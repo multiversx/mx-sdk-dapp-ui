@@ -19,14 +19,17 @@ describe('my-component', () => {
 
     component.setProperty('first', 'James');
     await page.waitForChanges();
-    expect(element.textContent).toEqual(`Hello, World! I'm James`);
+    const first = await page.find('my-component >>> div');
+    expect(first.textContent).toEqual(`Hello, World! I'm James`);
 
     component.setProperty('last', 'Quincy');
     await page.waitForChanges();
-    expect(element.textContent).toEqual(`Hello, World! I'm James Quincy`);
+    const last = await page.find('my-component >>> div');
+    expect(last.textContent).toEqual(`Hello, World! I'm James Quincy`);
 
     component.setProperty('middle', 'Earl');
     await page.waitForChanges();
-    expect(element.textContent).toEqual(`Hello, World! I'm James Earl Quincy`);
+    const middle = await page.find('my-component >>> div');
+    expect(middle.textContent).toEqual(`Hello, World! I'm James Earl Quincy`);
   });
 });
