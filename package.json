@@ -40,6 +40,9 @@
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },
+  "dependencies": {
+    "bignumber.js": "9.x"
+  },
   "devDependencies": {
     "@stencil/core": "^4.22.3",
     "@types/jest": "^29.5.14",
