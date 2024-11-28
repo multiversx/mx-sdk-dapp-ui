@@ -1,8 +1,9 @@
-import { Component, Prop, h, State, Element } from '@stencil/core';
+import { Component, Prop, h, State, Element, Fragment } from '@stencil/core';
 import { EventBus } from 'utils/EventBus';
 import { ILedgerConnectModalData, LedgerConnectEventsEnum } from './ledger-connect-modal.types';
 import { renderAccounts } from './helpers/renderAccounts';
 import { renderInModal } from './helpers/renderInModal';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
   tag: 'ledger-connect-modal',
@@ -31,7 +32,7 @@ export class LedgerConnectModal {
 
       const accountsList =
         accountScreenData.isLoading || accountScreenData.accounts.length === 0 ? (
-          <div class="spinner"></div>
+          <div class="spinner" data-testid={DataTestIdsEnum.ledgerLoading}></div>
         ) : (
           renderAccounts({
             shownAccounts: accountScreenData.accounts,
@@ -42,22 +43,24 @@ export class LedgerConnectModal {
 
       return renderInModal({
         onClose: () => this.close(),
-        title: 'Access your wallet',
-        subtitle: 'Choose the wallet you want to access',
+        title: <div data-testid={`${DataTestIdsEnum.addressTableContainer}Title`}>Access your wallet</div>,
+        subtitle: <div data-testid={`${DataTestIdsEnum.addressTableContainer}SubTitle`}>Choose the wallet you want to access</div>,
         body: (
-          <div>
-            <div class="account-list">{accountsList}</div>
+          <Fragment>
+            {accountsList}
             <div class="navigation">
-              <button onClick={() => this.prevPage()} disabled={accountScreenData.startIndex <= 0}>
+              <button onClick={() => this.prevPage()} disabled={accountScreenData.startIndex <= 0} data-testid={DataTestIdsEnum.prevBtn}>
                 Prev
               </button>
-              <button onClick={() => this.nextPage()}>Next</button>
+              <button onClick={() => this.nextPage()} data-testid={DataTestIdsEnum.nextBtn}>
+                Next
+              </button>
             </div>
 
-            <button class="access-button" onClick={() => this.accessWallet()} disabled={!isSelectedIndexOnPage}>
+            <button data-testid={DataTestIdsEnum.confirmBtn} class="access-button" onClick={() => this.accessWallet()} disabled={!isSelectedIndexOnPage}>
               Access Wallet
             </button>
-          </div>
+          </Fragment>
         ),
       });
     }
@@ -68,7 +71,7 @@ export class LedgerConnectModal {
         title: 'Confirm',
         subtitle: 'Confirm Ledger Address',
         body: (
-          <div data-testid="ledgerConfirmAddress" class="ledger-confirm-address-section">
+          <div data-testid={DataTestIdsEnum.ledgerConfirmAddress} class="ledger-confirm-address-section">
             <div class="ledger-confirm-address-section">
               <div>{confirmScreenData.confirmAddressText}</div>
               <div>{confirmScreenData.selectedAddress}</div>
@@ -106,7 +109,12 @@ export class LedgerConnectModal {
           {connectScreenData?.error && <p>{connectScreenData.error}</p>}
           {connectScreenData?.customContentMarkup && connectScreenData?.customContentMarkup}
 
-          <button class="access-button" onClick={() => this.eventBus.publish(LedgerConnectEventsEnum.CONNECT_DEVICE)} disabled={connectScreenData?.disabled}>
+          <button
+            data-testid={DataTestIdsEnum.ledgerConnectBtn}
+            class="access-button"
+            onClick={() => this.eventBus.publish(LedgerConnectEventsEnum.CONNECT_DEVICE)}
+            disabled={connectScreenData?.disabled}
+          >
             Connect Ledger
           </button>
           <a href="https://support.ledger.com/hc/en-us/articles/115005165269-Connection-issues-with-Windows-or-Linux" target="_blank" rel="noopener noreferrer">
