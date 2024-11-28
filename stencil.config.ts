@@ -1,7 +1,7 @@
 import { Config } from '@stencil/core';
 
 export const config: Config = {
-  namespace: 'sdk-core-ui',
+  namespace: 'sdk-dapp-core-ui',
   outputTargets: [
     {
       type: 'dist',
@@ -21,6 +21,6 @@ export const config: Config = {
     },
   ],
   testing: {
-    browserHeadless: "new",
+    browserHeadless: 'new',
   },
 };
