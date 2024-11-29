@@ -1,5 +1,5 @@
-import { Component, Prop, h, State, Element, Fragment } from '@stencil/core';
-import { EventBus } from 'utils/EventBus';
+import { Component, Prop, h, State, Element, Fragment, Method } from '@stencil/core';
+import { EventBus, IEventBus } from 'utils/EventBus';
 import { ILedgerConnectModalData, LedgerConnectEventsEnum } from './ledger-connect-modal.types';
 import { renderAccounts } from './helpers/renderAccounts';
 import { renderInModal } from './helpers/renderInModal';
@@ -12,6 +12,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 })
 export class LedgerConnectModal {
   @Element() hostElement: HTMLElement;
+  private eventBus: IEventBus = EventBus.getInstance();
 
   @Prop() data: ILedgerConnectModalData = {
     accountScreenData: null,
@@ -19,10 +20,12 @@ export class LedgerConnectModal {
     connectScreenData: {},
   };
 
+  @Method() async getEventBus() {
+    return this.eventBus;
+  }
+
   @State() private selectedIndex = 0;
   @State() private selectedAddress = '';
-
-  private eventBus: EventBus = EventBus.getInstance();
 
   render() {
     const { accountScreenData, confirmScreenData, connectScreenData } = this.data;

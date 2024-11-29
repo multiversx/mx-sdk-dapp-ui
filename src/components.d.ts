@@ -6,10 +6,13 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledger-connect-modal.types";
+import { IEventBus } from "./utils/EventBus";
 export { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledger-connect-modal.types";
+export { IEventBus } from "./utils/EventBus";
 export namespace Components {
     interface LedgerConnectModal {
         "data": ILedgerConnectModalData;
+        "getEventBus": () => Promise<IEventBus>;
     }
     interface MyComponent {
         /**

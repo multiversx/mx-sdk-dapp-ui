@@ -9,15 +9,19 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/sdk-dapp-core-ui/sdk-dapp-core-ui.esm.js",
+  "unpkg": "dist/components/sdk-dapp-core-ui.esm.js",
   "exports": {
     ".": {
-      "import": "./dist/sdk-dapp-core-ui/sdk-dapp-core-ui.esm.js",
-      "require": "./dist/sdk-dapp-core-ui/sdk-dapp-core-ui.cjs.js"
+      "import": "./dist/components/sdk-dapp-core-ui.esm.js",
+      "require": "./dist/components/sdk-dapp-core-ui.cjs.js"
     },
     "./my-component": {
       "import": "./dist/components/my-component.js",
       "types": "./dist/components/my-component.d.ts"
+    },
+    "./ledger-connect-modal": {
+      "import": "./dist/components/ledger-connect-modal.js",
+      "types": "./dist/components/ledger-connect-modal.d.ts"
     },
     "./loader": {
       "import": "./loader/index.js",
