@@ -41,6 +41,8 @@
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
+    "unpublish-verdaccio": "npm unpublish @multiversx/sdk-dapp-core-ui --force --registry http://localhost:4873",
+    "publish-verdaccio": "npm run unpublish-verdaccio && npm run build && npm publish --registry http://localhost:4873/",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },

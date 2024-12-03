@@ -1,4 +1,4 @@
-import { Component, Prop, h, State, Element, Fragment, Method } from '@stencil/core';
+import { Component, Prop, h, State, Element, Fragment, Method, forceUpdate } from '@stencil/core';
 import { EventBus, IEventBus } from 'utils/EventBus';
 import { ILedgerConnectModalData, LedgerConnectEventsEnum } from './ledger-connect-modal.types';
 import { renderAccounts } from './helpers/renderAccounts';
@@ -162,7 +162,8 @@ export class LedgerConnectModal {
     if (payload.shouldClose) {
       return this.close({ isUserClick: false });
     }
-    this.data = payload;
+    this.data = { ...payload };
+    forceUpdate(this);
   }
 
   componentDidLoad() {
