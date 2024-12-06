@@ -77,7 +77,7 @@ describe('ledger-connect-modal', () => {
     component.setProperty('data', balancesUpdate);
     await page.waitForChanges();
     const addressTableContainer = await page.find(`${tag} >>> [data-testid=${DataTestIdsEnum.addressTableContainer}]`);
-    expect(addressTableContainer.textContent).toContain('8.9983');
+    expect(addressTableContainer.textContent).toContain('89983');
 
     const connectScreenUpdate = {
       connectScreenData: {},
