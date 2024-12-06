@@ -9,15 +9,19 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/sdk-core-ui/sdk-core-ui.esm.js",
+  "unpkg": "dist/components/sdk-dapp-core-ui.esm.js",
   "exports": {
     ".": {
-      "import": "./dist/sdk-core-ui/sdk-core-ui.esm.js",
-      "require": "./dist/sdk-core-ui/sdk-core-ui.cjs.js"
+      "import": "./dist/components/sdk-dapp-core-ui.esm.js",
+      "require": "./dist/components/sdk-dapp-core-ui.cjs.js"
     },
     "./my-component": {
       "import": "./dist/components/my-component.js",
       "types": "./dist/components/my-component.d.ts"
+    },
+    "./ledger-connect-modal": {
+      "import": "./dist/components/ledger-connect-modal.js",
+      "types": "./dist/components/ledger-connect-modal.d.ts"
     },
     "./loader": {
       "import": "./loader/index.js",
@@ -27,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ionic-team/stencil-component-starter.git"
+    "url": "https://github.com/multiversx/mx-sdk-dapp-core-ui.git"
   },
   "files": [
     "dist/",
@@ -37,11 +41,10 @@
     "build": "stencil build",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
+    "unpublish-verdaccio": "npm unpublish @multiversx/sdk-dapp-core-ui --force --registry http://localhost:4873",
+    "publish-verdaccio": "npm run unpublish-verdaccio && npm run build && npm publish --registry http://localhost:4873/",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
-  },
-  "dependencies": {
-    "bignumber.js": "9.x"
   },
   "devDependencies": {
     "@stencil/core": "^4.22.3",
