@@ -7,8 +7,10 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledger-connect-modal.types";
 import { IEventBus } from "./utils/EventBus";
+import { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
 export { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledger-connect-modal.types";
 export { IEventBus } from "./utils/EventBus";
+export { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
 export namespace Components {
     interface LedgerConnectModal {
         "data": ILedgerConnectModalData;
@@ -28,6 +30,10 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface WalletConnectModal {
+        "data": IWalletConnectModalData;
+        "getEventBus": () => Promise<IEventBus>;
+    }
 }
 declare global {
     interface HTMLLedgerConnectModalElement extends Components.LedgerConnectModal, HTMLStencilElement {
@@ -42,9 +48,16 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLWalletConnectModalElement extends Components.WalletConnectModal, HTMLStencilElement {
+    }
+    var HTMLWalletConnectModalElement: {
+        prototype: HTMLWalletConnectModalElement;
+        new (): HTMLWalletConnectModalElement;
+    };
     interface HTMLElementTagNameMap {
         "ledger-connect-modal": HTMLLedgerConnectModalElement;
         "my-component": HTMLMyComponentElement;
+        "wallet-connect-modal": HTMLWalletConnectModalElement;
     }
 }
 declare namespace LocalJSX {
@@ -65,9 +78,13 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface WalletConnectModal {
+        "data"?: IWalletConnectModalData;
+    }
     interface IntrinsicElements {
         "ledger-connect-modal": LedgerConnectModal;
         "my-component": MyComponent;
+        "wallet-connect-modal": WalletConnectModal;
     }
 }
 export { LocalJSX as JSX };
@@ -76,6 +93,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "ledger-connect-modal": LocalJSX.LedgerConnectModal & JSXBase.HTMLAttributes<HTMLLedgerConnectModalElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "wallet-connect-modal": LocalJSX.WalletConnectModal & JSXBase.HTMLAttributes<HTMLWalletConnectModalElement>;
         }
     }
 }

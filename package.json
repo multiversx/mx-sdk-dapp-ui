@@ -46,12 +46,16 @@
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },
+  "dependencies": {
+    "qrcode": "1.5.4"
+  },
   "devDependencies": {
     "@stencil/core": "^4.22.3",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.10.0",
     "jest": "^29.7.0",
     "jest-cli": "^29.7.0",
-    "puppeteer": "^23.9.0"
+    "puppeteer": "^23.9.0",
+    "prettier": "3.4.2"
   }
 }
