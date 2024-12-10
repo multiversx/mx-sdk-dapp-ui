@@ -2,6 +2,7 @@ import { Component, h, Element, Method, forceUpdate, Prop, State, Watch } from '
 import { EventBus, IEventBus } from 'utils/EventBus';
 import { IWalletConnectModalData, WalletConnectEventsEnum } from './wallet-connect-modal.types';
 import QRCode from 'qrcode';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
   tag: 'wallet-connect-modal',
@@ -45,10 +46,18 @@ export class WalletConnectModal {
   render() {
     return (
       <generic-modal
-        modalTitle={<div>xPortal Mobile Wallet</div>}
-        modalSubtitle={<div>Scan this QR code with your app</div>}
+        modalTitle={<div data-testid={DataTestIdsEnum.walletConnetModalTitle}>xPortal Mobile Wallet</div>}
+        modalSubtitle={<div data-testid={DataTestIdsEnum.walletConnetModalSubtitle}>Scan this QR code with your app</div>}
         onClose={() => this.close()}
-        body={<div class="modal-body">{this.qrCodeSvg ? <div class="qr-code-container" innerHTML={this.qrCodeSvg}></div> : <div class="spinner"></div>}</div>}
+        body={
+          <div class="modal-body">
+            {this.qrCodeSvg ? (
+              <div class="qr-code-container" data-testid={DataTestIdsEnum.walletConnectQrCode} innerHTML={this.qrCodeSvg}></div>
+            ) : (
+              <generic-spinner data-testid={DataTestIdsEnum.walletConnectLoading}></generic-spinner>
+            )}
+          </div>
+        }
       ></generic-modal>
     );
   }

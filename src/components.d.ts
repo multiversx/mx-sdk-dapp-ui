@@ -22,6 +22,8 @@ export namespace Components {
         "modalTitle": string | VNode;
         "onClose": () => void;
     }
+    interface GenericSpinner {
+    }
     interface LedgerConnectModal {
         "data": ILedgerConnectModalData;
         "getEventBus": () => Promise<IEventBus>;
@@ -56,6 +58,12 @@ declare global {
         prototype: HTMLGenericModalElement;
         new (): HTMLGenericModalElement;
     };
+    interface HTMLGenericSpinnerElement extends Components.GenericSpinner, HTMLStencilElement {
+    }
+    var HTMLGenericSpinnerElement: {
+        prototype: HTMLGenericSpinnerElement;
+        new (): HTMLGenericSpinnerElement;
+    };
     interface HTMLLedgerConnectModalElement extends Components.LedgerConnectModal, HTMLStencilElement {
     }
     var HTMLLedgerConnectModalElement: {
@@ -82,6 +90,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "generic-modal": HTMLGenericModalElement;
+        "generic-spinner": HTMLGenericSpinnerElement;
         "ledger-connect-modal": HTMLLedgerConnectModalElement;
         "my-component": HTMLMyComponentElement;
         "sign-transactions-modal": HTMLSignTransactionsModalElement;
@@ -94,6 +103,8 @@ declare namespace LocalJSX {
         "modalSubtitle"?: string | VNode;
         "modalTitle"?: string | VNode;
         "onClose"?: () => void;
+    }
+    interface GenericSpinner {
     }
     interface LedgerConnectModal {
         "data"?: ILedgerConnectModalData;
@@ -120,6 +131,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "generic-modal": GenericModal;
+        "generic-spinner": GenericSpinner;
         "ledger-connect-modal": LedgerConnectModal;
         "my-component": MyComponent;
         "sign-transactions-modal": SignTransactionsModal;
@@ -131,6 +143,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "generic-modal": LocalJSX.GenericModal & JSXBase.HTMLAttributes<HTMLGenericModalElement>;
+            "generic-spinner": LocalJSX.GenericSpinner & JSXBase.HTMLAttributes<HTMLGenericSpinnerElement>;
             "ledger-connect-modal": LocalJSX.LedgerConnectModal & JSXBase.HTMLAttributes<HTMLLedgerConnectModalElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "sign-transactions-modal": LocalJSX.SignTransactionsModal & JSXBase.HTMLAttributes<HTMLSignTransactionsModalElement>;
