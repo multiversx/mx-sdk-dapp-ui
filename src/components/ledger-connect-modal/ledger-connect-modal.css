@@ -1,3 +1,31 @@
+.account-header {
+  display: flex;
+  align-items: center;
+  background-color: #ced4da;
+  line-height: 1;
+  padding: 16px;
+  text-align: left;
+  font-size: 14px;
+  border-radius: 8px;
+  padding-right: 20px;
+}
+
+.account-header-item {
+  flex: 1;
+}
+
+.account-header-item:first-child {
+  width: 55%;
+  max-width: 55%;
+}
+
+.account-header-item:last-child {
+  width: 32px;
+  max-width: 32px;
+  flex-basis: 32px;
+  text-align: center;
+}
+
 .account-list {
   width: 100%;
   min-height: 300px;
@@ -7,9 +35,8 @@
 .account-row {
   display: flex;
   align-items: center;
-  padding: 12px;
+  padding: 16px;
   border-radius: 8px;
-  margin-bottom: 8px;
   cursor: pointer;
 }
 
@@ -17,25 +44,42 @@
   background-color: #f5f5f5;
 }
 
-.address {
-  flex: 2;
-  font-family: monospace;
-}
-
-.balance {
+.address-row-item-data {
+  font-size: 14px;
+  line-height: 1;
   flex: 1;
-  text-align: right;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  padding-right: 16px;
 }
-
-.index {
-  flex: 0 0 30px;
-  text-align: right;
+.address-row-item-data:last-child {
+  width: 32px;
+  max-width: 32px;
+  flex-basis: 32px;
+  text-align: center;
+  justify-content: center;
+  padding-right: 0;
 }
 
 .navigation {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 10rem;
   margin-top: 20px;
+}
+
+.navigation-button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.navigation-button:hover {
+  color: #1a56db;
+}
+.navigation-button:disabled {
+  color: #737373;
+  pointer-events: none;
 }
 
 .access-button {
@@ -57,6 +101,20 @@
   opacity: 0.6;
   box-shadow: none;
   transform: none;
+}
+
+.connection-link {
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .ledger-confirm-address {
@@ -85,18 +143,26 @@
   line-height: 1.5;
   margin-top: 40px;
   font-size: 16px;
+  text-align: center;
 }
 
 .ledger-confirm-address-section .ledger-confirm-address-description {
-  color: var(--gray-700);
+  color: #858688;
 }
 
 .ledger-confirm-address-section .ledger-confirm-address-data {
-  color: var(--black);
-  margin: 8px 0;
-  word-break: break-word;
-  background-color: var(--gray-500);
+  background-color: #ced4da;
+  line-height: 1;
   padding: 12px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.ledger-confirm-address-section .ledger-confirm-address-header {
+  background-color: #ced4da;
+  line-height: 1;
+  padding: 12px;
+  text-align: center;
   border-radius: 8px;
 }
 
