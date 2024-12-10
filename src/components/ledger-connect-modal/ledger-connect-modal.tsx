@@ -50,18 +50,21 @@ export class LedgerConnectModal {
           body={
             <Fragment>
               {accountsList}
-              <div class="navigation">
-                <button onClick={() => this.prevPage()} disabled={accountScreenData.startIndex <= 0} data-testid={DataTestIdsEnum.prevBtn}>
-                  Prev
-                </button>
-                <button onClick={() => this.nextPage()} data-testid={DataTestIdsEnum.nextBtn}>
-                  Next
-                </button>
-              </div>
-
-              <button data-testid={DataTestIdsEnum.confirmBtn} class="access-button" onClick={() => this.accessWallet()} disabled={!isSelectedIndexOnPage}>
-                Access Wallet
-              </button>
+              {!accountScreenData.isLoading && accountScreenData.accounts.length !== 0 && (
+                <Fragment>
+                  <div class="navigation">
+                    <button onClick={() => this.prevPage()} disabled={accountScreenData.startIndex <= 0} data-testid={DataTestIdsEnum.prevBtn} class="navigation-button">
+                      {'< '} Prev
+                    </button>
+                    <button onClick={() => this.nextPage()} data-testid={DataTestIdsEnum.nextBtn} class="navigation-button">
+                      Next{' >'}
+                    </button>
+                  </div>
+                  <button data-testid={DataTestIdsEnum.confirmBtn} class="access-button" onClick={() => this.accessWallet()} disabled={!isSelectedIndexOnPage}>
+                    Access Wallet
+                  </button>
+                </Fragment>
+              )}
             </Fragment>
           }
           onClose={() => this.close()}
@@ -78,8 +81,8 @@ export class LedgerConnectModal {
           body={
             <div data-testid={DataTestIdsEnum.ledgerConfirmAddress} class="ledger-confirm-address-section">
               <div class="ledger-confirm-address-section">
-                <div>{confirmScreenData.confirmAddressText}</div>
-                <div>{confirmScreenData.selectedAddress}</div>
+                <div class="ledger-confirm-address-description">{confirmScreenData.confirmAddressText}</div>
+                <div class="ledger-confirm-address-header">{confirmScreenData.selectedAddress}</div>
               </div>
 
               <div class="ledger-confirm-address-section">
@@ -124,7 +127,12 @@ export class LedgerConnectModal {
             >
               Connect Ledger
             </button>
-            <a href="https://support.ledger.com/hc/en-us/articles/115005165269-Connection-issues-with-Windows-or-Linux" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://support.ledger.com/hc/en-us/articles/115005165269-Connection-issues-with-Windows-or-Linux"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="connection-link"
+            >
               Having connection issues?
             </a>
           </div>
