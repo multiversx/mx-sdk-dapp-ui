@@ -18,7 +18,6 @@ export namespace Components {
         "body": VNode;
         "modalSubtitle"?: string | VNode;
         "modalTitle": string | VNode;
-        "onClose": () => void;
     }
     interface LedgerConnectModal {
         "data": ILedgerConnectModalData;
@@ -43,8 +42,23 @@ export namespace Components {
         "getEventBus": () => Promise<IEventBus>;
     }
 }
+export interface GenericModalCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLGenericModalElement;
+}
 declare global {
+    interface HTMLGenericModalElementEventMap {
+        "close": any;
+    }
     interface HTMLGenericModalElement extends Components.GenericModal, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLGenericModalElementEventMap>(type: K, listener: (this: HTMLGenericModalElement, ev: GenericModalCustomEvent<HTMLGenericModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLGenericModalElementEventMap>(type: K, listener: (this: HTMLGenericModalElement, ev: GenericModalCustomEvent<HTMLGenericModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLGenericModalElement: {
         prototype: HTMLGenericModalElement;
@@ -80,7 +94,7 @@ declare namespace LocalJSX {
         "body"?: VNode;
         "modalSubtitle"?: string | VNode;
         "modalTitle"?: string | VNode;
-        "onClose"?: () => void;
+        "onClose"?: (event: GenericModalCustomEvent<any>) => void;
     }
     interface LedgerConnectModal {
         "data"?: ILedgerConnectModalData;

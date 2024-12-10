@@ -1,4 +1,4 @@
-// types here need to be synced with the types in sdk-dapp-core ledger.types.ts
+// types here need to be synced with the types in sdk-dapp-core signTransactionsModal.types.ts
 
 export interface ITransactionData {
   receiver?: string;
@@ -7,6 +7,7 @@ export interface ITransactionData {
 
 export interface ISignTransactionsModalData {
   transaction: ITransactionData | null;
+  shouldClose?: true;
 }
 
 export enum SignEventsEnum {

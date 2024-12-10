@@ -1,4 +1,4 @@
-import { Component, Prop, VNode, h } from '@stencil/core';
+import { Component, Prop, VNode, h, Event } from '@stencil/core';
 
 @Component({
   tag: 'generic-modal',
@@ -9,14 +9,14 @@ export class GenericModal {
   @Prop() body: VNode;
   @Prop() modalTitle: string | VNode;
   @Prop() modalSubtitle?: string | VNode;
-  @Prop() onClose: () => void;
+  @Event() close: () => void;
 
   render() {
     return (
       <div class="modal">
         <div class="modal-content">
           <div class="modal-header">
-            <span class="close" onClick={this.onClose}>
+            <span class="close" onClick={this.close}>
               ✕
             </span>
             <h2>{this.modalTitle}</h2>
