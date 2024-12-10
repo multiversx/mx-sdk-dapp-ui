@@ -10,7 +10,25 @@
   </head>
   <body>
     <my-component first="Stencil" middle="'Don't call me a framework'" last="JS"></my-component>
-    <sign-transactions-modal></sign-transactions-modal>
-    <!-- <ledger-connect-modal></ledger-connect-modal> -->
+    <button id="sign-transactions-btn" onclick="openSignModal();">Open Sign Transactions Modal</button>
+    <button id="ledger-connect-btn" onclick="openLedgerConnectModal();">Open Ledger Connect Modal</button>
+
+    <script>
+      function openSignModal() {
+        const signTransactionsModal = document.querySelector('sign-transactions-modal');
+        if (!signTransactionsModal) {
+          const newModal = document.createElement('sign-transactions-modal');
+          document.body.appendChild(newModal);
+        } 
+      }
+
+      function openLedgerConnectModal() {
+        const ledgerConnectModal = document.querySelector('ledger-connect-modal');
+        if (!ledgerConnectModal) {
+          const newModal = document.createElement('ledger-connect-modal');
+          document.body.appendChild(newModal);
+        } 
+      }
+    </script>
   </body>
 </html>
