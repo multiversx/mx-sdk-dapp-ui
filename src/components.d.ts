@@ -5,13 +5,23 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { VNode } from "@stencil/core";
 import { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledger-connect-modal.types";
 import { IEventBus } from "./utils/EventBus";
+import { ISignTransactionsModalData } from "./components/sign-transactions-modal/sign-transactions-modal.types";
 import { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
+export { VNode } from "@stencil/core";
 export { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledger-connect-modal.types";
 export { IEventBus } from "./utils/EventBus";
+export { ISignTransactionsModalData } from "./components/sign-transactions-modal/sign-transactions-modal.types";
 export { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
 export namespace Components {
+    interface GenericModal {
+        "body": VNode;
+        "modalSubtitle"?: string | VNode;
+        "modalTitle": string | VNode;
+        "onClose": () => void;
+    }
     interface LedgerConnectModal {
         "data": ILedgerConnectModalData;
         "getEventBus": () => Promise<IEventBus>;
@@ -30,12 +40,22 @@ export namespace Components {
          */
         "middle": string;
     }
+    interface SignTransactionsModal {
+        "data": ISignTransactionsModalData;
+        "getEventBus": () => Promise<IEventBus>;
+    }
     interface WalletConnectModal {
         "data": IWalletConnectModalData;
         "getEventBus": () => Promise<IEventBus>;
     }
 }
 declare global {
+    interface HTMLGenericModalElement extends Components.GenericModal, HTMLStencilElement {
+    }
+    var HTMLGenericModalElement: {
+        prototype: HTMLGenericModalElement;
+        new (): HTMLGenericModalElement;
+    };
     interface HTMLLedgerConnectModalElement extends Components.LedgerConnectModal, HTMLStencilElement {
     }
     var HTMLLedgerConnectModalElement: {
@@ -48,6 +68,12 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
+    interface HTMLSignTransactionsModalElement extends Components.SignTransactionsModal, HTMLStencilElement {
+    }
+    var HTMLSignTransactionsModalElement: {
+        prototype: HTMLSignTransactionsModalElement;
+        new (): HTMLSignTransactionsModalElement;
+    };
     interface HTMLWalletConnectModalElement extends Components.WalletConnectModal, HTMLStencilElement {
     }
     var HTMLWalletConnectModalElement: {
@@ -55,12 +81,20 @@ declare global {
         new (): HTMLWalletConnectModalElement;
     };
     interface HTMLElementTagNameMap {
+        "generic-modal": HTMLGenericModalElement;
         "ledger-connect-modal": HTMLLedgerConnectModalElement;
         "my-component": HTMLMyComponentElement;
+        "sign-transactions-modal": HTMLSignTransactionsModalElement;
         "wallet-connect-modal": HTMLWalletConnectModalElement;
     }
 }
 declare namespace LocalJSX {
+    interface GenericModal {
+        "body"?: VNode;
+        "modalSubtitle"?: string | VNode;
+        "modalTitle"?: string | VNode;
+        "onClose"?: () => void;
+    }
     interface LedgerConnectModal {
         "data"?: ILedgerConnectModalData;
     }
@@ -78,12 +112,17 @@ declare namespace LocalJSX {
          */
         "middle"?: string;
     }
+    interface SignTransactionsModal {
+        "data"?: ISignTransactionsModalData;
+    }
     interface WalletConnectModal {
         "data"?: IWalletConnectModalData;
     }
     interface IntrinsicElements {
+        "generic-modal": GenericModal;
         "ledger-connect-modal": LedgerConnectModal;
         "my-component": MyComponent;
+        "sign-transactions-modal": SignTransactionsModal;
         "wallet-connect-modal": WalletConnectModal;
     }
 }
@@ -91,8 +130,10 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "generic-modal": LocalJSX.GenericModal & JSXBase.HTMLAttributes<HTMLGenericModalElement>;
             "ledger-connect-modal": LocalJSX.LedgerConnectModal & JSXBase.HTMLAttributes<HTMLLedgerConnectModalElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "sign-transactions-modal": LocalJSX.SignTransactionsModal & JSXBase.HTMLAttributes<HTMLSignTransactionsModalElement>;
             "wallet-connect-modal": LocalJSX.WalletConnectModal & JSXBase.HTMLAttributes<HTMLWalletConnectModalElement>;
         }
     }
