@@ -44,18 +44,12 @@ export class WalletConnectModal {
 
   render() {
     return (
-      <div class="modal">
-        <div class="modal-content">
-          <div class="modal-header">
-            <span class="close" onClick={() => this.close()}>
-              ✕
-            </span>
-            <h2>Connect xPortal</h2>
-            <h4>xPortal App</h4>
-          </div>
-          <div class="modal-body">{this.qrCodeSvg ? <div class="qr-code-container" innerHTML={this.qrCodeSvg}></div> : <div class="spinner"></div>}</div>
-        </div>
-      </div>
+      <generic-modal
+        modalTitle={<div>xPortal Mobile Wallet</div>}
+        modalSubtitle={<div>Scan this QR code with your app</div>}
+        onClose={() => this.close()}
+        body={<div class="modal-body">{this.qrCodeSvg ? <div class="qr-code-container" innerHTML={this.qrCodeSvg}></div> : <div class="spinner"></div>}</div>}
+      ></generic-modal>
     );
   }
 
