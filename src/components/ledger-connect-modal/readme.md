@@ -29,11 +29,13 @@ Type: `Promise<IEventBus>`
 
 ### Depends on
 
+- [generic-spinner](../../common/generic-spinner)
 - [generic-modal](../../common/generic-modal)
 
 ### Graph
 ```mermaid
 graph TD;
+  ledger-connect-modal --> generic-spinner
   ledger-connect-modal --> generic-modal
   style ledger-connect-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```
