@@ -3,6 +3,7 @@
 export interface ITransactionData {
   receiver?: string;
   value?: string;
+  data?: string;
 }
 
 export interface ISignTransactionsModalData {
