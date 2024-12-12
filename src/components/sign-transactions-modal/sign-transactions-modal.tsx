@@ -32,6 +32,7 @@ export class SignTransactionsModal {
           <div>
             <p>{transaction?.receiver}</p>
             <p>{transaction?.value}</p>
+            <p>{transaction?.data}</p>
 
             <button data-testid={DataTestIdsEnum.ledgerConnectBtn} class="access-button" onClick={() => this.eventBus.publish(SignEventsEnum.SIGN_TRANSACTION)}>
               Sign
