@@ -19,7 +19,7 @@ describe('pending-transactions-modal', () => {
 
     await page.setContent(`<${tag}></${tag}>`);
     const component = await page.find(tag);
-    component.setProperty('data', { isPending: true, title, subtitle });
+    component.setProperty('data', { title, subtitle });
 
     await page.waitForChanges();
     const titleElement = await page.find(`${tag} >>> [data-testid=${DataTestIdsEnum.pendingTransactionsTitle}]`);
