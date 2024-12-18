@@ -1,6 +1,7 @@
 import { Component, Prop, h } from '@stencil/core';
 import BigNumber from 'bignumber.js';
-import { DECIMALS, DIGITS, formatAmount, ZERO } from '@multiversx/sdk-dapp-utils/out';
+import { formatAmount } from '@multiversx/sdk-dapp-utils/out/helpers';
+import { DECIMALS, DIGITS, ZERO } from '@multiversx/sdk-dapp-utils/out/constants';
 
 @Component({
   tag: 'format-amount',

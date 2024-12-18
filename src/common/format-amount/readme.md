@@ -7,18 +7,17 @@
 
 ## Properties
 
-| Property                 | Attribute | Description | Type                   | Default     |
-|--------------------------|-----------| ----------- |------------------------|-------------|
-| `class`                  | --        |             | `string \| undefined`  | `undefined` |
-| `decimals`               | --        |             | `number \| undefined`  | `18`        |
-| `digits`                 | --        |             | `number \| undefined`  | `4`         |
-| `egldLabel`              | --        |             | `string \| undefined`  | `undefined` |
-| `showLabel`              | --        |             | `boolean \| undefined` | `undefined` |
-| `showLastNonZeroDecimal` | --        |             | `boolean \| undefined` | `false`     |
-| `styles`                 | --        |             | `object \| undefined`  | `undefined` |
-| `token`                  | --        |             | `string \| undefined`  | `undefined` |
-| `value`                  | --        |             | `string`               | `undefined` |
-
+| Property                 | Attribute                    | Description | Type                         | Default     |
+| ------------------------ | ---------------------------- | ----------- | ---------------------------- | ----------- |
+| `class`                  | `class`                      |             | `string`                     | `undefined` |
+| `decimals`               | `decimals`                   |             | `number`                     | `DECIMALS`  |
+| `digits`                 | `digits`                     |             | `number`                     | `DIGITS`    |
+| `egldLabel`              | `egld-label`                 |             | `string`                     | `undefined` |
+| `showLabel`              | `show-label`                 |             | `boolean`                    | `true`      |
+| `showLastNonZeroDecimal` | `show-last-non-zero-decimal` |             | `boolean`                    | `false`     |
+| `styles`                 | --                           |             | `{ [key: string]: string; }` | `{}`        |
+| `token`                  | `token`                      |             | `string`                     | `undefined` |
+| `value`                  | `value`                      |             | `string`                     | `undefined` |
 
 
 ----------------------------------------------
