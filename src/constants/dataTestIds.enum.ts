@@ -11,6 +11,6 @@ export enum DataTestIdsEnum {
   walletConnectQrCode = 'walletConnectQrCode',
   walletConnetModalTitle = 'walletConnetModalTitle',
   walletConnetModalSubtitle = 'walletConnetModalSubtitle',
-  pendingTransactionsTitle = 'pendingTrasactionsTitle',
-  pendingTransactionsSubtitle = 'pendingTrasactionsSubtitle',
+  pendingTransactionsTitle = 'pendingTransactionsTitle',
+  pendingTransactionsSubtitle = 'pendingTransactionsSubtitle',
 }
