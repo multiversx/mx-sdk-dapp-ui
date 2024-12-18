@@ -27,6 +27,10 @@
       "import": "./loader/index.js",
       "require": "./loader/index.cjs",
       "types": "./loader/index.d.ts"
+    },
+    "./format-amount": {
+      "import": "./dist/components/format-amount.js",
+      "types": "./dist/components/format-amount.d.ts"
     }
   },
   "repository": {
