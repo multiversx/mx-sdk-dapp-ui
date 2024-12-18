@@ -29,11 +29,9 @@ export class PendingTransactionstModal {
         onClose={() => this.close()}
         body={
           <div class="modal-body">
-            {
-              <button class="close-button" onClick={() => this.close()}>
-                Close
-              </button>
-            }
+            <button class="close-button" onClick={() => this.close()}>
+              Close
+            </button>
           </div>
         }
       ></generic-modal>
