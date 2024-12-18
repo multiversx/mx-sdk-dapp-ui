@@ -14,6 +14,8 @@ export class SignTransactionsModal {
 
   @Prop() data: ISignTransactionsModalData = {
     transaction: null,
+    total: 0,
+    currentIndex: 0,
   };
 
   @Method() async getEventBus() {
@@ -27,7 +29,7 @@ export class SignTransactionsModal {
       <generic-modal
         onClose={() => this.close()}
         modalTitle="Sign transaction"
-        modalSubtitle="1/2"
+        modalSubtitle={`Transaction ${this.data.currentIndex + 1} of ${this.data.total}`}
         body={
           <div>
             <p>{transaction?.receiver}</p>
