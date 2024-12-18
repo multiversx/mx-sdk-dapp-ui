@@ -16,6 +16,17 @@ export { IEventBus } from "./utils/EventBus";
 export { ISignTransactionsModalData } from "./components/sign-transactions-modal/sign-transactions-modal.types";
 export { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
 export namespace Components {
+    interface FormatAmount {
+        "class"?: string;
+        "decimals"?: number;
+        "digits"?: number;
+        "egldLabel"?: string;
+        "showLabel"?: boolean;
+        "showLastNonZeroDecimal"?: boolean;
+        "styles"?: { [key: string]: string };
+        "token"?: string;
+        "value": string;
+    }
     interface GenericModal {
         "body": VNode;
         "modalSubtitle"?: string | VNode;
@@ -52,6 +63,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLFormatAmountElement extends Components.FormatAmount, HTMLStencilElement {
+    }
+    var HTMLFormatAmountElement: {
+        prototype: HTMLFormatAmountElement;
+        new (): HTMLFormatAmountElement;
+    };
     interface HTMLGenericModalElement extends Components.GenericModal, HTMLStencilElement {
     }
     var HTMLGenericModalElement: {
@@ -89,6 +106,7 @@ declare global {
         new (): HTMLWalletConnectModalElement;
     };
     interface HTMLElementTagNameMap {
+        "format-amount": HTMLFormatAmountElement;
         "generic-modal": HTMLGenericModalElement;
         "generic-spinner": HTMLGenericSpinnerElement;
         "ledger-connect-modal": HTMLLedgerConnectModalElement;
@@ -98,6 +116,17 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface FormatAmount {
+        "class"?: string;
+        "decimals"?: number;
+        "digits"?: number;
+        "egldLabel"?: string;
+        "showLabel"?: boolean;
+        "showLastNonZeroDecimal"?: boolean;
+        "styles"?: { [key: string]: string };
+        "token"?: string;
+        "value"?: string;
+    }
     interface GenericModal {
         "body"?: VNode;
         "modalSubtitle"?: string | VNode;
@@ -130,6 +159,7 @@ declare namespace LocalJSX {
         "data"?: IWalletConnectModalData;
     }
     interface IntrinsicElements {
+        "format-amount": FormatAmount;
         "generic-modal": GenericModal;
         "generic-spinner": GenericSpinner;
         "ledger-connect-modal": LedgerConnectModal;
@@ -142,6 +172,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "format-amount": LocalJSX.FormatAmount & JSXBase.HTMLAttributes<HTMLFormatAmountElement>;
             "generic-modal": LocalJSX.GenericModal & JSXBase.HTMLAttributes<HTMLGenericModalElement>;
             "generic-spinner": LocalJSX.GenericSpinner & JSXBase.HTMLAttributes<HTMLGenericSpinnerElement>;
             "ledger-connect-modal": LocalJSX.LedgerConnectModal & JSXBase.HTMLAttributes<HTMLLedgerConnectModalElement>;
