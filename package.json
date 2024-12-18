@@ -47,7 +47,8 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "qrcode": "1.5.4"
+    "qrcode": "1.5.4",
+    "@multiversx/sdk-dapp-utils": "1.0.2"
   },
   "devDependencies": {
     "@stencil/core": "^4.22.3",
