@@ -34,7 +34,7 @@ export class LedgerConnectModal {
 
       const accountsList =
         accountScreenData.isLoading || accountScreenData.accounts.length === 0 ? (
-          <div class="spinner" data-testid={DataTestIdsEnum.ledgerLoading}></div>
+          <generic-spinner data-testid={DataTestIdsEnum.ledgerLoading}></generic-spinner>
         ) : (
           renderAccounts({
             shownAccounts: accountScreenData.accounts,

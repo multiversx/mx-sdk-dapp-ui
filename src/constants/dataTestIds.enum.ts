@@ -7,4 +7,8 @@ export enum DataTestIdsEnum {
   ledgerConfirmAddress = 'ledgerConfirmAddress',
   ledgerConnectBtn = 'ledgerConnectBtn',
   ledgerLoading = 'ledgerLoading',
+  walletConnectLoading = 'walletConnectLoading',
+  walletConnectQrCode = 'walletConnectQrCode',
+  walletConnetModalTitle = 'walletConnetModalTitle',
+  walletConnetModalSubtitle = 'walletConnetModalSubtitle',
 }
