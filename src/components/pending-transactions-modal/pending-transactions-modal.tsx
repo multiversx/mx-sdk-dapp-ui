@@ -1,6 +1,8 @@
-import { Component, h, Element, Method, forceUpdate, Prop, State } from '@stencil/core';
+import { Component, h, Element, Method, forceUpdate, Prop } from '@stencil/core';
 import { EventBus, IEventBus } from 'utils/EventBus';
 import { IPendingTransactionsModalData, PendingTransactionsEventsEnum } from './pending-transactions-modal.types';
+import { ProviderTypeEnum } from 'types/provider.types';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
   tag: 'pending-transactions-modal',
@@ -15,6 +17,7 @@ export class PendingTransactionstModal {
     isPending: false,
     title: '',
     subtitle: '',
+    type: ProviderTypeEnum.none,
   };
 
   @Method() async getEventBus() {
@@ -24,8 +27,8 @@ export class PendingTransactionstModal {
   render() {
     return (
       <generic-modal
-        modalTitle={<div>{this.data.title}</div>}
-        modalSubtitle={<div>{this.data.subtitle}</div>}
+        modalTitle={<div data-testid={DataTestIdsEnum.pendingTransactionsTitle}>{this.data.title}</div>}
+        modalSubtitle={<div data-testid={DataTestIdsEnum.pendingTransactionsSubtitle}>{this.data.subtitle}</div>}
         onClose={() => this.close()}
         body={
           <div class="modal-body">
