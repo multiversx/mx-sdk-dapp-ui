@@ -14,6 +14,9 @@ export class SignTransactionsModal {
 
   @Prop() data: ISignTransactionsModalData = {
     transaction: null,
+    egldLabel: '',
+    feeLimit: '',
+    feeInFiatLimit: '',
     total: 0,
     currentIndex: 0,
   };
@@ -23,7 +26,7 @@ export class SignTransactionsModal {
   }
 
   render() {
-    const { transaction } = this.data;
+    const { transaction, feeInFiatLimit, feeLimit, egldLabel, usdValue } = this.data;
 
     return (
       <generic-modal
@@ -34,6 +37,10 @@ export class SignTransactionsModal {
           <div>
             <p>{transaction?.receiver}</p>
             <p>{transaction?.value}</p>
+            <p>{usdValue}</p>
+            <p>
+              {feeLimit} {egldLabel} ({feeInFiatLimit})
+            </p>
             <p>{transaction?.data}</p>
 
             <button data-testid={DataTestIdsEnum.ledgerConnectBtn} class="access-button" onClick={() => this.eventBus.publish(SignEventsEnum.SIGN_TRANSACTION)}>

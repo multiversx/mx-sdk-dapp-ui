@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                         | Default                                                           |
-| -------- | --------- | ----------- | ---------------------------- | ----------------------------------------------------------------- |
-| `data`   | --        |             | `ISignTransactionsModalData` | `{     transaction: null,     total: 0,     currentIndex: 0,   }` |
+| Property | Attribute | Description | Type                         | Default                                                                                                                        |
+| -------- | --------- | ----------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| `data`   | --        |             | `ISignTransactionsModalData` | `{     transaction: null,     egldLabel: '',     feeLimit: '',     feeInFiatLimit: '',     total: 0,     currentIndex: 0,   }` |
 
 
 ## Methods

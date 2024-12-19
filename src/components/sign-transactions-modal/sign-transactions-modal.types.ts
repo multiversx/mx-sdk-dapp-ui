@@ -2,13 +2,17 @@
 
 export interface ITransactionData {
   receiver?: string;
-  value?: string;
   data?: string;
+  value?: string;
 }
 
 export interface ISignTransactionsModalData {
   transaction: ITransactionData | null;
   total: number;
+  egldLabel: string;
+  usdValue?: string;
+  feeLimit?: string;
+  feeInFiatLimit?: string | null;
   currentIndex: number;
   shouldClose?: true;
 }
