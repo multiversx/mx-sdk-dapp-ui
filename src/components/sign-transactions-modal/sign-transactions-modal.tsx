@@ -1,7 +1,7 @@
-import { Component, Prop, h, Element, Method, forceUpdate } from '@stencil/core';
+import { Component, Prop, h, Element, Method, forceUpdate, Watch } from '@stencil/core';
 import { EventBus, IEventBus } from 'utils/EventBus';
 import { ISignTransactionsModalData, SignEventsEnum } from './sign-transactions-modal.types';
-import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import state, { resetState } from './sign-transactions-modal-store';
 
 @Component({
   tag: 'sign-transactions-modal',
@@ -25,28 +25,38 @@ export class SignTransactionsModal {
     return this.eventBus;
   }
 
+  @Watch('data')
+  onDataChange(data: ISignTransactionsModalData) {
+    state.transaction = data.transaction;
+    state.total = data.total;
+    state.currentIndex = data.currentIndex;
+    state.egldLabel = data.egldLabel;
+    state.feeInFiatLimit = data.feeInFiatLimit;
+    state.usdValue = data.usdValue;
+  }
+
+  componentWillLoad() {
+    state.onSign = () => {
+      this.eventBus.publish(SignEventsEnum.SIGN_TRANSACTION);
+    };
+  }
+
   render() {
-    const { transaction, feeInFiatLimit, feeLimit, egldLabel, usdValue } = this.data;
+    const { transaction } = state;
 
     return (
       <generic-modal
         onClose={() => this.close()}
         modalTitle="Sign transaction"
-        modalSubtitle={`Transaction ${this.data.currentIndex + 1} of ${this.data.total}`}
+        modalSubtitle={`Transaction ${state.currentIndex + 1} of ${state.total}`}
         body={
-          <div>
-            <p>{transaction?.receiver}</p>
-            <p>{transaction?.value}</p>
-            <p>{usdValue}</p>
-            <p>
-              {feeLimit} {egldLabel} ({feeInFiatLimit})
-            </p>
-            <p>{transaction?.data}</p>
-
-            <button data-testid={DataTestIdsEnum.ledgerConnectBtn} class="access-button" onClick={() => this.eventBus.publish(SignEventsEnum.SIGN_TRANSACTION)}>
-              Sign
-            </button>
-          </div>
+          transaction ? (
+            <mvx-sign-transaction></mvx-sign-transaction>
+          ) : (
+            <div class="loading-spinner">
+              <generic-spinner></generic-spinner>
+            </div>
+          )
         }
       />
     );
@@ -64,6 +74,8 @@ export class SignTransactionsModal {
     if (props.isUserClick) {
       this.eventBus.publish(SignEventsEnum.CLOSE);
     }
+
+    resetState();
 
     if (this.hostElement && this.hostElement.parentNode) {
       this.hostElement.parentNode.removeChild(this.hostElement);

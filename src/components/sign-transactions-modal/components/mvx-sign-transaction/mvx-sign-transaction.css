@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.transaction-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 2rem;
+}
+
+.transaction-inner-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.amount-container {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 4px;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.amount-value {
+  font-weight: bold;
+}
+
+.amount-unit {
+  font-size: 16px;
+  align-self: flex-start;
+}
+
+.receiver-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  line-height: 1;
+}
+
+.data-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  line-height: 1;
+}
+
+.data-content {
+  width: 100%;
+  height: 100px;
+  resize: none;
+  padding: 0.25rem;
+}
+
+.fee-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  line-height: 1;
+}
+
+.sign-btn {
+  display: block;
+  width: 200px;
+  margin: 0 auto;
+  padding: 12px;
+  background-color: #1a56db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.sign-btn:disabled {
+  background-color: #a1a1a1;
+  color: #e0e0e0;
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+  transform: none;
+}

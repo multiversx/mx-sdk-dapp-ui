@@ -32,6 +32,9 @@ export namespace Components {
         "data": ILedgerConnectModalData;
         "getEventBus": () => Promise<IEventBus>;
     }
+    interface MvxSignTransaction {
+        "data": SignTransactionProps;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -118,6 +121,12 @@ declare global {
     var HTMLLedgerConnectModalElement: {
         prototype: HTMLLedgerConnectModalElement;
         new (): HTMLLedgerConnectModalElement;
+    };
+    interface HTMLMvxSignTransactionElement extends Components.MvxSignTransaction, HTMLStencilElement {
+    }
+    var HTMLMvxSignTransactionElement: {
+        prototype: HTMLMvxSignTransactionElement;
+        new (): HTMLMvxSignTransactionElement;
     };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
@@ -211,6 +220,7 @@ declare global {
         "generic-modal": HTMLGenericModalElement;
         "generic-spinner": HTMLGenericSpinnerElement;
         "ledger-connect-modal": HTMLLedgerConnectModalElement;
+        "mvx-sign-transaction": HTMLMvxSignTransactionElement;
         "my-component": HTMLMyComponentElement;
         "pending-transactions-modal": HTMLPendingTransactionsModalElement;
         "sign-transactions-modal": HTMLSignTransactionsModalElement;
@@ -235,6 +245,9 @@ declare namespace LocalJSX {
     }
     interface LedgerConnectModal {
         "data"?: ILedgerConnectModalData;
+    }
+    interface MvxSignTransaction {
+        "data"?: SignTransactionProps;
     }
     interface MyComponent {
         /**
@@ -298,6 +311,7 @@ declare namespace LocalJSX {
         "generic-modal": GenericModal;
         "generic-spinner": GenericSpinner;
         "ledger-connect-modal": LedgerConnectModal;
+        "mvx-sign-transaction": MvxSignTransaction;
         "my-component": MyComponent;
         "pending-transactions-modal": PendingTransactionsModal;
         "sign-transactions-modal": SignTransactionsModal;
@@ -318,6 +332,7 @@ declare module "@stencil/core" {
             "generic-modal": LocalJSX.GenericModal & JSXBase.HTMLAttributes<HTMLGenericModalElement>;
             "generic-spinner": LocalJSX.GenericSpinner & JSXBase.HTMLAttributes<HTMLGenericSpinnerElement>;
             "ledger-connect-modal": LocalJSX.LedgerConnectModal & JSXBase.HTMLAttributes<HTMLLedgerConnectModalElement>;
+            "mvx-sign-transaction": LocalJSX.MvxSignTransaction & JSXBase.HTMLAttributes<HTMLMvxSignTransactionElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "pending-transactions-modal": LocalJSX.PendingTransactionsModal & JSXBase.HTMLAttributes<HTMLPendingTransactionsModalElement>;
             "sign-transactions-modal": LocalJSX.SignTransactionsModal & JSXBase.HTMLAttributes<HTMLSignTransactionsModalElement>;

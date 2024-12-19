@@ -9,7 +9,7 @@
 
 | Property                      | Attribute                       | Description | Type                        | Default     |
 | ----------------------------- | ------------------------------- | ----------- | --------------------------- | ----------- |
-| `processedTransactionsStatus` | `processed-transactions-status` |             | `any`                       | `''`        |
+| `processedTransactionsStatus` | `processed-transactions-status` |             | `Element \| string`         | `''`        |
 | `toastDataState`              | --                              |             | `IToastDataState`           | `undefined` |
 | `toastId`                     | `toast-id`                      |             | `string`                    | `''`        |
 | `transactionProgressState`    | --                              |             | `ITransactionProgressState` | `undefined` |
