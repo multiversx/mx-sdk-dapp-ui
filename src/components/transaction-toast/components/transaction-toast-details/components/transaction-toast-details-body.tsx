@@ -1,7 +1,8 @@
 import { Component, Prop, h } from '@stencil/core';
 import classNames from 'classnames';
 import { faCheck, faCircleNotch, faTimes, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { getIconHtmlFromIconDefinition } from 'utils/getIconHtml';
+import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 const iconData: Record<string, IconDefinition> = {
   pending: faCircleNotch,
@@ -25,7 +26,7 @@ export class TransactionDetailsBody {
     const iconHtml = statusIcon ? getIconHtmlFromIconDefinition(statusIcon) : null;
 
     return (
-      <div class={this.transactionClass} key={this.hash}>
+      <div class={this.transactionClass} key={this.hash} data-testid={DataTestIdsEnum.transactionDetailsToastBody}>
         {iconHtml && (
           <div
             innerHTML={iconHtml}

@@ -5,6 +5,8 @@ import { ITransactionProgressState, IToastDataState, ITransaction } from './tran
   tag: 'transaction-toast',
   shadow: true,
 })
+
+//TODO: use State Tunnel
 export class TransactionToast {
   @Prop() toastId: string = '';
   @Prop() wrapperClass: string;

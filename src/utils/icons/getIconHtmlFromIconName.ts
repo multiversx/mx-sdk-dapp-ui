@@ -1,7 +1,7 @@
-import { library, icon, IconDefinition, Icon, IconName } from '@fortawesome/fontawesome-svg-core';
+import { library, icon, Icon, IconName } from '@fortawesome/fontawesome-svg-core';
 import * as solidIcons from '@fortawesome/free-solid-svg-icons';
 
-export function getIconHtmlFromIconLookup(iconName: IconName | string): string | null {
+export function getIconHtmlFromIconName(iconName: IconName | string): string | null {
   let faIcon: Icon;
   const dynamicIcon = solidIcons[`fa${capitalize(iconName)}`];
 
@@ -12,14 +12,6 @@ export function getIconHtmlFromIconLookup(iconName: IconName | string): string |
 
   library.add(dynamicIcon);
   faIcon = icon(dynamicIcon);
-
-  return faIcon ? faIcon.html[0] : null;
-}
-
-export function getIconHtmlFromIconDefinition(iconDefinition: IconDefinition): string | null {
-  let faIcon: Icon;
-  library.add(iconDefinition);
-  faIcon = icon(iconDefinition);
 
   return faIcon ? faIcon.html[0] : null;
 }

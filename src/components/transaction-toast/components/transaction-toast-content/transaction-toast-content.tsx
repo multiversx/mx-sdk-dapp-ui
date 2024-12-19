@@ -2,7 +2,8 @@ import { Component, EventEmitter, Prop, Event, h } from '@stencil/core';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
 import { IToastDataState, ITransaction } from '../../transaction-toast.type';
-import { getIconHtmlFromIconLookup, getIconHtmlFromIconDefinition } from 'utils/getIconHtml';
+import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
+import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 
 @Component({
   tag: 'transaction-toast-content',
@@ -20,13 +21,13 @@ export class TransactionToastContent {
 
     let iconHtml = null;
     if (typeof icon === 'string') {
-      iconHtml = getIconHtmlFromIconLookup(icon);
+      iconHtml = getIconHtmlFromIconName(icon);
     }
     if (icon instanceof HTMLElement) {
       iconHtml = icon.outerHTML;
     }
     return (
-      <div class="content">
+      <div class="content" data-testid={DataTestIdsEnum.transactionToastContent}>
         <div class="content-left">
           <div class={classNames('content-icon', iconClassName)} innerHTML={iconHtml}></div>
         </div>

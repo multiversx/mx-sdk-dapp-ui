@@ -10,8 +10,12 @@ export class ToastProgress {
   @Prop() currentRemaining?: number;
 
   render() {
-    return this.currentRemaining ? (
-      <div class={this.progressClass} id="progress">
+    if (!this.currentRemaining) {
+      return <slot></slot>;
+    }
+
+    return (
+      <div class={this.progressClass}>
         <div
           class="transaction-toast-bar"
           style={{ width: `${this.currentRemaining}%` }}
@@ -22,8 +26,6 @@ export class ToastProgress {
         />
         <slot></slot>
       </div>
-    ) : (
-      <slot></slot>
     );
   }
 }
