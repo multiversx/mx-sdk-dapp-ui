@@ -49,7 +49,7 @@ export class PendingTransactionstModal {
     }
   }
 
-  private dataUpdate(payload: any) {
+  private dataUpdate(payload: IPendingTransactionsModalData) {
     if (payload.shouldClose) {
       return this.close({ isUserClick: false });
     }

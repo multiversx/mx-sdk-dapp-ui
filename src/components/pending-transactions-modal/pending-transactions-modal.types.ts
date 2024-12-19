@@ -9,4 +9,5 @@ export interface IPendingTransactionsModalData {
   isPending: boolean;
   title: string;
   subtitle?: string;
+  shouldClose?: boolean;
 }
