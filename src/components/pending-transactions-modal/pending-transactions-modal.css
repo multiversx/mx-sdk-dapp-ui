@@ -1,0 +1,16 @@
+.modal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+.close-button {
+  cursor: pointer;
+  color: #ffff;
+  background-color: #343a40;
+  border-color: #343a40;
+  border-radius: 0.25rem;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
