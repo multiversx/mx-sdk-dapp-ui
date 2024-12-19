@@ -23,7 +23,6 @@ export namespace Components {
         "egldLabel"?: string;
         "showLabel"?: boolean;
         "showLastNonZeroDecimal"?: boolean;
-        "styles"?: { [key: string]: string };
         "token"?: string;
         "value": string;
     }
@@ -123,7 +122,6 @@ declare namespace LocalJSX {
         "egldLabel"?: string;
         "showLabel"?: boolean;
         "showLastNonZeroDecimal"?: boolean;
-        "styles"?: { [key: string]: string };
         "token"?: string;
         "value"?: string;
     }

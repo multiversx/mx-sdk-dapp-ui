@@ -15,14 +15,13 @@ export class FormatAmount {
   @Prop() egldLabel?: string;
   @Prop() showLabel?: boolean = true;
   @Prop() showLastNonZeroDecimal?: boolean = false;
-  @Prop() styles?: { [key: string]: string } = {};
   @Prop() token?: string;
   @Prop() value: string;
 
   private renderInvalid() {
     return (
       <span data-testid='formatAmountComponent' class={this.class}>
-        <span class={this.styles['int-amount']} data-testid='formatAmountInt'>
+        <span class='int-amount' data-testid='formatAmountInt'>
           ...
         </span>
       </span>
@@ -48,18 +47,18 @@ export class FormatAmount {
 
     return (
       <span data-testid='formatAmountComponent' class={this.class}>
-        <span class={this.styles['int-amount']} data-testid='formatAmountInt'>
+        <span class='int-amount' data-testid='formatAmountInt'>
           {valueParts[0]}
         </span>
         {valueParts.length > 1 && (
-          <span class={this.styles.decimals} data-testid='formatAmountDecimals'>
+          <span class='decimals' data-testid='formatAmountDecimals'>
             .{valueParts[1]}
           </span>
         )}
         {this.showLabel && (
           <span
             class={{
-              [this.styles.symbol]: true,
+              'symbol': true,
               [this.token]: !!this.token
             }}
             data-testid='formatAmountSymbol'
