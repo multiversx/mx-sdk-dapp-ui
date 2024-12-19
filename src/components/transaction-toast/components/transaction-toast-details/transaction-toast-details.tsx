@@ -1,4 +1,4 @@
-import { Component, Fragment, Prop, h } from '@stencil/core';
+import { Component, Fragment, JSX, Prop, h } from '@stencil/core';
 import { ITransaction } from './../../transaction-toast.type';
 
 @Component({

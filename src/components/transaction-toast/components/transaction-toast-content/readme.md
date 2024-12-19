@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property                      | Attribute                       | Description | Type                | Default     |
-| ----------------------------- | ------------------------------- | ----------- | ------------------- | ----------- |
-| `processedTransactionsStatus` | `processed-transactions-status` |             | `Element \| string` | `undefined` |
-| `toastDataState`              | --                              |             | `IToastDataState`   | `undefined` |
-| `transactions`                | --                              |             | `ITransaction[]`    | `undefined` |
+| Property                      | Attribute                       | Description | Type              | Default     |
+| ----------------------------- | ------------------------------- | ----------- | ----------------- | ----------- |
+| `processedTransactionsStatus` | `processed-transactions-status` |             | `any`             | `undefined` |
+| `toastDataState`              | --                              |             | `IToastDataState` | `undefined` |
+| `transactions`                | --                              |             | `ITransaction[]`  | `undefined` |
 
 
 ## Events

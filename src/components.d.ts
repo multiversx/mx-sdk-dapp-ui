@@ -5,14 +5,14 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { VNode } from "@stencil/core";
+import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledger-connect-modal.types";
 import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsModalData } from "./components/pending-transactions-modal/pending-transactions-modal.types";
 import { ISignTransactionsModalData } from "./components/sign-transactions-modal/sign-transactions-modal.types";
 import { IToastDataState, ITransaction, ITransactionProgressState } from "./components/transaction-toast/transaction-toast.type";
 import { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
-export { VNode } from "@stencil/core";
+export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledger-connect-modal.types";
 export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsModalData } from "./components/pending-transactions-modal/pending-transactions-modal.types";
