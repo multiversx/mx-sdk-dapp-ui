@@ -51,8 +51,8 @@
     "generate": "stencil generate"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": ">= 6.7.2",
     "@fortawesome/free-solid-svg-icons": ">= 6.7.2",
-    "@fortawesome/fontawesome-svg-core": ">= 6.7.2",,
     "@multiversx/sdk-dapp-utils": "1.0.2",
     "bignumber.js": "9.1.2",
     "classnames": ">= 2.5.1",
