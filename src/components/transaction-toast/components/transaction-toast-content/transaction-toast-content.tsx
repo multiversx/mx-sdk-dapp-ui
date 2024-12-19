@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { IToastDataState, ITransaction } from '../../transaction-toast.type';
 import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
 import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
   tag: 'transaction-toast-content',
@@ -34,7 +35,9 @@ export class TransactionToastContent {
 
         <div class="content-right">
           <div class="content-heading">
-            <h5 class="content-heading-title">{title}</h5>
+            <h5 class="content-heading-title" data-testid={DataTestIdsEnum.transactionToastTitle}>
+              {title}
+            </h5>
             {hasCloseButton && <button onClick={() => this.deleteToast.emit()} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>}
           </div>
 
