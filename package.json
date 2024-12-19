@@ -47,7 +47,10 @@
     "generate": "stencil generate"
   },
   "dependencies": {
-    "qrcode": "1.5.4"
+    "qrcode": "1.5.4",
+    "classnames": ">= 2.5.1",
+    "@fortawesome/free-solid-svg-icons": ">= 6.7.2",
+    "@fortawesome/fontawesome-svg-core": ">= 6.7.2"
   },
   "devDependencies": {
     "@stencil/core": "^4.22.3",
