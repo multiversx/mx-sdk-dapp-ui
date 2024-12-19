@@ -32,6 +32,11 @@ export namespace Components {
         "data": ILedgerConnectModalData;
         "getEventBus": () => Promise<IEventBus>;
     }
+    interface MvxBalance {
+        "amount": string;
+        "ticker": string;
+        "usdValue"?: string;
+    }
     interface MvxSignTransaction {
         "data": SignTransactionProps;
     }
@@ -121,6 +126,12 @@ declare global {
     var HTMLLedgerConnectModalElement: {
         prototype: HTMLLedgerConnectModalElement;
         new (): HTMLLedgerConnectModalElement;
+    };
+    interface HTMLMvxBalanceElement extends Components.MvxBalance, HTMLStencilElement {
+    }
+    var HTMLMvxBalanceElement: {
+        prototype: HTMLMvxBalanceElement;
+        new (): HTMLMvxBalanceElement;
     };
     interface HTMLMvxSignTransactionElement extends Components.MvxSignTransaction, HTMLStencilElement {
     }
@@ -220,6 +231,7 @@ declare global {
         "generic-modal": HTMLGenericModalElement;
         "generic-spinner": HTMLGenericSpinnerElement;
         "ledger-connect-modal": HTMLLedgerConnectModalElement;
+        "mvx-balance": HTMLMvxBalanceElement;
         "mvx-sign-transaction": HTMLMvxSignTransactionElement;
         "my-component": HTMLMyComponentElement;
         "pending-transactions-modal": HTMLPendingTransactionsModalElement;
@@ -245,6 +257,11 @@ declare namespace LocalJSX {
     }
     interface LedgerConnectModal {
         "data"?: ILedgerConnectModalData;
+    }
+    interface MvxBalance {
+        "amount"?: string;
+        "ticker"?: string;
+        "usdValue"?: string;
     }
     interface MvxSignTransaction {
         "data"?: SignTransactionProps;
@@ -311,6 +328,7 @@ declare namespace LocalJSX {
         "generic-modal": GenericModal;
         "generic-spinner": GenericSpinner;
         "ledger-connect-modal": LedgerConnectModal;
+        "mvx-balance": MvxBalance;
         "mvx-sign-transaction": MvxSignTransaction;
         "my-component": MyComponent;
         "pending-transactions-modal": PendingTransactionsModal;
@@ -332,6 +350,7 @@ declare module "@stencil/core" {
             "generic-modal": LocalJSX.GenericModal & JSXBase.HTMLAttributes<HTMLGenericModalElement>;
             "generic-spinner": LocalJSX.GenericSpinner & JSXBase.HTMLAttributes<HTMLGenericSpinnerElement>;
             "ledger-connect-modal": LocalJSX.LedgerConnectModal & JSXBase.HTMLAttributes<HTMLLedgerConnectModalElement>;
+            "mvx-balance": LocalJSX.MvxBalance & JSXBase.HTMLAttributes<HTMLMvxBalanceElement>;
             "mvx-sign-transaction": LocalJSX.MvxSignTransaction & JSXBase.HTMLAttributes<HTMLMvxSignTransactionElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "pending-transactions-modal": LocalJSX.PendingTransactionsModal & JSXBase.HTMLAttributes<HTMLPendingTransactionsModalElement>;

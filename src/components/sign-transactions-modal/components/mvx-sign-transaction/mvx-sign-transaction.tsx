@@ -24,11 +24,7 @@ export class SignTransaction {
       <div class="transaction-container">
         <div class="transaction-inner-container">
           <p>You are sending</p>
-          <div class="amount-container">
-            <p class="amount-value">{amount}</p>
-            <p class="amount-unit">{ticker}</p>
-          </div>
-          <p>{usdValue}</p>
+          <mvx-balance amount={amount} ticker={ticker} usdValue={usdValue}></mvx-balance>
         </div>
 
         <div class="receiver-container">

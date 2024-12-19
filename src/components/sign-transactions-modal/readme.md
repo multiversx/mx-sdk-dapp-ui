@@ -39,6 +39,7 @@ graph TD;
   sign-transactions-modal --> generic-modal
   sign-transactions-modal --> mvx-sign-transaction
   sign-transactions-modal --> generic-spinner
+  mvx-sign-transaction --> mvx-balance
   style sign-transactions-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
