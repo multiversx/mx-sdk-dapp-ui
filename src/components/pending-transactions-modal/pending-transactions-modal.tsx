@@ -1,7 +1,6 @@
 import { Component, h, Element, Method, forceUpdate, Prop } from '@stencil/core';
 import { EventBus, IEventBus } from 'utils/EventBus';
 import { IPendingTransactionsModalData, PendingTransactionsEventsEnum } from './pending-transactions-modal.types';
-import { ProviderTypeEnum } from 'types/provider.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
@@ -17,7 +16,6 @@ export class PendingTransactionstModal {
     isPending: false,
     title: '',
     subtitle: '',
-    type: ProviderTypeEnum.none,
   };
 
   @Method() async getEventBus() {
