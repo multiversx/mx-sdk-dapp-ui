@@ -7,7 +7,8 @@ export interface ITransactionData {
 }
 
 export interface ISignTransactionsModalData {
-  transaction: ITransactionData | null;
+  receiver?: string;
+  data?: string;
   total: number;
   /**
    * Token type of the transaction.

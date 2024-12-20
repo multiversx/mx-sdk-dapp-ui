@@ -6,7 +6,6 @@ type ITransactionState = ISignTransactionsModalData & {
 };
 
 const initialState: ITransactionState = {
-  transaction: null,
   egldLabel: '',
   feeLimit: '',
   feeInFiatLimit: '',

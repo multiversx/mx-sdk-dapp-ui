@@ -17,7 +17,7 @@ type SignTransactionProps = {
 export class SignTransaction {
   @Prop() data: SignTransactionProps;
   render() {
-    const { transaction, feeInFiatLimit, usdValue, onSign, tokenAmount, identifier } = state;
+    const { receiver, data, feeInFiatLimit, usdValue, onSign, tokenAmount, identifier } = state;
 
     return (
       <div class="transaction-container">
@@ -28,7 +28,7 @@ export class SignTransaction {
 
         <div class="receiver-container">
           <p>To</p>
-          <p>{formatAddress(transaction?.receiver, 40)}</p>
+          <p>{formatAddress(receiver, 40)}</p>
         </div>
 
         <div class="fee-container">
@@ -39,7 +39,7 @@ export class SignTransaction {
         <div class="data-container">
           <p>Data</p>
           <textarea class="data-content" readOnly draggable={false}>
-            {transaction?.data}
+            {data}
           </textarea>
         </div>
 

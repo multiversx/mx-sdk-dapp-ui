@@ -13,7 +13,6 @@ export class SignTransactionsModal {
   private eventBus: IEventBus = EventBus.getInstance();
 
   @Prop() data: ISignTransactionsModalData = {
-    transaction: null,
     egldLabel: '',
     feeLimit: '',
     feeInFiatLimit: '',
@@ -41,7 +40,7 @@ export class SignTransactionsModal {
   }
 
   render() {
-    const { transaction } = state;
+    const { receiver } = state;
 
     return (
       <generic-modal
@@ -49,7 +48,7 @@ export class SignTransactionsModal {
         modalTitle="Sign transaction"
         modalSubtitle={`Transaction ${state.currentIndex + 1} of ${state.total}`}
         body={
-          transaction ? (
+          receiver ? (
             <mvx-sign-transaction></mvx-sign-transaction>
           ) : (
             <div class="loading-spinner">
