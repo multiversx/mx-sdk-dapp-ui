@@ -49,7 +49,7 @@ export class SignTransactionsModal {
         modalSubtitle={`Transaction ${state.currentIndex + 1} of ${state.total}`}
         body={
           receiver ? (
-            <mvx-sign-transaction></mvx-sign-transaction>
+            <sign-transaction-component></sign-transaction-component>
           ) : (
             <div class="loading-spinner">
               <generic-spinner></generic-spinner>
@@ -82,7 +82,6 @@ export class SignTransactionsModal {
 
   private dataUpdate(payload: ISignTransactionsModalData) {
     this.data = { ...payload };
-    console.log('dataUpdate', payload);
     forceUpdate(this);
   }
 

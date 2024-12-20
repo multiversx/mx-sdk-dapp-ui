@@ -4,26 +4,25 @@ import { formatAddress } from 'utils/utils';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import state from '../../sign-transactions-modal-store';
 
-type SignTransactionProps = {
-  transaction: ITransactionData;
+type SignTransactionProps = ITransactionData & {
   onSign: () => void;
 };
 
 @Component({
-  tag: 'mvx-sign-transaction',
-  styleUrl: 'mvx-sign-transaction.css',
+  tag: 'sign-transaction-component',
+  styleUrl: 'sign-transaction-component.css',
   shadow: true,
 })
 export class SignTransaction {
   @Prop() data: SignTransactionProps;
   render() {
-    const { receiver, data, feeInFiatLimit, usdValue, onSign, tokenAmount, identifier } = state;
+    const { receiver, data, feeInFiatLimit, usdValue, onSign, tokenAmount, egldLabel, feeLimit } = state;
 
     return (
       <div class="transaction-container">
         <div class="transaction-inner-container">
           <p>You are sending</p>
-          <mvx-balance amount={tokenAmount} ticker={identifier} usdValue={usdValue}></mvx-balance>
+          <balance-component amount={tokenAmount} ticker={egldLabel} usdValue={usdValue}></balance-component>
         </div>
 
         <div class="receiver-container">
@@ -33,7 +32,13 @@ export class SignTransaction {
 
         <div class="fee-container">
           <p>Transaction fee</p>
-          <p>{feeInFiatLimit}</p>
+          {feeLimit && (
+            <p>
+              <span>{feeLimit}</span>&nbsp;
+              <span>{egldLabel}</span>
+            </p>
+          )}
+          <p>≈{feeInFiatLimit}</p>
         </div>
 
         <div class="data-container">

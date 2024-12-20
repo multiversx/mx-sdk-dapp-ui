@@ -20,6 +20,11 @@ export { ISignTransactionsModalData } from "./components/sign-transactions-modal
 export { IToastDataState, ITransaction, ITransactionProgressState } from "./components/transaction-toast/transaction-toast.type";
 export { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
 export namespace Components {
+    interface BalanceComponent {
+        "amount": string;
+        "ticker": string;
+        "usdValue"?: string;
+    }
     interface GenericModal {
         "body": VNode;
         "modalSubtitle"?: string | VNode;
@@ -31,14 +36,6 @@ export namespace Components {
     interface LedgerConnectModal {
         "data": ILedgerConnectModalData;
         "getEventBus": () => Promise<IEventBus>;
-    }
-    interface MvxBalance {
-        "amount": string;
-        "ticker": string;
-        "usdValue"?: string;
-    }
-    interface MvxSignTransaction {
-        "data": SignTransactionProps;
     }
     interface MyComponent {
         /**
@@ -57,6 +54,9 @@ export namespace Components {
     interface PendingTransactionsModal {
         "data": IPendingTransactionsModalData;
         "getEventBus": () => Promise<IEventBus>;
+    }
+    interface SignTransactionComponent {
+        "data": SignTransactionProps;
     }
     interface SignTransactionsModal {
         "data": ISignTransactionsModalData;
@@ -109,6 +109,12 @@ export interface TransactionToastContentCustomEvent<T> extends CustomEvent<T> {
     target: HTMLTransactionToastContentElement;
 }
 declare global {
+    interface HTMLBalanceComponentElement extends Components.BalanceComponent, HTMLStencilElement {
+    }
+    var HTMLBalanceComponentElement: {
+        prototype: HTMLBalanceComponentElement;
+        new (): HTMLBalanceComponentElement;
+    };
     interface HTMLGenericModalElement extends Components.GenericModal, HTMLStencilElement {
     }
     var HTMLGenericModalElement: {
@@ -127,18 +133,6 @@ declare global {
         prototype: HTMLLedgerConnectModalElement;
         new (): HTMLLedgerConnectModalElement;
     };
-    interface HTMLMvxBalanceElement extends Components.MvxBalance, HTMLStencilElement {
-    }
-    var HTMLMvxBalanceElement: {
-        prototype: HTMLMvxBalanceElement;
-        new (): HTMLMvxBalanceElement;
-    };
-    interface HTMLMvxSignTransactionElement extends Components.MvxSignTransaction, HTMLStencilElement {
-    }
-    var HTMLMvxSignTransactionElement: {
-        prototype: HTMLMvxSignTransactionElement;
-        new (): HTMLMvxSignTransactionElement;
-    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -150,6 +144,12 @@ declare global {
     var HTMLPendingTransactionsModalElement: {
         prototype: HTMLPendingTransactionsModalElement;
         new (): HTMLPendingTransactionsModalElement;
+    };
+    interface HTMLSignTransactionComponentElement extends Components.SignTransactionComponent, HTMLStencilElement {
+    }
+    var HTMLSignTransactionComponentElement: {
+        prototype: HTMLSignTransactionComponentElement;
+        new (): HTMLSignTransactionComponentElement;
     };
     interface HTMLSignTransactionsModalElement extends Components.SignTransactionsModal, HTMLStencilElement {
     }
@@ -228,13 +228,13 @@ declare global {
         new (): HTMLWalletConnectModalElement;
     };
     interface HTMLElementTagNameMap {
+        "balance-component": HTMLBalanceComponentElement;
         "generic-modal": HTMLGenericModalElement;
         "generic-spinner": HTMLGenericSpinnerElement;
         "ledger-connect-modal": HTMLLedgerConnectModalElement;
-        "mvx-balance": HTMLMvxBalanceElement;
-        "mvx-sign-transaction": HTMLMvxSignTransactionElement;
         "my-component": HTMLMyComponentElement;
         "pending-transactions-modal": HTMLPendingTransactionsModalElement;
+        "sign-transaction-component": HTMLSignTransactionComponentElement;
         "sign-transactions-modal": HTMLSignTransactionsModalElement;
         "transaction-toast": HTMLTransactionToastElement;
         "transaction-toast-content": HTMLTransactionToastContentElement;
@@ -247,6 +247,11 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface BalanceComponent {
+        "amount"?: string;
+        "ticker"?: string;
+        "usdValue"?: string;
+    }
     interface GenericModal {
         "body"?: VNode;
         "modalSubtitle"?: string | VNode;
@@ -257,14 +262,6 @@ declare namespace LocalJSX {
     }
     interface LedgerConnectModal {
         "data"?: ILedgerConnectModalData;
-    }
-    interface MvxBalance {
-        "amount"?: string;
-        "ticker"?: string;
-        "usdValue"?: string;
-    }
-    interface MvxSignTransaction {
-        "data"?: SignTransactionProps;
     }
     interface MyComponent {
         /**
@@ -282,6 +279,9 @@ declare namespace LocalJSX {
     }
     interface PendingTransactionsModal {
         "data"?: IPendingTransactionsModalData;
+    }
+    interface SignTransactionComponent {
+        "data"?: SignTransactionProps;
     }
     interface SignTransactionsModal {
         "data"?: ISignTransactionsModalData;
@@ -325,13 +325,13 @@ declare namespace LocalJSX {
         "data"?: IWalletConnectModalData;
     }
     interface IntrinsicElements {
+        "balance-component": BalanceComponent;
         "generic-modal": GenericModal;
         "generic-spinner": GenericSpinner;
         "ledger-connect-modal": LedgerConnectModal;
-        "mvx-balance": MvxBalance;
-        "mvx-sign-transaction": MvxSignTransaction;
         "my-component": MyComponent;
         "pending-transactions-modal": PendingTransactionsModal;
+        "sign-transaction-component": SignTransactionComponent;
         "sign-transactions-modal": SignTransactionsModal;
         "transaction-toast": TransactionToast;
         "transaction-toast-content": TransactionToastContent;
@@ -347,13 +347,13 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "balance-component": LocalJSX.BalanceComponent & JSXBase.HTMLAttributes<HTMLBalanceComponentElement>;
             "generic-modal": LocalJSX.GenericModal & JSXBase.HTMLAttributes<HTMLGenericModalElement>;
             "generic-spinner": LocalJSX.GenericSpinner & JSXBase.HTMLAttributes<HTMLGenericSpinnerElement>;
             "ledger-connect-modal": LocalJSX.LedgerConnectModal & JSXBase.HTMLAttributes<HTMLLedgerConnectModalElement>;
-            "mvx-balance": LocalJSX.MvxBalance & JSXBase.HTMLAttributes<HTMLMvxBalanceElement>;
-            "mvx-sign-transaction": LocalJSX.MvxSignTransaction & JSXBase.HTMLAttributes<HTMLMvxSignTransactionElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "pending-transactions-modal": LocalJSX.PendingTransactionsModal & JSXBase.HTMLAttributes<HTMLPendingTransactionsModalElement>;
+            "sign-transaction-component": LocalJSX.SignTransactionComponent & JSXBase.HTMLAttributes<HTMLSignTransactionComponentElement>;
             "sign-transactions-modal": LocalJSX.SignTransactionsModal & JSXBase.HTMLAttributes<HTMLSignTransactionsModalElement>;
             "transaction-toast": LocalJSX.TransactionToast & JSXBase.HTMLAttributes<HTMLTransactionToastElement>;
             "transaction-toast-content": LocalJSX.TransactionToastContent & JSXBase.HTMLAttributes<HTMLTransactionToastContentElement>;

@@ -30,16 +30,16 @@ Type: `Promise<IEventBus>`
 ### Depends on
 
 - [generic-modal](../../common/generic-modal)
-- [mvx-sign-transaction](./components/mvx-sign-transaction)
+- [sign-transaction-component](./components/sign-transaction-component)
 - [generic-spinner](../../common/generic-spinner)
 
 ### Graph
 ```mermaid
 graph TD;
   sign-transactions-modal --> generic-modal
-  sign-transactions-modal --> mvx-sign-transaction
+  sign-transactions-modal --> sign-transaction-component
   sign-transactions-modal --> generic-spinner
-  mvx-sign-transaction --> mvx-balance
+  sign-transaction-component --> balance-component
   style sign-transactions-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -1,7 +1,7 @@
 import { Component, Prop, h } from '@stencil/core';
 @Component({
-  tag: 'mvx-balance',
-  styleUrl: 'mvx-balance.css',
+  tag: 'balance-component',
+  styleUrl: 'balance-component.css',
   shadow: true,
 })
 export class BalanceComponent {
