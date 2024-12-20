@@ -7,7 +7,7 @@ import { TransactionToastEventsEnum } from './transaction-toast-list.types';
   styleUrl: 'transaction-toast-list.css',
 })
 export class TransactionToastList {
-  private eventBus: IEventBus = EventBus.getInstance();
+  private eventBus: IEventBus = new EventBus();
   @Prop() data: ITransactionToast[];
 
   @Method() async getEventBus() {
@@ -15,15 +15,17 @@ export class TransactionToastList {
   }
 
   render() {
-    return <div class="transaction-list" id="transaction-list">
-    {this.data?.map((toast) => (
-        <transaction-toast {...toast} onHandleDeleteToast={()=> this.eventBus.publish(TransactionToastEventsEnum.CLOSE_TOAST, toast.toastId)}></transaction-toast>
-    ))}
-    </div>;
+    return (
+      <div class="transaction-list" id="transaction-list">
+        {this.data?.map(toast => (
+          <transaction-toast {...toast} onHandleDeleteToast={() => this.eventBus.publish(TransactionToastEventsEnum.CLOSE_TOAST, toast.toastId)}></transaction-toast>
+        ))}
+      </div>
+    );
   }
 
   private dataUpdate(payload: ITransactionToast[]) {
-    this.data = [...payload ];
+    this.data = [...payload];
     forceUpdate(this);
   }
 
