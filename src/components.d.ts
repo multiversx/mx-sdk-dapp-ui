@@ -22,8 +22,11 @@ export { IWalletConnectModalData } from "./components/wallet-connect-modal/walle
 export namespace Components {
     interface BalanceComponent {
         "amount": string;
+        "header"?: string;
         "ticker": string;
         "usdValue"?: string;
+    }
+    interface FungibleComponent {
     }
     interface GenericModal {
         "body": VNode;
@@ -57,10 +60,13 @@ export namespace Components {
     }
     interface SignTransactionComponent {
         "data": SignTransactionProps;
+        "header": VNode;
     }
     interface SignTransactionsModal {
         "data": ISignTransactionsModalData;
         "getEventBus": () => Promise<IEventBus>;
+    }
+    interface TokenComponent {
     }
     interface TransactionToast {
         "processedTransactionsStatus": string | JSX.Element;
@@ -115,6 +121,12 @@ declare global {
         prototype: HTMLBalanceComponentElement;
         new (): HTMLBalanceComponentElement;
     };
+    interface HTMLFungibleComponentElement extends Components.FungibleComponent, HTMLStencilElement {
+    }
+    var HTMLFungibleComponentElement: {
+        prototype: HTMLFungibleComponentElement;
+        new (): HTMLFungibleComponentElement;
+    };
     interface HTMLGenericModalElement extends Components.GenericModal, HTMLStencilElement {
     }
     var HTMLGenericModalElement: {
@@ -156,6 +168,12 @@ declare global {
     var HTMLSignTransactionsModalElement: {
         prototype: HTMLSignTransactionsModalElement;
         new (): HTMLSignTransactionsModalElement;
+    };
+    interface HTMLTokenComponentElement extends Components.TokenComponent, HTMLStencilElement {
+    }
+    var HTMLTokenComponentElement: {
+        prototype: HTMLTokenComponentElement;
+        new (): HTMLTokenComponentElement;
     };
     interface HTMLTransactionToastElementEventMap {
         "handleDeleteToast": string;
@@ -229,6 +247,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "balance-component": HTMLBalanceComponentElement;
+        "fungible-component": HTMLFungibleComponentElement;
         "generic-modal": HTMLGenericModalElement;
         "generic-spinner": HTMLGenericSpinnerElement;
         "ledger-connect-modal": HTMLLedgerConnectModalElement;
@@ -236,6 +255,7 @@ declare global {
         "pending-transactions-modal": HTMLPendingTransactionsModalElement;
         "sign-transaction-component": HTMLSignTransactionComponentElement;
         "sign-transactions-modal": HTMLSignTransactionsModalElement;
+        "token-component": HTMLTokenComponentElement;
         "transaction-toast": HTMLTransactionToastElement;
         "transaction-toast-content": HTMLTransactionToastContentElement;
         "transaction-toast-details": HTMLTransactionToastDetailsElement;
@@ -249,8 +269,11 @@ declare global {
 declare namespace LocalJSX {
     interface BalanceComponent {
         "amount"?: string;
+        "header"?: string;
         "ticker"?: string;
         "usdValue"?: string;
+    }
+    interface FungibleComponent {
     }
     interface GenericModal {
         "body"?: VNode;
@@ -282,9 +305,12 @@ declare namespace LocalJSX {
     }
     interface SignTransactionComponent {
         "data"?: SignTransactionProps;
+        "header"?: VNode;
     }
     interface SignTransactionsModal {
         "data"?: ISignTransactionsModalData;
+    }
+    interface TokenComponent {
     }
     interface TransactionToast {
         "onHandleDeleteToast"?: (event: TransactionToastCustomEvent<string>) => void;
@@ -326,6 +352,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "balance-component": BalanceComponent;
+        "fungible-component": FungibleComponent;
         "generic-modal": GenericModal;
         "generic-spinner": GenericSpinner;
         "ledger-connect-modal": LedgerConnectModal;
@@ -333,6 +360,7 @@ declare namespace LocalJSX {
         "pending-transactions-modal": PendingTransactionsModal;
         "sign-transaction-component": SignTransactionComponent;
         "sign-transactions-modal": SignTransactionsModal;
+        "token-component": TokenComponent;
         "transaction-toast": TransactionToast;
         "transaction-toast-content": TransactionToastContent;
         "transaction-toast-details": TransactionToastDetails;
@@ -348,6 +376,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "balance-component": LocalJSX.BalanceComponent & JSXBase.HTMLAttributes<HTMLBalanceComponentElement>;
+            "fungible-component": LocalJSX.FungibleComponent & JSXBase.HTMLAttributes<HTMLFungibleComponentElement>;
             "generic-modal": LocalJSX.GenericModal & JSXBase.HTMLAttributes<HTMLGenericModalElement>;
             "generic-spinner": LocalJSX.GenericSpinner & JSXBase.HTMLAttributes<HTMLGenericSpinnerElement>;
             "ledger-connect-modal": LocalJSX.LedgerConnectModal & JSXBase.HTMLAttributes<HTMLLedgerConnectModalElement>;
@@ -355,6 +384,7 @@ declare module "@stencil/core" {
             "pending-transactions-modal": LocalJSX.PendingTransactionsModal & JSXBase.HTMLAttributes<HTMLPendingTransactionsModalElement>;
             "sign-transaction-component": LocalJSX.SignTransactionComponent & JSXBase.HTMLAttributes<HTMLSignTransactionComponentElement>;
             "sign-transactions-modal": LocalJSX.SignTransactionsModal & JSXBase.HTMLAttributes<HTMLSignTransactionsModalElement>;
+            "token-component": LocalJSX.TokenComponent & JSXBase.HTMLAttributes<HTMLTokenComponentElement>;
             "transaction-toast": LocalJSX.TransactionToast & JSXBase.HTMLAttributes<HTMLTransactionToastElement>;
             "transaction-toast-content": LocalJSX.TransactionToastContent & JSXBase.HTMLAttributes<HTMLTransactionToastContentElement>;
             "transaction-toast-details": LocalJSX.TransactionToastDetails & JSXBase.HTMLAttributes<HTMLTransactionToastDetailsElement>;

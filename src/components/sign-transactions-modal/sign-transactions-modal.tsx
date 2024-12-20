@@ -3,6 +3,12 @@ import { EventBus, IEventBus } from 'utils/EventBus';
 import { ISignTransactionsModalData, SignEventsEnum } from './sign-transactions-modal.types';
 import state, { resetState } from './sign-transactions-modal-store';
 
+const HEADERS = {
+  FungibleESDT: 'token-component',
+  SemiFungibleESDT: 'fungible-component',
+  NonFungibleESDT: 'fungible-component',
+};
+
 @Component({
   tag: 'sign-transactions-modal',
   styleUrl: 'sign-transactions-modal.css',
@@ -40,7 +46,8 @@ export class SignTransactionsModal {
   }
 
   render() {
-    const { receiver } = state;
+    const { receiver, tokenType } = state;
+    const HeaderComponent = HEADERS[tokenType];
 
     return (
       <generic-modal
@@ -49,7 +56,7 @@ export class SignTransactionsModal {
         modalSubtitle={`Transaction ${state.currentIndex + 1} of ${state.total}`}
         body={
           receiver ? (
-            <sign-transaction-component></sign-transaction-component>
+            <HeaderComponent></HeaderComponent>
           ) : (
             <div class="loading-spinner">
               <generic-spinner></generic-spinner>
@@ -69,11 +76,11 @@ export class SignTransactionsModal {
   }
 
   close(props = { isUserClick: true }) {
+    resetState();
+
     if (props.isUserClick) {
       this.eventBus.publish(SignEventsEnum.CLOSE);
     }
-
-    resetState();
 
     if (this.hostElement && this.hostElement.parentNode) {
       this.hostElement.parentNode.removeChild(this.hostElement);

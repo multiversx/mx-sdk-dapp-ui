@@ -10,23 +10,21 @@
 | Property | Attribute | Description | Type                                         | Default     |
 | -------- | --------- | ----------- | -------------------------------------------- | ----------- |
 | `data`   | --        |             | `ITransactionData & { onSign: () => void; }` | `undefined` |
+| `header` | --        |             | `VNode`                                      | `undefined` |
 
 
 ## Dependencies
 
 ### Used by
 
- - [sign-transactions-modal](../..)
-
-### Depends on
-
-- [balance-component](../balance-component)
+ - [fungible-component](../fungible-component)
+ - [token-component](../token-component)
 
 ### Graph
 ```mermaid
 graph TD;
-  sign-transaction-component --> balance-component
-  sign-transactions-modal --> sign-transaction-component
+  fungible-component --> sign-transaction-component
+  token-component --> sign-transaction-component
   style sign-transaction-component fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+.transaction-header-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .loading-spinner {
   display: flex;
   justify-content: center;

@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, VNode, h } from '@stencil/core';
 import { ITransactionData } from '../../sign-transactions-modal.types';
 import { formatAddress } from 'utils/utils';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
@@ -11,19 +11,17 @@ type SignTransactionProps = ITransactionData & {
 @Component({
   tag: 'sign-transaction-component',
   styleUrl: 'sign-transaction-component.css',
-  shadow: true,
+  shadow: false,
 })
 export class SignTransaction {
   @Prop() data: SignTransactionProps;
+  @Prop() header: VNode;
   render() {
-    const { receiver, data, feeInFiatLimit, usdValue, onSign, tokenAmount, egldLabel, feeLimit } = state;
+    const { receiver, data, feeInFiatLimit, onSign, egldLabel, feeLimit } = state;
 
     return (
       <div class="transaction-container">
-        <div class="transaction-inner-container">
-          <p>You are sending</p>
-          <balance-component amount={tokenAmount} ticker={egldLabel} usdValue={usdValue}></balance-component>
-        </div>
+        {this.header}
 
         <div class="receiver-container">
           <p>To</p>

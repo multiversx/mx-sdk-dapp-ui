@@ -10,6 +10,7 @@
 | Property   | Attribute   | Description | Type     | Default     |
 | ---------- | ----------- | ----------- | -------- | ----------- |
 | `amount`   | `amount`    |             | `string` | `''`        |
+| `header`   | `header`    |             | `string` | `''`        |
 | `ticker`   | `ticker`    |             | `string` | `''`        |
 | `usdValue` | `usd-value` |             | `string` | `undefined` |
 
@@ -18,12 +19,12 @@
 
 ### Used by
 
- - [sign-transaction-component](../sign-transaction-component)
+ - [token-component](../token-component)
 
 ### Graph
 ```mermaid
 graph TD;
-  sign-transaction-component --> balance-component
+  token-component --> balance-component
   style balance-component fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

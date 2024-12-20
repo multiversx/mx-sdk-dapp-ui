@@ -6,11 +6,18 @@ type ITransactionState = ISignTransactionsModalData & {
 };
 
 const initialState: ITransactionState = {
+  data: '',
+  total: 0,
+  tokenType: null,
+  identifier: '',
+  tokenAmount: '',
+  tokenImageUrl: '',
   egldLabel: '',
+  usdValue: '',
   feeLimit: '',
   feeInFiatLimit: '',
-  total: 0,
   currentIndex: 0,
+  receiver: '',
   onSign: null,
 };
 
