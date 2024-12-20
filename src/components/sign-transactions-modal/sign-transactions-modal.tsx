@@ -27,12 +27,11 @@ export class SignTransactionsModal {
 
   @Watch('data')
   onDataChange(data: ISignTransactionsModalData) {
-    state.transaction = data.transaction;
-    state.total = data.total;
-    state.currentIndex = data.currentIndex;
-    state.egldLabel = data.egldLabel;
-    state.feeInFiatLimit = data.feeInFiatLimit;
-    state.usdValue = data.usdValue;
+    for (const key in data) {
+      if (Object.prototype.hasOwnProperty.call(state, key)) {
+        state[key] = data[key];
+      }
+    }
   }
 
   componentWillLoad() {
@@ -84,6 +83,7 @@ export class SignTransactionsModal {
 
   private dataUpdate(payload: ISignTransactionsModalData) {
     this.data = { ...payload };
+    console.log('dataUpdate', payload);
     forceUpdate(this);
   }
 

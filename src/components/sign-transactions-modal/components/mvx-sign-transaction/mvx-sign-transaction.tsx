@@ -17,14 +17,13 @@ type SignTransactionProps = {
 export class SignTransaction {
   @Prop() data: SignTransactionProps;
   render() {
-    const { transaction, feeInFiatLimit, usdValue, onSign } = state;
-    const [amount, ticker] = transaction?.value.split(' ') ?? [];
+    const { transaction, feeInFiatLimit, usdValue, onSign, tokenAmount, identifier } = state;
 
     return (
       <div class="transaction-container">
         <div class="transaction-inner-container">
           <p>You are sending</p>
-          <mvx-balance amount={amount} ticker={ticker} usdValue={usdValue}></mvx-balance>
+          <mvx-balance amount={tokenAmount} ticker={identifier} usdValue={usdValue}></mvx-balance>
         </div>
 
         <div class="receiver-container">

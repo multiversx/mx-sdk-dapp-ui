@@ -9,6 +9,14 @@ export interface ITransactionData {
 export interface ISignTransactionsModalData {
   transaction: ITransactionData | null;
   total: number;
+  /**
+   * Token type of the transaction.
+   * @param {string} `null` - if is EGLD or MultiEsdt transaction.
+   */
+  tokenType?: 'SemiFungibleESDT' | 'NonFungibleESDT' | 'FungibleESDT' | null;
+  identifier?: string;
+  tokenAmount?: string;
+  tokenImageUrl?: string;
   egldLabel: string;
   usdValue?: string;
   feeLimit?: string;
