@@ -6,7 +6,6 @@ type ITransactionState = ISignTransactionsModalData & {
   onSign: () => void;
 };
 
-//add commonData
 const initialState: ITransactionState = {
   isLoading: true,
   commonData: {
