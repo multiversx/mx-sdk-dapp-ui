@@ -18,3 +18,12 @@ export interface ITransaction {
   hash: string;
   status: string;
 }
+
+export interface ITransactionToast {
+  toastId: string;
+  wrapperClass: string;
+  processedTransactionsStatus: string | JSX.Element;
+  transactions: ITransaction[];
+  toastDataState: IToastDataState;
+  transactionProgressState?: ITransactionProgressState;
+}

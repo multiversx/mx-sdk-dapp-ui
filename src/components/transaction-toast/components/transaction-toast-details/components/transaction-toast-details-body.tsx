@@ -36,7 +36,7 @@ export class TransactionDetailsBody {
           ></div>
         )}
 
-        <span>{this.hash}</span>
+      <span>{this.hash.length > 12 ? `${this.hash.slice(0, 6)}...${this.hash.slice(-6)}` : this.hash}</span>
       </div>
     );
   }

@@ -1,4 +1,5 @@
 import { Config } from '@stencil/core';
+import nodePolyfills from 'rollup-plugin-node-polyfills';
 
 export const config: Config = {
   namespace: 'sdk-dapp-core-ui',
@@ -23,4 +24,9 @@ export const config: Config = {
   testing: {
     browserHeadless: 'new',
   },
+  rollupPlugins: {
+    after: [
+      nodePolyfills()
+    ]
+  }
 };

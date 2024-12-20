@@ -26,6 +26,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [transaction-toast-list](./components/transaction-toast-list)
+
 ### Depends on
 
 - [transaction-toast-wrapper](./components/transaction-toast-wrapper)
@@ -40,6 +44,7 @@ graph TD;
   transaction-toast --> transaction-toast-content
   transaction-toast-content --> transaction-toast-details
   transaction-toast-details --> transaction-toast-details-body
+  transaction-toast-list --> transaction-toast
   style transaction-toast fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
