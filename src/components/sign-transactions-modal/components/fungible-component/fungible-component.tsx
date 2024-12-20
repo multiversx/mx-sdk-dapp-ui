@@ -13,17 +13,21 @@ const LABELS = {
 })
 export class FungibleComponent {
   render() {
-    const { tokenAmount, tokenImageUrl, tokenType, identifier } = state;
+    const { sftTransaction, nftTransaction, commonData } = state;
+    const { tokenType } = commonData;
+
+    const data = tokenType === 'SemiFungibleESDT' ? sftTransaction : nftTransaction;
+    const { amount = '', identifier = '', imageURL = '' } = data || {};
 
     const label = LABELS[tokenType];
     return (
       <sign-transaction-component
         header={
           <div class="fungible-container">
-            <span>{`You are sending ${tokenAmount} ${label}`}</span>
+            <span>{`You are sending ${amount} ${label}`}</span>
             <div class="fungible-inner-container">
               <div class="fungible-img-container">
-                <img src={tokenImageUrl} alt={identifier} class="fungible-img" />
+                <img src={imageURL} alt={identifier} class="fungible-img" />
                 <div>
                   <span>{identifier}</span>
                 </div>

@@ -6,24 +6,37 @@ export interface ITransactionData {
   value?: string;
 }
 
-export interface ISignTransactionsModalData {
-  receiver?: string;
-  data?: string;
-  total: number;
-  /**
-   * Token type of the transaction.
-   * @param {string} `null` - if is EGLD or MultiEsdt transaction.
-   */
-  tokenType?: 'SemiFungibleESDT' | 'NonFungibleESDT' | 'FungibleESDT' | null;
+export type FungibleTransactionType = {
+  amount: string;
   identifier?: string;
-  tokenAmount?: string;
-  tokenImageUrl?: string;
-  egldLabel: string;
-  usdValue?: string;
-  feeLimit?: string;
-  feeInFiatLimit?: string | null;
-  currentIndex: number;
+  imageURL: string;
+};
+
+export type TokenTransactionType = {
+  identifier?: string;
+  amount: string;
+  usdValue: string;
+};
+
+export interface ISignTransactionsModalData {
+  commonData: {
+    receiver?: string;
+    data?: string;
+    transactionsCount: number;
+    /**
+     * Token type of the transaction.
+     * @param {string} `null` - if is EGLD or MultiEsdt transaction.
+     */
+    tokenType?: 'SemiFungibleESDT' | 'NonFungibleESDT' | 'FungibleESDT' | null;
+    egldLabel: string;
+    feeLimit?: string;
+    feeInFiatLimit?: string | null;
+    currentIndex: number;
+  };
   shouldClose?: true;
+  tokenTransaction: TokenTransactionType | null;
+  nftTransaction: FungibleTransactionType | null;
+  sftTransaction: FungibleTransactionType | null;
 }
 
 export enum SignEventsEnum {

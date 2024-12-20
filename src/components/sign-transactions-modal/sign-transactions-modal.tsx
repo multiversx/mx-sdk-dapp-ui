@@ -16,14 +16,13 @@ const HEADERS = {
 })
 export class SignTransactionsModal {
   @Element() hostElement: HTMLElement;
-  private eventBus: IEventBus = EventBus.getInstance();
+  private eventBus: IEventBus = new EventBus();
 
   @Prop() data: ISignTransactionsModalData = {
-    egldLabel: '',
-    feeLimit: '',
-    feeInFiatLimit: '',
-    total: 0,
-    currentIndex: 0,
+    commonData: { egldLabel: '', feeLimit: '', feeInFiatLimit: '', transactionsCount: 0, currentIndex: 0 },
+    tokenTransaction: null,
+    nftTransaction: null,
+    sftTransaction: null,
   };
 
   @Method() async getEventBus() {
@@ -37,6 +36,8 @@ export class SignTransactionsModal {
         state[key] = data[key];
       }
     }
+
+    state.isLoading = false;
   }
 
   componentWillLoad() {
@@ -46,21 +47,22 @@ export class SignTransactionsModal {
   }
 
   render() {
-    const { receiver, tokenType } = state;
+    const { commonData, isLoading } = state;
+    const { tokenType, currentIndex, transactionsCount } = commonData;
     const HeaderComponent = HEADERS[tokenType];
 
     return (
       <generic-modal
         onClose={() => this.close()}
         modalTitle="Sign transaction"
-        modalSubtitle={`Transaction ${state.currentIndex + 1} of ${state.total}`}
+        modalSubtitle={`Transaction ${currentIndex + 1} of ${transactionsCount}`}
         body={
-          receiver ? (
-            <HeaderComponent></HeaderComponent>
-          ) : (
+          isLoading ? (
             <div class="loading-spinner">
               <generic-spinner></generic-spinner>
             </div>
+          ) : (
+            <HeaderComponent></HeaderComponent>
           )
         }
       />
@@ -97,6 +99,7 @@ export class SignTransactionsModal {
   }
 
   disconnectedCallback() {
+    resetState();
     this.eventBus.unsubscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
   }
 }

@@ -1,23 +1,26 @@
 import { createStore } from '@stencil/store';
-import { ISignTransactionsModalData } from 'components';
+import { ISignTransactionsModalData } from 'components/sign-transactions-modal/sign-transactions-modal.types';
 
 type ITransactionState = ISignTransactionsModalData & {
+  isLoading: boolean;
   onSign: () => void;
 };
 
+//add commonData
 const initialState: ITransactionState = {
-  data: '',
-  total: 0,
-  tokenType: null,
-  identifier: '',
-  tokenAmount: '',
-  tokenImageUrl: '',
-  egldLabel: '',
-  usdValue: '',
-  feeLimit: '',
-  feeInFiatLimit: '',
-  currentIndex: 0,
-  receiver: '',
+  isLoading: true,
+  commonData: {
+    data: '',
+    transactionsCount: 0,
+    egldLabel: '',
+    feeLimit: '',
+    feeInFiatLimit: '',
+    currentIndex: 0,
+    receiver: '',
+  },
+  nftTransaction: null,
+  sftTransaction: null,
+  tokenTransaction: null,
   onSign: null,
 };
 

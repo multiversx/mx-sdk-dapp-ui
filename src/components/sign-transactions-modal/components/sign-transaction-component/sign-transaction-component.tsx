@@ -17,7 +17,8 @@ export class SignTransaction {
   @Prop() data: SignTransactionProps;
   @Prop() header: VNode;
   render() {
-    const { receiver, data, feeInFiatLimit, onSign, egldLabel, feeLimit } = state;
+    const { commonData, onSign } = state;
+    const { receiver, egldLabel, data, feeInFiatLimit, feeLimit } = commonData;
 
     return (
       <div class="transaction-container">

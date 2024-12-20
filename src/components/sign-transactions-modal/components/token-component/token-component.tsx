@@ -7,11 +7,12 @@ import state from '../../sign-transactions-modal-store';
 })
 export class TokenComponent {
   render() {
-    const { tokenAmount, egldLabel, usdValue } = state;
+    const { tokenTransaction } = state;
+    const { amount, identifier, usdValue } = tokenTransaction || {};
 
     return (
       <sign-transaction-component
-        header={<balance-component amount={tokenAmount} ticker={egldLabel} usdValue={usdValue} header="You are sending"></balance-component>}
+        header={<balance-component amount={amount} ticker={identifier} usdValue={usdValue} header="You are sending"></balance-component>}
       ></sign-transaction-component>
     );
   }
