@@ -10,14 +10,14 @@ import { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledge
 import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsModalData } from "./components/pending-transactions-modal/pending-transactions-modal.types";
 import { ISignTransactionsModalData } from "./components/sign-transactions-modal/sign-transactions-modal.types";
-import { IToastDataState, ITransaction, ITransactionProgressState } from "./components/transaction-toast/transaction-toast.type";
+import { IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/transaction-toast/transaction-toast.type";
 import { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
 export { VNode } from "@stencil/core";
 export { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledger-connect-modal.types";
 export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsModalData } from "./components/pending-transactions-modal/pending-transactions-modal.types";
 export { ISignTransactionsModalData } from "./components/sign-transactions-modal/sign-transactions-modal.types";
-export { IToastDataState, ITransaction, ITransactionProgressState } from "./components/transaction-toast/transaction-toast.type";
+export { IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/transaction-toast/transaction-toast.type";
 export { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
 export namespace Components {
     interface FormatAmount {
@@ -88,6 +88,8 @@ export namespace Components {
         "transactionClass"?: string;
     }
     interface TransactionToastList {
+        "data": ITransactionToast[];
+        "getEventBus": () => Promise<IEventBus>;
     }
     interface TransactionToastProgress {
         "currentRemaining"?: number;
@@ -309,6 +311,7 @@ declare namespace LocalJSX {
         "transactionClass"?: string;
     }
     interface TransactionToastList {
+        "data"?: ITransactionToast[];
     }
     interface TransactionToastProgress {
         "currentRemaining"?: number;
