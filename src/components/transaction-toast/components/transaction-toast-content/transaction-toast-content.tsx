@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Prop, Event, h } from '@stencil/core';
+import { Component, EventEmitter, Prop, Event, h, JSX } from '@stencil/core';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
 import { IToastDataState, ITransaction } from '../../transaction-toast.type';
