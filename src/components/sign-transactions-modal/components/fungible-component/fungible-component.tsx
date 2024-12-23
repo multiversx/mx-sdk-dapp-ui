@@ -1,5 +1,5 @@
 import { Component, h } from '@stencil/core';
-import state from '../../sign-transactions-modal-store';
+import state from '../../signTransactionsModalStore';
 
 const LABELS = {
   SemiFungibleESDT: 'SFT',

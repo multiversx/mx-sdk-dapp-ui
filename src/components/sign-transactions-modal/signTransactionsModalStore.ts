@@ -3,11 +3,13 @@ import { ISignTransactionsModalData } from 'components/sign-transactions-modal/s
 
 type ITransactionState = ISignTransactionsModalData & {
   isLoading: boolean;
+  isWaitingForSignature: boolean;
   onSign: () => void;
 };
 
 const initialState: ITransactionState = {
   isLoading: true,
+  isWaitingForSignature: false,
   commonData: {
     data: '',
     transactionsCount: 0,
@@ -27,8 +29,9 @@ const { state } = createStore<ITransactionState>({
   ...initialState,
 });
 
-export const resetState = () => {
-  Object.assign(state, initialState);
-};
+export const resetState = () => ({
+  ...state,
+  ...initialState,
+});
 
 export default state;
