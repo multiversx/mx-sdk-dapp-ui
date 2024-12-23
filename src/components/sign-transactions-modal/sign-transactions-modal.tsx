@@ -1,9 +1,9 @@
 import { Component, Prop, h, Element, Method, forceUpdate, Watch } from '@stencil/core';
 import { EventBus, IEventBus } from 'utils/EventBus';
 import { ISignTransactionsModalData, SignEventsEnum } from './sign-transactions-modal.types';
-import state, { resetState } from './sign-transactions-modal-store';
+import state, { resetState } from './signTransactionsModalStore';
 
-const HEADERS = {
+const signScreens = {
   FungibleESDT: 'token-component',
   SemiFungibleESDT: 'fungible-component',
   NonFungibleESDT: 'fungible-component',
@@ -37,11 +37,13 @@ export class SignTransactionsModal {
       }
     }
 
+    state.isWaitingForSignature = false;
     state.isLoading = false;
   }
 
   componentWillLoad() {
     state.onSign = () => {
+      state.isWaitingForSignature = true;
       this.eventBus.publish(SignEventsEnum.SIGN_TRANSACTION);
     };
   }
@@ -49,7 +51,7 @@ export class SignTransactionsModal {
   render() {
     const { commonData, isLoading } = state;
     const { tokenType, currentIndex, transactionsCount } = commonData;
-    const HeaderComponent = HEADERS[tokenType];
+    const SignScreen = signScreens[tokenType];
 
     return (
       <generic-modal
@@ -62,7 +64,7 @@ export class SignTransactionsModal {
               <generic-spinner></generic-spinner>
             </div>
           ) : (
-            <HeaderComponent></HeaderComponent>
+            <SignScreen></SignScreen>
           )
         }
       />

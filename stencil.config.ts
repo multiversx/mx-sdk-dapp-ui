@@ -1,8 +1,10 @@
 import { Config } from '@stencil/core';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
+import { sass } from '@stencil/sass';
 
 export const config: Config = {
   namespace: 'sdk-dapp-core-ui',
+  plugins: [sass()],
   outputTargets: [
     {
       type: 'dist',
@@ -25,8 +27,6 @@ export const config: Config = {
     browserHeadless: 'new',
   },
   rollupPlugins: {
-    after: [
-      nodePolyfills()
-    ]
-  }
+    after: [nodePolyfills()],
+  },
 };

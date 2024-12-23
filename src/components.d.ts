@@ -69,7 +69,6 @@ export namespace Components {
         "getEventBus": () => Promise<IEventBus>;
     }
     interface SignTransactionComponent {
-        "data": SignTransactionProps;
         "header": VNode;
     }
     interface SignTransactionsModal {
@@ -333,7 +332,6 @@ declare namespace LocalJSX {
         "data"?: IPendingTransactionsModalData;
     }
     interface SignTransactionComponent {
-        "data"?: SignTransactionProps;
         "header"?: VNode;
     }
     interface SignTransactionsModal {

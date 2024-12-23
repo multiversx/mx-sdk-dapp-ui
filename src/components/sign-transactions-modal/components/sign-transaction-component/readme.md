@@ -7,10 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                                         | Default     |
-| -------- | --------- | ----------- | -------------------------------------------- | ----------- |
-| `data`   | --        |             | `ITransactionData & { onSign: () => void; }` | `undefined` |
-| `header` | --        |             | `VNode`                                      | `undefined` |
+| Property | Attribute | Description | Type    | Default     |
+| -------- | --------- | ----------- | ------- | ----------- |
+| `header` | --        |             | `VNode` | `undefined` |
 
 
 ## Dependencies

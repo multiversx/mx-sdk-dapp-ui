@@ -1,12 +1,7 @@
 import { Component, Prop, VNode, h } from '@stencil/core';
-import { ITransactionData } from '../../sign-transactions-modal.types';
 import { formatAddress } from 'utils/utils';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-import state from '../../sign-transactions-modal-store';
-
-type SignTransactionProps = ITransactionData & {
-  onSign: () => void;
-};
+import state from '../../signTransactionsModalStore';
 
 @Component({
   tag: 'sign-transaction-component',
@@ -14,11 +9,10 @@ type SignTransactionProps = ITransactionData & {
   shadow: false,
 })
 export class SignTransaction {
-  @Prop() data: SignTransactionProps;
   @Prop() header: VNode;
+
   render() {
-    const { commonData, onSign } = state;
-    const { receiver, egldLabel, data, feeInFiatLimit, feeLimit } = commonData;
+    const { receiver, egldLabel, data, feeInFiatLimit, feeLimit } = state.commonData;
 
     return (
       <div class="transaction-container">
@@ -47,7 +41,7 @@ export class SignTransaction {
           </textarea>
         </div>
 
-        <button data-testid={DataTestIdsEnum.signTransactionBtn} class="sign-btn" onClick={onSign}>
+        <button disabled={state.isWaitingForSignature} data-testid={DataTestIdsEnum.signTransactionBtn} class="sign-button" onClick={state.onSign}>
           Sign
         </button>
       </div>
