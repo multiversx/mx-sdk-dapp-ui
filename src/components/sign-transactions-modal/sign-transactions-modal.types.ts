@@ -1,5 +1,3 @@
-// types here need to be synced with the types in sdk-dapp-core signTransactionsModal.types.ts
-
 export interface ITransactionData {
   receiver?: string;
   data?: string;
@@ -12,13 +10,10 @@ export type FungibleTransactionType = {
   imageURL: string;
 };
 
-export type TokenTransactionType = {
-  identifier?: string;
-  amount: string;
-  usdValue: string;
-};
+export type TokenType = 'SemiFungibleESDT' | 'NonFungibleESDT' | 'FungibleESDT' | null;
 
 export interface ISignTransactionsModalData {
+  shouldClose?: true;
   commonData: {
     receiver?: string;
     data?: string;
@@ -27,14 +22,17 @@ export interface ISignTransactionsModalData {
      * Token type of the transaction.
      * @param {string} `null` - if is EGLD or MultiEsdt transaction.
      */
-    tokenType?: 'SemiFungibleESDT' | 'NonFungibleESDT' | 'FungibleESDT' | null;
+    tokenType?: TokenType;
     egldLabel: string;
     feeLimit?: string;
     feeInFiatLimit?: string | null;
     currentIndex: number;
   };
-  shouldClose?: true;
-  tokenTransaction: TokenTransactionType | null;
+  tokenTransaction: {
+    identifier?: string;
+    amount: string;
+    usdValue: string;
+  } | null;
   nftTransaction: FungibleTransactionType | null;
   sftTransaction: FungibleTransactionType | null;
 }
