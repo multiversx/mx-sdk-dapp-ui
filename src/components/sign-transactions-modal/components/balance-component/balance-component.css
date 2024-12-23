@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.balance-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.amount-container {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 4px;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.amount-value {
+  font-weight: bold;
+}
+
+.amount-ticker {
+  font-size: 16px;
+  align-self: flex-start;
+}

@@ -10,7 +10,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 })
 export class PendingTransactionstModal {
   @Element() hostElement: HTMLElement;
-  private eventBus: IEventBus = EventBus.getInstance();
+  private eventBus: IEventBus = new EventBus();
 
   @Prop() data: IPendingTransactionsModalData = {
     isPending: false,

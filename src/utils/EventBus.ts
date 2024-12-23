@@ -1,26 +1,13 @@
 export interface IEventBus {
-  getInstance(): IEventBus;
   subscribe(event: string, callback: Function): void;
   publish(event: string, data?: any): void;
   unsubscribe(event: string, callback: Function): void;
 }
 
 export class EventBus implements IEventBus {
-  private static instance: IEventBus;
   private subscribers: { [key: string]: Function[] } = {};
 
-  private constructor() {}
-
-  static getInstance(): IEventBus {
-    if (!EventBus.instance) {
-      EventBus.instance = new EventBus();
-    }
-    return EventBus.instance;
-  }
-
-  getInstance(): IEventBus {
-    return EventBus.getInstance();
-  }
+  public constructor() {}
 
   // Rest of the implementation remains the same
   subscribe(event: string, callback: Function) {

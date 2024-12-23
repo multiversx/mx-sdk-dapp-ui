@@ -60,6 +60,7 @@
   },
   "devDependencies": {
     "@stencil/core": "^4.22.3",
+    "@stencil/store": "2.0.16",
     "@types/jest": "^29.5.14",
     "@types/jsdom": "^21.1.1",
     "@types/node": "^22.10.0",

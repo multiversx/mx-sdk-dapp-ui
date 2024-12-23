@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.fungible-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.fungible-inner-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f6ee;
+  border-radius: 8px;
+  padding-right: 8px;
+}
+
+.fungible-img-container {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.fungible-img {
+  width: 64px;
+  height: 64px;
+}
+
+.fungible-sft {
+  color: #fed7aa;
+  background-color: #171717;
+  padding: 4px 8px;
+  text-transform: uppercase;
+  border-radius: 4px;
+}

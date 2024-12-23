@@ -1,7 +1,13 @@
-import { Component, Prop, h, Element, Method, forceUpdate } from '@stencil/core';
+import { Component, Prop, h, Element, Method, forceUpdate, Watch } from '@stencil/core';
 import { EventBus, IEventBus } from 'utils/EventBus';
 import { ISignTransactionsModalData, SignEventsEnum } from './sign-transactions-modal.types';
-import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import state, { resetState } from './sign-transactions-modal-store';
+
+const HEADERS = {
+  FungibleESDT: 'token-component',
+  SemiFungibleESDT: 'fungible-component',
+  NonFungibleESDT: 'fungible-component',
+};
 
 @Component({
   tag: 'sign-transactions-modal',
@@ -10,34 +16,54 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 })
 export class SignTransactionsModal {
   @Element() hostElement: HTMLElement;
-  private eventBus: IEventBus = EventBus.getInstance();
+  private eventBus: IEventBus = new EventBus();
 
   @Prop() data: ISignTransactionsModalData = {
-    transaction: null,
+    commonData: { egldLabel: '', feeLimit: '', feeInFiatLimit: '', transactionsCount: 0, currentIndex: 0 },
+    tokenTransaction: null,
+    nftTransaction: null,
+    sftTransaction: null,
   };
 
   @Method() async getEventBus() {
     return this.eventBus;
   }
 
+  @Watch('data')
+  onDataChange(data: ISignTransactionsModalData) {
+    for (const key in data) {
+      if (Object.prototype.hasOwnProperty.call(state, key)) {
+        state[key] = data[key];
+      }
+    }
+
+    state.isLoading = false;
+  }
+
+  componentWillLoad() {
+    state.onSign = () => {
+      this.eventBus.publish(SignEventsEnum.SIGN_TRANSACTION);
+    };
+  }
+
   render() {
-    const { transaction } = this.data;
+    const { commonData, isLoading } = state;
+    const { tokenType, currentIndex, transactionsCount } = commonData;
+    const HeaderComponent = HEADERS[tokenType];
 
     return (
       <generic-modal
         onClose={() => this.close()}
         modalTitle="Sign transaction"
-        modalSubtitle="1/2"
+        modalSubtitle={`Transaction ${currentIndex + 1} of ${transactionsCount}`}
         body={
-          <div>
-            <p>{transaction?.receiver}</p>
-            <p>{transaction?.value}</p>
-            <p>{transaction?.data}</p>
-
-            <button data-testid={DataTestIdsEnum.ledgerConnectBtn} class="access-button" onClick={() => this.eventBus.publish(SignEventsEnum.SIGN_TRANSACTION)}>
-              Sign
-            </button>
-          </div>
+          isLoading ? (
+            <div class="loading-spinner">
+              <generic-spinner></generic-spinner>
+            </div>
+          ) : (
+            <HeaderComponent></HeaderComponent>
+          )
         }
       />
     );
@@ -52,6 +78,8 @@ export class SignTransactionsModal {
   }
 
   close(props = { isUserClick: true }) {
+    resetState();
+
     if (props.isUserClick) {
       this.eventBus.publish(SignEventsEnum.CLOSE);
     }
@@ -71,6 +99,7 @@ export class SignTransactionsModal {
   }
 
   disconnectedCallback() {
+    resetState();
     this.eventBus.unsubscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
   }
 }
