@@ -1,0 +1,37 @@
+.transaction-container {
+  line-height: 1.5;
+  font-size: 0.875rem;
+  padding-right: 0.5rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.2rem;
+
+  .icon {
+    svg {
+      font-size: 0.875rem;
+      color: #6c757d;
+      margin-right: 0.25rem;
+      width: 1rem;
+    }
+  }
+  .fa-spin {
+    svg {
+      animation: spin 2s linear infinite;
+    }
+  }
+
+  .trim {
+    width: 11rem;
+    white-space: nowrap;
+    margin-right: 1rem;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,4 @@
+export enum TransactionToastEventsEnum {
+  'CLOSE_TOAST' = 'CLOSE_TOAST',
+  'TRANSACTION_TOAST_DATA_UPDATE' = 'TRANSACTION_TOAST_DATA_UPDATE',
+}

@@ -1,16 +1,15 @@
-export class EventBus {
-  private static instance: EventBus;
+export interface IEventBus {
+  subscribe(event: string, callback: Function): void;
+  publish(event: string, data?: any): void;
+  unsubscribe(event: string, callback: Function): void;
+}
+
+export class EventBus implements IEventBus {
   private subscribers: { [key: string]: Function[] } = {};
 
-  private constructor() {}
+  public constructor() {}
 
-  static getInstance(): EventBus {
-    if (!EventBus.instance) {
-      EventBus.instance = new EventBus();
-    }
-    return EventBus.instance;
-  }
-
+  // Rest of the implementation remains the same
   subscribe(event: string, callback: Function) {
     if (!this.subscribers[event]) {
       this.subscribers[event] = [];
@@ -22,15 +21,13 @@ export class EventBus {
     if (!this.subscribers[event]) {
       return;
     }
-    this.subscribers[event].forEach((callback) => callback(data));
+    this.subscribers[event].forEach(callback => callback(data));
   }
 
   unsubscribe(event: string, callback: Function) {
     if (!this.subscribers[event]) {
       return;
     }
-    this.subscribers[event] = this.subscribers[event].filter(
-      (cb) => cb !== callback
-    );
+    this.subscribers[event] = this.subscribers[event].filter(cb => cb !== callback);
   }
 }

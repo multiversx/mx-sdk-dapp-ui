@@ -1,14 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
 
-    <script type="module" src="/build/sdk-core-ui.esm.js"></script>
-    <script nomodule src="/build/sdk-core-ui.js"></script>
+    <script type="module" src="/build/sdk-dapp-core-ui.esm.js"></script>
+    <script nomodule src="/build/sdk-dapp-core-ui.js"></script>
   </head>
   <body>
     <my-component first="Stencil" middle="'Don't call me a framework'" last="JS"></my-component>
+    <transaction-toast-list />
+    <button id="sign-transactions-btn" onclick="openSignModal();">Open Sign Transactions Modal</button>
+    <button id="ledger-connect-btn" onclick="openLedgerConnectModal();">Open Ledger Connect Modal</button>
+    <button id="show-notification-btn" onclick="showNotification();">Show Notification</button>
+
+    <script>
+      function openSignModal() {
+        const signTransactionsModal = document.querySelector('sign-transactions-modal');
+        if (!signTransactionsModal) {
+          const newModal = document.createElement('sign-transactions-modal');
+          document.body.appendChild(newModal);
+        }
+      }
+
+      function openLedgerConnectModal() {
+        const ledgerConnectModal = document.querySelector('ledger-connect-modal');
+        if (!ledgerConnectModal) {
+          const newModal = document.createElement('ledger-connect-modal');
+          document.body.appendChild(newModal);
+        }
+      }
+    </script>
+    <script type="text/javascript" src="./assets/notification.js"></script>
   </body>
 </html>
