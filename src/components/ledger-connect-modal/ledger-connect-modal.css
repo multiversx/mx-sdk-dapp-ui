@@ -149,6 +149,7 @@
   padding: 12px;
   text-align: center;
   border-radius: 8px;
+  word-break: break-word;
 }
 
 .ledger-confirm-address-section .ledger-confirm-address-header {

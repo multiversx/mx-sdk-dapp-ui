@@ -17,7 +17,8 @@ import state, { resetState } from './signTransactionsModalStore';
 const signScreens = {
   FungibleESDT: 'token-component',
   SemiFungibleESDT: 'fungible-component',
-  NonFungibleESDT: 'fungible-component'
+  NonFungibleESDT: 'fungible-component',
+  MetaESDT: 'token-component'
 };
 
 @Component({

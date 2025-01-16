@@ -11,10 +11,10 @@ export type FungibleTransactionType = {
 };
 
 export type TokenType =
+  | 'MetaESDT'
   | 'SemiFungibleESDT'
   | 'NonFungibleESDT'
-  | 'FungibleESDT'
-  | null;
+  | 'FungibleESDT';
 
 export interface ISignTransactionsModalData {
   shouldClose?: true;
@@ -22,10 +22,6 @@ export interface ISignTransactionsModalData {
     receiver?: string;
     data?: string;
     transactionsCount: number;
-    /**
-     * Token type of the transaction.
-     * @param {string} `null` - if is EGLD or MultiEsdt transaction.
-     */
     tokenType?: TokenType;
     egldLabel: string;
     feeLimit?: string;
