@@ -49,20 +49,44 @@ export class SignTransaction {
 
     return {
       'data-testid': DataTestIdsEnum.signBackBtn,
-      backButtonText: '< Back',
+      backButtonText: 'Back',
       onClick: state.onPrev,
       disabled: state.isWaitingForSignature
     };
   }
 
+  getHighlightedData() {
+    const { data, highlight } = state.commonData;
+
+    if (!highlight || !data) {
+      return data;
+    }
+
+    const parts = data.split(highlight);
+
+    return (
+      <span>
+        {parts.map((part, index) => (
+          <span>
+            <span class="data-content">{part}</span>
+            {index < parts.length - 1 && (
+              <span class="highlight">{highlight}</span>
+            )}
+          </span>
+        ))}
+      </span>
+    );
+  }
+
   render() {
-    const { receiver, egldLabel, data, feeInFiatLimit, feeLimit } =
+    const { receiver, egldLabel, feeInFiatLimit, feeLimit, scCall } =
       state.commonData;
 
     const { signText, ...signButtonProps } = this.getSignButtonProps();
     const { backButtonText, ...backButtonProps } =
       this.getBackButtonProps() ?? {};
 
+    const highlightedData = this.getHighlightedData();
     return (
       <div class="transaction-container">
         {this.header}
@@ -83,11 +107,16 @@ export class SignTransaction {
           <p>≈{feeInFiatLimit}</p>
         </div>
 
+        {scCall && (
+          <div class="data-container">
+            <p>Smart Contract Call</p>
+            <div class="data-content-container">{scCall}</div>
+          </div>
+        )}
+
         <div class="data-container">
           <p>Data</p>
-          <textarea class="data-content" readOnly draggable={false}>
-            {data}
-          </textarea>
+          <div class="data-content-container">{highlightedData}</div>
         </div>
 
         <div class="sign-button-container">

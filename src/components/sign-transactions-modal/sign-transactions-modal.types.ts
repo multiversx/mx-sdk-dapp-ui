@@ -32,6 +32,8 @@ export interface ISignTransactionsModalData {
     feeInFiatLimit?: string | null;
     currentIndex: number;
     nextUnsignedTxIndex?: number;
+    highlight?: string;
+    scCall?: string;
   };
   tokenTransaction: {
     identifier?: string;

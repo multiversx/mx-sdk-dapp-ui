@@ -82,7 +82,6 @@ export class SignTransactionsModal {
     const { tokenType, currentIndex, transactionsCount } = commonData;
     const SignScreen = signScreens[tokenType];
 
-    console.log({ SignScreen, commonData });
     return (
       <generic-modal
         onClose={() => this.close()}

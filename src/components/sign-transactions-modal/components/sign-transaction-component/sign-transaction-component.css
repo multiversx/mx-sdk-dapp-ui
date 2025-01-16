@@ -7,8 +7,8 @@
 .transaction-container {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  gap: 1.25rem;
+  padding: 0rem 1rem 0rem 1rem;
+  gap: 1rem;
 }
 
 .receiver-container {
@@ -27,12 +27,25 @@
   line-height: 1;
 }
 
-.data-content {
+.data-content-container {
+  display: block;
   width: 100%;
+  min-height: 100px;
   height: 100px;
-  resize: none;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  overflow-y: auto;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: #f9f9f9;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  color: #333;
+}
+
+.data-content {
+  opacity: 0.6;
 }
 
 .fee-container {
@@ -95,4 +108,8 @@
     box-shadow: none;
     transform: none;
   }
+}
+
+.highlight {
+  opacity: 1;
 }
