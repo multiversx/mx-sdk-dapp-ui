@@ -10,7 +10,11 @@ export type FungibleTransactionType = {
   imageURL: string;
 };
 
-export type TokenType = 'SemiFungibleESDT' | 'NonFungibleESDT' | 'FungibleESDT' | null;
+export type TokenType =
+  | 'SemiFungibleESDT'
+  | 'NonFungibleESDT'
+  | 'FungibleESDT'
+  | null;
 
 export interface ISignTransactionsModalData {
   shouldClose?: true;
@@ -27,6 +31,7 @@ export interface ISignTransactionsModalData {
     feeLimit?: string;
     feeInFiatLimit?: string | null;
     currentIndex: number;
+    nextUnsignedTxIndex?: number;
   };
   tokenTransaction: {
     identifier?: string;
@@ -39,8 +44,8 @@ export interface ISignTransactionsModalData {
 
 export enum SignEventsEnum {
   'SIGN_TRANSACTION' = 'SIGN_TRANSACTION',
-  'NEXT_PAGE' = 'NEXT_PAGE',
-  'PREV_PAGE' = 'PREV_PAGE',
+  'NEXT_TRANSACTION' = 'NEXT_TRANSACTION',
+  'PREV_TRANSACTION' = 'PREV_TRANSACTION',
   'CLOSE' = 'CLOSE',
-  'DATA_UPDATE' = 'DATA_UPDATE',
+  'DATA_UPDATE' = 'DATA_UPDATE'
 }

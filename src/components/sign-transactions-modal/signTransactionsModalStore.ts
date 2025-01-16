@@ -5,6 +5,9 @@ type ITransactionState = ISignTransactionsModalData & {
   isLoading: boolean;
   isWaitingForSignature: boolean;
   onSign: () => void;
+  onCancel: () => void;
+  onPrev: () => void;
+  onNext: () => void;
 };
 
 const initialState: ITransactionState = {
@@ -18,20 +21,24 @@ const initialState: ITransactionState = {
     feeInFiatLimit: '',
     currentIndex: 0,
     receiver: '',
+    nextUnsignedTxIndex: 0
   },
   nftTransaction: null,
   sftTransaction: null,
   tokenTransaction: null,
   onSign: null,
+  onCancel: null,
+  onPrev: null,
+  onNext: null
 };
 
 const { state } = createStore<ITransactionState>({
-  ...initialState,
+  ...initialState
 });
 
 export const resetState = () => ({
   ...state,
-  ...initialState,
+  ...initialState
 });
 
 export default state;

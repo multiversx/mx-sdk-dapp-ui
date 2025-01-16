@@ -6,13 +6,62 @@ import state from '../../signTransactionsModalStore';
 @Component({
   tag: 'sign-transaction-component',
   styleUrl: 'sign-transaction-component.css',
-  shadow: false,
+  shadow: false
 })
 export class SignTransaction {
   @Prop() header: VNode;
 
+  getSignButtonProps() {
+    const { currentIndex, nextUnsignedTxIndex } = state.commonData;
+
+    if (currentIndex === nextUnsignedTxIndex) {
+      return {
+        signText: 'Sign',
+        disabled: state.isWaitingForSignature,
+        'data-testid': DataTestIdsEnum.signTransactionBtn,
+        onClick: state.onSign
+      };
+    }
+
+    return {
+      signText: 'Next',
+      disabled: false,
+      'data-testid': DataTestIdsEnum.signNextTransactionBtn,
+      onClick: state.onNext
+    };
+  }
+
+  getBackButtonProps() {
+    const { transactionsCount, currentIndex } = state.commonData;
+    const isMultipleTransactions = transactionsCount > 1;
+
+    if (!isMultipleTransactions) {
+      return null;
+    }
+
+    if (currentIndex === 0) {
+      return {
+        'data-testid': DataTestIdsEnum.signCancelBtn,
+        backButtonText: 'Cancel',
+        onClick: state.onCancel
+      };
+    }
+
+    return {
+      'data-testid': DataTestIdsEnum.signBackBtn,
+      backButtonText: '< Back',
+      onClick: state.onPrev,
+      disabled: state.isWaitingForSignature
+    };
+  }
+
   render() {
-    const { receiver, egldLabel, data, feeInFiatLimit, feeLimit } = state.commonData;
+    const { receiver, egldLabel, data, feeInFiatLimit, feeLimit } =
+      state.commonData;
+
+    const { signText, ...signButtonProps } = this.getSignButtonProps();
+    const { backButtonText, ...backButtonProps } =
+      this.getBackButtonProps() ?? {};
 
     return (
       <div class="transaction-container">
@@ -41,9 +90,17 @@ export class SignTransaction {
           </textarea>
         </div>
 
-        <button disabled={state.isWaitingForSignature} data-testid={DataTestIdsEnum.signTransactionBtn} class="sign-button" onClick={state.onSign}>
-          Sign
-        </button>
+        <div class="sign-button-container">
+          <button class="sign-button" {...signButtonProps}>
+            {signText}
+          </button>
+
+          {backButtonText && (
+            <button class="sign-back-button" {...backButtonProps}>
+              {backButtonText}
+            </button>
+          )}
+        </div>
       </div>
     );
   }

@@ -3,20 +3,21 @@ import state from '../../signTransactionsModalStore';
 
 const LABELS = {
   SemiFungibleESDT: 'SFT',
-  NonFungibleESDT: 'NFT',
+  NonFungibleESDT: 'NFT'
 };
 
 @Component({
   tag: 'fungible-component',
   styleUrl: 'fungible-component.css',
-  shadow: false,
+  shadow: false
 })
 export class FungibleComponent {
   render() {
     const { sftTransaction, nftTransaction, commonData } = state;
     const { tokenType } = commonData;
 
-    const data = tokenType === 'SemiFungibleESDT' ? sftTransaction : nftTransaction;
+    const data =
+      tokenType === 'SemiFungibleESDT' ? sftTransaction : nftTransaction;
     const { amount = '', identifier = '', imageURL = '' } = data || {};
 
     const label = LABELS[tokenType];
