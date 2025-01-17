@@ -1,3 +1,6 @@
+// types here need to be synced with the types in sdk-dapp-core signTransactionsModal.types.ts
+import { EsdtEnumType, NftEnumType } from 'types/tokens.types';
+
 export interface ITransactionData {
   receiver?: string;
   data?: string;
@@ -10,11 +13,7 @@ export type FungibleTransactionType = {
   imageURL: string;
 };
 
-export type TokenType =
-  | 'MetaESDT'
-  | 'SemiFungibleESDT'
-  | 'NonFungibleESDT'
-  | 'FungibleESDT';
+export type TokenType = EsdtEnumType | NftEnumType;
 
 export interface ISignTransactionsModalData {
   shouldClose?: true;
@@ -27,6 +26,9 @@ export interface ISignTransactionsModalData {
     feeLimit?: string;
     feeInFiatLimit?: string | null;
     currentIndex: number;
+    /**
+     * Tracks the index of the next unsigned transaction to be processed.
+     */
     nextUnsignedTxIndex?: number;
     highlight?: string;
     scCall?: string;

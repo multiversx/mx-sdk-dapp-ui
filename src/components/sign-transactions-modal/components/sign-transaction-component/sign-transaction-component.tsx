@@ -36,7 +36,7 @@ export class SignTransaction {
     const isMultipleTransactions = transactionsCount > 1;
 
     if (!isMultipleTransactions) {
-      return null;
+      return {};
     }
 
     if (currentIndex === 0) {
@@ -83,8 +83,7 @@ export class SignTransaction {
       state.commonData;
 
     const { signText, ...signButtonProps } = this.getSignButtonProps();
-    const { backButtonText, ...backButtonProps } =
-      this.getBackButtonProps() ?? {};
+    const { backButtonText, ...backButtonProps } = this.getBackButtonProps();
 
     const highlightedData = this.getHighlightedData();
     return (
