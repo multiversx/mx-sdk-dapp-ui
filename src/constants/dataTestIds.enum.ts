@@ -17,4 +17,7 @@ export enum DataTestIdsEnum {
   transactionToastTitle = 'transactionToastTitle',
   transactionDetailsToastBody = 'transactionDetailsToastBody',
   signTransactionBtn = 'signTransactionBtn',
+  signNextTransactionBtn = 'signNextTransactionBtn',
+  signCancelBtn = 'signCancelBtn',
+  signBackBtn = 'signBackBtn'
 }
