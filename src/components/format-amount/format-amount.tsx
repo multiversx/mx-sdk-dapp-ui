@@ -1,7 +1,7 @@
 import { Component, Prop, h } from '@stencil/core';
 import BigNumber from 'bignumber.js';
 import { formatAmount } from '@multiversx/sdk-dapp-utils/out/helpers';
-import { DECIMALS, DIGITS, ZERO } from '@multiversx/sdk-dapp-utils/out/constants';
+import { DECIMALS, DIGITS } from '@multiversx/sdk-dapp-utils/out/constants';
 
 @Component({
   tag: 'format-amount',
@@ -38,12 +38,7 @@ export class FormatAmount {
     });
 
     const valueParts = formattedValue.split('.');
-    const hasNoDecimals = valueParts.length === 1;
-    const isNotZero = formattedValue !== ZERO;
-
-    if (this.digits > 0 && hasNoDecimals && isNotZero) {
-      valueParts.push(ZERO.repeat(this.digits));
-    }
+    const label = ` ${this.token ?? this.egldLabel ?? ''}`.trimEnd();
 
     return (
       <span data-testid='formatAmountComponent' class={this.class}>
@@ -63,7 +58,7 @@ export class FormatAmount {
             }}
             data-testid='formatAmountSymbol'
           >
-            {` ${this.token ?? this.egldLabel}`}
+            {label}
           </span>
         )}
       </span>
