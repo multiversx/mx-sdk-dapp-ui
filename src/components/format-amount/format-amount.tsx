@@ -46,7 +46,8 @@ export class FormatAmount {
           {valueParts[0]}
         </span>
         {valueParts.length > 1 && (
-          <span class='decimals' data-testid='formatAmountDecimals'>
+          <span class='decimals' data-testid='formatAmountDec
+          imals'>
             .{valueParts[1]}
           </span>
         )}
