@@ -16,7 +16,7 @@ permissions:
   contents: write
 
 jobs:
-  publish-npm:
+  build-test:
     runs-on: ubuntu-latest
     permissions:
       contents: write

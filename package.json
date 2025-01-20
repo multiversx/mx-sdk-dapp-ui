@@ -54,6 +54,7 @@
     "@fortawesome/fontawesome-svg-core": ">= 6.7.2",
     "@fortawesome/free-solid-svg-icons": ">= 6.7.2",
     "@multiversx/sdk-dapp-utils": ">= 1.0.3",
+    "@multiversx/sdk-core": ">= 13.5.0",
     "bignumber.js": ">= 9.1.2",
     "classnames": ">= 2.5.1",
     "qrcode": ">= 1.5.4"
