@@ -1,17 +1,16 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { FormatAmount } from '../format-amount';
 
-describe('Format amount component when digits = 2', () => {
+describe('FormatAmount component', () => {
   const renderComponent = async (props: any) => {
     const page = await newSpecPage({
       components: [FormatAmount],
       html: '<format-amount></format-amount>',
-      supportsShadowDom: true
+      supportsShadowDom: true,
     });
 
     const component = page.root;
-    // Set each property individually
-    Object.keys(props).forEach(key => {
+    Object.keys(props).forEach((key) => {
       component[key] = props[key];
     });
 
@@ -31,81 +30,64 @@ describe('Format amount component when digits = 2', () => {
       .length;
   };
 
-  it('should show 2 non zero decimals', async () => {
+  it('should render valid amount with decimals', async () => {
     const props = {
-      value: '9999979999800000000000000',
-      showLastNonZeroDecimal: false,
-      showLabel: true,
-      digits: 2,
-      egldLabel: 'EGLD'
+      isValid: true,
+      valueInteger: '99999',
+      valueDecimal: '99',
+      label: 'EGLD',
     };
 
     const page = await renderComponent(props);
-    expect(await decimalsSelector(page)).toBe('.99');
+    expect(page.root.shadowRoot.querySelector('span[data-testid="formatAmountInt"]').textContent).toBe('99999');
+    expect(decimalsSelector(page)).toBe('.99');
   });
 
-  it('should show 2 zero decimals', async () => {
+  it('should not render decimals when valueDecimal is empty', async () => {
     const props = {
-      value: '9000000000000000000000000',
-      showLastNonZeroDecimal: false,
-      showLabel: true,
-      digits: 2,
-      egldLabel: 'EGLD'
+      isValid: true,
+      valueInteger: '90000',
+      valueDecimal: '',
+      label: 'EGLD',
     };
 
     const page = await renderComponent(props);
-    expect(await decimalsSelector(page)).toBe('.00');
+    expect(decimalsSelector(page)).toBe(undefined);
   });
 
-  it('should show all non zero decimals when showLastNonZeroDecimal = true', async () => {
+  it('should render invalid state when isValid is false', async () => {
     const props = {
-      value: '100000000000000',
-      showLastNonZeroDecimal: true,
-      showLabel: false,
-      digits: 2,
-      egldLabel: 'EGLD'
+      isValid: false,
+      valueInteger: '',
+      valueDecimal: '',
+      label: '',
     };
 
     const page = await renderComponent(props);
-    expect(await decimalsSelector(page)).toBe('.0001');
+    expect(page.root.shadowRoot.querySelector('span[data-testid="formatAmountInt"]').textContent).toBe('...');
   });
 
-  it('should not show decimals when value is 0', async () => {
+  it('should render symbol when label is provided', async () => {
     const props = {
-      value: '100000000000000',
-      showLastNonZeroDecimal: false,
-      showLabel: true,
-      digits: 2,
-      egldLabel: 'EGLD'
+      isValid: true,
+      valueInteger: '90000',
+      valueDecimal: '00',
+      label: 'EGLD',
     };
 
     const page = await renderComponent(props);
-    expect(await decimalsSelector(page)).toBe(undefined);
+    expect(symbolSelector(page)).toBe(1);
   });
 
-  it('should show symbol', async () => {
+  it('should not render symbol when label is not provided', async () => {
     const props = {
-      value: '9000000000000000000000000',
-      showLastNonZeroDecimal: false,
-      showLabel: true,
-      digits: 2,
-      egldLabel: 'EGLD'
+      isValid: true,
+      valueInteger: '90000',
+      valueDecimal: '00',
+      label: '',
     };
 
     const page = await renderComponent(props);
-    expect(await symbolSelector(page)).toBe(1);
-  });
-
-  it('should not show symbol', async () => {
-    const props = {
-      value: '9000000000000000000000000',
-      showLastNonZeroDecimal: false,
-      showLabel: false,
-      digits: 2,
-      egldLabel: 'EGLD'
-    };
-
-    const page = await renderComponent(props);
-    expect(await symbolSelector(page)).toBe(0);
+    expect(symbolSelector(page)).toBe(0);
   });
 });
