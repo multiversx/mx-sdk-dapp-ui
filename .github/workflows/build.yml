@@ -1,0 +1,41 @@
+name: Build and test
+
+on:
+  pull_request:
+    branches: [main, development]
+    paths:
+      - 'src/**'
+      - '**.js'
+      - '**.ts'
+      - '**.json'
+  repository_dispatch:
+    types: run-unit-tests
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org/
+
+      - name: Setup yarn
+        run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run tests
+        run: yarn test --silent
+
+      - name: Build project
+        run: yarn build

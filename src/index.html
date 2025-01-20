@@ -11,11 +11,21 @@
   <body>
     <my-component first="Stencil" middle="'Don't call me a framework'" last="JS"></my-component>
     <transaction-toast-list />
+    <pengind-transactions-modal></pengind-transactions-modal>
+    <button id="pending-transactions-btn" onclick="openPendingTxModal();">Open Pending Transactions Modal</button>
     <button id="sign-transactions-btn" onclick="openSignModal();">Open Sign Transactions Modal</button>
     <button id="ledger-connect-btn" onclick="openLedgerConnectModal();">Open Ledger Connect Modal</button>
     <button id="show-notification-btn" onclick="showNotification();">Show Notification</button>
 
     <script>
+      function openPendingTxModal() {
+        const pendingTransactionsModal = document.querySelector('pending-transactions-modal');
+        if (!pendingTransactionsModal) {
+          const newModal = document.createElement('pending-transactions-modal');
+          document.body.appendChild(newModal);
+        }
+      }
+
       function openSignModal() {
         const signTransactionsModal = document.querySelector('sign-transactions-modal');
         if (!signTransactionsModal) {

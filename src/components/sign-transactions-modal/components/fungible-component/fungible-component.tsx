@@ -1,22 +1,26 @@
 import { Component, h } from '@stencil/core';
 import state from '../../signTransactionsModalStore';
+import { NftEnumType } from 'types/tokens.types';
 
 const LABELS = {
-  SemiFungibleESDT: 'SFT',
-  NonFungibleESDT: 'NFT',
+  [NftEnumType.SemiFungibleESDT]: 'SFT',
+  [NftEnumType.NonFungibleESDT]: 'NFT'
 };
 
 @Component({
   tag: 'fungible-component',
   styleUrl: 'fungible-component.css',
-  shadow: false,
+  shadow: false
 })
 export class FungibleComponent {
   render() {
     const { sftTransaction, nftTransaction, commonData } = state;
     const { tokenType } = commonData;
 
-    const data = tokenType === 'SemiFungibleESDT' ? sftTransaction : nftTransaction;
+    const data =
+      tokenType === NftEnumType.SemiFungibleESDT
+        ? sftTransaction
+        : nftTransaction;
     const { amount = '', identifier = '', imageURL = '' } = data || {};
 
     const label = LABELS[tokenType];
