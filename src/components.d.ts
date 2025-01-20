@@ -28,11 +28,13 @@ export namespace Components {
     }
     interface FormatAmount {
         "class"?: string;
-        "isValid": boolean;
-        "label"?: string;
-        "labelClass"?: string;
-        "valueDecimal": string;
-        "valueInteger": string;
+        "decimals"?: number;
+        "digits"?: number;
+        "egldLabel"?: string;
+        "showLabel"?: boolean;
+        "showLastNonZeroDecimal"?: boolean;
+        "token"?: string;
+        "value": string;
     }
     interface FungibleComponent {
     }
@@ -291,11 +293,13 @@ declare namespace LocalJSX {
     }
     interface FormatAmount {
         "class"?: string;
-        "isValid"?: boolean;
-        "label"?: string;
-        "labelClass"?: string;
-        "valueDecimal"?: string;
-        "valueInteger"?: string;
+        "decimals"?: number;
+        "digits"?: number;
+        "egldLabel"?: string;
+        "showLabel"?: boolean;
+        "showLastNonZeroDecimal"?: boolean;
+        "token"?: string;
+        "value"?: string;
     }
     interface FungibleComponent {
     }
