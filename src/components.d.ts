@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { FormatAmountDataType } from "./components/format-amount/format-amount";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledger-connect-modal.types";
 import { IEventBus } from "./utils/EventBus";
@@ -12,6 +13,7 @@ import { IPendingTransactionsModalData } from "./components/pending-transactions
 import { ISignTransactionsModalData } from "./components/sign-transactions-modal/sign-transactions-modal.types";
 import { IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/transaction-toast/transaction-toast.type";
 import { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
+export { FormatAmountDataType } from "./components/format-amount/format-amount";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledger-connect-modal.types";
 export { IEventBus } from "./utils/EventBus";
@@ -28,9 +30,11 @@ export namespace Components {
     }
     interface FormatAmount {
         "class"?: string;
+        "dataTestId"?: string;
         "isValid": boolean;
         "label"?: string;
         "labelClass"?: string;
+        "updateData": (data: FormatAmountDataType) => Promise<void>;
         "valueDecimal": string;
         "valueInteger": string;
     }
@@ -291,6 +295,7 @@ declare namespace LocalJSX {
     }
     interface FormatAmount {
         "class"?: string;
+        "dataTestId"?: string;
         "isValid"?: boolean;
         "label"?: string;
         "labelClass"?: string;
