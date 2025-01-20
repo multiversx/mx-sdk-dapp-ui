@@ -1,16 +1,17 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { FormatAmount } from '../format-amount';
 
-describe('FormatAmount component', () => {
+describe('Format amount component when digits = 2', () => {
   const renderComponent = async (props: any) => {
     const page = await newSpecPage({
       components: [FormatAmount],
       html: '<format-amount></format-amount>',
-      supportsShadowDom: true,
+      supportsShadowDom: true
     });
 
     const component = page.root;
-    Object.keys(props).forEach((key) => {
+    // Set each property individually
+    Object.keys(props).forEach(key => {
       component[key] = props[key];
     });
 
@@ -30,64 +31,81 @@ describe('FormatAmount component', () => {
       .length;
   };
 
-  it('should render valid amount with decimals', async () => {
+  it('should show 2 non zero decimals', async () => {
     const props = {
-      isValid: true,
-      valueInteger: '99999',
-      valueDecimal: '99',
-      label: 'EGLD',
+      value: '9999979999800000000000000',
+      showLastNonZeroDecimal: false,
+      showLabel: true,
+      digits: 2,
+      egldLabel: 'EGLD'
     };
 
     const page = await renderComponent(props);
-    expect(page.root.shadowRoot.querySelector('span[data-testid="formatAmountInt"]').textContent).toBe('99999');
-    expect(decimalsSelector(page)).toBe('.99');
+    expect(await decimalsSelector(page)).toBe('.99');
   });
 
-  it('should not render decimals when valueDecimal is empty', async () => {
+  it('should show 2 zero decimals', async () => {
     const props = {
-      isValid: true,
-      valueInteger: '90000',
-      valueDecimal: '',
-      label: 'EGLD',
+      value: '9000000000000000000000000',
+      showLastNonZeroDecimal: false,
+      showLabel: true,
+      digits: 2,
+      egldLabel: 'EGLD'
     };
 
     const page = await renderComponent(props);
-    expect(decimalsSelector(page)).toBe(undefined);
+    expect(await decimalsSelector(page)).toBe('.00');
   });
 
-  it('should render invalid state when isValid is false', async () => {
+  it('should show all non zero decimals when showLastNonZeroDecimal = true', async () => {
     const props = {
-      isValid: false,
-      valueInteger: '',
-      valueDecimal: '',
-      label: '',
+      value: '100000000000000',
+      showLastNonZeroDecimal: true,
+      showLabel: false,
+      digits: 2,
+      egldLabel: 'EGLD'
     };
 
     const page = await renderComponent(props);
-    expect(page.root.shadowRoot.querySelector('span[data-testid="formatAmountInt"]').textContent).toBe('...');
+    expect(await decimalsSelector(page)).toBe('.0001');
   });
 
-  it('should render symbol when label is provided', async () => {
+  it('should not show decimals when value is 0', async () => {
     const props = {
-      isValid: true,
-      valueInteger: '90000',
-      valueDecimal: '00',
-      label: 'EGLD',
+      value: '100000000000000',
+      showLastNonZeroDecimal: false,
+      showLabel: true,
+      digits: 2,
+      egldLabel: 'EGLD'
     };
 
     const page = await renderComponent(props);
-    expect(symbolSelector(page)).toBe(1);
+    expect(await decimalsSelector(page)).toBe(undefined);
   });
 
-  it('should not render symbol when label is not provided', async () => {
+  it('should show symbol', async () => {
     const props = {
-      isValid: true,
-      valueInteger: '90000',
-      valueDecimal: '00',
-      label: '',
+      value: '9000000000000000000000000',
+      showLastNonZeroDecimal: false,
+      showLabel: true,
+      digits: 2,
+      egldLabel: 'EGLD'
     };
 
     const page = await renderComponent(props);
-    expect(symbolSelector(page)).toBe(0);
+    expect(await symbolSelector(page)).toBe(1);
+  });
+
+  it('should not show symbol', async () => {
+    const props = {
+      value: '9000000000000000000000000',
+      showLastNonZeroDecimal: false,
+      showLabel: false,
+      digits: 2,
+      egldLabel: 'EGLD'
+    };
+
+    const page = await renderComponent(props);
+    expect(await symbolSelector(page)).toBe(0);
   });
 });

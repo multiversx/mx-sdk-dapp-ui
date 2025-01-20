@@ -1,4 +1,7 @@
 import { Component, Prop, h } from '@stencil/core';
+import BigNumber from 'bignumber.js';
+import { formatAmount } from '@multiversx/sdk-dapp-utils/out/helpers';
+import { DECIMALS, DIGITS } from '@multiversx/sdk-dapp-utils/out/constants';
 
 @Component({
   tag: 'format-amount',
@@ -7,11 +10,13 @@ import { Component, Prop, h } from '@stencil/core';
 })
 export class FormatAmount {
   @Prop() class?: string;
-  @Prop() isValid: boolean;
-  @Prop() label?: string;
-  @Prop() labelClass?: string;
-  @Prop() valueDecimal: string;
-  @Prop() valueInteger: string;
+  @Prop() decimals?: number = DECIMALS;
+  @Prop() digits?: number = DIGITS;
+  @Prop() egldLabel?: string;
+  @Prop() showLabel?: boolean = true;
+  @Prop() showLastNonZeroDecimal?: boolean = false;
+  @Prop() token?: string;
+  @Prop() value: string;
 
   private renderInvalid() {
     return (
@@ -24,25 +29,36 @@ export class FormatAmount {
   }
 
   private renderValid() {
+    const formattedValue = formatAmount({
+      input: this.value,
+      decimals: this.decimals,
+      digits: this.digits,
+      showLastNonZeroDecimal: this.showLastNonZeroDecimal,
+      addCommas: true
+    });
+
+    const valueParts = formattedValue.split('.');
+    const label = ` ${this.token ?? this.egldLabel ?? ''}`.trimEnd();
+
     return (
       <span data-testid='formatAmountComponent' class={this.class}>
         <span class='int-amount' data-testid='formatAmountInt'>
-          {this.valueInteger}
+          {valueParts[0]}
         </span>
-        {this.valueDecimal && (
+        {valueParts.length > 1 && (
           <span class='decimals' data-testid='formatAmountDecimals'>
-            .{this.valueDecimal}
+            .{valueParts[1]}
           </span>
         )}
-        {this.label && (
+        {this.showLabel && (
           <span
             class={{
               'symbol': true,
-              [this.labelClass]: Boolean(this.labelClass)
+              [this.token]: !!this.token
             }}
             data-testid='formatAmountSymbol'
           >
-            {this.label}
+            {label}
           </span>
         )}
       </span>
@@ -50,6 +66,7 @@ export class FormatAmount {
   }
 
   render() {
-    return this.isValid ? this.renderValid() : this.renderInvalid();
+    const isInteger = new BigNumber(this.value).isInteger();
+    return !isInteger ? this.renderInvalid() : this.renderValid();
   }
 }

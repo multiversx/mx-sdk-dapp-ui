@@ -8,6 +8,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ## [[0.0.0-alpha.1](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/16)] - 2025-01-20
-
-- [Updated formatAmount component and removed dependencies](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/17)
 - [Updated formatAmount component](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/15)
