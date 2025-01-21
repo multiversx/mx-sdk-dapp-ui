@@ -1,16 +1,5 @@
 import { Component, Prop, h } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-import { forceUpdate, Method } from '../../../dist/types/stencil-public-runtime';
-
-export interface FormatAmountDataType {
-  class?: string;
-  dataTestId?: string;
-  isValid: boolean;
-  label?: string;
-  labelClass?: string;
-  valueDecimal: string;
-  valueInteger: string;
-}
 
 @Component({
   tag: 'format-amount',
@@ -25,14 +14,6 @@ export class FormatAmount {
   @Prop() labelClass?: string;
   @Prop() valueDecimal: string;
   @Prop() valueInteger: string;
-
-  @Method() public updateData(data: FormatAmountDataType) {
-    for (const key in data) {
-      this[key] = data[key];
-    }
-
-    forceUpdate(this);
-  }
 
 
   render() {
