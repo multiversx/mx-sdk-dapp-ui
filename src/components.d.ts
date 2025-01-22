@@ -5,19 +5,21 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { IComponentToastType, ICustomToastType, ISimpleToastType } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledger-connect-modal.types";
 import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsModalData } from "./components/pending-transactions-modal/pending-transactions-modal.types";
 import { ISignTransactionsModalData } from "./components/sign-transactions-modal/sign-transactions-modal.types";
-import { IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/transaction-toast/transaction-toast.type";
+import { ICustomToastType as ICustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
 import { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
+export { IComponentToastType, ICustomToastType, ISimpleToastType } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledger-connect-modal.types";
 export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsModalData } from "./components/pending-transactions-modal/pending-transactions-modal.types";
 export { ISignTransactionsModalData } from "./components/sign-transactions-modal/sign-transactions-modal.types";
-export { IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/transaction-toast/transaction-toast.type";
+export { ICustomToastType as ICustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
 export namespace Components {
     interface BalanceComponent {
@@ -25,6 +27,12 @@ export namespace Components {
         "header"?: string;
         "ticker": string;
         "usdValue"?: string;
+    }
+    interface CustomCreateToast {
+        "toast": IComponentToastType;
+    }
+    interface CustomToast {
+        "toast": ICustomToastType;
     }
     interface FormatAmount {
         "class"?: string;
@@ -74,6 +82,14 @@ export namespace Components {
         "data": ISignTransactionsModalData;
         "getEventBus": () => Promise<IEventBus>;
     }
+    interface SimpleToast {
+        "toast": ISimpleToastType;
+    }
+    interface ToastList {
+        "customToasts": ICustomToastType1[];
+        "getEventBus": () => Promise<IEventBus>;
+        "transactionToasts": ITransactionToast[];
+    }
     interface TokenComponent {
     }
     interface TransactionToast {
@@ -99,10 +115,6 @@ export namespace Components {
         "status"?: string;
         "transactionClass"?: string;
     }
-    interface TransactionToastList {
-        "data": ITransactionToast[];
-        "getEventBus": () => Promise<IEventBus>;
-    }
     interface TransactionToastProgress {
         "currentRemaining"?: number;
         "progressClass": string;
@@ -115,6 +127,18 @@ export namespace Components {
         "data": IWalletConnectModalData;
         "getEventBus": () => Promise<IEventBus>;
     }
+}
+export interface CustomCreateToastCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCustomCreateToastElement;
+}
+export interface CustomToastCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCustomToastElement;
+}
+export interface SimpleToastCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSimpleToastElement;
 }
 export interface TransactionToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -130,6 +154,40 @@ declare global {
     var HTMLBalanceComponentElement: {
         prototype: HTMLBalanceComponentElement;
         new (): HTMLBalanceComponentElement;
+    };
+    interface HTMLCustomCreateToastElementEventMap {
+        "handleDeleteToast": string;
+    }
+    interface HTMLCustomCreateToastElement extends Components.CustomCreateToast, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCustomCreateToastElementEventMap>(type: K, listener: (this: HTMLCustomCreateToastElement, ev: CustomCreateToastCustomEvent<HTMLCustomCreateToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCustomCreateToastElementEventMap>(type: K, listener: (this: HTMLCustomCreateToastElement, ev: CustomCreateToastCustomEvent<HTMLCustomCreateToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCustomCreateToastElement: {
+        prototype: HTMLCustomCreateToastElement;
+        new (): HTMLCustomCreateToastElement;
+    };
+    interface HTMLCustomToastElementEventMap {
+        "handleDeleteToast": string;
+    }
+    interface HTMLCustomToastElement extends Components.CustomToast, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCustomToastElementEventMap>(type: K, listener: (this: HTMLCustomToastElement, ev: CustomToastCustomEvent<HTMLCustomToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCustomToastElementEventMap>(type: K, listener: (this: HTMLCustomToastElement, ev: CustomToastCustomEvent<HTMLCustomToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCustomToastElement: {
+        prototype: HTMLCustomToastElement;
+        new (): HTMLCustomToastElement;
     };
     interface HTMLFormatAmountElement extends Components.FormatAmount, HTMLStencilElement {
     }
@@ -185,6 +243,29 @@ declare global {
         prototype: HTMLSignTransactionsModalElement;
         new (): HTMLSignTransactionsModalElement;
     };
+    interface HTMLSimpleToastElementEventMap {
+        "handleDeleteToast": void;
+    }
+    interface HTMLSimpleToastElement extends Components.SimpleToast, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSimpleToastElementEventMap>(type: K, listener: (this: HTMLSimpleToastElement, ev: SimpleToastCustomEvent<HTMLSimpleToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSimpleToastElementEventMap>(type: K, listener: (this: HTMLSimpleToastElement, ev: SimpleToastCustomEvent<HTMLSimpleToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSimpleToastElement: {
+        prototype: HTMLSimpleToastElement;
+        new (): HTMLSimpleToastElement;
+    };
+    interface HTMLToastListElement extends Components.ToastList, HTMLStencilElement {
+    }
+    var HTMLToastListElement: {
+        prototype: HTMLToastListElement;
+        new (): HTMLToastListElement;
+    };
     interface HTMLTokenComponentElement extends Components.TokenComponent, HTMLStencilElement {
     }
     var HTMLTokenComponentElement: {
@@ -237,12 +318,6 @@ declare global {
         prototype: HTMLTransactionToastDetailsBodyElement;
         new (): HTMLTransactionToastDetailsBodyElement;
     };
-    interface HTMLTransactionToastListElement extends Components.TransactionToastList, HTMLStencilElement {
-    }
-    var HTMLTransactionToastListElement: {
-        prototype: HTMLTransactionToastListElement;
-        new (): HTMLTransactionToastListElement;
-    };
     interface HTMLTransactionToastProgressElement extends Components.TransactionToastProgress, HTMLStencilElement {
     }
     var HTMLTransactionToastProgressElement: {
@@ -263,6 +338,8 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "balance-component": HTMLBalanceComponentElement;
+        "custom-create-toast": HTMLCustomCreateToastElement;
+        "custom-toast": HTMLCustomToastElement;
         "format-amount": HTMLFormatAmountElement;
         "fungible-component": HTMLFungibleComponentElement;
         "generic-modal": HTMLGenericModalElement;
@@ -272,12 +349,13 @@ declare global {
         "pending-transactions-modal": HTMLPendingTransactionsModalElement;
         "sign-transaction-component": HTMLSignTransactionComponentElement;
         "sign-transactions-modal": HTMLSignTransactionsModalElement;
+        "simple-toast": HTMLSimpleToastElement;
+        "toast-list": HTMLToastListElement;
         "token-component": HTMLTokenComponentElement;
         "transaction-toast": HTMLTransactionToastElement;
         "transaction-toast-content": HTMLTransactionToastContentElement;
         "transaction-toast-details": HTMLTransactionToastDetailsElement;
         "transaction-toast-details-body": HTMLTransactionToastDetailsBodyElement;
-        "transaction-toast-list": HTMLTransactionToastListElement;
         "transaction-toast-progress": HTMLTransactionToastProgressElement;
         "transaction-toast-wrapper": HTMLTransactionToastWrapperElement;
         "wallet-connect-modal": HTMLWalletConnectModalElement;
@@ -289,6 +367,14 @@ declare namespace LocalJSX {
         "header"?: string;
         "ticker"?: string;
         "usdValue"?: string;
+    }
+    interface CustomCreateToast {
+        "onHandleDeleteToast"?: (event: CustomCreateToastCustomEvent<string>) => void;
+        "toast"?: IComponentToastType;
+    }
+    interface CustomToast {
+        "onHandleDeleteToast"?: (event: CustomToastCustomEvent<string>) => void;
+        "toast"?: ICustomToastType;
     }
     interface FormatAmount {
         "class"?: string;
@@ -335,6 +421,14 @@ declare namespace LocalJSX {
     interface SignTransactionsModal {
         "data"?: ISignTransactionsModalData;
     }
+    interface SimpleToast {
+        "onHandleDeleteToast"?: (event: SimpleToastCustomEvent<void>) => void;
+        "toast"?: ISimpleToastType;
+    }
+    interface ToastList {
+        "customToasts"?: ICustomToastType1[];
+        "transactionToasts"?: ITransactionToast[];
+    }
     interface TokenComponent {
     }
     interface TransactionToast {
@@ -362,9 +456,6 @@ declare namespace LocalJSX {
         "status"?: string;
         "transactionClass"?: string;
     }
-    interface TransactionToastList {
-        "data"?: ITransactionToast[];
-    }
     interface TransactionToastProgress {
         "currentRemaining"?: number;
         "progressClass"?: string;
@@ -378,6 +469,8 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "balance-component": BalanceComponent;
+        "custom-create-toast": CustomCreateToast;
+        "custom-toast": CustomToast;
         "format-amount": FormatAmount;
         "fungible-component": FungibleComponent;
         "generic-modal": GenericModal;
@@ -387,12 +480,13 @@ declare namespace LocalJSX {
         "pending-transactions-modal": PendingTransactionsModal;
         "sign-transaction-component": SignTransactionComponent;
         "sign-transactions-modal": SignTransactionsModal;
+        "simple-toast": SimpleToast;
+        "toast-list": ToastList;
         "token-component": TokenComponent;
         "transaction-toast": TransactionToast;
         "transaction-toast-content": TransactionToastContent;
         "transaction-toast-details": TransactionToastDetails;
         "transaction-toast-details-body": TransactionToastDetailsBody;
-        "transaction-toast-list": TransactionToastList;
         "transaction-toast-progress": TransactionToastProgress;
         "transaction-toast-wrapper": TransactionToastWrapper;
         "wallet-connect-modal": WalletConnectModal;
@@ -403,6 +497,8 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "balance-component": LocalJSX.BalanceComponent & JSXBase.HTMLAttributes<HTMLBalanceComponentElement>;
+            "custom-create-toast": LocalJSX.CustomCreateToast & JSXBase.HTMLAttributes<HTMLCustomCreateToastElement>;
+            "custom-toast": LocalJSX.CustomToast & JSXBase.HTMLAttributes<HTMLCustomToastElement>;
             "format-amount": LocalJSX.FormatAmount & JSXBase.HTMLAttributes<HTMLFormatAmountElement>;
             "fungible-component": LocalJSX.FungibleComponent & JSXBase.HTMLAttributes<HTMLFungibleComponentElement>;
             "generic-modal": LocalJSX.GenericModal & JSXBase.HTMLAttributes<HTMLGenericModalElement>;
@@ -412,12 +508,13 @@ declare module "@stencil/core" {
             "pending-transactions-modal": LocalJSX.PendingTransactionsModal & JSXBase.HTMLAttributes<HTMLPendingTransactionsModalElement>;
             "sign-transaction-component": LocalJSX.SignTransactionComponent & JSXBase.HTMLAttributes<HTMLSignTransactionComponentElement>;
             "sign-transactions-modal": LocalJSX.SignTransactionsModal & JSXBase.HTMLAttributes<HTMLSignTransactionsModalElement>;
+            "simple-toast": LocalJSX.SimpleToast & JSXBase.HTMLAttributes<HTMLSimpleToastElement>;
+            "toast-list": LocalJSX.ToastList & JSXBase.HTMLAttributes<HTMLToastListElement>;
             "token-component": LocalJSX.TokenComponent & JSXBase.HTMLAttributes<HTMLTokenComponentElement>;
             "transaction-toast": LocalJSX.TransactionToast & JSXBase.HTMLAttributes<HTMLTransactionToastElement>;
             "transaction-toast-content": LocalJSX.TransactionToastContent & JSXBase.HTMLAttributes<HTMLTransactionToastContentElement>;
             "transaction-toast-details": LocalJSX.TransactionToastDetails & JSXBase.HTMLAttributes<HTMLTransactionToastDetailsElement>;
             "transaction-toast-details-body": LocalJSX.TransactionToastDetailsBody & JSXBase.HTMLAttributes<HTMLTransactionToastDetailsBodyElement>;
-            "transaction-toast-list": LocalJSX.TransactionToastList & JSXBase.HTMLAttributes<HTMLTransactionToastListElement>;
             "transaction-toast-progress": LocalJSX.TransactionToastProgress & JSXBase.HTMLAttributes<HTMLTransactionToastProgressElement>;
             "transaction-toast-wrapper": LocalJSX.TransactionToastWrapper & JSXBase.HTMLAttributes<HTMLTransactionToastWrapperElement>;
             "wallet-connect-modal": LocalJSX.WalletConnectModal & JSXBase.HTMLAttributes<HTMLWalletConnectModalElement>;

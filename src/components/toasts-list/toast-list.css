@@ -1,4 +1,4 @@
-.transaction-list {
+.toast-list {
   position: fixed;
   bottom: 1rem;
   left: 1rem;
@@ -6,7 +6,7 @@
   z-index: 9999;
 }
 @media (min-width: 760px) {
-  .transaction-list {
+  .toast-list {
     right: 2rem;
     bottom: 2rem;
     width: 22.5rem;
