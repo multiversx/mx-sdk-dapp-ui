@@ -1,0 +1,35 @@
+.toast-wrapper {
+  border-radius: 0.25rem;
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.7rem;
+  padding: 0.5rem;
+  background-color: #fff;
+  position: relative;
+}
+
+.icon-close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.5;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  display: flex;
+  align-items: center;
+  margin: 0 0.5rem;
+  width: 12px;
+}
+
+.toast-body {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  font-size: 16px;
+}

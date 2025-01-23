@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Prop, Event, h, JSX } from '@stencil/core';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Component, EventEmitter, Prop, Event, h, JSX } from '@stencil/core';
 import classNames from 'classnames';
-import { IToastDataState, ITransaction } from '../../transaction-toast.type';
-import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
-import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
+import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
+import { IToastDataState, ITransaction } from '../..//transaction-toast.type';
 
 @Component({
   tag: 'transaction-toast-content',
