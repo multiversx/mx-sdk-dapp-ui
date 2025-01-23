@@ -1,7 +1,7 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Component, EventEmitter, Prop, Event, h } from '@stencil/core';
 import classNames from 'classnames';
-import { ISimpleToastType } from 'components/toasts-list/components/transaction-toast/transaction-toast.type';
+import { ISimpleToast } from 'components/toasts-list/components/transaction-toast/transaction-toast.type';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
@@ -11,12 +11,12 @@ import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
   styleUrl: 'simple-toast.css',
   shadow: true,
 })
-export class TransactionToastContent {
-  @Prop() toast: ISimpleToastType;
+export class SimpleToast {
+  @Prop() toast: ISimpleToast;
   @Event() handleDeleteToast: EventEmitter<void>;
 
   render() {
-    const { icon, iconClassName, title, message, subtitle: notificationStatus } = this.toast;
+    const { icon, iconClassName, title, message, subtitle } = this.toast;
 
     let iconHtml = null;
     if (typeof icon === 'string') {
@@ -46,8 +46,8 @@ export class TransactionToastContent {
 
             <button onClick={() => this.handleDeleteToast.emit()} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>
 
-            {notificationStatus && <div class="status-title">{notificationStatus}</div>}
-            {message && <div class={classNames('content-message', { 'no-margin': !title && !notificationStatus })}>{message}</div>}
+            {subtitle && <div class="subtitle">{subtitle}</div>}
+            {message && <div class={classNames('content-message', { 'no-margin': !title && !subtitle })}>{message}</div>}
           </div>
         </div>
       </transaction-toast-wrapper>

@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                  | Default     |
-| -------- | --------- | ----------- | --------------------- | ----------- |
-| `toast`  | --        |             | `IComponentToastType` | `undefined` |
+| Property | Attribute | Description | Type              | Default     |
+| -------- | --------- | ----------- | ----------------- | ----------- |
+| `toast`  | --        |             | `IComponentToast` | `undefined` |
 
 
 ## Events
@@ -23,13 +23,13 @@
 
 ### Used by
 
- - [custom-toast](../..)
+ - [generic-toast](../..)
 
 ### Graph
 ```mermaid
 graph TD;
-  custom-toast --> custom-create-toast
-  style custom-create-toast fill:#f9f,stroke:#333,stroke-width:4px
+  generic-toast --> custom-toast
+  style custom-toast fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

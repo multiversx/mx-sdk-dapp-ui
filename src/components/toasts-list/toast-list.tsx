@@ -1,6 +1,6 @@
 import { Component, h, Prop, Method, forceUpdate } from '@stencil/core';
 import { EventBus, IEventBus } from 'utils/EventBus';
-import { ICustomToastType, ITransactionToast } from './components/transaction-toast/transaction-toast.type';
+import { CustomToastType, ITransactionToast } from './components/transaction-toast/transaction-toast.type';
 import { ToastEventsEnum } from './toast-list.types';
 @Component({
   tag: 'toast-list',
@@ -9,7 +9,7 @@ import { ToastEventsEnum } from './toast-list.types';
 export class ToastList {
   private eventBus: IEventBus = new EventBus();
   @Prop() transactionToasts: ITransactionToast[];
-  @Prop() customToasts: ICustomToastType[];
+  @Prop() customToasts: CustomToastType[];
 
   @Method() async getEventBus() {
     return this.eventBus;
@@ -18,7 +18,9 @@ export class ToastList {
   render() {
     return (
       <div class="toast-list" id="toast-list">
-        {this.customToasts?.map(toast => <custom-toast toast={toast} onHandleDeleteToast={() => this.eventBus.publish(ToastEventsEnum.CLOSE_TOAST, toast.toastId)}></custom-toast>)}
+        {this.customToasts?.map(toast => (
+          <generic-toast toast={toast} onHandleDeleteToast={() => this.eventBus.publish(ToastEventsEnum.CLOSE_TOAST, toast.toastId)}></generic-toast>
+        ))}
         {this.transactionToasts?.map(toast => (
           <transaction-toast {...toast} onHandleDeleteToast={() => this.eventBus.publish(ToastEventsEnum.CLOSE_TOAST, toast.toastId)}></transaction-toast>
         ))}
@@ -31,7 +33,7 @@ export class ToastList {
     forceUpdate(this);
   }
 
-  private customToastsUpdate(payload: ICustomToastType[]) {
+  private customToastsUpdate(payload: CustomToastType[]) {
     this.customToasts = [...payload];
     forceUpdate(this);
   }

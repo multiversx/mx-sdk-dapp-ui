@@ -1,3 +1,4 @@
+// match these interfaces with src/path-to-file.type.ts from sdk-dapp
 import { IconName } from '@fortawesome/free-solid-svg-icons';
 import { JSX } from '@stencil/core';
 
@@ -34,7 +35,7 @@ interface ISharedCustomToast {
   onClose?: () => void;
 }
 
-export interface ISimpleToastType extends ISharedCustomToast {
+export interface ISimpleToast extends ISharedCustomToast {
   icon: IconName | string | JSX.Element;
   iconClassName?: string;
   title?: string;
@@ -46,11 +47,11 @@ export interface ISimpleToastType extends ISharedCustomToast {
   instantiateToastElement?: never;
 }
 
-export interface IComponentToastType extends ISharedCustomToast {
+export interface IComponentToast extends ISharedCustomToast {
   /**
    * A function that creates a custom toast component.
    *
-   * Use `componentCreate` to display a custom agnostic component.
+   * Use `instantiateToastElement` to display a custom agnostic component.
    *
    * @returns {HTMLElement | null} The custom toast component to be displayed, or `null` if no component is created.
    *
@@ -63,4 +64,4 @@ export interface IComponentToastType extends ISharedCustomToast {
   message?: never;
   subtitle?: never;
 }
-export type ICustomToastType = ISimpleToastType | IComponentToastType;
+export type CustomToastType = ISimpleToast | IComponentToast;

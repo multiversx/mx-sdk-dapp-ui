@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type               | Default     |
-| -------- | --------- | ----------- | ------------------ | ----------- |
-| `toast`  | --        |             | `ISimpleToastType` | `undefined` |
+| Property | Attribute | Description | Type           | Default     |
+| -------- | --------- | ----------- | -------------- | ----------- |
+| `toast`  | --        |             | `ISimpleToast` | `undefined` |
 
 
 ## Events
@@ -23,7 +23,7 @@
 
 ### Used by
 
- - [custom-toast](../..)
+ - [generic-toast](../..)
 
 ### Depends on
 
@@ -33,7 +33,7 @@
 ```mermaid
 graph TD;
   simple-toast --> transaction-toast-wrapper
-  custom-toast --> simple-toast
+  generic-toast --> simple-toast
   style simple-toast fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                                      | Default     |
-| -------- | --------- | ----------- | ----------------------------------------- | ----------- |
-| `toast`  | --        |             | `IComponentToastType \| ISimpleToastType` | `undefined` |
+| Property | Attribute | Description | Type                              | Default     |
+| -------- | --------- | ----------- | --------------------------------- | ----------- |
+| `toast`  | --        |             | `IComponentToast \| ISimpleToast` | `undefined` |
 
 
 ## Events
@@ -27,17 +27,17 @@
 
 ### Depends on
 
-- [custom-create-toast](./components/custom-create-toast)
+- [custom-toast](./components/custom-create-toast)
 - [simple-toast](./components/simple-toast)
 
 ### Graph
 ```mermaid
 graph TD;
-  custom-toast --> custom-create-toast
-  custom-toast --> simple-toast
+  generic-toast --> custom-toast
+  generic-toast --> simple-toast
   simple-toast --> transaction-toast-wrapper
-  toast-list --> custom-toast
-  style custom-toast fill:#f9f,stroke:#333,stroke-width:4px
+  toast-list --> generic-toast
+  style generic-toast fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
