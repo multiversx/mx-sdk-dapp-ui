@@ -4,7 +4,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 @Component({
   tag: 'format-amount',
   styleUrl: 'format-amount.css',
-  shadow: true
+  shadow: true,
 })
 export class FormatAmount {
   @Prop() class?: string;
@@ -15,7 +15,6 @@ export class FormatAmount {
   @Prop() valueDecimal: string;
   @Prop() valueInteger: string;
 
-
   render() {
     return this.isValid ? this.renderValid() : this.renderInvalid();
   }
@@ -23,7 +22,7 @@ export class FormatAmount {
   private renderInvalid() {
     return (
       <span data-testid={this.dataTestId} class={this.class}>
-        <span class='int-amount' data-testid={DataTestIdsEnum.formatAmountInt}>
+        <span class="int-amount" data-testid={DataTestIdsEnum.formatAmountInt}>
           ...
         </span>
       </span>
@@ -33,19 +32,19 @@ export class FormatAmount {
   private renderValid() {
     return (
       <span data-testid={this.dataTestId} class={this.class}>
-        <span class='int-amount' data-testid={DataTestIdsEnum.formatAmountInt}>
+        <span class="int-amount" data-testid={DataTestIdsEnum.formatAmountInt}>
           {this.valueInteger}
         </span>
         {this.valueDecimal && (
-          <span class='decimals' data-testid={DataTestIdsEnum.formatAmountDecimals}>
+          <span class="decimals" data-testid={DataTestIdsEnum.formatAmountDecimals}>
             .{this.valueDecimal}
           </span>
         )}
         {this.label && (
           <span
             class={{
-              'symbol': true,
-              [this.labelClass]: Boolean(this.labelClass)
+              symbol: true,
+              [this.labelClass]: Boolean(this.labelClass),
             }}
             data-testid={DataTestIdsEnum.formatAmountSymbol}
           >
@@ -55,5 +54,4 @@ export class FormatAmount {
       </span>
     );
   }
-
 }
