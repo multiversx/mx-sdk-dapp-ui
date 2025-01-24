@@ -1,5 +1,5 @@
 import { Component, Fragment, JSX, Prop, h } from '@stencil/core';
-import { ITransaction } from './../../transaction-toast.type';
+import { ITransaction } from '../../transaction-toast.type';
 
 @Component({
   tag: 'transaction-toast-details',

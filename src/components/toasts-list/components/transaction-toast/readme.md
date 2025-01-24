@@ -28,7 +28,7 @@
 
 ### Used by
 
- - [transaction-toast-list](./components/transaction-toast-list)
+ - [toast-list](../..)
 
 ### Depends on
 
@@ -44,7 +44,7 @@ graph TD;
   transaction-toast --> transaction-toast-content
   transaction-toast-content --> transaction-toast-details
   transaction-toast-details --> transaction-toast-details-body
-  transaction-toast-list --> transaction-toast
+  toast-list --> transaction-toast
   style transaction-toast fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
