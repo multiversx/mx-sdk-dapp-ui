@@ -1,4 +1,4 @@
-# my-component
+# transaction-row
 
 
 
@@ -16,20 +16,20 @@
 
 ### Used by
 
- - [transaction-row](../transaction-row)
+ - [transactions-table](../..)
 
 ### Depends on
 
-- [transaction-icon](../transaction-icon)
-- [explorer-link](../../../explorer-link)
+- [transaction-hash](../transaction-hash)
 
 ### Graph
 ```mermaid
 graph TD;
+  transaction-row --> transaction-hash
   transaction-hash --> transaction-icon
   transaction-hash --> explorer-link
-  transaction-row --> transaction-hash
-  style transaction-hash fill:#f9f,stroke:#333,stroke-width:4px
+  transactions-table --> transaction-row
+  style transaction-row fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
