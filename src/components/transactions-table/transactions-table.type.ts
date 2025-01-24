@@ -9,7 +9,7 @@ export interface ITransactionsTableRow {
 }
 
 export interface ITransactionAge {
-  age: string;
+  timeAgo: string;
   tooltip: string;
 }
 
@@ -19,6 +19,6 @@ export interface ITransactionIconInfo {
 }
 
 export interface ITransactionMethod {
-  method: string;
+  name: string;
   transactionActionDescription?: string;
 }
