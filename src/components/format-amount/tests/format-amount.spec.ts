@@ -5,29 +5,25 @@ describe('FormatAmount component', () => {
   const renderComponent = async (props: any) => {
     const page = await newSpecPage({
       components: [FormatAmount],
-      html: '<format-amount></format-amount>',
+      html: `<format-amount
+      is-valid="${props.isValid}"
+      value-integer="${props.valueInteger}"
+      value-decimal="${props.valueDecimal}"
+      label="${props.label}"
+    ></format-amount>`,
       supportsShadowDom: true,
-    });
-
-    const component = page.root;
-    Object.keys(props).forEach((key) => {
-      component[key] = props[key];
     });
 
     await page.waitForChanges();
     return page;
   };
 
-  const decimalsSelector = (page) => {
-    return page.root.shadowRoot
-      .querySelector('span[data-testid="formatAmountDecimals"]')
-      ?.textContent;
+  const decimalsSelector = page => {
+    return page.root.shadowRoot.querySelector('span[data-testid="formatAmountDecimals"]')?.textContent;
   };
 
-  const symbolSelector = (page) => {
-    return page.root.shadowRoot
-      .querySelectorAll('span[data-testid="formatAmountSymbol"]')
-      .length;
+  const symbolSelector = page => {
+    return page.root.shadowRoot.querySelectorAll('span[data-testid="formatAmountSymbol"]').length;
   };
 
   it('should render valid amount with decimals', async () => {

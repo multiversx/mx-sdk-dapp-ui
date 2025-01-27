@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Added transactions table component](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/22)
 - [Fixed generic modal event warning](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/23)
 - [Added custom notification support](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/21)
 
