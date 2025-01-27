@@ -1,6 +1,6 @@
 {
   "name": "@multiversx/sdk-dapp-core-ui",
-  "version": "0.0.0-alpha.1",
+  "version": "0.0.0-alpha.2",
   "description": "A library to hold UI components for a dApp on the MultiversX blockchain",
   "author": "MultiversX",
   "license": "MIT",
@@ -67,6 +67,7 @@
     "jest": "^29.7.0",
     "jest-cli": "^29.7.0",
     "jsdom": "^22.1.0",
+    "prettier": "3.2.5",
     "puppeteer": "^23.9.0",
     "rollup-plugin-node-polyfills": "^0.2.1"
   }

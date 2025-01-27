@@ -67,7 +67,7 @@ function showNotification() {
   newToast.toastId = notificationId.toString();
   newToast.transactions = [{ hash: 'erd1...8ctr', status: 'success' }];
 
-  const transactionListElement = document.getElementById('transaction-list');
+  const transactionListElement = document.getElementById('toast-list');
   if (transactionListElement) {
     transactionListElement.appendChild(newToast);
   }
