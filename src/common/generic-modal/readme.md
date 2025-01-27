@@ -12,7 +12,13 @@
 | `body`          | --               |             | `VNode`           | `undefined` |
 | `modalSubtitle` | `modal-subtitle` |             | `VNode \| string` | `undefined` |
 | `modalTitle`    | `modal-title`    |             | `VNode \| string` | `undefined` |
-| `onClose`       | --               |             | `() => void`      | `undefined` |
+
+
+## Events
+
+| Event   | Description | Type                |
+| ------- | ----------- | ------------------- |
+| `close` |             | `CustomEvent<void>` |
 
 
 ## Dependencies
