@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property   | Attribute | Description | Type                   | Default     |
-| ---------- | --------- | ----------- | ---------------------- | ----------- |
-| `iconInfo` | --        |             | `ITransactionIconInfo` | `undefined` |
+| Property | Attribute | Description | Type     | Default     |
+| -------- | --------- | ----------- | -------- | ----------- |
+| `data`   | `data`    |             | `string` | `undefined` |
 
 
 ## Dependencies
