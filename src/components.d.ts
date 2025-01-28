@@ -151,7 +151,7 @@ export namespace Components {
         "wrapperId"?: string;
     }
     interface TransactionsTable {
-        "transactions": ITransactionsTableRow[];
+        "data": string;
     }
     interface WalletConnectModal {
         "data": IWalletConnectModalData;
@@ -583,7 +583,7 @@ declare namespace LocalJSX {
         "wrapperId"?: string;
     }
     interface TransactionsTable {
-        "transactions"?: ITransactionsTableRow[];
+        "data"?: string;
     }
     interface WalletConnectModal {
         "data"?: IWalletConnectModalData;

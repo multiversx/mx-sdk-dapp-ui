@@ -2,9 +2,9 @@ import { newSpecPage } from '@stencil/core/testing';
 import { h } from '@stencil/core';
 import { TransactionHash } from '../transaction-hash';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-import { ITransactionsTableRow } from '../../../transactions-table.type';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons/faCircleInfo';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons/faCircleCheck';
+import { ITransactionsTableRow } from '../../../transactions-table.type';
 
 describe('TransactionHash', () => {
   it('renders with transaction data', async () => {
@@ -31,7 +31,7 @@ describe('TransactionHash', () => {
         <mock:shadow-root>
           <div class="transactions-table-body-cell">
             <transaction-icon></transaction-icon>
-            <explorer-link datatestid="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/123" text="0x123456789abcdef"></explorer-link>
+            <explorer-link dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/123" text="0x123456789abcdef"></explorer-link>
           </div>
         </mock:shadow-root>
       </transaction-hash>
@@ -39,7 +39,7 @@ describe('TransactionHash', () => {
   });
 
   it('updates when transaction prop changes', async () => {
-    const initialTransaction = {
+    const initialTransactionData: ITransactionsTableRow = {
       age: {
         timeAgo: '1h',
         tooltip: '1 hour ago',
@@ -54,7 +54,7 @@ describe('TransactionHash', () => {
 
     const page = await newSpecPage({
       components: [TransactionHash],
-      template: () => <transaction-hash transaction={initialTransaction}></transaction-hash>,
+      template: () => <transaction-hash transaction={initialTransactionData}></transaction-hash>,
     });
 
     expect(page.root).toEqualHtml(`
@@ -62,13 +62,13 @@ describe('TransactionHash', () => {
         <mock:shadow-root>
           <div class="transactions-table-body-cell">
             <transaction-icon></transaction-icon>
-            <explorer-link datatestid="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/initial" text="0xInitialHash"></explorer-link>
+            <explorer-link dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/initial" text="0xInitialHash"></explorer-link>
           </div>
         </mock:shadow-root>
       </transaction-hash>
     `);
 
-    const updatedTransaction = {
+    const updatedTransactionData: ITransactionsTableRow = {
       age: {
         timeAgo: '1h',
         tooltip: '1 hour ago',
@@ -81,7 +81,7 @@ describe('TransactionHash', () => {
       txHash: '0xUpdatedHash',
     };
 
-    page.root.transaction = updatedTransaction;
+    page.root.transaction = updatedTransactionData;
     await page.waitForChanges();
 
     expect(page.root).toEqualHtml(`
@@ -89,9 +89,22 @@ describe('TransactionHash', () => {
         <mock:shadow-root>
           <div class="transactions-table-body-cell">
             <transaction-icon></transaction-icon>
-            <explorer-link datatestid="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/updated" text="0xUpdatedHash"></explorer-link>
+            <explorer-link dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/updated" text="0xUpdatedHash"></explorer-link>
           </div>
         </mock:shadow-root>
+      </transaction-hash>
+    `);
+  });
+
+  it('renders null when transaction is not provided', async () => {
+    const page = await newSpecPage({
+      components: [TransactionHash],
+      template: () => <transaction-hash></transaction-hash>,
+    });
+
+    expect(page.root).toEqualHtml(`
+      <transaction-hash>
+        <mock:shadow-root></mock:shadow-root>
       </transaction-hash>
     `);
   });
