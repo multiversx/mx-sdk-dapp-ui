@@ -13,6 +13,10 @@ export class TransactionIcon {
   @Prop() iconInfo: ITransactionIconInfo;
 
   render() {
+    if (!this.iconInfo) {
+      return null;
+    }
+
     const iconHtml = getIconHtmlFromIconDefinition(this.iconInfo.icon);
 
     return (

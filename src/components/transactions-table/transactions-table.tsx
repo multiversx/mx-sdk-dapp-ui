@@ -9,9 +9,11 @@ const COLUMNS = ['TxHash', 'Age', 'Shard', 'From', 'To', 'Method', 'Value'];
   shadow: true,
 })
 export class TransactionsTable {
-  @Prop() transactions: ITransactionsTableRow[];
+  @Prop() data: string;
 
   render() {
+    const transactions: ITransactionsTableRow[] = JSON.parse(this.data);
+
     return (
       <table class="transactions-table">
         <thead class="transactions-table-header">
@@ -24,7 +26,7 @@ export class TransactionsTable {
           </tr>
         </thead>
         <tbody class="transactions-table-body">
-          {this.transactions.map(transaction => (
+          {transactions.map(transaction => (
             <transaction-row key={transaction.txHash} transaction={transaction}></transaction-row>
           ))}
         </tbody>
