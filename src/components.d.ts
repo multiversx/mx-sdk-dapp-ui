@@ -13,6 +13,7 @@ import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsModalData } from "./components/pending-transactions-modal/pending-transactions-modal.types";
 import { ISignTransactionsModalData } from "./components/sign-transactions-modal/sign-transactions-modal.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
+import { ITransactionIconInfo, ITransactionsTableRow } from "./components/transactions-table/transactions-table.type";
 import { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
@@ -22,6 +23,7 @@ export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsModalData } from "./components/pending-transactions-modal/pending-transactions-modal.types";
 export { ISignTransactionsModalData } from "./components/sign-transactions-modal/sign-transactions-modal.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
+export { ITransactionIconInfo, ITransactionsTableRow } from "./components/transactions-table/transactions-table.type";
 export { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
 export namespace Components {
     interface BalanceComponent {
@@ -105,17 +107,17 @@ export namespace Components {
         "tooltip"?: string;
     }
     interface TransactionHash {
-        "data": string;
+        "transaction": ITransactionsTableRow;
     }
     interface TransactionIcon {
-        "data": string;
+        "iconInfo": ITransactionIconInfo;
     }
     interface TransactionMethod {
         "transactionActionDescription": string;
         "transactionMethod": string;
     }
     interface TransactionRow {
-        "data": string;
+        "transaction": ITransactionsTableRow;
     }
     interface TransactionToast {
         "processedTransactionsStatus": string | JSX.Element;
@@ -535,17 +537,17 @@ declare namespace LocalJSX {
         "tooltip"?: string;
     }
     interface TransactionHash {
-        "data"?: string;
+        "transaction"?: ITransactionsTableRow;
     }
     interface TransactionIcon {
-        "data"?: string;
+        "iconInfo"?: ITransactionIconInfo;
     }
     interface TransactionMethod {
         "transactionActionDescription"?: string;
         "transactionMethod"?: string;
     }
     interface TransactionRow {
-        "data"?: string;
+        "transaction"?: ITransactionsTableRow;
     }
     interface TransactionToast {
         "onHandleDeleteToast"?: (event: TransactionToastCustomEvent<string>) => void;

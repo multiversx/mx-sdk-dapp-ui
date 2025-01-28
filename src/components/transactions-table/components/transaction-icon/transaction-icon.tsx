@@ -3,7 +3,6 @@ import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDe
 import classNames from 'classnames';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { ITransactionIconInfo } from '../../transactions-table.type';
-import { Watch } from '../../../../../dist/types/stencil-public-runtime';
 
 @Component({
   tag: 'transaction-icon',
@@ -11,28 +10,7 @@ import { Watch } from '../../../../../dist/types/stencil-public-runtime';
   shadow: true,
 })
 export class TransactionIcon {
-  @Prop() data: string;
-  private iconInfo: ITransactionIconInfo;
-
-  @Watch('data')
-  dataChangeHandler(newValue: string) {
-    if (!newValue) {
-      return;
-    }
-
-    try {
-      this.iconInfo = JSON.parse(newValue);
-    } catch (error) {
-      console.error('Failed to parse icon info');
-    }
-  }
-
-  componentDidLoad() {
-    // Parse initial data
-    if (this.data) {
-      this.dataChangeHandler(this.data);
-    }
-  }
+  @Prop() iconInfo: ITransactionIconInfo;
 
   render() {
     if (!this.iconInfo) {

@@ -1,6 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
 import { ITransactionsTableRow } from '../../transactions-table.type';
-import { Watch } from '../../../../../dist/types/stencil-public-runtime';
 
 @Component({
   tag: 'transaction-row',
@@ -8,38 +7,13 @@ import { Watch } from '../../../../../dist/types/stencil-public-runtime';
   shadow: true,
 })
 export class TransactionRow {
-  @Prop() data: string;
-  private transaction: ITransactionsTableRow;
-
-  @Watch('data')
-  dataChangeHandler(newValue: string) {
-    if (!newValue) {
-      return;
-    }
-
-    try {
-      this.transaction = JSON.parse(newValue);
-    } catch (error) {
-      console.error('Failed to parse transactions data');
-    }
-  }
-
-  componentDidLoad() {
-    // Parse initial data
-    if (this.data) {
-      this.dataChangeHandler(this.data);
-    }
-  }
+  @Prop() transaction: ITransactionsTableRow;
 
   render() {
-    if (!this.transaction) {
-      return null;
-    }
-
     return (
       <tr class="transaction-row">
         <td>
-          <transaction-hash data={this.data}></transaction-hash>
+          <transaction-hash transaction={this.transaction}></transaction-hash>
         </td>
       </tr>
     );

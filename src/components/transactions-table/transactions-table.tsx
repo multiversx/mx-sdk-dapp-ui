@@ -1,6 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
 import { ITransactionsTableRow } from './transactions-table.type';
-import { Watch } from '../../../dist/types/stencil-public-runtime';
 
 const COLUMNS = ['TxHash', 'Age', 'Shard', 'From', 'To', 'Method', 'Value'];
 
@@ -11,30 +10,9 @@ const COLUMNS = ['TxHash', 'Age', 'Shard', 'From', 'To', 'Method', 'Value'];
 })
 export class TransactionsTable {
   @Prop() data: string;
-  private transactions: ITransactionsTableRow[] = [];
-
-  @Watch('data')
-  dataChangeHandler(newValue: string) {
-    if (!newValue) {
-      return;
-    }
-
-    try {
-      this.transactions = JSON.parse(newValue);
-    } catch (error) {
-      console.error('Failed to parse transactions data');
-    }
-  }
-
-  componentDidLoad() {
-    // Parse initial data
-    if (this.data) {
-      this.dataChangeHandler(this.data);
-    }
-  }
 
   render() {
-    console.log(this.transactions);
+    const transactions: ITransactionsTableRow[] = JSON.parse(this.data);
 
     return (
       <table class="transactions-table">
@@ -48,8 +26,8 @@ export class TransactionsTable {
           </tr>
         </thead>
         <tbody class="transactions-table-body">
-          {this.transactions.map(transaction => (
-            <transaction-row key={transaction.txHash} data={JSON.stringify(transaction)}></transaction-row>
+          {transactions.map(transaction => (
+            <transaction-row key={transaction.txHash} transaction={transaction}></transaction-row>
           ))}
         </tbody>
       </table>

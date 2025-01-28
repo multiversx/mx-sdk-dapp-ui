@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default     |
-| -------- | --------- | ----------- | -------- | ----------- |
-| `data`   | `data`    |             | `string` | `undefined` |
+| Property      | Attribute | Description | Type                    | Default     |
+| ------------- | --------- | ----------- | ----------------------- | ----------- |
+| `transaction` | --        |             | `ITransactionsTableRow` | `undefined` |
 
 
 ## Dependencies
