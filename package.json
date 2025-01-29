@@ -15,22 +15,18 @@
       "import": "./dist/components/sdk-dapp-core-ui.esm.js",
       "require": "./dist/components/sdk-dapp-core-ui.cjs.js"
     },
-    "./my-component": {
-      "import": "./dist/components/my-component.js",
-      "types": "./dist/components/my-component.d.ts"
+    "./dist/*": {
+      "import": "./dist/*",
+      "types": "./dist/*"
     },
-    "./ledger-connect-modal": {
-      "import": "./dist/components/ledger-connect-modal.js",
-      "types": "./dist/components/ledger-connect-modal.d.ts"
+    "./components/*": {
+      "import": "./dist/components/*.js",
+      "types": "./dist/components/*.d.ts"
     },
     "./loader": {
       "import": "./loader/index.js",
       "require": "./loader/index.cjs",
       "types": "./loader/index.d.ts"
-    },
-    "./format-amount": {
-      "import": "./dist/components/format-amount.js",
-      "types": "./dist/components/format-amount.d.ts"
     }
   },
   "repository": {
@@ -54,6 +50,7 @@
     "@fortawesome/fontawesome-svg-core": ">= 6.7.2",
     "@fortawesome/free-solid-svg-icons": ">= 6.7.2",
     "@multiversx/sdk-dapp-utils": ">= 1.0.4",
+    "@stencil/react-output-target": "^0.8.2",
     "classnames": ">= 2.5.1",
     "qrcode": ">= 1.5.4"
   },

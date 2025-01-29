@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- [Added transaction account](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/26)
+- [Added transaction account](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/27)
+- [Clean package.json export](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/26)
 - [Updated transactions table props](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/25)
 
 ## [[0.0.0-alpha.2](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/24)] - 2025-01-27
