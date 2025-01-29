@@ -4,7 +4,17 @@ import { TransactionHash } from '../transaction-hash';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons/faCircleInfo';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons/faCircleCheck';
-import { ITransactionsTableRow } from '../../../transactions-table.type';
+import { ITransactionAccount, ITransactionsTableRow } from '../../../transactions-table.type';
+
+const account: ITransactionAccount = {
+  address: 'erd...',
+  name: 'test',
+  description: 'test',
+  isContract: false,
+  isTokenLocked: false,
+  link: '/test',
+  showLink: false,
+};
 
 describe('TransactionHash', () => {
   it('renders with transaction data', async () => {
@@ -18,6 +28,8 @@ describe('TransactionHash', () => {
       method: {
         name: 'Smart Contract',
       },
+      receiver: account,
+      sender: account,
       txHash: '0x123456789abcdef',
     };
 
@@ -29,7 +41,7 @@ describe('TransactionHash', () => {
     expect(page.root).toEqualHtml(`
       <transaction-hash>
         <mock:shadow-root>
-          <div class="transactions-table-body-cell">
+          <div class="transaction-hash">
             <transaction-icon></transaction-icon>
             <explorer-link dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/123" text="0x123456789abcdef"></explorer-link>
           </div>
@@ -49,6 +61,8 @@ describe('TransactionHash', () => {
       method: {
         name: 'Smart Contract',
       },
+      receiver: account,
+      sender: account,
       txHash: '0xInitialHash',
     };
 
@@ -60,7 +74,7 @@ describe('TransactionHash', () => {
     expect(page.root).toEqualHtml(`
       <transaction-hash>
         <mock:shadow-root>
-          <div class="transactions-table-body-cell">
+          <div class="transaction-hash">
             <transaction-icon></transaction-icon>
             <explorer-link dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/initial" text="0xInitialHash"></explorer-link>
           </div>
@@ -78,6 +92,8 @@ describe('TransactionHash', () => {
       method: {
         name: 'Smart Contract',
       },
+      receiver: account,
+      sender: account,
       txHash: '0xUpdatedHash',
     };
 
@@ -87,7 +103,7 @@ describe('TransactionHash', () => {
     expect(page.root).toEqualHtml(`
       <transaction-hash>
         <mock:shadow-root>
-          <div class="transactions-table-body-cell">
+          <div class="transaction-hash">
             <transaction-icon></transaction-icon>
             <explorer-link dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/updated" text="0xUpdatedHash"></explorer-link>
           </div>

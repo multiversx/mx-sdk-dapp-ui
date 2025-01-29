@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property      | Attribute | Description | Type                    | Default     |
-| ------------- | --------- | ----------- | ----------------------- | ----------- |
-| `transaction` | --        |             | `ITransactionsTableRow` | `undefined` |
+| Property      | Attribute | Description | Type                    | Default              |
+| ------------- | --------- | ----------- | ----------------------- | -------------------- |
+| `class`       | `class`   |             | `string`                | `'transaction-hash'` |
+| `transaction` | --        |             | `ITransactionsTableRow` | `undefined`          |
 
 
 ## Dependencies
@@ -28,6 +29,7 @@
 graph TD;
   transaction-hash --> transaction-icon
   transaction-hash --> explorer-link
+  transaction-icon --> fontawesome-icon
   transaction-row --> transaction-hash
   style transaction-hash fill:#f9f,stroke:#333,stroke-width:4px
 ```

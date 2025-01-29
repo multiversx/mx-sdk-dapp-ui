@@ -1,5 +1,4 @@
 import { Component, Prop, h } from '@stencil/core';
-import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 import classNames from 'classnames';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { ITransactionIconInfo } from '../../transactions-table.type';
@@ -10,6 +9,7 @@ import { ITransactionIconInfo } from '../../transactions-table.type';
   shadow: true,
 })
 export class TransactionIcon {
+  @Prop() class?: string = 'transaction-icon';
   @Prop() iconInfo: ITransactionIconInfo;
 
   render() {
@@ -17,16 +17,17 @@ export class TransactionIcon {
       return null;
     }
 
-    const iconHtml = getIconHtmlFromIconDefinition(this.iconInfo.icon);
-
     return (
-      <div
-        class={classNames({
-          'fa-sm': this.iconInfo.icon === faTimes,
-        })}
-        innerHTML={iconHtml}
-        title={this.iconInfo.tooltip}
-      ></div>
+      <fontawesome-icon
+        class={classNames(
+          {
+            'fa-sm': this.iconInfo.icon === faTimes,
+          },
+          this.class,
+        )}
+        icon={this.iconInfo.icon}
+        description={this.iconInfo.tooltip}
+      />
     );
   }
 }

@@ -5,6 +5,8 @@ export interface ITransactionsTableRow {
   method: ITransactionMethod;
   iconInfo: ITransactionIconInfo;
   link: string;
+  receiver: ITransactionAccount;
+  sender: ITransactionAccount;
   txHash: string;
 }
 
@@ -20,5 +22,15 @@ export interface ITransactionIconInfo {
 
 export interface ITransactionMethod {
   name: string;
-  transactionActionDescription?: string;
+  actionDescription?: string;
+}
+
+export interface ITransactionAccount {
+  address: string;
+  name: string;
+  description: string;
+  isContract: boolean;
+  isTokenLocked: boolean;
+  link: string;
+  showLink: boolean;
 }

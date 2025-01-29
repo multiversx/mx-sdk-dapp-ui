@@ -20,11 +20,13 @@
 
 ### Used by
 
+ - [transaction-account](../transactions-table/components/transaction-account)
  - [transaction-hash](../transactions-table/components/transaction-hash)
 
 ### Graph
 ```mermaid
 graph TD;
+  transaction-account --> explorer-link
   transaction-hash --> explorer-link
   style explorer-link fill:#f9f,stroke:#333,stroke-width:4px
 ```
