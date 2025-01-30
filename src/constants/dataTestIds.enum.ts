@@ -24,7 +24,9 @@ export enum DataTestIdsEnum {
   walletConnectQrCode = 'walletConnectQrCode',
   walletConnetModalSubtitle = 'walletConnetModalSubtitle',
   walletConnetModalTitle = 'walletConnetModalTitle',
-  transactionMethod = 'transactionMethod',
+  method = 'method',
   transactionAge = 'transactionAge',
   transactionLink = 'transactionLink',
+  transactionReceiver = 'transactionReceiver',
+  transactionSender = 'transactionSender',
 }

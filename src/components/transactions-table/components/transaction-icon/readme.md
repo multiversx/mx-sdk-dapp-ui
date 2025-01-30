@@ -7,9 +7,10 @@
 
 ## Properties
 
-| Property   | Attribute | Description | Type                   | Default     |
-| ---------- | --------- | ----------- | ---------------------- | ----------- |
-| `iconInfo` | --        |             | `ITransactionIconInfo` | `undefined` |
+| Property   | Attribute | Description | Type                   | Default              |
+| ---------- | --------- | ----------- | ---------------------- | -------------------- |
+| `class`    | `class`   |             | `string`               | `'transaction-icon'` |
+| `iconInfo` | --        |             | `ITransactionIconInfo` | `undefined`          |
 
 
 ## Dependencies
@@ -18,9 +19,14 @@
 
  - [transaction-hash](../transaction-hash)
 
+### Depends on
+
+- [fontawesome-icon](../../../fontawesome-icon)
+
 ### Graph
 ```mermaid
 graph TD;
+  transaction-icon --> fontawesome-icon
   transaction-hash --> transaction-icon
   style transaction-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

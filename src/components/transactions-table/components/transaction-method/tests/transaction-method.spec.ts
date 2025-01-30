@@ -16,7 +16,7 @@ describe('transaction-method', () => {
     await page.setContent('<transaction-method></transaction-method>');
 
     await page.$eval('transaction-method', (elm: any) => {
-      elm.transactionMethod = 'testMethod';
+      elm.method = 'testMethod';
     });
     await page.waitForChanges();
 
@@ -29,11 +29,11 @@ describe('transaction-method', () => {
     await page.setContent('<transaction-method></transaction-method>');
 
     await page.$eval('transaction-method', (elm: any) => {
-      elm.transactionActionDescription = 'Test Description';
+      elm.actionDescription = 'Test Description';
     });
     await page.waitForChanges();
 
-    const spanElement = await page.find(`transaction-method >>> [data-testid="${DataTestIdsEnum.transactionMethod}"]`);
+    const spanElement = await page.find(`transaction-method >>> [data-testid="${DataTestIdsEnum.method}"]`);
     expect(await spanElement.getAttribute('title')).toBe('Test Description');
   });
 
@@ -59,7 +59,7 @@ describe('transaction-method', () => {
     const page = await newE2EPage();
     await page.setContent('<transaction-method></transaction-method>');
 
-    const spanElement = await page.find(`transaction-method >>> [data-testid="${DataTestIdsEnum.transactionMethod}"]`);
+    const spanElement = await page.find(`transaction-method >>> [data-testid="${DataTestIdsEnum.method}"]`);
     expect(spanElement).not.toBeNull();
   });
 });

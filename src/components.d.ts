@@ -13,7 +13,7 @@ import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsModalData } from "./components/pending-transactions-modal/pending-transactions-modal.types";
 import { ISignTransactionsModalData } from "./components/sign-transactions-modal/sign-transactions-modal.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
-import { ITransactionIconInfo, ITransactionsTableRow } from "./components/transactions-table/transactions-table.type";
+import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/transactions-table/transactions-table.type";
 import { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
@@ -23,7 +23,7 @@ export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsModalData } from "./components/pending-transactions-modal/pending-transactions-modal.types";
 export { ISignTransactionsModalData } from "./components/sign-transactions-modal/sign-transactions-modal.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
-export { ITransactionIconInfo, ITransactionsTableRow } from "./components/transactions-table/transactions-table.type";
+export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/transactions-table/transactions-table.type";
 export { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
 export namespace Components {
     interface BalanceComponent {
@@ -41,6 +41,11 @@ export namespace Components {
         "icon"?: IconDefinition;
         "link": string;
         "text"?: string;
+    }
+    interface FontawesomeIcon {
+        "class"?: string;
+        "description"?: string;
+        "icon": IconDefinition;
     }
     interface FormatAmount {
         "class"?: string;
@@ -102,21 +107,39 @@ export namespace Components {
     }
     interface TokenComponent {
     }
+    interface TransactionAccount {
+        "account": ITransactionAccount;
+        "class"?: string;
+        "dataTestId"?: string;
+        "scope": 'receiver' | 'sender';
+        "showLockedAccounts": boolean;
+    }
+    interface TransactionAccountName {
+        "class"?: string;
+        "dataTestId"?: string;
+        "description": string;
+        "name": string;
+    }
     interface TransactionAge {
         "age": string;
+        "class"?: string;
         "tooltip"?: string;
     }
     interface TransactionHash {
+        "class"?: string;
         "transaction": ITransactionsTableRow;
     }
     interface TransactionIcon {
+        "class"?: string;
         "iconInfo": ITransactionIconInfo;
     }
     interface TransactionMethod {
-        "transactionActionDescription": string;
-        "transactionMethod": string;
+        "actionDescription": string;
+        "class"?: string;
+        "method": string;
     }
     interface TransactionRow {
+        "class"?: string;
         "transaction": ITransactionsTableRow;
     }
     interface TransactionToast {
@@ -151,6 +174,7 @@ export namespace Components {
         "wrapperId"?: string;
     }
     interface TransactionsTable {
+        "class"?: string;
         "data": string;
     }
     interface WalletConnectModal {
@@ -211,6 +235,12 @@ declare global {
     var HTMLExplorerLinkElement: {
         prototype: HTMLExplorerLinkElement;
         new (): HTMLExplorerLinkElement;
+    };
+    interface HTMLFontawesomeIconElement extends Components.FontawesomeIcon, HTMLStencilElement {
+    }
+    var HTMLFontawesomeIconElement: {
+        prototype: HTMLFontawesomeIconElement;
+        new (): HTMLFontawesomeIconElement;
     };
     interface HTMLFormatAmountElement extends Components.FormatAmount, HTMLStencilElement {
     }
@@ -323,6 +353,18 @@ declare global {
         prototype: HTMLTokenComponentElement;
         new (): HTMLTokenComponentElement;
     };
+    interface HTMLTransactionAccountElement extends Components.TransactionAccount, HTMLStencilElement {
+    }
+    var HTMLTransactionAccountElement: {
+        prototype: HTMLTransactionAccountElement;
+        new (): HTMLTransactionAccountElement;
+    };
+    interface HTMLTransactionAccountNameElement extends Components.TransactionAccountName, HTMLStencilElement {
+    }
+    var HTMLTransactionAccountNameElement: {
+        prototype: HTMLTransactionAccountNameElement;
+        new (): HTMLTransactionAccountNameElement;
+    };
     interface HTMLTransactionAgeElement extends Components.TransactionAge, HTMLStencilElement {
     }
     var HTMLTransactionAgeElement: {
@@ -427,6 +469,7 @@ declare global {
         "balance-component": HTMLBalanceComponentElement;
         "custom-toast": HTMLCustomToastElement;
         "explorer-link": HTMLExplorerLinkElement;
+        "fontawesome-icon": HTMLFontawesomeIconElement;
         "format-amount": HTMLFormatAmountElement;
         "fungible-component": HTMLFungibleComponentElement;
         "generic-modal": HTMLGenericModalElement;
@@ -440,6 +483,8 @@ declare global {
         "simple-toast": HTMLSimpleToastElement;
         "toast-list": HTMLToastListElement;
         "token-component": HTMLTokenComponentElement;
+        "transaction-account": HTMLTransactionAccountElement;
+        "transaction-account-name": HTMLTransactionAccountNameElement;
         "transaction-age": HTMLTransactionAgeElement;
         "transaction-hash": HTMLTransactionHashElement;
         "transaction-icon": HTMLTransactionIconElement;
@@ -472,6 +517,11 @@ declare namespace LocalJSX {
         "icon"?: IconDefinition;
         "link"?: string;
         "text"?: string;
+    }
+    interface FontawesomeIcon {
+        "class"?: string;
+        "description"?: string;
+        "icon"?: IconDefinition;
     }
     interface FormatAmount {
         "class"?: string;
@@ -532,21 +582,39 @@ declare namespace LocalJSX {
     }
     interface TokenComponent {
     }
+    interface TransactionAccount {
+        "account"?: ITransactionAccount;
+        "class"?: string;
+        "dataTestId"?: string;
+        "scope"?: 'receiver' | 'sender';
+        "showLockedAccounts"?: boolean;
+    }
+    interface TransactionAccountName {
+        "class"?: string;
+        "dataTestId"?: string;
+        "description"?: string;
+        "name"?: string;
+    }
     interface TransactionAge {
         "age"?: string;
+        "class"?: string;
         "tooltip"?: string;
     }
     interface TransactionHash {
+        "class"?: string;
         "transaction"?: ITransactionsTableRow;
     }
     interface TransactionIcon {
+        "class"?: string;
         "iconInfo"?: ITransactionIconInfo;
     }
     interface TransactionMethod {
-        "transactionActionDescription"?: string;
-        "transactionMethod"?: string;
+        "actionDescription"?: string;
+        "class"?: string;
+        "method"?: string;
     }
     interface TransactionRow {
+        "class"?: string;
         "transaction"?: ITransactionsTableRow;
     }
     interface TransactionToast {
@@ -583,6 +651,7 @@ declare namespace LocalJSX {
         "wrapperId"?: string;
     }
     interface TransactionsTable {
+        "class"?: string;
         "data"?: string;
     }
     interface WalletConnectModal {
@@ -592,6 +661,7 @@ declare namespace LocalJSX {
         "balance-component": BalanceComponent;
         "custom-toast": CustomToast;
         "explorer-link": ExplorerLink;
+        "fontawesome-icon": FontawesomeIcon;
         "format-amount": FormatAmount;
         "fungible-component": FungibleComponent;
         "generic-modal": GenericModal;
@@ -605,6 +675,8 @@ declare namespace LocalJSX {
         "simple-toast": SimpleToast;
         "toast-list": ToastList;
         "token-component": TokenComponent;
+        "transaction-account": TransactionAccount;
+        "transaction-account-name": TransactionAccountName;
         "transaction-age": TransactionAge;
         "transaction-hash": TransactionHash;
         "transaction-icon": TransactionIcon;
@@ -627,6 +699,7 @@ declare module "@stencil/core" {
             "balance-component": LocalJSX.BalanceComponent & JSXBase.HTMLAttributes<HTMLBalanceComponentElement>;
             "custom-toast": LocalJSX.CustomToast & JSXBase.HTMLAttributes<HTMLCustomToastElement>;
             "explorer-link": LocalJSX.ExplorerLink & JSXBase.HTMLAttributes<HTMLExplorerLinkElement>;
+            "fontawesome-icon": LocalJSX.FontawesomeIcon & JSXBase.HTMLAttributes<HTMLFontawesomeIconElement>;
             "format-amount": LocalJSX.FormatAmount & JSXBase.HTMLAttributes<HTMLFormatAmountElement>;
             "fungible-component": LocalJSX.FungibleComponent & JSXBase.HTMLAttributes<HTMLFungibleComponentElement>;
             "generic-modal": LocalJSX.GenericModal & JSXBase.HTMLAttributes<HTMLGenericModalElement>;
@@ -640,6 +713,8 @@ declare module "@stencil/core" {
             "simple-toast": LocalJSX.SimpleToast & JSXBase.HTMLAttributes<HTMLSimpleToastElement>;
             "toast-list": LocalJSX.ToastList & JSXBase.HTMLAttributes<HTMLToastListElement>;
             "token-component": LocalJSX.TokenComponent & JSXBase.HTMLAttributes<HTMLTokenComponentElement>;
+            "transaction-account": LocalJSX.TransactionAccount & JSXBase.HTMLAttributes<HTMLTransactionAccountElement>;
+            "transaction-account-name": LocalJSX.TransactionAccountName & JSXBase.HTMLAttributes<HTMLTransactionAccountNameElement>;
             "transaction-age": LocalJSX.TransactionAge & JSXBase.HTMLAttributes<HTMLTransactionAgeElement>;
             "transaction-hash": LocalJSX.TransactionHash & JSXBase.HTMLAttributes<HTMLTransactionHashElement>;
             "transaction-icon": LocalJSX.TransactionIcon & JSXBase.HTMLAttributes<HTMLTransactionIconElement>;
