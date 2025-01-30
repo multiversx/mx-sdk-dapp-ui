@@ -131,6 +131,10 @@ export namespace Components {
         "class"?: string;
         "tooltip"?: string;
     }
+    interface TransactionDirectionBadge {
+        "class"?: string;
+        "direction": string;
+    }
     interface TransactionHash {
         "class"?: string;
         "transaction": ITransactionsTableRow;
@@ -145,6 +149,10 @@ export namespace Components {
         "method": string;
     }
     interface TransactionRow {
+        "class"?: string;
+        "transaction": ITransactionsTableRow;
+    }
+    interface TransactionShards {
         "class"?: string;
         "transaction": ITransactionsTableRow;
     }
@@ -388,6 +396,12 @@ declare global {
         prototype: HTMLTransactionAgeElement;
         new (): HTMLTransactionAgeElement;
     };
+    interface HTMLTransactionDirectionBadgeElement extends Components.TransactionDirectionBadge, HTMLStencilElement {
+    }
+    var HTMLTransactionDirectionBadgeElement: {
+        prototype: HTMLTransactionDirectionBadgeElement;
+        new (): HTMLTransactionDirectionBadgeElement;
+    };
     interface HTMLTransactionHashElement extends Components.TransactionHash, HTMLStencilElement {
     }
     var HTMLTransactionHashElement: {
@@ -411,6 +425,12 @@ declare global {
     var HTMLTransactionRowElement: {
         prototype: HTMLTransactionRowElement;
         new (): HTMLTransactionRowElement;
+    };
+    interface HTMLTransactionShardsElement extends Components.TransactionShards, HTMLStencilElement {
+    }
+    var HTMLTransactionShardsElement: {
+        prototype: HTMLTransactionShardsElement;
+        new (): HTMLTransactionShardsElement;
     };
     interface HTMLTransactionToastElementEventMap {
         "handleDeleteToast": string;
@@ -510,10 +530,12 @@ declare global {
         "transaction-account": HTMLTransactionAccountElement;
         "transaction-account-name": HTMLTransactionAccountNameElement;
         "transaction-age": HTMLTransactionAgeElement;
+        "transaction-direction-badge": HTMLTransactionDirectionBadgeElement;
         "transaction-hash": HTMLTransactionHashElement;
         "transaction-icon": HTMLTransactionIconElement;
         "transaction-method": HTMLTransactionMethodElement;
         "transaction-row": HTMLTransactionRowElement;
+        "transaction-shards": HTMLTransactionShardsElement;
         "transaction-toast": HTMLTransactionToastElement;
         "transaction-toast-content": HTMLTransactionToastContentElement;
         "transaction-toast-details": HTMLTransactionToastDetailsElement;
@@ -631,6 +653,10 @@ declare namespace LocalJSX {
         "class"?: string;
         "tooltip"?: string;
     }
+    interface TransactionDirectionBadge {
+        "class"?: string;
+        "direction"?: string;
+    }
     interface TransactionHash {
         "class"?: string;
         "transaction"?: ITransactionsTableRow;
@@ -645,6 +671,10 @@ declare namespace LocalJSX {
         "method"?: string;
     }
     interface TransactionRow {
+        "class"?: string;
+        "transaction"?: ITransactionsTableRow;
+    }
+    interface TransactionShards {
         "class"?: string;
         "transaction"?: ITransactionsTableRow;
     }
@@ -715,10 +745,12 @@ declare namespace LocalJSX {
         "transaction-account": TransactionAccount;
         "transaction-account-name": TransactionAccountName;
         "transaction-age": TransactionAge;
+        "transaction-direction-badge": TransactionDirectionBadge;
         "transaction-hash": TransactionHash;
         "transaction-icon": TransactionIcon;
         "transaction-method": TransactionMethod;
         "transaction-row": TransactionRow;
+        "transaction-shards": TransactionShards;
         "transaction-toast": TransactionToast;
         "transaction-toast-content": TransactionToastContent;
         "transaction-toast-details": TransactionToastDetails;
@@ -755,10 +787,12 @@ declare module "@stencil/core" {
             "transaction-account": LocalJSX.TransactionAccount & JSXBase.HTMLAttributes<HTMLTransactionAccountElement>;
             "transaction-account-name": LocalJSX.TransactionAccountName & JSXBase.HTMLAttributes<HTMLTransactionAccountNameElement>;
             "transaction-age": LocalJSX.TransactionAge & JSXBase.HTMLAttributes<HTMLTransactionAgeElement>;
+            "transaction-direction-badge": LocalJSX.TransactionDirectionBadge & JSXBase.HTMLAttributes<HTMLTransactionDirectionBadgeElement>;
             "transaction-hash": LocalJSX.TransactionHash & JSXBase.HTMLAttributes<HTMLTransactionHashElement>;
             "transaction-icon": LocalJSX.TransactionIcon & JSXBase.HTMLAttributes<HTMLTransactionIconElement>;
             "transaction-method": LocalJSX.TransactionMethod & JSXBase.HTMLAttributes<HTMLTransactionMethodElement>;
             "transaction-row": LocalJSX.TransactionRow & JSXBase.HTMLAttributes<HTMLTransactionRowElement>;
+            "transaction-shards": LocalJSX.TransactionShards & JSXBase.HTMLAttributes<HTMLTransactionShardsElement>;
             "transaction-toast": LocalJSX.TransactionToast & JSXBase.HTMLAttributes<HTMLTransactionToastElement>;
             "transaction-toast-content": LocalJSX.TransactionToastContent & JSXBase.HTMLAttributes<HTMLTransactionToastContentElement>;
             "transaction-toast-details": LocalJSX.TransactionToastDetails & JSXBase.HTMLAttributes<HTMLTransactionToastDetailsElement>;

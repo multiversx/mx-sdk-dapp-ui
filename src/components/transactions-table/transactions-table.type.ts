@@ -2,6 +2,7 @@ import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 export interface ITransactionsTableRow {
   age: ITransactionAge;
+  direction?: string;
   method: ITransactionMethod;
   iconInfo: ITransactionIconInfo;
   link: string;
@@ -27,10 +28,12 @@ export interface ITransactionMethod {
 
 export interface ITransactionAccount {
   address: string;
-  name: string;
   description: string;
   isContract: boolean;
   isTokenLocked: boolean;
   link: string;
+  name: string;
+  shard?: string;
+  shardLink?: string;
   showLink: boolean;
 }
