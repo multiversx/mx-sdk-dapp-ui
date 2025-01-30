@@ -29,8 +29,8 @@ graph TD;
   transaction-row --> transaction-method
   transaction-hash --> transaction-icon
   transaction-hash --> explorer-link
-  transaction-icon --> fontawesome-icon
-  transaction-account --> fontawesome-icon
+  transaction-icon --> fa-icon
+  transaction-account --> fa-icon
   transaction-account --> explorer-link
   transaction-account --> transaction-account-name
   style transactions-table fill:#f9f,stroke:#333,stroke-width:4px

@@ -29,4 +29,5 @@ export enum DataTestIdsEnum {
   transactionLink = 'transactionLink',
   transactionReceiver = 'transactionReceiver',
   transactionSender = 'transactionSender',
+  trim = 'trim',
 }

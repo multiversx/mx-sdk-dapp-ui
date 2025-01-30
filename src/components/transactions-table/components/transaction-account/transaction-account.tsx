@@ -5,7 +5,6 @@ import { faFileAlt } from '@fortawesome/free-solid-svg-icons/faFileAlt';
 
 @Component({
   tag: 'transaction-account',
-  styleUrl: 'transaction-account.css',
   shadow: true,
 })
 export class TransactionAccount {
@@ -18,9 +17,9 @@ export class TransactionAccount {
   render() {
     return (
       <div class={this.class} data-testid={this.dataTestId}>
-        {this.showLockedAccounts && this.account.isTokenLocked && <fontawesome-icon icon={faLock} description={this.account.name}></fontawesome-icon>}
+        {this.showLockedAccounts && this.account.isTokenLocked && <fa-icon icon={faLock} description={this.account.name}></fa-icon>}
 
-        {this.account.isContract && <fontawesome-icon icon={faFileAlt} description="Smart Contract"></fontawesome-icon>}
+        {this.account.isContract && <fa-icon icon={faFileAlt} description="Smart Contract"></fa-icon>}
 
         {this.account.showLink ? (
           <explorer-link link={this.account.link} data-testid={`${this.scope}Link`}>

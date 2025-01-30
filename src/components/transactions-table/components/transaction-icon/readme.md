@@ -21,12 +21,12 @@
 
 ### Depends on
 
-- [fontawesome-icon](../../../fontawesome-icon)
+- [fa-icon](../../../fa-icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  transaction-icon --> fontawesome-icon
+  transaction-icon --> fa-icon
   transaction-hash --> transaction-icon
   style transaction-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```

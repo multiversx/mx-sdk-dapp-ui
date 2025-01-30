@@ -5,8 +5,8 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { CustomToastType, IComponentToast, ISimpleToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { CustomToastType, IComponentToast, ISimpleToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledger-connect-modal.types";
 import { IEventBus } from "./utils/EventBus";
@@ -15,8 +15,8 @@ import { ISignTransactionsModalData } from "./components/sign-transactions-modal
 import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/transactions-table/transactions-table.type";
 import { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
-export { CustomToastType, IComponentToast, ISimpleToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+export { CustomToastType, IComponentToast, ISimpleToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledger-connect-modal.types";
 export { IEventBus } from "./utils/EventBus";
@@ -32,6 +32,12 @@ export namespace Components {
         "ticker": string;
         "usdValue"?: string;
     }
+    interface CopyButton {
+        "class"?: string;
+        "copyIcon": IconDefinition;
+        "successIcon": IconDefinition;
+        "text": string;
+    }
     interface CustomToast {
         "toast": IComponentToast;
     }
@@ -42,7 +48,7 @@ export namespace Components {
         "link": string;
         "text"?: string;
     }
-    interface FontawesomeIcon {
+    interface FaIcon {
         "class"?: string;
         "description"?: string;
         "icon": IconDefinition;
@@ -177,6 +183,11 @@ export namespace Components {
         "class"?: string;
         "data": string;
     }
+    interface TrimText {
+        "class"?: string;
+        "dataTestId": string;
+        "text": string;
+    }
     interface WalletConnectModal {
         "data": IWalletConnectModalData;
         "getEventBus": () => Promise<IEventBus>;
@@ -213,6 +224,12 @@ declare global {
         prototype: HTMLBalanceComponentElement;
         new (): HTMLBalanceComponentElement;
     };
+    interface HTMLCopyButtonElement extends Components.CopyButton, HTMLStencilElement {
+    }
+    var HTMLCopyButtonElement: {
+        prototype: HTMLCopyButtonElement;
+        new (): HTMLCopyButtonElement;
+    };
     interface HTMLCustomToastElementEventMap {
         "handleDeleteToast": string;
     }
@@ -236,11 +253,11 @@ declare global {
         prototype: HTMLExplorerLinkElement;
         new (): HTMLExplorerLinkElement;
     };
-    interface HTMLFontawesomeIconElement extends Components.FontawesomeIcon, HTMLStencilElement {
+    interface HTMLFaIconElement extends Components.FaIcon, HTMLStencilElement {
     }
-    var HTMLFontawesomeIconElement: {
-        prototype: HTMLFontawesomeIconElement;
-        new (): HTMLFontawesomeIconElement;
+    var HTMLFaIconElement: {
+        prototype: HTMLFaIconElement;
+        new (): HTMLFaIconElement;
     };
     interface HTMLFormatAmountElement extends Components.FormatAmount, HTMLStencilElement {
     }
@@ -459,6 +476,12 @@ declare global {
         prototype: HTMLTransactionsTableElement;
         new (): HTMLTransactionsTableElement;
     };
+    interface HTMLTrimTextElement extends Components.TrimText, HTMLStencilElement {
+    }
+    var HTMLTrimTextElement: {
+        prototype: HTMLTrimTextElement;
+        new (): HTMLTrimTextElement;
+    };
     interface HTMLWalletConnectModalElement extends Components.WalletConnectModal, HTMLStencilElement {
     }
     var HTMLWalletConnectModalElement: {
@@ -467,9 +490,10 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "balance-component": HTMLBalanceComponentElement;
+        "copy-button": HTMLCopyButtonElement;
         "custom-toast": HTMLCustomToastElement;
         "explorer-link": HTMLExplorerLinkElement;
-        "fontawesome-icon": HTMLFontawesomeIconElement;
+        "fa-icon": HTMLFaIconElement;
         "format-amount": HTMLFormatAmountElement;
         "fungible-component": HTMLFungibleComponentElement;
         "generic-modal": HTMLGenericModalElement;
@@ -497,6 +521,7 @@ declare global {
         "transaction-toast-progress": HTMLTransactionToastProgressElement;
         "transaction-toast-wrapper": HTMLTransactionToastWrapperElement;
         "transactions-table": HTMLTransactionsTableElement;
+        "trim-text": HTMLTrimTextElement;
         "wallet-connect-modal": HTMLWalletConnectModalElement;
     }
 }
@@ -506,6 +531,12 @@ declare namespace LocalJSX {
         "header"?: string;
         "ticker"?: string;
         "usdValue"?: string;
+    }
+    interface CopyButton {
+        "class"?: string;
+        "copyIcon"?: IconDefinition;
+        "successIcon"?: IconDefinition;
+        "text"?: string;
     }
     interface CustomToast {
         "onHandleDeleteToast"?: (event: CustomToastCustomEvent<string>) => void;
@@ -518,7 +549,7 @@ declare namespace LocalJSX {
         "link"?: string;
         "text"?: string;
     }
-    interface FontawesomeIcon {
+    interface FaIcon {
         "class"?: string;
         "description"?: string;
         "icon"?: IconDefinition;
@@ -654,14 +685,20 @@ declare namespace LocalJSX {
         "class"?: string;
         "data"?: string;
     }
+    interface TrimText {
+        "class"?: string;
+        "dataTestId"?: string;
+        "text"?: string;
+    }
     interface WalletConnectModal {
         "data"?: IWalletConnectModalData;
     }
     interface IntrinsicElements {
         "balance-component": BalanceComponent;
+        "copy-button": CopyButton;
         "custom-toast": CustomToast;
         "explorer-link": ExplorerLink;
-        "fontawesome-icon": FontawesomeIcon;
+        "fa-icon": FaIcon;
         "format-amount": FormatAmount;
         "fungible-component": FungibleComponent;
         "generic-modal": GenericModal;
@@ -689,6 +726,7 @@ declare namespace LocalJSX {
         "transaction-toast-progress": TransactionToastProgress;
         "transaction-toast-wrapper": TransactionToastWrapper;
         "transactions-table": TransactionsTable;
+        "trim-text": TrimText;
         "wallet-connect-modal": WalletConnectModal;
     }
 }
@@ -697,9 +735,10 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "balance-component": LocalJSX.BalanceComponent & JSXBase.HTMLAttributes<HTMLBalanceComponentElement>;
+            "copy-button": LocalJSX.CopyButton & JSXBase.HTMLAttributes<HTMLCopyButtonElement>;
             "custom-toast": LocalJSX.CustomToast & JSXBase.HTMLAttributes<HTMLCustomToastElement>;
             "explorer-link": LocalJSX.ExplorerLink & JSXBase.HTMLAttributes<HTMLExplorerLinkElement>;
-            "fontawesome-icon": LocalJSX.FontawesomeIcon & JSXBase.HTMLAttributes<HTMLFontawesomeIconElement>;
+            "fa-icon": LocalJSX.FaIcon & JSXBase.HTMLAttributes<HTMLFaIconElement>;
             "format-amount": LocalJSX.FormatAmount & JSXBase.HTMLAttributes<HTMLFormatAmountElement>;
             "fungible-component": LocalJSX.FungibleComponent & JSXBase.HTMLAttributes<HTMLFungibleComponentElement>;
             "generic-modal": LocalJSX.GenericModal & JSXBase.HTMLAttributes<HTMLGenericModalElement>;
@@ -727,6 +766,7 @@ declare module "@stencil/core" {
             "transaction-toast-progress": LocalJSX.TransactionToastProgress & JSXBase.HTMLAttributes<HTMLTransactionToastProgressElement>;
             "transaction-toast-wrapper": LocalJSX.TransactionToastWrapper & JSXBase.HTMLAttributes<HTMLTransactionToastWrapperElement>;
             "transactions-table": LocalJSX.TransactionsTable & JSXBase.HTMLAttributes<HTMLTransactionsTableElement>;
+            "trim-text": LocalJSX.TrimText & JSXBase.HTMLAttributes<HTMLTrimTextElement>;
             "wallet-connect-modal": LocalJSX.WalletConnectModal & JSXBase.HTMLAttributes<HTMLWalletConnectModalElement>;
         }
     }

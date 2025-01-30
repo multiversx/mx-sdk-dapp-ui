@@ -4,7 +4,6 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
   tag: 'transaction-hash',
-  styleUrl: 'transaction-hash.css',
   shadow: true,
 })
 export class TransactionHash {

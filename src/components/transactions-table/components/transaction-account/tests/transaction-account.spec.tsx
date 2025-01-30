@@ -34,7 +34,7 @@ describe('TransactionAccount Component', () => {
       template: () => <transaction-account account={lockedAccount} showLockedAccounts={true} scope="receiver"></transaction-account>,
     });
 
-    const lockedIcon = page.root.shadowRoot.querySelector('fontawesome-icon');
+    const lockedIcon = page.root.shadowRoot.querySelector('fa-icon');
     expect(lockedIcon).not.toBeNull();
   });
 
@@ -46,7 +46,7 @@ describe('TransactionAccount Component', () => {
       template: () => <transaction-account account={contractAccount} scope="sender"></transaction-account>,
     });
 
-    const contractIcon = page.root.shadowRoot.querySelector('fontawesome-icon');
+    const contractIcon = page.root.shadowRoot.querySelector('fa-icon');
     expect(contractIcon).not.toBeNull();
   });
 

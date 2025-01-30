@@ -1,4 +1,4 @@
-# fontawesome-icon
+# fa-icon
 
 
 
@@ -9,7 +9,7 @@
 
 | Property      | Attribute     | Description | Type             | Default              |
 | ------------- | ------------- | ----------- | ---------------- | -------------------- |
-| `class`       | `class`       |             | `string`         | `'fontawesome-icon'` |
+| `class`       | `class`       |             | `string`         | `'fa-icon'` |
 | `description` | `description` |             | `string`         | `undefined`          |
 | `icon`        | --            |             | `IconDefinition` | `undefined`          |
 
@@ -24,9 +24,9 @@
 ### Graph
 ```mermaid
 graph TD;
-  transaction-account --> fontawesome-icon
-  transaction-icon --> fontawesome-icon
-  style fontawesome-icon fill:#f9f,stroke:#333,stroke-width:4px
+  transaction-account --> fa-icon
+  transaction-icon --> fa-icon
+  style fa-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------
