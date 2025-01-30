@@ -19,6 +19,6 @@ export class FontawesomeIcon {
 
     const iconHtml = getIconHtmlFromIconDefinition(this.icon);
 
-    return <div class={this.class} innerHTML={iconHtml} title={this.description}></div>;
+    return <i class={this.class} innerHTML={iconHtml} title={this.description}></i>;
   }
 }
