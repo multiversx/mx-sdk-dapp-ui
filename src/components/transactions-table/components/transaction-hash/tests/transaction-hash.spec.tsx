@@ -14,6 +14,8 @@ const account: ITransactionAccount = {
   isTokenLocked: false,
   link: '/test',
   showLink: false,
+  shard: '0',
+  shardLink: '/shard/0',
 };
 
 describe('TransactionHash', () => {
@@ -23,14 +25,20 @@ describe('TransactionHash', () => {
         timeAgo: '1h',
         tooltip: '1 hour ago',
       },
+      direction: 'in',
       iconInfo: { icon: faCircleInfo, tooltip: 'Test' },
       link: 'https://example.com/tx/123',
       method: {
         name: 'Smart Contract',
+        actionDescription: 'Contract call',
       },
       receiver: account,
       sender: account,
       txHash: '0x123456789abcdef',
+      value: {
+        valueDecimal: '0',
+        valueInteger: '100',
+      },
     };
 
     const page = await newSpecPage({
@@ -56,14 +64,20 @@ describe('TransactionHash', () => {
         timeAgo: '1h',
         tooltip: '1 hour ago',
       },
+      direction: 'in',
       iconInfo: { icon: faCircleInfo, tooltip: 'Initial' },
       link: 'https://example.com/tx/initial',
       method: {
         name: 'Smart Contract',
+        actionDescription: 'Initial call',
       },
       receiver: account,
       sender: account,
       txHash: '0xInitialHash',
+      value: {
+        valueDecimal: '0',
+        valueInteger: '100',
+      },
     };
 
     const page = await newSpecPage({
@@ -84,17 +98,23 @@ describe('TransactionHash', () => {
 
     const updatedTransactionData: ITransactionsTableRow = {
       age: {
-        timeAgo: '1h',
-        tooltip: '1 hour ago',
+        timeAgo: '2h',
+        tooltip: '2 hours ago',
       },
+      direction: 'out',
       iconInfo: { icon: faCircleCheck, tooltip: 'Updated' },
       link: 'https://example.com/tx/updated',
       method: {
-        name: 'Smart Contract',
+        name: 'Transfer',
+        actionDescription: 'Token transfer',
       },
       receiver: account,
       sender: account,
       txHash: '0xUpdatedHash',
+      value: {
+        valueDecimal: '1',
+        valueInteger: '200',
+      },
     };
 
     page.root.transaction = updatedTransactionData;

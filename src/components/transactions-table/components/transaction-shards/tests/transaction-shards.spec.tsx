@@ -33,6 +33,11 @@ describe('TransactionShards', () => {
       showLink: true,
     },
     txHash: 'hash123',
+    value: {
+      valueDecimal: '0',
+      valueInteger: '100',
+    },
+    direction: 'in',
   });
 
   it('renders with default props', async () => {
