@@ -9,6 +9,7 @@ export interface ITransactionsTableRow {
   receiver: ITransactionAccount;
   sender: ITransactionAccount;
   txHash: string;
+  value: ITransactionValue;
 }
 
 export interface ITransactionAge {
@@ -36,4 +37,18 @@ export interface ITransactionAccount {
   shard?: string;
   shardLink?: string;
   showLink: boolean;
+}
+
+export interface ITransactionValue {
+  badge?: string;
+  collection?: string;
+  link?: string;
+  linkText?: string;
+  name?: string;
+  showFormattedAmount?: boolean;
+  svgUrl?: string;
+  ticker?: string;
+  titleText?: string;
+  valueDecimal: string;
+  valueInteger: string;
 }

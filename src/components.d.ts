@@ -14,6 +14,7 @@ import { IPendingTransactionsModalData } from "./components/pending-transactions
 import { ISignTransactionsModalData } from "./components/sign-transactions-modal/sign-transactions-modal.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/transactions-table/transactions-table.type";
+import { ITransactionValue } from "./components/transactions-table/transactions-table.type";
 import { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -24,6 +25,7 @@ export { IPendingTransactionsModalData } from "./components/pending-transactions
 export { ISignTransactionsModalData } from "./components/sign-transactions-modal/sign-transactions-modal.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/transactions-table/transactions-table.type";
+export { ITransactionValue } from "./components/transactions-table/transactions-table.type";
 export { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
 export namespace Components {
     interface BalanceComponent {
@@ -186,6 +188,10 @@ export namespace Components {
     interface TransactionToastWrapper {
         "wrapperClass": string;
         "wrapperId"?: string;
+    }
+    interface TransactionValue {
+        "class"?: string;
+        "value": ITransactionValue;
     }
     interface TransactionsTable {
         "class"?: string;
@@ -490,6 +496,12 @@ declare global {
         prototype: HTMLTransactionToastWrapperElement;
         new (): HTMLTransactionToastWrapperElement;
     };
+    interface HTMLTransactionValueElement extends Components.TransactionValue, HTMLStencilElement {
+    }
+    var HTMLTransactionValueElement: {
+        prototype: HTMLTransactionValueElement;
+        new (): HTMLTransactionValueElement;
+    };
     interface HTMLTransactionsTableElement extends Components.TransactionsTable, HTMLStencilElement {
     }
     var HTMLTransactionsTableElement: {
@@ -542,6 +554,7 @@ declare global {
         "transaction-toast-details-body": HTMLTransactionToastDetailsBodyElement;
         "transaction-toast-progress": HTMLTransactionToastProgressElement;
         "transaction-toast-wrapper": HTMLTransactionToastWrapperElement;
+        "transaction-value": HTMLTransactionValueElement;
         "transactions-table": HTMLTransactionsTableElement;
         "trim-text": HTMLTrimTextElement;
         "wallet-connect-modal": HTMLWalletConnectModalElement;
@@ -711,6 +724,10 @@ declare namespace LocalJSX {
         "wrapperClass"?: string;
         "wrapperId"?: string;
     }
+    interface TransactionValue {
+        "class"?: string;
+        "value"?: ITransactionValue;
+    }
     interface TransactionsTable {
         "class"?: string;
         "data"?: string;
@@ -757,6 +774,7 @@ declare namespace LocalJSX {
         "transaction-toast-details-body": TransactionToastDetailsBody;
         "transaction-toast-progress": TransactionToastProgress;
         "transaction-toast-wrapper": TransactionToastWrapper;
+        "transaction-value": TransactionValue;
         "transactions-table": TransactionsTable;
         "trim-text": TrimText;
         "wallet-connect-modal": WalletConnectModal;
@@ -799,6 +817,7 @@ declare module "@stencil/core" {
             "transaction-toast-details-body": LocalJSX.TransactionToastDetailsBody & JSXBase.HTMLAttributes<HTMLTransactionToastDetailsBodyElement>;
             "transaction-toast-progress": LocalJSX.TransactionToastProgress & JSXBase.HTMLAttributes<HTMLTransactionToastProgressElement>;
             "transaction-toast-wrapper": LocalJSX.TransactionToastWrapper & JSXBase.HTMLAttributes<HTMLTransactionToastWrapperElement>;
+            "transaction-value": LocalJSX.TransactionValue & JSXBase.HTMLAttributes<HTMLTransactionValueElement>;
             "transactions-table": LocalJSX.TransactionsTable & JSXBase.HTMLAttributes<HTMLTransactionsTableElement>;
             "trim-text": LocalJSX.TrimText & JSXBase.HTMLAttributes<HTMLTrimTextElement>;
             "wallet-connect-modal": LocalJSX.WalletConnectModal & JSXBase.HTMLAttributes<HTMLWalletConnectModalElement>;

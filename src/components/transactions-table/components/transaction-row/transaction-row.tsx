@@ -49,6 +49,9 @@ export class TransactionRow {
         <td>
           <transaction-method method={this.transaction.method.name} actionDescription={this.transaction.method.actionDescription}></transaction-method>
         </td>
+        <td>
+          <transaction-value value={this.transaction.value}></transaction-value>
+        </td>
       </tr>
     );
   }

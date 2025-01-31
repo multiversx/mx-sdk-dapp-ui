@@ -29,6 +29,8 @@ export enum DataTestIdsEnum {
   transactionSender = 'transactionSender',
   transactionToastContent = 'transactionToastContent',
   transactionToastTitle = 'transactionToastTitle',
+  transactionNftBadge = 'transactionNftBadge',
+  transactionActionFormattedAmount = 'transactionActionFormattedAmount',
   trim = 'trim',
   walletConnectLoading = 'walletConnectLoading',
   walletConnectQrCode = 'walletConnectQrCode',
