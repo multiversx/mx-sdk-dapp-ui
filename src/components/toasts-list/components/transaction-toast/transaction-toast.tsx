@@ -23,7 +23,9 @@ export class TransactionToast {
         <transaction-toast-progress
           key={this.toastId}
           progressClass={this.transactionProgressState?.progressClass}
-          currentRemaining={this.transactionProgressState?.currentRemaining}
+          isCrossShard={this.transactionProgressState?.isCrossShard}
+          startTime={this.transactionProgressState?.startTime}
+          endTime={this.transactionProgressState?.endTime}
         >
           <transaction-toast-content
             onDeleteToast={() => this.handleDeleteToast.emit(this.toastId)}
