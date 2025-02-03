@@ -4,7 +4,6 @@ import classNames from 'classnames';
 
 @Component({
   tag: 'transaction-method',
-  styleUrl: 'transaction-method.css',
   shadow: true,
 })
 export class TransactionMethod {

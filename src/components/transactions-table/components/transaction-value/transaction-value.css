@@ -1,0 +1,10 @@
+.transaction-action {
+  .transaction-nft-badge {
+    margin: 0 0.25rem auto auto;
+  }
+}
+
+.transaction-action-content {
+  align-items: center;
+  display: flex;
+}

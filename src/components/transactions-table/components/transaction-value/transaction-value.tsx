@@ -1,0 +1,63 @@
+import { Component, h, Prop } from '@stencil/core';
+import { ITransactionValue } from 'components/transactions-table/transactions-table.type';
+import classNames from 'classnames';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import { faLayerGroup } from '@fortawesome/free-solid-svg-icons';
+
+@Component({
+  tag: 'transaction-value',
+  styleUrl: 'transaction-value.css',
+  shadow: true,
+})
+export class TransactionValue {
+  @Prop() value: ITransactionValue;
+  @Prop() class?: string = 'transaction-value';
+
+  render() {
+    return (
+      <div class={this.class}>
+        {this.value.badge && (
+          <div data-testid={DataTestIdsEnum.transactionNftBadge} class={classNames('badge badge-secondary badge-pill font-weight-light', this.class)}>
+            {this.value.badge}
+          </div>
+        )}
+
+        {this.value.showFormattedAmount && (
+          <format-amount
+            class={classNames('mr-1', {
+              'text-truncate': this.value.svgUrl,
+            })}
+            dataTestId={DataTestIdsEnum.transactionActionFormattedAmount}
+            isValid={true}
+            valueDecimal={this.value.valueDecimal}
+            valueInteger={this.value.valueInteger}
+          />
+        )}
+
+        {this.value.link && (
+          <explorer-link
+            link={this.value.link}
+            class={classNames(`${this.class}-link`, {
+              'side-link d-flex': this.value.svgUrl,
+              'text-truncate': !this.value.svgUrl,
+            })}
+          >
+            <div class={`${this.class}-content`} slot="content">
+              {this.value.svgUrl && <img src={this.value.svgUrl} alt={this.value.name ?? ''} class={`${this.class}-icon`} />}
+              {this.value.linkText && (
+                <span
+                  class={classNames(`${this.class}-text`, {
+                    truncate: this.value.ticker === this.value.collection && this.value.ticker != null,
+                  })}
+                >
+                  {this.value.linkText}
+                </span>
+              )}
+            </div>
+          </explorer-link>
+        )}
+        {this.value.titleText && <fa-icon icon={faLayerGroup} class={`${this.class}-icon`} title={this.value.titleText} />}
+      </div>
+    );
+  }
+}

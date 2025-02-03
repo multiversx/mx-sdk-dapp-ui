@@ -18,6 +18,19 @@
 | `valueInteger` | `value-integer` |             | `string`  | `undefined`                             |
 
 
+## Dependencies
+
+### Used by
+
+ - [transaction-value](../transactions-table/components/transaction-value)
+
+### Graph
+```mermaid
+graph TD;
+  transaction-value --> format-amount
+  style format-amount fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
