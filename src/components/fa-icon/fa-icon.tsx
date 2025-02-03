@@ -3,12 +3,11 @@ import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDe
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  tag: 'fontawesome-icon',
-  styleUrl: 'fontawesome-icon.css',
+  tag: 'fa-icon',
   shadow: true,
 })
-export class FontawesomeIcon {
-  @Prop() class?: string = 'fontawesome-icon';
+export class FaIcon {
+  @Prop() class?: string = 'fa-icon';
   @Prop() icon: IconDefinition;
   @Prop() description?: string;
 

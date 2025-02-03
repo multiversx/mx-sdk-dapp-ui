@@ -24,14 +24,14 @@
 
 ### Depends on
 
-- [fontawesome-icon](../../../fontawesome-icon)
+- [fa-icon](../../../fa-icon)
 - [explorer-link](../../../explorer-link)
 - [transaction-account-name](./components/transaction-account-name)
 
 ### Graph
 ```mermaid
 graph TD;
-  transaction-account --> fontawesome-icon
+  transaction-account --> fa-icon
   transaction-account --> explorer-link
   transaction-account --> transaction-account-name
   transaction-row --> transaction-account

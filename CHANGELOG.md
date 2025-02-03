@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Added Trim and CopyButton components](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/28)
 - [Added transaction account](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/27)
 - [Clean package.json export](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/26)
 - [Updated transactions table props](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/25)

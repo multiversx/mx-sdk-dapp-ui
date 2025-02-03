@@ -29,7 +29,7 @@
 graph TD;
   transaction-hash --> transaction-icon
   transaction-hash --> explorer-link
-  transaction-icon --> fontawesome-icon
+  transaction-icon --> fa-icon
   transaction-row --> transaction-hash
   style transaction-hash fill:#f9f,stroke:#333,stroke-width:4px
 ```

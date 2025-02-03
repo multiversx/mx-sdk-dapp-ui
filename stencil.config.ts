@@ -5,6 +5,7 @@ import { sass } from '@stencil/sass';
 export const config: Config = {
   namespace: 'sdk-dapp-core-ui',
   plugins: [sass()],
+  globalStyle: 'src/index.css',
   outputTargets: [
     {
       type: 'dist',

@@ -22,12 +22,16 @@
 
  - [transaction-account](../transactions-table/components/transaction-account)
  - [transaction-hash](../transactions-table/components/transaction-hash)
+ - [transaction-shards](../transactions-table/components/transaction-shards)
+ - [transaction-value](../transactions-table/components/transaction-value)
 
 ### Graph
 ```mermaid
 graph TD;
   transaction-account --> explorer-link
   transaction-hash --> explorer-link
+  transaction-shards --> explorer-link
+  transaction-value --> explorer-link
   style explorer-link fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
