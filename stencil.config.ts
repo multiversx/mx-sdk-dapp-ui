@@ -27,7 +27,7 @@ export const config: Config = {
   outputTargets: [
     reactOutputTarget({
       outDir: './dist/react',
-      excludeComponents: excludeComponents,
+      excludeComponents,
     }),
     {
       type: 'dist',
