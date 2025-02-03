@@ -22,13 +22,7 @@ describe('TransactionValue', () => {
     expect(page.root).toEqualHtml(`
       <transaction-value>
         <mock:shadow-root>
-          <div class="transaction-value">
-            <explorer-link class="text-truncate transaction-value-link" link="">
-              <div class="transaction-value-content" slot="content">
-                <span class="transaction-value-text"></span>
-              </div>
-            </explorer-link>
-          </div>
+          <div class="transaction-value"></div>
         </mock:shadow-root>
       </transaction-value>
     `);
@@ -57,11 +51,6 @@ describe('TransactionValue', () => {
             <div class="badge badge-pill badge-secondary font-weight-light transaction-value" data-testid="transactionNftBadge">
               NFT
             </div>
-            <explorer-link class="text-truncate transaction-value-link" link="">
-              <div class="transaction-value-content" slot="content">
-                <span class="transaction-value-text"></span>
-              </div>
-            </explorer-link>
           </div>
         </mock:shadow-root>
       </transaction-value>
@@ -89,11 +78,6 @@ describe('TransactionValue', () => {
         <mock:shadow-root>
           <div class="transaction-value">
             <format-amount class="mr-1" datatestid="transactionActionFormattedAmount" isvalid="" valuedecimal="123" valueinteger="123"></format-amount>
-            <explorer-link class="text-truncate transaction-value-link" link="">
-              <div class="transaction-value-content" slot="content">
-                <span class="transaction-value-text"></span>
-              </div>
-            </explorer-link>
           </div>
         </mock:shadow-root>
       </transaction-value>
