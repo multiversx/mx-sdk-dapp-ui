@@ -72,20 +72,6 @@ export namespace Components {
         "data": ILedgerConnectModalData;
         "getEventBus": () => Promise<IEventBus>;
     }
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
-    }
     interface PendingTransactionsModal {
         "data": IPendingTransactionsModalData;
         "getEventBus": () => Promise<IEventBus>;
@@ -175,7 +161,7 @@ export namespace Components {
     }
     interface TransactionsTable {
         "class"?: string;
-        "data": string;
+        "transactions": ITransactionsTableRow[];
     }
     interface WalletConnectModal {
         "data": IWalletConnectModalData;
@@ -299,12 +285,6 @@ declare global {
     var HTMLLedgerConnectModalElement: {
         prototype: HTMLLedgerConnectModalElement;
         new (): HTMLLedgerConnectModalElement;
-    };
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
-    }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
     };
     interface HTMLPendingTransactionsModalElement extends Components.PendingTransactionsModal, HTMLStencilElement {
     }
@@ -476,7 +456,6 @@ declare global {
         "generic-spinner": HTMLGenericSpinnerElement;
         "generic-toast": HTMLGenericToastElement;
         "ledger-connect-modal": HTMLLedgerConnectModalElement;
-        "my-component": HTMLMyComponentElement;
         "pending-transactions-modal": HTMLPendingTransactionsModalElement;
         "sign-transaction-component": HTMLSignTransactionComponentElement;
         "sign-transactions-modal": HTMLSignTransactionsModalElement;
@@ -548,20 +527,6 @@ declare namespace LocalJSX {
     }
     interface LedgerConnectModal {
         "data"?: ILedgerConnectModalData;
-    }
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
     }
     interface PendingTransactionsModal {
         "data"?: IPendingTransactionsModalData;
@@ -652,7 +617,7 @@ declare namespace LocalJSX {
     }
     interface TransactionsTable {
         "class"?: string;
-        "data"?: string;
+        "transactions"?: ITransactionsTableRow[];
     }
     interface WalletConnectModal {
         "data"?: IWalletConnectModalData;
@@ -668,7 +633,6 @@ declare namespace LocalJSX {
         "generic-spinner": GenericSpinner;
         "generic-toast": GenericToast;
         "ledger-connect-modal": LedgerConnectModal;
-        "my-component": MyComponent;
         "pending-transactions-modal": PendingTransactionsModal;
         "sign-transaction-component": SignTransactionComponent;
         "sign-transactions-modal": SignTransactionsModal;
@@ -706,7 +670,6 @@ declare module "@stencil/core" {
             "generic-spinner": LocalJSX.GenericSpinner & JSXBase.HTMLAttributes<HTMLGenericSpinnerElement>;
             "generic-toast": LocalJSX.GenericToast & JSXBase.HTMLAttributes<HTMLGenericToastElement>;
             "ledger-connect-modal": LocalJSX.LedgerConnectModal & JSXBase.HTMLAttributes<HTMLLedgerConnectModalElement>;
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "pending-transactions-modal": LocalJSX.PendingTransactionsModal & JSXBase.HTMLAttributes<HTMLPendingTransactionsModalElement>;
             "sign-transaction-component": LocalJSX.SignTransactionComponent & JSXBase.HTMLAttributes<HTMLSignTransactionComponentElement>;
             "sign-transactions-modal": LocalJSX.SignTransactionsModal & JSXBase.HTMLAttributes<HTMLSignTransactionsModalElement>;

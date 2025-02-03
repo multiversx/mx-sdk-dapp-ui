@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type     | Default                |
-| -------- | --------- | ----------- | -------- | ---------------------- |
-| `class`  | `class`   |             | `string` | `'transactions-table'` |
-| `data`   | `data`    |             | `string` | `undefined`            |
+| Property       | Attribute | Description | Type                      | Default                |
+| -------------- | --------- | ----------- | ------------------------- | ---------------------- |
+| `class`        | `class`   |             | `string`                  | `'transactions-table'` |
+| `transactions` | --        |             | `ITransactionsTableRow[]` | `undefined`            |
 
 
 ## Dependencies
