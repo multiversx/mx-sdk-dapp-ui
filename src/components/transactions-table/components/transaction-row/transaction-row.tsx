@@ -20,7 +20,9 @@ export class TransactionRow {
         <td>
           <transaction-age class="transactions-table-body-cell" age={this.transaction.age.timeAgo} tooltip={this.transaction.age.tooltip}></transaction-age>
         </td>
-        <td>{/*<TransactionShardsTransition transaction={transaction} />*/}</td>
+        <td>
+          <transaction-shards class="transactions-table-body-cell" transaction={this.transaction}></transaction-shards>
+        </td>
         <td>
           <transaction-account
             class="transactions-table-body-cell"
@@ -30,13 +32,11 @@ export class TransactionRow {
             showLockedAccounts={true}
           ></transaction-account>
         </td>
-        <td>
-          {/*{showDirectionCol && (*/}
-          {/*  <td>*/}
-          {/*    <TransactionDirectionBadge transaction={transaction} />*/}
-          {/*  </td>*/}
-          {/*)}*/}
-        </td>
+        {this.transaction.direction && (
+          <td>
+            <transaction-direction-badge direction={this.transaction.direction}></transaction-direction-badge>
+          </td>
+        )}
         <td>
           <transaction-account
             class="transactions-table-body-cell"
@@ -48,6 +48,9 @@ export class TransactionRow {
         </td>
         <td>
           <transaction-method method={this.transaction.method.name} actionDescription={this.transaction.method.actionDescription}></transaction-method>
+        </td>
+        <td>
+          <transaction-value value={this.transaction.value}></transaction-value>
         </td>
       </tr>
     );

@@ -27,6 +27,10 @@
       "import": "./loader/index.js",
       "require": "./loader/index.cjs",
       "types": "./loader/index.d.ts"
+    },
+    "./react": {
+      "import": "./dist/react/components.ts",
+      "require": "./dist/react/components.ts"
     }
   },
   "repository": {
@@ -50,7 +54,6 @@
     "@fortawesome/fontawesome-svg-core": ">= 6.7.2",
     "@fortawesome/free-solid-svg-icons": ">= 6.7.2",
     "@multiversx/sdk-dapp-utils": ">= 1.0.4",
-    "@stencil/react-output-target": "^0.8.2",
     "classnames": ">= 2.5.1",
     "qrcode": ">= 1.5.4"
   },
@@ -58,6 +61,7 @@
     "@stencil/core": "^4.22.3",
     "@stencil/sass": "^3.0.12",
     "@stencil/store": "2.0.16",
+    "@stencil/react-output-target": "0.8.2",
     "@types/jest": "^29.5.14",
     "@types/jsdom": "^21.1.1",
     "@types/node": "^22.10.0",

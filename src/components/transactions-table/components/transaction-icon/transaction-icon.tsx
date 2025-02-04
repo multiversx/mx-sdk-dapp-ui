@@ -5,7 +5,6 @@ import { ITransactionIconInfo } from '../../transactions-table.type';
 
 @Component({
   tag: 'transaction-icon',
-  styleUrl: 'transaction-icon.css',
   shadow: true,
 })
 export class TransactionIcon {
@@ -18,7 +17,7 @@ export class TransactionIcon {
     }
 
     return (
-      <fontawesome-icon
+      <fa-icon
         class={classNames(
           {
             'fa-sm': this.iconInfo.icon === faTimes,

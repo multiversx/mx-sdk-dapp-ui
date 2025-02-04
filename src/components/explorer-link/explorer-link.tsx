@@ -1,4 +1,4 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, Prop, h, Element, State } from '@stencil/core';
 import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 import { IconDefinition, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,12 +14,19 @@ export class ExplorerLink {
   @Prop() link: string;
   @Prop() text?: string;
 
+  @Element() hostElement: HTMLElement;
+  @State() hasSlotContent: boolean = false;
+
+  componentWillLoad() {
+    this.hasSlotContent = !!this.hostElement.querySelector('[slot="content"]');
+  }
+
   render() {
     const icon = getIconHtmlFromIconDefinition(this.icon ?? faArrowUpRightFromSquare);
 
     return (
       <a data-testid={this.dataTestId} href={this.link} target="_blank" class={this.class} rel="noreferrer">
-        {this.text ?? <span innerHTML={icon}></span>}
+        {this.hasSlotContent ? <slot name="content"></slot> : this.text ?? <span innerHTML={icon}></span>}
       </a>
     );
   }
