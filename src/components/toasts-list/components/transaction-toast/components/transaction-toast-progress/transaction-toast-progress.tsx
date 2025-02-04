@@ -1,6 +1,4 @@
-import { Component, Prop, State, h } from '@stencil/core';
-import { calculateRemainingPercentage } from './helpers/calculateRemainingPercentage';
-import { getRemainingValue, PROGRESS_INTERVAL_DURATION_MS } from './helpers/getRemainingValue';
+import { Component, Prop, State, Watch, h } from '@stencil/core';
 
 @Component({
   tag: 'transaction-toast-progress',
@@ -13,54 +11,73 @@ export class ToastProgress {
   @Prop() endTime?: number;
   @Prop() isCrossShard: boolean = false;
 
-  @State() currentRemaining: number | undefined;
-
-  private intervalId?: ReturnType<typeof setInterval>;
+  @State() currentTimestamp: number = Date.now() / 1000;
+  @State() hasTimeElapsed: boolean = false;
+  @State() expectedTransactionDuration: number = 0;
+  @State() secondsPassedSinceStart: number = 0;
+  @State() shouldShowProgressBar: boolean = false;
+  @State() percentagePassedSinceStart: number = 0;
+  @State() shouldQuickFill: boolean = false;
+  @State() infiniteProgressDelay: number = 0;
+  @State() infinitePercentagePassedSinceStart: number = 0;
+  @State() infinitePercentageAnimationDuration: number = 60;
 
   componentWillLoad() {
-    this.updateRemaining();
-    this.startInterval();
+    this.updateProgress();
   }
 
-  disconnectedCallback() {
-    clearInterval(this.intervalId);
+  @Watch('startTime')
+  @Watch('endTime')
+  handleTimeChange() {
+    this.updateProgress();
   }
 
-  private updateRemaining = () => {
-    if (!this.startTime || !this.endTime) {
-      this.currentRemaining = 0;
+  private updateProgress() {
+    this.shouldShowProgressBar = Boolean(this.endTime) && Boolean(this.startTime);
+
+    if (!this.shouldShowProgressBar) {
+      this.shouldQuickFill = true;
+      setTimeout(() => (this.hasTimeElapsed = true), 500);
       return;
     }
-    const totalDuration = this.endTime - this.startTime;
-    const now = Date.now() / 1000;
 
-    let remainingPercent = this.currentRemaining ?? calculateRemainingPercentage({ currentTime: now, startTime: this.startTime, totalDuration });
-
-    this.currentRemaining = getRemainingValue({
-      remaining: remainingPercent,
-      totalSeconds: totalDuration,
-      isCrossShard: this.isCrossShard,
-    });
-  };
-
-  private startInterval() {
-    this.intervalId = setInterval(() => {
-      this.updateRemaining();
-    }, PROGRESS_INTERVAL_DURATION_MS);
+    this.currentTimestamp = Date.now() / 1000;
+    this.expectedTransactionDuration = this.endTime - this.startTime;
+    this.secondsPassedSinceStart = this.currentTimestamp - this.startTime;
+    this.percentagePassedSinceStart = this.expectedTransactionDuration > 0 ? (this.secondsPassedSinceStart / this.expectedTransactionDuration) * 100 : 0;
+    this.infiniteProgressDelay = Math.max(0, this.expectedTransactionDuration - this.secondsPassedSinceStart);
+    this.infinitePercentagePassedSinceStart = (this.secondsPassedSinceStart / (this.expectedTransactionDuration + this.infinitePercentageAnimationDuration)) * 100;
   }
 
   render() {
     return (
       <div class={this.progressClass}>
-        <div
-          class="transaction-toast-bar"
-          style={{ width: `${this.currentRemaining}%` }}
-          role="progressbar"
-          aria-valuemin={0}
-          aria-valuemax={100}
-          aria-valnow={this.currentRemaining}
-        />
-        <slot></slot>
+        <div class="transaction-toast-bar-wrapper" style={{ opacity: this.hasTimeElapsed ? '0' : '1' }}>
+          <div
+            class="transaction-toast-bar fixed"
+            style={{
+              '--animation-duration': `${this.expectedTransactionDuration}s`,
+              '--start-width': `${this.percentagePassedSinceStart}%`,
+            }}
+          />
+
+          <div class="transaction-toast-bar infinite">
+            <div
+              class="transaction-toast-bar-line"
+              style={{
+                '--start-width': `${this.infinitePercentagePassedSinceStart}%`,
+                '--animation-duration': `${this.infinitePercentageAnimationDuration}s`,
+                '--animation-delay': `${this.infiniteProgressDelay}s`,
+              }}
+            />
+          </div>
+
+          <div class={`transaction-toast-bar ${this.shouldQuickFill ? 'fill animate' : 'fill'}`} />
+        </div>
+
+        <div class="transaction-toast-bar-content">
+          <slot />
+        </div>
       </div>
     );
   }
