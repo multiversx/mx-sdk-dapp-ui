@@ -34,6 +34,7 @@ describe('TransactionShards', () => {
     },
     txHash: 'hash123',
     value: {
+      egldLabel: 'xEGLD',
       valueDecimal: '0',
       valueInteger: '100',
     },
@@ -54,11 +55,11 @@ describe('TransactionShards', () => {
         <mock:shadow-root>
           <div class="transaction-shards">
             <explorer-link class="transactions-table-body-cell-link" data-testid="${DataTestIdsEnum.shardFromLink}" link="/blocks?shard=0">
-              <span data-testid="${DataTestIdsEnum.senderShard}">0</span>
+              <span data-testid="${DataTestIdsEnum.senderShard}" slot="content">0</span>
             </explorer-link>
             <span class="transaction-shards-arrow">&#10132;</span>
             <explorer-link class="transactions-table-body-cell-link" data-testid="${DataTestIdsEnum.shardToLink}" link="/blocks?shard=1">
-              <span data-testid="${DataTestIdsEnum.receiverShard}">1</span>
+              <span data-testid="${DataTestIdsEnum.receiverShard}" slot="content">1</span>
             </explorer-link>
           </div>
         </mock:shadow-root>
@@ -78,13 +79,13 @@ describe('TransactionShards', () => {
     expect(page.root).toEqualHtml(`
       <transaction-shards class="custom-class">
         <mock:shadow-root>
-          <div class="custom-class">
+          <div class="custom-class transaction-shards">
             <explorer-link class="transactions-table-body-cell-link" data-testid="${DataTestIdsEnum.shardFromLink}" link="/blocks?shard=0">
-              <span data-testid="${DataTestIdsEnum.senderShard}">0</span>
+              <span data-testid="${DataTestIdsEnum.senderShard}" slot="content">0</span>
             </explorer-link>
             <span class="transaction-shards-arrow">&#10132;</span>
             <explorer-link class="transactions-table-body-cell-link" data-testid="${DataTestIdsEnum.shardToLink}" link="/blocks?shard=1">
-              <span data-testid="${DataTestIdsEnum.receiverShard}">1</span>
+              <span data-testid="${DataTestIdsEnum.receiverShard}" slot="content">1</span>
             </explorer-link>
           </div>
         </mock:shadow-root>

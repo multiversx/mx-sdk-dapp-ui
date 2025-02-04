@@ -109,10 +109,11 @@ export namespace Components {
         "showLockedAccounts": boolean;
     }
     interface TransactionAccountName {
+        "address": string;
         "class"?: string;
         "dataTestId"?: string;
         "description": string;
-        "name": string;
+        "name"?: string;
     }
     interface TransactionAge {
         "age": string;
@@ -135,10 +136,6 @@ export namespace Components {
         "actionDescription": string;
         "class"?: string;
         "method": string;
-    }
-    interface TransactionRow {
-        "class"?: string;
-        "transaction": ITransactionsTableRow;
     }
     interface TransactionShards {
         "class"?: string;
@@ -406,12 +403,6 @@ declare global {
         prototype: HTMLTransactionMethodElement;
         new (): HTMLTransactionMethodElement;
     };
-    interface HTMLTransactionRowElement extends Components.TransactionRow, HTMLStencilElement {
-    }
-    var HTMLTransactionRowElement: {
-        prototype: HTMLTransactionRowElement;
-        new (): HTMLTransactionRowElement;
-    };
     interface HTMLTransactionShardsElement extends Components.TransactionShards, HTMLStencilElement {
     }
     var HTMLTransactionShardsElement: {
@@ -525,7 +516,6 @@ declare global {
         "transaction-hash": HTMLTransactionHashElement;
         "transaction-icon": HTMLTransactionIconElement;
         "transaction-method": HTMLTransactionMethodElement;
-        "transaction-row": HTMLTransactionRowElement;
         "transaction-shards": HTMLTransactionShardsElement;
         "transaction-toast": HTMLTransactionToastElement;
         "transaction-toast-content": HTMLTransactionToastContentElement;
@@ -621,6 +611,7 @@ declare namespace LocalJSX {
         "showLockedAccounts"?: boolean;
     }
     interface TransactionAccountName {
+        "address"?: string;
         "class"?: string;
         "dataTestId"?: string;
         "description"?: string;
@@ -647,10 +638,6 @@ declare namespace LocalJSX {
         "actionDescription"?: string;
         "class"?: string;
         "method"?: string;
-    }
-    interface TransactionRow {
-        "class"?: string;
-        "transaction"?: ITransactionsTableRow;
     }
     interface TransactionShards {
         "class"?: string;
@@ -730,7 +717,6 @@ declare namespace LocalJSX {
         "transaction-hash": TransactionHash;
         "transaction-icon": TransactionIcon;
         "transaction-method": TransactionMethod;
-        "transaction-row": TransactionRow;
         "transaction-shards": TransactionShards;
         "transaction-toast": TransactionToast;
         "transaction-toast-content": TransactionToastContent;
@@ -772,7 +758,6 @@ declare module "@stencil/core" {
             "transaction-hash": LocalJSX.TransactionHash & JSXBase.HTMLAttributes<HTMLTransactionHashElement>;
             "transaction-icon": LocalJSX.TransactionIcon & JSXBase.HTMLAttributes<HTMLTransactionIconElement>;
             "transaction-method": LocalJSX.TransactionMethod & JSXBase.HTMLAttributes<HTMLTransactionMethodElement>;
-            "transaction-row": LocalJSX.TransactionRow & JSXBase.HTMLAttributes<HTMLTransactionRowElement>;
             "transaction-shards": LocalJSX.TransactionShards & JSXBase.HTMLAttributes<HTMLTransactionShardsElement>;
             "transaction-toast": LocalJSX.TransactionToast & JSXBase.HTMLAttributes<HTMLTransactionToastElement>;
             "transaction-toast-content": LocalJSX.TransactionToastContent & JSXBase.HTMLAttributes<HTMLTransactionToastContentElement>;

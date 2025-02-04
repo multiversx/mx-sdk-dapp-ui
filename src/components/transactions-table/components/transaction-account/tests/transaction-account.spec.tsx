@@ -71,7 +71,7 @@ describe('TransactionAccount Component', () => {
     });
 
     const div = page.root.shadowRoot.querySelector('div');
-    expect(div.className).toBe('custom-class');
+    expect(div.className).toBe('custom-class transaction-account');
     expect(div.getAttribute('data-testid')).toBe('test-id');
   });
 });

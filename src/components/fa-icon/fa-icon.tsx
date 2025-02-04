@@ -1,13 +1,15 @@
 import { Component, Prop, h } from '@stencil/core';
 import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames';
 
 @Component({
   tag: 'fa-icon',
+  styleUrl: 'fa-icon.css',
   shadow: true,
 })
 export class FaIcon {
-  @Prop() class?: string = 'fa-icon';
+  @Prop() class?: string;
   @Prop() icon: IconDefinition;
   @Prop() description?: string;
 
@@ -18,6 +20,6 @@ export class FaIcon {
 
     const iconHtml = getIconHtmlFromIconDefinition(this.icon);
 
-    return <i class={this.class} innerHTML={iconHtml} title={this.description}></i>;
+    return <i class={classNames(this.class, 'fa-icon')} innerHTML={iconHtml} title={this.description}></i>;
   }
 }

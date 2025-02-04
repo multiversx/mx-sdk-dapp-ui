@@ -12,7 +12,7 @@ export class TrimText {
   @Element() el: HTMLElement;
 
   @Prop() text: string;
-  @Prop() class?: string = 'trim';
+  @Prop() class?: string;
   @Prop() dataTestId: string = DataTestIdsEnum.trim;
 
   @State() overflow: boolean = false;
@@ -57,7 +57,7 @@ export class TrimText {
 
   render() {
     return (
-      <span ref={el => (this.trimRef = el as HTMLSpanElement)} class={classNames(this.class, { overflow: this.overflow })} data-testid={this.dataTestId}>
+      <span ref={el => (this.trimRef = el as HTMLSpanElement)} class={classNames(this.class, 'trim', { overflow: this.overflow })} data-testid={this.dataTestId}>
         <span ref={el => (this.hiddenTextRef = el as HTMLSpanElement)} class="hidden-text">
           {this.text}
         </span>

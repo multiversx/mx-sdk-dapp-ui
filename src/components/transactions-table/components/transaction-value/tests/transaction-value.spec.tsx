@@ -6,6 +6,7 @@ import { ITransactionValue } from 'components/transactions-table/transactions-ta
 describe('TransactionValue', () => {
   it('renders with minimal props', async () => {
     const value: ITransactionValue = {
+      egldLabel: '',
       link: '',
       linkText: '',
       name: '',
@@ -31,6 +32,7 @@ describe('TransactionValue', () => {
   it('renders with badge', async () => {
     const value: ITransactionValue = {
       badge: 'NFT',
+      egldLabel: '',
       link: '',
       linkText: '',
       name: '',
@@ -60,6 +62,7 @@ describe('TransactionValue', () => {
   it('renders with formatted amount', async () => {
     const value: ITransactionValue = {
       showFormattedAmount: true,
+      egldLabel: 'xEGLD',
       valueDecimal: '123',
       valueInteger: '123',
       link: '',
@@ -77,7 +80,7 @@ describe('TransactionValue', () => {
       <transaction-value>
         <mock:shadow-root>
           <div class="transaction-value">
-            <format-amount class="mr-1" datatestid="transactionActionFormattedAmount" isvalid="" valuedecimal="123" valueinteger="123"></format-amount>
+            <format-amount class="mr-1" datatestid="transactionActionFormattedAmount" isvalid="" label="xEGLD" valuedecimal="123" valueinteger="123"></format-amount>
           </div>
         </mock:shadow-root>
       </transaction-value>
@@ -86,6 +89,7 @@ describe('TransactionValue', () => {
 
   it('renders with explorer link', async () => {
     const value: ITransactionValue = {
+      egldLabel: '',
       link: 'https://example.com',
       linkText: 'Example Link',
       name: 'Example',
@@ -116,6 +120,7 @@ describe('TransactionValue', () => {
 
   it('renders with SVG icon', async () => {
     const value: ITransactionValue = {
+      egldLabel: '',
       link: 'https://example.com',
       linkText: 'Example Link',
       svgUrl: 'https://example.com/icon.svg',
@@ -148,6 +153,7 @@ describe('TransactionValue', () => {
 
   it('renders with truncated text', async () => {
     const value: ITransactionValue = {
+      egldLabel: '',
       link: 'https://example.com',
       linkText: 'Example Link',
       ticker: 'EXM',
@@ -179,6 +185,7 @@ describe('TransactionValue', () => {
 
   it('renders with titleText', async () => {
     const value: ITransactionValue = {
+      egldLabel: '',
       link: 'https://example.com',
       linkText: 'Example Link',
       name: 'Example',

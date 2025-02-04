@@ -36,6 +36,7 @@ describe('TransactionHash', () => {
       sender: account,
       txHash: '0x123456789abcdef',
       value: {
+        egldLabel: 'xEGLD',
         valueDecimal: '0',
         valueInteger: '100',
       },
@@ -75,6 +76,7 @@ describe('TransactionHash', () => {
       sender: account,
       txHash: '0xInitialHash',
       value: {
+        egldLabel: 'xEGLD',
         valueDecimal: '0',
         valueInteger: '100',
       },
@@ -112,6 +114,7 @@ describe('TransactionHash', () => {
       sender: account,
       txHash: '0xUpdatedHash',
       value: {
+        egldLabel: 'xEGLD',
         valueDecimal: '1',
         valueInteger: '200',
       },

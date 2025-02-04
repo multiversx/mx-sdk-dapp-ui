@@ -8,7 +8,7 @@ import { ITransactionIconInfo } from '../../transactions-table.type';
   shadow: true,
 })
 export class TransactionIcon {
-  @Prop() class?: string = 'transaction-icon';
+  @Prop() class?: string;
   @Prop() iconInfo: ITransactionIconInfo;
 
   render() {
@@ -23,6 +23,7 @@ export class TransactionIcon {
             'fa-sm': this.iconInfo.icon === faTimes,
           },
           this.class,
+          'transaction-icon',
         )}
         icon={this.iconInfo.icon}
         description={this.iconInfo.tooltip}

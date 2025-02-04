@@ -7,32 +7,36 @@
 
 ## Properties
 
-| Property       | Attribute | Description | Type                      | Default                |
-| -------------- | --------- | ----------- | ------------------------- | ---------------------- |
-| `class`        | `class`   |             | `string`                  | `'transactions-table'` |
-| `transactions` | --        |             | `ITransactionsTableRow[]` | `undefined`            |
+| Property       | Attribute | Description | Type                      | Default     |
+| -------------- | --------- | ----------- | ------------------------- | ----------- |
+| `class`        | `class`   |             | `string`                  | `undefined` |
+| `transactions` | --        |             | `ITransactionsTableRow[]` | `undefined` |
 
 
 ## Dependencies
 
 ### Depends on
 
-- [transaction-row](./components/transaction-row)
+- [transaction-hash](./components/transaction-hash)
+- [transaction-age](./components/transaction-age)
+- [transaction-shards](./components/transaction-shards)
+- [transaction-account](./components/transaction-account)
+- [transaction-method](./components/transaction-method)
+- [transaction-value](./components/transaction-value)
 
 ### Graph
 ```mermaid
 graph TD;
-  transactions-table --> transaction-row
-  transaction-row --> transaction-hash
-  transaction-row --> transaction-age
-  transaction-row --> transaction-shards
-  transaction-row --> transaction-account
-  transaction-row --> transaction-direction-badge
-  transaction-row --> transaction-method
-  transaction-row --> transaction-value
+  transactions-table --> transaction-hash
+  transactions-table --> transaction-age
+  transactions-table --> transaction-shards
+  transactions-table --> transaction-account
+  transactions-table --> transaction-method
+  transactions-table --> transaction-value
   transaction-hash --> transaction-icon
   transaction-hash --> explorer-link
   transaction-icon --> fa-icon
+  explorer-link --> fa-icon
   transaction-shards --> explorer-link
   transaction-account --> fa-icon
   transaction-account --> explorer-link

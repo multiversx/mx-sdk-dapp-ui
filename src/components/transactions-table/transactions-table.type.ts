@@ -42,6 +42,7 @@ export interface ITransactionAccount {
 export interface ITransactionValue {
   badge?: string;
   collection?: string;
+  egldLabel: string;
   link?: string;
   linkText?: string;
   name?: string;
