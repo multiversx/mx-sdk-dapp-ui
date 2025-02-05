@@ -1,6 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { CopyButton } from '../copy-button';
 import * as copyUtils from 'utils/copyToClipboard';
+
+import { CopyButton } from '../copy-button';
 
 describe('CopyButton', () => {
   it('renders with default props', async () => {

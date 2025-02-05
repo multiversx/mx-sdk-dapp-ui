@@ -1,5 +1,6 @@
-import { Component, Prop, Event, h, EventEmitter } from '@stencil/core';
-import { IComponentToast, CustomToastType, ISimpleToast } from 'components/toasts-list/components/transaction-toast/transaction-toast.type';
+import type { EventEmitter } from '@stencil/core';
+import { Component, Event, h,Prop } from '@stencil/core';
+import type { CustomToastType, IComponentToast, ISimpleToast } from 'components/toasts-list/components/transaction-toast/transaction-toast.type';
 
 @Component({
   tag: 'generic-toast',

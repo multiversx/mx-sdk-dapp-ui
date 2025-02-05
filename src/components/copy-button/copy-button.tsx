@@ -1,7 +1,8 @@
-import { Component, Prop, h, State } from '@stencil/core';
-import { faCheck, faCopy, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { copyToClipboard } from 'utils/copyToClipboard';
+import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faCopy } from '@fortawesome/free-solid-svg-icons';
+import { Component, h, Prop, State } from '@stencil/core';
 import classNames from 'classnames';
+import { copyToClipboard } from 'utils/copyToClipboard';
 
 @Component({
   tag: 'copy-button',

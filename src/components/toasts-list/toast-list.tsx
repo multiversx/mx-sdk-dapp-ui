@@ -1,6 +1,8 @@
-import { Component, h, Prop, Method, forceUpdate } from '@stencil/core';
-import { EventBus, IEventBus } from 'utils/EventBus';
-import { CustomToastType, ITransactionToast } from './components/transaction-toast/transaction-toast.type';
+import { Component, forceUpdate,h, Method, Prop } from '@stencil/core';
+import type { IEventBus } from 'utils/EventBus';
+import { EventBus } from 'utils/EventBus';
+
+import type { CustomToastType, ITransactionToast } from './components/transaction-toast/transaction-toast.type';
 import { ToastEventsEnum } from './toast-list.types';
 @Component({
   tag: 'toast-list',

@@ -1,6 +1,7 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { ExplorerLink } from '../explorer-link';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { newSpecPage } from '@stencil/core/testing';
+
+import { ExplorerLink } from '../explorer-link';
 
 describe('ExplorerLink', () => {
   it('renders with default props', async () => {

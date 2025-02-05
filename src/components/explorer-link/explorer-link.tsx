@@ -1,5 +1,6 @@
-import { Component, Prop, h, Element, State } from '@stencil/core';
-import { IconDefinition, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import type { IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { Component, Element, h, Prop, State } from '@stencil/core';
 import classNames from 'classnames';
 
 @Component({

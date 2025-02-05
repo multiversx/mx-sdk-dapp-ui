@@ -1,7 +1,7 @@
-import { Component, Prop, h } from '@stencil/core';
-import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
-import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { Component, h,Prop } from '@stencil/core';
 import classNames from 'classnames';
+import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 
 @Component({
   tag: 'fa-icon',

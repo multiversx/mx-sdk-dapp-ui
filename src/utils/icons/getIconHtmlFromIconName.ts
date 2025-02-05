@@ -1,4 +1,5 @@
-import { library, icon, Icon, IconName } from '@fortawesome/fontawesome-svg-core';
+import type { Icon, IconName } from '@fortawesome/fontawesome-svg-core';
+import { icon,library } from '@fortawesome/fontawesome-svg-core';
 import * as solidIcons from '@fortawesome/free-solid-svg-icons';
 
 export function getIconHtmlFromIconName(iconName: IconName | string): string | null {

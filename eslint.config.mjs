@@ -1,12 +1,24 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
-import tseslint from "typescript-eslint";
+import simpleImportSort from 'eslint-plugin-simple-import-sort';
+import typescriptParser from '@typescript-eslint/parser';
+import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 
-
-/** @type {import('eslint').Linter.Config[]} */
 export default [
-  {files: ["**/*.{ts,tsx}"]},
-  {languageOptions: { globals: globals.browser }},
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
+  {
+    files: ['src/**/*.{ts,tsx}'],
+    plugins: {
+      '@typescript-eslint': typescriptPlugin,
+      'simple-import-sort': simpleImportSort
+    },
+    rules: {
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
+      '@typescript-eslint/consistent-type-imports': 'error'
+    },
+    languageOptions: {
+      parser: typescriptParser,
+      parserOptions: {
+        project: true
+      }
+    }
+  }
 ];

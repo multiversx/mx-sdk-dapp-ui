@@ -1,8 +1,9 @@
-import { Component, Prop, h } from '@stencil/core';
-import { ITransactionAccount } from '../../transactions-table.type';
-import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
 import { faFileAlt } from '@fortawesome/free-solid-svg-icons/faFileAlt';
+import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
+import { Component, h,Prop } from '@stencil/core';
 import classNames from 'classnames';
+
+import type { ITransactionAccount } from '../../transactions-table.type';
 
 @Component({
   tag: 'transaction-account',

@@ -1,6 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
-import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import classNames from 'classnames';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
   tag: 'transaction-age',

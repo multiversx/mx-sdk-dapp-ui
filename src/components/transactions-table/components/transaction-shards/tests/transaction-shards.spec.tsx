@@ -1,8 +1,9 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { TransactionShards } from '../transaction-shards';
-import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { h } from '@stencil/core';
-import { ITransactionsTableRow } from '../../../transactions-table.type';
+import { newSpecPage } from '@stencil/core/testing';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+
+import type { ITransactionsTableRow } from '../../../transactions-table.type';
+import { TransactionShards } from '../transaction-shards';
 
 describe('TransactionShards', () => {
   const createMockTransaction = (senderShard: string, receiverShard: string): ITransactionsTableRow => ({

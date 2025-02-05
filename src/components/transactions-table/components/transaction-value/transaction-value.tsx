@@ -1,8 +1,8 @@
-import { Component, h, Prop } from '@stencil/core';
-import { ITransactionValue } from 'components/transactions-table/transactions-table.type';
-import classNames from 'classnames';
-import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { faLayerGroup } from '@fortawesome/free-solid-svg-icons';
+import { Component, h, Prop } from '@stencil/core';
+import classNames from 'classnames';
+import type { ITransactionValue } from 'components/transactions-table/transactions-table.type';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
   tag: 'transaction-value',

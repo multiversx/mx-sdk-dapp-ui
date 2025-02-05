@@ -1,6 +1,6 @@
-import { Component, Prop, h } from '@stencil/core';
-import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import { Component, h,Prop } from '@stencil/core';
 import classNames from 'classnames';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
   tag: 'format-amount',

@@ -1,7 +1,8 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { Component, EventEmitter, Prop, Event, h } from '@stencil/core';
+import type { EventEmitter} from '@stencil/core';
+import { Component, Event, h,Prop } from '@stencil/core';
 import classNames from 'classnames';
-import { ISimpleToast } from 'components/toasts-list/components/transaction-toast/transaction-toast.type';
+import type { ISimpleToast } from 'components/toasts-list/components/transaction-toast/transaction-toast.type';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';

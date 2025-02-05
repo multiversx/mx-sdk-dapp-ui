@@ -1,4 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
+
 import { TransactionAccountName } from '../transaction-account-name';
 
 describe('transaction-account-name', () => {

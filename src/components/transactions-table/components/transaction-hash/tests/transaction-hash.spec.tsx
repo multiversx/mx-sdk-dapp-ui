@@ -1,10 +1,11 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { h } from '@stencil/core';
-import { TransactionHash } from '../transaction-hash';
-import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons/faCircleInfo';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons/faCircleCheck';
-import { ITransactionAccount, ITransactionsTableRow } from '../../../transactions-table.type';
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons/faCircleInfo';
+import { h } from '@stencil/core';
+import { newSpecPage } from '@stencil/core/testing';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+
+import type { ITransactionAccount, ITransactionsTableRow } from '../../../transactions-table.type';
+import { TransactionHash } from '../transaction-hash';
 
 const account: ITransactionAccount = {
   address: 'erd...',

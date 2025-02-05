@@ -1,6 +1,7 @@
 import { Component, h } from '@stencil/core';
-import state from '../../signTransactionsModalStore';
 import { NftEnumType } from 'types/tokens.types';
+
+import state from '../../signTransactionsModalStore';
 
 const LABELS = {
   [NftEnumType.SemiFungibleESDT]: 'SFT',
