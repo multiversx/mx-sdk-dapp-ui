@@ -1,11 +1,13 @@
-import { newSpecPage } from '@stencil/core/testing';
 import { h } from '@stencil/core';
+import { newSpecPage } from '@stencil/core/testing';
+import type { ITransactionValue } from 'components/transactions-table/transactions-table.type';
+
 import { TransactionValue } from '../transaction-value';
-import { ITransactionValue } from 'components/transactions-table/transactions-table.type';
 
 describe('TransactionValue', () => {
   it('renders with minimal props', async () => {
     const value: ITransactionValue = {
+      egldLabel: '',
       link: '',
       linkText: '',
       name: '',
@@ -31,6 +33,7 @@ describe('TransactionValue', () => {
   it('renders with badge', async () => {
     const value: ITransactionValue = {
       badge: 'NFT',
+      egldLabel: '',
       link: '',
       linkText: '',
       name: '',
@@ -48,7 +51,7 @@ describe('TransactionValue', () => {
       <transaction-value>
         <mock:shadow-root>
           <div class="transaction-value">
-            <div class="badge badge-pill badge-secondary font-weight-light transaction-value" data-testid="transactionNftBadge">
+            <div class="badge badge-pill badge-secondary font-weight-light transaction-value-badge" data-testid="transactionNftBadge">
               NFT
             </div>
           </div>
@@ -60,6 +63,7 @@ describe('TransactionValue', () => {
   it('renders with formatted amount', async () => {
     const value: ITransactionValue = {
       showFormattedAmount: true,
+      egldLabel: 'xEGLD',
       valueDecimal: '123',
       valueInteger: '123',
       link: '',
@@ -77,7 +81,7 @@ describe('TransactionValue', () => {
       <transaction-value>
         <mock:shadow-root>
           <div class="transaction-value">
-            <format-amount class="mr-1" datatestid="transactionActionFormattedAmount" isvalid="" valuedecimal="123" valueinteger="123"></format-amount>
+            <format-amount class="mr-1" datatestid="transactionActionFormattedAmount" isvalid="" label="xEGLD" valuedecimal="123" valueinteger="123"></format-amount>
           </div>
         </mock:shadow-root>
       </transaction-value>
@@ -86,6 +90,7 @@ describe('TransactionValue', () => {
 
   it('renders with explorer link', async () => {
     const value: ITransactionValue = {
+      egldLabel: '',
       link: 'https://example.com',
       linkText: 'Example Link',
       name: 'Example',
@@ -105,7 +110,7 @@ describe('TransactionValue', () => {
           <div class="transaction-value">
             <explorer-link class="transaction-value-link text-truncate" link="https://example.com">
               <div class="transaction-value-content" slot="content">
-                <span class="transaction-value-text">Example Link</span>
+                <span class="transaction-value-link-text">Example Link</span>
               </div>
             </explorer-link>
           </div>
@@ -116,6 +121,7 @@ describe('TransactionValue', () => {
 
   it('renders with SVG icon', async () => {
     const value: ITransactionValue = {
+      egldLabel: '',
       link: 'https://example.com',
       linkText: 'Example Link',
       svgUrl: 'https://example.com/icon.svg',
@@ -136,8 +142,8 @@ describe('TransactionValue', () => {
           <div class="transaction-value">
             <explorer-link class="transaction-value-link side-link d-flex" link="https://example.com">
               <div class="transaction-value-content" slot="content">
-                <img alt="Example Icon" class="transaction-value-icon" src="https://example.com/icon.svg">
-                <span class="transaction-value-text">Example Link</span>
+                <img alt="Example Icon" class="transaction-value-img" src="https://example.com/icon.svg">
+                <span class="transaction-value-link-text">Example Link</span>
               </div>
             </explorer-link>
           </div>
@@ -148,6 +154,7 @@ describe('TransactionValue', () => {
 
   it('renders with truncated text', async () => {
     const value: ITransactionValue = {
+      egldLabel: '',
       link: 'https://example.com',
       linkText: 'Example Link',
       ticker: 'EXM',
@@ -168,7 +175,7 @@ describe('TransactionValue', () => {
           <div class="transaction-value">
             <explorer-link class="transaction-value-link text-truncate" link="https://example.com">
               <div class="transaction-value-content" slot="content">
-                <span class="transaction-value-text truncate">Example Link</span>
+                <span class="transaction-value-link-text truncate">Example Link</span>
               </div>
             </explorer-link>
           </div>
@@ -179,6 +186,7 @@ describe('TransactionValue', () => {
 
   it('renders with titleText', async () => {
     const value: ITransactionValue = {
+      egldLabel: '',
       link: 'https://example.com',
       linkText: 'Example Link',
       name: 'Example',
@@ -199,7 +207,7 @@ describe('TransactionValue', () => {
           <div class="transaction-value">
             <explorer-link class="transaction-value-link text-truncate" link="https://example.com">
               <div class="transaction-value-content" slot="content">
-                <span class="transaction-value-text">Example Link</span>
+                <span class="transaction-value-link-text">Example Link</span>
               </div>
             </explorer-link>
             <fa-icon class="transaction-value-icon" title="Title Text"></fa-icon>

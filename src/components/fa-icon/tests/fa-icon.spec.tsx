@@ -1,7 +1,8 @@
+import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
+
 import { FaIcon } from '../fa-icon';
-import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
 
 describe('FaIcon Component', () => {
   it('should render with icon prop', async () => {

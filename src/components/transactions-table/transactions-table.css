@@ -30,9 +30,16 @@
   border-color: #e5e7eb;
 }
 
+.transactions-table-body-row {
+  color: rgb(107 114 128);
+}
+
 .transactions-table-body-cell {
-  align-items: center;
-  display: flex;
-  justify-content: center;
+  padding: 0.5rem;
+  width: max-content;
+}
+
+.transactions-table-body-cell > * {
+  width: max-content;
 }
 

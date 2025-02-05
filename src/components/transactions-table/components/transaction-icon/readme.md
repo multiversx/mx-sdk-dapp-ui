@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property   | Attribute | Description | Type                   | Default              |
-| ---------- | --------- | ----------- | ---------------------- | -------------------- |
-| `class`    | `class`   |             | `string`               | `'transaction-icon'` |
-| `iconInfo` | --        |             | `ITransactionIconInfo` | `undefined`          |
+| Property   | Attribute | Description | Type                   | Default     |
+| ---------- | --------- | ----------- | ---------------------- | ----------- |
+| `class`    | `class`   |             | `string`               | `undefined` |
+| `iconInfo` | --        |             | `ITransactionIconInfo` | `undefined` |
 
 
 ## Dependencies

@@ -1,6 +1,6 @@
 // match these interfaces with src/path-to-file.type.ts from sdk-dapp
-import { IconName } from '@fortawesome/free-solid-svg-icons';
-import { JSX } from '@stencil/core';
+import type { IconName } from '@fortawesome/free-solid-svg-icons';
+import type { JSX } from '@stencil/core';
 
 export interface IToastDataState {
   id: string;

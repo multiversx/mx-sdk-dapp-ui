@@ -1,5 +1,5 @@
 import { createStore } from '@stencil/store';
-import { ISignTransactionsModalData } from 'components/sign-transactions-modal/sign-transactions-modal.types';
+import type { ISignTransactionsModalData } from 'components/sign-transactions-modal/sign-transactions-modal.types';
 
 type ITransactionState = ISignTransactionsModalData & {
   isLoading: boolean;

@@ -1,7 +1,10 @@
-import { Component, h, Element, Method, forceUpdate, Prop } from '@stencil/core';
-import { EventBus, IEventBus } from 'utils/EventBus';
-import { IPendingTransactionsModalData, PendingTransactionsEventsEnum } from './pending-transactions-modal.types';
+import { Component, Element, forceUpdate, h, Method, Prop } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import type { IEventBus } from 'utils/EventBus';
+import { EventBus } from 'utils/EventBus';
+
+import type { IPendingTransactionsModalData} from './pending-transactions-modal.types';
+import { PendingTransactionsEventsEnum } from './pending-transactions-modal.types';
 
 @Component({
   tag: 'pending-transactions-modal',

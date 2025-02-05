@@ -1,5 +1,7 @@
-import { Component, Prop, Event, h, EventEmitter, JSX } from '@stencil/core';
-import { ITransactionProgressState, IToastDataState, ITransaction } from './transaction-toast.type';
+import type { EventEmitter, JSX } from '@stencil/core';
+import { Component, Event, h,Prop } from '@stencil/core';
+
+import type { IToastDataState, ITransaction,ITransactionProgressState } from './transaction-toast.type';
 
 @Component({
   tag: 'transaction-toast',

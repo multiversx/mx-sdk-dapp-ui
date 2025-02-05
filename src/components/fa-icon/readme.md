@@ -9,7 +9,7 @@
 
 | Property      | Attribute     | Description | Type             | Default     |
 | ------------- | ------------- | ----------- | ---------------- | ----------- |
-| `class`       | `class`       |             | `string`         | `'fa-icon'` |
+| `class`       | `class`       |             | `string`         | `undefined` |
 | `description` | `description` |             | `string`         | `undefined` |
 | `icon`        | --            |             | `IconDefinition` | `undefined` |
 
@@ -19,6 +19,7 @@
 ### Used by
 
  - [copy-button](../copy-button)
+ - [explorer-link](../explorer-link)
  - [transaction-account](../transactions-table/components/transaction-account)
  - [transaction-icon](../transactions-table/components/transaction-icon)
  - [transaction-value](../transactions-table/components/transaction-value)
@@ -27,6 +28,7 @@
 ```mermaid
 graph TD;
   copy-button --> fa-icon
+  explorer-link --> fa-icon
   transaction-account --> fa-icon
   transaction-icon --> fa-icon
   transaction-value --> fa-icon

@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property     | Attribute      | Description | Type             | Default           |
-| ------------ | -------------- | ----------- | ---------------- | ----------------- |
-| `class`      | `class`        |             | `string`         | `'explorer-link'` |
-| `dataTestId` | `data-test-id` |             | `string`         | `undefined`       |
-| `icon`       | --             |             | `IconDefinition` | `undefined`       |
-| `link`       | `link`         |             | `string`         | `undefined`       |
-| `text`       | `text`         |             | `string`         | `undefined`       |
+| Property     | Attribute      | Description | Type             | Default     |
+| ------------ | -------------- | ----------- | ---------------- | ----------- |
+| `class`      | `class`        |             | `string`         | `undefined` |
+| `dataTestId` | `data-test-id` |             | `string`         | `undefined` |
+| `icon`       | --             |             | `IconDefinition` | `undefined` |
+| `link`       | `link`         |             | `string`         | `undefined` |
+| `text`       | `text`         |             | `string`         | `undefined` |
 
 
 ## Dependencies
@@ -25,9 +25,14 @@
  - [transaction-shards](../transactions-table/components/transaction-shards)
  - [transaction-value](../transactions-table/components/transaction-value)
 
+### Depends on
+
+- [fa-icon](../fa-icon)
+
 ### Graph
 ```mermaid
 graph TD;
+  explorer-link --> fa-icon
   transaction-account --> explorer-link
   transaction-hash --> explorer-link
   transaction-shards --> explorer-link

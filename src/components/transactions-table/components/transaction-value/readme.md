@@ -7,17 +7,17 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                | Default               |
-| -------- | --------- | ----------- | ------------------- | --------------------- |
-| `class`  | `class`   |             | `string`            | `'transaction-value'` |
-| `value`  | --        |             | `ITransactionValue` | `undefined`           |
+| Property | Attribute | Description | Type                | Default     |
+| -------- | --------- | ----------- | ------------------- | ----------- |
+| `class`  | `class`   |             | `string`            | `undefined` |
+| `value`  | --        |             | `ITransactionValue` | `undefined` |
 
 
 ## Dependencies
 
 ### Used by
 
- - [transaction-row](../transaction-row)
+ - [transactions-table](../..)
 
 ### Depends on
 
@@ -31,7 +31,8 @@ graph TD;
   transaction-value --> format-amount
   transaction-value --> explorer-link
   transaction-value --> fa-icon
-  transaction-row --> transaction-value
+  explorer-link --> fa-icon
+  transactions-table --> transaction-value
   style transaction-value fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

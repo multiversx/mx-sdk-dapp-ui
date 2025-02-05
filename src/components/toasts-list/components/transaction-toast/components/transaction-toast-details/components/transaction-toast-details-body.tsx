@@ -1,8 +1,9 @@
-import { Component, Prop, h } from '@stencil/core';
+import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faCircleNotch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Component, h,Prop } from '@stencil/core';
 import classNames from 'classnames';
-import { faCheck, faCircleNotch, faTimes, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 
 const iconData: Record<string, IconDefinition> = {
   pending: faCircleNotch,

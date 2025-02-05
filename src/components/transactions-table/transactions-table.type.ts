@@ -1,4 +1,4 @@
-import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 export interface ITransactionsTableRow {
   age: ITransactionAge;
@@ -42,6 +42,7 @@ export interface ITransactionAccount {
 export interface ITransactionValue {
   badge?: string;
   collection?: string;
+  egldLabel: string;
   link?: string;
   linkText?: string;
   name?: string;

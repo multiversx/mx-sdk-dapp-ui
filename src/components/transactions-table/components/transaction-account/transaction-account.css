@@ -1,0 +1,5 @@
+.transaction-account {
+  align-items: center;
+  display: flex;
+  gap: 0.5rem;
+}

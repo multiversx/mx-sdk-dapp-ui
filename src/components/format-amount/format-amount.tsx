@@ -1,4 +1,5 @@
-import { Component, Prop, h } from '@stencil/core';
+import { Component, h,Prop } from '@stencil/core';
+import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
@@ -31,7 +32,7 @@ export class FormatAmount {
 
   private renderValid() {
     return (
-      <span data-testid={this.dataTestId} class={this.class}>
+      <span data-testid={this.dataTestId} class={classNames(this.class, 'format-amount')}>
         <span class="int-amount" data-testid={DataTestIdsEnum.formatAmountInt}>
           {this.valueInteger}
         </span>
