@@ -7,20 +7,20 @@
 
 ## Properties
 
-| Property             | Attribute              | Description | Type                     | Default                 |
-| -------------------- | ---------------------- | ----------- | ------------------------ | ----------------------- |
-| `account`            | --                     |             | `ITransactionAccount`    | `undefined`             |
-| `class`              | `class`                |             | `string`                 | `'transaction-account'` |
-| `dataTestId`         | `data-test-id`         |             | `string`                 | `undefined`             |
-| `scope`              | `scope`                |             | `"receiver" \| "sender"` | `undefined`             |
-| `showLockedAccounts` | `show-locked-accounts` |             | `boolean`                | `false`                 |
+| Property             | Attribute              | Description | Type                     | Default     |
+| -------------------- | ---------------------- | ----------- | ------------------------ | ----------- |
+| `account`            | --                     |             | `ITransactionAccount`    | `undefined` |
+| `class`              | `class`                |             | `string`                 | `undefined` |
+| `dataTestId`         | `data-test-id`         |             | `string`                 | `undefined` |
+| `scope`              | `scope`                |             | `"receiver" \| "sender"` | `undefined` |
+| `showLockedAccounts` | `show-locked-accounts` |             | `boolean`                | `false`     |
 
 
 ## Dependencies
 
 ### Used by
 
- - [transaction-row](../transaction-row)
+ - [transactions-table](../..)
 
 ### Depends on
 
@@ -34,7 +34,8 @@ graph TD;
   transaction-account --> fa-icon
   transaction-account --> explorer-link
   transaction-account --> transaction-account-name
-  transaction-row --> transaction-account
+  explorer-link --> fa-icon
+  transactions-table --> transaction-account
   style transaction-account fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -1,6 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { CopyButton } from '../copy-button';
 import * as copyUtils from 'utils/copyToClipboard';
+
+import { CopyButton } from '../copy-button';
 
 describe('CopyButton', () => {
   it('renders with default props', async () => {
@@ -29,7 +30,7 @@ describe('CopyButton', () => {
     expect(page.root).toEqualHtml(`
       <copy-button class="custom-class" text="Copy me">
         <mock:shadow-root>
-          <a href="/#" class="custom-class">
+          <a href="/#" class="custom-class copy-button">
             <fa-icon></fa-icon>
           </a>
         </mock:shadow-root>

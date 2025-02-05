@@ -1,6 +1,8 @@
-import { Component, Prop, VNode, h } from '@stencil/core';
-import { formatAddress } from 'utils/utils';
+import type { VNode} from '@stencil/core';
+import { Component, h,Prop } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import { formatAddress } from 'utils/utils';
+
 import state from '../../signTransactionsModalStore';
 
 @Component({

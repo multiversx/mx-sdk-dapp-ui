@@ -1,10 +1,11 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { h } from '@stencil/core';
-import { TransactionHash } from '../transaction-hash';
-import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons/faCircleInfo';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons/faCircleCheck';
-import { ITransactionAccount, ITransactionsTableRow } from '../../../transactions-table.type';
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons/faCircleInfo';
+import { h } from '@stencil/core';
+import { newSpecPage } from '@stencil/core/testing';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+
+import type { ITransactionAccount, ITransactionsTableRow } from '../../../transactions-table.type';
+import { TransactionHash } from '../transaction-hash';
 
 const account: ITransactionAccount = {
   address: 'erd...',
@@ -36,6 +37,7 @@ describe('TransactionHash', () => {
       sender: account,
       txHash: '0x123456789abcdef',
       value: {
+        egldLabel: 'xEGLD',
         valueDecimal: '0',
         valueInteger: '100',
       },
@@ -75,6 +77,7 @@ describe('TransactionHash', () => {
       sender: account,
       txHash: '0xInitialHash',
       value: {
+        egldLabel: 'xEGLD',
         valueDecimal: '0',
         valueInteger: '100',
       },
@@ -112,6 +115,7 @@ describe('TransactionHash', () => {
       sender: account,
       txHash: '0xUpdatedHash',
       value: {
+        egldLabel: 'xEGLD',
         valueDecimal: '1',
         valueInteger: '200',
       },

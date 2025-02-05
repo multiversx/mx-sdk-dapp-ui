@@ -1,8 +1,8 @@
-import { Component, h, Prop } from '@stencil/core';
-import { ITransactionValue } from 'components/transactions-table/transactions-table.type';
-import classNames from 'classnames';
-import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { faLayerGroup } from '@fortawesome/free-solid-svg-icons';
+import { Component, h, Prop } from '@stencil/core';
+import classNames from 'classnames';
+import type { ITransactionValue } from 'components/transactions-table/transactions-table.type';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
   tag: 'transaction-value',
@@ -10,14 +10,14 @@ import { faLayerGroup } from '@fortawesome/free-solid-svg-icons';
   shadow: true,
 })
 export class TransactionValue {
+  @Prop() class?: string;
   @Prop() value: ITransactionValue;
-  @Prop() class?: string = 'transaction-value';
 
   render() {
     return (
-      <div class={this.class}>
+      <div class={classNames(this.class, 'transaction-value')}>
         {this.value.badge && (
-          <div data-testid={DataTestIdsEnum.transactionNftBadge} class={classNames('badge badge-secondary badge-pill font-weight-light', this.class)}>
+          <div data-testid={DataTestIdsEnum.transactionNftBadge} class="badge badge-secondary badge-pill font-weight-light transaction-value-badge">
             {this.value.badge}
           </div>
         )}
@@ -29,6 +29,7 @@ export class TransactionValue {
             })}
             dataTestId={DataTestIdsEnum.transactionActionFormattedAmount}
             isValid={true}
+            label={this.value.egldLabel}
             valueDecimal={this.value.valueDecimal}
             valueInteger={this.value.valueInteger}
           />
@@ -37,16 +38,16 @@ export class TransactionValue {
         {this.value.link && (
           <explorer-link
             link={this.value.link}
-            class={classNames(`${this.class}-link`, {
+            class={classNames('transaction-value-link', {
               'side-link d-flex': this.value.svgUrl,
               'text-truncate': !this.value.svgUrl,
             })}
           >
-            <div class={`${this.class}-content`} slot="content">
-              {this.value.svgUrl && <img src={this.value.svgUrl} alt={this.value.name ?? ''} class={`${this.class}-icon`} />}
+            <div class="transaction-value-content" slot="content">
+              {this.value.svgUrl && <img src={this.value.svgUrl} alt={this.value.name ?? ''} class="transaction-value-img" />}
               {this.value.linkText && (
                 <span
-                  class={classNames(`${this.class}-text`, {
+                  class={classNames('transaction-value-link-text', {
                     truncate: this.value.ticker === this.value.collection && this.value.ticker != null,
                   })}
                 >
@@ -56,7 +57,7 @@ export class TransactionValue {
             </div>
           </explorer-link>
         )}
-        {this.value.titleText && <fa-icon icon={faLayerGroup} class={`${this.class}-icon`} title={this.value.titleText} />}
+        {this.value.titleText && <fa-icon icon={faLayerGroup} class="transaction-value-icon" title={this.value.titleText} />}
       </div>
     );
   }

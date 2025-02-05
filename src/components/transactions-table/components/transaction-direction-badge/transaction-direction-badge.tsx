@@ -1,5 +1,6 @@
 // transaction-direction-badge.tsx
 import { Component, h, Prop } from '@stencil/core';
+import classNames from 'classnames';
 
 @Component({
   tag: 'transaction-direction-badge',
@@ -7,12 +8,12 @@ import { Component, h, Prop } from '@stencil/core';
   shadow: true,
 })
 export class TransactionDirectionBadge {
-  @Prop() class?: string = 'transaction-direction-badge';
+  @Prop() class?: string;
   @Prop() direction: string;
 
   render() {
     return (
-      <div class={this.class}>
+      <div class={classNames(this.class, 'transaction-direction-badge')}>
         <span
           class={{
             directionBadge: true,

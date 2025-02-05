@@ -1,4 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
+
 import { FormatAmount } from '../format-amount';
 
 describe('FormatAmount component', () => {

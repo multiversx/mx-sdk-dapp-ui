@@ -7,17 +7,17 @@
 
 ## Properties
 
-| Property      | Attribute | Description | Type                    | Default                |
-| ------------- | --------- | ----------- | ----------------------- | ---------------------- |
-| `class`       | `class`   |             | `string`                | `'transaction-shards'` |
-| `transaction` | --        |             | `ITransactionsTableRow` | `undefined`            |
+| Property      | Attribute | Description | Type                    | Default     |
+| ------------- | --------- | ----------- | ----------------------- | ----------- |
+| `class`       | `class`   |             | `string`                | `undefined` |
+| `transaction` | --        |             | `ITransactionsTableRow` | `undefined` |
 
 
 ## Dependencies
 
 ### Used by
 
- - [transaction-row](../transaction-row)
+ - [transactions-table](../..)
 
 ### Depends on
 
@@ -27,7 +27,8 @@
 ```mermaid
 graph TD;
   transaction-shards --> explorer-link
-  transaction-row --> transaction-shards
+  explorer-link --> fa-icon
+  transactions-table --> transaction-shards
   style transaction-shards fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

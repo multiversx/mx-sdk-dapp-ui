@@ -7,12 +7,13 @@
 
 ## Properties
 
-| Property      | Attribute      | Description | Type     | Default                      |
-| ------------- | -------------- | ----------- | -------- | ---------------------------- |
-| `class`       | `class`        |             | `string` | `'transaction-account-name'` |
-| `dataTestId`  | `data-test-id` |             | `string` | `undefined`                  |
-| `description` | `description`  |             | `string` | `undefined`                  |
-| `name`        | `name`         |             | `string` | `undefined`                  |
+| Property      | Attribute      | Description | Type     | Default     |
+| ------------- | -------------- | ----------- | -------- | ----------- |
+| `address`     | `address`      |             | `string` | `undefined` |
+| `class`       | `class`        |             | `string` | `undefined` |
+| `dataTestId`  | `data-test-id` |             | `string` | `undefined` |
+| `description` | `description`  |             | `string` | `undefined` |
+| `name`        | `name`         |             | `string` | `undefined` |
 
 
 ## Dependencies

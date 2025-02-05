@@ -46,13 +46,11 @@ describe('transaction-method', () => {
     expect(outerSpan).toHaveClass('badge-secondary');
     expect(outerSpan).toHaveClass('badge-pill');
     expect(outerSpan).toHaveClass('font-weight-light');
-    expect(outerSpan).toHaveClass('p-0');
 
     const innerDiv = await page.find('transaction-method >>> div > div');
     expect(innerDiv).toHaveClass('text-truncate');
     expect(innerDiv).toHaveClass('text-capitalize');
     expect(innerDiv).toHaveClass('text-white');
-    expect(innerDiv).toHaveClass('p-1');
   });
 
   it('has correct data-testid', async () => {

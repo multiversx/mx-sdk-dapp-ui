@@ -1,8 +1,11 @@
-import { Component, Prop, h, State, Element, Fragment, Method, forceUpdate } from '@stencil/core';
-import { EventBus, IEventBus } from 'utils/EventBus';
-import { ILedgerConnectModalData, LedgerConnectEventsEnum } from './ledger-connect-modal.types';
-import { renderAccounts } from './helpers/renderAccounts';
+import { Component, Element, forceUpdate,Fragment, h, Method, Prop, State } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import type { IEventBus } from 'utils/EventBus';
+import { EventBus } from 'utils/EventBus';
+
+import { renderAccounts } from './helpers/renderAccounts';
+import type { ILedgerConnectModalData} from './ledger-connect-modal.types';
+import { LedgerConnectEventsEnum } from './ledger-connect-modal.types';
 
 @Component({
   tag: 'ledger-connect-modal',
