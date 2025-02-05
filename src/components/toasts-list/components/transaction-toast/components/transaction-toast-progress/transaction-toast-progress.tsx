@@ -1,4 +1,7 @@
-import { Component, h,Prop } from '@stencil/core';
+import { Component, Fragment, Prop, State, Watch, h } from '@stencil/core';
+import classNames from 'classnames';
+
+const DEFAULT_INFINITE_ANIMATION_DURATION = 30;
 
 @Component({
   tag: 'transaction-toast-progress',
@@ -6,26 +9,89 @@ import { Component, h,Prop } from '@stencil/core';
   shadow: true,
 })
 export class ToastProgress {
-  @Prop() progressClass: string = 'transaction-toast-progress';
-  @Prop() currentRemaining?: number;
+  private timeElapsedTimeoutReference?: ReturnType<typeof setTimeout>;
 
-  render() {
-    if (!this.currentRemaining) {
-      return <slot></slot>;
+  @Prop() startTime?: number;
+  @Prop() endTime?: number;
+
+  @State() currentTimestamp: number = Date.now() / 1000;
+  @State() hasTimeElapsed: boolean = false;
+  @State() expectedTransactionDuration: number = 0;
+  @State() secondsPassedSinceStart: number = 0;
+  @State() shouldShowProgressBar: boolean = false;
+  @State() percentagePassedSinceStart: number = 0;
+  @State() shouldQuickFill: boolean = false;
+  @State() infiniteProgressDelay: number = 0;
+  @State() infinitePercentagePassedSinceStart: number = 0;
+  @State() infinitePercentageAnimationDuration: number = DEFAULT_INFINITE_ANIMATION_DURATION + (this.endTime - this.startTime) * 2;
+
+  componentWillLoad() {
+    this.updateProgress();
+  }
+
+  @Watch('startTime')
+  @Watch('endTime')
+  handleTimeChange() {
+    this.updateProgress();
+  }
+
+  private updateProgress() {
+    this.shouldShowProgressBar = Boolean(this.endTime) && Boolean(this.startTime);
+
+    if (!this.shouldShowProgressBar) {
+      this.shouldQuickFill = true;
+      this.timeElapsedTimeoutReference = setTimeout(() => (this.hasTimeElapsed = true), 500);
+      return;
     }
 
+    this.currentTimestamp = Date.now() / 1000;
+    this.expectedTransactionDuration = this.endTime - this.startTime;
+    this.secondsPassedSinceStart = this.currentTimestamp - this.startTime;
+    this.percentagePassedSinceStart = this.expectedTransactionDuration > 0 ? (this.secondsPassedSinceStart / this.expectedTransactionDuration) * 100 : 0;
+    this.infiniteProgressDelay = Math.max(0, this.expectedTransactionDuration - this.secondsPassedSinceStart);
+    this.infinitePercentagePassedSinceStart = (this.secondsPassedSinceStart / (this.expectedTransactionDuration + this.infinitePercentageAnimationDuration)) * 100;
+  }
+
+  disconnectedCallback() {
+    if (this.timeElapsedTimeoutReference) {
+      clearTimeout(this.timeElapsedTimeoutReference);
+    }
+  }
+
+  render() {
     return (
-      <div class={this.progressClass}>
-        <div
-          class="transaction-toast-bar"
-          style={{ width: `${this.currentRemaining}%` }}
-          role="progressbar"
-          aria-valuemin={0}
-          aria-valuemax={100}
-          aria-valnow={this.currentRemaining}
-        />
-        <slot></slot>
-      </div>
+      <Fragment>
+        <div class="transaction-toast-bar-wrapper" style={{ opacity: this.hasTimeElapsed ? '0' : '1' }}>
+          <div
+            class="transaction-toast-bar fixed"
+            style={{
+              '--animation-duration': `${this.expectedTransactionDuration}s`,
+              '--start-width': `${this.percentagePassedSinceStart}%`,
+            }}
+          />
+
+          <div class="transaction-toast-bar infinite">
+            <div
+              class="transaction-toast-bar-line"
+              style={{
+                '--start-width': `${this.infinitePercentagePassedSinceStart}%`,
+                '--animation-duration': `${this.infinitePercentageAnimationDuration}s`,
+                '--animation-delay': `${this.infiniteProgressDelay}s`,
+              }}
+            />
+          </div>
+
+          <div
+            class={classNames('transaction-toast-bar fill', {
+              animate: this.shouldQuickFill,
+            })}
+          />
+        </div>
+
+        <div class="transaction-toast-bar-content">
+          <slot />
+        </div>
+      </Fragment>
     );
   }
 }

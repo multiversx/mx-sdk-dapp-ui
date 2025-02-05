@@ -165,8 +165,8 @@ export namespace Components {
         "transactionClass"?: string;
     }
     interface TransactionToastProgress {
-        "currentRemaining"?: number;
-        "progressClass": string;
+        "endTime"?: number;
+        "startTime"?: number;
     }
     interface TransactionToastWrapper {
         "wrapperClass": string;
@@ -669,8 +669,8 @@ declare namespace LocalJSX {
         "transactionClass"?: string;
     }
     interface TransactionToastProgress {
-        "currentRemaining"?: number;
-        "progressClass"?: string;
+        "endTime"?: number;
+        "startTime"?: number;
     }
     interface TransactionToastWrapper {
         "wrapperClass"?: string;

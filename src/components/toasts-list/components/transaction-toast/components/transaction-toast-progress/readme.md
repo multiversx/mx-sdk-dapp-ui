@@ -7,10 +7,10 @@
 
 ## Properties
 
-| Property           | Attribute           | Description | Type     | Default                        |
-| ------------------ | ------------------- | ----------- | -------- | ------------------------------ |
-| `currentRemaining` | `current-remaining` |             | `number` | `undefined`                    |
-| `progressClass`    | `progress-class`    |             | `string` | `'transaction-toast-progress'` |
+| Property    | Attribute    | Description | Type     | Default     |
+| ----------- | ------------ | ----------- | -------- | ----------- |
+| `endTime`   | `end-time`   |             | `number` | `undefined` |
+| `startTime` | `start-time` |             | `number` | `undefined` |
 
 
 ## Dependencies
