@@ -1,4 +1,3 @@
-// transaction-direction-badge.spec.tsx
 import { newSpecPage } from '@stencil/core/testing';
 import { TransactionDirectionBadge } from '../transaction-direction-badge';
 

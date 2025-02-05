@@ -20,7 +20,7 @@ export class TransactionMethod {
         title={this.actionDescription}
       >
         <div class="badge badge-secondary badge-pill">
-          <div class="text-truncate text-capitalize text-white p-1">{this.method}</div>
+          <div class="text-truncate text-capitalize text-white">{this.method}</div>
         </div>
       </span>
     );

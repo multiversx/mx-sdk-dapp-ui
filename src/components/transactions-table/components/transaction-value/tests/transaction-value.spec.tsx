@@ -50,7 +50,7 @@ describe('TransactionValue', () => {
       <transaction-value>
         <mock:shadow-root>
           <div class="transaction-value">
-            <div class="badge badge-pill badge-secondary font-weight-light transaction-value" data-testid="transactionNftBadge">
+            <div class="badge badge-pill badge-secondary font-weight-light transaction-value-badge" data-testid="transactionNftBadge">
               NFT
             </div>
           </div>
@@ -109,7 +109,7 @@ describe('TransactionValue', () => {
           <div class="transaction-value">
             <explorer-link class="transaction-value-link text-truncate" link="https://example.com">
               <div class="transaction-value-content" slot="content">
-                <span class="transaction-value-text">Example Link</span>
+                <span class="transaction-value-link-text">Example Link</span>
               </div>
             </explorer-link>
           </div>
@@ -141,8 +141,8 @@ describe('TransactionValue', () => {
           <div class="transaction-value">
             <explorer-link class="transaction-value-link side-link d-flex" link="https://example.com">
               <div class="transaction-value-content" slot="content">
-                <img alt="Example Icon" class="transaction-value-icon" src="https://example.com/icon.svg">
-                <span class="transaction-value-text">Example Link</span>
+                <img alt="Example Icon" class="transaction-value-img" src="https://example.com/icon.svg">
+                <span class="transaction-value-link-text">Example Link</span>
               </div>
             </explorer-link>
           </div>
@@ -174,7 +174,7 @@ describe('TransactionValue', () => {
           <div class="transaction-value">
             <explorer-link class="transaction-value-link text-truncate" link="https://example.com">
               <div class="transaction-value-content" slot="content">
-                <span class="transaction-value-text truncate">Example Link</span>
+                <span class="transaction-value-link-text truncate">Example Link</span>
               </div>
             </explorer-link>
           </div>
@@ -206,7 +206,7 @@ describe('TransactionValue', () => {
           <div class="transaction-value">
             <explorer-link class="transaction-value-link text-truncate" link="https://example.com">
               <div class="transaction-value-content" slot="content">
-                <span class="transaction-value-text">Example Link</span>
+                <span class="transaction-value-link-text">Example Link</span>
               </div>
             </explorer-link>
             <fa-icon class="transaction-value-icon" title="Title Text"></fa-icon>

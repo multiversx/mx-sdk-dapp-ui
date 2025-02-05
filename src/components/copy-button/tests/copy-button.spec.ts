@@ -29,7 +29,7 @@ describe('CopyButton', () => {
     expect(page.root).toEqualHtml(`
       <copy-button class="custom-class" text="Copy me">
         <mock:shadow-root>
-          <a href="/#" class="custom-class">
+          <a href="/#" class="custom-class copy-button">
             <fa-icon></fa-icon>
           </a>
         </mock:shadow-root>
