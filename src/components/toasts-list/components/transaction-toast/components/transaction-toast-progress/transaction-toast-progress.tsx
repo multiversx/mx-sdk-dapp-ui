@@ -9,6 +9,8 @@ export class ToastProgress {
   @Prop() startTime?: number;
   @Prop() endTime?: number;
 
+  private DEFAULT_INFINITE_ANIMATION_DURATION = 30;
+
   @State() currentTimestamp: number = Date.now() / 1000;
   @State() hasTimeElapsed: boolean = false;
   @State() expectedTransactionDuration: number = 0;
@@ -18,9 +20,10 @@ export class ToastProgress {
   @State() shouldQuickFill: boolean = false;
   @State() infiniteProgressDelay: number = 0;
   @State() infinitePercentagePassedSinceStart: number = 0;
-  @State() infinitePercentageAnimationDuration: number = 60;
+  @State() infinitePercentageAnimationDuration: number = this.DEFAULT_INFINITE_ANIMATION_DURATION + (this.endTime - this.startTime) * 2;
 
   componentWillLoad() {
+    console.log(this.endTime - this.startTime);
     this.updateProgress();
   }
 
