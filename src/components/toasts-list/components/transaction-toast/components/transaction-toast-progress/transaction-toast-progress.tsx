@@ -1,4 +1,7 @@
 import { Component, Fragment, Prop, State, Watch, h } from '@stencil/core';
+import classNames from 'classnames';
+
+const DEFAULT_INFINITE_ANIMATION_DURATION = 30;
 
 @Component({
   tag: 'transaction-toast-progress',
@@ -6,10 +9,10 @@ import { Component, Fragment, Prop, State, Watch, h } from '@stencil/core';
   shadow: true,
 })
 export class ToastProgress {
+  private timeElapsedTimeoutReference?: ReturnType<typeof setTimeout>;
+
   @Prop() startTime?: number;
   @Prop() endTime?: number;
-
-  private DEFAULT_INFINITE_ANIMATION_DURATION = 30;
 
   @State() currentTimestamp: number = Date.now() / 1000;
   @State() hasTimeElapsed: boolean = false;
@@ -20,10 +23,9 @@ export class ToastProgress {
   @State() shouldQuickFill: boolean = false;
   @State() infiniteProgressDelay: number = 0;
   @State() infinitePercentagePassedSinceStart: number = 0;
-  @State() infinitePercentageAnimationDuration: number = this.DEFAULT_INFINITE_ANIMATION_DURATION + (this.endTime - this.startTime) * 2;
+  @State() infinitePercentageAnimationDuration: number = DEFAULT_INFINITE_ANIMATION_DURATION + (this.endTime - this.startTime) * 2;
 
   componentWillLoad() {
-    console.log(this.endTime - this.startTime);
     this.updateProgress();
   }
 
@@ -38,7 +40,7 @@ export class ToastProgress {
 
     if (!this.shouldShowProgressBar) {
       this.shouldQuickFill = true;
-      setTimeout(() => (this.hasTimeElapsed = true), 500);
+      this.timeElapsedTimeoutReference = setTimeout(() => (this.hasTimeElapsed = true), 500);
       return;
     }
 
@@ -48,6 +50,12 @@ export class ToastProgress {
     this.percentagePassedSinceStart = this.expectedTransactionDuration > 0 ? (this.secondsPassedSinceStart / this.expectedTransactionDuration) * 100 : 0;
     this.infiniteProgressDelay = Math.max(0, this.expectedTransactionDuration - this.secondsPassedSinceStart);
     this.infinitePercentagePassedSinceStart = (this.secondsPassedSinceStart / (this.expectedTransactionDuration + this.infinitePercentageAnimationDuration)) * 100;
+  }
+
+  disconnectedCallback() {
+    if (this.timeElapsedTimeoutReference) {
+      clearTimeout(this.timeElapsedTimeoutReference);
+    }
   }
 
   render() {
@@ -73,7 +81,11 @@ export class ToastProgress {
             />
           </div>
 
-          <div class={`transaction-toast-bar ${this.shouldQuickFill ? 'fill animate' : 'fill'}`} />
+          <div
+            class={classNames('transaction-toast-bar fill', {
+              animate: this.shouldQuickFill,
+            })}
+          />
         </div>
 
         <div class="transaction-toast-bar-content">
