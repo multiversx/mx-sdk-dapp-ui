@@ -1,4 +1,4 @@
-import { Component, Prop, State, Watch, h } from '@stencil/core';
+import { Component, Fragment, Prop, State, Watch, h } from '@stencil/core';
 
 @Component({
   tag: 'transaction-toast-progress',
@@ -6,10 +6,8 @@ import { Component, Prop, State, Watch, h } from '@stencil/core';
   shadow: true,
 })
 export class ToastProgress {
-  @Prop() progressClass: string = 'transaction-toast-progress';
   @Prop() startTime?: number;
   @Prop() endTime?: number;
-  @Prop() isCrossShard: boolean = false;
 
   @State() currentTimestamp: number = Date.now() / 1000;
   @State() hasTimeElapsed: boolean = false;
@@ -51,7 +49,7 @@ export class ToastProgress {
 
   render() {
     return (
-      <div class={this.progressClass}>
+      <Fragment>
         <div class="transaction-toast-bar-wrapper" style={{ opacity: this.hasTimeElapsed ? '0' : '1' }}>
           <div
             class="transaction-toast-bar fixed"
@@ -78,7 +76,7 @@ export class ToastProgress {
         <div class="transaction-toast-bar-content">
           <slot />
         </div>
-      </div>
+      </Fragment>
     );
   }
 }
