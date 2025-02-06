@@ -1,71 +1,106 @@
 import { newSpecPage } from '@stencil/core/testing';
-
 import { TransactionAccountName } from '../transaction-account-name';
 
 describe('transaction-account-name', () => {
-  // Test 1: Renders name with description title when available
-  it('displays name with title when provided', async () => {
-    const page = await newSpecPage({
+  it('renders name when provided', async () => {
+    const { root } = await newSpecPage({
       components: [TransactionAccountName],
       html: `
         <transaction-account-name
-          name="Savings Account"
-          description="Primary savings account"
-          data-test-id="account-1"
-        ></transaction-account-name>
+          address="erd1q..."
+          name="Alice"
+          description="Alice's Wallet"
+          data-test-id="account-name"
+        />
       `,
     });
 
-    const div = page.root.shadowRoot.querySelector('div');
-    expect(div.textContent).toContain('Savings Account');
-    expect(div.getAttribute('title')).toBe('Primary savings account');
-    expect(div.getAttribute('data-testid')).toBe('account-1');
-    expect(div.classList.contains('text-truncate')).toBe(true);
+    const element = root.shadowRoot?.querySelector('div');
+    expect(element).not.toBeNull();
+    expect(element?.textContent).toBe('Alice');
+    expect(element?.getAttribute('title')).toBe("Alice's Wallet");
+    expect(element?.getAttribute('data-testid')).toBe('account-name');
+    expect(element?.className).toContain('text-truncate');
   });
 
-  // Test 2: Falls back to address when name is missing
-  it('displays address when name is absent', async () => {
-    const page = await newSpecPage({
+  it('uses trim component when name is missing', async () => {
+    const { root } = await newSpecPage({
       components: [TransactionAccountName],
       html: `
         <transaction-account-name
-          address="0x1234abcd"
-          data-test-id="account-2"
-        ></transaction-account-name>
+          address="erd1q..."
+          data-test-id="account-trim"
+        />
       `,
     });
 
-    const div = page.root.shadowRoot.querySelector('div');
-    expect(div.textContent).toContain('0x1234abcd');
-    expect(div.classList.contains('trim')).toBe(true);
-    expect(div.hasAttribute('title')).toBe(false);
+    const trimElement = root.shadowRoot?.querySelector('trim-text');
+    expect(trimElement).not.toBeNull();
+    expect(trimElement?.getAttribute('text')).toBe('erd1q...');
+    expect(trimElement?.getAttribute('datatestid')).toBe('account-trim');
   });
 
-  // Test 3: Combines custom classes with default
-  it('merges custom classes with default styles', async () => {
-    const page = await newSpecPage({
+  it('handles empty name string', async () => {
+    const { root } = await newSpecPage({
       components: [TransactionAccountName],
       html: `
         <transaction-account-name
-          class="custom-style"
-          name="Checking"
-        ></transaction-account-name>
+          address="erd1q..."
+          name=""
+        />
       `,
     });
 
-    const div = page.root.shadowRoot.querySelector('div');
-    expect(div.classList.contains('custom-style')).toBe(true);
-    expect(div.classList.contains('transaction-account-name')).toBe(true);
+    const trimElement = root.shadowRoot?.querySelector('trim-text');
+    expect(trimElement).not.toBeNull();
   });
 
-  // Test 4: Handles missing optional props
-  it('renders without data-testid when not provided', async () => {
-    const page = await newSpecPage({
+  it('applies correct class names', async () => {
+    const { root } = await newSpecPage({
       components: [TransactionAccountName],
-      html: `<transaction-account-name name="Investment"></transaction-account-name>`,
+      html: `
+        <transaction-account-name
+          address="erd1q..."
+          name="Bob"
+          class="custom-class"
+        />
+      `,
     });
 
-    const div = page.root.shadowRoot.querySelector('div');
-    expect(div.hasAttribute('data-testid')).toBe(false);
+    const element = root.shadowRoot?.querySelector('div');
+    expect(element?.className).toContain('custom-class');
+    expect(element?.className).toContain('text-truncate');
+    expect(element?.className).toContain('transaction-account-name');
+  });
+
+  it('handles missing dataTestId', async () => {
+    const { root } = await newSpecPage({
+      components: [TransactionAccountName],
+      html: `
+        <transaction-account-name
+          address="erd1q..."
+          name="Charlie"
+        />
+      `,
+    });
+
+    const element = root.shadowRoot?.querySelector('div');
+    expect(element?.hasAttribute('data-testid')).toBe(false);
+  });
+
+  it('uses description as title when name exists', async () => {
+    const { root } = await newSpecPage({
+      components: [TransactionAccountName],
+      html: `
+        <transaction-account-name
+          address="erd1q..."
+          name="Dave"
+          description="Dave's Savings"
+        />
+      `,
+    });
+
+    const element = root.shadowRoot?.querySelector('div');
+    expect(element?.getAttribute('title')).toBe("Dave's Savings");
   });
 });

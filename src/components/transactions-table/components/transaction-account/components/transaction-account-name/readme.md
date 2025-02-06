@@ -22,9 +22,14 @@
 
  - [transaction-account](../..)
 
+### Depends on
+
+- [trim-text](../../../../../trim)
+
 ### Graph
 ```mermaid
 graph TD;
+  transaction-account-name --> trim-text
   transaction-account --> transaction-account-name
   style transaction-account-name fill:#f9f,stroke:#333,stroke-width:4px
 ```

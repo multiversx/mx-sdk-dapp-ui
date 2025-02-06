@@ -1,4 +1,4 @@
-import { Component, h,Prop } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 
 @Component({
@@ -22,10 +22,6 @@ export class TransactionAccountName {
       );
     }
 
-    return (
-      <div class={classNames('trim', this.class, 'transaction-account-name')} data-testid={this.dataTestId}>
-        {this.address}
-      </div>
-    );
+    return <trim-text text={this.address} class={classNames(this.class, 'transaction-account-name')} dataTestId={this.dataTestId}></trim-text>;
   }
 }

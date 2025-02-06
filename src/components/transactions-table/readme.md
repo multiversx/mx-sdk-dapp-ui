@@ -41,6 +41,7 @@ graph TD;
   transaction-account --> fa-icon
   transaction-account --> explorer-link
   transaction-account --> transaction-account-name
+  transaction-account-name --> trim-text
   transaction-value --> format-amount
   transaction-value --> explorer-link
   transaction-value --> fa-icon
