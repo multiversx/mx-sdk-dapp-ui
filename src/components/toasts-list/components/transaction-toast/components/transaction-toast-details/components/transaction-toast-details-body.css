@@ -5,6 +5,14 @@
   display: flex;
   align-items: center;
   margin-bottom: 0.2rem;
+  justify-content: space-between;
+  --explorer-link-color: #6c757d;
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
 
   .icon {
     svg {

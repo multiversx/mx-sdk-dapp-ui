@@ -17,6 +17,10 @@
 
 ## Dependencies
 
+### Used by
+
+ - [transaction-toast-details-body](../toasts-list/components/transaction-toast/components/transaction-toast-details/components)
+
 ### Depends on
 
 - [fa-icon](../fa-icon)
@@ -25,6 +29,7 @@
 ```mermaid
 graph TD;
   copy-button --> fa-icon
+  transaction-toast-details-body --> copy-button
   style copy-button fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

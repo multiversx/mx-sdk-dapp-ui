@@ -1,5 +1,5 @@
-import type { JSX} from '@stencil/core';
-import { Component, Fragment, h,Prop } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { Component, Fragment, h, Prop } from '@stencil/core';
 
 import type { ITransaction } from '../../transaction-toast.type';
 
@@ -22,8 +22,8 @@ export class TransactionDetails {
       <Fragment>
         <div class="status-title">{this.processedTransactionsStatus}</div>
 
-        {this.transactions.map(({ hash, status }) => (
-          <transaction-toast-details-body transactionClass={this.transactionClass} hash={hash} status={status} key={hash} />
+        {this.transactions.map(({ hash, status, link }) => (
+          <transaction-toast-details-body transactionClass={this.transactionClass} hash={hash} status={status} link={link} key={hash} />
         ))}
       </Fragment>
     );

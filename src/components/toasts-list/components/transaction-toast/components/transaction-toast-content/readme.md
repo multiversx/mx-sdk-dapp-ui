@@ -36,6 +36,11 @@
 graph TD;
   transaction-toast-content --> transaction-toast-details
   transaction-toast-details --> transaction-toast-details-body
+  transaction-toast-details-body --> trim-text
+  transaction-toast-details-body --> copy-button
+  transaction-toast-details-body --> explorer-link
+  copy-button --> fa-icon
+  explorer-link --> fa-icon
   transaction-toast --> transaction-toast-content
   style transaction-toast-content fill:#f9f,stroke:#333,stroke-width:4px
 ```
