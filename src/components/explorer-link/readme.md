@@ -23,6 +23,7 @@
  - [transaction-account](../transactions-table/components/transaction-account)
  - [transaction-hash](../transactions-table/components/transaction-hash)
  - [transaction-shards](../transactions-table/components/transaction-shards)
+ - [transaction-toast-details-body](../toasts-list/components/transaction-toast/components/transaction-toast-details/components)
  - [transaction-value](../transactions-table/components/transaction-value)
 
 ### Depends on
@@ -36,6 +37,7 @@ graph TD;
   transaction-account --> explorer-link
   transaction-hash --> explorer-link
   transaction-shards --> explorer-link
+  transaction-toast-details-body --> explorer-link
   transaction-value --> explorer-link
   style explorer-link fill:#f9f,stroke:#333,stroke-width:4px
 ```

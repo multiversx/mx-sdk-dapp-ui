@@ -161,6 +161,7 @@ export namespace Components {
     }
     interface TransactionToastDetailsBody {
         "hash": string;
+        "link": string;
         "status"?: string;
         "transactionClass"?: string;
     }
@@ -665,6 +666,7 @@ declare namespace LocalJSX {
     }
     interface TransactionToastDetailsBody {
         "hash"?: string;
+        "link"?: string;
         "status"?: string;
         "transactionClass"?: string;
     }
