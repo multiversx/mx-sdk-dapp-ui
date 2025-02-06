@@ -1,4 +1,4 @@
-import { Component, h,Prop } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
@@ -38,7 +38,7 @@ export class FormatAmount {
         </span>
         {this.valueDecimal && (
           <span class="decimals" data-testid={DataTestIdsEnum.formatAmountDecimals}>
-            .{this.valueDecimal}
+            {this.valueDecimal}
           </span>
         )}
         {this.label && (

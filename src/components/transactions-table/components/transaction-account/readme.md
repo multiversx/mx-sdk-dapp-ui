@@ -35,6 +35,7 @@ graph TD;
   transaction-account --> explorer-link
   transaction-account --> transaction-account-name
   explorer-link --> fa-icon
+  transaction-account-name --> trim-text
   transactions-table --> transaction-account
   style transaction-account fill:#f9f,stroke:#333,stroke-width:4px
 ```

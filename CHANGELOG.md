@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Fixed TrimText component](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/33)
 - [Added copy, trim and explorer link on toasts](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/32)
 - [Enhance toast progress component](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/31)
 - [Added transactions table styling](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/30)

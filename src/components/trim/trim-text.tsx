@@ -1,4 +1,4 @@
-import { Component, Element,h, Prop, State } from '@stencil/core';
+import { Component, Element, h, Prop, State } from '@stencil/core';
 import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { ELLIPSIS } from 'constants/htmlStrings';
@@ -19,20 +19,16 @@ export class TrimText {
 
   private trimRef: HTMLSpanElement;
   private hiddenTextRef: HTMLSpanElement;
-
   private resizeObserver: ResizeObserver;
 
-  componentWillLoad() {
-    this.checkOverflow();
+  componentDidLoad() {
     this.setupResizeObserver();
+    // Initial check after DOM elements exist
+    requestAnimationFrame(() => this.checkOverflow());
   }
 
   disconnectedCallback() {
-    if (this.resizeObserver) {
-      this.resizeObserver.disconnect();
-    }
-
-    window.removeEventListener('resize', this.checkOverflow);
+    this.resizeObserver?.disconnect();
   }
 
   private setupResizeObserver() {
@@ -40,38 +36,39 @@ export class TrimText {
       this.checkOverflow();
     });
 
-    if (this.trimRef && this.hiddenTextRef) {
-      this.resizeObserver.observe(this.hiddenTextRef);
+    if (this.trimRef) {
       this.resizeObserver.observe(this.trimRef);
     }
-
-    window.addEventListener('resize', this.checkOverflow);
   }
 
-  private checkOverflow() {
+  private checkOverflow = () => {
     if (this.hiddenTextRef && this.trimRef) {
-      const diff = this.hiddenTextRef.offsetWidth - this.trimRef.offsetWidth;
-      this.overflow = diff > 1;
+      const hiddenWidth = this.hiddenTextRef.offsetWidth;
+      const containerWidth = this.trimRef.offsetWidth;
+      // Batch state updates to minimize re-renders
+      if (this.overflow !== hiddenWidth > containerWidth) {
+        this.overflow = hiddenWidth > containerWidth;
+      }
     }
-  }
+  };
 
   render() {
+    const trimmedText = this.getTrimmedText();
+
     return (
-      <span ref={el => (this.trimRef = el as HTMLSpanElement)} class={classNames(this.class, 'trim', { overflow: this.overflow })} data-testid={this.dataTestId}>
-        <span ref={el => (this.hiddenTextRef = el as HTMLSpanElement)} class="hidden-text">
+      <span ref={el => (this.trimRef = el)} class={classNames('trim', this.class, { overflow: this.overflow })} data-testid={this.dataTestId}>
+        <span ref={el => (this.hiddenTextRef = el)} class="hidden-text-ref">
           {this.text}
         </span>
 
         {this.overflow ? (
-          <div>
+          <div class="trim-wrapper">
             <span class="left">
-              <span>{String(this.text).substring(0, Math.floor(this.text.length / 2))}</span>
+              <span>{trimmedText.left}</span>
             </span>
-
             <span class="ellipsis">{ELLIPSIS}</span>
-
             <span class="right">
-              <span>{String(this.text).substring(Math.ceil(this.text.length / 2))}</span>
+              <span>{trimmedText.right}</span>
             </span>
           </div>
         ) : (
@@ -79,5 +76,13 @@ export class TrimText {
         )}
       </span>
     );
+  }
+
+  private getTrimmedText() {
+    const middleIndex = Math.floor(this.text.length / 2);
+    return {
+      left: this.text.slice(0, middleIndex),
+      right: this.text.slice(middleIndex),
+    };
   }
 }
