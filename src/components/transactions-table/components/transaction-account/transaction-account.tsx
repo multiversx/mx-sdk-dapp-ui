@@ -1,7 +1,7 @@
+import { faFileAlt } from '@fortawesome/free-solid-svg-icons/faFileAlt';
+import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
 import { Component, Prop, h } from '@stencil/core';
 import { ITransactionAccount } from '../../transactions-table.type';
-import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
-import { faFileAlt } from '@fortawesome/free-solid-svg-icons/faFileAlt';
 
 @Component({
   tag: 'transaction-account',
