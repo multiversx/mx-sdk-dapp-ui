@@ -1,10 +1,11 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { h } from '@stencil/core';
-import { TransactionHash } from '../transaction-hash';
-import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons/faCircleInfo';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons/faCircleCheck';
-import { ITransactionAccount, ITransactionsTableRow } from '../../../transactions-table.type';
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons/faCircleInfo';
+import { h } from '@stencil/core';
+import { newSpecPage } from '@stencil/core/testing';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+
+import type { ITransactionAccount, ITransactionsTableRow } from '../../../transactions-table.type';
+import { TransactionHash } from '../transaction-hash';
 
 const account: ITransactionAccount = {
   address: 'erd...',
@@ -14,6 +15,8 @@ const account: ITransactionAccount = {
   isTokenLocked: false,
   link: '/test',
   showLink: false,
+  shard: '0',
+  shardLink: '/shard/0',
 };
 
 describe('TransactionHash', () => {
@@ -23,14 +26,21 @@ describe('TransactionHash', () => {
         timeAgo: '1h',
         tooltip: '1 hour ago',
       },
+      direction: 'in',
       iconInfo: { icon: faCircleInfo, tooltip: 'Test' },
       link: 'https://example.com/tx/123',
       method: {
         name: 'Smart Contract',
+        actionDescription: 'Contract call',
       },
       receiver: account,
       sender: account,
       txHash: '0x123456789abcdef',
+      value: {
+        egldLabel: 'xEGLD',
+        valueDecimal: '0',
+        valueInteger: '100',
+      },
     };
 
     const page = await newSpecPage({
@@ -56,14 +66,21 @@ describe('TransactionHash', () => {
         timeAgo: '1h',
         tooltip: '1 hour ago',
       },
+      direction: 'in',
       iconInfo: { icon: faCircleInfo, tooltip: 'Initial' },
       link: 'https://example.com/tx/initial',
       method: {
         name: 'Smart Contract',
+        actionDescription: 'Initial call',
       },
       receiver: account,
       sender: account,
       txHash: '0xInitialHash',
+      value: {
+        egldLabel: 'xEGLD',
+        valueDecimal: '0',
+        valueInteger: '100',
+      },
     };
 
     const page = await newSpecPage({
@@ -84,17 +101,24 @@ describe('TransactionHash', () => {
 
     const updatedTransactionData: ITransactionsTableRow = {
       age: {
-        timeAgo: '1h',
-        tooltip: '1 hour ago',
+        timeAgo: '2h',
+        tooltip: '2 hours ago',
       },
+      direction: 'out',
       iconInfo: { icon: faCircleCheck, tooltip: 'Updated' },
       link: 'https://example.com/tx/updated',
       method: {
-        name: 'Smart Contract',
+        name: 'Transfer',
+        actionDescription: 'Token transfer',
       },
       receiver: account,
       sender: account,
       txHash: '0xUpdatedHash',
+      value: {
+        egldLabel: 'xEGLD',
+        valueDecimal: '1',
+        valueInteger: '200',
+      },
     };
 
     page.root.transaction = updatedTransactionData;

@@ -157,7 +157,6 @@ a.badge-dark:focus, a.badge-dark.focus {
   box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
 }
 
-
 .text-truncate {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -170,8 +169,4 @@ a.badge-dark:focus, a.badge-dark.focus {
 
 .text-white {
   color: #fff;
-}
-
-.p-1 {
-  padding: 0.25rem;
 }

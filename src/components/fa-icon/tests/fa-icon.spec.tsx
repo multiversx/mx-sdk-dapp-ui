@@ -1,13 +1,14 @@
+import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
-import { FontawesomeIcon } from '../fontawesome-icon';
-import { faUser } from '@fortawesome/free-solid-svg-icons/faUser';
 
-describe('FontawesomeIcon Component', () => {
+import { FaIcon } from '../fa-icon';
+
+describe('FaIcon Component', () => {
   it('should render with icon prop', async () => {
     const page = await newSpecPage({
-      components: [FontawesomeIcon],
-      template: () => <fontawesome-icon icon={faUser}></fontawesome-icon>,
+      components: [FaIcon],
+      template: () => <fa-icon icon={faUser}></fa-icon>,
     });
 
     const i = page.root.shadowRoot.querySelector('i');
@@ -19,8 +20,8 @@ describe('FontawesomeIcon Component', () => {
 
   it('should not render when icon prop is not provided', async () => {
     const page = await newSpecPage({
-      components: [FontawesomeIcon],
-      template: () => <fontawesome-icon></fontawesome-icon>,
+      components: [FaIcon],
+      template: () => <fa-icon></fa-icon>,
     });
 
     expect(page.root.shadowRoot.childNodes.length).toBe(0);
@@ -28,8 +29,8 @@ describe('FontawesomeIcon Component', () => {
 
   it('should apply custom class when provided', async () => {
     const page = await newSpecPage({
-      components: [FontawesomeIcon],
-      template: () => <fontawesome-icon icon={faUser} class="custom-class"></fontawesome-icon>,
+      components: [FaIcon],
+      template: () => <fa-icon icon={faUser} class="custom-class"></fa-icon>,
     });
 
     const i = page.root.shadowRoot.querySelector('i');
@@ -38,8 +39,8 @@ describe('FontawesomeIcon Component', () => {
 
   it('should set description as title when provided', async () => {
     const page = await newSpecPage({
-      components: [FontawesomeIcon],
-      template: () => <fontawesome-icon icon={faUser} description="User Icon"></fontawesome-icon>,
+      components: [FaIcon],
+      template: () => <fa-icon icon={faUser} description="User Icon"></fa-icon>,
     });
 
     const i = page.root.shadowRoot.querySelector('i');
@@ -48,11 +49,11 @@ describe('FontawesomeIcon Component', () => {
 
   it('should use default class when no class prop is provided', async () => {
     const page = await newSpecPage({
-      components: [FontawesomeIcon],
-      template: () => <fontawesome-icon icon={faUser}></fontawesome-icon>,
+      components: [FaIcon],
+      template: () => <fa-icon icon={faUser}></fa-icon>,
     });
 
     const i = page.root.shadowRoot.querySelector('i');
-    expect(i.classList.contains('fontawesome-icon')).toBe(true);
+    expect(i.classList.contains('fa-icon')).toBe(true);
   });
 });

@@ -7,17 +7,17 @@
 
 ## Properties
 
-| Property      | Attribute | Description | Type                    | Default              |
-| ------------- | --------- | ----------- | ----------------------- | -------------------- |
-| `class`       | `class`   |             | `string`                | `'transaction-hash'` |
-| `transaction` | --        |             | `ITransactionsTableRow` | `undefined`          |
+| Property      | Attribute | Description | Type                    | Default     |
+| ------------- | --------- | ----------- | ----------------------- | ----------- |
+| `class`       | `class`   |             | `string`                | `undefined` |
+| `transaction` | --        |             | `ITransactionsTableRow` | `undefined` |
 
 
 ## Dependencies
 
 ### Used by
 
- - [transaction-row](../transaction-row)
+ - [transactions-table](../..)
 
 ### Depends on
 
@@ -29,8 +29,9 @@
 graph TD;
   transaction-hash --> transaction-icon
   transaction-hash --> explorer-link
-  transaction-icon --> fontawesome-icon
-  transaction-row --> transaction-hash
+  transaction-icon --> fa-icon
+  explorer-link --> fa-icon
+  transactions-table --> transaction-hash
   style transaction-hash fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

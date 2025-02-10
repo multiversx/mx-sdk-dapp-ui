@@ -1,4 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
+
 import { FormatAmount } from '../format-amount';
 
 describe('FormatAmount component', () => {
@@ -30,7 +31,7 @@ describe('FormatAmount component', () => {
     const props = {
       isValid: true,
       valueInteger: '99999',
-      valueDecimal: '99',
+      valueDecimal: '.99',
       label: 'EGLD',
     };
 
@@ -67,7 +68,7 @@ describe('FormatAmount component', () => {
     const props = {
       isValid: true,
       valueInteger: '90000',
-      valueDecimal: '00',
+      valueDecimal: '.00',
       label: 'EGLD',
     };
 
@@ -79,7 +80,7 @@ describe('FormatAmount component', () => {
     const props = {
       isValid: true,
       valueInteger: '90000',
-      valueDecimal: '00',
+      valueDecimal: '.00',
       label: '',
     };
 

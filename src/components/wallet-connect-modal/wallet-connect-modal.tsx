@@ -1,8 +1,11 @@
-import { Component, h, Element, Method, forceUpdate, Prop, State, Watch } from '@stencil/core';
-import { EventBus, IEventBus } from 'utils/EventBus';
-import { IWalletConnectModalData, WalletConnectEventsEnum } from './wallet-connect-modal.types';
-import QRCode from 'qrcode';
+import { Component, Element, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import QRCode from 'qrcode';
+import type { IEventBus } from 'utils/EventBus';
+import { EventBus } from 'utils/EventBus';
+
+import type { IWalletConnectModalData} from './wallet-connect-modal.types';
+import { WalletConnectEventsEnum } from './wallet-connect-modal.types';
 
 @Component({
   tag: 'wallet-connect-modal',

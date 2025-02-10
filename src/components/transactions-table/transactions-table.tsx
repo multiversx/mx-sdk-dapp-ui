@@ -1,5 +1,8 @@
 import { Component, h, Prop } from '@stencil/core';
-import { ITransactionsTableRow } from './transactions-table.type';
+import classNames from 'classnames';
+
+import { DataTestIdsEnum } from '../../constants/dataTestIds.enum';
+import type { ITransactionsTableRow } from './transactions-table.type';
 
 const COLUMNS = ['TxHash', 'Age', 'Shard', 'From', 'To', 'Method', 'Value'];
 
@@ -9,14 +12,12 @@ const COLUMNS = ['TxHash', 'Age', 'Shard', 'From', 'To', 'Method', 'Value'];
   shadow: true,
 })
 export class TransactionsTable {
-  @Prop() class?: string = 'transactions-table';
-  @Prop() data: string;
+  @Prop() class?: string;
+  @Prop() transactions: ITransactionsTableRow[];
 
   render() {
-    const transactions: ITransactionsTableRow[] = JSON.parse(this.data);
-
     return (
-      <table class={this.class}>
+      <table class={classNames(this.class, 'transactions-table')}>
         <thead class="transactions-table-header">
           <tr>
             {COLUMNS.map(column => (
@@ -27,8 +28,35 @@ export class TransactionsTable {
           </tr>
         </thead>
         <tbody class="transactions-table-body">
-          {transactions.map(transaction => (
-            <transaction-row key={transaction.txHash} transaction={transaction}></transaction-row>
+          {this.transactions.map(transaction => (
+            <tr class="transactions-table-body-row">
+              <td class="transactions-table-body-cell">
+                <transaction-hash transaction={transaction}></transaction-hash>
+              </td>
+              <td class="transactions-table-body-cell">
+                <transaction-age age={transaction.age.timeAgo} tooltip={transaction.age.tooltip}></transaction-age>
+              </td>
+              <td class="transactions-table-body-cell">
+                <transaction-shards transaction={transaction}></transaction-shards>
+              </td>
+              <td class="transactions-table-body-cell">
+                <transaction-account account={transaction.sender} dataTestId={DataTestIdsEnum.transactionSender} scope="sender" showLockedAccounts={true}></transaction-account>
+              </td>
+              <td class="transactions-table-body-cell">
+                <transaction-account
+                  account={transaction.receiver}
+                  dataTestId={DataTestIdsEnum.transactionReceiver}
+                  scope="receiver"
+                  showLockedAccounts={true}
+                ></transaction-account>
+              </td>
+              <td class="transactions-table-body-cell">
+                <transaction-method method={transaction.method.name} actionDescription={transaction.method.actionDescription}></transaction-method>
+              </td>
+              <td class="transactions-table-body-cell">
+                <transaction-value value={transaction.value}></transaction-value>
+              </td>
+            </tr>
           ))}
         </tbody>
       </table>

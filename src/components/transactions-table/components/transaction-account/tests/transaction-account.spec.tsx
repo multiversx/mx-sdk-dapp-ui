@@ -1,7 +1,8 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
+
+import type { ITransactionAccount } from '../../../transactions-table.type';
 import { TransactionAccount } from '../transaction-account';
-import { ITransactionAccount } from '../../../transactions-table.type';
 
 describe('TransactionAccount Component', () => {
   const baseAccount: ITransactionAccount = {
@@ -34,7 +35,7 @@ describe('TransactionAccount Component', () => {
       template: () => <transaction-account account={lockedAccount} showLockedAccounts={true} scope="receiver"></transaction-account>,
     });
 
-    const lockedIcon = page.root.shadowRoot.querySelector('fontawesome-icon');
+    const lockedIcon = page.root.shadowRoot.querySelector('fa-icon');
     expect(lockedIcon).not.toBeNull();
   });
 
@@ -46,7 +47,7 @@ describe('TransactionAccount Component', () => {
       template: () => <transaction-account account={contractAccount} scope="sender"></transaction-account>,
     });
 
-    const contractIcon = page.root.shadowRoot.querySelector('fontawesome-icon');
+    const contractIcon = page.root.shadowRoot.querySelector('fa-icon');
     expect(contractIcon).not.toBeNull();
   });
 
@@ -71,7 +72,7 @@ describe('TransactionAccount Component', () => {
     });
 
     const div = page.root.shadowRoot.querySelector('div');
-    expect(div.className).toBe('custom-class');
+    expect(div.className).toBe('custom-class transaction-account');
     expect(div.getAttribute('data-testid')).toBe('test-id');
   });
 });

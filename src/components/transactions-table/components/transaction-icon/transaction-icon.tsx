@@ -1,15 +1,15 @@
-import { Component, Prop, h } from '@stencil/core';
-import classNames from 'classnames';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { ITransactionIconInfo } from '../../transactions-table.type';
+import { Component, h,Prop } from '@stencil/core';
+import classNames from 'classnames';
+
+import type { ITransactionIconInfo } from '../../transactions-table.type';
 
 @Component({
   tag: 'transaction-icon',
-  styleUrl: 'transaction-icon.css',
   shadow: true,
 })
 export class TransactionIcon {
-  @Prop() class?: string = 'transaction-icon';
+  @Prop() class?: string;
   @Prop() iconInfo: ITransactionIconInfo;
 
   render() {
@@ -18,12 +18,13 @@ export class TransactionIcon {
     }
 
     return (
-      <fontawesome-icon
+      <fa-icon
         class={classNames(
           {
             'fa-sm': this.iconInfo.icon === faTimes,
           },
           this.class,
+          'transaction-icon',
         )}
         icon={this.iconInfo.icon}
         description={this.iconInfo.tooltip}

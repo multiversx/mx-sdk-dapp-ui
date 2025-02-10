@@ -1,4 +1,5 @@
-import { Component, Event, EventEmitter, Prop, VNode, h } from '@stencil/core';
+import type { EventEmitter, VNode} from '@stencil/core';
+import { Component, Event, h,Prop } from '@stencil/core';
 
 @Component({
   tag: 'generic-modal',

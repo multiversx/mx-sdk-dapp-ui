@@ -1,8 +1,9 @@
-import { Component, Prop, h } from '@stencil/core';
+import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faCircleNotch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
-import { faCheck, faCircleNotch, faTimes, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 
 const iconData: Record<string, IconDefinition> = {
   pending: faCircleNotch,
@@ -20,6 +21,7 @@ export class TransactionDetailsBody {
   @Prop() transactionClass?: string = 'transaction-container';
   @Prop() status?: string;
   @Prop() hash: string;
+  @Prop() link: string;
 
   render() {
     const statusIcon = this.status ? iconData[this.status] : null;
@@ -35,8 +37,11 @@ export class TransactionDetailsBody {
             })}
           ></div>
         )}
-
-      <span>{this.hash.length > 12 ? `${this.hash.slice(0, 6)}...${this.hash.slice(-6)}` : this.hash}</span>
+        <trim-text text={this.hash} />
+        <div class="actions">
+          <copy-button text={this.hash} />
+          <explorer-link link={this.link} />
+        </div>
       </div>
     );
   }

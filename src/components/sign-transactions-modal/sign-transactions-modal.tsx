@@ -1,15 +1,18 @@
 import {
   Component,
-  Prop,
-  h,
   Element,
-  Method,
   forceUpdate,
+  h,
+  Method,
+  Prop,
   Watch
 } from '@stencil/core';
-import { EventBus, IEventBus } from 'utils/EventBus';
+import type { IEventBus } from 'utils/EventBus';
+import { EventBus } from 'utils/EventBus';
+
+import type {
+  ISignTransactionsModalData} from './sign-transactions-modal.types';
 import {
-  ISignTransactionsModalData,
   SignEventsEnum
 } from './sign-transactions-modal.types';
 import state, { resetState } from './signTransactionsModalStore';
