@@ -1,4 +1,4 @@
-name: 'Jest Unit Tests'
+name: 'Stencil Unit Tests'
 on:
   pull_request:
     branches: [main]
