@@ -37,7 +37,9 @@ export class TransactionDetailsBody {
             })}
           ></div>
         )}
-        <trim-text text={this.hash} />
+        <span class="trim">
+          <trim-text text={this.hash} />
+        </span>
         <div class="actions">
           <copy-button text={this.hash} />
           <explorer-link link={this.link} />
