@@ -1,7 +1,7 @@
 import { faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
-import type { ITransactionValue } from 'components/transactions-table/transactions-table.type';
+import type { ITransactionValue } from 'components/controlled/transactions-table/transactions-table.type';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({

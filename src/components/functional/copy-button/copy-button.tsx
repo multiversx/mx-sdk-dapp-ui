@@ -11,8 +11,8 @@ import { copyToClipboard } from 'utils/copyToClipboard';
 })
 export class CopyButton {
   @Prop() class?: string;
-  @Prop() copyIcon: IconDefinition = faCopy;
-  @Prop() successIcon: IconDefinition = faCheck;
+  @Prop() copyIcon?: IconDefinition;
+  @Prop() successIcon?: IconDefinition;
   @Prop() text: string;
 
   @State() isSuccess: boolean = false;
@@ -44,9 +44,12 @@ export class CopyButton {
   }
 
   render() {
+    const copyIcon = this.copyIcon ?? faCopy;
+    const successIcon = this.successIcon ?? faCheck;
+
     return (
       <a href="/#" class={classNames(this.class, 'copy-button')} onClick={this.handleClick}>
-        <fa-icon icon={this.isSuccess ? this.successIcon : this.copyIcon}></fa-icon>
+        <fa-icon icon={this.isSuccess ? successIcon : copyIcon}></fa-icon>
       </a>
     );
   }

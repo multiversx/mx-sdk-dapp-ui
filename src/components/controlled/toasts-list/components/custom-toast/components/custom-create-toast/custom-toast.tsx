@@ -1,7 +1,7 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter } from '@stencil/core';
-import { Component, Event, h,Prop } from '@stencil/core';
-import type { IComponentToast } from 'components/toasts-list/components/transaction-toast/transaction-toast.type';
+import { Component, Event, h, Prop } from '@stencil/core';
+import type { IComponentToast } from 'components/controlled/toasts-list/components/transaction-toast/transaction-toast.type';
 import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 
 @Component({

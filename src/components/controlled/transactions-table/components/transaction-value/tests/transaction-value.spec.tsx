@@ -1,6 +1,6 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
-import type { ITransactionValue } from 'components/transactions-table/transactions-table.type';
+import type { ITransactionValue } from 'components/controlled/transactions-table/transactions-table.type';
 
 import { TransactionValue } from '../transaction-value';
 

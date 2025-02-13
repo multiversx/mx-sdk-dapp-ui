@@ -1,5 +1,5 @@
 import { createStore } from '@stencil/store';
-import type { ISignTransactionsModalData } from 'components/sign-transactions-modal/sign-transactions-modal.types';
+import type { ISignTransactionsModalData } from 'components/controlled/sign-transactions-modal/sign-transactions-modal.types';
 
 type ITransactionState = ISignTransactionsModalData & {
   isLoading: boolean;
@@ -21,7 +21,7 @@ const initialState: ITransactionState = {
     feeInFiatLimit: '',
     currentIndex: 0,
     receiver: '',
-    nextUnsignedTxIndex: 0
+    nextUnsignedTxIndex: 0,
   },
   nftTransaction: null,
   sftTransaction: null,
@@ -29,16 +29,16 @@ const initialState: ITransactionState = {
   onSign: null,
   onCancel: null,
   onPrev: null,
-  onNext: null
+  onNext: null,
 };
 
 const { state } = createStore<ITransactionState>({
-  ...initialState
+  ...initialState,
 });
 
 export const resetState = () => ({
   ...state,
-  ...initialState
+  ...initialState,
 });
 
 export default state;

@@ -1,7 +1,7 @@
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 
-import { DataTestIdsEnum } from '../../constants/dataTestIds.enum';
+import { DataTestIdsEnum } from '../../../constants/dataTestIds.enum';
 import type { ITransactionsTableRow } from './transactions-table.type';
 
 const COLUMNS = ['TxHash', 'Age', 'Shard', 'From', 'To', 'Method', 'Value'];

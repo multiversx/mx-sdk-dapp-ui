@@ -9,7 +9,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 })
 export class FormatAmount {
   @Prop() class?: string;
-  @Prop() dataTestId?: string = DataTestIdsEnum.formatAmountComponent;
+  @Prop() dataTestId?: string;
   @Prop() isValid: boolean;
   @Prop() label?: string;
   @Prop() labelClass?: string;
@@ -22,7 +22,7 @@ export class FormatAmount {
 
   private renderInvalid() {
     return (
-      <span data-testid={this.dataTestId} class={this.class}>
+      <span data-testid={this.dataTestId ?? DataTestIdsEnum.formatAmountComponent} class={this.class}>
         <span class="int-amount" data-testid={DataTestIdsEnum.formatAmountInt}>
           ...
         </span>
