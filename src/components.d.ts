@@ -6,27 +6,27 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
-import { CustomToastType, IComponentToast, ISimpleToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
+import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
-import { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledger-connect-modal.types";
+import { ILedgerConnectModalData } from "./components/functional/ledger-connect-modal/ledger-connect-modal.types";
 import { IEventBus } from "./utils/EventBus";
-import { IPendingTransactionsModalData } from "./components/pending-transactions-modal/pending-transactions-modal.types";
-import { ISignTransactionsModalData } from "./components/sign-transactions-modal/sign-transactions-modal.types";
-import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
-import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/transactions-table/transactions-table.type";
-import { ITransactionValue } from "./components/transactions-table/transactions-table.type";
-import { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
+import { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
+import { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
+import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
+import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
+import { IWalletConnectModalData } from "./components/functional/wallet-connect-modal/wallet-connect-modal.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
-export { CustomToastType, IComponentToast, ISimpleToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
+export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
-export { ILedgerConnectModalData } from "./components/ledger-connect-modal/ledger-connect-modal.types";
+export { ILedgerConnectModalData } from "./components/functional/ledger-connect-modal/ledger-connect-modal.types";
 export { IEventBus } from "./utils/EventBus";
-export { IPendingTransactionsModalData } from "./components/pending-transactions-modal/pending-transactions-modal.types";
-export { ISignTransactionsModalData } from "./components/sign-transactions-modal/sign-transactions-modal.types";
-export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/toasts-list/components/transaction-toast/transaction-toast.type";
-export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/transactions-table/transactions-table.type";
-export { ITransactionValue } from "./components/transactions-table/transactions-table.type";
-export { IWalletConnectModalData } from "./components/wallet-connect-modal/wallet-connect-modal.types";
+export { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
+export { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
+export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
+export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
+export { IWalletConnectModalData } from "./components/functional/wallet-connect-modal/wallet-connect-modal.types";
 export namespace Components {
     interface BalanceComponent {
         "amount": string;
@@ -36,15 +36,15 @@ export namespace Components {
     }
     interface CopyButton {
         "class"?: string;
-        "copyIcon": IconDefinition;
-        "successIcon": IconDefinition;
+        "copyIcon"?: IconDefinition;
+        "successIcon"?: IconDefinition;
         "text": string;
     }
     interface CustomToast {
         "toast": IComponentToast;
     }
     interface ExplorerLink {
-        "class": string;
+        "class"?: string;
         "dataTestId"?: string;
         "icon"?: IconDefinition;
         "link": string;
@@ -183,7 +183,7 @@ export namespace Components {
     }
     interface TrimText {
         "class"?: string;
-        "dataTestId": string;
+        "dataTestId"?: string;
         "text": string;
     }
     interface WalletConnectModal {
