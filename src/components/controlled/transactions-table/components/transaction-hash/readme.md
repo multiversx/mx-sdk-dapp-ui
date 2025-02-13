@@ -22,7 +22,7 @@
 ### Depends on
 
 - [transaction-icon](../transaction-icon)
-- [explorer-link](../../../explorer-link)
+- [explorer-link](../../../../visual/explorer-link)
 
 ### Graph
 ```mermaid

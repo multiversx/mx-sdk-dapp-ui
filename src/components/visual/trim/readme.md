@@ -7,19 +7,19 @@
 
 ## Properties
 
-| Property     | Attribute      | Description | Type     | Default                |
-| ------------ | -------------- | ----------- | -------- | ---------------------- |
-| `class`      | `class`        |             | `string` | `undefined`            |
-| `dataTestId` | `data-test-id` |             | `string` | `DataTestIdsEnum.trim` |
-| `text`       | `text`         |             | `string` | `undefined`            |
+| Property     | Attribute      | Description | Type     | Default     |
+| ------------ | -------------- | ----------- | -------- | ----------- |
+| `class`      | `class`        |             | `string` | `undefined` |
+| `dataTestId` | `data-test-id` |             | `string` | `undefined` |
+| `text`       | `text`         |             | `string` | `undefined` |
 
 
 ## Dependencies
 
 ### Used by
 
- - [transaction-account-name](../transactions-table/components/transaction-account/components/transaction-account-name)
- - [transaction-toast-details-body](../toasts-list/components/transaction-toast/components/transaction-toast-details/components)
+ - [transaction-account-name](../../controlled/transactions-table/components/transaction-account/components/transaction-account-name)
+ - [transaction-toast-details-body](../../controlled/toasts-list/components/transaction-toast/components/transaction-toast-details/components)
 
 ### Graph
 ```mermaid

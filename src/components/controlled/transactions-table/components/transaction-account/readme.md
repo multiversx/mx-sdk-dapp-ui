@@ -24,8 +24,8 @@
 
 ### Depends on
 
-- [fa-icon](../../../fa-icon)
-- [explorer-link](../../../explorer-link)
+- [fa-icon](../../../../visual/fa-icon)
+- [explorer-link](../../../../visual/explorer-link)
 - [transaction-account-name](./components/transaction-account-name)
 
 ### Graph

@@ -18,11 +18,11 @@
 
 ### Used by
 
- - [copy-button](../copy-button)
+ - [copy-button](../../functional/copy-button)
  - [explorer-link](../explorer-link)
- - [transaction-account](../transactions-table/components/transaction-account)
- - [transaction-icon](../transactions-table/components/transaction-icon)
- - [transaction-value](../transactions-table/components/transaction-value)
+ - [transaction-account](../../controlled/transactions-table/components/transaction-account)
+ - [transaction-icon](../../controlled/transactions-table/components/transaction-icon)
+ - [transaction-value](../../controlled/transactions-table/components/transaction-value)
 
 ### Graph
 ```mermaid

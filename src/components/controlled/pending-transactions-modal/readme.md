@@ -29,7 +29,7 @@ Type: `Promise<IEventBus>`
 
 ### Depends on
 
-- [generic-modal](../../common/generic-modal)
+- [generic-modal](../../../common/generic-modal)
 
 ### Graph
 ```mermaid

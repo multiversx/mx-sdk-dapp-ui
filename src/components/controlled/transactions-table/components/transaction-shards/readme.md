@@ -21,7 +21,7 @@
 
 ### Depends on
 
-- [explorer-link](../../../explorer-link)
+- [explorer-link](../../../../visual/explorer-link)
 
 ### Graph
 ```mermaid

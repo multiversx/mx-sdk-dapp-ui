@@ -22,8 +22,8 @@
 ### Depends on
 
 - [format-amount](../../../format-amount)
-- [explorer-link](../../../explorer-link)
-- [fa-icon](../../../fa-icon)
+- [explorer-link](../../../../visual/explorer-link)
+- [fa-icon](../../../../visual/fa-icon)
 
 ### Graph
 ```mermaid

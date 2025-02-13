@@ -9,9 +9,9 @@
 
 ### Used by
 
- - [ledger-connect-modal](../../components/ledger-connect-modal)
- - [sign-transactions-modal](../../components/sign-transactions-modal)
- - [wallet-connect-modal](../../components/wallet-connect-modal)
+ - [ledger-connect-modal](../../components/controlled/ledger-connect-modal)
+ - [sign-transactions-modal](../../components/controlled/sign-transactions-modal)
+ - [wallet-connect-modal](../../components/controlled/wallet-connect-modal)
 
 ### Graph
 ```mermaid

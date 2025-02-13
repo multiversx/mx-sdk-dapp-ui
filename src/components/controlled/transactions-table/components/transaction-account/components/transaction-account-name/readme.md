@@ -24,7 +24,7 @@
 
 ### Depends on
 
-- [trim-text](../../../../../trim)
+- [trim-text](../../../../../../visual/trim)
 
 ### Graph
 ```mermaid

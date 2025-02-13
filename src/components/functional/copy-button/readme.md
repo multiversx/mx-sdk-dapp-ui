@@ -10,8 +10,8 @@
 | Property      | Attribute | Description | Type             | Default     |
 | ------------- | --------- | ----------- | ---------------- | ----------- |
 | `class`       | `class`   |             | `string`         | `undefined` |
-| `copyIcon`    | --        |             | `IconDefinition` | `faCopy`    |
-| `successIcon` | --        |             | `IconDefinition` | `faCheck`   |
+| `copyIcon`    | --        |             | `IconDefinition` | `undefined` |
+| `successIcon` | --        |             | `IconDefinition` | `undefined` |
 | `text`        | `text`    |             | `string`         | `undefined` |
 
 
@@ -19,11 +19,11 @@
 
 ### Used by
 
- - [transaction-toast-details-body](../toasts-list/components/transaction-toast/components/transaction-toast-details/components)
+ - [transaction-toast-details-body](../../controlled/toasts-list/components/transaction-toast/components/transaction-toast-details/components)
 
 ### Depends on
 
-- [fa-icon](../fa-icon)
+- [fa-icon](../../visual/fa-icon)
 
 ### Graph
 ```mermaid

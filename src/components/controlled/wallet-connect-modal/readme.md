@@ -29,8 +29,8 @@ Type: `Promise<IEventBus>`
 
 ### Depends on
 
-- [generic-modal](../../common/generic-modal)
-- [generic-spinner](../../common/generic-spinner)
+- [generic-modal](../../../common/generic-modal)
+- [generic-spinner](../../../common/generic-spinner)
 
 ### Graph
 ```mermaid

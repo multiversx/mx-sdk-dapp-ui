@@ -20,11 +20,11 @@
 
 ### Used by
 
- - [transaction-account](../transactions-table/components/transaction-account)
- - [transaction-hash](../transactions-table/components/transaction-hash)
- - [transaction-shards](../transactions-table/components/transaction-shards)
- - [transaction-toast-details-body](../toasts-list/components/transaction-toast/components/transaction-toast-details/components)
- - [transaction-value](../transactions-table/components/transaction-value)
+ - [transaction-account](../../controlled/transactions-table/components/transaction-account)
+ - [transaction-hash](../../controlled/transactions-table/components/transaction-hash)
+ - [transaction-shards](../../controlled/transactions-table/components/transaction-shards)
+ - [transaction-toast-details-body](../../controlled/toasts-list/components/transaction-toast/components/transaction-toast-details/components)
+ - [transaction-value](../../controlled/transactions-table/components/transaction-value)
 
 ### Depends on
 

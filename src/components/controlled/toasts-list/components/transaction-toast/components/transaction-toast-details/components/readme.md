@@ -23,9 +23,9 @@
 
 ### Depends on
 
-- [trim-text](../../../../../../trim)
-- [copy-button](../../../../../../copy-button)
-- [explorer-link](../../../../../../explorer-link)
+- [trim-text](../../../../../../../visual/trim)
+- [copy-button](../../../../../../../functional/copy-button)
+- [explorer-link](../../../../../../../visual/explorer-link)
 
 ### Graph
 ```mermaid
