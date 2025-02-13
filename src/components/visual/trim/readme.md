@@ -19,7 +19,7 @@
 ### Used by
 
  - [transaction-account-name](../../controlled/transactions-table/components/transaction-account/components/transaction-account-name)
- - [transaction-toast-details-body](../../controlled/toasts-list/components/transaction-toast/components/transaction-toast-details/components)
+ - [transaction-toast-details-body](../../functional/toasts-list/components/transaction-toast/components/transaction-toast-details/components)
 
 ### Graph
 ```mermaid

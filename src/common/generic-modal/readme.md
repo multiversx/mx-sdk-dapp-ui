@@ -25,10 +25,10 @@
 
 ### Used by
 
- - [ledger-connect-modal](../../components/controlled/ledger-connect-modal)
- - [pending-transactions-modal](../../components/controlled/pending-transactions-modal)
- - [sign-transactions-modal](../../components/controlled/sign-transactions-modal)
- - [wallet-connect-modal](../../components/controlled/wallet-connect-modal)
+ - [ledger-connect-modal](../../components/functional/ledger-connect-modal)
+ - [pending-transactions-modal](../../components/functional/pending-transactions-modal)
+ - [sign-transactions-modal](../../components/functional/sign-transactions-modal)
+ - [wallet-connect-modal](../../components/functional/wallet-connect-modal)
 
 ### Graph
 ```mermaid

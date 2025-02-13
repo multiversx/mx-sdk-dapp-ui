@@ -19,11 +19,11 @@
 
 ### Used by
 
- - [transaction-toast-details-body](../../controlled/toasts-list/components/transaction-toast/components/transaction-toast-details/components)
+ - [transaction-toast-details-body](../../functional/toasts-list/components/transaction-toast/components/transaction-toast-details/components)
 
 ### Depends on
 
-- [fa-icon](../../visual/fa-icon)
+- [fa-icon](../fa-icon)
 
 ### Graph
 ```mermaid

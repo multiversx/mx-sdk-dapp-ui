@@ -23,7 +23,7 @@
  - [transaction-account](../../controlled/transactions-table/components/transaction-account)
  - [transaction-hash](../../controlled/transactions-table/components/transaction-hash)
  - [transaction-shards](../../controlled/transactions-table/components/transaction-shards)
- - [transaction-toast-details-body](../../controlled/toasts-list/components/transaction-toast/components/transaction-toast-details/components)
+ - [transaction-toast-details-body](../../functional/toasts-list/components/transaction-toast/components/transaction-toast-details/components)
  - [transaction-value](../../controlled/transactions-table/components/transaction-value)
 
 ### Depends on

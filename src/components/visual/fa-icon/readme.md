@@ -18,7 +18,7 @@
 
 ### Used by
 
- - [copy-button](../../functional/copy-button)
+ - [copy-button](../copy-button)
  - [explorer-link](../explorer-link)
  - [transaction-account](../../controlled/transactions-table/components/transaction-account)
  - [transaction-icon](../../controlled/transactions-table/components/transaction-icon)

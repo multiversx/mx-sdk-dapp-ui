@@ -24,7 +24,7 @@
 ### Depends on
 
 - [trim-text](../../../../../../../visual/trim)
-- [copy-button](../../../../../../../functional/copy-button)
+- [copy-button](../../../../../../../visual/copy-button)
 - [explorer-link](../../../../../../../visual/explorer-link)
 
 ### Graph
