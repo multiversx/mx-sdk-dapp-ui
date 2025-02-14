@@ -61,6 +61,7 @@ export namespace Components {
         "isValid": boolean;
         "label"?: string;
         "labelClass"?: string;
+        "showLabel"?: boolean;
         "valueDecimal": string;
         "valueInteger": string;
     }
@@ -565,6 +566,7 @@ declare namespace LocalJSX {
         "isValid"?: boolean;
         "label"?: string;
         "labelClass"?: string;
+        "showLabel"?: boolean;
         "valueDecimal"?: string;
         "valueInteger"?: string;
     }
