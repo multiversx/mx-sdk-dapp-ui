@@ -11,7 +11,6 @@ describe('FormatAmount component', () => {
       value-integer="${props.valueInteger}"
       value-decimal="${props.valueDecimal}"
       label="${props.label}"
-      show-label="${props.showLabel}"
     ></format-amount>`,
       supportsShadowDom: true,
     });
@@ -34,7 +33,6 @@ describe('FormatAmount component', () => {
       valueInteger: '99999',
       valueDecimal: '.99',
       label: 'EGLD',
-      showLabel: true,
     };
 
     const page = await renderComponent(props);
@@ -48,7 +46,6 @@ describe('FormatAmount component', () => {
       valueInteger: '90000',
       valueDecimal: '',
       label: 'EGLD',
-      showLabel: true,
     };
 
     const page = await renderComponent(props);
@@ -61,20 +58,18 @@ describe('FormatAmount component', () => {
       valueInteger: '',
       valueDecimal: '',
       label: '',
-      showLabel: true,
     };
 
     const page = await renderComponent(props);
     expect(page.root.shadowRoot.querySelector('span[data-testid="formatAmountInt"]').textContent).toBe('...');
   });
 
-  it('should render symbol when label is provided and showLabel is true', async () => {
+  it('should render symbol when label is provided', async () => {
     const props = {
       isValid: true,
       valueInteger: '90000',
       valueDecimal: '.00',
       label: 'EGLD',
-      showLabel: true,
     };
 
     const page = await renderComponent(props);
@@ -87,20 +82,6 @@ describe('FormatAmount component', () => {
       valueInteger: '90000',
       valueDecimal: '.00',
       label: '',
-      showLabel: true,
-    };
-
-    const page = await renderComponent(props);
-    expect(symbolSelector(page)).toBe(0);
-  });
-
-  it('should not render symbol when showLabel is false even if label is provided', async () => {
-    const props = {
-      isValid: true,
-      valueInteger: '90000',
-      valueDecimal: '.00',
-      label: 'EGLD',
-      showLabel: false,
     };
 
     const page = await renderComponent(props);
