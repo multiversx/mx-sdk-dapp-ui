@@ -14,6 +14,7 @@
 | `isValid`      | `is-valid`      |             | `boolean` | `undefined` |
 | `label`        | `label`         |             | `string`  | `undefined` |
 | `labelClass`   | `label-class`   |             | `string`  | `undefined` |
+| `showLabel`    | `show-label`    |             | `boolean` | `undefined` |
 | `valueDecimal` | `value-decimal` |             | `string`  | `undefined` |
 | `valueInteger` | `value-integer` |             | `string`  | `undefined` |
 
