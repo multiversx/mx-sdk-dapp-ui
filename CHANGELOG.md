@@ -7,7 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- [Added showLabel prop to formatAmount component](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/38)
 - [Refactored components folders](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/37)
 - [Added tests workflow](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/36)
 - [Added transactions-table test](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/34)

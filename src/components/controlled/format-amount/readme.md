@@ -1,9 +1,6 @@
 # format-amount
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -14,24 +11,24 @@
 | `isValid`      | `is-valid`      |             | `boolean` | `undefined` |
 | `label`        | `label`         |             | `string`  | `undefined` |
 | `labelClass`   | `label-class`   |             | `string`  | `undefined` |
-| `showLabel`    | `show-label`    |             | `boolean` | `undefined` |
+| `showLabel`    | `show-label`    |             | `boolean` | `true`      |
 | `valueDecimal` | `value-decimal` |             | `string`  | `undefined` |
 | `valueInteger` | `value-integer` |             | `string`  | `undefined` |
-
 
 ## Dependencies
 
 ### Used by
 
- - [transaction-value](../transactions-table/components/transaction-value)
+- [transaction-value](../transactions-table/components/transaction-value)
 
 ### Graph
+
 ```mermaid
 graph TD;
   transaction-value --> format-amount
   style format-amount fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
