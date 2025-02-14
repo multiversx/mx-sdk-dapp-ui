@@ -13,6 +13,7 @@ export class FormatAmount {
   @Prop() isValid: boolean;
   @Prop() label?: string;
   @Prop() labelClass?: string;
+  @Prop() showLabel?: boolean = true;
   @Prop() valueDecimal: string;
   @Prop() valueInteger: string;
 
@@ -41,7 +42,7 @@ export class FormatAmount {
             {this.valueDecimal}
           </span>
         )}
-        {this.label && (
+        {this.showLabel && this.label && (
           <span
             class={{
               symbol: true,

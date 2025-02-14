@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property       | Attribute       | Description | Type      | Default     |
@@ -15,20 +16,20 @@
 | `valueDecimal` | `value-decimal` |             | `string`  | `undefined` |
 | `valueInteger` | `value-integer` |             | `string`  | `undefined` |
 
+
 ## Dependencies
 
 ### Used by
 
-- [transaction-value](../transactions-table/components/transaction-value)
+ - [transaction-value](../transactions-table/components/transaction-value)
 
 ### Graph
-
 ```mermaid
 graph TD;
   transaction-value --> format-amount
   style format-amount fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*
