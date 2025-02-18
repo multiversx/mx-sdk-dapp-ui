@@ -1,0 +1,16 @@
+.format-amount {
+  align-items: center;
+}
+
+.int-amount {
+  color: inherit;
+}
+
+.decimals {
+  color: inherit;
+}
+
+.symbol {
+  color: inherit;
+  margin-left: 0.25rem;
+}

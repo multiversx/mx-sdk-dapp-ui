@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.0-alpha.3](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/40)] - 2025-02-18
+
+- [Refactored components folders](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/37)
+- [Added tests workflow](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/36)
+- [Added transactions-table test](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/34)
+- [Fixed TrimText component](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/33)
+- [Added copy, trim and explorer link on toasts](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/32)
+- [Enhance toast progress component](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/31)
+- [Added transactions table styling](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/30)
+- [Added react output config](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/29)
+- [Added Trim and CopyButton components](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/28)
+- [Added transaction account](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/27)
+- [Clean package.json export](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/26)
+- [Updated transactions table props](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/25)
+
 ## [[0.0.0-alpha.2](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/24)] - 2025-01-27
 
 - [Fixed generic modal event warning](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/23)

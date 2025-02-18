@@ -1,0 +1,108 @@
+@keyframes progressiveFixedWidthExpansion {
+  from {
+    width: min(var(--start-width, 0%), 80%);
+  }
+
+  to {
+    width: 80%;
+  }
+}
+
+@keyframes progressiveInfiniteWidthExpansion {
+  from {
+    width: min(var(--start-width, 0%), 100%);
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes quickWidthExpansion {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.transaction-toast-progress {
+  position: relative;
+}
+
+.transaction-toast-bar-wrapper {
+  transition: opacity 250ms ease-in;
+  background-color: lightgray;
+  position: absolute;
+  pointer-events: none;
+  left: 0;
+  top: 0;
+  opacity: 25%;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  flex-direction: row-reverse;
+}
+
+.transaction-toast-bar {
+  height: 100%;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.transaction-toast-bar.fixed {
+  width: min(var(--start-width, 0%), 50%);
+  background-color: white;
+  animation-name: progressiveFixedWidthExpansion;
+  animation-duration: var(--animation-duration, 6s);
+  animation-timing-function: cubic-bezier(0.5, 0.95, 0, 0.35);
+  animation-fill-mode: forwards;
+}
+
+.transaction-toast-bar.infinite {
+  width: 20%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.transaction-toast-bar.infinite .transaction-toast-bar-line {
+  width: 0%;
+  background-color: white;
+  animation-name: progressiveInfiniteWidthExpansion;
+  animation-duration: var(--animation-duration, 60s);
+  animation-timing-function: cubic-bezier(0.1, 0.95, 0.25, 0.75);
+  animation-fill-mode: forwards;
+  animation-delay: var(--animation-delay, 6s);
+  height: 100%;
+  position: relative;
+}
+
+.transaction-toast-bar.infinite .transaction-toast-bar-line:before {
+  position: absolute;
+  background-color: white;
+  content: '';
+  width: calc(4px / 2);
+  right: -1px;
+  top: 0;
+  bottom: 0;
+}
+
+.transaction-toast-bar.fill {
+  width: 0%;
+  position: absolute;
+  background-color: white;
+}
+
+.transaction-toast-bar.fill.animate {
+  animation: quickWidthExpansion 250ms linear forwards;
+}
+
+.transaction-toast-bar-content {
+  z-index: 1;
+  position: relative;
+}
