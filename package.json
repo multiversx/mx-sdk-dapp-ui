@@ -1,6 +1,6 @@
 {
   "name": "@multiversx/sdk-dapp-core-ui",
-  "version": "0.0.0-alpha.3",
+  "version": "0.0.0-alpha.4",
   "description": "A library to hold UI components for a dApp on the MultiversX blockchain",
   "author": "MultiversX",
   "license": "MIT",
@@ -56,12 +56,12 @@
     "@fortawesome/fontawesome-svg-core": ">= 6.7.2",
     "@fortawesome/free-solid-svg-icons": ">= 6.7.2",
     "@multiversx/sdk-dapp-utils": ">= 1.0.4",
+    "@stencil/react-output-target": "0.8.2",
     "classnames": ">= 2.5.1",
     "qrcode": ">= 1.5.4"
   },
   "devDependencies": {
     "@stencil/core": "^4.22.3",
-    "@stencil/react-output-target": "0.8.2",
     "@stencil/sass": "^3.0.12",
     "@stencil/store": "2.0.16",
     "@types/jest": "^29.5.14",
