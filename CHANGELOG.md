@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.0-alpha.4](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/41)] - 2025-02-18
+
+- [Added react-output-target](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/41)
+
 ## [[0.0.0-alpha.3](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/40)] - 2025-02-18
 
 - [Refactored components folders](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/37)
