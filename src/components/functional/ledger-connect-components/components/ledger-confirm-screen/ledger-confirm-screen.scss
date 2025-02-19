@@ -1,0 +1,50 @@
+.address-section {
+  line-height: 1.5;
+  margin-top: 40px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.address-section .address-description {
+  color: #858688;
+}
+
+.address-section .address-data {
+  background-color: #ced4da;
+  line-height: 1;
+  padding: 12px;
+  text-align: center;
+  border-radius: 8px;
+  word-break: break-word;
+}
+
+.address-section .address-header {
+  background-color: #ced4da;
+  line-height: 1;
+  padding: 12px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.address-footer {
+  font-size: 14px;
+  color: var(--gray-700);
+  line-height: 1.5;
+  position: relative;
+  margin-top: 40px;
+  padding-top: 40px;
+}
+
+.address-footer::before {
+  height: 1px;
+  content: '';
+  left: 0;
+  bottom: 100%;
+  right: 0;
+  position: absolute;
+  background-color: var(--gray-700);
+}
+
+.address-footer a {
+  color: var(--primary);
+}

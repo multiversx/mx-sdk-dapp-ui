@@ -25,7 +25,7 @@
 
 ### Used by
 
- - [ledger-connect-modal](../../components/functional/ledger-connect-modal)
+ - [ledger-connect-modal](../../components/functional/ledger-connect-components)
  - [pending-transactions-modal](../../components/functional/pending-transactions-modal)
  - [sign-transactions-modal](../../components/functional/sign-transactions-modal)
  - [wallet-connect-modal](../../components/functional/wallet-connect-modal)
