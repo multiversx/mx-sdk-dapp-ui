@@ -44,6 +44,15 @@ export class UnlockPanel {
     }, 300); // Delay unmounting after animation
   }
 
+  disconnectedCallback() {
+    if (this.closeTimeout) {
+      clearTimeout(this.closeTimeout);
+    }
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  }
+
   handleClose = (event: MouseEvent) => {
     if (event.target === event.currentTarget) {
       this.close.emit();

@@ -2,6 +2,7 @@ import { Component, Element, forceUpdate, h, Method, Prop, State } from '@stenci
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
+import { getLedgerAddressByIndex } from './helpers/getLedgerAddressByIndex';
 import type { ILedgerConnectModalData } from './ledger-connect.types';
 import { LedgerConnectEventsEnum } from './ledger-connect.types';
 
@@ -52,13 +53,13 @@ export class LedgerConnect {
   private accessWallet() {
     this.eventBus.publish(LedgerConnectEventsEnum.ACCESS_WALLET, {
       addressIndex: this.selectedIndex,
-      selectedAddress: this.selectedAddress || this.data.accountScreenData?.accounts.find(({ index }) => index === this.selectedIndex)?.address || '',
+      selectedAddress: this.selectedAddress || getLedgerAddressByIndex({ accounts: this.data.accountScreenData?.accounts, selectedIndex: this.selectedIndex }),
     });
   }
 
   private selectAccount(index: number) {
     this.selectedIndex = index;
-    this.selectedAddress = this.data.accountScreenData?.accounts.find(({ index }) => index === this.selectedIndex)?.address ?? '';
+    this.selectedAddress = getLedgerAddressByIndex({ accounts: this.data.accountScreenData?.accounts, selectedIndex: this.selectedIndex });
   }
 
   async nextPage() {
@@ -78,7 +79,7 @@ export class LedgerConnect {
   }
 
   private removeComponent() {
-    if (this.hostElement && this.hostElement.parentNode) {
+    if (this.hostElement?.parentNode) {
       this.hostElement.parentNode.removeChild(this.hostElement);
     }
   }
