@@ -56,7 +56,9 @@ export class UnlockPanel {
     }
     this.anchor = element;
 
-    if (this.observer) this.observer.disconnect();
+    if (this.observer) {
+      this.observer.disconnect();
+    }
 
     this.observer = new MutationObserver(() => {
       this.isLoggingIn = element.childElementCount > 0;
