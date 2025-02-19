@@ -1,0 +1,25 @@
+.access-button {
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+  padding: 12px;
+  background-color: #1a56db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.access-button:disabled {
+  background-color: #a1a1a1;
+  color: #e0e0e0;
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+  transform: none;
+}
+
+.connection-link {
+  display: flex;
+  justify-content: center;
+}

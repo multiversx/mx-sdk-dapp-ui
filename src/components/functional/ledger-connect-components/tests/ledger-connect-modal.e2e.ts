@@ -22,7 +22,7 @@ describe('ledger-connect-modal', () => {
     const component = await page.find(tag);
     component.setProperty('data', { connectScreenData: { error: 'Unable to find device' } });
     await page.waitForChanges();
-    const error = await page.find(`${tag} >>> div`);
+    const error = await page.find(`${tag} >>> ledger-connect-screen >>> div`);
     expect(error.textContent).toContain(`Unable to find device`);
 
     const loadingUpdate = { connectScreenData: {}, accountScreenData: { accounts: [], startIndex: 0, addressesPerPage: 10, isLoading: true }, confirmScreenData: null };

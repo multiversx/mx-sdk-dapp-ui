@@ -1,7 +1,5 @@
 # fa-icon
 
-
-
 <!-- Auto Generated Below -->
 
 
@@ -23,6 +21,7 @@
  - [transaction-account](../../controlled/transactions-table/components/transaction-account)
  - [transaction-icon](../../controlled/transactions-table/components/transaction-icon)
  - [transaction-value](../../controlled/transactions-table/components/transaction-value)
+ - [unlock-header](../../unlock-panel/components/header)
 
 ### Graph
 ```mermaid
@@ -32,6 +31,7 @@ graph TD;
   transaction-account --> fa-icon
   transaction-icon --> fa-icon
   transaction-value --> fa-icon
+  unlock-header --> fa-icon
   style fa-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

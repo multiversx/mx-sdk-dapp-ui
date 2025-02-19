@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Added unlock panel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/42)
+
 ## [[0.0.0-alpha.4](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/41)] - 2025-02-18
 
 - [Added react-output-target](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/41)
