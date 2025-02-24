@@ -2,7 +2,7 @@ import { Component, Element, forceUpdate, h, Method, Prop, State } from '@stenci
 
 import type { ILedgerConnectModalData } from './ledger-connect.types';
 import { LedgerConnectEventsEnum } from './ledger-connect.types';
-import { LedgerConnectBase } from './legdger-connect-base';
+import { LedgerConnectBase } from './LedgerConnectBase';
 
 @Component({
   tag: 'ledger-connect',
@@ -17,9 +17,9 @@ export class LedgerConnect {
     connectScreenData: {},
   };
 
-  private ledgerConnectBase: LedgerConnectBase;
-
   @State() private selectedIndex = 0;
+
+  private ledgerConnectBase: LedgerConnectBase;
 
   componentWillLoad() {
     this.ledgerConnectBase = new LedgerConnectBase(this.data);
@@ -58,6 +58,7 @@ export class LedgerConnect {
 
   private selectAccount(index: number) {
     this.ledgerConnectBase.selectAccount(index);
+    // this is needed for the UI to be reactive
     this.selectedIndex = this.ledgerConnectBase.selectedIndex;
   }
 
@@ -76,10 +77,24 @@ export class LedgerConnect {
   }
 
   componentDidLoad() {
-    this.ledgerConnectBase.subscribeEventBus({ closeFn: () => this.removeComponent(), forceUpdateFn: () => forceUpdate(this) });
+    this.ledgerConnectBase.subscribeEventBus({
+      closeFn: () => this.removeComponent(),
+      forceUpdateFn: () => {
+        // this is needed for the UI to be reactive
+        this.data = this.ledgerConnectBase.data;
+        forceUpdate(this);
+      },
+    });
   }
 
   disconnectedCallback() {
-    this.ledgerConnectBase.unsubscribeEventBus({ closeFn: () => this.removeComponent(), forceUpdateFn: () => forceUpdate(this) });
+    this.ledgerConnectBase.unsubscribeEventBus({
+      closeFn: () => this.removeComponent(),
+      forceUpdateFn: () => {
+        // this is needed for the UI to be reactive
+        this.data = this.ledgerConnectBase.data;
+        forceUpdate(this);
+      },
+    });
   }
 }

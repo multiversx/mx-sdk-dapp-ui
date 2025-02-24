@@ -1,9 +1,10 @@
 import { Component, Element, forceUpdate, h, Method, Prop, State } from '@stencil/core';
+import type { IGenericModalProps } from 'common/generic-modal/generic-modal.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { ILedgerConnectModalData } from './ledger-connect.types';
 import { LedgerConnectEventsEnum } from './ledger-connect.types';
-import { LedgerConnectBase } from './legdger-connect-base';
+import { LedgerConnectBase } from './LedgerConnectBase';
 
 @Component({
   tag: 'ledger-connect-modal',
@@ -33,16 +34,16 @@ export class LedgerConnectModal {
   render() {
     const modalProps = this.getModalProps();
 
-    return <generic-modal modalTitle={modalProps.title} modalSubtitle={modalProps.subtitle} body={modalProps.body} onClose={() => this.close()} />;
+    return <generic-modal {...modalProps} onClose={() => this.close()} />;
   }
 
-  private getModalProps = () => {
+  private getModalProps = (): Omit<IGenericModalProps, 'close'> => {
     const { accountScreenData, confirmScreenData, connectScreenData } = this.data;
 
     if (accountScreenData) {
       return {
-        title: <div data-testid={`${DataTestIdsEnum.addressTableContainer}Title`}>Access your wallet</div>,
-        subtitle: <div data-testid={`${DataTestIdsEnum.addressTableContainer}SubTitle`}>Choose the wallet you want to access</div>,
+        modalTitle: <div data-testid={`${DataTestIdsEnum.addressTableContainer}Title`}>Access your wallet</div>,
+        modalSubtitle: <div data-testid={`${DataTestIdsEnum.addressTableContainer}SubTitle`}>Choose the wallet you want to access</div>,
         body: (
           <ledger-account-screen
             accountScreenData={accountScreenData}
@@ -58,15 +59,15 @@ export class LedgerConnectModal {
 
     if (confirmScreenData) {
       return {
-        title: 'Confirm',
-        subtitle: 'Confirm Ledger Address',
+        modalTitle: 'Confirm',
+        modalSubtitle: 'Confirm Ledger Address',
         body: <ledger-confirm-screen confirmScreenData={confirmScreenData} />,
       };
     }
 
     return {
-      title: 'Connect Ledger',
-      subtitle: 'Unlock your device & open the MultiversX App',
+      modalTitle: 'Connect Ledger',
+      modalSubtitle: 'Unlock your device & open the MultiversX App',
       body: <ledger-connect-screen connectScreenData={connectScreenData} onConnect={() => this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.CONNECT_DEVICE)} />,
     };
   };
@@ -77,6 +78,7 @@ export class LedgerConnectModal {
 
   private selectAccount(index: number) {
     this.ledgerConnectBase.selectAccount(index);
+    // this is needed for the UI to be reactive
     this.selectedIndex = this.ledgerConnectBase.selectedIndex;
   }
 
@@ -99,10 +101,24 @@ export class LedgerConnectModal {
   }
 
   componentDidLoad() {
-    this.ledgerConnectBase.subscribeEventBus({ closeFn: () => this.close({ isUserClick: false }), forceUpdateFn: () => forceUpdate(this) });
+    this.ledgerConnectBase.subscribeEventBus({
+      closeFn: () => this.close({ isUserClick: false }),
+      forceUpdateFn: () => {
+        // this is needed for the UI to be reactive
+        this.data = this.ledgerConnectBase.data;
+        forceUpdate(this);
+      },
+    });
   }
 
   disconnectedCallback() {
-    this.ledgerConnectBase.unsubscribeEventBus({ closeFn: () => this.close({ isUserClick: false }), forceUpdateFn: () => forceUpdate(this) });
+    this.ledgerConnectBase.unsubscribeEventBus({
+      closeFn: () => this.close({ isUserClick: false }),
+      forceUpdateFn: () => {
+        // this is needed for the UI to be reactive
+        this.data = this.ledgerConnectBase.data;
+        forceUpdate(this);
+      },
+    });
   }
 }

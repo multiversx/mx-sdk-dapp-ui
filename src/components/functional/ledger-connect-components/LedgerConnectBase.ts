@@ -40,6 +40,7 @@ export class LedgerConnectBase {
     this.eventBus.subscribe(LedgerConnectEventsEnum.DATA_UPDATE, (payload: ILedgerConnectModalData) => this.dataUpdate({ payload, closeFn, forceUpdateFn }));
   }
 
+  //TODO: Add tsdoc
   unsubscribeEventBus({ closeFn, forceUpdateFn }: { forceUpdateFn: () => void; closeFn: () => void }) {
     this.eventBus.unsubscribe(LedgerConnectEventsEnum.DATA_UPDATE, (payload: ILedgerConnectModalData) => this.dataUpdate({ payload, closeFn, forceUpdateFn }));
   }

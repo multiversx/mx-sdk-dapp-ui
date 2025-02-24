@@ -1,11 +1,9 @@
 import { Component, Element, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-import QRCode from 'qrcode';
-import type { IEventBus } from 'utils/EventBus';
-import { EventBus } from 'utils/EventBus';
 
-import type { IWalletConnectModalData} from './wallet-connect-modal.types';
+import type { IWalletConnectModalData } from './wallet-connect-modal.types';
 import { WalletConnectEventsEnum } from './wallet-connect-modal.types';
+import { WalletConnectBase } from './WalletConnectBase';
 
 @Component({
   tag: 'wallet-connect-modal',
@@ -14,35 +12,27 @@ import { WalletConnectEventsEnum } from './wallet-connect-modal.types';
 })
 export class WalletConnectModal {
   @Element() hostElement: HTMLElement;
-  private eventBus: IEventBus = new EventBus();
 
   @Prop() data: IWalletConnectModalData = {
     wcURI: '',
   };
 
-  @State() qrCodeSvg: string = ''; // State to hold the generated SVG
+  @State() qrCodeSvg: string = '';
 
-  @Method() async getEventBus() {
-    return this.eventBus;
+  private walletConnectBase: WalletConnectBase;
+
+  componentWillLoad() {
+    this.walletConnectBase = new WalletConnectBase(this.data);
   }
 
-  async generateSVG() {
-    try {
-      const svg = await QRCode.toString(this.data.wcURI, {
-        type: 'svg',
-      });
-      this.qrCodeSvg = svg;
-      return svg;
-    } catch (error) {
-      console.error('Error generating QR Code:', error);
-      return '';
-    }
+  @Method() async getEventBus() {
+    return this.walletConnectBase.getEventBus();
   }
 
   @Watch('data')
-  onDataChange(data: IWalletConnectModalData) {
+  async onDataChange(data: IWalletConnectModalData) {
     if (data.wcURI) {
-      this.generateSVG();
+      this.qrCodeSvg = await this.walletConnectBase.generateSVG(data.wcURI);
     }
   }
 
@@ -57,17 +47,17 @@ export class WalletConnectModal {
             {this.qrCodeSvg ? (
               <div class="qr-code-container" data-testid={DataTestIdsEnum.walletConnectQrCode} innerHTML={this.qrCodeSvg}></div>
             ) : (
-              <generic-spinner data-testid={DataTestIdsEnum.walletConnectLoading}></generic-spinner>
+              <generic-spinner data-testid={DataTestIdsEnum.walletConnectLoading} />
             )}
           </div>
         }
-      ></generic-modal>
+      />
     );
   }
 
   close(props = { isUserClick: true }) {
     if (props.isUserClick) {
-      this.eventBus.publish(WalletConnectEventsEnum.CLOSE);
+      this.walletConnectBase.eventBus.publish(WalletConnectEventsEnum.CLOSE);
     }
 
     if (this.hostElement && this.hostElement.parentNode) {
@@ -75,19 +65,25 @@ export class WalletConnectModal {
     }
   }
 
-  private dataUpdate(payload: any) {
-    if (payload.shouldClose) {
-      return this.close({ isUserClick: false });
-    }
-    this.data = { ...payload };
-    forceUpdate(this);
-  }
-
   componentDidLoad() {
-    this.eventBus.subscribe(WalletConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
+    this.walletConnectBase.subscribeEventBus({
+      closeFn: () => this.close({ isUserClick: false }),
+      forceUpdateFn: () => {
+        // this is needed for the UI to be reactive
+        this.data = this.walletConnectBase.data;
+        forceUpdate(this);
+      },
+    });
   }
 
   disconnectedCallback() {
-    this.eventBus.unsubscribe(WalletConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
+    this.walletConnectBase.unsubscribeEventBus({
+      closeFn: () => this.close({ isUserClick: false }),
+      forceUpdateFn: () => {
+        // this is needed for the UI to be reactive
+        this.data = this.walletConnectBase.data;
+        forceUpdate(this);
+      },
+    });
   }
 }

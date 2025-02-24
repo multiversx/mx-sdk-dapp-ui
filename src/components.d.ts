@@ -7,28 +7,30 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-import { LocalJSX as JSX, VNode } from "@stencil/core";
+import { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
 import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectModalData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 import { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
 import { IEventBus } from "./utils/EventBus";
 import { ProviderTypeEnum } from "./types/provider.types";
+import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-import { IWalletConnectModalData } from "./components/functional/wallet-connect-modal/wallet-connect-modal.types";
+import { IWalletConnectModalData } from "./components/functional/wallet-connect-components/wallet-connect-modal.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-export { LocalJSX as JSX, VNode } from "@stencil/core";
+export { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
 export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectModalData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 export { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
 export { IEventBus } from "./utils/EventBus";
 export { ProviderTypeEnum } from "./types/provider.types";
+export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-export { IWalletConnectModalData } from "./components/functional/wallet-connect-modal/wallet-connect-modal.types";
+export { IWalletConnectModalData } from "./components/functional/wallet-connect-components/wallet-connect-modal.types";
 export namespace Components {
     interface BalanceComponent {
         "amount": string;
@@ -70,9 +72,9 @@ export namespace Components {
     interface FungibleComponent {
     }
     interface GenericModal {
-        "body": VNode;
-        "modalSubtitle"?: string | VNode;
-        "modalTitle": string | VNode;
+        "body": IGenericModalProps['body'];
+        "modalSubtitle"?: IGenericModalProps['modalSubtitle'];
+        "modalTitle": IGenericModalProps['modalTitle'];
     }
     interface GenericSpinner {
     }
@@ -221,7 +223,7 @@ export namespace Components {
     }
     interface WalletConnectModal {
         "data": IWalletConnectModalData;
-        "getEventBus": () => Promise<IEventBus>;
+        "getEventBus": () => Promise<import("/Users/iliedaniel/Projects/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
     }
 }
 export interface CustomToastCustomEvent<T> extends CustomEvent<T> {
@@ -319,7 +321,7 @@ declare global {
         new (): HTMLFungibleComponentElement;
     };
     interface HTMLGenericModalElementEventMap {
-        "close": void;
+        "close": any;
     }
     interface HTMLGenericModalElement extends Components.GenericModal, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGenericModalElementEventMap>(type: K, listener: (this: HTMLGenericModalElement, ev: GenericModalCustomEvent<HTMLGenericModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -726,10 +728,10 @@ declare namespace LocalJSX {
     interface FungibleComponent {
     }
     interface GenericModal {
-        "body"?: VNode;
-        "modalSubtitle"?: string | VNode;
-        "modalTitle"?: string | VNode;
-        "onClose"?: (event: GenericModalCustomEvent<void>) => void;
+        "body"?: IGenericModalProps['body'];
+        "modalSubtitle"?: IGenericModalProps['modalSubtitle'];
+        "modalTitle"?: IGenericModalProps['modalTitle'];
+        "onClose"?: (event: GenericModalCustomEvent<any>) => void;
     }
     interface GenericSpinner {
     }

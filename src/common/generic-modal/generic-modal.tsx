@@ -1,5 +1,6 @@
-import type { EventEmitter, VNode} from '@stencil/core';
-import { Component, Event, h,Prop } from '@stencil/core';
+import { Component, Event, h, Prop } from '@stencil/core';
+
+import type { IGenericModalProps } from './generic-modal.types';
 
 @Component({
   tag: 'generic-modal',
@@ -7,10 +8,10 @@ import { Component, Event, h,Prop } from '@stencil/core';
   shadow: false,
 })
 export class GenericModal {
-  @Prop() body: VNode;
-  @Prop() modalTitle: string | VNode;
-  @Prop() modalSubtitle?: string | VNode;
-  @Event() close: EventEmitter<void>;
+  @Prop() body: IGenericModalProps['body'];
+  @Prop() modalTitle: IGenericModalProps['modalTitle'];
+  @Prop() modalSubtitle?: IGenericModalProps['modalSubtitle'];
+  @Event() close: IGenericModalProps['close'];
 
   render() {
     return (
