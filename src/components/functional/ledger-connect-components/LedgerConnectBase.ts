@@ -5,6 +5,15 @@ import { getLedgerAddressByIndex } from './helpers/getLedgerAddressByIndex';
 import type { ILedgerConnectModalData } from './ledger-connect.types';
 import { LedgerConnectEventsEnum } from './ledger-connect.types';
 
+interface ILedgerConnectEventBusProps {
+  forceUpdateFn: () => void;
+  closeFn: () => void;
+}
+
+interface ILedgerConnectDataUpdateProps extends ILedgerConnectEventBusProps {
+  payload: ILedgerConnectModalData;
+}
+
 export class LedgerConnectBase {
   eventBus: IEventBus = new EventBus();
   selectedIndex = 0;
@@ -36,16 +45,15 @@ export class LedgerConnectBase {
     this.eventBus.publish(LedgerConnectEventsEnum.PREV_PAGE);
   }
 
-  subscribeEventBus({ closeFn, forceUpdateFn }: { forceUpdateFn: () => void; closeFn: () => void }) {
+  subscribeEventBus({ closeFn, forceUpdateFn }: ILedgerConnectEventBusProps) {
     this.eventBus.subscribe(LedgerConnectEventsEnum.DATA_UPDATE, (payload: ILedgerConnectModalData) => this.dataUpdate({ payload, closeFn, forceUpdateFn }));
   }
 
-  //TODO: Add tsdoc
-  unsubscribeEventBus({ closeFn, forceUpdateFn }: { forceUpdateFn: () => void; closeFn: () => void }) {
+  unsubscribeEventBus({ closeFn, forceUpdateFn }: ILedgerConnectEventBusProps) {
     this.eventBus.unsubscribe(LedgerConnectEventsEnum.DATA_UPDATE, (payload: ILedgerConnectModalData) => this.dataUpdate({ payload, closeFn, forceUpdateFn }));
   }
 
-  private dataUpdate({ payload, closeFn, forceUpdateFn }: { payload: ILedgerConnectModalData; forceUpdateFn: () => void; closeFn: () => void }) {
+  private dataUpdate({ payload, closeFn, forceUpdateFn }: ILedgerConnectDataUpdateProps) {
     if (payload.shouldClose) {
       return closeFn();
     }

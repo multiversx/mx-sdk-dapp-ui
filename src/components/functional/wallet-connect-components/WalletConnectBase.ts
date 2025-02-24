@@ -5,6 +5,15 @@ import { EventBus } from 'utils/EventBus';
 import type { IWalletConnectModalData } from './wallet-connect-modal.types';
 import { WalletConnectEventsEnum } from './wallet-connect-modal.types';
 
+interface IWalletConnectEventBusProps {
+  forceUpdateFn: () => void;
+  closeFn: () => void;
+}
+
+interface IWalletConnectDataUpdateProps extends IWalletConnectEventBusProps {
+  payload: IWalletConnectModalData;
+}
+
 export class WalletConnectBase {
   eventBus: IEventBus = new EventBus();
 
@@ -26,15 +35,15 @@ export class WalletConnectBase {
     }
   }
 
-  subscribeEventBus({ closeFn, forceUpdateFn }: { forceUpdateFn: () => void; closeFn: () => void }) {
+  subscribeEventBus({ closeFn, forceUpdateFn }: IWalletConnectEventBusProps) {
     this.eventBus.subscribe(WalletConnectEventsEnum.DATA_UPDATE, (payload: IWalletConnectModalData) => this.dataUpdate({ payload, closeFn, forceUpdateFn }));
   }
 
-  unsubscribeEventBus({ closeFn, forceUpdateFn }: { forceUpdateFn: () => void; closeFn: () => void }) {
+  unsubscribeEventBus({ closeFn, forceUpdateFn }: IWalletConnectEventBusProps) {
     this.eventBus.unsubscribe(WalletConnectEventsEnum.DATA_UPDATE, (payload: IWalletConnectModalData) => this.dataUpdate({ payload, closeFn, forceUpdateFn }));
   }
 
-  private dataUpdate({ payload, closeFn, forceUpdateFn }: { payload: IWalletConnectModalData; forceUpdateFn: () => void; closeFn: () => void }) {
+  private dataUpdate({ payload, closeFn, forceUpdateFn }: IWalletConnectDataUpdateProps) {
     if (payload.shouldClose) {
       return closeFn();
     }
