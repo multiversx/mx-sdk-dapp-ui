@@ -23,6 +23,9 @@ const excludeComponents = [
   'sign-transaction-component',
   'wallet-connect-modal',
   'transaction-toast-progress',
+  'token-component',
+  'fungible-component',
+  'balance-component',
 ];
 
 export const config: Config = {
