@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Added missing components from excludeComponents stancil config](https://github.com/multiversx/mx-sdk-dapp-core/pull/44)
 - [Added wallet connect side panel support](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/43)
 - [Added unlock panel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/42)
 
