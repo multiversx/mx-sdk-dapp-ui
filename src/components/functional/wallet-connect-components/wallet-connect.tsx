@@ -1,15 +1,13 @@
 import { Component, Element, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
-import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { IWalletConnectModalData } from './wallet-connect-modal.types';
-import { WalletConnectEventsEnum } from './wallet-connect-modal.types';
 import { WalletConnectBase } from './WalletConnectBase';
 
 @Component({
-  tag: 'wallet-connect-modal',
+  tag: 'wallet-connect',
   shadow: true,
 })
-export class WalletConnectModal {
+export class WalletConnect {
   @Element() hostElement: HTMLElement;
 
   @Prop() data: IWalletConnectModalData = {
@@ -36,29 +34,18 @@ export class WalletConnectModal {
   }
 
   render() {
-    return (
-      <generic-modal
-        modalTitle={<div data-testid={DataTestIdsEnum.walletConnetModalTitle}>xPortal Mobile Wallet</div>}
-        modalSubtitle={<div data-testid={DataTestIdsEnum.walletConnetModalSubtitle}>Scan this QR code with your app</div>}
-        onClose={() => this.close()}
-        body={<wallet-connect-body qrCodeSvg={this.qrCodeSvg} />}
-      />
-    );
+    return <wallet-connect-body qrCodeSvg={this.qrCodeSvg} description="Scan this QR using xPortal" />;
   }
 
-  close(props = { isUserClick: true }) {
-    if (props.isUserClick) {
-      this.walletConnectBase.eventBus.publish(WalletConnectEventsEnum.CLOSE);
-    }
-
-    if (this.hostElement && this.hostElement.parentNode) {
+  private removeComponent() {
+    if (this.hostElement?.parentNode) {
       this.hostElement.parentNode.removeChild(this.hostElement);
     }
   }
 
   componentDidLoad() {
     this.walletConnectBase.subscribeEventBus({
-      closeFn: () => this.close({ isUserClick: false }),
+      closeFn: () => this.removeComponent(),
       forceUpdateFn: () => {
         // this is needed for the UI to be reactive
         this.data = this.walletConnectBase.data;
@@ -69,7 +56,7 @@ export class WalletConnectModal {
 
   disconnectedCallback() {
     this.walletConnectBase.unsubscribeEventBus({
-      closeFn: () => this.close({ isUserClick: false }),
+      closeFn: () => this.removeComponent(),
       forceUpdateFn: () => {
         // this is needed for the UI to be reactive
         this.data = this.walletConnectBase.data;
