@@ -11,7 +11,7 @@
 
  - [ledger-account-screen](../../components/functional/ledger-connect-components/components/ledger-account-screen)
  - [sign-transactions-modal](../../components/functional/sign-transactions-modal)
- - [wallet-connect-modal](../../components/functional/wallet-connect-modal)
+ - [wallet-connect-modal](../../components/functional/wallet-connect-components)
 
 ### Graph
 ```mermaid

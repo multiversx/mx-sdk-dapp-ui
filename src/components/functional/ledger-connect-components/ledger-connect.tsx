@@ -1,10 +1,8 @@
 import { Component, Element, forceUpdate, h, Method, Prop, State } from '@stencil/core';
-import type { IEventBus } from 'utils/EventBus';
-import { EventBus } from 'utils/EventBus';
 
-import { getLedgerAddressByIndex } from './helpers/getLedgerAddressByIndex';
 import type { ILedgerConnectModalData } from './ledger-connect.types';
 import { LedgerConnectEventsEnum } from './ledger-connect.types';
+import { LedgerConnectBase } from './LedgerConnectBase';
 
 @Component({
   tag: 'ledger-connect',
@@ -12,7 +10,6 @@ import { LedgerConnectEventsEnum } from './ledger-connect.types';
 })
 export class LedgerConnect {
   @Element() hostElement: HTMLElement;
-  private eventBus: IEventBus = new EventBus();
 
   @Prop() data: ILedgerConnectModalData = {
     accountScreenData: null,
@@ -20,12 +17,17 @@ export class LedgerConnect {
     connectScreenData: {},
   };
 
-  @Method() async getEventBus() {
-    return this.eventBus;
+  @State() private selectedIndex = 0;
+
+  private ledgerConnectBase: LedgerConnectBase;
+
+  componentWillLoad() {
+    this.ledgerConnectBase = new LedgerConnectBase(this.data);
   }
 
-  @State() private selectedIndex = 0;
-  @State() private selectedAddress = '';
+  @Method() async getEventBus() {
+    return this.ledgerConnectBase.getEventBus();
+  }
 
   render() {
     const { accountScreenData, confirmScreenData, connectScreenData } = this.data;
@@ -47,35 +49,25 @@ export class LedgerConnect {
       return <ledger-confirm-screen confirmScreenData={confirmScreenData} />;
     }
 
-    return <ledger-connect-screen connectScreenData={connectScreenData} onConnect={() => this.eventBus.publish(LedgerConnectEventsEnum.CONNECT_DEVICE)} />;
+    return <ledger-connect-screen connectScreenData={connectScreenData} onConnect={() => this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.CONNECT_DEVICE)} />;
   }
 
   private accessWallet() {
-    this.eventBus.publish(LedgerConnectEventsEnum.ACCESS_WALLET, {
-      addressIndex: this.selectedIndex,
-      selectedAddress: this.selectedAddress || getLedgerAddressByIndex({ accounts: this.data.accountScreenData?.accounts, selectedIndex: this.selectedIndex }),
-    });
+    this.ledgerConnectBase.accessWallet();
   }
 
   private selectAccount(index: number) {
-    this.selectedIndex = index;
-    this.selectedAddress = getLedgerAddressByIndex({ accounts: this.data.accountScreenData?.accounts, selectedIndex: this.selectedIndex });
+    this.ledgerConnectBase.selectAccount(index);
+    // this is needed for the UI to be reactive
+    this.selectedIndex = this.ledgerConnectBase.selectedIndex;
   }
 
   async nextPage() {
-    this.eventBus.publish(LedgerConnectEventsEnum.NEXT_PAGE);
+    this.ledgerConnectBase.nextPage();
   }
 
   async prevPage() {
-    this.eventBus.publish(LedgerConnectEventsEnum.PREV_PAGE);
-  }
-
-  private dataUpdate(payload: ILedgerConnectModalData) {
-    if (payload.shouldClose) {
-      return this.removeComponent();
-    }
-    this.data = { ...payload };
-    forceUpdate(this);
+    this.ledgerConnectBase.prevPage();
   }
 
   private removeComponent() {
@@ -85,10 +77,24 @@ export class LedgerConnect {
   }
 
   componentDidLoad() {
-    this.eventBus.subscribe(LedgerConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
+    this.ledgerConnectBase.subscribeEventBus({
+      closeFn: () => this.removeComponent(),
+      forceUpdateFn: () => {
+        // this is needed for the UI to be reactive
+        this.data = this.ledgerConnectBase.data;
+        forceUpdate(this);
+      },
+    });
   }
 
   disconnectedCallback() {
-    this.eventBus.unsubscribe(LedgerConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
+    this.ledgerConnectBase.unsubscribeEventBus({
+      closeFn: () => this.removeComponent(),
+      forceUpdateFn: () => {
+        // this is needed for the UI to be reactive
+        this.data = this.ledgerConnectBase.data;
+        forceUpdate(this);
+      },
+    });
   }
 }

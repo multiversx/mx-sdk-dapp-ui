@@ -5,4 +5,5 @@ export enum WalletConnectEventsEnum {
 
 export interface IWalletConnectModalData {
   wcURI: string;
+  shouldClose?: boolean;
 }

@@ -16,9 +16,9 @@
 
 ## Events
 
-| Event   | Description | Type                |
-| ------- | ----------- | ------------------- |
-| `close` |             | `CustomEvent<void>` |
+| Event   | Description | Type               |
+| ------- | ----------- | ------------------ |
+| `close` |             | `CustomEvent<any>` |
 
 
 ## Dependencies
@@ -28,7 +28,7 @@
  - [ledger-connect-modal](../../components/functional/ledger-connect-components)
  - [pending-transactions-modal](../../components/functional/pending-transactions-modal)
  - [sign-transactions-modal](../../components/functional/sign-transactions-modal)
- - [wallet-connect-modal](../../components/functional/wallet-connect-modal)
+ - [wallet-connect-modal](../../components/functional/wallet-connect-components)
 
 ### Graph
 ```mermaid
