@@ -9,8 +9,8 @@ import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
 import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectModalData } from "./components/functional/ledger-connect-components/ledger-connect.types";
-import { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
 import { IEventBus } from "./utils/EventBus";
+import { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
 import { ProviderTypeEnum } from "./types/provider.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
@@ -22,8 +22,8 @@ export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
 export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectModalData } from "./components/functional/ledger-connect-components/ledger-connect.types";
-export { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
 export { IEventBus } from "./utils/EventBus";
+export { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
 export { ProviderTypeEnum } from "./types/provider.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
@@ -90,11 +90,11 @@ export namespace Components {
     }
     interface LedgerConnect {
         "data": ILedgerConnectModalData;
-        "getEventBus": () => Promise<import("/Users/iliedaniel/Projects/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
+        "getEventBus": () => Promise<IEventBus>;
     }
     interface LedgerConnectModal {
         "data": ILedgerConnectModalData;
-        "getEventBus": () => Promise<import("/Users/iliedaniel/Projects/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
+        "getEventBus": () => Promise<IEventBus>;
     }
     interface LedgerConnectScreen {
         "connectScreenData": IConnectScreenData;
@@ -223,7 +223,7 @@ export namespace Components {
     }
     interface WalletConnectModal {
         "data": IWalletConnectModalData;
-        "getEventBus": () => Promise<import("/Users/iliedaniel/Projects/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
+        "getEventBus": () => Promise<IEventBus>;
     }
 }
 export interface CustomToastCustomEvent<T> extends CustomEvent<T> {

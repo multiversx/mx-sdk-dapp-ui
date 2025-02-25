@@ -1,9 +1,6 @@
 # ledger-connect-modal
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -11,19 +8,13 @@
 | -------- | --------- | ----------- | ------------------------- | -------------------------------------------------------------------------------------------- |
 | `data`   | --        |             | `ILedgerConnectModalData` | `{     accountScreenData: null,     confirmScreenData: null,     connectScreenData: {},   }` |
 
-
 ## Methods
 
-### `getEventBus() => Promise<import("/Users/iliedaniel/Projects/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>`
-
-
+### `getEventBus() => Promise<IEventBus>`
 
 #### Returns
 
 Type: `Promise<IEventBus>`
-
-
-
 
 ## Dependencies
 
@@ -35,6 +26,7 @@ Type: `Promise<IEventBus>`
 - [generic-modal](../../../common/generic-modal)
 
 ### Graph
+
 ```mermaid
 graph TD;
   ledger-connect-modal --> ledger-account-screen
@@ -45,6 +37,6 @@ graph TD;
   style ledger-connect-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
