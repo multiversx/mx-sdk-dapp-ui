@@ -90,11 +90,11 @@ export namespace Components {
     }
     interface LedgerConnect {
         "data": ILedgerConnectModalData;
-        "getEventBus": () => Promise<import("/Users/iliedaniel/Projects/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
+        "getEventBus": () => Promise<import("/Users/razvan/Work/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
     }
     interface LedgerConnectModal {
         "data": ILedgerConnectModalData;
-        "getEventBus": () => Promise<import("/Users/iliedaniel/Projects/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
+        "getEventBus": () => Promise<import("/Users/razvan/Work/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
     }
     interface LedgerConnectScreen {
         "connectScreenData": IConnectScreenData;
@@ -223,7 +223,7 @@ export namespace Components {
     }
     interface WalletConnectModal {
         "data": IWalletConnectModalData;
-        "getEventBus": () => Promise<import("/Users/iliedaniel/Projects/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
+        "getEventBus": () => Promise<import("/Users/razvan/Work/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
     }
 }
 export interface CustomToastCustomEvent<T> extends CustomEvent<T> {

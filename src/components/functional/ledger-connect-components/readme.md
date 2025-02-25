@@ -14,7 +14,7 @@
 
 ## Methods
 
-### `getEventBus() => Promise<import("/Users/iliedaniel/Projects/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>`
+### `getEventBus() => Promise<import("/Users/razvan/Work/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>`
 
 
 
