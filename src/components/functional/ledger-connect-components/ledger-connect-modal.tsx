@@ -1,6 +1,7 @@
 import { Component, Element, forceUpdate, h, Method, Prop, State } from '@stencil/core';
 import type { IGenericModalProps } from 'common/generic-modal/generic-modal.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import type { IEventBus } from 'utils/EventBus';
 
 import type { ILedgerConnectModalData } from './ledger-connect.types';
 import { LedgerConnectEventsEnum } from './ledger-connect.types';
@@ -27,7 +28,7 @@ export class LedgerConnectModal {
     this.ledgerConnectBase = new LedgerConnectBase(this.data);
   }
 
-  @Method() async getEventBus() {
+  @Method() async getEventBus(): Promise<IEventBus> {
     return this.ledgerConnectBase.getEventBus();
   }
 
