@@ -1,9 +1,6 @@
 # wallet-connect-modal
 
-
-
 <!-- Auto Generated Below -->
-
 
 ## Properties
 
@@ -11,19 +8,13 @@
 | -------- | --------- | ----------- | ------------------------- | ---------------------- |
 | `data`   | --        |             | `IWalletConnectModalData` | `{     wcURI: '',   }` |
 
-
 ## Methods
 
-### `getEventBus() => Promise<import("/Users/razvan/Work/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>`
-
-
+### `getEventBus() => Promise<IEventBus>`
 
 #### Returns
 
 Type: `Promise<IEventBus>`
-
-
-
 
 ## Dependencies
 
@@ -33,6 +24,7 @@ Type: `Promise<IEventBus>`
 - [generic-spinner](../../../common/generic-spinner)
 
 ### Graph
+
 ```mermaid
 graph TD;
   wallet-connect-modal --> generic-modal
@@ -40,6 +32,6 @@ graph TD;
   style wallet-connect-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-----------------------------------------------
+---
 
-*Built with [StencilJS](https://stenciljs.com/)*
+_Built with [StencilJS](https://stenciljs.com/)_
