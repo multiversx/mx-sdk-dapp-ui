@@ -9,6 +9,7 @@
 
 | Property                      | Attribute                       | Description | Type                        | Default     |
 | ----------------------------- | ------------------------------- | ----------- | --------------------------- | ----------- |
+| `maxTransactions`             | `max-transactions`              |             | `number`                    | `5`         |
 | `processedTransactionsStatus` | `processed-transactions-status` |             | `Element \| string`         | `''`        |
 | `toastDataState`              | --                              |             | `IToastDataState`           | `undefined` |
 | `toastId`                     | `toast-id`                      |             | `string`                    | `''`        |
@@ -43,6 +44,7 @@ graph TD;
   transaction-toast --> transaction-toast-progress
   transaction-toast --> transaction-toast-content
   transaction-toast-content --> transaction-toast-details
+  transaction-toast-details --> fa-icon
   transaction-toast-details --> transaction-toast-details-body
   transaction-toast-details-body --> trim-text
   transaction-toast-details-body --> copy-button

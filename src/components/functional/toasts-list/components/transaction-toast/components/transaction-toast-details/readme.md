@@ -9,6 +9,7 @@
 
 | Property                      | Attribute                       | Description | Type                | Default     |
 | ----------------------------- | ------------------------------- | ----------- | ------------------- | ----------- |
+| `maxTransactions`             | `max-transactions`              |             | `number`            | `5`         |
 | `processedTransactionsStatus` | `processed-transactions-status` |             | `Element \| string` | `undefined` |
 | `transactionClass`            | `transaction-class`             |             | `string`            | `undefined` |
 | `transactions`                | --                              |             | `ITransaction[]`    | `undefined` |
@@ -22,11 +23,13 @@
 
 ### Depends on
 
+- [fa-icon](../../../../../../visual/fa-icon)
 - [transaction-toast-details-body](components)
 
 ### Graph
 ```mermaid
 graph TD;
+  transaction-toast-details --> fa-icon
   transaction-toast-details --> transaction-toast-details-body
   transaction-toast-details-body --> trim-text
   transaction-toast-details-body --> copy-button

@@ -2,19 +2,26 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property | Attribute | Description | Type                      | Default                |
 | -------- | --------- | ----------- | ------------------------- | ---------------------- |
 | `data`   | --        |             | `IWalletConnectModalData` | `{     wcURI: '',   }` |
 
+
 ## Methods
 
 ### `getEventBus() => Promise<IEventBus>`
 
+
+
 #### Returns
 
 Type: `Promise<IEventBus>`
+
+
+
 
 ## Dependencies
 
@@ -24,7 +31,6 @@ Type: `Promise<IEventBus>`
 - [generic-spinner](../../../common/generic-spinner)
 
 ### Graph
-
 ```mermaid
 graph TD;
   wallet-connect-modal --> generic-modal
@@ -32,6 +38,6 @@ graph TD;
   style wallet-connect-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*
