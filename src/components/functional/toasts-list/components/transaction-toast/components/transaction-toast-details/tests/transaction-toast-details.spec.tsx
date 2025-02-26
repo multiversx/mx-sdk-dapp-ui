@@ -1,4 +1,3 @@
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { TransactionDetails } from '../transaction-toast-details';
