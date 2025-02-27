@@ -5,7 +5,7 @@ import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
 import type { ITransactionListItem } from '../../visual/transaction-list-item/transaction-list-item.types';
-import type { CustomToastType, ITransactionToast } from '../toasts-list/components/transaction-toast/transaction-toast.type';
+import type { ITransactionToast } from '../toasts-list/components/transaction-toast/transaction-toast.type';
 import { ToastEventsEnum } from '../toasts-list/toast-list.types';
 import { NotificationFeedEventsEnum } from './notifications-feed.types';
 
@@ -17,7 +17,6 @@ import { NotificationFeedEventsEnum } from './notifications-feed.types';
 export class NotificationsFeed {
   @Prop() open: boolean = false;
   @Prop() transactionToasts: ITransactionToast[];
-  @Prop() customToasts: CustomToastType[];
   @Prop() transactionsHistory: ITransactionListItem[] = [];
 
   @Event() close: EventEmitter;
@@ -107,7 +106,7 @@ export class NotificationsFeed {
             <div class="processing-status">Processing...</div>
 
             {/* Toast List */}
-            <toast-list transactionToasts={this.transactionToasts} customToasts={this.customToasts}></toast-list>
+            <toast-list transactionToasts={this.transactionToasts}></toast-list>
           </div>
 
           {/* Activity Section */}
@@ -137,11 +136,6 @@ export class NotificationsFeed {
     forceUpdate(this);
   }
 
-  private customToastsUpdate(payload: CustomToastType[]) {
-    this.customToasts = [...payload];
-    forceUpdate(this);
-  }
-
   private transactionsHistoryUpdate(payload: ITransactionListItem[]) {
     this.transactionsHistory = [...payload];
     forceUpdate(this);
@@ -149,7 +143,6 @@ export class NotificationsFeed {
 
   componentDidLoad() {
     this.eventBus.subscribe(ToastEventsEnum.TRANSACTION_TOAST_DATA_UPDATE, this.transactionToastUpdate.bind(this));
-    this.eventBus.subscribe(ToastEventsEnum.CUSTOM_TOAST_DATA_UPDATE, this.customToastsUpdate.bind(this));
     this.eventBus.subscribe(NotificationFeedEventsEnum.TRANSACTIONS_HISTORY_UPDATE, this.transactionsHistoryUpdate.bind(this));
   }
 }

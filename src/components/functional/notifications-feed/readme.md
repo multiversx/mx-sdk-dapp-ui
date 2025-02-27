@@ -9,7 +9,6 @@
 
 | Property              | Attribute | Description | Type                     | Default     |
 | --------------------- | --------- | ----------- | ------------------------ | ----------- |
-| `customToasts`        | --        |             | `CustomToastType[]`      | `undefined` |
 | `open`                | `open`    |             | `boolean`                | `false`     |
 | `transactionToasts`   | --        |             | `ITransactionToast[]`    | `undefined` |
 | `transactionsHistory` | --        |             | `ITransactionListItem[]` | `[]`        |

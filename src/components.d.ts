@@ -102,7 +102,6 @@ export namespace Components {
         "connectScreenData": IConnectScreenData;
     }
     interface NotificationsFeed {
-        "customToasts": CustomToastType1[];
         "getEventBus": () => Promise<IEventBus>;
         "open": boolean;
         "transactionToasts": ITransactionToast[];
@@ -803,7 +802,6 @@ declare namespace LocalJSX {
         "onConnect"?: (event: LedgerConnectScreenCustomEvent<any>) => void;
     }
     interface NotificationsFeed {
-        "customToasts"?: CustomToastType1[];
         "onClose"?: (event: NotificationsFeedCustomEvent<any>) => void;
         "open"?: boolean;
         "transactionToasts"?: ITransactionToast[];

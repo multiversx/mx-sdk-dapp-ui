@@ -25,11 +25,22 @@ export class ToastList {
     this.eventBus.publish(ToastEventsEnum.CLOSE_TOAST, toastId);
   }
 
+  private handleViewAllClick() {
+    this.eventBus.publish(ToastEventsEnum.VIEW_ALL);
+  }
+
   render() {
     return (
       <div class="toast-list" id="toast-list">
         {this.customToasts?.map(toast => <generic-toast toast={toast} onHandleDeleteToast={this.handleCustomToastDelete.bind(this, toast.toastId)}></generic-toast>)}
         {this.transactionToasts?.map(toast => <transaction-toast {...toast} onHandleDeleteToast={this.handleTransactionToastDelete.bind(this, toast.toastId)}></transaction-toast>)}
+        {this.transactionToasts?.length > 0 && (
+          <div class="view-all-button-container">
+            <button class="view-all-button" onClick={this.handleViewAllClick.bind(this)}>
+              View All
+            </button>
+          </div>
+        )}
       </div>
     );
   }

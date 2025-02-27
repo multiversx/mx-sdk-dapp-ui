@@ -230,4 +230,59 @@ describe('toast-list', () => {
     // Verify the same event bus instance is returned
     expect(returnedEventBus).toBe(originalEventBus);
   });
+
+  it('renders View All button when transaction toasts are present', async () => {
+    const page = await newSpecPage({
+      components: [ToastList],
+      html: '<toast-list></toast-list>',
+    });
+
+    // Set transaction toasts
+    page.rootInstance.transactionToasts = mockTransactionToasts;
+    await page.waitForChanges();
+
+    // Verify View All button is rendered
+    const viewAllButton = page.root.querySelector('.view-all-button');
+    expect(viewAllButton).not.toBeNull();
+    expect(viewAllButton.textContent.trim()).toBe('View All');
+  });
+
+  it('does not render View All button when no transaction toasts are present', async () => {
+    const page = await newSpecPage({
+      components: [ToastList],
+      html: '<toast-list></toast-list>',
+    });
+
+    // Set only custom toasts, no transaction toasts
+    page.rootInstance.customToasts = mockCustomToasts;
+    await page.waitForChanges();
+
+    // Verify View All button is not rendered
+    const viewAllButton = page.root.querySelector('.view-all-button');
+    expect(viewAllButton).toBeNull();
+  });
+
+  it('publishes VIEW_ALL event when View All button is clicked', async () => {
+    const page = await newSpecPage({
+      components: [ToastList],
+      html: '<toast-list></toast-list>',
+    });
+
+    // Mock the event bus
+    const eventBusMock = {
+      publish: jest.fn(),
+      subscribe: jest.fn(),
+    };
+    page.rootInstance.eventBus = eventBusMock;
+
+    // Set transaction toasts
+    page.rootInstance.transactionToasts = mockTransactionToasts;
+    await page.waitForChanges();
+
+    // Call the handler directly (since we can't easily trigger the click event in the test)
+    page.rootInstance.handleViewAllClick();
+
+    // Verify the event was published with correct parameters
+    expect(eventBusMock.publish).toHaveBeenCalledWith(ToastEventsEnum.VIEW_ALL);
+  });
 });
