@@ -9,7 +9,7 @@
 
 | Property                      | Attribute                       | Description | Type                | Default     |
 | ----------------------------- | ------------------------------- | ----------- | ------------------- | ----------- |
-| `maxTransactions`             | `max-transactions`              |             | `number`            | `5`         |
+| `maxShownTransactions`        | `max-shown-transactions`        |             | `number`            | `5`         |
 | `processedTransactionsStatus` | `processed-transactions-status` |             | `Element \| string` | `undefined` |
 | `transactionClass`            | `transaction-class`             |             | `string`            | `undefined` |
 | `transactions`                | --                              |             | `ITransaction[]`    | `undefined` |

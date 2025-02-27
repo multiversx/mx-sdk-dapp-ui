@@ -113,27 +113,6 @@ describe('toast-list', () => {
     expect(genericToastElements.length).toBe(2);
   });
 
-  it('passes maxTransactions prop to transaction toasts', async () => {
-    const page = await newSpecPage({
-      components: [ToastList],
-      html: '<toast-list></toast-list>',
-    });
-
-    // Set custom maxTransactions value
-    page.rootInstance.maxTransactions = 10;
-    page.rootInstance.transactionToasts = mockTransactionToasts;
-    await page.waitForChanges();
-
-    // Get the transaction toast elements
-    const transactionToastElements = page.root.querySelectorAll('transaction-toast');
-
-    // Verify maxTransactions is passed to each transaction toast
-    // Note: In unit tests, we can't directly check props passed to child components
-    // We would need integration tests or component mocks to fully verify this
-    // This test primarily checks that the component renders with the prop set
-    expect(transactionToastElements.length).toBe(2);
-  });
-
   it('handles transaction toast deletion correctly', async () => {
     const page = await newSpecPage({
       components: [ToastList],

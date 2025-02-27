@@ -9,7 +9,6 @@
 
 | Property                      | Attribute                       | Description | Type                | Default     |
 | ----------------------------- | ------------------------------- | ----------- | ------------------- | ----------- |
-| `maxTransactions`             | `max-transactions`              |             | `number`            | `5`         |
 | `processedTransactionsStatus` | `processed-transactions-status` |             | `Element \| string` | `undefined` |
 | `toastDataState`              | --                              |             | `IToastDataState`   | `undefined` |
 | `transactions`                | --                              |             | `ITransaction[]`    | `undefined` |

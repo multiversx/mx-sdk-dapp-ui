@@ -119,7 +119,6 @@ export namespace Components {
     interface ToastList {
         "customToasts": CustomToastType1[];
         "getEventBus": () => Promise<IEventBus>;
-        "maxTransactions": number;
         "transactionToasts": ITransactionToast[];
     }
     interface TokenComponent {
@@ -165,7 +164,6 @@ export namespace Components {
         "transaction": ITransactionsTableRow;
     }
     interface TransactionToast {
-        "maxTransactions": number;
         "processedTransactionsStatus": string | JSX.Element;
         "toastDataState": IToastDataState;
         "toastId": string;
@@ -174,13 +172,12 @@ export namespace Components {
         "wrapperClass": string;
     }
     interface TransactionToastContent {
-        "maxTransactions": number;
         "processedTransactionsStatus"?: string | JSX.Element;
         "toastDataState": IToastDataState;
         "transactions": ITransaction[];
     }
     interface TransactionToastDetails {
-        "maxTransactions": number;
+        "maxShownTransactions": number;
         "processedTransactionsStatus"?: JSX.Element | string;
         "transactionClass": string;
         "transactions"?: ITransaction[];
@@ -782,7 +779,6 @@ declare namespace LocalJSX {
     }
     interface ToastList {
         "customToasts"?: CustomToastType1[];
-        "maxTransactions"?: number;
         "transactionToasts"?: ITransactionToast[];
     }
     interface TokenComponent {
@@ -828,7 +824,6 @@ declare namespace LocalJSX {
         "transaction"?: ITransactionsTableRow;
     }
     interface TransactionToast {
-        "maxTransactions"?: number;
         "onHandleDeleteToast"?: (event: TransactionToastCustomEvent<string>) => void;
         "processedTransactionsStatus"?: string | JSX.Element;
         "toastDataState"?: IToastDataState;
@@ -838,14 +833,13 @@ declare namespace LocalJSX {
         "wrapperClass"?: string;
     }
     interface TransactionToastContent {
-        "maxTransactions"?: number;
         "onDeleteToast"?: (event: TransactionToastContentCustomEvent<void>) => void;
         "processedTransactionsStatus"?: string | JSX.Element;
         "toastDataState"?: IToastDataState;
         "transactions"?: ITransaction[];
     }
     interface TransactionToastDetails {
-        "maxTransactions"?: number;
+        "maxShownTransactions"?: number;
         "processedTransactionsStatus"?: JSX.Element | string;
         "transactionClass"?: string;
         "transactions"?: ITransaction[];

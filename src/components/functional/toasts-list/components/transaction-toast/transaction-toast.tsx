@@ -16,7 +16,6 @@ export class TransactionToast {
   @Prop() transactions: ITransaction[] = [];
   @Prop() toastDataState: IToastDataState;
   @Prop() transactionProgressState?: ITransactionProgressState;
-  @Prop() maxTransactions: number = 5;
 
   @Event() handleDeleteToast: EventEmitter<string>;
 
@@ -33,7 +32,6 @@ export class TransactionToast {
             processedTransactionsStatus={this.processedTransactionsStatus}
             toastDataState={this.toastDataState}
             transactions={this.transactions}
-            maxTransactions={this.maxTransactions}
           />
         </transaction-toast-progress>
       </transaction-toast-wrapper>

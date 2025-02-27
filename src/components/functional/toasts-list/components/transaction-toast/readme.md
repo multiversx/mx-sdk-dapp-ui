@@ -9,7 +9,6 @@
 
 | Property                      | Attribute                       | Description | Type                        | Default     |
 | ----------------------------- | ------------------------------- | ----------- | --------------------------- | ----------- |
-| `maxTransactions`             | `max-transactions`              |             | `number`                    | `5`         |
 | `processedTransactionsStatus` | `processed-transactions-status` |             | `Element \| string`         | `''`        |
 | `toastDataState`              | --                              |             | `IToastDataState`           | `undefined` |
 | `toastId`                     | `toast-id`                      |             | `string`                    | `''`        |

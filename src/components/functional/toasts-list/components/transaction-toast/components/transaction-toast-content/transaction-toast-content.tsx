@@ -17,7 +17,6 @@ export class TransactionToastContent {
   @Prop() transactions: ITransaction[];
   @Prop() toastDataState: IToastDataState;
   @Prop() processedTransactionsStatus?: string | JSX.Element;
-  @Prop() maxTransactions: number = 5;
   @Event() deleteToast: EventEmitter<void>;
 
   private handleDeleteToast() {
@@ -49,7 +48,7 @@ export class TransactionToastContent {
           </div>
 
           <div class="content-heading-title">
-            <transaction-toast-details transactions={this.transactions} processedTransactionsStatus={this.processedTransactionsStatus} maxTransactions={this.maxTransactions} />
+            <transaction-toast-details transactions={this.transactions} processedTransactionsStatus={this.processedTransactionsStatus} />
           </div>
         </div>
       </div>

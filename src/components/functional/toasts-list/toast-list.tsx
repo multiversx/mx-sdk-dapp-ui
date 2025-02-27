@@ -12,7 +12,6 @@ export class ToastList {
   private eventBus: IEventBus = new EventBus();
   @Prop() transactionToasts: ITransactionToast[];
   @Prop() customToasts: CustomToastType[];
-  @Prop() maxTransactions: number = 5;
 
   @Method() async getEventBus() {
     return this.eventBus;
@@ -30,13 +29,7 @@ export class ToastList {
     return (
       <div class="toast-list" id="toast-list">
         {this.customToasts?.map(toast => <generic-toast toast={toast} onHandleDeleteToast={this.handleCustomToastDelete.bind(this, toast.toastId)}></generic-toast>)}
-        {this.transactionToasts?.map(toast => (
-          <transaction-toast
-            {...toast}
-            maxTransactions={this.maxTransactions}
-            onHandleDeleteToast={this.handleTransactionToastDelete.bind(this, toast.toastId)}
-          ></transaction-toast>
-        ))}
+        {this.transactionToasts?.map(toast => <transaction-toast {...toast} onHandleDeleteToast={this.handleTransactionToastDelete.bind(this, toast.toastId)}></transaction-toast>)}
       </div>
     );
   }

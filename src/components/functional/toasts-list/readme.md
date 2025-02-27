@@ -5,11 +5,10 @@
 
 ## Properties
 
-| Property            | Attribute          | Description | Type                  | Default     |
-| ------------------- | ------------------ | ----------- | --------------------- | ----------- |
-| `customToasts`      | --                 |             | `CustomToastType[]`   | `undefined` |
-| `maxTransactions`   | `max-transactions` |             | `number`              | `3`         |
-| `transactionToasts` | --                 |             | `ITransactionToast[]` | `undefined` |
+| Property            | Attribute | Description | Type                  | Default     |
+| ------------------- | --------- | ----------- | --------------------- | ----------- |
+| `customToasts`      | --        |             | `CustomToastType[]`   | `undefined` |
+| `transactionToasts` | --        |             | `ITransactionToast[]` | `undefined` |
 
 
 ## Methods

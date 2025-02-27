@@ -65,7 +65,7 @@ describe('transaction-toast-details', () => {
     expect(page.rootInstance.isExpanded).toBe(true);
   });
 
-  it('shows only maxTransactions by default when expanded', async () => {
+  it('shows only maxShownTransactions by default when expanded', async () => {
     const page = await newSpecPage({
       components: [TransactionDetails],
       html: '<transaction-toast-details></transaction-toast-details>',
@@ -74,7 +74,7 @@ describe('transaction-toast-details', () => {
     page.rootInstance.transactions = mockTransactions;
     page.rootInstance.processedTransactionsStatus = '1/7 transactions processed';
     page.rootInstance.transactionClass = 'test-class';
-    page.rootInstance.maxTransactions = 3; // Only show first 3 transactions
+    page.rootInstance.maxShownTransactions = 3; // Only show first 3 transactions
 
     await page.waitForChanges();
 
@@ -83,7 +83,7 @@ describe('transaction-toast-details', () => {
     triggerClick(statusTitle);
     await page.waitForChanges();
 
-    // Verify only maxTransactions shown
+    // Verify only maxShownTransactions shown
     const detailsBodies = page.root.shadowRoot.querySelectorAll('transaction-toast-details-body');
     expect(detailsBodies.length).toBe(3);
 
@@ -102,7 +102,7 @@ describe('transaction-toast-details', () => {
     page.rootInstance.transactions = mockTransactions;
     page.rootInstance.processedTransactionsStatus = '1/7 transactions processed';
     page.rootInstance.transactionClass = 'test-class';
-    page.rootInstance.maxTransactions = 3; // Only show first 3 transactions
+    page.rootInstance.maxShownTransactions = 3; // Only show first 3 transactions
 
     await page.waitForChanges();
 
@@ -125,7 +125,7 @@ describe('transaction-toast-details', () => {
     expect(showMoreButtonAfterClick).toBeNull();
   });
 
-  it('resets to showing only maxTransactions when collapsed and re-expanded', async () => {
+  it('resets to showing only maxShownTransactions when collapsed and re-expanded', async () => {
     const page = await newSpecPage({
       components: [TransactionDetails],
       html: '<transaction-toast-details></transaction-toast-details>',
@@ -134,7 +134,7 @@ describe('transaction-toast-details', () => {
     page.rootInstance.transactions = mockTransactions;
     page.rootInstance.processedTransactionsStatus = '1/7 transactions processed';
     page.rootInstance.transactionClass = 'test-class';
-    page.rootInstance.maxTransactions = 3; // Only show first 3 transactions
+    page.rootInstance.maxShownTransactions = 3; // Only show first 3 transactions
 
     await page.waitForChanges();
 
@@ -164,7 +164,7 @@ describe('transaction-toast-details', () => {
     triggerClick(statusTitle);
     await page.waitForChanges();
 
-    // Verify only maxTransactions shown again
+    // Verify only maxShownTransactions shown again
     detailsBodies = page.root.shadowRoot.querySelectorAll('transaction-toast-details-body');
     expect(detailsBodies.length).toBe(3);
 
@@ -173,7 +173,7 @@ describe('transaction-toast-details', () => {
     expect(showMoreButtonAfterReExpand).not.toBeNull();
   });
 
-  it('does not show "Show more" button when transactions <= maxTransactions', async () => {
+  it('does not show "Show more" button when transactions <= maxShownTransactions', async () => {
     const page = await newSpecPage({
       components: [TransactionDetails],
       html: '<transaction-toast-details></transaction-toast-details>',
@@ -185,7 +185,7 @@ describe('transaction-toast-details', () => {
     page.rootInstance.transactions = fewTransactions;
     page.rootInstance.processedTransactionsStatus = '1/3 transactions processed';
     page.rootInstance.transactionClass = 'test-class';
-    page.rootInstance.maxTransactions = 5; // Max is greater than available transactions
+    page.rootInstance.maxShownTransactions = 5; // Max is greater than available transactions
 
     await page.waitForChanges();
 

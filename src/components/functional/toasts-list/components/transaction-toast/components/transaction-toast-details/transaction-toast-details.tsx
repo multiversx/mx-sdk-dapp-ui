@@ -13,7 +13,7 @@ export class TransactionDetails {
   @Prop() processedTransactionsStatus?: JSX.Element | string;
   @Prop() transactions?: ITransaction[];
   @Prop() transactionClass: string;
-  @Prop() maxTransactions: number = 5;
+  @Prop() maxShownTransactions: number = 5;
   @State() isExpanded: boolean = false;
   @State() showAllTransactions: boolean = false;
 
@@ -34,9 +34,9 @@ export class TransactionDetails {
       return null;
     }
 
-    const hasMoreTransactionsToShow = this.transactions.length > this.maxTransactions;
-    const hiddenTransactionsCount = this.transactions.length - this.maxTransactions;
-    const visibleTransactions = this.showAllTransactions ? this.transactions : this.transactions.slice(0, this.maxTransactions);
+    const hasMoreTransactionsToShow = this.transactions.length > this.maxShownTransactions;
+    const hiddenTransactionsCount = this.transactions.length - this.maxShownTransactions;
+    const visibleTransactions = this.showAllTransactions ? this.transactions : this.transactions.slice(0, this.maxShownTransactions);
 
     return (
       <Fragment>
