@@ -7,11 +7,10 @@
 
 ## Properties
 
-| Property              | Attribute | Description | Type                     | Default     |
-| --------------------- | --------- | ----------- | ------------------------ | ----------- |
-| `open`                | `open`    |             | `boolean`                | `false`     |
-| `transactionToasts`   | --        |             | `ITransactionToast[]`    | `undefined` |
-| `transactionsHistory` | --        |             | `ITransactionListItem[]` | `[]`        |
+| Property                 | Attribute | Description | Type                     | Default     |
+| ------------------------ | --------- | ----------- | ------------------------ | ----------- |
+| `processingTransactions` | --        |             | `ITransactionToast[]`    | `undefined` |
+| `transactionsHistory`    | --        |             | `ITransactionListItem[]` | `[]`        |
 
 
 ## Events

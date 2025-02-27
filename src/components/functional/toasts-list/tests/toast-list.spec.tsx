@@ -1,5 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
 
+import { NotificationsFeedEventsEnum } from '../../notifications-feed/notifications-feed.types';
 import { ToastList } from '../toast-list';
 import { ToastEventsEnum } from '../toast-list.types';
 
@@ -262,7 +263,7 @@ describe('toast-list', () => {
     expect(viewAllButton).toBeNull();
   });
 
-  it('publishes VIEW_ALL event when View All button is clicked', async () => {
+  it('publishes OPEN_NOTIFICATIONS_FEED event when View All button is clicked', async () => {
     const page = await newSpecPage({
       components: [ToastList],
       html: '<toast-list></toast-list>',
@@ -283,6 +284,6 @@ describe('toast-list', () => {
     page.rootInstance.handleViewAllClick();
 
     // Verify the event was published with correct parameters
-    expect(eventBusMock.publish).toHaveBeenCalledWith(ToastEventsEnum.VIEW_ALL);
+    expect(eventBusMock.publish).toHaveBeenCalledWith(NotificationsFeedEventsEnum.OPEN_NOTIFICATIONS_FEED);
   });
 });

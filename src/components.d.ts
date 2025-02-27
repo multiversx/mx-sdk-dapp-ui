@@ -103,8 +103,7 @@ export namespace Components {
     }
     interface NotificationsFeed {
         "getEventBus": () => Promise<IEventBus>;
-        "open": boolean;
-        "transactionToasts": ITransactionToast[];
+        "processingTransactions": ITransactionToast[];
         "transactionsHistory": ITransactionListItem[];
     }
     interface PendingTransactionsModal {
@@ -803,8 +802,7 @@ declare namespace LocalJSX {
     }
     interface NotificationsFeed {
         "onClose"?: (event: NotificationsFeedCustomEvent<any>) => void;
-        "open"?: boolean;
-        "transactionToasts"?: ITransactionToast[];
+        "processingTransactions"?: ITransactionToast[];
         "transactionsHistory"?: ITransactionListItem[];
     }
     interface PendingTransactionsModal {

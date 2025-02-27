@@ -7,7 +7,7 @@ import { EventBus } from 'utils/EventBus';
 import type { ITransactionListItem } from '../../visual/transaction-list-item/transaction-list-item.types';
 import type { ITransactionToast } from '../toasts-list/components/transaction-toast/transaction-toast.type';
 import { ToastEventsEnum } from '../toasts-list/toast-list.types';
-import { NotificationFeedEventsEnum } from './notifications-feed.types';
+import { NotificationsFeedEventsEnum } from './notifications-feed.types';
 
 @Component({
   tag: 'notifications-feed',
@@ -15,8 +15,8 @@ import { NotificationFeedEventsEnum } from './notifications-feed.types';
   shadow: true,
 })
 export class NotificationsFeed {
-  @Prop() open: boolean = false;
-  @Prop() transactionToasts: ITransactionToast[];
+  @State() open: boolean = false;
+  @Prop() processingTransactions: ITransactionToast[];
   @Prop() transactionsHistory: ITransactionListItem[] = [];
 
   @Event() close: EventEmitter;
@@ -59,12 +59,18 @@ export class NotificationsFeed {
   }
 
   handleClose = () => {
+    this.open = false;
     this.close.emit();
-    this.eventBus.publish(NotificationFeedEventsEnum.CLOSE);
+    this.eventBus.publish(NotificationsFeedEventsEnum.CLOSE_NOTIFICATIONS_FEED);
   };
 
   handleClear = () => {
-    this.eventBus.publish(NotificationFeedEventsEnum.CLEAR);
+    this.eventBus.publish(NotificationsFeedEventsEnum.CLEAR_NOTIFICATIONS_FEED_HISTORY);
+  };
+
+  handleViewAll = () => {
+    console.log('handleViewAll');
+    this.open = true;
   };
 
   handleOverlayClick = (event: MouseEvent) => {
@@ -74,6 +80,8 @@ export class NotificationsFeed {
   };
 
   render() {
+    console.log('render', this.isVisible);
+
     if (!this.isVisible) {
       return null;
     }
@@ -106,7 +114,7 @@ export class NotificationsFeed {
             <div class="processing-status">Processing...</div>
 
             {/* Toast List */}
-            <toast-list transactionToasts={this.transactionToasts}></toast-list>
+            <toast-list transactionToasts={this.processingTransactions}></toast-list>
           </div>
 
           {/* Activity Section */}
@@ -131,18 +139,22 @@ export class NotificationsFeed {
     );
   }
 
-  private transactionToastUpdate(payload: ITransactionToast[]) {
-    this.transactionToasts = [...payload];
+  private processingTransactionsUpdate(payload: ITransactionToast[]) {
+    console.log('processingTransactionsUpdate', payload);
+    this.processingTransactions = [...payload];
     forceUpdate(this);
   }
 
   private transactionsHistoryUpdate(payload: ITransactionListItem[]) {
+    console.log('transactionsHistoryUpdate', payload);
     this.transactionsHistory = [...payload];
     forceUpdate(this);
   }
 
   componentDidLoad() {
-    this.eventBus.subscribe(ToastEventsEnum.TRANSACTION_TOAST_DATA_UPDATE, this.transactionToastUpdate.bind(this));
-    this.eventBus.subscribe(NotificationFeedEventsEnum.TRANSACTIONS_HISTORY_UPDATE, this.transactionsHistoryUpdate.bind(this));
+    this.eventBus.subscribe(ToastEventsEnum.TRANSACTION_TOAST_DATA_UPDATE, this.processingTransactionsUpdate.bind(this));
+    this.eventBus.subscribe(NotificationsFeedEventsEnum.PROCESSING_TRANSACTIONS_UPDATE, this.processingTransactionsUpdate.bind(this));
+    this.eventBus.subscribe(NotificationsFeedEventsEnum.TRANSACTIONS_HISTORY_UPDATE, this.transactionsHistoryUpdate.bind(this));
+    this.eventBus.subscribe(NotificationsFeedEventsEnum.OPEN_NOTIFICATIONS_FEED, this.handleViewAll.bind(this));
   }
 }

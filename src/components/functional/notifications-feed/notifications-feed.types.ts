@@ -13,8 +13,10 @@ export interface ITransactionHistory {
   badge?: string | string[];
 }
 
-export enum NotificationFeedEventsEnum {
-  CLOSE = 'notification-feed-close',
-  CLEAR = 'notification-feed-clear',
-  TRANSACTIONS_HISTORY_UPDATE = 'transactions-history-update',
+export enum NotificationsFeedEventsEnum {
+  CLOSE_NOTIFICATIONS_FEED = 'CLOSE_NOTIFICATIONS_FEED',
+  CLEAR_NOTIFICATIONS_FEED_HISTORY = 'CLEAR_NOTIFICATIONS_FEED_HISTORY',
+  OPEN_NOTIFICATIONS_FEED = 'OPEN_NOTIFICATIONS_FEED',
+  PROCESSING_TRANSACTIONS_UPDATE = 'PROCESSING_TRANSACTIONS_UPDATE',
+  TRANSACTIONS_HISTORY_UPDATE = 'TRANSACTIONS_HISTORY_UPDATE',
 }
