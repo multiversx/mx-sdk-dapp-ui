@@ -20,6 +20,7 @@
  - [explorer-link](../explorer-link)
  - [transaction-account](../../controlled/transactions-table/components/transaction-account)
  - [transaction-icon](../../controlled/transactions-table/components/transaction-icon)
+ - [transaction-toast-details](../../functional/toasts-list/components/transaction-toast/components/transaction-toast-details)
  - [transaction-value](../../controlled/transactions-table/components/transaction-value)
  - [unlock-header](../../unlock-panel/components/header)
 
@@ -30,6 +31,7 @@ graph TD;
   explorer-link --> fa-icon
   transaction-account --> fa-icon
   transaction-icon --> fa-icon
+  transaction-toast-details --> fa-icon
   transaction-value --> fa-icon
   unlock-header --> fa-icon
   style fa-icon fill:#f9f,stroke:#333,stroke-width:4px

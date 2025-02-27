@@ -2,4 +2,38 @@
   font-size: 0.875rem;
   margin: 0.25rem 0 0.5rem;
   line-height: 1.5;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.toggle-icon {
+  margin-right: 0.5rem;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.transaction-details-list {
+  margin-bottom: 0.5rem;
+}
+
+.view-all-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+.show-more-button {
+  font-size: 0.875rem;
+  color: var(--mx-dapp-core-color-primary, #2044F5);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+}
+
+.show-more-button:hover {
+  text-decoration: underline;
 }

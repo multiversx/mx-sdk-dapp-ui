@@ -2,19 +2,26 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property | Attribute | Description | Type                      | Default                                                                                      |
 | -------- | --------- | ----------- | ------------------------- | -------------------------------------------------------------------------------------------- |
 | `data`   | --        |             | `ILedgerConnectModalData` | `{     accountScreenData: null,     confirmScreenData: null,     connectScreenData: {},   }` |
 
+
 ## Methods
 
 ### `getEventBus() => Promise<IEventBus>`
 
+
+
 #### Returns
 
 Type: `Promise<IEventBus>`
+
+
+
 
 ## Dependencies
 
@@ -26,7 +33,6 @@ Type: `Promise<IEventBus>`
 - [generic-modal](../../../common/generic-modal)
 
 ### Graph
-
 ```mermaid
 graph TD;
   ledger-connect-modal --> ledger-account-screen
@@ -37,6 +43,6 @@ graph TD;
   style ledger-connect-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*
