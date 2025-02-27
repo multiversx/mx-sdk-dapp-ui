@@ -1,0 +1,109 @@
+:host {
+  display: block;
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--mx-dapp-core-border-light, #f3f4f6);
+}
+
+.transaction-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  color: white;
+
+  &.sent {
+    background-color: var(--mx-dapp-core-color-blue, #4096ff);
+  }
+
+  &.received {
+    background-color: var(--mx-dapp-core-color-green, #20cc8e);
+  }
+
+  &.claim {
+    background-color: var(--mx-dapp-core-color-purple, #7b61ff);
+  }
+}
+
+.transaction-details {
+  flex: 1;
+}
+
+.transaction-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+  color: var(--mx-dapp-core-text-primary, #1f2937);
+}
+
+.transaction-info {
+  display: flex;
+  font-size: 0.875rem;
+  color: var(--mx-dapp-core-text-secondary, #6b7280);
+}
+
+.transaction-target {
+  margin-right: 0.75rem;
+
+  .entity-name {
+    font-weight: 500;
+  }
+}
+
+.transaction-amount {
+  font-weight: 600;
+  margin-left: auto;
+  font-size: 0.9375rem;
+  padding-left: 1rem;
+
+  &.amount-negative {
+    color: var(--mx-dapp-core-color-red, #f56c6c);
+  }
+
+  &.amount-positive {
+    color: var(--mx-dapp-core-color-green, #20cc8e);
+  }
+}
+
+.asset-container {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+
+.asset {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background-color: var(--mx-dapp-core-bg-secondary, #f3f4f6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  margin-left: -0.5rem;
+  border: 2px solid var(--mx-dapp-core-bg-primary, white);
+  overflow: hidden;
+}
+
+.asset-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.asset:first-child {
+  margin-left: 0;
+}
+
+.asset-more {
+  background-color: var(--mx-dapp-core-color-indigo, #5045e4);
+  font-weight: 600;
+  color: white;
+}

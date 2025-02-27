@@ -3,7 +3,7 @@ export function format(first?: string, middle?: string, last?: string): string {
 }
 
 export const formatAddress = (value: string, maxLength = 25) => {
-  if (!value) return value;
+  if (!value) {return value;}
 
   const ellipsis = '...';
 

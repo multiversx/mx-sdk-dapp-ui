@@ -26,6 +26,10 @@ Type: `Promise<IEventBus>`
 
 ## Dependencies
 
+### Used by
+
+ - [notifications-feed](../notifications-feed)
+
 ### Depends on
 
 - [generic-toast](./components/custom-toast)
@@ -50,6 +54,7 @@ graph TD;
   transaction-toast-details-body --> explorer-link
   copy-button --> fa-icon
   explorer-link --> fa-icon
+  notifications-feed --> toast-list
   style toast-list fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

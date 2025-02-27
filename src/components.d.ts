@@ -10,11 +10,12 @@ import { CustomToastType, IComponentToast, ISimpleToast } from "./components/fun
 import { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
 import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectModalData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
+import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
 import { ProviderTypeEnum } from "./types/provider.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
-import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 import { IWalletConnectModalData } from "./components/functional/wallet-connect-components/wallet-connect-modal.types";
@@ -23,11 +24,12 @@ export { CustomToastType, IComponentToast, ISimpleToast } from "./components/fun
 export { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
 export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectModalData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
+export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
 export { ProviderTypeEnum } from "./types/provider.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
-export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 export { IWalletConnectModalData } from "./components/functional/wallet-connect-components/wallet-connect-modal.types";
@@ -99,6 +101,13 @@ export namespace Components {
     interface LedgerConnectScreen {
         "connectScreenData": IConnectScreenData;
     }
+    interface NotificationsFeed {
+        "customToasts": CustomToastType1[];
+        "getEventBus": () => Promise<IEventBus>;
+        "open": boolean;
+        "transactionToasts": ITransactionToast[];
+        "transactionsHistory": ITransactionListItem[];
+    }
     interface PendingTransactionsModal {
         "data": IPendingTransactionsModalData;
         "getEventBus": () => Promise<IEventBus>;
@@ -153,6 +162,9 @@ export namespace Components {
     interface TransactionIcon {
         "class"?: string;
         "iconInfo": ITransactionIconInfo;
+    }
+    interface TransactionListItem {
+        "transaction": ITransactionListItem;
     }
     interface TransactionMethod {
         "actionDescription": string;
@@ -246,6 +258,10 @@ export interface LedgerAccountScreenCustomEvent<T> extends CustomEvent<T> {
 export interface LedgerConnectScreenCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLLedgerConnectScreenElement;
+}
+export interface NotificationsFeedCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLNotificationsFeedElement;
 }
 export interface SimpleToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -416,6 +432,23 @@ declare global {
         prototype: HTMLLedgerConnectScreenElement;
         new (): HTMLLedgerConnectScreenElement;
     };
+    interface HTMLNotificationsFeedElementEventMap {
+        "close": any;
+    }
+    interface HTMLNotificationsFeedElement extends Components.NotificationsFeed, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLNotificationsFeedElementEventMap>(type: K, listener: (this: HTMLNotificationsFeedElement, ev: NotificationsFeedCustomEvent<HTMLNotificationsFeedElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLNotificationsFeedElementEventMap>(type: K, listener: (this: HTMLNotificationsFeedElement, ev: NotificationsFeedCustomEvent<HTMLNotificationsFeedElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLNotificationsFeedElement: {
+        prototype: HTMLNotificationsFeedElement;
+        new (): HTMLNotificationsFeedElement;
+    };
     interface HTMLPendingTransactionsModalElement extends Components.PendingTransactionsModal, HTMLStencilElement {
     }
     var HTMLPendingTransactionsModalElement: {
@@ -504,6 +537,12 @@ declare global {
     var HTMLTransactionIconElement: {
         prototype: HTMLTransactionIconElement;
         new (): HTMLTransactionIconElement;
+    };
+    interface HTMLTransactionListItemElement extends Components.TransactionListItem, HTMLStencilElement {
+    }
+    var HTMLTransactionListItemElement: {
+        prototype: HTMLTransactionListItemElement;
+        new (): HTMLTransactionListItemElement;
     };
     interface HTMLTransactionMethodElement extends Components.TransactionMethod, HTMLStencilElement {
     }
@@ -657,6 +696,7 @@ declare global {
         "ledger-connect": HTMLLedgerConnectElement;
         "ledger-connect-modal": HTMLLedgerConnectModalElement;
         "ledger-connect-screen": HTMLLedgerConnectScreenElement;
+        "notifications-feed": HTMLNotificationsFeedElement;
         "pending-transactions-modal": HTMLPendingTransactionsModalElement;
         "provider-button": HTMLProviderButtonElement;
         "sign-transaction-component": HTMLSignTransactionComponentElement;
@@ -670,6 +710,7 @@ declare global {
         "transaction-direction-badge": HTMLTransactionDirectionBadgeElement;
         "transaction-hash": HTMLTransactionHashElement;
         "transaction-icon": HTMLTransactionIconElement;
+        "transaction-list-item": HTMLTransactionListItemElement;
         "transaction-method": HTMLTransactionMethodElement;
         "transaction-shards": HTMLTransactionShardsElement;
         "transaction-toast": HTMLTransactionToastElement;
@@ -761,6 +802,13 @@ declare namespace LocalJSX {
         "connectScreenData"?: IConnectScreenData;
         "onConnect"?: (event: LedgerConnectScreenCustomEvent<any>) => void;
     }
+    interface NotificationsFeed {
+        "customToasts"?: CustomToastType1[];
+        "onClose"?: (event: NotificationsFeedCustomEvent<any>) => void;
+        "open"?: boolean;
+        "transactionToasts"?: ITransactionToast[];
+        "transactionsHistory"?: ITransactionListItem[];
+    }
     interface PendingTransactionsModal {
         "data"?: IPendingTransactionsModalData;
     }
@@ -813,6 +861,9 @@ declare namespace LocalJSX {
     interface TransactionIcon {
         "class"?: string;
         "iconInfo"?: ITransactionIconInfo;
+    }
+    interface TransactionListItem {
+        "transaction": ITransactionListItem;
     }
     interface TransactionMethod {
         "actionDescription"?: string;
@@ -907,6 +958,7 @@ declare namespace LocalJSX {
         "ledger-connect": LedgerConnect;
         "ledger-connect-modal": LedgerConnectModal;
         "ledger-connect-screen": LedgerConnectScreen;
+        "notifications-feed": NotificationsFeed;
         "pending-transactions-modal": PendingTransactionsModal;
         "provider-button": ProviderButton;
         "sign-transaction-component": SignTransactionComponent;
@@ -920,6 +972,7 @@ declare namespace LocalJSX {
         "transaction-direction-badge": TransactionDirectionBadge;
         "transaction-hash": TransactionHash;
         "transaction-icon": TransactionIcon;
+        "transaction-list-item": TransactionListItem;
         "transaction-method": TransactionMethod;
         "transaction-shards": TransactionShards;
         "transaction-toast": TransactionToast;
@@ -956,6 +1009,7 @@ declare module "@stencil/core" {
             "ledger-connect": LocalJSX.LedgerConnect & JSXBase.HTMLAttributes<HTMLLedgerConnectElement>;
             "ledger-connect-modal": LocalJSX.LedgerConnectModal & JSXBase.HTMLAttributes<HTMLLedgerConnectModalElement>;
             "ledger-connect-screen": LocalJSX.LedgerConnectScreen & JSXBase.HTMLAttributes<HTMLLedgerConnectScreenElement>;
+            "notifications-feed": LocalJSX.NotificationsFeed & JSXBase.HTMLAttributes<HTMLNotificationsFeedElement>;
             "pending-transactions-modal": LocalJSX.PendingTransactionsModal & JSXBase.HTMLAttributes<HTMLPendingTransactionsModalElement>;
             "provider-button": LocalJSX.ProviderButton & JSXBase.HTMLAttributes<HTMLProviderButtonElement>;
             "sign-transaction-component": LocalJSX.SignTransactionComponent & JSXBase.HTMLAttributes<HTMLSignTransactionComponentElement>;
@@ -969,6 +1023,7 @@ declare module "@stencil/core" {
             "transaction-direction-badge": LocalJSX.TransactionDirectionBadge & JSXBase.HTMLAttributes<HTMLTransactionDirectionBadgeElement>;
             "transaction-hash": LocalJSX.TransactionHash & JSXBase.HTMLAttributes<HTMLTransactionHashElement>;
             "transaction-icon": LocalJSX.TransactionIcon & JSXBase.HTMLAttributes<HTMLTransactionIconElement>;
+            "transaction-list-item": LocalJSX.TransactionListItem & JSXBase.HTMLAttributes<HTMLTransactionListItemElement>;
             "transaction-method": LocalJSX.TransactionMethod & JSXBase.HTMLAttributes<HTMLTransactionMethodElement>;
             "transaction-shards": LocalJSX.TransactionShards & JSXBase.HTMLAttributes<HTMLTransactionShardsElement>;
             "transaction-toast": LocalJSX.TransactionToast & JSXBase.HTMLAttributes<HTMLTransactionToastElement>;
