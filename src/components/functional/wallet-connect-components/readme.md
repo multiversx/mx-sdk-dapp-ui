@@ -1,7 +1,5 @@
 # wallet-connect-modal
 
-
-
 <!-- Auto Generated Below -->
 
 

@@ -7,6 +7,10 @@ const excludeComponents = [
   'sign-transactions-modal',
   'pending-transactions-modal',
   'ledger-connect-modal',
+  'ledger-connect',
+  'ledger-account-screen',
+  'ledger-connect-screen',
+  'ledger-confirm-screen',
   'toast-list',
   'generic-toast',
   'custom-toast',
@@ -19,6 +23,9 @@ const excludeComponents = [
   'sign-transaction-component',
   'wallet-connect-modal',
   'transaction-toast-progress',
+  'token-component',
+  'fungible-component',
+  'balance-component',
 ];
 
 export const config: Config = {

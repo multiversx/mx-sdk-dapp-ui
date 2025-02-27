@@ -7,26 +7,30 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-import { LocalJSX as JSX, VNode } from "@stencil/core";
-import { ILedgerConnectModalData } from "./components/functional/ledger-connect-modal/ledger-connect-modal.types";
+import { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
+import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectModalData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
+import { ProviderTypeEnum } from "./types/provider.types";
+import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-import { IWalletConnectModalData } from "./components/functional/wallet-connect-modal/wallet-connect-modal.types";
+import { IWalletConnectModalData } from "./components/functional/wallet-connect-components/wallet-connect-modal.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-export { LocalJSX as JSX, VNode } from "@stencil/core";
-export { ILedgerConnectModalData } from "./components/functional/ledger-connect-modal/ledger-connect-modal.types";
+export { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
+export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectModalData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
+export { ProviderTypeEnum } from "./types/provider.types";
+export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-export { IWalletConnectModalData } from "./components/functional/wallet-connect-modal/wallet-connect-modal.types";
+export { IWalletConnectModalData } from "./components/functional/wallet-connect-components/wallet-connect-modal.types";
 export namespace Components {
     interface BalanceComponent {
         "amount": string;
@@ -68,22 +72,39 @@ export namespace Components {
     interface FungibleComponent {
     }
     interface GenericModal {
-        "body": VNode;
-        "modalSubtitle"?: string | VNode;
-        "modalTitle": string | VNode;
+        "body": IGenericModalProps['body'];
+        "modalSubtitle"?: IGenericModalProps['modalSubtitle'];
+        "modalTitle": IGenericModalProps['modalTitle'];
     }
     interface GenericSpinner {
     }
     interface GenericToast {
         "toast": CustomToastType;
     }
+    interface LedgerAccountScreen {
+        "accountScreenData": IAccountScreenData;
+        "selectedIndex": number;
+    }
+    interface LedgerConfirmScreen {
+        "confirmScreenData": IConfirmScreenData;
+    }
+    interface LedgerConnect {
+        "data": ILedgerConnectModalData;
+        "getEventBus": () => Promise<IEventBus>;
+    }
     interface LedgerConnectModal {
         "data": ILedgerConnectModalData;
         "getEventBus": () => Promise<IEventBus>;
     }
+    interface LedgerConnectScreen {
+        "connectScreenData": IConnectScreenData;
+    }
     interface PendingTransactionsModal {
         "data": IPendingTransactionsModalData;
         "getEventBus": () => Promise<IEventBus>;
+    }
+    interface ProviderButton {
+        "type": ProviderTypeEnum;
     }
     interface SignTransactionComponent {
         "header": VNode;
@@ -156,6 +177,7 @@ export namespace Components {
         "transactions": ITransaction[];
     }
     interface TransactionToastDetails {
+        "maxShownTransactions": number;
         "processedTransactionsStatus"?: JSX.Element | string;
         "transactionClass": string;
         "transactions"?: ITransaction[];
@@ -187,6 +209,19 @@ export namespace Components {
         "dataTestId"?: string;
         "text": string;
     }
+    interface UnlockButton {
+        "icon": HTMLElement;
+        "label": string;
+    }
+    interface UnlockHeader {
+        "backIcon"?: IconDefinition;
+        "closeIcon": IconDefinition;
+        "text": string;
+    }
+    interface UnlockPanel {
+        "allowedProviders"?: ProviderTypeEnum[];
+        "open": boolean;
+    }
     interface WalletConnectModal {
         "data": IWalletConnectModalData;
         "getEventBus": () => Promise<IEventBus>;
@@ -204,6 +239,14 @@ export interface GenericToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLGenericToastElement;
 }
+export interface LedgerAccountScreenCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLedgerAccountScreenElement;
+}
+export interface LedgerConnectScreenCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLLedgerConnectScreenElement;
+}
 export interface SimpleToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSimpleToastElement;
@@ -215,6 +258,14 @@ export interface TransactionToastCustomEvent<T> extends CustomEvent<T> {
 export interface TransactionToastContentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLTransactionToastContentElement;
+}
+export interface UnlockHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUnlockHeaderElement;
+}
+export interface UnlockPanelCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUnlockPanelElement;
 }
 declare global {
     interface HTMLBalanceComponentElement extends Components.BalanceComponent, HTMLStencilElement {
@@ -271,7 +322,7 @@ declare global {
         new (): HTMLFungibleComponentElement;
     };
     interface HTMLGenericModalElementEventMap {
-        "close": void;
+        "close": any;
     }
     interface HTMLGenericModalElement extends Components.GenericModal, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGenericModalElementEventMap>(type: K, listener: (this: HTMLGenericModalElement, ev: GenericModalCustomEvent<HTMLGenericModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -310,17 +361,72 @@ declare global {
         prototype: HTMLGenericToastElement;
         new (): HTMLGenericToastElement;
     };
+    interface HTMLLedgerAccountScreenElementEventMap {
+        "selectAccount": any;
+        "nextPage": any;
+        "prevPage": any;
+        "accessWallet": any;
+    }
+    interface HTMLLedgerAccountScreenElement extends Components.LedgerAccountScreen, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLedgerAccountScreenElementEventMap>(type: K, listener: (this: HTMLLedgerAccountScreenElement, ev: LedgerAccountScreenCustomEvent<HTMLLedgerAccountScreenElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLedgerAccountScreenElementEventMap>(type: K, listener: (this: HTMLLedgerAccountScreenElement, ev: LedgerAccountScreenCustomEvent<HTMLLedgerAccountScreenElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLLedgerAccountScreenElement: {
+        prototype: HTMLLedgerAccountScreenElement;
+        new (): HTMLLedgerAccountScreenElement;
+    };
+    interface HTMLLedgerConfirmScreenElement extends Components.LedgerConfirmScreen, HTMLStencilElement {
+    }
+    var HTMLLedgerConfirmScreenElement: {
+        prototype: HTMLLedgerConfirmScreenElement;
+        new (): HTMLLedgerConfirmScreenElement;
+    };
+    interface HTMLLedgerConnectElement extends Components.LedgerConnect, HTMLStencilElement {
+    }
+    var HTMLLedgerConnectElement: {
+        prototype: HTMLLedgerConnectElement;
+        new (): HTMLLedgerConnectElement;
+    };
     interface HTMLLedgerConnectModalElement extends Components.LedgerConnectModal, HTMLStencilElement {
     }
     var HTMLLedgerConnectModalElement: {
         prototype: HTMLLedgerConnectModalElement;
         new (): HTMLLedgerConnectModalElement;
     };
+    interface HTMLLedgerConnectScreenElementEventMap {
+        "connect": any;
+    }
+    interface HTMLLedgerConnectScreenElement extends Components.LedgerConnectScreen, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLLedgerConnectScreenElementEventMap>(type: K, listener: (this: HTMLLedgerConnectScreenElement, ev: LedgerConnectScreenCustomEvent<HTMLLedgerConnectScreenElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLLedgerConnectScreenElementEventMap>(type: K, listener: (this: HTMLLedgerConnectScreenElement, ev: LedgerConnectScreenCustomEvent<HTMLLedgerConnectScreenElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLLedgerConnectScreenElement: {
+        prototype: HTMLLedgerConnectScreenElement;
+        new (): HTMLLedgerConnectScreenElement;
+    };
     interface HTMLPendingTransactionsModalElement extends Components.PendingTransactionsModal, HTMLStencilElement {
     }
     var HTMLPendingTransactionsModalElement: {
         prototype: HTMLPendingTransactionsModalElement;
         new (): HTMLPendingTransactionsModalElement;
+    };
+    interface HTMLProviderButtonElement extends Components.ProviderButton, HTMLStencilElement {
+    }
+    var HTMLProviderButtonElement: {
+        prototype: HTMLProviderButtonElement;
+        new (): HTMLProviderButtonElement;
     };
     interface HTMLSignTransactionComponentElement extends Components.SignTransactionComponent, HTMLStencilElement {
     }
@@ -487,6 +593,48 @@ declare global {
         prototype: HTMLTrimTextElement;
         new (): HTMLTrimTextElement;
     };
+    interface HTMLUnlockButtonElement extends Components.UnlockButton, HTMLStencilElement {
+    }
+    var HTMLUnlockButtonElement: {
+        prototype: HTMLUnlockButtonElement;
+        new (): HTMLUnlockButtonElement;
+    };
+    interface HTMLUnlockHeaderElementEventMap {
+        "back": void;
+        "close": void;
+    }
+    interface HTMLUnlockHeaderElement extends Components.UnlockHeader, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUnlockHeaderElementEventMap>(type: K, listener: (this: HTMLUnlockHeaderElement, ev: UnlockHeaderCustomEvent<HTMLUnlockHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUnlockHeaderElementEventMap>(type: K, listener: (this: HTMLUnlockHeaderElement, ev: UnlockHeaderCustomEvent<HTMLUnlockHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUnlockHeaderElement: {
+        prototype: HTMLUnlockHeaderElement;
+        new (): HTMLUnlockHeaderElement;
+    };
+    interface HTMLUnlockPanelElementEventMap {
+        "close": any;
+        "login": { provider: ProviderTypeEnum; anchor?: HTMLElement };
+    }
+    interface HTMLUnlockPanelElement extends Components.UnlockPanel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUnlockPanelElementEventMap>(type: K, listener: (this: HTMLUnlockPanelElement, ev: UnlockPanelCustomEvent<HTMLUnlockPanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUnlockPanelElementEventMap>(type: K, listener: (this: HTMLUnlockPanelElement, ev: UnlockPanelCustomEvent<HTMLUnlockPanelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUnlockPanelElement: {
+        prototype: HTMLUnlockPanelElement;
+        new (): HTMLUnlockPanelElement;
+    };
     interface HTMLWalletConnectModalElement extends Components.WalletConnectModal, HTMLStencilElement {
     }
     var HTMLWalletConnectModalElement: {
@@ -504,8 +652,13 @@ declare global {
         "generic-modal": HTMLGenericModalElement;
         "generic-spinner": HTMLGenericSpinnerElement;
         "generic-toast": HTMLGenericToastElement;
+        "ledger-account-screen": HTMLLedgerAccountScreenElement;
+        "ledger-confirm-screen": HTMLLedgerConfirmScreenElement;
+        "ledger-connect": HTMLLedgerConnectElement;
         "ledger-connect-modal": HTMLLedgerConnectModalElement;
+        "ledger-connect-screen": HTMLLedgerConnectScreenElement;
         "pending-transactions-modal": HTMLPendingTransactionsModalElement;
+        "provider-button": HTMLProviderButtonElement;
         "sign-transaction-component": HTMLSignTransactionComponentElement;
         "sign-transactions-modal": HTMLSignTransactionsModalElement;
         "simple-toast": HTMLSimpleToastElement;
@@ -528,6 +681,9 @@ declare global {
         "transaction-value": HTMLTransactionValueElement;
         "transactions-table": HTMLTransactionsTableElement;
         "trim-text": HTMLTrimTextElement;
+        "unlock-button": HTMLUnlockButtonElement;
+        "unlock-header": HTMLUnlockHeaderElement;
+        "unlock-panel": HTMLUnlockPanelElement;
         "wallet-connect-modal": HTMLWalletConnectModalElement;
     }
 }
@@ -573,10 +729,10 @@ declare namespace LocalJSX {
     interface FungibleComponent {
     }
     interface GenericModal {
-        "body"?: VNode;
-        "modalSubtitle"?: string | VNode;
-        "modalTitle"?: string | VNode;
-        "onClose"?: (event: GenericModalCustomEvent<void>) => void;
+        "body"?: IGenericModalProps['body'];
+        "modalSubtitle"?: IGenericModalProps['modalSubtitle'];
+        "modalTitle"?: IGenericModalProps['modalTitle'];
+        "onClose"?: (event: GenericModalCustomEvent<any>) => void;
     }
     interface GenericSpinner {
     }
@@ -584,11 +740,32 @@ declare namespace LocalJSX {
         "onHandleDeleteToast"?: (event: GenericToastCustomEvent<string>) => void;
         "toast"?: CustomToastType;
     }
+    interface LedgerAccountScreen {
+        "accountScreenData"?: IAccountScreenData;
+        "onAccessWallet"?: (event: LedgerAccountScreenCustomEvent<any>) => void;
+        "onNextPage"?: (event: LedgerAccountScreenCustomEvent<any>) => void;
+        "onPrevPage"?: (event: LedgerAccountScreenCustomEvent<any>) => void;
+        "onSelectAccount"?: (event: LedgerAccountScreenCustomEvent<any>) => void;
+        "selectedIndex"?: number;
+    }
+    interface LedgerConfirmScreen {
+        "confirmScreenData"?: IConfirmScreenData;
+    }
+    interface LedgerConnect {
+        "data"?: ILedgerConnectModalData;
+    }
     interface LedgerConnectModal {
         "data"?: ILedgerConnectModalData;
     }
+    interface LedgerConnectScreen {
+        "connectScreenData"?: IConnectScreenData;
+        "onConnect"?: (event: LedgerConnectScreenCustomEvent<any>) => void;
+    }
     interface PendingTransactionsModal {
         "data"?: IPendingTransactionsModalData;
+    }
+    interface ProviderButton {
+        "type"?: ProviderTypeEnum;
     }
     interface SignTransactionComponent {
         "header"?: VNode;
@@ -662,6 +839,7 @@ declare namespace LocalJSX {
         "transactions"?: ITransaction[];
     }
     interface TransactionToastDetails {
+        "maxShownTransactions"?: number;
         "processedTransactionsStatus"?: JSX.Element | string;
         "transactionClass"?: string;
         "transactions"?: ITransaction[];
@@ -693,6 +871,23 @@ declare namespace LocalJSX {
         "dataTestId"?: string;
         "text"?: string;
     }
+    interface UnlockButton {
+        "icon"?: HTMLElement;
+        "label"?: string;
+    }
+    interface UnlockHeader {
+        "backIcon"?: IconDefinition;
+        "closeIcon"?: IconDefinition;
+        "onBack"?: (event: UnlockHeaderCustomEvent<void>) => void;
+        "onClose"?: (event: UnlockHeaderCustomEvent<void>) => void;
+        "text"?: string;
+    }
+    interface UnlockPanel {
+        "allowedProviders"?: ProviderTypeEnum[];
+        "onClose"?: (event: UnlockPanelCustomEvent<any>) => void;
+        "onLogin"?: (event: UnlockPanelCustomEvent<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>) => void;
+        "open"?: boolean;
+    }
     interface WalletConnectModal {
         "data"?: IWalletConnectModalData;
     }
@@ -707,8 +902,13 @@ declare namespace LocalJSX {
         "generic-modal": GenericModal;
         "generic-spinner": GenericSpinner;
         "generic-toast": GenericToast;
+        "ledger-account-screen": LedgerAccountScreen;
+        "ledger-confirm-screen": LedgerConfirmScreen;
+        "ledger-connect": LedgerConnect;
         "ledger-connect-modal": LedgerConnectModal;
+        "ledger-connect-screen": LedgerConnectScreen;
         "pending-transactions-modal": PendingTransactionsModal;
+        "provider-button": ProviderButton;
         "sign-transaction-component": SignTransactionComponent;
         "sign-transactions-modal": SignTransactionsModal;
         "simple-toast": SimpleToast;
@@ -731,6 +931,9 @@ declare namespace LocalJSX {
         "transaction-value": TransactionValue;
         "transactions-table": TransactionsTable;
         "trim-text": TrimText;
+        "unlock-button": UnlockButton;
+        "unlock-header": UnlockHeader;
+        "unlock-panel": UnlockPanel;
         "wallet-connect-modal": WalletConnectModal;
     }
 }
@@ -748,8 +951,13 @@ declare module "@stencil/core" {
             "generic-modal": LocalJSX.GenericModal & JSXBase.HTMLAttributes<HTMLGenericModalElement>;
             "generic-spinner": LocalJSX.GenericSpinner & JSXBase.HTMLAttributes<HTMLGenericSpinnerElement>;
             "generic-toast": LocalJSX.GenericToast & JSXBase.HTMLAttributes<HTMLGenericToastElement>;
+            "ledger-account-screen": LocalJSX.LedgerAccountScreen & JSXBase.HTMLAttributes<HTMLLedgerAccountScreenElement>;
+            "ledger-confirm-screen": LocalJSX.LedgerConfirmScreen & JSXBase.HTMLAttributes<HTMLLedgerConfirmScreenElement>;
+            "ledger-connect": LocalJSX.LedgerConnect & JSXBase.HTMLAttributes<HTMLLedgerConnectElement>;
             "ledger-connect-modal": LocalJSX.LedgerConnectModal & JSXBase.HTMLAttributes<HTMLLedgerConnectModalElement>;
+            "ledger-connect-screen": LocalJSX.LedgerConnectScreen & JSXBase.HTMLAttributes<HTMLLedgerConnectScreenElement>;
             "pending-transactions-modal": LocalJSX.PendingTransactionsModal & JSXBase.HTMLAttributes<HTMLPendingTransactionsModalElement>;
+            "provider-button": LocalJSX.ProviderButton & JSXBase.HTMLAttributes<HTMLProviderButtonElement>;
             "sign-transaction-component": LocalJSX.SignTransactionComponent & JSXBase.HTMLAttributes<HTMLSignTransactionComponentElement>;
             "sign-transactions-modal": LocalJSX.SignTransactionsModal & JSXBase.HTMLAttributes<HTMLSignTransactionsModalElement>;
             "simple-toast": LocalJSX.SimpleToast & JSXBase.HTMLAttributes<HTMLSimpleToastElement>;
@@ -772,6 +980,9 @@ declare module "@stencil/core" {
             "transaction-value": LocalJSX.TransactionValue & JSXBase.HTMLAttributes<HTMLTransactionValueElement>;
             "transactions-table": LocalJSX.TransactionsTable & JSXBase.HTMLAttributes<HTMLTransactionsTableElement>;
             "trim-text": LocalJSX.TrimText & JSXBase.HTMLAttributes<HTMLTrimTextElement>;
+            "unlock-button": LocalJSX.UnlockButton & JSXBase.HTMLAttributes<HTMLUnlockButtonElement>;
+            "unlock-header": LocalJSX.UnlockHeader & JSXBase.HTMLAttributes<HTMLUnlockHeaderElement>;
+            "unlock-panel": LocalJSX.UnlockPanel & JSXBase.HTMLAttributes<HTMLUnlockPanelElement>;
             "wallet-connect-modal": LocalJSX.WalletConnectModal & JSXBase.HTMLAttributes<HTMLWalletConnectModalElement>;
         }
     }
