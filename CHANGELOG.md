@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.0-alpha.5](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/49)] - 2025-02-27
+
 - [Added ability to expand/collapse transactions in toast](https://github.com/multiversx/mx-sdk-dapp-core/pull/48)
 - [Added ability to close modal on Escape](https://github.com/multiversx/mx-sdk-dapp-core/pull/46)
 - [Added missing components from excludeComponents stancil config](https://github.com/multiversx/mx-sdk-dapp-core/pull/44)
