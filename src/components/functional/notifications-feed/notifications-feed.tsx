@@ -1,12 +1,10 @@
 import { faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
-import type { EventEmitter } from '@stencil/core';
-import { Component, Event, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
 import type { ITransactionListItem } from '../../visual/transaction-list-item/transaction-list-item.types';
 import type { ITransactionToast } from '../toasts-list/components/transaction-toast/transaction-toast.type';
-import { ToastEventsEnum } from '../toasts-list/toast-list.types';
 import { NotificationsFeedEventsEnum } from './notifications-feed.types';
 
 @Component({
@@ -19,37 +17,50 @@ export class NotificationsFeed {
   @Prop() processingTransactions: ITransactionToast[];
   @Prop() transactionsHistory: ITransactionListItem[] = [];
 
-  @Event() close: EventEmitter;
-
   @State() isVisible: boolean = false;
   @State() shouldAnimate: boolean = false;
 
   private eventBus: IEventBus = new EventBus();
   private closeTimeout: NodeJS.Timeout | null = null;
+  private closeEventTimeout: NodeJS.Timeout | null = null;
+  private readonly ANIMATION_DURATION = 300; // Duration in ms
 
   @Watch('open')
   handleOpenChange(newValue: boolean) {
     if (newValue) {
+      // Opening
       if (this.closeTimeout) {
         clearTimeout(this.closeTimeout);
+        this.closeTimeout = null;
+      }
+      if (this.closeEventTimeout) {
+        clearTimeout(this.closeEventTimeout);
+        this.closeEventTimeout = null;
       }
       this.isVisible = true;
-
-      // Delay animation to allow rendering first
-      return requestAnimationFrame(() => {
+      // Delay animation to next frame to ensure DOM is ready
+      requestAnimationFrame(() => {
         this.shouldAnimate = true;
       });
+    } else {
+      // Closing
+      this.shouldAnimate = false;
+      // Wait for animation to complete before hiding
+      this.closeTimeout = setTimeout(() => {
+        this.isVisible = false;
+      }, this.ANIMATION_DURATION);
     }
-
-    this.shouldAnimate = false;
-    this.closeTimeout = setTimeout(() => {
-      this.isVisible = false;
-    }, 300); // Delay unmounting after animation
   }
 
   disconnectedCallback() {
     if (this.closeTimeout) {
       clearTimeout(this.closeTimeout);
+      this.closeTimeout = null;
+    }
+    
+    if (this.closeEventTimeout) {
+      clearTimeout(this.closeEventTimeout);
+      this.closeEventTimeout = null;
     }
   }
 
@@ -60,8 +71,10 @@ export class NotificationsFeed {
 
   handleClose = () => {
     this.open = false;
-    this.close.emit();
-    this.eventBus.publish(NotificationsFeedEventsEnum.CLOSE_NOTIFICATIONS_FEED);
+    // Wait for animation to complete before publishing close event
+    this.closeEventTimeout = setTimeout(() => {
+      this.eventBus.publish(NotificationsFeedEventsEnum.CLOSE_NOTIFICATIONS_FEED);
+    }, this.ANIMATION_DURATION);
   };
 
   handleClear = () => {
@@ -69,7 +82,6 @@ export class NotificationsFeed {
   };
 
   handleViewAll = () => {
-    console.log('handleViewAll');
     this.open = true;
   };
 
@@ -80,8 +92,6 @@ export class NotificationsFeed {
   };
 
   render() {
-    console.log('render', this.isVisible);
-
     if (!this.isVisible) {
       return null;
     }
@@ -93,6 +103,7 @@ export class NotificationsFeed {
         class={{
           overlay: true,
           visible: this.shouldAnimate,
+          hidden: !this.shouldAnimate,
         }}
         onClick={this.handleOverlayClick}
       >
@@ -140,19 +151,16 @@ export class NotificationsFeed {
   }
 
   private processingTransactionsUpdate(payload: ITransactionToast[]) {
-    console.log('processingTransactionsUpdate', payload);
     this.processingTransactions = [...payload];
     forceUpdate(this);
   }
 
   private transactionsHistoryUpdate(payload: ITransactionListItem[]) {
-    console.log('transactionsHistoryUpdate', payload);
     this.transactionsHistory = [...payload];
     forceUpdate(this);
   }
 
   componentDidLoad() {
-    this.eventBus.subscribe(ToastEventsEnum.TRANSACTION_TOAST_DATA_UPDATE, this.processingTransactionsUpdate.bind(this));
     this.eventBus.subscribe(NotificationsFeedEventsEnum.PROCESSING_TRANSACTIONS_UPDATE, this.processingTransactionsUpdate.bind(this));
     this.eventBus.subscribe(NotificationsFeedEventsEnum.TRANSACTIONS_HISTORY_UPDATE, this.transactionsHistoryUpdate.bind(this));
     this.eventBus.subscribe(NotificationsFeedEventsEnum.OPEN_NOTIFICATIONS_FEED, this.handleViewAll.bind(this));

@@ -13,13 +13,6 @@
 | `transactionsHistory`    | --        |             | `ITransactionListItem[]` | `[]`        |
 
 
-## Events
-
-| Event   | Description | Type               |
-| ------- | ----------- | ------------------ |
-| `close` |             | `CustomEvent<any>` |
-
-
 ## Methods
 
 ### `getEventBus() => Promise<IEventBus>`

@@ -1,6 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
 
-import { NotificationsFeedEventsEnum } from '../../notifications-feed/notifications-feed.types';
 import { ToastList } from '../toast-list';
 import { ToastEventsEnum } from '../toast-list.types';
 
@@ -284,6 +283,6 @@ describe('toast-list', () => {
     page.rootInstance.handleViewAllClick();
 
     // Verify the event was published with correct parameters
-    expect(eventBusMock.publish).toHaveBeenCalledWith(NotificationsFeedEventsEnum.OPEN_NOTIFICATIONS_FEED);
+    expect(eventBusMock.publish).toHaveBeenCalledWith(ToastEventsEnum.VIEW_ALL);
   });
 });

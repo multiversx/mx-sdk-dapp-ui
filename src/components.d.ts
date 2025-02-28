@@ -257,10 +257,6 @@ export interface LedgerConnectScreenCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLLedgerConnectScreenElement;
 }
-export interface NotificationsFeedCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLNotificationsFeedElement;
-}
 export interface SimpleToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSimpleToastElement;
@@ -430,18 +426,7 @@ declare global {
         prototype: HTMLLedgerConnectScreenElement;
         new (): HTMLLedgerConnectScreenElement;
     };
-    interface HTMLNotificationsFeedElementEventMap {
-        "close": any;
-    }
     interface HTMLNotificationsFeedElement extends Components.NotificationsFeed, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLNotificationsFeedElementEventMap>(type: K, listener: (this: HTMLNotificationsFeedElement, ev: NotificationsFeedCustomEvent<HTMLNotificationsFeedElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLNotificationsFeedElementEventMap>(type: K, listener: (this: HTMLNotificationsFeedElement, ev: NotificationsFeedCustomEvent<HTMLNotificationsFeedElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLNotificationsFeedElement: {
         prototype: HTMLNotificationsFeedElement;
@@ -801,7 +786,6 @@ declare namespace LocalJSX {
         "onConnect"?: (event: LedgerConnectScreenCustomEvent<any>) => void;
     }
     interface NotificationsFeed {
-        "onClose"?: (event: NotificationsFeedCustomEvent<any>) => void;
         "processingTransactions"?: ITransactionToast[];
         "transactionsHistory"?: ITransactionListItem[];
     }

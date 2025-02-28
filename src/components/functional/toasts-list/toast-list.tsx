@@ -2,7 +2,6 @@ import { Component, forceUpdate, h, Method, Prop } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import { NotificationsFeedEventsEnum } from '../notifications-feed/notifications-feed.types';
 import type { CustomToastType, ITransactionToast } from './components/transaction-toast/transaction-toast.type';
 import { ToastEventsEnum } from './toast-list.types';
 
@@ -28,7 +27,7 @@ export class ToastList {
   }
 
   private handleViewAllClick() {
-    this.eventBus.publish(NotificationsFeedEventsEnum.OPEN_NOTIFICATIONS_FEED);
+    this.eventBus.publish(ToastEventsEnum.VIEW_ALL);
   }
 
   render() {
