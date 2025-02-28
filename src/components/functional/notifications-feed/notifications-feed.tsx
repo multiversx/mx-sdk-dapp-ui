@@ -1,5 +1,5 @@
 import { faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { Component, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Method, State, Watch } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
@@ -14,9 +14,8 @@ import { NotificationsFeedEventsEnum } from './notifications-feed.types';
 })
 export class NotificationsFeed {
   @State() open: boolean = false;
-  @Prop() processingTransactions: ITransactionToast[];
-  @Prop() transactionsHistory: ITransactionListItem[] = [];
-
+  @State() processingTransactions: ITransactionToast[] = [];
+  @State() transactionsHistory: ITransactionListItem[] = [];
   @State() isVisible: boolean = false;
   @State() shouldAnimate: boolean = false;
 
@@ -57,7 +56,6 @@ export class NotificationsFeed {
       clearTimeout(this.closeTimeout);
       this.closeTimeout = null;
     }
-    
     if (this.closeEventTimeout) {
       clearTimeout(this.closeEventTimeout);
       this.closeEventTimeout = null;
@@ -97,6 +95,7 @@ export class NotificationsFeed {
     }
 
     const hasActivity = this.transactionsHistory && this.transactionsHistory.length > 0;
+    const hasProcessing = this.processingTransactions && this.processingTransactions.length > 0;
 
     return (
       <div
@@ -121,14 +120,14 @@ export class NotificationsFeed {
           </div>
 
           <div class="notifications-container">
-            {/* Processing Status */}
-            <div class="processing-status">Processing...</div>
-
-            {/* Toast List */}
-            <toast-list transactionToasts={this.processingTransactions}></toast-list>
+            {hasProcessing && (
+              <div>
+                <div class="processing-status">Processing...</div>
+                {this.processingTransactions?.map(toast => <transaction-toast {...toast}></transaction-toast>)}
+              </div>
+            )}
           </div>
 
-          {/* Activity Section */}
           <div class="activity-section">
             <div class="activity-header">
               <h3 class="activity-title">Activity</h3>
@@ -140,9 +139,13 @@ export class NotificationsFeed {
             </div>
 
             <div class="activity-list">
-              {this.transactionsHistory.map(transaction => (
-                <transaction-list-item key={transaction.hash} transaction={transaction} />
-              ))}
+              {hasActivity ? (
+                this.transactionsHistory.map(transaction => (
+                  <transaction-list-item key={transaction.hash} transaction={transaction} />
+                ))
+              ) : (
+                <div class="no-activity">No activity to show</div>
+              )}
             </div>
           </div>
         </div>
@@ -151,13 +154,13 @@ export class NotificationsFeed {
   }
 
   private processingTransactionsUpdate(payload: ITransactionToast[]) {
+    console.log('processingTransactionsUpdate', payload);
     this.processingTransactions = [...payload];
-    forceUpdate(this);
   }
 
   private transactionsHistoryUpdate(payload: ITransactionListItem[]) {
+    console.log('transactionsHistoryUpdate', payload);
     this.transactionsHistory = [...payload];
-    forceUpdate(this);
   }
 
   componentDidLoad() {

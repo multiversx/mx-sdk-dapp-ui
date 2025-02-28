@@ -27,9 +27,9 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 340px;
+  max-width: 480px;
   height: 100%;
-  background: var(--mx-dapp-core-bg-primary, #ffffff);
+  background: white;
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
   transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
@@ -43,83 +43,111 @@
 }
 
 .panel-header {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  border-bottom: 1px solid var(--mx-dapp-core-border-color, #e5e7eb);
+  flex-shrink: 0;
 }
 
 .panel-title {
-  font-size: 1.25rem;
-  font-weight: 600;
   margin: 0;
-}
-
-.close-button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 1.25rem;
-  color: var(--mx-dapp-core-text-secondary, #6b7280);
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .notifications-info {
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #eee;
   display: flex;
   align-items: center;
-  padding: 0.75rem 1rem;
-  background-color: rgba(255, 185, 46, 0.1);
-  font-size: 0.875rem;
-  color: var(--mx-dapp-core-text-info, #6b7280);
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #666;
 }
 
 .info-icon {
-  margin-left: 0.5rem;
-  color: #f59e0b;
+  color: #666;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #666;
+  
+  &:hover {
+    color: #333;
+  }
 }
 
 .notifications-container {
-  flex: 1;
-  overflow-y: auto;
-  padding: 0.5rem 0;
-}
-
-.processing-status {
   padding: 1rem;
-  display: flex;
-  align-items: center;
-  color: var(--mx-dapp-core-text-secondary, #6b7280);
-  font-style: italic;
+  width: 100%;
+  flex-shrink: 0;
+  max-height: 40%;
+  overflow-y: auto;
 }
 
 .activity-section {
-  border-top: 1px solid var(--mx-dapp-core-border-color, #e5e7eb);
+  padding: 1rem;
+  width: 100%;
+  border-top: 1px solid #eee;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .activity-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 .activity-title {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
   margin: 0;
 }
 
-.clear-button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-size: 0.875rem;
-  color: var(--mx-dapp-core-color-primary, #2044f5);
+.activity-list {
+  width: 100%;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 0.5rem;
 }
 
-.activity-list {
-  max-height: 300px;
-  overflow-y: auto;
+.no-activity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.clear-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: none;
+  color: #666;
+  cursor: pointer;
+  font-size: 0.9rem;
+  
+  &:hover {
+    color: #333;
+  }
+}
+
+.processing-status {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
 }
 
 /* Mobile styles */
@@ -130,15 +158,9 @@
   }
 
   .panel {
-    border-radius: 12px 12px 0 0;
     max-width: 100%;
-    max-height: 80vh;
+    border-radius: 12px 12px 0 0;
     transform: translateY(100%);
-    border-left: none;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
   }
 
   .overlay.visible .panel {

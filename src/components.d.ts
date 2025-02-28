@@ -10,13 +10,13 @@ import { CustomToastType, IComponentToast, ISimpleToast } from "./components/fun
 import { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
 import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectModalData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
-import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
 import { ProviderTypeEnum } from "./types/provider.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
+import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
+import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 import { IWalletConnectModalData } from "./components/functional/wallet-connect-components/wallet-connect-modal.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
@@ -24,13 +24,13 @@ export { CustomToastType, IComponentToast, ISimpleToast } from "./components/fun
 export { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
 export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectModalData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
-export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
 export { ProviderTypeEnum } from "./types/provider.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
+export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
+export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 export { IWalletConnectModalData } from "./components/functional/wallet-connect-components/wallet-connect-modal.types";
 export namespace Components {
@@ -103,8 +103,6 @@ export namespace Components {
     }
     interface NotificationsFeed {
         "getEventBus": () => Promise<IEventBus>;
-        "processingTransactions": ITransactionToast[];
-        "transactionsHistory": ITransactionListItem[];
     }
     interface PendingTransactionsModal {
         "data": IPendingTransactionsModalData;
@@ -786,8 +784,6 @@ declare namespace LocalJSX {
         "onConnect"?: (event: LedgerConnectScreenCustomEvent<any>) => void;
     }
     interface NotificationsFeed {
-        "processingTransactions"?: ITransactionToast[];
-        "transactionsHistory"?: ITransactionListItem[];
     }
     interface PendingTransactionsModal {
         "data"?: IPendingTransactionsModalData;

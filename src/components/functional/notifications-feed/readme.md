@@ -5,14 +5,6 @@
 <!-- Auto Generated Below -->
 
 
-## Properties
-
-| Property                 | Attribute | Description | Type                     | Default     |
-| ------------------------ | --------- | ----------- | ------------------------ | ----------- |
-| `processingTransactions` | --        |             | `ITransactionToast[]`    | `undefined` |
-| `transactionsHistory`    | --        |             | `ITransactionListItem[]` | `[]`        |
-
-
 ## Methods
 
 ### `getEventBus() => Promise<IEventBus>`
@@ -31,20 +23,15 @@ Type: `Promise<IEventBus>`
 ### Depends on
 
 - [fa-icon](../../visual/fa-icon)
-- [toast-list](../toasts-list)
+- [transaction-toast](../toasts-list/components/transaction-toast)
 - [transaction-list-item](../../visual/transaction-list-item)
 
 ### Graph
 ```mermaid
 graph TD;
   notifications-feed --> fa-icon
-  notifications-feed --> toast-list
+  notifications-feed --> transaction-toast
   notifications-feed --> transaction-list-item
-  toast-list --> generic-toast
-  toast-list --> transaction-toast
-  generic-toast --> custom-toast
-  generic-toast --> simple-toast
-  simple-toast --> transaction-toast-wrapper
   transaction-toast --> transaction-toast-wrapper
   transaction-toast --> transaction-toast-progress
   transaction-toast --> transaction-toast-content

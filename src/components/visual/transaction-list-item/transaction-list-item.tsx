@@ -1,6 +1,7 @@
 import { Component, h, Host, Prop } from '@stencil/core';
 
 import type { ITransactionListItem } from './transaction-list-item.types';
+import { TransactionBatchStatusesEnum, TransactionServerStatusesEnum } from './transaction-list-item.types';
 
 @Component({
   tag: 'transaction-list-item',
@@ -50,43 +51,73 @@ export class TransactionListItem {
     return '';
   }
 
+  private getStatusClass() {
+    if (!this.transaction?.status) {
+      return '';
+    }
+
+    switch (this.transaction.status) {
+      case TransactionServerStatusesEnum.success:
+      case TransactionBatchStatusesEnum.success:
+        return 'status-success';
+      case TransactionServerStatusesEnum.pending:
+      case TransactionBatchStatusesEnum.sent:
+        return 'status-pending';
+      case TransactionServerStatusesEnum.fail:
+      case TransactionBatchStatusesEnum.fail:
+        return 'status-fail';
+      case TransactionServerStatusesEnum.invalid:
+      case TransactionBatchStatusesEnum.invalid:
+        return 'status-invalid';
+      default:
+        return '';
+    }
+  }
+
   render() {
     if (!this.transaction) {
       return <Host></Host>;
     }
 
+    const transactionTitle = this.transaction.title || '';
+    const transactionTitleLower = transactionTitle.toLowerCase();
+    const statusClass = this.getStatusClass();
+
     return (
       <Host
         class={{
-          'transaction-item-sent': this.transaction.title.toLowerCase() === 'sent',
-          'transaction-item-received': this.transaction.title.toLowerCase() === 'received',
-          'transaction-item-claim': this.transaction.title.toLowerCase().includes('claim'),
+          'transaction-item-sent': transactionTitleLower === 'sent',
+          'transaction-item-received': transactionTitleLower === 'received',
+          'transaction-item-claim': transactionTitleLower.includes('claim'),
+          'transaction-in-transit': this.transaction.inTransit,
+          [statusClass]: true,
         }}
       >
         <div class="transaction-item">
-          <div class={`transaction-icon ${this.transaction.title.toLowerCase()}`}>
-            {this.transaction.icon ? <fa-icon icon={this.transaction.icon}></fa-icon> : <span>{this.transaction.title.charAt(0)}</span>}
+          <div class={`transaction-icon ${transactionTitleLower}`}>
+            {this.transaction.icon ? <fa-icon icon={this.transaction.icon}></fa-icon> : <span>{transactionTitle.charAt(0)}</span>}
           </div>
 
           <div class="transaction-details">
-            <h4 class="transaction-title">{this.transaction.title}</h4>
+            <h4 class="transaction-title">{transactionTitle}</h4>
             <div class="transaction-info">
-              {this.transaction.to && (
+              {(this.transaction.to || this.transaction.receiver) && (
                 <span class="transaction-target">
-                  To <span class="entity-name">{this.transaction.to}</span>
+                  To <span class="entity-name">{this.transaction.receiverUsername || this.transaction.to || this.transaction.receiver}</span>
                 </span>
               )}
-              {this.transaction.from && (
+              {(this.transaction.from || this.transaction.sender) && (
                 <span class="transaction-target">
-                  From <span class="entity-name">{this.transaction.from}</span>
+                  From <span class="entity-name">{this.transaction.senderUsername || this.transaction.from || this.transaction.sender}</span>
                 </span>
               )}
+              {this.transaction.status && <span class="transaction-status">{this.transaction.status}</span>}
             </div>
           </div>
 
-          {this.transaction.amount && (
+          {(this.transaction.amount || this.transaction.value) && (
             <div class={`transaction-amount ${this.getAmountClass()}`}>
-              {this.transaction.amount} {this.transaction.label}
+              {this.transaction.amount || this.transaction.value} {this.transaction.label}
             </div>
           )}
 
