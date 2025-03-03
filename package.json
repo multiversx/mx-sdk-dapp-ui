@@ -58,14 +58,14 @@
     "@multiversx/sdk-dapp-utils": ">= 1.0.4",
     "@stencil/react-output-target": "0.8.2",
     "classnames": ">= 2.5.1",
-    "qrcode": ">= 1.5.4"
+    "qrcode": ">= 1.5.4",
+    "sass-embedded": "^1.85.1"
   },
   "devDependencies": {
     "@stencil/core": "^4.22.3",
     "@stencil/sass": "^3.0.12",
     "@stencil/store": "2.0.16",
     "@types/jest": "^29.5.14",
-    "stencil-tailwind-plugin": "1.8.0",
     "@types/jsdom": "^21.1.1",
     "@types/node": "^22.10.0",
     "@typescript-eslint/eslint-plugin": "^8.23.0",
@@ -81,6 +81,7 @@
     "prettier": "3.2.5",
     "puppeteer": "^23.9.0",
     "rollup-plugin-node-polyfills": "^0.2.1",
+    "stencil-tailwind-plugin": "1.8.0",
     "tailwindcss": "3.4.17",
     "typescript": "^5.7.3"
   }
