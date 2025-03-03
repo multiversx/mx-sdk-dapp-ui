@@ -19,6 +19,10 @@ export class TransactionToastContent {
   @Prop() processedTransactionsStatus?: string | JSX.Element;
   @Event() deleteToast: EventEmitter<void>;
 
+  private handleDeleteToast() {
+    this.deleteToast.emit();
+  }
+
   render() {
     const { icon, iconClassName, title, hasCloseButton } = this.toastDataState;
 
@@ -40,7 +44,7 @@ export class TransactionToastContent {
             <h5 class="content-heading-title" data-testid={DataTestIdsEnum.transactionToastTitle}>
               {title}
             </h5>
-            {hasCloseButton && <button onClick={() => this.deleteToast.emit()} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>}
+            {hasCloseButton && <button onClick={this.handleDeleteToast.bind(this)} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>}
           </div>
 
           <div class="content-heading-title">

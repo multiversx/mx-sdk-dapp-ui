@@ -177,6 +177,7 @@ export namespace Components {
         "transactions": ITransaction[];
     }
     interface TransactionToastDetails {
+        "maxShownTransactions": number;
         "processedTransactionsStatus"?: JSX.Element | string;
         "transactionClass": string;
         "transactions"?: ITransaction[];
@@ -838,6 +839,7 @@ declare namespace LocalJSX {
         "transactions"?: ITransaction[];
     }
     interface TransactionToastDetails {
+        "maxShownTransactions"?: number;
         "processedTransactionsStatus"?: JSX.Element | string;
         "transactionClass"?: string;
         "transactions"?: ITransaction[];
