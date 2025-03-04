@@ -1,7 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
 
 import { TransactionListItem } from '../transaction-list-item';
-import type { ITransactionListItem } from '../transaction-list-item.types';
+import { type ITransactionListItem, TransactionServerStatusesEnum } from '../transaction-list-item.types';
 
 describe('transaction-list-item', () => {
   const testTransactions: ITransactionListItem[] = [
@@ -9,37 +9,69 @@ describe('transaction-list-item', () => {
     {
       hash: '0x123',
       title: 'Sent',
-      status: 'completed',
+      status: TransactionServerStatusesEnum.success,
       amount: '-1,420.2133',
       label: 'EGLD',
       to: 'AshSwap: Aggregator...',
+      nonce: 1,
+      value: '1420213300000000000',
+      receiver: 'erd1qqqqqqqqqqqqqpgqd77fnev2sthncy2nd8lzn4cqp3vvqwvg7yqs3njh3x',
+      sender: 'erd1qqqqqqqqqqqqqpgqd77fnev2sthncy2nd8lzn4cqp3vvqwvg7yqs3njh3x',
+      gasPrice: 1000000000,
+      gasLimit: 50000,
+      chainID: '1',
+      version: 1,
     },
 
     // Example 2: Claim Rewards with multiple assets
     {
       hash: '0x456',
       title: 'Claim Rewards',
-      status: 'completed',
+      status: TransactionServerStatusesEnum.success,
       to: 'xExchange: Fees Collector',
       assets: ['/assets/tokens/egld.svg', '/assets/tokens/usdc.svg', '/assets/tokens/mex.svg', '/assets/tokens/utk.svg', '/assets/tokens/btc.svg'],
+      nonce: 2,
+      value: '0',
+      receiver: 'erd1qqqqqqqqqqqqqpgqd77fnev2sthncy2nd8lzn4cqp3vvqwvg7yqs3njh3x',
+      sender: 'erd1qqqqqqqqqqqqqpgqd77fnev2sthncy2nd8lzn4cqp3vvqwvg7yqs3njh3x',
+      gasPrice: 1000000000,
+      gasLimit: 50000,
+      chainID: '1',
+      version: 1,
     },
 
     // Example 3: Received transaction with positive amount
     {
       hash: '0x789',
       title: 'Received',
-      status: 'completed',
+      status: TransactionServerStatusesEnum.success,
       amount: '+3,420,865.2133',
       label: 'MEX',
       from: 'xExchange: Fees Collector',
+      nonce: 3,
+      value: '3420865213300000000',
+      receiver: 'erd1qqqqqqqqqqqqqpgqd77fnev2sthncy2nd8lzn4cqp3vvqwvg7yqs3njh3x',
+      sender: 'erd1qqqqqqqqqqqqqpgqd77fnev2sthncy2nd8lzn4cqp3vvqwvg7yqs3njh3x',
+      gasPrice: 1000000000,
+      gasLimit: 50000,
+      chainID: '1',
+      version: 1,
     },
 
     // Example 4: Another Claim Rewards
     {
       hash: '0xabc',
       title: 'Claim Rewards',
-      status: 'completed',
+      status: TransactionServerStatusesEnum.success,
       to: 'xExchange: Fees Collector',
+      nonce: 4,
+      value: '0',
+      receiver: 'erd1qqqqqqqqqqqqqpgqd77fnev2sthncy2nd8lzn4cqp3vvqwvg7yqs3njh3x',
+      sender: 'erd1qqqqqqqqqqqqqpgqd77fnev2sthncy2nd8lzn4cqp3vvqwvg7yqs3njh3x',
+      gasPrice: 1000000000,
+      gasLimit: 50000,
+      chainID: '1',
+      version: 1,
     },
   ];
 
