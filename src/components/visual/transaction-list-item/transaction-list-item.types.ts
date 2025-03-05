@@ -32,7 +32,6 @@ export interface ITransactionListItem {
   to?: string;
   from?: string;
   assets?: string | string[]; // Array of image URLs (SVG or PNG) for the token assets involved in the transaction
-
   // New properties
   nonce: number;
   value: string;

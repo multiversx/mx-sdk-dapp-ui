@@ -7,6 +7,7 @@
   align-items: center;
   padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--mx-dapp-core-border-light, #f3f4f6);
+  gap: 1rem;
 }
 
 .transaction-icon {
@@ -16,24 +17,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 1rem;
-  color: white;
+  background-color: var(--mx-dapp-core-bg-secondary, #f3f4f6);
+  flex-shrink: 0;
+  overflow: hidden;
 
-  &.sent {
-    background-color: var(--mx-dapp-core-color-blue, #4096ff);
-  }
-
-  &.received {
-    background-color: var(--mx-dapp-core-color-green, #20cc8e);
-  }
-
-  &.claim {
-    background-color: var(--mx-dapp-core-color-purple, #7b61ff);
+  .asset-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
 .transaction-details {
   flex: 1;
+  min-width: 0;
 }
 
 .transaction-title {
@@ -57,11 +54,16 @@
   }
 }
 
+.transaction-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
 .transaction-amount {
   font-weight: 600;
-  margin-left: auto;
   font-size: 0.9375rem;
-  padding-left: 1rem;
+  white-space: nowrap;
 
   &.amount-negative {
     color: var(--mx-dapp-core-color-red, #f56c6c);
@@ -75,7 +77,6 @@
 .asset-container {
   display: flex;
   align-items: center;
-  margin-left: 1rem;
 }
 
 .asset {
@@ -86,20 +87,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.75rem;
   margin-left: -0.5rem;
   border: 2px solid var(--mx-dapp-core-bg-primary, white);
   overflow: hidden;
-}
 
-.asset-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+  &:first-child {
+    margin-left: 0;
+  }
 
-.asset:first-child {
-  margin-left: 0;
+  .asset-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 .asset-more {
