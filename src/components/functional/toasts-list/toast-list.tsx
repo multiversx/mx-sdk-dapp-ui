@@ -18,6 +18,11 @@ export class ToastList {
     return this.eventBus;
   }
 
+  disconnectedCallback() {
+    this.eventBus.unsubscribe(ToastEventsEnum.TRANSACTION_TOAST_DATA_UPDATE, this.transactionToastUpdate.bind(this));
+    this.eventBus.unsubscribe(ToastEventsEnum.CUSTOM_TOAST_DATA_UPDATE, this.customToastsUpdate.bind(this));
+  }
+
   private handleCustomToastDelete(toastId: string) {
     this.eventBus.publish(ToastEventsEnum.CLOSE_TOAST, toastId);
   }

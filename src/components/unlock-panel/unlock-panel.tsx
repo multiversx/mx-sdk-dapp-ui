@@ -1,7 +1,9 @@
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter } from '@stencil/core';
-import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Event, h, Prop, State } from '@stencil/core';
 import { ProviderTypeEnum } from 'types/provider.types';
+
+import { SidePanelTypeEnum } from '../visual/side-panel/side-panel.types';
 
 @Component({
   tag: 'unlock-panel',
@@ -9,55 +11,22 @@ import { ProviderTypeEnum } from 'types/provider.types';
   shadow: true,
 })
 export class UnlockPanel {
-  @Prop() open: boolean = false;
+  @Prop() isOpen: boolean = false;
   @Prop() allowedProviders?: ProviderTypeEnum[] = Object.values(ProviderTypeEnum);
   @Event() close: EventEmitter;
   @Event() login: EventEmitter<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>;
 
-  @State() isVisible: boolean = false; // Controls DOM presence
-  @State() shouldAnimate: boolean = false; // Ensures animation plays on open
   @State() isLoggingIn: boolean = false;
   @State() selectedMethod: ProviderTypeEnum | null = null;
 
   private anchor: HTMLElement | null = null;
   private observer: MutationObserver | null = null;
-  private closeTimeout: NodeJS.Timeout | null = null;
-
-  @Watch('open')
-  handleOpenChange(newValue: boolean) {
-    if (newValue) {
-      if (this.closeTimeout) {
-        clearTimeout(this.closeTimeout);
-      }
-      this.isVisible = true; // Ensure component is in DOM
-
-      // Delay animation to allow rendering first
-      return requestAnimationFrame(() => {
-        this.shouldAnimate = true;
-      });
-    }
-
-    this.shouldAnimate = false;
-    this.closeTimeout = setTimeout(() => {
-      this.isVisible = false;
-      this.resetLoginState();
-    }, 300); // Delay unmounting after animation
-  }
 
   disconnectedCallback() {
-    if (this.closeTimeout) {
-      clearTimeout(this.closeTimeout);
-    }
     if (this.observer) {
       this.observer.disconnect();
     }
   }
-
-  handleClose = (event: MouseEvent) => {
-    if (event.target === event.currentTarget) {
-      this.close.emit();
-    }
-  };
 
   private observeContainer(element: HTMLElement | null) {
     if (!element) {
@@ -92,40 +61,29 @@ export class UnlockPanel {
     }
   };
 
+  handleClose = () => {
+    this.close.emit();
+  };
+
   render() {
-    if (!this.isVisible) {
-      return null;
-    }
-
     return (
-      <div
-        class={{
-          overlay: true,
-          visible: this.shouldAnimate,
-          hidden: !this.shouldAnimate,
-        }}
-        onClick={this.handleClose}
-        tabindex="-1"
-      >
-        <div class="panel">
-          <unlock-header
-            text={this.isLoggingIn ? `${this.selectedMethod} connect` : 'Connect your wallet'}
-            backIcon={this.isLoggingIn ? faArrowLeft : null}
-            onBack={this.resetLoginState}
-            onClose={() => this.close.emit()}
-          />
-          <div id="anchor" ref={element => this.observeContainer(element)}></div>
-          {!this.isLoggingIn && (
-            <div class="body">
-              {this.allowedProviders.map(method => (
-                <provider-button type={method} onClick={() => this.handleLogin(method)}></provider-button>
-              ))}
-
-              <slot></slot>
-            </div>
-          )}
-        </div>
-      </div>
+      <side-panel isOpen={this.isOpen} side={SidePanelTypeEnum.RIGHT} onClose={this.handleClose} panelClassName="unlock-panel">
+        <unlock-header
+          text={this.isLoggingIn ? `${this.selectedMethod} connect` : 'Connect your wallet'}
+          backIcon={this.isLoggingIn ? faArrowLeft : null}
+          onBack={this.resetLoginState}
+          onClose={this.handleClose}
+        />
+        <div id="anchor" ref={element => this.observeContainer(element)}></div>
+        {!this.isLoggingIn && (
+          <div class="body">
+            {this.allowedProviders.map(method => (
+              <provider-button type={method} onClick={() => this.handleLogin(method)}></provider-button>
+            ))}
+            <slot></slot>
+          </div>
+        )}
+      </side-panel>
     );
   }
 }

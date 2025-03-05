@@ -17,49 +17,45 @@ const DefaultIcon = () => (
   shadow: true,
 })
 export class TransactionListItem {
-  @Prop() transaction!: ITransactionListItem;
+  @Prop() transaction: ITransactionListItem;
 
   private renderLeftIcon() {
-    if (this.transaction?.assets?.length === 1) {
-      return (
-        <div class="transaction-icon">
-          <img src={this.transaction.assets[0]} alt="Token asset" class="asset-image" loading="lazy" />
-        </div>
-      );
-    }
-
-    return <div class="transaction-icon">{this.transaction.icon ? <fa-icon icon={this.transaction.icon}></fa-icon> : <DefaultIcon />}</div>;
-  }
-
-  private renderMultipleAssets() {
-    if (!this.transaction?.assets || this.transaction.assets.length <= 1) {
-      return null;
-    }
-
-    const assets = Array.isArray(this.transaction.assets) ? this.transaction.assets : [this.transaction.assets];
-
     return (
-      <div class="asset-container">
-        {assets.map((asset, index) => (
-          <div class="asset" style={{ 'z-index': `${assets.length - index}` }}>
-            <img src={asset} alt="Token asset" class="asset-image" loading="lazy" />
-          </div>
-        ))}
+      <div class="transaction-icon">
+        {this.transaction.mainIconUrl ? <img src={this.transaction.mainIconUrl} alt="Transaction icon" class="icon-image" loading="lazy" /> : <DefaultIcon />}
       </div>
     );
   }
 
-  private isOutgoingTransaction() {
-    return Boolean(this.transaction?.to);
-  }
-
-  private formatAmount() {
-    if (!this.transaction?.amount) {
-      return '';
+  private renderDetails() {
+    if (!this.transaction.details) {
+      return null;
     }
 
-    const amount = this.transaction.amount.replace(/^[+-]/, ''); // Remove existing sign if any
-    return this.isOutgoingTransaction() ? `-${amount}` : `+${amount}`;
+    return (
+      <div class="transaction-info">
+        <span class="transaction-target">
+          {this.transaction.details.iconUrl && <img src={this.transaction.details.iconUrl} alt="Service icon" class="service-icon" loading="lazy" />}
+          {this.transaction.details.directionLabel} <span class="entity-name">{this.transaction.details.initiator}</span>
+        </span>
+      </div>
+    );
+  }
+
+  private renderRightIcons() {
+    if (!this.transaction.rightIcons?.length) {
+      return null;
+    }
+
+    return (
+      <div class="asset-container">
+        {this.transaction.rightIcons.map((iconUrl, index) => (
+          <div class="asset" style={{ 'z-index': `${this.transaction.rightIcons!.length - index}` }}>
+            <img src={iconUrl} alt="Token asset" class="asset-image" loading="lazy" />
+          </div>
+        ))}
+      </div>
+    );
   }
 
   render() {
@@ -67,7 +63,7 @@ export class TransactionListItem {
       return <Host></Host>;
     }
 
-    const hasMultipleAssets = this.transaction.assets && this.transaction.assets.length > 1;
+    const hasRightIcons = this.transaction.rightIcons && this.transaction.rightIcons.length > 0;
 
     return (
       <Host>
@@ -76,27 +72,14 @@ export class TransactionListItem {
 
           <div class="transaction-details">
             <h4 class="transaction-title">{this.transaction.title}</h4>
-            <div class="transaction-info">
-              {this.transaction.from && (
-                <span class="transaction-target">
-                  From <span class="entity-name">{this.transaction.senderUsername || this.transaction.from}</span>
-                </span>
-              )}
-              {this.transaction.to && (
-                <span class="transaction-target">
-                  To <span class="entity-name">{this.transaction.receiverUsername || this.transaction.to}</span>
-                </span>
-              )}
-            </div>
+            {this.renderDetails()}
           </div>
 
           <div class="transaction-right">
-            {hasMultipleAssets ? (
-              this.renderMultipleAssets()
+            {hasRightIcons ? (
+              this.renderRightIcons()
             ) : (
-              <div class={`transaction-amount ${this.isOutgoingTransaction() ? 'amount-negative' : 'amount-positive'}`}>
-                {this.formatAmount()} {this.transaction.label}
-              </div>
+              <div class={`transaction-amount ${this.transaction.amount.startsWith('-') ? 'amount-negative' : 'amount-positive'}`}>{this.transaction.amount}</div>
             )}
           </div>
         </div>

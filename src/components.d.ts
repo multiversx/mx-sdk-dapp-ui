@@ -12,6 +12,7 @@ import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConn
 import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
 import { ProviderTypeEnum } from "./types/provider.types";
+import { ISidePanelProps } from "./components/visual/side-panel/side-panel.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -26,6 +27,7 @@ export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConn
 export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
 export { ProviderTypeEnum } from "./types/provider.types";
+export { ISidePanelProps } from "./components/visual/side-panel/side-panel.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -110,6 +112,20 @@ export namespace Components {
     }
     interface ProviderButton {
         "type": ProviderTypeEnum;
+    }
+    interface SidePanel {
+        /**
+          * Whether the panel is open
+         */
+        "isOpen": boolean;
+        /**
+          * Optional class name for the panel content
+         */
+        "panelClassName"?: string;
+        /**
+          * Which side the panel slides from
+         */
+        "side": ISidePanelProps['side'];
     }
     interface SignTransactionComponent {
         "header": VNode;
@@ -228,7 +244,7 @@ export namespace Components {
     }
     interface UnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
-        "open": boolean;
+        "isOpen": boolean;
     }
     interface WalletConnectModal {
         "data": IWalletConnectModalData;
@@ -254,6 +270,10 @@ export interface LedgerAccountScreenCustomEvent<T> extends CustomEvent<T> {
 export interface LedgerConnectScreenCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLLedgerConnectScreenElement;
+}
+export interface SidePanelCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSidePanelElement;
 }
 export interface SimpleToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -441,6 +461,23 @@ declare global {
     var HTMLProviderButtonElement: {
         prototype: HTMLProviderButtonElement;
         new (): HTMLProviderButtonElement;
+    };
+    interface HTMLSidePanelElementEventMap {
+        "close": any;
+    }
+    interface HTMLSidePanelElement extends Components.SidePanel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSidePanelElementEventMap>(type: K, listener: (this: HTMLSidePanelElement, ev: SidePanelCustomEvent<HTMLSidePanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSidePanelElementEventMap>(type: K, listener: (this: HTMLSidePanelElement, ev: SidePanelCustomEvent<HTMLSidePanelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSidePanelElement: {
+        prototype: HTMLSidePanelElement;
+        new (): HTMLSidePanelElement;
     };
     interface HTMLSignTransactionComponentElement extends Components.SignTransactionComponent, HTMLStencilElement {
     }
@@ -680,6 +717,7 @@ declare global {
         "notifications-feed": HTMLNotificationsFeedElement;
         "pending-transactions-modal": HTMLPendingTransactionsModalElement;
         "provider-button": HTMLProviderButtonElement;
+        "side-panel": HTMLSidePanelElement;
         "sign-transaction-component": HTMLSignTransactionComponentElement;
         "sign-transactions-modal": HTMLSignTransactionsModalElement;
         "simple-toast": HTMLSimpleToastElement;
@@ -791,6 +829,21 @@ declare namespace LocalJSX {
     interface ProviderButton {
         "type"?: ProviderTypeEnum;
     }
+    interface SidePanel {
+        /**
+          * Whether the panel is open
+         */
+        "isOpen"?: boolean;
+        "onClose"?: (event: SidePanelCustomEvent<any>) => void;
+        /**
+          * Optional class name for the panel content
+         */
+        "panelClassName"?: string;
+        /**
+          * Which side the panel slides from
+         */
+        "side": ISidePanelProps['side'];
+    }
     interface SignTransactionComponent {
         "header"?: VNode;
     }
@@ -839,7 +892,7 @@ declare namespace LocalJSX {
         "iconInfo"?: ITransactionIconInfo;
     }
     interface TransactionListItem {
-        "transaction": ITransactionListItem;
+        "transaction"?: ITransactionListItem;
     }
     interface TransactionMethod {
         "actionDescription"?: string;
@@ -911,9 +964,9 @@ declare namespace LocalJSX {
     }
     interface UnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
+        "isOpen"?: boolean;
         "onClose"?: (event: UnlockPanelCustomEvent<any>) => void;
         "onLogin"?: (event: UnlockPanelCustomEvent<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>) => void;
-        "open"?: boolean;
     }
     interface WalletConnectModal {
         "data"?: IWalletConnectModalData;
@@ -937,6 +990,7 @@ declare namespace LocalJSX {
         "notifications-feed": NotificationsFeed;
         "pending-transactions-modal": PendingTransactionsModal;
         "provider-button": ProviderButton;
+        "side-panel": SidePanel;
         "sign-transaction-component": SignTransactionComponent;
         "sign-transactions-modal": SignTransactionsModal;
         "simple-toast": SimpleToast;
@@ -988,6 +1042,7 @@ declare module "@stencil/core" {
             "notifications-feed": LocalJSX.NotificationsFeed & JSXBase.HTMLAttributes<HTMLNotificationsFeedElement>;
             "pending-transactions-modal": LocalJSX.PendingTransactionsModal & JSXBase.HTMLAttributes<HTMLPendingTransactionsModalElement>;
             "provider-button": LocalJSX.ProviderButton & JSXBase.HTMLAttributes<HTMLProviderButtonElement>;
+            "side-panel": LocalJSX.SidePanel & JSXBase.HTMLAttributes<HTMLSidePanelElement>;
             "sign-transaction-component": LocalJSX.SignTransactionComponent & JSXBase.HTMLAttributes<HTMLSignTransactionComponentElement>;
             "sign-transactions-modal": LocalJSX.SignTransactionsModal & JSXBase.HTMLAttributes<HTMLSignTransactionsModalElement>;
             "simple-toast": LocalJSX.SimpleToast & JSXBase.HTMLAttributes<HTMLSimpleToastElement>;

@@ -2,46 +2,6 @@
   display: block;
 }
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease-in-out;
-  z-index: 9999;
-}
-
-.overlay.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.panel {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 480px;
-  height: 100%;
-  background: white;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
-  transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
-  overflow: hidden;
-}
-
-.overlay.visible .panel {
-  transform: translateX(0);
-}
-
 .panel-header {
   padding: 1rem;
   border-bottom: 1px solid #eee;
@@ -66,6 +26,7 @@
   gap: 0.5rem;
   font-size: 0.9rem;
   color: #666;
+  flex-shrink: 0;
 }
 
 .info-icon {
@@ -99,7 +60,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  min-height: 0;
 }
 
 .activity-header {
@@ -107,6 +68,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+  flex-shrink: 0;
 }
 
 .activity-title {
@@ -120,6 +82,7 @@
   flex: 1;
   overflow-y: auto;
   padding-right: 0.5rem;
+  min-height: 0;
 }
 
 .no-activity {
@@ -148,22 +111,5 @@
   font-size: 0.9rem;
   color: #666;
   margin-bottom: 1rem;
-}
-
-/* Mobile styles */
-@media (max-width: 768px) {
-  .overlay {
-    justify-content: center;
-    align-items: flex-end;
-  }
-
-  .panel {
-    max-width: 100%;
-    border-radius: 12px 12px 0 0;
-    transform: translateY(100%);
-  }
-
-  .overlay.visible .panel {
-    transform: translateY(0);
-  }
+  flex-shrink: 0;
 }

@@ -22,6 +22,7 @@ Type: `Promise<IEventBus>`
 
 ### Depends on
 
+- [side-panel](../../visual/side-panel)
 - [fa-icon](../../visual/fa-icon)
 - [transaction-toast](../toasts-list/components/transaction-toast)
 - [transaction-list-item](../../visual/transaction-list-item)
@@ -29,6 +30,7 @@ Type: `Promise<IEventBus>`
 ### Graph
 ```mermaid
 graph TD;
+  notifications-feed --> side-panel
   notifications-feed --> fa-icon
   notifications-feed --> transaction-toast
   notifications-feed --> transaction-list-item
@@ -43,7 +45,6 @@ graph TD;
   transaction-toast-details-body --> explorer-link
   copy-button --> fa-icon
   explorer-link --> fa-icon
-  transaction-list-item --> fa-icon
   style notifications-feed fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
