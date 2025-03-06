@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property            | Attribute          | Description                               | Type                                                | Default     |
-| ------------------- | ------------------ | ----------------------------------------- | --------------------------------------------------- | ----------- |
-| `isOpen`            | `is-open`          | Whether the panel is open                 | `boolean`                                           | `false`     |
-| `panelClassName`    | `panel-class-name` | Optional class name for the panel content | `string`                                            | `undefined` |
-| `side` _(required)_ | `side`             | Which side the panel slides from          | `SidePanelTypeEnum.LEFT \| SidePanelTypeEnum.RIGHT` | `undefined` |
+| Property         | Attribute          | Description | Type                                                | Default                   |
+| ---------------- | ------------------ | ----------- | --------------------------------------------------- | ------------------------- |
+| `isOpen`         | `is-open`          |             | `boolean`                                           | `false`                   |
+| `panelClassName` | `panel-class-name` |             | `string`                                            | `undefined`               |
+| `side`           | `side`             |             | `SidePanelSideEnum.LEFT \| SidePanelSideEnum.RIGHT` | `SidePanelSideEnum.RIGHT` |
 
 
 ## Events

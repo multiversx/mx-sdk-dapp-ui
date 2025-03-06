@@ -3,7 +3,7 @@ import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State } from '@stencil/core';
 import { ProviderTypeEnum } from 'types/provider.types';
 
-import { SidePanelTypeEnum } from '../visual/side-panel/side-panel.types';
+import { SidePanelSideEnum } from '../visual/side-panel/side-panel.types';
 
 @Component({
   tag: 'unlock-panel',
@@ -67,7 +67,7 @@ export class UnlockPanel {
 
   render() {
     return (
-      <side-panel isOpen={this.isOpen} side={SidePanelTypeEnum.RIGHT} onClose={this.handleClose} panelClassName="unlock-panel">
+      <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} onClose={this.handleClose} panelClassName="unlock-panel">
         <unlock-header
           text={this.isLoggingIn ? `${this.selectedMethod} connect` : 'Connect your wallet'}
           backIcon={this.isLoggingIn ? faArrowLeft : null}

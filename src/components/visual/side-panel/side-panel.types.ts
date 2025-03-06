@@ -1,21 +1,4 @@
-export enum SidePanelTypeEnum {
+export enum SidePanelSideEnum {
   LEFT = 'left',
-  RIGHT = 'right'
+  RIGHT = 'right',
 }
-
-export interface ISidePanelProps {
-  /**
-   * Whether the panel is open
-   */
-  isOpen: boolean;
-
-  /**
-   * Which side the panel slides from
-   */
-  side: SidePanelTypeEnum;
-
-  /**
-   * Optional class name for the panel content
-   */
-  panelClassName?: string;
-} 

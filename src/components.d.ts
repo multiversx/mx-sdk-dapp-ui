@@ -12,7 +12,7 @@ import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConn
 import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
 import { ProviderTypeEnum } from "./types/provider.types";
-import { ISidePanelProps } from "./components/visual/side-panel/side-panel.types";
+import { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -27,7 +27,7 @@ export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConn
 export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
 export { ProviderTypeEnum } from "./types/provider.types";
-export { ISidePanelProps } from "./components/visual/side-panel/side-panel.types";
+export { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -114,18 +114,9 @@ export namespace Components {
         "type": ProviderTypeEnum;
     }
     interface SidePanel {
-        /**
-          * Whether the panel is open
-         */
         "isOpen": boolean;
-        /**
-          * Optional class name for the panel content
-         */
         "panelClassName"?: string;
-        /**
-          * Which side the panel slides from
-         */
-        "side": ISidePanelProps['side'];
+        "side": SidePanelSideEnum;
     }
     interface SignTransactionComponent {
         "header": VNode;
@@ -830,19 +821,10 @@ declare namespace LocalJSX {
         "type"?: ProviderTypeEnum;
     }
     interface SidePanel {
-        /**
-          * Whether the panel is open
-         */
         "isOpen"?: boolean;
         "onClose"?: (event: SidePanelCustomEvent<any>) => void;
-        /**
-          * Optional class name for the panel content
-         */
         "panelClassName"?: string;
-        /**
-          * Which side the panel slides from
-         */
-        "side": ISidePanelProps['side'];
+        "side"?: SidePanelSideEnum;
     }
     interface SignTransactionComponent {
         "header"?: VNode;

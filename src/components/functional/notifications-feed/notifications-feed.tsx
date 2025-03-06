@@ -3,7 +3,7 @@ import { Component, h, Method, State } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import { SidePanelTypeEnum } from '../../visual/side-panel/side-panel.types';
+import { SidePanelSideEnum } from '../../visual/side-panel/side-panel.types';
 import type { ITransactionListItem } from '../../visual/transaction-list-item/transaction-list-item.types';
 import type { ITransactionToast } from '../toasts-list/components/transaction-toast/transaction-toast.type';
 import { NotificationsFeedEventsEnum } from './notifications-feed.types';
@@ -15,7 +15,7 @@ import { NotificationsFeedEventsEnum } from './notifications-feed.types';
 })
 export class NotificationsFeed {
   @State() isOpen: boolean = false;
-  @State() processingTransactions: ITransactionToast[] = [];
+  @State() pendingTransactions: ITransactionToast[] = [];
   @State() transactionsHistory: ITransactionListItem[] = [];
 
   private eventBus: IEventBus = new EventBus();
@@ -30,7 +30,7 @@ export class NotificationsFeed {
 
   disconnectedCallback() {
     this.clearTimeouts();
-    this.eventBus.unsubscribe(NotificationsFeedEventsEnum.PENDING_TRANSACTIONS_UPDATE, this.processingTransactionsUpdate.bind(this));
+    this.eventBus.unsubscribe(NotificationsFeedEventsEnum.PENDING_TRANSACTIONS_UPDATE, this.pendingTransactionsUpdate.bind(this));
     this.eventBus.unsubscribe(NotificationsFeedEventsEnum.TRANSACTIONS_HISTORY_UPDATE, this.transactionsHistoryUpdate.bind(this));
     this.eventBus.unsubscribe(NotificationsFeedEventsEnum.OPEN_NOTIFICATIONS_FEED, this.handleViewAll.bind(this));
   }
@@ -54,15 +54,11 @@ export class NotificationsFeed {
   };
 
   render() {
-    const hasActivity = this.transactionsHistory && this.transactionsHistory.length > 0;
-    const hasProcessing = this.processingTransactions && this.processingTransactions.length > 0;
+    const hasActivity = this.transactionsHistory?.length > 0;
+    const hasPending = this.pendingTransactions?.length > 0;
 
     return (
-      <side-panel
-        isOpen={this.isOpen}
-        side={SidePanelTypeEnum.RIGHT}
-        onClose={this.handleClose}
-      >
+      <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} onClose={this.handleClose}>
         <div class="panel-header">
           <h2 class="panel-title">Notifications Feed</h2>
           <button class="close-button" onClick={this.handleClose}>
@@ -76,10 +72,10 @@ export class NotificationsFeed {
         </div>
 
         <div class="notifications-container">
-          {hasProcessing && (
+          {hasPending && (
             <div>
               <div class="processing-status">Processing...</div>
-              {this.processingTransactions?.map(toast => <transaction-toast {...toast}></transaction-toast>)}
+              {this.pendingTransactions?.map(toast => <transaction-toast {...toast}></transaction-toast>)}
             </div>
           )}
         </div>
@@ -95,19 +91,15 @@ export class NotificationsFeed {
           </div>
 
           <div class="activity-list">
-            {hasActivity ? (
-              this.transactionsHistory.map(transaction => <transaction-list-item transaction={transaction} />)
-            ) : (
-              <div class="no-activity">No activity to show</div>
-            )}
+            {hasActivity ? this.transactionsHistory.map(transaction => <transaction-list-item transaction={transaction} />) : <div class="no-activity">No activity to show</div>}
           </div>
         </div>
       </side-panel>
     );
   }
 
-  private processingTransactionsUpdate(payload: ITransactionToast[]) {
-    this.processingTransactions = [...payload];
+  private pendingTransactionsUpdate(payload: ITransactionToast[]) {
+    this.pendingTransactions = [...payload];
   }
 
   private transactionsHistoryUpdate(payload: ITransactionListItem[]) {
@@ -115,7 +107,7 @@ export class NotificationsFeed {
   }
 
   componentDidLoad() {
-    this.eventBus.subscribe(NotificationsFeedEventsEnum.PENDING_TRANSACTIONS_UPDATE, this.processingTransactionsUpdate.bind(this));
+    this.eventBus.subscribe(NotificationsFeedEventsEnum.PENDING_TRANSACTIONS_UPDATE, this.pendingTransactionsUpdate.bind(this));
     this.eventBus.subscribe(NotificationsFeedEventsEnum.TRANSACTIONS_HISTORY_UPDATE, this.transactionsHistoryUpdate.bind(this));
     this.eventBus.subscribe(NotificationsFeedEventsEnum.OPEN_NOTIFICATIONS_FEED, this.handleViewAll.bind(this));
   }
