@@ -3,6 +3,9 @@ const colors = require('tailwindcss/colors');
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/reactjs/**/*.{js,ts,jsx,tsx}', './node_modules/@multiverx/sdk-dapp-form/**/*.js'],
+  content: ['./src/**/*.{tsx,ts,jsx,js,html}'],
+  theme: {
+    extend: {},
+  },
   plugins: [],
 };
