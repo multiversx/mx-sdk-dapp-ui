@@ -1,3 +1,5 @@
+import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+
 export enum TransactionServerStatusesEnum {
   pending = 'pending',
   fail = 'fail',
@@ -19,15 +21,25 @@ export enum TransactionBatchStatusesEnum {
 }
 
 export interface ITransactionListItemDetails {
-  iconUrl?: string;
+  initiator: string;
+  initiatorAsset?: string;
   directionLabel?: string;
-  initiator?: string;
+}
+
+export interface ITransactionListItemAsset {
+  imageUrl?: string;
+  text?: string;
+  icon?: IconDefinition;
+}
+
+export interface ITransactionListItemAction {
+  name: string;
+  description?: string;
 }
 
 export interface ITransactionListItem {
-  mainIconUrl?: string;
-  title: string;
-  amount: string;
+  asset: ITransactionListItemAsset | null;
+  action: ITransactionListItemAction;
+  amount?: string;
   details?: ITransactionListItemDetails;
-  rightIcons?: string[];
 }

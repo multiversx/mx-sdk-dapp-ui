@@ -45,6 +45,8 @@ graph TD;
   transaction-toast-details-body --> explorer-link
   copy-button --> fa-icon
   explorer-link --> fa-icon
+  transaction-list-item --> fa-icon
+  transaction-list-item --> trim-text
   style notifications-feed fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
