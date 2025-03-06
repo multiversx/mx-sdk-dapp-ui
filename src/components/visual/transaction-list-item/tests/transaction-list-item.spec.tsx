@@ -4,6 +4,9 @@ import { newSpecPage } from '@stencil/core/testing';
 import { TransactionListItem } from '../transaction-list-item';
 import type { ITransactionListItem } from '../transaction-list-item.types';
 
+// Mock the SVG import
+jest.mock('../assets/default-icon.svg', () => 'mocked-default-icon.svg');
+
 describe('transaction-list-item', () => {
   const createPage = async (transaction: ITransactionListItem) => {
     const page = await newSpecPage({
@@ -29,8 +32,17 @@ describe('transaction-list-item', () => {
     details: {
       initiator: 'Test Address',
       initiatorAsset: '/assets/icons/service.svg',
+      directionLabel: 'From',
     },
   };
+
+  it('renders empty when no transaction is provided', async () => {
+    const page = await newSpecPage({
+      components: [TransactionListItem],
+      html: '<transaction-list-item></transaction-list-item>',
+    });
+    expect(page.root.shadowRoot.querySelector('.transaction-item')).toBeFalsy();
+  });
 
   it('renders with asset image', async () => {
     const page = await createPage(baseTransaction);
@@ -46,8 +58,9 @@ describe('transaction-list-item', () => {
       },
     };
     const page = await createPage(transaction);
-    const iconText = page.root.shadowRoot.querySelector('.icon-text');
-    expect(iconText).toBeTruthy();
+    const iconComponent = page.root.shadowRoot.querySelector('fa-icon');
+    expect(iconComponent).toBeTruthy();
+    expect(iconComponent.getAttribute('icon')).toBeDefined();
   });
 
   it('renders with asset text', async () => {
@@ -68,18 +81,26 @@ describe('transaction-list-item', () => {
       asset: {},
     };
     const page = await createPage(transaction);
-    const iconImg = page.root.shadowRoot.querySelector('.icon-image');
-    expect(iconImg.getAttribute('src')).toBe('default-icon.svg');
+    const defaultIcon = page.root.shadowRoot.querySelector('svg');
+    expect(defaultIcon).toBeTruthy();
+    expect(defaultIcon.getAttribute('width')).toBe('20');
+    expect(defaultIcon.getAttribute('height')).toBe('21');
   });
 
   it('renders transaction details correctly', async () => {
     const page = await createPage(baseTransaction);
-    const title = page.root.shadowRoot.querySelector('.transaction-title');
-    const details = page.root.shadowRoot.querySelector('.transaction-info');
 
+    const title = page.root.shadowRoot.querySelector('.transaction-title');
     expect(title.textContent).toBe(baseTransaction.action.name);
-    expect(details.textContent).toContain(baseTransaction.action.description);
-    expect(details.textContent).toContain(baseTransaction.details.initiator);
+
+    const directionLabel = page.root.shadowRoot.querySelector('.direction-label');
+    expect(directionLabel.textContent).toBe(baseTransaction.details.directionLabel);
+
+    const initiatorAsset = page.root.shadowRoot.querySelector('.service-icon');
+    expect(initiatorAsset.getAttribute('src')).toBe(baseTransaction.details.initiatorAsset);
+
+    const initiator = page.root.shadowRoot.querySelector('trim-text');
+    expect(initiator.getAttribute('text')).toBe(baseTransaction.details.initiator);
   });
 
   it('renders amount with correct styling for positive value', async () => {
@@ -115,7 +136,6 @@ describe('transaction-list-item', () => {
       details: undefined,
     };
     const page = await createPage(transaction);
-
     const details = page.root.shadowRoot.querySelector('.transaction-info');
     expect(details).toBeFalsy();
   });
@@ -126,8 +146,10 @@ describe('transaction-list-item', () => {
       asset: null,
     };
     const page = await createPage(transaction);
-    const iconImg = page.root.shadowRoot.querySelector('.icon-image');
-    expect(iconImg.getAttribute('src')).toBe('default-icon.svg');
+    const defaultIcon = page.root.shadowRoot.querySelector('svg');
+    expect(defaultIcon).toBeTruthy();
+    expect(defaultIcon.getAttribute('width')).toBe('20');
+    expect(defaultIcon.getAttribute('height')).toBe('21');
   });
 
   it('renders without initiator asset', async () => {
@@ -135,6 +157,7 @@ describe('transaction-list-item', () => {
       ...baseTransaction,
       details: {
         initiator: 'Test Address',
+        directionLabel: 'From',
       },
     };
     const page = await createPage(transaction);
@@ -142,16 +165,16 @@ describe('transaction-list-item', () => {
     expect(serviceIcon).toBeFalsy();
   });
 
-  it('renders direction label when provided', async () => {
+  it('renders without direction label', async () => {
     const transaction = {
       ...baseTransaction,
       details: {
-        ...baseTransaction.details,
-        directionLabel: 'From',
+        initiator: 'Test Address',
+        initiatorAsset: '/assets/icons/service.svg',
       },
     };
     const page = await createPage(transaction);
-    const directionLabel = page.root.shadowRoot.querySelector('.entity-name');
-    expect(directionLabel.textContent).toBe('From');
+    const directionLabel = page.root.shadowRoot.querySelector('.direction-label');
+    expect(directionLabel).toBeFalsy();
   });
 });

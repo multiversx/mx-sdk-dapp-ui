@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop } from '@stencil/core';
 
-import defaultIcon from './assets/default-icon.svg';
+import { DefaultIcon } from './assets/default-icon';
 import type { ITransactionListItem } from './transaction-list-item.types';
 
 @Component({
@@ -21,7 +21,7 @@ export class TransactionListItem {
         ) : this.transaction.asset?.text ? (
           <span class="icon-text">{this.transaction.asset.text}</span>
         ) : (
-          <img src={defaultIcon} alt="Default transaction icon" class="icon-image" />
+          <DefaultIcon />
         )}
       </div>
     );
