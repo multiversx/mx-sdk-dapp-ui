@@ -245,6 +245,6 @@ describe('toast-list', () => {
 
     page.rootInstance.handleViewAllClick();
 
-    expect(eventBusMock.publish).toHaveBeenCalledWith(ToastEventsEnum.VIEW_ALL);
+    expect(eventBusMock.publish).toHaveBeenCalledWith(ToastEventsEnum.OPEN_NOTIFICATIONS_FEED);
   });
 });

@@ -32,7 +32,7 @@ export class ToastList {
   }
 
   private handleViewAllClick() {
-    this.eventBus.publish(ToastEventsEnum.VIEW_ALL);
+    this.eventBus.publish(ToastEventsEnum.OPEN_NOTIFICATIONS_FEED);
   }
 
   render() {
