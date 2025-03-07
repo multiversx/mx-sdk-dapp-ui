@@ -11,20 +11,24 @@ import type { ITransactionListItem } from './transaction-list-item.types';
 export class TransactionListItem {
   @Prop() transaction: ITransactionListItem;
 
-  private renderLeftIcon() {
-    return (
-      <div class="transaction-icon">
-        {this.transaction.asset?.imageUrl ? (
-          <img src={this.transaction.asset.imageUrl} alt="Transaction icon" class="icon-image" loading="lazy" />
-        ) : this.transaction.asset?.icon ? (
-          <fa-icon icon={this.transaction.asset.icon} class="icon-text"></fa-icon>
-        ) : this.transaction.asset?.text ? (
-          <span class="icon-text">{this.transaction.asset.text}</span>
-        ) : (
-          <DefaultIcon />
-        )}
-      </div>
-    );
+  private renderPrimaryIcon() {
+    if (!this.transaction.asset) {
+      return <DefaultIcon />;
+    }
+
+    if (this.transaction.asset.imageUrl) {
+      return <img src={this.transaction.asset.imageUrl} alt="Transaction icon" class="icon-image" loading="lazy" />;
+    }
+
+    if (this.transaction.asset.icon) {
+      return <fa-icon icon={this.transaction.asset.icon} class="icon-text"></fa-icon>;
+    }
+
+    if (this.transaction.asset.text) {
+      return <span class="icon-text">{this.transaction.asset.text}</span>;
+    }
+
+    return <DefaultIcon />;
   }
 
   private renderDetails() {
@@ -51,7 +55,7 @@ export class TransactionListItem {
     return (
       <Host>
         <div class="transaction-item">
-          {this.renderLeftIcon()}
+          <div class="transaction-icon">{this.renderPrimaryIcon()}</div>
 
           <div class="transaction-details">
             <h4 class="transaction-title">{this.transaction.action.name}</h4>
@@ -60,7 +64,15 @@ export class TransactionListItem {
 
           {this.transaction.amount && (
             <div class="transaction-right">
-              <div class={`transaction-amount ${this.transaction.amount?.startsWith('-') ? 'amount-negative' : 'amount-positive'}`}>{this.transaction.amount}</div>
+              <div
+                class={{
+                  'transaction-amount': true,
+                  'amount-negative': this.transaction.amount.startsWith('-'),
+                  'amount-positive': !this.transaction.amount.startsWith('-'),
+                }}
+              >
+                {this.transaction.amount}
+              </div>
             </div>
           )}
         </div>
