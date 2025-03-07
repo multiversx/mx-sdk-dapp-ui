@@ -5,11 +5,11 @@
 
 ## Properties
 
-| Property      | Attribute     | Description | Type             | Default     |
-| ------------- | ------------- | ----------- | ---------------- | ----------- |
-| `class`       | `class`       |             | `string`         | `undefined` |
-| `description` | `description` |             | `string`         | `undefined` |
-| `icon`        | --            |             | `IconDefinition` | `undefined` |
+| Property      | Attribute     | Description | Type                       | Default     |
+| ------------- | ------------- | ----------- | -------------------------- | ----------- |
+| `class`       | `class`       |             | `string`                   | `undefined` |
+| `description` | `description` |             | `string`                   | `undefined` |
+| `icon`        | `icon`        |             | `IconDefinition \| string` | `undefined` |
 
 
 ## Dependencies

@@ -61,7 +61,7 @@ export namespace Components {
     interface FaIcon {
         "class"?: string;
         "description"?: string;
-        "icon": IconDefinition;
+        "icon": IconDefinition | string;
     }
     interface FormatAmount {
         "class"?: string;
@@ -765,7 +765,7 @@ declare namespace LocalJSX {
     interface FaIcon {
         "class"?: string;
         "description"?: string;
-        "icon"?: IconDefinition;
+        "icon"?: IconDefinition | string;
     }
     interface FormatAmount {
         "class"?: string;
