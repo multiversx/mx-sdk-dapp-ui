@@ -57,8 +57,8 @@
 .activity-section {
   display: flex;
   flex-direction: column;
-  height: calc(100% - 12rem);
-  min-height: 0;
+  height: calc(100% - 12rem); // Adjust based on your header heights
+  min-height: 0; // Important for flex child scrolling
 }
 
 .activity-header {
@@ -92,7 +92,7 @@
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  min-height: 0;
+  min-height: 0; // Important for flex child scrolling
   width: 100%;
   max-width: 100%;
 
@@ -116,6 +116,7 @@
     border-radius: 3px;
   }
 
+  // Ensure children don't cause horizontal scroll
   > * {
     width: 100%;
     max-width: 100%;
