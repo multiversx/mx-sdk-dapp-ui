@@ -5,6 +5,7 @@ import { sass } from '@stencil/sass';
 
 const excludeComponents = [
   'sign-transactions-modal',
+  'transaction-fee-component',
   'pending-transactions-modal',
   'ledger-connect-modal',
   'ledger-connect',
@@ -54,7 +55,7 @@ export const config: Config = {
     },
   ],
   testing: {
-    browserHeadless: 'new',
+    browserHeadless: 'shell',
   },
   rollupPlugins: {
     after: [nodePolyfills()],

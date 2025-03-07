@@ -15,6 +15,8 @@ const initialState: ITransactionState = {
   isWaitingForSignature: false,
   commonData: {
     data: '',
+    gasLimit: '',
+    gasPrice: '',
     transactionsCount: 0,
     egldLabel: '',
     feeLimit: '',

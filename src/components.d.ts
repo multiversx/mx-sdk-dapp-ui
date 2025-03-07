@@ -158,6 +158,8 @@ export namespace Components {
         "class"?: string;
         "direction": string;
     }
+    interface TransactionFeeComponent {
+    }
     interface TransactionHash {
         "class"?: string;
         "transaction": ITransactionsTableRow;
@@ -535,6 +537,12 @@ declare global {
         prototype: HTMLTransactionDirectionBadgeElement;
         new (): HTMLTransactionDirectionBadgeElement;
     };
+    interface HTMLTransactionFeeComponentElement extends Components.TransactionFeeComponent, HTMLStencilElement {
+    }
+    var HTMLTransactionFeeComponentElement: {
+        prototype: HTMLTransactionFeeComponentElement;
+        new (): HTMLTransactionFeeComponentElement;
+    };
     interface HTMLTransactionHashElement extends Components.TransactionHash, HTMLStencilElement {
     }
     var HTMLTransactionHashElement: {
@@ -718,6 +726,7 @@ declare global {
         "transaction-account-name": HTMLTransactionAccountNameElement;
         "transaction-age": HTMLTransactionAgeElement;
         "transaction-direction-badge": HTMLTransactionDirectionBadgeElement;
+        "transaction-fee-component": HTMLTransactionFeeComponentElement;
         "transaction-hash": HTMLTransactionHashElement;
         "transaction-icon": HTMLTransactionIconElement;
         "transaction-list-item": HTMLTransactionListItemElement;
@@ -865,6 +874,8 @@ declare namespace LocalJSX {
         "class"?: string;
         "direction"?: string;
     }
+    interface TransactionFeeComponent {
+    }
     interface TransactionHash {
         "class"?: string;
         "transaction"?: ITransactionsTableRow;
@@ -982,6 +993,7 @@ declare namespace LocalJSX {
         "transaction-account-name": TransactionAccountName;
         "transaction-age": TransactionAge;
         "transaction-direction-badge": TransactionDirectionBadge;
+        "transaction-fee-component": TransactionFeeComponent;
         "transaction-hash": TransactionHash;
         "transaction-icon": TransactionIcon;
         "transaction-list-item": TransactionListItem;
@@ -1034,6 +1046,7 @@ declare module "@stencil/core" {
             "transaction-account-name": LocalJSX.TransactionAccountName & JSXBase.HTMLAttributes<HTMLTransactionAccountNameElement>;
             "transaction-age": LocalJSX.TransactionAge & JSXBase.HTMLAttributes<HTMLTransactionAgeElement>;
             "transaction-direction-badge": LocalJSX.TransactionDirectionBadge & JSXBase.HTMLAttributes<HTMLTransactionDirectionBadgeElement>;
+            "transaction-fee-component": LocalJSX.TransactionFeeComponent & JSXBase.HTMLAttributes<HTMLTransactionFeeComponentElement>;
             "transaction-hash": LocalJSX.TransactionHash & JSXBase.HTMLAttributes<HTMLTransactionHashElement>;
             "transaction-icon": LocalJSX.TransactionIcon & JSXBase.HTMLAttributes<HTMLTransactionIconElement>;
             "transaction-list-item": LocalJSX.TransactionListItem & JSXBase.HTMLAttributes<HTMLTransactionListItemElement>;
