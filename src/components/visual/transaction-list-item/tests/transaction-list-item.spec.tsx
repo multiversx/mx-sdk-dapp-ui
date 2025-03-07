@@ -5,6 +5,9 @@ import { TransactionListItem } from '../transaction-list-item';
 import type { ITransactionListItem } from '../transaction-list-item.types';
 
 describe('transaction-list-item', () => {
+  const defaultIconWidth = '20';
+  const defaultIconHeight = '21';
+
   const createPage = async (transaction: ITransactionListItem) => {
     const page = await newSpecPage({
       components: [TransactionListItem],
@@ -80,8 +83,8 @@ describe('transaction-list-item', () => {
     const page = await createPage(transaction);
     const defaultIcon = page.root.shadowRoot.querySelector('svg');
     expect(defaultIcon).toBeTruthy();
-    expect(defaultIcon.getAttribute('width')).toBe('20');
-    expect(defaultIcon.getAttribute('height')).toBe('21');
+    expect(defaultIcon.getAttribute('width')).toBe(defaultIconWidth);
+    expect(defaultIcon.getAttribute('height')).toBe(defaultIconHeight);
   });
 
   it('renders transaction details correctly', async () => {
@@ -145,8 +148,8 @@ describe('transaction-list-item', () => {
     const page = await createPage(transaction);
     const defaultIcon = page.root.shadowRoot.querySelector('svg');
     expect(defaultIcon).toBeTruthy();
-    expect(defaultIcon.getAttribute('width')).toBe('20');
-    expect(defaultIcon.getAttribute('height')).toBe('21');
+    expect(defaultIcon.getAttribute('width')).toBe(defaultIconWidth);
+    expect(defaultIcon.getAttribute('height')).toBe(defaultIconHeight);
   });
 
   it('renders without initiator asset', async () => {
