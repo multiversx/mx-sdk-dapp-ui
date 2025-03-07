@@ -1,0 +1,125 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px solid var(--mx-dapp-core-border-light, #f3f4f6);
+
+  .panel-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .close-button {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: var(--mx-dapp-core-text-secondary, #6b7280);
+
+    &:hover {
+      color: var(--mx-dapp-core-text-primary, #1f2937);
+    }
+  }
+}
+
+.notifications-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background-color: var(--mx-dapp-core-bg-secondary, #f3f4f6);
+  color: var(--mx-dapp-core-text-secondary, #6b7280);
+  font-size: 0.875rem;
+
+  .info-icon {
+    color: var(--mx-dapp-core-text-secondary, #6b7280);
+  }
+}
+
+.notifications-container {
+  padding: 1rem;
+
+  .processing-status {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--mx-dapp-core-text-secondary, #6b7280);
+    margin-bottom: 0.5rem;
+  }
+}
+
+.activity-section {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 12rem); // Adjust based on your header heights
+  min-height: 0; // Important for flex child scrolling
+}
+
+.activity-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-top: 1px solid var(--mx-dapp-core-border-light, #f3f4f6);
+
+  .activity-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .clear-button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--mx-dapp-core-text-secondary, #6b7280);
+    font-size: 0.875rem;
+    cursor: pointer;
+
+    &:hover {
+      color: var(--mx-dapp-core-text-primary, #1f2937);
+    }
+  }
+}
+
+.activity-list {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0; // Important for flex child scrolling
+  width: 100%;
+  max-width: 100%;
+
+  .no-activity {
+    padding: 1rem;
+    text-align: center;
+    color: var(--mx-dapp-core-text-secondary, #6b7280);
+  }
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--mx-dapp-core-bg-secondary, #f3f4f6);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--mx-dapp-core-text-secondary, #6b7280);
+    border-radius: 3px;
+  }
+
+  // Ensure children don't cause horizontal scroll
+  > * {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}

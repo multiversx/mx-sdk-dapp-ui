@@ -13,3 +13,25 @@
     left: auto;
   }
 }
+
+.view-all-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+
+.view-all-button {
+  background-color: rgba(50, 50, 60, 0.8);
+  color: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.view-all-button:hover {
+  background-color: rgba(60, 60, 70, 0.9);
+}
