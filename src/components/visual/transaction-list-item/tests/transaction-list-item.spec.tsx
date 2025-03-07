@@ -4,9 +4,6 @@ import { newSpecPage } from '@stencil/core/testing';
 import { TransactionListItem } from '../transaction-list-item';
 import type { ITransactionListItem } from '../transaction-list-item.types';
 
-// Mock the SVG import
-jest.mock('../assets/default-icon.svg', () => 'mocked-default-icon.svg');
-
 describe('transaction-list-item', () => {
   const createPage = async (transaction: ITransactionListItem) => {
     const page = await newSpecPage({
