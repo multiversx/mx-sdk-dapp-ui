@@ -24,10 +24,7 @@ export class SidePanel {
   @Watch('isOpen')
   handleOpenChange(newValue: boolean) {
     if (newValue) {
-      if (this.closeTimeout) {
-        clearTimeout(this.closeTimeout);
-      }
-
+      clearTimeout(this.closeTimeout);
       this.isVisible = true;
       requestAnimationFrame(() => {
         this.shouldAnimate = true;
@@ -43,9 +40,7 @@ export class SidePanel {
   }
 
   disconnectedCallback() {
-    if (this.closeTimeout) {
-      clearTimeout(this.closeTimeout);
-    }
+    clearTimeout(this.closeTimeout);
   }
 
   handleOverlayClick = (event: MouseEvent) => {
