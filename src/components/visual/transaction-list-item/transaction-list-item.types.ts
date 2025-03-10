@@ -1,4 +1,3 @@
-import type { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 export interface ITransactionListItemDetails {
   initiator: string;
   initiatorAsset?: string;
@@ -8,7 +7,7 @@ export interface ITransactionListItemDetails {
 export interface ITransactionListItemAsset {
   imageUrl?: string;
   text?: string;
-  icon?: IconDefinition;
+  icon?: string;
 }
 
 export interface ITransactionListItemAction {

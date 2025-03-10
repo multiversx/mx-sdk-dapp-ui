@@ -1,4 +1,3 @@
-import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { TransactionListItem } from '../transaction-list-item';
@@ -54,7 +53,7 @@ describe('transaction-list-item', () => {
     const transaction = {
       ...baseTransaction,
       asset: {
-        icon: faArrowsRotate,
+        icon: 'faArrowsRotate',
       },
     };
     const page = await createPage(transaction);
