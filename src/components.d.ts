@@ -237,6 +237,14 @@ export namespace Components {
         "allowedProviders"?: ProviderTypeEnum[];
         "isOpen": boolean;
     }
+    interface WalletConnect {
+        "data": IWalletConnectModalData;
+        "getEventBus": () => Promise<import("/Users/iliedaniel/Projects/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
+    }
+    interface WalletConnectBody {
+        "description": string;
+        "qrCodeSvg": string;
+    }
     interface WalletConnectModal {
         "data": IWalletConnectModalData;
         "getEventBus": () => Promise<IEventBus>;
@@ -683,6 +691,18 @@ declare global {
         prototype: HTMLUnlockPanelElement;
         new (): HTMLUnlockPanelElement;
     };
+    interface HTMLWalletConnectElement extends Components.WalletConnect, HTMLStencilElement {
+    }
+    var HTMLWalletConnectElement: {
+        prototype: HTMLWalletConnectElement;
+        new (): HTMLWalletConnectElement;
+    };
+    interface HTMLWalletConnectBodyElement extends Components.WalletConnectBody, HTMLStencilElement {
+    }
+    var HTMLWalletConnectBodyElement: {
+        prototype: HTMLWalletConnectBodyElement;
+        new (): HTMLWalletConnectBodyElement;
+    };
     interface HTMLWalletConnectModalElement extends Components.WalletConnectModal, HTMLStencilElement {
     }
     var HTMLWalletConnectModalElement: {
@@ -735,6 +755,8 @@ declare global {
         "unlock-button": HTMLUnlockButtonElement;
         "unlock-header": HTMLUnlockHeaderElement;
         "unlock-panel": HTMLUnlockPanelElement;
+        "wallet-connect": HTMLWalletConnectElement;
+        "wallet-connect-body": HTMLWalletConnectBodyElement;
         "wallet-connect-modal": HTMLWalletConnectModalElement;
     }
 }
@@ -950,6 +972,13 @@ declare namespace LocalJSX {
         "onClose"?: (event: UnlockPanelCustomEvent<any>) => void;
         "onLogin"?: (event: UnlockPanelCustomEvent<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>) => void;
     }
+    interface WalletConnect {
+        "data"?: IWalletConnectModalData;
+    }
+    interface WalletConnectBody {
+        "description"?: string;
+        "qrCodeSvg"?: string;
+    }
     interface WalletConnectModal {
         "data"?: IWalletConnectModalData;
     }
@@ -999,6 +1028,8 @@ declare namespace LocalJSX {
         "unlock-button": UnlockButton;
         "unlock-header": UnlockHeader;
         "unlock-panel": UnlockPanel;
+        "wallet-connect": WalletConnect;
+        "wallet-connect-body": WalletConnectBody;
         "wallet-connect-modal": WalletConnectModal;
     }
 }
@@ -1051,6 +1082,8 @@ declare module "@stencil/core" {
             "unlock-button": LocalJSX.UnlockButton & JSXBase.HTMLAttributes<HTMLUnlockButtonElement>;
             "unlock-header": LocalJSX.UnlockHeader & JSXBase.HTMLAttributes<HTMLUnlockHeaderElement>;
             "unlock-panel": LocalJSX.UnlockPanel & JSXBase.HTMLAttributes<HTMLUnlockPanelElement>;
+            "wallet-connect": LocalJSX.WalletConnect & JSXBase.HTMLAttributes<HTMLWalletConnectElement>;
+            "wallet-connect-body": LocalJSX.WalletConnectBody & JSXBase.HTMLAttributes<HTMLWalletConnectBodyElement>;
             "wallet-connect-modal": LocalJSX.WalletConnectModal & JSXBase.HTMLAttributes<HTMLWalletConnectModalElement>;
         }
     }

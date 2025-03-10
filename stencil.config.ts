@@ -22,6 +22,7 @@ const excludeComponents = [
   'transaction-toast',
   'transaction-toast-wrapper',
   'sign-transaction-component',
+  'wallet-connect',
   'wallet-connect-modal',
   'transaction-toast-progress',
   'token-component',
