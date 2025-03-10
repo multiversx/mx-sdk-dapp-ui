@@ -14,9 +14,9 @@ export class SignTransaction {
   @Prop() header: VNode;
 
   getSignButtonProps() {
-    const { currentTransactionIndex: currentScreenIndex, nextUnsignedTxIndex } = state.commonData;
+    const { currentTransactionIndex, nextUnsignedTxIndex } = state.commonData;
 
-    if (currentScreenIndex === nextUnsignedTxIndex) {
+    if (currentTransactionIndex === nextUnsignedTxIndex) {
       return {
         'signText': 'Sign',
         'disabled': state.isWaitingForSignature,
@@ -34,14 +34,14 @@ export class SignTransaction {
   }
 
   getBackButtonProps() {
-    const { transactionsCount, currentTransactionIndex: currentScreenIndex } = state.commonData;
+    const { transactionsCount, currentTransactionIndex } = state.commonData;
     const isMultipleTransactions = transactionsCount > 1;
 
     if (!isMultipleTransactions) {
       return {};
     }
 
-    if (currentScreenIndex === 0) {
+    if (currentTransactionIndex === 0) {
       return {
         'data-testid': DataTestIdsEnum.signCancelBtn,
         'backButtonText': 'Cancel',

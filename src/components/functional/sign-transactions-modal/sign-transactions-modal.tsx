@@ -76,14 +76,14 @@ export class SignTransactionsModal {
 
   render() {
     const { commonData, isLoading } = state;
-    const { tokenType, currentTransactionIndex: currentScreenIndex, transactionsCount } = commonData;
+    const { tokenType, currentTransactionIndex, transactionsCount } = commonData;
     const SignScreen = signScreens[tokenType];
 
     return (
       <generic-modal
         onClose={() => this.close()}
         modalTitle="Sign transaction"
-        modalSubtitle={`Transaction ${currentScreenIndex + 1} of ${transactionsCount}`}
+        modalSubtitle={`Transaction ${currentTransactionIndex + 1} of ${transactionsCount}`}
         body={
           isLoading ? (
             <div class="loading-spinner">
