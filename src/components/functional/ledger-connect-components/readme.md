@@ -1,7 +1,5 @@
 # ledger-connect-modal
 
-
-
 <!-- Auto Generated Below -->
 
 
@@ -14,7 +12,7 @@
 
 ## Methods
 
-### `getEventBus() => Promise<import("/Users/iliedaniel/Projects/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>`
+### `getEventBus() => Promise<IEventBus>`
 
 
 

@@ -1,5 +1,6 @@
 import { Component, Element, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import type { IEventBus } from 'utils/EventBus';
 
 import type { IWalletConnectModalData } from './wallet-connect-modal.types';
 import { WalletConnectEventsEnum } from './wallet-connect-modal.types';
@@ -24,7 +25,7 @@ export class WalletConnectModal {
     this.walletConnectBase = new WalletConnectBase(this.data);
   }
 
-  @Method() async getEventBus() {
+  @Method() async getEventBus(): Promise<IEventBus> {
     return this.walletConnectBase.getEventBus();
   }
 

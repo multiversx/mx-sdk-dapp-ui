@@ -35,6 +35,7 @@
 ```mermaid
 graph TD;
   transaction-toast-content --> transaction-toast-details
+  transaction-toast-details --> fa-icon
   transaction-toast-details --> transaction-toast-details-body
   transaction-toast-details-body --> trim-text
   transaction-toast-details-body --> copy-button
