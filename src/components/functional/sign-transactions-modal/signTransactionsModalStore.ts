@@ -36,9 +36,15 @@ const initialState: ITransactionState = {
   onSetGasPriceMultiplier: null,
 };
 
-const { state } = createStore<ITransactionState>({
+const store = createStore<ITransactionState>({
   ...initialState,
 });
+
+/*
+  All components using `state` must be included in
+  `excludeComponents` under `stencil.config.ts`
+*/
+const state = store.state;
 
 export const resetState = () => ({
   ...state,

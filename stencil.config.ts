@@ -57,7 +57,7 @@ export const config: Config = {
     },
   ],
   testing: {
-    browserHeadless: 'shell',
+    browserHeadless: 'new',
   },
   rollupPlugins: {
     after: [nodePolyfills()],

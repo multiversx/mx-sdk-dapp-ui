@@ -83,7 +83,6 @@ export class SignTransaction {
 
     const { signText, ...signButtonProps } = this.getSignButtonProps();
     const { backButtonText, ...backButtonProps } = this.getBackButtonProps();
-    console.log('\x1b[42m%s\x1b[0m', 11244, state.commonData);
 
     const highlightedData = this.getHighlightedData();
     return (
