@@ -9,19 +9,17 @@ import state from '../../../../signTransactionsModalStore';
 })
 export class TransactionFeeComponent {
   @State() showGasOptions: boolean = false;
-  @State() selectedMultiplier: number = 1;
 
   private toggleGasOptions = () => {
     this.showGasOptions = !this.showGasOptions;
   };
 
-  private handleMultiplierChange = (value: number) => {
-    this.selectedMultiplier = value;
-    console.log('selectedMultiplier', this.selectedMultiplier);
+  private handleMultiplierChange = (value: 1 | 2 | 3) => () => {
+    state.onSetGasPriceMultiplier(value);
   };
 
   render() {
-    const { egldLabel, feeInFiatLimit, feeLimit, gasLimit, gasPrice } = state.commonData;
+    const { egldLabel, feeInFiatLimit, feeLimit, gasLimit, gasPrice, gasPriceMultiplier } = state.commonData;
 
     return (
       <div class="transaction-fee-container">
@@ -49,17 +47,17 @@ export class TransactionFeeComponent {
 
               <div class="radio-group">
                 <div class="radio-option">
-                  <input type="radio" id="multiplier1" name="gasMultiplier" value="1" checked={this.selectedMultiplier === 1} onChange={() => this.handleMultiplierChange(1)} />
+                  <input type="radio" id="multiplier1" name="gasMultiplier" value="1" checked={gasPriceMultiplier === 1} onChange={this.handleMultiplierChange(1)} />
                   <label htmlFor="multiplier1">x1</label>
                 </div>
 
                 <div class="radio-option">
-                  <input type="radio" id="multiplier2" name="gasMultiplier" value="2" checked={this.selectedMultiplier === 2} onChange={() => this.handleMultiplierChange(2)} />
+                  <input type="radio" id="multiplier2" name="gasMultiplier" value="2" checked={gasPriceMultiplier === 2} onChange={this.handleMultiplierChange(2)} />
                   <label htmlFor="multiplier2">x2</label>
                 </div>
 
                 <div class="radio-option">
-                  <input type="radio" id="multiplier3" name="gasMultiplier" value="3" checked={this.selectedMultiplier === 3} onChange={() => this.handleMultiplierChange(3)} />
+                  <input type="radio" id="multiplier3" name="gasMultiplier" value="3" checked={gasPriceMultiplier === 3} onChange={this.handleMultiplierChange(3)} />
                   <label htmlFor="multiplier3">x3</label>
                 </div>
               </div>

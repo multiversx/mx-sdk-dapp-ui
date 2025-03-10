@@ -1,33 +1,22 @@
-import {
-  Component,
-  Element,
-  forceUpdate,
-  h,
-  Method,
-  Prop,
-  Watch
-} from '@stencil/core';
+import { Component, Element, forceUpdate, h, Method, Prop, Watch } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import type {
-  ISignTransactionsModalData} from './sign-transactions-modal.types';
-import {
-  SignEventsEnum
-} from './sign-transactions-modal.types';
+import type { ISignTransactionsModalData } from './sign-transactions-modal.types';
+import { SignEventsEnum } from './sign-transactions-modal.types';
 import state, { resetState } from './signTransactionsModalStore';
 
 const signScreens = {
   FungibleESDT: 'token-component',
   SemiFungibleESDT: 'fungible-component',
   NonFungibleESDT: 'fungible-component',
-  MetaESDT: 'token-component'
+  MetaESDT: 'token-component',
 };
 
 @Component({
   tag: 'sign-transactions-modal',
   styleUrl: 'sign-transactions-modal.css',
-  shadow: true
+  shadow: true,
 })
 export class SignTransactionsModal {
   @Element() hostElement: HTMLElement;
@@ -39,11 +28,11 @@ export class SignTransactionsModal {
       feeLimit: '',
       feeInFiatLimit: '',
       transactionsCount: 0,
-      currentIndex: 0
+      currentTxIndex: 0,
     },
     tokenTransaction: null,
     nftTransaction: null,
-    sftTransaction: null
+    sftTransaction: null,
   };
 
   @Method() async getEventBus() {
@@ -79,18 +68,22 @@ export class SignTransactionsModal {
     state.onCancel = () => {
       this.eventBus.publish(SignEventsEnum.CLOSE);
     };
+
+    state.onSetGasPriceMultiplier = (gasPriceMultiplier: 1 | 2 | 3) => {
+      this.eventBus.publish(SignEventsEnum.SET_GAS_PRICE_MULTIPLIER, gasPriceMultiplier);
+    };
   }
 
   render() {
     const { commonData, isLoading } = state;
-    const { tokenType, currentIndex, transactionsCount } = commonData;
+    const { tokenType, currentTxIndex: currentScreenIndex, transactionsCount } = commonData;
     const SignScreen = signScreens[tokenType];
 
     return (
       <generic-modal
         onClose={() => this.close()}
         modalTitle="Sign transaction"
-        modalSubtitle={`Transaction ${currentIndex + 1} of ${transactionsCount}`}
+        modalSubtitle={`Transaction ${currentScreenIndex + 1} of ${transactionsCount}`}
         body={
           isLoading ? (
             <div class="loading-spinner">
@@ -122,17 +115,11 @@ export class SignTransactionsModal {
   }
 
   componentDidLoad() {
-    this.eventBus.subscribe(
-      SignEventsEnum.DATA_UPDATE,
-      this.dataUpdate.bind(this)
-    );
+    this.eventBus.subscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
   }
 
   disconnectedCallback() {
     resetState();
-    this.eventBus.unsubscribe(
-      SignEventsEnum.DATA_UPDATE,
-      this.dataUpdate.bind(this)
-    );
+    this.eventBus.unsubscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
   }
 }

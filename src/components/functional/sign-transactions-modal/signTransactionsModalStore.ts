@@ -8,6 +8,7 @@ type ITransactionState = ISignTransactionsModalData & {
   onCancel: () => void;
   onPrev: () => void;
   onNext: () => void;
+  onSetGasPriceMultiplier: (gasPriceMultiplier: 1 | 2 | 3) => void;
 };
 
 const initialState: ITransactionState = {
@@ -21,7 +22,7 @@ const initialState: ITransactionState = {
     egldLabel: '',
     feeLimit: '',
     feeInFiatLimit: '',
-    currentIndex: 0,
+    currentTxIndex: 0,
     receiver: '',
     nextUnsignedTxIndex: 0,
   },
@@ -32,6 +33,7 @@ const initialState: ITransactionState = {
   onCancel: null,
   onPrev: null,
   onNext: null,
+  onSetGasPriceMultiplier: null,
 };
 
 const { state } = createStore<ITransactionState>({
