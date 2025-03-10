@@ -22,7 +22,7 @@ const initialState: ITransactionState = {
     egldLabel: '',
     feeLimit: '',
     feeInFiatLimit: '',
-    currentTxIndex: 0,
+    currentTransactionIndex: 0,
     receiver: '',
     nextUnsignedTxIndex: 0,
   },

@@ -26,7 +26,7 @@ export interface ISignTransactionsModalCommonData {
   egldLabel: string;
   feeLimit?: string;
   feeInFiatLimit?: string | null;
-  currentTxIndex: number;
+  currentTransactionIndex: number;
   /**
    * Tracks the index of the next unsigned transaction to be processed.
    */

@@ -14,7 +14,7 @@ export class SignTransaction {
   @Prop() header: VNode;
 
   getSignButtonProps() {
-    const { currentTxIndex: currentScreenIndex, nextUnsignedTxIndex } = state.commonData;
+    const { currentTransactionIndex: currentScreenIndex, nextUnsignedTxIndex } = state.commonData;
 
     if (currentScreenIndex === nextUnsignedTxIndex) {
       return {
@@ -34,7 +34,7 @@ export class SignTransaction {
   }
 
   getBackButtonProps() {
-    const { transactionsCount, currentTxIndex: currentScreenIndex } = state.commonData;
+    const { transactionsCount, currentTransactionIndex: currentScreenIndex } = state.commonData;
     const isMultipleTransactions = transactionsCount > 1;
 
     if (!isMultipleTransactions) {

@@ -7,9 +7,9 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type                         | Default                                                                                                                                                                                                                                  |
-| -------- | --------- | ----------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `data`   | --        |             | `ISignTransactionsModalData` | `{     commonData: {       egldLabel: '',       feeLimit: '',       feeInFiatLimit: '',       transactionsCount: 0,       currentTxIndex: 0,     },     tokenTransaction: null,     nftTransaction: null,     sftTransaction: null,   }` |
+| Property | Attribute | Description | Type                         | Default                                                                                                                                                                                                                                           |
+| -------- | --------- | ----------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data`   | --        |             | `ISignTransactionsModalData` | `{     commonData: {       egldLabel: '',       feeLimit: '',       feeInFiatLimit: '',       transactionsCount: 0,       currentTransactionIndex: 0,     },     tokenTransaction: null,     nftTransaction: null,     sftTransaction: null,   }` |
 
 
 ## Methods
