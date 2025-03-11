@@ -28,6 +28,7 @@ export interface ISignTransactionsModalCommonData {
   feeInFiatLimit?: string | null;
   currentTransactionIndex: number;
   needsSigning?: boolean;
+  isEditable?: boolean;
   highlight?: string | null;
   scCall?: string | null;
 }
