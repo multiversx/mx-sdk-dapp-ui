@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [[0.0.0-alpha.6](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/51)] - 2025-03-12
+## [[0.0.0-alpha.6](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/53)] - 2025-03-12
 
 - [Added notifications feed side panel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/50)
 - [Added Tailwind CSS support](https://github.com/multiversx/mx-sdk-dapp-core/pull/47)
