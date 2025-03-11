@@ -14,14 +14,14 @@ export class SignTransaction {
   @Prop() header: VNode;
 
   getSignButtonProps() {
-    const { currentTransactionIndex, nextUnsignedTxIndex } = state.commonData;
+    const { needsSigning } = state.commonData;
 
-    if (currentTransactionIndex === nextUnsignedTxIndex) {
+    if (needsSigning) {
       return {
         'signText': 'Sign',
         'disabled': state.isWaitingForSignature,
         'data-testid': DataTestIdsEnum.signTransactionBtn,
-        'onClick': state.onSign,
+        'onClick': state.onConfirm,
       };
     }
 
@@ -29,7 +29,7 @@ export class SignTransaction {
       'signText': 'Next',
       'disabled': false,
       'data-testid': DataTestIdsEnum.signNextTransactionBtn,
-      'onClick': state.onNext,
+      'onClick': state.onConfirm,
     };
   }
 
@@ -52,7 +52,7 @@ export class SignTransaction {
     return {
       'data-testid': DataTestIdsEnum.signBackBtn,
       'backButtonText': 'Back',
-      'onClick': state.onPrev,
+      'onClick': state.onBack,
       'disabled': state.isWaitingForSignature,
     };
   }

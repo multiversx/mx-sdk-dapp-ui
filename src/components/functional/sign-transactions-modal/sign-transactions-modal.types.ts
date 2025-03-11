@@ -27,10 +27,7 @@ export interface ISignTransactionsModalCommonData {
   feeLimit?: string;
   feeInFiatLimit?: string | null;
   currentTransactionIndex: number;
-  /**
-   * Tracks the index of the next unsigned transaction to be processed.
-   */
-  nextUnsignedTxIndex?: number;
+  needsSigning?: boolean;
   highlight?: string | null;
   scCall?: string | null;
 }
@@ -47,9 +44,8 @@ export interface ISignTransactionsModalData {
 }
 
 export enum SignEventsEnum {
-  'SIGN_TRANSACTION' = 'SIGN_TRANSACTION',
-  'NEXT_TRANSACTION' = 'NEXT_TRANSACTION',
-  'PREV_TRANSACTION' = 'PREV_TRANSACTION',
+  'CONFIRM' = 'CONFIRM', // can be sign or next
+  'BACK' = 'BACK',
   'CLOSE' = 'CLOSE',
   'DATA_UPDATE' = 'DATA_UPDATE',
   'SET_GAS_PRICE_MULTIPLIER' = 'SET_GAS_PRICE_MULTIPLIER',

@@ -52,21 +52,16 @@ export class SignTransactionsModal {
   }
 
   componentWillLoad() {
-    state.onSign = () => {
-      state.isWaitingForSignature = true;
-      this.eventBus.publish(SignEventsEnum.SIGN_TRANSACTION);
-    };
-
-    state.onPrev = () => {
-      this.eventBus.publish(SignEventsEnum.PREV_TRANSACTION);
-    };
-
-    state.onNext = () => {
-      this.eventBus.publish(SignEventsEnum.NEXT_TRANSACTION);
+    state.onConfirm = () => {
+      this.eventBus.publish(SignEventsEnum.CONFIRM);
     };
 
     state.onCancel = () => {
       this.eventBus.publish(SignEventsEnum.CLOSE);
+    };
+
+    state.onBack = () => {
+      this.eventBus.publish(SignEventsEnum.BACK);
     };
 
     state.onSetGasPriceMultiplier = (gasPriceMultiplier: 1 | 2 | 3) => {

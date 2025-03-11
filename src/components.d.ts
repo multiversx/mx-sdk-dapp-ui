@@ -241,7 +241,7 @@ export namespace Components {
     }
     interface WalletConnect {
         "data": IWalletConnectModalData;
-        "getEventBus": () => Promise<import("/Users/iliedaniel/Projects/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
+        "getEventBus": () => Promise<import("/Users/tudor/Work/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
     }
     interface WalletConnectBody {
         "description": string;
