@@ -1,5 +1,6 @@
 import { Component, h, State } from '@stencil/core';
 
+import type { ISignTransactionsModalCommonData } from '../../../../sign-transactions-modal.types';
 import state from '../../../../signTransactionsModalStore';
 
 @Component({
@@ -14,7 +15,7 @@ export class TransactionFeeComponent {
     this.showGasOptions = !this.showGasOptions;
   };
 
-  private handleMultiplierChange = (value: 1 | 2 | 3) => () => {
+  private handleMultiplierChange = (value: ISignTransactionsModalCommonData['gasPriceMultiplier']) => () => {
     state.onSetGasPriceMultiplier(value);
   };
 
