@@ -28,7 +28,7 @@ export class SignTransactionsModal {
       feeLimit: '',
       feeInFiatLimit: '',
       transactionsCount: 0,
-      currentTransactionIndex: 0,
+      currentIndex: 0,
     },
     tokenTransaction: null,
     nftTransaction: null,
@@ -71,7 +71,7 @@ export class SignTransactionsModal {
 
   render() {
     const { commonData, isLoading } = state;
-    const { tokenType, currentTransactionIndex, transactionsCount } = commonData;
+    const { tokenType, currentIndex: currentTransactionIndex, transactionsCount } = commonData;
     const SignScreen = signScreens[tokenType];
 
     return (

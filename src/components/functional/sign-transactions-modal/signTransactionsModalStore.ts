@@ -21,7 +21,7 @@ const initialState: ITransactionState = {
     egldLabel: '',
     feeLimit: '',
     feeInFiatLimit: '',
-    currentTransactionIndex: 0,
+    currentIndex: 0,
     receiver: '',
   },
   nftTransaction: null,

@@ -34,14 +34,14 @@ export class SignTransaction {
   }
 
   getBackButtonProps() {
-    const { transactionsCount, currentTransactionIndex } = state.commonData;
+    const { transactionsCount, currentIndex } = state.commonData;
     const isMultipleTransactions = transactionsCount > 1;
 
     if (!isMultipleTransactions) {
       return {};
     }
 
-    if (currentTransactionIndex === 0) {
+    if (currentIndex === 0) {
       return {
         'data-testid': DataTestIdsEnum.signCancelBtn,
         'backButtonText': 'Cancel',

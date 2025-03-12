@@ -26,7 +26,7 @@ export interface ISignTransactionsModalCommonData {
   egldLabel: string;
   feeLimit?: string;
   feeInFiatLimit?: string | null;
-  currentTransactionIndex: number;
+  currentIndex: number;
   needsSigning?: boolean;
   isEditable?: boolean;
   highlight?: string | null;
