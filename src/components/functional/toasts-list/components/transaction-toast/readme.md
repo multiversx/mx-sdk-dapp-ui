@@ -28,6 +28,7 @@
 
 ### Used by
 
+ - [notifications-feed](../../../notifications-feed)
  - [toast-list](../..)
 
 ### Depends on
@@ -50,6 +51,7 @@ graph TD;
   transaction-toast-details-body --> explorer-link
   copy-button --> fa-icon
   explorer-link --> fa-icon
+  notifications-feed --> transaction-toast
   toast-list --> transaction-toast
   style transaction-toast fill:#f9f,stroke:#333,stroke-width:4px
 ```

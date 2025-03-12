@@ -2,6 +2,7 @@ import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
 import { sass } from '@stencil/sass';
+import tailwind, { tailwindHMR } from 'stencil-tailwind-plugin';
 
 const excludeComponents = [
   'sign-transactions-modal',
@@ -21,6 +22,7 @@ const excludeComponents = [
   'transaction-toast',
   'transaction-toast-wrapper',
   'sign-transaction-component',
+  'wallet-connect',
   'wallet-connect-modal',
   'transaction-toast-progress',
   'token-component',
@@ -30,7 +32,7 @@ const excludeComponents = [
 
 export const config: Config = {
   namespace: 'sdk-dapp-core-ui',
-  plugins: [sass()],
+  plugins: [sass(), tailwind(), tailwindHMR()],
   outputTargets: [
     reactOutputTarget({
       outDir: './dist/react',

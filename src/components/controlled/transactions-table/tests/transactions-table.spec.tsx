@@ -1,8 +1,9 @@
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
+
 import { TransactionsTable } from '../transactions-table';
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { ITransactionsTableRow } from '../transactions-table.type';
+import type { ITransactionsTableRow } from '../transactions-table.type';
 
 describe('TransactionsTable', () => {
   const mockTransactions: ITransactionsTableRow[] = [

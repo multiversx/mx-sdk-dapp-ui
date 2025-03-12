@@ -7,6 +7,7 @@ import type { ITransactionsTableRow } from '../../transactions-table.type';
 @Component({
   tag: 'transaction-hash',
   shadow: true,
+  styleUrl: 'transaction-hash.css',
 })
 export class TransactionHash {
   @Prop() class?: string;

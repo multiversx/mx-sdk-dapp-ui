@@ -3,36 +3,9 @@
   display: block;
 }
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.overlay.visible {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.panel {
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
-  width: 100%;
-  max-width: 340px;
-  height: 100%;
+.unlock-panel {
   background: #f5f1ec;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
-  transform: translateX(100%);
-  transition: transform 0.3s ease-in-out;
+  max-width: 340px;
 }
 
 .body {
@@ -40,8 +13,4 @@
   flex-direction: column;
   gap: 0.2rem;
   padding: 1rem;
-}
-
-.overlay.visible .panel {
-  transform: translateX(0);
 }
