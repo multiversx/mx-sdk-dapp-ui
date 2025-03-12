@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Added gasPrice editing radios](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/52)
+- [Added notifications feed side panel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/50)
+- [Added Tailwind CSS support](https://github.com/multiversx/mx-sdk-dapp-core/pull/47)
+
 ## [[0.0.0-alpha.6](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/53)] - 2025-03-12
 
 - [Added notifications feed side panel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/50)
@@ -17,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [Added ability to expand/collapse transactions in toast](https://github.com/multiversx/mx-sdk-dapp-core/pull/48)
 - [Added ability to close modal on Escape](https://github.com/multiversx/mx-sdk-dapp-core/pull/46)
+- [Added wallet connect side panel component](https://github.com/multiversx/mx-sdk-dapp-core/pull/45)
 - [Added missing components from excludeComponents stancil config](https://github.com/multiversx/mx-sdk-dapp-core/pull/44)
 - [Added wallet connect side panel support](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/43)
 - [Added unlock panel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/42)

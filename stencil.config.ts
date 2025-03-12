@@ -6,6 +6,7 @@ import tailwind, { tailwindHMR } from 'stencil-tailwind-plugin';
 
 const excludeComponents = [
   'sign-transactions-modal',
+  'transaction-fee-component',
   'pending-transactions-modal',
   'ledger-connect-modal',
   'ledger-connect',

@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.transaction-fee-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  line-height: 1;
+  padding: 16px;
+  border-radius: 8px;
+  background: var(--white);
+}
+
+.fee-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.edit-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: var(--text-secondary);
+}
+
+.edit-button:hover {
+  color: var(--text-primary);
+}
+
+.gas-options {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+  width: 100%;
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.gas-price-section .label,
+.gas-limit-section .label {
+  color: #6c757d;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.gas-price-section .value,
+.gas-limit-section .value {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #212529;
+  margin: 0;
+}
+
+.gas-limit-section {
+  padding-top: 1rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.radio-group {
+  display: inline-flex;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-left: 12px;
+}
+
+.radio-option {
+  position: relative;
+}
+
+.radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio-option input[type="radio"]:checked + label {
+  background: #0d6efd;
+  color: white;
+}
+
+.radio-option label {
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  border-right: 1px solid #dee2e6;
+  transition: all 0.2s ease;
+}
+
+.radio-option label:hover {
+  background: #e9ecef;
+}
+
+.radio-option:last-child label {
+  border-right: none;
+}
