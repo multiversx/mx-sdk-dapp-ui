@@ -3,7 +3,7 @@ import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State } from '@stencil/core';
 import { ProviderTypeEnum } from 'types/provider.types';
 
-import { SidePanelSideEnum } from '../visual/side-panel/side-panel.types';
+import { SidePanelSideEnum } from '../side-panel/side-panel.types';
 
 @Component({
   tag: 'unlock-panel',
@@ -45,12 +45,12 @@ export class UnlockPanel {
     this.observer.observe(element, { childList: true, subtree: true });
   }
 
-  handleLogin = (provider: ProviderTypeEnum) => {
+  handleLogin(provider: ProviderTypeEnum) {
     this.login.emit({ provider, anchor: this.anchor });
     this.selectedMethod = provider;
-  };
+  }
 
-  resetLoginState = () => {
+  resetLoginState() {
     this.isLoggingIn = false;
     this.selectedMethod = null;
     if (!this.anchor) {
@@ -59,26 +59,26 @@ export class UnlockPanel {
     while (this.anchor.firstChild) {
       this.anchor.removeChild(this.anchor.firstChild);
     }
-  };
+  }
 
-  handleClose = () => {
+  handleClose() {
     this.close.emit();
-  };
+  }
 
   render() {
     return (
-      <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} onClose={this.handleClose} panelClassName="unlock-panel">
+      <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} onClose={this.handleClose.bind(this)} panelClassName="unlock-panel">
         <unlock-header
           text={this.isLoggingIn ? `${this.selectedMethod} connect` : 'Connect your wallet'}
           backIcon={this.isLoggingIn ? faArrowLeft : null}
-          onBack={this.resetLoginState}
-          onClose={this.handleClose}
+          onBack={this.resetLoginState.bind(this)}
+          onClose={this.handleClose.bind(this)}
         />
         <div id="anchor" ref={element => this.observeContainer(element)}></div>
         {!this.isLoggingIn && (
           <div class="body">
             {this.allowedProviders.map(method => (
-              <provider-button type={method} onClick={() => this.handleLogin(method)}></provider-button>
+              <provider-button type={method} onClick={this.handleLogin.bind(this, method)}></provider-button>
             ))}
             <slot></slot>
           </div>

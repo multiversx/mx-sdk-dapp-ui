@@ -7,7 +7,7 @@
 .transaction-item {
   display: flex;
   align-items: flex-start;
-  padding: 1rem;
+  padding: 1rem 0;
   gap: 1rem;
   border-bottom: 1px solid var(--mx-dapp-core-border-light, #f3f4f6);
 }
@@ -75,6 +75,7 @@
 
   .initiator {
     color: var(--mx-dapp-core-text-secondary, #6b7280);
+    max-width: 318px;
   }
 }
 

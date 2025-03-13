@@ -17,7 +17,7 @@
 
 ### Used by
 
- - [provider-button](../../components/unlock-panel/components/provider-button)
+ - [provider-button](../../components/visual/unlock-panel/components/provider-button)
 
 ### Graph
 ```mermaid

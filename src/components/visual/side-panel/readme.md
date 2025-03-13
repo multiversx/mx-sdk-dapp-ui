@@ -26,12 +26,16 @@
 ### Used by
 
  - [notifications-feed](../../functional/notifications-feed)
- - [unlock-panel](../../unlock-panel)
+ - [pending-transactions-panel](../../functional/pending-transactions-panel)
+ - [sign-transactions-modal](../../functional/sign-transactions-modal)
+ - [unlock-panel](../unlock-panel)
 
 ### Graph
 ```mermaid
 graph TD;
   notifications-feed --> side-panel
+  pending-transactions-panel --> side-panel
+  sign-transactions-modal --> side-panel
   unlock-panel --> side-panel
   style side-panel fill:#f9f,stroke:#333,stroke-width:4px
 ```

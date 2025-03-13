@@ -5,7 +5,7 @@ export enum PendingTransactionsEventsEnum {
   'DATA_UPDATE' = 'DATA_UPDATE',
 }
 
-export interface IPendingTransactionsModalData {
+export interface IPendingTransactionsPanelData {
   isPending: boolean;
   title: string;
   subtitle?: string;

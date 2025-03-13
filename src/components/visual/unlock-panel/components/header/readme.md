@@ -30,7 +30,7 @@
 
 ### Depends on
 
-- [fa-icon](../../../visual/fa-icon)
+- [fa-icon](../../../fa-icon)
 
 ### Graph
 ```mermaid

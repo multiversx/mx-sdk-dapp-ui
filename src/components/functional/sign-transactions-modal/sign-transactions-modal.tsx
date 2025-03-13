@@ -1,37 +1,28 @@
-import {
-  Component,
-  Element,
-  forceUpdate,
-  h,
-  Method,
-  Prop,
-  Watch
-} from '@stencil/core';
+import { Component, Element, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import type {
-  ISignTransactionsModalData} from './sign-transactions-modal.types';
-import {
-  SignEventsEnum
-} from './sign-transactions-modal.types';
+import { SidePanelSideEnum } from '../../visual/side-panel/side-panel.types';
+import type { ISignTransactionsModalData } from './sign-transactions-modal.types';
+import { SignEventsEnum } from './sign-transactions-modal.types';
 import state, { resetState } from './signTransactionsModalStore';
 
 const signScreens = {
   FungibleESDT: 'token-component',
   SemiFungibleESDT: 'fungible-component',
   NonFungibleESDT: 'fungible-component',
-  MetaESDT: 'token-component'
+  MetaESDT: 'token-component',
 };
 
 @Component({
   tag: 'sign-transactions-modal',
   styleUrl: 'sign-transactions-modal.css',
-  shadow: true
+  shadow: true,
 })
 export class SignTransactionsModal {
   @Element() hostElement: HTMLElement;
   private eventBus: IEventBus = new EventBus();
+  @State() isPanelOpen: boolean = false;
 
   @Prop() data: ISignTransactionsModalData = {
     commonData: {
@@ -39,11 +30,11 @@ export class SignTransactionsModal {
       feeLimit: '',
       feeInFiatLimit: '',
       transactionsCount: 0,
-      currentIndex: 0
+      currentIndex: 0,
     },
     tokenTransaction: null,
     nftTransaction: null,
-    sftTransaction: null
+    sftTransaction: null,
   };
 
   @Method() async getEventBus() {
@@ -63,6 +54,8 @@ export class SignTransactionsModal {
   }
 
   componentWillLoad() {
+    this.isPanelOpen = true;
+
     state.onSign = () => {
       state.isWaitingForSignature = true;
       this.eventBus.publish(SignEventsEnum.SIGN_TRANSACTION);
@@ -87,32 +80,34 @@ export class SignTransactionsModal {
     const SignScreen = signScreens[tokenType];
 
     return (
-      <generic-modal
-        onClose={() => this.close()}
-        modalTitle="Sign transaction"
-        modalSubtitle={`Transaction ${currentIndex + 1} of ${transactionsCount}`}
-        body={
-          isLoading ? (
-            <div class="loading-spinner">
-              <generic-spinner></generic-spinner>
-            </div>
-          ) : (
-            <SignScreen></SignScreen>
-          )
-        }
-      />
+      <side-panel isOpen={this.isPanelOpen} side={SidePanelSideEnum.LEFT} panelClassName="sign-transactions-panel" onClose={this.close.bind(this, { isUserClick: true })}>
+        <div class="sign-transactions-content">
+          <div class="sign-transactions-header">
+            <h2>Sign transaction</h2>
+            <h4>
+              Transaction {currentIndex + 1} of {transactionsCount}
+            </h4>
+          </div>
+          <div class="sign-transactions-body">
+            {isLoading ? (
+              <div class="loading-spinner">
+                <generic-spinner></generic-spinner>
+              </div>
+            ) : (
+              <SignScreen></SignScreen>
+            )}
+          </div>
+        </div>
+      </side-panel>
     );
   }
 
   close(props = { isUserClick: true }) {
+    this.isPanelOpen = false;
     resetState();
 
     if (props.isUserClick) {
       this.eventBus.publish(SignEventsEnum.CLOSE);
-    }
-
-    if (this.hostElement && this.hostElement.parentNode) {
-      this.hostElement.parentNode.removeChild(this.hostElement);
     }
   }
 
@@ -122,17 +117,11 @@ export class SignTransactionsModal {
   }
 
   componentDidLoad() {
-    this.eventBus.subscribe(
-      SignEventsEnum.DATA_UPDATE,
-      this.dataUpdate.bind(this)
-    );
+    this.eventBus.subscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
   }
 
   disconnectedCallback() {
     resetState();
-    this.eventBus.unsubscribe(
-      SignEventsEnum.DATA_UPDATE,
-      this.dataUpdate.bind(this)
-    );
+    this.eventBus.unsubscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
   }
 }

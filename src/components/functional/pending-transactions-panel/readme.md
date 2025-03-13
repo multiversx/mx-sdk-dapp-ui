@@ -9,7 +9,7 @@
 
 | Property | Attribute | Description | Type                            | Default                                                        |
 | -------- | --------- | ----------- | ------------------------------- | -------------------------------------------------------------- |
-| `data`   | --        |             | `IPendingTransactionsModalData` | `{     isPending: false,     title: '',     subtitle: '',   }` |
+| `data`   | --        |             | `IPendingTransactionsPanelData` | `{     isPending: false,     title: '',     subtitle: '',   }` |
 
 
 ## Methods
@@ -29,13 +29,13 @@ Type: `Promise<IEventBus>`
 
 ### Depends on
 
-- [generic-modal](../../../common/generic-modal)
+- [side-panel](../../visual/side-panel)
 
 ### Graph
 ```mermaid
 graph TD;
-  pending-transactions-modal --> generic-modal
-  style pending-transactions-modal fill:#f9f,stroke:#333,stroke-width:4px
+  pending-transactions-panel --> side-panel
+  style pending-transactions-panel fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

@@ -25,7 +25,7 @@
 
 ### Depends on
 
-- [side-panel](../visual/side-panel)
+- [side-panel](../side-panel)
 - [unlock-header](./components/header)
 - [provider-button](./components/provider-button)
 

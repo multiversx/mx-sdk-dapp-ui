@@ -20,7 +20,7 @@
 
 ### Depends on
 
-- [unlock-button](../../../../common/unlock-button)
+- [unlock-button](../../../../../common/unlock-button)
 
 ### Graph
 ```mermaid

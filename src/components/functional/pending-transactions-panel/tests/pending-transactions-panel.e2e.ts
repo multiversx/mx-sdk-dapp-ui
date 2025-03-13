@@ -1,11 +1,11 @@
 import { newE2EPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-const tag = 'pending-transactions-modal';
+const tag = 'pending-transactions-panel';
 const title = 'Pending Transaction';
 const subtitle = 'Confirm transaction on wallet';
 
-describe('pending-transactions-modal', () => {
+describe('pending-transactions-panel', () => {
   it(`renders ${tag}`, async () => {
     const page = await newE2EPage();
 

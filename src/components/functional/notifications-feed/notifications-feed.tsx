@@ -59,39 +59,39 @@ export class NotificationsFeed {
 
     return (
       <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} onClose={this.handleClose}>
-        <div class="panel-header">
-          <h2 class="panel-title">Notifications Feed</h2>
-          <button class="close-button" onClick={this.handleClose}>
-            <fa-icon icon={faTimes}></fa-icon>
-          </button>
-        </div>
-
-        <div class="notifications-info">
-          This feed is stored in your browser and will be reset when a new session is started.
-          <fa-icon class="info-icon" icon={faInfoCircle}></fa-icon>
-        </div>
-
-        <div class="notifications-container">
-          {hasPending && (
-            <div>
-              <div class="processing-status">Processing...</div>
-              {this.pendingTransactions?.map(toast => <transaction-toast {...toast}></transaction-toast>)}
-            </div>
-          )}
-        </div>
-
-        <div class="activity-section">
-          <div class="activity-header">
-            <h3 class="activity-title">Activity</h3>
-            {hasActivity && (
-              <button class="clear-button" onClick={this.handleClear}>
-                Clear
-              </button>
-            )}
+        <div class="feed-content">
+          <div class="feed-header">
+            <h2 class="feed-title">Notifications Feed</h2>
+            <button class="close-button" onClick={this.handleClose}>
+              <fa-icon class="close-icon" icon={faTimes} />
+            </button>
           </div>
 
-          <div class="activity-list">
-            {hasActivity ? this.transactionsHistory.map(transaction => <transaction-list-item transaction={transaction} />) : <div class="no-activity">No activity to show</div>}
+          <div class="notifications-info">
+            <fa-icon class="info-icon" icon={faInfoCircle} />
+            This feed is stored in your browser and will be reset when a new session is started.
+          </div>
+
+          {hasPending && (
+            <div class="notifications-container">
+              <div class="processing-status">Processing...</div>
+              {this.pendingTransactions?.map(toast => <transaction-toast {...toast} />)}
+            </div>
+          )}
+
+          <div class="activity-section">
+            <div class="activity-header">
+              <h3 class="activity-title">Activity</h3>
+              {hasActivity && (
+                <button class="clear-button" onClick={this.handleClear}>
+                  Clear
+                </button>
+              )}
+            </div>
+
+            <div class="activity-list">
+              {hasActivity ? this.transactionsHistory.map(transaction => <transaction-list-item transaction={transaction} />) : <div class="no-activity">No activity to show</div>}
+            </div>
           </div>
         </div>
       </side-panel>

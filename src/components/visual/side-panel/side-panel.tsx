@@ -49,6 +49,10 @@ export class SidePanel {
     }
   };
 
+  handleCloseClick = () => {
+    this.close.emit();
+  };
+
   render() {
     if (!this.isVisible) {
       return null;
@@ -72,7 +76,9 @@ export class SidePanel {
               [this.panelClassName]: Boolean(this.panelClassName),
             }}
           >
-            <slot></slot>
+            <div class="panel-content">
+              <slot></slot>
+            </div>
           </div>
         </div>
       </Host>

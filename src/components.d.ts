@@ -10,7 +10,7 @@ import { CustomToastType, IComponentToast, ISimpleToast } from "./components/fun
 import { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
 import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectModalData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
-import { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
+import { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 import { ProviderTypeEnum } from "./types/provider.types";
 import { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
@@ -25,7 +25,7 @@ export { CustomToastType, IComponentToast, ISimpleToast } from "./components/fun
 export { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
 export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectModalData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
-export { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
+export { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 export { ProviderTypeEnum } from "./types/provider.types";
 export { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
@@ -106,8 +106,8 @@ export namespace Components {
     interface NotificationsFeed {
         "getEventBus": () => Promise<IEventBus>;
     }
-    interface PendingTransactionsModal {
-        "data": IPendingTransactionsModalData;
+    interface PendingTransactionsPanel {
+        "data": IPendingTransactionsPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
     interface ProviderButton {
@@ -239,7 +239,7 @@ export namespace Components {
     }
     interface WalletConnect {
         "data": IWalletConnectModalData;
-        "getEventBus": () => Promise<import("/Users/iliedaniel/Projects/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
+        "getEventBus": () => Promise<import("/Users/razvan/Work/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
     }
     interface WalletConnectBody {
         "description": string;
@@ -449,11 +449,11 @@ declare global {
         prototype: HTMLNotificationsFeedElement;
         new (): HTMLNotificationsFeedElement;
     };
-    interface HTMLPendingTransactionsModalElement extends Components.PendingTransactionsModal, HTMLStencilElement {
+    interface HTMLPendingTransactionsPanelElement extends Components.PendingTransactionsPanel, HTMLStencilElement {
     }
-    var HTMLPendingTransactionsModalElement: {
-        prototype: HTMLPendingTransactionsModalElement;
-        new (): HTMLPendingTransactionsModalElement;
+    var HTMLPendingTransactionsPanelElement: {
+        prototype: HTMLPendingTransactionsPanelElement;
+        new (): HTMLPendingTransactionsPanelElement;
     };
     interface HTMLProviderButtonElement extends Components.ProviderButton, HTMLStencilElement {
     }
@@ -726,7 +726,7 @@ declare global {
         "ledger-connect-modal": HTMLLedgerConnectModalElement;
         "ledger-connect-screen": HTMLLedgerConnectScreenElement;
         "notifications-feed": HTMLNotificationsFeedElement;
-        "pending-transactions-modal": HTMLPendingTransactionsModalElement;
+        "pending-transactions-panel": HTMLPendingTransactionsPanelElement;
         "provider-button": HTMLProviderButtonElement;
         "side-panel": HTMLSidePanelElement;
         "sign-transaction-component": HTMLSignTransactionComponentElement;
@@ -836,8 +836,8 @@ declare namespace LocalJSX {
     }
     interface NotificationsFeed {
     }
-    interface PendingTransactionsModal {
-        "data"?: IPendingTransactionsModalData;
+    interface PendingTransactionsPanel {
+        "data"?: IPendingTransactionsPanelData;
     }
     interface ProviderButton {
         "type"?: ProviderTypeEnum;
@@ -999,7 +999,7 @@ declare namespace LocalJSX {
         "ledger-connect-modal": LedgerConnectModal;
         "ledger-connect-screen": LedgerConnectScreen;
         "notifications-feed": NotificationsFeed;
-        "pending-transactions-modal": PendingTransactionsModal;
+        "pending-transactions-panel": PendingTransactionsPanel;
         "provider-button": ProviderButton;
         "side-panel": SidePanel;
         "sign-transaction-component": SignTransactionComponent;
@@ -1053,7 +1053,7 @@ declare module "@stencil/core" {
             "ledger-connect-modal": LocalJSX.LedgerConnectModal & JSXBase.HTMLAttributes<HTMLLedgerConnectModalElement>;
             "ledger-connect-screen": LocalJSX.LedgerConnectScreen & JSXBase.HTMLAttributes<HTMLLedgerConnectScreenElement>;
             "notifications-feed": LocalJSX.NotificationsFeed & JSXBase.HTMLAttributes<HTMLNotificationsFeedElement>;
-            "pending-transactions-modal": LocalJSX.PendingTransactionsModal & JSXBase.HTMLAttributes<HTMLPendingTransactionsModalElement>;
+            "pending-transactions-panel": LocalJSX.PendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLPendingTransactionsPanelElement>;
             "provider-button": LocalJSX.ProviderButton & JSXBase.HTMLAttributes<HTMLProviderButtonElement>;
             "side-panel": LocalJSX.SidePanel & JSXBase.HTMLAttributes<HTMLSidePanelElement>;
             "sign-transaction-component": LocalJSX.SignTransactionComponent & JSXBase.HTMLAttributes<HTMLSignTransactionComponentElement>;
