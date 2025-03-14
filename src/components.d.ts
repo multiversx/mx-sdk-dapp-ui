@@ -245,7 +245,7 @@ export namespace Components {
         "description": string;
         "qrCodeSvg": string;
     }
-    interface WalletConnectModal {
+    interface WalletConnectPanel {
         "data": IWalletConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
@@ -703,11 +703,11 @@ declare global {
         prototype: HTMLWalletConnectBodyElement;
         new (): HTMLWalletConnectBodyElement;
     };
-    interface HTMLWalletConnectModalElement extends Components.WalletConnectModal, HTMLStencilElement {
+    interface HTMLWalletConnectPanelElement extends Components.WalletConnectPanel, HTMLStencilElement {
     }
-    var HTMLWalletConnectModalElement: {
-        prototype: HTMLWalletConnectModalElement;
-        new (): HTMLWalletConnectModalElement;
+    var HTMLWalletConnectPanelElement: {
+        prototype: HTMLWalletConnectPanelElement;
+        new (): HTMLWalletConnectPanelElement;
     };
     interface HTMLElementTagNameMap {
         "balance-component": HTMLBalanceComponentElement;
@@ -757,7 +757,7 @@ declare global {
         "unlock-panel": HTMLUnlockPanelElement;
         "wallet-connect": HTMLWalletConnectElement;
         "wallet-connect-body": HTMLWalletConnectBodyElement;
-        "wallet-connect-modal": HTMLWalletConnectModalElement;
+        "wallet-connect-panel": HTMLWalletConnectPanelElement;
     }
 }
 declare namespace LocalJSX {
@@ -979,7 +979,7 @@ declare namespace LocalJSX {
         "description"?: string;
         "qrCodeSvg"?: string;
     }
-    interface WalletConnectModal {
+    interface WalletConnectPanel {
         "data"?: IWalletConnectPanelData;
     }
     interface IntrinsicElements {
@@ -1030,7 +1030,7 @@ declare namespace LocalJSX {
         "unlock-panel": UnlockPanel;
         "wallet-connect": WalletConnect;
         "wallet-connect-body": WalletConnectBody;
-        "wallet-connect-modal": WalletConnectModal;
+        "wallet-connect-panel": WalletConnectPanel;
     }
 }
 export { LocalJSX as JSX };
@@ -1084,7 +1084,7 @@ declare module "@stencil/core" {
             "unlock-panel": LocalJSX.UnlockPanel & JSXBase.HTMLAttributes<HTMLUnlockPanelElement>;
             "wallet-connect": LocalJSX.WalletConnect & JSXBase.HTMLAttributes<HTMLWalletConnectElement>;
             "wallet-connect-body": LocalJSX.WalletConnectBody & JSXBase.HTMLAttributes<HTMLWalletConnectBodyElement>;
-            "wallet-connect-modal": LocalJSX.WalletConnectModal & JSXBase.HTMLAttributes<HTMLWalletConnectModalElement>;
+            "wallet-connect-panel": LocalJSX.WalletConnectPanel & JSXBase.HTMLAttributes<HTMLWalletConnectPanelElement>;
         }
     }
 }

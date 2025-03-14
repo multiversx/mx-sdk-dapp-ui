@@ -1,9 +1,9 @@
 import { newE2EPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-const tag = 'wallet-connect-modal';
+const tag = 'wallet-connect-panel';
 
-describe('wallet-connect-modal', () => {
+describe('wallet-connect-panel', () => {
   it(`renders ${tag}`, async () => {
     const page = await newE2EPage();
 

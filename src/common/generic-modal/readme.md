@@ -25,12 +25,12 @@
 
 ### Used by
 
- - [wallet-connect-modal](../../components/functional/wallet-connect-components)
+ - [wallet-connect-panel](../../components/functional/wallet-connect-components)
 
 ### Graph
 ```mermaid
 graph TD;
-  wallet-connect-modal --> generic-modal
+  wallet-connect-panel --> generic-modal
   style generic-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

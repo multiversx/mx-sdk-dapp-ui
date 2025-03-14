@@ -7,10 +7,10 @@ import { WalletConnectEventsEnum } from './wallet-connect-panel.types';
 import { WalletConnectBase } from './WalletConnectBase';
 
 @Component({
-  tag: 'wallet-connect-modal',
+  tag: 'wallet-connect-panel',
   shadow: true,
 })
-export class WalletConnectModal {
+export class WalletConnectPanel {
   @Element() hostElement: HTMLElement;
 
   @Prop() data: IWalletConnectPanelData = {

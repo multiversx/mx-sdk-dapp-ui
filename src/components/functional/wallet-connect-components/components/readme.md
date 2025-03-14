@@ -18,7 +18,7 @@
 ### Used by
 
  - [wallet-connect](..)
- - [wallet-connect-modal](..)
+ - [wallet-connect-panel](..)
 
 ### Depends on
 
@@ -29,7 +29,7 @@
 graph TD;
   wallet-connect-body --> generic-spinner
   wallet-connect --> wallet-connect-body
-  wallet-connect-modal --> wallet-connect-body
+  wallet-connect-panel --> wallet-connect-body
   style wallet-connect-body fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
