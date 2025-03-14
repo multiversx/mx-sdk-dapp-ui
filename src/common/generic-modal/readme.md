@@ -25,13 +25,11 @@
 
 ### Used by
 
- - [ledger-connect-modal](../../components/functional/ledger-connect-components)
  - [wallet-connect-modal](../../components/functional/wallet-connect-components)
 
 ### Graph
 ```mermaid
 graph TD;
-  ledger-connect-modal --> generic-modal
   wallet-connect-modal --> generic-modal
   style generic-modal fill:#f9f,stroke:#333,stroke-width:4px
 ```

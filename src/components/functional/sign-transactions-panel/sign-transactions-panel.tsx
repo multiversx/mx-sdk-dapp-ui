@@ -3,9 +3,9 @@ import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
 import { SidePanelSideEnum } from '../../visual/side-panel/side-panel.types';
-import type { ISignTransactionsModalData } from './sign-transactions-modal.types';
-import { SignEventsEnum } from './sign-transactions-modal.types';
-import state, { resetState } from './signTransactionsModalStore';
+import type { ISignTransactionsPanelData } from './sign-transactions-panel.types';
+import { SignEventsEnum } from './sign-transactions-panel.types';
+import state, { resetState } from './signTransactionsPanelStore';
 
 const signScreens = {
   FungibleESDT: 'token-component',
@@ -15,16 +15,16 @@ const signScreens = {
 };
 
 @Component({
-  tag: 'sign-transactions-modal',
-  styleUrl: 'sign-transactions-modal.css',
+  tag: 'sign-transactions-panel',
+  styleUrl: 'sign-transactions-panel.css',
   shadow: true,
 })
-export class SignTransactionsModal {
+export class SignTransactionsPanel {
   @Element() hostElement: HTMLElement;
   private eventBus: IEventBus = new EventBus();
   @State() isPanelOpen: boolean = false;
 
-  @Prop() data: ISignTransactionsModalData = {
+  @Prop() data: ISignTransactionsPanelData = {
     commonData: {
       egldLabel: '',
       feeLimit: '',
@@ -42,7 +42,7 @@ export class SignTransactionsModal {
   }
 
   @Watch('data')
-  onDataChange(data: ISignTransactionsModalData) {
+  onDataChange(data: ISignTransactionsPanelData) {
     for (const key in data) {
       if (Object.prototype.hasOwnProperty.call(state, key)) {
         state[key] = data[key];
@@ -111,7 +111,7 @@ export class SignTransactionsModal {
     }
   }
 
-  private dataUpdate(payload: ISignTransactionsModalData) {
+  private dataUpdate(payload: ISignTransactionsPanelData) {
     this.data = { ...payload };
     forceUpdate(this);
   }

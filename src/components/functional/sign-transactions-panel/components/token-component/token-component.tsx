@@ -1,6 +1,6 @@
 import { Component, h } from '@stencil/core';
 
-import state from '../../signTransactionsModalStore';
+import state from '../../signTransactionsPanelStore';
 
 @Component({
   tag: 'token-component',

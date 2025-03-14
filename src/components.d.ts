@@ -14,7 +14,7 @@ import { IPendingTransactionsPanelData } from "./components/functional/pending-t
 import { ProviderTypeEnum } from "./types/provider.types";
 import { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
-import { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
+import { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
@@ -29,7 +29,7 @@ export { IPendingTransactionsPanelData } from "./components/functional/pending-t
 export { ProviderTypeEnum } from "./types/provider.types";
 export { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
-export { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
+export { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
@@ -96,7 +96,7 @@ export namespace Components {
         "data": ILedgerConnectModalData;
         "getEventBus": () => Promise<IEventBus>;
     }
-    interface LedgerConnectModal {
+    interface LedgerConnectPanel {
         "data": ILedgerConnectModalData;
         "getEventBus": () => Promise<IEventBus>;
     }
@@ -121,8 +121,8 @@ export namespace Components {
     interface SignTransactionComponent {
         "header": VNode;
     }
-    interface SignTransactionsModal {
-        "data": ISignTransactionsModalData;
+    interface SignTransactionsPanel {
+        "data": ISignTransactionsPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
     interface SimpleToast {
@@ -420,11 +420,11 @@ declare global {
         prototype: HTMLLedgerConnectElement;
         new (): HTMLLedgerConnectElement;
     };
-    interface HTMLLedgerConnectModalElement extends Components.LedgerConnectModal, HTMLStencilElement {
+    interface HTMLLedgerConnectPanelElement extends Components.LedgerConnectPanel, HTMLStencilElement {
     }
-    var HTMLLedgerConnectModalElement: {
-        prototype: HTMLLedgerConnectModalElement;
-        new (): HTMLLedgerConnectModalElement;
+    var HTMLLedgerConnectPanelElement: {
+        prototype: HTMLLedgerConnectPanelElement;
+        new (): HTMLLedgerConnectPanelElement;
     };
     interface HTMLLedgerConnectScreenElementEventMap {
         "connect": any;
@@ -484,11 +484,11 @@ declare global {
         prototype: HTMLSignTransactionComponentElement;
         new (): HTMLSignTransactionComponentElement;
     };
-    interface HTMLSignTransactionsModalElement extends Components.SignTransactionsModal, HTMLStencilElement {
+    interface HTMLSignTransactionsPanelElement extends Components.SignTransactionsPanel, HTMLStencilElement {
     }
-    var HTMLSignTransactionsModalElement: {
-        prototype: HTMLSignTransactionsModalElement;
-        new (): HTMLSignTransactionsModalElement;
+    var HTMLSignTransactionsPanelElement: {
+        prototype: HTMLSignTransactionsPanelElement;
+        new (): HTMLSignTransactionsPanelElement;
     };
     interface HTMLSimpleToastElementEventMap {
         "handleDeleteToast": void;
@@ -723,14 +723,14 @@ declare global {
         "ledger-account-screen": HTMLLedgerAccountScreenElement;
         "ledger-confirm-screen": HTMLLedgerConfirmScreenElement;
         "ledger-connect": HTMLLedgerConnectElement;
-        "ledger-connect-modal": HTMLLedgerConnectModalElement;
+        "ledger-connect-panel": HTMLLedgerConnectPanelElement;
         "ledger-connect-screen": HTMLLedgerConnectScreenElement;
         "notifications-feed": HTMLNotificationsFeedElement;
         "pending-transactions-panel": HTMLPendingTransactionsPanelElement;
         "provider-button": HTMLProviderButtonElement;
         "side-panel": HTMLSidePanelElement;
         "sign-transaction-component": HTMLSignTransactionComponentElement;
-        "sign-transactions-modal": HTMLSignTransactionsModalElement;
+        "sign-transactions-panel": HTMLSignTransactionsPanelElement;
         "simple-toast": HTMLSimpleToastElement;
         "toast-list": HTMLToastListElement;
         "token-component": HTMLTokenComponentElement;
@@ -827,7 +827,7 @@ declare namespace LocalJSX {
     interface LedgerConnect {
         "data"?: ILedgerConnectModalData;
     }
-    interface LedgerConnectModal {
+    interface LedgerConnectPanel {
         "data"?: ILedgerConnectModalData;
     }
     interface LedgerConnectScreen {
@@ -851,8 +851,8 @@ declare namespace LocalJSX {
     interface SignTransactionComponent {
         "header"?: VNode;
     }
-    interface SignTransactionsModal {
-        "data"?: ISignTransactionsModalData;
+    interface SignTransactionsPanel {
+        "data"?: ISignTransactionsPanelData;
     }
     interface SimpleToast {
         "onHandleDeleteToast"?: (event: SimpleToastCustomEvent<void>) => void;
@@ -996,14 +996,14 @@ declare namespace LocalJSX {
         "ledger-account-screen": LedgerAccountScreen;
         "ledger-confirm-screen": LedgerConfirmScreen;
         "ledger-connect": LedgerConnect;
-        "ledger-connect-modal": LedgerConnectModal;
+        "ledger-connect-panel": LedgerConnectPanel;
         "ledger-connect-screen": LedgerConnectScreen;
         "notifications-feed": NotificationsFeed;
         "pending-transactions-panel": PendingTransactionsPanel;
         "provider-button": ProviderButton;
         "side-panel": SidePanel;
         "sign-transaction-component": SignTransactionComponent;
-        "sign-transactions-modal": SignTransactionsModal;
+        "sign-transactions-panel": SignTransactionsPanel;
         "simple-toast": SimpleToast;
         "toast-list": ToastList;
         "token-component": TokenComponent;
@@ -1050,14 +1050,14 @@ declare module "@stencil/core" {
             "ledger-account-screen": LocalJSX.LedgerAccountScreen & JSXBase.HTMLAttributes<HTMLLedgerAccountScreenElement>;
             "ledger-confirm-screen": LocalJSX.LedgerConfirmScreen & JSXBase.HTMLAttributes<HTMLLedgerConfirmScreenElement>;
             "ledger-connect": LocalJSX.LedgerConnect & JSXBase.HTMLAttributes<HTMLLedgerConnectElement>;
-            "ledger-connect-modal": LocalJSX.LedgerConnectModal & JSXBase.HTMLAttributes<HTMLLedgerConnectModalElement>;
+            "ledger-connect-panel": LocalJSX.LedgerConnectPanel & JSXBase.HTMLAttributes<HTMLLedgerConnectPanelElement>;
             "ledger-connect-screen": LocalJSX.LedgerConnectScreen & JSXBase.HTMLAttributes<HTMLLedgerConnectScreenElement>;
             "notifications-feed": LocalJSX.NotificationsFeed & JSXBase.HTMLAttributes<HTMLNotificationsFeedElement>;
             "pending-transactions-panel": LocalJSX.PendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLPendingTransactionsPanelElement>;
             "provider-button": LocalJSX.ProviderButton & JSXBase.HTMLAttributes<HTMLProviderButtonElement>;
             "side-panel": LocalJSX.SidePanel & JSXBase.HTMLAttributes<HTMLSidePanelElement>;
             "sign-transaction-component": LocalJSX.SignTransactionComponent & JSXBase.HTMLAttributes<HTMLSignTransactionComponentElement>;
-            "sign-transactions-modal": LocalJSX.SignTransactionsModal & JSXBase.HTMLAttributes<HTMLSignTransactionsModalElement>;
+            "sign-transactions-panel": LocalJSX.SignTransactionsPanel & JSXBase.HTMLAttributes<HTMLSignTransactionsPanelElement>;
             "simple-toast": LocalJSX.SimpleToast & JSXBase.HTMLAttributes<HTMLSimpleToastElement>;
             "toast-list": LocalJSX.ToastList & JSXBase.HTMLAttributes<HTMLToastListElement>;
             "token-component": LocalJSX.TokenComponent & JSXBase.HTMLAttributes<HTMLTokenComponentElement>;

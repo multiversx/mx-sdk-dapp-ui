@@ -5,9 +5,9 @@ import { sass } from '@stencil/sass';
 import tailwind, { tailwindHMR } from 'stencil-tailwind-plugin';
 
 const excludeComponents = [
-  'sign-transactions-modal',
+  'sign-transactions-panel',
   'pending-transactions-modal',
-  'ledger-connect-modal',
+  'ledger-connect-panel',
   'ledger-connect',
   'ledger-account-screen',
   'ledger-connect-screen',
@@ -56,7 +56,7 @@ export const config: Config = {
     },
   ],
   testing: {
-    browserHeadless: 'new',
+    browserHeadless: 'shell',
   },
   rollupPlugins: {
     after: [nodePolyfills()],

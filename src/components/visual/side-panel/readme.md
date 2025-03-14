@@ -25,17 +25,19 @@
 
 ### Used by
 
+ - [ledger-connect-panel](../../functional/ledger-connect-components)
  - [notifications-feed](../../functional/notifications-feed)
  - [pending-transactions-panel](../../functional/pending-transactions-panel)
- - [sign-transactions-modal](../../functional/sign-transactions-modal)
+ - [sign-transactions-panel](../../functional/sign-transactions-panel)
  - [unlock-panel](../unlock-panel)
 
 ### Graph
 ```mermaid
 graph TD;
+  ledger-connect-panel --> side-panel
   notifications-feed --> side-panel
   pending-transactions-panel --> side-panel
-  sign-transactions-modal --> side-panel
+  sign-transactions-panel --> side-panel
   unlock-panel --> side-panel
   style side-panel fill:#f9f,stroke:#333,stroke-width:4px
 ```

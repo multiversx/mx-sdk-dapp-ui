@@ -1,9 +1,9 @@
 import { newE2EPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-const tag = 'ledger-connect-modal';
+const tag = 'ledger-connect-panel';
 
-describe('ledger-connect-modal', () => {
+describe('ledger-connect-panel', () => {
   it(`renders ${tag}`, async () => {
     const page = await newE2EPage();
 

@@ -9,7 +9,7 @@
 
 | Property | Attribute | Description | Type                         | Default                                                                                                                                                                                                                                |
 | -------- | --------- | ----------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `data`   | --        |             | `ISignTransactionsModalData` | `{     commonData: {       egldLabel: '',       feeLimit: '',       feeInFiatLimit: '',       transactionsCount: 0,       currentIndex: 0,     },     tokenTransaction: null,     nftTransaction: null,     sftTransaction: null,   }` |
+| `data`   | --        |             | `ISignTransactionsPanelData` | `{     commonData: {       egldLabel: '',       feeLimit: '',       feeInFiatLimit: '',       transactionsCount: 0,       currentIndex: 0,     },     tokenTransaction: null,     nftTransaction: null,     sftTransaction: null,   }` |
 
 
 ## Methods
@@ -35,9 +35,9 @@ Type: `Promise<IEventBus>`
 ### Graph
 ```mermaid
 graph TD;
-  sign-transactions-modal --> side-panel
-  sign-transactions-modal --> generic-spinner
-  style sign-transactions-modal fill:#f9f,stroke:#333,stroke-width:4px
+  sign-transactions-panel --> side-panel
+  sign-transactions-panel --> generic-spinner
+  style sign-transactions-panel fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

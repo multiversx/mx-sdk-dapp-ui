@@ -26,18 +26,18 @@
       }
 
       function openSignModal() {
-        const signTransactionsModal = document.querySelector('sign-transactions-modal');
-        if (!signTransactionsModal) {
-          const newModal = document.createElement('sign-transactions-modal');
-          document.body.appendChild(newModal);
+        const signTransactionsPanel = document.querySelector('sign-transactions-panel');
+        if (!signTransactionsPanel) {
+          const newPanel = document.createElement('sign-transactions-panel');
+          document.body.appendChild(newPanel);
         }
       }
 
       function openLedgerConnectModal() {
-        const ledgerConnectModal = document.querySelector('ledger-connect-modal');
-        if (!ledgerConnectModal) {
-          const newModal = document.createElement('ledger-connect-modal');
-          document.body.appendChild(newModal);
+        const ledgerConnectPanel = document.querySelector('ledger-connect-panel');
+        if (!ledgerConnectPanel) {
+          const newPanel = document.createElement('ledger-connect-panel');
+          document.body.appendChild(newPanel);
         }
       }
     </script>

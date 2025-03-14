@@ -17,13 +17,13 @@
 ### Used by
 
  - [ledger-connect](../..)
- - [ledger-connect-modal](../..)
+ - [ledger-connect-panel](../..)
 
 ### Graph
 ```mermaid
 graph TD;
   ledger-connect --> ledger-confirm-screen
-  ledger-connect-modal --> ledger-confirm-screen
+  ledger-connect-panel --> ledger-confirm-screen
   style ledger-confirm-screen fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
