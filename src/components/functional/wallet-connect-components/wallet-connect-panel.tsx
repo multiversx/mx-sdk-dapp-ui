@@ -2,8 +2,8 @@ import { Component, Element, forceUpdate, h, Method, Prop, State, Watch } from '
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IEventBus } from 'utils/EventBus';
 
-import type { IWalletConnectModalData } from './wallet-connect-modal.types';
-import { WalletConnectEventsEnum } from './wallet-connect-modal.types';
+import type { IWalletConnectPanelData } from './wallet-connect-panel.types';
+import { WalletConnectEventsEnum } from './wallet-connect-panel.types';
 import { WalletConnectBase } from './WalletConnectBase';
 
 @Component({
@@ -13,7 +13,7 @@ import { WalletConnectBase } from './WalletConnectBase';
 export class WalletConnectModal {
   @Element() hostElement: HTMLElement;
 
-  @Prop() data: IWalletConnectModalData = {
+  @Prop() data: IWalletConnectPanelData = {
     wcURI: '',
   };
 
@@ -30,7 +30,7 @@ export class WalletConnectModal {
   }
 
   @Watch('data')
-  async onDataChange(data: IWalletConnectModalData) {
+  async onDataChange(data: IWalletConnectPanelData) {
     if (data.wcURI) {
       this.qrCodeSvg = await this.walletConnectBase.generateSVG(data.wcURI);
     }

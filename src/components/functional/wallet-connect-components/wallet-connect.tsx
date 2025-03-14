@@ -1,6 +1,6 @@
 import { Component, Element, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
 
-import type { IWalletConnectModalData } from './wallet-connect-modal.types';
+import type { IWalletConnectPanelData } from './wallet-connect-panel.types';
 import { WalletConnectBase } from './WalletConnectBase';
 
 @Component({
@@ -10,7 +10,7 @@ import { WalletConnectBase } from './WalletConnectBase';
 export class WalletConnect {
   @Element() hostElement: HTMLElement;
 
-  @Prop() data: IWalletConnectModalData = {
+  @Prop() data: IWalletConnectPanelData = {
     wcURI: '',
   };
 
@@ -27,7 +27,7 @@ export class WalletConnect {
   }
 
   @Watch('data')
-  async onDataChange(data: IWalletConnectModalData) {
+  async onDataChange(data: IWalletConnectPanelData) {
     if (data.wcURI) {
       this.qrCodeSvg = await this.walletConnectBase.generateSVG(data.wcURI);
     }

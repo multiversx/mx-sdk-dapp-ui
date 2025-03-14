@@ -7,7 +7,7 @@
 
 | Property | Attribute | Description | Type                      | Default                |
 | -------- | --------- | ----------- | ------------------------- | ---------------------- |
-| `data`   | --        |             | `IWalletConnectModalData` | `{     wcURI: '',   }` |
+| `data`   | --        |             | `IWalletConnectPanelData` | `{     wcURI: '',   }` |
 
 
 ## Methods

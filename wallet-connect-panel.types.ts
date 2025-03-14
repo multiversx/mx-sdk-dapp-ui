@@ -1,9 +1,9 @@
 export enum WalletConnectEventsEnum {
-  'CLOSE' = 'CLOSE', //  close modal event
+  'CLOSE' = 'CLOSE', //  close panel event
   'DATA_UPDATE' = 'DATA_UPDATE', // update data event
 }
 
-export interface IWalletConnectModalData {
+export interface IWalletConnectPanelData {
   wcURI: string;
   shouldClose?: boolean;
 }

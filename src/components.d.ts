@@ -19,7 +19,7 @@ import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITr
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-import { IWalletConnectModalData } from "./components/functional/wallet-connect-components/wallet-connect-modal.types";
+import { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
@@ -34,7 +34,7 @@ export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITr
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-export { IWalletConnectModalData } from "./components/functional/wallet-connect-components/wallet-connect-modal.types";
+export { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export namespace Components {
     interface BalanceComponent {
         "amount": string;
@@ -238,7 +238,7 @@ export namespace Components {
         "isOpen": boolean;
     }
     interface WalletConnect {
-        "data": IWalletConnectModalData;
+        "data": IWalletConnectPanelData;
         "getEventBus": () => Promise<import("/Users/razvan/Work/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
     }
     interface WalletConnectBody {
@@ -246,7 +246,7 @@ export namespace Components {
         "qrCodeSvg": string;
     }
     interface WalletConnectModal {
-        "data": IWalletConnectModalData;
+        "data": IWalletConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
 }
@@ -973,14 +973,14 @@ declare namespace LocalJSX {
         "onLogin"?: (event: UnlockPanelCustomEvent<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>) => void;
     }
     interface WalletConnect {
-        "data"?: IWalletConnectModalData;
+        "data"?: IWalletConnectPanelData;
     }
     interface WalletConnectBody {
         "description"?: string;
         "qrCodeSvg"?: string;
     }
     interface WalletConnectModal {
-        "data"?: IWalletConnectModalData;
+        "data"?: IWalletConnectPanelData;
     }
     interface IntrinsicElements {
         "balance-component": BalanceComponent;
