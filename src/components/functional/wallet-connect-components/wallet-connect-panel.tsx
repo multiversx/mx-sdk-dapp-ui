@@ -1,4 +1,5 @@
 import { Component, Element, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
+import { SidePanelSideEnum } from 'components/visual/side-panel/side-panel.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IEventBus } from 'utils/EventBus';
 
@@ -8,6 +9,7 @@ import { WalletConnectBase } from './WalletConnectBase';
 
 @Component({
   tag: 'wallet-connect-panel',
+  styleUrl: 'wallet-connect-panel.css',
   shadow: true,
 })
 export class WalletConnectPanel {
@@ -18,6 +20,7 @@ export class WalletConnectPanel {
   };
 
   @State() qrCodeSvg: string = '';
+  @State() isOpen: boolean = true;
 
   private walletConnectBase: WalletConnectBase;
 
@@ -38,13 +41,21 @@ export class WalletConnectPanel {
 
   render() {
     return (
-      <generic-modal
-        modalTitle={<div data-testid={DataTestIdsEnum.walletConnetModalTitle}>xPortal Mobile Wallet</div>}
-        modalSubtitle={<div data-testid={DataTestIdsEnum.walletConnetModalSubtitle}>Scan this QR code with your app</div>}
-        onClose={() => this.close()}
-        body={<wallet-connect-body qrCodeSvg={this.qrCodeSvg} />}
-      />
+      <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} panelClassName="wallet-connect-side-panel" onClose={() => this.handleClose()}>
+        <div class="wallet-connect-container">
+          <div class="wallet-connect-header">
+            <h2 data-testid={DataTestIdsEnum.walletConnetModalTitle}>xPortal Mobile Wallet</h2>
+            <h4 data-testid={DataTestIdsEnum.walletConnetModalSubtitle}>Scan this QR code with your app</h4>
+          </div>
+          <wallet-connect-body qrCodeSvg={this.qrCodeSvg} />
+        </div>
+      </side-panel>
     );
+  }
+
+  handleClose() {
+    this.isOpen = false;
+    this.close({ isUserClick: true });
   }
 
   close(props = { isUserClick: true }) {

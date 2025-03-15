@@ -1,8 +1,8 @@
 import { Component, Element, forceUpdate, h, Method, Prop, State } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IEventBus } from 'utils/EventBus';
-import { SidePanelSideEnum } from '../../visual/side-panel/side-panel.types';
 
+import { SidePanelSideEnum } from '../../visual/side-panel/side-panel.types';
 import type { ILedgerConnectModalData } from './ledger-connect.types';
 import { LedgerConnectEventsEnum } from './ledger-connect.types';
 import { LedgerConnectBase } from './LedgerConnectBase';
