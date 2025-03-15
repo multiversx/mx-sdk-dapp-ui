@@ -30,6 +30,7 @@
  - [pending-transactions-panel](../../functional/pending-transactions-panel)
  - [sign-transactions-panel](../../functional/sign-transactions-panel)
  - [unlock-panel](../unlock-panel)
+ - [wallet-connect-panel](../../functional/wallet-connect-components)
 
 ### Graph
 ```mermaid
@@ -39,6 +40,7 @@ graph TD;
   pending-transactions-panel --> side-panel
   sign-transactions-panel --> side-panel
   unlock-panel --> side-panel
+  wallet-connect-panel --> side-panel
   style side-panel fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
