@@ -19,7 +19,15 @@ export interface ISignTransactionsModalCommonData {
   receiver?: string;
   data?: string;
   gasPrice?: string;
-  gasPriceMultiplier?: 1 | 2 | 3;
+  /**
+   * ppu - Price Per Unit
+   * a constant that is used to calculate the gas price inside `recommendGasPrice`
+   */
+  ppu?: number;
+  ppuOptions: {
+    label: string;
+    value: number;
+  }[];
   gasLimit?: string;
   transactionsCount: number;
   tokenType?: TokenType;
@@ -49,5 +57,5 @@ export enum SignEventsEnum {
   'BACK' = 'BACK',
   'CLOSE' = 'CLOSE',
   'DATA_UPDATE' = 'DATA_UPDATE',
-  'SET_GAS_PRICE_MULTIPLIER' = 'SET_GAS_PRICE_MULTIPLIER',
+  'SET_PPU' = 'SET_PPU',
 }

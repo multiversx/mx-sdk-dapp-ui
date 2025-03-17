@@ -7,7 +7,7 @@ type ITransactionState = ISignTransactionsModalData & {
   onCancel: () => void;
   onBack: () => void;
   onConfirm: () => void;
-  onSetGasPriceMultiplier: (gasPriceMultiplier: 1 | 2 | 3) => void;
+  onSetPpu: (ppu: number) => void;
 };
 
 const initialState: ITransactionState = {
@@ -23,6 +23,7 @@ const initialState: ITransactionState = {
     feeInFiatLimit: '',
     currentIndex: 0,
     receiver: '',
+    ppuOptions: [],
   },
   nftTransaction: null,
   sftTransaction: null,
@@ -30,7 +31,7 @@ const initialState: ITransactionState = {
   onCancel: null,
   onBack: null,
   onConfirm: null,
-  onSetGasPriceMultiplier: null,
+  onSetPpu: null,
 };
 
 const store = createStore<ITransactionState>({
