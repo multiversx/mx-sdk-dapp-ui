@@ -41,5 +41,6 @@ export enum SignEventsEnum {
   SIGN_TRANSACTION = 'sign-event-sign-transaction',
   PREV_TRANSACTION = 'sign-event-prev-transaction',
   NEXT_TRANSACTION = 'sign-event-next-transaction',
-  CLOSE = 'sign-event-close',
+  CLOSE_SIGN_TRANSACTIONS = 'sign-event-close',
+  OPEN_SIGN_TRANSACTIONS_PANEL = 'sign-event-open',
 }

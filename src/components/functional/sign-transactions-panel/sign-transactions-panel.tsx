@@ -1,4 +1,4 @@
-import { Component, Element, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
@@ -20,9 +20,8 @@ const signScreens = {
   shadow: true,
 })
 export class SignTransactionsPanel {
-  @Element() hostElement: HTMLElement;
   private eventBus: IEventBus = new EventBus();
-  @State() isPanelOpen: boolean = false;
+  @State() isOpen: boolean = false;
 
   @Prop() data: ISignTransactionsPanelData = {
     commonData: {
@@ -37,25 +36,7 @@ export class SignTransactionsPanel {
     sftTransaction: null,
   };
 
-  @Method() async getEventBus() {
-    return this.eventBus;
-  }
-
-  @Watch('data')
-  onDataChange(data: ISignTransactionsPanelData) {
-    for (const key in data) {
-      if (Object.prototype.hasOwnProperty.call(state, key)) {
-        state[key] = data[key];
-      }
-    }
-
-    state.isWaitingForSignature = false;
-    state.isLoading = false;
-  }
-
   componentWillLoad() {
-    this.isPanelOpen = true;
-
     state.onSign = () => {
       state.isWaitingForSignature = true;
       this.eventBus.publish(SignEventsEnum.SIGN_TRANSACTION);
@@ -70,8 +51,60 @@ export class SignTransactionsPanel {
     };
 
     state.onCancel = () => {
-      this.eventBus.publish(SignEventsEnum.CLOSE);
+      this.eventBus.publish(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS);
     };
+  }
+
+  componentDidLoad() {
+    this.eventBus.subscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
+    this.eventBus.subscribe(SignEventsEnum.OPEN_SIGN_TRANSACTIONS_PANEL, this.handleOpen.bind(this));
+    this.eventBus.subscribe(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS, this.onClose.bind(this, { isUserClick: false }));
+  }
+
+  disconnectedCallback() {
+    resetState();
+    this.eventBus.unsubscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
+    this.eventBus.unsubscribe(SignEventsEnum.OPEN_SIGN_TRANSACTIONS_PANEL, this.handleOpen.bind(this));
+    this.eventBus.unsubscribe(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS, this.onClose.bind(this, { isUserClick: false }));
+  }
+
+  handleOpen() {
+    this.isOpen = true;
+  }
+
+  handleClose() {
+    this.isOpen = false;
+    this.onClose({ isUserClick: true });
+  }
+
+  onClose(props = { isUserClick: true }) {
+    this.isOpen = false;
+    resetState();
+
+    if (props.isUserClick) {
+      this.eventBus.publish(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS);
+    }
+  }
+
+  private dataUpdate(payload: ISignTransactionsPanelData) {
+    this.data = { ...payload };
+    forceUpdate(this);
+  }
+
+  @Watch('data')
+  onDataChange(data: ISignTransactionsPanelData) {
+    for (const key in data) {
+      if (Object.prototype.hasOwnProperty.call(state, key)) {
+        state[key] = data[key];
+      }
+    }
+
+    state.isWaitingForSignature = false;
+    state.isLoading = false;
+  }
+
+  @Method() async getEventBus() {
+    return this.eventBus;
   }
 
   render() {
@@ -80,7 +113,7 @@ export class SignTransactionsPanel {
     const SignScreen = signScreens[tokenType];
 
     return (
-      <side-panel isOpen={this.isPanelOpen} side={SidePanelSideEnum.LEFT} panelClassName="sign-transactions-panel" onClose={this.close.bind(this, { isUserClick: true })}>
+      <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.LEFT} panelClassName="sign-transactions-panel" onClose={this.handleClose.bind(this)}>
         <div class="sign-transactions-content">
           <div class="sign-transactions-header">
             <h2>Sign transaction</h2>
@@ -100,28 +133,5 @@ export class SignTransactionsPanel {
         </div>
       </side-panel>
     );
-  }
-
-  close(props = { isUserClick: true }) {
-    this.isPanelOpen = false;
-    resetState();
-
-    if (props.isUserClick) {
-      this.eventBus.publish(SignEventsEnum.CLOSE);
-    }
-  }
-
-  private dataUpdate(payload: ISignTransactionsPanelData) {
-    this.data = { ...payload };
-    forceUpdate(this);
-  }
-
-  componentDidLoad() {
-    this.eventBus.subscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
-  }
-
-  disconnectedCallback() {
-    resetState();
-    this.eventBus.unsubscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
   }
 }

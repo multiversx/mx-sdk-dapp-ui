@@ -20,7 +20,7 @@ export class WalletConnectPanel {
   };
 
   @State() qrCodeSvg: string = '';
-  @State() isOpen: boolean = true;
+  @State() isOpen: boolean = false;
 
   private walletConnectBase: WalletConnectBase;
 
@@ -28,8 +28,47 @@ export class WalletConnectPanel {
     this.walletConnectBase = new WalletConnectBase(this.data);
   }
 
+  componentDidLoad() {
+    this.walletConnectBase.subscribeEventBus(this.getEventBusSubscription());
+    this.walletConnectBase.eventBus.subscribe(WalletConnectEventsEnum.OPEN_WALLET_CONNECT_PANEL, this.handleOpen.bind(this));
+    this.walletConnectBase.eventBus.subscribe(WalletConnectEventsEnum.CLOSE_WALLET_CONNECT_PANEL, this.onClose.bind(this, { isUserClick: false }));
+  }
+
+  disconnectedCallback() {
+    this.walletConnectBase.unsubscribeEventBus(this.getEventBusSubscription());
+    this.walletConnectBase.eventBus.unsubscribe(WalletConnectEventsEnum.OPEN_WALLET_CONNECT_PANEL, this.handleOpen.bind(this));
+    this.walletConnectBase.eventBus.unsubscribe(WalletConnectEventsEnum.CLOSE_WALLET_CONNECT_PANEL, this.onClose.bind(this, { isUserClick: false }));
+  }
+
+  handleOpen() {
+    this.isOpen = true;
+  }
+
+  handleClose() {
+    this.isOpen = false;
+    this.onClose({ isUserClick: true });
+  }
+
+  onClose(props = { isUserClick: true }) {
+    this.isOpen = false;
+
+    if (props.isUserClick) {
+      this.walletConnectBase.eventBus.publish(WalletConnectEventsEnum.CLOSE_WALLET_CONNECT_PANEL);
+    }
+  }
+
   @Method() async getEventBus(): Promise<IEventBus> {
     return this.walletConnectBase.getEventBus();
+  }
+
+  private getEventBusSubscription() {
+    return {
+      closeFn: () => this.onClose({ isUserClick: false }),
+      forceUpdateFn: () => {
+        this.data = this.walletConnectBase.data;
+        forceUpdate(this);
+      },
+    };
   }
 
   @Watch('data')
@@ -41,7 +80,7 @@ export class WalletConnectPanel {
 
   render() {
     return (
-      <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} panelClassName="wallet-connect-side-panel" onClose={() => this.handleClose()}>
+      <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} panelClassName="wallet-connect-side-panel" onClose={this.handleClose.bind(this)}>
         <div class="wallet-connect-container">
           <div class="wallet-connect-header">
             <h2 data-testid={DataTestIdsEnum.walletConnetModalTitle}>xPortal Mobile Wallet</h2>
@@ -51,42 +90,5 @@ export class WalletConnectPanel {
         </div>
       </side-panel>
     );
-  }
-
-  handleClose() {
-    this.isOpen = false;
-    this.close({ isUserClick: true });
-  }
-
-  close(props = { isUserClick: true }) {
-    if (props.isUserClick) {
-      this.walletConnectBase.eventBus.publish(WalletConnectEventsEnum.CLOSE);
-    }
-
-    if (this.hostElement && this.hostElement.parentNode) {
-      this.hostElement.parentNode.removeChild(this.hostElement);
-    }
-  }
-
-  componentDidLoad() {
-    this.walletConnectBase.subscribeEventBus({
-      closeFn: () => this.close({ isUserClick: false }),
-      forceUpdateFn: () => {
-        // this is needed for the UI to be reactive
-        this.data = this.walletConnectBase.data;
-        forceUpdate(this);
-      },
-    });
-  }
-
-  disconnectedCallback() {
-    this.walletConnectBase.unsubscribeEventBus({
-      closeFn: () => this.close({ isUserClick: false }),
-      forceUpdateFn: () => {
-        // this is needed for the UI to be reactive
-        this.data = this.walletConnectBase.data;
-        forceUpdate(this);
-      },
-    });
   }
 }

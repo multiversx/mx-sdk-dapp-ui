@@ -1,6 +1,7 @@
 export enum WalletConnectEventsEnum {
-  'CLOSE' = 'CLOSE', //  close modal event
-  'DATA_UPDATE' = 'DATA_UPDATE', // update data event
+  CLOSE_WALLET_CONNECT_PANEL = 'CLOSE_WALLET_CONNECT_PANEL',
+  OPEN_WALLET_CONNECT_PANEL = 'OPEN_WALLET_CONNECT_PANEL',
+  DATA_UPDATE = 'DATA_UPDATE',
 }
 
 export interface IWalletConnectPanelData {

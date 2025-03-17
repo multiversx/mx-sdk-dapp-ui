@@ -1,4 +1,4 @@
-import { Component, Element, forceUpdate, h, Method, Prop, State } from '@stencil/core';
+import { Component, forceUpdate, h, Method, Prop, State } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
@@ -13,9 +13,8 @@ import { PendingTransactionsEventsEnum } from './pending-transactions-panel.type
   shadow: true,
 })
 export class PendingTransactionstPanel {
-  @Element() hostElement: HTMLElement;
   private eventBus: IEventBus = new EventBus();
-  @State() isPanelOpen: boolean = false;
+  @State() isOpen: boolean = false;
 
   @Prop() data: IPendingTransactionsPanelData = {
     isPending: false,
@@ -23,21 +22,52 @@ export class PendingTransactionstPanel {
     subtitle: '',
   };
 
+  componentDidLoad() {
+    this.eventBus.subscribe(PendingTransactionsEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
+    this.eventBus.subscribe(PendingTransactionsEventsEnum.OPEN_PENDING_TRANSACTIONS_PANEL, this.handleOpen.bind(this));
+    this.eventBus.subscribe(PendingTransactionsEventsEnum.CLOSE_PENDING_TRANSACTIONS, this.onClose.bind(this, { isUserClick: false }));
+  }
+
+  disconnectedCallback() {
+    this.eventBus.unsubscribe(PendingTransactionsEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
+    this.eventBus.unsubscribe(PendingTransactionsEventsEnum.OPEN_PENDING_TRANSACTIONS_PANEL, this.handleOpen.bind(this));
+    this.eventBus.unsubscribe(PendingTransactionsEventsEnum.CLOSE_PENDING_TRANSACTIONS, this.onClose.bind(this, { isUserClick: false }));
+  }
+
+  handleOpen() {
+    this.isOpen = true;
+  }
+
+  handleClose() {
+    this.isOpen = false;
+    this.onClose({ isUserClick: true });
+  }
+
+  onClose(props = { isUserClick: true }) {
+    this.isOpen = false;
+
+    if (props.isUserClick) {
+      this.eventBus.publish(PendingTransactionsEventsEnum.CLOSE_PENDING_TRANSACTIONS);
+    }
+  }
+
+  private dataUpdate(payload: IPendingTransactionsPanelData) {
+    if (payload.shouldClose) {
+      return this.onClose({ isUserClick: false });
+    }
+
+    this.isOpen = true;
+    this.data = { ...payload };
+    forceUpdate(this);
+  }
+
   @Method() async getEventBus() {
     return this.eventBus;
   }
 
-  handleClose() {
-    this.close();
-  }
-
-  componentWillLoad() {
-    this.isPanelOpen = true;
-  }
-
   render() {
     return (
-      <side-panel isOpen={this.isPanelOpen} side={SidePanelSideEnum.RIGHT} panelClassName="pending-transactions-panel" onClose={this.handleClose.bind(this)}>
+      <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} panelClassName="pending-transactions-panel" onClose={this.handleClose.bind(this)}>
         <div class="pending-transactions-content">
           <div class="pending-transactions-header">
             <h2 data-testid={DataTestIdsEnum.pendingTransactionsTitle}>{this.data.title}</h2>
@@ -51,36 +81,5 @@ export class PendingTransactionstPanel {
         </div>
       </side-panel>
     );
-  }
-
-  close(props = { isUserClick: true }) {
-    this.isPanelOpen = false;
-
-    if (props.isUserClick) {
-      this.eventBus.publish(PendingTransactionsEventsEnum.CLOSE);
-    }
-
-    // Add a slight delay to allow the side panel to animate closed
-    setTimeout(() => {
-      if (this.hostElement && this.hostElement.parentNode) {
-        this.hostElement.parentNode.removeChild(this.hostElement);
-      }
-    }, 300); // Match the animation duration in side-panel
-  }
-
-  private dataUpdate(payload: IPendingTransactionsPanelData) {
-    if (payload.shouldClose) {
-      return this.close({ isUserClick: false });
-    }
-    this.data = { ...payload };
-    forceUpdate(this);
-  }
-
-  componentDidLoad() {
-    this.eventBus.subscribe(PendingTransactionsEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
-  }
-
-  disconnectedCallback() {
-    this.eventBus.unsubscribe(PendingTransactionsEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
   }
 }
