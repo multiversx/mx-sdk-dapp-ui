@@ -239,7 +239,7 @@ export namespace Components {
     }
     interface WalletConnect {
         "data": IWalletConnectPanelData;
-        "getEventBus": () => Promise<import("/Users/razvan/Work/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
+        "getEventBus": () => Promise<import("/Users/miromargineanu/Documents/Programming/MultiversX/Repositories/sdk-dapp-core-workspace/packages/mx-sdk-dapp-core-ui/src/components").IEventBus>;
     }
     interface WalletConnectBody {
         "description": string;

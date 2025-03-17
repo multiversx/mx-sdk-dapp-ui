@@ -1,5 +1,6 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
+import classNames from 'classnames';
 
 import { SidePanelSideEnum } from './side-panel.types';
 
@@ -60,22 +61,15 @@ export class SidePanel {
 
     return (
       <div
-        class={{
-          'overlay': true,
-          'visible': this.shouldAnimate,
-          'hidden': !this.shouldAnimate,
-          'side-left': this.side === 'left',
-          'side-right': this.side === 'right',
-        }}
         onClick={this.handleOverlayClick}
+        class={classNames('side-panel-wrapper', {
+          visible: this.shouldAnimate,
+        })}
       >
-        <div
-          class={{
-            panel: true,
-            [this.panelClassName]: Boolean(this.panelClassName),
-          }}
-        >
-          <div class="panel-content">
+        <div class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}>
+          <div class="side-panel-title">{}</div>
+
+          <div class="side-panel-content">
             <slot></slot>
           </div>
         </div>

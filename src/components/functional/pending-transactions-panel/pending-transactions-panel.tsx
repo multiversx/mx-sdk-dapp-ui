@@ -3,7 +3,6 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import { SidePanelSideEnum } from '../../visual/side-panel/side-panel.types';
 import type { IPendingTransactionsPanelData } from './pending-transactions-panel.types';
 import { PendingTransactionsEventsEnum } from './pending-transactions-panel.types';
 
@@ -67,7 +66,7 @@ export class PendingTransactionstPanel {
 
   render() {
     return (
-      <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} panelClassName="pending-transactions-panel" onClose={this.handleClose.bind(this)}>
+      <side-panel isOpen={this.isOpen} panelClassName="pending-transactions-panel" onClose={this.handleClose.bind(this)}>
         <div class="pending-transactions-content">
           <div class="pending-transactions-header">
             <h2 data-testid={DataTestIdsEnum.pendingTransactionsTitle}>{this.data.title}</h2>

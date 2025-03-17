@@ -3,7 +3,6 @@ import { Component, h, Method, State } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import { SidePanelSideEnum } from '../../visual/side-panel/side-panel.types';
 import type { ITransactionListItem } from '../../visual/transaction-list-item/transaction-list-item.types';
 import type { ITransactionToast } from '../toasts-list/components/transaction-toast/transaction-toast.type';
 import { NotificationsFeedEventsEnum } from './notifications-feed.types';
@@ -58,7 +57,7 @@ export class NotificationsFeed {
     const hasPending = this.pendingTransactions?.length > 0;
 
     return (
-      <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} onClose={this.handleClose}>
+      <side-panel isOpen={this.isOpen} onClose={this.handleClose}>
         <div class="feed-content">
           <div class="feed-header">
             <h2 class="feed-title">Notifications Feed</h2>

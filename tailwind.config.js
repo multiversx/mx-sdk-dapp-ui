@@ -5,7 +5,11 @@ const colors = require('tailwindcss/colors');
 export default {
   content: ['./src/**/*.{tsx,ts,jsx,js,html}'],
   theme: {
-    extend: {},
+    extend: {
+      borderRadius: {
+        20: '20px',
+      },
+    },
   },
   plugins: [],
 };
