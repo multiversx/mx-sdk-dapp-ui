@@ -29,6 +29,7 @@ export class SignTransactionsModal {
       feeInFiatLimit: '',
       transactionsCount: 0,
       currentIndex: 0,
+      ppuOptions: [],
     },
     tokenTransaction: null,
     nftTransaction: null,
@@ -64,8 +65,8 @@ export class SignTransactionsModal {
       this.eventBus.publish(SignEventsEnum.BACK);
     };
 
-    state.onSetGasPriceMultiplier = (gasPriceMultiplier: 1 | 2 | 3) => {
-      this.eventBus.publish(SignEventsEnum.SET_GAS_PRICE_MULTIPLIER, gasPriceMultiplier);
+    state.onSetPpu = (ppu: number) => {
+      this.eventBus.publish(SignEventsEnum.SET_PPU, ppu);
     };
   }
 

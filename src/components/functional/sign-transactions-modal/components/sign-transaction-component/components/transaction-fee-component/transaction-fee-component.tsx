@@ -15,12 +15,12 @@ export class TransactionFeeComponent {
     this.showGasOptions = !this.showGasOptions;
   };
 
-  private handleMultiplierChange = (value: ISignTransactionsModalCommonData['gasPriceMultiplier']) => () => {
-    state.onSetGasPriceMultiplier(value);
+  private handlePpuChange = (value: ISignTransactionsModalCommonData['ppu']) => () => {
+    state.onSetPpu(value);
   };
 
   render() {
-    const { egldLabel, feeInFiatLimit, feeLimit, gasLimit, gasPrice, gasPriceMultiplier, isEditable } = state.commonData;
+    const { egldLabel, feeInFiatLimit, feeLimit, gasLimit, gasPrice, ppu, isEditable, ppuOptions } = state.commonData;
 
     return (
       <div class="transaction-fee-container">
@@ -48,46 +48,24 @@ export class TransactionFeeComponent {
                 <div class="value">{gasPrice}</div>
               </div>
 
-              <div class="radio-group">
-                <div class="radio-option">
-                  <input
-                    disabled={!isEditable}
-                    type="radio"
-                    id="multiplier1"
-                    name="gasMultiplier"
-                    value="1"
-                    checked={gasPriceMultiplier === 1}
-                    onChange={this.handleMultiplierChange(1)}
-                  />
-                  <label htmlFor="multiplier1">x1</label>
+              {ppuOptions && ppuOptions.length > 0 && (
+                <div class="radio-group">
+                  {ppuOptions.map(option => (
+                    <div class="radio-option">
+                      <input
+                        disabled={!isEditable}
+                        type="radio"
+                        id={`ppu${option.value}`}
+                        name="ppu"
+                        value={option.value}
+                        checked={ppu === option.value}
+                        onChange={this.handlePpuChange(option.value)}
+                      />
+                      <label htmlFor={`ppu${option.value}`}>{option.label}</label>
+                    </div>
+                  ))}
                 </div>
-
-                <div class="radio-option">
-                  <input
-                    disabled={!isEditable}
-                    type="radio"
-                    id="multiplier2"
-                    name="gasMultiplier"
-                    value="2"
-                    checked={gasPriceMultiplier === 2}
-                    onChange={this.handleMultiplierChange(2)}
-                  />
-                  <label htmlFor="multiplier2">x2</label>
-                </div>
-
-                <div class="radio-option">
-                  <input
-                    disabled={!isEditable}
-                    type="radio"
-                    id="multiplier3"
-                    name="gasMultiplier"
-                    value="3"
-                    checked={gasPriceMultiplier === 3}
-                    onChange={this.handleMultiplierChange(3)}
-                  />
-                  <label htmlFor="multiplier3">x3</label>
-                </div>
-              </div>
+              )}
             </div>
 
             <div class="gas-limit-section">
