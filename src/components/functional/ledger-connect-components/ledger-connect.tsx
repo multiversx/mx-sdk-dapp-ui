@@ -59,7 +59,6 @@ export class LedgerConnect {
 
   private selectAccount(index: number) {
     this.ledgerConnectBase.selectAccount(index);
-    // this is needed for the UI to be reactive
     this.selectedIndex = this.ledgerConnectBase.selectedIndex;
   }
 
@@ -77,25 +76,21 @@ export class LedgerConnect {
     }
   }
 
-  componentDidLoad() {
-    this.ledgerConnectBase.subscribeEventBus({
+  private getEventSubscription() {
+    return {
       closeFn: () => this.removeComponent(),
       forceUpdateFn: () => {
-        // this is needed for the UI to be reactive
         this.data = this.ledgerConnectBase.data;
         forceUpdate(this);
       },
-    });
+    };
+  }
+
+  componentDidLoad() {
+    this.ledgerConnectBase.subscribeEventBus(this.getEventSubscription());
   }
 
   disconnectedCallback() {
-    this.ledgerConnectBase.unsubscribeEventBus({
-      closeFn: () => this.removeComponent(),
-      forceUpdateFn: () => {
-        // this is needed for the UI to be reactive
-        this.data = this.ledgerConnectBase.data;
-        forceUpdate(this);
-      },
-    });
+    this.ledgerConnectBase.unsubscribeEventBus(this.getEventSubscription());
   }
 }

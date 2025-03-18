@@ -44,25 +44,20 @@ export class WalletConnect {
     }
   }
 
-  componentDidLoad() {
-    this.walletConnectBase.subscribeEventBus({
+  private getEventSubscription() {
+    return {
       closeFn: () => this.removeComponent(),
       forceUpdateFn: () => {
-        // this is needed for the UI to be reactive
         this.data = this.walletConnectBase.data;
         forceUpdate(this);
       },
-    });
+    };
+  }
+  componentDidLoad() {
+    this.walletConnectBase.subscribeEventBus(this.getEventSubscription());
   }
 
   disconnectedCallback() {
-    this.walletConnectBase.unsubscribeEventBus({
-      closeFn: () => this.removeComponent(),
-      forceUpdateFn: () => {
-        // this is needed for the UI to be reactive
-        this.data = this.walletConnectBase.data;
-        forceUpdate(this);
-      },
-    });
+    this.walletConnectBase.unsubscribeEventBus(this.getEventSubscription());
   }
 }
