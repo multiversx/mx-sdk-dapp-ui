@@ -35,7 +35,7 @@ export const config: Config = {
   outputTargets: [
     reactOutputTarget({
       outDir: './dist/react',
-      customElementsDir: './dist/components',
+      customElementsDir: 'dist/components',
       excludeComponents,
     }),
 
