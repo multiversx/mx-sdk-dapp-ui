@@ -16,7 +16,7 @@
       "require": "./dist/index.cjs.js",
       "types": "./dist/types/index.d.ts"
     },
-    "./web-components": {
+    "./web-components/*": {
       "import": "./dist/web-components/*.js",
       "types": "./dist/web-components/*.d.ts"
     },
