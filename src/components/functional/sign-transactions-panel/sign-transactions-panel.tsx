@@ -1,8 +1,8 @@
 import { Component, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
+import { SidePanelSideEnum } from 'components/visual/side-panel/side-panel.types';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import { SidePanelSideEnum } from '../../visualx/side-panel/side-panel.types';
 import type { ISignTransactionsPanelData } from './sign-transactions-panel.types';
 import { SignEventsEnum } from './sign-transactions-panel.types';
 import state, { resetState } from './signTransactionsPanelStore';
