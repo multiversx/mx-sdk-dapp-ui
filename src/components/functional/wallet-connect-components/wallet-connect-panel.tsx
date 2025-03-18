@@ -22,11 +22,7 @@ export class WalletConnectPanel {
   @State() qrCodeSvg: string = '';
   @State() isOpen: boolean = false;
 
-  private walletConnectBase: WalletConnectBase;
-
-  componentWillLoad() {
-    this.walletConnectBase = new WalletConnectBase(this.data);
-  }
+  private walletConnectBase: WalletConnectBase = new WalletConnectBase(this.data);
 
   componentDidLoad() {
     this.walletConnectBase.subscribeEventBus(this.getEventBusSubscription());

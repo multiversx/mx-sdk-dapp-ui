@@ -3,7 +3,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IEventBus } from 'utils/EventBus';
 
 import { SidePanelSideEnum } from '../../visual/side-panel/side-panel.types';
-import type { ILedgerConnectModalData } from './ledger-connect.types';
+import type { ILedgerConnectPanelData } from './ledger-connect.types';
 import { LedgerConnectEventsEnum } from './ledger-connect.types';
 import { LedgerConnectBase } from './LedgerConnectBase';
 
@@ -13,7 +13,7 @@ import { LedgerConnectBase } from './LedgerConnectBase';
   shadow: true,
 })
 export class LedgerConnectPanel {
-  @Prop() data: ILedgerConnectModalData = {
+  @Prop() data: ILedgerConnectPanelData = {
     accountScreenData: null,
     confirmScreenData: null,
     connectScreenData: {},
@@ -31,13 +31,13 @@ export class LedgerConnectPanel {
   componentDidLoad() {
     this.ledgerConnectBase.subscribeEventBus(this.getEventBusSubscription());
     this.ledgerConnectBase.eventBus.subscribe(LedgerConnectEventsEnum.OPEN_LEDGER_CONNECT_PANEL, this.handleOpen.bind(this));
-    this.ledgerConnectBase.eventBus.subscribe(LedgerConnectEventsEnum.CLOSE_LEDGER_CONNECT, this.onClose.bind(this, { isUserClick: false }));
+    this.ledgerConnectBase.eventBus.subscribe(LedgerConnectEventsEnum.CLOSE_LEDGER_CONNECT_PANEL, this.onClose.bind(this, { isUserClick: false }));
   }
 
   disconnectedCallback() {
     this.ledgerConnectBase.unsubscribeEventBus(this.getEventBusSubscription());
     this.ledgerConnectBase.eventBus.unsubscribe(LedgerConnectEventsEnum.OPEN_LEDGER_CONNECT_PANEL, this.handleOpen.bind(this));
-    this.ledgerConnectBase.eventBus.unsubscribe(LedgerConnectEventsEnum.CLOSE_LEDGER_CONNECT, this.onClose.bind(this, { isUserClick: false }));
+    this.ledgerConnectBase.eventBus.unsubscribe(LedgerConnectEventsEnum.CLOSE_LEDGER_CONNECT_PANEL, this.onClose.bind(this, { isUserClick: false }));
   }
 
   handleConnect() {
@@ -57,7 +57,7 @@ export class LedgerConnectPanel {
     this.isOpen = false;
 
     if (props.isUserClick) {
-      this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.CLOSE_LEDGER_CONNECT);
+      this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.CLOSE_LEDGER_CONNECT_PANEL);
     }
   }
 

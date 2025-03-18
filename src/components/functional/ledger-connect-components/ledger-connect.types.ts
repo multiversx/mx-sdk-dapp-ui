@@ -21,7 +21,7 @@ export interface IConfirmScreenData {
   areShownText?: string | null;
 }
 
-export interface ILedgerConnectModalData {
+export interface ILedgerConnectPanelData {
   connectScreenData: IConnectScreenData | null;
   accountScreenData: IAccountScreenData | null;
   shouldClose?: true;
@@ -39,7 +39,7 @@ export enum LedgerConnectEventsEnum {
   ACCESS_WALLET = 'ACCESS_WALLET',
   NEXT_PAGE = 'NEXT_PAGE',
   PREV_PAGE = 'PREV_PAGE',
-  CLOSE_LEDGER_CONNECT = 'CLOSE_LEDGER_CONNECT',
+  CLOSE_LEDGER_CONNECT_PANEL = 'CLOSE_LEDGER_CONNECT_PANEL',
   OPEN_LEDGER_CONNECT_PANEL = 'OPEN_LEDGER_CONNECT_PANEL',
   DATA_UPDATE = 'DATA_UPDATE',
 }
