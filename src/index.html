@@ -10,7 +10,7 @@
   </head>
   <body>
     <transaction-toast-list />
-    <pengind-transactions-Panel></pengind-transactions-Panel>
+    <pending-transactions-panel></pending-transactions-panel>
     <button id="pending-transactions-btn" onclick="openPendingTxPanel();">Open Pending Transactions Panel</button>
     <button id="sign-transactions-btn" onclick="openSignPanel();">Open Sign Transactions Panel</button>
     <button id="ledger-connect-btn" onclick="openLedgerConnectPanel();">Open Ledger Connect Panel</button>
@@ -18,9 +18,9 @@
 
     <script>
       function openPendingTxPanel() {
-        const pendingTransactionsPanel = document.querySelector('pending-transactions-Panel');
+        const pendingTransactionsPanel = document.querySelector('pending-transactions-panel');
         if (!pendingTransactionsPanel) {
-          const newPanel = document.createElement('pending-transactions-Panel');
+          const newPanel = document.createElement('pending-transactions-panel');
           document.body.appendChild(newPanel);
         }
       }
