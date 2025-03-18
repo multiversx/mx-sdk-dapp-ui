@@ -20,10 +20,10 @@
       "import": "./dist/web-components/*.js",
       "types": "./dist/web-components/*.d.ts"
     },
-    "./loader": {
-      "import": "./loader/index.js",
-      "require": "./loader/index.cjs",
-      "types": "./loader/index.d.ts"
+    "./dist/loader": {
+      "import": "./dist/loader/index.js",
+      "require": "./dist/loader/index.cjs",
+      "types": "./dist/loader/index.d.ts"
     },
     "./react": {
       "import": "./dist/react/components.ts",
