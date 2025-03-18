@@ -66,7 +66,6 @@ export class LedgerConnectPanel {
 
   private selectAccount(index: number) {
     this.ledgerConnectBase.selectAccount(index);
-    // this is needed for the UI to be reactive
     this.selectedIndex = this.ledgerConnectBase.selectedIndex;
   }
 
@@ -86,7 +85,6 @@ export class LedgerConnectPanel {
     return {
       closeFn: () => this.onClose({ isUserClick: false }),
       forceUpdateFn: () => {
-        // this is needed for the UI to be reactive
         this.data = this.ledgerConnectBase.data;
         forceUpdate(this);
       },
