@@ -14,14 +14,14 @@ export class SignTransaction {
   @Prop() header: VNode;
 
   getSignButtonProps() {
-    const { currentIndex, nextUnsignedTxIndex } = state.commonData;
+    const { needsSigning } = state.commonData;
 
-    if (currentIndex === nextUnsignedTxIndex) {
+    if (needsSigning) {
       return {
         'signText': 'Sign',
         'disabled': state.isWaitingForSignature,
         'data-testid': DataTestIdsEnum.signTransactionBtn,
-        'onClick': state.onSign,
+        'onClick': state.onConfirm,
       };
     }
 
@@ -29,7 +29,7 @@ export class SignTransaction {
       'signText': 'Next',
       'disabled': false,
       'data-testid': DataTestIdsEnum.signNextTransactionBtn,
-      'onClick': state.onNext,
+      'onClick': state.onConfirm,
     };
   }
 
@@ -52,7 +52,7 @@ export class SignTransaction {
     return {
       'data-testid': DataTestIdsEnum.signBackBtn,
       'backButtonText': 'Back',
-      'onClick': state.onPrev,
+      'onClick': state.onBack,
       'disabled': state.isWaitingForSignature,
     };
   }
@@ -79,7 +79,7 @@ export class SignTransaction {
   }
 
   render() {
-    const { receiver, egldLabel, feeInFiatLimit, feeLimit, scCall } = state.commonData;
+    const { receiver, scCall } = state.commonData;
 
     const { signText, ...signButtonProps } = this.getSignButtonProps();
     const { backButtonText, ...backButtonProps } = this.getBackButtonProps();
@@ -94,16 +94,7 @@ export class SignTransaction {
           <p>{formatAddress(receiver, 40)}</p>
         </div>
 
-        <div class="fee-container">
-          <p>Transaction fee</p>
-          {feeLimit && (
-            <p>
-              <span>{feeLimit}</span>&nbsp;
-              <span>{egldLabel}</span>
-            </p>
-          )}
-          <p>≈{feeInFiatLimit}</p>
-        </div>
+        <transaction-fee-component />
 
         {scCall && (
           <div class="data-container">

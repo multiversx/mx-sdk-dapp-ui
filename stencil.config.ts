@@ -3,10 +3,10 @@ import { reactOutputTarget } from '@stencil/react-output-target';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
 import { sass } from '@stencil/sass';
 import tailwind, { tailwindHMR } from 'stencil-tailwind-plugin';
-
 const excludeComponents = [
   'sign-transactions-panel',
-  'pending-transactions-modal',
+  'transaction-fee-component',
+  'pending-transactions-panel',
   'ledger-connect-panel',
   'ledger-connect',
   'ledger-account-screen',
@@ -29,23 +29,27 @@ const excludeComponents = [
   'fungible-component',
   'balance-component',
 ];
-
 export const config: Config = {
   namespace: 'sdk-dapp-core-ui',
   plugins: [sass(), tailwind(), tailwindHMR()],
   outputTargets: [
     reactOutputTarget({
       outDir: './dist/react',
+      stencilPackageName: '../../dist/types',
+      customElementsDir: '../web-components',
       excludeComponents,
     }),
-    {
-      type: 'dist',
-      esmLoaderPath: '../loader',
-    },
+
     {
       type: 'dist-custom-elements',
       externalRuntime: false,
       generateTypeDeclarations: true,
+      dir: './dist/web-components',
+    },
+
+    {
+      type: 'dist',
+      esmLoaderPath: './loader',
     },
     {
       type: 'docs-readme',
@@ -55,10 +59,10 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
   ],
-  testing: {
-    browserHeadless: 'shell',
-  },
   rollupPlugins: {
     after: [nodePolyfills()],
+  },
+  extras: {
+    enableImportInjection: true,
   },
 };
