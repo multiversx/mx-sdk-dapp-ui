@@ -9,7 +9,7 @@
 
 | Property | Attribute | Description | Type                         | Default                                                                                                                                                                                                                                                      |
 | -------- | --------- | ----------- | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `data`   | --        |             | `ISignTransactionsModalData` | `{     commonData: {       egldLabel: '',       feeLimit: '',       feeInFiatLimit: '',       transactionsCount: 0,       currentIndex: 0,       ppuOptions: [],     },     tokenTransaction: null,     nftTransaction: null,     sftTransaction: null,   }` |
+| `data`   | --        |             | `ISignTransactionsPanelData` | `{     commonData: {       egldLabel: '',       feeLimit: '',       feeInFiatLimit: '',       transactionsCount: 0,       currentIndex: 0,       ppuOptions: [],     },     tokenTransaction: null,     nftTransaction: null,     sftTransaction: null,   }` |
 
 
 ## Methods

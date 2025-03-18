@@ -1,7 +1,7 @@
 import { Component, h, State } from '@stencil/core';
 
-import type { ISignTransactionsModalCommonData } from '../../../../sign-transactions-modal.types';
-import state from '../../../../signTransactionsModalStore';
+import type { ISignTransactionsPanelCommonData } from '../../../../sign-transactions-panel.types';
+import state from '../../../../signTransactionsPanelStore';
 
 @Component({
   tag: 'transaction-fee-component',
@@ -15,7 +15,7 @@ export class TransactionFeeComponent {
     this.showGasOptions = !this.showGasOptions;
   };
 
-  private handlePpuChange = (value: ISignTransactionsModalCommonData['ppu']) => () => {
+  private handlePpuChange = (value: ISignTransactionsPanelCommonData['ppu']) => () => {
     state.onSetPpu(value);
   };
 

@@ -1,4 +1,4 @@
-# fungible-component
+# transaction-fee-component
 
 
 

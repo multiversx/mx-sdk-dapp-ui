@@ -30,6 +30,7 @@ export class SignTransactionsPanel {
       feeInFiatLimit: '',
       transactionsCount: 0,
       currentIndex: 0,
+      ppuOptions: [],
     },
     tokenTransaction: null,
     nftTransaction: null,
@@ -37,21 +38,20 @@ export class SignTransactionsPanel {
   };
 
   componentWillLoad() {
-    state.onSign = () => {
-      state.isWaitingForSignature = true;
-      this.eventBus.publish(SignEventsEnum.SIGN_TRANSACTION);
-    };
-
-    state.onPrev = () => {
-      this.eventBus.publish(SignEventsEnum.PREV_TRANSACTION);
-    };
-
-    state.onNext = () => {
-      this.eventBus.publish(SignEventsEnum.NEXT_TRANSACTION);
-    };
-
     state.onCancel = () => {
-      this.eventBus.publish(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS);
+      this.onClose({ isUserClick: true });
+    };
+
+    state.onConfirm = () => {
+      this.eventBus.publish(SignEventsEnum.CONFIRM);
+    };
+
+    state.onBack = () => {
+      this.eventBus.publish(SignEventsEnum.BACK);
+    };
+
+    state.onSetPpu = (ppu: number) => {
+      this.eventBus.publish(SignEventsEnum.SET_PPU, ppu);
     };
   }
 
