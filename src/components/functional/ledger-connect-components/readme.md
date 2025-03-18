@@ -7,7 +7,7 @@
 
 | Property | Attribute | Description | Type                      | Default                                                                                      |
 | -------- | --------- | ----------- | ------------------------- | -------------------------------------------------------------------------------------------- |
-| `data`   | --        |             | `ILedgerConnectModalData` | `{     accountScreenData: null,     confirmScreenData: null,     connectScreenData: {},   }` |
+| `data`   | --        |             | `ILedgerConnectPanelData` | `{     accountScreenData: null,     confirmScreenData: null,     connectScreenData: {},   }` |
 
 
 ## Methods

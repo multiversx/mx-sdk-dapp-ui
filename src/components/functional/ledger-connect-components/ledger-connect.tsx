@@ -1,7 +1,7 @@
 import { Component, Element, forceUpdate, h, Method, Prop, State } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 
-import type { ILedgerConnectModalData } from './ledger-connect.types';
+import type { ILedgerConnectPanelData } from './ledger-connect.types';
 import { LedgerConnectEventsEnum } from './ledger-connect.types';
 import { LedgerConnectBase } from './LedgerConnectBase';
 
@@ -12,7 +12,7 @@ import { LedgerConnectBase } from './LedgerConnectBase';
 export class LedgerConnect {
   @Element() hostElement: HTMLElement;
 
-  @Prop() data: ILedgerConnectModalData = {
+  @Prop() data: ILedgerConnectPanelData = {
     accountScreenData: null,
     confirmScreenData: null,
     connectScreenData: {},

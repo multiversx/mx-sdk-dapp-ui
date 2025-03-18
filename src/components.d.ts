@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
-import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectModalData } from "./components/functional/ledger-connect-components/ledger-connect.types";
+import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 import { ProviderTypeEnum } from "./types/provider.types";
@@ -23,7 +23,7 @@ import { IWalletConnectPanelData } from "./components/functional/wallet-connect-
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
-export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectModalData } from "./components/functional/ledger-connect-components/ledger-connect.types";
+export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 export { ProviderTypeEnum } from "./types/provider.types";
@@ -93,11 +93,11 @@ export namespace Components {
         "confirmScreenData": IConfirmScreenData;
     }
     interface LedgerConnect {
-        "data": ILedgerConnectModalData;
+        "data": ILedgerConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
     interface LedgerConnectPanel {
-        "data": ILedgerConnectModalData;
+        "data": ILedgerConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
     interface LedgerConnectScreen {
@@ -825,10 +825,10 @@ declare namespace LocalJSX {
         "confirmScreenData"?: IConfirmScreenData;
     }
     interface LedgerConnect {
-        "data"?: ILedgerConnectModalData;
+        "data"?: ILedgerConnectPanelData;
     }
     interface LedgerConnectPanel {
-        "data"?: ILedgerConnectModalData;
+        "data"?: ILedgerConnectPanelData;
     }
     interface LedgerConnectScreen {
         "connectScreenData"?: IConnectScreenData;
