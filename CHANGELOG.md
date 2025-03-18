@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.0-alpha.7](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/58)] - 2025-03-18
+
 - [Refactor package compile](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/57)
 - [Added gasPrice PPU editing radios](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/56)
 - [Added gasPrice editing radios](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/52)
