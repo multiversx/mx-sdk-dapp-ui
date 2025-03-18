@@ -16,9 +16,9 @@
       "require": "./dist/index.cjs.js",
       "types": "./dist/types/index.d.ts"
     },
-    "./components/*": {
-      "import": "./dist/components/*.js",
-      "types": "./dist/components/*.d.ts"
+    "./web-components": {
+      "import": "./dist/web-components/*.js",
+      "types": "./dist/web-components/*.d.ts"
     },
     "./loader": {
       "import": "./loader/index.js",
@@ -35,8 +35,7 @@
     "url": "https://github.com/multiversx/mx-sdk-dapp-core-ui.git"
   },
   "files": [
-    "dist/",
-    "loader/"
+    "dist/"
   ],
   "scripts": {
     "build": "stencil build",
