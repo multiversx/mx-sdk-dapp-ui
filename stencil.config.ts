@@ -4,10 +4,10 @@ import nodePolyfills from 'rollup-plugin-node-polyfills';
 import { sass } from '@stencil/sass';
 import tailwind, { tailwindHMR } from 'stencil-tailwind-plugin';
 const excludeComponents = [
-  'sign-transactions-modal',
+  'sign-transactions-panel',
   'transaction-fee-component',
-  'pending-transactions-modal',
-  'ledger-connect-modal',
+  'pending-transactions-panel',
+  'ledger-connect-panel',
   'ledger-connect',
   'ledger-account-screen',
   'ledger-connect-screen',

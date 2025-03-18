@@ -28,7 +28,7 @@
 ### Used by
 
  - [ledger-connect](../..)
- - [ledger-connect-modal](../..)
+ - [ledger-connect-panel](../..)
 
 ### Depends on
 
@@ -39,7 +39,7 @@
 graph TD;
   ledger-account-screen --> generic-spinner
   ledger-connect --> ledger-account-screen
-  ledger-connect-modal --> ledger-account-screen
+  ledger-connect-panel --> ledger-account-screen
   style ledger-account-screen fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

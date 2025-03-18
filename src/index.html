@@ -10,34 +10,34 @@
   </head>
   <body>
     <transaction-toast-list />
-    <pengind-transactions-modal></pengind-transactions-modal>
-    <button id="pending-transactions-btn" onclick="openPendingTxModal();">Open Pending Transactions Modal</button>
-    <button id="sign-transactions-btn" onclick="openSignModal();">Open Sign Transactions Modal</button>
-    <button id="ledger-connect-btn" onclick="openLedgerConnectModal();">Open Ledger Connect Modal</button>
+    <pending-transactions-panel></pending-transactions-panel>
+    <button id="pending-transactions-btn" onclick="openPendingTxPanel();">Open Pending Transactions Panel</button>
+    <button id="sign-transactions-btn" onclick="openSignPanel();">Open Sign Transactions Panel</button>
+    <button id="ledger-connect-btn" onclick="openLedgerConnectPanel();">Open Ledger Connect Panel</button>
     <button id="show-notification-btn" onclick="showNotification();">Show Notification</button>
 
     <script>
-      function openPendingTxModal() {
-        const pendingTransactionsModal = document.querySelector('pending-transactions-modal');
-        if (!pendingTransactionsModal) {
-          const newModal = document.createElement('pending-transactions-modal');
-          document.body.appendChild(newModal);
+      function openPendingTxPanel() {
+        const pendingTransactionsPanel = document.querySelector('pending-transactions-panel');
+        if (!pendingTransactionsPanel) {
+          const newPanel = document.createElement('pending-transactions-panel');
+          document.body.appendChild(newPanel);
         }
       }
 
-      function openSignModal() {
-        const signTransactionsModal = document.querySelector('sign-transactions-modal');
-        if (!signTransactionsModal) {
-          const newModal = document.createElement('sign-transactions-modal');
-          document.body.appendChild(newModal);
+      function openSignPanel() {
+        const signTransactionsPanel = document.querySelector('sign-transactions-panel');
+        if (!signTransactionsPanel) {
+          const newPanel = document.createElement('sign-transactions-panel');
+          document.body.appendChild(newPanel);
         }
       }
 
-      function openLedgerConnectModal() {
-        const ledgerConnectModal = document.querySelector('ledger-connect-modal');
-        if (!ledgerConnectModal) {
-          const newModal = document.createElement('ledger-connect-modal');
-          document.body.appendChild(newModal);
+      function openLedgerConnectPanel() {
+        const ledgerConnectPanel = document.querySelector('ledger-connect-panel');
+        if (!ledgerConnectPanel) {
+          const newPanel = document.createElement('ledger-connect-panel');
+          document.body.appendChild(newPanel);
         }
       }
     </script>

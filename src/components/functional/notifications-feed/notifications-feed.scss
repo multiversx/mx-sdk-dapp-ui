@@ -3,87 +3,109 @@
   height: 100%;
 }
 
-.panel-header {
+.feed-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 24px 24px 0 24px;
+}
+
+.feed-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.feed-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  color: black;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-  border-bottom: 1px solid var(--mx-dapp-core-border-light, #f3f4f6);
+  justify-content: center;
+  position: absolute;
+  top: 24px;
+  right: 24px;
 
-  .panel-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin: 0;
+  &:hover {
+    opacity: 0.8;
   }
 
-  .close-button {
-    background: none;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-    color: var(--mx-dapp-core-text-secondary, #6b7280);
-
-    &:hover {
-      color: var(--mx-dapp-core-text-primary, #1f2937);
-    }
+  .close-icon {
+    font-size: 24px;
+    color: black;
   }
 }
 
 .notifications-info {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 1rem;
-  background-color: var(--mx-dapp-core-bg-secondary, #f3f4f6);
-  color: var(--mx-dapp-core-text-secondary, #6b7280);
-  font-size: 0.875rem;
+  gap: 8px;
+  margin: 0;
+  padding: 16px;
+  color: #f0b90b;
+  font-size: 14px;
+  border: 1px dashed rgba(240, 185, 11, 0.3);
+  border-radius: 8px;
+  margin-bottom: 24px;
 
   .info-icon {
-    color: var(--mx-dapp-core-text-secondary, #6b7280);
+    color: #f0b90b;
+    font-size: 16px;
   }
 }
 
 .notifications-container {
-  padding: 1rem;
+  margin-bottom: 24px;
 
   .processing-status {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: var(--mx-dapp-core-text-secondary, #6b7280);
-    margin-bottom: 0.5rem;
+    font-size: 14px;
+    color: #333333;
+    margin-bottom: 16px;
   }
 }
 
 .activity-section {
   display: flex;
   flex-direction: column;
-  height: calc(100% - 12rem); // Adjust based on your header heights
-  min-height: 0; // Important for flex child scrolling
+  flex: 1;
+  min-height: 0;
+  margin: 0 -24px 0 0;
 }
 
 .activity-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
-  border-top: 1px solid var(--mx-dapp-core-border-light, #f3f4f6);
+  margin: 0 24px 16px 0;
 
   .activity-title {
-    font-size: 1.125rem;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 500;
     margin: 0;
+    color: #000000;
   }
 
   .clear-button {
     background: none;
     border: none;
     padding: 0;
-    color: var(--mx-dapp-core-text-secondary, #6b7280);
-    font-size: 0.875rem;
+    color: #666666;
+    font-size: 14px;
     cursor: pointer;
 
     &:hover {
-      color: var(--mx-dapp-core-text-primary, #1f2937);
+      color: #000000;
     }
   }
 }
@@ -92,28 +114,29 @@
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  min-height: 0; // Important for flex child scrolling
+  min-height: 0;
   width: 100%;
   max-width: 100%;
+  padding: 0 24px 0 0;
 
   .no-activity {
-    padding: 1rem;
+    padding: 16px;
     text-align: center;
-    color: var(--mx-dapp-core-text-secondary, #6b7280);
+    color: #666666;
   }
 
   &::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
   }
 
   &::-webkit-scrollbar-track {
-    background: var(--mx-dapp-core-bg-secondary, #f3f4f6);
-    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 2px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(--mx-dapp-core-text-secondary, #6b7280);
-    border-radius: 3px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
   }
 
   // Ensure children don't cause horizontal scroll

@@ -24,13 +24,13 @@
 ### Used by
 
  - [ledger-connect](../..)
- - [ledger-connect-modal](../..)
+ - [ledger-connect-panel](../..)
 
 ### Graph
 ```mermaid
 graph TD;
   ledger-connect --> ledger-connect-screen
-  ledger-connect-modal --> ledger-connect-screen
+  ledger-connect-panel --> ledger-connect-screen
   style ledger-connect-screen fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
