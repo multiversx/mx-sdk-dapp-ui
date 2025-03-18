@@ -27,12 +27,10 @@
   margin-top: 0;
 }
 
-/* Ensure wallet-connect-body fits well in the side panel */
 :host ::slotted(wallet-connect-body) {
   width: 100%;
 }
 
-/* These styles will be applied globally */
 :global(.wallet-connect-side-panel) {
   width: 380px;
   max-width: 90vw;
