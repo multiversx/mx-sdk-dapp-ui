@@ -12,12 +12,9 @@
   "unpkg": "dist/components/sdk-dapp-core-ui.esm.js",
   "exports": {
     ".": {
-      "import": "./dist/components/sdk-dapp-core-ui.esm.js",
-      "require": "./dist/components/sdk-dapp-core-ui.cjs.js"
-    },
-    "./dist/*": {
-      "import": "./dist/*",
-      "types": "./dist/*"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/types/index.d.ts"
     },
     "./components/*": {
       "import": "./dist/components/*.js",
