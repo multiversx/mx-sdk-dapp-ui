@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Refactor package compile](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/57)
 - [Added gasPrice PPU editing radios](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/56)
 - [Added gasPrice editing radios](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/52)
 - [Added notifications feed side panel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/50)
