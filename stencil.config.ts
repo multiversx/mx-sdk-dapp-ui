@@ -35,7 +35,8 @@ export const config: Config = {
   outputTargets: [
     reactOutputTarget({
       outDir: './dist/react',
-      customElementsDir: 'dist/components',
+      stencilPackageName: '../../dist/types',
+      customElementsDir: '../web-components',
       excludeComponents,
     }),
 
@@ -43,12 +44,12 @@ export const config: Config = {
       type: 'dist-custom-elements',
       externalRuntime: false,
       generateTypeDeclarations: true,
-      dir: './dist/components',
+      dir: './dist/web-components',
     },
 
     {
       type: 'dist',
-      esmLoaderPath: '../loader',
+      esmLoaderPath: './loader',
     },
     {
       type: 'docs-readme',
@@ -58,9 +59,6 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
   ],
-  testing: {
-    browserHeadless: 'new',
-  },
   rollupPlugins: {
     after: [nodePolyfills()],
   },
