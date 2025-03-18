@@ -21,7 +21,7 @@ export interface ISignTransactionsPanelCommonData {
   gasPrice?: string;
   /**
    * ppu - Price Per Unit
-   * a constant that is used to calculate the gas price
+   * a constant that is used to calculate the gas price inside `recommendGasPrice`
    */
   ppu?: number;
   ppuOptions: {
@@ -52,8 +52,6 @@ export interface ISignTransactionsPanelData {
   } | null;
   nftTransaction: FungibleTransactionType | null;
   sftTransaction: FungibleTransactionType | null;
-  isLoading?: boolean;
-  isWaitingForSignature?: boolean;
 }
 
 export enum SignEventsEnum {
