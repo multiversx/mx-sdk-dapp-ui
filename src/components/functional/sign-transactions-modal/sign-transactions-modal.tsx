@@ -1,33 +1,22 @@
-import {
-  Component,
-  Element,
-  forceUpdate,
-  h,
-  Method,
-  Prop,
-  Watch
-} from '@stencil/core';
+import { Component, Element, forceUpdate, h, Method, Prop, Watch } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import type {
-  ISignTransactionsModalData} from './sign-transactions-modal.types';
-import {
-  SignEventsEnum
-} from './sign-transactions-modal.types';
+import type { ISignTransactionsModalData } from './sign-transactions-modal.types';
+import { SignEventsEnum } from './sign-transactions-modal.types';
 import state, { resetState } from './signTransactionsModalStore';
 
 const signScreens = {
   FungibleESDT: 'token-component',
   SemiFungibleESDT: 'fungible-component',
   NonFungibleESDT: 'fungible-component',
-  MetaESDT: 'token-component'
+  MetaESDT: 'token-component',
 };
 
 @Component({
   tag: 'sign-transactions-modal',
   styleUrl: 'sign-transactions-modal.css',
-  shadow: true
+  shadow: true,
 })
 export class SignTransactionsModal {
   @Element() hostElement: HTMLElement;
@@ -39,11 +28,12 @@ export class SignTransactionsModal {
       feeLimit: '',
       feeInFiatLimit: '',
       transactionsCount: 0,
-      currentIndex: 0
+      currentIndex: 0,
+      ppuOptions: [],
     },
     tokenTransaction: null,
     nftTransaction: null,
-    sftTransaction: null
+    sftTransaction: null,
   };
 
   @Method() async getEventBus() {
@@ -63,21 +53,20 @@ export class SignTransactionsModal {
   }
 
   componentWillLoad() {
-    state.onSign = () => {
-      state.isWaitingForSignature = true;
-      this.eventBus.publish(SignEventsEnum.SIGN_TRANSACTION);
-    };
-
-    state.onPrev = () => {
-      this.eventBus.publish(SignEventsEnum.PREV_TRANSACTION);
-    };
-
-    state.onNext = () => {
-      this.eventBus.publish(SignEventsEnum.NEXT_TRANSACTION);
+    state.onConfirm = () => {
+      this.eventBus.publish(SignEventsEnum.CONFIRM);
     };
 
     state.onCancel = () => {
       this.eventBus.publish(SignEventsEnum.CLOSE);
+    };
+
+    state.onBack = () => {
+      this.eventBus.publish(SignEventsEnum.BACK);
+    };
+
+    state.onSetPpu = (ppu: number) => {
+      this.eventBus.publish(SignEventsEnum.SET_PPU, ppu);
     };
   }
 
@@ -122,17 +111,11 @@ export class SignTransactionsModal {
   }
 
   componentDidLoad() {
-    this.eventBus.subscribe(
-      SignEventsEnum.DATA_UPDATE,
-      this.dataUpdate.bind(this)
-    );
+    this.eventBus.subscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
   }
 
   disconnectedCallback() {
     resetState();
-    this.eventBus.unsubscribe(
-      SignEventsEnum.DATA_UPDATE,
-      this.dataUpdate.bind(this)
-    );
+    this.eventBus.unsubscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
   }
 }

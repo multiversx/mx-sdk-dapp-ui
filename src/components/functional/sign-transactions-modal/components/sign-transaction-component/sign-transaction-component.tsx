@@ -1,5 +1,5 @@
-import type { VNode} from '@stencil/core';
-import { Component, h,Prop } from '@stencil/core';
+import type { VNode } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { formatAddress } from 'utils/utils';
 
@@ -8,28 +8,28 @@ import state from '../../signTransactionsModalStore';
 @Component({
   tag: 'sign-transaction-component',
   styleUrl: 'sign-transaction-component.css',
-  shadow: false
+  shadow: false,
 })
 export class SignTransaction {
   @Prop() header: VNode;
 
   getSignButtonProps() {
-    const { currentIndex, nextUnsignedTxIndex } = state.commonData;
+    const { needsSigning } = state.commonData;
 
-    if (currentIndex === nextUnsignedTxIndex) {
+    if (needsSigning) {
       return {
-        signText: 'Sign',
-        disabled: state.isWaitingForSignature,
+        'signText': 'Sign',
+        'disabled': state.isWaitingForSignature,
         'data-testid': DataTestIdsEnum.signTransactionBtn,
-        onClick: state.onSign
+        'onClick': state.onConfirm,
       };
     }
 
     return {
-      signText: 'Next',
-      disabled: false,
+      'signText': 'Next',
+      'disabled': false,
       'data-testid': DataTestIdsEnum.signNextTransactionBtn,
-      onClick: state.onNext
+      'onClick': state.onConfirm,
     };
   }
 
@@ -44,16 +44,16 @@ export class SignTransaction {
     if (currentIndex === 0) {
       return {
         'data-testid': DataTestIdsEnum.signCancelBtn,
-        backButtonText: 'Cancel',
-        onClick: state.onCancel
+        'backButtonText': 'Cancel',
+        'onClick': state.onCancel,
       };
     }
 
     return {
       'data-testid': DataTestIdsEnum.signBackBtn,
-      backButtonText: 'Back',
-      onClick: state.onPrev,
-      disabled: state.isWaitingForSignature
+      'backButtonText': 'Back',
+      'onClick': state.onBack,
+      'disabled': state.isWaitingForSignature,
     };
   }
 
@@ -71,9 +71,7 @@ export class SignTransaction {
         {parts.map((part, index) => (
           <span>
             <span class="data-content">{part}</span>
-            {index < parts.length - 1 && (
-              <span class="highlight">{highlight}</span>
-            )}
+            {index < parts.length - 1 && <span class="highlight">{highlight}</span>}
           </span>
         ))}
       </span>
@@ -81,8 +79,7 @@ export class SignTransaction {
   }
 
   render() {
-    const { receiver, egldLabel, feeInFiatLimit, feeLimit, scCall } =
-      state.commonData;
+    const { receiver, scCall } = state.commonData;
 
     const { signText, ...signButtonProps } = this.getSignButtonProps();
     const { backButtonText, ...backButtonProps } = this.getBackButtonProps();
@@ -97,16 +94,7 @@ export class SignTransaction {
           <p>{formatAddress(receiver, 40)}</p>
         </div>
 
-        <div class="fee-container">
-          <p>Transaction fee</p>
-          {feeLimit && (
-            <p>
-              <span>{feeLimit}</span>&nbsp;
-              <span>{egldLabel}</span>
-            </p>
-          )}
-          <p>≈{feeInFiatLimit}</p>
-        </div>
+        <transaction-fee-component />
 
         {scCall && (
           <div class="data-container">

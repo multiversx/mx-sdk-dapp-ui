@@ -15,24 +15,34 @@ export type FungibleTransactionType = {
 
 export type TokenType = EsdtEnumType | NftEnumType;
 
+export interface ISignTransactionsModalCommonData {
+  receiver?: string;
+  data?: string;
+  gasPrice?: string;
+  /**
+   * ppu - Price Per Unit
+   * a constant that is used to calculate the gas price inside `recommendGasPrice`
+   */
+  ppu?: number;
+  ppuOptions: {
+    label: string;
+    value: number;
+  }[];
+  gasLimit?: string;
+  transactionsCount: number;
+  tokenType?: TokenType;
+  egldLabel: string;
+  feeLimit?: string;
+  feeInFiatLimit?: string | null;
+  currentIndex: number;
+  needsSigning?: boolean;
+  isEditable?: boolean;
+  highlight?: string | null;
+  scCall?: string | null;
+}
 export interface ISignTransactionsModalData {
   shouldClose?: true;
-  commonData: {
-    receiver?: string;
-    data?: string;
-    transactionsCount: number;
-    tokenType?: TokenType;
-    egldLabel: string;
-    feeLimit?: string;
-    feeInFiatLimit?: string | null;
-    currentIndex: number;
-    /**
-     * Tracks the index of the next unsigned transaction to be processed.
-     */
-    nextUnsignedTxIndex?: number;
-    highlight?: string;
-    scCall?: string;
-  };
+  commonData: ISignTransactionsModalCommonData;
   tokenTransaction: {
     identifier?: string;
     amount: string;
@@ -43,9 +53,9 @@ export interface ISignTransactionsModalData {
 }
 
 export enum SignEventsEnum {
-  'SIGN_TRANSACTION' = 'SIGN_TRANSACTION',
-  'NEXT_TRANSACTION' = 'NEXT_TRANSACTION',
-  'PREV_TRANSACTION' = 'PREV_TRANSACTION',
+  'CONFIRM' = 'CONFIRM', // can be sign or next
+  'BACK' = 'BACK',
   'CLOSE' = 'CLOSE',
-  'DATA_UPDATE' = 'DATA_UPDATE'
+  'DATA_UPDATE' = 'DATA_UPDATE',
+  'SET_PPU' = 'SET_PPU',
 }

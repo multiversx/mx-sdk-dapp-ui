@@ -1,6 +1,6 @@
 {
   "name": "@multiversx/sdk-dapp-core-ui",
-  "version": "0.0.0-alpha.6",
+  "version": "0.0.0-alpha.7",
   "description": "A library to hold UI components for a dApp on the MultiversX blockchain",
   "author": "MultiversX",
   "license": "MIT",
@@ -12,12 +12,9 @@
   "unpkg": "dist/components/sdk-dapp-core-ui.esm.js",
   "exports": {
     ".": {
-      "import": "./dist/components/sdk-dapp-core-ui.esm.js",
-      "require": "./dist/components/sdk-dapp-core-ui.cjs.js"
-    },
-    "./dist/*": {
-      "import": "./dist/*",
-      "types": "./dist/*"
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/types/index.d.ts"
     },
     "./components/*": {
       "import": "./dist/components/*.js",
