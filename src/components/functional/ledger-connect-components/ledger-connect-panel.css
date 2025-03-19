@@ -1,0 +1,29 @@
+.ledger-connect-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+.ledger-connect-header {
+  margin-bottom: 24px;
+}
+
+.ledger-connect-header h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0 0 8px 0;
+  color: #000;
+}
+
+.ledger-connect-header h4 {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  color: #666;
+}
+
+.ledger-connect-body {
+  flex: 1;
+  overflow-y: auto;
+} 

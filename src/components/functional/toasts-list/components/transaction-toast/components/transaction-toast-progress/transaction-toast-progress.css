@@ -30,6 +30,11 @@
 
 .transaction-toast-progress {
   position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: block;
+  border-radius: 0.25rem;
 }
 
 .transaction-toast-bar-wrapper {

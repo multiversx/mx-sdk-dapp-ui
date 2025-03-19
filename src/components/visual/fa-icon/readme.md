@@ -24,7 +24,7 @@
  - [transaction-list-item](../transaction-list-item)
  - [transaction-toast-details](../../functional/toasts-list/components/transaction-toast/components/transaction-toast-details)
  - [transaction-value](../../controlled/transactions-table/components/transaction-value)
- - [unlock-header](../../unlock-panel/components/header)
+ - [unlock-header](../unlock-panel/components/header)
 
 ### Graph
 ```mermaid

@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.0-alpha.9](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/64)] - 2025-03-19
+
+- [Fixed sign transactions panel and component](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/63)
+- [Fixed loader export](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/62)
+- [Migrated modals to side panels](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/61)
+
 ## [[0.0.0-alpha.8](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/60)] - 2025-03-18
 
 - [Fix react output config](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/59)

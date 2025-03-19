@@ -1,7 +1,7 @@
 import { Component, Element, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 
-import type { IWalletConnectModalData } from './wallet-connect-modal.types';
+import type { IWalletConnectPanelData } from './wallet-connect-panel.types';
 import { WalletConnectBase } from './WalletConnectBase';
 
 @Component({
@@ -11,7 +11,7 @@ import { WalletConnectBase } from './WalletConnectBase';
 export class WalletConnect {
   @Element() hostElement: HTMLElement;
 
-  @Prop() data: IWalletConnectModalData = {
+  @Prop() data: IWalletConnectPanelData = {
     wcURI: '',
   };
 
@@ -28,7 +28,7 @@ export class WalletConnect {
   }
 
   @Watch('data')
-  async onDataChange(data: IWalletConnectModalData) {
+  async onDataChange(data: IWalletConnectPanelData) {
     if (data.wcURI) {
       this.qrCodeSvg = await this.walletConnectBase.generateSVG(data.wcURI);
     }
@@ -44,25 +44,20 @@ export class WalletConnect {
     }
   }
 
-  componentDidLoad() {
-    this.walletConnectBase.subscribeEventBus({
+  private getEventSubscription() {
+    return {
       closeFn: () => this.removeComponent(),
       forceUpdateFn: () => {
-        // this is needed for the UI to be reactive
         this.data = this.walletConnectBase.data;
         forceUpdate(this);
       },
-    });
+    };
+  }
+  componentDidLoad() {
+    this.walletConnectBase.subscribeEventBus(this.getEventSubscription());
   }
 
   disconnectedCallback() {
-    this.walletConnectBase.unsubscribeEventBus({
-      closeFn: () => this.removeComponent(),
-      forceUpdateFn: () => {
-        // this is needed for the UI to be reactive
-        this.data = this.walletConnectBase.data;
-        forceUpdate(this);
-      },
-    });
+    this.walletConnectBase.unsubscribeEventBus(this.getEventSubscription());
   }
 }

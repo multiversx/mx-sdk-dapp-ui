@@ -40,7 +40,6 @@
 
   .ellipsis {
     flex-shrink: 0;
-    display: none;
     pointer-events: none;
     user-select: none;
   }

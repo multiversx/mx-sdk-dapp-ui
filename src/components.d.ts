@@ -8,33 +8,33 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
-import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectModalData } from "./components/functional/ledger-connect-components/ledger-connect.types";
+import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
-import { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
+import { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 import { ProviderTypeEnum } from "./types/provider.types";
 import { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
-import { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
+import { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-import { IWalletConnectModalData } from "./components/functional/wallet-connect-components/wallet-connect-modal.types";
+import { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
-export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectModalData } from "./components/functional/ledger-connect-components/ledger-connect.types";
+export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
-export { IPendingTransactionsModalData } from "./components/functional/pending-transactions-modal/pending-transactions-modal.types";
+export { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 export { ProviderTypeEnum } from "./types/provider.types";
 export { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
-export { ISignTransactionsModalData } from "./components/functional/sign-transactions-modal/sign-transactions-modal.types";
+export { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-export { IWalletConnectModalData } from "./components/functional/wallet-connect-components/wallet-connect-modal.types";
+export { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export namespace Components {
     interface BalanceComponent {
         "amount": string;
@@ -93,11 +93,11 @@ export namespace Components {
         "confirmScreenData": IConfirmScreenData;
     }
     interface LedgerConnect {
-        "data": ILedgerConnectModalData;
+        "data": ILedgerConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
-    interface LedgerConnectModal {
-        "data": ILedgerConnectModalData;
+    interface LedgerConnectPanel {
+        "data": ILedgerConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
     interface LedgerConnectScreen {
@@ -106,8 +106,8 @@ export namespace Components {
     interface NotificationsFeed {
         "getEventBus": () => Promise<IEventBus>;
     }
-    interface PendingTransactionsModal {
-        "data": IPendingTransactionsModalData;
+    interface PendingTransactionsPanel {
+        "data": IPendingTransactionsPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
     interface ProviderButton {
@@ -121,8 +121,8 @@ export namespace Components {
     interface SignTransactionComponent {
         "header": VNode;
     }
-    interface SignTransactionsModal {
-        "data": ISignTransactionsModalData;
+    interface SignTransactionsPanel {
+        "data": ISignTransactionsPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
     interface SimpleToast {
@@ -240,15 +240,15 @@ export namespace Components {
         "isOpen": boolean;
     }
     interface WalletConnect {
-        "data": IWalletConnectModalData;
+        "data": IWalletConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
     interface WalletConnectBody {
         "description": string;
         "qrCodeSvg": string;
     }
-    interface WalletConnectModal {
-        "data": IWalletConnectModalData;
+    interface WalletConnectPanel {
+        "data": IWalletConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
 }
@@ -422,11 +422,11 @@ declare global {
         prototype: HTMLLedgerConnectElement;
         new (): HTMLLedgerConnectElement;
     };
-    interface HTMLLedgerConnectModalElement extends Components.LedgerConnectModal, HTMLStencilElement {
+    interface HTMLLedgerConnectPanelElement extends Components.LedgerConnectPanel, HTMLStencilElement {
     }
-    var HTMLLedgerConnectModalElement: {
-        prototype: HTMLLedgerConnectModalElement;
-        new (): HTMLLedgerConnectModalElement;
+    var HTMLLedgerConnectPanelElement: {
+        prototype: HTMLLedgerConnectPanelElement;
+        new (): HTMLLedgerConnectPanelElement;
     };
     interface HTMLLedgerConnectScreenElementEventMap {
         "connect": any;
@@ -451,11 +451,11 @@ declare global {
         prototype: HTMLNotificationsFeedElement;
         new (): HTMLNotificationsFeedElement;
     };
-    interface HTMLPendingTransactionsModalElement extends Components.PendingTransactionsModal, HTMLStencilElement {
+    interface HTMLPendingTransactionsPanelElement extends Components.PendingTransactionsPanel, HTMLStencilElement {
     }
-    var HTMLPendingTransactionsModalElement: {
-        prototype: HTMLPendingTransactionsModalElement;
-        new (): HTMLPendingTransactionsModalElement;
+    var HTMLPendingTransactionsPanelElement: {
+        prototype: HTMLPendingTransactionsPanelElement;
+        new (): HTMLPendingTransactionsPanelElement;
     };
     interface HTMLProviderButtonElement extends Components.ProviderButton, HTMLStencilElement {
     }
@@ -486,11 +486,11 @@ declare global {
         prototype: HTMLSignTransactionComponentElement;
         new (): HTMLSignTransactionComponentElement;
     };
-    interface HTMLSignTransactionsModalElement extends Components.SignTransactionsModal, HTMLStencilElement {
+    interface HTMLSignTransactionsPanelElement extends Components.SignTransactionsPanel, HTMLStencilElement {
     }
-    var HTMLSignTransactionsModalElement: {
-        prototype: HTMLSignTransactionsModalElement;
-        new (): HTMLSignTransactionsModalElement;
+    var HTMLSignTransactionsPanelElement: {
+        prototype: HTMLSignTransactionsPanelElement;
+        new (): HTMLSignTransactionsPanelElement;
     };
     interface HTMLSimpleToastElementEventMap {
         "handleDeleteToast": void;
@@ -711,11 +711,11 @@ declare global {
         prototype: HTMLWalletConnectBodyElement;
         new (): HTMLWalletConnectBodyElement;
     };
-    interface HTMLWalletConnectModalElement extends Components.WalletConnectModal, HTMLStencilElement {
+    interface HTMLWalletConnectPanelElement extends Components.WalletConnectPanel, HTMLStencilElement {
     }
-    var HTMLWalletConnectModalElement: {
-        prototype: HTMLWalletConnectModalElement;
-        new (): HTMLWalletConnectModalElement;
+    var HTMLWalletConnectPanelElement: {
+        prototype: HTMLWalletConnectPanelElement;
+        new (): HTMLWalletConnectPanelElement;
     };
     interface HTMLElementTagNameMap {
         "balance-component": HTMLBalanceComponentElement;
@@ -731,14 +731,14 @@ declare global {
         "ledger-account-screen": HTMLLedgerAccountScreenElement;
         "ledger-confirm-screen": HTMLLedgerConfirmScreenElement;
         "ledger-connect": HTMLLedgerConnectElement;
-        "ledger-connect-modal": HTMLLedgerConnectModalElement;
+        "ledger-connect-panel": HTMLLedgerConnectPanelElement;
         "ledger-connect-screen": HTMLLedgerConnectScreenElement;
         "notifications-feed": HTMLNotificationsFeedElement;
-        "pending-transactions-modal": HTMLPendingTransactionsModalElement;
+        "pending-transactions-panel": HTMLPendingTransactionsPanelElement;
         "provider-button": HTMLProviderButtonElement;
         "side-panel": HTMLSidePanelElement;
         "sign-transaction-component": HTMLSignTransactionComponentElement;
-        "sign-transactions-modal": HTMLSignTransactionsModalElement;
+        "sign-transactions-panel": HTMLSignTransactionsPanelElement;
         "simple-toast": HTMLSimpleToastElement;
         "toast-list": HTMLToastListElement;
         "token-component": HTMLTokenComponentElement;
@@ -766,7 +766,7 @@ declare global {
         "unlock-panel": HTMLUnlockPanelElement;
         "wallet-connect": HTMLWalletConnectElement;
         "wallet-connect-body": HTMLWalletConnectBodyElement;
-        "wallet-connect-modal": HTMLWalletConnectModalElement;
+        "wallet-connect-panel": HTMLWalletConnectPanelElement;
     }
 }
 declare namespace LocalJSX {
@@ -834,10 +834,10 @@ declare namespace LocalJSX {
         "confirmScreenData"?: IConfirmScreenData;
     }
     interface LedgerConnect {
-        "data"?: ILedgerConnectModalData;
+        "data"?: ILedgerConnectPanelData;
     }
-    interface LedgerConnectModal {
-        "data"?: ILedgerConnectModalData;
+    interface LedgerConnectPanel {
+        "data"?: ILedgerConnectPanelData;
     }
     interface LedgerConnectScreen {
         "connectScreenData"?: IConnectScreenData;
@@ -845,8 +845,8 @@ declare namespace LocalJSX {
     }
     interface NotificationsFeed {
     }
-    interface PendingTransactionsModal {
-        "data"?: IPendingTransactionsModalData;
+    interface PendingTransactionsPanel {
+        "data"?: IPendingTransactionsPanelData;
     }
     interface ProviderButton {
         "type"?: ProviderTypeEnum;
@@ -860,8 +860,8 @@ declare namespace LocalJSX {
     interface SignTransactionComponent {
         "header"?: VNode;
     }
-    interface SignTransactionsModal {
-        "data"?: ISignTransactionsModalData;
+    interface SignTransactionsPanel {
+        "data"?: ISignTransactionsPanelData;
     }
     interface SimpleToast {
         "onHandleDeleteToast"?: (event: SimpleToastCustomEvent<void>) => void;
@@ -984,14 +984,14 @@ declare namespace LocalJSX {
         "onLogin"?: (event: UnlockPanelCustomEvent<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>) => void;
     }
     interface WalletConnect {
-        "data"?: IWalletConnectModalData;
+        "data"?: IWalletConnectPanelData;
     }
     interface WalletConnectBody {
         "description"?: string;
         "qrCodeSvg"?: string;
     }
-    interface WalletConnectModal {
-        "data"?: IWalletConnectModalData;
+    interface WalletConnectPanel {
+        "data"?: IWalletConnectPanelData;
     }
     interface IntrinsicElements {
         "balance-component": BalanceComponent;
@@ -1007,14 +1007,14 @@ declare namespace LocalJSX {
         "ledger-account-screen": LedgerAccountScreen;
         "ledger-confirm-screen": LedgerConfirmScreen;
         "ledger-connect": LedgerConnect;
-        "ledger-connect-modal": LedgerConnectModal;
+        "ledger-connect-panel": LedgerConnectPanel;
         "ledger-connect-screen": LedgerConnectScreen;
         "notifications-feed": NotificationsFeed;
-        "pending-transactions-modal": PendingTransactionsModal;
+        "pending-transactions-panel": PendingTransactionsPanel;
         "provider-button": ProviderButton;
         "side-panel": SidePanel;
         "sign-transaction-component": SignTransactionComponent;
-        "sign-transactions-modal": SignTransactionsModal;
+        "sign-transactions-panel": SignTransactionsPanel;
         "simple-toast": SimpleToast;
         "toast-list": ToastList;
         "token-component": TokenComponent;
@@ -1042,7 +1042,7 @@ declare namespace LocalJSX {
         "unlock-panel": UnlockPanel;
         "wallet-connect": WalletConnect;
         "wallet-connect-body": WalletConnectBody;
-        "wallet-connect-modal": WalletConnectModal;
+        "wallet-connect-panel": WalletConnectPanel;
     }
 }
 export { LocalJSX as JSX };
@@ -1062,14 +1062,14 @@ declare module "@stencil/core" {
             "ledger-account-screen": LocalJSX.LedgerAccountScreen & JSXBase.HTMLAttributes<HTMLLedgerAccountScreenElement>;
             "ledger-confirm-screen": LocalJSX.LedgerConfirmScreen & JSXBase.HTMLAttributes<HTMLLedgerConfirmScreenElement>;
             "ledger-connect": LocalJSX.LedgerConnect & JSXBase.HTMLAttributes<HTMLLedgerConnectElement>;
-            "ledger-connect-modal": LocalJSX.LedgerConnectModal & JSXBase.HTMLAttributes<HTMLLedgerConnectModalElement>;
+            "ledger-connect-panel": LocalJSX.LedgerConnectPanel & JSXBase.HTMLAttributes<HTMLLedgerConnectPanelElement>;
             "ledger-connect-screen": LocalJSX.LedgerConnectScreen & JSXBase.HTMLAttributes<HTMLLedgerConnectScreenElement>;
             "notifications-feed": LocalJSX.NotificationsFeed & JSXBase.HTMLAttributes<HTMLNotificationsFeedElement>;
-            "pending-transactions-modal": LocalJSX.PendingTransactionsModal & JSXBase.HTMLAttributes<HTMLPendingTransactionsModalElement>;
+            "pending-transactions-panel": LocalJSX.PendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLPendingTransactionsPanelElement>;
             "provider-button": LocalJSX.ProviderButton & JSXBase.HTMLAttributes<HTMLProviderButtonElement>;
             "side-panel": LocalJSX.SidePanel & JSXBase.HTMLAttributes<HTMLSidePanelElement>;
             "sign-transaction-component": LocalJSX.SignTransactionComponent & JSXBase.HTMLAttributes<HTMLSignTransactionComponentElement>;
-            "sign-transactions-modal": LocalJSX.SignTransactionsModal & JSXBase.HTMLAttributes<HTMLSignTransactionsModalElement>;
+            "sign-transactions-panel": LocalJSX.SignTransactionsPanel & JSXBase.HTMLAttributes<HTMLSignTransactionsPanelElement>;
             "simple-toast": LocalJSX.SimpleToast & JSXBase.HTMLAttributes<HTMLSimpleToastElement>;
             "toast-list": LocalJSX.ToastList & JSXBase.HTMLAttributes<HTMLToastListElement>;
             "token-component": LocalJSX.TokenComponent & JSXBase.HTMLAttributes<HTMLTokenComponentElement>;
@@ -1097,7 +1097,7 @@ declare module "@stencil/core" {
             "unlock-panel": LocalJSX.UnlockPanel & JSXBase.HTMLAttributes<HTMLUnlockPanelElement>;
             "wallet-connect": LocalJSX.WalletConnect & JSXBase.HTMLAttributes<HTMLWalletConnectElement>;
             "wallet-connect-body": LocalJSX.WalletConnectBody & JSXBase.HTMLAttributes<HTMLWalletConnectBodyElement>;
-            "wallet-connect-modal": LocalJSX.WalletConnectModal & JSXBase.HTMLAttributes<HTMLWalletConnectModalElement>;
+            "wallet-connect-panel": LocalJSX.WalletConnectPanel & JSXBase.HTMLAttributes<HTMLWalletConnectPanelElement>;
         }
     }
 }

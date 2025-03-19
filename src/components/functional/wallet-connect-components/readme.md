@@ -7,7 +7,7 @@
 
 | Property | Attribute | Description | Type                      | Default                |
 | -------- | --------- | ----------- | ------------------------- | ---------------------- |
-| `data`   | --        |             | `IWalletConnectModalData` | `{     wcURI: '',   }` |
+| `data`   | --        |             | `IWalletConnectPanelData` | `{     wcURI: '',   }` |
 
 
 ## Methods
@@ -27,16 +27,16 @@ Type: `Promise<IEventBus>`
 
 ### Depends on
 
-- [generic-modal](../../../common/generic-modal)
+- [side-panel](../../visual/side-panel)
 - [wallet-connect-body](components)
 
 ### Graph
 ```mermaid
 graph TD;
-  wallet-connect-modal --> generic-modal
-  wallet-connect-modal --> wallet-connect-body
+  wallet-connect-panel --> side-panel
+  wallet-connect-panel --> wallet-connect-body
   wallet-connect-body --> generic-spinner
-  style wallet-connect-modal fill:#f9f,stroke:#333,stroke-width:4px
+  style wallet-connect-panel fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

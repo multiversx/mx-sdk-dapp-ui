@@ -2,8 +2,8 @@ import QRCode from 'qrcode';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import type { IWalletConnectModalData } from './wallet-connect-modal.types';
-import { WalletConnectEventsEnum } from './wallet-connect-modal.types';
+import type { IWalletConnectPanelData } from './wallet-connect-panel.types';
+import { WalletConnectEventsEnum } from './wallet-connect-panel.types';
 
 interface IWalletConnectEventBusProps {
   forceUpdateFn: () => void;
@@ -11,13 +11,13 @@ interface IWalletConnectEventBusProps {
 }
 
 interface IWalletConnectDataUpdateProps extends IWalletConnectEventBusProps {
-  payload: IWalletConnectModalData;
+  payload: IWalletConnectPanelData;
 }
 
 export class WalletConnectBase {
   eventBus: IEventBus = new EventBus();
 
-  constructor(public data: IWalletConnectModalData) {}
+  constructor(public data: IWalletConnectPanelData) {}
 
   getEventBus() {
     return this.eventBus;
@@ -36,11 +36,11 @@ export class WalletConnectBase {
   }
 
   subscribeEventBus({ closeFn, forceUpdateFn }: IWalletConnectEventBusProps) {
-    this.eventBus.subscribe(WalletConnectEventsEnum.DATA_UPDATE, (payload: IWalletConnectModalData) => this.dataUpdate({ payload, closeFn, forceUpdateFn }));
+    this.eventBus.subscribe(WalletConnectEventsEnum.DATA_UPDATE, (payload: IWalletConnectPanelData) => this.dataUpdate({ payload, closeFn, forceUpdateFn }));
   }
 
   unsubscribeEventBus({ closeFn, forceUpdateFn }: IWalletConnectEventBusProps) {
-    this.eventBus.unsubscribe(WalletConnectEventsEnum.DATA_UPDATE, (payload: IWalletConnectModalData) => this.dataUpdate({ payload, closeFn, forceUpdateFn }));
+    this.eventBus.unsubscribe(WalletConnectEventsEnum.DATA_UPDATE, (payload: IWalletConnectPanelData) => this.dataUpdate({ payload, closeFn, forceUpdateFn }));
   }
 
   private dataUpdate({ payload, closeFn, forceUpdateFn }: IWalletConnectDataUpdateProps) {
