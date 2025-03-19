@@ -55,10 +55,10 @@ export interface ISignTransactionsPanelData {
 }
 
 export enum SignEventsEnum {
-  CONFIRM = 'CONFIRM',
+  CONFIRM = 'CONFIRM', // can be sign or next
   BACK = 'BACK',
-  OPEN_SIGN_TRANSACTIONS_PANEL = 'sign-event-open',
-  CLOSE_SIGN_TRANSACTIONS = 'sign-event-close',
-  DATA_UPDATE = 'sign-event-data-update',
-  SET_PPU = 'sign-event-set-ppu',
+  DATA_UPDATE = 'DATA_UPDATE',
+  SET_PPU = 'SET_PPU',
+  OPEN_SIGN_TRANSACTIONS_PANEL = 'OPEN_SIGN_TRANSACTIONS_PANEL',
+  CLOSE_SIGN_TRANSACTIONS_PANEL = 'CLOSE_SIGN_TRANSACTIONS_PANEL',
 }
