@@ -1,5 +1,4 @@
 import { Component, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
-import { SidePanelSideEnum } from 'components/visual/side-panel/side-panel.types';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
