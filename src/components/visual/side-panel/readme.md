@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property         | Attribute          | Description | Type                                                | Default                   |
-| ---------------- | ------------------ | ----------- | --------------------------------------------------- | ------------------------- |
-| `isOpen`         | `is-open`          |             | `boolean`                                           | `false`                   |
-| `panelClassName` | `panel-class-name` |             | `string`                                            | `undefined`               |
-| `side`           | `side`             |             | `SidePanelSideEnum.LEFT \| SidePanelSideEnum.RIGHT` | `SidePanelSideEnum.RIGHT` |
+| Property         | Attribute          | Description | Type      | Default     |
+| ---------------- | ------------------ | ----------- | --------- | ----------- |
+| `isOpen`         | `is-open`          |             | `boolean` | `false`     |
+| `panelClassName` | `panel-class-name` |             | `string`  | `undefined` |
+| `title`          | `title`            |             | `string`  | `undefined` |
 
 
 ## Events

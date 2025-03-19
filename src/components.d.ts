@@ -12,7 +12,6 @@ import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConn
 import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 import { ProviderTypeEnum } from "./types/provider.types";
-import { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -27,7 +26,6 @@ export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConn
 export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 export { ProviderTypeEnum } from "./types/provider.types";
-export { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -116,7 +114,7 @@ export namespace Components {
     interface SidePanel {
         "isOpen": boolean;
         "panelClassName"?: string;
-        "side": SidePanelSideEnum;
+        "title": string;
     }
     interface SignTransactionComponent {
         "header": VNode;
@@ -855,7 +853,7 @@ declare namespace LocalJSX {
         "isOpen"?: boolean;
         "onClose"?: (event: SidePanelCustomEvent<any>) => void;
         "panelClassName"?: string;
-        "side"?: SidePanelSideEnum;
+        "title"?: string;
     }
     interface SignTransactionComponent {
         "header"?: VNode;
