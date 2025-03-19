@@ -1,8 +1,8 @@
+// import { faX } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
-
-import { SidePanelSideEnum } from './side-panel.types';
 
 @Component({
   tag: 'side-panel',
@@ -11,8 +11,8 @@ import { SidePanelSideEnum } from './side-panel.types';
 })
 export class SidePanel {
   @Prop() isOpen: boolean = false;
-  @Prop() side: SidePanelSideEnum = SidePanelSideEnum.RIGHT;
   @Prop() panelClassName?: string;
+  @Prop() title: string;
 
   @Event() close: EventEmitter;
 
@@ -67,7 +67,10 @@ export class SidePanel {
         })}
       >
         <div class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}>
-          <div class="side-panel-title">{}</div>
+          <div class="side-panel-heading">
+            <div class="side-panel-heading-title">{this.title}</div>
+            <div class="side-panel-heading-close"></div>
+          </div>
 
           <div class="side-panel-content">
             <slot></slot>
