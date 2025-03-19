@@ -112,8 +112,6 @@ export class SignTransactionsPanel {
     const { tokenType, currentIndex, transactionsCount } = commonData;
     const SignScreen = signScreens[tokenType];
 
-    console.log('state', state);
-
     return (
       <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.LEFT} panelClassName="sign-transactions-panel" onClose={this.handleClose.bind(this)}>
         <div class="sign-transactions-content">
