@@ -2,7 +2,7 @@ import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
 import { sass } from '@stencil/sass';
-import tailwind, { tailwindHMR } from 'stencil-tailwind-plugin';
+
 const excludeComponents = [
   'sign-transactions-panel',
   'transaction-fee-component',
@@ -29,9 +29,11 @@ const excludeComponents = [
   'fungible-component',
   'balance-component',
 ];
+
 export const config: Config = {
+  globalStyle: 'src/global/tailwind.css',
   namespace: 'sdk-dapp-core-ui',
-  plugins: [sass(), tailwind(), tailwindHMR()],
+  plugins: [sass()],
   outputTargets: [
     reactOutputTarget({
       outDir: './dist/react',
@@ -39,14 +41,12 @@ export const config: Config = {
       customElementsDir: '../web-components',
       excludeComponents,
     }),
-
     {
       type: 'dist-custom-elements',
       externalRuntime: false,
       generateTypeDeclarations: true,
       dir: './dist/web-components',
     },
-
     {
       type: 'dist',
       esmLoaderPath: './loader',
@@ -56,6 +56,7 @@ export const config: Config = {
     },
     {
       type: 'www',
+      copy: [{ src: 'global/output.css', dest: 'tailwind.css' }],
       serviceWorker: null, // disable service workers
     },
   ],

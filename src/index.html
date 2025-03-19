@@ -4,13 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
-
+    <link rel="stylesheet" href="/tailwind.css" />
     <script type="module" src="/build/sdk-dapp-core-ui.esm.js"></script>
     <script nomodule src="/build/sdk-dapp-core-ui.js"></script>
   </head>
   <body>
     <transaction-toast-list />
     <pending-transactions-panel></pending-transactions-panel>
+    <tailwind-component />
+
     <button id="pending-transactions-btn" onclick="openPendingTxPanel();">Open Pending Transactions Panel</button>
     <button id="sign-transactions-btn" onclick="openSignPanel();">Open Sign Transactions Panel</button>
     <button id="ledger-connect-btn" onclick="openLedgerConnectPanel();">Open Ledger Connect Panel</button>

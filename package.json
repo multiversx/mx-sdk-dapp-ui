@@ -38,21 +38,23 @@
     "dist/"
   ],
   "scripts": {
-    "build": "stencil build",
-    "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "unpublish-verdaccio": "npm unpublish @multiversx/sdk-dapp-core-ui --force --registry http://localhost:4873",
     "publish-verdaccio": "npm run unpublish-verdaccio && npm run build && npm publish --registry http://localhost:4873/",
     "test.watch": "stencil test --spec --e2e --watchAll",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "build:css": "npx tailwindcss -i src/global/tailwind.css -o src/global/output.css",
+    "build": "npm run build:css && stencil build",
+    "start": "npm run build:css && stencil build --dev --watch --serve"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": ">= 6.7.2",
     "@fortawesome/free-solid-svg-icons": ">= 6.7.2",
     "@multiversx/sdk-dapp-utils": ">= 1.0.4",
     "@stencil/react-output-target": "0.8.2",
+    "autoprefixer": "^10.4.21",
     "classnames": ">= 2.5.1",
     "qrcode": ">= 1.5.4",
     "sass-embedded": "^1.85.1"
@@ -78,7 +80,7 @@
     "puppeteer": "^23.9.0",
     "rollup-plugin-node-polyfills": "^0.2.1",
     "stencil-tailwind-plugin": "1.8.0",
-    "tailwindcss": "3.4.17",
+    "tailwindcss": "4.0.14",
     "typescript": "^5.7.3"
   }
 }
