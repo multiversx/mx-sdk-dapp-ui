@@ -58,14 +58,14 @@ export class SignTransactionsPanel {
   componentDidLoad() {
     this.eventBus.subscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
     this.eventBus.subscribe(SignEventsEnum.OPEN_SIGN_TRANSACTIONS_PANEL, this.handleOpen.bind(this));
-    this.eventBus.subscribe(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS, this.onClose.bind(this, { isUserClick: false }));
+    this.eventBus.subscribe(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS_PANEL, this.onClose.bind(this, { isUserClick: false }));
   }
 
   disconnectedCallback() {
     resetState();
     this.eventBus.unsubscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
     this.eventBus.unsubscribe(SignEventsEnum.OPEN_SIGN_TRANSACTIONS_PANEL, this.handleOpen.bind(this));
-    this.eventBus.unsubscribe(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS, this.onClose.bind(this, { isUserClick: false }));
+    this.eventBus.unsubscribe(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS_PANEL, this.onClose.bind(this, { isUserClick: false }));
   }
 
   handleOpen() {
@@ -82,7 +82,7 @@ export class SignTransactionsPanel {
     resetState();
 
     if (props.isUserClick) {
-      this.eventBus.publish(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS);
+      this.eventBus.publish(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS_PANEL);
     }
   }
 
@@ -111,6 +111,8 @@ export class SignTransactionsPanel {
     const { commonData, isLoading } = state;
     const { tokenType, currentIndex, transactionsCount } = commonData;
     const SignScreen = signScreens[tokenType];
+
+    console.log('state', state);
 
     return (
       <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.LEFT} panelClassName="sign-transactions-panel" onClose={this.handleClose.bind(this)}>

@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Fixed sign transactions panel and component](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/63)
 - [Fixed loader export](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/62)
 - [Migrated modals to side panels](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/61)
 
