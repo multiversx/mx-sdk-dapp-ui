@@ -18,12 +18,10 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 8px;
   width: 100%;
 }
 
 .content-icon {
-  width: 32px;
   height: 32px;
   flex-shrink: 0;
   display: flex;

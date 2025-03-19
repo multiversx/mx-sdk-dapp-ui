@@ -46,18 +46,18 @@ export class SimpleToast {
         <div class="content-left">
           {this.renderIcon()}
           <div class="content-right">
-            {title && (
-              <div class="content-heading">
+            <div class="content-heading">
+              {title && (
                 <h5 class="content-heading-title" data-testid={DataTestIdsEnum.transactionToastTitle}>
                   {title}
                 </h5>
-              </div>
-            )}
+              )}
+              <button onClick={this.handleDeleteToast.bind(this)} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>
+            </div>
             {subtitle && <div class="subtitle">{subtitle}</div>}
             {message && <div class={classNames('content-message', { 'no-margin': !title && !subtitle })}>{message}</div>}
           </div>
         </div>
-        <button onClick={this.handleDeleteToast.bind(this)} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>
       </div>
     );
   }

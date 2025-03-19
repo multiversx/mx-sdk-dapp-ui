@@ -15,9 +15,8 @@
 
 .content-left {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
-  margin-bottom: 8px;
   width: 100%;
 }
 
@@ -61,6 +60,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
   width: 100%;
 }
 
@@ -83,14 +83,12 @@
   border: none;
   padding: 0;
   width: 14px;
-  margin: 1px;
+  height: 14px;
+  flex-shrink: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  right: 16px;
-  top: 12px;
 }
 
 .icon-close:hover {
@@ -101,14 +99,12 @@
   color: var(--Toasts-mx-toast-text-secondary, #6B7280);
   font-size: 12px;
   line-height: 16px;
-  margin-top: 4px;
 }
 
 .content-message {
   color: var(--Toasts-mx-toast-text-secondary, #6B7280);
   font-size: 12px;
   line-height: 16px;
-  margin-top: 4px;
 }
 
 .content-message.no-margin {
