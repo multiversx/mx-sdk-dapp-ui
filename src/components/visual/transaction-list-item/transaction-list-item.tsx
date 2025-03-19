@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop } from '@stencil/core';
 
-import { DefaultIcon } from './assets/default-icon';
+import { DefaultIcon } from '../default-icon/default-icon';
 import type { ITransactionListItem } from './transaction-list-item.types';
 
 @Component({

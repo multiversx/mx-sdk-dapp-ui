@@ -38,8 +38,6 @@ graph TD;
   toast-list --> transaction-toast
   generic-toast --> custom-toast
   generic-toast --> simple-toast
-  simple-toast --> transaction-toast-wrapper
-  transaction-toast --> transaction-toast-wrapper
   transaction-toast --> transaction-toast-progress
   transaction-toast --> transaction-toast-content
   transaction-toast-content --> transaction-toast-details

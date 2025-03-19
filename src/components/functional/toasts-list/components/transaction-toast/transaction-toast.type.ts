@@ -4,7 +4,7 @@ import type { JSX } from '@stencil/core';
 
 export interface IToastDataState {
   id: string;
-  icon: IconName | string | JSX.Element;
+  iconUrl?: string;
   hasCloseButton: boolean;
   title: string;
   iconClassName: string;

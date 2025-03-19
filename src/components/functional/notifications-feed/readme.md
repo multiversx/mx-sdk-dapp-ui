@@ -34,7 +34,6 @@ graph TD;
   notifications-feed --> fa-icon
   notifications-feed --> transaction-toast
   notifications-feed --> transaction-list-item
-  transaction-toast --> transaction-toast-wrapper
   transaction-toast --> transaction-toast-progress
   transaction-toast --> transaction-toast-content
   transaction-toast-content --> transaction-toast-details

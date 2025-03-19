@@ -19,9 +19,9 @@
 
 ## Events
 
-| Event               | Description | Type                  |
-| ------------------- | ----------- | --------------------- |
-| `handleDeleteToast` |             | `CustomEvent<string>` |
+| Event         | Description | Type                |
+| ------------- | ----------- | ------------------- |
+| `deleteToast` |             | `CustomEvent<void>` |
 
 
 ## Dependencies
@@ -33,14 +33,12 @@
 
 ### Depends on
 
-- [transaction-toast-wrapper](./components/transaction-toast-wrapper)
 - [transaction-toast-progress](./components/transaction-toast-progress)
 - [transaction-toast-content](./components/transaction-toast-content)
 
 ### Graph
 ```mermaid
 graph TD;
-  transaction-toast --> transaction-toast-wrapper
   transaction-toast --> transaction-toast-progress
   transaction-toast --> transaction-toast-content
   transaction-toast-content --> transaction-toast-details

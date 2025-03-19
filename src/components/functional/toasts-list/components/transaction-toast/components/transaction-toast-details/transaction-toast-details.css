@@ -1,39 +1,55 @@
+/* Only keeping custom styles that can't be represented with Tailwind */
 .status-title {
-  font-size: 0.875rem;
-  margin: 0.25rem 0 0.5rem;
-  line-height: 1.5;
+  color: var(--Toasts-mx-toast-text-primary, #262626);
+  font-family: var(--font-family-roobert);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
   display: flex;
   align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  margin-bottom: 8px;
   cursor: pointer;
 }
 
 .toggle-icon {
-  margin-right: 0.5rem;
-  font-size: 0.75rem;
+  color: var(--mx-toast-text-secondary);
+  width: 16px;
+  height: 16px;
   flex-shrink: 0;
 }
 
 .transaction-details-list {
-  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .view-all-container {
   display: flex;
   justify-content: center;
-  margin-top: 0.5rem;
+  margin-top: 12px;
+  border-top: 1px solid var(--mx-toast-border-color, rgba(0, 0, 0, 0.1));
+  padding-top: 8px;
 }
 
 .show-more-button {
-  font-size: 0.875rem;
-  color: var(--mx-dapp-core-color-primary, #2044F5);
-  text-decoration: none;
-  cursor: pointer;
+  color: var(--mx-dapp-core-color-primary, theme('colors.blue.600'));
+  font-size: 14px;
+  line-height: 20px;
   background: none;
   border: none;
   padding: 0;
-  font-family: inherit;
+  cursor: pointer;
 }
 
 .show-more-button:hover {
   text-decoration: underline;
+}
+
+/* Container for all transaction details */
+.transaction-details-container {
+  padding: 0;
 }

@@ -5,10 +5,9 @@ import type { IToastDataState, ITransaction, ITransactionProgressState } from '.
 
 @Component({
   tag: 'transaction-toast',
+  styleUrl: 'transaction-toast.css',
   shadow: true,
 })
-
-//TODO: use State Tunnel
 export class TransactionToast {
   @Prop() toastId: string = '';
   @Prop() wrapperClass: string;
@@ -16,25 +15,22 @@ export class TransactionToast {
   @Prop() transactions: ITransaction[] = [];
   @Prop() toastDataState: IToastDataState;
   @Prop() transactionProgressState?: ITransactionProgressState;
+  @Event() deleteToast: EventEmitter<void>;
 
-  @Event() handleDeleteToast: EventEmitter<string>;
-
-  private onDeleteToast() {
-    this.handleDeleteToast.emit(this.toastId);
+  private handleDeleteToast() {
+    this.deleteToast.emit();
   }
 
   render() {
     return (
-      <transaction-toast-wrapper wrapperId={`toast-${this.toastId}`} wrapperClass={this.wrapperClass}>
-        <transaction-toast-progress key={this.toastId} startTime={this.transactionProgressState?.startTime} endTime={this.transactionProgressState?.endTime}>
-          <transaction-toast-content
-            onDeleteToast={this.onDeleteToast.bind(this)}
-            processedTransactionsStatus={this.processedTransactionsStatus}
-            toastDataState={this.toastDataState}
-            transactions={this.transactions}
-          />
-        </transaction-toast-progress>
-      </transaction-toast-wrapper>
+      <transaction-toast-progress key={this.toastId} startTime={this.transactionProgressState?.startTime} endTime={this.transactionProgressState?.endTime}>
+        <transaction-toast-content
+          toastDataState={this.toastDataState}
+          transactions={this.transactions}
+          processedTransactionsStatus={this.processedTransactionsStatus}
+          onDeleteToast={this.handleDeleteToast.bind(this)}
+        />
+      </transaction-toast-progress>
     );
   }
 }

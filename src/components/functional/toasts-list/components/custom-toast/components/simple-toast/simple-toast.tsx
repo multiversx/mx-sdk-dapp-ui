@@ -14,10 +14,14 @@ import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
 })
 export class SimpleToast {
   @Prop() toast: ISimpleToast;
-  @Event() handleDeleteToast: EventEmitter<void>;
+  @Event() deleteToast: EventEmitter<void>;
 
-  render() {
-    const { icon, iconClassName, title, message, subtitle } = this.toast;
+  private handleDeleteToast() {
+    this.deleteToast.emit();
+  }
+
+  private renderIcon() {
+    const { icon, iconClassName } = this.toast;
 
     let iconHtml = null;
     if (typeof icon === 'string') {
@@ -27,15 +31,20 @@ export class SimpleToast {
       iconHtml = icon.outerHTML;
     }
 
-    return (
-      <transaction-toast-wrapper wrapperId={`toast-${this.toast.toastId}`}>
-        <div class="content" data-testid={DataTestIdsEnum.transactionToastContent}>
-          {iconHtml && (
-            <div class={classNames('content-left', { 'no-icon': !iconHtml })}>
-              <div class={classNames('content-icon', iconClassName)} innerHTML={iconHtml}></div>
-            </div>
-          )}
+    if (!iconHtml) {
+      return null;
+    }
 
+    return <div class={classNames('content-icon', iconClassName)} innerHTML={iconHtml}></div>;
+  }
+
+  render() {
+    const { title, message, subtitle } = this.toast;
+
+    return (
+      <div class="content" data-testid={DataTestIdsEnum.transactionToastContent} id={`toast-${this.toast.toastId}`}>
+        <div class="content-left">
+          {this.renderIcon()}
           <div class="content-right">
             {title && (
               <div class="content-heading">
@@ -44,14 +53,12 @@ export class SimpleToast {
                 </h5>
               </div>
             )}
-
-            <button onClick={() => this.handleDeleteToast.emit()} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>
-
             {subtitle && <div class="subtitle">{subtitle}</div>}
             {message && <div class={classNames('content-message', { 'no-margin': !title && !subtitle })}>{message}</div>}
           </div>
         </div>
-      </transaction-toast-wrapper>
+        <button onClick={this.handleDeleteToast.bind(this)} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>
+      </div>
     );
   }
 }

@@ -1,6 +1,6 @@
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import type { JSX } from '@stencil/core';
-import { Component, Fragment, h, Prop, State } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 
 import type { ITransaction } from '../../transaction-toast.type';
 
@@ -10,7 +10,7 @@ import type { ITransaction } from '../../transaction-toast.type';
   shadow: true,
 })
 export class TransactionDetails {
-  @Prop() processedTransactionsStatus?: JSX.Element | string;
+  @Prop() processedTransactionsStatus?: string | JSX.Element;
   @Prop() transactions?: ITransaction[];
   @Prop() transactionClass: string;
   @Prop() maxShownTransactions: number = 5;
@@ -39,7 +39,7 @@ export class TransactionDetails {
     const visibleTransactions = this.showAllTransactions ? this.transactions : this.transactions.slice(0, this.maxShownTransactions);
 
     return (
-      <Fragment>
+      <div class="transaction-details-container">
         <div class="status-title" onClick={this.toggleExpand.bind(this)}>
           <fa-icon icon={this.isExpanded ? faChevronUp : faChevronDown} class="toggle-icon"></fa-icon>
           {this.processedTransactionsStatus}
@@ -60,7 +60,7 @@ export class TransactionDetails {
             )}
           </div>
         )}
-      </Fragment>
+      </div>
     );
   }
 }

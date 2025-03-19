@@ -2,9 +2,9 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
+import { DefaultIcon } from 'components/visual/default-icon/default-icon';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
-import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
 
 import type { IToastDataState, ITransaction } from '../../transaction-toast.type';
 
@@ -23,34 +23,38 @@ export class TransactionToastContent {
     this.deleteToast.emit();
   }
 
-  render() {
-    const { icon, iconClassName, title, hasCloseButton } = this.toastDataState;
+  private renderIcon() {
+    const { iconUrl, iconClassName } = this.toastDataState;
 
-    let iconHtml = null;
-    if (typeof icon === 'string') {
-      iconHtml = getIconHtmlFromIconName(icon);
+    if (iconUrl) {
+      return (
+        <div class={classNames('content-icon', iconClassName)}>
+          <img src={iconUrl} alt="Transaction icon" class="icon-image" loading="lazy" />
+        </div>
+      );
     }
-    if (icon instanceof HTMLElement) {
-      iconHtml = icon.outerHTML;
-    }
+
+    return (
+      <div class={classNames('content-icon', iconClassName)}>
+        <DefaultIcon />
+      </div>
+    );
+  }
+
+  render() {
+    const { title, hasCloseButton } = this.toastDataState;
+
     return (
       <div class="content" data-testid={DataTestIdsEnum.transactionToastContent}>
-        <div class="content-left">
-          <div class={classNames('content-icon', iconClassName)} innerHTML={iconHtml}></div>
+        <div class="content-header">
+          {this.renderIcon()}
+          <h5 class="content-heading-title" data-testid={DataTestIdsEnum.transactionToastTitle}>
+            {title}
+          </h5>
+          {hasCloseButton && <button onClick={this.handleDeleteToast.bind(this)} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>}
         </div>
 
-        <div class="content-right">
-          <div class="content-heading">
-            <h5 class="content-heading-title" data-testid={DataTestIdsEnum.transactionToastTitle}>
-              {title}
-            </h5>
-            {hasCloseButton && <button onClick={this.handleDeleteToast.bind(this)} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>}
-          </div>
-
-          <div class="content-heading-title">
-            <transaction-toast-details transactions={this.transactions} processedTransactionsStatus={this.processedTransactionsStatus} />
-          </div>
-        </div>
+        <transaction-toast-details transactions={this.transactions} processedTransactionsStatus={this.processedTransactionsStatus} />
       </div>
     );
   }

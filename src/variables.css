@@ -1,0 +1,31 @@
+:root {
+    /* Toast Colors */
+    --Toasts-mx-toast-text-primary: #262626;
+    --Toasts-mx-toast-border: #C7C7C7;
+    --mx-accent: #000;
+  
+    /* Toast Colors */
+    --mx-toast-bg: theme('colors.gray.100');
+    --mx-toast-text-primary: theme('colors.gray.900');
+    --mx-toast-text-secondary: theme('colors.gray.600');
+    --mx-toast-border: theme('colors.gray.200');
+    --mx-toast-progress-bg: theme('colors.gray.200');
+    --mx-toast-progress-bar: theme('colors.white');
+    
+    /* Toast Status Colors */
+    --mx-toast-success-bg: theme('colors.green.50');
+    --mx-toast-success-icon: theme('colors.green.500');
+    --mx-toast-pending-bg: theme('colors.yellow.50');
+    --mx-toast-pending-icon: theme('colors.yellow.500');
+    --mx-toast-error-bg: theme('colors.red.50');
+    --mx-toast-error-icon: theme('colors.red.500');
+  
+    /* Toast Dimensions */
+    --mx-toast-width: 315px;
+    --mx-toast-max-width: 90vw;
+    --mx-toast-border-radius: 0.5rem;
+    --mx-toast-padding: 1rem;
+  
+    /* Font Settings */
+    --font-family-roobert: "Roobert PRO", system-ui, -apple-system, sans-serif;
+  } 

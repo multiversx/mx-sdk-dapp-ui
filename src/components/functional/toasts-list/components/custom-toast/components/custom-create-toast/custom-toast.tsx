@@ -11,12 +11,12 @@ import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDe
 })
 export class CustomToast {
   @Prop() toast: IComponentToast;
-  @Event() handleDeleteToast: EventEmitter<string>;
+  @Event() deleteToast: EventEmitter<string>;
 
   render() {
     const customToast = (
       <div class="toast-wrapper">
-        <button onClick={() => this.handleDeleteToast.emit()} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>
+        <button onClick={() => this.deleteToast.emit()} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>
         <div class="toast-body" ref={container => this.initializeToast(container)}></div>
       </div>
     );
