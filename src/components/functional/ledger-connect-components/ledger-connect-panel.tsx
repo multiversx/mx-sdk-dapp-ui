@@ -145,6 +145,7 @@ export class LedgerConnectPanel {
 
     return (
       <side-panel isOpen={this.isOpen} panelClassName="ledger-connect-panel" onClose={this.handleClose.bind(this)}>
+        LEDGER CONNECT PANEL
         <div class="ledger-connect-content">
           {this.getHeaderContent(accountScreenData, confirmScreenData)}
           <div class="ledger-connect-body">{bodyContent}</div>

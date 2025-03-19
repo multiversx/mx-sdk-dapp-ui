@@ -13,6 +13,7 @@ export class UnlockPanel {
   @Prop() allowedProviders?: ProviderTypeEnum[] = Object.values(ProviderTypeEnum);
   @Event() close: EventEmitter;
   @Event() login: EventEmitter<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>;
+  @Prop() isExtensionAvailable: boolean = false;
 
   @State() isLoggingIn: boolean = false;
   @State() selectedMethod: ProviderTypeEnum | null = null;
@@ -51,9 +52,11 @@ export class UnlockPanel {
   resetLoginState() {
     this.isLoggingIn = false;
     this.selectedMethod = null;
+
     if (!this.anchor) {
       return;
     }
+
     while (this.anchor.firstChild) {
       this.anchor.removeChild(this.anchor.firstChild);
     }
@@ -63,17 +66,21 @@ export class UnlockPanel {
     this.close.emit();
   }
 
+  componentWillLoad() {
+    console.log('Allowed Providers:', this.allowedProviders, this.observeContainer);
+  }
+
   render() {
     return (
       <side-panel isOpen={this.isOpen} onClose={this.handleClose.bind(this)} panelClassName="unlock-panel">
-        WHAT IS THIS?
+        UNLOCK PANEL
         <unlock-header
           text={this.isLoggingIn ? `${this.selectedMethod} connect` : 'Connect your wallet'}
           backIcon={this.isLoggingIn ? faArrowLeft : null}
           onBack={this.resetLoginState.bind(this)}
           onClose={this.handleClose.bind(this)}
         />
-        <div id="anchor" ref={element => this.observeContainer(element)}></div>
+        <div id="anchor" ref={element => this.observeContainer(element)} />
         {!this.isLoggingIn && (
           <div class="body">
             {this.allowedProviders.map(method => (

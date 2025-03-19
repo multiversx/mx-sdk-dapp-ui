@@ -19,6 +19,7 @@
  - [copy-button](../copy-button)
  - [explorer-link](../explorer-link)
  - [notifications-feed](../../functional/notifications-feed)
+ - [side-panel](../side-panel)
  - [transaction-account](../../controlled/transactions-table/components/transaction-account)
  - [transaction-icon](../../controlled/transactions-table/components/transaction-icon)
  - [transaction-list-item](../transaction-list-item)
@@ -32,6 +33,7 @@ graph TD;
   copy-button --> fa-icon
   explorer-link --> fa-icon
   notifications-feed --> fa-icon
+  side-panel --> fa-icon
   transaction-account --> fa-icon
   transaction-icon --> fa-icon
   transaction-list-item --> fa-icon

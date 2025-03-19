@@ -67,6 +67,7 @@ export class PendingTransactionstPanel {
   render() {
     return (
       <side-panel isOpen={this.isOpen} panelClassName="pending-transactions-panel" onClose={this.handleClose.bind(this)}>
+        PENDING TRANSACTIONS PANEL
         <div class="pending-transactions-content">
           <div class="pending-transactions-header">
             <h2 data-testid={DataTestIdsEnum.pendingTransactionsTitle}>{this.data.title}</h2>

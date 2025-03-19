@@ -113,6 +113,7 @@ export class SignTransactionsPanel {
 
     return (
       <side-panel isOpen={this.isOpen} panelClassName="sign-transactions-panel" onClose={this.handleClose.bind(this)}>
+        SIGN TRANSACTIONS PANEL
         <div class="sign-transactions-content">
           <div class="sign-transactions-header">
             <h2>Sign transaction</h2>

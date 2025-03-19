@@ -37,6 +37,7 @@ Type: `Promise<IEventBus>`
 graph TD;
   sign-transactions-panel --> side-panel
   sign-transactions-panel --> generic-spinner
+  side-panel --> fa-icon
   style sign-transactions-panel fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

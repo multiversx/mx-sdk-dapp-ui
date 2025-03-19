@@ -76,6 +76,7 @@ export class WalletConnectPanel {
   render() {
     return (
       <side-panel isOpen={this.isOpen} panelClassName="wallet-connect-side-panel" onClose={this.handleClose.bind(this)}>
+        WALLET CONNECT PANEL
         <div class="wallet-connect-container">
           <div class="wallet-connect-header">
             <h2 data-testid={DataTestIdsEnum.walletConnetModalTitle}>xPortal Mobile Wallet</h2>

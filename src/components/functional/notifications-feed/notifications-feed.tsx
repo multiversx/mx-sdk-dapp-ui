@@ -58,6 +58,7 @@ export class NotificationsFeed {
 
     return (
       <side-panel isOpen={this.isOpen} onClose={this.handleClose}>
+        NOTIFICATIONS FEED PANEL
         <div class="feed-content">
           <div class="feed-header">
             <h2 class="feed-title">Notifications Feed</h2>

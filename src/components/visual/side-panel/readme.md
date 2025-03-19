@@ -31,9 +31,14 @@
  - [unlock-panel](../unlock-panel)
  - [wallet-connect-panel](../../functional/wallet-connect-components)
 
+### Depends on
+
+- [fa-icon](../fa-icon)
+
 ### Graph
 ```mermaid
 graph TD;
+  side-panel --> fa-icon
   ledger-connect-panel --> side-panel
   notifications-feed --> side-panel
   pending-transactions-panel --> side-panel

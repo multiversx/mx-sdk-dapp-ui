@@ -1,5 +1,4 @@
-// import { faX } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
@@ -49,7 +48,8 @@ export class SidePanel {
     }
   };
 
-  handleCloseClick = () => {
+  handleCloseClick = (event: MouseEvent) => {
+    event.preventDefault();
     this.close.emit();
   };
 
@@ -68,7 +68,7 @@ export class SidePanel {
         <div class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}>
           <div class="side-panel-heading">
             <div class="side-panel-heading-title">{'PANEL TITLE'}</div>
-            <div class="side-panel-heading-close"></div>
+            <fa-icon class="side-panel-heading-close" onClick={this.handleCloseClick} icon={faXmark} />
           </div>
 
           <div class="side-panel-content">
