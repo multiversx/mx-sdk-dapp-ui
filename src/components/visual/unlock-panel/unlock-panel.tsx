@@ -66,6 +66,7 @@ export class UnlockPanel {
   render() {
     return (
       <side-panel isOpen={this.isOpen} onClose={this.handleClose.bind(this)} panelClassName="unlock-panel">
+        WHAT IS THIS?
         <unlock-header
           text={this.isLoggingIn ? `${this.selectedMethod} connect` : 'Connect your wallet'}
           backIcon={this.isLoggingIn ? faArrowLeft : null}

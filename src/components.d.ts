@@ -114,7 +114,6 @@ export namespace Components {
     interface SidePanel {
         "isOpen": boolean;
         "panelClassName"?: string;
-        "title": string;
     }
     interface SignTransactionComponent {
         "header": VNode;
@@ -853,7 +852,6 @@ declare namespace LocalJSX {
         "isOpen"?: boolean;
         "onClose"?: (event: SidePanelCustomEvent<any>) => void;
         "panelClassName"?: string;
-        "title"?: string;
     }
     interface SignTransactionComponent {
         "header"?: VNode;

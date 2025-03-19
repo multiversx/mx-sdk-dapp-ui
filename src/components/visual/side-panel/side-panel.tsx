@@ -12,7 +12,6 @@ import classNames from 'classnames';
 export class SidePanel {
   @Prop() isOpen: boolean = false;
   @Prop() panelClassName?: string;
-  @Prop() title: string;
 
   @Event() close: EventEmitter;
 
@@ -68,7 +67,7 @@ export class SidePanel {
       >
         <div class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}>
           <div class="side-panel-heading">
-            <div class="side-panel-heading-title">{this.title}</div>
+            <div class="side-panel-heading-title">{'PANEL TITLE'}</div>
             <div class="side-panel-heading-close"></div>
           </div>
 
