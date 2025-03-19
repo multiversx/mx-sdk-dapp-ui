@@ -13,11 +13,11 @@ import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 import { ProviderTypeEnum } from "./types/provider.types";
 import { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
+import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
-import { LocalJSX as JSX } from "@stencil/core";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 import { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
@@ -28,11 +28,11 @@ export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 export { ProviderTypeEnum } from "./types/provider.types";
 export { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
+export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
-export { LocalJSX as JSX } from "@stencil/core";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 export { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export namespace Components {
@@ -117,6 +117,9 @@ export namespace Components {
         "isOpen": boolean;
         "panelClassName"?: string;
         "side": SidePanelSideEnum;
+    }
+    interface SignTransactionComponent {
+        "header": VNode;
     }
     interface SignTransactionsPanel {
         "data": ISignTransactionsPanelData;
@@ -477,6 +480,12 @@ declare global {
         prototype: HTMLSidePanelElement;
         new (): HTMLSidePanelElement;
     };
+    interface HTMLSignTransactionComponentElement extends Components.SignTransactionComponent, HTMLStencilElement {
+    }
+    var HTMLSignTransactionComponentElement: {
+        prototype: HTMLSignTransactionComponentElement;
+        new (): HTMLSignTransactionComponentElement;
+    };
     interface HTMLSignTransactionsPanelElement extends Components.SignTransactionsPanel, HTMLStencilElement {
     }
     var HTMLSignTransactionsPanelElement: {
@@ -728,6 +737,7 @@ declare global {
         "pending-transactions-panel": HTMLPendingTransactionsPanelElement;
         "provider-button": HTMLProviderButtonElement;
         "side-panel": HTMLSidePanelElement;
+        "sign-transaction-component": HTMLSignTransactionComponentElement;
         "sign-transactions-panel": HTMLSignTransactionsPanelElement;
         "simple-toast": HTMLSimpleToastElement;
         "toast-list": HTMLToastListElement;
@@ -846,6 +856,9 @@ declare namespace LocalJSX {
         "onClose"?: (event: SidePanelCustomEvent<any>) => void;
         "panelClassName"?: string;
         "side"?: SidePanelSideEnum;
+    }
+    interface SignTransactionComponent {
+        "header"?: VNode;
     }
     interface SignTransactionsPanel {
         "data"?: ISignTransactionsPanelData;
@@ -1000,6 +1013,7 @@ declare namespace LocalJSX {
         "pending-transactions-panel": PendingTransactionsPanel;
         "provider-button": ProviderButton;
         "side-panel": SidePanel;
+        "sign-transaction-component": SignTransactionComponent;
         "sign-transactions-panel": SignTransactionsPanel;
         "simple-toast": SimpleToast;
         "toast-list": ToastList;
@@ -1054,6 +1068,7 @@ declare module "@stencil/core" {
             "pending-transactions-panel": LocalJSX.PendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLPendingTransactionsPanelElement>;
             "provider-button": LocalJSX.ProviderButton & JSXBase.HTMLAttributes<HTMLProviderButtonElement>;
             "side-panel": LocalJSX.SidePanel & JSXBase.HTMLAttributes<HTMLSidePanelElement>;
+            "sign-transaction-component": LocalJSX.SignTransactionComponent & JSXBase.HTMLAttributes<HTMLSignTransactionComponentElement>;
             "sign-transactions-panel": LocalJSX.SignTransactionsPanel & JSXBase.HTMLAttributes<HTMLSignTransactionsPanelElement>;
             "simple-toast": LocalJSX.SimpleToast & JSXBase.HTMLAttributes<HTMLSimpleToastElement>;
             "toast-list": LocalJSX.ToastList & JSXBase.HTMLAttributes<HTMLToastListElement>;
