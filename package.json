@@ -38,9 +38,9 @@
     "dist/"
   ],
   "scripts": {
-    "build:css": "npx ./src/global.css -o ./www/build/tailwind.css --watch",
+    "copy-tailwind": "cp ./src/assets/tailwind.css ./www/build/tailwind.css",
     "build": "stencil build",
-    "start": "stencil build --dev --watch --serve",
+    "start": "stencil build --dev --watch --serve && yarn run copy-tailwind",
     "test": "stencil test --spec --e2e",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
