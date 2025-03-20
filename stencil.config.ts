@@ -56,8 +56,8 @@ export const config: Config = {
     },
     {
       type: 'www',
-      copy: [{ src: 'global/output.css', dest: 'tailwind.css' }],
-      serviceWorker: null, // disable service workers
+      copy: [{ src: '../www/tailwind.css', dest: 'tailwind.css' }],
+      serviceWorker: null,
     },
   ],
   rollupPlugins: {

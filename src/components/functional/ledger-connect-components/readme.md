@@ -40,6 +40,7 @@ graph TD;
   ledger-connect-panel --> ledger-connect-screen
   ledger-connect-panel --> side-panel
   ledger-account-screen --> generic-spinner
+  side-panel --> styled-host
   style ledger-connect-panel fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

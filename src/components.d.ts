@@ -128,7 +128,7 @@ export namespace Components {
     interface SimpleToast {
         "toast": ISimpleToast;
     }
-    interface TailwindComponent {
+    interface StyledHost {
     }
     interface ToastList {
         "customToasts": CustomToastType1[];
@@ -511,11 +511,11 @@ declare global {
         prototype: HTMLSimpleToastElement;
         new (): HTMLSimpleToastElement;
     };
-    interface HTMLTailwindComponentElement extends Components.TailwindComponent, HTMLStencilElement {
+    interface HTMLStyledHostElement extends Components.StyledHost, HTMLStencilElement {
     }
-    var HTMLTailwindComponentElement: {
-        prototype: HTMLTailwindComponentElement;
-        new (): HTMLTailwindComponentElement;
+    var HTMLStyledHostElement: {
+        prototype: HTMLStyledHostElement;
+        new (): HTMLStyledHostElement;
     };
     interface HTMLToastListElement extends Components.ToastList, HTMLStencilElement {
     }
@@ -748,7 +748,7 @@ declare global {
         "sign-transaction-component": HTMLSignTransactionComponentElement;
         "sign-transactions-panel": HTMLSignTransactionsPanelElement;
         "simple-toast": HTMLSimpleToastElement;
-        "tailwind-component": HTMLTailwindComponentElement;
+        "styled-host": HTMLStyledHostElement;
         "toast-list": HTMLToastListElement;
         "token-component": HTMLTokenComponentElement;
         "transaction-account": HTMLTransactionAccountElement;
@@ -876,7 +876,7 @@ declare namespace LocalJSX {
         "onHandleDeleteToast"?: (event: SimpleToastCustomEvent<void>) => void;
         "toast"?: ISimpleToast;
     }
-    interface TailwindComponent {
+    interface StyledHost {
     }
     interface ToastList {
         "customToasts"?: CustomToastType1[];
@@ -1027,7 +1027,7 @@ declare namespace LocalJSX {
         "sign-transaction-component": SignTransactionComponent;
         "sign-transactions-panel": SignTransactionsPanel;
         "simple-toast": SimpleToast;
-        "tailwind-component": TailwindComponent;
+        "styled-host": StyledHost;
         "toast-list": ToastList;
         "token-component": TokenComponent;
         "transaction-account": TransactionAccount;
@@ -1083,7 +1083,7 @@ declare module "@stencil/core" {
             "sign-transaction-component": LocalJSX.SignTransactionComponent & JSXBase.HTMLAttributes<HTMLSignTransactionComponentElement>;
             "sign-transactions-panel": LocalJSX.SignTransactionsPanel & JSXBase.HTMLAttributes<HTMLSignTransactionsPanelElement>;
             "simple-toast": LocalJSX.SimpleToast & JSXBase.HTMLAttributes<HTMLSimpleToastElement>;
-            "tailwind-component": LocalJSX.TailwindComponent & JSXBase.HTMLAttributes<HTMLTailwindComponentElement>;
+            "styled-host": LocalJSX.StyledHost & JSXBase.HTMLAttributes<HTMLStyledHostElement>;
             "toast-list": LocalJSX.ToastList & JSXBase.HTMLAttributes<HTMLToastListElement>;
             "token-component": LocalJSX.TokenComponent & JSXBase.HTMLAttributes<HTMLTokenComponentElement>;
             "transaction-account": LocalJSX.TransactionAccount & JSXBase.HTMLAttributes<HTMLTransactionAccountElement>;

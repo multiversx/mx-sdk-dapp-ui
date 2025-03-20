@@ -45,8 +45,8 @@
     "publish-verdaccio": "npm run unpublish-verdaccio && npm run build && npm publish --registry http://localhost:4873/",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
-    "build:css": "npx tailwindcss -i src/global/tailwind.css -o src/global/output.css",
     "build": "npm run build:css && stencil build",
+    "build:css": "npx tailwindcss -i src/global/tailwind.css -o www/tailwind.css",
     "start": "npm run build:css && stencil build --dev --watch --serve"
   },
   "dependencies": {
