@@ -3,6 +3,7 @@
   font-size: 0.875rem;
   padding-right: 0.5rem;
   display: flex;
+  gap: 10px;
   align-items: center;
   margin-bottom: 0.2rem;
   justify-content: space-between;
@@ -15,6 +16,9 @@
   }
 
   .icon {
+    width: 20px;
+    height: 20px;
+    
     svg {
       font-size: 0.875rem;
       color: #6c757d;

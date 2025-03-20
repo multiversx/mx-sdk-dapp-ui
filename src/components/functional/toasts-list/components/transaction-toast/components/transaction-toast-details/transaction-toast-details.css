@@ -8,7 +8,7 @@
   line-height: 140%;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   padding: 8px 0;
   margin-bottom: 8px;
   cursor: pointer;
@@ -16,9 +16,12 @@
 
 .toggle-icon {
   color: var(--mx-toast-text-secondary);
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .transaction-details-list {

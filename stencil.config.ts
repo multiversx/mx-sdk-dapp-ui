@@ -31,6 +31,7 @@ const excludeComponents = [
 ];
 export const config: Config = {
   namespace: 'sdk-dapp-core-ui',
+  globalStyle: 'src/styles.css',
   plugins: [sass(), tailwind(), tailwindHMR()],
   outputTargets: [
     reactOutputTarget({
