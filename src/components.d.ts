@@ -103,6 +103,8 @@ export namespace Components {
     interface LedgerConnectScreen {
         "connectScreenData": IConnectScreenData;
     }
+    interface MyComponent {
+    }
     interface NotificationsFeed {
         "getEventBus": () => Promise<IEventBus>;
     }
@@ -445,6 +447,12 @@ declare global {
         prototype: HTMLLedgerConnectScreenElement;
         new (): HTMLLedgerConnectScreenElement;
     };
+    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    }
+    var HTMLMyComponentElement: {
+        prototype: HTMLMyComponentElement;
+        new (): HTMLMyComponentElement;
+    };
     interface HTMLNotificationsFeedElement extends Components.NotificationsFeed, HTMLStencilElement {
     }
     var HTMLNotificationsFeedElement: {
@@ -733,6 +741,7 @@ declare global {
         "ledger-connect": HTMLLedgerConnectElement;
         "ledger-connect-panel": HTMLLedgerConnectPanelElement;
         "ledger-connect-screen": HTMLLedgerConnectScreenElement;
+        "my-component": HTMLMyComponentElement;
         "notifications-feed": HTMLNotificationsFeedElement;
         "pending-transactions-panel": HTMLPendingTransactionsPanelElement;
         "provider-button": HTMLProviderButtonElement;
@@ -842,6 +851,8 @@ declare namespace LocalJSX {
     interface LedgerConnectScreen {
         "connectScreenData"?: IConnectScreenData;
         "onConnect"?: (event: LedgerConnectScreenCustomEvent<any>) => void;
+    }
+    interface MyComponent {
     }
     interface NotificationsFeed {
     }
@@ -1009,6 +1020,7 @@ declare namespace LocalJSX {
         "ledger-connect": LedgerConnect;
         "ledger-connect-panel": LedgerConnectPanel;
         "ledger-connect-screen": LedgerConnectScreen;
+        "my-component": MyComponent;
         "notifications-feed": NotificationsFeed;
         "pending-transactions-panel": PendingTransactionsPanel;
         "provider-button": ProviderButton;
@@ -1064,6 +1076,7 @@ declare module "@stencil/core" {
             "ledger-connect": LocalJSX.LedgerConnect & JSXBase.HTMLAttributes<HTMLLedgerConnectElement>;
             "ledger-connect-panel": LocalJSX.LedgerConnectPanel & JSXBase.HTMLAttributes<HTMLLedgerConnectPanelElement>;
             "ledger-connect-screen": LocalJSX.LedgerConnectScreen & JSXBase.HTMLAttributes<HTMLLedgerConnectScreenElement>;
+            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
             "notifications-feed": LocalJSX.NotificationsFeed & JSXBase.HTMLAttributes<HTMLNotificationsFeedElement>;
             "pending-transactions-panel": LocalJSX.PendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLPendingTransactionsPanelElement>;
             "provider-button": LocalJSX.ProviderButton & JSXBase.HTMLAttributes<HTMLProviderButtonElement>;
