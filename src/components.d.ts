@@ -15,9 +15,10 @@ import { ProviderTypeEnum } from "./types/provider.types";
 import { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
-import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+import { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
+import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 import { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
@@ -30,9 +31,10 @@ export { ProviderTypeEnum } from "./types/provider.types";
 export { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
-export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+export { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
+export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 export { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export namespace Components {
@@ -185,19 +187,19 @@ export namespace Components {
         "toastDataState": IToastDataState;
         "toastId": string;
         "transactionProgressState"?: ITransactionProgressState;
-        "transactions": ITransaction[];
+        "transactions": ITransactionListItem[];
         "wrapperClass": string;
     }
     interface TransactionToastContent {
         "processedTransactionsStatus"?: string | JSX.Element;
         "toastDataState": IToastDataState;
-        "transactions": ITransaction[];
+        "transactions": ITransactionListItem[];
     }
     interface TransactionToastDetails {
         "maxShownTransactions": number;
         "processedTransactionsStatus"?: string | JSX.Element;
         "transactionClass": string;
-        "transactions"?: ITransaction[];
+        "transactions"?: ITransactionListItem[];
     }
     interface TransactionToastDetailsBody {
         "hash": string;
@@ -913,20 +915,20 @@ declare namespace LocalJSX {
         "toastDataState"?: IToastDataState;
         "toastId"?: string;
         "transactionProgressState"?: ITransactionProgressState;
-        "transactions"?: ITransaction[];
+        "transactions"?: ITransactionListItem[];
         "wrapperClass"?: string;
     }
     interface TransactionToastContent {
         "onDeleteToast"?: (event: TransactionToastContentCustomEvent<void>) => void;
         "processedTransactionsStatus"?: string | JSX.Element;
         "toastDataState"?: IToastDataState;
-        "transactions"?: ITransaction[];
+        "transactions"?: ITransactionListItem[];
     }
     interface TransactionToastDetails {
         "maxShownTransactions"?: number;
         "processedTransactionsStatus"?: string | JSX.Element;
         "transactionClass"?: string;
-        "transactions"?: ITransaction[];
+        "transactions"?: ITransactionListItem[];
     }
     interface TransactionToastDetailsBody {
         "hash"?: string;

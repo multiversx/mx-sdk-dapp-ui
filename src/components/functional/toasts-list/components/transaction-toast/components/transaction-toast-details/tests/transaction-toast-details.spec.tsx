@@ -1,6 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
 
-import { TransactionDetails } from '../transaction-toast-details';
+import { TransactionToastDetails } from '../transaction-toast-details';
 
 describe('transaction-toast-details', () => {
   const mockTransactions = [
@@ -19,7 +19,7 @@ describe('transaction-toast-details', () => {
 
   it('renders with collapsed state by default', async () => {
     const page = await newSpecPage({
-      components: [TransactionDetails],
+      components: [TransactionToastDetails],
       html: '<transaction-toast-details></transaction-toast-details>',
     });
 
@@ -42,7 +42,7 @@ describe('transaction-toast-details', () => {
 
   it('expands when clicked', async () => {
     const page = await newSpecPage({
-      components: [TransactionDetails],
+      components: [TransactionToastDetails],
       html: '<transaction-toast-details></transaction-toast-details>',
     });
 
@@ -67,7 +67,7 @@ describe('transaction-toast-details', () => {
 
   it('shows only maxShownTransactions by default when expanded', async () => {
     const page = await newSpecPage({
-      components: [TransactionDetails],
+      components: [TransactionToastDetails],
       html: '<transaction-toast-details></transaction-toast-details>',
     });
 
@@ -95,7 +95,7 @@ describe('transaction-toast-details', () => {
 
   it('shows all transactions when "Show more" is clicked', async () => {
     const page = await newSpecPage({
-      components: [TransactionDetails],
+      components: [TransactionToastDetails],
       html: '<transaction-toast-details></transaction-toast-details>',
     });
 
@@ -127,7 +127,7 @@ describe('transaction-toast-details', () => {
 
   it('resets to showing only maxShownTransactions when collapsed and re-expanded', async () => {
     const page = await newSpecPage({
-      components: [TransactionDetails],
+      components: [TransactionToastDetails],
       html: '<transaction-toast-details></transaction-toast-details>',
     });
 
@@ -175,7 +175,7 @@ describe('transaction-toast-details', () => {
 
   it('does not show "Show more" button when transactions <= maxShownTransactions', async () => {
     const page = await newSpecPage({
-      components: [TransactionDetails],
+      components: [TransactionToastDetails],
       html: '<transaction-toast-details></transaction-toast-details>',
     });
 

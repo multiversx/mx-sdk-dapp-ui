@@ -20,4 +20,7 @@ export interface ITransactionListItem {
   action: ITransactionListItemAction;
   amount?: string;
   details?: ITransactionListItemDetails;
+  hash: string;
+  status: string;
+  link: string;
 }

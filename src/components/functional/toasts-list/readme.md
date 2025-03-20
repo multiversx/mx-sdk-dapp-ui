@@ -40,6 +40,8 @@ graph TD;
   generic-toast --> simple-toast
   transaction-toast --> transaction-toast-progress
   transaction-toast --> transaction-toast-content
+  transaction-toast-content --> fa-icon
+  transaction-toast-content --> trim-text
   transaction-toast-content --> transaction-toast-details
   transaction-toast-details --> fa-icon
   transaction-toast-details --> transaction-toast-details-body

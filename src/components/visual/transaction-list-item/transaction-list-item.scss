@@ -19,9 +19,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--mx-dapp-core-bg-secondary, #f3f4f6);
   flex-shrink: 0;
   overflow: hidden;
+
+  .fa-icon .svg-inline--fa {
+    height: 2rem;
+  }
 
   .icon-image {
     width: 100%;
@@ -67,10 +70,13 @@
     color: var(--mx-dapp-core-text-secondary, #6b7280);
   }
 
-  .service-icon {
-    width: 1.25rem;
-    height: 1.25rem;
-    object-fit: contain;
+  .transaction-icon {
+    height: 1rem;
+    width: 1rem;
+
+    .fa-icon .svg-inline--fa {
+      height: 1rem;
+    }
   }
 
   .initiator {

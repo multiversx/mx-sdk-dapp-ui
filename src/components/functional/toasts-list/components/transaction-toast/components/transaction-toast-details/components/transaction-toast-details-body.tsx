@@ -1,7 +1,6 @@
 import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { faCheck, faCircleNotch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 
@@ -29,14 +28,7 @@ export class TransactionDetailsBody {
 
     return (
       <div class={this.transactionClass} key={this.hash} data-testid={DataTestIdsEnum.transactionDetailsToastBody}>
-        {iconHtml && (
-          <div
-            innerHTML={iconHtml}
-            class={classNames('icon', {
-              'fa-spin': this.status === 'pending',
-            })}
-          ></div>
-        )}
+        {iconHtml && <div innerHTML={iconHtml} class="icon"></div>}
         <span class="trim">
           <trim-text text={this.hash} />
         </span>

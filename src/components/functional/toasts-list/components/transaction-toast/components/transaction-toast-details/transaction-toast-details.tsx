@@ -1,17 +1,16 @@
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import type { JSX } from '@stencil/core';
 import { Component, h, Prop, State } from '@stencil/core';
-
-import type { ITransaction } from '../../transaction-toast.type';
+import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 
 @Component({
   tag: 'transaction-toast-details',
   styleUrl: 'transaction-toast-details.css',
   shadow: true,
 })
-export class TransactionDetails {
+export class TransactionToastDetails {
   @Prop() processedTransactionsStatus?: string | JSX.Element;
-  @Prop() transactions?: ITransaction[];
+  @Prop() transactions?: ITransactionListItem[];
   @Prop() transactionClass: string;
   @Prop() maxShownTransactions: number = 5;
   @State() isExpanded: boolean = false;

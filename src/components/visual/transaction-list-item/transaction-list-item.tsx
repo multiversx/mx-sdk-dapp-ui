@@ -40,7 +40,11 @@ export class TransactionListItem {
       <div class="transaction-info">
         <span class="transaction-target">
           {this.transaction.details.directionLabel && <span class="direction-label">{this.transaction.details.directionLabel}</span>}
-          {this.transaction.details.initiatorAsset && <img src={this.transaction.details.initiatorAsset} alt="Service icon" class="service-icon" loading="lazy" />}
+          {this.transaction.details.initiatorAsset && (
+            <div class="transaction-icon">
+              <img src={this.transaction.details.initiatorAsset} alt="Service icon" class="service-icon" loading="lazy" />
+            </div>
+          )}
           <trim-text text={this.transaction.details.initiator} class="initiator" />
         </span>
       </div>

@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property                      | Attribute                       | Description | Type                | Default     |
-| ----------------------------- | ------------------------------- | ----------- | ------------------- | ----------- |
-| `processedTransactionsStatus` | `processed-transactions-status` |             | `Element \| string` | `undefined` |
-| `toastDataState`              | --                              |             | `IToastDataState`   | `undefined` |
-| `transactions`                | --                              |             | `ITransaction[]`    | `undefined` |
+| Property                      | Attribute                       | Description | Type                     | Default     |
+| ----------------------------- | ------------------------------- | ----------- | ------------------------ | ----------- |
+| `processedTransactionsStatus` | `processed-transactions-status` |             | `Element \| string`      | `undefined` |
+| `toastDataState`              | --                              |             | `IToastDataState`        | `undefined` |
+| `transactions`                | --                              |             | `ITransactionListItem[]` | `undefined` |
 
 
 ## Events
@@ -29,11 +29,15 @@
 
 ### Depends on
 
+- [fa-icon](../../../../../../visual/fa-icon)
+- [trim-text](../../../../../../visual/trim)
 - [transaction-toast-details](../transaction-toast-details)
 
 ### Graph
 ```mermaid
 graph TD;
+  transaction-toast-content --> fa-icon
+  transaction-toast-content --> trim-text
   transaction-toast-content --> transaction-toast-details
   transaction-toast-details --> fa-icon
   transaction-toast-details --> transaction-toast-details-body

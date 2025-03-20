@@ -25,6 +25,10 @@
       "require": "./dist/loader/index.cjs",
       "types": "./dist/loader/index.d.ts"
     },
+    "./sdk-dapp-core-ui.css": {
+      "import": "./www/build/sdk-dapp-core-ui.css",
+      "require": "./www/build/sdk-dapp-core-ui.css"
+    },
     "./react": {
       "import": "./dist/react/components.ts",
       "require": "./dist/react/components.ts"

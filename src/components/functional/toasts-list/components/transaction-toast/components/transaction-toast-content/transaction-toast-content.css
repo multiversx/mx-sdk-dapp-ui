@@ -1,32 +1,41 @@
 .content {
   position: relative;
-  padding: 12px 16px;
+  padding: var(--mx-toast-padding);
   padding-bottom: 16px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--mx-toast-gap);
   width: var(--mx-toast-width);
   max-width: var(--mx-toast-max-width);
-  border-radius: 12px;
-  border: 0.5px solid var(--Toasts-mx-toast-border, #C7C7C7);
-  background: var(--Toasts-mx-toast-bg, rgba(169, 169, 169, 0.40));
-  backdrop-filter: blur(38px);
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: var(--mx-toast-border-radius);
+  border: 0.5px solid var(--mx-toast-border);
+  background: var(--mx-toast-bg);
+  backdrop-filter: blur(var(--mx-toast-backdrop-blur));
+  box-shadow: var(--mx-toast-shadow);
 }
 
-.content-header {
+.transaction-item {
   display: flex;
   align-items: center;
   gap: 12px;
-  width: 100%;
+  border-radius: var(--mx-toast-border-radius);
+  
+  position: relative;
 }
 
-.content-icon {
-  height: 32px;
-  flex-shrink: 0;
-  display: flex;
+.transaction-icon {
   align-items: center;
+  border-radius: 50%;
+  display: flex;
+  flex-shrink: 0;
+  height: 3rem;
   justify-content: center;
+  overflow: hidden;
+  width: 3rem;
+
+  .fa-icon .svg-inline--fa {
+    height: 2rem;
+  }
 }
 
 .icon-image {
@@ -35,44 +44,73 @@
   object-fit: contain;
 }
 
-.content-icon svg {
-  width: 20px;
-  height: 20px;
-}
-
-.content-icon .icon-image {
-  width: 32px;
-  height: 32px;
-  object-fit: cover;
-  border-radius: 16px;
-}
-
-.content-icon.success {
-  color: var(--mx-toast-success-icon);
-  background: var(--mx-toast-success-bg, rgba(52, 199, 123, 0.2));
-}
-
-.content-icon.pending {
-  color: var(--mx-toast-pending-icon);
-  background: var(--mx-toast-pending-bg, rgba(255, 176, 0, 0.2));
-}
-
-.content-icon.error {
-  color: var(--mx-toast-error-icon);
-  background: var(--mx-toast-error-bg, rgba(255, 71, 71, 0.2));
-}
-
-.content-heading-title {
+.icon-text {
+  font-size: 14px;
   color: var(--mx-toast-text-primary);
+}
+
+.transaction-details {
+  flex: 1;
+  min-width: 0;
+}
+
+.transaction-title {
+  margin: 0;
   font-size: 14px;
   font-weight: 700;
   line-height: 140%;
-  margin: 0;
-  flex-grow: 1;
-  /* Ensure text truncates with ellipsis if too long */
-  overflow: hidden;
+  color: var(--mx-toast-text-primary);
+}
+
+.transaction-info {
+  margin-top: 4px;
+}
+
+.transaction-target {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--mx-toast-text-secondary);
+
+  .transaction-icon {
+    height: 1rem;
+    width: 1rem;
+
+    .fa-icon .svg-inline--fa {
+      height: 1rem;
+    }
+  }
+}
+
+.direction-label {
+  color: var(--mx-toast-text-secondary);
+}
+
+.service-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.initiator {
+  color: var(--mx-toast-text-secondary);
   text-overflow: ellipsis;
+  overflow: hidden;
   white-space: nowrap;
+}
+
+.transaction-amount {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.amount-negative {
+  color: var(--mx-toast-error-icon);
+}
+
+.amount-positive {
+  color: var(--mx-toast-success-icon);
 }
 
 .icon-close {
@@ -86,16 +124,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.2s;
 }
 
 .icon-close:hover {
-  opacity: 0.8;
+  opacity: 1;
 }
 
-/* Additional styles for secondary text */
-.content-details {
-  color: var(--Toasts-mx-toast-text-secondary, #6B7280);
-  font-size: 12px;
-  line-height: 16px;
-  margin-left: 44px; /* 32px icon width + 12px gap */
+/* Status icon styles */
+.content-icon.success {
+  color: var(--mx-toast-success-icon);
+  background: var(--mx-toast-success-bg);
+}
+
+.content-icon.pending {
+  color: var(--mx-toast-pending-icon);
+  background: var(--mx-toast-pending-bg);
+}
+
+.content-icon.error {
+  color: var(--mx-toast-error-icon);
+  background: var(--mx-toast-error-bg);
 }

@@ -19,6 +19,9 @@ describe('transaction-list-item', () => {
   };
 
   const baseTransaction: ITransactionListItem = {
+    hash: 'fe0eee477f7bcedf76bbcajklsd',
+    status: 'success',
+    link: 'https://explorer.multiversx.com/transactions/fe0eee477f7bcedf76bbcajklsd',
     asset: {
       imageUrl: '/assets/icons/transaction.svg',
       text: 'Test Asset',
@@ -175,5 +178,19 @@ describe('transaction-list-item', () => {
     const page = await createPage(transaction);
     const directionLabel = page.root.shadowRoot.querySelector('.direction-label');
     expect(directionLabel).toBeFalsy();
+  });
+
+  it('renders transaction hash and status', async () => {
+    const page = await createPage(baseTransaction);
+
+    const hash = page.root.shadowRoot.querySelector('.transaction-hash');
+    expect(hash).toBeTruthy();
+    expect(hash.getAttribute('href')).toBe(baseTransaction.link);
+    expect(hash.textContent.trim()).toBe(baseTransaction.hash);
+
+    const status = page.root.shadowRoot.querySelector('.status');
+    expect(status).toBeTruthy();
+    expect(status).toHaveClass(`status-${baseTransaction.status.toLowerCase()}`);
+    expect(status.textContent.trim()).toBe(baseTransaction.status);
   });
 });

@@ -1,7 +1,8 @@
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
+import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 
-import type { IToastDataState, ITransaction, ITransactionProgressState } from './transaction-toast.type';
+import type { IToastDataState, ITransactionProgressState } from './transaction-toast.type';
 
 @Component({
   tag: 'transaction-toast',
@@ -12,7 +13,7 @@ export class TransactionToast {
   @Prop() toastId: string = '';
   @Prop() wrapperClass: string;
   @Prop() processedTransactionsStatus: string | JSX.Element = '';
-  @Prop() transactions: ITransaction[] = [];
+  @Prop() transactions: ITransactionListItem[] = [];
   @Prop() toastDataState: IToastDataState;
   @Prop() transactionProgressState?: ITransactionProgressState;
   @Event() deleteToast: EventEmitter<void>;

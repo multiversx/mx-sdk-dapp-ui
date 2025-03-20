@@ -13,7 +13,7 @@
 | `toastDataState`              | --                              |             | `IToastDataState`           | `undefined` |
 | `toastId`                     | `toast-id`                      |             | `string`                    | `''`        |
 | `transactionProgressState`    | --                              |             | `ITransactionProgressState` | `undefined` |
-| `transactions`                | --                              |             | `ITransaction[]`            | `[]`        |
+| `transactions`                | --                              |             | `ITransactionListItem[]`    | `[]`        |
 | `wrapperClass`                | `wrapper-class`                 |             | `string`                    | `undefined` |
 
 
@@ -41,6 +41,8 @@
 graph TD;
   transaction-toast --> transaction-toast-progress
   transaction-toast --> transaction-toast-content
+  transaction-toast-content --> fa-icon
+  transaction-toast-content --> trim-text
   transaction-toast-content --> transaction-toast-details
   transaction-toast-details --> fa-icon
   transaction-toast-details --> transaction-toast-details-body

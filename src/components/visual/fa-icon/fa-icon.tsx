@@ -7,7 +7,7 @@ import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
 @Component({
   tag: 'fa-icon',
   styleUrl: 'fa-icon.css',
-  shadow: true,
+  shadow: false,
 })
 export class FaIcon {
   @Prop() class?: string;
