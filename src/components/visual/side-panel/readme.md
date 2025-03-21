@@ -32,14 +32,9 @@
  - [unlock-panel](../unlock-panel)
  - [wallet-connect-panel](../../functional/wallet-connect-components)
 
-### Depends on
-
-- [styled-host](../styled-host)
-
 ### Graph
 ```mermaid
 graph TD;
-  side-panel --> styled-host
   ledger-connect-panel --> side-panel
   notifications-feed --> side-panel
   pending-transactions-panel --> side-panel

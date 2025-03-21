@@ -35,7 +35,6 @@ graph TD;
   unlock-panel --> side-panel
   unlock-panel --> unlock-header
   unlock-panel --> provider-button
-  side-panel --> styled-host
   unlock-header --> fa-icon
   provider-button --> unlock-button
   style unlock-panel fill:#f9f,stroke:#333,stroke-width:4px

@@ -2,6 +2,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State } from '@stencil/core';
 import { ProviderTypeEnum } from 'types/provider.types';
+import { StyledHost } from 'utils/StyledHost';
 
 import { SidePanelSideEnum } from '../side-panel/side-panel.types';
 
@@ -67,23 +68,25 @@ export class UnlockPanel {
 
   render() {
     return (
-      <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} onClose={this.handleClose.bind(this)} panelClassName="unlock-panel">
-        <unlock-header
-          text={this.isLoggingIn ? `${this.selectedMethod} connect` : 'Connect your wallet'}
-          backIcon={this.isLoggingIn ? faArrowLeft : null}
-          onBack={this.resetLoginState.bind(this)}
-          onClose={this.handleClose.bind(this)}
-        />
-        <div id="anchor" ref={element => this.observeContainer(element)}></div>
-        {!this.isLoggingIn && (
-          <div class="body">
-            {this.allowedProviders.map(method => (
-              <provider-button type={method} onClick={this.handleLogin.bind(this, method)}></provider-button>
-            ))}
-            <slot></slot>
-          </div>
-        )}
-      </side-panel>
+      <StyledHost>
+        <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} onClose={this.handleClose.bind(this)} panelClassName="unlock-panel">
+          <unlock-header
+            text={this.isLoggingIn ? `${this.selectedMethod} connect` : 'Connect your wallet'}
+            backIcon={this.isLoggingIn ? faArrowLeft : null}
+            onBack={this.resetLoginState.bind(this)}
+            onClose={this.handleClose.bind(this)}
+          />
+          <div id="anchor" ref={element => this.observeContainer(element)}></div>
+          {!this.isLoggingIn && (
+            <div class="body bg-indigo-400">
+              {this.allowedProviders.map(method => (
+                <provider-button type={method} onClick={this.handleLogin.bind(this, method)}></provider-button>
+              ))}
+              <slot></slot>
+            </div>
+          )}
+        </side-panel>
+      </StyledHost>
     );
   }
 }

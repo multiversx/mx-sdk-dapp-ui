@@ -1,7 +1,6 @@
-@tailwind base;
-@tailwind utilities;
-@tailwind components;
+@import 'tailwindcss' prefix(sdk);
 
-.test {
-  background-color: red;
+@theme {
+  --color-primary: #1e40af;
+  --color-secondary: #9333ea;
 }

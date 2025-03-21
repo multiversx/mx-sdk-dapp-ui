@@ -1,7 +1,6 @@
 import { Config } from '@stencil/core';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
-import { sass } from '@stencil/sass';
 
 const excludeComponents = [
   'sign-transactions-panel',
@@ -31,9 +30,7 @@ const excludeComponents = [
 ];
 
 export const config: Config = {
-  globalStyle: 'src/global/tailwind.css',
   namespace: 'sdk-dapp-core-ui',
-  plugins: [sass()],
   outputTargets: [
     reactOutputTarget({
       outDir: './dist/react',
@@ -56,7 +53,6 @@ export const config: Config = {
     },
     {
       type: 'www',
-      copy: [{ src: '../www/tailwind.css', dest: 'tailwind.css' }],
       serviceWorker: null,
     },
   ],
