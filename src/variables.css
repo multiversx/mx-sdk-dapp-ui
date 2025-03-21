@@ -16,6 +16,7 @@
     --mx-toast-tx-bg: #FFF;
     --mx-toast-tx-border: #FFF;
     --mx-toast-backdrop-blur: 38px;
+    --mx-toast-copy-button-color: var(--mx-white);
   
     /* Toast Status Colors */
     --mx-toast-success-bg: #1D6030;

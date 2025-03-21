@@ -49,8 +49,8 @@ graph TD;
   transaction-toast-details --> fa-icon
   transaction-toast-details --> transaction-toast-details-body
   transaction-toast-details-body --> trim-text
-  transaction-toast-details-body --> copy-button
   transaction-toast-details-body --> explorer-link
+  transaction-toast-details-body --> copy-button
   copy-button --> fa-icon
   notifications-feed --> transaction-toast
   toast-list --> transaction-toast

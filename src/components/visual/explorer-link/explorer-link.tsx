@@ -6,7 +6,7 @@ import classNames from 'classnames';
 @Component({
   tag: 'explorer-link',
   styleUrl: 'explorer-link.css',
-  shadow: true,
+  shadow: false,
 })
 export class ExplorerLink {
   @Prop() class?: string;
@@ -24,7 +24,7 @@ export class ExplorerLink {
 
   render() {
     return (
-      <a data-testid={this.dataTestId} href={this.link} target="_blank" class={classNames(this.class, 'explorer-link')} rel="noreferrer">
+      <a data-testid={this.dataTestId} href={this.link} target="_blank" class={classNames('explorer-link', this.class)} rel="noreferrer">
         {this.hasSlotContent ? <slot name="content"></slot> : this.text ?? <fa-icon icon={this.icon ?? faArrowUpRightFromSquare}></fa-icon>}
       </a>
     );

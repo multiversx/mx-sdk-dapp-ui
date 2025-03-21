@@ -44,8 +44,8 @@ export class TransactionDetailsBody {
         <div class="transaction-details-list-item-hash-value">
           <trim-text text={this.hash} />
         </div>
-        <copy-button text={this.hash} />
-        <explorer-link link={this.link} />
+        <explorer-link class="transaction-details-list-item-explorer-link" link={this.link} />
+        <copy-button class="transaction-details-list-item-copy-button" text={this.hash} />
       </div>
     );
   }

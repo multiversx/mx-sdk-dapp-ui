@@ -1,6 +1,6 @@
 .transaction-details-list-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 12px;
   align-self: stretch;
 }
@@ -61,5 +61,21 @@
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  max-width: 160px;
+  max-width: 172px;
+}
+
+.transaction-details-list-item-copy-button  {
+  .svg-inline--fa {
+    color: var(--mx-toast-copy-button-color);
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.transaction-details-list-item-explorer-link {
+  .svg-inline--fa {
+    color: var(--mx-toast-text-primary);
+    width: 14px !important;
+    height: 14px !important;
+  }
 }

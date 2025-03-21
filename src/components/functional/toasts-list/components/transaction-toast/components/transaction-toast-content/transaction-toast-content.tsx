@@ -1,4 +1,4 @@
-import { faSquareArrowUpRight, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import { DefaultIcon } from 'components/visual/default-icon/default-icon';
@@ -84,7 +84,7 @@ export class TransactionToastContent {
             <button onClick={this.handleDeleteToast.bind(this)} type="button" class="transaction-toast-action-button" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>
           )}
 
-          {!hasCloseButton && showExplorerLinkButton && <explorer-link link={transaction.link} class="transaction-toast-action-button" icon={faSquareArrowUpRight}></explorer-link>}
+          {!hasCloseButton && showExplorerLinkButton && <explorer-link link={transaction.link} class="transaction-toast-action-button"></explorer-link>}
         </div>
 
         {!showExplorerLinkButton && <transaction-toast-details transactions={this.transactions} processedTransactionsStatus={this.processedTransactionsStatus} />}

@@ -48,8 +48,8 @@ graph TD;
   transaction-toast-details --> fa-icon
   transaction-toast-details --> transaction-toast-details-body
   transaction-toast-details-body --> trim-text
-  transaction-toast-details-body --> copy-button
   transaction-toast-details-body --> explorer-link
+  transaction-toast-details-body --> copy-button
   copy-button --> fa-icon
   style toast-list fill:#f9f,stroke:#333,stroke-width:4px
 ```

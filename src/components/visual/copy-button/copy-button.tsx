@@ -7,7 +7,7 @@ import { copyToClipboard } from 'utils/copyToClipboard';
 @Component({
   tag: 'copy-button',
   styleUrl: 'copy-button.css',
-  shadow: true,
+  shadow: false,
 })
 export class CopyButton {
   @Prop() class?: string;
@@ -48,7 +48,7 @@ export class CopyButton {
     const successIcon = this.successIcon ?? faCheck;
 
     return (
-      <a href="/#" class={classNames(this.class, 'copy-button')} onClick={this.handleClick}>
+      <a href="/#" class={classNames('copy-button', this.class)} onClick={this.handleClick}>
         <fa-icon icon={this.isSuccess ? successIcon : copyIcon}></fa-icon>
       </a>
     );

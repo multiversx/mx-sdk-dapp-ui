@@ -25,17 +25,17 @@
 ### Depends on
 
 - [trim-text](../../../../../../../visual/trim)
-- [copy-button](../../../../../../../visual/copy-button)
 - [explorer-link](../../../../../../../visual/explorer-link)
+- [copy-button](../../../../../../../visual/copy-button)
 
 ### Graph
 ```mermaid
 graph TD;
   transaction-toast-details-body --> trim-text
-  transaction-toast-details-body --> copy-button
   transaction-toast-details-body --> explorer-link
-  copy-button --> fa-icon
+  transaction-toast-details-body --> copy-button
   explorer-link --> fa-icon
+  copy-button --> fa-icon
   transaction-toast-details --> transaction-toast-details-body
   style transaction-toast-details-body fill:#f9f,stroke:#333,stroke-width:4px
 ```
