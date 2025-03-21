@@ -1,4 +1,4 @@
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faSquareArrowUpRight, faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import { DefaultIcon } from 'components/visual/default-icon/default-icon';
@@ -52,16 +52,12 @@ export class TransactionToastContent {
     }
 
     return (
-      <div class="transaction-info">
-        <span class="transaction-target">
-          {transaction.details.directionLabel && <span class="direction-label">{transaction.details.directionLabel}</span>}
-          {transaction.details.initiatorAsset && (
-            <div class="transaction-icon">
-              <img src={transaction.details.initiatorAsset} alt="Service icon" class="service-icon" loading="lazy" />
-            </div>
-          )}
-          <trim-text text={transaction.details.initiator} class="initiator" />
-        </span>
+      <div class="transaction-toast-details-info">
+        {transaction.details.directionLabel && <span class="transaction-toast-details-info-text">{transaction.details.directionLabel}</span>}
+        <div class="transaction-toast-details-info-icon">
+          {transaction.details.initiatorAsset ? <img src={transaction.details.initiatorAsset} alt="Service icon" loading="lazy" /> : <DefaultIcon />}
+        </div>
+        <trim-text text={transaction.details.initiator} class="transaction-toast-details-info-text" />
       </div>
     );
   }
@@ -69,35 +65,29 @@ export class TransactionToastContent {
   render() {
     const { title, hasCloseButton } = this.toastDataState;
     const transaction = this.transactions[0];
+    const showExplorerLinkButton = transaction?.link && this.transactions.length === 1;
 
     return (
-      <div class="content" data-testid={DataTestIdsEnum.transactionToastContent}>
-        <div class="transaction-item">
-          <div class="transaction-icon">{this.renderPrimaryIcon()}</div>
+      <div class="transaction-toast-content-wrapper" data-testid={DataTestIdsEnum.transactionToastContent}>
+        <div class="transaction-toast-content">
+          <div class="transaction-toast-icon">{this.renderPrimaryIcon()}</div>
 
-          <div class="transaction-details">
-            <h4 class="transaction-title">{title || transaction?.action?.name}</h4>
+          <div class="transaction-toast-details">
+            <div class="transaction-toast-details-header">
+              <h4 class="transaction-toast-title">{title || transaction?.action?.name}</h4>
+              {transaction?.amount && <div class="transaction-toast-amount">{transaction.amount}</div>}
+            </div>
             {this.renderDetails()}
           </div>
 
-          {transaction?.amount && (
-            <div class="transaction-right">
-              <div
-                class={{
-                  'transaction-amount': true,
-                  'amount-negative': transaction.amount.startsWith('-'),
-                  'amount-positive': !transaction.amount.startsWith('-'),
-                }}
-              >
-                {transaction.amount}
-              </div>
-            </div>
+          {hasCloseButton && (
+            <button onClick={this.handleDeleteToast.bind(this)} type="button" class="transaction-toast-action-button" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>
           )}
 
-          {hasCloseButton && <button onClick={this.handleDeleteToast.bind(this)} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>}
+          {!hasCloseButton && showExplorerLinkButton && <explorer-link link={transaction.link} class="transaction-toast-action-button" icon={faSquareArrowUpRight}></explorer-link>}
         </div>
 
-        <transaction-toast-details transactions={this.transactions} processedTransactionsStatus={this.processedTransactionsStatus} />
+        {!showExplorerLinkButton && <transaction-toast-details transactions={this.transactions} processedTransactionsStatus={this.processedTransactionsStatus} />}
       </div>
     );
   }

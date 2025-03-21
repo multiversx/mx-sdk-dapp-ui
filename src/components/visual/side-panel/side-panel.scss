@@ -14,8 +14,8 @@
   padding: 16px;
   pointer-events: none;
   transition:
-    opacity var(--mx-side-panel-transition),
-    visibility var(--mx-side-panel-transition);
+    opacity var(--mx-transition),
+    visibility var(--mx-transition);
   visibility: hidden;
   z-index: 9999;
 
@@ -59,7 +59,7 @@
   background: var(--mx-side-panel-bg);
   color: var(--mx-side-panel-text);
   box-shadow: var(--mx-side-panel-shadow);
-  transition: all var(--mx-side-panel-transition);
+  transition: all var(--mx-transition);
   overflow: hidden;
   display: flex;
   flex-direction: column;

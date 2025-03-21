@@ -1,58 +1,77 @@
-/* Only keeping custom styles that can't be represented with Tailwind */
-.status-title {
-  color: var(--Toasts-mx-toast-text-primary, #262626);
+.transaction-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  align-self: stretch;
+}
+
+.transaction-details-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  align-self: stretch;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.transaction-details-status-icon {
+  margin: 0 3px;
+  transition: transform var(--mx-transition);
+
+  .svg-inline--fa {
+    height: 14px;
+  }
+}
+
+.transaction-details-status-icon.rotate-up {
+  transform: rotate(180deg);
+}
+
+.transaction-details-status-text {
+  color: var(--mx-toast-text-primary);
   font-family: var(--font-family-roobert);
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: 140%;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 0;
-  margin-bottom: 8px;
-  cursor: pointer;
-}
-
-.toggle-icon {
-  color: var(--mx-toast-text-secondary);
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  line-height: 140%; /* 19.6px */
 }
 
 .transaction-details-list {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 4px;
+  align-self: stretch;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--mx-transition);
+}
+
+.transaction-details-list.expanded {
+  max-height: 500px;
 }
 
 .view-all-container {
+  width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 12px;
-  border-top: 1px solid var(--mx-toast-border-color, rgba(0, 0, 0, 0.1));
-  padding-top: 8px;
+  margin-top: 8px;
 }
 
 .show-more-button {
-  color: var(--mx-dapp-core-color-primary, theme('colors.blue.600'));
-  font-size: 14px;
-  line-height: 20px;
   background: none;
   border: none;
-  padding: 0;
+  color: var(--mx-toast-text-primary);
+  font-family: var(--font-family-roobert);
+  font-size: 12px;
+  font-weight: 500;
   cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color var(--mx-transition);
 }
 
 .show-more-button:hover {
-  text-decoration: underline;
-}
-
-/* Container for all transaction details */
-.transaction-details-container {
-  padding: 0;
+  background-color: rgba(0, 0, 0, 0.05);
 }

@@ -43,14 +43,15 @@ graph TD;
   transaction-toast --> transaction-toast-content
   transaction-toast-content --> fa-icon
   transaction-toast-content --> trim-text
+  transaction-toast-content --> explorer-link
   transaction-toast-content --> transaction-toast-details
+  explorer-link --> fa-icon
   transaction-toast-details --> fa-icon
   transaction-toast-details --> transaction-toast-details-body
   transaction-toast-details-body --> trim-text
   transaction-toast-details-body --> copy-button
   transaction-toast-details-body --> explorer-link
   copy-button --> fa-icon
-  explorer-link --> fa-icon
   notifications-feed --> transaction-toast
   toast-list --> transaction-toast
   style transaction-toast fill:#f9f,stroke:#333,stroke-width:4px

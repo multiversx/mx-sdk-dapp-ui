@@ -35,15 +35,6 @@
   display: block;
 }
 
-.transaction-toast-title {
-  color: var(--Toasts-mx-toast-text-primary, #262626);
-  font-family: var(--font-family-roobert);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 140%;
-}
-
 .transaction-toast-bar-wrapper {
   position: absolute;
   left: 4px;
@@ -52,7 +43,7 @@
   display: flex;
   overflow: hidden;
   pointer-events: none;
-  background: var(--Toasts-mx-toast-border, #C7C7C7);
+  background: var(--mx-toast-border, #C7C7C7);
   border-radius: 20px;
   height: 4px;
   opacity: 1;
@@ -79,6 +70,7 @@
 .transaction-toast-bar.infinite {
   width: 20%;
   display: flex;
+  background: var(--mx-accent, #000);
 }
 
 .transaction-toast-bar.infinite .transaction-toast-bar-line {
@@ -89,10 +81,6 @@
   border-radius: 20px;
   animation: progressiveInfiniteWidthExpansion var(--animation-duration, 60s) cubic-bezier(0.1, 0.95, 0.25, 0.75) forwards;
   animation-delay: var(--animation-delay, 6s);
-}
-
-.transaction-toast-bar.infinite .transaction-toast-bar-line:before {
-  display: none;
 }
 
 .transaction-toast-bar.fill {

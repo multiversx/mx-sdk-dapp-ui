@@ -7,12 +7,13 @@
 
 ## Properties
 
-| Property           | Attribute           | Description | Type     | Default                   |
-| ------------------ | ------------------- | ----------- | -------- | ------------------------- |
-| `hash`             | `hash`              |             | `string` | `undefined`               |
-| `link`             | `link`              |             | `string` | `undefined`               |
-| `status`           | `status`            |             | `string` | `undefined`               |
-| `transactionClass` | `transaction-class` |             | `string` | `'transaction-container'` |
+| Property           | Attribute           | Description | Type     | Default                           |
+| ------------------ | ------------------- | ----------- | -------- | --------------------------------- |
+| `hash`             | `hash`              |             | `string` | `undefined`                       |
+| `index`            | `index`             |             | `string` | `undefined`                       |
+| `link`             | `link`              |             | `string` | `undefined`                       |
+| `status`           | `status`            |             | `string` | `undefined`                       |
+| `transactionClass` | `transaction-class` |             | `string` | `'transaction-details-list-item'` |
 
 
 ## Dependencies

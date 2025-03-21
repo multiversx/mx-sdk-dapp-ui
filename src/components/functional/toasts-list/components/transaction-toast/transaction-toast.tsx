@@ -6,8 +6,6 @@ import type { IToastDataState, ITransactionProgressState } from './transaction-t
 
 @Component({
   tag: 'transaction-toast',
-  styleUrl: 'transaction-toast.css',
-  shadow: true,
 })
 export class TransactionToast {
   @Prop() toastId: string = '';

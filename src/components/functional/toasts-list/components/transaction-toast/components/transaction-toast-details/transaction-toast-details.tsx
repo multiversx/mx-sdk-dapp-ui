@@ -1,4 +1,4 @@
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import type { JSX } from '@stencil/core';
 import { Component, h, Prop, State } from '@stencil/core';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
@@ -39,26 +39,36 @@ export class TransactionToastDetails {
 
     return (
       <div class="transaction-details-container">
-        <div class="status-title" onClick={this.toggleExpand.bind(this)}>
-          <fa-icon icon={this.isExpanded ? faChevronUp : faChevronDown} class="toggle-icon"></fa-icon>
-          {this.processedTransactionsStatus}
+        <div class="transaction-details-status" onClick={this.toggleExpand.bind(this)}>
+          <div
+            class={{
+              'transaction-details-status-icon': true,
+              'rotate-up': this.isExpanded,
+            }}
+          >
+            <fa-icon icon={faChevronDown}></fa-icon>
+          </div>
+          <span class="transaction-details-status-text">{this.processedTransactionsStatus}</span>
         </div>
 
-        {this.isExpanded && (
-          <div class="transaction-details-list">
-            {visibleTransactions.map(({ hash, status, link }) => (
-              <transaction-toast-details-body transactionClass={this.transactionClass} hash={hash} status={status} link={link} key={hash} />
-            ))}
+        <div
+          class={{
+            'transaction-details-list': true,
+            'expanded': this.isExpanded,
+          }}
+        >
+          {visibleTransactions.map(({ hash, status, link }, index) => (
+            <transaction-toast-details-body transactionClass={this.transactionClass} hash={hash} status={status} link={link} index={`#${index + 1}`} key={hash} />
+          ))}
 
-            {hasMoreTransactionsToShow && !this.showAllTransactions && (
-              <div class="view-all-container">
-                <button type="button" class="show-more-button" onClick={this.showMoreTransactions.bind(this)}>
-                  Show {hiddenTransactionsCount} more
-                </button>
-              </div>
-            )}
-          </div>
-        )}
+          {hasMoreTransactionsToShow && !this.showAllTransactions && (
+            <div class="view-all-container">
+              <button type="button" class="show-more-button" onClick={this.showMoreTransactions.bind(this)}>
+                Show {hiddenTransactionsCount} more
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     );
   }

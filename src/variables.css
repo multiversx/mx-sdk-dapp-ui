@@ -4,31 +4,26 @@
     --mx-white: #FFFFFF;
     --mx-black: #000000;
 
-    --mx-toast-text-primary: #262626;
-    --mx-toast-text-secondary: #868686;
+    /* Text Colors */
+    --mx-text-primary: #262626;
+    --mx-text-secondary: #868686;
   
     /* Toast Colors */
-    --mx-toast-text-primary: var(--mx-toast-text-primary);
-    --mx-toast-text-secondary: var(--mx-toast-text-secondary);
+    --mx-toast-text-primary: var(--mx-text-primary);
+    --mx-toast-text-secondary: var(--mx-text-secondary);
     --mx-toast-border: #C7C7C7;
     --mx-toast-bg: rgba(169, 169, 169, 0.40);
+    --mx-toast-tx-bg: #FFF;
+    --mx-toast-tx-border: #FFF;
     --mx-toast-backdrop-blur: 38px;
   
     /* Toast Status Colors */
-    --mx-toast-success-bg: rgba(52, 199, 123, 0.2);
-    --mx-toast-success-icon: #34C77B;
-    --mx-toast-pending-bg: rgba(255, 176, 0, 0.2);
-    --mx-toast-pending-icon: #FFB000;
+    --mx-toast-success-bg: #1D6030;
+    --mx-toast-success-icon: #4ADE80;
+    --mx-toast-pending-bg: ##453412;
+    --mx-toast-pending-icon: ##FACC15;
     --mx-toast-error-bg: rgba(255, 71, 71, 0.2);
     --mx-toast-error-icon: #FF4747;
-  
-    /* Toast Dimensions */
-    --mx-toast-width: 315px;
-    --mx-toast-max-width: 90vw;
-    --mx-toast-border-radius: 12px;
-    --mx-toast-padding: 12px 16px;
-    --mx-toast-gap: 8px;
-    --mx-toast-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
   
     /* Side Panel Variables */
     --mx-side-panel-bg: var(--mx-white);
@@ -38,11 +33,16 @@
     --mx-side-panel-max-width: 480px;
     --mx-side-panel-border-radius: 24px;
     --mx-side-panel-mobile-height: 90%;
-    --mx-side-panel-transition: 0.3s ease-in-out;
   
     /* Font Settings */
     --font-family-roobert: "Roobert PRO", system-ui, -apple-system, sans-serif;
   
     /* Dapp Core Colors - for backward compatibility */
     --mx-dapp-core-color-primary: #3B82F6;
+
+    /* Explorer Link Colors */
+    --mx-explorer-link-color: var(--mx-text-primary);
+
+    /* Transition */
+    --mx-transition: 0.3s ease-in-out;
   } 

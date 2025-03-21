@@ -1,8 +1,0 @@
-.transaction-toast {
-  @apply relative w-full overflow-hidden rounded-lg;
-  width: var(--mx-toast-width);
-  max-width: var(--mx-toast-max-width);
-  border-radius: var(--mx-toast-border-radius);
-  background: var(--mx-toast-bg);
-  border: 1px solid var(--mx-toast-border);
-} 
