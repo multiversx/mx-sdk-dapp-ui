@@ -1,6 +1,7 @@
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import type { JSX } from '@stencil/core';
 import { Component, h, Prop, State } from '@stencil/core';
+import classNames from 'classnames';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 
 @Component({
@@ -40,14 +41,7 @@ export class TransactionToastDetails {
     return (
       <div class="transaction-details-container">
         <div class="transaction-details-status" onClick={this.toggleExpand.bind(this)}>
-          <div
-            class={{
-              'transaction-details-status-icon': true,
-              'rotate-up': this.isExpanded,
-            }}
-          >
-            <fa-icon icon={faChevronDown}></fa-icon>
-          </div>
+          <fa-icon icon={faChevronDown} class={classNames('transaction-details-status-icon', { 'rotate-up': this.isExpanded })}></fa-icon>
           <span class="transaction-details-status-text">{this.processedTransactionsStatus}</span>
         </div>
 

@@ -7,12 +7,13 @@
 
 ## Properties
 
-| Property      | Attribute | Description | Type             | Default     |
-| ------------- | --------- | ----------- | ---------------- | ----------- |
-| `class`       | `class`   |             | `string`         | `undefined` |
-| `copyIcon`    | --        |             | `IconDefinition` | `undefined` |
-| `successIcon` | --        |             | `IconDefinition` | `undefined` |
-| `text`        | `text`    |             | `string`         | `undefined` |
+| Property      | Attribute    | Description | Type             | Default              |
+| ------------- | ------------ | ----------- | ---------------- | -------------------- |
+| `class`       | `class`      |             | `string`         | `'copy-button'`      |
+| `copyIcon`    | --           |             | `IconDefinition` | `undefined`          |
+| `iconClass`   | `icon-class` |             | `string`         | `'copy-button-icon'` |
+| `successIcon` | --           |             | `IconDefinition` | `undefined`          |
+| `text`        | `text`       |             | `string`         | `undefined`          |
 
 
 ## Dependencies

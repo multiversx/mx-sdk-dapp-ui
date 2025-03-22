@@ -7,13 +7,14 @@
 
 ## Properties
 
-| Property     | Attribute      | Description | Type             | Default     |
-| ------------ | -------------- | ----------- | ---------------- | ----------- |
-| `class`      | `class`        |             | `string`         | `undefined` |
-| `dataTestId` | `data-test-id` |             | `string`         | `undefined` |
-| `icon`       | --             |             | `IconDefinition` | `undefined` |
-| `link`       | `link`         |             | `string`         | `undefined` |
-| `text`       | `text`         |             | `string`         | `undefined` |
+| Property     | Attribute      | Description | Type             | Default                |
+| ------------ | -------------- | ----------- | ---------------- | ---------------------- |
+| `class`      | `class`        |             | `string`         | `'explorer-link'`      |
+| `dataTestId` | `data-test-id` |             | `string`         | `undefined`            |
+| `icon`       | --             |             | `IconDefinition` | `undefined`            |
+| `iconClass`  | `icon-class`   |             | `string`         | `'explorer-link-icon'` |
+| `link`       | `link`         |             | `string`         | `undefined`            |
+| `text`       | `text`         |             | `string`         | `undefined`            |
 
 
 ## Dependencies

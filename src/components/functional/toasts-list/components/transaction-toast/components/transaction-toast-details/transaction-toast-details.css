@@ -16,16 +16,23 @@
 }
 
 .transaction-details-status-icon {
-  margin: 0 3px;
+  color: var(--mx-toast-text-primary);
   transition: transform var(--mx-transition);
+  align-items: center;
+  display: flex;
+  height: 20px;
+  width: 20px;
+  justify-content: center;
 
   .svg-inline--fa {
     height: 14px;
+    width: 14px;
+    color: var(--mx-toast-text-primary);
   }
 }
 
 .transaction-details-status-icon.rotate-up {
-  transform: rotate(180deg);
+  transform: rotate(90deg);
 }
 
 .transaction-details-status-text {

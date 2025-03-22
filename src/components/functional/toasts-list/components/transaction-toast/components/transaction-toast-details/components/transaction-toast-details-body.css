@@ -64,18 +64,14 @@
   max-width: 172px;
 }
 
-.transaction-details-list-item-copy-button  {
-  .svg-inline--fa {
-    color: var(--mx-toast-copy-button-color);
-    width: 14px;
-    height: 14px;
-  }
+.transaction-details-list-item-copy-button-icon .svg-inline--fa {
+  color: var(--mx-toast-copy-button-color);
+  width: 12px;
+  height: 12px;
 }
 
-.transaction-details-list-item-explorer-link {
-  .svg-inline--fa {
-    color: var(--mx-toast-text-primary);
-    width: 14px !important;
-    height: 14px !important;
-  }
+.transaction-details-list-item-explorer-link-icon .svg-inline--fa {
+  color: var(--mx-toast-text-primary);
+  width: 12px;
+  height: 12px;
 }

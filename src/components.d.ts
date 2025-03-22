@@ -47,6 +47,7 @@ export namespace Components {
     interface CopyButton {
         "class"?: string;
         "copyIcon"?: IconDefinition;
+        "iconClass"?: string;
         "successIcon"?: IconDefinition;
         "text": string;
     }
@@ -57,6 +58,7 @@ export namespace Components {
         "class"?: string;
         "dataTestId"?: string;
         "icon"?: IconDefinition;
+        "iconClass"?: string;
         "link": string;
         "text"?: string;
     }
@@ -771,6 +773,7 @@ declare namespace LocalJSX {
     interface CopyButton {
         "class"?: string;
         "copyIcon"?: IconDefinition;
+        "iconClass"?: string;
         "successIcon"?: IconDefinition;
         "text"?: string;
     }
@@ -782,6 +785,7 @@ declare namespace LocalJSX {
         "class"?: string;
         "dataTestId"?: string;
         "icon"?: IconDefinition;
+        "iconClass"?: string;
         "link"?: string;
         "text"?: string;
     }

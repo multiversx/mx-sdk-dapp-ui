@@ -1,7 +1,6 @@
 import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { faCheck, faCopy } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Prop, State } from '@stencil/core';
-import classNames from 'classnames';
 import { copyToClipboard } from 'utils/copyToClipboard';
 
 @Component({
@@ -10,7 +9,8 @@ import { copyToClipboard } from 'utils/copyToClipboard';
   shadow: false,
 })
 export class CopyButton {
-  @Prop() class?: string;
+  @Prop() class?: string = 'copy-button';
+  @Prop() iconClass?: string = 'copy-button-icon';
   @Prop() copyIcon?: IconDefinition;
   @Prop() successIcon?: IconDefinition;
   @Prop() text: string;
@@ -48,8 +48,8 @@ export class CopyButton {
     const successIcon = this.successIcon ?? faCheck;
 
     return (
-      <a href="/#" class={classNames('copy-button', this.class)} onClick={this.handleClick}>
-        <fa-icon icon={this.isSuccess ? successIcon : copyIcon}></fa-icon>
+      <a href="/#" class={this.class} onClick={this.handleClick}>
+        <fa-icon icon={this.isSuccess ? successIcon : copyIcon} class={this.iconClass}></fa-icon>
       </a>
     );
   }

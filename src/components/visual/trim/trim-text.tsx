@@ -6,7 +6,7 @@ import { ELLIPSIS } from 'constants/htmlStrings';
 @Component({
   tag: 'trim-text',
   styleUrl: 'trim-text.css',
-  shadow: true,
+  shadow: false,
 })
 export class TrimText {
   @Element() el: HTMLElement;

@@ -7,7 +7,7 @@
 
 | Property      | Attribute     | Description | Type                       | Default     |
 | ------------- | ------------- | ----------- | -------------------------- | ----------- |
-| `class`       | `class`       |             | `string`                   | `undefined` |
+| `class`       | `class`       |             | `string`                   | `'fa-icon'` |
 | `description` | `description` |             | `string`                   | `undefined` |
 | `icon`        | `icon`        |             | `IconDefinition \| string` | `undefined` |
 
