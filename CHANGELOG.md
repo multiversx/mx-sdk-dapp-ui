@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Upgrade Tailwind to v4](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/65)
+
 ## [[0.0.0-alpha.9](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/64)] - 2025-03-19
 
 - [Fixed sign transactions panel and component](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/63)
