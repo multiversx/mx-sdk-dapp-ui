@@ -1,7 +1,7 @@
 .transaction-toast-content-wrapper {
   position: relative;
   display: flex;
-  max-width: 380px;
+  max-width: 315px;
   padding: 12px;
   flex-direction: column;
   align-items: flex-start;
@@ -58,7 +58,16 @@
   font-style: normal;
   font-weight: 700;
   line-height: 140%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
 }
+
+.transaction-toast-content-wrapper.full-width .transaction-toast-title {
+  max-width: 100%;
+}
+
 
 .transaction-toast-amount {
   color: var(--mx-toast-text-primary);
