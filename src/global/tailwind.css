@@ -1,6 +1,6 @@
-@import 'tailwindcss' prefix(sdk);
+@import '../../node_modules/tailwindcss/index.css' prefix(sdk);
 
 @theme {
-  --color-primary: #1e40af;
-  --color-secondary: #9333ea;
+  --color-blue-500: blue;
+  --color-indigo-400: magenta;
 }

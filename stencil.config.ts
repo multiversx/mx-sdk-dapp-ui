@@ -31,6 +31,7 @@ const excludeComponents = [
 
 export const config: Config = {
   namespace: 'sdk-dapp-core-ui',
+  globalStyle: 'dist/output.css',
   outputTargets: [
     reactOutputTarget({
       outDir: './dist/react',

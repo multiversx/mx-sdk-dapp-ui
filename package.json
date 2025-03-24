@@ -41,7 +41,7 @@
     "dist/"
   ],
   "scripts": {
-    "test": "stencil test --spec --e2e",
+    "test": "npm run build:css && stencil test --spec --e2e",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "unpublish-verdaccio": "npm unpublish @multiversx/sdk-dapp-core-ui --force --registry http://localhost:4873",
@@ -49,7 +49,7 @@
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "build": "npm run build:css && stencil build",
-    "build:css": "npx @tailwindcss/cli -i src/global/tailwind.css -o src/assets/tailwind.css",
+    "build:css": "npx @tailwindcss/cli -i src/global/tailwind.css -o ./dist/output.css",
     "start": "npm run build:css && stencil build --dev --watch --serve "
   },
   "dependencies": {
@@ -65,12 +65,12 @@
     "@stencil/core": "^4.22.3",
     "@stencil/sass": "^3.0.12",
     "@stencil/store": "2.0.16",
+    "@tailwindcss/cli": "4.0.15",
     "@types/jest": "^29.5.14",
     "@types/jsdom": "^21.1.1",
     "@types/node": "^22.10.0",
     "@typescript-eslint/eslint-plugin": "^8.23.0",
     "@typescript-eslint/parser": "^8.23.0",
-    "@tailwindcss/cli": "4.0.14",
     "eslint": "^9.19.0",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^15.14.0",
@@ -80,7 +80,7 @@
     "prettier": "3.2.5",
     "puppeteer": "^23.9.0",
     "rollup-plugin-node-polyfills": "^0.2.1",
-    "tailwindcss": "4.0.14",
+    "tailwindcss": "4.0.15",
     "typescript": "^5.7.3"
   }
 }

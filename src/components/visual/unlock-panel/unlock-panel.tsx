@@ -78,7 +78,7 @@ export class UnlockPanel {
           />
           <div id="anchor" ref={element => this.observeContainer(element)}></div>
           {!this.isLoggingIn && (
-            <div class="body bg-indigo-400">
+            <div class="body sdk:bg-neutral-400">
               {this.allowedProviders.map(method => (
                 <provider-button type={method} onClick={this.handleLogin.bind(this, method)}></provider-button>
               ))}

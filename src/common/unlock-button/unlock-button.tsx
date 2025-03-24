@@ -13,7 +13,7 @@ export class UnlockButton {
   render() {
     return (
       <StyledHost>
-        <div class="unlock-button sdk:bg-blue-500 sdk:text-white p-4">
+        <div class="unlock-button sdk:bg-blue-500 text-white p-4">
           <div class="unlock-icon">{this.icon}</div>
           <span class="unlock-label">{this.label}</span>
         </div>
