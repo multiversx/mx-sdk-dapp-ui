@@ -36,6 +36,7 @@ describe('transaction-list-item', () => {
       initiatorAsset: '/assets/icons/service.svg',
       directionLabel: 'From',
     },
+    timestamp: 1716537600,
   };
 
   it('renders empty when no transaction is provided', async () => {

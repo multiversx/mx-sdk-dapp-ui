@@ -185,6 +185,7 @@ export namespace Components {
         "transaction": ITransactionsTableRow;
     }
     interface TransactionToast {
+        "fullWidth"?: boolean;
         "processedTransactionsStatus": string | JSX.Element;
         "toastDataState": IToastDataState;
         "toastId": string;
@@ -193,6 +194,7 @@ export namespace Components {
         "wrapperClass": string;
     }
     interface TransactionToastContent {
+        "fullWidth"?: boolean;
         "processedTransactionsStatus"?: string | JSX.Element;
         "toastDataState": IToastDataState;
         "transactions": ITransactionListItem[];
@@ -915,6 +917,7 @@ declare namespace LocalJSX {
         "transaction"?: ITransactionsTableRow;
     }
     interface TransactionToast {
+        "fullWidth"?: boolean;
         "onDeleteToast"?: (event: TransactionToastCustomEvent<void>) => void;
         "processedTransactionsStatus"?: string | JSX.Element;
         "toastDataState"?: IToastDataState;
@@ -924,6 +927,7 @@ declare namespace LocalJSX {
         "wrapperClass"?: string;
     }
     interface TransactionToastContent {
+        "fullWidth"?: boolean;
         "onDeleteToast"?: (event: TransactionToastContentCustomEvent<void>) => void;
         "processedTransactionsStatus"?: string | JSX.Element;
         "toastDataState"?: IToastDataState;

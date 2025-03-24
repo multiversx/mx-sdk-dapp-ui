@@ -1,7 +1,7 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
-import { DefaultIcon } from 'components/visual/default-icon/default-icon';
+import { DefaultToastsIcon } from 'components/visual/default-icon/default-icon';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
@@ -16,6 +16,7 @@ export class TransactionToastContent {
   @Prop() transactions: ITransactionListItem[];
   @Prop() toastDataState: IToastDataState;
   @Prop() processedTransactionsStatus?: string | JSX.Element;
+  @Prop() fullWidth?: boolean;
   @Event() deleteToast: EventEmitter<void>;
 
   private handleDeleteToast() {
@@ -26,7 +27,7 @@ export class TransactionToastContent {
     const transaction = this.transactions[0];
 
     if (!transaction?.asset) {
-      return <DefaultIcon />;
+      return <DefaultToastsIcon />;
     }
 
     if (transaction.asset.imageUrl) {
@@ -41,7 +42,7 @@ export class TransactionToastContent {
       return <span class="icon-text">{transaction.asset.text}</span>;
     }
 
-    return <DefaultIcon />;
+    return <DefaultToastsIcon />;
   }
 
   private renderDetails() {
@@ -55,7 +56,7 @@ export class TransactionToastContent {
       <div class="transaction-toast-details-info">
         {transaction.details.directionLabel && <span class="transaction-toast-details-info-text">{transaction.details.directionLabel}</span>}
         <div class="transaction-toast-details-info-icon">
-          {transaction.details.initiatorAsset ? <img src={transaction.details.initiatorAsset} alt="Service icon" loading="lazy" /> : <DefaultIcon />}
+          {transaction.details.initiatorAsset ? <img src={transaction.details.initiatorAsset} alt="Service icon" loading="lazy" /> : <DefaultToastsIcon />}
         </div>
         <trim-text text={transaction.details.initiator} class="transaction-toast-details-info-text" />
       </div>
@@ -68,7 +69,13 @@ export class TransactionToastContent {
     const showExplorerLinkButton = transaction?.link && this.transactions.length === 1;
 
     return (
-      <div class="transaction-toast-content-wrapper" data-testid={DataTestIdsEnum.transactionToastContent}>
+      <div
+        class={{
+          'transaction-toast-content-wrapper': true,
+          'full-width': this.fullWidth,
+        }}
+        data-testid={DataTestIdsEnum.transactionToastContent}
+      >
         <div class="transaction-toast-content">
           <div class="transaction-toast-icon">{this.renderPrimaryIcon()}</div>
 

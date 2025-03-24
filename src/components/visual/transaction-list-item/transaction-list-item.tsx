@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop } from '@stencil/core';
 
-import { DefaultIcon } from '../default-icon/default-icon';
+import { DefaultTransactionIcon } from '../default-icon/default-icon';
 import type { ITransactionListItem } from './transaction-list-item.types';
 
 @Component({
@@ -13,7 +13,7 @@ export class TransactionListItem {
 
   private renderPrimaryIcon() {
     if (!this.transaction.asset) {
-      return <DefaultIcon />;
+      return <DefaultTransactionIcon />;
     }
 
     if (this.transaction.asset.imageUrl) {
@@ -28,7 +28,7 @@ export class TransactionListItem {
       return <span class="icon-text">{this.transaction.asset.text}</span>;
     }
 
-    return <DefaultIcon />;
+    return <DefaultTransactionIcon />;
   }
 
   private renderDetails() {
@@ -62,12 +62,8 @@ export class TransactionListItem {
           <div class="transaction-icon">{this.renderPrimaryIcon()}</div>
 
           <div class="transaction-details">
-            <h4 class="transaction-title">{this.transaction.action.name}</h4>
-            {this.renderDetails()}
-          </div>
-
-          {this.transaction.amount && (
-            <div class="transaction-right">
+            <div class="transaction-details-header">
+              <h4 class="transaction-title">{this.transaction.action.name}</h4>
               <div
                 class={{
                   'transaction-amount': true,
@@ -78,7 +74,8 @@ export class TransactionListItem {
                 {this.transaction.amount}
               </div>
             </div>
-          )}
+            {this.renderDetails()}
+          </div>
         </div>
       </Host>
     );

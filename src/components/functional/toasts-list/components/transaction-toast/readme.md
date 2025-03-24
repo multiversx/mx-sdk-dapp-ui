@@ -9,6 +9,7 @@
 
 | Property                      | Attribute                       | Description | Type                        | Default     |
 | ----------------------------- | ------------------------------- | ----------- | --------------------------- | ----------- |
+| `fullWidth`                   | `full-width`                    |             | `boolean`                   | `undefined` |
 | `processedTransactionsStatus` | `processed-transactions-status` |             | `Element \| string`         | `''`        |
 | `toastDataState`              | --                              |             | `IToastDataState`           | `undefined` |
 | `toastId`                     | `toast-id`                      |             | `string`                    | `''`        |

@@ -23,4 +23,5 @@ export interface ITransactionListItem {
   hash: string;
   status: string;
   link: string;
+  timestamp: number;
 }

@@ -75,7 +75,7 @@ export class NotificationsFeed {
           {hasPending && (
             <div class="notifications-container">
               <div class="processing-status">Processing...</div>
-              {this.pendingTransactions?.map(toast => <transaction-toast {...toast} />)}
+              {this.pendingTransactions?.map(toast => <transaction-toast fullWidth={true} {...toast} />)}
             </div>
           )}
 

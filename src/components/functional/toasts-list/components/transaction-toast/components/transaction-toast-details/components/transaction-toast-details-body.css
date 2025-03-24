@@ -61,7 +61,8 @@
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  max-width: 172px;
+  max-width: 300px;
+  width: 100%;
 }
 
 .transaction-details-list-item-copy-button-icon .svg-inline--fa {

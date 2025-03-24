@@ -6,10 +6,12 @@ import type { IToastDataState, ITransactionProgressState } from './transaction-t
 
 @Component({
   tag: 'transaction-toast',
+  styleUrl: './transaction-toast.css',
 })
 export class TransactionToast {
   @Prop() toastId: string = '';
   @Prop() wrapperClass: string;
+  @Prop() fullWidth?: boolean;
   @Prop() processedTransactionsStatus: string | JSX.Element = '';
   @Prop() transactions: ITransactionListItem[] = [];
   @Prop() toastDataState: IToastDataState;
@@ -22,14 +24,17 @@ export class TransactionToast {
 
   render() {
     return (
-      <transaction-toast-progress key={this.toastId} startTime={this.transactionProgressState?.startTime} endTime={this.transactionProgressState?.endTime}>
-        <transaction-toast-content
-          toastDataState={this.toastDataState}
-          transactions={this.transactions}
-          processedTransactionsStatus={this.processedTransactionsStatus}
-          onDeleteToast={this.handleDeleteToast.bind(this)}
-        />
-      </transaction-toast-progress>
+      <div class="transaction-toast">
+        <transaction-toast-progress key={this.toastId} startTime={this.transactionProgressState?.startTime} endTime={this.transactionProgressState?.endTime}>
+          <transaction-toast-content
+            fullWidth={this.fullWidth}
+            toastDataState={this.toastDataState}
+            transactions={this.transactions}
+            processedTransactionsStatus={this.processedTransactionsStatus}
+            onDeleteToast={this.handleDeleteToast.bind(this)}
+          />
+        </transaction-toast-progress>
+      </div>
     );
   }
 }
