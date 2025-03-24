@@ -29,9 +29,10 @@
   width: 20px;
   height: 20px;
 
-  svg, img, .fa-icon .svg-inline--fa {
+  svg, img, .svg-inline--fa {
     width: 20px;
     height: 20px;
+    border-radius: 50%;
   }
 }
 
@@ -100,6 +101,10 @@
   border-radius: 50%;
   width: 16px;
   height: 16px;
+
+  img {
+    border-radius: 50%;
+  }
 }
 
 .transaction-toast-action-button {
