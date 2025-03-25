@@ -1,7 +1,5 @@
 # side-panel
 
-
-
 <!-- Auto Generated Below -->
 
 
@@ -11,7 +9,7 @@
 | ---------------- | ------------------ | ----------- | --------- | ----------- |
 | `isOpen`         | `is-open`          |             | `boolean` | `false`     |
 | `panelClassName` | `panel-class-name` |             | `string`  | `undefined` |
-| `title`          | `title`            |             | `string`  | `undefined` |
+| `panelTitle`     | `panel-title`      |             | `string`  | `undefined` |
 
 
 ## Events

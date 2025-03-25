@@ -7,11 +7,10 @@
 
 ## Properties
 
-| Property               | Attribute                | Description | Type                 | Default                           |
-| ---------------------- | ------------------------ | ----------- | -------------------- | --------------------------------- |
-| `allowedProviders`     | --                       |             | `ProviderTypeEnum[]` | `Object.values(ProviderTypeEnum)` |
-| `isExtensionAvailable` | `is-extension-available` |             | `boolean`            | `false`                           |
-| `isOpen`               | `is-open`                |             | `boolean`            | `false`                           |
+| Property           | Attribute | Description | Type                 | Default                           |
+| ------------------ | --------- | ----------- | -------------------- | --------------------------------- |
+| `allowedProviders` | --        |             | `ProviderTypeEnum[]` | `Object.values(ProviderTypeEnum)` |
+| `isOpen`           | `is-open` |             | `boolean`            | `false`                           |
 
 
 ## Events
@@ -37,6 +36,13 @@ graph TD;
   side-panel --> back-arrow-icon
   side-panel --> close-icon
   provider-button --> unlock-button
+  provider-button --> extension-provider-icon
+  provider-button --> metamask-provider-icon
+  provider-button --> passkey-provider-icon
+  provider-button --> xportal-provider-icon
+  provider-button --> ledger-provider-icon
+  provider-button --> wallet-provider-icon
+  provider-button --> xalias-provider-icon
   style unlock-panel fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

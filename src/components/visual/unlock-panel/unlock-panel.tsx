@@ -2,6 +2,9 @@ import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State } from '@stencil/core';
 import { ProviderTypeEnum } from 'types/provider.types';
 
+import { getIsMetaMaskAvailable } from './helpers';
+import { getIsExtensionAvailable } from './helpers/getIsExtensionAvailable';
+
 @Component({
   tag: 'unlock-panel',
   styleUrl: 'unlock-panel.scss',
@@ -10,12 +13,22 @@ import { ProviderTypeEnum } from 'types/provider.types';
 export class UnlockPanel {
   @Prop() isOpen: boolean = false;
   @Prop() allowedProviders?: ProviderTypeEnum[] = Object.values(ProviderTypeEnum);
+
   @Event() close: EventEmitter;
   @Event() login: EventEmitter<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>;
-  @Prop() isExtensionAvailable: boolean = false;
 
   @State() isLoggingIn: boolean = false;
   @State() selectedMethod: ProviderTypeEnum | null = null;
+
+  private isExtensionInstalled = (currentProvider: ProviderTypeEnum) => currentProvider === ProviderTypeEnum.extension && getIsExtensionAvailable();
+  private isMetaMaskInstalled = (currentProvider: ProviderTypeEnum) => currentProvider === ProviderTypeEnum.metamask && getIsMetaMaskAvailable();
+
+  private detectedProviders: ProviderTypeEnum[] = this.allowedProviders.filter(
+    allowedProvider => this.isExtensionInstalled(allowedProvider) || this.isMetaMaskInstalled(allowedProvider),
+  );
+
+  private otherProviders: ProviderTypeEnum[] = this.allowedProviders.filter(allowedProvider => !this.detectedProviders.includes(allowedProvider));
+  private hasDetectedProviders: boolean = this.detectedProviders.length > 0;
 
   private anchor: HTMLElement | null = null;
   private observer: MutationObserver | null = null;
@@ -68,28 +81,40 @@ export class UnlockPanel {
     this.close.emit();
   };
 
-  componentWillLoad() {
-    console.log('Allowed Providers:', this.allowedProviders, this.observeContainer);
-  }
-
   render() {
     return (
-      <side-panel
-        isOpen={this.isOpen}
-        title="Connect your wallet"
-        panelClassName="unlock-panel"
-        onClose={this.handleClose.bind(this)}
-        onBack={this.handleResetLoginState.bind(this)}
-      >
+      <side-panel isOpen={this.isOpen} panelTitle="Connect your wallet" onClose={this.handleClose.bind(this)} onBack={this.handleResetLoginState.bind(this)}>
         <div id="anchor" ref={element => this.observeContainer(element)} />
-        {!this.isLoggingIn && (
-          <div class="body">
-            {this.allowedProviders.map(method => (
-              <provider-button type={method} onClick={this.handleLogin.bind(this, method)}></provider-button>
-            ))}
-            <slot></slot>
-          </div>
-        )}
+
+        <div class="unlock-panel">
+          {!this.isLoggingIn && (
+            <div class="unlock-panel-groups">
+              {this.hasDetectedProviders && (
+                <div class="unlock-panel-group">
+                  <div class="unlock-panel-group-label">Detected</div>
+
+                  <div class="unlock-panel-group-providers">
+                    {this.detectedProviders.map(provider => (
+                      <provider-button type={provider} onClick={this.handleLogin.bind(this, provider)} />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div class="unlock-panel-group">
+                <div class="unlock-panel-group-label">{this.hasDetectedProviders ? 'Other Options' : 'Options'}</div>
+
+                <div class="unlock-panel-group-providers">
+                  {this.otherProviders.map(provider => (
+                    <provider-button type={provider} onClick={this.handleLogin.bind(this, provider)} />
+                  ))}
+                </div>
+              </div>
+
+              <slot></slot>
+            </div>
+          )}
+        </div>
       </side-panel>
     );
   }

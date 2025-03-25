@@ -74,12 +74,22 @@
     .side-panel-heading-back {
       cursor: pointer;
       color: #a3a3a3;
+      transition: all 200ms ease;
+
+      &:hover {
+        opacity: 0.75;
+      }
     }
 
     .side-panel-heading-title {
       color: #e5e5e5;
       font-weight: 500;
+      transition: all 200ms ease;
       font-family: 'Inter', sans-serif;
+
+      &:hover {
+        opacity: 0.75;
+      }
     }
 
     .side-panel-heading-close {

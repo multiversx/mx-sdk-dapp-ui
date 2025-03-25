@@ -10,7 +10,7 @@ import classNames from 'classnames';
 export class SidePanel {
   @Prop() isOpen: boolean = false;
   @Prop() panelClassName?: string;
-  @Prop() title: string;
+  @Prop() panelTitle: string;
 
   @Event() close: EventEmitter;
   @Event() back: EventEmitter;
@@ -74,7 +74,7 @@ export class SidePanel {
         <div class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}>
           <div class="side-panel-heading">
             {this.handleBackClick && <back-arrow-icon onClick={this.handleBackClick} class="side-panel-heading-back" />}
-            <div class="side-panel-heading-title">{this.title}</div>
+            <div class="side-panel-heading-title">{this.panelTitle}</div>
             <close-icon class="side-panel-heading-close" onClick={this.handleCloseClick} />
           </div>
 

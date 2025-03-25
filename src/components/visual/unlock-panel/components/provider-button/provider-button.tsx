@@ -3,28 +3,32 @@ import { ProviderTypeEnum } from 'types/provider.types';
 
 const providerButtonInfo = {
   [ProviderTypeEnum.extension]: {
-    icon: <Fragment></Fragment>,
+    icon: <extension-provider-icon />,
     label: 'MultiversX Wallet Extension',
   },
   [ProviderTypeEnum.metamask]: {
-    icon: <Fragment></Fragment>,
+    icon: <metamask-provider-icon />,
     label: 'Metamask Snap',
   },
   [ProviderTypeEnum.passkey]: {
-    icon: <Fragment></Fragment>,
+    icon: <passkey-provider-icon />,
     label: 'Passkey',
   },
   [ProviderTypeEnum.walletConnect]: {
-    icon: <Fragment></Fragment>,
+    icon: <xportal-provider-icon />,
     label: 'xPortal Wallet',
   },
   [ProviderTypeEnum.ledger]: {
-    icon: <Fragment></Fragment>,
+    icon: <ledger-provider-icon />,
     label: 'Ledger',
   },
   [ProviderTypeEnum.crossWindow]: {
-    icon: <Fragment></Fragment>,
+    icon: <wallet-provider-icon />,
     label: 'MultiversX Web Wallet',
+  },
+  [ProviderTypeEnum.xalias]: {
+    icon: <xalias-provider-icon />,
+    label: 'xAlias',
   },
 };
 
@@ -39,7 +43,7 @@ export class ProviderButton {
   render() {
     const walletInfo = this.type ? providerButtonInfo[this.type] : null;
     if (!walletInfo) {
-      return <Fragment></Fragment>;
+      return <Fragment />;
     }
 
     return <unlock-button icon={walletInfo.icon} label={walletInfo.label}></unlock-button>;
