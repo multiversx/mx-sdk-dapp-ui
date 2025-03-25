@@ -1,4 +1,3 @@
-import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
@@ -11,8 +10,10 @@ import classNames from 'classnames';
 export class SidePanel {
   @Prop() isOpen: boolean = false;
   @Prop() panelClassName?: string;
+  @Prop() title: string;
 
   @Event() close: EventEmitter;
+  @Event() back: EventEmitter;
 
   @State() isVisible: boolean = false;
   @State() shouldAnimate: boolean = false;
@@ -53,6 +54,11 @@ export class SidePanel {
     this.close.emit();
   };
 
+  handleBackClick = (event: MouseEvent) => {
+    event.preventDefault();
+    this.back.emit();
+  };
+
   render() {
     if (!this.isVisible) {
       return null;
@@ -67,8 +73,9 @@ export class SidePanel {
       >
         <div class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}>
           <div class="side-panel-heading">
-            <div class="side-panel-heading-title">{'PANEL TITLE'}</div>
-            <fa-icon class="side-panel-heading-close" onClick={this.handleCloseClick} icon={faXmark} />
+            {this.handleBackClick && <back-arrow-icon onClick={this.handleBackClick} class="side-panel-heading-back" />}
+            <div class="side-panel-heading-title">{this.title}</div>
+            <close-icon class="side-panel-heading-close" onClick={this.handleCloseClick} />
           </div>
 
           <div class="side-panel-content">

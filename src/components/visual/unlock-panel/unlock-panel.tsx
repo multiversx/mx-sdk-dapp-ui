@@ -1,4 +1,3 @@
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State } from '@stencil/core';
 import { ProviderTypeEnum } from 'types/provider.types';
@@ -49,7 +48,9 @@ export class UnlockPanel {
     this.selectedMethod = provider;
   }
 
-  resetLoginState() {
+  handleResetLoginState = (event: MouseEvent) => {
+    event.preventDefault();
+
     this.isLoggingIn = false;
     this.selectedMethod = null;
 
@@ -60,11 +61,12 @@ export class UnlockPanel {
     while (this.anchor.firstChild) {
       this.anchor.removeChild(this.anchor.firstChild);
     }
-  }
+  };
 
-  handleClose() {
+  handleClose = (event: MouseEvent) => {
+    event.preventDefault();
     this.close.emit();
-  }
+  };
 
   componentWillLoad() {
     console.log('Allowed Providers:', this.allowedProviders, this.observeContainer);
@@ -72,14 +74,13 @@ export class UnlockPanel {
 
   render() {
     return (
-      <side-panel isOpen={this.isOpen} onClose={this.handleClose.bind(this)} panelClassName="unlock-panel">
-        UNLOCK PANEL
-        <unlock-header
-          text={this.isLoggingIn ? `${this.selectedMethod} connect` : 'Connect your wallet'}
-          backIcon={this.isLoggingIn ? faArrowLeft : null}
-          onBack={this.resetLoginState.bind(this)}
-          onClose={this.handleClose.bind(this)}
-        />
+      <side-panel
+        isOpen={this.isOpen}
+        title="Connect your wallet"
+        panelClassName="unlock-panel"
+        onClose={this.handleClose.bind(this)}
+        onBack={this.handleResetLoginState.bind(this)}
+      >
         <div id="anchor" ref={element => this.observeContainer(element)} />
         {!this.isLoggingIn && (
           <div class="body">

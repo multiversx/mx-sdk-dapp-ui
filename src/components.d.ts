@@ -34,11 +34,17 @@ export { ITransactionListItem } from "./components/visual/transaction-list-item/
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 export { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export namespace Components {
+    interface BackArrowIcon {
+        "class"?: string;
+    }
     interface BalanceComponent {
         "amount": string;
         "header"?: string;
         "ticker": string;
         "usdValue"?: string;
+    }
+    interface CloseIcon {
+        "class"?: string;
     }
     interface CopyButton {
         "class"?: string;
@@ -114,6 +120,7 @@ export namespace Components {
     interface SidePanel {
         "isOpen": boolean;
         "panelClassName"?: string;
+        "title": string;
     }
     interface SignTransactionComponent {
         "header": VNode;
@@ -234,6 +241,7 @@ export namespace Components {
     }
     interface UnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
+        "isExtensionAvailable": boolean;
         "isOpen": boolean;
     }
     interface WalletConnect {
@@ -294,11 +302,23 @@ export interface UnlockPanelCustomEvent<T> extends CustomEvent<T> {
     target: HTMLUnlockPanelElement;
 }
 declare global {
+    interface HTMLBackArrowIconElement extends Components.BackArrowIcon, HTMLStencilElement {
+    }
+    var HTMLBackArrowIconElement: {
+        prototype: HTMLBackArrowIconElement;
+        new (): HTMLBackArrowIconElement;
+    };
     interface HTMLBalanceComponentElement extends Components.BalanceComponent, HTMLStencilElement {
     }
     var HTMLBalanceComponentElement: {
         prototype: HTMLBalanceComponentElement;
         new (): HTMLBalanceComponentElement;
+    };
+    interface HTMLCloseIconElement extends Components.CloseIcon, HTMLStencilElement {
+    }
+    var HTMLCloseIconElement: {
+        prototype: HTMLCloseIconElement;
+        new (): HTMLCloseIconElement;
     };
     interface HTMLCopyButtonElement extends Components.CopyButton, HTMLStencilElement {
     }
@@ -462,6 +482,7 @@ declare global {
     };
     interface HTMLSidePanelElementEventMap {
         "close": any;
+        "back": any;
     }
     interface HTMLSidePanelElement extends Components.SidePanel, HTMLStencilElement {
         addEventListener<K extends keyof HTMLSidePanelElementEventMap>(type: K, listener: (this: HTMLSidePanelElement, ev: SidePanelCustomEvent<HTMLSidePanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -715,7 +736,9 @@ declare global {
         new (): HTMLWalletConnectPanelElement;
     };
     interface HTMLElementTagNameMap {
+        "back-arrow-icon": HTMLBackArrowIconElement;
         "balance-component": HTMLBalanceComponentElement;
+        "close-icon": HTMLCloseIconElement;
         "copy-button": HTMLCopyButtonElement;
         "custom-toast": HTMLCustomToastElement;
         "explorer-link": HTMLExplorerLinkElement;
@@ -767,11 +790,17 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface BackArrowIcon {
+        "class"?: string;
+    }
     interface BalanceComponent {
         "amount"?: string;
         "header"?: string;
         "ticker"?: string;
         "usdValue"?: string;
+    }
+    interface CloseIcon {
+        "class"?: string;
     }
     interface CopyButton {
         "class"?: string;
@@ -850,8 +879,10 @@ declare namespace LocalJSX {
     }
     interface SidePanel {
         "isOpen"?: boolean;
+        "onBack"?: (event: SidePanelCustomEvent<any>) => void;
         "onClose"?: (event: SidePanelCustomEvent<any>) => void;
         "panelClassName"?: string;
+        "title"?: string;
     }
     interface SignTransactionComponent {
         "header"?: VNode;
@@ -975,6 +1006,7 @@ declare namespace LocalJSX {
     }
     interface UnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
+        "isExtensionAvailable"?: boolean;
         "isOpen"?: boolean;
         "onClose"?: (event: UnlockPanelCustomEvent<any>) => void;
         "onLogin"?: (event: UnlockPanelCustomEvent<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>) => void;
@@ -990,7 +1022,9 @@ declare namespace LocalJSX {
         "data"?: IWalletConnectPanelData;
     }
     interface IntrinsicElements {
+        "back-arrow-icon": BackArrowIcon;
         "balance-component": BalanceComponent;
+        "close-icon": CloseIcon;
         "copy-button": CopyButton;
         "custom-toast": CustomToast;
         "explorer-link": ExplorerLink;
@@ -1045,7 +1079,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "back-arrow-icon": LocalJSX.BackArrowIcon & JSXBase.HTMLAttributes<HTMLBackArrowIconElement>;
             "balance-component": LocalJSX.BalanceComponent & JSXBase.HTMLAttributes<HTMLBalanceComponentElement>;
+            "close-icon": LocalJSX.CloseIcon & JSXBase.HTMLAttributes<HTMLCloseIconElement>;
             "copy-button": LocalJSX.CopyButton & JSXBase.HTMLAttributes<HTMLCopyButtonElement>;
             "custom-toast": LocalJSX.CustomToast & JSXBase.HTMLAttributes<HTMLCustomToastElement>;
             "explorer-link": LocalJSX.ExplorerLink & JSXBase.HTMLAttributes<HTMLExplorerLinkElement>;

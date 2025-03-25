@@ -35,7 +35,8 @@ Type: `Promise<IEventBus>`
 ```mermaid
 graph TD;
   pending-transactions-panel --> side-panel
-  side-panel --> fa-icon
+  side-panel --> back-arrow-icon
+  side-panel --> close-icon
   style pending-transactions-panel fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -11,12 +11,14 @@
 | ---------------- | ------------------ | ----------- | --------- | ----------- |
 | `isOpen`         | `is-open`          |             | `boolean` | `false`     |
 | `panelClassName` | `panel-class-name` |             | `string`  | `undefined` |
+| `title`          | `title`            |             | `string`  | `undefined` |
 
 
 ## Events
 
 | Event   | Description | Type               |
 | ------- | ----------- | ------------------ |
+| `back`  |             | `CustomEvent<any>` |
 | `close` |             | `CustomEvent<any>` |
 
 
@@ -33,12 +35,14 @@
 
 ### Depends on
 
-- [fa-icon](../fa-icon)
+- [back-arrow-icon](../../../assets/icons/back-arrow-icon)
+- [close-icon](../../../assets/icons/close-icon)
 
 ### Graph
 ```mermaid
 graph TD;
-  side-panel --> fa-icon
+  side-panel --> back-arrow-icon
+  side-panel --> close-icon
   ledger-connect-panel --> side-panel
   notifications-feed --> side-panel
   pending-transactions-panel --> side-panel

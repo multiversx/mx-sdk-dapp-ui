@@ -24,10 +24,6 @@
 
 ## Dependencies
 
-### Used by
-
- - [unlock-panel](../..)
-
 ### Depends on
 
 - [fa-icon](../../../fa-icon)
@@ -36,7 +32,6 @@
 ```mermaid
 graph TD;
   unlock-header --> fa-icon
-  unlock-panel --> unlock-header
   style unlock-header fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

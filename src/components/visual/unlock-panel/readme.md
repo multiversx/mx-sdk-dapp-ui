@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property           | Attribute | Description | Type                 | Default                           |
-| ------------------ | --------- | ----------- | -------------------- | --------------------------------- |
-| `allowedProviders` | --        |             | `ProviderTypeEnum[]` | `Object.values(ProviderTypeEnum)` |
-| `isOpen`           | `is-open` |             | `boolean`            | `false`                           |
+| Property               | Attribute                | Description | Type                 | Default                           |
+| ---------------------- | ------------------------ | ----------- | -------------------- | --------------------------------- |
+| `allowedProviders`     | --                       |             | `ProviderTypeEnum[]` | `Object.values(ProviderTypeEnum)` |
+| `isExtensionAvailable` | `is-extension-available` |             | `boolean`            | `false`                           |
+| `isOpen`               | `is-open`                |             | `boolean`            | `false`                           |
 
 
 ## Events
@@ -26,17 +27,15 @@
 ### Depends on
 
 - [side-panel](../side-panel)
-- [unlock-header](./components/header)
 - [provider-button](./components/provider-button)
 
 ### Graph
 ```mermaid
 graph TD;
   unlock-panel --> side-panel
-  unlock-panel --> unlock-header
   unlock-panel --> provider-button
-  side-panel --> fa-icon
-  unlock-header --> fa-icon
+  side-panel --> back-arrow-icon
+  side-panel --> close-icon
   provider-button --> unlock-button
   style unlock-panel fill:#f9f,stroke:#333,stroke-width:4px
 ```
