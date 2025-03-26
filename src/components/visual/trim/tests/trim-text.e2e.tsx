@@ -2,17 +2,10 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { TrimText } from '../trim-text';
 
-// Mock ResizeObserver which is not available in the test environment
 class MockResizeObserver {
-  observe() {
-    /* do nothing */
-  }
-  unobserve() {
-    /* do nothing */
-  }
-  disconnect() {
-    /* do nothing */
-  }
+  observe() {}
+  unobserve() {}
+  disconnect() {}
 }
 
 describe('trim-text', () => {
@@ -27,14 +20,11 @@ describe('trim-text', () => {
       html: '<trim-text text="Short text"></trim-text>',
     });
 
-    // Get the trim element
     const trimElement = page.root;
 
-    // Simulate non-overflow condition
     trimElement.overflow = false;
     await page.waitForChanges();
 
-    // Check that the text is displayed correctly
     const textElement = trimElement.querySelector('span:not(.hidden-text-ref)');
     expect(textElement.textContent).toBe('Short textShort text');
   });
@@ -45,54 +35,31 @@ describe('trim-text', () => {
       html: '<trim-text text="A very long text that should be truncated due to container width limitations"></trim-text>',
     });
 
-    // Get the trim element
-    const trimElement = page.root;
+    const component = page.rootInstance;
 
-    // Simulate overflow condition and manually update the DOM
-    trimElement.overflow = true;
-
-    // Manually create the overflow elements that would be created when overflow=true
-    const trimWrapper = document.createElement('div');
-    trimWrapper.className = 'trim-wrapper';
-
-    const leftSpan = document.createElement('span');
-    leftSpan.className = 'left';
-    const leftInnerSpan = document.createElement('span');
-    leftInnerSpan.textContent = 'A very long text that should be truncated due to c';
-    leftSpan.appendChild(leftInnerSpan);
-
-    const ellipsisSpan = document.createElement('span');
-    ellipsisSpan.className = 'ellipsis';
-    ellipsisSpan.textContent = '...';
-
-    const rightSpan = document.createElement('span');
-    rightSpan.className = 'right';
-    const rightInnerSpan = document.createElement('span');
-    rightInnerSpan.textContent = 'ontainer width limitations';
-    rightSpan.appendChild(rightInnerSpan);
-
-    trimWrapper.appendChild(leftSpan);
-    trimWrapper.appendChild(ellipsisSpan);
-    trimWrapper.appendChild(rightSpan);
-
-    // Replace the existing content
-    const nonHiddenSpan = trimElement.querySelector('span:not(.hidden-text-ref)');
-    if (nonHiddenSpan) {
-      nonHiddenSpan.replaceWith(trimWrapper);
-    }
-
-    // Force the overflow class on the outer element
-    trimElement.classList.add('overflow');
-
+    component.overflow = true;
     await page.waitForChanges();
 
-    const content = {
-      overflow: trimElement.classList.contains('overflow'),
-      hasEllipsis: trimElement.querySelector('.ellipsis')?.textContent === '...',
-    };
+    const trimElement = page.root;
 
-    expect(content.overflow).toBe(true);
-    expect(content.hasEllipsis).toBe(true);
+    const trimRef = trimElement.querySelector('.trim');
+    expect(trimRef.classList.contains('overflow')).toBe(true);
+
+    const trimWrapper = trimElement.querySelector('.trim-wrapper');
+    expect(trimWrapper).toBeTruthy();
+
+    const leftSpan = trimWrapper.querySelector('.left');
+    const ellipsisSpan = trimWrapper.querySelector('.ellipsis');
+    const rightSpan = trimWrapper.querySelector('.right');
+
+    expect(leftSpan).toBeTruthy();
+    expect(ellipsisSpan.textContent).toBe('...');
+    expect(rightSpan).toBeTruthy();
+
+    const leftText = leftSpan.querySelector('span').textContent;
+    const rightText = rightSpan.querySelector('span').textContent;
+
+    expect(leftText + rightText).toBe('A very long text that should be truncated due to container width limitations');
   });
 
   it('should use custom class and data-testid', async () => {
@@ -103,11 +70,9 @@ describe('trim-text', () => {
 
     const trimElement = page.root;
 
-    // The class should be added to the trim span
     const trimSpan = trimElement.querySelector('.trim');
     expect(trimSpan.className).toContain('custom-class');
 
-    // The data-testid should be on the root element
     expect(trimElement.getAttribute('data-testid')).toBe('custom-id');
   });
 });

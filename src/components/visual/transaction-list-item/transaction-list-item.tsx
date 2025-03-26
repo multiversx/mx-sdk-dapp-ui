@@ -60,15 +60,17 @@ export class TransactionListItem {
           <div class="transaction-details">
             <div class="transaction-details-header">
               <h4 class="transaction-title">{this.transaction.action.name}</h4>
-              <div
-                class={{
-                  'transaction-amount': true,
-                  'amount-negative': this.transaction.amount.startsWith('-'),
-                  'amount-positive': !this.transaction.amount.startsWith('-'),
-                }}
-              >
-                {this.transaction.amount}
-              </div>
+              {this.transaction.amount && (
+                <div
+                  class={{
+                    'transaction-amount': true,
+                    'amount-negative': this.transaction.amount.startsWith('-'),
+                    'amount-positive': !this.transaction.amount.startsWith('-'),
+                  }}
+                >
+                  {this.transaction.amount}
+                </div>
+              )}
             </div>
             {this.renderDetails()}
           </div>

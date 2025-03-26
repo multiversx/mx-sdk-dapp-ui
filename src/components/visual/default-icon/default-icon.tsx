@@ -2,7 +2,7 @@ import type { FunctionalComponent } from '@stencil/core';
 import { h } from '@stencil/core';
 
 export const DefaultToastsIcon: FunctionalComponent = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <svg class="default-toasts-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
     <g clip-path="url(#clip0_7973_15392)">
       <rect width="16" height="16" rx="8" fill="#787878" fill-opacity="0.2" />
       <path
@@ -19,7 +19,7 @@ export const DefaultToastsIcon: FunctionalComponent = () => (
 );
 
 export const DefaultTransactionIcon: FunctionalComponent = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
+  <svg class="default-transaction-icon" xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
     <g clip-path="url(#clip0_8002_13994)">
       <rect y="0.319824" width="40" height="40" rx="20" fill="#787878" fill-opacity="0.2" />
       <path
