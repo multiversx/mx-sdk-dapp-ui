@@ -12,8 +12,8 @@ export interface ITransactionListItemAction {
 export interface ITransactionListItem {
   asset: ITransactionListItemAsset | null;
   action: ITransactionListItemAction;
-  initiator: string;
-  initiatorAsset?: string;
+  interactor: string;
+  interactorAsset?: string;
   directionLabel?: string;
   amount?: string;
   hash: string;

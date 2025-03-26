@@ -26,8 +26,8 @@ describe('transaction-list-item', () => {
       text: 'Test Asset',
     },
     directionLabel: 'From',
-    initiator: 'Test Address',
-    initiatorAsset: '/assets/icons/service.svg',
+    interactor: 'Test Address',
+    interactorAsset: '/assets/icons/service.svg',
     hash: 'fe0eee477f7bcedf76bbcajklsd',
     status: 'success',
     link: 'https://explorer.multiversx.com/transactions/fe0eee477f7bcedf76bbcajklsd',
@@ -110,14 +110,14 @@ describe('transaction-list-item', () => {
       const directionLabel = page.root.shadowRoot.querySelector('.direction-label');
       expect(directionLabel.textContent).toBe(baseTransaction.directionLabel);
 
-      const initiatorAsset = page.root.shadowRoot.querySelector('.service-icon');
-      expect(initiatorAsset.getAttribute('src')).toBe(baseTransaction.initiatorAsset);
-      expect(initiatorAsset.getAttribute('alt')).toBe('Service icon');
-      expect(initiatorAsset.getAttribute('loading')).toBe('lazy');
+      const interactorAsset = page.root.shadowRoot.querySelector('.service-icon');
+      expect(interactorAsset.getAttribute('src')).toBe(baseTransaction.interactorAsset);
+      expect(interactorAsset.getAttribute('alt')).toBe('Service icon');
+      expect(interactorAsset.getAttribute('loading')).toBe('lazy');
 
-      const initiator = page.root.shadowRoot.querySelector('trim-text');
-      expect(initiator.getAttribute('text')).toBe(baseTransaction.initiator);
-      expect(initiator.className).toBe('initiator');
+      const interactor = page.root.shadowRoot.querySelector('trim-text');
+      expect(interactor.getAttribute('text')).toBe(baseTransaction.interactor);
+      expect(interactor.className).toBe('interactor');
     });
 
     it('renders without direction label when not provided', async () => {
@@ -130,10 +130,10 @@ describe('transaction-list-item', () => {
       expect(directionLabel).toBeFalsy();
     });
 
-    it('renders without initiator asset when not provided', async () => {
+    it('renders without interactor asset when not provided', async () => {
       const transaction = {
         ...baseTransaction,
-        initiatorAsset: undefined,
+        interactorAsset: undefined,
       };
       const page = await createPage(transaction);
       const serviceIcon = page.root.shadowRoot.querySelector('.service-icon');

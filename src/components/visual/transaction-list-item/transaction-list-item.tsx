@@ -36,12 +36,12 @@ export class TransactionListItem {
       <div class="transaction-info">
         <span class="transaction-target">
           {this.transaction.directionLabel && <span class="direction-label">{this.transaction.directionLabel}</span>}
-          {this.transaction.initiatorAsset && (
+          {this.transaction.interactorAsset && (
             <div class="transaction-icon">
-              <img src={this.transaction.initiatorAsset} alt="Service icon" class="service-icon" loading="lazy" />
+              <img src={this.transaction.interactorAsset} alt="Service icon" class="service-icon" loading="lazy" />
             </div>
           )}
-          <trim-text text={this.transaction.initiator} class="initiator" />
+          <trim-text text={this.transaction.interactor} class="interactor" />
         </span>
       </div>
     );

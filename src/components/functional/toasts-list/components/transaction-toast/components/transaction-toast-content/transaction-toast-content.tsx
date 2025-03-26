@@ -56,9 +56,9 @@ export class TransactionToastContent {
       <div class="transaction-toast-details-info">
         {transaction.directionLabel && <span class="transaction-toast-details-info-text">{transaction.directionLabel}</span>}
         <div class="transaction-toast-details-info-icon">
-          {transaction.initiatorAsset ? <img src={transaction.initiatorAsset} alt="Service icon" loading="lazy" /> : <DefaultToastsIcon />}
+          {transaction.interactorAsset ? <img src={transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <DefaultToastsIcon />}
         </div>
-        <trim-text text={transaction.initiator} class="transaction-toast-details-info-text" />
+        <trim-text text={transaction.interactor} class="transaction-toast-details-info-text" />
       </div>
     );
   }
