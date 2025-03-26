@@ -65,24 +65,26 @@ export class SidePanel {
     }
 
     return (
-      <div
-        onClick={this.handleOverlayClick}
-        class={classNames('side-panel-wrapper', {
-          visible: this.shouldAnimate,
-        })}
-      >
-        <div class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}>
-          <div class="side-panel-heading">
-            {this.handleBackClick && <back-arrow-icon onClick={this.handleBackClick} class="side-panel-heading-back" />}
-            <div class="side-panel-heading-title">{this.panelTitle}</div>
-            <close-icon class="side-panel-heading-close" onClick={this.handleCloseClick} />
-          </div>
+      <styled-host>
+        <div
+          onClick={this.handleOverlayClick}
+          class={classNames('side-panel-wrapper', {
+            visible: this.shouldAnimate,
+          })}
+        >
+          <div class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}>
+            <div class="side-panel-heading">
+              {this.handleBackClick && <back-arrow-icon onClick={this.handleBackClick} class="side-panel-heading-back" />}
+              <div class="side-panel-heading-title">{this.panelTitle}</div>
+              <close-icon class="side-panel-heading-close" onClick={this.handleCloseClick} />
+            </div>
 
-          <div class="side-panel-content">
-            <slot></slot>
+            <div class="side-panel-content">
+              <slot></slot>
+            </div>
           </div>
         </div>
-      </div>
+      </styled-host>
     );
   }
 }
