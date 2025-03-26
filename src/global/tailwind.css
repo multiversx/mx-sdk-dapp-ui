@@ -1,4 +1,4 @@
-@import '../../node_modules/tailwindcss/index.css' prefix(sdk);
+@import 'tailwindcss' prefix(sdk);
 
 @theme {
   --color-blue-500: blue;
