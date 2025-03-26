@@ -92,10 +92,8 @@ describe('transaction-toast-details', () => {
     component.setProperty('transactions', mockTransactions);
     component.setProperty('processedTransactionsStatus', '6 Transactions');
 
-    // Wait for component to render completely
     await page.waitForChanges();
 
-    // Make sure the element exists before trying to click it
     const statusElement = await page.find('transaction-toast-details >>> .transaction-details-status');
     expect(statusElement).not.toBeNull();
     await statusElement.click();
