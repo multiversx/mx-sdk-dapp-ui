@@ -31,11 +31,9 @@ describe('transaction-list-item', () => {
       description: 'To',
     },
     amount: '+100 EGLD',
-    details: {
-      initiator: 'Test Address',
-      initiatorAsset: '/assets/icons/service.svg',
-      directionLabel: 'From',
-    },
+    initiator: 'Test Address',
+    initiatorAsset: '/assets/icons/service.svg',
+    directionLabel: 'From',
     timestamp: 1716537600,
   };
 
@@ -97,13 +95,13 @@ describe('transaction-list-item', () => {
     expect(title.textContent).toBe(baseTransaction.action.name);
 
     const directionLabel = page.root.shadowRoot.querySelector('.direction-label');
-    expect(directionLabel.textContent).toBe(baseTransaction.details.directionLabel);
+    expect(directionLabel.textContent).toBe(baseTransaction.directionLabel);
 
     const initiatorAsset = page.root.shadowRoot.querySelector('.service-icon');
-    expect(initiatorAsset.getAttribute('src')).toBe(baseTransaction.details.initiatorAsset);
+    expect(initiatorAsset.getAttribute('src')).toBe(baseTransaction.initiatorAsset);
 
     const initiator = page.root.shadowRoot.querySelector('trim-text');
-    expect(initiator.getAttribute('text')).toBe(baseTransaction.details.initiator);
+    expect(initiator.getAttribute('text')).toBe(baseTransaction.initiator);
   });
 
   it('renders amount with correct styling for positive value', async () => {

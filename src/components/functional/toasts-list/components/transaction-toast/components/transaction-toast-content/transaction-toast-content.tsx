@@ -48,17 +48,17 @@ export class TransactionToastContent {
   private renderDetails() {
     const transaction = this.transactions[0];
 
-    if (!transaction?.details) {
+    if (!transaction) {
       return null;
     }
 
     return (
       <div class="transaction-toast-details-info">
-        {transaction.details.directionLabel && <span class="transaction-toast-details-info-text">{transaction.details.directionLabel}</span>}
+        {transaction.directionLabel && <span class="transaction-toast-details-info-text">{transaction.directionLabel}</span>}
         <div class="transaction-toast-details-info-icon">
-          {transaction.details.initiatorAsset ? <img src={transaction.details.initiatorAsset} alt="Service icon" loading="lazy" /> : <DefaultToastsIcon />}
+          {transaction.initiatorAsset ? <img src={transaction.initiatorAsset} alt="Service icon" loading="lazy" /> : <DefaultToastsIcon />}
         </div>
-        <trim-text text={transaction.details.initiator} class="transaction-toast-details-info-text" />
+        <trim-text text={transaction.initiator} class="transaction-toast-details-info-text" />
       </div>
     );
   }

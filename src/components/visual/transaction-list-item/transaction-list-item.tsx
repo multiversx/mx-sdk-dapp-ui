@@ -32,20 +32,16 @@ export class TransactionListItem {
   }
 
   private renderDetails() {
-    if (!this.transaction.details) {
-      return null;
-    }
-
     return (
       <div class="transaction-info">
         <span class="transaction-target">
-          {this.transaction.details.directionLabel && <span class="direction-label">{this.transaction.details.directionLabel}</span>}
-          {this.transaction.details.initiatorAsset && (
+          {this.transaction.directionLabel && <span class="direction-label">{this.transaction.directionLabel}</span>}
+          {this.transaction.initiatorAsset && (
             <div class="transaction-icon">
-              <img src={this.transaction.details.initiatorAsset} alt="Service icon" class="service-icon" loading="lazy" />
+              <img src={this.transaction.initiatorAsset} alt="Service icon" class="service-icon" loading="lazy" />
             </div>
           )}
-          <trim-text text={this.transaction.details.initiator} class="initiator" />
+          <trim-text text={this.transaction.initiator} class="initiator" />
         </span>
       </div>
     );
