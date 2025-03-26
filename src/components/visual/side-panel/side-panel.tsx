@@ -59,27 +59,29 @@ export class SidePanel {
     }
 
     return (
-      <div
-        class={{
-          'overlay': true,
-          'visible': this.shouldAnimate,
-          'hidden': !this.shouldAnimate,
-          'side-left': this.side === 'left',
-          'side-right': this.side === 'right',
-        }}
-        onClick={this.handleOverlayClick}
-      >
+      <styled-host>
         <div
           class={{
-            panel: true,
-            [this.panelClassName]: Boolean(this.panelClassName),
+            'overlay': true,
+            'visible': this.shouldAnimate,
+            'hidden': !this.shouldAnimate,
+            'side-left': this.side === 'left',
+            'side-right': this.side === 'right',
           }}
+          onClick={this.handleOverlayClick}
         >
-          <div class="panel-content">
-            <slot></slot>
+          <div
+            class={{
+              panel: true,
+              [this.panelClassName]: Boolean(this.panelClassName),
+            }}
+          >
+            <div class="panel-content">
+              <slot></slot>
+            </div>
           </div>
         </div>
-      </div>
+      </styled-host>
     );
   }
 }
