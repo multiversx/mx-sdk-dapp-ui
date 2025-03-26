@@ -1,5 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+
 import { TransactionMethod } from '../transaction-method';
 
 describe('transaction-method', () => {
