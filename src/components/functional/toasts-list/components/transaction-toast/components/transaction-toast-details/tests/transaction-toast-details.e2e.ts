@@ -1,7 +1,6 @@
 import { newE2EPage } from '@stencil/core/testing';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 
-// Factory function to create mock transactions
 const createMockTransaction = (params: { hash: string; status?: string; timestamp?: number }): ITransactionListItem => ({
   hash: params.hash,
   status: params.status || 'success',
@@ -12,7 +11,6 @@ const createMockTransaction = (params: { hash: string; status?: string; timestam
   timestamp: params.timestamp || 1234567890,
 });
 
-// Create a set of mock transactions for reuse
 const createMockTransactions = (count: number): ITransactionListItem[] => {
   return Array.from({ length: count }, (_, i) => {
     const index = i + 1;
