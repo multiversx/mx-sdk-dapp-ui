@@ -25,6 +25,10 @@
       "require": "./dist/loader/index.cjs",
       "types": "./dist/loader/index.d.ts"
     },
+    "./sdk-dapp-core-ui.css": {
+      "import": "./www/build/sdk-dapp-core-ui.css",
+      "require": "./www/build/sdk-dapp-core-ui.css"
+    },
     "./react": {
       "import": "./dist/react/components.ts",
       "require": "./dist/react/components.ts"
@@ -65,7 +69,7 @@
     "@stencil/core": "^4.22.3",
     "@stencil/sass": "^3.0.12",
     "@stencil/store": "2.0.16",
-    "@tailwindcss/cli": "4.0.15",
+    "@tailwindcss/cli": "4.0.17",
     "@types/jest": "^29.5.14",
     "@types/jsdom": "^21.1.1",
     "@types/node": "^22.10.0",

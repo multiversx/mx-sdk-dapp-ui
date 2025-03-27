@@ -1,12 +1,11 @@
 import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { faCheck, faCircleNotch, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faHourglass, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 
 const iconData: Record<string, IconDefinition> = {
-  pending: faCircleNotch,
+  pending: faHourglass,
   success: faCheck,
   fail: faTimes,
   invalid: faTimes,
@@ -18,10 +17,11 @@ const iconData: Record<string, IconDefinition> = {
   shadow: true,
 })
 export class TransactionDetailsBody {
-  @Prop() transactionClass?: string = 'transaction-container';
+  @Prop() transactionClass?: string = 'transaction-details-list-item';
   @Prop() status?: string;
   @Prop() hash: string;
   @Prop() link: string;
+  @Prop() index: string;
 
   render() {
     const statusIcon = this.status ? iconData[this.status] : null;
@@ -32,18 +32,20 @@ export class TransactionDetailsBody {
         {iconHtml && (
           <div
             innerHTML={iconHtml}
-            class={classNames('icon', {
-              'fa-spin': this.status === 'pending',
-            })}
+            class={{
+              'transaction-details-list-item-icon': true,
+              'transaction-details-list-item-icon-success': this.status === 'success',
+              'transaction-details-list-item-icon-pending': this.status === 'pending',
+              'transaction-details-list-item-icon-fail': ['fail', 'invalid'].includes(this.status),
+            }}
           ></div>
         )}
-        <span class="trim">
+        <div class="transaction-details-list-item-hash-index">{this.index}</div>
+        <div class="transaction-details-list-item-hash-value">
           <trim-text text={this.hash} />
-        </span>
-        <div class="actions">
-          <copy-button text={this.hash} />
-          <explorer-link link={this.link} />
         </div>
+        <explorer-link iconClass="transaction-details-list-item-explorer-link-icon" link={this.link} />
+        <copy-button iconClass="transaction-details-list-item-copy-button-icon" text={this.hash} />
       </div>
     );
   }

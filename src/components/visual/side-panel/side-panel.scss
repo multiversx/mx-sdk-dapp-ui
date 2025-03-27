@@ -32,6 +32,7 @@
 
   &.visible {
     pointer-events: auto;
+    visibility: visible;
 
     &:before {
       opacity: 0.9;

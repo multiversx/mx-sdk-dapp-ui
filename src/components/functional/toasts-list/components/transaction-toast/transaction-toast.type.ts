@@ -1,15 +1,7 @@
 // match these interfaces with src/path-to-file.type.ts from sdk-dapp
 import type { IconName } from '@fortawesome/free-solid-svg-icons';
 import type { JSX } from '@stencil/core';
-
-export interface IToastDataState {
-  id: string;
-  icon: IconName | string | JSX.Element;
-  hasCloseButton: boolean;
-  title: string;
-  iconClassName: string;
-}
-
+import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 export interface ITransactionProgressState {
   progressClass?: string;
   startTime: number;
@@ -17,19 +9,20 @@ export interface ITransactionProgressState {
   isCrossShard: boolean;
 }
 
-export interface ITransaction {
-  hash: string;
-  status: string;
-  link: string;
+export interface IToastDataState {
+  title: string;
+  iconUrl?: string;
+  iconClassName?: string;
+  hasCloseButton?: boolean;
 }
 
 export interface ITransactionToast {
   toastId: string;
   wrapperClass: string;
   processedTransactionsStatus: string | JSX.Element;
-  transactions: ITransaction[];
+  transactions: ITransactionListItem[];
   toastDataState: IToastDataState;
-  transactionProgressState?: ITransactionProgressState;
+  transactionProgressState?: ITransactionProgressState | null;
 }
 
 interface ISharedCustomToast {

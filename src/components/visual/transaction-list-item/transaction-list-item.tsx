@@ -1,6 +1,6 @@
 import { Component, h, Host, Prop } from '@stencil/core';
 
-import { DefaultIcon } from './assets/default-icon';
+import { DefaultTransactionIcon } from '../default-icon/default-icon';
 import type { ITransactionListItem } from './transaction-list-item.types';
 
 @Component({
@@ -13,7 +13,7 @@ export class TransactionListItem {
 
   private renderPrimaryIcon() {
     if (!this.transaction.asset) {
-      return <DefaultIcon />;
+      return <DefaultTransactionIcon />;
     }
 
     if (this.transaction.asset.imageUrl) {
@@ -28,20 +28,20 @@ export class TransactionListItem {
       return <span class="icon-text">{this.transaction.asset.text}</span>;
     }
 
-    return <DefaultIcon />;
+    return <DefaultTransactionIcon />;
   }
 
   private renderDetails() {
-    if (!this.transaction.details) {
-      return null;
-    }
-
     return (
       <div class="transaction-info">
         <span class="transaction-target">
-          {this.transaction.details.directionLabel && <span class="direction-label">{this.transaction.details.directionLabel}</span>}
-          {this.transaction.details.initiatorAsset && <img src={this.transaction.details.initiatorAsset} alt="Service icon" class="service-icon" loading="lazy" />}
-          <trim-text text={this.transaction.details.initiator} class="initiator" />
+          {this.transaction.directionLabel && <span class="direction-label">{this.transaction.directionLabel}</span>}
+          {this.transaction.interactorAsset && (
+            <div class="transaction-icon">
+              <img src={this.transaction.interactorAsset} alt="Service icon" class="service-icon" loading="lazy" />
+            </div>
+          )}
+          <trim-text text={this.transaction.interactor} class="interactor" />
         </span>
       </div>
     );
@@ -58,23 +58,22 @@ export class TransactionListItem {
           <div class="transaction-icon">{this.renderPrimaryIcon()}</div>
 
           <div class="transaction-details">
-            <h4 class="transaction-title">{this.transaction.action.name}</h4>
+            <div class="transaction-details-header">
+              <h4 class="transaction-title">{this.transaction.action.name}</h4>
+              {this.transaction.amount && (
+                <div
+                  class={{
+                    'transaction-amount': true,
+                    'amount-negative': this.transaction.amount.startsWith('-'),
+                    'amount-positive': !this.transaction.amount.startsWith('-'),
+                  }}
+                >
+                  {this.transaction.amount}
+                </div>
+              )}
+            </div>
             {this.renderDetails()}
           </div>
-
-          {this.transaction.amount && (
-            <div class="transaction-right">
-              <div
-                class={{
-                  'transaction-amount': true,
-                  'amount-negative': this.transaction.amount.startsWith('-'),
-                  'amount-positive': !this.transaction.amount.startsWith('-'),
-                }}
-              >
-                {this.transaction.amount}
-              </div>
-            </div>
-          )}
         </div>
       </Host>
     );

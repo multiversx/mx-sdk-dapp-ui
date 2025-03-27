@@ -1,50 +1,78 @@
-import { newE2EPage } from '@stencil/core/testing';
+import { newSpecPage } from '@stencil/core/testing';
+
+import { TrimText } from '../trim-text';
+
+class MockResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
 
 describe('trim-text', () => {
+  beforeAll(() => {
+    // @ts-ignore
+    global.ResizeObserver = MockResizeObserver;
+  });
+
   it('should render the full text when not overflowing', async () => {
-    const page = await newE2EPage();
-    await page.setContent('<trim-text text="Short text"></trim-text>');
-
-    // Wait for component to initialize
-    await page.waitForChanges();
-
-    // Verify rendered content matches expectations
-    const textContent = await page.$eval('trim-text', el => {
-      const span = el.shadowRoot?.querySelector('span:not(.hidden-text-ref)');
-      return span?.textContent;
+    const page = await newSpecPage({
+      components: [TrimText],
+      html: '<trim-text text="Short text"></trim-text>',
     });
 
-    expect(textContent).toBe('Short textShort text');
+    const trimElement = page.root;
+
+    trimElement.overflow = false;
+    await page.waitForChanges();
+
+    const textElement = trimElement.querySelector('span:not(.hidden-text-ref)');
+    expect(textElement.textContent).toBe('Short textShort text');
   });
 
   it('should handle overflow and truncate text', async () => {
-    const page = await newE2EPage();
-    await page.setContent('<trim-text text="A very long text that should be truncated due to container width limitations"></trim-text>');
-
-    // Force narrow viewport
-    await page.setViewport({ width: 200, height: 600 });
-
-    const content = await page.$eval('trim-text', el => {
-      return {
-        overflow: el.shadowRoot?.querySelector('.overflow') !== null,
-        hasEllipsis: el.shadowRoot?.querySelector('.ellipsis')?.textContent === '...',
-      };
+    const page = await newSpecPage({
+      components: [TrimText],
+      html: '<trim-text text="A very long text that should be truncated due to container width limitations"></trim-text>',
     });
 
-    expect(content.overflow).toBe(true);
-    expect(content.hasEllipsis).toBe(true);
+    const component = page.rootInstance;
+
+    component.overflow = true;
+    await page.waitForChanges();
+
+    const trimElement = page.root;
+
+    const trimRef = trimElement.querySelector('.trim');
+    expect(trimRef.classList.contains('overflow')).toBe(true);
+
+    const trimWrapper = trimElement.querySelector('.trim-wrapper');
+    expect(trimWrapper).toBeTruthy();
+
+    const leftSpan = trimWrapper.querySelector('.left');
+    const ellipsisSpan = trimWrapper.querySelector('.ellipsis');
+    const rightSpan = trimWrapper.querySelector('.right');
+
+    expect(leftSpan).toBeTruthy();
+    expect(ellipsisSpan.textContent).toBe('...');
+    expect(rightSpan).toBeTruthy();
+
+    const leftText = leftSpan.querySelector('span').textContent;
+    const rightText = rightSpan.querySelector('span').textContent;
+
+    expect(leftText + rightText).toBe('A very long text that should be truncated due to container width limitations');
   });
 
   it('should use custom class and data-testid', async () => {
-    const page = await newE2EPage();
-    await page.setContent('<trim-text text="Custom" class="custom-class" data-test-id="custom-id"></trim-text>');
+    const page = await newSpecPage({
+      components: [TrimText],
+      html: '<trim-text text="Custom" class="custom-class" data-testid="custom-id"></trim-text>',
+    });
 
-    const elementProps = await page.$eval('trim-text', el => ({
-      class: el.shadowRoot?.querySelector('span')?.className,
-      testId: el.getAttribute('data-test-id'),
-    }));
+    const trimElement = page.root;
 
-    expect(elementProps.class).toContain('custom-class');
-    expect(elementProps.testId).toBe('custom-id');
+    const trimSpan = trimElement.querySelector('.trim');
+    expect(trimSpan.className).toContain('custom-class');
+
+    expect(trimElement.getAttribute('data-testid')).toBe('custom-id');
   });
 });

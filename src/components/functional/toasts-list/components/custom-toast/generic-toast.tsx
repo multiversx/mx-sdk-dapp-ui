@@ -7,14 +7,14 @@ import type { CustomToastType, IComponentToast, ISimpleToast } from 'components/
 })
 export class GenericToast {
   @Prop() toast: CustomToastType;
-  @Event() handleDeleteToast: EventEmitter<string>;
+  @Event() deleteToast: EventEmitter<string>;
 
   render() {
     const isComponentToast = 'instantiateToastElement' in this.toast;
     if (isComponentToast) {
-      return <custom-toast toast={this.toast as IComponentToast} onHandleDeleteToast={() => this.handleDeleteToast.emit(this.toast.toastId)} />;
+      return <custom-toast toast={this.toast as IComponentToast} onDeleteToast={() => this.deleteToast.emit(this.toast.toastId)} />;
     }
 
-    return <simple-toast toast={this.toast as ISimpleToast} onHandleDeleteToast={() => this.handleDeleteToast.emit(this.toast.toastId)} />;
+    return <simple-toast toast={this.toast as ISimpleToast} onDeleteToast={() => this.deleteToast.emit(this.toast.toastId)} />;
   }
 }

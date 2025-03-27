@@ -14,9 +14,9 @@
 
 ## Events
 
-| Event               | Description | Type                  |
-| ------------------- | ----------- | --------------------- |
-| `handleDeleteToast` |             | `CustomEvent<string>` |
+| Event         | Description | Type                  |
+| ------------- | ----------- | --------------------- |
+| `deleteToast` |             | `CustomEvent<string>` |
 
 
 ## Dependencies
@@ -35,7 +35,6 @@
 graph TD;
   generic-toast --> custom-toast
   generic-toast --> simple-toast
-  simple-toast --> transaction-toast-wrapper
   toast-list --> generic-toast
   style generic-toast fill:#f9f,stroke:#333,stroke-width:4px
 ```
