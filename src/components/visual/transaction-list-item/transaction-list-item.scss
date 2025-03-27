@@ -6,20 +6,19 @@
 
 .transaction-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   padding: 1rem 0;
   gap: 1rem;
   border-bottom: 1px solid var(--mx-dapp-core-border-light, #f3f4f6);
 }
 
 .transaction-icon {
-  width: 3rem;
-  height: 3rem;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--mx-dapp-core-bg-secondary, #f3f4f6);
   flex-shrink: 0;
   overflow: hidden;
 
@@ -32,10 +31,12 @@
   .icon-text {
     font-size: 1.25rem;
     color: var(--mx-dapp-core-text-primary, #1f2937);
+    width: 40px;
+    height: 40px;
 
-    &:not(fa-icon) {
-      font-weight: 600;
-      font-size: 1rem;
+    .svg-inline--fa {
+      width: 40px;
+      height: 40px;
     }
   }
 }
@@ -43,6 +44,12 @@
 .transaction-details {
   flex: 1;
   min-width: 0;
+}
+
+.transaction-details-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .transaction-title {
@@ -67,13 +74,16 @@
     color: var(--mx-dapp-core-text-secondary, #6b7280);
   }
 
-  .service-icon {
-    width: 1.25rem;
-    height: 1.25rem;
-    object-fit: contain;
+  .transaction-icon {
+    height: 1rem;
+    width: 1rem;
+
+    .fa-icon .svg-inline--fa {
+      height: 1rem;
+    }
   }
 
-  .initiator {
+  .interactor {
     color: var(--mx-dapp-core-text-secondary, #6b7280);
     max-width: 318px;
   }

@@ -7,11 +7,12 @@
 
 ## Properties
 
-| Property                      | Attribute                       | Description | Type                | Default     |
-| ----------------------------- | ------------------------------- | ----------- | ------------------- | ----------- |
-| `processedTransactionsStatus` | `processed-transactions-status` |             | `Element \| string` | `undefined` |
-| `toastDataState`              | --                              |             | `IToastDataState`   | `undefined` |
-| `transactions`                | --                              |             | `ITransaction[]`    | `undefined` |
+| Property                      | Attribute                       | Description | Type                     | Default     |
+| ----------------------------- | ------------------------------- | ----------- | ------------------------ | ----------- |
+| `fullWidth`                   | `full-width`                    |             | `boolean`                | `undefined` |
+| `processedTransactionsStatus` | `processed-transactions-status` |             | `Element \| string`      | `undefined` |
+| `toastDataState`              | --                              |             | `IToastDataState`        | `undefined` |
+| `transactions`                | --                              |             | `ITransactionListItem[]` | `undefined` |
 
 
 ## Events
@@ -29,19 +30,25 @@
 
 ### Depends on
 
+- [fa-icon](../../../../../../visual/fa-icon)
+- [trim-text](../../../../../../visual/trim)
+- [explorer-link](../../../../../../visual/explorer-link)
 - [transaction-toast-details](../transaction-toast-details)
 
 ### Graph
 ```mermaid
 graph TD;
+  transaction-toast-content --> fa-icon
+  transaction-toast-content --> trim-text
+  transaction-toast-content --> explorer-link
   transaction-toast-content --> transaction-toast-details
+  explorer-link --> fa-icon
   transaction-toast-details --> fa-icon
   transaction-toast-details --> transaction-toast-details-body
   transaction-toast-details-body --> trim-text
-  transaction-toast-details-body --> copy-button
   transaction-toast-details-body --> explorer-link
+  transaction-toast-details-body --> copy-button
   copy-button --> fa-icon
-  explorer-link --> fa-icon
   transaction-toast --> transaction-toast-content
   style transaction-toast-content fill:#f9f,stroke:#333,stroke-width:4px
 ```

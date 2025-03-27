@@ -1,39 +1,84 @@
-.status-title {
-  font-size: 0.875rem;
-  margin: 0.25rem 0 0.5rem;
-  line-height: 1.5;
+.transaction-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  width: 100%;
+}
+
+.transaction-details-status {
   display: flex;
   align-items: center;
+  gap: 12px;
+  align-self: stretch;
+  margin-bottom: 12px;
   cursor: pointer;
 }
 
-.toggle-icon {
-  margin-right: 0.5rem;
-  font-size: 0.75rem;
-  flex-shrink: 0;
+.transaction-details-status-icon {
+  color: var(--mx-toast-text-primary);
+  transition: transform var(--mx-transition);
+  align-items: center;
+  display: flex;
+  height: 20px;
+  width: 20px;
+  justify-content: center;
+
+  .svg-inline--fa {
+    height: 14px;
+    width: 14px;
+    color: var(--mx-toast-text-primary);
+  }
+}
+
+.transaction-details-status-icon.rotate-up {
+  transform: rotate(90deg);
+}
+
+.transaction-details-status-text {
+  color: var(--mx-toast-text-primary);
+  font-family: var(--font-family-roobert);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%; /* 19.6px */
 }
 
 .transaction-details-list {
-  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  align-self: stretch;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--mx-transition);
+}
+
+.transaction-details-list.expanded {
+  max-height: 500px;
 }
 
 .view-all-container {
+  width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 0.5rem;
+  margin-top: 8px;
 }
 
 .show-more-button {
-  font-size: 0.875rem;
-  color: var(--mx-dapp-core-color-primary, #2044F5);
-  text-decoration: none;
-  cursor: pointer;
   background: none;
   border: none;
-  padding: 0;
-  font-family: inherit;
+  color: var(--mx-toast-text-primary);
+  font-family: var(--font-family-roobert);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color var(--mx-transition);
 }
 
 .show-more-button:hover {
-  text-decoration: underline;
+  background-color: rgba(0, 0, 0, 0.05);
 }

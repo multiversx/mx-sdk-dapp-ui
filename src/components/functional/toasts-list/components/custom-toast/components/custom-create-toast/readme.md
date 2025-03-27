@@ -14,9 +14,9 @@
 
 ## Events
 
-| Event               | Description | Type                  |
-| ------------------- | ----------- | --------------------- |
-| `handleDeleteToast` |             | `CustomEvent<string>` |
+| Event         | Description | Type                  |
+| ------------- | ----------- | --------------------- |
+| `deleteToast` |             | `CustomEvent<string>` |
 
 
 ## Dependencies

@@ -15,9 +15,10 @@ import { ProviderTypeEnum } from "./types/provider.types";
 import { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
-import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+import { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
+import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 import { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
@@ -30,9 +31,10 @@ export { ProviderTypeEnum } from "./types/provider.types";
 export { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
-export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+export { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
+export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 export { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export namespace Components {
@@ -45,6 +47,7 @@ export namespace Components {
     interface CopyButton {
         "class"?: string;
         "copyIcon"?: IconDefinition;
+        "iconClass"?: string;
         "successIcon"?: IconDefinition;
         "text": string;
     }
@@ -55,6 +58,7 @@ export namespace Components {
         "class"?: string;
         "dataTestId"?: string;
         "icon"?: IconDefinition;
+        "iconClass"?: string;
         "link": string;
         "text"?: string;
     }
@@ -181,26 +185,29 @@ export namespace Components {
         "transaction": ITransactionsTableRow;
     }
     interface TransactionToast {
+        "fullWidth"?: boolean;
         "processedTransactionsStatus": string | JSX.Element;
         "toastDataState": IToastDataState;
         "toastId": string;
         "transactionProgressState"?: ITransactionProgressState;
-        "transactions": ITransaction[];
+        "transactions": ITransactionListItem[];
         "wrapperClass": string;
     }
     interface TransactionToastContent {
+        "fullWidth"?: boolean;
         "processedTransactionsStatus"?: string | JSX.Element;
         "toastDataState": IToastDataState;
-        "transactions": ITransaction[];
+        "transactions": ITransactionListItem[];
     }
     interface TransactionToastDetails {
         "maxShownTransactions": number;
-        "processedTransactionsStatus"?: JSX.Element | string;
+        "processedTransactionsStatus"?: string | JSX.Element;
         "transactionClass": string;
-        "transactions"?: ITransaction[];
+        "transactions"?: ITransactionListItem[];
     }
     interface TransactionToastDetailsBody {
         "hash": string;
+        "index": string;
         "link": string;
         "status"?: string;
         "transactionClass"?: string;
@@ -208,10 +215,6 @@ export namespace Components {
     interface TransactionToastProgress {
         "endTime"?: number;
         "startTime"?: number;
-    }
-    interface TransactionToastWrapper {
-        "wrapperClass": string;
-        "wrapperId"?: string;
     }
     interface TransactionValue {
         "class"?: string;
@@ -310,7 +313,7 @@ declare global {
         new (): HTMLCopyButtonElement;
     };
     interface HTMLCustomToastElementEventMap {
-        "handleDeleteToast": string;
+        "deleteToast": string;
     }
     interface HTMLCustomToastElement extends Components.CustomToast, HTMLStencilElement {
         addEventListener<K extends keyof HTMLCustomToastElementEventMap>(type: K, listener: (this: HTMLCustomToastElement, ev: CustomToastCustomEvent<HTMLCustomToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -374,7 +377,7 @@ declare global {
         new (): HTMLGenericSpinnerElement;
     };
     interface HTMLGenericToastElementEventMap {
-        "handleDeleteToast": string;
+        "deleteToast": string;
     }
     interface HTMLGenericToastElement extends Components.GenericToast, HTMLStencilElement {
         addEventListener<K extends keyof HTMLGenericToastElementEventMap>(type: K, listener: (this: HTMLGenericToastElement, ev: GenericToastCustomEvent<HTMLGenericToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -493,7 +496,7 @@ declare global {
         new (): HTMLSignTransactionsPanelElement;
     };
     interface HTMLSimpleToastElementEventMap {
-        "handleDeleteToast": void;
+        "deleteToast": void;
     }
     interface HTMLSimpleToastElement extends Components.SimpleToast, HTMLStencilElement {
         addEventListener<K extends keyof HTMLSimpleToastElementEventMap>(type: K, listener: (this: HTMLSimpleToastElement, ev: SimpleToastCustomEvent<HTMLSimpleToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -582,7 +585,7 @@ declare global {
         new (): HTMLTransactionShardsElement;
     };
     interface HTMLTransactionToastElementEventMap {
-        "handleDeleteToast": string;
+        "deleteToast": void;
     }
     interface HTMLTransactionToastElement extends Components.TransactionToast, HTMLStencilElement {
         addEventListener<K extends keyof HTMLTransactionToastElementEventMap>(type: K, listener: (this: HTMLTransactionToastElement, ev: TransactionToastCustomEvent<HTMLTransactionToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -632,12 +635,6 @@ declare global {
     var HTMLTransactionToastProgressElement: {
         prototype: HTMLTransactionToastProgressElement;
         new (): HTMLTransactionToastProgressElement;
-    };
-    interface HTMLTransactionToastWrapperElement extends Components.TransactionToastWrapper, HTMLStencilElement {
-    }
-    var HTMLTransactionToastWrapperElement: {
-        prototype: HTMLTransactionToastWrapperElement;
-        new (): HTMLTransactionToastWrapperElement;
     };
     interface HTMLTransactionValueElement extends Components.TransactionValue, HTMLStencilElement {
     }
@@ -757,7 +754,6 @@ declare global {
         "transaction-toast-details": HTMLTransactionToastDetailsElement;
         "transaction-toast-details-body": HTMLTransactionToastDetailsBodyElement;
         "transaction-toast-progress": HTMLTransactionToastProgressElement;
-        "transaction-toast-wrapper": HTMLTransactionToastWrapperElement;
         "transaction-value": HTMLTransactionValueElement;
         "transactions-table": HTMLTransactionsTableElement;
         "trim-text": HTMLTrimTextElement;
@@ -779,17 +775,19 @@ declare namespace LocalJSX {
     interface CopyButton {
         "class"?: string;
         "copyIcon"?: IconDefinition;
+        "iconClass"?: string;
         "successIcon"?: IconDefinition;
         "text"?: string;
     }
     interface CustomToast {
-        "onHandleDeleteToast"?: (event: CustomToastCustomEvent<string>) => void;
+        "onDeleteToast"?: (event: CustomToastCustomEvent<string>) => void;
         "toast"?: IComponentToast;
     }
     interface ExplorerLink {
         "class"?: string;
         "dataTestId"?: string;
         "icon"?: IconDefinition;
+        "iconClass"?: string;
         "link"?: string;
         "text"?: string;
     }
@@ -819,7 +817,7 @@ declare namespace LocalJSX {
     interface GenericSpinner {
     }
     interface GenericToast {
-        "onHandleDeleteToast"?: (event: GenericToastCustomEvent<string>) => void;
+        "onDeleteToast"?: (event: GenericToastCustomEvent<string>) => void;
         "toast"?: CustomToastType;
     }
     interface LedgerAccountScreen {
@@ -864,7 +862,7 @@ declare namespace LocalJSX {
         "data"?: ISignTransactionsPanelData;
     }
     interface SimpleToast {
-        "onHandleDeleteToast"?: (event: SimpleToastCustomEvent<void>) => void;
+        "onDeleteToast"?: (event: SimpleToastCustomEvent<void>) => void;
         "toast"?: ISimpleToast;
     }
     interface ToastList {
@@ -919,28 +917,31 @@ declare namespace LocalJSX {
         "transaction"?: ITransactionsTableRow;
     }
     interface TransactionToast {
-        "onHandleDeleteToast"?: (event: TransactionToastCustomEvent<string>) => void;
+        "fullWidth"?: boolean;
+        "onDeleteToast"?: (event: TransactionToastCustomEvent<void>) => void;
         "processedTransactionsStatus"?: string | JSX.Element;
         "toastDataState"?: IToastDataState;
         "toastId"?: string;
         "transactionProgressState"?: ITransactionProgressState;
-        "transactions"?: ITransaction[];
+        "transactions"?: ITransactionListItem[];
         "wrapperClass"?: string;
     }
     interface TransactionToastContent {
+        "fullWidth"?: boolean;
         "onDeleteToast"?: (event: TransactionToastContentCustomEvent<void>) => void;
         "processedTransactionsStatus"?: string | JSX.Element;
         "toastDataState"?: IToastDataState;
-        "transactions"?: ITransaction[];
+        "transactions"?: ITransactionListItem[];
     }
     interface TransactionToastDetails {
         "maxShownTransactions"?: number;
-        "processedTransactionsStatus"?: JSX.Element | string;
+        "processedTransactionsStatus"?: string | JSX.Element;
         "transactionClass"?: string;
-        "transactions"?: ITransaction[];
+        "transactions"?: ITransactionListItem[];
     }
     interface TransactionToastDetailsBody {
         "hash"?: string;
+        "index"?: string;
         "link"?: string;
         "status"?: string;
         "transactionClass"?: string;
@@ -948,10 +949,6 @@ declare namespace LocalJSX {
     interface TransactionToastProgress {
         "endTime"?: number;
         "startTime"?: number;
-    }
-    interface TransactionToastWrapper {
-        "wrapperClass"?: string;
-        "wrapperId"?: string;
     }
     interface TransactionValue {
         "class"?: string;
@@ -1033,7 +1030,6 @@ declare namespace LocalJSX {
         "transaction-toast-details": TransactionToastDetails;
         "transaction-toast-details-body": TransactionToastDetailsBody;
         "transaction-toast-progress": TransactionToastProgress;
-        "transaction-toast-wrapper": TransactionToastWrapper;
         "transaction-value": TransactionValue;
         "transactions-table": TransactionsTable;
         "trim-text": TrimText;
@@ -1088,7 +1084,6 @@ declare module "@stencil/core" {
             "transaction-toast-details": LocalJSX.TransactionToastDetails & JSXBase.HTMLAttributes<HTMLTransactionToastDetailsElement>;
             "transaction-toast-details-body": LocalJSX.TransactionToastDetailsBody & JSXBase.HTMLAttributes<HTMLTransactionToastDetailsBodyElement>;
             "transaction-toast-progress": LocalJSX.TransactionToastProgress & JSXBase.HTMLAttributes<HTMLTransactionToastProgressElement>;
-            "transaction-toast-wrapper": LocalJSX.TransactionToastWrapper & JSXBase.HTMLAttributes<HTMLTransactionToastWrapperElement>;
             "transaction-value": LocalJSX.TransactionValue & JSXBase.HTMLAttributes<HTMLTransactionValueElement>;
             "transactions-table": LocalJSX.TransactionsTable & JSXBase.HTMLAttributes<HTMLTransactionsTableElement>;
             "trim-text": LocalJSX.TrimText & JSXBase.HTMLAttributes<HTMLTrimTextElement>;

@@ -7,7 +7,7 @@
 
 | Property      | Attribute     | Description | Type                       | Default     |
 | ------------- | ------------- | ----------- | -------------------------- | ----------- |
-| `class`       | `class`       |             | `string`                   | `undefined` |
+| `class`       | `class`       |             | `string`                   | `'fa-icon'` |
 | `description` | `description` |             | `string`                   | `undefined` |
 | `icon`        | `icon`        |             | `IconDefinition \| string` | `undefined` |
 
@@ -22,6 +22,7 @@
  - [transaction-account](../../controlled/transactions-table/components/transaction-account)
  - [transaction-icon](../../controlled/transactions-table/components/transaction-icon)
  - [transaction-list-item](../transaction-list-item)
+ - [transaction-toast-content](../../functional/toasts-list/components/transaction-toast/components/transaction-toast-content)
  - [transaction-toast-details](../../functional/toasts-list/components/transaction-toast/components/transaction-toast-details)
  - [transaction-value](../../controlled/transactions-table/components/transaction-value)
  - [unlock-header](../unlock-panel/components/header)
@@ -35,6 +36,7 @@ graph TD;
   transaction-account --> fa-icon
   transaction-icon --> fa-icon
   transaction-list-item --> fa-icon
+  transaction-toast-content --> fa-icon
   transaction-toast-details --> fa-icon
   transaction-value --> fa-icon
   unlock-header --> fa-icon

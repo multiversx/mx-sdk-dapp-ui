@@ -34,17 +34,19 @@ graph TD;
   notifications-feed --> fa-icon
   notifications-feed --> transaction-toast
   notifications-feed --> transaction-list-item
-  transaction-toast --> transaction-toast-wrapper
   transaction-toast --> transaction-toast-progress
   transaction-toast --> transaction-toast-content
+  transaction-toast-content --> fa-icon
+  transaction-toast-content --> trim-text
+  transaction-toast-content --> explorer-link
   transaction-toast-content --> transaction-toast-details
+  explorer-link --> fa-icon
   transaction-toast-details --> fa-icon
   transaction-toast-details --> transaction-toast-details-body
   transaction-toast-details-body --> trim-text
-  transaction-toast-details-body --> copy-button
   transaction-toast-details-body --> explorer-link
+  transaction-toast-details-body --> copy-button
   copy-button --> fa-icon
-  explorer-link --> fa-icon
   transaction-list-item --> fa-icon
   transaction-list-item --> trim-text
   style notifications-feed fill:#f9f,stroke:#333,stroke-width:4px
