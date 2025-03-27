@@ -16,6 +16,14 @@
         line-height: 1;
         color: #a09a93;
       }
+
+      .unlock-panel-group-providers {
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: calc(4px / 2);
+      }
     }
   }
 }

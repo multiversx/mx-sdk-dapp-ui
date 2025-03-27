@@ -26,7 +26,7 @@ const providerButtonInfo = {
     label: ProviderButtonLabelsEnum.passkey,
   },
   [ProviderTypeEnum.walletConnect]: {
-    icon: <xportal-provider-icon />,
+    icon: <multiversx-logo-icon />,
     label: ProviderButtonLabelsEnum.xportal,
   },
   [ProviderTypeEnum.ledger]: {

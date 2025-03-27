@@ -23,13 +23,6 @@ export class UnlockPanel {
   private isExtensionInstalled = (currentProvider: ProviderTypeEnum) => currentProvider === ProviderTypeEnum.extension && getIsExtensionAvailable();
   private isMetaMaskInstalled = (currentProvider: ProviderTypeEnum) => currentProvider === ProviderTypeEnum.metamask && getIsMetaMaskAvailable();
 
-  private detectedProviders: ProviderTypeEnum[] = this.allowedProviders.filter(
-    allowedProvider => this.isExtensionInstalled(allowedProvider) || this.isMetaMaskInstalled(allowedProvider),
-  );
-
-  private otherProviders: ProviderTypeEnum[] = this.allowedProviders.filter(allowedProvider => !this.detectedProviders.includes(allowedProvider));
-  private hasDetectedProviders: boolean = this.detectedProviders.length > 0;
-
   private anchor: HTMLElement | null = null;
   private observer: MutationObserver | null = null;
 
@@ -82,6 +75,13 @@ export class UnlockPanel {
   };
 
   render() {
+    const detectedProviders: ProviderTypeEnum[] = this.allowedProviders.filter(
+      allowedProvider => this.isExtensionInstalled(allowedProvider) || this.isMetaMaskInstalled(allowedProvider),
+    );
+
+    const otherProviders = this.allowedProviders.filter(allowedProvider => !detectedProviders.includes(allowedProvider));
+    const hasDetectedProviders = detectedProviders.length > 0;
+
     return (
       <StyledHost>
         <side-panel isOpen={this.isOpen} panelTitle="Connect your wallet" onClose={this.handleClose.bind(this)} onBack={this.handleResetLoginState.bind(this)}>
@@ -90,12 +90,12 @@ export class UnlockPanel {
           <div class="unlock-panel">
             {!this.isLoggingIn && (
               <div class="unlock-panel-groups">
-                {this.hasDetectedProviders && (
+                {hasDetectedProviders && (
                   <div class="unlock-panel-group">
                     <div class="unlock-panel-group-label">Detected</div>
 
                     <div class="unlock-panel-group-providers">
-                      {this.detectedProviders.map(provider => (
+                      {detectedProviders.map(provider => (
                         <provider-button type={provider} onClick={this.handleLogin.bind(this, provider)} />
                       ))}
                     </div>
@@ -103,10 +103,10 @@ export class UnlockPanel {
                 )}
 
                 <div class="unlock-panel-group">
-                  <div class="unlock-panel-group-label">{this.hasDetectedProviders ? 'Other Options' : 'Options'}</div>
+                  <div class="unlock-panel-group-label">{hasDetectedProviders ? 'Other Options' : 'Options'}</div>
 
                   <div class="unlock-panel-group-providers">
-                    {this.otherProviders.map(provider => (
+                    {otherProviders.map(provider => (
                       <provider-button type={provider} onClick={this.handleLogin.bind(this, provider)} />
                     ))}
                   </div>

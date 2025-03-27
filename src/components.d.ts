@@ -121,11 +121,13 @@ export namespace Components {
     interface MetamaskProviderIcon {
         "class"?: string;
     }
+    interface MultiversxLogoIcon {
+        "class"?: string;
+    }
     interface NotificationsFeed {
         "getEventBus": () => Promise<IEventBus>;
     }
     interface PasskeyProviderIcon {
-        "class"?: string;
     }
     interface PendingTransactionsPanel {
         "data": IPendingTransactionsPanelData;
@@ -272,9 +274,6 @@ export namespace Components {
         "class"?: string;
     }
     interface XaliasProviderIcon {
-        "class"?: string;
-    }
-    interface XportalProviderIcon {
         "class"?: string;
     }
 }
@@ -502,6 +501,12 @@ declare global {
     var HTMLMetamaskProviderIconElement: {
         prototype: HTMLMetamaskProviderIconElement;
         new (): HTMLMetamaskProviderIconElement;
+    };
+    interface HTMLMultiversxLogoIconElement extends Components.MultiversxLogoIcon, HTMLStencilElement {
+    }
+    var HTMLMultiversxLogoIconElement: {
+        prototype: HTMLMultiversxLogoIconElement;
+        new (): HTMLMultiversxLogoIconElement;
     };
     interface HTMLNotificationsFeedElement extends Components.NotificationsFeed, HTMLStencilElement {
     }
@@ -776,12 +781,6 @@ declare global {
         prototype: HTMLXaliasProviderIconElement;
         new (): HTMLXaliasProviderIconElement;
     };
-    interface HTMLXportalProviderIconElement extends Components.XportalProviderIcon, HTMLStencilElement {
-    }
-    var HTMLXportalProviderIconElement: {
-        prototype: HTMLXportalProviderIconElement;
-        new (): HTMLXportalProviderIconElement;
-    };
     interface HTMLElementTagNameMap {
         "arrow-up-right-icon": HTMLArrowUpRightIconElement;
         "back-arrow-icon": HTMLBackArrowIconElement;
@@ -804,6 +803,7 @@ declare global {
         "ledger-connect-screen": HTMLLedgerConnectScreenElement;
         "ledger-provider-icon": HTMLLedgerProviderIconElement;
         "metamask-provider-icon": HTMLMetamaskProviderIconElement;
+        "multiversx-logo-icon": HTMLMultiversxLogoIconElement;
         "notifications-feed": HTMLNotificationsFeedElement;
         "passkey-provider-icon": HTMLPasskeyProviderIconElement;
         "pending-transactions-panel": HTMLPendingTransactionsPanelElement;
@@ -840,7 +840,6 @@ declare global {
         "wallet-connect-panel": HTMLWalletConnectPanelElement;
         "wallet-provider-icon": HTMLWalletProviderIconElement;
         "xalias-provider-icon": HTMLXaliasProviderIconElement;
-        "xportal-provider-icon": HTMLXportalProviderIconElement;
     }
 }
 declare namespace LocalJSX {
@@ -935,10 +934,12 @@ declare namespace LocalJSX {
     interface MetamaskProviderIcon {
         "class"?: string;
     }
+    interface MultiversxLogoIcon {
+        "class"?: string;
+    }
     interface NotificationsFeed {
     }
     interface PasskeyProviderIcon {
-        "class"?: string;
     }
     interface PendingTransactionsPanel {
         "data"?: IPendingTransactionsPanelData;
@@ -1089,9 +1090,6 @@ declare namespace LocalJSX {
     interface XaliasProviderIcon {
         "class"?: string;
     }
-    interface XportalProviderIcon {
-        "class"?: string;
-    }
     interface IntrinsicElements {
         "arrow-up-right-icon": ArrowUpRightIcon;
         "back-arrow-icon": BackArrowIcon;
@@ -1114,6 +1112,7 @@ declare namespace LocalJSX {
         "ledger-connect-screen": LedgerConnectScreen;
         "ledger-provider-icon": LedgerProviderIcon;
         "metamask-provider-icon": MetamaskProviderIcon;
+        "multiversx-logo-icon": MultiversxLogoIcon;
         "notifications-feed": NotificationsFeed;
         "passkey-provider-icon": PasskeyProviderIcon;
         "pending-transactions-panel": PendingTransactionsPanel;
@@ -1150,7 +1149,6 @@ declare namespace LocalJSX {
         "wallet-connect-panel": WalletConnectPanel;
         "wallet-provider-icon": WalletProviderIcon;
         "xalias-provider-icon": XaliasProviderIcon;
-        "xportal-provider-icon": XportalProviderIcon;
     }
 }
 export { LocalJSX as JSX };
@@ -1178,6 +1176,7 @@ declare module "@stencil/core" {
             "ledger-connect-screen": LocalJSX.LedgerConnectScreen & JSXBase.HTMLAttributes<HTMLLedgerConnectScreenElement>;
             "ledger-provider-icon": LocalJSX.LedgerProviderIcon & JSXBase.HTMLAttributes<HTMLLedgerProviderIconElement>;
             "metamask-provider-icon": LocalJSX.MetamaskProviderIcon & JSXBase.HTMLAttributes<HTMLMetamaskProviderIconElement>;
+            "multiversx-logo-icon": LocalJSX.MultiversxLogoIcon & JSXBase.HTMLAttributes<HTMLMultiversxLogoIconElement>;
             "notifications-feed": LocalJSX.NotificationsFeed & JSXBase.HTMLAttributes<HTMLNotificationsFeedElement>;
             "passkey-provider-icon": LocalJSX.PasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLPasskeyProviderIconElement>;
             "pending-transactions-panel": LocalJSX.PendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLPendingTransactionsPanelElement>;
@@ -1214,7 +1213,6 @@ declare module "@stencil/core" {
             "wallet-connect-panel": LocalJSX.WalletConnectPanel & JSXBase.HTMLAttributes<HTMLWalletConnectPanelElement>;
             "wallet-provider-icon": LocalJSX.WalletProviderIcon & JSXBase.HTMLAttributes<HTMLWalletProviderIconElement>;
             "xalias-provider-icon": LocalJSX.XaliasProviderIcon & JSXBase.HTMLAttributes<HTMLXaliasProviderIconElement>;
-            "xportal-provider-icon": LocalJSX.XportalProviderIcon & JSXBase.HTMLAttributes<HTMLXportalProviderIconElement>;
         }
     }
 }

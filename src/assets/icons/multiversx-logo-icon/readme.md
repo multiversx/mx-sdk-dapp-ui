@@ -21,8 +21,8 @@
 ### Graph
 ```mermaid
 graph TD;
-  provider-button --> xportal-provider-icon
-  style xportal-provider-icon fill:#f9f,stroke:#333,stroke-width:4px
+  provider-button --> multiversx-logo-icon
+  style multiversx-logo-icon fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
 ----------------------------------------------

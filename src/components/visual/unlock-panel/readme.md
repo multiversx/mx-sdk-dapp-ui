@@ -39,7 +39,7 @@ graph TD;
   provider-button --> extension-provider-icon
   provider-button --> metamask-provider-icon
   provider-button --> passkey-provider-icon
-  provider-button --> xportal-provider-icon
+  provider-button --> multiversx-logo-icon
   provider-button --> ledger-provider-icon
   provider-button --> wallet-provider-icon
   provider-button --> xalias-provider-icon

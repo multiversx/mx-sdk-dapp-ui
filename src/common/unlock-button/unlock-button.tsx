@@ -2,7 +2,7 @@ import { Component, h, Prop } from '@stencil/core';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from 'components/visual/unlock-panel/helpers';
 import { StyledHost } from 'utils/StyledHost';
 
-import { ProviderTypeEnum } from '../../types/provider.types';
+import type { ProviderTypeEnum } from '../../types/provider.types';
 
 @Component({
   tag: 'unlock-button',
@@ -14,38 +14,28 @@ export class UnlockButton {
   @Prop() buttonIcon: HTMLElement;
   @Prop() buttonType?: ProviderTypeEnum;
 
-  private isDetectableProvider: boolean = false;
-  private shouldShowOpenLabel: boolean = false;
-  private isExtensionProvider = this.buttonType === ProviderTypeEnum.extension;
-  private isMetaMaskProvider = this.buttonType === ProviderTypeEnum.metamask;
-
-  componentWillLoad() {
-    this.isDetectableProvider = this.isExtensionProvider || this.isMetaMaskProvider;
-    this.shouldShowOpenLabel = this.isDetectableProvider && ((this.isExtensionProvider && getIsExtensionAvailable()) || (this.isMetaMaskProvider && getIsMetaMaskAvailable()));
-
-    console.log({
-      buttonType: this.buttonType,
-      isDetectableProvider: this.isDetectableProvider,
-      isExtensionProvider: this.isExtensionProvider,
-      isMetaMaskProvider: this.isMetaMaskProvider,
-    });
-  }
-
   render() {
+    const isExtensionProvider = this.buttonType === 'extension';
+    const isMetaMaskProvider = this.buttonType === 'metamask';
+    const isDetectableProvider = isExtensionProvider || isMetaMaskProvider;
+    const isExtensionInstalled = isExtensionProvider && getIsExtensionAvailable();
+    const isMetaMaskInstalled = isMetaMaskProvider && getIsMetaMaskAvailable();
+    const shouldShowOpenLabel = isDetectableProvider && (isExtensionInstalled || isMetaMaskInstalled);
+
     return (
       <StyledHost>
         <div class="unlock-button">
           <div class="unlock-button-icon">{this.buttonIcon}</div>
           <div class="unlock-button-label">{this.buttonLabel}</div>
 
-          {this.isDetectableProvider && (
+          {isDetectableProvider && (
             <div class="unlock-button-status">
-              {this.shouldShowOpenLabel ? (
+              {shouldShowOpenLabel ? (
                 <div class="unlock-button-status-open">Open</div>
               ) : (
-                <div class="unlock-button-install">
-                  <span class="unlock-button-install-label">Install</span>
-                  <arrow-up-right-icon class="unlock-button-install-icon" />
+                <div class="unlock-button-status-install">
+                  <span class="unlock-button-status-install-label">Install</span>
+                  <arrow-up-right-icon class="unlock-button-status-install-icon" />
                 </div>
               )}
             </div>
