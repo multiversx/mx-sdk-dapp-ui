@@ -2,10 +2,10 @@
 
 export enum ProviderTypeEnum {
   extension = 'extension',
+  metamask = 'metamask',
   crossWindow = 'crossWindow',
   walletConnect = 'walletConnect',
   ledger = 'ledger',
-  metamask = 'metamask',
   passkey = 'passkey',
   xalias = 'xalias',
 }

@@ -1,34 +1,45 @@
 import { Component, Fragment, h, Prop } from '@stencil/core';
 import { ProviderTypeEnum } from 'types/provider.types';
+import { StyledHost } from 'utils/StyledHost';
+
+enum ProviderButtonLabelsEnum {
+  extension = 'MultiversX Wallet Extension',
+  metamask = 'MetaMask Snap',
+  passkey = 'Passkey',
+  xportal = 'xPortal Wallet',
+  ledger = 'Ledger',
+  wallet = 'MultiversX Web Wallet',
+  xalias = 'Google (xAlias)',
+}
 
 const providerButtonInfo = {
   [ProviderTypeEnum.extension]: {
     icon: <extension-provider-icon />,
-    label: 'MultiversX Wallet Extension',
+    label: ProviderButtonLabelsEnum.extension,
   },
   [ProviderTypeEnum.metamask]: {
     icon: <metamask-provider-icon />,
-    label: 'Metamask Snap',
+    label: ProviderButtonLabelsEnum.metamask,
   },
   [ProviderTypeEnum.passkey]: {
     icon: <passkey-provider-icon />,
-    label: 'Passkey',
+    label: ProviderButtonLabelsEnum.passkey,
   },
   [ProviderTypeEnum.walletConnect]: {
     icon: <xportal-provider-icon />,
-    label: 'xPortal Wallet',
+    label: ProviderButtonLabelsEnum.xportal,
   },
   [ProviderTypeEnum.ledger]: {
     icon: <ledger-provider-icon />,
-    label: 'Ledger',
+    label: ProviderButtonLabelsEnum.ledger,
   },
   [ProviderTypeEnum.crossWindow]: {
     icon: <wallet-provider-icon />,
-    label: 'MultiversX Web Wallet',
+    label: ProviderButtonLabelsEnum.wallet,
   },
   [ProviderTypeEnum.xalias]: {
     icon: <xalias-provider-icon />,
-    label: 'xAlias',
+    label: ProviderButtonLabelsEnum.xalias,
   },
 };
 
@@ -42,10 +53,15 @@ export class ProviderButton {
 
   render() {
     const walletInfo = this.type ? providerButtonInfo[this.type] : null;
+
     if (!walletInfo) {
       return <Fragment />;
     }
 
-    return <unlock-button icon={walletInfo.icon} label={walletInfo.label}></unlock-button>;
+    return (
+      <StyledHost>
+        <unlock-button buttonIcon={walletInfo.icon} buttonLabel={walletInfo.label} buttonType={this.type} class="provider-button" />
+      </StyledHost>
+    );
   }
 }

@@ -18,6 +18,7 @@ import { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITr
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
+import { ProviderTypeEnum as ProviderTypeEnum1 } from "./types/provider.types";
 import { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -32,8 +33,12 @@ export { CustomToastType as CustomToastType1, IToastDataState, ITransaction, ITr
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
+export { ProviderTypeEnum as ProviderTypeEnum1 } from "./types/provider.types";
 export { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export namespace Components {
+    interface ArrowUpRightIcon {
+        "class"?: string;
+    }
     interface BackArrowIcon {
         "class"?: string;
     }
@@ -243,8 +248,9 @@ export namespace Components {
         "text": string;
     }
     interface UnlockButton {
-        "icon": HTMLElement;
-        "label": string;
+        "buttonIcon": HTMLElement;
+        "buttonLabel": string;
+        "buttonType"?: ProviderTypeEnum1;
     }
     interface UnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
@@ -313,6 +319,12 @@ export interface UnlockPanelCustomEvent<T> extends CustomEvent<T> {
     target: HTMLUnlockPanelElement;
 }
 declare global {
+    interface HTMLArrowUpRightIconElement extends Components.ArrowUpRightIcon, HTMLStencilElement {
+    }
+    var HTMLArrowUpRightIconElement: {
+        prototype: HTMLArrowUpRightIconElement;
+        new (): HTMLArrowUpRightIconElement;
+    };
     interface HTMLBackArrowIconElement extends Components.BackArrowIcon, HTMLStencilElement {
     }
     var HTMLBackArrowIconElement: {
@@ -771,6 +783,7 @@ declare global {
         new (): HTMLXportalProviderIconElement;
     };
     interface HTMLElementTagNameMap {
+        "arrow-up-right-icon": HTMLArrowUpRightIconElement;
         "back-arrow-icon": HTMLBackArrowIconElement;
         "balance-component": HTMLBalanceComponentElement;
         "close-icon": HTMLCloseIconElement;
@@ -831,6 +844,9 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface ArrowUpRightIcon {
+        "class"?: string;
+    }
     interface BackArrowIcon {
         "class"?: string;
     }
@@ -1047,8 +1063,9 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface UnlockButton {
-        "icon"?: HTMLElement;
-        "label"?: string;
+        "buttonIcon"?: HTMLElement;
+        "buttonLabel"?: string;
+        "buttonType"?: ProviderTypeEnum1;
     }
     interface UnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
@@ -1076,6 +1093,7 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface IntrinsicElements {
+        "arrow-up-right-icon": ArrowUpRightIcon;
         "back-arrow-icon": BackArrowIcon;
         "balance-component": BalanceComponent;
         "close-icon": CloseIcon;
@@ -1139,6 +1157,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "arrow-up-right-icon": LocalJSX.ArrowUpRightIcon & JSXBase.HTMLAttributes<HTMLArrowUpRightIconElement>;
             "back-arrow-icon": LocalJSX.BackArrowIcon & JSXBase.HTMLAttributes<HTMLBackArrowIconElement>;
             "balance-component": LocalJSX.BalanceComponent & JSXBase.HTMLAttributes<HTMLBalanceComponentElement>;
             "close-icon": LocalJSX.CloseIcon & JSXBase.HTMLAttributes<HTMLCloseIconElement>;

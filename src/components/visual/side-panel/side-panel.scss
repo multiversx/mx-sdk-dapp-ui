@@ -43,7 +43,7 @@
     border-radius: 20px;
     padding: 24px;
     width: calc(400px + 40px);
-    height: 100%;
+    height: calc(100% - 48px);
     transition: all 200ms ease;
     overflow: hidden;
     display: flex;
@@ -84,19 +84,19 @@
     .side-panel-heading-title {
       color: #e5e5e5;
       font-weight: 500;
-      transition: all 200ms ease;
       font-family: 'Inter', sans-serif;
-
-      &:hover {
-        opacity: 0.75;
-      }
     }
 
     .side-panel-heading-close {
       color: #a3a3a3;
       font-size: 24px;
+      transition: all 200ms ease;
       cursor: pointer;
       margin-left: auto;
+
+      &:hover {
+        opacity: 0.75;
+      }
     }
   }
 

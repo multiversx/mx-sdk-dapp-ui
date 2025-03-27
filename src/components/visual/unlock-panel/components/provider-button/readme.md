@@ -40,6 +40,7 @@ graph TD;
   provider-button --> ledger-provider-icon
   provider-button --> wallet-provider-icon
   provider-button --> xalias-provider-icon
+  unlock-button --> arrow-up-right-icon
   unlock-panel --> provider-button
   style provider-button fill:#f9f,stroke:#333,stroke-width:4px
 ```

@@ -3,8 +3,7 @@ import { Component, Event, h, Prop, State } from '@stencil/core';
 import { ProviderTypeEnum } from 'types/provider.types';
 import { StyledHost } from 'utils/StyledHost';
 
-import { getIsMetaMaskAvailable } from './helpers';
-import { getIsExtensionAvailable } from './helpers/getIsExtensionAvailable';
+import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
 
 @Component({
   tag: 'unlock-panel',
