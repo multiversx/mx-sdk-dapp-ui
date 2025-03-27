@@ -1,12 +1,13 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
+import { StyledHost } from 'utils/StyledHost';
 
 import { DefaultTransactionIconLarge, DefaultTransactionIconSmall } from '../default-icon/default-icon';
 import type { ITransactionListItem } from './transaction-list-item.types';
 
 @Component({
   tag: 'transaction-list-item',
-  styleUrl: 'transaction-list-item.scss',
-  shadow: true,
+  styleUrl: 'transaction-list-item.css',
+  shadow: false,
 })
 export class TransactionListItem {
   @Prop() transaction: ITransactionListItem;
@@ -45,11 +46,11 @@ export class TransactionListItem {
 
   render() {
     if (!this.transaction) {
-      return <Host></Host>;
+      return null;
     }
 
     return (
-      <Host>
+      <StyledHost>
         <div class="transaction-item">
           <div class="transaction-icon">{this.renderPrimaryIcon()}</div>
 
@@ -71,7 +72,7 @@ export class TransactionListItem {
             {this.renderDetails()}
           </div>
         </div>
-      </Host>
+      </StyledHost>
     );
   }
 }

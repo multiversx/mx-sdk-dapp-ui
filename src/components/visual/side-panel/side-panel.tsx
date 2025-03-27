@@ -1,6 +1,7 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
+import { StyledHost } from 'utils/StyledHost';
 
 @Component({
   tag: 'side-panel',
@@ -65,7 +66,7 @@ export class SidePanel {
     }
 
     return (
-      <styled-host>
+      <StyledHost>
         <div
           onClick={this.handleOverlayClick}
           class={classNames('side-panel-wrapper', {
@@ -84,7 +85,7 @@ export class SidePanel {
             </div>
           </div>
         </div>
-      </styled-host>
+      </StyledHost>
     );
   }
 }
