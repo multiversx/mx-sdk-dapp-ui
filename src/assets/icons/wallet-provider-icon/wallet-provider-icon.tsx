@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'wallet-provider-icon',
@@ -6,11 +6,9 @@ import { Component, h, Prop } from '@stencil/core';
   shadow: true,
 })
 export class WalletProviderIcon {
-  @Prop() class?: string;
-
   render() {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="41" viewBox="0 0 40 41" fill="none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="wallet-provider-icon" viewBox="0 0 40 40" fill="none">
         <mask id="mask0_7913_1658" maskUnits="userSpaceOnUse" x="0" y="0" width="40" height="41">
           <path
             fill-rule="evenodd"
