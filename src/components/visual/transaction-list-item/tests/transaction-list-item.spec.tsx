@@ -85,7 +85,7 @@ describe('transaction-list-item', () => {
         asset: {},
       };
       const page = await createPage(transaction);
-      const defaultIcon = page.root.shadowRoot.querySelector('.default-transaction-icon');
+      const defaultIcon = page.root.shadowRoot.querySelector('.default-transaction-icon-large');
       expect(defaultIcon).toBeTruthy();
     });
 

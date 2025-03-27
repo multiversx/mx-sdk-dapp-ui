@@ -2,13 +2,19 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Methods
 
 ### `getEventBus() => Promise<IEventBus>`
 
+
+
 #### Returns
 
 Type: `Promise<IEventBus>`
+
+
+
 
 ## Dependencies
 
@@ -20,7 +26,6 @@ Type: `Promise<IEventBus>`
 - [transaction-list-item](../../visual/transaction-list-item)
 
 ### Graph
-
 ```mermaid
 graph TD;
   notifications-feed --> side-panel
@@ -29,7 +34,6 @@ graph TD;
   notifications-feed --> transaction-list-item
   side-panel --> back-arrow-icon
   side-panel --> close-icon
-  transaction-toast --> transaction-toast-wrapper
   transaction-toast --> transaction-toast-progress
   transaction-toast --> transaction-toast-content
   transaction-toast-content --> fa-icon
@@ -48,6 +52,6 @@ graph TD;
   style notifications-feed fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*
