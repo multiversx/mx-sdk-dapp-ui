@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'metamask-provider-icon',
@@ -6,8 +6,6 @@ import { Component, h, Prop } from '@stencil/core';
   shadow: true,
 })
 export class MetaMaskProviderIcon {
-  @Prop() class?: string;
-
   render() {
     return (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none" class="metamask-provider-icon">

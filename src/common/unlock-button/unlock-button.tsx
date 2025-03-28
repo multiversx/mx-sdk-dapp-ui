@@ -2,7 +2,7 @@ import { Component, h, Prop } from '@stencil/core';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from 'components/visual/unlock-panel/helpers';
 import { StyledHost } from 'utils/StyledHost';
 
-import type { ProviderTypeEnum } from '../../types/provider.types';
+import { ProviderTypeEnum } from '../../types/provider.types';
 
 @Component({
   tag: 'unlock-button',
@@ -15,8 +15,8 @@ export class UnlockButton {
   @Prop() buttonType?: ProviderTypeEnum;
 
   render() {
-    const isExtensionProvider = this.buttonType === 'extension';
-    const isMetaMaskProvider = this.buttonType === 'metamask';
+    const isExtensionProvider = this.buttonType === ProviderTypeEnum.extension;
+    const isMetaMaskProvider = this.buttonType === ProviderTypeEnum.metamask;
     const isDetectableProvider = isExtensionProvider || isMetaMaskProvider;
     const isExtensionInstalled = isExtensionProvider && getIsExtensionAvailable();
     const isMetaMaskInstalled = isMetaMaskProvider && getIsMetaMaskAvailable();
@@ -24,8 +24,15 @@ export class UnlockButton {
 
     return (
       <StyledHost>
-        <div class="unlock-button">
-          <div class="unlock-button-icon">{this.buttonIcon}</div>
+        <div part="unlock-button" class="unlock-button">
+          {this.buttonIcon ? (
+            <div class="unlock-button-icon">{this.buttonIcon}</div>
+          ) : (
+            <div class="unlock-button-icon">
+              <multiversx-logo-icon />
+            </div>
+          )}
+
           <div class="unlock-button-label">{this.buttonLabel}</div>
 
           {isDetectableProvider && (

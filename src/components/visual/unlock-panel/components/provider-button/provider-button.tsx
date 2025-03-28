@@ -1,4 +1,4 @@
-import { Component, Fragment, h, Prop } from '@stencil/core';
+import { Component, Element, Fragment, h, Prop } from '@stencil/core';
 import { ProviderTypeEnum } from 'types/provider.types';
 import { StyledHost } from 'utils/StyledHost';
 
@@ -50,6 +50,14 @@ const providerButtonInfo = {
 })
 export class ProviderButton {
   @Prop() type: ProviderTypeEnum;
+  @Element() host!: HTMLElement;
+
+  componentDidLoad() {
+    const btn = this.host.shadowRoot?.querySelector('unlock-button');
+    if (btn) {
+      btn.setAttribute('exportparts', 'unlock-button');
+    }
+  }
 
   render() {
     const walletInfo = this.type ? providerButtonInfo[this.type] : null;
@@ -60,7 +68,7 @@ export class ProviderButton {
 
     return (
       <StyledHost>
-        <unlock-button buttonIcon={walletInfo.icon} buttonLabel={walletInfo.label} buttonType={this.type} class="provider-button" />
+        <unlock-button buttonIcon={walletInfo.icon} buttonLabel={walletInfo.label} buttonType={this.type} />
       </StyledHost>
     );
   }
