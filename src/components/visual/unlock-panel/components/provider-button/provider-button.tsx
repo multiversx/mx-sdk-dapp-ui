@@ -43,33 +43,31 @@ const providerButtonInfo = {
   },
 };
 
+const renderProviderButton = (type: ProviderTypeEnum, className?: string) => {
+  const walletInfo = type ? providerButtonInfo[type] : null;
+
+  if (!walletInfo) {
+    return <Fragment />;
+  }
+
+  return (
+    <StyledHost>
+      <internal-unlock-button buttonIcon={walletInfo.icon} buttonLabel={walletInfo.label} buttonType={type} class={className} />
+    </StyledHost>
+  );
+};
+
 @Component({
   tag: 'provider-button',
   styleUrl: 'provider-button.scss',
-  shadow: true,
+  shadow: false,
 })
 export class ProviderButton {
   @Prop() type: ProviderTypeEnum;
   @Element() host!: HTMLElement;
-
-  componentDidLoad() {
-    const btn = this.host.shadowRoot?.querySelector('unlock-button');
-    if (btn) {
-      btn.setAttribute('exportparts', 'unlock-button');
-    }
-  }
+  @Prop() class?: string;
 
   render() {
-    const walletInfo = this.type ? providerButtonInfo[this.type] : null;
-
-    if (!walletInfo) {
-      return <Fragment />;
-    }
-
-    return (
-      <StyledHost>
-        <unlock-button buttonIcon={walletInfo.icon} buttonLabel={walletInfo.label} buttonType={this.type} />
-      </StyledHost>
-    );
+    return renderProviderButton(this.type, this.class);
   }
 }

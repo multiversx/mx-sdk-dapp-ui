@@ -8,10 +8,11 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
+import { ProviderTypeEnum } from "./types/provider.types";
 import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
-import { ProviderTypeEnum } from "./types/provider.types";
+import { ProviderTypeEnum as ProviderTypeEnum1 } from "./types/provider.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -19,15 +20,15 @@ import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-import { ProviderTypeEnum as ProviderTypeEnum1 } from "./types/provider.types";
 import { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
+export { ProviderTypeEnum } from "./types/provider.types";
 export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
-export { ProviderTypeEnum } from "./types/provider.types";
+export { ProviderTypeEnum as ProviderTypeEnum1 } from "./types/provider.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -35,7 +36,6 @@ export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-export { ProviderTypeEnum as ProviderTypeEnum1 } from "./types/provider.types";
 export { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export namespace Components {
     interface ArrowUpRightIcon {
@@ -100,6 +100,12 @@ export namespace Components {
     interface GenericToast {
         "toast": CustomToastType;
     }
+    interface InternalUnlockButton {
+        "buttonIcon": HTMLElement;
+        "buttonLabel": string;
+        "buttonType"?: ProviderTypeEnum;
+        "class"?: string;
+    }
     interface LedgerAccountScreen {
         "accountScreenData": IAccountScreenData;
         "selectedIndex": number;
@@ -134,6 +140,7 @@ export namespace Components {
         "getEventBus": () => Promise<IEventBus>;
     }
     interface ProviderButton {
+        "class"?: string;
         "type": ProviderTypeEnum;
     }
     interface SidePanel {
@@ -251,7 +258,8 @@ export namespace Components {
     interface UnlockButton {
         "buttonIcon": HTMLElement;
         "buttonLabel": string;
-        "buttonType"?: ProviderTypeEnum1;
+        "buttonType"?: ProviderTypeEnum;
+        "class"?: string;
     }
     interface UnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
@@ -431,6 +439,12 @@ declare global {
     var HTMLGenericToastElement: {
         prototype: HTMLGenericToastElement;
         new (): HTMLGenericToastElement;
+    };
+    interface HTMLInternalUnlockButtonElement extends Components.InternalUnlockButton, HTMLStencilElement {
+    }
+    var HTMLInternalUnlockButtonElement: {
+        prototype: HTMLInternalUnlockButtonElement;
+        new (): HTMLInternalUnlockButtonElement;
     };
     interface HTMLLedgerAccountScreenElementEventMap {
         "selectAccount": any;
@@ -787,6 +801,7 @@ declare global {
         "generic-modal": HTMLGenericModalElement;
         "generic-spinner": HTMLGenericSpinnerElement;
         "generic-toast": HTMLGenericToastElement;
+        "internal-unlock-button": HTMLInternalUnlockButtonElement;
         "ledger-account-screen": HTMLLedgerAccountScreenElement;
         "ledger-confirm-screen": HTMLLedgerConfirmScreenElement;
         "ledger-connect": HTMLLedgerConnectElement;
@@ -898,6 +913,12 @@ declare namespace LocalJSX {
         "onDeleteToast"?: (event: GenericToastCustomEvent<string>) => void;
         "toast"?: CustomToastType;
     }
+    interface InternalUnlockButton {
+        "buttonIcon"?: HTMLElement;
+        "buttonLabel"?: string;
+        "buttonType"?: ProviderTypeEnum;
+        "class"?: string;
+    }
     interface LedgerAccountScreen {
         "accountScreenData"?: IAccountScreenData;
         "onAccessWallet"?: (event: LedgerAccountScreenCustomEvent<any>) => void;
@@ -933,6 +954,7 @@ declare namespace LocalJSX {
         "data"?: IPendingTransactionsPanelData;
     }
     interface ProviderButton {
+        "class"?: string;
         "type"?: ProviderTypeEnum;
     }
     interface SidePanel {
@@ -1053,7 +1075,8 @@ declare namespace LocalJSX {
     interface UnlockButton {
         "buttonIcon"?: HTMLElement;
         "buttonLabel"?: string;
-        "buttonType"?: ProviderTypeEnum1;
+        "buttonType"?: ProviderTypeEnum;
+        "class"?: string;
     }
     interface UnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
@@ -1090,6 +1113,7 @@ declare namespace LocalJSX {
         "generic-modal": GenericModal;
         "generic-spinner": GenericSpinner;
         "generic-toast": GenericToast;
+        "internal-unlock-button": InternalUnlockButton;
         "ledger-account-screen": LedgerAccountScreen;
         "ledger-confirm-screen": LedgerConfirmScreen;
         "ledger-connect": LedgerConnect;
@@ -1153,6 +1177,7 @@ declare module "@stencil/core" {
             "generic-modal": LocalJSX.GenericModal & JSXBase.HTMLAttributes<HTMLGenericModalElement>;
             "generic-spinner": LocalJSX.GenericSpinner & JSXBase.HTMLAttributes<HTMLGenericSpinnerElement>;
             "generic-toast": LocalJSX.GenericToast & JSXBase.HTMLAttributes<HTMLGenericToastElement>;
+            "internal-unlock-button": LocalJSX.InternalUnlockButton & JSXBase.HTMLAttributes<HTMLInternalUnlockButtonElement>;
             "ledger-account-screen": LocalJSX.LedgerAccountScreen & JSXBase.HTMLAttributes<HTMLLedgerAccountScreenElement>;
             "ledger-confirm-screen": LocalJSX.LedgerConfirmScreen & JSXBase.HTMLAttributes<HTMLLedgerConfirmScreenElement>;
             "ledger-connect": LocalJSX.LedgerConnect & JSXBase.HTMLAttributes<HTMLLedgerConnectElement>;

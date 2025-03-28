@@ -4,11 +4,11 @@ import type { ProviderTypeEnum } from '../../types/provider.types';
 import { renderUnlockButton } from './renderUnlockButton';
 
 @Component({
-  tag: 'unlock-button',
+  tag: 'internal-unlock-button',
   styleUrl: 'unlock-button.scss',
-  shadow: true,
+  shadow: false,
 })
-export class UnlockButton {
+export class InternalUnlockButton {
   @Prop() buttonLabel: string;
   @Prop() buttonIcon: HTMLElement;
   @Prop() buttonType?: ProviderTypeEnum;

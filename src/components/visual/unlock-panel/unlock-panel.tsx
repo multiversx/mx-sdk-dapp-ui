@@ -96,7 +96,7 @@ export class UnlockPanel {
 
                     <div class="unlock-panel-group-providers">
                       {detectedProviders.map(provider => (
-                        <provider-button type={provider} onClick={this.handleLogin.bind(this, provider)} />
+                        <provider-button type={provider} onClick={this.handleLogin.bind(this, provider)} class="red" />
                       ))}
                     </div>
                   </div>
@@ -107,7 +107,7 @@ export class UnlockPanel {
 
                   <div class="unlock-panel-group-providers">
                     {otherProviders.map(provider => (
-                      <provider-button type={provider} onClick={this.handleLogin.bind(this, provider)} />
+                      <provider-button type={provider} onClick={this.handleLogin.bind(this, provider)} class="red" />
                     ))}
                   </div>
                 </div>
