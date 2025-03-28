@@ -1,4 +1,4 @@
-import { faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Method, State } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
@@ -57,19 +57,11 @@ export class NotificationsFeed {
     const hasPending = this.pendingTransactions?.length > 0;
 
     return (
-      <side-panel isOpen={this.isOpen} onClose={this.handleClose}>
-        NOTIFICATIONS FEED PANEL
+      <side-panel isOpen={this.isOpen} onClose={this.handleClose} panelTitle="Notifications Feed">
         <div class="feed-content">
-          <div class="feed-header">
-            <h2 class="feed-title">Notifications Feed</h2>
-            <button class="close-button" onClick={this.handleClose}>
-              <fa-icon class="close-icon" icon={faTimes} />
-            </button>
-          </div>
-
           <div class="notifications-info">
-            <fa-icon class="info-icon" icon={faInfoCircle} />
             This feed is stored in your browser and will be reset when a new session is started.
+            <fa-icon class="info-icon" icon={faInfoCircle} />
           </div>
 
           {hasPending && (

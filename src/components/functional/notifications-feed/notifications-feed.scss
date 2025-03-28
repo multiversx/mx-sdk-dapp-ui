@@ -1,6 +1,6 @@
 :host {
-  display: block;
-  height: 100%;
+  --mx-body-label-color: #a09a93;
+  --mx-warning-text: #facc15;
 }
 
 .feed-content {
@@ -8,68 +8,33 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  padding: 24px 24px 0 24px;
+  gap: 24px;
+  padding: 4px 0 0 0;
 
   .transaction-toast-content-wrapper {
     width: 100%;
   }
 }
 
-.feed-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.feed-title {
-  margin: 0;
-  font-size: 24px;
-  font-weight: 500;
-  color: black;
-}
-
-.close-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 30px;
-  height: 30px;
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  .close-icon {
-    font-size: 24px;
-    color: black;
-    width: 100%;
-    height: 100%;
-  }
-}
-
 .notifications-info {
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
+  gap: 14px;
   margin: 0;
-  padding: 16px;
-  color: #f0b90b;
-  font-size: 14px;
-  border: 1px dashed rgba(240, 185, 11, 0.3);
-  border-radius: 8px;
-  margin-bottom: 24px;
+  color: var(--mx-warning-text);
+
+  /* body/regular/xs */
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
 
   .info-icon {
-    color: #f0b90b;
+    color: var(--mx-warning-text);
     font-size: 16px;
+    width: 16px;
+    height: 16px;
   }
 }
 
@@ -77,8 +42,8 @@
   margin-bottom: 24px;
 
   .processing-status {
-    font-size: 14px;
-    color: #333333;
+    font-size: 16px;
+    color: var(--mx-body-label-color);
     margin-bottom: 16px;
   }
 }
@@ -101,7 +66,7 @@
     font-size: 20px;
     font-weight: 500;
     margin: 0;
-    color: #000000;
+    color: var(--mx-body-label-color);
   }
 
   .clear-button {
@@ -109,7 +74,7 @@
     border: none;
     padding: 0;
     color: #666666;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
 
     &:hover {
@@ -123,9 +88,10 @@
   overflow-y: auto;
   overflow-x: hidden;
   min-height: 0;
-  width: 100%;
-  max-width: 100%;
   padding: 0 24px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 
   .no-activity {
     padding: 16px;

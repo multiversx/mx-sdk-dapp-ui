@@ -35,7 +35,15 @@ export class SimpleToast {
       return null;
     }
 
-    return <div class={classNames('content-icon', iconClassName)} innerHTML={iconHtml}></div>;
+    return (
+      <div
+        class={{
+          'content-icon': true,
+          [iconClassName]: Boolean(iconClassName),
+        }}
+        innerHTML={iconHtml}
+      ></div>
+    );
   }
 
   render() {

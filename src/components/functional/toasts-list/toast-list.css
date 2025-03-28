@@ -1,3 +1,5 @@
+@import './variables.css';
+
 .toast-list {
   position: fixed;
   bottom: 16px;
@@ -27,13 +29,13 @@
 
 .view-all-button {
   border-radius: 100px;
-  border: 0.5px solid var(--Toasts-mx-toast-border, #C7C7C7);
+  border: 0.5px solid var(--mx-toast-border, #C7C7C7);
   background: rgba(169, 169, 169, 0.40);
   backdrop-filter: blur(38px);
   padding: 8px 16px;
-  color: var(--Toasts-mx-toast-text-primary, #262626);
+  color: var(--mx-toast-text-primary, #262626);
   font-family: var(--font-family-roobert);
-  font-size: 14px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 140%;

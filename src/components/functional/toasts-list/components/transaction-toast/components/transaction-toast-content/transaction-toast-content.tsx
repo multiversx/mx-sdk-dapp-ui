@@ -1,7 +1,7 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
-import { DefaultToastsIcon } from 'components/visual/default-icon/default-icon';
+import { DefaultTransactionIconSmall } from 'components/visual/default-icon/default-icon';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
@@ -27,7 +27,7 @@ export class TransactionToastContent {
     const transaction = this.transactions[0];
 
     if (!transaction?.asset) {
-      return <DefaultToastsIcon />;
+      return <DefaultTransactionIconSmall />;
     }
 
     if (transaction.asset.imageUrl) {
@@ -42,7 +42,7 @@ export class TransactionToastContent {
       return <span class="icon-text">{transaction.asset.text}</span>;
     }
 
-    return <DefaultToastsIcon />;
+    return <DefaultTransactionIconSmall />;
   }
 
   private renderDetails() {
@@ -56,7 +56,7 @@ export class TransactionToastContent {
       <div class="transaction-toast-details-info">
         {transaction.directionLabel && <span class="transaction-toast-details-info-text">{transaction.directionLabel}</span>}
         <div class="transaction-toast-details-info-icon">
-          {transaction.interactorAsset ? <img src={transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <DefaultToastsIcon />}
+          {transaction.interactorAsset ? <img src={transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <DefaultTransactionIconSmall />}
         </div>
         <trim-text text={transaction.interactor} class="transaction-toast-details-info-text" />
       </div>

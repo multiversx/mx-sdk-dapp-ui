@@ -85,17 +85,19 @@ describe('transaction-list-item', () => {
         asset: {},
       };
       const page = await createPage(transaction);
-      const defaultIcon = page.root.shadowRoot.querySelector('.default-transaction-icon');
+      const defaultIcon = page.root.shadowRoot.querySelector('.default-transaction-icon-large');
       expect(defaultIcon).toBeTruthy();
     });
 
-    it('renders with null asset', async () => {
+    it('renders default icon when asset is null', async () => {
       const transaction = {
         ...baseTransaction,
         asset: null,
       };
       const page = await createPage(transaction);
-      const defaultIcon = page.root.shadowRoot.querySelector('.default-transaction-icon');
+      const regularIcon = page.root.shadowRoot.querySelector('.icon-text');
+      expect(regularIcon).toBeFalsy();
+      const defaultIcon = page.root.shadowRoot.querySelector('.default-transaction-icon-large');
       expect(defaultIcon).toBeTruthy();
     });
   });
@@ -107,17 +109,17 @@ describe('transaction-list-item', () => {
       const title = page.root.shadowRoot.querySelector('.transaction-title');
       expect(title.textContent).toBe(baseTransaction.action.name);
 
-      const directionLabel = page.root.shadowRoot.querySelector('.direction-label');
+      const directionLabel = page.root.shadowRoot.querySelector('.transaction-details-info-text');
       expect(directionLabel.textContent).toBe(baseTransaction.directionLabel);
 
-      const interactorAsset = page.root.shadowRoot.querySelector('.service-icon');
+      const interactorAsset = page.root.shadowRoot.querySelector('.transaction-details-info-icon img');
       expect(interactorAsset.getAttribute('src')).toBe(baseTransaction.interactorAsset);
       expect(interactorAsset.getAttribute('alt')).toBe('Service icon');
       expect(interactorAsset.getAttribute('loading')).toBe('lazy');
 
       const interactor = page.root.shadowRoot.querySelector('trim-text');
       expect(interactor.getAttribute('text')).toBe(baseTransaction.interactor);
-      expect(interactor.className).toBe('interactor');
+      expect(interactor.className).toBe('transaction-details-info-text');
     });
 
     it('renders without direction label when not provided', async () => {
@@ -126,7 +128,7 @@ describe('transaction-list-item', () => {
         directionLabel: undefined,
       };
       const page = await createPage(transaction);
-      const directionLabel = page.root.shadowRoot.querySelector('.direction-label');
+      const directionLabel = page.root.shadowRoot.querySelector('.transaction-details-info-text:not(trim-text)');
       expect(directionLabel).toBeFalsy();
     });
 
@@ -136,7 +138,7 @@ describe('transaction-list-item', () => {
         interactorAsset: undefined,
       };
       const page = await createPage(transaction);
-      const serviceIcon = page.root.shadowRoot.querySelector('.service-icon');
+      const serviceIcon = page.root.shadowRoot.querySelector('.transaction-details-info-icon img');
       expect(serviceIcon).toBeFalsy();
     });
   });

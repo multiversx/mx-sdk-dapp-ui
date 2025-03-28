@@ -1,19 +1,20 @@
-import { Component, h, Host, Prop } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
+import { StyledHost } from 'utils/StyledHost';
 
-import { DefaultTransactionIcon } from '../default-icon/default-icon';
+import { DefaultTransactionIconLarge, DefaultTransactionIconSmall } from '../default-icon/default-icon';
 import type { ITransactionListItem } from './transaction-list-item.types';
 
 @Component({
   tag: 'transaction-list-item',
-  styleUrl: 'transaction-list-item.scss',
-  shadow: true,
+  styleUrl: 'transaction-list-item.css',
+  shadow: false,
 })
 export class TransactionListItem {
   @Prop() transaction: ITransactionListItem;
 
   private renderPrimaryIcon() {
     if (!this.transaction.asset) {
-      return <DefaultTransactionIcon />;
+      return <DefaultTransactionIconLarge />;
     }
 
     if (this.transaction.asset.imageUrl) {
@@ -28,32 +29,28 @@ export class TransactionListItem {
       return <span class="icon-text">{this.transaction.asset.text}</span>;
     }
 
-    return <DefaultTransactionIcon />;
+    return <DefaultTransactionIconLarge />;
   }
 
   private renderDetails() {
     return (
-      <div class="transaction-info">
-        <span class="transaction-target">
-          {this.transaction.directionLabel && <span class="direction-label">{this.transaction.directionLabel}</span>}
-          {this.transaction.interactorAsset && (
-            <div class="transaction-icon">
-              <img src={this.transaction.interactorAsset} alt="Service icon" class="service-icon" loading="lazy" />
-            </div>
-          )}
-          <trim-text text={this.transaction.interactor} class="interactor" />
-        </span>
+      <div class="transaction-details-info">
+        {this.transaction.directionLabel && <span class="transaction-details-info-text">{this.transaction.directionLabel}</span>}
+        <div class="transaction-details-info-icon">
+          {this.transaction.interactorAsset ? <img src={this.transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <DefaultTransactionIconSmall />}
+        </div>
+        <trim-text text={this.transaction.interactor} class="transaction-details-info-text" />
       </div>
     );
   }
 
   render() {
     if (!this.transaction) {
-      return <Host></Host>;
+      return null;
     }
 
     return (
-      <Host>
+      <StyledHost>
         <div class="transaction-item">
           <div class="transaction-icon">{this.renderPrimaryIcon()}</div>
 
@@ -75,7 +72,7 @@ export class TransactionListItem {
             {this.renderDetails()}
           </div>
         </div>
-      </Host>
+      </StyledHost>
     );
   }
 }
