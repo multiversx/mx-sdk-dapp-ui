@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Updated the layout for the new unlock panel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/67)
 - [Toasts design](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/66)
 - [Upgrade Tailwind to v4](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/65)
 
