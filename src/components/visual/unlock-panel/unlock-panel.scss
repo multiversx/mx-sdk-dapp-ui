@@ -18,11 +18,23 @@
       }
 
       .unlock-panel-group-providers {
-        border-radius: 12px;
-        overflow: hidden;
         display: flex;
         flex-direction: column;
         gap: calc(4px / 2);
+
+        .unlock-panel-group-provider {
+          border-radius: 0;
+
+          &.first {
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+          }
+
+          &.last {
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+          }
+        }
       }
     }
   }

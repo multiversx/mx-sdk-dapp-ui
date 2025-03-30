@@ -1,5 +1,6 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State } from '@stencil/core';
+import classNames from 'classnames';
 import { ProviderTypeEnum } from 'types/provider.types';
 import { StyledHost } from 'utils/StyledHost';
 
@@ -84,7 +85,13 @@ export class UnlockPanel {
 
     return (
       <StyledHost>
-        <side-panel isOpen={this.isOpen} panelTitle="Connect your wallet" onClose={this.handleClose.bind(this)} onBack={this.handleResetLoginState.bind(this)}>
+        <side-panel
+          isOpen={this.isOpen}
+          panelTitle="Connect your wallet"
+          onClose={this.handleClose.bind(this)}
+          onBack={this.handleResetLoginState.bind(this)}
+          withBackButton={this.isLoggingIn}
+        >
           <div id="anchor" ref={element => this.observeContainer(element)} />
 
           <div class="unlock-panel">
@@ -95,8 +102,15 @@ export class UnlockPanel {
                     <div class="unlock-panel-group-label">Detected</div>
 
                     <div class="unlock-panel-group-providers">
-                      {detectedProviders.map(provider => (
-                        <provider-button type={provider} onClick={this.handleLogin.bind(this, provider)} />
+                      {detectedProviders.map((provider, providerIndex) => (
+                        <provider-button
+                          type={provider}
+                          onClick={this.handleLogin.bind(this, provider)}
+                          class={classNames('unlock-panel-group-provider', {
+                            first: providerIndex === 0,
+                            last: providerIndex === detectedProviders.length - 1,
+                          })}
+                        />
                       ))}
                     </div>
                   </div>
@@ -106,8 +120,15 @@ export class UnlockPanel {
                   <div class="unlock-panel-group-label">{hasDetectedProviders ? 'Other Options' : 'Options'}</div>
 
                   <div class="unlock-panel-group-providers">
-                    {otherProviders.map(provider => (
-                      <provider-button type={provider} onClick={this.handleLogin.bind(this, provider)} />
+                    {otherProviders.map((provider, providerIndex) => (
+                      <provider-button
+                        type={provider}
+                        onClick={this.handleLogin.bind(this, provider)}
+                        class={classNames('unlock-panel-group-provider', {
+                          first: providerIndex === 0,
+                          last: providerIndex === otherProviders.length - 1,
+                        })}
+                      />
                     ))}
                   </div>
                 </div>

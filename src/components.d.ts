@@ -134,12 +134,14 @@ export namespace Components {
         "getEventBus": () => Promise<IEventBus>;
     }
     interface ProviderButton {
+        "class"?: string;
         "type": ProviderTypeEnum;
     }
     interface SidePanel {
         "isOpen": boolean;
         "panelClassName"?: string;
         "panelTitle": string;
+        "withBackButton"?: boolean;
     }
     interface SignTransactionComponent {
         "header": VNode;
@@ -252,6 +254,7 @@ export namespace Components {
         "buttonIcon": HTMLElement;
         "buttonLabel": string;
         "buttonType"?: ProviderTypeEnum1;
+        "class"?: string;
     }
     interface UnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
@@ -933,6 +936,7 @@ declare namespace LocalJSX {
         "data"?: IPendingTransactionsPanelData;
     }
     interface ProviderButton {
+        "class"?: string;
         "type"?: ProviderTypeEnum;
     }
     interface SidePanel {
@@ -941,6 +945,7 @@ declare namespace LocalJSX {
         "onClose"?: (event: SidePanelCustomEvent<any>) => void;
         "panelClassName"?: string;
         "panelTitle"?: string;
+        "withBackButton"?: boolean;
     }
     interface SignTransactionComponent {
         "header"?: VNode;
@@ -1054,6 +1059,7 @@ declare namespace LocalJSX {
         "buttonIcon"?: HTMLElement;
         "buttonLabel"?: string;
         "buttonType"?: ProviderTypeEnum1;
+        "class"?: string;
     }
     interface UnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];

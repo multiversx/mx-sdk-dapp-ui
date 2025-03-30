@@ -12,13 +12,7 @@
 | `buttonIcon`  | --             |             | `HTMLElement`                                                                                                                                                                                                 | `undefined` |
 | `buttonLabel` | `button-label` |             | `string`                                                                                                                                                                                                      | `undefined` |
 | `buttonType`  | `button-type`  |             | `ProviderTypeEnum.crossWindow \| ProviderTypeEnum.extension \| ProviderTypeEnum.ledger \| ProviderTypeEnum.metamask \| ProviderTypeEnum.passkey \| ProviderTypeEnum.walletConnect \| ProviderTypeEnum.xalias` | `undefined` |
-
-
-## Shadow Parts
-
-| Part              | Description |
-| ----------------- | ----------- |
-| `"unlock-button"` |             |
+| `class`       | `class`        |             | `string`                                                                                                                                                                                                      | `undefined` |
 
 
 ## Dependencies

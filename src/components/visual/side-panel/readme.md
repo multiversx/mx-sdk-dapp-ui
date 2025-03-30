@@ -10,6 +10,7 @@
 | `isOpen`         | `is-open`          |             | `boolean` | `false`     |
 | `panelClassName` | `panel-class-name` |             | `string`  | `undefined` |
 | `panelTitle`     | `panel-title`      |             | `string`  | `undefined` |
+| `withBackButton` | `with-back-button` |             | `boolean` | `undefined` |
 
 
 ## Events

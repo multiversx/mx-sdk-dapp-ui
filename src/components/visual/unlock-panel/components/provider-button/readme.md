@@ -9,6 +9,7 @@
 
 | Property | Attribute | Description | Type                                                                                                                                                                                                          | Default     |
 | -------- | --------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `class`  | `class`   |             | `string`                                                                                                                                                                                                      | `undefined` |
 | `type`   | `type`    |             | `ProviderTypeEnum.crossWindow \| ProviderTypeEnum.extension \| ProviderTypeEnum.ledger \| ProviderTypeEnum.metamask \| ProviderTypeEnum.passkey \| ProviderTypeEnum.walletConnect \| ProviderTypeEnum.xalias` | `undefined` |
 
 
