@@ -1,7 +1,6 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
-import { StyledHost } from 'utils/StyledHost';
 
 @Component({
   tag: 'side-panel',
@@ -67,26 +66,24 @@ export class SidePanel {
     }
 
     return (
-      <StyledHost>
-        <div
-          onClick={this.handleOverlayClick}
-          class={classNames('side-panel-wrapper', {
-            visible: this.shouldAnimate,
-          })}
-        >
-          <div class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}>
-            <div class="side-panel-heading">
-              {this.withBackButton && <back-arrow-icon onClick={this.handleBackClick} class="side-panel-heading-back" />}
-              <div class="side-panel-heading-title">{this.panelTitle}</div>
-              <close-icon class="side-panel-heading-close" onClick={this.handleCloseClick} />
-            </div>
+      <div
+        onClick={this.handleOverlayClick}
+        class={classNames('side-panel-wrapper', {
+          visible: this.shouldAnimate,
+        })}
+      >
+        <div class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}>
+          <div class="side-panel-heading">
+            {this.withBackButton && <back-arrow-icon onClick={this.handleBackClick} class="side-panel-heading-back" />}
+            <div class="side-panel-heading-title">{this.panelTitle}</div>
+            <close-icon class="side-panel-heading-close" onClick={this.handleCloseClick} />
+          </div>
 
-            <div class="side-panel-content">
-              <slot></slot>
-            </div>
+          <div class="side-panel-content">
+            <slot></slot>
           </div>
         </div>
-      </StyledHost>
+      </div>
     );
   }
 }
