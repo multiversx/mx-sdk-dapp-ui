@@ -3,9 +3,8 @@ import { Component, Event, h, Prop } from '@stencil/core';
 import type { IGenericModalProps } from './generic-modal.types';
 
 @Component({
-  tag: 'generic-modal',
+  tag: 'mvx-generic-modal',
   styleUrl: './generic-modal.css',
-  shadow: false,
 })
 export class GenericModal {
   @Prop() body: IGenericModalProps['body'];

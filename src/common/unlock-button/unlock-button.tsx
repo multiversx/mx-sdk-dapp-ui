@@ -1,12 +1,10 @@
 import { Component, h, Prop } from '@stencil/core';
+import { ProviderTypeEnum } from 'components';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from 'components/visual/unlock-panel/helpers';
 
-import { ProviderTypeEnum } from '../../types/provider.types';
-
 @Component({
-  tag: 'unlock-button',
+  tag: 'mvx-unlock-button',
   styleUrl: 'unlock-button.scss',
-  shadow: false,
 })
 export class UnlockButton {
   @Prop() buttonLabel: string;

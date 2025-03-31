@@ -58,6 +58,6 @@ export class ProviderButton {
       return <Fragment />;
     }
 
-    return <unlock-button buttonIcon={walletInfo.icon} buttonLabel={walletInfo.label} buttonType={this.type} class={this.class} />;
+    return <mvx-unlock-button buttonIcon={walletInfo.icon} buttonLabel={walletInfo.label} buttonType={this.type} class={this.class} />;
   }
 }

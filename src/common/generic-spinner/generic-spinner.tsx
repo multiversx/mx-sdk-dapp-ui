@@ -1,9 +1,8 @@
-import { Component, Element,h } from '@stencil/core';
+import { Component, Element, h } from '@stencil/core';
 
 @Component({
-  tag: 'generic-spinner',
+  tag: 'mvx-generic-spinner',
   styleUrl: './generic-spinner.css',
-  shadow: false,
 })
 export class GenericSpinner {
   @Element() host: HTMLElement;
