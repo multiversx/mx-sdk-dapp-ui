@@ -100,43 +100,43 @@ describe('TransactionsTable', () => {
   it('renders with transactions', async () => {
     const page = await newSpecPage({
       components: [TransactionsTable],
-      template: () => <transactions-table transactions={mockTransactions}></transactions-table>,
+      template: () => <mvx-transactions-table transactions={mockTransactions}></mvx-transactions-table>,
     });
 
     expect(page.root).toBeTruthy();
-    expect(page.root.shadowRoot.querySelectorAll('tbody tr').length).toBe(2); // 2 mock transactions
+    expect(page.root.querySelectorAll('tbody tr').length).toBe(2); // 2 mock transactions
   });
 
   it('applies custom class', async () => {
     const page = await newSpecPage({
       components: [TransactionsTable],
-      template: () => <transactions-table class="custom-class" transactions={mockTransactions}></transactions-table>,
+      template: () => <mvx-transactions-table class="custom-class" transactions={mockTransactions}></mvx-transactions-table>,
     });
 
-    expect(page.root.shadowRoot.querySelector('table').classList.contains('custom-class')).toBeTruthy();
+    expect(page.root.querySelector('table').classList.contains('custom-class')).toBeTruthy();
   });
 
   it('renders transaction details correctly', async () => {
     const page = await newSpecPage({
       components: [TransactionsTable],
-      template: () => <transactions-table transactions={mockTransactions}></transactions-table>,
+      template: () => <mvx-transactions-table transactions={mockTransactions}></mvx-transactions-table>,
     });
 
-    const rows = page.root.shadowRoot.querySelectorAll('tbody tr');
+    const rows = page.root.querySelectorAll('tbody tr');
     expect(rows.length).toBe(2);
 
     rows.forEach((row, index) => {
-      expect(row.querySelector('transaction-hash')).toBeTruthy();
-      expect(row.querySelector('transaction-age')).toBeTruthy();
-      expect(row.querySelector('transaction-shards')).toBeTruthy();
-      expect(row.querySelector('transaction-account[scope="sender"]')).toBeTruthy();
-      expect(row.querySelector('transaction-account[scope="receiver"]')).toBeTruthy();
-      expect(row.querySelector('transaction-method')).toBeTruthy();
-      expect(row.querySelector('transaction-value')).toBeTruthy();
+      expect(row.querySelector('mvx-transaction-hash')).toBeTruthy();
+      expect(row.querySelector('mvx-transaction-age')).toBeTruthy();
+      expect(row.querySelector('mvx-transaction-shards')).toBeTruthy();
+      expect(row.querySelector('mvx-transaction-account[scope="sender"]')).toBeTruthy();
+      expect(row.querySelector('mvx-transaction-account[scope="receiver"]')).toBeTruthy();
+      expect(row.querySelector('mvx-transaction-method')).toBeTruthy();
+      expect(row.querySelector('mvx-transaction-value')).toBeTruthy();
 
       // Check some specific values
-      expect(row.querySelector('transaction-age').getAttribute('age')).toBe(mockTransactions[index].age.timeAgo);
-      expect(row.querySelector('transaction-method').getAttribute('method')).toBe(mockTransactions[index].method.name);
+      expect(row.querySelector('mvx-transaction-age').getAttribute('age')).toBe(mockTransactions[index].age.timeAgo);
+      expect(row.querySelector('mvx-transaction-method').getAttribute('method')).toBe(mockTransactions[index].method.name);
     });
   });
 });

@@ -7,7 +7,7 @@ describe('transaction-account-name', () => {
     const { root } = await newSpecPage({
       components: [TransactionAccountName],
       html: `
-        <transaction-account-name
+        <mvx-transaction-account-name
           address="erd1q..."
           name="Alice"
           description="Alice's Wallet"
@@ -16,7 +16,7 @@ describe('transaction-account-name', () => {
       `,
     });
 
-    const element = root.shadowRoot?.querySelector('div');
+    const element = root?.querySelector('div');
     expect(element).not.toBeNull();
     expect(element?.textContent).toBe('Alice');
     expect(element?.getAttribute('title')).toBe("Alice's Wallet");
@@ -28,14 +28,14 @@ describe('transaction-account-name', () => {
     const { root } = await newSpecPage({
       components: [TransactionAccountName],
       html: `
-        <transaction-account-name
+        <mvx-transaction-account-name
           address="erd1q..."
           data-test-id="account-trim"
         />
       `,
     });
 
-    const trimElement = root.shadowRoot?.querySelector('trim-text');
+    const trimElement = root?.querySelector('trim-text');
     expect(trimElement).not.toBeNull();
     expect(trimElement?.getAttribute('text')).toBe('erd1q...');
     expect(trimElement?.getAttribute('datatestid')).toBe('account-trim');
@@ -45,14 +45,14 @@ describe('transaction-account-name', () => {
     const { root } = await newSpecPage({
       components: [TransactionAccountName],
       html: `
-        <transaction-account-name
+        <mvx-transaction-account-name
           address="erd1q..."
           name=""
         />
       `,
     });
 
-    const trimElement = root.shadowRoot?.querySelector('trim-text');
+    const trimElement = root?.querySelector('trim-text');
     expect(trimElement).not.toBeNull();
   });
 
@@ -60,7 +60,7 @@ describe('transaction-account-name', () => {
     const { root } = await newSpecPage({
       components: [TransactionAccountName],
       html: `
-        <transaction-account-name
+        <mvx-transaction-account-name
           address="erd1q..."
           name="Bob"
           class="custom-class"
@@ -68,7 +68,7 @@ describe('transaction-account-name', () => {
       `,
     });
 
-    const element = root.shadowRoot?.querySelector('div');
+    const element = root?.querySelector('div');
     expect(element?.className).toContain('custom-class');
     expect(element?.className).toContain('text-truncate');
     expect(element?.className).toContain('transaction-account-name');
@@ -78,14 +78,14 @@ describe('transaction-account-name', () => {
     const { root } = await newSpecPage({
       components: [TransactionAccountName],
       html: `
-        <transaction-account-name
+        <mvx-transaction-account-name
           address="erd1q..."
           name="Charlie"
         />
       `,
     });
 
-    const element = root.shadowRoot?.querySelector('div');
+    const element = root?.querySelector('div');
     expect(element?.hasAttribute('data-testid')).toBe(false);
   });
 
@@ -93,7 +93,7 @@ describe('transaction-account-name', () => {
     const { root } = await newSpecPage({
       components: [TransactionAccountName],
       html: `
-        <transaction-account-name
+        <mvx-transaction-account-name
           address="erd1q..."
           name="Dave"
           description="Dave's Savings"
@@ -101,7 +101,7 @@ describe('transaction-account-name', () => {
       `,
     });
 
-    const element = root.shadowRoot?.querySelector('div');
+    const element = root?.querySelector('div');
     expect(element?.getAttribute('title')).toBe("Dave's Savings");
   });
 });

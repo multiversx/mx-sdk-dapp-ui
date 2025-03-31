@@ -6,14 +6,13 @@ describe('FormatAmount component', () => {
   const renderComponent = async (props: any) => {
     const page = await newSpecPage({
       components: [FormatAmount],
-      html: `<format-amount
+      html: `<mvx-format-amount
       is-valid="${props.isValid}"
       value-integer="${props.valueInteger}"
       value-decimal="${props.valueDecimal}"
       label="${props.label}"
       show-label="${props.showLabel}"
-    ></format-amount>`,
-      supportsShadowDom: true,
+    ></mvx-format-amount>`,
     });
 
     await page.waitForChanges();
@@ -21,11 +20,11 @@ describe('FormatAmount component', () => {
   };
 
   const decimalsSelector = page => {
-    return page.root.shadowRoot.querySelector('span[data-testid="formatAmountDecimals"]')?.textContent;
+    return page.root.querySelector('span[data-testid="formatAmountDecimals"]')?.textContent;
   };
 
   const symbolSelector = page => {
-    return page.root.shadowRoot.querySelectorAll('span[data-testid="formatAmountSymbol"]').length;
+    return page.root.querySelectorAll('span[data-testid="formatAmountSymbol"]').length;
   };
 
   it('should render valid amount with decimals', async () => {
@@ -38,7 +37,7 @@ describe('FormatAmount component', () => {
     };
 
     const page = await renderComponent(props);
-    expect(page.root.shadowRoot.querySelector('span[data-testid="formatAmountInt"]').textContent).toBe('99999');
+    expect(page.root.querySelector('span[data-testid="formatAmountInt"]').textContent).toBe('99999');
     expect(decimalsSelector(page)).toBe('.99');
   });
 
@@ -65,7 +64,7 @@ describe('FormatAmount component', () => {
     };
 
     const page = await renderComponent(props);
-    expect(page.root.shadowRoot.querySelector('span[data-testid="formatAmountInt"]').textContent).toBe('...');
+    expect(page.root.querySelector('span[data-testid="formatAmountInt"]').textContent).toBe('...');
   });
 
   it('should render symbol when label is provided and showLabel is true', async () => {

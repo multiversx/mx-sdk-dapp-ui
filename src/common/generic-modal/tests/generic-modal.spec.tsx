@@ -7,7 +7,7 @@ describe('GenericModal Component', () => {
   it('should render with required props', async () => {
     const page = await newSpecPage({
       components: [GenericModal],
-      template: () => <generic-modal modalTitle="Test Modal" body={<div>Modal Content</div>}></generic-modal>,
+      template: () => <mvx-generic-modal modalTitle="Test Modal" body={<div>Modal Content</div>}></mvx-generic-modal>,
     });
 
     expect(page.root.querySelector('.modal')).not.toBeNull();
@@ -18,7 +18,7 @@ describe('GenericModal Component', () => {
   it('should render with subtitle when modalSubtitle is provided', async () => {
     const page = await newSpecPage({
       components: [GenericModal],
-      template: () => <generic-modal modalTitle="Test Modal" modalSubtitle="Modal Subtitle" body={<div>Modal Content</div>}></generic-modal>,
+      template: () => <mvx-generic-modal modalTitle="Test Modal" modalSubtitle="Modal Subtitle" body={<div>Modal Content</div>}></mvx-generic-modal>,
     });
 
     const subtitle = page.root.querySelector('.modal-header h4');
@@ -29,7 +29,7 @@ describe('GenericModal Component', () => {
   it('should not render subtitle when modalSubtitle is not provided', async () => {
     const page = await newSpecPage({
       components: [GenericModal],
-      template: () => <generic-modal modalTitle="Test Modal" body={<div>Modal Content</div>}></generic-modal>,
+      template: () => <mvx-generic-modal modalTitle="Test Modal" body={<div>Modal Content</div>}></mvx-generic-modal>,
     });
 
     const subtitle = page.root.querySelector('.modal-header h4');
@@ -41,7 +41,7 @@ describe('GenericModal Component', () => {
 
     const page = await newSpecPage({
       components: [GenericModal],
-      template: () => <generic-modal modalTitle="Test Modal" body={<div>Modal Content</div>}></generic-modal>,
+      template: () => <mvx-generic-modal modalTitle="Test Modal" body={<div>Modal Content</div>}></mvx-generic-modal>,
     });
 
     // Set up event listener for close event
@@ -60,7 +60,7 @@ describe('GenericModal Component', () => {
 
     const page = await newSpecPage({
       components: [GenericModal],
-      template: () => <generic-modal modalTitle="Test Modal" body={<div>Modal Content</div>}></generic-modal>,
+      template: () => <mvx-generic-modal modalTitle="Test Modal" body={<div>Modal Content</div>}></mvx-generic-modal>,
     });
 
     // Set up event listener for close event
@@ -79,7 +79,7 @@ describe('GenericModal Component', () => {
 
     const page = await newSpecPage({
       components: [GenericModal],
-      template: () => <generic-modal modalTitle="Test Modal" body={<div>Modal Content</div>}></generic-modal>,
+      template: () => <mvx-generic-modal modalTitle="Test Modal" body={<div>Modal Content</div>}></mvx-generic-modal>,
     });
 
     // Set up event listener for close event

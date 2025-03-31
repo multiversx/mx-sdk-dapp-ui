@@ -1,10 +1,8 @@
 import { Component, h, Prop } from '@stencil/core';
-import { StyledHost } from 'utils/StyledHost';
 
 @Component({
-  tag: 'unlock-button',
+  tag: 'mvx-unlock-button',
   styleUrl: 'unlock-button.scss',
-  shadow: true,
 })
 export class UnlockButton {
   @Prop() label: string;
@@ -12,12 +10,10 @@ export class UnlockButton {
 
   render() {
     return (
-      <StyledHost>
-        <div class="unlock-button sdk:bg-blue-500 text-white p-4">
-          <div class="unlock-icon">{this.icon}</div>
-          <span class="unlock-label">{this.label}</span>
-        </div>
-      </StyledHost>
+      <div class="unlock-button sdk:bg-blue-500 text-white p-4">
+        <div class="unlock-icon">{this.icon}</div>
+        <span class="unlock-label">{this.label}</span>
+      </div>
     );
   }
 }

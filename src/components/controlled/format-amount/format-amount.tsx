@@ -3,9 +3,8 @@ import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
-  tag: 'format-amount',
+  tag: 'mvx-format-amount',
   styleUrl: 'format-amount.css',
-  shadow: true,
 })
 export class FormatAmount {
   @Prop() class?: string;
