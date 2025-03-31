@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Added prefix to controlled components](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/71)
+
 ## [[0.0.0-alpha.9](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/67)] - 2025-03-31
 
 - [Toasts design](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/66)
