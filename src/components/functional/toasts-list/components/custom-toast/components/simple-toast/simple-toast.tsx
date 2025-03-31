@@ -10,7 +10,7 @@ import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
 @Component({
   tag: 'simple-toast',
   styleUrl: 'simple-toast.css',
-  shadow: true,
+  shadow: false,
 })
 export class SimpleToast {
   @Prop() toast: ISimpleToast;

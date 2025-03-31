@@ -1,9 +1,4 @@
-:host {
-  --mx-body-label-color: #a09a93;
-  --mx-warning-text: #facc15;
-  --mx-body-label-color: #a09a93;
-  --mx-warning-text: #facc15;
-}
+@import '../../../global/variables.css';
 
 .feed-content {
   height: 100%;
@@ -16,6 +11,8 @@
 
   .transaction-toast-content-wrapper {
     width: 100%;
+    background: var(--mx-tx-bg-transparent);
+    border-color: var(--mx-tx-bg-transparent);
   }
 }
 

@@ -9,7 +9,7 @@ import type { IToastDataState } from '../../transaction-toast.type';
 @Component({
   tag: 'transaction-toast-content',
   styleUrl: 'transaction-toast-content.css',
-  shadow: true,
+  shadow: false,
 })
 export class TransactionToastContent {
   @Prop() transactions: ITransactionListItem[];
@@ -59,7 +59,6 @@ export class TransactionToastContent {
       <div class="transaction-toast-details-info">
         {transaction.directionLabel && <span class="transaction-toast-details-info-text">{transaction.directionLabel}</span>}
         <div class="transaction-toast-details-info-icon">
-          {transaction.interactorAsset ? <img src={transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <DefaultTransactionIconSmall />}
           {transaction.interactorAsset ? <img src={transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <DefaultTransactionIconSmall />}
         </div>
         <trim-text text={transaction.interactor} class="transaction-toast-details-info-text" />
