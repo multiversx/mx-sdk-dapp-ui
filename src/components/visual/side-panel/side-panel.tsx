@@ -1,7 +1,6 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
-import { StyledHost } from 'utils/StyledHost';
 
 @Component({
   tag: 'side-panel',

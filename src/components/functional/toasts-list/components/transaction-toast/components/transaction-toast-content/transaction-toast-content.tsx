@@ -2,7 +2,6 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import { DefaultTransactionIconSmall } from 'components/visual/default-icon/default-icon';
-import { DefaultTransactionIconSmall } from 'components/visual/default-icon/default-icon';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
@@ -28,7 +27,6 @@ export class TransactionToastContent {
 
     if (!transaction?.asset) {
       return <DefaultTransactionIconSmall />;
-      return <DefaultTransactionIconSmall />;
     }
 
     if (transaction.asset.imageUrl) {
@@ -47,7 +45,6 @@ export class TransactionToastContent {
       return <fa-icon icon={this.toastDataState.icon} class={`transaction-toast-icon ${this.toastDataState.iconClassName ?? ''}`}></fa-icon>;
     }
 
-    return <DefaultTransactionIconSmall />;
     return <DefaultTransactionIconSmall />;
   }
 
