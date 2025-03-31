@@ -1,7 +1,7 @@
 .transaction-toast-content-wrapper {
   position: relative;
   display: flex;
-  max-width: 315px;
+  max-width: 350px;
   padding: 12px;
   flex-direction: column;
   align-items: flex-start;
@@ -50,11 +50,13 @@
   align-self: stretch;
   justify-content: space-between;
   padding: 0;
+  padding: 0;
 }
 
 .transaction-toast-title {
   color: var(--mx-toast-text-primary);
   font-family: var(--font-family-roobert);
+  font-size: 16px;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -62,8 +64,11 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100px;
   margin: 0;
+}
+
+.transaction-toast-title-short {
+  max-width: 160px;
 }
 
 .transaction-toast-content-wrapper.full-width .transaction-toast-title {
@@ -74,6 +79,7 @@
 .transaction-toast-amount {
   color: var(--mx-toast-text-primary);
   font-family: var(--font-family-roobert);
+  font-size: 16px;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -91,6 +97,7 @@
   color: var(--mx-toast-text-secondary);
   font-family: var(--font-family-roobert);
   font-size: 16px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 16px;
@@ -105,6 +112,8 @@
 
   img {
     border-radius: 50%;
+    width: 16px;
+    height: 16px;
   }
 }
 
