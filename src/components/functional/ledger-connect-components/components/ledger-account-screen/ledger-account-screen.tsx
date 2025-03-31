@@ -22,7 +22,7 @@ export class LedgerAccountScreen {
     const isSelectedIndexOnPage = this.accountScreenData.accounts.some(({ index }) => index === this.selectedIndex);
     const accountsList =
       this.accountScreenData.isLoading || this.accountScreenData.accounts.length === 0 ? (
-        <generic-spinner data-testid={DataTestIdsEnum.ledgerLoading}></generic-spinner>
+        <mvx-generic-spinner data-testid={DataTestIdsEnum.ledgerLoading}></mvx-generic-spinner>
       ) : (
         renderAccounts({
           shownAccounts: this.accountScreenData.accounts,

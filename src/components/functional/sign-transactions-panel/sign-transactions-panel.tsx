@@ -124,7 +124,7 @@ export class SignTransactionsPanel {
           <div class="sign-transactions-body">
             {isLoading ? (
               <div class="loading-spinner">
-                <generic-spinner></generic-spinner>
+                <mvx-generic-spinner></mvx-generic-spinner>
               </div>
             ) : (
               <SignScreen></SignScreen>

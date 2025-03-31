@@ -5,8 +5,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { ITransactionsTableRow } from '../../transactions-table.type';
 
 @Component({
-  tag: 'transaction-hash',
-  shadow: true,
+  tag: 'mvx-transaction-hash',
   styleUrl: 'transaction-hash.css',
 })
 export class TransactionHash {
@@ -20,7 +19,7 @@ export class TransactionHash {
 
     return (
       <div class={classNames(this.class, 'transaction-hash')}>
-        <transaction-icon iconInfo={this.transaction.iconInfo}></transaction-icon>
+        <mvx-transaction-icon iconInfo={this.transaction.iconInfo}></mvx-transaction-icon>
         <explorer-link dataTestId={DataTestIdsEnum.transactionLink} link={this.transaction.link} text={this.transaction.txHash}></explorer-link>
       </div>
     );

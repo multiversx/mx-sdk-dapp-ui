@@ -5,9 +5,8 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { ITransactionsTableRow } from '../../transactions-table.type';
 
 @Component({
-  tag: 'transaction-shards',
+  tag: 'mvx-transaction-shards',
   styleUrl: 'transaction-shards.css',
-  shadow: true,
 })
 export class TransactionShards {
   @Prop() class?: string;

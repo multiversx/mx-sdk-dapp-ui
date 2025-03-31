@@ -1,11 +1,9 @@
-// transaction-direction-badge.tsx
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 
 @Component({
-  tag: 'transaction-direction-badge',
+  tag: 'mvx-transaction-direction-badge',
   styleUrl: 'transaction-direction-badge.css',
-  shadow: true,
 })
 export class TransactionDirectionBadge {
   @Prop() class?: string;

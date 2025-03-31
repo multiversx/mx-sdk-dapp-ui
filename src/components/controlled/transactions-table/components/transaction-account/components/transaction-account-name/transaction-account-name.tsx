@@ -2,9 +2,8 @@ import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 
 @Component({
-  tag: 'transaction-account-name',
+  tag: 'mvx-transaction-account-name',
   styleUrl: 'transaction-account-name.css',
-  shadow: true,
 })
 export class TransactionAccountName {
   @Prop() address: string;

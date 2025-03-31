@@ -18,15 +18,13 @@ describe('TransactionValue', () => {
 
     const page = await newSpecPage({
       components: [TransactionValue],
-      template: () => <transaction-value value={value}></transaction-value>,
+      template: () => <mvx-transaction-value value={value}></mvx-transaction-value>,
     });
 
     expect(page.root).toEqualHtml(`
-      <transaction-value>
-        <mock:shadow-root>
+      <mvx-transaction-value>
           <div class="transaction-value"></div>
-        </mock:shadow-root>
-      </transaction-value>
+      </mvx-transaction-value>
     `);
   });
 
@@ -44,19 +42,17 @@ describe('TransactionValue', () => {
 
     const page = await newSpecPage({
       components: [TransactionValue],
-      template: () => <transaction-value value={value}></transaction-value>,
+      template: () => <mvx-transaction-value value={value}></mvx-transaction-value>,
     });
 
     expect(page.root).toEqualHtml(`
-      <transaction-value>
-        <mock:shadow-root>
+      <mvx-transaction-value>
           <div class="transaction-value">
             <div class="badge badge-pill badge-secondary font-weight-light transaction-value-badge" data-testid="transactionNftBadge">
               NFT
             </div>
           </div>
-        </mock:shadow-root>
-      </transaction-value>
+      </mvx-transaction-value>
     `);
   });
 
@@ -74,17 +70,15 @@ describe('TransactionValue', () => {
 
     const page = await newSpecPage({
       components: [TransactionValue],
-      template: () => <transaction-value value={value}></transaction-value>,
+      template: () => <mvx-transaction-value value={value}></mvx-transaction-value>,
     });
 
     expect(page.root).toEqualHtml(`
-      <transaction-value>
-        <mock:shadow-root>
+      <mvx-transaction-value>
           <div class="transaction-value">
-            <format-amount class="mr-1" datatestid="transactionActionFormattedAmount" isvalid="" label="xEGLD" valuedecimal="123" valueinteger="123"></format-amount>
+            <mvx-format-amount class="mr-1" datatestid="transactionActionFormattedAmount" isvalid="" label="xEGLD" valuedecimal="123" valueinteger="123"></mvx-format-amount>
           </div>
-        </mock:shadow-root>
-      </transaction-value>
+      </mvx-transaction-value>
     `);
   });
 
@@ -101,12 +95,11 @@ describe('TransactionValue', () => {
 
     const page = await newSpecPage({
       components: [TransactionValue],
-      template: () => <transaction-value value={value}></transaction-value>,
+      template: () => <mvx-transaction-value value={value}></mvx-transaction-value>,
     });
 
     expect(page.root).toEqualHtml(`
-      <transaction-value>
-        <mock:shadow-root>
+      <mvx-transaction-value>
           <div class="transaction-value">
             <explorer-link class="transaction-value-link text-truncate" link="https://example.com">
               <div class="transaction-value-content" slot="content">
@@ -114,8 +107,7 @@ describe('TransactionValue', () => {
               </div>
             </explorer-link>
           </div>
-        </mock:shadow-root>
-      </transaction-value>
+      </mvx-transaction-value>
     `);
   });
 
@@ -133,12 +125,11 @@ describe('TransactionValue', () => {
 
     const page = await newSpecPage({
       components: [TransactionValue],
-      template: () => <transaction-value value={value}></transaction-value>,
+      template: () => <mvx-transaction-value value={value}></mvx-transaction-value>,
     });
 
     expect(page.root).toEqualHtml(`
-      <transaction-value>
-        <mock:shadow-root>
+      <mvx-transaction-value>
           <div class="transaction-value">
             <explorer-link class="transaction-value-link side-link d-flex" link="https://example.com">
               <div class="transaction-value-content" slot="content">
@@ -147,8 +138,7 @@ describe('TransactionValue', () => {
               </div>
             </explorer-link>
           </div>
-        </mock:shadow-root>
-      </transaction-value>
+      </mvx-transaction-value>
     `);
   });
 
@@ -166,12 +156,11 @@ describe('TransactionValue', () => {
 
     const page = await newSpecPage({
       components: [TransactionValue],
-      template: () => <transaction-value value={value}></transaction-value>,
+      template: () => <mvx-transaction-value value={value}></mvx-transaction-value>,
     });
 
     expect(page.root).toEqualHtml(`
-      <transaction-value>
-        <mock:shadow-root>
+      <mvx-transaction-value>
           <div class="transaction-value">
             <explorer-link class="transaction-value-link text-truncate" link="https://example.com">
               <div class="transaction-value-content" slot="content">
@@ -179,8 +168,7 @@ describe('TransactionValue', () => {
               </div>
             </explorer-link>
           </div>
-        </mock:shadow-root>
-      </transaction-value>
+      </mvx-transaction-value>
     `);
   });
 
@@ -198,12 +186,11 @@ describe('TransactionValue', () => {
 
     const page = await newSpecPage({
       components: [TransactionValue],
-      template: () => <transaction-value value={value}></transaction-value>,
+      template: () => <mvx-transaction-value value={value}></mvx-transaction-value>,
     });
 
     expect(page.root).toEqualHtml(`
-      <transaction-value>
-        <mock:shadow-root>
+      <mvx-transaction-value>
           <div class="transaction-value">
             <explorer-link class="transaction-value-link text-truncate" link="https://example.com">
               <div class="transaction-value-content" slot="content">
@@ -212,8 +199,7 @@ describe('TransactionValue', () => {
             </explorer-link>
             <fa-icon class="transaction-value-icon" title="Title Text"></fa-icon>
           </div>
-        </mock:shadow-root>
-      </transaction-value>
+      </mvx-transaction-value>
     `);
   });
 });

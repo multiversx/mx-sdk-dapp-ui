@@ -1,14 +1,13 @@
 import { faFileAlt } from '@fortawesome/free-solid-svg-icons/faFileAlt';
 import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
-import { Component, h,Prop } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 
 import type { ITransactionAccount } from '../../transactions-table.type';
 
 @Component({
-  tag: 'transaction-account',
+  tag: 'mvx-transaction-account',
   styleUrl: 'transaction-account.css',
-  shadow: true,
 })
 export class TransactionAccount {
   @Prop() account: ITransactionAccount;
@@ -26,10 +25,15 @@ export class TransactionAccount {
 
         {this.account.showLink ? (
           <explorer-link link={this.account.link} data-testid={`${this.scope}Link`}>
-            <transaction-account-name slot="content" name={this.account.name} description={this.account.description} address={this.account.address}></transaction-account-name>
+            <mvx-transaction-account-name
+              slot="content"
+              name={this.account.name}
+              description={this.account.description}
+              address={this.account.address}
+            ></mvx-transaction-account-name>
           </explorer-link>
         ) : (
-          <transaction-account-name name={this.account.name} description={this.account.description} address={this.account.address}></transaction-account-name>
+          <mvx-transaction-account-name name={this.account.name} description={this.account.description} address={this.account.address}></mvx-transaction-account-name>
         )}
       </div>
     );
