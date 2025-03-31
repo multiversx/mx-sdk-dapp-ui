@@ -11,7 +11,6 @@ describe('TransactionAge', () => {
     });
 
     const ageSpan = page.root.querySelector(`[data-testid="${DataTestIdsEnum.transactionAge}"]`);
-    console.log(ageSpan);
     expect(ageSpan).not.toBeNull();
     expect(ageSpan.textContent).toBe('2 days ago');
   });
