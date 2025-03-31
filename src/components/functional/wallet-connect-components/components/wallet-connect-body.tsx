@@ -19,7 +19,7 @@ export class WalletConnectModal {
             <div>{this.description}</div>
           </Fragment>
         ) : (
-          <generic-spinner data-testid={DataTestIdsEnum.walletConnectLoading} />
+          <mvx-generic-spinner data-testid={DataTestIdsEnum.walletConnectLoading} />
         )}
       </div>
     );
