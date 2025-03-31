@@ -1,5 +1,4 @@
 import { Component, h, Prop } from '@stencil/core';
-import { StyledHost } from 'utils/StyledHost';
 
 import { DefaultTransactionIconLarge, DefaultTransactionIconSmall } from '../default-icon/default-icon';
 import type { ITransactionListItem } from './transaction-list-item.types';
@@ -50,29 +49,27 @@ export class TransactionListItem {
     }
 
     return (
-      <StyledHost>
-        <div class="transaction-item">
-          <div class="transaction-icon">{this.renderPrimaryIcon()}</div>
+      <div class="transaction-item">
+        <div class="transaction-icon">{this.renderPrimaryIcon()}</div>
 
-          <div class="transaction-details">
-            <div class="transaction-details-header">
-              <h4 class="transaction-title">{this.transaction.action.name}</h4>
-              {this.transaction.amount && (
-                <div
-                  class={{
-                    'transaction-amount': true,
-                    'amount-negative': this.transaction.amount.startsWith('-'),
-                    'amount-positive': !this.transaction.amount.startsWith('-'),
-                  }}
-                >
-                  {this.transaction.amount}
-                </div>
-              )}
-            </div>
-            {this.renderDetails()}
+        <div class="transaction-details">
+          <div class="transaction-details-header">
+            <h4 class="transaction-title">{this.transaction.action.name}</h4>
+            {this.transaction.amount && (
+              <div
+                class={{
+                  'transaction-amount': true,
+                  'amount-negative': this.transaction.amount.startsWith('-'),
+                  'amount-positive': !this.transaction.amount.startsWith('-'),
+                }}
+              >
+                {this.transaction.amount}
+              </div>
+            )}
           </div>
+          {this.renderDetails()}
         </div>
-      </StyledHost>
+      </div>
     );
   }
 }
