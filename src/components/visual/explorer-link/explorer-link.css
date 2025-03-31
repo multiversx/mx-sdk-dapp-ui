@@ -1,4 +1,4 @@
 .explorer-link {
   text-decoration: none;
-  color: var(--explorer-link-color, -webkit-link); /* Default color */
+  color: var(--mx-explorer-link-color, -webkit-link); /* Default color */
 }

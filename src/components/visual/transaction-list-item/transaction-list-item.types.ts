@@ -1,9 +1,3 @@
-export interface ITransactionListItemDetails {
-  initiator: string;
-  initiatorAsset?: string;
-  directionLabel?: string;
-}
-
 export interface ITransactionListItemAsset {
   imageUrl?: string;
   text?: string;
@@ -18,6 +12,12 @@ export interface ITransactionListItemAction {
 export interface ITransactionListItem {
   asset: ITransactionListItemAsset | null;
   action: ITransactionListItemAction;
+  interactor: string;
+  interactorAsset?: string;
+  directionLabel?: string;
   amount?: string;
-  details?: ITransactionListItemDetails;
+  hash: string;
+  status: string;
+  link: string;
+  timestamp: number;
 }

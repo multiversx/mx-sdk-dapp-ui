@@ -11,11 +11,9 @@ describe('ExplorerLink', () => {
     });
     expect(page.root).toEqualHtml(`
       <explorer-link link="https://example.com">
-        <mock:shadow-root>
-          <a href="https://example.com" target="_blank" class="explorer-link" rel="noreferrer">
-            <fa-icon></fa-icon>
-          </a>
-        </mock:shadow-root>
+        <a href="https://example.com" target="_blank" class="explorer-link" rel="noreferrer">
+          <fa-icon class="explorer-link-icon"></fa-icon>
+        </a>
       </explorer-link>
     `);
   });
@@ -27,11 +25,9 @@ describe('ExplorerLink', () => {
     });
     expect(page.root).toEqualHtml(`
       <explorer-link link="https://example.com" text="View on Explorer">
-        <mock:shadow-root>
-          <a href="https://example.com" target="_blank" class="explorer-link" rel="noreferrer">
-            View on Explorer
-          </a>
-        </mock:shadow-root>
+        <a href="https://example.com" target="_blank" class="explorer-link" rel="noreferrer">
+          View on Explorer
+        </a>
       </explorer-link>
     `);
   });
@@ -43,11 +39,9 @@ describe('ExplorerLink', () => {
     });
     expect(page.root).toEqualHtml(`
       <explorer-link link="https://example.com" class="custom-class">
-        <mock:shadow-root>
-          <a href="https://example.com" target="_blank" class="custom-class explorer-link" rel="noreferrer">
-            <fa-icon></fa-icon>
-          </a>
-        </mock:shadow-root>
+        <a href="https://example.com" target="_blank" class="custom-class" rel="noreferrer">
+          <fa-icon class="explorer-link-icon"></fa-icon>
+        </a>
       </explorer-link>
     `);
   });
@@ -63,11 +57,9 @@ describe('ExplorerLink', () => {
 
     expect(page.root).toEqualHtml(`
       <explorer-link link="https://example.com">
-        <mock:shadow-root>
-          <a href="https://example.com" target="_blank" class="explorer-link" rel="noreferrer">
-            <fa-icon></fa-icon>
-          </a>
-        </mock:shadow-root>
+        <a href="https://example.com" target="_blank" class="explorer-link" rel="noreferrer">
+          <fa-icon class="explorer-link-icon"></fa-icon>
+        </a>
       </explorer-link>
     `);
 

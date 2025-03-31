@@ -12,11 +12,9 @@ describe('CopyButton', () => {
 
     expect(page.root).toEqualHtml(`
       <copy-button text="Copy me">
-        <mock:shadow-root>
-          <a href="/#" class="copy-button">
-            <fa-icon></fa-icon>
-          </a>
-        </mock:shadow-root>
+        <a href="/#" class="copy-button">
+          <fa-icon class="copy-button-icon"></fa-icon>
+        </a>
       </copy-button>
     `);
   });
@@ -29,11 +27,9 @@ describe('CopyButton', () => {
 
     expect(page.root).toEqualHtml(`
       <copy-button class="custom-class" text="Copy me">
-        <mock:shadow-root>
-          <a href="/#" class="custom-class copy-button">
-            <fa-icon></fa-icon>
-          </a>
-        </mock:shadow-root>
+        <a href="/#" class="custom-class">
+          <fa-icon class="copy-button-icon"></fa-icon>
+        </a>
       </copy-button>
     `);
   });
@@ -47,18 +43,16 @@ describe('CopyButton', () => {
     });
 
     const copyButton = page.root;
-    const anchor = copyButton.shadowRoot.querySelector('a');
+    const anchor = copyButton.querySelector('a');
 
     await anchor.click();
     await page.waitForChanges();
 
     expect(copyButton).toEqualHtml(`
       <copy-button text="Copy me">
-        <mock:shadow-root>
-          <a href="/#" class="copy-button">
-            <fa-icon></fa-icon>
-          </a>
-        </mock:shadow-root>
+        <a href="/#" class="copy-button">
+          <fa-icon class="copy-button-icon"></fa-icon>
+        </a>
       </copy-button>
     `);
   });
@@ -72,18 +66,16 @@ describe('CopyButton', () => {
     });
 
     const copyButton = page.root;
-    const anchor = copyButton.shadowRoot.querySelector('a');
+    const anchor = copyButton.querySelector('a');
 
     await anchor.click();
     await page.waitForChanges();
 
     expect(copyButton).toEqualHtml(`
       <copy-button text="Copy me">
-        <mock:shadow-root>
-          <a href="/#" class="copy-button">
-            <fa-icon></fa-icon>
-          </a>
-        </mock:shadow-root>
+        <a href="/#" class="copy-button">
+          <fa-icon class="copy-button-icon"></fa-icon>
+        </a>
       </copy-button>
     `);
   });
@@ -95,7 +87,7 @@ describe('CopyButton', () => {
     });
 
     const copyButton = page.root;
-    const anchor = copyButton.shadowRoot.querySelector('a');
+    const anchor = copyButton.querySelector('a');
 
     const mockEvent = {
       preventDefault: jest.fn(),

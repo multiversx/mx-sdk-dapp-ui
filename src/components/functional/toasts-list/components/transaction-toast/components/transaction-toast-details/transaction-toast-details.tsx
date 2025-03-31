@@ -1,17 +1,16 @@
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import type { JSX } from '@stencil/core';
-import { Component, Fragment, h, Prop, State } from '@stencil/core';
-
-import type { ITransaction } from '../../transaction-toast.type';
+import { Component, h, Prop, State } from '@stencil/core';
+import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 
 @Component({
   tag: 'transaction-toast-details',
   styleUrl: 'transaction-toast-details.css',
   shadow: true,
 })
-export class TransactionDetails {
-  @Prop() processedTransactionsStatus?: JSX.Element | string;
-  @Prop() transactions?: ITransaction[];
+export class TransactionToastDetails {
+  @Prop() processedTransactionsStatus?: string | JSX.Element;
+  @Prop() transactions?: ITransactionListItem[];
   @Prop() transactionClass: string;
   @Prop() maxShownTransactions: number = 5;
   @State() isExpanded: boolean = false;
@@ -39,28 +38,31 @@ export class TransactionDetails {
     const visibleTransactions = this.showAllTransactions ? this.transactions : this.transactions.slice(0, this.maxShownTransactions);
 
     return (
-      <Fragment>
-        <div class="status-title" onClick={this.toggleExpand.bind(this)}>
-          <fa-icon icon={this.isExpanded ? faChevronUp : faChevronDown} class="toggle-icon"></fa-icon>
-          {this.processedTransactionsStatus}
+      <div class="transaction-details-container">
+        <div class="transaction-details-status" onClick={this.toggleExpand.bind(this)}>
+          <fa-icon icon={faChevronDown} class={`transaction-details-status-icon ${this.isExpanded ? 'rotate-up' : ''}`}></fa-icon>
+          <span class="transaction-details-status-text">{this.processedTransactionsStatus}</span>
         </div>
 
-        {this.isExpanded && (
-          <div class="transaction-details-list">
-            {visibleTransactions.map(({ hash, status, link }) => (
-              <transaction-toast-details-body transactionClass={this.transactionClass} hash={hash} status={status} link={link} key={hash} />
-            ))}
+        <div
+          class={{
+            'transaction-details-list': true,
+            'expanded': this.isExpanded,
+          }}
+        >
+          {visibleTransactions.map(({ hash, status, link }, index) => (
+            <transaction-toast-details-body transactionClass={this.transactionClass} hash={hash} status={status} link={link} index={`#${index + 1}`} key={hash} />
+          ))}
 
-            {hasMoreTransactionsToShow && !this.showAllTransactions && (
-              <div class="view-all-container">
-                <button type="button" class="show-more-button" onClick={this.showMoreTransactions.bind(this)}>
-                  Show {hiddenTransactionsCount} more
-                </button>
-              </div>
-            )}
-          </div>
-        )}
-      </Fragment>
+          {hasMoreTransactionsToShow && !this.showAllTransactions && (
+            <div class="view-all-container">
+              <button type="button" class="show-more-button" onClick={this.showMoreTransactions.bind(this)}>
+                Show {hiddenTransactionsCount} more
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
     );
   }
 }

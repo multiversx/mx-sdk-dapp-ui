@@ -8,6 +8,5 @@
  * to consume components of this package as outlined in the `README.md`.
  */
 
-import './index.css';
 export type * from './components.d.ts';
 export { format } from './utils/utils';

@@ -2,6 +2,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import type { IComponentToast } from 'components/functional/toasts-list/components/transaction-toast/transaction-toast.type';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 
 @Component({
@@ -11,16 +12,19 @@ import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDe
 })
 export class CustomToast {
   @Prop() toast: IComponentToast;
-  @Event() handleDeleteToast: EventEmitter<string>;
+  @Event() deleteToast: EventEmitter<string>;
+
+  private handleDeleteToast() {
+    this.deleteToast.emit();
+  }
 
   render() {
-    const customToast = (
-      <div class="toast-wrapper">
-        <button onClick={() => this.handleDeleteToast.emit()} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>
+    return (
+      <div class="toast-wrapper" data-testid={DataTestIdsEnum.transactionToastContent}>
+        <button onClick={this.handleDeleteToast.bind(this)} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>
         <div class="toast-body" ref={container => this.initializeToast(container)}></div>
       </div>
     );
-    return customToast;
   }
 
   private initializeToast(container: HTMLElement) {
