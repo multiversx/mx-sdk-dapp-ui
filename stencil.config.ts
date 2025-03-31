@@ -47,6 +47,7 @@ export const config: Config = {
     },
     {
       type: 'dist',
+      copy: [{ src: 'assets', dest: 'assets' }],
       esmLoaderPath: './loader',
     },
     {

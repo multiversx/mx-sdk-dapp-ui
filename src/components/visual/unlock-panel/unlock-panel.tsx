@@ -132,6 +132,8 @@ export class UnlockPanel {
               </div>
 
               <slot></slot>
+
+              <img src={new URL('../collection/assets/unlock-panel-wallet.png', import.meta.url).href} />
             </div>
           )}
         </div>
