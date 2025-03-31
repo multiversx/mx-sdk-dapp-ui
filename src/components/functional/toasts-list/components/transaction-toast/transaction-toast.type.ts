@@ -11,7 +11,7 @@ export interface ITransactionProgressState {
 
 export interface IToastDataState {
   title: string;
-  iconUrl?: string;
+  icon?: string;
   iconClassName?: string;
   hasCloseButton?: boolean;
 }

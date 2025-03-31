@@ -1,7 +1,7 @@
 .transaction-toast-content-wrapper {
   position: relative;
   display: flex;
-  max-width: 315px;
+  max-width: 350px;
   padding: 12px;
   flex-direction: column;
   align-items: flex-start;
@@ -62,8 +62,11 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100px;
   margin: 0;
+}
+
+.transaction-toast-title-short {
+  max-width: 160px;
 }
 
 .transaction-toast-content-wrapper.full-width .transaction-toast-title {
@@ -105,6 +108,8 @@
 
   img {
     border-radius: 50%;
+    width: 16px;
+    height: 16px;
   }
 }
 
