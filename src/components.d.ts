@@ -72,7 +72,6 @@ export namespace Components {
         "text"?: string;
     }
     interface ExtensionProviderIcon {
-        "class"?: string;
     }
     interface FaIcon {
         "class"?: string;
@@ -120,13 +119,10 @@ export namespace Components {
         "connectScreenData": IConnectScreenData;
     }
     interface LedgerProviderIcon {
-        "class"?: string;
     }
     interface MetamaskProviderIcon {
-        "class"?: string;
     }
     interface MultiversxLogoIcon {
-        "class"?: string;
     }
     interface NotificationsFeed {
         "getEventBus": () => Promise<IEventBus>;
@@ -138,12 +134,14 @@ export namespace Components {
         "getEventBus": () => Promise<IEventBus>;
     }
     interface ProviderButton {
+        "class"?: string;
         "type": ProviderTypeEnum;
     }
     interface SidePanel {
         "isOpen": boolean;
         "panelClassName"?: string;
         "panelTitle": string;
+        "withBackButton"?: boolean;
     }
     interface SignTransactionComponent {
         "header": VNode;
@@ -256,6 +254,7 @@ export namespace Components {
         "buttonIcon": HTMLElement;
         "buttonLabel": string;
         "buttonType"?: ProviderTypeEnum1;
+        "class"?: string;
     }
     interface UnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
@@ -274,10 +273,8 @@ export namespace Components {
         "getEventBus": () => Promise<IEventBus>;
     }
     interface WalletProviderIcon {
-        "class"?: string;
     }
     interface XaliasProviderIcon {
-        "class"?: string;
     }
 }
 export interface CustomToastCustomEvent<T> extends CustomEvent<T> {
@@ -874,7 +871,6 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface ExtensionProviderIcon {
-        "class"?: string;
     }
     interface FaIcon {
         "class"?: string;
@@ -927,13 +923,10 @@ declare namespace LocalJSX {
         "onConnect"?: (event: LedgerConnectScreenCustomEvent<any>) => void;
     }
     interface LedgerProviderIcon {
-        "class"?: string;
     }
     interface MetamaskProviderIcon {
-        "class"?: string;
     }
     interface MultiversxLogoIcon {
-        "class"?: string;
     }
     interface NotificationsFeed {
     }
@@ -943,6 +936,7 @@ declare namespace LocalJSX {
         "data"?: IPendingTransactionsPanelData;
     }
     interface ProviderButton {
+        "class"?: string;
         "type"?: ProviderTypeEnum;
     }
     interface SidePanel {
@@ -951,6 +945,7 @@ declare namespace LocalJSX {
         "onClose"?: (event: SidePanelCustomEvent<any>) => void;
         "panelClassName"?: string;
         "panelTitle"?: string;
+        "withBackButton"?: boolean;
     }
     interface SignTransactionComponent {
         "header"?: VNode;
@@ -1064,6 +1059,7 @@ declare namespace LocalJSX {
         "buttonIcon"?: HTMLElement;
         "buttonLabel"?: string;
         "buttonType"?: ProviderTypeEnum1;
+        "class"?: string;
     }
     interface UnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
@@ -1082,10 +1078,8 @@ declare namespace LocalJSX {
         "data"?: IWalletConnectPanelData;
     }
     interface WalletProviderIcon {
-        "class"?: string;
     }
     interface XaliasProviderIcon {
-        "class"?: string;
     }
     interface IntrinsicElements {
         "arrow-up-right-icon": ArrowUpRightIcon;

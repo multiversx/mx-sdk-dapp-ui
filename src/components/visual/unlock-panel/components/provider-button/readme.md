@@ -9,6 +9,7 @@
 
 | Property | Attribute | Description | Type                                                                                                                                                                                                          | Default     |
 | -------- | --------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `class`  | `class`   |             | `string`                                                                                                                                                                                                      | `undefined` |
 | `type`   | `type`    |             | `ProviderTypeEnum.crossWindow \| ProviderTypeEnum.extension \| ProviderTypeEnum.ledger \| ProviderTypeEnum.metamask \| ProviderTypeEnum.passkey \| ProviderTypeEnum.walletConnect \| ProviderTypeEnum.xalias` | `undefined` |
 
 
@@ -40,6 +41,7 @@ graph TD;
   provider-button --> ledger-provider-icon
   provider-button --> wallet-provider-icon
   provider-button --> xalias-provider-icon
+  unlock-button --> multiversx-logo-icon
   unlock-button --> arrow-up-right-icon
   unlock-panel --> provider-button
   style provider-button fill:#f9f,stroke:#333,stroke-width:4px

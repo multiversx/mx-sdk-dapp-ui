@@ -50,11 +50,13 @@
   align-self: stretch;
   justify-content: space-between;
   padding: 0;
+  padding: 0;
 }
 
 .transaction-toast-title {
   color: var(--mx-toast-text-primary);
   font-family: var(--font-family-roobert);
+  font-size: 16px;
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -78,6 +80,7 @@
   color: var(--mx-toast-text-primary);
   font-family: var(--font-family-roobert);
   font-size: 16px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   letter-spacing: -0.14px;
@@ -93,6 +96,7 @@
 .transaction-toast-details-info-text {
   color: var(--mx-toast-text-secondary);
   font-family: var(--font-family-roobert);
+  font-size: 16px;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;

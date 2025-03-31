@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'extension-provider-icon',
@@ -6,8 +6,6 @@ import { Component, h, Prop } from '@stencil/core';
   shadow: true,
 })
 export class ExtensionProviderIcon {
-  @Prop() class?: string;
-
   render() {
     return (
       <svg xmlns="http://www.w3.org/2000/svg" width="46" height="44" viewBox="0 0 46 44" fill="none" class="extension-provider-icon">

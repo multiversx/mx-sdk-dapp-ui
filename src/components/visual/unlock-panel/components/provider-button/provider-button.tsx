@@ -1,6 +1,5 @@
 import { Component, Fragment, h, Prop } from '@stencil/core';
 import { ProviderTypeEnum } from 'types/provider.types';
-import { StyledHost } from 'utils/StyledHost';
 
 enum ProviderButtonLabelsEnum {
   extension = 'MultiversX Wallet Extension',
@@ -46,10 +45,11 @@ const providerButtonInfo = {
 @Component({
   tag: 'provider-button',
   styleUrl: 'provider-button.scss',
-  shadow: true,
+  shadow: false,
 })
 export class ProviderButton {
   @Prop() type: ProviderTypeEnum;
+  @Prop() class?: string;
 
   render() {
     const walletInfo = this.type ? providerButtonInfo[this.type] : null;
@@ -58,10 +58,6 @@ export class ProviderButton {
       return <Fragment />;
     }
 
-    return (
-      <StyledHost>
-        <unlock-button buttonIcon={walletInfo.icon} buttonLabel={walletInfo.label} buttonType={this.type} class="provider-button" />
-      </StyledHost>
-    );
+    return <unlock-button buttonIcon={walletInfo.icon} buttonLabel={walletInfo.label} buttonType={this.type} class={this.class} />;
   }
 }

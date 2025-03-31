@@ -6,22 +6,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- [Updated the layout for the new unlock panel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/67)
 
+## [[0.0.0-alpha.10](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/70)] - 2025-03-31
 - [Toasts design](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/66)
 - [Upgrade Tailwind to v4](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/65)
 
 ## [[0.0.0-alpha.9](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/64)] - 2025-03-19
-
 - [Fixed sign transactions panel and component](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/63)
 - [Fixed loader export](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/62)
 - [Migrated modals to side panels](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/61)
 
 ## [[0.0.0-alpha.8](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/60)] - 2025-03-18
-
 - [Fix react output config](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/59)
 
 ## [[0.0.0-alpha.7](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/58)] - 2025-03-18
-
 - [Refactor package compile](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/57)
 - [Added gasPrice PPU editing radios](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/56)
 - [Added gasPrice editing radios](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/52)

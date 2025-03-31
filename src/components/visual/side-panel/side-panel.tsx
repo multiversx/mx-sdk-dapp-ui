@@ -12,6 +12,7 @@ export class SidePanel {
   @Prop() isOpen: boolean = false;
   @Prop() panelClassName?: string;
   @Prop() panelTitle: string;
+  @Prop() withBackButton?: boolean;
 
   @Event() close: EventEmitter;
   @Event() back: EventEmitter;
@@ -66,26 +67,24 @@ export class SidePanel {
     }
 
     return (
-      <StyledHost>
-        <div
-          onClick={this.handleOverlayClick}
-          class={classNames('side-panel-wrapper', {
-            visible: this.shouldAnimate,
-          })}
-        >
-          <div class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}>
-            <div class="side-panel-heading">
-              {this.handleBackClick && <back-arrow-icon onClick={this.handleBackClick} class="side-panel-heading-back" />}
-              <div class="side-panel-heading-title">{this.panelTitle}</div>
-              <close-icon class="side-panel-heading-close" onClick={this.handleCloseClick} />
-            </div>
+      <div
+        onClick={this.handleOverlayClick}
+        class={classNames('side-panel-wrapper', {
+          visible: this.shouldAnimate,
+        })}
+      >
+        <div class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}>
+          <div class="side-panel-heading">
+            {this.withBackButton && <back-arrow-icon onClick={this.handleBackClick} class="side-panel-heading-back" />}
+            <div class="side-panel-heading-title">{this.panelTitle}</div>
+            <close-icon class="side-panel-heading-close" onClick={this.handleCloseClick} />
+          </div>
 
-            <div class="side-panel-content">
-              <slot></slot>
-            </div>
+          <div class="side-panel-content">
+            <slot></slot>
           </div>
         </div>
-      </StyledHost>
+      </div>
     );
   }
 }
