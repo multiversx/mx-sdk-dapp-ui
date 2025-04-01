@@ -137,7 +137,7 @@ export class UnlockPanel {
             </div>
           )}
         </div>
-      </side-panel>
+      </mvx-side-panel>
     );
   }
 }

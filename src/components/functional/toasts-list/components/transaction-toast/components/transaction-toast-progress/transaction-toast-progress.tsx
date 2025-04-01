@@ -6,7 +6,6 @@ const DEFAULT_INFINITE_ANIMATION_DURATION = 30;
 @Component({
   tag: 'mvx-transaction-toast-progress',
   styleUrl: 'transaction-toast-progress.css',
-  shadow: false,
 })
 export class ToastProgress {
   private timeElapsedTimeoutReference?: ReturnType<typeof setTimeout>;

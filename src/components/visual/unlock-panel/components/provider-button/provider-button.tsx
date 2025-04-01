@@ -45,7 +45,6 @@ const providerButtonInfo = {
 @Component({
   tag: 'mvx-provider-button',
   styleUrl: 'provider-button.scss',
-  shadow: false,
 })
 export class ProviderButton {
   @Prop() type: ProviderTypeEnum;

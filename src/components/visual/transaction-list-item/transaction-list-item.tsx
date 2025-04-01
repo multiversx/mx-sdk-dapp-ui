@@ -1,19 +1,17 @@
 import { Component, h, Prop } from '@stencil/core';
 
-import { DefaultTransactionIconLarge, DefaultTransactionIconSmall } from '../default-icon/default-icon';
 import type { ITransactionListItem } from './transaction-list-item.types';
 
 @Component({
   tag: 'mvx-transaction-list-item',
-  styleUrl: 'transaction-list-item.scss',
-  shadow: false,
+  styleUrl: 'transaction-list-item.css',
 })
 export class TransactionListItem {
   @Prop() transaction: ITransactionListItem;
 
   private renderPrimaryIcon() {
     if (!this.transaction.asset) {
-      return <DefaultTransactionIconLarge />;
+      return <default-transaction-icon-large />;
     }
 
     if (this.transaction.asset.imageUrl) {
@@ -28,7 +26,7 @@ export class TransactionListItem {
       return <span class="icon-text">{this.transaction.asset.text}</span>;
     }
 
-    return <DefaultTransactionIconLarge />;
+    return <default-transaction-icon-large />;
   }
 
   private renderDetails() {
@@ -37,7 +35,7 @@ export class TransactionListItem {
         {this.transaction.directionLabel && <span class="transaction-details-info-text">{this.transaction.directionLabel}</span>}
 
         <div class="transaction-details-info-icon">
-          {this.transaction.interactorAsset ? <img src={this.transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <DefaultTransactionIconSmall />}
+          {this.transaction.interactorAsset ? <img src={this.transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <default-transaction-icon-small />}
         </div>
 
         <mvx-trim-text text={this.transaction.interactor} class="transaction-details-info-text" />

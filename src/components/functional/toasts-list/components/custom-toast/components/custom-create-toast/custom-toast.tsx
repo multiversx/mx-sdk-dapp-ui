@@ -8,7 +8,6 @@ import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDe
 @Component({
   tag: 'mvx-custom-toast',
   styleUrl: 'custom-toast.css',
-  shadow: false,
 })
 export class CustomToast {
   @Prop() toast: IComponentToast;
