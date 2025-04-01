@@ -6,7 +6,7 @@ import { LedgerConnectEventsEnum } from './ledger-connect.types';
 import { LedgerConnectBase } from './LedgerConnectBase';
 
 @Component({
-  tag: 'ledger-connect',
+  tag: 'mvx-ledger-connect',
   shadow: true,
 })
 export class LedgerConnect {
@@ -35,7 +35,7 @@ export class LedgerConnect {
 
     if (accountScreenData) {
       return (
-        <ledger-account-screen
+        <mvx-ledger-account-screen
           accountScreenData={accountScreenData}
           selectedIndex={this.selectedIndex}
           onSelectAccount={(event: CustomEvent) => this.selectAccount(event.detail)}
@@ -47,10 +47,10 @@ export class LedgerConnect {
     }
 
     if (confirmScreenData) {
-      return <ledger-confirm-screen confirmScreenData={confirmScreenData} />;
+      return <mvx-ledger-confirm-screen confirmScreenData={confirmScreenData} />;
     }
 
-    return <ledger-connect-screen connectScreenData={connectScreenData} onConnect={() => this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.CONNECT_DEVICE)} />;
+    return <mvx-ledger-connect-screen connectScreenData={connectScreenData} onConnect={() => this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.CONNECT_DEVICE)} />;
   }
 
   private accessWallet() {

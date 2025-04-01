@@ -1,10 +1,10 @@
-import { Component, Fragment, h,Prop, State, Watch } from '@stencil/core';
+import { Component, Fragment, h, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
 
 const DEFAULT_INFINITE_ANIMATION_DURATION = 30;
 
 @Component({
-  tag: 'transaction-toast-progress',
+  tag: 'mvx-transaction-toast-progress',
   styleUrl: 'transaction-toast-progress.css',
   shadow: true,
 })

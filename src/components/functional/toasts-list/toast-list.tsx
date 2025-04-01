@@ -6,7 +6,7 @@ import type { CustomToastType, ITransactionToast } from './components/transactio
 import { ToastEventsEnum } from './toast-list.types';
 
 @Component({
-  tag: 'toast-list',
+  tag: 'mvx-toast-list',
   styleUrl: 'toast-list.css',
 })
 export class ToastList {
@@ -46,8 +46,10 @@ export class ToastList {
         }}
         id="toast-list"
       >
-        {this.customToasts?.map(toast => <generic-toast toast={toast} onDeleteToast={this.handleCustomToastDelete.bind(this, toast.toastId)}></generic-toast>)}
-        {this.transactionToasts?.map(toast => <transaction-toast {...toast} onDeleteToast={this.handleTransactionToastDelete.bind(this, toast.toastId)}></transaction-toast>)}
+        {this.customToasts?.map(toast => <mvx-generic-toast toast={toast} onDeleteToast={this.handleCustomToastDelete.bind(this, toast.toastId)}></mvx-generic-toast>)}
+        {this.transactionToasts?.map(toast => (
+          <mvx-transaction-toast {...toast} onDeleteToast={this.handleTransactionToastDelete.bind(this, toast.toastId)}></mvx-transaction-toast>
+        ))}
         {hasTransactionToasts && (
           <div class="view-all-button-container">
             <button class="view-all-button" onClick={this.handleViewAllClick.bind(this)}>

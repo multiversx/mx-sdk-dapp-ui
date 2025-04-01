@@ -4,7 +4,7 @@ import { DefaultTransactionIcon } from '../default-icon/default-icon';
 import type { ITransactionListItem } from './transaction-list-item.types';
 
 @Component({
-  tag: 'transaction-list-item',
+  tag: 'mvx-transaction-list-item',
   styleUrl: 'transaction-list-item.scss',
   shadow: true,
 })
@@ -21,7 +21,7 @@ export class TransactionListItem {
     }
 
     if (this.transaction.asset.icon) {
-      return <fa-icon icon={this.transaction.asset.icon} class="icon-text"></fa-icon>;
+      return <mvx-fa-icon icon={this.transaction.asset.icon} class="icon-text"></mvx-fa-icon>;
     }
 
     if (this.transaction.asset.text) {
@@ -41,7 +41,7 @@ export class TransactionListItem {
               <img src={this.transaction.interactorAsset} alt="Service icon" class="service-icon" loading="lazy" />
             </div>
           )}
-          <trim-text text={this.transaction.interactor} class="interactor" />
+          <mvx-trim-text text={this.transaction.interactor} class="interactor" />
         </span>
       </div>
     );

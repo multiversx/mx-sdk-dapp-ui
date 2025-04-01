@@ -52,7 +52,7 @@ describe('TransactionHash', () => {
       <mvx-transaction-hash>
           <div class="transaction-hash">
             <mvx-transaction-icon></mvx-transaction-icon>
-            <explorer-link dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/123" text="0x123456789abcdef"></explorer-link>
+            <mvx-explorer-link dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/123" text="0x123456789abcdef"></mvx-explorer-link>
           </div>
       </mvx-transaction-hash>
     `);
@@ -90,7 +90,7 @@ describe('TransactionHash', () => {
       <mvx-transaction-hash>
           <div class="transaction-hash">
             <mvx-transaction-icon></mvx-transaction-icon>
-            <explorer-link dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/initial" text="0xInitialHash"></explorer-link>
+            <mvx-explorer-link dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/initial" text="0xInitialHash"></mvx-explorer-link>
           </div>
       </mvx-transaction-hash>
     `);
@@ -124,7 +124,7 @@ describe('TransactionHash', () => {
       <mvx-transaction-hash>
           <div class="transaction-hash">
             <mvx-transaction-icon></mvx-transaction-icon>
-            <explorer-link dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/updated" text="0xUpdatedHash"></explorer-link>
+            <mvx-explorer-link dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/updated" text="0xUpdatedHash"></mvx-explorer-link>
           </div>
       </mvx-transaction-hash>
     `);

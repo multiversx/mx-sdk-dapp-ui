@@ -7,54 +7,54 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+import { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
 import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
-import { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
-import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
-import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 import { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 import { ProviderTypeEnum } from "./types/provider.types";
 import { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
+import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 import { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+export { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
 export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
-export { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
-export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
-export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 export { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 export { ProviderTypeEnum } from "./types/provider.types";
 export { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
+export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 export { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export namespace Components {
-    interface BalanceComponent {
+    interface MvxBalanceComponent {
         "amount": string;
         "header"?: string;
         "ticker": string;
         "usdValue"?: string;
     }
-    interface CopyButton {
+    interface MvxCopyButton {
         "class"?: string;
         "copyIcon"?: IconDefinition;
         "iconClass"?: string;
         "successIcon"?: IconDefinition;
         "text": string;
     }
-    interface CustomToast {
+    interface MvxCustomToast {
         "toast": IComponentToast;
     }
-    interface ExplorerLink {
+    interface MvxExplorerLink {
         "class"?: string;
         "dataTestId"?: string;
         "icon"?: IconDefinition;
@@ -62,33 +62,10 @@ export namespace Components {
         "link": string;
         "text"?: string;
     }
-    interface FaIcon {
+    interface MvxFaIcon {
         "class"?: string;
         "description"?: string;
         "icon": IconDefinition | string;
-    }
-    interface FungibleComponent {
-    }
-    interface GenericToast {
-        "toast": CustomToastType;
-    }
-    interface LedgerAccountScreen {
-        "accountScreenData": IAccountScreenData;
-        "selectedIndex": number;
-    }
-    interface LedgerConfirmScreen {
-        "confirmScreenData": IConfirmScreenData;
-    }
-    interface LedgerConnect {
-        "data": ILedgerConnectPanelData;
-        "getEventBus": () => Promise<IEventBus>;
-    }
-    interface LedgerConnectPanel {
-        "data": ILedgerConnectPanelData;
-        "getEventBus": () => Promise<IEventBus>;
-    }
-    interface LedgerConnectScreen {
-        "connectScreenData": IConnectScreenData;
     }
     interface MvxFormatAmount {
         "class"?: string;
@@ -100,12 +77,67 @@ export namespace Components {
         "valueDecimal": string;
         "valueInteger": string;
     }
+    interface MvxFungibleComponent {
+    }
     interface MvxGenericModal {
         "body": IGenericModalProps['body'];
         "modalSubtitle"?: IGenericModalProps['modalSubtitle'];
         "modalTitle": IGenericModalProps['modalTitle'];
     }
     interface MvxGenericSpinner {
+    }
+    interface MvxGenericToast {
+        "toast": CustomToastType;
+    }
+    interface MvxLedgerAccountScreen {
+        "accountScreenData": IAccountScreenData;
+        "selectedIndex": number;
+    }
+    interface MvxLedgerConfirmScreen {
+        "confirmScreenData": IConfirmScreenData;
+    }
+    interface MvxLedgerConnect {
+        "data": ILedgerConnectPanelData;
+        "getEventBus": () => Promise<IEventBus>;
+    }
+    interface MvxLedgerConnectPanel {
+        "data": ILedgerConnectPanelData;
+        "getEventBus": () => Promise<IEventBus>;
+    }
+    interface MvxLedgerConnectScreen {
+        "connectScreenData": IConnectScreenData;
+    }
+    interface MvxNotificationsFeed {
+        "getEventBus": () => Promise<IEventBus>;
+    }
+    interface MvxPendingTransactionsPanel {
+        "data": IPendingTransactionsPanelData;
+        "getEventBus": () => Promise<IEventBus>;
+    }
+    interface MvxProviderButton {
+        "type": ProviderTypeEnum;
+    }
+    interface MvxSidePanel {
+        "isOpen": boolean;
+        "panelClassName"?: string;
+        "side": SidePanelSideEnum;
+    }
+    interface MvxSignTransactionComponent {
+        "header": VNode;
+    }
+    interface MvxSignTransactionsPanel {
+        "data": ISignTransactionsPanelData;
+        "getEventBus": () => Promise<IEventBus>;
+    }
+    interface MvxSimpleToast {
+        "toast": ISimpleToast;
+    }
+    interface MvxToastList {
+        "customToasts": CustomToastType1[];
+        "getEventBus": () => Promise<IEventBus>;
+        "transactionToasts": ITransactionToast[];
+    }
+    interface MvxTokenComponent {
     }
     interface MvxTransactionAccount {
         "account": ITransactionAccount;
@@ -130,6 +162,8 @@ export namespace Components {
         "class"?: string;
         "direction": string;
     }
+    interface MvxTransactionFeeComponent {
+    }
     interface MvxTransactionHash {
         "class"?: string;
         "transaction": ITransactionsTableRow;
@@ -137,6 +171,9 @@ export namespace Components {
     interface MvxTransactionIcon {
         "class"?: string;
         "iconInfo": ITransactionIconInfo;
+    }
+    interface MvxTransactionListItem {
+        "transaction": ITransactionListItem;
     }
     interface MvxTransactionMethod {
         "actionDescription": string;
@@ -147,56 +184,7 @@ export namespace Components {
         "class"?: string;
         "transaction": ITransactionsTableRow;
     }
-    interface MvxTransactionValue {
-        "class"?: string;
-        "value": ITransactionValue;
-    }
-    interface MvxTransactionsTable {
-        "class"?: string;
-        "transactions": ITransactionsTableRow[];
-    }
-    interface MvxUnlockButton {
-        "icon": HTMLElement;
-        "label": string;
-    }
-    interface NotificationsFeed {
-        "getEventBus": () => Promise<IEventBus>;
-    }
-    interface PendingTransactionsPanel {
-        "data": IPendingTransactionsPanelData;
-        "getEventBus": () => Promise<IEventBus>;
-    }
-    interface ProviderButton {
-        "type": ProviderTypeEnum;
-    }
-    interface SidePanel {
-        "isOpen": boolean;
-        "panelClassName"?: string;
-        "side": SidePanelSideEnum;
-    }
-    interface SignTransactionComponent {
-        "header": VNode;
-    }
-    interface SignTransactionsPanel {
-        "data": ISignTransactionsPanelData;
-        "getEventBus": () => Promise<IEventBus>;
-    }
-    interface SimpleToast {
-        "toast": ISimpleToast;
-    }
-    interface ToastList {
-        "customToasts": CustomToastType1[];
-        "getEventBus": () => Promise<IEventBus>;
-        "transactionToasts": ITransactionToast[];
-    }
-    interface TokenComponent {
-    }
-    interface TransactionFeeComponent {
-    }
-    interface TransactionListItem {
-        "transaction": ITransactionListItem;
-    }
-    interface TransactionToast {
+    interface MvxTransactionToast {
         "fullWidth"?: boolean;
         "processedTransactionsStatus": string | JSX.Element;
         "toastDataState": IToastDataState;
@@ -205,225 +193,165 @@ export namespace Components {
         "transactions": ITransactionListItem[];
         "wrapperClass": string;
     }
-    interface TransactionToastContent {
+    interface MvxTransactionToastContent {
         "fullWidth"?: boolean;
         "processedTransactionsStatus"?: string | JSX.Element;
         "toastDataState": IToastDataState;
         "transactions": ITransactionListItem[];
     }
-    interface TransactionToastDetails {
+    interface MvxTransactionToastDetails {
         "maxShownTransactions": number;
         "processedTransactionsStatus"?: string | JSX.Element;
         "transactionClass": string;
         "transactions"?: ITransactionListItem[];
     }
-    interface TransactionToastDetailsBody {
+    interface MvxTransactionToastDetailsBody {
         "hash": string;
         "index": string;
         "link": string;
         "status"?: string;
         "transactionClass"?: string;
     }
-    interface TransactionToastProgress {
+    interface MvxTransactionToastProgress {
         "endTime"?: number;
         "startTime"?: number;
     }
-    interface TrimText {
+    interface MvxTransactionValue {
+        "class"?: string;
+        "value": ITransactionValue;
+    }
+    interface MvxTransactionsTable {
+        "class"?: string;
+        "transactions": ITransactionsTableRow[];
+    }
+    interface MvxTrimText {
         "class"?: string;
         "dataTestId"?: string;
         "text": string;
     }
-    interface UnlockHeader {
+    interface MvxUnlockButton {
+        "icon": HTMLElement;
+        "label": string;
+    }
+    interface MvxUnlockHeader {
         "backIcon"?: IconDefinition;
         "closeIcon": IconDefinition;
         "text": string;
     }
-    interface UnlockPanel {
+    interface MvxUnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
         "isOpen": boolean;
     }
-    interface WalletConnect {
+    interface MvxWalletConnect {
         "data": IWalletConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
-    interface WalletConnectBody {
+    interface MvxWalletConnectBody {
         "description": string;
         "qrCodeSvg": string;
     }
-    interface WalletConnectPanel {
+    interface MvxWalletConnectPanel {
         "data": IWalletConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
 }
-export interface CustomToastCustomEvent<T> extends CustomEvent<T> {
+export interface MvxCustomToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLCustomToastElement;
-}
-export interface GenericToastCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLGenericToastElement;
-}
-export interface LedgerAccountScreenCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLLedgerAccountScreenElement;
-}
-export interface LedgerConnectScreenCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLLedgerConnectScreenElement;
+    target: HTMLMvxCustomToastElement;
 }
 export interface MvxGenericModalCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxGenericModalElement;
 }
-export interface SidePanelCustomEvent<T> extends CustomEvent<T> {
+export interface MvxGenericToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLSidePanelElement;
+    target: HTMLMvxGenericToastElement;
 }
-export interface SimpleToastCustomEvent<T> extends CustomEvent<T> {
+export interface MvxLedgerAccountScreenCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLSimpleToastElement;
+    target: HTMLMvxLedgerAccountScreenElement;
 }
-export interface TransactionToastCustomEvent<T> extends CustomEvent<T> {
+export interface MvxLedgerConnectScreenCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLTransactionToastElement;
+    target: HTMLMvxLedgerConnectScreenElement;
 }
-export interface TransactionToastContentCustomEvent<T> extends CustomEvent<T> {
+export interface MvxSidePanelCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLTransactionToastContentElement;
+    target: HTMLMvxSidePanelElement;
 }
-export interface UnlockHeaderCustomEvent<T> extends CustomEvent<T> {
+export interface MvxSimpleToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLUnlockHeaderElement;
+    target: HTMLMvxSimpleToastElement;
 }
-export interface UnlockPanelCustomEvent<T> extends CustomEvent<T> {
+export interface MvxTransactionToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLUnlockPanelElement;
+    target: HTMLMvxTransactionToastElement;
+}
+export interface MvxTransactionToastContentCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMvxTransactionToastContentElement;
+}
+export interface MvxUnlockHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMvxUnlockHeaderElement;
+}
+export interface MvxUnlockPanelCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMvxUnlockPanelElement;
 }
 declare global {
-    interface HTMLBalanceComponentElement extends Components.BalanceComponent, HTMLStencilElement {
+    interface HTMLMvxBalanceComponentElement extends Components.MvxBalanceComponent, HTMLStencilElement {
     }
-    var HTMLBalanceComponentElement: {
-        prototype: HTMLBalanceComponentElement;
-        new (): HTMLBalanceComponentElement;
+    var HTMLMvxBalanceComponentElement: {
+        prototype: HTMLMvxBalanceComponentElement;
+        new (): HTMLMvxBalanceComponentElement;
     };
-    interface HTMLCopyButtonElement extends Components.CopyButton, HTMLStencilElement {
+    interface HTMLMvxCopyButtonElement extends Components.MvxCopyButton, HTMLStencilElement {
     }
-    var HTMLCopyButtonElement: {
-        prototype: HTMLCopyButtonElement;
-        new (): HTMLCopyButtonElement;
+    var HTMLMvxCopyButtonElement: {
+        prototype: HTMLMvxCopyButtonElement;
+        new (): HTMLMvxCopyButtonElement;
     };
-    interface HTMLCustomToastElementEventMap {
+    interface HTMLMvxCustomToastElementEventMap {
         "deleteToast": string;
     }
-    interface HTMLCustomToastElement extends Components.CustomToast, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLCustomToastElementEventMap>(type: K, listener: (this: HTMLCustomToastElement, ev: CustomToastCustomEvent<HTMLCustomToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLMvxCustomToastElement extends Components.MvxCustomToast, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxCustomToastElementEventMap>(type: K, listener: (this: HTMLMvxCustomToastElement, ev: MvxCustomToastCustomEvent<HTMLMvxCustomToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLCustomToastElementEventMap>(type: K, listener: (this: HTMLCustomToastElement, ev: CustomToastCustomEvent<HTMLCustomToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxCustomToastElementEventMap>(type: K, listener: (this: HTMLMvxCustomToastElement, ev: MvxCustomToastCustomEvent<HTMLMvxCustomToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLCustomToastElement: {
-        prototype: HTMLCustomToastElement;
-        new (): HTMLCustomToastElement;
+    var HTMLMvxCustomToastElement: {
+        prototype: HTMLMvxCustomToastElement;
+        new (): HTMLMvxCustomToastElement;
     };
-    interface HTMLExplorerLinkElement extends Components.ExplorerLink, HTMLStencilElement {
+    interface HTMLMvxExplorerLinkElement extends Components.MvxExplorerLink, HTMLStencilElement {
     }
-    var HTMLExplorerLinkElement: {
-        prototype: HTMLExplorerLinkElement;
-        new (): HTMLExplorerLinkElement;
+    var HTMLMvxExplorerLinkElement: {
+        prototype: HTMLMvxExplorerLinkElement;
+        new (): HTMLMvxExplorerLinkElement;
     };
-    interface HTMLFaIconElement extends Components.FaIcon, HTMLStencilElement {
+    interface HTMLMvxFaIconElement extends Components.MvxFaIcon, HTMLStencilElement {
     }
-    var HTMLFaIconElement: {
-        prototype: HTMLFaIconElement;
-        new (): HTMLFaIconElement;
-    };
-    interface HTMLFungibleComponentElement extends Components.FungibleComponent, HTMLStencilElement {
-    }
-    var HTMLFungibleComponentElement: {
-        prototype: HTMLFungibleComponentElement;
-        new (): HTMLFungibleComponentElement;
-    };
-    interface HTMLGenericToastElementEventMap {
-        "deleteToast": string;
-    }
-    interface HTMLGenericToastElement extends Components.GenericToast, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLGenericToastElementEventMap>(type: K, listener: (this: HTMLGenericToastElement, ev: GenericToastCustomEvent<HTMLGenericToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLGenericToastElementEventMap>(type: K, listener: (this: HTMLGenericToastElement, ev: GenericToastCustomEvent<HTMLGenericToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLGenericToastElement: {
-        prototype: HTMLGenericToastElement;
-        new (): HTMLGenericToastElement;
-    };
-    interface HTMLLedgerAccountScreenElementEventMap {
-        "selectAccount": any;
-        "nextPage": any;
-        "prevPage": any;
-        "accessWallet": any;
-    }
-    interface HTMLLedgerAccountScreenElement extends Components.LedgerAccountScreen, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLLedgerAccountScreenElementEventMap>(type: K, listener: (this: HTMLLedgerAccountScreenElement, ev: LedgerAccountScreenCustomEvent<HTMLLedgerAccountScreenElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLLedgerAccountScreenElementEventMap>(type: K, listener: (this: HTMLLedgerAccountScreenElement, ev: LedgerAccountScreenCustomEvent<HTMLLedgerAccountScreenElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLLedgerAccountScreenElement: {
-        prototype: HTMLLedgerAccountScreenElement;
-        new (): HTMLLedgerAccountScreenElement;
-    };
-    interface HTMLLedgerConfirmScreenElement extends Components.LedgerConfirmScreen, HTMLStencilElement {
-    }
-    var HTMLLedgerConfirmScreenElement: {
-        prototype: HTMLLedgerConfirmScreenElement;
-        new (): HTMLLedgerConfirmScreenElement;
-    };
-    interface HTMLLedgerConnectElement extends Components.LedgerConnect, HTMLStencilElement {
-    }
-    var HTMLLedgerConnectElement: {
-        prototype: HTMLLedgerConnectElement;
-        new (): HTMLLedgerConnectElement;
-    };
-    interface HTMLLedgerConnectPanelElement extends Components.LedgerConnectPanel, HTMLStencilElement {
-    }
-    var HTMLLedgerConnectPanelElement: {
-        prototype: HTMLLedgerConnectPanelElement;
-        new (): HTMLLedgerConnectPanelElement;
-    };
-    interface HTMLLedgerConnectScreenElementEventMap {
-        "connect": any;
-    }
-    interface HTMLLedgerConnectScreenElement extends Components.LedgerConnectScreen, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLLedgerConnectScreenElementEventMap>(type: K, listener: (this: HTMLLedgerConnectScreenElement, ev: LedgerConnectScreenCustomEvent<HTMLLedgerConnectScreenElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLLedgerConnectScreenElementEventMap>(type: K, listener: (this: HTMLLedgerConnectScreenElement, ev: LedgerConnectScreenCustomEvent<HTMLLedgerConnectScreenElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLLedgerConnectScreenElement: {
-        prototype: HTMLLedgerConnectScreenElement;
-        new (): HTMLLedgerConnectScreenElement;
+    var HTMLMvxFaIconElement: {
+        prototype: HTMLMvxFaIconElement;
+        new (): HTMLMvxFaIconElement;
     };
     interface HTMLMvxFormatAmountElement extends Components.MvxFormatAmount, HTMLStencilElement {
     }
     var HTMLMvxFormatAmountElement: {
         prototype: HTMLMvxFormatAmountElement;
         new (): HTMLMvxFormatAmountElement;
+    };
+    interface HTMLMvxFungibleComponentElement extends Components.MvxFungibleComponent, HTMLStencilElement {
+    }
+    var HTMLMvxFungibleComponentElement: {
+        prototype: HTMLMvxFungibleComponentElement;
+        new (): HTMLMvxFungibleComponentElement;
     };
     interface HTMLMvxGenericModalElementEventMap {
         "close": any;
@@ -447,6 +375,154 @@ declare global {
     var HTMLMvxGenericSpinnerElement: {
         prototype: HTMLMvxGenericSpinnerElement;
         new (): HTMLMvxGenericSpinnerElement;
+    };
+    interface HTMLMvxGenericToastElementEventMap {
+        "deleteToast": string;
+    }
+    interface HTMLMvxGenericToastElement extends Components.MvxGenericToast, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxGenericToastElementEventMap>(type: K, listener: (this: HTMLMvxGenericToastElement, ev: MvxGenericToastCustomEvent<HTMLMvxGenericToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxGenericToastElementEventMap>(type: K, listener: (this: HTMLMvxGenericToastElement, ev: MvxGenericToastCustomEvent<HTMLMvxGenericToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMvxGenericToastElement: {
+        prototype: HTMLMvxGenericToastElement;
+        new (): HTMLMvxGenericToastElement;
+    };
+    interface HTMLMvxLedgerAccountScreenElementEventMap {
+        "selectAccount": any;
+        "nextPage": any;
+        "prevPage": any;
+        "accessWallet": any;
+    }
+    interface HTMLMvxLedgerAccountScreenElement extends Components.MvxLedgerAccountScreen, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxLedgerAccountScreenElementEventMap>(type: K, listener: (this: HTMLMvxLedgerAccountScreenElement, ev: MvxLedgerAccountScreenCustomEvent<HTMLMvxLedgerAccountScreenElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxLedgerAccountScreenElementEventMap>(type: K, listener: (this: HTMLMvxLedgerAccountScreenElement, ev: MvxLedgerAccountScreenCustomEvent<HTMLMvxLedgerAccountScreenElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMvxLedgerAccountScreenElement: {
+        prototype: HTMLMvxLedgerAccountScreenElement;
+        new (): HTMLMvxLedgerAccountScreenElement;
+    };
+    interface HTMLMvxLedgerConfirmScreenElement extends Components.MvxLedgerConfirmScreen, HTMLStencilElement {
+    }
+    var HTMLMvxLedgerConfirmScreenElement: {
+        prototype: HTMLMvxLedgerConfirmScreenElement;
+        new (): HTMLMvxLedgerConfirmScreenElement;
+    };
+    interface HTMLMvxLedgerConnectElement extends Components.MvxLedgerConnect, HTMLStencilElement {
+    }
+    var HTMLMvxLedgerConnectElement: {
+        prototype: HTMLMvxLedgerConnectElement;
+        new (): HTMLMvxLedgerConnectElement;
+    };
+    interface HTMLMvxLedgerConnectPanelElement extends Components.MvxLedgerConnectPanel, HTMLStencilElement {
+    }
+    var HTMLMvxLedgerConnectPanelElement: {
+        prototype: HTMLMvxLedgerConnectPanelElement;
+        new (): HTMLMvxLedgerConnectPanelElement;
+    };
+    interface HTMLMvxLedgerConnectScreenElementEventMap {
+        "connect": any;
+    }
+    interface HTMLMvxLedgerConnectScreenElement extends Components.MvxLedgerConnectScreen, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxLedgerConnectScreenElementEventMap>(type: K, listener: (this: HTMLMvxLedgerConnectScreenElement, ev: MvxLedgerConnectScreenCustomEvent<HTMLMvxLedgerConnectScreenElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxLedgerConnectScreenElementEventMap>(type: K, listener: (this: HTMLMvxLedgerConnectScreenElement, ev: MvxLedgerConnectScreenCustomEvent<HTMLMvxLedgerConnectScreenElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMvxLedgerConnectScreenElement: {
+        prototype: HTMLMvxLedgerConnectScreenElement;
+        new (): HTMLMvxLedgerConnectScreenElement;
+    };
+    interface HTMLMvxNotificationsFeedElement extends Components.MvxNotificationsFeed, HTMLStencilElement {
+    }
+    var HTMLMvxNotificationsFeedElement: {
+        prototype: HTMLMvxNotificationsFeedElement;
+        new (): HTMLMvxNotificationsFeedElement;
+    };
+    interface HTMLMvxPendingTransactionsPanelElement extends Components.MvxPendingTransactionsPanel, HTMLStencilElement {
+    }
+    var HTMLMvxPendingTransactionsPanelElement: {
+        prototype: HTMLMvxPendingTransactionsPanelElement;
+        new (): HTMLMvxPendingTransactionsPanelElement;
+    };
+    interface HTMLMvxProviderButtonElement extends Components.MvxProviderButton, HTMLStencilElement {
+    }
+    var HTMLMvxProviderButtonElement: {
+        prototype: HTMLMvxProviderButtonElement;
+        new (): HTMLMvxProviderButtonElement;
+    };
+    interface HTMLMvxSidePanelElementEventMap {
+        "close": any;
+    }
+    interface HTMLMvxSidePanelElement extends Components.MvxSidePanel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxSidePanelElementEventMap>(type: K, listener: (this: HTMLMvxSidePanelElement, ev: MvxSidePanelCustomEvent<HTMLMvxSidePanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxSidePanelElementEventMap>(type: K, listener: (this: HTMLMvxSidePanelElement, ev: MvxSidePanelCustomEvent<HTMLMvxSidePanelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMvxSidePanelElement: {
+        prototype: HTMLMvxSidePanelElement;
+        new (): HTMLMvxSidePanelElement;
+    };
+    interface HTMLMvxSignTransactionComponentElement extends Components.MvxSignTransactionComponent, HTMLStencilElement {
+    }
+    var HTMLMvxSignTransactionComponentElement: {
+        prototype: HTMLMvxSignTransactionComponentElement;
+        new (): HTMLMvxSignTransactionComponentElement;
+    };
+    interface HTMLMvxSignTransactionsPanelElement extends Components.MvxSignTransactionsPanel, HTMLStencilElement {
+    }
+    var HTMLMvxSignTransactionsPanelElement: {
+        prototype: HTMLMvxSignTransactionsPanelElement;
+        new (): HTMLMvxSignTransactionsPanelElement;
+    };
+    interface HTMLMvxSimpleToastElementEventMap {
+        "deleteToast": void;
+    }
+    interface HTMLMvxSimpleToastElement extends Components.MvxSimpleToast, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxSimpleToastElementEventMap>(type: K, listener: (this: HTMLMvxSimpleToastElement, ev: MvxSimpleToastCustomEvent<HTMLMvxSimpleToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxSimpleToastElementEventMap>(type: K, listener: (this: HTMLMvxSimpleToastElement, ev: MvxSimpleToastCustomEvent<HTMLMvxSimpleToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMvxSimpleToastElement: {
+        prototype: HTMLMvxSimpleToastElement;
+        new (): HTMLMvxSimpleToastElement;
+    };
+    interface HTMLMvxToastListElement extends Components.MvxToastList, HTMLStencilElement {
+    }
+    var HTMLMvxToastListElement: {
+        prototype: HTMLMvxToastListElement;
+        new (): HTMLMvxToastListElement;
+    };
+    interface HTMLMvxTokenComponentElement extends Components.MvxTokenComponent, HTMLStencilElement {
+    }
+    var HTMLMvxTokenComponentElement: {
+        prototype: HTMLMvxTokenComponentElement;
+        new (): HTMLMvxTokenComponentElement;
     };
     interface HTMLMvxTransactionAccountElement extends Components.MvxTransactionAccount, HTMLStencilElement {
     }
@@ -472,6 +548,12 @@ declare global {
         prototype: HTMLMvxTransactionDirectionBadgeElement;
         new (): HTMLMvxTransactionDirectionBadgeElement;
     };
+    interface HTMLMvxTransactionFeeComponentElement extends Components.MvxTransactionFeeComponent, HTMLStencilElement {
+    }
+    var HTMLMvxTransactionFeeComponentElement: {
+        prototype: HTMLMvxTransactionFeeComponentElement;
+        new (): HTMLMvxTransactionFeeComponentElement;
+    };
     interface HTMLMvxTransactionHashElement extends Components.MvxTransactionHash, HTMLStencilElement {
     }
     var HTMLMvxTransactionHashElement: {
@@ -483,6 +565,12 @@ declare global {
     var HTMLMvxTransactionIconElement: {
         prototype: HTMLMvxTransactionIconElement;
         new (): HTMLMvxTransactionIconElement;
+    };
+    interface HTMLMvxTransactionListItemElement extends Components.MvxTransactionListItem, HTMLStencilElement {
+    }
+    var HTMLMvxTransactionListItemElement: {
+        prototype: HTMLMvxTransactionListItemElement;
+        new (): HTMLMvxTransactionListItemElement;
     };
     interface HTMLMvxTransactionMethodElement extends Components.MvxTransactionMethod, HTMLStencilElement {
     }
@@ -496,6 +584,58 @@ declare global {
         prototype: HTMLMvxTransactionShardsElement;
         new (): HTMLMvxTransactionShardsElement;
     };
+    interface HTMLMvxTransactionToastElementEventMap {
+        "deleteToast": void;
+    }
+    interface HTMLMvxTransactionToastElement extends Components.MvxTransactionToast, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxTransactionToastElementEventMap>(type: K, listener: (this: HTMLMvxTransactionToastElement, ev: MvxTransactionToastCustomEvent<HTMLMvxTransactionToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxTransactionToastElementEventMap>(type: K, listener: (this: HTMLMvxTransactionToastElement, ev: MvxTransactionToastCustomEvent<HTMLMvxTransactionToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMvxTransactionToastElement: {
+        prototype: HTMLMvxTransactionToastElement;
+        new (): HTMLMvxTransactionToastElement;
+    };
+    interface HTMLMvxTransactionToastContentElementEventMap {
+        "deleteToast": void;
+    }
+    interface HTMLMvxTransactionToastContentElement extends Components.MvxTransactionToastContent, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxTransactionToastContentElementEventMap>(type: K, listener: (this: HTMLMvxTransactionToastContentElement, ev: MvxTransactionToastContentCustomEvent<HTMLMvxTransactionToastContentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxTransactionToastContentElementEventMap>(type: K, listener: (this: HTMLMvxTransactionToastContentElement, ev: MvxTransactionToastContentCustomEvent<HTMLMvxTransactionToastContentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMvxTransactionToastContentElement: {
+        prototype: HTMLMvxTransactionToastContentElement;
+        new (): HTMLMvxTransactionToastContentElement;
+    };
+    interface HTMLMvxTransactionToastDetailsElement extends Components.MvxTransactionToastDetails, HTMLStencilElement {
+    }
+    var HTMLMvxTransactionToastDetailsElement: {
+        prototype: HTMLMvxTransactionToastDetailsElement;
+        new (): HTMLMvxTransactionToastDetailsElement;
+    };
+    interface HTMLMvxTransactionToastDetailsBodyElement extends Components.MvxTransactionToastDetailsBody, HTMLStencilElement {
+    }
+    var HTMLMvxTransactionToastDetailsBodyElement: {
+        prototype: HTMLMvxTransactionToastDetailsBodyElement;
+        new (): HTMLMvxTransactionToastDetailsBodyElement;
+    };
+    interface HTMLMvxTransactionToastProgressElement extends Components.MvxTransactionToastProgress, HTMLStencilElement {
+    }
+    var HTMLMvxTransactionToastProgressElement: {
+        prototype: HTMLMvxTransactionToastProgressElement;
+        new (): HTMLMvxTransactionToastProgressElement;
+    };
     interface HTMLMvxTransactionValueElement extends Components.MvxTransactionValue, HTMLStencilElement {
     }
     var HTMLMvxTransactionValueElement: {
@@ -508,282 +648,142 @@ declare global {
         prototype: HTMLMvxTransactionsTableElement;
         new (): HTMLMvxTransactionsTableElement;
     };
+    interface HTMLMvxTrimTextElement extends Components.MvxTrimText, HTMLStencilElement {
+    }
+    var HTMLMvxTrimTextElement: {
+        prototype: HTMLMvxTrimTextElement;
+        new (): HTMLMvxTrimTextElement;
+    };
     interface HTMLMvxUnlockButtonElement extends Components.MvxUnlockButton, HTMLStencilElement {
     }
     var HTMLMvxUnlockButtonElement: {
         prototype: HTMLMvxUnlockButtonElement;
         new (): HTMLMvxUnlockButtonElement;
     };
-    interface HTMLNotificationsFeedElement extends Components.NotificationsFeed, HTMLStencilElement {
-    }
-    var HTMLNotificationsFeedElement: {
-        prototype: HTMLNotificationsFeedElement;
-        new (): HTMLNotificationsFeedElement;
-    };
-    interface HTMLPendingTransactionsPanelElement extends Components.PendingTransactionsPanel, HTMLStencilElement {
-    }
-    var HTMLPendingTransactionsPanelElement: {
-        prototype: HTMLPendingTransactionsPanelElement;
-        new (): HTMLPendingTransactionsPanelElement;
-    };
-    interface HTMLProviderButtonElement extends Components.ProviderButton, HTMLStencilElement {
-    }
-    var HTMLProviderButtonElement: {
-        prototype: HTMLProviderButtonElement;
-        new (): HTMLProviderButtonElement;
-    };
-    interface HTMLSidePanelElementEventMap {
-        "close": any;
-    }
-    interface HTMLSidePanelElement extends Components.SidePanel, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLSidePanelElementEventMap>(type: K, listener: (this: HTMLSidePanelElement, ev: SidePanelCustomEvent<HTMLSidePanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLSidePanelElementEventMap>(type: K, listener: (this: HTMLSidePanelElement, ev: SidePanelCustomEvent<HTMLSidePanelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLSidePanelElement: {
-        prototype: HTMLSidePanelElement;
-        new (): HTMLSidePanelElement;
-    };
-    interface HTMLSignTransactionComponentElement extends Components.SignTransactionComponent, HTMLStencilElement {
-    }
-    var HTMLSignTransactionComponentElement: {
-        prototype: HTMLSignTransactionComponentElement;
-        new (): HTMLSignTransactionComponentElement;
-    };
-    interface HTMLSignTransactionsPanelElement extends Components.SignTransactionsPanel, HTMLStencilElement {
-    }
-    var HTMLSignTransactionsPanelElement: {
-        prototype: HTMLSignTransactionsPanelElement;
-        new (): HTMLSignTransactionsPanelElement;
-    };
-    interface HTMLSimpleToastElementEventMap {
-        "deleteToast": void;
-    }
-    interface HTMLSimpleToastElement extends Components.SimpleToast, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLSimpleToastElementEventMap>(type: K, listener: (this: HTMLSimpleToastElement, ev: SimpleToastCustomEvent<HTMLSimpleToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLSimpleToastElementEventMap>(type: K, listener: (this: HTMLSimpleToastElement, ev: SimpleToastCustomEvent<HTMLSimpleToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLSimpleToastElement: {
-        prototype: HTMLSimpleToastElement;
-        new (): HTMLSimpleToastElement;
-    };
-    interface HTMLToastListElement extends Components.ToastList, HTMLStencilElement {
-    }
-    var HTMLToastListElement: {
-        prototype: HTMLToastListElement;
-        new (): HTMLToastListElement;
-    };
-    interface HTMLTokenComponentElement extends Components.TokenComponent, HTMLStencilElement {
-    }
-    var HTMLTokenComponentElement: {
-        prototype: HTMLTokenComponentElement;
-        new (): HTMLTokenComponentElement;
-    };
-    interface HTMLTransactionFeeComponentElement extends Components.TransactionFeeComponent, HTMLStencilElement {
-    }
-    var HTMLTransactionFeeComponentElement: {
-        prototype: HTMLTransactionFeeComponentElement;
-        new (): HTMLTransactionFeeComponentElement;
-    };
-    interface HTMLTransactionListItemElement extends Components.TransactionListItem, HTMLStencilElement {
-    }
-    var HTMLTransactionListItemElement: {
-        prototype: HTMLTransactionListItemElement;
-        new (): HTMLTransactionListItemElement;
-    };
-    interface HTMLTransactionToastElementEventMap {
-        "deleteToast": void;
-    }
-    interface HTMLTransactionToastElement extends Components.TransactionToast, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLTransactionToastElementEventMap>(type: K, listener: (this: HTMLTransactionToastElement, ev: TransactionToastCustomEvent<HTMLTransactionToastElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLTransactionToastElementEventMap>(type: K, listener: (this: HTMLTransactionToastElement, ev: TransactionToastCustomEvent<HTMLTransactionToastElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLTransactionToastElement: {
-        prototype: HTMLTransactionToastElement;
-        new (): HTMLTransactionToastElement;
-    };
-    interface HTMLTransactionToastContentElementEventMap {
-        "deleteToast": void;
-    }
-    interface HTMLTransactionToastContentElement extends Components.TransactionToastContent, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLTransactionToastContentElementEventMap>(type: K, listener: (this: HTMLTransactionToastContentElement, ev: TransactionToastContentCustomEvent<HTMLTransactionToastContentElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLTransactionToastContentElementEventMap>(type: K, listener: (this: HTMLTransactionToastContentElement, ev: TransactionToastContentCustomEvent<HTMLTransactionToastContentElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLTransactionToastContentElement: {
-        prototype: HTMLTransactionToastContentElement;
-        new (): HTMLTransactionToastContentElement;
-    };
-    interface HTMLTransactionToastDetailsElement extends Components.TransactionToastDetails, HTMLStencilElement {
-    }
-    var HTMLTransactionToastDetailsElement: {
-        prototype: HTMLTransactionToastDetailsElement;
-        new (): HTMLTransactionToastDetailsElement;
-    };
-    interface HTMLTransactionToastDetailsBodyElement extends Components.TransactionToastDetailsBody, HTMLStencilElement {
-    }
-    var HTMLTransactionToastDetailsBodyElement: {
-        prototype: HTMLTransactionToastDetailsBodyElement;
-        new (): HTMLTransactionToastDetailsBodyElement;
-    };
-    interface HTMLTransactionToastProgressElement extends Components.TransactionToastProgress, HTMLStencilElement {
-    }
-    var HTMLTransactionToastProgressElement: {
-        prototype: HTMLTransactionToastProgressElement;
-        new (): HTMLTransactionToastProgressElement;
-    };
-    interface HTMLTrimTextElement extends Components.TrimText, HTMLStencilElement {
-    }
-    var HTMLTrimTextElement: {
-        prototype: HTMLTrimTextElement;
-        new (): HTMLTrimTextElement;
-    };
-    interface HTMLUnlockHeaderElementEventMap {
+    interface HTMLMvxUnlockHeaderElementEventMap {
         "back": void;
         "close": void;
     }
-    interface HTMLUnlockHeaderElement extends Components.UnlockHeader, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLUnlockHeaderElementEventMap>(type: K, listener: (this: HTMLUnlockHeaderElement, ev: UnlockHeaderCustomEvent<HTMLUnlockHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLMvxUnlockHeaderElement extends Components.MvxUnlockHeader, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxUnlockHeaderElementEventMap>(type: K, listener: (this: HTMLMvxUnlockHeaderElement, ev: MvxUnlockHeaderCustomEvent<HTMLMvxUnlockHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLUnlockHeaderElementEventMap>(type: K, listener: (this: HTMLUnlockHeaderElement, ev: UnlockHeaderCustomEvent<HTMLUnlockHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxUnlockHeaderElementEventMap>(type: K, listener: (this: HTMLMvxUnlockHeaderElement, ev: MvxUnlockHeaderCustomEvent<HTMLMvxUnlockHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLUnlockHeaderElement: {
-        prototype: HTMLUnlockHeaderElement;
-        new (): HTMLUnlockHeaderElement;
+    var HTMLMvxUnlockHeaderElement: {
+        prototype: HTMLMvxUnlockHeaderElement;
+        new (): HTMLMvxUnlockHeaderElement;
     };
-    interface HTMLUnlockPanelElementEventMap {
+    interface HTMLMvxUnlockPanelElementEventMap {
         "close": any;
         "login": { provider: ProviderTypeEnum; anchor?: HTMLElement };
     }
-    interface HTMLUnlockPanelElement extends Components.UnlockPanel, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLUnlockPanelElementEventMap>(type: K, listener: (this: HTMLUnlockPanelElement, ev: UnlockPanelCustomEvent<HTMLUnlockPanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLMvxUnlockPanelElement extends Components.MvxUnlockPanel, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxUnlockPanelElementEventMap>(type: K, listener: (this: HTMLMvxUnlockPanelElement, ev: MvxUnlockPanelCustomEvent<HTMLMvxUnlockPanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLUnlockPanelElementEventMap>(type: K, listener: (this: HTMLUnlockPanelElement, ev: UnlockPanelCustomEvent<HTMLUnlockPanelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxUnlockPanelElementEventMap>(type: K, listener: (this: HTMLMvxUnlockPanelElement, ev: MvxUnlockPanelCustomEvent<HTMLMvxUnlockPanelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLUnlockPanelElement: {
-        prototype: HTMLUnlockPanelElement;
-        new (): HTMLUnlockPanelElement;
+    var HTMLMvxUnlockPanelElement: {
+        prototype: HTMLMvxUnlockPanelElement;
+        new (): HTMLMvxUnlockPanelElement;
     };
-    interface HTMLWalletConnectElement extends Components.WalletConnect, HTMLStencilElement {
+    interface HTMLMvxWalletConnectElement extends Components.MvxWalletConnect, HTMLStencilElement {
     }
-    var HTMLWalletConnectElement: {
-        prototype: HTMLWalletConnectElement;
-        new (): HTMLWalletConnectElement;
+    var HTMLMvxWalletConnectElement: {
+        prototype: HTMLMvxWalletConnectElement;
+        new (): HTMLMvxWalletConnectElement;
     };
-    interface HTMLWalletConnectBodyElement extends Components.WalletConnectBody, HTMLStencilElement {
+    interface HTMLMvxWalletConnectBodyElement extends Components.MvxWalletConnectBody, HTMLStencilElement {
     }
-    var HTMLWalletConnectBodyElement: {
-        prototype: HTMLWalletConnectBodyElement;
-        new (): HTMLWalletConnectBodyElement;
+    var HTMLMvxWalletConnectBodyElement: {
+        prototype: HTMLMvxWalletConnectBodyElement;
+        new (): HTMLMvxWalletConnectBodyElement;
     };
-    interface HTMLWalletConnectPanelElement extends Components.WalletConnectPanel, HTMLStencilElement {
+    interface HTMLMvxWalletConnectPanelElement extends Components.MvxWalletConnectPanel, HTMLStencilElement {
     }
-    var HTMLWalletConnectPanelElement: {
-        prototype: HTMLWalletConnectPanelElement;
-        new (): HTMLWalletConnectPanelElement;
+    var HTMLMvxWalletConnectPanelElement: {
+        prototype: HTMLMvxWalletConnectPanelElement;
+        new (): HTMLMvxWalletConnectPanelElement;
     };
     interface HTMLElementTagNameMap {
-        "balance-component": HTMLBalanceComponentElement;
-        "copy-button": HTMLCopyButtonElement;
-        "custom-toast": HTMLCustomToastElement;
-        "explorer-link": HTMLExplorerLinkElement;
-        "fa-icon": HTMLFaIconElement;
-        "fungible-component": HTMLFungibleComponentElement;
-        "generic-toast": HTMLGenericToastElement;
-        "ledger-account-screen": HTMLLedgerAccountScreenElement;
-        "ledger-confirm-screen": HTMLLedgerConfirmScreenElement;
-        "ledger-connect": HTMLLedgerConnectElement;
-        "ledger-connect-panel": HTMLLedgerConnectPanelElement;
-        "ledger-connect-screen": HTMLLedgerConnectScreenElement;
+        "mvx-balance-component": HTMLMvxBalanceComponentElement;
+        "mvx-copy-button": HTMLMvxCopyButtonElement;
+        "mvx-custom-toast": HTMLMvxCustomToastElement;
+        "mvx-explorer-link": HTMLMvxExplorerLinkElement;
+        "mvx-fa-icon": HTMLMvxFaIconElement;
         "mvx-format-amount": HTMLMvxFormatAmountElement;
+        "mvx-fungible-component": HTMLMvxFungibleComponentElement;
         "mvx-generic-modal": HTMLMvxGenericModalElement;
         "mvx-generic-spinner": HTMLMvxGenericSpinnerElement;
+        "mvx-generic-toast": HTMLMvxGenericToastElement;
+        "mvx-ledger-account-screen": HTMLMvxLedgerAccountScreenElement;
+        "mvx-ledger-confirm-screen": HTMLMvxLedgerConfirmScreenElement;
+        "mvx-ledger-connect": HTMLMvxLedgerConnectElement;
+        "mvx-ledger-connect-panel": HTMLMvxLedgerConnectPanelElement;
+        "mvx-ledger-connect-screen": HTMLMvxLedgerConnectScreenElement;
+        "mvx-notifications-feed": HTMLMvxNotificationsFeedElement;
+        "mvx-pending-transactions-panel": HTMLMvxPendingTransactionsPanelElement;
+        "mvx-provider-button": HTMLMvxProviderButtonElement;
+        "mvx-side-panel": HTMLMvxSidePanelElement;
+        "mvx-sign-transaction-component": HTMLMvxSignTransactionComponentElement;
+        "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
+        "mvx-simple-toast": HTMLMvxSimpleToastElement;
+        "mvx-toast-list": HTMLMvxToastListElement;
+        "mvx-token-component": HTMLMvxTokenComponentElement;
         "mvx-transaction-account": HTMLMvxTransactionAccountElement;
         "mvx-transaction-account-name": HTMLMvxTransactionAccountNameElement;
         "mvx-transaction-age": HTMLMvxTransactionAgeElement;
         "mvx-transaction-direction-badge": HTMLMvxTransactionDirectionBadgeElement;
+        "mvx-transaction-fee-component": HTMLMvxTransactionFeeComponentElement;
         "mvx-transaction-hash": HTMLMvxTransactionHashElement;
         "mvx-transaction-icon": HTMLMvxTransactionIconElement;
+        "mvx-transaction-list-item": HTMLMvxTransactionListItemElement;
         "mvx-transaction-method": HTMLMvxTransactionMethodElement;
         "mvx-transaction-shards": HTMLMvxTransactionShardsElement;
+        "mvx-transaction-toast": HTMLMvxTransactionToastElement;
+        "mvx-transaction-toast-content": HTMLMvxTransactionToastContentElement;
+        "mvx-transaction-toast-details": HTMLMvxTransactionToastDetailsElement;
+        "mvx-transaction-toast-details-body": HTMLMvxTransactionToastDetailsBodyElement;
+        "mvx-transaction-toast-progress": HTMLMvxTransactionToastProgressElement;
         "mvx-transaction-value": HTMLMvxTransactionValueElement;
         "mvx-transactions-table": HTMLMvxTransactionsTableElement;
+        "mvx-trim-text": HTMLMvxTrimTextElement;
         "mvx-unlock-button": HTMLMvxUnlockButtonElement;
-        "notifications-feed": HTMLNotificationsFeedElement;
-        "pending-transactions-panel": HTMLPendingTransactionsPanelElement;
-        "provider-button": HTMLProviderButtonElement;
-        "side-panel": HTMLSidePanelElement;
-        "sign-transaction-component": HTMLSignTransactionComponentElement;
-        "sign-transactions-panel": HTMLSignTransactionsPanelElement;
-        "simple-toast": HTMLSimpleToastElement;
-        "toast-list": HTMLToastListElement;
-        "token-component": HTMLTokenComponentElement;
-        "transaction-fee-component": HTMLTransactionFeeComponentElement;
-        "transaction-list-item": HTMLTransactionListItemElement;
-        "transaction-toast": HTMLTransactionToastElement;
-        "transaction-toast-content": HTMLTransactionToastContentElement;
-        "transaction-toast-details": HTMLTransactionToastDetailsElement;
-        "transaction-toast-details-body": HTMLTransactionToastDetailsBodyElement;
-        "transaction-toast-progress": HTMLTransactionToastProgressElement;
-        "trim-text": HTMLTrimTextElement;
-        "unlock-header": HTMLUnlockHeaderElement;
-        "unlock-panel": HTMLUnlockPanelElement;
-        "wallet-connect": HTMLWalletConnectElement;
-        "wallet-connect-body": HTMLWalletConnectBodyElement;
-        "wallet-connect-panel": HTMLWalletConnectPanelElement;
+        "mvx-unlock-header": HTMLMvxUnlockHeaderElement;
+        "mvx-unlock-panel": HTMLMvxUnlockPanelElement;
+        "mvx-wallet-connect": HTMLMvxWalletConnectElement;
+        "mvx-wallet-connect-body": HTMLMvxWalletConnectBodyElement;
+        "mvx-wallet-connect-panel": HTMLMvxWalletConnectPanelElement;
     }
 }
 declare namespace LocalJSX {
-    interface BalanceComponent {
+    interface MvxBalanceComponent {
         "amount"?: string;
         "header"?: string;
         "ticker"?: string;
         "usdValue"?: string;
     }
-    interface CopyButton {
+    interface MvxCopyButton {
         "class"?: string;
         "copyIcon"?: IconDefinition;
         "iconClass"?: string;
         "successIcon"?: IconDefinition;
         "text"?: string;
     }
-    interface CustomToast {
-        "onDeleteToast"?: (event: CustomToastCustomEvent<string>) => void;
+    interface MvxCustomToast {
+        "onDeleteToast"?: (event: MvxCustomToastCustomEvent<string>) => void;
         "toast"?: IComponentToast;
     }
-    interface ExplorerLink {
+    interface MvxExplorerLink {
         "class"?: string;
         "dataTestId"?: string;
         "icon"?: IconDefinition;
@@ -791,37 +791,10 @@ declare namespace LocalJSX {
         "link"?: string;
         "text"?: string;
     }
-    interface FaIcon {
+    interface MvxFaIcon {
         "class"?: string;
         "description"?: string;
         "icon"?: IconDefinition | string;
-    }
-    interface FungibleComponent {
-    }
-    interface GenericToast {
-        "onDeleteToast"?: (event: GenericToastCustomEvent<string>) => void;
-        "toast"?: CustomToastType;
-    }
-    interface LedgerAccountScreen {
-        "accountScreenData"?: IAccountScreenData;
-        "onAccessWallet"?: (event: LedgerAccountScreenCustomEvent<any>) => void;
-        "onNextPage"?: (event: LedgerAccountScreenCustomEvent<any>) => void;
-        "onPrevPage"?: (event: LedgerAccountScreenCustomEvent<any>) => void;
-        "onSelectAccount"?: (event: LedgerAccountScreenCustomEvent<any>) => void;
-        "selectedIndex"?: number;
-    }
-    interface LedgerConfirmScreen {
-        "confirmScreenData"?: IConfirmScreenData;
-    }
-    interface LedgerConnect {
-        "data"?: ILedgerConnectPanelData;
-    }
-    interface LedgerConnectPanel {
-        "data"?: ILedgerConnectPanelData;
-    }
-    interface LedgerConnectScreen {
-        "connectScreenData"?: IConnectScreenData;
-        "onConnect"?: (event: LedgerConnectScreenCustomEvent<any>) => void;
     }
     interface MvxFormatAmount {
         "class"?: string;
@@ -833,6 +806,8 @@ declare namespace LocalJSX {
         "valueDecimal"?: string;
         "valueInteger"?: string;
     }
+    interface MvxFungibleComponent {
+    }
     interface MvxGenericModal {
         "body"?: IGenericModalProps['body'];
         "modalSubtitle"?: IGenericModalProps['modalSubtitle'];
@@ -840,6 +815,61 @@ declare namespace LocalJSX {
         "onClose"?: (event: MvxGenericModalCustomEvent<any>) => void;
     }
     interface MvxGenericSpinner {
+    }
+    interface MvxGenericToast {
+        "onDeleteToast"?: (event: MvxGenericToastCustomEvent<string>) => void;
+        "toast"?: CustomToastType;
+    }
+    interface MvxLedgerAccountScreen {
+        "accountScreenData"?: IAccountScreenData;
+        "onAccessWallet"?: (event: MvxLedgerAccountScreenCustomEvent<any>) => void;
+        "onNextPage"?: (event: MvxLedgerAccountScreenCustomEvent<any>) => void;
+        "onPrevPage"?: (event: MvxLedgerAccountScreenCustomEvent<any>) => void;
+        "onSelectAccount"?: (event: MvxLedgerAccountScreenCustomEvent<any>) => void;
+        "selectedIndex"?: number;
+    }
+    interface MvxLedgerConfirmScreen {
+        "confirmScreenData"?: IConfirmScreenData;
+    }
+    interface MvxLedgerConnect {
+        "data"?: ILedgerConnectPanelData;
+    }
+    interface MvxLedgerConnectPanel {
+        "data"?: ILedgerConnectPanelData;
+    }
+    interface MvxLedgerConnectScreen {
+        "connectScreenData"?: IConnectScreenData;
+        "onConnect"?: (event: MvxLedgerConnectScreenCustomEvent<any>) => void;
+    }
+    interface MvxNotificationsFeed {
+    }
+    interface MvxPendingTransactionsPanel {
+        "data"?: IPendingTransactionsPanelData;
+    }
+    interface MvxProviderButton {
+        "type"?: ProviderTypeEnum;
+    }
+    interface MvxSidePanel {
+        "isOpen"?: boolean;
+        "onClose"?: (event: MvxSidePanelCustomEvent<any>) => void;
+        "panelClassName"?: string;
+        "side"?: SidePanelSideEnum;
+    }
+    interface MvxSignTransactionComponent {
+        "header"?: VNode;
+    }
+    interface MvxSignTransactionsPanel {
+        "data"?: ISignTransactionsPanelData;
+    }
+    interface MvxSimpleToast {
+        "onDeleteToast"?: (event: MvxSimpleToastCustomEvent<void>) => void;
+        "toast"?: ISimpleToast;
+    }
+    interface MvxToastList {
+        "customToasts"?: CustomToastType1[];
+        "transactionToasts"?: ITransactionToast[];
+    }
+    interface MvxTokenComponent {
     }
     interface MvxTransactionAccount {
         "account"?: ITransactionAccount;
@@ -864,6 +894,8 @@ declare namespace LocalJSX {
         "class"?: string;
         "direction"?: string;
     }
+    interface MvxTransactionFeeComponent {
+    }
     interface MvxTransactionHash {
         "class"?: string;
         "transaction"?: ITransactionsTableRow;
@@ -871,6 +903,9 @@ declare namespace LocalJSX {
     interface MvxTransactionIcon {
         "class"?: string;
         "iconInfo"?: ITransactionIconInfo;
+    }
+    interface MvxTransactionListItem {
+        "transaction"?: ITransactionListItem;
     }
     interface MvxTransactionMethod {
         "actionDescription"?: string;
@@ -881,6 +916,40 @@ declare namespace LocalJSX {
         "class"?: string;
         "transaction"?: ITransactionsTableRow;
     }
+    interface MvxTransactionToast {
+        "fullWidth"?: boolean;
+        "onDeleteToast"?: (event: MvxTransactionToastCustomEvent<void>) => void;
+        "processedTransactionsStatus"?: string | JSX.Element;
+        "toastDataState"?: IToastDataState;
+        "toastId"?: string;
+        "transactionProgressState"?: ITransactionProgressState;
+        "transactions"?: ITransactionListItem[];
+        "wrapperClass"?: string;
+    }
+    interface MvxTransactionToastContent {
+        "fullWidth"?: boolean;
+        "onDeleteToast"?: (event: MvxTransactionToastContentCustomEvent<void>) => void;
+        "processedTransactionsStatus"?: string | JSX.Element;
+        "toastDataState"?: IToastDataState;
+        "transactions"?: ITransactionListItem[];
+    }
+    interface MvxTransactionToastDetails {
+        "maxShownTransactions"?: number;
+        "processedTransactionsStatus"?: string | JSX.Element;
+        "transactionClass"?: string;
+        "transactions"?: ITransactionListItem[];
+    }
+    interface MvxTransactionToastDetailsBody {
+        "hash"?: string;
+        "index"?: string;
+        "link"?: string;
+        "status"?: string;
+        "transactionClass"?: string;
+    }
+    interface MvxTransactionToastProgress {
+        "endTime"?: number;
+        "startTime"?: number;
+    }
     interface MvxTransactionValue {
         "class"?: string;
         "value"?: ITransactionValue;
@@ -889,210 +958,141 @@ declare namespace LocalJSX {
         "class"?: string;
         "transactions"?: ITransactionsTableRow[];
     }
-    interface MvxUnlockButton {
-        "icon"?: HTMLElement;
-        "label"?: string;
-    }
-    interface NotificationsFeed {
-    }
-    interface PendingTransactionsPanel {
-        "data"?: IPendingTransactionsPanelData;
-    }
-    interface ProviderButton {
-        "type"?: ProviderTypeEnum;
-    }
-    interface SidePanel {
-        "isOpen"?: boolean;
-        "onClose"?: (event: SidePanelCustomEvent<any>) => void;
-        "panelClassName"?: string;
-        "side"?: SidePanelSideEnum;
-    }
-    interface SignTransactionComponent {
-        "header"?: VNode;
-    }
-    interface SignTransactionsPanel {
-        "data"?: ISignTransactionsPanelData;
-    }
-    interface SimpleToast {
-        "onDeleteToast"?: (event: SimpleToastCustomEvent<void>) => void;
-        "toast"?: ISimpleToast;
-    }
-    interface ToastList {
-        "customToasts"?: CustomToastType1[];
-        "transactionToasts"?: ITransactionToast[];
-    }
-    interface TokenComponent {
-    }
-    interface TransactionFeeComponent {
-    }
-    interface TransactionListItem {
-        "transaction"?: ITransactionListItem;
-    }
-    interface TransactionToast {
-        "fullWidth"?: boolean;
-        "onDeleteToast"?: (event: TransactionToastCustomEvent<void>) => void;
-        "processedTransactionsStatus"?: string | JSX.Element;
-        "toastDataState"?: IToastDataState;
-        "toastId"?: string;
-        "transactionProgressState"?: ITransactionProgressState;
-        "transactions"?: ITransactionListItem[];
-        "wrapperClass"?: string;
-    }
-    interface TransactionToastContent {
-        "fullWidth"?: boolean;
-        "onDeleteToast"?: (event: TransactionToastContentCustomEvent<void>) => void;
-        "processedTransactionsStatus"?: string | JSX.Element;
-        "toastDataState"?: IToastDataState;
-        "transactions"?: ITransactionListItem[];
-    }
-    interface TransactionToastDetails {
-        "maxShownTransactions"?: number;
-        "processedTransactionsStatus"?: string | JSX.Element;
-        "transactionClass"?: string;
-        "transactions"?: ITransactionListItem[];
-    }
-    interface TransactionToastDetailsBody {
-        "hash"?: string;
-        "index"?: string;
-        "link"?: string;
-        "status"?: string;
-        "transactionClass"?: string;
-    }
-    interface TransactionToastProgress {
-        "endTime"?: number;
-        "startTime"?: number;
-    }
-    interface TrimText {
+    interface MvxTrimText {
         "class"?: string;
         "dataTestId"?: string;
         "text"?: string;
     }
-    interface UnlockHeader {
+    interface MvxUnlockButton {
+        "icon"?: HTMLElement;
+        "label"?: string;
+    }
+    interface MvxUnlockHeader {
         "backIcon"?: IconDefinition;
         "closeIcon"?: IconDefinition;
-        "onBack"?: (event: UnlockHeaderCustomEvent<void>) => void;
-        "onClose"?: (event: UnlockHeaderCustomEvent<void>) => void;
+        "onBack"?: (event: MvxUnlockHeaderCustomEvent<void>) => void;
+        "onClose"?: (event: MvxUnlockHeaderCustomEvent<void>) => void;
         "text"?: string;
     }
-    interface UnlockPanel {
+    interface MvxUnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
         "isOpen"?: boolean;
-        "onClose"?: (event: UnlockPanelCustomEvent<any>) => void;
-        "onLogin"?: (event: UnlockPanelCustomEvent<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>) => void;
+        "onClose"?: (event: MvxUnlockPanelCustomEvent<any>) => void;
+        "onLogin"?: (event: MvxUnlockPanelCustomEvent<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>) => void;
     }
-    interface WalletConnect {
+    interface MvxWalletConnect {
         "data"?: IWalletConnectPanelData;
     }
-    interface WalletConnectBody {
+    interface MvxWalletConnectBody {
         "description"?: string;
         "qrCodeSvg"?: string;
     }
-    interface WalletConnectPanel {
+    interface MvxWalletConnectPanel {
         "data"?: IWalletConnectPanelData;
     }
     interface IntrinsicElements {
-        "balance-component": BalanceComponent;
-        "copy-button": CopyButton;
-        "custom-toast": CustomToast;
-        "explorer-link": ExplorerLink;
-        "fa-icon": FaIcon;
-        "fungible-component": FungibleComponent;
-        "generic-toast": GenericToast;
-        "ledger-account-screen": LedgerAccountScreen;
-        "ledger-confirm-screen": LedgerConfirmScreen;
-        "ledger-connect": LedgerConnect;
-        "ledger-connect-panel": LedgerConnectPanel;
-        "ledger-connect-screen": LedgerConnectScreen;
+        "mvx-balance-component": MvxBalanceComponent;
+        "mvx-copy-button": MvxCopyButton;
+        "mvx-custom-toast": MvxCustomToast;
+        "mvx-explorer-link": MvxExplorerLink;
+        "mvx-fa-icon": MvxFaIcon;
         "mvx-format-amount": MvxFormatAmount;
+        "mvx-fungible-component": MvxFungibleComponent;
         "mvx-generic-modal": MvxGenericModal;
         "mvx-generic-spinner": MvxGenericSpinner;
+        "mvx-generic-toast": MvxGenericToast;
+        "mvx-ledger-account-screen": MvxLedgerAccountScreen;
+        "mvx-ledger-confirm-screen": MvxLedgerConfirmScreen;
+        "mvx-ledger-connect": MvxLedgerConnect;
+        "mvx-ledger-connect-panel": MvxLedgerConnectPanel;
+        "mvx-ledger-connect-screen": MvxLedgerConnectScreen;
+        "mvx-notifications-feed": MvxNotificationsFeed;
+        "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
+        "mvx-provider-button": MvxProviderButton;
+        "mvx-side-panel": MvxSidePanel;
+        "mvx-sign-transaction-component": MvxSignTransactionComponent;
+        "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
+        "mvx-simple-toast": MvxSimpleToast;
+        "mvx-toast-list": MvxToastList;
+        "mvx-token-component": MvxTokenComponent;
         "mvx-transaction-account": MvxTransactionAccount;
         "mvx-transaction-account-name": MvxTransactionAccountName;
         "mvx-transaction-age": MvxTransactionAge;
         "mvx-transaction-direction-badge": MvxTransactionDirectionBadge;
+        "mvx-transaction-fee-component": MvxTransactionFeeComponent;
         "mvx-transaction-hash": MvxTransactionHash;
         "mvx-transaction-icon": MvxTransactionIcon;
+        "mvx-transaction-list-item": MvxTransactionListItem;
         "mvx-transaction-method": MvxTransactionMethod;
         "mvx-transaction-shards": MvxTransactionShards;
+        "mvx-transaction-toast": MvxTransactionToast;
+        "mvx-transaction-toast-content": MvxTransactionToastContent;
+        "mvx-transaction-toast-details": MvxTransactionToastDetails;
+        "mvx-transaction-toast-details-body": MvxTransactionToastDetailsBody;
+        "mvx-transaction-toast-progress": MvxTransactionToastProgress;
         "mvx-transaction-value": MvxTransactionValue;
         "mvx-transactions-table": MvxTransactionsTable;
+        "mvx-trim-text": MvxTrimText;
         "mvx-unlock-button": MvxUnlockButton;
-        "notifications-feed": NotificationsFeed;
-        "pending-transactions-panel": PendingTransactionsPanel;
-        "provider-button": ProviderButton;
-        "side-panel": SidePanel;
-        "sign-transaction-component": SignTransactionComponent;
-        "sign-transactions-panel": SignTransactionsPanel;
-        "simple-toast": SimpleToast;
-        "toast-list": ToastList;
-        "token-component": TokenComponent;
-        "transaction-fee-component": TransactionFeeComponent;
-        "transaction-list-item": TransactionListItem;
-        "transaction-toast": TransactionToast;
-        "transaction-toast-content": TransactionToastContent;
-        "transaction-toast-details": TransactionToastDetails;
-        "transaction-toast-details-body": TransactionToastDetailsBody;
-        "transaction-toast-progress": TransactionToastProgress;
-        "trim-text": TrimText;
-        "unlock-header": UnlockHeader;
-        "unlock-panel": UnlockPanel;
-        "wallet-connect": WalletConnect;
-        "wallet-connect-body": WalletConnectBody;
-        "wallet-connect-panel": WalletConnectPanel;
+        "mvx-unlock-header": MvxUnlockHeader;
+        "mvx-unlock-panel": MvxUnlockPanel;
+        "mvx-wallet-connect": MvxWalletConnect;
+        "mvx-wallet-connect-body": MvxWalletConnectBody;
+        "mvx-wallet-connect-panel": MvxWalletConnectPanel;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "balance-component": LocalJSX.BalanceComponent & JSXBase.HTMLAttributes<HTMLBalanceComponentElement>;
-            "copy-button": LocalJSX.CopyButton & JSXBase.HTMLAttributes<HTMLCopyButtonElement>;
-            "custom-toast": LocalJSX.CustomToast & JSXBase.HTMLAttributes<HTMLCustomToastElement>;
-            "explorer-link": LocalJSX.ExplorerLink & JSXBase.HTMLAttributes<HTMLExplorerLinkElement>;
-            "fa-icon": LocalJSX.FaIcon & JSXBase.HTMLAttributes<HTMLFaIconElement>;
-            "fungible-component": LocalJSX.FungibleComponent & JSXBase.HTMLAttributes<HTMLFungibleComponentElement>;
-            "generic-toast": LocalJSX.GenericToast & JSXBase.HTMLAttributes<HTMLGenericToastElement>;
-            "ledger-account-screen": LocalJSX.LedgerAccountScreen & JSXBase.HTMLAttributes<HTMLLedgerAccountScreenElement>;
-            "ledger-confirm-screen": LocalJSX.LedgerConfirmScreen & JSXBase.HTMLAttributes<HTMLLedgerConfirmScreenElement>;
-            "ledger-connect": LocalJSX.LedgerConnect & JSXBase.HTMLAttributes<HTMLLedgerConnectElement>;
-            "ledger-connect-panel": LocalJSX.LedgerConnectPanel & JSXBase.HTMLAttributes<HTMLLedgerConnectPanelElement>;
-            "ledger-connect-screen": LocalJSX.LedgerConnectScreen & JSXBase.HTMLAttributes<HTMLLedgerConnectScreenElement>;
+            "mvx-balance-component": LocalJSX.MvxBalanceComponent & JSXBase.HTMLAttributes<HTMLMvxBalanceComponentElement>;
+            "mvx-copy-button": LocalJSX.MvxCopyButton & JSXBase.HTMLAttributes<HTMLMvxCopyButtonElement>;
+            "mvx-custom-toast": LocalJSX.MvxCustomToast & JSXBase.HTMLAttributes<HTMLMvxCustomToastElement>;
+            "mvx-explorer-link": LocalJSX.MvxExplorerLink & JSXBase.HTMLAttributes<HTMLMvxExplorerLinkElement>;
+            "mvx-fa-icon": LocalJSX.MvxFaIcon & JSXBase.HTMLAttributes<HTMLMvxFaIconElement>;
             "mvx-format-amount": LocalJSX.MvxFormatAmount & JSXBase.HTMLAttributes<HTMLMvxFormatAmountElement>;
+            "mvx-fungible-component": LocalJSX.MvxFungibleComponent & JSXBase.HTMLAttributes<HTMLMvxFungibleComponentElement>;
             "mvx-generic-modal": LocalJSX.MvxGenericModal & JSXBase.HTMLAttributes<HTMLMvxGenericModalElement>;
             "mvx-generic-spinner": LocalJSX.MvxGenericSpinner & JSXBase.HTMLAttributes<HTMLMvxGenericSpinnerElement>;
+            "mvx-generic-toast": LocalJSX.MvxGenericToast & JSXBase.HTMLAttributes<HTMLMvxGenericToastElement>;
+            "mvx-ledger-account-screen": LocalJSX.MvxLedgerAccountScreen & JSXBase.HTMLAttributes<HTMLMvxLedgerAccountScreenElement>;
+            "mvx-ledger-confirm-screen": LocalJSX.MvxLedgerConfirmScreen & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmScreenElement>;
+            "mvx-ledger-connect": LocalJSX.MvxLedgerConnect & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectElement>;
+            "mvx-ledger-connect-panel": LocalJSX.MvxLedgerConnectPanel & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectPanelElement>;
+            "mvx-ledger-connect-screen": LocalJSX.MvxLedgerConnectScreen & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectScreenElement>;
+            "mvx-notifications-feed": LocalJSX.MvxNotificationsFeed & JSXBase.HTMLAttributes<HTMLMvxNotificationsFeedElement>;
+            "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
+            "mvx-provider-button": LocalJSX.MvxProviderButton & JSXBase.HTMLAttributes<HTMLMvxProviderButtonElement>;
+            "mvx-side-panel": LocalJSX.MvxSidePanel & JSXBase.HTMLAttributes<HTMLMvxSidePanelElement>;
+            "mvx-sign-transaction-component": LocalJSX.MvxSignTransactionComponent & JSXBase.HTMLAttributes<HTMLMvxSignTransactionComponentElement>;
+            "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;
+            "mvx-simple-toast": LocalJSX.MvxSimpleToast & JSXBase.HTMLAttributes<HTMLMvxSimpleToastElement>;
+            "mvx-toast-list": LocalJSX.MvxToastList & JSXBase.HTMLAttributes<HTMLMvxToastListElement>;
+            "mvx-token-component": LocalJSX.MvxTokenComponent & JSXBase.HTMLAttributes<HTMLMvxTokenComponentElement>;
             "mvx-transaction-account": LocalJSX.MvxTransactionAccount & JSXBase.HTMLAttributes<HTMLMvxTransactionAccountElement>;
             "mvx-transaction-account-name": LocalJSX.MvxTransactionAccountName & JSXBase.HTMLAttributes<HTMLMvxTransactionAccountNameElement>;
             "mvx-transaction-age": LocalJSX.MvxTransactionAge & JSXBase.HTMLAttributes<HTMLMvxTransactionAgeElement>;
             "mvx-transaction-direction-badge": LocalJSX.MvxTransactionDirectionBadge & JSXBase.HTMLAttributes<HTMLMvxTransactionDirectionBadgeElement>;
+            "mvx-transaction-fee-component": LocalJSX.MvxTransactionFeeComponent & JSXBase.HTMLAttributes<HTMLMvxTransactionFeeComponentElement>;
             "mvx-transaction-hash": LocalJSX.MvxTransactionHash & JSXBase.HTMLAttributes<HTMLMvxTransactionHashElement>;
             "mvx-transaction-icon": LocalJSX.MvxTransactionIcon & JSXBase.HTMLAttributes<HTMLMvxTransactionIconElement>;
+            "mvx-transaction-list-item": LocalJSX.MvxTransactionListItem & JSXBase.HTMLAttributes<HTMLMvxTransactionListItemElement>;
             "mvx-transaction-method": LocalJSX.MvxTransactionMethod & JSXBase.HTMLAttributes<HTMLMvxTransactionMethodElement>;
             "mvx-transaction-shards": LocalJSX.MvxTransactionShards & JSXBase.HTMLAttributes<HTMLMvxTransactionShardsElement>;
+            "mvx-transaction-toast": LocalJSX.MvxTransactionToast & JSXBase.HTMLAttributes<HTMLMvxTransactionToastElement>;
+            "mvx-transaction-toast-content": LocalJSX.MvxTransactionToastContent & JSXBase.HTMLAttributes<HTMLMvxTransactionToastContentElement>;
+            "mvx-transaction-toast-details": LocalJSX.MvxTransactionToastDetails & JSXBase.HTMLAttributes<HTMLMvxTransactionToastDetailsElement>;
+            "mvx-transaction-toast-details-body": LocalJSX.MvxTransactionToastDetailsBody & JSXBase.HTMLAttributes<HTMLMvxTransactionToastDetailsBodyElement>;
+            "mvx-transaction-toast-progress": LocalJSX.MvxTransactionToastProgress & JSXBase.HTMLAttributes<HTMLMvxTransactionToastProgressElement>;
             "mvx-transaction-value": LocalJSX.MvxTransactionValue & JSXBase.HTMLAttributes<HTMLMvxTransactionValueElement>;
             "mvx-transactions-table": LocalJSX.MvxTransactionsTable & JSXBase.HTMLAttributes<HTMLMvxTransactionsTableElement>;
+            "mvx-trim-text": LocalJSX.MvxTrimText & JSXBase.HTMLAttributes<HTMLMvxTrimTextElement>;
             "mvx-unlock-button": LocalJSX.MvxUnlockButton & JSXBase.HTMLAttributes<HTMLMvxUnlockButtonElement>;
-            "notifications-feed": LocalJSX.NotificationsFeed & JSXBase.HTMLAttributes<HTMLNotificationsFeedElement>;
-            "pending-transactions-panel": LocalJSX.PendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLPendingTransactionsPanelElement>;
-            "provider-button": LocalJSX.ProviderButton & JSXBase.HTMLAttributes<HTMLProviderButtonElement>;
-            "side-panel": LocalJSX.SidePanel & JSXBase.HTMLAttributes<HTMLSidePanelElement>;
-            "sign-transaction-component": LocalJSX.SignTransactionComponent & JSXBase.HTMLAttributes<HTMLSignTransactionComponentElement>;
-            "sign-transactions-panel": LocalJSX.SignTransactionsPanel & JSXBase.HTMLAttributes<HTMLSignTransactionsPanelElement>;
-            "simple-toast": LocalJSX.SimpleToast & JSXBase.HTMLAttributes<HTMLSimpleToastElement>;
-            "toast-list": LocalJSX.ToastList & JSXBase.HTMLAttributes<HTMLToastListElement>;
-            "token-component": LocalJSX.TokenComponent & JSXBase.HTMLAttributes<HTMLTokenComponentElement>;
-            "transaction-fee-component": LocalJSX.TransactionFeeComponent & JSXBase.HTMLAttributes<HTMLTransactionFeeComponentElement>;
-            "transaction-list-item": LocalJSX.TransactionListItem & JSXBase.HTMLAttributes<HTMLTransactionListItemElement>;
-            "transaction-toast": LocalJSX.TransactionToast & JSXBase.HTMLAttributes<HTMLTransactionToastElement>;
-            "transaction-toast-content": LocalJSX.TransactionToastContent & JSXBase.HTMLAttributes<HTMLTransactionToastContentElement>;
-            "transaction-toast-details": LocalJSX.TransactionToastDetails & JSXBase.HTMLAttributes<HTMLTransactionToastDetailsElement>;
-            "transaction-toast-details-body": LocalJSX.TransactionToastDetailsBody & JSXBase.HTMLAttributes<HTMLTransactionToastDetailsBodyElement>;
-            "transaction-toast-progress": LocalJSX.TransactionToastProgress & JSXBase.HTMLAttributes<HTMLTransactionToastProgressElement>;
-            "trim-text": LocalJSX.TrimText & JSXBase.HTMLAttributes<HTMLTrimTextElement>;
-            "unlock-header": LocalJSX.UnlockHeader & JSXBase.HTMLAttributes<HTMLUnlockHeaderElement>;
-            "unlock-panel": LocalJSX.UnlockPanel & JSXBase.HTMLAttributes<HTMLUnlockPanelElement>;
-            "wallet-connect": LocalJSX.WalletConnect & JSXBase.HTMLAttributes<HTMLWalletConnectElement>;
-            "wallet-connect-body": LocalJSX.WalletConnectBody & JSXBase.HTMLAttributes<HTMLWalletConnectBodyElement>;
-            "wallet-connect-panel": LocalJSX.WalletConnectPanel & JSXBase.HTMLAttributes<HTMLWalletConnectPanelElement>;
+            "mvx-unlock-header": LocalJSX.MvxUnlockHeader & JSXBase.HTMLAttributes<HTMLMvxUnlockHeaderElement>;
+            "mvx-unlock-panel": LocalJSX.MvxUnlockPanel & JSXBase.HTMLAttributes<HTMLMvxUnlockPanelElement>;
+            "mvx-wallet-connect": LocalJSX.MvxWalletConnect & JSXBase.HTMLAttributes<HTMLMvxWalletConnectElement>;
+            "mvx-wallet-connect-body": LocalJSX.MvxWalletConnectBody & JSXBase.HTMLAttributes<HTMLMvxWalletConnectBodyElement>;
+            "mvx-wallet-connect-panel": LocalJSX.MvxWalletConnectPanel & JSXBase.HTMLAttributes<HTMLMvxWalletConnectPanelElement>;
         }
     }
 }

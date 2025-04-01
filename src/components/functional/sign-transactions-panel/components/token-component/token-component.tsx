@@ -3,8 +3,7 @@ import { Component, h } from '@stencil/core';
 import state from '../../signTransactionsPanelStore';
 
 @Component({
-  tag: 'token-component',
-  shadow: false,
+  tag: 'mvx-token-component',
 })
 export class TokenComponent {
   render() {
@@ -12,9 +11,9 @@ export class TokenComponent {
     const { amount, identifier, usdValue } = tokenTransaction || {};
 
     return (
-      <sign-transaction-component
-        header={<balance-component amount={amount} ticker={identifier} usdValue={usdValue} header="You are sending"></balance-component>}
-      ></sign-transaction-component>
+      <mvx-sign-transaction-component
+        header={<mvx-balance-component amount={amount} ticker={identifier} usdValue={usdValue} header="You are sending"></mvx-balance-component>}
+      ></mvx-sign-transaction-component>
     );
   }
 }
