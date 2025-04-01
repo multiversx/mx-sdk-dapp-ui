@@ -8,7 +8,7 @@ import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDe
 import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
 
 @Component({
-  tag: 'simple-toast',
+  tag: 'mvx-simple-toast',
   styleUrl: 'simple-toast.css',
   shadow: true,
 })

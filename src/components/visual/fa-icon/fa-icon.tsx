@@ -4,9 +4,8 @@ import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDe
 import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
 
 @Component({
-  tag: 'fa-icon',
+  tag: 'mvx-fa-icon',
   styleUrl: 'fa-icon.css',
-  shadow: false,
 })
 export class FaIcon {
   @Prop() class?: string = 'fa-icon';

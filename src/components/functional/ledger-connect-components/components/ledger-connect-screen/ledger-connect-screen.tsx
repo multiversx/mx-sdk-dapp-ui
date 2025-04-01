@@ -5,7 +5,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IConnectScreenData } from '../../ledger-connect.types';
 
 @Component({
-  tag: 'ledger-connect-screen',
+  tag: 'mvx-ledger-connect-screen',
   styleUrl: 'ledger-connect-screen.scss',
   shadow: true,
 })

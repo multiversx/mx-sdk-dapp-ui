@@ -8,7 +8,7 @@ import type { IPendingTransactionsPanelData } from './pending-transactions-panel
 import { PendingTransactionsEventsEnum } from './pending-transactions-panel.types';
 
 @Component({
-  tag: 'pending-transactions-panel',
+  tag: 'mvx-pending-transactions-panel',
   styleUrl: 'pending-transactions-panel.css',
   shadow: true,
 })
@@ -67,7 +67,7 @@ export class PendingTransactionstPanel {
 
   render() {
     return (
-      <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} panelClassName="pending-transactions-panel" onClose={this.handleClose.bind(this)}>
+      <mvx-side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} panelClassName="pending-transactions-panel" onClose={this.handleClose.bind(this)}>
         <div class="pending-transactions-content">
           <div class="pending-transactions-header">
             <h2 data-testid={DataTestIdsEnum.pendingTransactionsTitle}>{this.data.title}</h2>
@@ -79,7 +79,7 @@ export class PendingTransactionstPanel {
             </button>
           </div>
         </div>
-      </side-panel>
+      </mvx-side-panel>
     );
   }
 }

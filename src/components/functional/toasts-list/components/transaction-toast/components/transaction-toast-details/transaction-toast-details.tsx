@@ -4,7 +4,7 @@ import { Component, h, Prop, State } from '@stencil/core';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 
 @Component({
-  tag: 'transaction-toast-details',
+  tag: 'mvx-transaction-toast-details',
   styleUrl: 'transaction-toast-details.css',
   shadow: true,
 })
@@ -40,7 +40,7 @@ export class TransactionToastDetails {
     return (
       <div class="transaction-details-container">
         <div class="transaction-details-status" onClick={this.toggleExpand.bind(this)}>
-          <fa-icon icon={faChevronDown} class={`transaction-details-status-icon ${this.isExpanded ? 'rotate-up' : ''}`}></fa-icon>
+          <mvx-fa-icon icon={faChevronDown} class={`transaction-details-status-icon ${this.isExpanded ? 'rotate-up' : ''}`}></mvx-fa-icon>
           <span class="transaction-details-status-text">{this.processedTransactionsStatus}</span>
         </div>
 
@@ -51,7 +51,7 @@ export class TransactionToastDetails {
           }}
         >
           {visibleTransactions.map(({ hash, status, link }, index) => (
-            <transaction-toast-details-body transactionClass={this.transactionClass} hash={hash} status={status} link={link} index={`#${index + 1}`} key={hash} />
+            <mvx-transaction-toast-details-body transactionClass={this.transactionClass} hash={hash} status={status} link={link} index={`#${index + 1}`} key={hash} />
           ))}
 
           {hasMoreTransactionsToShow && !this.showAllTransactions && (

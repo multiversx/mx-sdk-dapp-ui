@@ -101,11 +101,11 @@ describe('TransactionValue', () => {
     expect(page.root).toEqualHtml(`
       <mvx-transaction-value>
           <div class="transaction-value">
-            <explorer-link class="transaction-value-link text-truncate" link="https://example.com">
+            <mvx-explorer-link class="transaction-value-link text-truncate" link="https://example.com">
               <div class="transaction-value-content" slot="content">
                 <span class="transaction-value-link-text">Example Link</span>
               </div>
-            </explorer-link>
+            </mvx-explorer-link>
           </div>
       </mvx-transaction-value>
     `);
@@ -131,12 +131,12 @@ describe('TransactionValue', () => {
     expect(page.root).toEqualHtml(`
       <mvx-transaction-value>
           <div class="transaction-value">
-            <explorer-link class="transaction-value-link side-link d-flex" link="https://example.com">
+            <mvx-explorer-link class="transaction-value-link side-link d-flex" link="https://example.com">
               <div class="transaction-value-content" slot="content">
                 <img alt="Example Icon" class="transaction-value-img" src="https://example.com/icon.svg">
                 <span class="transaction-value-link-text">Example Link</span>
               </div>
-            </explorer-link>
+            </mvx-explorer-link>
           </div>
       </mvx-transaction-value>
     `);
@@ -162,11 +162,11 @@ describe('TransactionValue', () => {
     expect(page.root).toEqualHtml(`
       <mvx-transaction-value>
           <div class="transaction-value">
-            <explorer-link class="transaction-value-link text-truncate" link="https://example.com">
+            <mvx-explorer-link class="transaction-value-link text-truncate" link="https://example.com">
               <div class="transaction-value-content" slot="content">
                 <span class="transaction-value-link-text truncate">Example Link</span>
               </div>
-            </explorer-link>
+            </mvx-explorer-link>
           </div>
       </mvx-transaction-value>
     `);
@@ -192,12 +192,12 @@ describe('TransactionValue', () => {
     expect(page.root).toEqualHtml(`
       <mvx-transaction-value>
           <div class="transaction-value">
-            <explorer-link class="transaction-value-link text-truncate" link="https://example.com">
+            <mvx-explorer-link class="transaction-value-link text-truncate" link="https://example.com">
               <div class="transaction-value-content" slot="content">
                 <span class="transaction-value-link-text">Example Link</span>
               </div>
-            </explorer-link>
-            <fa-icon class="transaction-value-icon" title="Title Text"></fa-icon>
+            </mvx-explorer-link>
+            <mvx-fa-icon class="transaction-value-icon" title="Title Text"></mvx-fa-icon>
           </div>
       </mvx-transaction-value>
     `);

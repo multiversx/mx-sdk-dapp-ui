@@ -6,31 +6,31 @@
 
   /* Base Colors */
   --mx-accent: #000000;
-  --mx-white: #FFFFFF;
+  --mx-white: #ffffff;
   --mx-black: #000000;
 
   /* Text Colors */
   --mx-text-primary: #262626;
   --mx-text-secondary: #868686;
-  
+
   /* Toast Colors */
   --mx-toast-text-primary: var(--mx-text-primary);
   --mx-toast-text-secondary: var(--mx-text-secondary);
-  --mx-toast-border: #C7C7C7;
-  --mx-toast-bg: rgba(169, 169, 169, 0.40);
-  --mx-toast-tx-bg: #FFF;
-  --mx-toast-tx-border: #FFF;
+  --mx-toast-border: #c7c7c7;
+  --mx-toast-bg: rgba(169, 169, 169, 0.4);
+  --mx-toast-tx-bg: #fff;
+  --mx-toast-tx-border: #fff;
   --mx-toast-backdrop-blur: 38px;
   --mx-toast-copy-button-color: var(--mx-white);
-  
+
   /* Toast Status Colors */
-  --mx-toast-success-bg: #1D6030;
-  --mx-toast-success-icon: #4ADE80;
+  --mx-toast-success-bg: #1d6030;
+  --mx-toast-success-icon: #4ade80;
   --mx-toast-pending-bg: #453412;
-  --mx-toast-pending-icon: #FACC15;
+  --mx-toast-pending-icon: #facc15;
   --mx-toast-error-bg: rgba(255, 71, 71, 0.2);
-  --mx-toast-error-icon: #FF4747;
-  
+  --mx-toast-error-icon: #ff4747;
+
   /* Side Panel Variables */
   --mx-side-panel-bg: var(--mx-white);
   --mx-side-panel-text: var(--mx-toast-text-primary);
@@ -39,12 +39,12 @@
   --mx-side-panel-max-width: 480px;
   --mx-side-panel-border-radius: 24px;
   --mx-side-panel-mobile-height: 90%;
-  
+
   /* Font Settings */
-  --font-family-roobert: "Roobert PRO", system-ui, -apple-system, sans-serif;
-  
+  --font-family-roobert: 'Roobert PRO', system-ui, -apple-system, sans-serif;
+
   /* Dapp Core Colors - for backward compatibility */
-  --mx-dapp-core-color-primary: #3B82F6;
+  --mx-dapp-core-color-primary: #3b82f6;
 
   /* Explorer Link Colors */
   --mx-explorer-link-color: var(--mx-text-primary);

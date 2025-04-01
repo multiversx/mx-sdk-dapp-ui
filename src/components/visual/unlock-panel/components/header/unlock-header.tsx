@@ -4,7 +4,7 @@ import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 
 @Component({
-  tag: 'unlock-header',
+  tag: 'mvx-unlock-header',
   styleUrl: 'unlock-header.scss',
   shadow: true,
 })
@@ -29,12 +29,12 @@ export class UnlockHeader {
       <div class={'header'}>
         {this.backIcon && (
           <button class="icon-button" onClick={this.handleBack}>
-            <fa-icon icon={this.backIcon} />
+            <mvx-fa-icon icon={this.backIcon} />
           </button>
         )}
         <span class="title">{this.text}</span>
         <button class="icon-button" onClick={this.handleClose}>
-          <fa-icon icon={this.closeIcon} />
+          <mvx-fa-icon icon={this.closeIcon} />
         </button>
       </div>
     );

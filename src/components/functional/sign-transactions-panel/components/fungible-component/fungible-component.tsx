@@ -9,9 +9,8 @@ const LABELS = {
 };
 
 @Component({
-  tag: 'fungible-component',
+  tag: 'mvx-fungible-component',
   styleUrl: 'fungible-component.css',
-  shadow: false,
 })
 export class FungibleComponent {
   render() {
@@ -23,7 +22,7 @@ export class FungibleComponent {
 
     const label = LABELS[tokenType];
     return (
-      <sign-transaction-component
+      <mvx-sign-transaction-component
         header={
           <div class="fungible-container">
             <span>{`You are sending ${amount} ${label}`}</span>
@@ -39,7 +38,7 @@ export class FungibleComponent {
             </div>
           </div>
         }
-      ></sign-transaction-component>
+      ></mvx-sign-transaction-component>
     );
   }
 }

@@ -29,7 +29,7 @@ const providerButtonInfo = {
 };
 
 @Component({
-  tag: 'provider-button',
+  tag: 'mvx-provider-button',
   styleUrl: 'provider-button.scss',
   shadow: true,
 })

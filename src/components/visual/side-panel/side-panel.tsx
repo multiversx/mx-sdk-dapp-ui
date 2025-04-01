@@ -4,7 +4,7 @@ import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
 import { SidePanelSideEnum } from './side-panel.types';
 
 @Component({
-  tag: 'side-panel',
+  tag: 'mvx-side-panel',
   styleUrl: 'side-panel.scss',
   shadow: true,
 })
