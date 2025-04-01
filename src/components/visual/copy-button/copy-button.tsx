@@ -4,9 +4,8 @@ import { Component, h, Prop, State } from '@stencil/core';
 import { copyToClipboard } from 'utils/copyToClipboard';
 
 @Component({
-  tag: 'copy-button',
+  tag: 'mvx-copy-button',
   styleUrl: 'copy-button.css',
-  shadow: false,
 })
 export class CopyButton {
   @Prop() class?: string = 'copy-button';
@@ -49,7 +48,7 @@ export class CopyButton {
 
     return (
       <a href="/#" class={this.class} onClick={this.handleClick}>
-        <fa-icon icon={this.isSuccess ? successIcon : copyIcon} class={this.iconClass}></fa-icon>
+        <mvx-fa-icon icon={this.isSuccess ? successIcon : copyIcon} class={this.iconClass}></mvx-fa-icon>
       </a>
     );
   }

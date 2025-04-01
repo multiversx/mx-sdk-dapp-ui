@@ -7,7 +7,7 @@ describe('transaction-list-item', () => {
   const createPage = async (transaction: ITransactionListItem) => {
     const page = await newSpecPage({
       components: [TransactionListItem],
-      html: '<transaction-list-item></transaction-list-item>',
+      html: '<mvx-transaction-list-item></mvx-transaction-list-item>',
     });
 
     page.rootInstance.transaction = transaction;
@@ -38,7 +38,7 @@ describe('transaction-list-item', () => {
     it('renders empty when no transaction is provided', async () => {
       const page = await newSpecPage({
         components: [TransactionListItem],
-        html: '<transaction-list-item></transaction-list-item>',
+        html: '<mvx-transaction-list-item></mvx-transaction-list-item>',
       });
       expect(page.root.shadowRoot.querySelector('.transaction-item')).toBeFalsy();
     });
@@ -61,7 +61,7 @@ describe('transaction-list-item', () => {
         },
       };
       const page = await createPage(transaction);
-      const iconComponent = page.root.shadowRoot.querySelector('fa-icon');
+      const iconComponent = page.root.shadowRoot.querySelector('mvx-fa-icon');
       expect(iconComponent).toBeTruthy();
       expect(iconComponent.getAttribute('icon')).toBe('faArrowsRotate');
       expect(iconComponent.className).toBe('icon-text');
@@ -117,7 +117,7 @@ describe('transaction-list-item', () => {
       expect(interactorAsset.getAttribute('alt')).toBe('Service icon');
       expect(interactorAsset.getAttribute('loading')).toBe('lazy');
 
-      const interactor = page.root.shadowRoot.querySelector('trim-text');
+      const interactor = page.root.shadowRoot.querySelector('mvx-trim-text');
       expect(interactor.getAttribute('text')).toBe(baseTransaction.interactor);
       expect(interactor.className).toBe('transaction-details-info-text');
     });

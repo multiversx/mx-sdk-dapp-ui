@@ -1,7 +1,7 @@
 import { newE2EPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-const tag = 'ledger-connect-panel';
+const tag = 'mvx-ledger-connect-panel';
 
 describe('ledger-connect-panel', () => {
   it(`renders ${tag}`, async () => {
@@ -22,7 +22,7 @@ describe('ledger-connect-panel', () => {
     const component = await page.find(tag);
     component.setProperty('data', { connectScreenData: { error: 'Unable to find device' } });
     await page.waitForChanges();
-    const error = await page.find(`${tag} >>> ledger-connect-screen >>> div`);
+    const error = await page.find(`${tag} >>> mvx-ledger-connect-screen >>> div`);
     expect(error.textContent).toContain(`Unable to find device`);
 
     const loadingUpdate = { connectScreenData: {}, accountScreenData: { accounts: [], startIndex: 0, addressesPerPage: 10, isLoading: true }, confirmScreenData: null };

@@ -35,7 +35,7 @@ describe('TransactionAccount Component', () => {
       template: () => <mvx-transaction-account account={lockedAccount} showLockedAccounts={true} scope="receiver"></mvx-transaction-account>,
     });
 
-    const lockedIcon = page.root.querySelector('fa-icon');
+    const lockedIcon = page.root.querySelector('mvx-fa-icon');
     expect(lockedIcon).not.toBeNull();
   });
 
@@ -47,7 +47,7 @@ describe('TransactionAccount Component', () => {
       template: () => <mvx-transaction-account account={contractAccount} scope="sender"></mvx-transaction-account>,
     });
 
-    const contractIcon = page.root.querySelector('fa-icon');
+    const contractIcon = page.root.querySelector('mvx-fa-icon');
     expect(contractIcon).not.toBeNull();
   });
 
@@ -59,7 +59,7 @@ describe('TransactionAccount Component', () => {
       template: () => <mvx-transaction-account account={linkedAccount} scope="receiver"></mvx-transaction-account>,
     });
 
-    const explorerLink = page.root.querySelector('explorer-link');
+    const explorerLink = page.root.querySelector('mvx-explorer-link');
     expect(explorerLink).not.toBeNull();
     expect(explorerLink.getAttribute('link')).toBe(linkedAccount.link);
     expect(explorerLink.getAttribute('data-testid')).toBe('receiverLink');

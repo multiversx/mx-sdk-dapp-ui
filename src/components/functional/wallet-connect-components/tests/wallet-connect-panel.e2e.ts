@@ -4,7 +4,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { WalletConnectModal } from '../components/wallet-connect-body';
 import { WalletConnectPanel } from '../wallet-connect-panel';
 
-const tag = 'wallet-connect-panel';
+const tag = 'mvx-wallet-connect-panel';
 
 describe('wallet-connect-panel', () => {
   const createPage = async (props: { data?: any; isOpen?: boolean } = {}) => {
@@ -49,7 +49,7 @@ describe('wallet-connect-panel', () => {
   describe('QR code', () => {
     it('shows loading state initially', async () => {
       const page = await createPage({ isOpen: true });
-      const bodyComponent = page.root.shadowRoot.querySelector('wallet-connect-body');
+      const bodyComponent = page.root.shadowRoot.querySelector('mvx-wallet-connect-body');
       expect(bodyComponent).toBeTruthy();
 
       const loading = bodyComponent.shadowRoot.querySelector(`[data-testid=${DataTestIdsEnum.walletConnectLoading}]`);
@@ -64,7 +64,7 @@ describe('wallet-connect-panel', () => {
       await new Promise(resolve => setTimeout(resolve, 0));
       await page.waitForChanges();
 
-      const bodyComponent = page.root.shadowRoot.querySelector('wallet-connect-body');
+      const bodyComponent = page.root.shadowRoot.querySelector('mvx-wallet-connect-body');
       expect(bodyComponent).toBeTruthy();
 
       const qrCodeContainer = bodyComponent.shadowRoot.querySelector(`[data-testid=${DataTestIdsEnum.walletConnectQrCode}]`);
@@ -82,7 +82,7 @@ describe('wallet-connect-panel', () => {
       await new Promise(resolve => setTimeout(resolve, 0));
       await page.waitForChanges();
 
-      const bodyComponent = page.root.shadowRoot.querySelector('wallet-connect-body');
+      const bodyComponent = page.root.shadowRoot.querySelector('mvx-wallet-connect-body');
       expect(bodyComponent).toBeTruthy();
 
       const loading = bodyComponent.shadowRoot.querySelector(`[data-testid=${DataTestIdsEnum.walletConnectLoading}]`);

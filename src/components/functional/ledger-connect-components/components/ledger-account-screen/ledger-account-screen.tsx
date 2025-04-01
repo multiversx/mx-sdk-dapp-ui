@@ -6,7 +6,7 @@ import { renderAccounts } from '../../helpers/renderAccounts';
 import type { IAccountScreenData } from '../../ledger-connect.types';
 
 @Component({
-  tag: 'ledger-account-screen',
+  tag: 'mvx-ledger-account-screen',
   styleUrl: 'ledger-account-screen.scss',
   shadow: true,
 })

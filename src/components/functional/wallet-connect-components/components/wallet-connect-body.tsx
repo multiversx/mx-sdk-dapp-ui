@@ -2,7 +2,7 @@ import { Component, Fragment, h, Prop } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
-  tag: 'wallet-connect-body',
+  tag: 'mvx-wallet-connect-body',
   styleUrl: 'wallet-connect-body.scss',
   shadow: true,
 })

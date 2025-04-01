@@ -4,7 +4,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IConfirmScreenData } from '../../ledger-connect.types';
 
 @Component({
-  tag: 'ledger-confirm-screen',
+  tag: 'mvx-ledger-confirm-screen',
   styleUrl: 'ledger-confirm-screen.scss',
   shadow: true,
 })

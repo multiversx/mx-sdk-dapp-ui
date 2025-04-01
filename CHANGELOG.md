@@ -7,8 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Added prefix to functional and controlled components](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/75)
+- [Added prefix to common and controlled components](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/72)
 - [Updated the layout for the new unlock panel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/67)
-- [Added prefix to common and controlled component ](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/72)
 
 ## [[0.0.0-alpha.10](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/70)] - 2025-03-31
 

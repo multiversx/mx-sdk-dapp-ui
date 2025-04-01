@@ -7,30 +7,30 @@ describe('CopyButton', () => {
   it('renders with default props', async () => {
     const page = await newSpecPage({
       components: [CopyButton],
-      html: '<copy-button text="Copy me"></copy-button>',
+      html: '<mvx-copy-button text="Copy me"></mvx-copy-button>',
     });
 
     expect(page.root).toEqualHtml(`
-      <copy-button text="Copy me">
+      <mvx-copy-button text="Copy me">
         <a href="/#" class="copy-button">
-          <fa-icon class="copy-button-icon"></fa-icon>
+          <mvx-fa-icon class="copy-button-icon"></mvx-fa-icon>
         </a>
-      </copy-button>
+      </mvx-copy-button>
     `);
   });
 
   it('renders with custom class', async () => {
     const page = await newSpecPage({
       components: [CopyButton],
-      html: '<copy-button class="custom-class" text="Copy me"></copy-button>',
+      html: '<mvx-copy-button class="custom-class" text="Copy me"></mvx-copy-button>',
     });
 
     expect(page.root).toEqualHtml(`
-      <copy-button class="custom-class" text="Copy me">
+      <mvx-copy-button class="custom-class" text="Copy me">
         <a href="/#" class="custom-class">
-          <fa-icon class="copy-button-icon"></fa-icon>
+          <mvx-fa-icon class="copy-button-icon"></mvx-fa-icon>
         </a>
-      </copy-button>
+      </mvx-copy-button>
     `);
   });
 
@@ -39,7 +39,7 @@ describe('CopyButton', () => {
 
     const page = await newSpecPage({
       components: [CopyButton],
-      html: '<copy-button text="Copy me"></copy-button>',
+      html: '<mvx-copy-button text="Copy me"></mvx-copy-button>',
     });
 
     const copyButton = page.root;
@@ -49,11 +49,11 @@ describe('CopyButton', () => {
     await page.waitForChanges();
 
     expect(copyButton).toEqualHtml(`
-      <copy-button text="Copy me">
+      <mvx-copy-button text="Copy me">
         <a href="/#" class="copy-button">
-          <fa-icon class="copy-button-icon"></fa-icon>
+          <mvx-fa-icon class="copy-button-icon"></mvx-fa-icon>
         </a>
-      </copy-button>
+      </mvx-copy-button>
     `);
   });
 
@@ -62,7 +62,7 @@ describe('CopyButton', () => {
 
     const page = await newSpecPage({
       components: [CopyButton],
-      html: '<copy-button text="Copy me"></copy-button>',
+      html: '<mvx-copy-button text="Copy me"></mvx-copy-button>',
     });
 
     const copyButton = page.root;
@@ -72,18 +72,18 @@ describe('CopyButton', () => {
     await page.waitForChanges();
 
     expect(copyButton).toEqualHtml(`
-      <copy-button text="Copy me">
+      <mvx-copy-button text="Copy me">
         <a href="/#" class="copy-button">
-          <fa-icon class="copy-button-icon"></fa-icon>
+          <mvx-fa-icon class="copy-button-icon"></mvx-fa-icon>
         </a>
-      </copy-button>
+      </mvx-copy-button>
     `);
   });
 
   it('prevents default behavior and stops propagation on click', async () => {
     const page = await newSpecPage({
       components: [CopyButton],
-      html: '<copy-button text="Copy me"></copy-button>',
+      html: '<mvx-copy-button text="Copy me"></mvx-copy-button>',
     });
 
     const copyButton = page.root;

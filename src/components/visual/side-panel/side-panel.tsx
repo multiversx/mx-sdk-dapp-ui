@@ -3,7 +3,7 @@ import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
 
 @Component({
-  tag: 'side-panel',
+  tag: 'mvx-side-panel',
   styleUrl: 'side-panel.scss',
   shadow: true,
 })

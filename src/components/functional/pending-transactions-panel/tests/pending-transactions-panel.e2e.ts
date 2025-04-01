@@ -1,7 +1,7 @@
 import { newE2EPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-const tag = 'pending-transactions-panel';
+const tag = 'mvx-pending-transactions-panel';
 const title = 'Pending Transaction';
 const subtitle = 'Confirm transaction on wallet';
 

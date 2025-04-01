@@ -7,7 +7,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { IToastDataState } from '../../transaction-toast.type';
 @Component({
-  tag: 'transaction-toast-content',
+  tag: 'mvx-transaction-toast-content',
   styleUrl: 'transaction-toast-content.css',
   shadow: false,
 })
@@ -34,7 +34,7 @@ export class TransactionToastContent {
     }
 
     if (transaction.asset.icon) {
-      return <fa-icon icon={transaction.asset.icon} class="transaction-toast-icon"></fa-icon>;
+      return <mvx-fa-icon icon={transaction.asset.icon} class="transaction-toast-icon" />;
     }
 
     if (transaction.asset.text) {
@@ -61,7 +61,7 @@ export class TransactionToastContent {
         <div class="transaction-toast-details-info-icon">
           {transaction.interactorAsset ? <img src={transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <DefaultTransactionIconSmall />}
         </div>
-        <trim-text text={transaction.interactor} class="transaction-toast-details-info-text" />
+        <mvx-trim-text text={transaction.interactor} class="transaction-toast-details-info-text" />
       </div>
     );
   }
@@ -100,10 +100,10 @@ export class TransactionToastContent {
 
           {hasCloseButton && <fa-icon icon={faTimes} class="transaction-toast-close-icon" onClick={this.handleDeleteToast.bind(this)}></fa-icon>}
 
-          {!hasCloseButton && showExplorerLinkButton && <explorer-link link={transaction.link} class="transaction-toast-action-button"></explorer-link>}
+          {!hasCloseButton && showExplorerLinkButton && <mvx-explorer-link link={transaction.link} class="transaction-toast-action-button"></mvx-explorer-link>}
         </div>
 
-        {!showExplorerLinkButton && <transaction-toast-details transactions={this.transactions} processedTransactionsStatus={this.processedTransactionsStatus} />}
+        {!showExplorerLinkButton && <mvx-transaction-toast-details transactions={this.transactions} processedTransactionsStatus={this.processedTransactionsStatus} />}
       </div>
     );
   }

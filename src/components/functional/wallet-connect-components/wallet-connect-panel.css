@@ -27,11 +27,11 @@
   margin-top: 0;
 }
 
-:host ::slotted(wallet-connect-body) {
+:host ::slotted(mvx-wallet-connect-body) {
   width: 100%;
 }
 
 :global(.wallet-connect-side-panel) {
   width: 380px;
   max-width: 90vw;
-} 
+}

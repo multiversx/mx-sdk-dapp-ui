@@ -6,9 +6,8 @@ import { formatAddress } from 'utils/utils';
 import state from '../../signTransactionsPanelStore';
 
 @Component({
-  tag: 'sign-transaction-component',
+  tag: 'mvx-sign-transaction-component',
   styleUrl: 'sign-transaction-component.css',
-  shadow: false,
 })
 export class SignTransaction {
   @Prop() header: VNode;
@@ -94,7 +93,7 @@ export class SignTransaction {
           <p>{formatAddress(receiver, 40)}</p>
         </div>
 
-        <transaction-fee-component />
+        <mvx-transaction-fee-component />
 
         {scCall && (
           <div class="data-container">

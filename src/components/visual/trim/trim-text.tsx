@@ -4,9 +4,8 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { ELLIPSIS } from 'constants/htmlStrings';
 
 @Component({
-  tag: 'trim-text',
+  tag: 'mvx-trim-text',
   styleUrl: 'trim-text.css',
-  shadow: false,
 })
 export class TrimText {
   @Element() el: HTMLElement;

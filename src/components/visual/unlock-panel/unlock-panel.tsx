@@ -6,7 +6,7 @@ import { ProviderTypeEnum } from 'types/provider.types';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
 
 @Component({
-  tag: 'unlock-panel',
+  tag: 'mvx-unlock-panel',
   styleUrl: 'unlock-panel.scss',
   shadow: true,
 })
@@ -83,7 +83,7 @@ export class UnlockPanel {
     const hasDetectedProviders = detectedProviders.length > 0;
 
     return (
-      <side-panel
+      <mvx-side-panel
         isOpen={this.isOpen}
         panelTitle="Connect your wallet"
         onClose={this.handleClose.bind(this)}
@@ -101,7 +101,7 @@ export class UnlockPanel {
 
                   <div class="unlock-panel-group-providers">
                     {detectedProviders.map((provider, providerIndex) => (
-                      <provider-button
+                      <mvx-provider-button
                         type={provider}
                         onClick={this.handleLogin.bind(this, provider)}
                         class={classNames('unlock-panel-group-provider', {
@@ -119,7 +119,7 @@ export class UnlockPanel {
 
                 <div class="unlock-panel-group-providers">
                   {otherProviders.map((provider, providerIndex) => (
-                    <provider-button
+                    <mvx-provider-button
                       type={provider}
                       onClick={this.handleLogin.bind(this, provider)}
                       class={classNames('unlock-panel-group-provider', {

@@ -7,7 +7,7 @@ import { WalletConnectEventsEnum } from './wallet-connect-panel.types';
 import { WalletConnectBase } from './WalletConnectBase';
 
 @Component({
-  tag: 'wallet-connect-panel',
+  tag: 'mvx-wallet-connect-panel',
   styleUrl: 'wallet-connect-panel.css',
   shadow: true,
 })
@@ -75,16 +75,15 @@ export class WalletConnectPanel {
 
   render() {
     return (
-      <side-panel isOpen={this.isOpen} panelClassName="wallet-connect-side-panel" onClose={this.handleClose.bind(this)}>
-        WALLET CONNECT PANEL
+      <mvx-side-panel isOpen={this.isOpen} panelClassName="wallet-connect-side-panel" onClose={this.handleClose.bind(this)}>
         <div class="wallet-connect-container">
           <div class="wallet-connect-header">
             <h2 data-testid={DataTestIdsEnum.walletConnetModalTitle}>xPortal Mobile Wallet</h2>
             <h4 data-testid={DataTestIdsEnum.walletConnetModalSubtitle}>Scan this QR code with your app</h4>
           </div>
-          <wallet-connect-body qrCodeSvg={this.qrCodeSvg} />
+          <mvx-wallet-connect-body qrCodeSvg={this.qrCodeSvg} />
         </div>
-      </side-panel>
+      </mvx-side-panel>
     );
   }
 }

@@ -53,13 +53,13 @@ describe('TransactionShards', () => {
     expect(page.root).toEqualHtml(`
       <mvx-transaction-shards>
           <div class="transaction-shards">
-            <explorer-link class="transactions-table-body-cell-link" data-testid="${DataTestIdsEnum.shardFromLink}" link="/blocks?shard=0">
+            <mvx-explorer-link class="transactions-table-body-cell-link" data-testid="${DataTestIdsEnum.shardFromLink}" link="/blocks?shard=0">
               <span data-testid="${DataTestIdsEnum.senderShard}" slot="content">0</span>
-            </explorer-link>
+            </mvx-explorer-link>
             <span class="transaction-shards-arrow">&#10132;</span>
-            <explorer-link class="transactions-table-body-cell-link" data-testid="${DataTestIdsEnum.shardToLink}" link="/blocks?shard=1">
+            <mvx-explorer-link class="transactions-table-body-cell-link" data-testid="${DataTestIdsEnum.shardToLink}" link="/blocks?shard=1">
               <span data-testid="${DataTestIdsEnum.receiverShard}" slot="content">1</span>
-            </explorer-link>
+            </mvx-explorer-link>
           </div>
       </mvx-transaction-shards>
     `);
@@ -76,13 +76,13 @@ describe('TransactionShards', () => {
     expect(page.root).toEqualHtml(`
       <mvx-transaction-shards class="custom-class">
           <div class="custom-class transaction-shards">
-            <explorer-link class="transactions-table-body-cell-link" data-testid="${DataTestIdsEnum.shardFromLink}" link="/blocks?shard=0">
+            <mvx-explorer-link class="transactions-table-body-cell-link" data-testid="${DataTestIdsEnum.shardFromLink}" link="/blocks?shard=0">
               <span data-testid="${DataTestIdsEnum.senderShard}" slot="content">0</span>
-            </explorer-link>
+            </mvx-explorer-link>
             <span class="transaction-shards-arrow">&#10132;</span>
-            <explorer-link class="transactions-table-body-cell-link" data-testid="${DataTestIdsEnum.shardToLink}" link="/blocks?shard=1">
+            <mvx-explorer-link class="transactions-table-body-cell-link" data-testid="${DataTestIdsEnum.shardToLink}" link="/blocks?shard=1">
               <span data-testid="${DataTestIdsEnum.receiverShard}" slot="content">1</span>
-            </explorer-link>
+            </mvx-explorer-link>
           </div>
       </mvx-transaction-shards>
     `);
