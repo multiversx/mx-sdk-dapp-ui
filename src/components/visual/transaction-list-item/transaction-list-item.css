@@ -1,15 +1,9 @@
-:host {
-  --mx-tx-bg: rgba(53, 53, 53, 0.3);
-  --mx-tx-text-primary: #e8e8e8;
-  --mx-tx-text-secondary: #737373;
-}
-
 .transaction-item {
   display: flex;
   align-items: center;
   padding: 20px 16px;
   gap: 16px;
-  background: var(--mx-tx-bg);
+  background: var(--mx-tx-bg-transparent);
   border-radius: 8px;
 }
 
@@ -82,7 +76,7 @@
   font-weight: 400;
   line-height: 16px;
   letter-spacing: -0.14px;
-  max-width: 200px;
+  max-width: 250px;
 
   span {
     color: var(--mx-tx-text-secondary);
@@ -126,6 +120,8 @@
 
   img {
     border-radius: 50%;
+    width: 16px;
+    height: 16px;
   }
 }
 

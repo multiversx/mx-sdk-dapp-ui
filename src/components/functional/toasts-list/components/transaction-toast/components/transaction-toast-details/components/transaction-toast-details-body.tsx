@@ -14,7 +14,7 @@ const iconData: Record<string, IconDefinition> = {
 @Component({
   tag: 'transaction-toast-details-body',
   styleUrl: 'transaction-toast-details-body.css',
-  shadow: true,
+  shadow: false,
 })
 export class TransactionDetailsBody {
   @Prop() transactionClass?: string = 'transaction-details-list-item';

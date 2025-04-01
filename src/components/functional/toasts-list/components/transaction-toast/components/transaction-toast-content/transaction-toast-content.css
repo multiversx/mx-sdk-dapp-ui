@@ -1,15 +1,20 @@
 .transaction-toast-content-wrapper {
   position: relative;
   display: flex;
-  max-width: 350px;
+  max-width: 400px;
   padding: 12px;
   flex-direction: column;
   align-items: flex-start;
   gap: 4px;
   border-radius: 12px;
-  border: 0.5px solid var(--mx-toast-border);
-  background: var(--mx-toast-bg);
+  border: 0.5px solid var(--mx-tx-bg);
+  background: var(--mx-tx-bg);
   backdrop-filter: blur(38px);
+  color: var(--mx-tx-text-primary);
+
+  .svg-inline--fa {
+    color: var(--mx-tx-text-primary);
+  }
 }
 
 .transaction-toast-content-wrapper.full-width {
@@ -54,7 +59,7 @@
 }
 
 .transaction-toast-title {
-  color: var(--mx-toast-text-primary);
+  color: var(--mx-tx-text-primary);
   font-family: var(--font-family-roobert);
   font-size: 16px;
   font-size: 16px;
@@ -65,6 +70,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0;
+  max-width: 220px;
 }
 
 .transaction-toast-title-short {
@@ -77,7 +83,7 @@
 
 
 .transaction-toast-amount {
-  color: var(--mx-toast-text-primary);
+  color: var(--mx-tx-text-primary);
   font-family: var(--font-family-roobert);
   font-size: 16px;
   font-size: 16px;
@@ -94,7 +100,7 @@
 }
 
 .transaction-toast-details-info-text {
-  color: var(--mx-toast-text-secondary);
+  color: var(--mx-tx-text-secondary);
   font-family: var(--font-family-roobert);
   font-size: 16px;
   font-size: 16px;
@@ -118,7 +124,7 @@
 }
 
 .transaction-toast-action-button {
-  color: var(--mx-toast-text-primary);
+  color: var(--mx-tx-text-primary);
   display: flex;
   width: 14px;
   height: 14px;
@@ -127,7 +133,7 @@
   flex-shrink: 0;
 
   .svg-inline--fa {
-    color: var(--mx-toast-text-primary);
+    color: var(--mx-tx-text-primary);
     text-align: center;
     height: 14px;
   }
