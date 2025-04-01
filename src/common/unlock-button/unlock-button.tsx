@@ -1,6 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
-import { ProviderTypeEnum } from 'components';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from 'components/visual/unlock-panel/helpers';
+import { ProviderTypeEnum } from 'types/provider.types';
 
 @Component({
   tag: 'mvx-unlock-button',

@@ -12,9 +12,8 @@ import { IEventBus } from "./utils/EventBus";
 import { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-import { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 import { ProviderTypeEnum } from "./types/provider.types";
-import { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
+import { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -28,9 +27,8 @@ export { IEventBus } from "./utils/EventBus";
 export { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-export { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 export { ProviderTypeEnum } from "./types/provider.types";
-export { SidePanelSideEnum } from "./components/visual/side-panel/side-panel.types";
+export { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -38,11 +36,20 @@ export { ITransactionListItem } from "./components/visual/transaction-list-item/
 export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export namespace Components {
+    interface ArrowUpRightIcon {
+        "class"?: string;
+    }
+    interface BackArrowIcon {
+        "class"?: string;
+    }
     interface BalanceComponent {
         "amount": string;
         "header"?: string;
         "ticker": string;
         "usdValue"?: string;
+    }
+    interface CloseIcon {
+        "class"?: string;
     }
     interface CopyButton {
         "class"?: string;
@@ -61,6 +68,8 @@ export namespace Components {
         "iconClass"?: string;
         "link": string;
         "text"?: string;
+    }
+    interface ExtensionProviderIcon {
     }
     interface FaIcon {
         "class"?: string;
@@ -89,6 +98,12 @@ export namespace Components {
     }
     interface LedgerConnectScreen {
         "connectScreenData": IConnectScreenData;
+    }
+    interface LedgerProviderIcon {
+    }
+    interface MetamaskProviderIcon {
+    }
+    interface MultiversxLogoIcon {
     }
     interface MvxFormatAmount {
         "class"?: string;
@@ -156,23 +171,29 @@ export namespace Components {
         "transactions": ITransactionsTableRow[];
     }
     interface MvxUnlockButton {
-        "icon": HTMLElement;
-        "label": string;
+        "buttonIcon": HTMLElement;
+        "buttonLabel": string;
+        "buttonType"?: ProviderTypeEnum;
+        "class"?: string;
     }
     interface NotificationsFeed {
         "getEventBus": () => Promise<IEventBus>;
+    }
+    interface PasskeyProviderIcon {
     }
     interface PendingTransactionsPanel {
         "data": IPendingTransactionsPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
     interface ProviderButton {
+        "class"?: string;
         "type": ProviderTypeEnum;
     }
     interface SidePanel {
         "isOpen": boolean;
         "panelClassName"?: string;
-        "side": SidePanelSideEnum;
+        "panelTitle": string;
+        "withBackButton"?: boolean;
     }
     interface SignTransactionComponent {
         "header": VNode;
@@ -233,11 +254,6 @@ export namespace Components {
         "dataTestId"?: string;
         "text": string;
     }
-    interface UnlockHeader {
-        "backIcon"?: IconDefinition;
-        "closeIcon": IconDefinition;
-        "text": string;
-    }
     interface UnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
         "isOpen": boolean;
@@ -253,6 +269,10 @@ export namespace Components {
     interface WalletConnectPanel {
         "data": IWalletConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
+    }
+    interface WalletProviderIcon {
+    }
+    interface XaliasProviderIcon {
     }
 }
 export interface CustomToastCustomEvent<T> extends CustomEvent<T> {
@@ -291,20 +311,34 @@ export interface TransactionToastContentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLTransactionToastContentElement;
 }
-export interface UnlockHeaderCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLUnlockHeaderElement;
-}
 export interface UnlockPanelCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLUnlockPanelElement;
 }
 declare global {
+    interface HTMLArrowUpRightIconElement extends Components.ArrowUpRightIcon, HTMLStencilElement {
+    }
+    var HTMLArrowUpRightIconElement: {
+        prototype: HTMLArrowUpRightIconElement;
+        new (): HTMLArrowUpRightIconElement;
+    };
+    interface HTMLBackArrowIconElement extends Components.BackArrowIcon, HTMLStencilElement {
+    }
+    var HTMLBackArrowIconElement: {
+        prototype: HTMLBackArrowIconElement;
+        new (): HTMLBackArrowIconElement;
+    };
     interface HTMLBalanceComponentElement extends Components.BalanceComponent, HTMLStencilElement {
     }
     var HTMLBalanceComponentElement: {
         prototype: HTMLBalanceComponentElement;
         new (): HTMLBalanceComponentElement;
+    };
+    interface HTMLCloseIconElement extends Components.CloseIcon, HTMLStencilElement {
+    }
+    var HTMLCloseIconElement: {
+        prototype: HTMLCloseIconElement;
+        new (): HTMLCloseIconElement;
     };
     interface HTMLCopyButtonElement extends Components.CopyButton, HTMLStencilElement {
     }
@@ -334,6 +368,12 @@ declare global {
     var HTMLExplorerLinkElement: {
         prototype: HTMLExplorerLinkElement;
         new (): HTMLExplorerLinkElement;
+    };
+    interface HTMLExtensionProviderIconElement extends Components.ExtensionProviderIcon, HTMLStencilElement {
+    }
+    var HTMLExtensionProviderIconElement: {
+        prototype: HTMLExtensionProviderIconElement;
+        new (): HTMLExtensionProviderIconElement;
     };
     interface HTMLFaIconElement extends Components.FaIcon, HTMLStencilElement {
     }
@@ -418,6 +458,24 @@ declare global {
     var HTMLLedgerConnectScreenElement: {
         prototype: HTMLLedgerConnectScreenElement;
         new (): HTMLLedgerConnectScreenElement;
+    };
+    interface HTMLLedgerProviderIconElement extends Components.LedgerProviderIcon, HTMLStencilElement {
+    }
+    var HTMLLedgerProviderIconElement: {
+        prototype: HTMLLedgerProviderIconElement;
+        new (): HTMLLedgerProviderIconElement;
+    };
+    interface HTMLMetamaskProviderIconElement extends Components.MetamaskProviderIcon, HTMLStencilElement {
+    }
+    var HTMLMetamaskProviderIconElement: {
+        prototype: HTMLMetamaskProviderIconElement;
+        new (): HTMLMetamaskProviderIconElement;
+    };
+    interface HTMLMultiversxLogoIconElement extends Components.MultiversxLogoIcon, HTMLStencilElement {
+    }
+    var HTMLMultiversxLogoIconElement: {
+        prototype: HTMLMultiversxLogoIconElement;
+        new (): HTMLMultiversxLogoIconElement;
     };
     interface HTMLMvxFormatAmountElement extends Components.MvxFormatAmount, HTMLStencilElement {
     }
@@ -520,6 +578,12 @@ declare global {
         prototype: HTMLNotificationsFeedElement;
         new (): HTMLNotificationsFeedElement;
     };
+    interface HTMLPasskeyProviderIconElement extends Components.PasskeyProviderIcon, HTMLStencilElement {
+    }
+    var HTMLPasskeyProviderIconElement: {
+        prototype: HTMLPasskeyProviderIconElement;
+        new (): HTMLPasskeyProviderIconElement;
+    };
     interface HTMLPendingTransactionsPanelElement extends Components.PendingTransactionsPanel, HTMLStencilElement {
     }
     var HTMLPendingTransactionsPanelElement: {
@@ -534,6 +598,7 @@ declare global {
     };
     interface HTMLSidePanelElementEventMap {
         "close": any;
+        "back": any;
     }
     interface HTMLSidePanelElement extends Components.SidePanel, HTMLStencilElement {
         addEventListener<K extends keyof HTMLSidePanelElementEventMap>(type: K, listener: (this: HTMLSidePanelElement, ev: SidePanelCustomEvent<HTMLSidePanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -660,24 +725,6 @@ declare global {
         prototype: HTMLTrimTextElement;
         new (): HTMLTrimTextElement;
     };
-    interface HTMLUnlockHeaderElementEventMap {
-        "back": void;
-        "close": void;
-    }
-    interface HTMLUnlockHeaderElement extends Components.UnlockHeader, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLUnlockHeaderElementEventMap>(type: K, listener: (this: HTMLUnlockHeaderElement, ev: UnlockHeaderCustomEvent<HTMLUnlockHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLUnlockHeaderElementEventMap>(type: K, listener: (this: HTMLUnlockHeaderElement, ev: UnlockHeaderCustomEvent<HTMLUnlockHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLUnlockHeaderElement: {
-        prototype: HTMLUnlockHeaderElement;
-        new (): HTMLUnlockHeaderElement;
-    };
     interface HTMLUnlockPanelElementEventMap {
         "close": any;
         "login": { provider: ProviderTypeEnum; anchor?: HTMLElement };
@@ -714,11 +761,27 @@ declare global {
         prototype: HTMLWalletConnectPanelElement;
         new (): HTMLWalletConnectPanelElement;
     };
+    interface HTMLWalletProviderIconElement extends Components.WalletProviderIcon, HTMLStencilElement {
+    }
+    var HTMLWalletProviderIconElement: {
+        prototype: HTMLWalletProviderIconElement;
+        new (): HTMLWalletProviderIconElement;
+    };
+    interface HTMLXaliasProviderIconElement extends Components.XaliasProviderIcon, HTMLStencilElement {
+    }
+    var HTMLXaliasProviderIconElement: {
+        prototype: HTMLXaliasProviderIconElement;
+        new (): HTMLXaliasProviderIconElement;
+    };
     interface HTMLElementTagNameMap {
+        "arrow-up-right-icon": HTMLArrowUpRightIconElement;
+        "back-arrow-icon": HTMLBackArrowIconElement;
         "balance-component": HTMLBalanceComponentElement;
+        "close-icon": HTMLCloseIconElement;
         "copy-button": HTMLCopyButtonElement;
         "custom-toast": HTMLCustomToastElement;
         "explorer-link": HTMLExplorerLinkElement;
+        "extension-provider-icon": HTMLExtensionProviderIconElement;
         "fa-icon": HTMLFaIconElement;
         "fungible-component": HTMLFungibleComponentElement;
         "generic-toast": HTMLGenericToastElement;
@@ -727,6 +790,9 @@ declare global {
         "ledger-connect": HTMLLedgerConnectElement;
         "ledger-connect-panel": HTMLLedgerConnectPanelElement;
         "ledger-connect-screen": HTMLLedgerConnectScreenElement;
+        "ledger-provider-icon": HTMLLedgerProviderIconElement;
+        "metamask-provider-icon": HTMLMetamaskProviderIconElement;
+        "multiversx-logo-icon": HTMLMultiversxLogoIconElement;
         "mvx-format-amount": HTMLMvxFormatAmountElement;
         "mvx-generic-modal": HTMLMvxGenericModalElement;
         "mvx-generic-spinner": HTMLMvxGenericSpinnerElement;
@@ -742,6 +808,7 @@ declare global {
         "mvx-transactions-table": HTMLMvxTransactionsTableElement;
         "mvx-unlock-button": HTMLMvxUnlockButtonElement;
         "notifications-feed": HTMLNotificationsFeedElement;
+        "passkey-provider-icon": HTMLPasskeyProviderIconElement;
         "pending-transactions-panel": HTMLPendingTransactionsPanelElement;
         "provider-button": HTMLProviderButtonElement;
         "side-panel": HTMLSidePanelElement;
@@ -758,19 +825,29 @@ declare global {
         "transaction-toast-details-body": HTMLTransactionToastDetailsBodyElement;
         "transaction-toast-progress": HTMLTransactionToastProgressElement;
         "trim-text": HTMLTrimTextElement;
-        "unlock-header": HTMLUnlockHeaderElement;
         "unlock-panel": HTMLUnlockPanelElement;
         "wallet-connect": HTMLWalletConnectElement;
         "wallet-connect-body": HTMLWalletConnectBodyElement;
         "wallet-connect-panel": HTMLWalletConnectPanelElement;
+        "wallet-provider-icon": HTMLWalletProviderIconElement;
+        "xalias-provider-icon": HTMLXaliasProviderIconElement;
     }
 }
 declare namespace LocalJSX {
+    interface ArrowUpRightIcon {
+        "class"?: string;
+    }
+    interface BackArrowIcon {
+        "class"?: string;
+    }
     interface BalanceComponent {
         "amount"?: string;
         "header"?: string;
         "ticker"?: string;
         "usdValue"?: string;
+    }
+    interface CloseIcon {
+        "class"?: string;
     }
     interface CopyButton {
         "class"?: string;
@@ -790,6 +867,8 @@ declare namespace LocalJSX {
         "iconClass"?: string;
         "link"?: string;
         "text"?: string;
+    }
+    interface ExtensionProviderIcon {
     }
     interface FaIcon {
         "class"?: string;
@@ -822,6 +901,12 @@ declare namespace LocalJSX {
     interface LedgerConnectScreen {
         "connectScreenData"?: IConnectScreenData;
         "onConnect"?: (event: LedgerConnectScreenCustomEvent<any>) => void;
+    }
+    interface LedgerProviderIcon {
+    }
+    interface MetamaskProviderIcon {
+    }
+    interface MultiversxLogoIcon {
     }
     interface MvxFormatAmount {
         "class"?: string;
@@ -890,22 +975,29 @@ declare namespace LocalJSX {
         "transactions"?: ITransactionsTableRow[];
     }
     interface MvxUnlockButton {
-        "icon"?: HTMLElement;
-        "label"?: string;
+        "buttonIcon"?: HTMLElement;
+        "buttonLabel"?: string;
+        "buttonType"?: ProviderTypeEnum;
+        "class"?: string;
     }
     interface NotificationsFeed {
+    }
+    interface PasskeyProviderIcon {
     }
     interface PendingTransactionsPanel {
         "data"?: IPendingTransactionsPanelData;
     }
     interface ProviderButton {
+        "class"?: string;
         "type"?: ProviderTypeEnum;
     }
     interface SidePanel {
         "isOpen"?: boolean;
+        "onBack"?: (event: SidePanelCustomEvent<any>) => void;
         "onClose"?: (event: SidePanelCustomEvent<any>) => void;
         "panelClassName"?: string;
-        "side"?: SidePanelSideEnum;
+        "panelTitle"?: string;
+        "withBackButton"?: boolean;
     }
     interface SignTransactionComponent {
         "header"?: VNode;
@@ -967,13 +1059,6 @@ declare namespace LocalJSX {
         "dataTestId"?: string;
         "text"?: string;
     }
-    interface UnlockHeader {
-        "backIcon"?: IconDefinition;
-        "closeIcon"?: IconDefinition;
-        "onBack"?: (event: UnlockHeaderCustomEvent<void>) => void;
-        "onClose"?: (event: UnlockHeaderCustomEvent<void>) => void;
-        "text"?: string;
-    }
     interface UnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
         "isOpen"?: boolean;
@@ -990,11 +1075,19 @@ declare namespace LocalJSX {
     interface WalletConnectPanel {
         "data"?: IWalletConnectPanelData;
     }
+    interface WalletProviderIcon {
+    }
+    interface XaliasProviderIcon {
+    }
     interface IntrinsicElements {
+        "arrow-up-right-icon": ArrowUpRightIcon;
+        "back-arrow-icon": BackArrowIcon;
         "balance-component": BalanceComponent;
+        "close-icon": CloseIcon;
         "copy-button": CopyButton;
         "custom-toast": CustomToast;
         "explorer-link": ExplorerLink;
+        "extension-provider-icon": ExtensionProviderIcon;
         "fa-icon": FaIcon;
         "fungible-component": FungibleComponent;
         "generic-toast": GenericToast;
@@ -1003,6 +1096,9 @@ declare namespace LocalJSX {
         "ledger-connect": LedgerConnect;
         "ledger-connect-panel": LedgerConnectPanel;
         "ledger-connect-screen": LedgerConnectScreen;
+        "ledger-provider-icon": LedgerProviderIcon;
+        "metamask-provider-icon": MetamaskProviderIcon;
+        "multiversx-logo-icon": MultiversxLogoIcon;
         "mvx-format-amount": MvxFormatAmount;
         "mvx-generic-modal": MvxGenericModal;
         "mvx-generic-spinner": MvxGenericSpinner;
@@ -1018,6 +1114,7 @@ declare namespace LocalJSX {
         "mvx-transactions-table": MvxTransactionsTable;
         "mvx-unlock-button": MvxUnlockButton;
         "notifications-feed": NotificationsFeed;
+        "passkey-provider-icon": PasskeyProviderIcon;
         "pending-transactions-panel": PendingTransactionsPanel;
         "provider-button": ProviderButton;
         "side-panel": SidePanel;
@@ -1034,21 +1131,26 @@ declare namespace LocalJSX {
         "transaction-toast-details-body": TransactionToastDetailsBody;
         "transaction-toast-progress": TransactionToastProgress;
         "trim-text": TrimText;
-        "unlock-header": UnlockHeader;
         "unlock-panel": UnlockPanel;
         "wallet-connect": WalletConnect;
         "wallet-connect-body": WalletConnectBody;
         "wallet-connect-panel": WalletConnectPanel;
+        "wallet-provider-icon": WalletProviderIcon;
+        "xalias-provider-icon": XaliasProviderIcon;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "arrow-up-right-icon": LocalJSX.ArrowUpRightIcon & JSXBase.HTMLAttributes<HTMLArrowUpRightIconElement>;
+            "back-arrow-icon": LocalJSX.BackArrowIcon & JSXBase.HTMLAttributes<HTMLBackArrowIconElement>;
             "balance-component": LocalJSX.BalanceComponent & JSXBase.HTMLAttributes<HTMLBalanceComponentElement>;
+            "close-icon": LocalJSX.CloseIcon & JSXBase.HTMLAttributes<HTMLCloseIconElement>;
             "copy-button": LocalJSX.CopyButton & JSXBase.HTMLAttributes<HTMLCopyButtonElement>;
             "custom-toast": LocalJSX.CustomToast & JSXBase.HTMLAttributes<HTMLCustomToastElement>;
             "explorer-link": LocalJSX.ExplorerLink & JSXBase.HTMLAttributes<HTMLExplorerLinkElement>;
+            "extension-provider-icon": LocalJSX.ExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLExtensionProviderIconElement>;
             "fa-icon": LocalJSX.FaIcon & JSXBase.HTMLAttributes<HTMLFaIconElement>;
             "fungible-component": LocalJSX.FungibleComponent & JSXBase.HTMLAttributes<HTMLFungibleComponentElement>;
             "generic-toast": LocalJSX.GenericToast & JSXBase.HTMLAttributes<HTMLGenericToastElement>;
@@ -1057,6 +1159,9 @@ declare module "@stencil/core" {
             "ledger-connect": LocalJSX.LedgerConnect & JSXBase.HTMLAttributes<HTMLLedgerConnectElement>;
             "ledger-connect-panel": LocalJSX.LedgerConnectPanel & JSXBase.HTMLAttributes<HTMLLedgerConnectPanelElement>;
             "ledger-connect-screen": LocalJSX.LedgerConnectScreen & JSXBase.HTMLAttributes<HTMLLedgerConnectScreenElement>;
+            "ledger-provider-icon": LocalJSX.LedgerProviderIcon & JSXBase.HTMLAttributes<HTMLLedgerProviderIconElement>;
+            "metamask-provider-icon": LocalJSX.MetamaskProviderIcon & JSXBase.HTMLAttributes<HTMLMetamaskProviderIconElement>;
+            "multiversx-logo-icon": LocalJSX.MultiversxLogoIcon & JSXBase.HTMLAttributes<HTMLMultiversxLogoIconElement>;
             "mvx-format-amount": LocalJSX.MvxFormatAmount & JSXBase.HTMLAttributes<HTMLMvxFormatAmountElement>;
             "mvx-generic-modal": LocalJSX.MvxGenericModal & JSXBase.HTMLAttributes<HTMLMvxGenericModalElement>;
             "mvx-generic-spinner": LocalJSX.MvxGenericSpinner & JSXBase.HTMLAttributes<HTMLMvxGenericSpinnerElement>;
@@ -1072,6 +1177,7 @@ declare module "@stencil/core" {
             "mvx-transactions-table": LocalJSX.MvxTransactionsTable & JSXBase.HTMLAttributes<HTMLMvxTransactionsTableElement>;
             "mvx-unlock-button": LocalJSX.MvxUnlockButton & JSXBase.HTMLAttributes<HTMLMvxUnlockButtonElement>;
             "notifications-feed": LocalJSX.NotificationsFeed & JSXBase.HTMLAttributes<HTMLNotificationsFeedElement>;
+            "passkey-provider-icon": LocalJSX.PasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLPasskeyProviderIconElement>;
             "pending-transactions-panel": LocalJSX.PendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLPendingTransactionsPanelElement>;
             "provider-button": LocalJSX.ProviderButton & JSXBase.HTMLAttributes<HTMLProviderButtonElement>;
             "side-panel": LocalJSX.SidePanel & JSXBase.HTMLAttributes<HTMLSidePanelElement>;
@@ -1088,11 +1194,12 @@ declare module "@stencil/core" {
             "transaction-toast-details-body": LocalJSX.TransactionToastDetailsBody & JSXBase.HTMLAttributes<HTMLTransactionToastDetailsBodyElement>;
             "transaction-toast-progress": LocalJSX.TransactionToastProgress & JSXBase.HTMLAttributes<HTMLTransactionToastProgressElement>;
             "trim-text": LocalJSX.TrimText & JSXBase.HTMLAttributes<HTMLTrimTextElement>;
-            "unlock-header": LocalJSX.UnlockHeader & JSXBase.HTMLAttributes<HTMLUnlockHeaderElement>;
             "unlock-panel": LocalJSX.UnlockPanel & JSXBase.HTMLAttributes<HTMLUnlockPanelElement>;
             "wallet-connect": LocalJSX.WalletConnect & JSXBase.HTMLAttributes<HTMLWalletConnectElement>;
             "wallet-connect-body": LocalJSX.WalletConnectBody & JSXBase.HTMLAttributes<HTMLWalletConnectBodyElement>;
             "wallet-connect-panel": LocalJSX.WalletConnectPanel & JSXBase.HTMLAttributes<HTMLWalletConnectPanelElement>;
+            "wallet-provider-icon": LocalJSX.WalletProviderIcon & JSXBase.HTMLAttributes<HTMLWalletProviderIconElement>;
+            "xalias-provider-icon": LocalJSX.XaliasProviderIcon & JSXBase.HTMLAttributes<HTMLXaliasProviderIconElement>;
         }
     }
 }
