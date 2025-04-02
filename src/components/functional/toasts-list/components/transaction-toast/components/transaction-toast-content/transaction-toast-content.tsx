@@ -1,7 +1,6 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
-import { DefaultTransactionIconSmall } from 'components/visual/default-icon/default-icon';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
@@ -9,7 +8,6 @@ import type { IToastDataState } from '../../transaction-toast.type';
 @Component({
   tag: 'mvx-transaction-toast-content',
   styleUrl: 'transaction-toast-content.css',
-  shadow: false,
 })
 export class TransactionToastContent {
   @Prop() transactions: ITransactionListItem[];
@@ -26,7 +24,7 @@ export class TransactionToastContent {
     const transaction = this.transactions?.[0];
 
     if (!transaction?.asset) {
-      return <DefaultTransactionIconSmall />;
+      return <default-transaction-icon-small />;
     }
 
     if (transaction.asset.imageUrl) {
@@ -45,7 +43,7 @@ export class TransactionToastContent {
       return <fa-icon icon={this.toastDataState.icon} class={`transaction-toast-icon ${this.toastDataState.iconClassName ?? ''}`}></fa-icon>;
     }
 
-    return <DefaultTransactionIconSmall />;
+    return <default-transaction-icon-small />;
   }
 
   private renderDetails() {
@@ -59,7 +57,7 @@ export class TransactionToastContent {
       <div class="transaction-toast-details-info">
         {transaction.directionLabel && <span class="transaction-toast-details-info-text">{transaction.directionLabel}</span>}
         <div class="transaction-toast-details-info-icon">
-          {transaction.interactorAsset ? <img src={transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <DefaultTransactionIconSmall />}
+          {transaction.interactorAsset ? <img src={transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <default-transaction-icon-small />}
         </div>
         <mvx-trim-text text={transaction.interactor} class="transaction-toast-details-info-text" />
       </div>

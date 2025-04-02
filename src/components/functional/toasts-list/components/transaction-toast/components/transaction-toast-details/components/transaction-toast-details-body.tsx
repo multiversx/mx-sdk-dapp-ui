@@ -14,7 +14,6 @@ const iconData: Record<string, IconDefinition> = {
 @Component({
   tag: 'mvx-transaction-toast-details-body',
   styleUrl: 'transaction-toast-details-body.css',
-  shadow: false,
 })
 export class TransactionDetailsBody {
   @Prop() transactionClass?: string = 'transaction-details-list-item';

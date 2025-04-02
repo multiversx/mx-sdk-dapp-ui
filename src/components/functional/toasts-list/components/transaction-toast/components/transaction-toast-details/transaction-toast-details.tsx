@@ -6,7 +6,6 @@ import type { ITransactionListItem } from 'components/visual/transaction-list-it
 @Component({
   tag: 'mvx-transaction-toast-details',
   styleUrl: 'transaction-toast-details.css',
-  shadow: false,
 })
 export class TransactionToastDetails {
   @Prop() processedTransactionsStatus?: string | JSX.Element;
