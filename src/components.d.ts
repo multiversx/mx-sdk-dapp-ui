@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-import { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
+import { IGenericModalProps } from "./components/common/generic-modal/generic-modal.types";
 import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
@@ -22,7 +22,7 @@ import { ITransactionValue } from "./components/controlled/transactions-table/tr
 import { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-export { IGenericModalProps } from "./common/generic-modal/generic-modal.types";
+export { IGenericModalProps } from "./components/common/generic-modal/generic-modal.types";
 export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect-components/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
@@ -43,6 +43,12 @@ export namespace Components {
         "class"?: string;
     }
     interface CloseIcon {
+        "class"?: string;
+    }
+    interface DefaultTransactionIconLarge {
+        "class"?: string;
+    }
+    interface DefaultTransactionIconSmall {
         "class"?: string;
     }
     interface ExtensionProviderIcon {
@@ -333,6 +339,18 @@ declare global {
     var HTMLCloseIconElement: {
         prototype: HTMLCloseIconElement;
         new (): HTMLCloseIconElement;
+    };
+    interface HTMLDefaultTransactionIconLargeElement extends Components.DefaultTransactionIconLarge, HTMLStencilElement {
+    }
+    var HTMLDefaultTransactionIconLargeElement: {
+        prototype: HTMLDefaultTransactionIconLargeElement;
+        new (): HTMLDefaultTransactionIconLargeElement;
+    };
+    interface HTMLDefaultTransactionIconSmallElement extends Components.DefaultTransactionIconSmall, HTMLStencilElement {
+    }
+    var HTMLDefaultTransactionIconSmallElement: {
+        prototype: HTMLDefaultTransactionIconSmallElement;
+        new (): HTMLDefaultTransactionIconSmallElement;
     };
     interface HTMLExtensionProviderIconElement extends Components.ExtensionProviderIcon, HTMLStencilElement {
     }
@@ -777,6 +795,8 @@ declare global {
         "arrow-up-right-icon": HTMLArrowUpRightIconElement;
         "back-arrow-icon": HTMLBackArrowIconElement;
         "close-icon": HTMLCloseIconElement;
+        "default-transaction-icon-large": HTMLDefaultTransactionIconLargeElement;
+        "default-transaction-icon-small": HTMLDefaultTransactionIconSmallElement;
         "extension-provider-icon": HTMLExtensionProviderIconElement;
         "ledger-provider-icon": HTMLLedgerProviderIconElement;
         "metamask-provider-icon": HTMLMetamaskProviderIconElement;
@@ -841,6 +861,12 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface CloseIcon {
+        "class"?: string;
+    }
+    interface DefaultTransactionIconLarge {
+        "class"?: string;
+    }
+    interface DefaultTransactionIconSmall {
         "class"?: string;
     }
     interface ExtensionProviderIcon {
@@ -1083,6 +1109,8 @@ declare namespace LocalJSX {
         "arrow-up-right-icon": ArrowUpRightIcon;
         "back-arrow-icon": BackArrowIcon;
         "close-icon": CloseIcon;
+        "default-transaction-icon-large": DefaultTransactionIconLarge;
+        "default-transaction-icon-small": DefaultTransactionIconSmall;
         "extension-provider-icon": ExtensionProviderIcon;
         "ledger-provider-icon": LedgerProviderIcon;
         "metamask-provider-icon": MetamaskProviderIcon;
@@ -1146,6 +1174,8 @@ declare module "@stencil/core" {
             "arrow-up-right-icon": LocalJSX.ArrowUpRightIcon & JSXBase.HTMLAttributes<HTMLArrowUpRightIconElement>;
             "back-arrow-icon": LocalJSX.BackArrowIcon & JSXBase.HTMLAttributes<HTMLBackArrowIconElement>;
             "close-icon": LocalJSX.CloseIcon & JSXBase.HTMLAttributes<HTMLCloseIconElement>;
+            "default-transaction-icon-large": LocalJSX.DefaultTransactionIconLarge & JSXBase.HTMLAttributes<HTMLDefaultTransactionIconLargeElement>;
+            "default-transaction-icon-small": LocalJSX.DefaultTransactionIconSmall & JSXBase.HTMLAttributes<HTMLDefaultTransactionIconSmallElement>;
             "extension-provider-icon": LocalJSX.ExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLExtensionProviderIconElement>;
             "ledger-provider-icon": LocalJSX.LedgerProviderIcon & JSXBase.HTMLAttributes<HTMLLedgerProviderIconElement>;
             "metamask-provider-icon": LocalJSX.MetamaskProviderIcon & JSXBase.HTMLAttributes<HTMLMetamaskProviderIconElement>;

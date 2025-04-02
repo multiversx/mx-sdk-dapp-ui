@@ -4,7 +4,7 @@ import type { ITransactionListItem } from './transaction-list-item.types';
 
 @Component({
   tag: 'mvx-transaction-list-item',
-  styleUrl: 'transaction-list-item.css',
+  styleUrl: 'transaction-list-item.scss',
 })
 export class TransactionListItem {
   @Prop() transaction: ITransactionListItem;
