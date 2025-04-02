@@ -3,7 +3,6 @@ import { Component, h } from '@stencil/core';
 @Component({
   tag: 'wallet-provider-icon',
   styleUrl: 'wallet-provider-icon.scss',
-  shadow: true,
 })
 export class WalletProviderIcon {
   render() {

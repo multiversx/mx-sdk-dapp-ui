@@ -3,7 +3,6 @@ import { Component, h } from '@stencil/core';
 @Component({
   tag: 'multiversx-logo-icon',
   styleUrl: 'multiversx-logo-icon.scss',
-  shadow: true,
 })
 export class MultiversXLogoIcon {
   render() {

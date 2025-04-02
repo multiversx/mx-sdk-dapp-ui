@@ -3,7 +3,6 @@ import { Component, h, Prop } from '@stencil/core';
 @Component({
   tag: 'arrow-up-right-icon',
   styleUrl: 'arrow-up-right-icon.scss',
-  shadow: true,
 })
 export class ArrowUpRightIcon {
   @Prop() class?: string;

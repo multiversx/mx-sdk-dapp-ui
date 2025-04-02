@@ -3,7 +3,6 @@ import { Component, h } from '@stencil/core';
 @Component({
   tag: 'extension-provider-icon',
   styleUrl: 'extension-provider-icon.scss',
-  shadow: true,
 })
 export class ExtensionProviderIcon {
   render() {

@@ -3,7 +3,6 @@ import { Component, h } from '@stencil/core';
 @Component({
   tag: 'xalias-provider-icon',
   styleUrl: 'xalias-provider-icon.scss',
-  shadow: true,
 })
 export class XAliasProviderIcon {
   render() {

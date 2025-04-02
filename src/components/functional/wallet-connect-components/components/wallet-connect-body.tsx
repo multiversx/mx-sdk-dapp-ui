@@ -4,7 +4,6 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 @Component({
   tag: 'mvx-wallet-connect-body',
   styleUrl: 'wallet-connect-body.scss',
-  shadow: true,
 })
 export class WalletConnectModal {
   @Prop() qrCodeSvg: string = '';

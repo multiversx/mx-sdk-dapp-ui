@@ -3,7 +3,6 @@ import { Component, h } from '@stencil/core';
 @Component({
   tag: 'passkey-provider-icon',
   styleUrl: 'passkey-provider-icon.scss',
-  shadow: true,
 })
 export class PasskeyProviderIcon {
   render() {

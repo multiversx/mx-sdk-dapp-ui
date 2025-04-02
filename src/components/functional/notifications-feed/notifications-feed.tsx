@@ -10,7 +10,6 @@ import { NotificationsFeedEventsEnum } from './notifications-feed.types';
 @Component({
   tag: 'mvx-notifications-feed',
   styleUrl: 'notifications-feed.scss',
-  shadow: true,
 })
 export class NotificationsFeed {
   @State() isOpen: boolean = false;

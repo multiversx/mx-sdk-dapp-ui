@@ -6,7 +6,6 @@ import type { IConfirmScreenData } from '../../ledger-connect.types';
 @Component({
   tag: 'mvx-ledger-confirm-screen',
   styleUrl: 'ledger-confirm-screen.scss',
-  shadow: true,
 })
 export class LedgerConnectConfirmBody {
   @Prop() confirmScreenData: IConfirmScreenData;

@@ -9,7 +9,6 @@ import { PendingTransactionsEventsEnum } from './pending-transactions-panel.type
 @Component({
   tag: 'mvx-pending-transactions-panel',
   styleUrl: 'pending-transactions-panel.css',
-  shadow: true,
 })
 export class PendingTransactionstPanel {
   private eventBus: IEventBus = new EventBus();

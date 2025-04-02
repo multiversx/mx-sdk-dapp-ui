@@ -8,7 +8,6 @@ import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
 @Component({
   tag: 'mvx-unlock-panel',
   styleUrl: 'unlock-panel.scss',
-  shadow: true,
 })
 export class UnlockPanel {
   @Prop() isOpen: boolean = false;
@@ -20,8 +19,13 @@ export class UnlockPanel {
   @State() isLoggingIn: boolean = false;
   @State() selectedMethod: ProviderTypeEnum | null = null;
 
-  private isExtensionInstalled = (currentProvider: ProviderTypeEnum) => currentProvider === ProviderTypeEnum.extension && getIsExtensionAvailable();
-  private isMetaMaskInstalled = (currentProvider: ProviderTypeEnum) => currentProvider === ProviderTypeEnum.metamask && getIsMetaMaskAvailable();
+  private isExtensionInstalled(currentProvider: ProviderTypeEnum) {
+    return currentProvider === ProviderTypeEnum.extension && getIsExtensionAvailable();
+  }
+
+  private isMetaMaskInstalled(currentProvider: ProviderTypeEnum) {
+    return currentProvider === ProviderTypeEnum.metamask && getIsMetaMaskAvailable();
+  }
 
   private anchor: HTMLElement | null = null;
   private observer: MutationObserver | null = null;
@@ -54,7 +58,7 @@ export class UnlockPanel {
     this.selectedMethod = provider;
   }
 
-  handleResetLoginState = (event: MouseEvent) => {
+  handleResetLoginState(event: MouseEvent) {
     event.preventDefault();
 
     this.isLoggingIn = false;
@@ -67,12 +71,12 @@ export class UnlockPanel {
     while (this.anchor.firstChild) {
       this.anchor.removeChild(this.anchor.firstChild);
     }
-  };
+  }
 
-  handleClose = (event: MouseEvent) => {
+  handleClose(event: MouseEvent) {
     event.preventDefault();
     this.close.emit();
-  };
+  }
 
   render() {
     const detectedProviders: ProviderTypeEnum[] = this.allowedProviders.filter(
@@ -137,7 +141,7 @@ export class UnlockPanel {
             </div>
           )}
         </div>
-      </side-panel>
+      </mvx-side-panel>
     );
   }
 }

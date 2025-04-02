@@ -3,7 +3,6 @@ import { Component, h } from '@stencil/core';
 @Component({
   tag: 'metamask-provider-icon',
   styleUrl: 'metamask-provider-icon.scss',
-  shadow: true,
 })
 export class MetaMaskProviderIcon {
   render() {

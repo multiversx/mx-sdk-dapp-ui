@@ -9,7 +9,6 @@ import { LedgerConnectBase } from './LedgerConnectBase';
 @Component({
   tag: 'mvx-ledger-connect-panel',
   styleUrl: 'ledger-connect-panel.css',
-  shadow: true,
 })
 export class LedgerConnectPanel {
   @Prop() data: ILedgerConnectPanelData = {

@@ -16,7 +16,6 @@ const signScreens = {
 @Component({
   tag: 'mvx-sign-transactions-panel',
   styleUrl: 'sign-transactions-panel.css',
-  shadow: true,
 })
 export class SignTransactionsPanel {
   private eventBus: IEventBus = new EventBus();

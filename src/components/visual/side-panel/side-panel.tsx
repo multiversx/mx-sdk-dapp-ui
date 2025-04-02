@@ -5,7 +5,6 @@ import classNames from 'classnames';
 @Component({
   tag: 'mvx-side-panel',
   styleUrl: 'side-panel.scss',
-  shadow: true,
 })
 export class SidePanel {
   @Prop() isOpen: boolean = false;
