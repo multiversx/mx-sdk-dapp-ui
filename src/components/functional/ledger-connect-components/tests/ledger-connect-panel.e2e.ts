@@ -76,7 +76,7 @@ describe('ledger-connect-panel', () => {
     };
     component.setProperty('data', balancesUpdate);
     await page.waitForChanges();
-    const addressTableContainer = await page.find(`${tag} >>> [data-testid=${DataTestIdsEnum.addressTableContainer}]`);
+    const addressTableContainer = await page.find(`[data-testid=${DataTestIdsEnum.addressTableContainer}]`);
     expect(addressTableContainer.textContent).toContain('89983');
 
     const connectScreenUpdate = {
@@ -92,7 +92,7 @@ describe('ledger-connect-panel', () => {
     };
     component.setProperty('data', connectScreenUpdate);
     await page.waitForChanges();
-    const confirmScreen = await page.find(`${tag} >>> [data-testid=${DataTestIdsEnum.ledgerConfirmAddress}]`);
+    const confirmScreen = await page.find(`[data-testid=${DataTestIdsEnum.ledgerConfirmAddress}]`);
     expect(confirmScreen.textContent).toContain('please confirm your address');
   });
 });

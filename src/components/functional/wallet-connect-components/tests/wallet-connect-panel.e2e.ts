@@ -28,7 +28,6 @@ describe('wallet-connect-panel', () => {
     it('renders component', async () => {
       const page = await createPage();
       expect(page.root).toBeTruthy();
-      expect(page.root).toBeTruthy();
     });
   });
 
