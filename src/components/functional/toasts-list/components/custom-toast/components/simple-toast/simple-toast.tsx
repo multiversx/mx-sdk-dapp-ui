@@ -10,7 +10,6 @@ import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
 @Component({
   tag: 'mvx-simple-toast',
   styleUrl: 'simple-toast.css',
-  shadow: true,
 })
 export class SimpleToast {
   @Prop() toast: ISimpleToast;
@@ -35,7 +34,15 @@ export class SimpleToast {
       return null;
     }
 
-    return <div class={classNames('content-icon', iconClassName)} innerHTML={iconHtml}></div>;
+    return (
+      <div
+        class={{
+          'content-icon': true,
+          [iconClassName]: Boolean(iconClassName),
+        }}
+        innerHTML={iconHtml}
+      ></div>
+    );
   }
 
   render() {

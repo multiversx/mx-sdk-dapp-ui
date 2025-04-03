@@ -7,7 +7,6 @@ import { LedgerConnectBase } from './LedgerConnectBase';
 
 @Component({
   tag: 'mvx-ledger-connect',
-  shadow: true,
 })
 export class LedgerConnect {
   @Element() hostElement: HTMLElement;

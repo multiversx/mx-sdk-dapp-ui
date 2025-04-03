@@ -6,7 +6,6 @@ import { WalletConnectBase } from './WalletConnectBase';
 
 @Component({
   tag: 'mvx-wallet-connect',
-  shadow: true,
 })
 export class WalletConnect {
   @Element() hostElement: HTMLElement;

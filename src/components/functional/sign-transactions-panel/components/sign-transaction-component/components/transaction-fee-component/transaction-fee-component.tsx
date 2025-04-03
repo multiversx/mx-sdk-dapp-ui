@@ -6,7 +6,6 @@ import state from '../../../../signTransactionsPanelStore';
 @Component({
   tag: 'mvx-transaction-fee-component',
   styleUrl: 'transaction-fee-component.css',
-  shadow: true,
 })
 export class TransactionFeeComponent {
   @State() showGasOptions = false;

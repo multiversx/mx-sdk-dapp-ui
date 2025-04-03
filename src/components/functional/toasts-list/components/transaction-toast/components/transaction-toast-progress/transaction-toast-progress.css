@@ -43,7 +43,7 @@
   display: flex;
   overflow: hidden;
   pointer-events: none;
-  background: var(--mx-toast-border, #C7C7C7);
+  background: var(--mx-tx-text-secondary);
   border-radius: 20px;
   height: 4px;
   opacity: 1;
@@ -61,23 +61,23 @@
   border-radius: 20px;
 }
 
-.transaction-toast-bar.fixed {
+.transaction-toast-bar-fixed {
   width: min(var(--start-width, 0%), 50%);
-  background: var(--mx-accent, #000);
+  background: var(--mx-accent);
   animation: progressiveFixedWidthExpansion var(--animation-duration, 6s) cubic-bezier(0.5, 0.95, 0, 0.35) forwards;
 }
 
 .transaction-toast-bar.infinite {
   width: 20%;
   display: flex;
-  background: var(--mx-accent, #000);
+  background: var(--mx-accent);
 }
 
 .transaction-toast-bar.infinite .transaction-toast-bar-line {
   width: 0;
   height: 100%;
   position: relative;
-  background: var(--mx-accent, #000);
+  background: var(--mx-accent);
   border-radius: 20px;
   animation: progressiveInfiniteWidthExpansion var(--animation-duration, 60s) cubic-bezier(0.1, 0.95, 0.25, 0.75) forwards;
   animation-delay: var(--animation-delay, 6s);
@@ -86,7 +86,7 @@
 .transaction-toast-bar.fill {
   width: 0;
   position: absolute;
-  background: var(--mx-accent, #000);
+  background: var(--mx-accent);
   border-radius: 20px;
 }
 

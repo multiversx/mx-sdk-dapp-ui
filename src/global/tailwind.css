@@ -1,4 +1,4 @@
-@import 'tailwindcss' prefix(sdk);
+@import 'tailwindcss' prefix(mvx);
 
 @theme {
   --color-blue-500: blue;

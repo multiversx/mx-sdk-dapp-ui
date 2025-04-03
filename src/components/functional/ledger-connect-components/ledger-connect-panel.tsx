@@ -2,7 +2,6 @@ import { Component, forceUpdate, h, Method, Prop, State } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IEventBus } from 'utils/EventBus';
 
-import { SidePanelSideEnum } from '../../visual/side-panel/side-panel.types';
 import type { ILedgerConnectPanelData } from './ledger-connect.types';
 import { LedgerConnectEventsEnum } from './ledger-connect.types';
 import { LedgerConnectBase } from './LedgerConnectBase';
@@ -10,7 +9,6 @@ import { LedgerConnectBase } from './LedgerConnectBase';
 @Component({
   tag: 'mvx-ledger-connect-panel',
   styleUrl: 'ledger-connect-panel.css',
-  shadow: true,
 })
 export class LedgerConnectPanel {
   @Prop() data: ILedgerConnectPanelData = {
@@ -145,7 +143,7 @@ export class LedgerConnectPanel {
     const bodyContent = this.getBodyContent(accountScreenData, confirmScreenData, connectScreenData);
 
     return (
-      <mvx-side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} panelClassName="ledger-connect-panel" onClose={this.handleClose.bind(this)}>
+      <mvx-side-panel isOpen={this.isOpen} panelClassName="ledger-connect-panel" onClose={this.handleClose.bind(this)}>
         <div class="ledger-connect-content">
           {this.getHeaderContent(accountScreenData, confirmScreenData)}
           <div class="ledger-connect-body">{bodyContent}</div>

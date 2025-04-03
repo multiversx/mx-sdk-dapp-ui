@@ -7,7 +7,6 @@ import type { IConnectScreenData } from '../../ledger-connect.types';
 @Component({
   tag: 'mvx-ledger-connect-screen',
   styleUrl: 'ledger-connect-screen.scss',
-  shadow: true,
 })
 export class LedgerConnectScreen {
   @Prop() connectScreenData: IConnectScreenData;

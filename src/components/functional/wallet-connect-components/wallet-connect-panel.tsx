@@ -1,5 +1,4 @@
 import { Component, Element, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
-import { SidePanelSideEnum } from 'components/visual/side-panel/side-panel.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IEventBus } from 'utils/EventBus';
 
@@ -10,7 +9,6 @@ import { WalletConnectBase } from './WalletConnectBase';
 @Component({
   tag: 'mvx-wallet-connect-panel',
   styleUrl: 'wallet-connect-panel.css',
-  shadow: true,
 })
 export class WalletConnectPanel {
   @Element() hostElement: HTMLElement;
@@ -76,7 +74,7 @@ export class WalletConnectPanel {
 
   render() {
     return (
-      <mvx-side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} panelClassName="wallet-connect-side-panel" onClose={this.handleClose.bind(this)}>
+      <mvx-side-panel isOpen={this.isOpen} panelClassName="wallet-connect-side-panel" onClose={this.handleClose.bind(this)}>
         <div class="wallet-connect-container">
           <div class="wallet-connect-header">
             <h2 data-testid={DataTestIdsEnum.walletConnetModalTitle}>xPortal Mobile Wallet</h2>

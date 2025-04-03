@@ -8,7 +8,6 @@ import type { IAccountScreenData } from '../../ledger-connect.types';
 @Component({
   tag: 'mvx-ledger-account-screen',
   styleUrl: 'ledger-account-screen.scss',
-  shadow: true,
 })
 export class LedgerAccountScreen {
   @Prop() accountScreenData: IAccountScreenData;

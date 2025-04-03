@@ -1,5 +1,4 @@
 import { Component, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
-import { SidePanelSideEnum } from 'components/visual/side-panel/side-panel.types';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
@@ -17,7 +16,6 @@ const signScreens = {
 @Component({
   tag: 'mvx-sign-transactions-panel',
   styleUrl: 'sign-transactions-panel.css',
-  shadow: true,
 })
 export class SignTransactionsPanel {
   private eventBus: IEventBus = new EventBus();
@@ -113,7 +111,7 @@ export class SignTransactionsPanel {
     const SignScreen = signScreens[tokenType];
 
     return (
-      <mvx-side-panel isOpen={this.isOpen} side={SidePanelSideEnum.LEFT} panelClassName="sign-transactions-panel" onClose={this.handleClose.bind(this)}>
+      <mvx-side-panel isOpen={this.isOpen} panelClassName="sign-transactions-panel" onClose={this.handleClose.bind(this)}>
         <div class="sign-transactions-content">
           <div class="sign-transactions-header">
             <h2>Sign transaction</h2>
