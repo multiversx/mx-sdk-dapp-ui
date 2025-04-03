@@ -11,7 +11,7 @@ export class TransactionListItem {
 
   private renderPrimaryIcon() {
     if (!this.transaction.asset) {
-      return <default-transaction-icon-large />;
+      return <mvx-default-transaction-icon-large />;
     }
 
     if (this.transaction.asset.imageUrl) {
@@ -26,7 +26,7 @@ export class TransactionListItem {
       return <span class="icon-text">{this.transaction.asset.text}</span>;
     }
 
-    return <default-transaction-icon-large />;
+    return <mvx-default-transaction-icon-large />;
   }
 
   private renderDetails() {
@@ -35,7 +35,7 @@ export class TransactionListItem {
         {this.transaction.directionLabel && <span class="transaction-details-info-text">{this.transaction.directionLabel}</span>}
 
         <div class="transaction-details-info-icon">
-          {this.transaction.interactorAsset ? <img src={this.transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <default-transaction-icon-small />}
+          {this.transaction.interactorAsset ? <img src={this.transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <mvx-default-transaction-icon-small />}
         </div>
 
         <mvx-trim-text text={this.transaction.interactor} class="transaction-details-info-text" />

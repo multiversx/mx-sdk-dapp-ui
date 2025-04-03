@@ -24,7 +24,7 @@ export class TransactionToastContent {
     const transaction = this.transactions?.[0];
 
     if (!transaction?.asset) {
-      return <default-transaction-icon-small />;
+      return <mvx-default-transaction-icon-small />;
     }
 
     if (transaction.asset.imageUrl) {
@@ -43,7 +43,7 @@ export class TransactionToastContent {
       return <fa-icon icon={this.toastDataState.icon} class={`transaction-toast-icon ${this.toastDataState.iconClassName ?? ''}`}></fa-icon>;
     }
 
-    return <default-transaction-icon-small />;
+    return <mvx-default-transaction-icon-small />;
   }
 
   private renderDetails() {
@@ -57,7 +57,7 @@ export class TransactionToastContent {
       <div class="transaction-toast-details-info">
         {transaction.directionLabel && <span class="transaction-toast-details-info-text">{transaction.directionLabel}</span>}
         <div class="transaction-toast-details-info-icon">
-          {transaction.interactorAsset ? <img src={transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <default-transaction-icon-small />}
+          {transaction.interactorAsset ? <img src={transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <mvx-default-transaction-icon-small />}
         </div>
         <mvx-trim-text text={transaction.interactor} class="transaction-toast-details-info-text" />
       </div>

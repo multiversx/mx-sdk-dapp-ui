@@ -1,14 +1,12 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h } from '@stencil/core';
 
 @Component({
-  tag: 'default-transaction-icon-small',
+  tag: 'mvx-default-transaction-icon-small',
 })
 export class DefaultTransactionIconSmall {
-  @Prop() class?: string;
-
   render() {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="17" viewBox="0 0 16 17" fill="none" class={this.class}>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 17" fill="none">
         <g clip-path="url(#clip0_8136_19149)">
           <rect y="0.319824" width="16" height="16" rx="8" fill="#3B3D48" />
           <path

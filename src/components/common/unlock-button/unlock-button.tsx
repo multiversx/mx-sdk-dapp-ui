@@ -7,14 +7,14 @@ import { ProviderTypeEnum } from 'types/provider.types';
   styleUrl: 'unlock-button.scss',
 })
 export class UnlockButton {
-  @Prop() buttonLabel: string;
-  @Prop() buttonIcon: HTMLElement;
-  @Prop() buttonType?: ProviderTypeEnum;
+  @Prop() label: string;
+  @Prop() icon: HTMLElement;
+  @Prop() type?: ProviderTypeEnum;
   @Prop() class?: string;
 
   render() {
-    const isExtensionProvider = this.buttonType === ProviderTypeEnum.extension;
-    const isMetaMaskProvider = this.buttonType === ProviderTypeEnum.metamask;
+    const isExtensionProvider = this.type === ProviderTypeEnum.extension;
+    const isMetaMaskProvider = this.type === ProviderTypeEnum.metamask;
     const isDetectableProvider = isExtensionProvider || isMetaMaskProvider;
     const isExtensionInstalled = isExtensionProvider && getIsExtensionAvailable();
     const isMetaMaskInstalled = isMetaMaskProvider && getIsMetaMaskAvailable();
@@ -22,15 +22,15 @@ export class UnlockButton {
 
     return (
       <div class={{ 'unlock-button': true, [this.class]: Boolean(this.class) }}>
-        {this.buttonIcon ? (
-          <div class="unlock-button-icon">{this.buttonIcon}</div>
+        {this.icon ? (
+          <div class="unlock-button-icon">{this.icon}</div>
         ) : (
           <div class="unlock-button-icon">
-            <multiversx-logo-icon />
+            <mvx-multiversx-logo-icon />
           </div>
         )}
 
-        <div class="unlock-button-label">{this.buttonLabel}</div>
+        <div class="unlock-button-label">{this.label}</div>
 
         {isDetectableProvider && (
           <div class="unlock-button-status">
@@ -39,7 +39,7 @@ export class UnlockButton {
             ) : (
               <div class="unlock-button-status-install">
                 <span class="unlock-button-status-install-label">Install</span>
-                <arrow-up-right-icon class="unlock-button-status-install-icon" />
+                <mvx-arrow-up-right-icon class="unlock-button-status-install-icon" />
               </div>
             )}
           </div>

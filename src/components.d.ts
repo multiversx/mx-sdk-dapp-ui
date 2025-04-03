@@ -36,28 +36,9 @@ export { ITransactionListItem as ITransactionListItem1 } from "./components/visu
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 export { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
 export namespace Components {
-    interface ArrowUpRightIcon {
-        "class"?: string;
+    interface MvxArrowUpRightIcon {
     }
-    interface BackArrowIcon {
-        "class"?: string;
-    }
-    interface CloseIcon {
-        "class"?: string;
-    }
-    interface DefaultTransactionIconLarge {
-        "class"?: string;
-    }
-    interface DefaultTransactionIconSmall {
-        "class"?: string;
-    }
-    interface ExtensionProviderIcon {
-    }
-    interface LedgerProviderIcon {
-    }
-    interface MetamaskProviderIcon {
-    }
-    interface MultiversxLogoIcon {
+    interface MvxBackArrowIcon {
     }
     interface MvxBalanceComponent {
         "amount": string;
@@ -66,6 +47,8 @@ export namespace Components {
         "usdValue"?: string;
     }
     interface MvxChildren {
+    }
+    interface MvxCloseIcon {
     }
     interface MvxCopyButton {
         "class"?: string;
@@ -77,6 +60,10 @@ export namespace Components {
     interface MvxCustomToast {
         "toast": IComponentToast;
     }
+    interface MvxDefaultTransactionIconLarge {
+    }
+    interface MvxDefaultTransactionIconSmall {
+    }
     interface MvxExplorerLink {
         "class"?: string;
         "dataTestId"?: string;
@@ -84,6 +71,8 @@ export namespace Components {
         "iconClass"?: string;
         "link": string;
         "text"?: string;
+    }
+    interface MvxExtensionProviderIcon {
     }
     interface MvxFaIcon {
         "class"?: string;
@@ -130,8 +119,16 @@ export namespace Components {
     interface MvxLedgerConnectScreen {
         "connectScreenData": IConnectScreenData;
     }
+    interface MvxLedgerProviderIcon {
+    }
+    interface MvxMetamaskProviderIcon {
+    }
+    interface MvxMultiversxLogoIcon {
+    }
     interface MvxNotificationsFeed {
         "getEventBus": () => Promise<IEventBus>;
+    }
+    interface MvxPasskeyProviderIcon {
     }
     interface MvxPendingTransactionsPanel {
         "data": IPendingTransactionsPanelData;
@@ -255,10 +252,10 @@ export namespace Components {
         "text": string;
     }
     interface MvxUnlockButton {
-        "buttonIcon": HTMLElement;
-        "buttonLabel": string;
-        "buttonType"?: ProviderTypeEnum;
         "class"?: string;
+        "icon": HTMLElement;
+        "label": string;
+        "type"?: ProviderTypeEnum;
     }
     interface MvxUnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
@@ -276,11 +273,9 @@ export namespace Components {
         "data": IWalletConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
-    interface PasskeyProviderIcon {
+    interface MvxWalletProviderIcon {
     }
-    interface WalletProviderIcon {
-    }
-    interface XaliasProviderIcon {
+    interface MvxXaliasProviderIcon {
     }
 }
 export interface MvxCustomToastCustomEvent<T> extends CustomEvent<T> {
@@ -324,59 +319,17 @@ export interface MvxUnlockPanelCustomEvent<T> extends CustomEvent<T> {
     target: HTMLMvxUnlockPanelElement;
 }
 declare global {
-    interface HTMLArrowUpRightIconElement extends Components.ArrowUpRightIcon, HTMLStencilElement {
+    interface HTMLMvxArrowUpRightIconElement extends Components.MvxArrowUpRightIcon, HTMLStencilElement {
     }
-    var HTMLArrowUpRightIconElement: {
-        prototype: HTMLArrowUpRightIconElement;
-        new (): HTMLArrowUpRightIconElement;
+    var HTMLMvxArrowUpRightIconElement: {
+        prototype: HTMLMvxArrowUpRightIconElement;
+        new (): HTMLMvxArrowUpRightIconElement;
     };
-    interface HTMLBackArrowIconElement extends Components.BackArrowIcon, HTMLStencilElement {
+    interface HTMLMvxBackArrowIconElement extends Components.MvxBackArrowIcon, HTMLStencilElement {
     }
-    var HTMLBackArrowIconElement: {
-        prototype: HTMLBackArrowIconElement;
-        new (): HTMLBackArrowIconElement;
-    };
-    interface HTMLCloseIconElement extends Components.CloseIcon, HTMLStencilElement {
-    }
-    var HTMLCloseIconElement: {
-        prototype: HTMLCloseIconElement;
-        new (): HTMLCloseIconElement;
-    };
-    interface HTMLDefaultTransactionIconLargeElement extends Components.DefaultTransactionIconLarge, HTMLStencilElement {
-    }
-    var HTMLDefaultTransactionIconLargeElement: {
-        prototype: HTMLDefaultTransactionIconLargeElement;
-        new (): HTMLDefaultTransactionIconLargeElement;
-    };
-    interface HTMLDefaultTransactionIconSmallElement extends Components.DefaultTransactionIconSmall, HTMLStencilElement {
-    }
-    var HTMLDefaultTransactionIconSmallElement: {
-        prototype: HTMLDefaultTransactionIconSmallElement;
-        new (): HTMLDefaultTransactionIconSmallElement;
-    };
-    interface HTMLExtensionProviderIconElement extends Components.ExtensionProviderIcon, HTMLStencilElement {
-    }
-    var HTMLExtensionProviderIconElement: {
-        prototype: HTMLExtensionProviderIconElement;
-        new (): HTMLExtensionProviderIconElement;
-    };
-    interface HTMLLedgerProviderIconElement extends Components.LedgerProviderIcon, HTMLStencilElement {
-    }
-    var HTMLLedgerProviderIconElement: {
-        prototype: HTMLLedgerProviderIconElement;
-        new (): HTMLLedgerProviderIconElement;
-    };
-    interface HTMLMetamaskProviderIconElement extends Components.MetamaskProviderIcon, HTMLStencilElement {
-    }
-    var HTMLMetamaskProviderIconElement: {
-        prototype: HTMLMetamaskProviderIconElement;
-        new (): HTMLMetamaskProviderIconElement;
-    };
-    interface HTMLMultiversxLogoIconElement extends Components.MultiversxLogoIcon, HTMLStencilElement {
-    }
-    var HTMLMultiversxLogoIconElement: {
-        prototype: HTMLMultiversxLogoIconElement;
-        new (): HTMLMultiversxLogoIconElement;
+    var HTMLMvxBackArrowIconElement: {
+        prototype: HTMLMvxBackArrowIconElement;
+        new (): HTMLMvxBackArrowIconElement;
     };
     interface HTMLMvxBalanceComponentElement extends Components.MvxBalanceComponent, HTMLStencilElement {
     }
@@ -389,6 +342,12 @@ declare global {
     var HTMLMvxChildrenElement: {
         prototype: HTMLMvxChildrenElement;
         new (): HTMLMvxChildrenElement;
+    };
+    interface HTMLMvxCloseIconElement extends Components.MvxCloseIcon, HTMLStencilElement {
+    }
+    var HTMLMvxCloseIconElement: {
+        prototype: HTMLMvxCloseIconElement;
+        new (): HTMLMvxCloseIconElement;
     };
     interface HTMLMvxCopyButtonElement extends Components.MvxCopyButton, HTMLStencilElement {
     }
@@ -413,11 +372,29 @@ declare global {
         prototype: HTMLMvxCustomToastElement;
         new (): HTMLMvxCustomToastElement;
     };
+    interface HTMLMvxDefaultTransactionIconLargeElement extends Components.MvxDefaultTransactionIconLarge, HTMLStencilElement {
+    }
+    var HTMLMvxDefaultTransactionIconLargeElement: {
+        prototype: HTMLMvxDefaultTransactionIconLargeElement;
+        new (): HTMLMvxDefaultTransactionIconLargeElement;
+    };
+    interface HTMLMvxDefaultTransactionIconSmallElement extends Components.MvxDefaultTransactionIconSmall, HTMLStencilElement {
+    }
+    var HTMLMvxDefaultTransactionIconSmallElement: {
+        prototype: HTMLMvxDefaultTransactionIconSmallElement;
+        new (): HTMLMvxDefaultTransactionIconSmallElement;
+    };
     interface HTMLMvxExplorerLinkElement extends Components.MvxExplorerLink, HTMLStencilElement {
     }
     var HTMLMvxExplorerLinkElement: {
         prototype: HTMLMvxExplorerLinkElement;
         new (): HTMLMvxExplorerLinkElement;
+    };
+    interface HTMLMvxExtensionProviderIconElement extends Components.MvxExtensionProviderIcon, HTMLStencilElement {
+    }
+    var HTMLMvxExtensionProviderIconElement: {
+        prototype: HTMLMvxExtensionProviderIconElement;
+        new (): HTMLMvxExtensionProviderIconElement;
     };
     interface HTMLMvxFaIconElement extends Components.MvxFaIcon, HTMLStencilElement {
     }
@@ -532,11 +509,35 @@ declare global {
         prototype: HTMLMvxLedgerConnectScreenElement;
         new (): HTMLMvxLedgerConnectScreenElement;
     };
+    interface HTMLMvxLedgerProviderIconElement extends Components.MvxLedgerProviderIcon, HTMLStencilElement {
+    }
+    var HTMLMvxLedgerProviderIconElement: {
+        prototype: HTMLMvxLedgerProviderIconElement;
+        new (): HTMLMvxLedgerProviderIconElement;
+    };
+    interface HTMLMvxMetamaskProviderIconElement extends Components.MvxMetamaskProviderIcon, HTMLStencilElement {
+    }
+    var HTMLMvxMetamaskProviderIconElement: {
+        prototype: HTMLMvxMetamaskProviderIconElement;
+        new (): HTMLMvxMetamaskProviderIconElement;
+    };
+    interface HTMLMvxMultiversxLogoIconElement extends Components.MvxMultiversxLogoIcon, HTMLStencilElement {
+    }
+    var HTMLMvxMultiversxLogoIconElement: {
+        prototype: HTMLMvxMultiversxLogoIconElement;
+        new (): HTMLMvxMultiversxLogoIconElement;
+    };
     interface HTMLMvxNotificationsFeedElement extends Components.MvxNotificationsFeed, HTMLStencilElement {
     }
     var HTMLMvxNotificationsFeedElement: {
         prototype: HTMLMvxNotificationsFeedElement;
         new (): HTMLMvxNotificationsFeedElement;
+    };
+    interface HTMLMvxPasskeyProviderIconElement extends Components.MvxPasskeyProviderIcon, HTMLStencilElement {
+    }
+    var HTMLMvxPasskeyProviderIconElement: {
+        prototype: HTMLMvxPasskeyProviderIconElement;
+        new (): HTMLMvxPasskeyProviderIconElement;
     };
     interface HTMLMvxPendingTransactionsPanelElement extends Components.MvxPendingTransactionsPanel, HTMLStencilElement {
     }
@@ -781,39 +782,30 @@ declare global {
         prototype: HTMLMvxWalletConnectPanelElement;
         new (): HTMLMvxWalletConnectPanelElement;
     };
-    interface HTMLPasskeyProviderIconElement extends Components.PasskeyProviderIcon, HTMLStencilElement {
+    interface HTMLMvxWalletProviderIconElement extends Components.MvxWalletProviderIcon, HTMLStencilElement {
     }
-    var HTMLPasskeyProviderIconElement: {
-        prototype: HTMLPasskeyProviderIconElement;
-        new (): HTMLPasskeyProviderIconElement;
+    var HTMLMvxWalletProviderIconElement: {
+        prototype: HTMLMvxWalletProviderIconElement;
+        new (): HTMLMvxWalletProviderIconElement;
     };
-    interface HTMLWalletProviderIconElement extends Components.WalletProviderIcon, HTMLStencilElement {
+    interface HTMLMvxXaliasProviderIconElement extends Components.MvxXaliasProviderIcon, HTMLStencilElement {
     }
-    var HTMLWalletProviderIconElement: {
-        prototype: HTMLWalletProviderIconElement;
-        new (): HTMLWalletProviderIconElement;
-    };
-    interface HTMLXaliasProviderIconElement extends Components.XaliasProviderIcon, HTMLStencilElement {
-    }
-    var HTMLXaliasProviderIconElement: {
-        prototype: HTMLXaliasProviderIconElement;
-        new (): HTMLXaliasProviderIconElement;
+    var HTMLMvxXaliasProviderIconElement: {
+        prototype: HTMLMvxXaliasProviderIconElement;
+        new (): HTMLMvxXaliasProviderIconElement;
     };
     interface HTMLElementTagNameMap {
-        "arrow-up-right-icon": HTMLArrowUpRightIconElement;
-        "back-arrow-icon": HTMLBackArrowIconElement;
-        "close-icon": HTMLCloseIconElement;
-        "default-transaction-icon-large": HTMLDefaultTransactionIconLargeElement;
-        "default-transaction-icon-small": HTMLDefaultTransactionIconSmallElement;
-        "extension-provider-icon": HTMLExtensionProviderIconElement;
-        "ledger-provider-icon": HTMLLedgerProviderIconElement;
-        "metamask-provider-icon": HTMLMetamaskProviderIconElement;
-        "multiversx-logo-icon": HTMLMultiversxLogoIconElement;
+        "mvx-arrow-up-right-icon": HTMLMvxArrowUpRightIconElement;
+        "mvx-back-arrow-icon": HTMLMvxBackArrowIconElement;
         "mvx-balance-component": HTMLMvxBalanceComponentElement;
         "mvx-children": HTMLMvxChildrenElement;
+        "mvx-close-icon": HTMLMvxCloseIconElement;
         "mvx-copy-button": HTMLMvxCopyButtonElement;
         "mvx-custom-toast": HTMLMvxCustomToastElement;
+        "mvx-default-transaction-icon-large": HTMLMvxDefaultTransactionIconLargeElement;
+        "mvx-default-transaction-icon-small": HTMLMvxDefaultTransactionIconSmallElement;
         "mvx-explorer-link": HTMLMvxExplorerLinkElement;
+        "mvx-extension-provider-icon": HTMLMvxExtensionProviderIconElement;
         "mvx-fa-icon": HTMLMvxFaIconElement;
         "mvx-format-amount": HTMLMvxFormatAmountElement;
         "mvx-fungible-component": HTMLMvxFungibleComponentElement;
@@ -825,7 +817,11 @@ declare global {
         "mvx-ledger-connect": HTMLMvxLedgerConnectElement;
         "mvx-ledger-connect-panel": HTMLMvxLedgerConnectPanelElement;
         "mvx-ledger-connect-screen": HTMLMvxLedgerConnectScreenElement;
+        "mvx-ledger-provider-icon": HTMLMvxLedgerProviderIconElement;
+        "mvx-metamask-provider-icon": HTMLMvxMetamaskProviderIconElement;
+        "mvx-multiversx-logo-icon": HTMLMvxMultiversxLogoIconElement;
         "mvx-notifications-feed": HTMLMvxNotificationsFeedElement;
+        "mvx-passkey-provider-icon": HTMLMvxPasskeyProviderIconElement;
         "mvx-pending-transactions-panel": HTMLMvxPendingTransactionsPanelElement;
         "mvx-provider-button": HTMLMvxProviderButtonElement;
         "mvx-side-panel": HTMLMvxSidePanelElement;
@@ -857,34 +853,14 @@ declare global {
         "mvx-wallet-connect": HTMLMvxWalletConnectElement;
         "mvx-wallet-connect-body": HTMLMvxWalletConnectBodyElement;
         "mvx-wallet-connect-panel": HTMLMvxWalletConnectPanelElement;
-        "passkey-provider-icon": HTMLPasskeyProviderIconElement;
-        "wallet-provider-icon": HTMLWalletProviderIconElement;
-        "xalias-provider-icon": HTMLXaliasProviderIconElement;
+        "mvx-wallet-provider-icon": HTMLMvxWalletProviderIconElement;
+        "mvx-xalias-provider-icon": HTMLMvxXaliasProviderIconElement;
     }
 }
 declare namespace LocalJSX {
-    interface ArrowUpRightIcon {
-        "class"?: string;
+    interface MvxArrowUpRightIcon {
     }
-    interface BackArrowIcon {
-        "class"?: string;
-    }
-    interface CloseIcon {
-        "class"?: string;
-    }
-    interface DefaultTransactionIconLarge {
-        "class"?: string;
-    }
-    interface DefaultTransactionIconSmall {
-        "class"?: string;
-    }
-    interface ExtensionProviderIcon {
-    }
-    interface LedgerProviderIcon {
-    }
-    interface MetamaskProviderIcon {
-    }
-    interface MultiversxLogoIcon {
+    interface MvxBackArrowIcon {
     }
     interface MvxBalanceComponent {
         "amount"?: string;
@@ -893,6 +869,8 @@ declare namespace LocalJSX {
         "usdValue"?: string;
     }
     interface MvxChildren {
+    }
+    interface MvxCloseIcon {
     }
     interface MvxCopyButton {
         "class"?: string;
@@ -905,6 +883,10 @@ declare namespace LocalJSX {
         "onDeleteToast"?: (event: MvxCustomToastCustomEvent<string>) => void;
         "toast"?: IComponentToast;
     }
+    interface MvxDefaultTransactionIconLarge {
+    }
+    interface MvxDefaultTransactionIconSmall {
+    }
     interface MvxExplorerLink {
         "class"?: string;
         "dataTestId"?: string;
@@ -912,6 +894,8 @@ declare namespace LocalJSX {
         "iconClass"?: string;
         "link"?: string;
         "text"?: string;
+    }
+    interface MvxExtensionProviderIcon {
     }
     interface MvxFaIcon {
         "class"?: string;
@@ -963,7 +947,15 @@ declare namespace LocalJSX {
         "connectScreenData"?: IConnectScreenData;
         "onConnect"?: (event: MvxLedgerConnectScreenCustomEvent<any>) => void;
     }
+    interface MvxLedgerProviderIcon {
+    }
+    interface MvxMetamaskProviderIcon {
+    }
+    interface MvxMultiversxLogoIcon {
+    }
     interface MvxNotificationsFeed {
+    }
+    interface MvxPasskeyProviderIcon {
     }
     interface MvxPendingTransactionsPanel {
         "data"?: IPendingTransactionsPanelData;
@@ -1089,10 +1081,10 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface MvxUnlockButton {
-        "buttonIcon"?: HTMLElement;
-        "buttonLabel"?: string;
-        "buttonType"?: ProviderTypeEnum;
         "class"?: string;
+        "icon"?: HTMLElement;
+        "label"?: string;
+        "type"?: ProviderTypeEnum;
     }
     interface MvxUnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
@@ -1110,27 +1102,22 @@ declare namespace LocalJSX {
     interface MvxWalletConnectPanel {
         "data"?: IWalletConnectPanelData;
     }
-    interface PasskeyProviderIcon {
+    interface MvxWalletProviderIcon {
     }
-    interface WalletProviderIcon {
-    }
-    interface XaliasProviderIcon {
+    interface MvxXaliasProviderIcon {
     }
     interface IntrinsicElements {
-        "arrow-up-right-icon": ArrowUpRightIcon;
-        "back-arrow-icon": BackArrowIcon;
-        "close-icon": CloseIcon;
-        "default-transaction-icon-large": DefaultTransactionIconLarge;
-        "default-transaction-icon-small": DefaultTransactionIconSmall;
-        "extension-provider-icon": ExtensionProviderIcon;
-        "ledger-provider-icon": LedgerProviderIcon;
-        "metamask-provider-icon": MetamaskProviderIcon;
-        "multiversx-logo-icon": MultiversxLogoIcon;
+        "mvx-arrow-up-right-icon": MvxArrowUpRightIcon;
+        "mvx-back-arrow-icon": MvxBackArrowIcon;
         "mvx-balance-component": MvxBalanceComponent;
         "mvx-children": MvxChildren;
+        "mvx-close-icon": MvxCloseIcon;
         "mvx-copy-button": MvxCopyButton;
         "mvx-custom-toast": MvxCustomToast;
+        "mvx-default-transaction-icon-large": MvxDefaultTransactionIconLarge;
+        "mvx-default-transaction-icon-small": MvxDefaultTransactionIconSmall;
         "mvx-explorer-link": MvxExplorerLink;
+        "mvx-extension-provider-icon": MvxExtensionProviderIcon;
         "mvx-fa-icon": MvxFaIcon;
         "mvx-format-amount": MvxFormatAmount;
         "mvx-fungible-component": MvxFungibleComponent;
@@ -1142,7 +1129,11 @@ declare namespace LocalJSX {
         "mvx-ledger-connect": MvxLedgerConnect;
         "mvx-ledger-connect-panel": MvxLedgerConnectPanel;
         "mvx-ledger-connect-screen": MvxLedgerConnectScreen;
+        "mvx-ledger-provider-icon": MvxLedgerProviderIcon;
+        "mvx-metamask-provider-icon": MvxMetamaskProviderIcon;
+        "mvx-multiversx-logo-icon": MvxMultiversxLogoIcon;
         "mvx-notifications-feed": MvxNotificationsFeed;
+        "mvx-passkey-provider-icon": MvxPasskeyProviderIcon;
         "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
         "mvx-provider-button": MvxProviderButton;
         "mvx-side-panel": MvxSidePanel;
@@ -1174,29 +1165,25 @@ declare namespace LocalJSX {
         "mvx-wallet-connect": MvxWalletConnect;
         "mvx-wallet-connect-body": MvxWalletConnectBody;
         "mvx-wallet-connect-panel": MvxWalletConnectPanel;
-        "passkey-provider-icon": PasskeyProviderIcon;
-        "wallet-provider-icon": WalletProviderIcon;
-        "xalias-provider-icon": XaliasProviderIcon;
+        "mvx-wallet-provider-icon": MvxWalletProviderIcon;
+        "mvx-xalias-provider-icon": MvxXaliasProviderIcon;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "arrow-up-right-icon": LocalJSX.ArrowUpRightIcon & JSXBase.HTMLAttributes<HTMLArrowUpRightIconElement>;
-            "back-arrow-icon": LocalJSX.BackArrowIcon & JSXBase.HTMLAttributes<HTMLBackArrowIconElement>;
-            "close-icon": LocalJSX.CloseIcon & JSXBase.HTMLAttributes<HTMLCloseIconElement>;
-            "default-transaction-icon-large": LocalJSX.DefaultTransactionIconLarge & JSXBase.HTMLAttributes<HTMLDefaultTransactionIconLargeElement>;
-            "default-transaction-icon-small": LocalJSX.DefaultTransactionIconSmall & JSXBase.HTMLAttributes<HTMLDefaultTransactionIconSmallElement>;
-            "extension-provider-icon": LocalJSX.ExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLExtensionProviderIconElement>;
-            "ledger-provider-icon": LocalJSX.LedgerProviderIcon & JSXBase.HTMLAttributes<HTMLLedgerProviderIconElement>;
-            "metamask-provider-icon": LocalJSX.MetamaskProviderIcon & JSXBase.HTMLAttributes<HTMLMetamaskProviderIconElement>;
-            "multiversx-logo-icon": LocalJSX.MultiversxLogoIcon & JSXBase.HTMLAttributes<HTMLMultiversxLogoIconElement>;
+            "mvx-arrow-up-right-icon": LocalJSX.MvxArrowUpRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowUpRightIconElement>;
+            "mvx-back-arrow-icon": LocalJSX.MvxBackArrowIcon & JSXBase.HTMLAttributes<HTMLMvxBackArrowIconElement>;
             "mvx-balance-component": LocalJSX.MvxBalanceComponent & JSXBase.HTMLAttributes<HTMLMvxBalanceComponentElement>;
             "mvx-children": LocalJSX.MvxChildren & JSXBase.HTMLAttributes<HTMLMvxChildrenElement>;
+            "mvx-close-icon": LocalJSX.MvxCloseIcon & JSXBase.HTMLAttributes<HTMLMvxCloseIconElement>;
             "mvx-copy-button": LocalJSX.MvxCopyButton & JSXBase.HTMLAttributes<HTMLMvxCopyButtonElement>;
             "mvx-custom-toast": LocalJSX.MvxCustomToast & JSXBase.HTMLAttributes<HTMLMvxCustomToastElement>;
+            "mvx-default-transaction-icon-large": LocalJSX.MvxDefaultTransactionIconLarge & JSXBase.HTMLAttributes<HTMLMvxDefaultTransactionIconLargeElement>;
+            "mvx-default-transaction-icon-small": LocalJSX.MvxDefaultTransactionIconSmall & JSXBase.HTMLAttributes<HTMLMvxDefaultTransactionIconSmallElement>;
             "mvx-explorer-link": LocalJSX.MvxExplorerLink & JSXBase.HTMLAttributes<HTMLMvxExplorerLinkElement>;
+            "mvx-extension-provider-icon": LocalJSX.MvxExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxExtensionProviderIconElement>;
             "mvx-fa-icon": LocalJSX.MvxFaIcon & JSXBase.HTMLAttributes<HTMLMvxFaIconElement>;
             "mvx-format-amount": LocalJSX.MvxFormatAmount & JSXBase.HTMLAttributes<HTMLMvxFormatAmountElement>;
             "mvx-fungible-component": LocalJSX.MvxFungibleComponent & JSXBase.HTMLAttributes<HTMLMvxFungibleComponentElement>;
@@ -1208,7 +1195,11 @@ declare module "@stencil/core" {
             "mvx-ledger-connect": LocalJSX.MvxLedgerConnect & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectElement>;
             "mvx-ledger-connect-panel": LocalJSX.MvxLedgerConnectPanel & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectPanelElement>;
             "mvx-ledger-connect-screen": LocalJSX.MvxLedgerConnectScreen & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectScreenElement>;
+            "mvx-ledger-provider-icon": LocalJSX.MvxLedgerProviderIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerProviderIconElement>;
+            "mvx-metamask-provider-icon": LocalJSX.MvxMetamaskProviderIcon & JSXBase.HTMLAttributes<HTMLMvxMetamaskProviderIconElement>;
+            "mvx-multiversx-logo-icon": LocalJSX.MvxMultiversxLogoIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxLogoIconElement>;
             "mvx-notifications-feed": LocalJSX.MvxNotificationsFeed & JSXBase.HTMLAttributes<HTMLMvxNotificationsFeedElement>;
+            "mvx-passkey-provider-icon": LocalJSX.MvxPasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLMvxPasskeyProviderIconElement>;
             "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
             "mvx-provider-button": LocalJSX.MvxProviderButton & JSXBase.HTMLAttributes<HTMLMvxProviderButtonElement>;
             "mvx-side-panel": LocalJSX.MvxSidePanel & JSXBase.HTMLAttributes<HTMLMvxSidePanelElement>;
@@ -1240,9 +1231,8 @@ declare module "@stencil/core" {
             "mvx-wallet-connect": LocalJSX.MvxWalletConnect & JSXBase.HTMLAttributes<HTMLMvxWalletConnectElement>;
             "mvx-wallet-connect-body": LocalJSX.MvxWalletConnectBody & JSXBase.HTMLAttributes<HTMLMvxWalletConnectBodyElement>;
             "mvx-wallet-connect-panel": LocalJSX.MvxWalletConnectPanel & JSXBase.HTMLAttributes<HTMLMvxWalletConnectPanelElement>;
-            "passkey-provider-icon": LocalJSX.PasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLPasskeyProviderIconElement>;
-            "wallet-provider-icon": LocalJSX.WalletProviderIcon & JSXBase.HTMLAttributes<HTMLWalletProviderIconElement>;
-            "xalias-provider-icon": LocalJSX.XaliasProviderIcon & JSXBase.HTMLAttributes<HTMLXaliasProviderIconElement>;
+            "mvx-wallet-provider-icon": LocalJSX.MvxWalletProviderIcon & JSXBase.HTMLAttributes<HTMLMvxWalletProviderIconElement>;
+            "mvx-xalias-provider-icon": LocalJSX.MvxXaliasProviderIcon & JSXBase.HTMLAttributes<HTMLMvxXaliasProviderIconElement>;
         }
     }
 }

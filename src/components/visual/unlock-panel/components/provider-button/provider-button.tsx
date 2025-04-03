@@ -13,31 +13,31 @@ enum ProviderButtonLabelsEnum {
 
 const providerButtonInfo = {
   [ProviderTypeEnum.extension]: {
-    icon: <extension-provider-icon />,
+    icon: <mvx-extension-provider-icon />,
     label: ProviderButtonLabelsEnum.extension,
   },
   [ProviderTypeEnum.metamask]: {
-    icon: <metamask-provider-icon />,
+    icon: <mvx-metamask-provider-icon />,
     label: ProviderButtonLabelsEnum.metamask,
   },
   [ProviderTypeEnum.passkey]: {
-    icon: <passkey-provider-icon />,
+    icon: <mvx-passkey-provider-icon />,
     label: ProviderButtonLabelsEnum.passkey,
   },
   [ProviderTypeEnum.walletConnect]: {
-    icon: <multiversx-logo-icon />,
+    icon: <mvx-multiversx-logo-icon />,
     label: ProviderButtonLabelsEnum.xportal,
   },
   [ProviderTypeEnum.ledger]: {
-    icon: <ledger-provider-icon />,
+    icon: <mvx-ledger-provider-icon />,
     label: ProviderButtonLabelsEnum.ledger,
   },
   [ProviderTypeEnum.crossWindow]: {
-    icon: <wallet-provider-icon />,
+    icon: <mvx-wallet-provider-icon />,
     label: ProviderButtonLabelsEnum.wallet,
   },
   [ProviderTypeEnum.xalias]: {
-    icon: <xalias-provider-icon />,
+    icon: <mvx-xalias-provider-icon />,
     label: ProviderButtonLabelsEnum.xalias,
   },
 };
@@ -57,6 +57,6 @@ export class ProviderButton {
       return <Fragment />;
     }
 
-    return <mvx-unlock-button buttonIcon={walletInfo.icon} buttonLabel={walletInfo.label} buttonType={this.type} class={this.class} />;
+    return <mvx-unlock-button icon={walletInfo.icon} label={walletInfo.label} type={this.type} class={this.class} />;
   }
 }
