@@ -85,7 +85,7 @@ describe('transaction-list-item', () => {
         asset: {},
       };
       const page = await createPage(transaction);
-      const defaultIcon = page.root.querySelector('default-transaction-icon-large');
+      const defaultIcon = page.root.querySelector('mvx-default-transaction-icon-large');
       expect(defaultIcon).toBeTruthy();
     });
 
@@ -97,7 +97,7 @@ describe('transaction-list-item', () => {
       const page = await createPage(transaction);
       const regularIcon = page.root.querySelector('.icon-text');
       expect(regularIcon).toBeFalsy();
-      const defaultIcon = page.root.querySelector('default-transaction-icon-large');
+      const defaultIcon = page.root.querySelector('mvx-default-transaction-icon-large');
       expect(defaultIcon).toBeTruthy();
     });
   });
