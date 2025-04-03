@@ -1,5 +1,5 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Event, h, Prop, State } from '@stencil/core';
+import { Component, Element, Event, h, Prop, State } from '@stencil/core';
 import classNames from 'classnames';
 import { ProviderTypeEnum } from 'types/provider.types';
 
@@ -10,6 +10,8 @@ import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
   styleUrl: 'unlock-panel.scss',
 })
 export class UnlockPanel {
+  @Element() host: HTMLElement;
+
   @Prop() isOpen: boolean = false;
   @Prop() allowedProviders?: ProviderTypeEnum[] = Object.values(ProviderTypeEnum);
 
@@ -18,6 +20,7 @@ export class UnlockPanel {
 
   @State() isLoggingIn: boolean = false;
   @State() selectedMethod: ProviderTypeEnum | null = null;
+  @State() childElements: Element[] = [];
 
   private isExtensionInstalled(currentProvider: ProviderTypeEnum) {
     return currentProvider === ProviderTypeEnum.extension && getIsExtensionAvailable();
@@ -78,6 +81,11 @@ export class UnlockPanel {
     this.close.emit();
   }
 
+  componentWillLoad() {
+    this.childElements = [...this.host.children];
+    this.host.innerHTML = '';
+  }
+
   render() {
     const detectedProviders: ProviderTypeEnum[] = this.allowedProviders.filter(
       allowedProvider => this.isExtensionInstalled(allowedProvider) || this.isMetaMaskInstalled(allowedProvider),
@@ -96,8 +104,8 @@ export class UnlockPanel {
       >
         <div id="anchor" ref={element => this.observeContainer(element)} />
 
-        <div class="unlock-panel">
-          {!this.isLoggingIn && (
+        {!this.isLoggingIn && (
+          <div class="unlock-panel">
             <div class="unlock-panel-groups">
               {hasDetectedProviders && (
                 <div class="unlock-panel-group">
@@ -134,13 +142,16 @@ export class UnlockPanel {
                   ))}
                 </div>
               </div>
-
-              <slot></slot>
-
-              <img src={new URL('../collection/assets/unlock-panel-wallet.png', import.meta.url).href} />
             </div>
-          )}
-        </div>
+
+            <div>
+              External Providers
+              <mxv-children innerHTML={this.childElements.map(childElement => childElement.innerHTML)} />
+            </div>
+
+            <img src={new URL('../collection/assets/unlock-panel-wallet.png', import.meta.url).href} />
+          </div>
+        )}
       </mvx-side-panel>
     );
   }

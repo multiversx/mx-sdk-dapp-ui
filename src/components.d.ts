@@ -65,6 +65,8 @@ export namespace Components {
         "ticker": string;
         "usdValue"?: string;
     }
+    interface MvxChildren {
+    }
     interface MvxCopyButton {
         "class"?: string;
         "copyIcon"?: IconDefinition;
@@ -381,6 +383,12 @@ declare global {
     var HTMLMvxBalanceComponentElement: {
         prototype: HTMLMvxBalanceComponentElement;
         new (): HTMLMvxBalanceComponentElement;
+    };
+    interface HTMLMvxChildrenElement extends Components.MvxChildren, HTMLStencilElement {
+    }
+    var HTMLMvxChildrenElement: {
+        prototype: HTMLMvxChildrenElement;
+        new (): HTMLMvxChildrenElement;
     };
     interface HTMLMvxCopyButtonElement extends Components.MvxCopyButton, HTMLStencilElement {
     }
@@ -802,6 +810,7 @@ declare global {
         "metamask-provider-icon": HTMLMetamaskProviderIconElement;
         "multiversx-logo-icon": HTMLMultiversxLogoIconElement;
         "mvx-balance-component": HTMLMvxBalanceComponentElement;
+        "mvx-children": HTMLMvxChildrenElement;
         "mvx-copy-button": HTMLMvxCopyButtonElement;
         "mvx-custom-toast": HTMLMvxCustomToastElement;
         "mvx-explorer-link": HTMLMvxExplorerLinkElement;
@@ -882,6 +891,8 @@ declare namespace LocalJSX {
         "header"?: string;
         "ticker"?: string;
         "usdValue"?: string;
+    }
+    interface MvxChildren {
     }
     interface MvxCopyButton {
         "class"?: string;
@@ -1116,6 +1127,7 @@ declare namespace LocalJSX {
         "metamask-provider-icon": MetamaskProviderIcon;
         "multiversx-logo-icon": MultiversxLogoIcon;
         "mvx-balance-component": MvxBalanceComponent;
+        "mvx-children": MvxChildren;
         "mvx-copy-button": MvxCopyButton;
         "mvx-custom-toast": MvxCustomToast;
         "mvx-explorer-link": MvxExplorerLink;
@@ -1181,6 +1193,7 @@ declare module "@stencil/core" {
             "metamask-provider-icon": LocalJSX.MetamaskProviderIcon & JSXBase.HTMLAttributes<HTMLMetamaskProviderIconElement>;
             "multiversx-logo-icon": LocalJSX.MultiversxLogoIcon & JSXBase.HTMLAttributes<HTMLMultiversxLogoIconElement>;
             "mvx-balance-component": LocalJSX.MvxBalanceComponent & JSXBase.HTMLAttributes<HTMLMvxBalanceComponentElement>;
+            "mvx-children": LocalJSX.MvxChildren & JSXBase.HTMLAttributes<HTMLMvxChildrenElement>;
             "mvx-copy-button": LocalJSX.MvxCopyButton & JSXBase.HTMLAttributes<HTMLMvxCopyButtonElement>;
             "mvx-custom-toast": LocalJSX.MvxCustomToast & JSXBase.HTMLAttributes<HTMLMvxCustomToastElement>;
             "mvx-explorer-link": LocalJSX.MvxExplorerLink & JSXBase.HTMLAttributes<HTMLMvxExplorerLinkElement>;

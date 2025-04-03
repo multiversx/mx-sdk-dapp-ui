@@ -5,6 +5,7 @@ import classNames from 'classnames';
 @Component({
   tag: 'mvx-side-panel',
   styleUrl: 'side-panel.scss',
+  shadow: true,
 })
 export class SidePanel {
   @Prop() isOpen: boolean = false;
@@ -43,21 +44,21 @@ export class SidePanel {
     clearTimeout(this.closeTimeout);
   }
 
-  handleOverlayClick = (event: MouseEvent) => {
+  handleOverlayClick(event: MouseEvent) {
     if (event.target === event.currentTarget) {
       this.close.emit();
     }
-  };
+  }
 
-  handleCloseClick = (event: MouseEvent) => {
+  handleCloseClick(event: MouseEvent) {
     event.preventDefault();
     this.close.emit();
-  };
+  }
 
-  handleBackClick = (event: MouseEvent) => {
+  handleBackClick(event: MouseEvent) {
     event.preventDefault();
     this.back.emit();
-  };
+  }
 
   render() {
     if (!this.isVisible) {
@@ -73,13 +74,13 @@ export class SidePanel {
       >
         <div class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}>
           <div class="side-panel-heading">
-            {this.withBackButton && <back-arrow-icon onClick={this.handleBackClick} class="side-panel-heading-back" />}
+            {this.withBackButton && <back-arrow-icon onClick={this.handleBackClick.bind(this)} class="side-panel-heading-back" />}
             <div class="side-panel-heading-title">{this.panelTitle}</div>
-            <close-icon class="side-panel-heading-close" onClick={this.handleCloseClick} />
+            <close-icon class="side-panel-heading-close" onClick={this.handleCloseClick.bind(this)} />
           </div>
 
           <div class="side-panel-content">
-            <slot></slot>
+            <slot />
           </div>
         </div>
       </div>
