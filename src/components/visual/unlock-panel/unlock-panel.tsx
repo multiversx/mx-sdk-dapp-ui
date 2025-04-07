@@ -1,7 +1,8 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Element, Event, h, Prop, State } from '@stencil/core';
 import classNames from 'classnames';
-import { ProviderTypeEnum } from 'types/provider.types';
+import { ProviderLabelsEnum, ProviderTypeEnum } from 'types/provider.types';
+import { processImgSrc } from 'utils/processImgSrc';
 
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
 
@@ -92,15 +93,20 @@ export class UnlockPanel {
     );
 
     const otherProviders = this.allowedProviders.filter(allowedProvider => !detectedProviders.includes(allowedProvider));
+    const panelTitle = this.selectedMethod ? ProviderLabelsEnum[this.selectedMethod] : 'Connect your wallet';
+    const hasExternalProviders = this.childElements.length > 0;
     const hasDetectedProviders = detectedProviders.length > 0;
 
     return (
       <mvx-side-panel
         isOpen={this.isOpen}
-        panelTitle="Connect your wallet"
+        panelTitle={panelTitle}
+        withBackButton={this.isLoggingIn}
         onClose={this.handleClose.bind(this)}
         onBack={this.handleResetLoginState.bind(this)}
-        withBackButton={this.isLoggingIn}
+        panelClassName={classNames('unlock-panel-wrapper', {
+          selected: Boolean(this.selectedMethod),
+        })}
       >
         <div id="anchor" ref={element => this.observeContainer(element)} />
 
@@ -142,14 +148,29 @@ export class UnlockPanel {
                   ))}
                 </div>
               </div>
+
+              {hasExternalProviders && (
+                <div class="unlock-panel-group">
+                  <div class="unlock-panel-group-label">External Providers</div>
+                  <div class="unlock-panel-group-providers">
+                    <mxv-children innerHTML={this.childElements.map(childElement => childElement.innerHTML)} />
+                  </div>
+                </div>
+              )}
             </div>
 
-            <div>
-              External Providers
-              <mxv-children innerHTML={this.childElements.map(childElement => childElement.innerHTML)} />
-            </div>
+            <div class="unlock-panel-footer">
+              <img src={processImgSrc('unlock-panel-wallet.png')} class="unlock-panel-footer-image" />
 
-            <img src={new URL('../collection/assets/unlock-panel-wallet.png', import.meta.url).href} />
+              <div class="unlock-panel-footer-wrapper">
+                <div class="unlock-panel-footer-title">Don't have a wallet?</div>
+                <div class="unlock-panel-footer-subtitle">
+                  Take full control of <br /> your assets.
+                </div>
+
+                <mvx-arrow-up-right-icon class="unlock-panel-footer-icon" />
+              </div>
+            </div>
           </div>
         )}
       </mvx-side-panel>

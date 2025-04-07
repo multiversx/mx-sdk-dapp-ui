@@ -34,7 +34,7 @@ export class WalletConnect {
   }
 
   render() {
-    return <mvx-wallet-connect-body qrCodeSvg={this.qrCodeSvg} description="Scan this QR using xPortal" />;
+    return <mvx-wallet-connect-body qrCodeSvg={this.qrCodeSvg} />;
   }
 
   private removeComponent() {

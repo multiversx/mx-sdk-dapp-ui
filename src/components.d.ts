@@ -266,7 +266,6 @@ export namespace Components {
         "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxWalletConnectBody {
-        "description": string;
         "qrCodeSvg": string;
     }
     interface MvxWalletConnectPanel {
@@ -1096,7 +1095,6 @@ declare namespace LocalJSX {
         "data"?: IWalletConnectPanelData;
     }
     interface MvxWalletConnectBody {
-        "description"?: string;
         "qrCodeSvg"?: string;
     }
     interface MvxWalletConnectPanel {

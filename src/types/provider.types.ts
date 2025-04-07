@@ -9,3 +9,13 @@ export enum ProviderTypeEnum {
   passkey = 'passkey',
   xalias = 'xalias',
 }
+
+export enum ProviderLabelsEnum {
+  extension = 'MultiversX Wallet Extension',
+  metamask = 'MetaMask Snap',
+  passkey = 'Passkey',
+  walletConnect = 'xPortal App',
+  ledger = 'Ledger',
+  crossWindow = 'MultiversX Web Wallet',
+  xalias = 'Google (xAlias)',
+}
