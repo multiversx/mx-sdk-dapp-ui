@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - [Add stencil-tailwind-plugin for tailwind v4](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/77)
+
+## [[0.0.0-alpha.11](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/76)] - 2025-04-09
+
 - [Added prefix to functional and controlled components](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/75)
 - [Added prefix to common and controlled components](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/72)
 - [Updated the layout for the new unlock panel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/67)
