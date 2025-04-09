@@ -276,6 +276,8 @@ export namespace Components {
     }
     interface MvxXaliasProviderIcon {
     }
+    interface MvxXportalDownloadQrIcon {
+    }
 }
 export interface MvxCustomToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -793,6 +795,12 @@ declare global {
         prototype: HTMLMvxXaliasProviderIconElement;
         new (): HTMLMvxXaliasProviderIconElement;
     };
+    interface HTMLMvxXportalDownloadQrIconElement extends Components.MvxXportalDownloadQrIcon, HTMLStencilElement {
+    }
+    var HTMLMvxXportalDownloadQrIconElement: {
+        prototype: HTMLMvxXportalDownloadQrIconElement;
+        new (): HTMLMvxXportalDownloadQrIconElement;
+    };
     interface HTMLElementTagNameMap {
         "mvx-arrow-up-right-icon": HTMLMvxArrowUpRightIconElement;
         "mvx-back-arrow-icon": HTMLMvxBackArrowIconElement;
@@ -854,6 +862,7 @@ declare global {
         "mvx-wallet-connect-panel": HTMLMvxWalletConnectPanelElement;
         "mvx-wallet-provider-icon": HTMLMvxWalletProviderIconElement;
         "mvx-xalias-provider-icon": HTMLMvxXaliasProviderIconElement;
+        "mvx-xportal-download-qr-icon": HTMLMvxXportalDownloadQrIconElement;
     }
 }
 declare namespace LocalJSX {
@@ -1104,6 +1113,8 @@ declare namespace LocalJSX {
     }
     interface MvxXaliasProviderIcon {
     }
+    interface MvxXportalDownloadQrIcon {
+    }
     interface IntrinsicElements {
         "mvx-arrow-up-right-icon": MvxArrowUpRightIcon;
         "mvx-back-arrow-icon": MvxBackArrowIcon;
@@ -1165,6 +1176,7 @@ declare namespace LocalJSX {
         "mvx-wallet-connect-panel": MvxWalletConnectPanel;
         "mvx-wallet-provider-icon": MvxWalletProviderIcon;
         "mvx-xalias-provider-icon": MvxXaliasProviderIcon;
+        "mvx-xportal-download-qr-icon": MvxXportalDownloadQrIcon;
     }
 }
 export { LocalJSX as JSX };
@@ -1231,6 +1243,7 @@ declare module "@stencil/core" {
             "mvx-wallet-connect-panel": LocalJSX.MvxWalletConnectPanel & JSXBase.HTMLAttributes<HTMLMvxWalletConnectPanelElement>;
             "mvx-wallet-provider-icon": LocalJSX.MvxWalletProviderIcon & JSXBase.HTMLAttributes<HTMLMvxWalletProviderIconElement>;
             "mvx-xalias-provider-icon": LocalJSX.MvxXaliasProviderIcon & JSXBase.HTMLAttributes<HTMLMvxXaliasProviderIconElement>;
+            "mvx-xportal-download-qr-icon": LocalJSX.MvxXportalDownloadQrIcon & JSXBase.HTMLAttributes<HTMLMvxXportalDownloadQrIconElement>;
         }
     }
 }

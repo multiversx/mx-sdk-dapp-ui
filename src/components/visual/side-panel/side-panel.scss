@@ -52,6 +52,7 @@
     flex-direction: column;
     border: 1px solid #404040;
     background-color: #101010;
+    height: 100%;
 
     &.visible {
       transform: translateX(0);
@@ -97,5 +98,9 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }

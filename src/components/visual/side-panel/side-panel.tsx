@@ -1,13 +1,14 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, h, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
 
 @Component({
   tag: 'mvx-side-panel',
   styleUrl: 'side-panel.scss',
-  shadow: true,
 })
 export class SidePanel {
+  @Element() host: HTMLElement;
+
   @Prop() isOpen: boolean = false;
   @Prop() panelClassName?: string;
   @Prop() panelTitle: string;
@@ -18,6 +19,7 @@ export class SidePanel {
 
   @State() isVisible: boolean = false;
   @State() shouldAnimate: boolean = false;
+  @State() childElements: Element[] = [];
 
   private closeTimeout: NodeJS.Timeout | null = null;
   private readonly ANIMATION_DURATION_MS = 300;
@@ -60,6 +62,11 @@ export class SidePanel {
     this.back.emit();
   }
 
+  componentWillLoad() {
+    this.childElements = [...this.host.children];
+    this.host.innerHTML = '';
+  }
+
   render() {
     if (!this.isVisible) {
       return null;
@@ -80,7 +87,11 @@ export class SidePanel {
           </div>
 
           <div class="side-panel-content">
-            <slot />
+            <mvx-children>
+              {this.childElements.map((childElement, childElementIndex) => (
+                <div key={childElementIndex} ref={element => element.replaceWith(childElement)} />
+              ))}
+            </mvx-children>
           </div>
         </div>
       </div>

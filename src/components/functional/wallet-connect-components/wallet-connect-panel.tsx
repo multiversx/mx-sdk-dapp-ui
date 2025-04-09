@@ -7,6 +7,7 @@ import { WalletConnectBase } from './WalletConnectBase';
 
 @Component({
   tag: 'mvx-wallet-connect-panel',
+  styleUrl: 'wallet-connect-panel.scss',
 })
 export class WalletConnectPanel {
   @Element() hostElement: HTMLElement;
@@ -72,7 +73,7 @@ export class WalletConnectPanel {
 
   render() {
     return (
-      <mvx-side-panel isOpen={this.isOpen} panelTitle="xPortal App" onClose={this.handleClose.bind(this)}>
+      <mvx-side-panel isOpen={this.isOpen} panelTitle="xPortal App" panelClassName="wallet-connect-panel" onClose={this.handleClose.bind(this)}>
         <mvx-wallet-connect-body qrCodeSvg={this.qrCodeSvg} />
       </mvx-side-panel>
     );

@@ -152,8 +152,13 @@ export class UnlockPanel {
               {hasExternalProviders && (
                 <div class="unlock-panel-group">
                   <div class="unlock-panel-group-label">External Providers</div>
+
                   <div class="unlock-panel-group-providers">
-                    <mxv-children innerHTML={this.childElements.map(childElement => childElement.innerHTML)} />
+                    <mvx-children>
+                      {this.childElements.map((childElement, childElementIndex) => (
+                        <div key={childElementIndex} ref={element => element.replaceWith(childElement)} />
+                      ))}
+                    </mvx-children>
                   </div>
                 </div>
               )}
