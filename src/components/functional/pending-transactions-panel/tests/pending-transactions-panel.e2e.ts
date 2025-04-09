@@ -1,7 +1,7 @@
 import { newE2EPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-const tag = 'pending-transactions-panel';
+const tag = 'mvx-pending-transactions-panel';
 const title = 'Pending Transaction';
 const subtitle = 'Confirm transaction on wallet';
 
@@ -22,10 +22,10 @@ describe('pending-transactions-panel', () => {
     component.setProperty('data', { title, subtitle });
 
     await page.waitForChanges();
-    const titleElement = await page.find(`${tag} >>> [data-testid=${DataTestIdsEnum.pendingTransactionsTitle}]`);
+    const titleElement = await page.find(`[data-testid=${DataTestIdsEnum.pendingTransactionsTitle}]`);
     expect(titleElement.textContent).toContain(title);
 
-    const subtitleElement = await page.find(`${tag} >>> [data-testid=${DataTestIdsEnum.pendingTransactionsSubtitle}]`);
+    const subtitleElement = await page.find(`[data-testid=${DataTestIdsEnum.pendingTransactionsSubtitle}]`);
     expect(subtitleElement.textContent).toContain(subtitle);
   });
 });

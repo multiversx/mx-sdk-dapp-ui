@@ -1,8 +1,8 @@
-import { Component, h,Prop } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
+
 @Component({
-  tag: 'balance-component',
+  tag: 'mvx-balance-component',
   styleUrl: 'balance-component.css',
-  shadow: true,
 })
 export class BalanceComponent {
   @Prop() amount: string = '';

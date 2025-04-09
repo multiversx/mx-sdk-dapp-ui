@@ -8,7 +8,7 @@ describe('FaIcon Component', () => {
   it('should render with icon prop', async () => {
     const page = await newSpecPage({
       components: [FaIcon],
-      template: () => <fa-icon icon={faUser}></fa-icon>,
+      template: () => <mvx-fa-icon icon={faUser}></mvx-fa-icon>,
     });
 
     const i = page.root.querySelector('i');
@@ -19,7 +19,7 @@ describe('FaIcon Component', () => {
   it('should not render when icon prop is not provided', async () => {
     const page = await newSpecPage({
       components: [FaIcon],
-      template: () => <fa-icon></fa-icon>,
+      template: () => <mvx-fa-icon></mvx-fa-icon>,
     });
 
     expect(page.root.querySelector('i')).toBeNull();
@@ -28,7 +28,7 @@ describe('FaIcon Component', () => {
   it('should apply custom class when provided', async () => {
     const page = await newSpecPage({
       components: [FaIcon],
-      template: () => <fa-icon icon={faUser} class="custom-class"></fa-icon>,
+      template: () => <mvx-fa-icon icon={faUser} class="custom-class"></mvx-fa-icon>,
     });
 
     const i = page.root.querySelector('i');
@@ -38,7 +38,7 @@ describe('FaIcon Component', () => {
   it('should set description as title when provided', async () => {
     const page = await newSpecPage({
       components: [FaIcon],
-      template: () => <fa-icon icon={faUser} description="User Icon"></fa-icon>,
+      template: () => <mvx-fa-icon icon={faUser} description="User Icon"></mvx-fa-icon>,
     });
 
     const i = page.root.querySelector('i');
@@ -48,7 +48,7 @@ describe('FaIcon Component', () => {
   it('should use default class when no class prop is provided', async () => {
     const page = await newSpecPage({
       components: [FaIcon],
-      template: () => <fa-icon icon={faUser}></fa-icon>,
+      template: () => <mvx-fa-icon icon={faUser}></mvx-fa-icon>,
     });
 
     const i = page.root.querySelector('i');

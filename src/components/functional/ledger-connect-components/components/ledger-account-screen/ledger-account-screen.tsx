@@ -6,9 +6,8 @@ import { renderAccounts } from '../../helpers/renderAccounts';
 import type { IAccountScreenData } from '../../ledger-connect.types';
 
 @Component({
-  tag: 'ledger-account-screen',
+  tag: 'mvx-ledger-account-screen',
   styleUrl: 'ledger-account-screen.scss',
-  shadow: true,
 })
 export class LedgerAccountScreen {
   @Prop() accountScreenData: IAccountScreenData;
@@ -22,7 +21,7 @@ export class LedgerAccountScreen {
     const isSelectedIndexOnPage = this.accountScreenData.accounts.some(({ index }) => index === this.selectedIndex);
     const accountsList =
       this.accountScreenData.isLoading || this.accountScreenData.accounts.length === 0 ? (
-        <generic-spinner data-testid={DataTestIdsEnum.ledgerLoading}></generic-spinner>
+        <mvx-generic-spinner data-testid={DataTestIdsEnum.ledgerLoading}></mvx-generic-spinner>
       ) : (
         renderAccounts({
           shownAccounts: this.accountScreenData.accounts,

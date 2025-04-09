@@ -7,9 +7,8 @@ import type { ITransactionsTableRow } from './transactions-table.type';
 const COLUMNS = ['TxHash', 'Age', 'Shard', 'From', 'To', 'Method', 'Value'];
 
 @Component({
-  tag: 'transactions-table',
+  tag: 'mvx-transactions-table',
   styleUrl: 'transactions-table.css',
-  shadow: true,
 })
 export class TransactionsTable {
   @Prop() class?: string;
@@ -31,30 +30,35 @@ export class TransactionsTable {
           {this.transactions.map(transaction => (
             <tr class="transactions-table-body-row">
               <td class="transactions-table-body-cell">
-                <transaction-hash transaction={transaction}></transaction-hash>
+                <mvx-transaction-hash transaction={transaction}></mvx-transaction-hash>
               </td>
               <td class="transactions-table-body-cell">
-                <transaction-age age={transaction.age.timeAgo} tooltip={transaction.age.tooltip}></transaction-age>
+                <mvx-transaction-age age={transaction.age.timeAgo} tooltip={transaction.age.tooltip}></mvx-transaction-age>
               </td>
               <td class="transactions-table-body-cell">
-                <transaction-shards transaction={transaction}></transaction-shards>
+                <mvx-transaction-shards transaction={transaction}></mvx-transaction-shards>
               </td>
               <td class="transactions-table-body-cell">
-                <transaction-account account={transaction.sender} dataTestId={DataTestIdsEnum.transactionSender} scope="sender" showLockedAccounts={true}></transaction-account>
+                <mvx-transaction-account
+                  account={transaction.sender}
+                  dataTestId={DataTestIdsEnum.transactionSender}
+                  scope="sender"
+                  showLockedAccounts={true}
+                ></mvx-transaction-account>
               </td>
               <td class="transactions-table-body-cell">
-                <transaction-account
+                <mvx-transaction-account
                   account={transaction.receiver}
                   dataTestId={DataTestIdsEnum.transactionReceiver}
                   scope="receiver"
                   showLockedAccounts={true}
-                ></transaction-account>
+                ></mvx-transaction-account>
               </td>
               <td class="transactions-table-body-cell">
-                <transaction-method method={transaction.method.name} actionDescription={transaction.method.actionDescription}></transaction-method>
+                <mvx-transaction-method method={transaction.method.name} actionDescription={transaction.method.actionDescription}></mvx-transaction-method>
               </td>
               <td class="transactions-table-body-cell">
-                <transaction-value value={transaction.value}></transaction-value>
+                <mvx-transaction-value value={transaction.value}></mvx-transaction-value>
               </td>
             </tr>
           ))}

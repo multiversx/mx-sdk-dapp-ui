@@ -48,7 +48,7 @@
 }
 
 .transaction-details-list-item-hash-index {
-  color: var(--mx-toast-text-secondary);
+  color: var(--mx-tx-text-secondary);
   font-family: var(--font-family-roobert);
   font-size: 12px;
   font-style: normal;
@@ -56,23 +56,23 @@
 }
 
 .transaction-details-list-item-hash-value {
-  color: var(--mx-toast-text-primary);
+  color: var(--mx-tx-text-secondary);
   font-family: var(--font-family-roobert);
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  max-width: 172px;
+  max-width: 220px;
   width: 100%;
 }
 
 .transaction-details-list-item-copy-button-icon .svg-inline--fa {
-  color: var(--mx-toast-copy-button-color);
+  color: var(--mx-tx-text-primary);
   width: 12px;
   height: 12px;
 }
 
 .transaction-details-list-item-explorer-link-icon .svg-inline--fa {
-  color: var(--mx-toast-text-primary);
+  color: var(--mx-tx-text-secondary);
   width: 12px;
   height: 12px;
 }

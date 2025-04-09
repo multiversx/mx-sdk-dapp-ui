@@ -2,9 +2,8 @@ import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 
 @Component({
-  tag: 'transaction-account-name',
+  tag: 'mvx-transaction-account-name',
   styleUrl: 'transaction-account-name.css',
-  shadow: true,
 })
 export class TransactionAccountName {
   @Prop() address: string;
@@ -22,6 +21,6 @@ export class TransactionAccountName {
       );
     }
 
-    return <trim-text text={this.address} class={classNames(this.class, 'transaction-account-name')} dataTestId={this.dataTestId}></trim-text>;
+    return <mvx-trim-text text={this.address} class={classNames(this.class, 'transaction-account-name')} dataTestId={this.dataTestId}></mvx-trim-text>;
   }
 }

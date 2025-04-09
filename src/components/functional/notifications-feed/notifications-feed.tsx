@@ -1,17 +1,15 @@
-import { faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Method, State } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import { SidePanelSideEnum } from '../../visual/side-panel/side-panel.types';
 import type { ITransactionListItem } from '../../visual/transaction-list-item/transaction-list-item.types';
 import type { ITransactionToast } from '../toasts-list/components/transaction-toast/transaction-toast.type';
 import { NotificationsFeedEventsEnum } from './notifications-feed.types';
 
 @Component({
-  tag: 'notifications-feed',
+  tag: 'mvx-notifications-feed',
   styleUrl: 'notifications-feed.scss',
-  shadow: true,
 })
 export class NotificationsFeed {
   @State() isOpen: boolean = false;
@@ -58,24 +56,18 @@ export class NotificationsFeed {
     const hasPending = this.pendingTransactions?.length > 0;
 
     return (
-      <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} onClose={this.handleClose}>
+      <mvx-side-panel isOpen={this.isOpen} panelTitle="Notifications Feed" onClose={this.handleClose}>
         <div class="feed-content">
-          <div class="feed-header">
-            <h2 class="feed-title">Notifications Feed</h2>
-            <button class="close-button" onClick={this.handleClose}>
-              <fa-icon class="close-icon" icon={faTimes} />
-            </button>
-          </div>
-
           <div class="notifications-info">
-            <fa-icon class="info-icon" icon={faInfoCircle} />
+            <mvx-fa-icon class="info-icon" icon={faInfoCircle} />
             This feed is stored in your browser and will be reset when a new session is started.
+            <fa-icon class="info-icon" icon={faInfoCircle} />
           </div>
 
           {hasPending && (
             <div class="notifications-container">
               <div class="processing-status">Processing...</div>
-              {this.pendingTransactions?.map(toast => <transaction-toast fullWidth={true} {...toast} />)}
+              {this.pendingTransactions?.map(toast => <mvx-transaction-toast fullWidth={true} {...toast} />)}
             </div>
           )}
 
@@ -90,11 +82,15 @@ export class NotificationsFeed {
             </div>
 
             <div class="activity-list">
-              {hasActivity ? this.transactionsHistory.map(transaction => <transaction-list-item transaction={transaction} />) : <div class="no-activity">No activity to show</div>}
+              {hasActivity ? (
+                this.transactionsHistory.map(transaction => <mvx-transaction-list-item transaction={transaction} />)
+              ) : (
+                <div class="no-activity">No activity to show</div>
+              )}
             </div>
           </div>
         </div>
-      </side-panel>
+      </mvx-side-panel>
     );
   }
 

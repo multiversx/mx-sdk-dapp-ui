@@ -2,9 +2,8 @@ import { Component, Fragment, h, Prop } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
-  tag: 'wallet-connect-body',
+  tag: 'mvx-wallet-connect-body',
   styleUrl: 'wallet-connect-body.scss',
-  shadow: true,
 })
 export class WalletConnectModal {
   @Prop() qrCodeSvg: string = '';
@@ -19,7 +18,7 @@ export class WalletConnectModal {
             <div>{this.description}</div>
           </Fragment>
         ) : (
-          <generic-spinner data-testid={DataTestIdsEnum.walletConnectLoading} />
+          <mvx-generic-spinner data-testid={DataTestIdsEnum.walletConnectLoading} />
         )}
       </div>
     );

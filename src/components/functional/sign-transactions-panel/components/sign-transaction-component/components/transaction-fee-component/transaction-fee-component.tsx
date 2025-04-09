@@ -4,9 +4,8 @@ import type { ISignTransactionsPanelCommonData } from '../../../../sign-transact
 import state from '../../../../signTransactionsPanelStore';
 
 @Component({
-  tag: 'transaction-fee-component',
+  tag: 'mvx-transaction-fee-component',
   styleUrl: 'transaction-fee-component.css',
-  shadow: true,
 })
 export class TransactionFeeComponent {
   @State() showGasOptions = false;

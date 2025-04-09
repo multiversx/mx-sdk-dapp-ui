@@ -1,16 +1,41 @@
-/* side-panel.css */
-:host {
-  display: block;
-}
-
 .unlock-panel {
-  background: #f5f1ec;
-  max-width: 340px;
-}
-
-.body {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  padding: 1rem;
+
+  .unlock-panel-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .unlock-panel-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .unlock-panel-group-label {
+        line-height: 1;
+        color: #a09a93;
+      }
+
+      .unlock-panel-group-providers {
+        display: flex;
+        flex-direction: column;
+        gap: calc(4px / 2);
+
+        .unlock-panel-group-provider {
+          border-radius: 0;
+
+          &.first {
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+          }
+
+          &.last {
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+          }
+        }
+      }
+    }
+  }
 }

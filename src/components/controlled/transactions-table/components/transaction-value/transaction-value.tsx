@@ -5,9 +5,8 @@ import type { ITransactionValue } from 'components/controlled/transactions-table
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
-  tag: 'transaction-value',
+  tag: 'mvx-transaction-value',
   styleUrl: 'transaction-value.css',
-  shadow: true,
 })
 export class TransactionValue {
   @Prop() class?: string;
@@ -23,7 +22,7 @@ export class TransactionValue {
         )}
 
         {this.value.showFormattedAmount && (
-          <format-amount
+          <mvx-format-amount
             class={classNames('mr-1', {
               'text-truncate': this.value.svgUrl,
             })}
@@ -36,7 +35,7 @@ export class TransactionValue {
         )}
 
         {this.value.link && (
-          <explorer-link
+          <mvx-explorer-link
             link={this.value.link}
             class={classNames('transaction-value-link', {
               'side-link d-flex': this.value.svgUrl,
@@ -55,9 +54,9 @@ export class TransactionValue {
                 </span>
               )}
             </div>
-          </explorer-link>
+          </mvx-explorer-link>
         )}
-        {this.value.titleText && <fa-icon icon={faLayerGroup} class="transaction-value-icon" title={this.value.titleText} />}
+        {this.value.titleText && <mvx-fa-icon icon={faLayerGroup} class="transaction-value-icon" title={this.value.titleText} />}
       </div>
     );
   }

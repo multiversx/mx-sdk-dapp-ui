@@ -5,8 +5,7 @@ import type { IWalletConnectPanelData } from './wallet-connect-panel.types';
 import { WalletConnectBase } from './WalletConnectBase';
 
 @Component({
-  tag: 'wallet-connect',
-  shadow: true,
+  tag: 'mvx-wallet-connect',
 })
 export class WalletConnect {
   @Element() hostElement: HTMLElement;
@@ -35,7 +34,7 @@ export class WalletConnect {
   }
 
   render() {
-    return <wallet-connect-body qrCodeSvg={this.qrCodeSvg} description="Scan this QR using xPortal" />;
+    return <mvx-wallet-connect-body qrCodeSvg={this.qrCodeSvg} description="Scan this QR using xPortal" />;
   }
 
   private removeComponent() {

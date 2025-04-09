@@ -1,12 +1,11 @@
-import { Component, Fragment, h,Prop, State, Watch } from '@stencil/core';
+import { Component, Fragment, h, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
 
 const DEFAULT_INFINITE_ANIMATION_DURATION = 30;
 
 @Component({
-  tag: 'transaction-toast-progress',
+  tag: 'mvx-transaction-toast-progress',
   styleUrl: 'transaction-toast-progress.css',
-  shadow: true,
 })
 export class ToastProgress {
   private timeElapsedTimeoutReference?: ReturnType<typeof setTimeout>;
@@ -63,7 +62,7 @@ export class ToastProgress {
       <Fragment>
         <div class="transaction-toast-bar-wrapper" style={{ opacity: this.hasTimeElapsed ? '0' : '1' }}>
           <div
-            class="transaction-toast-bar fixed"
+            class="transaction-toast-bar-fixed"
             style={{
               '--animation-duration': `${this.expectedTransactionDuration}s`,
               '--start-width': `${this.percentagePassedSinceStart}%`,

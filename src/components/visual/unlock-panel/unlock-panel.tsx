@@ -1,24 +1,34 @@
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter } from '@stencil/core';
-import { Component, Event, h, Prop, State } from '@stencil/core';
+import { Component, Element, Event, h, Prop, State } from '@stencil/core';
+import classNames from 'classnames';
 import { ProviderTypeEnum } from 'types/provider.types';
-import { StyledHost } from 'utils/StyledHost';
 
-import { SidePanelSideEnum } from '../side-panel/side-panel.types';
+import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
 
 @Component({
-  tag: 'unlock-panel',
+  tag: 'mvx-unlock-panel',
   styleUrl: 'unlock-panel.scss',
-  shadow: true,
 })
 export class UnlockPanel {
+  @Element() host: HTMLElement;
+
   @Prop() isOpen: boolean = false;
   @Prop() allowedProviders?: ProviderTypeEnum[] = Object.values(ProviderTypeEnum);
+
   @Event() close: EventEmitter;
   @Event() login: EventEmitter<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>;
 
   @State() isLoggingIn: boolean = false;
   @State() selectedMethod: ProviderTypeEnum | null = null;
+  @State() childElements: Element[] = [];
+
+  private isExtensionInstalled(currentProvider: ProviderTypeEnum) {
+    return currentProvider === ProviderTypeEnum.extension && getIsExtensionAvailable();
+  }
+
+  private isMetaMaskInstalled(currentProvider: ProviderTypeEnum) {
+    return currentProvider === ProviderTypeEnum.metamask && getIsMetaMaskAvailable();
+  }
 
   private anchor: HTMLElement | null = null;
   private observer: MutationObserver | null = null;
@@ -51,42 +61,98 @@ export class UnlockPanel {
     this.selectedMethod = provider;
   }
 
-  resetLoginState() {
+  handleResetLoginState(event: MouseEvent) {
+    event.preventDefault();
+
     this.isLoggingIn = false;
     this.selectedMethod = null;
+
     if (!this.anchor) {
       return;
     }
+
     while (this.anchor.firstChild) {
       this.anchor.removeChild(this.anchor.firstChild);
     }
   }
 
-  handleClose() {
+  handleClose(event: MouseEvent) {
+    event.preventDefault();
     this.close.emit();
   }
 
+  componentWillLoad() {
+    this.childElements = [...this.host.children];
+    this.host.innerHTML = '';
+  }
+
   render() {
+    const detectedProviders: ProviderTypeEnum[] = this.allowedProviders.filter(
+      allowedProvider => this.isExtensionInstalled(allowedProvider) || this.isMetaMaskInstalled(allowedProvider),
+    );
+
+    const otherProviders = this.allowedProviders.filter(allowedProvider => !detectedProviders.includes(allowedProvider));
+    const hasDetectedProviders = detectedProviders.length > 0;
+
     return (
-      <StyledHost>
-        <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} onClose={this.handleClose.bind(this)} panelClassName="unlock-panel">
-          <unlock-header
-            text={this.isLoggingIn ? `${this.selectedMethod} connect` : 'Connect your wallet'}
-            backIcon={this.isLoggingIn ? faArrowLeft : null}
-            onBack={this.resetLoginState.bind(this)}
-            onClose={this.handleClose.bind(this)}
-          />
-          <div id="anchor" ref={element => this.observeContainer(element)}></div>
-          {!this.isLoggingIn && (
-            <div class="body sdk:bg-neutral-400">
-              {this.allowedProviders.map(method => (
-                <provider-button type={method} onClick={this.handleLogin.bind(this, method)}></provider-button>
-              ))}
-              <slot></slot>
+      <mvx-side-panel
+        isOpen={this.isOpen}
+        panelTitle="Connect your wallet"
+        onClose={this.handleClose.bind(this)}
+        onBack={this.handleResetLoginState.bind(this)}
+        withBackButton={this.isLoggingIn}
+      >
+        <div id="anchor" ref={element => this.observeContainer(element)} />
+
+        {!this.isLoggingIn && (
+          <div class="unlock-panel">
+            <div class="unlock-panel-groups">
+              {hasDetectedProviders && (
+                <div class="unlock-panel-group">
+                  <div class="unlock-panel-group-label">Detected</div>
+
+                  <div class="unlock-panel-group-providers">
+                    {detectedProviders.map((provider, providerIndex) => (
+                      <mvx-provider-button
+                        type={provider}
+                        onClick={this.handleLogin.bind(this, provider)}
+                        class={classNames('unlock-panel-group-provider', {
+                          first: providerIndex === 0,
+                          last: providerIndex === detectedProviders.length - 1,
+                        })}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div class="unlock-panel-group">
+                <div class="unlock-panel-group-label">{hasDetectedProviders ? 'Other Options' : 'Options'}</div>
+
+                <div class="unlock-panel-group-providers">
+                  {otherProviders.map((provider, providerIndex) => (
+                    <mvx-provider-button
+                      type={provider}
+                      onClick={this.handleLogin.bind(this, provider)}
+                      class={classNames('unlock-panel-group-provider', {
+                        first: providerIndex === 0,
+                        last: providerIndex === otherProviders.length - 1,
+                      })}
+                    />
+                  ))}
+                </div>
+              </div>
             </div>
-          )}
-        </side-panel>
-      </StyledHost>
+
+            <div>
+              External Providers
+              <mxv-children innerHTML={this.childElements.map(childElement => childElement.innerHTML)} />
+            </div>
+
+            <img src={new URL('../collection/assets/unlock-panel-wallet.png', import.meta.url).href} />
+          </div>
+        )}
+      </mvx-side-panel>
     );
   }
 }

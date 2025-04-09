@@ -30,22 +30,22 @@ describe('transaction-toast-details', () => {
     const mockTransactions = createMockTransactions(3);
 
     await page.setContent(`
-      <transaction-toast-details
+      <mvx-transaction-toast-details
         transaction-class="test-transaction"
         max-shown-transactions="2"
-      ></transaction-toast-details>
+      ></mvx-transaction-toast-details>
     `);
 
-    const component = await page.find('transaction-toast-details');
+    const component = await page.find('mvx-transaction-toast-details');
     component.setProperty('transactions', mockTransactions);
     component.setProperty('processedTransactionsStatus', '3 Transactions');
 
     await page.waitForChanges();
 
-    const statusElement = await page.find('transaction-toast-details >>> .transaction-details-status-text');
+    const statusElement = await page.find('.transaction-details-status-text');
     expect(statusElement.textContent).toBe('3 Transactions');
 
-    const transactionItems = await page.findAll('transaction-toast-details >>> transaction-toast-details-body');
+    const transactionItems = await page.findAll('mvx-transaction-toast-details-body');
     expect(transactionItems.length).toBe(2);
   });
 
@@ -54,26 +54,26 @@ describe('transaction-toast-details', () => {
     const mockTransactions = createMockTransactions(2);
 
     await page.setContent(`
-      <transaction-toast-details
+      <mvx-transaction-toast-details
         transaction-class="test-transaction"
-      ></transaction-toast-details>
+      ></mvx-transaction-toast-details>
     `);
 
-    const component = await page.find('transaction-toast-details');
+    const component = await page.find('mvx-transaction-toast-details');
     component.setProperty('transactions', mockTransactions);
     component.setProperty('processedTransactionsStatus', '2 Transactions');
 
     await page.waitForChanges();
 
-    let detailsList = await page.find('transaction-toast-details >>> .transaction-details-list');
+    let detailsList = await page.find('.transaction-details-list');
     expect(detailsList.getAttribute('class')).not.toContain('expanded');
 
-    const statusElement = await page.find('transaction-toast-details >>> .transaction-details-status');
+    const statusElement = await page.find('.transaction-details-status');
     await statusElement.click();
 
     await page.waitForChanges();
 
-    detailsList = await page.find('transaction-toast-details >>> .transaction-details-list');
+    detailsList = await page.find('.transaction-details-list');
     expect(detailsList.getAttribute('class')).toContain('expanded');
   });
 
@@ -82,35 +82,35 @@ describe('transaction-toast-details', () => {
     const mockTransactions = createMockTransactions(6);
 
     await page.setContent(`
-      <transaction-toast-details
+      <mvx-transaction-toast-details
         transaction-class="test-transaction"
         max-shown-transactions="3"
-      ></transaction-toast-details>
+      ></mvx-transaction-toast-details>
     `);
 
-    const component = await page.find('transaction-toast-details');
+    const component = await page.find('mvx-transaction-toast-details');
     component.setProperty('transactions', mockTransactions);
     component.setProperty('processedTransactionsStatus', '6 Transactions');
 
     await page.waitForChanges();
 
-    const statusElement = await page.find('transaction-toast-details >>> .transaction-details-status');
+    const statusElement = await page.find('.transaction-details-status');
     expect(statusElement).not.toBeNull();
     await statusElement.click();
 
     await page.waitForChanges();
 
-    const showMoreButton = await page.find('transaction-toast-details >>> .show-more-button');
+    const showMoreButton = await page.find('.show-more-button');
     expect(showMoreButton).not.toBeNull();
     expect(showMoreButton.textContent).toContain('Show 3 more');
 
     await showMoreButton.click();
     await page.waitForChanges();
 
-    const transactionItems = await page.findAll('transaction-toast-details >>> transaction-toast-details-body');
+    const transactionItems = await page.findAll('mvx-transaction-toast-details-body');
     expect(transactionItems.length).toBe(6);
 
-    const showMoreButtonAfter = await page.find('transaction-toast-details >>> .show-more-button');
+    const showMoreButtonAfter = await page.find('.show-more-button');
     expect(showMoreButtonAfter).toBeNull();
   });
 
@@ -118,14 +118,14 @@ describe('transaction-toast-details', () => {
     const page = await newE2EPage();
 
     await page.setContent(`
-      <transaction-toast-details
+      <mvx-transaction-toast-details
         transaction-class="test-transaction"
-      ></transaction-toast-details>
+      ></mvx-transaction-toast-details>
     `);
 
     await page.waitForChanges();
 
-    const detailsContainer = await page.find('transaction-toast-details >>> .transaction-details-container');
+    const detailsContainer = await page.find('.transaction-details-container');
     expect(detailsContainer).toBeNull();
   });
 });

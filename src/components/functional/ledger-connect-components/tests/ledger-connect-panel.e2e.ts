@@ -1,7 +1,7 @@
 import { newE2EPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-const tag = 'ledger-connect-panel';
+const tag = 'mvx-ledger-connect-panel';
 
 describe('ledger-connect-panel', () => {
   it(`renders ${tag}`, async () => {
@@ -22,7 +22,7 @@ describe('ledger-connect-panel', () => {
     const component = await page.find(tag);
     component.setProperty('data', { connectScreenData: { error: 'Unable to find device' } });
     await page.waitForChanges();
-    const error = await page.find(`${tag} >>> ledger-connect-screen >>> div`);
+    const error = await page.find(`${tag} >>> mvx-ledger-connect-screen >>> div`);
     expect(error.textContent).toContain(`Unable to find device`);
 
     const loadingUpdate = { connectScreenData: {}, accountScreenData: { accounts: [], startIndex: 0, addressesPerPage: 10, isLoading: true }, confirmScreenData: null };
@@ -76,7 +76,7 @@ describe('ledger-connect-panel', () => {
     };
     component.setProperty('data', balancesUpdate);
     await page.waitForChanges();
-    const addressTableContainer = await page.find(`${tag} >>> [data-testid=${DataTestIdsEnum.addressTableContainer}]`);
+    const addressTableContainer = await page.find(`[data-testid=${DataTestIdsEnum.addressTableContainer}]`);
     expect(addressTableContainer.textContent).toContain('89983');
 
     const connectScreenUpdate = {
@@ -92,7 +92,7 @@ describe('ledger-connect-panel', () => {
     };
     component.setProperty('data', connectScreenUpdate);
     await page.waitForChanges();
-    const confirmScreen = await page.find(`${tag} >>> [data-testid=${DataTestIdsEnum.ledgerConfirmAddress}]`);
+    const confirmScreen = await page.find(`[data-testid=${DataTestIdsEnum.ledgerConfirmAddress}]`);
     expect(confirmScreen.textContent).toContain('please confirm your address');
   });
 });

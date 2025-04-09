@@ -7,7 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [[0.0.0-alpha.9](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/67)] - 2025-03-31
+## [[0.0.0-alpha.11](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/76)] - 2025-04-09
+
+- [Added prefix to functional and controlled components](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/75)
+- [Added prefix to common and controlled components](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/72)
+- [Updated the layout for the new unlock panel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/67)
+
+## [[0.0.0-alpha.10](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/70)] - 2025-03-31
 
 - [Toasts design](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/66)
 - [Upgrade Tailwind to v4](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/65)

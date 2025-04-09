@@ -2,15 +2,13 @@ import { Component, forceUpdate, h, Method, Prop, State } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IEventBus } from 'utils/EventBus';
 
-import { SidePanelSideEnum } from '../../visual/side-panel/side-panel.types';
 import type { ILedgerConnectPanelData } from './ledger-connect.types';
 import { LedgerConnectEventsEnum } from './ledger-connect.types';
 import { LedgerConnectBase } from './LedgerConnectBase';
 
 @Component({
-  tag: 'ledger-connect-panel',
+  tag: 'mvx-ledger-connect-panel',
   styleUrl: 'ledger-connect-panel.css',
-  shadow: true,
 })
 export class LedgerConnectPanel {
   @Prop() data: ILedgerConnectPanelData = {
@@ -122,7 +120,7 @@ export class LedgerConnectPanel {
   private getBodyContent(accountScreenData: any, confirmScreenData: any, connectScreenData: any) {
     if (accountScreenData) {
       return (
-        <ledger-account-screen
+        <mvx-ledger-account-screen
           accountScreenData={accountScreenData}
           selectedIndex={this.selectedIndex}
           onSelectAccount={(event: CustomEvent) => this.selectAccount(event.detail)}
@@ -134,10 +132,10 @@ export class LedgerConnectPanel {
     }
 
     if (confirmScreenData) {
-      return <ledger-confirm-screen confirmScreenData={confirmScreenData} />;
+      return <mvx-ledger-confirm-screen confirmScreenData={confirmScreenData} />;
     }
 
-    return <ledger-connect-screen connectScreenData={connectScreenData} onConnect={this.handleConnect.bind(this)} />;
+    return <mvx-ledger-connect-screen connectScreenData={connectScreenData} onConnect={this.handleConnect.bind(this)} />;
   }
 
   render() {
@@ -145,12 +143,12 @@ export class LedgerConnectPanel {
     const bodyContent = this.getBodyContent(accountScreenData, confirmScreenData, connectScreenData);
 
     return (
-      <side-panel isOpen={this.isOpen} side={SidePanelSideEnum.RIGHT} panelClassName="ledger-connect-panel" onClose={this.handleClose.bind(this)}>
+      <mvx-side-panel isOpen={this.isOpen} panelClassName="ledger-connect-panel" onClose={this.handleClose.bind(this)}>
         <div class="ledger-connect-content">
           {this.getHeaderContent(accountScreenData, confirmScreenData)}
           <div class="ledger-connect-body">{bodyContent}</div>
         </div>
-      </side-panel>
+      </mvx-side-panel>
     );
   }
 }
