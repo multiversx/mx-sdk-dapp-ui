@@ -1,4 +1,4 @@
-.explorer-link {
-  text-decoration: none;
-  color: var(--mx-explorer-link-color, -webkit-link); /* Default color */
+.mvx\:explorer-link {
+  @apply mvx:decoration-0;
+  color: var(--mx-explorer-link-color, -webkit-link);
 }
