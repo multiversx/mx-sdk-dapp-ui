@@ -1,39 +1,39 @@
 :root {
-    /* Base Colors */
-    --mx-accent: #FFFFFF;
-    --mx-white: #FFFFFF;
-    --mx-black: #000000;
-    --mx-neutral-900: #171717;
-    --mx-neutral-50: #FAFAFA;
-    --mx-neutral-400: #A3A3A3;
+  /* Base Colors */
+  --mx-accent: #ffffff;
+  --mx-white: #ffffff;
+  --mx-black: #000000;
+  --mx-neutral-900: #171717;
+  --mx-neutral-50: #fafafa;
+  --mx-neutral-400: #a3a3a3;
 
-    /* Text Colors */
-    --mx-text: var(--mx-white);
-    --mx-primary-text: #262626;
-    --mx-secondary-text: #868686;
-    --mx-warning-text: #facc15;
-    --mx-body-label-color: #a09a93;
-    --mx-warning-text: #facc15;
-    --mx-tx-bg: rgba(53, 53, 53);
-    --mx-tx-bg-transparent: rgba(53, 53, 53, 0.3);
-    --mx-tx-text-primary: #e8e8e8;
-    --mx-tx-text-secondary: #737373;
-  
-    /* Toast Colors */
-    --mx-toast-backdrop-blur: 38px;
-    --mx-toast-success-bg: #1D6030;
-    --mx-toast-success-color: #4ADE80;
-    --mx-toast-pending-bg: #453412;
-    --mx-toast-pending-color: #FACC15;
-    --mx-toast-error-bg: rgba(255, 71, 71, 0.2);
-    --mx-toast-error-color: #FF4747;
-  
-    /* Font Settings */
-    --font-family-roobert: "Roobert PRO", system-ui, -apple-system, sans-serif;
+  /* Text Colors */
+  --mx-text: var(--mx-white);
+  --mx-primary-text: #262626;
+  --mx-secondary-text: #868686;
+  --mx-warning-text: #facc15;
+  --mx-body-label-color: #a09a93;
+  --mx-warning-text: #facc15;
+  --mx-tx-bg: rgba(53, 53, 53);
+  --mx-tx-bg-transparent: rgba(53, 53, 53, 0.3);
+  --mx-tx-text-primary: #e8e8e8;
+  --mx-tx-text-secondary: #737373;
 
-    /* Explorer Link Colors */
-    --mx-explorer-link-color: var(--mx-text-primary);
+  /* Toast Colors */
+  --mx-toast-backdrop-blur: 38px;
+  --mx-toast-success-bg: #1d6030;
+  --mx-toast-success-color: #4ade80;
+  --mx-toast-pending-bg: #453412;
+  --mx-toast-pending-color: #facc15;
+  --mx-toast-error-bg: rgba(255, 71, 71, 0.2);
+  --mx-toast-error-color: #ff4747;
 
-    /* Transition */
-    --mx-transition: 0.3s ease-in-out;
-  } 
+  /* Font Settings */
+  --font-family-roobert: 'Roobert PRO', system-ui, -apple-system, sans-serif;
+
+  /* Explorer Link Colors */
+  --mx-explorer-link-color: var(--mx-primary-text);
+
+  /* Transition */
+  --mx-transition: 0.3s ease-in-out;
+}

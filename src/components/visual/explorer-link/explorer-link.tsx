@@ -7,7 +7,7 @@ import { Component, Element, h, Prop, State } from '@stencil/core';
   styleUrl: 'explorer-link.css',
 })
 export class ExplorerLink {
-  @Prop() class?: string = 'explorer-link';
+  @Prop() class?: string;
   @Prop() iconClass?: string = 'explorer-link-icon';
   @Prop() dataTestId?: string;
   @Prop() icon?: IconDefinition;
@@ -23,7 +23,7 @@ export class ExplorerLink {
 
   render() {
     return (
-      <a data-testid={this.dataTestId} href={this.link} target="_blank" class={this.class} rel="noreferrer">
+      <a data-testid={this.dataTestId} href={this.link} target="_blank" class={{ 'mvx:explorer-link': true, [this.class]: Boolean(this.class) }} rel="noreferrer">
         {this.hasSlotContent ? <slot name="content"></slot> : this.text ?? <mvx-fa-icon icon={this.icon ?? faArrowUpRightFromSquare} class={this.iconClass}></mvx-fa-icon>}
       </a>
     );
