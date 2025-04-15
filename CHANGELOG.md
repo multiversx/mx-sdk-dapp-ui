@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Fix stencil-tailwind-plugin build error in monorepo](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/79)
+
 ## [[0.0.0-alpha.12](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/78)] - 2025-04-10
 
 - [Add stencil-tailwind-plugin for tailwind v4](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/77)
