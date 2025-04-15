@@ -64,7 +64,7 @@ export const config: Config = {
     // },
   ],
   rollupPlugins: {
-    after: [nodePolyfills()],
+    before: [nodePolyfills()],
   },
   extras: {
     enableImportInjection: true,
