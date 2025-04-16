@@ -1,6 +1,8 @@
 import { Config } from '@stencil/core';
+import { sass } from '@stencil/sass';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
+import tailwind from 'stencil-tailwind-plugin';
 
 const excludeComponents = [
   'mvx-sign-transactions-panel',
@@ -31,7 +33,12 @@ const excludeComponents = [
 
 export const config: Config = {
   namespace: 'sdk-dapp-core-ui',
-  globalStyle: 'dist/output.css',
+  plugins: [
+    sass(),
+    tailwind({
+      tailwindCssPath: './src/global/tailwind.css',
+    }),
+  ],
   outputTargets: [
     reactOutputTarget({
       outDir: './dist/react',
@@ -57,7 +64,7 @@ export const config: Config = {
     // },
   ],
   rollupPlugins: {
-    after: [nodePolyfills()],
+    before: [nodePolyfills()],
   },
   extras: {
     enableImportInjection: true,

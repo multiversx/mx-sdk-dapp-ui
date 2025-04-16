@@ -11,7 +11,7 @@ describe('ExplorerLink', () => {
     });
     expect(page.root).toEqualHtml(`
       <mvx-explorer-link link="https://example.com">
-        <a href="https://example.com" target="_blank" class="explorer-link" rel="noreferrer">
+        <a href="https://example.com" target="_blank" class="mvx:explorer-link" rel="noreferrer">
           <mvx-fa-icon class="explorer-link-icon"></mvx-fa-icon>
         </a>
       </mvx-explorer-link>
@@ -25,7 +25,7 @@ describe('ExplorerLink', () => {
     });
     expect(page.root).toEqualHtml(`
       <mvx-explorer-link link="https://example.com" text="View on Explorer">
-        <a href="https://example.com" target="_blank" class="explorer-link" rel="noreferrer">
+        <a href="https://example.com" target="_blank" class="mvx:explorer-link" rel="noreferrer">
           View on Explorer
         </a>
       </mvx-explorer-link>
@@ -39,7 +39,7 @@ describe('ExplorerLink', () => {
     });
     expect(page.root).toEqualHtml(`
       <mvx-explorer-link link="https://example.com" class="custom-class">
-        <a href="https://example.com" target="_blank" class="custom-class" rel="noreferrer">
+        <a href="https://example.com" target="_blank" class="mvx:explorer-link custom-class" rel="noreferrer">
           <mvx-fa-icon class="explorer-link-icon"></mvx-fa-icon>
         </a>
       </mvx-explorer-link>
@@ -57,7 +57,7 @@ describe('ExplorerLink', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-explorer-link link="https://example.com">
-        <a href="https://example.com" target="_blank" class="explorer-link" rel="noreferrer">
+        <a href="https://example.com" target="_blank" class="mvx:explorer-link" rel="noreferrer">
           <mvx-fa-icon class="explorer-link-icon"></mvx-fa-icon>
         </a>
       </mvx-explorer-link>
