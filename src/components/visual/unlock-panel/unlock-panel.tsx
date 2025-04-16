@@ -1,5 +1,5 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, h, Prop, State } from '@stencil/core';
+import { Component, Event, h, Prop, State } from '@stencil/core';
 import classNames from 'classnames';
 import { ProviderLabelsEnum, ProviderTypeEnum } from 'types/provider.types';
 import { processImgSrc } from 'utils/processImgSrc';
@@ -9,10 +9,9 @@ import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
 @Component({
   tag: 'mvx-unlock-panel',
   styleUrl: 'unlock-panel.scss',
+  shadow: true,
 })
 export class UnlockPanel {
-  @Element() host: HTMLElement;
-
   @Prop() isOpen: boolean = false;
   @Prop() allowedProviders?: ProviderTypeEnum[] = Object.values(ProviderTypeEnum);
 
@@ -21,7 +20,6 @@ export class UnlockPanel {
 
   @State() isLoggingIn: boolean = false;
   @State() selectedMethod: ProviderTypeEnum | null = null;
-  @State() childElements: Element[] = [];
 
   private isExtensionInstalled(currentProvider: ProviderTypeEnum) {
     return currentProvider === ProviderTypeEnum.extension && getIsExtensionAvailable();
@@ -44,6 +42,7 @@ export class UnlockPanel {
     if (!element) {
       return;
     }
+
     this.anchor = element;
 
     if (this.observer) {
@@ -82,11 +81,6 @@ export class UnlockPanel {
     this.close.emit();
   }
 
-  componentWillLoad() {
-    this.childElements = [...this.host.children];
-    this.host.innerHTML = '';
-  }
-
   render() {
     const detectedProviders: ProviderTypeEnum[] = this.allowedProviders.filter(
       allowedProvider => this.isExtensionInstalled(allowedProvider) || this.isMetaMaskInstalled(allowedProvider),
@@ -94,7 +88,7 @@ export class UnlockPanel {
 
     const otherProviders = this.allowedProviders.filter(allowedProvider => !detectedProviders.includes(allowedProvider));
     const panelTitle = this.selectedMethod ? ProviderLabelsEnum[this.selectedMethod] : 'Connect your wallet';
-    const hasExternalProviders = this.childElements.length > 0;
+    const hasExternalProviders = true;
     const hasDetectedProviders = detectedProviders.length > 0;
 
     return (
@@ -104,11 +98,8 @@ export class UnlockPanel {
         withBackButton={this.isLoggingIn}
         onClose={this.handleClose.bind(this)}
         onBack={this.handleResetLoginState.bind(this)}
-        panelClassName={classNames('unlock-panel-wrapper', {
-          selected: Boolean(this.selectedMethod),
-        })}
       >
-        <div id="anchor" ref={element => this.observeContainer(element)} />
+        <div id="anchor" ref={element => this.observeContainer(element)} class="unlock-panel-anchor" />
 
         {!this.isLoggingIn && (
           <div class="unlock-panel">
@@ -154,11 +145,7 @@ export class UnlockPanel {
                   <div class="unlock-panel-group-label">External Providers</div>
 
                   <div class="unlock-panel-group-providers">
-                    <mvx-children>
-                      {this.childElements.map((childElement, childElementIndex) => (
-                        <div key={childElementIndex} ref={element => element.replaceWith(childElement)} />
-                      ))}
-                    </mvx-children>
+                    <slot />
                   </div>
                 </div>
               )}
