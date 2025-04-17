@@ -278,7 +278,6 @@ export namespace Components {
     }
     interface MvxXportalQrCodePreloader {
         "class"?: string;
-        "dataTestId"?: string;
     }
 }
 export interface MvxCustomToastCustomEvent<T> extends CustomEvent<T> {
@@ -1117,7 +1116,6 @@ declare namespace LocalJSX {
     }
     interface MvxXportalQrCodePreloader {
         "class"?: string;
-        "dataTestId"?: string;
     }
     interface IntrinsicElements {
         "mvx-arrow-up-right-icon": MvxArrowUpRightIcon;
