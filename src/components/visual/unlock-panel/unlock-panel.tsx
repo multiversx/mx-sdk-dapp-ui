@@ -1,5 +1,5 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Event, h, Prop, State } from '@stencil/core';
+import { Component, Element, Event, h, Prop, State } from '@stencil/core';
 import classNames from 'classnames';
 import { ProviderLabelsEnum, ProviderTypeEnum } from 'types/provider.types';
 import { processImgSrc } from 'utils/processImgSrc';
@@ -12,6 +12,8 @@ import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
   shadow: true,
 })
 export class UnlockPanel {
+  @Element() hostElement: HTMLElement;
+
   @Prop() isOpen: boolean = false;
   @Prop() allowedProviders?: ProviderTypeEnum[] = Object.values(ProviderTypeEnum);
 
@@ -20,6 +22,7 @@ export class UnlockPanel {
 
   @State() isLoggingIn: boolean = false;
   @State() selectedMethod: ProviderTypeEnum | null = null;
+  @State() hasSlotContent: boolean = false;
 
   private isExtensionInstalled(currentProvider: ProviderTypeEnum) {
     return currentProvider === ProviderTypeEnum.extension && getIsExtensionAvailable();
@@ -88,7 +91,6 @@ export class UnlockPanel {
 
     const otherProviders = this.allowedProviders.filter(allowedProvider => !detectedProviders.includes(allowedProvider));
     const panelTitle = this.selectedMethod ? ProviderLabelsEnum[this.selectedMethod] : 'Connect your wallet';
-    const hasExternalProviders = true;
     const hasDetectedProviders = detectedProviders.length > 0;
 
     return (
@@ -140,15 +142,13 @@ export class UnlockPanel {
                 </div>
               </div>
 
-              {hasExternalProviders && (
-                <div class="unlock-panel-group">
-                  <div class="unlock-panel-group-label">External Providers</div>
+              <div class="unlock-panel-group">
+                <div class="unlock-panel-group-label">External Providers</div>
 
-                  <div class="unlock-panel-group-providers">
-                    <slot />
-                  </div>
+                <div class="unlock-panel-group-providers">
+                  <slot />
                 </div>
-              )}
+              </div>
             </div>
 
             <div class="unlock-panel-footer">

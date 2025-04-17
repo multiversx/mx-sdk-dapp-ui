@@ -3,11 +3,11 @@
 @font-face {
   font-family: 'Satoshi';
   font-weight: 400;
-  src: url('../assets/fonts/Satoshi-Regular.otf') format('opentype');
+  src: url('../collection/assets/fonts/Satoshi-Regular.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'Satoshi';
   font-weight: 500;
-  src: url('../assets/fonts/Satoshi-Medium.otf') format('opentype');
+  src: url('../collection/assets/fonts/Satoshi-Medium.otf') format('opentype');
 }
