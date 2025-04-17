@@ -70,18 +70,5 @@ describe('wallet-connect-panel', () => {
       const svgElement = qrCodeContainer.querySelector('svg');
       expect(svgElement).toBeTruthy();
     });
-
-    it('hides loading state when QR code is displayed', async () => {
-      const qrData = { wcURI: 'test-qr-code-uri' };
-      const page = await createPage({ data: qrData, isOpen: true });
-
-      // Wait for QR code generation
-      await new Promise(resolve => setTimeout(resolve, 0));
-      await page.waitForChanges();
-
-      const body = page.root.shadowRoot.querySelector('mvx-wallet-connect-body').shadowRoot;
-      const loading = body.querySelector(`[data-testid=${DataTestIdsEnum.walletConnectLoading}]`);
-      expect(loading).toBeNull();
-    });
   });
 });

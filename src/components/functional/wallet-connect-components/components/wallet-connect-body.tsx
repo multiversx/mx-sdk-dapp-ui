@@ -33,15 +33,13 @@ export class WalletConnectModal {
       <div class={{ 'wallet-connect-body': true, 'flipped': Boolean(this.flipToggle) }}>
         <div class="wallet-connect-body-scan">
           <div class="wallet-connect-body-scan-qr">
-            {this.qrCodeSvg ? (
-              <div
-                class={{ 'wallet-connect-body-scan-qr-embed': true, 'visible': Boolean(this.qrCodeSvg) }}
-                data-testid={DataTestIdsEnum.walletConnectQrCode}
-                innerHTML={this.qrCodeSvg}
-              />
-            ) : (
-              <mvx-xportal-qr-code-preloader data-testid={DataTestIdsEnum.walletConnectLoading} />
-            )}
+            <mvx-xportal-qr-code-preloader data-testid={DataTestIdsEnum.walletConnectLoading} />
+
+            <div
+              class={{ 'wallet-connect-body-scan-qr-embed': true, 'visible': Boolean(this.qrCodeSvg) }}
+              data-testid={DataTestIdsEnum.walletConnectQrCode}
+              innerHTML={this.qrCodeSvg}
+            />
           </div>
 
           <div class="wallet-connect-body-scan-description" data-testid={DataTestIdsEnum.walletConnetModalTitle}>
