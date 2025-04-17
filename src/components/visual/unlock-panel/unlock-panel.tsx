@@ -99,7 +99,7 @@ export class UnlockPanel {
         onClose={this.handleClose.bind(this)}
         onBack={this.handleResetLoginState.bind(this)}
       >
-        <div id="anchor" ref={element => this.observeContainer(element)} class="unlock-panel-anchor" />
+        <div id="anchor" ref={element => this.observeContainer(element)} class={{ 'unlock-panel-anchor': this.isLoggingIn }} />
 
         {!this.isLoggingIn && (
           <div class="unlock-panel">

@@ -46,6 +46,9 @@
         top: calc(20px * -1);
         width: calc(300px + 40px);
         height: calc(300px + 40px);
+        opacity: 0;
+        transition: all 200ms ease;
+        pointer-events: none;
 
         &:before {
           pointer-events: none;
@@ -61,6 +64,10 @@
         path {
           fill: #101010;
           stroke: #fff;
+        }
+
+        &.visible {
+          opacity: 1;
         }
       }
     }

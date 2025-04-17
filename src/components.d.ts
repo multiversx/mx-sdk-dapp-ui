@@ -46,8 +46,6 @@ export namespace Components {
         "ticker": string;
         "usdValue"?: string;
     }
-    interface MvxChildren {
-    }
     interface MvxCloseIcon {
     }
     interface MvxCopyButton {
@@ -278,6 +276,9 @@ export namespace Components {
     }
     interface MvxXportalDownloadQrIcon {
     }
+    interface MvxXportalQrCodePreloader {
+        "class"?: string;
+    }
 }
 export interface MvxCustomToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -337,12 +338,6 @@ declare global {
     var HTMLMvxBalanceComponentElement: {
         prototype: HTMLMvxBalanceComponentElement;
         new (): HTMLMvxBalanceComponentElement;
-    };
-    interface HTMLMvxChildrenElement extends Components.MvxChildren, HTMLStencilElement {
-    }
-    var HTMLMvxChildrenElement: {
-        prototype: HTMLMvxChildrenElement;
-        new (): HTMLMvxChildrenElement;
     };
     interface HTMLMvxCloseIconElement extends Components.MvxCloseIcon, HTMLStencilElement {
     }
@@ -801,11 +796,16 @@ declare global {
         prototype: HTMLMvxXportalDownloadQrIconElement;
         new (): HTMLMvxXportalDownloadQrIconElement;
     };
+    interface HTMLMvxXportalQrCodePreloaderElement extends Components.MvxXportalQrCodePreloader, HTMLStencilElement {
+    }
+    var HTMLMvxXportalQrCodePreloaderElement: {
+        prototype: HTMLMvxXportalQrCodePreloaderElement;
+        new (): HTMLMvxXportalQrCodePreloaderElement;
+    };
     interface HTMLElementTagNameMap {
         "mvx-arrow-up-right-icon": HTMLMvxArrowUpRightIconElement;
         "mvx-back-arrow-icon": HTMLMvxBackArrowIconElement;
         "mvx-balance-component": HTMLMvxBalanceComponentElement;
-        "mvx-children": HTMLMvxChildrenElement;
         "mvx-close-icon": HTMLMvxCloseIconElement;
         "mvx-copy-button": HTMLMvxCopyButtonElement;
         "mvx-custom-toast": HTMLMvxCustomToastElement;
@@ -863,6 +863,7 @@ declare global {
         "mvx-wallet-provider-icon": HTMLMvxWalletProviderIconElement;
         "mvx-xalias-provider-icon": HTMLMvxXaliasProviderIconElement;
         "mvx-xportal-download-qr-icon": HTMLMvxXportalDownloadQrIconElement;
+        "mvx-xportal-qr-code-preloader": HTMLMvxXportalQrCodePreloaderElement;
     }
 }
 declare namespace LocalJSX {
@@ -875,8 +876,6 @@ declare namespace LocalJSX {
         "header"?: string;
         "ticker"?: string;
         "usdValue"?: string;
-    }
-    interface MvxChildren {
     }
     interface MvxCloseIcon {
     }
@@ -1115,11 +1114,13 @@ declare namespace LocalJSX {
     }
     interface MvxXportalDownloadQrIcon {
     }
+    interface MvxXportalQrCodePreloader {
+        "class"?: string;
+    }
     interface IntrinsicElements {
         "mvx-arrow-up-right-icon": MvxArrowUpRightIcon;
         "mvx-back-arrow-icon": MvxBackArrowIcon;
         "mvx-balance-component": MvxBalanceComponent;
-        "mvx-children": MvxChildren;
         "mvx-close-icon": MvxCloseIcon;
         "mvx-copy-button": MvxCopyButton;
         "mvx-custom-toast": MvxCustomToast;
@@ -1177,6 +1178,7 @@ declare namespace LocalJSX {
         "mvx-wallet-provider-icon": MvxWalletProviderIcon;
         "mvx-xalias-provider-icon": MvxXaliasProviderIcon;
         "mvx-xportal-download-qr-icon": MvxXportalDownloadQrIcon;
+        "mvx-xportal-qr-code-preloader": MvxXportalQrCodePreloader;
     }
 }
 export { LocalJSX as JSX };
@@ -1186,7 +1188,6 @@ declare module "@stencil/core" {
             "mvx-arrow-up-right-icon": LocalJSX.MvxArrowUpRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowUpRightIconElement>;
             "mvx-back-arrow-icon": LocalJSX.MvxBackArrowIcon & JSXBase.HTMLAttributes<HTMLMvxBackArrowIconElement>;
             "mvx-balance-component": LocalJSX.MvxBalanceComponent & JSXBase.HTMLAttributes<HTMLMvxBalanceComponentElement>;
-            "mvx-children": LocalJSX.MvxChildren & JSXBase.HTMLAttributes<HTMLMvxChildrenElement>;
             "mvx-close-icon": LocalJSX.MvxCloseIcon & JSXBase.HTMLAttributes<HTMLMvxCloseIconElement>;
             "mvx-copy-button": LocalJSX.MvxCopyButton & JSXBase.HTMLAttributes<HTMLMvxCopyButtonElement>;
             "mvx-custom-toast": LocalJSX.MvxCustomToast & JSXBase.HTMLAttributes<HTMLMvxCustomToastElement>;
@@ -1244,6 +1245,7 @@ declare module "@stencil/core" {
             "mvx-wallet-provider-icon": LocalJSX.MvxWalletProviderIcon & JSXBase.HTMLAttributes<HTMLMvxWalletProviderIconElement>;
             "mvx-xalias-provider-icon": LocalJSX.MvxXaliasProviderIcon & JSXBase.HTMLAttributes<HTMLMvxXaliasProviderIconElement>;
             "mvx-xportal-download-qr-icon": LocalJSX.MvxXportalDownloadQrIcon & JSXBase.HTMLAttributes<HTMLMvxXportalDownloadQrIconElement>;
+            "mvx-xportal-qr-code-preloader": LocalJSX.MvxXportalQrCodePreloader & JSXBase.HTMLAttributes<HTMLMvxXportalQrCodePreloaderElement>;
         }
     }
 }
