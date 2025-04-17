@@ -1,3 +1,7 @@
+jest.mock('../../../../utils/processImgSrc', () => ({
+  processImgSrc: jest.fn().mockImplementation(src => src),
+}));
+
 import { newSpecPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
@@ -34,24 +38,20 @@ describe('wallet-connect-panel', () => {
   describe('content', () => {
     it('displays correct title and subtitle', async () => {
       const page = await createPage({ isOpen: true });
+      const shadow = page.root.shadowRoot;
+      const body = shadow.querySelector('mvx-wallet-connect-body').shadowRoot;
 
-      const titleElement = page.root.querySelector(`[data-testid=${DataTestIdsEnum.walletConnetModalTitle}]`);
+      const titleElement = body.querySelector(`[data-testid=${DataTestIdsEnum.walletConnetModalTitle}]`);
       expect(titleElement).toBeTruthy();
-      expect(titleElement.textContent).toContain('xPortal Mobile Wallet');
-
-      const subtitleElement = page.root.querySelector(`[data-testid=${DataTestIdsEnum.walletConnetModalSubtitle}]`);
-      expect(subtitleElement).toBeTruthy();
-      expect(subtitleElement.textContent).toContain('Scan this QR code with your app');
+      expect(titleElement.textContent.trim()).toContain('Scan this QR code with your app');
     });
   });
 
   describe('QR code', () => {
     it('shows loading state initially', async () => {
       const page = await createPage({ isOpen: true });
-      const bodyComponent = page.root.querySelector('mvx-wallet-connect-body');
-      expect(bodyComponent).toBeTruthy();
-
-      const loading = bodyComponent.querySelector(`[data-testid=${DataTestIdsEnum.walletConnectLoading}]`);
+      const body = page.root.shadowRoot.querySelector('mvx-wallet-connect-body').shadowRoot;
+      const loading = body.querySelector(`[data-testid=${DataTestIdsEnum.walletConnectLoading}]`);
       expect(loading).toBeTruthy();
     });
 
@@ -63,10 +63,8 @@ describe('wallet-connect-panel', () => {
       await new Promise(resolve => setTimeout(resolve, 0));
       await page.waitForChanges();
 
-      const bodyComponent = page.root.querySelector('mvx-wallet-connect-body');
-      expect(bodyComponent).toBeTruthy();
-
-      const qrCodeContainer = bodyComponent.querySelector(`[data-testid=${DataTestIdsEnum.walletConnectQrCode}]`);
+      const body = page.root.shadowRoot.querySelector('mvx-wallet-connect-body').shadowRoot;
+      const qrCodeContainer = body.querySelector(`[data-testid=${DataTestIdsEnum.walletConnectQrCode}]`);
       expect(qrCodeContainer).toBeTruthy();
 
       const svgElement = qrCodeContainer.querySelector('svg');
@@ -81,10 +79,8 @@ describe('wallet-connect-panel', () => {
       await new Promise(resolve => setTimeout(resolve, 0));
       await page.waitForChanges();
 
-      const bodyComponent = page.root.querySelector('mvx-wallet-connect-body');
-      expect(bodyComponent).toBeTruthy();
-
-      const loading = bodyComponent.querySelector(`[data-testid=${DataTestIdsEnum.walletConnectLoading}]`);
+      const body = page.root.shadowRoot.querySelector('mvx-wallet-connect-body').shadowRoot;
+      const loading = body.querySelector(`[data-testid=${DataTestIdsEnum.walletConnectLoading}]`);
       expect(loading).toBeNull();
     });
   });

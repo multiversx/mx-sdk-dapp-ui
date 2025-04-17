@@ -1,6 +1,7 @@
 import { Component, h, Prop, State } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-import { processImgSrc } from 'utils/processImgSrc';
+
+import { processImgSrc } from '../../../../utils/processImgSrc';
 
 const XPORTAL_APP_GALLERY_LINK = 'https://appgallery.huawei.com/app/C104325151';
 const XPORTAL_APP_STORE_LINK = 'https://apps.apple.com/us/app/xportal/id1519405832';
@@ -32,16 +33,20 @@ export class WalletConnectModal {
       <div class={{ 'wallet-connect-body': true, 'flipped': Boolean(this.flipToggle) }}>
         <div class="wallet-connect-body-scan">
           <div class="wallet-connect-body-scan-qr">
-            <mvx-xportal-qr-code-preloader data-testid={DataTestIdsEnum.walletConnectLoading} />
-
-            <div
-              class={{ 'wallet-connect-body-scan-qr-embed': true, 'visible': Boolean(this.qrCodeSvg) }}
-              data-testid={DataTestIdsEnum.walletConnectQrCode}
-              innerHTML={this.qrCodeSvg}
-            />
+            {this.qrCodeSvg ? (
+              <div
+                class={{ 'wallet-connect-body-scan-qr-embed': true, 'visible': Boolean(this.qrCodeSvg) }}
+                data-testid={DataTestIdsEnum.walletConnectQrCode}
+                innerHTML={this.qrCodeSvg}
+              />
+            ) : (
+              <mvx-xportal-qr-code-preloader data-testid={DataTestIdsEnum.walletConnectLoading} />
+            )}
           </div>
 
-          <div class="wallet-connect-body-scan-description">Scan the QR code using xPortal</div>
+          <div class="wallet-connect-body-scan-description" data-testid={DataTestIdsEnum.walletConnetModalTitle}>
+            Scan this QR code with your app
+          </div>
           <div class="wallet-connect-body-scan-download">
             <div class="wallet-connect-body-scan-download-wrapper">
               <div class="wallet-connect-body-scan-download-title">

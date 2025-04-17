@@ -7,10 +7,11 @@ import { Component, h, Prop } from '@stencil/core';
 })
 export class XPortalQrCodePreloader {
   @Prop() class?: string;
+  @Prop() dataTestId?: string;
 
   render() {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 302 300" class={{ 'xportal-qr-code-preloader': true, [this.class]: Boolean(this.class) }}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 302 300" data-testid={this.dataTestId} class={{ 'xportal-qr-code-preloader': true, [this.class]: Boolean(this.class) }}>
         <g opacity="0.2">
           <path d="M108.94 0H96.9403V12.0001H108.94V0Z" fill="url(#paint0_linear_8712_31655)" />
           <path d="M120.941 0H108.94V12.0001H120.941V0Z" fill="url(#paint1_linear_8712_31655)" />
