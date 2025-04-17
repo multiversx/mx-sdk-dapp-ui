@@ -1,5 +1,4 @@
 import { Component, Element, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
-import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IEventBus } from 'utils/EventBus';
 
 import type { IWalletConnectPanelData } from './wallet-connect-panel.types';
@@ -8,7 +7,8 @@ import { WalletConnectBase } from './WalletConnectBase';
 
 @Component({
   tag: 'mvx-wallet-connect-panel',
-  styleUrl: 'wallet-connect-panel.css',
+  styleUrl: 'wallet-connect-panel.scss',
+  shadow: true,
 })
 export class WalletConnectPanel {
   @Element() hostElement: HTMLElement;
@@ -74,14 +74,8 @@ export class WalletConnectPanel {
 
   render() {
     return (
-      <mvx-side-panel isOpen={this.isOpen} panelClassName="wallet-connect-side-panel" onClose={this.handleClose.bind(this)}>
-        <div class="wallet-connect-container">
-          <div class="wallet-connect-header">
-            <h2 data-testid={DataTestIdsEnum.walletConnetModalTitle}>xPortal Mobile Wallet</h2>
-            <h4 data-testid={DataTestIdsEnum.walletConnetModalSubtitle}>Scan this QR code with your app</h4>
-          </div>
-          <mvx-wallet-connect-body qrCodeSvg={this.qrCodeSvg} />
-        </div>
+      <mvx-side-panel isOpen={this.isOpen} panelTitle="xPortal App" panelClassName="wallet-connect-panel" onClose={this.handleClose.bind(this)}>
+        <mvx-wallet-connect-body qrCodeSvg={this.qrCodeSvg} />
       </mvx-side-panel>
     );
   }

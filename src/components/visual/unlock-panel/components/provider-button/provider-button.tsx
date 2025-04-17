@@ -1,50 +1,41 @@
 import { Component, Fragment, h, Prop } from '@stencil/core';
-import { ProviderTypeEnum } from 'types/provider.types';
-
-enum ProviderButtonLabelsEnum {
-  extension = 'MultiversX Wallet Extension',
-  metamask = 'MetaMask Snap',
-  passkey = 'Passkey',
-  xportal = 'xPortal Wallet',
-  ledger = 'Ledger',
-  wallet = 'MultiversX Web Wallet',
-  xalias = 'Google (xAlias)',
-}
+import { ProviderLabelsEnum, ProviderTypeEnum } from 'types/provider.types';
 
 const providerButtonInfo = {
   [ProviderTypeEnum.extension]: {
     icon: <mvx-extension-provider-icon />,
-    label: ProviderButtonLabelsEnum.extension,
+    label: ProviderLabelsEnum.extension,
   },
   [ProviderTypeEnum.metamask]: {
     icon: <mvx-metamask-provider-icon />,
-    label: ProviderButtonLabelsEnum.metamask,
+    label: ProviderLabelsEnum.metamask,
   },
   [ProviderTypeEnum.passkey]: {
     icon: <mvx-passkey-provider-icon />,
-    label: ProviderButtonLabelsEnum.passkey,
+    label: ProviderLabelsEnum.passkey,
   },
   [ProviderTypeEnum.walletConnect]: {
     icon: <mvx-multiversx-logo-icon />,
-    label: ProviderButtonLabelsEnum.xportal,
+    label: ProviderLabelsEnum.walletConnect,
   },
   [ProviderTypeEnum.ledger]: {
     icon: <mvx-ledger-provider-icon />,
-    label: ProviderButtonLabelsEnum.ledger,
+    label: ProviderLabelsEnum.ledger,
   },
   [ProviderTypeEnum.crossWindow]: {
     icon: <mvx-wallet-provider-icon />,
-    label: ProviderButtonLabelsEnum.wallet,
+    label: ProviderLabelsEnum.crossWindow,
   },
   [ProviderTypeEnum.xalias]: {
     icon: <mvx-xalias-provider-icon />,
-    label: ProviderButtonLabelsEnum.xalias,
+    label: ProviderLabelsEnum.xalias,
   },
 };
 
 @Component({
   tag: 'mvx-provider-button',
   styleUrl: 'provider-button.scss',
+  shadow: true,
 })
 export class ProviderButton {
   @Prop() type: ProviderTypeEnum;
