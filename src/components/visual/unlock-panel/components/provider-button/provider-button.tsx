@@ -39,6 +39,7 @@ const providerButtonInfo = {
 })
 export class ProviderButton {
   @Prop() type: ProviderTypeEnum;
+  @Prop() providers: string[];
   @Prop() class?: string;
 
   render() {
