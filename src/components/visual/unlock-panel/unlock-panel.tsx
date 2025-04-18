@@ -139,13 +139,7 @@ export class UnlockPanel {
                       })}
                     />
                   ))}
-                </div>
-              </div>
 
-              <div class="unlock-panel-group">
-                <div class="unlock-panel-group-label">External Providers</div>
-
-                <div class="unlock-panel-group-providers">
                   <slot />
                 </div>
               </div>

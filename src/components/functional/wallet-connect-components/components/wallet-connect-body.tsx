@@ -18,7 +18,7 @@ const xPortalDownloadOptions = [
   styleUrl: 'wallet-connect-body.scss',
   shadow: true,
 })
-export class WalletConnectModal {
+export class WalletConnectBody {
   @Prop() qrCodeSvg: string = '';
   @State() flipToggle: boolean = false;
 
@@ -45,6 +45,7 @@ export class WalletConnectModal {
           <div class="wallet-connect-body-scan-description" data-testid={DataTestIdsEnum.walletConnetModalTitle}>
             Scan this QR code with your app
           </div>
+
           <div class="wallet-connect-body-scan-download">
             <div class="wallet-connect-body-scan-download-wrapper">
               <div class="wallet-connect-body-scan-download-title">

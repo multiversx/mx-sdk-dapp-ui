@@ -5,7 +5,7 @@ jest.mock('../../../../utils/processImgSrc', () => ({
 import { newSpecPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-import { WalletConnectModal } from '../components/wallet-connect-body';
+import { WalletConnectBody } from '../components/wallet-connect-body';
 import { WalletConnectPanel } from '../wallet-connect-panel';
 
 const tag = 'mvx-wallet-connect-panel';
@@ -13,7 +13,7 @@ const tag = 'mvx-wallet-connect-panel';
 describe('wallet-connect-panel', () => {
   const createPage = async (props: { data?: any; isOpen?: boolean } = {}) => {
     const page = await newSpecPage({
-      components: [WalletConnectPanel, WalletConnectModal],
+      components: [WalletConnectPanel, WalletConnectBody],
       html: `<${tag}></${tag}>`,
     });
 

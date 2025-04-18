@@ -33,6 +33,7 @@ const excludeComponents = [
 
 export const config: Config = {
   namespace: 'sdk-dapp-core-ui',
+  globalScript: './src/global/scripts/fonts-loader.ts',
   plugins: [
     sass(),
     tailwind({
