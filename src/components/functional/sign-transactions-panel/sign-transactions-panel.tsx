@@ -22,6 +22,7 @@ export class SignTransactionsPanel {
   @State() isOpen: boolean = false;
 
   @Prop() data: ISignTransactionsPanelData = {
+    shouldClose: false,
     commonData: {
       egldLabel: '',
       feeLimit: '',
@@ -85,6 +86,9 @@ export class SignTransactionsPanel {
   }
 
   private dataUpdate(payload: ISignTransactionsPanelData) {
+    if (payload.shouldClose) {
+      return this.onClose({ isUserClick: false });
+    }
     this.data = { ...payload };
     forceUpdate(this);
   }
