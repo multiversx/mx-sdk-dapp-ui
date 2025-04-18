@@ -3,7 +3,7 @@ import type { IEventBus } from 'utils/EventBus';
 
 import type { ILedgerConnectPanelData } from './ledger-connect.types';
 import { LedgerConnectEventsEnum } from './ledger-connect.types';
-import type { LedgerConnectBase } from './LedgerConnectBase';
+import { LedgerConnectBase } from './LedgerConnectBase';
 
 @Component({
   tag: 'mvx-ledger-connect',
