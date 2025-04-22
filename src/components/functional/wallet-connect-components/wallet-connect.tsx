@@ -2,7 +2,7 @@ import { Component, Element, forceUpdate, h, Method, Prop, State, Watch } from '
 import type { IEventBus } from 'utils/EventBus';
 
 import type { IWalletConnectPanelData } from '../wallet-connect/wallet-connect-panel/wallet-connect-panel.types';
-import { WalletConnectBase } from './WalletConnectBase';
+import { WalletConnectBase } from '../wallet-connect/WalletConnectBase';
 
 @Component({
   tag: 'mvx-wallet-connect',
@@ -36,7 +36,7 @@ export class WalletConnect {
   }
 
   render() {
-    return <mvx-wallet-connect-body qrCodeSvg={this.qrCodeSvg} />;
+    return <mvx-wallet-connect-flow qrCodeSvg={this.qrCodeSvg} />;
   }
 
   private removeComponent() {

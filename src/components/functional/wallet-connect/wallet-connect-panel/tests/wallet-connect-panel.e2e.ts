@@ -39,7 +39,7 @@ describe('wallet-connect-panel', () => {
     it('displays correct title and subtitle', async () => {
       const page = await createPage({ isOpen: true });
       const shadow = page.root.shadowRoot;
-      const body = shadow.querySelector('mvx-wallet-connect-body').shadowRoot;
+      const body = shadow.querySelector('mvx-wallet-connect-flow').shadowRoot;
 
       const titleElement = body.querySelector(`[data-testid=${DataTestIdsEnum.walletConnetModalTitle}]`);
       expect(titleElement).toBeTruthy();
@@ -50,7 +50,7 @@ describe('wallet-connect-panel', () => {
   describe('QR code', () => {
     it('shows loading state initially', async () => {
       const page = await createPage({ isOpen: true });
-      const body = page.root.shadowRoot.querySelector('mvx-wallet-connect-body').shadowRoot;
+      const body = page.root.shadowRoot.querySelector('mvx-wallet-connect-flow').shadowRoot;
       const loading = body.querySelector(`[data-testid=${DataTestIdsEnum.walletConnectLoading}]`);
       expect(loading).toBeTruthy();
     });
@@ -63,7 +63,7 @@ describe('wallet-connect-panel', () => {
       await new Promise(resolve => setTimeout(resolve, 0));
       await page.waitForChanges();
 
-      const body = page.root.shadowRoot.querySelector('mvx-wallet-connect-body').shadowRoot;
+      const body = page.root.shadowRoot.querySelector('mvx-wallet-connect-flow').shadowRoot;
       const qrCodeContainer = body.querySelector(`[data-testid=${DataTestIdsEnum.walletConnectQrCode}]`);
       expect(qrCodeContainer).toBeTruthy();
 

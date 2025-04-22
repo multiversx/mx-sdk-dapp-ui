@@ -277,9 +277,6 @@ export namespace Components {
         "data": IWalletConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
-    interface MvxWalletConnectBody {
-        "qrCodeSvg": string;
-    }
     interface MvxWalletConnectFlow {
         "qrCodeSvg": string;
     }
@@ -856,12 +853,6 @@ declare global {
         prototype: HTMLMvxWalletConnectElement;
         new (): HTMLMvxWalletConnectElement;
     };
-    interface HTMLMvxWalletConnectBodyElement extends Components.MvxWalletConnectBody, HTMLStencilElement {
-    }
-    var HTMLMvxWalletConnectBodyElement: {
-        prototype: HTMLMvxWalletConnectBodyElement;
-        new (): HTMLMvxWalletConnectBodyElement;
-    };
     interface HTMLMvxWalletConnectFlowElement extends Components.MvxWalletConnectFlow, HTMLStencilElement {
     }
     var HTMLMvxWalletConnectFlowElement: {
@@ -964,7 +955,6 @@ declare global {
         "mvx-unlock-provider-button": HTMLMvxUnlockProviderButtonElement;
         "mvx-unlock-provider-intro": HTMLMvxUnlockProviderIntroElement;
         "mvx-wallet-connect": HTMLMvxWalletConnectElement;
-        "mvx-wallet-connect-body": HTMLMvxWalletConnectBodyElement;
         "mvx-wallet-connect-flow": HTMLMvxWalletConnectFlowElement;
         "mvx-wallet-connect-panel": HTMLMvxWalletConnectPanelElement;
         "mvx-wallet-connect-provider": HTMLMvxWalletConnectProviderElement;
@@ -1227,9 +1217,6 @@ declare namespace LocalJSX {
     interface MvxWalletConnect {
         "data"?: IWalletConnectPanelData;
     }
-    interface MvxWalletConnectBody {
-        "qrCodeSvg"?: string;
-    }
     interface MvxWalletConnectFlow {
         "qrCodeSvg"?: string;
     }
@@ -1308,7 +1295,6 @@ declare namespace LocalJSX {
         "mvx-unlock-provider-button": MvxUnlockProviderButton;
         "mvx-unlock-provider-intro": MvxUnlockProviderIntro;
         "mvx-wallet-connect": MvxWalletConnect;
-        "mvx-wallet-connect-body": MvxWalletConnectBody;
         "mvx-wallet-connect-flow": MvxWalletConnectFlow;
         "mvx-wallet-connect-panel": MvxWalletConnectPanel;
         "mvx-wallet-connect-provider": MvxWalletConnectProvider;
@@ -1381,7 +1367,6 @@ declare module "@stencil/core" {
             "mvx-unlock-provider-button": LocalJSX.MvxUnlockProviderButton & JSXBase.HTMLAttributes<HTMLMvxUnlockProviderButtonElement>;
             "mvx-unlock-provider-intro": LocalJSX.MvxUnlockProviderIntro & JSXBase.HTMLAttributes<HTMLMvxUnlockProviderIntroElement>;
             "mvx-wallet-connect": LocalJSX.MvxWalletConnect & JSXBase.HTMLAttributes<HTMLMvxWalletConnectElement>;
-            "mvx-wallet-connect-body": LocalJSX.MvxWalletConnectBody & JSXBase.HTMLAttributes<HTMLMvxWalletConnectBodyElement>;
             "mvx-wallet-connect-flow": LocalJSX.MvxWalletConnectFlow & JSXBase.HTMLAttributes<HTMLMvxWalletConnectFlowElement>;
             "mvx-wallet-connect-panel": LocalJSX.MvxWalletConnectPanel & JSXBase.HTMLAttributes<HTMLMvxWalletConnectPanelElement>;
             "mvx-wallet-connect-provider": LocalJSX.MvxWalletConnectProvider & JSXBase.HTMLAttributes<HTMLMvxWalletConnectProviderElement>;
