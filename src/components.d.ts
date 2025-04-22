@@ -19,8 +19,7 @@ import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-import { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
-import { IWalletConnectPanelData as IWalletConnectPanelData1 } from "./components/functional/wallet-connect/wallet-connect-panel/wallet-connect-panel.types";
+import { IWalletConnectPanelData } from "./components/functional/wallet-connect/wallet-connect-panel/wallet-connect-panel.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IGenericModalProps } from "./components/common/generic-modal/generic-modal.types";
@@ -35,8 +34,7 @@ export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-export { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
-export { IWalletConnectPanelData as IWalletConnectPanelData1 } from "./components/functional/wallet-connect/wallet-connect-panel/wallet-connect-panel.types";
+export { IWalletConnectPanelData } from "./components/functional/wallet-connect/wallet-connect-panel/wallet-connect-panel.types";
 export namespace Components {
     interface MvxArrowUpRightIcon {
     }
@@ -289,12 +287,8 @@ export namespace Components {
         "data": IWalletConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
-    interface MvxWalletConnectPanel2 {
-        "data": IWalletConnectPanelData1;
-        "getEventBus": () => Promise<IEventBus>;
-    }
     interface MvxWalletConnectProvider {
-        "data": IWalletConnectPanelData1;
+        "data": IWalletConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxWalletProviderIcon {
@@ -880,12 +874,6 @@ declare global {
         prototype: HTMLMvxWalletConnectPanelElement;
         new (): HTMLMvxWalletConnectPanelElement;
     };
-    interface HTMLMvxWalletConnectPanel2Element extends Components.MvxWalletConnectPanel2, HTMLStencilElement {
-    }
-    var HTMLMvxWalletConnectPanel2Element: {
-        prototype: HTMLMvxWalletConnectPanel2Element;
-        new (): HTMLMvxWalletConnectPanel2Element;
-    };
     interface HTMLMvxWalletConnectProviderElement extends Components.MvxWalletConnectProvider, HTMLStencilElement {
     }
     var HTMLMvxWalletConnectProviderElement: {
@@ -979,7 +967,6 @@ declare global {
         "mvx-wallet-connect-body": HTMLMvxWalletConnectBodyElement;
         "mvx-wallet-connect-flow": HTMLMvxWalletConnectFlowElement;
         "mvx-wallet-connect-panel": HTMLMvxWalletConnectPanelElement;
-        "mvx-wallet-connect-panel2": HTMLMvxWalletConnectPanel2Element;
         "mvx-wallet-connect-provider": HTMLMvxWalletConnectProviderElement;
         "mvx-wallet-provider-icon": HTMLMvxWalletProviderIconElement;
         "mvx-xalias-provider-icon": HTMLMvxXaliasProviderIconElement;
@@ -1249,11 +1236,8 @@ declare namespace LocalJSX {
     interface MvxWalletConnectPanel {
         "data"?: IWalletConnectPanelData;
     }
-    interface MvxWalletConnectPanel2 {
-        "data"?: IWalletConnectPanelData1;
-    }
     interface MvxWalletConnectProvider {
-        "data"?: IWalletConnectPanelData1;
+        "data"?: IWalletConnectPanelData;
     }
     interface MvxWalletProviderIcon {
     }
@@ -1327,7 +1311,6 @@ declare namespace LocalJSX {
         "mvx-wallet-connect-body": MvxWalletConnectBody;
         "mvx-wallet-connect-flow": MvxWalletConnectFlow;
         "mvx-wallet-connect-panel": MvxWalletConnectPanel;
-        "mvx-wallet-connect-panel2": MvxWalletConnectPanel2;
         "mvx-wallet-connect-provider": MvxWalletConnectProvider;
         "mvx-wallet-provider-icon": MvxWalletProviderIcon;
         "mvx-xalias-provider-icon": MvxXaliasProviderIcon;
@@ -1401,7 +1384,6 @@ declare module "@stencil/core" {
             "mvx-wallet-connect-body": LocalJSX.MvxWalletConnectBody & JSXBase.HTMLAttributes<HTMLMvxWalletConnectBodyElement>;
             "mvx-wallet-connect-flow": LocalJSX.MvxWalletConnectFlow & JSXBase.HTMLAttributes<HTMLMvxWalletConnectFlowElement>;
             "mvx-wallet-connect-panel": LocalJSX.MvxWalletConnectPanel & JSXBase.HTMLAttributes<HTMLMvxWalletConnectPanelElement>;
-            "mvx-wallet-connect-panel2": LocalJSX.MvxWalletConnectPanel2 & JSXBase.HTMLAttributes<HTMLMvxWalletConnectPanel2Element>;
             "mvx-wallet-connect-provider": LocalJSX.MvxWalletConnectProvider & JSXBase.HTMLAttributes<HTMLMvxWalletConnectProviderElement>;
             "mvx-wallet-provider-icon": LocalJSX.MvxWalletProviderIcon & JSXBase.HTMLAttributes<HTMLMvxWalletProviderIconElement>;
             "mvx-xalias-provider-icon": LocalJSX.MvxXaliasProviderIcon & JSXBase.HTMLAttributes<HTMLMvxXaliasProviderIconElement>;

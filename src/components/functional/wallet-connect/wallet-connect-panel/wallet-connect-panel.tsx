@@ -6,7 +6,7 @@ import type { IWalletConnectPanelData } from './wallet-connect-panel.types';
 import { WalletConnectEventsEnum } from './wallet-connect-panel.types';
 
 @Component({
-  tag: 'mvx-wallet-connect-panel2',
+  tag: 'mvx-wallet-connect-panel',
   styleUrl: 'wallet-connect-panel.scss',
   shadow: true,
 })
