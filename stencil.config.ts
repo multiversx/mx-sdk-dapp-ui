@@ -23,7 +23,7 @@ const excludeComponents = [
   'mvx-transaction-toast',
   'mvx-transaction-toast-wrapper',
   'mvx-sign-transaction-component',
-  'mvx-wallet-connect',
+  'mvx-wallet-connect-provider',
   'mvx-wallet-connect-panel',
   'mvx-transaction-toast-progress',
   'mvx-token-component',
