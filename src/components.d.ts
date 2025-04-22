@@ -20,6 +20,7 @@ import { ITransactionListItem } from "./components/visual/transaction-list-item/
 import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 import { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
+import { IWalletConnectPanelData as IWalletConnectPanelData1 } from "./components/functional/wallet-connect/wallet-connect-panel/wallet-connect-panel.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IGenericModalProps } from "./components/common/generic-modal/generic-modal.types";
@@ -35,6 +36,7 @@ export { ITransactionListItem } from "./components/visual/transaction-list-item/
 export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 export { IWalletConnectPanelData } from "./components/functional/wallet-connect-components/wallet-connect-panel.types";
+export { IWalletConnectPanelData as IWalletConnectPanelData1 } from "./components/functional/wallet-connect/wallet-connect-panel/wallet-connect-panel.types";
 export namespace Components {
     interface MvxArrowUpRightIcon {
     }
@@ -265,6 +267,14 @@ export namespace Components {
         "allowedProviders": ProviderTypeEnum[];
         "isOpen": boolean;
     }
+    interface MvxUnlockProviderButton {
+        "class"?: string;
+        "providers": string[];
+        "type": ProviderTypeEnum;
+    }
+    interface MvxUnlockProviderIntro {
+        "provider": ProviderTypeEnum | null;
+    }
     interface MvxWalletConnect {
         "data": IWalletConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
@@ -272,8 +282,19 @@ export namespace Components {
     interface MvxWalletConnectBody {
         "qrCodeSvg": string;
     }
+    interface MvxWalletConnectFlow {
+        "qrCodeSvg": string;
+    }
     interface MvxWalletConnectPanel {
         "data": IWalletConnectPanelData;
+        "getEventBus": () => Promise<IEventBus>;
+    }
+    interface MvxWalletConnectPanel2 {
+        "data": IWalletConnectPanelData1;
+        "getEventBus": () => Promise<IEventBus>;
+    }
+    interface MvxWalletConnectProvider {
+        "data": IWalletConnectPanelData1;
         "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxWalletProviderIcon {
@@ -333,6 +354,10 @@ export interface MvxTransactionToastContentCustomEvent<T> extends CustomEvent<T>
 export interface MvxUnlockPanelCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxUnlockPanelElement;
+}
+export interface MvxUnlockProviderIntroCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMvxUnlockProviderIntroElement;
 }
 declare global {
     interface HTMLMvxArrowUpRightIconElement extends Components.MvxArrowUpRightIcon, HTMLStencilElement {
@@ -808,6 +833,29 @@ declare global {
         prototype: HTMLMvxUnlockPanelElement;
         new (): HTMLMvxUnlockPanelElement;
     };
+    interface HTMLMvxUnlockProviderButtonElement extends Components.MvxUnlockProviderButton, HTMLStencilElement {
+    }
+    var HTMLMvxUnlockProviderButtonElement: {
+        prototype: HTMLMvxUnlockProviderButtonElement;
+        new (): HTMLMvxUnlockProviderButtonElement;
+    };
+    interface HTMLMvxUnlockProviderIntroElementEventMap {
+        "access": any;
+    }
+    interface HTMLMvxUnlockProviderIntroElement extends Components.MvxUnlockProviderIntro, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxUnlockProviderIntroElementEventMap>(type: K, listener: (this: HTMLMvxUnlockProviderIntroElement, ev: MvxUnlockProviderIntroCustomEvent<HTMLMvxUnlockProviderIntroElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxUnlockProviderIntroElementEventMap>(type: K, listener: (this: HTMLMvxUnlockProviderIntroElement, ev: MvxUnlockProviderIntroCustomEvent<HTMLMvxUnlockProviderIntroElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMvxUnlockProviderIntroElement: {
+        prototype: HTMLMvxUnlockProviderIntroElement;
+        new (): HTMLMvxUnlockProviderIntroElement;
+    };
     interface HTMLMvxWalletConnectElement extends Components.MvxWalletConnect, HTMLStencilElement {
     }
     var HTMLMvxWalletConnectElement: {
@@ -820,11 +868,29 @@ declare global {
         prototype: HTMLMvxWalletConnectBodyElement;
         new (): HTMLMvxWalletConnectBodyElement;
     };
+    interface HTMLMvxWalletConnectFlowElement extends Components.MvxWalletConnectFlow, HTMLStencilElement {
+    }
+    var HTMLMvxWalletConnectFlowElement: {
+        prototype: HTMLMvxWalletConnectFlowElement;
+        new (): HTMLMvxWalletConnectFlowElement;
+    };
     interface HTMLMvxWalletConnectPanelElement extends Components.MvxWalletConnectPanel, HTMLStencilElement {
     }
     var HTMLMvxWalletConnectPanelElement: {
         prototype: HTMLMvxWalletConnectPanelElement;
         new (): HTMLMvxWalletConnectPanelElement;
+    };
+    interface HTMLMvxWalletConnectPanel2Element extends Components.MvxWalletConnectPanel2, HTMLStencilElement {
+    }
+    var HTMLMvxWalletConnectPanel2Element: {
+        prototype: HTMLMvxWalletConnectPanel2Element;
+        new (): HTMLMvxWalletConnectPanel2Element;
+    };
+    interface HTMLMvxWalletConnectProviderElement extends Components.MvxWalletConnectProvider, HTMLStencilElement {
+    }
+    var HTMLMvxWalletConnectProviderElement: {
+        prototype: HTMLMvxWalletConnectProviderElement;
+        new (): HTMLMvxWalletConnectProviderElement;
     };
     interface HTMLMvxWalletProviderIconElement extends Components.MvxWalletProviderIcon, HTMLStencilElement {
     }
@@ -907,9 +973,14 @@ declare global {
         "mvx-trim-text": HTMLMvxTrimTextElement;
         "mvx-unlock-button": HTMLMvxUnlockButtonElement;
         "mvx-unlock-panel": HTMLMvxUnlockPanelElement;
+        "mvx-unlock-provider-button": HTMLMvxUnlockProviderButtonElement;
+        "mvx-unlock-provider-intro": HTMLMvxUnlockProviderIntroElement;
         "mvx-wallet-connect": HTMLMvxWalletConnectElement;
         "mvx-wallet-connect-body": HTMLMvxWalletConnectBodyElement;
+        "mvx-wallet-connect-flow": HTMLMvxWalletConnectFlowElement;
         "mvx-wallet-connect-panel": HTMLMvxWalletConnectPanelElement;
+        "mvx-wallet-connect-panel2": HTMLMvxWalletConnectPanel2Element;
+        "mvx-wallet-connect-provider": HTMLMvxWalletConnectProviderElement;
         "mvx-wallet-provider-icon": HTMLMvxWalletProviderIconElement;
         "mvx-xalias-provider-icon": HTMLMvxXaliasProviderIconElement;
         "mvx-xportal-download-qr-icon": HTMLMvxXportalDownloadQrIconElement;
@@ -1157,14 +1228,32 @@ declare namespace LocalJSX {
         "onClose"?: (event: MvxUnlockPanelCustomEvent<any>) => void;
         "onLogin"?: (event: MvxUnlockPanelCustomEvent<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>) => void;
     }
+    interface MvxUnlockProviderButton {
+        "class"?: string;
+        "providers"?: string[];
+        "type"?: ProviderTypeEnum;
+    }
+    interface MvxUnlockProviderIntro {
+        "onAccess"?: (event: MvxUnlockProviderIntroCustomEvent<any>) => void;
+        "provider"?: ProviderTypeEnum | null;
+    }
     interface MvxWalletConnect {
         "data"?: IWalletConnectPanelData;
     }
     interface MvxWalletConnectBody {
         "qrCodeSvg"?: string;
     }
+    interface MvxWalletConnectFlow {
+        "qrCodeSvg"?: string;
+    }
     interface MvxWalletConnectPanel {
         "data"?: IWalletConnectPanelData;
+    }
+    interface MvxWalletConnectPanel2 {
+        "data"?: IWalletConnectPanelData1;
+    }
+    interface MvxWalletConnectProvider {
+        "data"?: IWalletConnectPanelData1;
     }
     interface MvxWalletProviderIcon {
     }
@@ -1232,9 +1321,14 @@ declare namespace LocalJSX {
         "mvx-trim-text": MvxTrimText;
         "mvx-unlock-button": MvxUnlockButton;
         "mvx-unlock-panel": MvxUnlockPanel;
+        "mvx-unlock-provider-button": MvxUnlockProviderButton;
+        "mvx-unlock-provider-intro": MvxUnlockProviderIntro;
         "mvx-wallet-connect": MvxWalletConnect;
         "mvx-wallet-connect-body": MvxWalletConnectBody;
+        "mvx-wallet-connect-flow": MvxWalletConnectFlow;
         "mvx-wallet-connect-panel": MvxWalletConnectPanel;
+        "mvx-wallet-connect-panel2": MvxWalletConnectPanel2;
+        "mvx-wallet-connect-provider": MvxWalletConnectProvider;
         "mvx-wallet-provider-icon": MvxWalletProviderIcon;
         "mvx-xalias-provider-icon": MvxXaliasProviderIcon;
         "mvx-xportal-download-qr-icon": MvxXportalDownloadQrIcon;
@@ -1301,9 +1395,14 @@ declare module "@stencil/core" {
             "mvx-trim-text": LocalJSX.MvxTrimText & JSXBase.HTMLAttributes<HTMLMvxTrimTextElement>;
             "mvx-unlock-button": LocalJSX.MvxUnlockButton & JSXBase.HTMLAttributes<HTMLMvxUnlockButtonElement>;
             "mvx-unlock-panel": LocalJSX.MvxUnlockPanel & JSXBase.HTMLAttributes<HTMLMvxUnlockPanelElement>;
+            "mvx-unlock-provider-button": LocalJSX.MvxUnlockProviderButton & JSXBase.HTMLAttributes<HTMLMvxUnlockProviderButtonElement>;
+            "mvx-unlock-provider-intro": LocalJSX.MvxUnlockProviderIntro & JSXBase.HTMLAttributes<HTMLMvxUnlockProviderIntroElement>;
             "mvx-wallet-connect": LocalJSX.MvxWalletConnect & JSXBase.HTMLAttributes<HTMLMvxWalletConnectElement>;
             "mvx-wallet-connect-body": LocalJSX.MvxWalletConnectBody & JSXBase.HTMLAttributes<HTMLMvxWalletConnectBodyElement>;
+            "mvx-wallet-connect-flow": LocalJSX.MvxWalletConnectFlow & JSXBase.HTMLAttributes<HTMLMvxWalletConnectFlowElement>;
             "mvx-wallet-connect-panel": LocalJSX.MvxWalletConnectPanel & JSXBase.HTMLAttributes<HTMLMvxWalletConnectPanelElement>;
+            "mvx-wallet-connect-panel2": LocalJSX.MvxWalletConnectPanel2 & JSXBase.HTMLAttributes<HTMLMvxWalletConnectPanel2Element>;
+            "mvx-wallet-connect-provider": LocalJSX.MvxWalletConnectProvider & JSXBase.HTMLAttributes<HTMLMvxWalletConnectProviderElement>;
             "mvx-wallet-provider-icon": LocalJSX.MvxWalletProviderIcon & JSXBase.HTMLAttributes<HTMLMvxWalletProviderIconElement>;
             "mvx-xalias-provider-icon": LocalJSX.MvxXaliasProviderIcon & JSXBase.HTMLAttributes<HTMLMvxXaliasProviderIconElement>;
             "mvx-xportal-download-qr-icon": LocalJSX.MvxXportalDownloadQrIcon & JSXBase.HTMLAttributes<HTMLMvxXportalDownloadQrIconElement>;
