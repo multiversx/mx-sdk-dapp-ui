@@ -1,9 +1,9 @@
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import { getLedgerAddressByIndex } from './helpers/getLedgerAddressByIndex';
-import type { ILedgerConnectPanelData } from './ledger-connect.types';
-import { LedgerConnectEventsEnum } from './ledger-connect.types';
+import { getLedgerAddressByIndex } from '../ledger-connect-components/helpers/getLedgerAddressByIndex';
+import type { ILedgerConnectPanelData } from './ledger-flow/ledger-flow.types';
+import { LedgerConnectEventsEnum } from './ledger-flow/ledger-flow.types';
 
 interface ILedgerConnectEventBusProps {
   forceUpdateFn: () => void;

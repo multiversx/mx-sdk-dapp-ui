@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-import type { ILedgerAccount } from '../ledger-connect.types';
+import type { ILedgerAccount } from '../../ledger/ledger-flow/ledger-flow.types';
 
 export function trimAddress(s: string): string {
   const firstFour = s.slice(0, 6);

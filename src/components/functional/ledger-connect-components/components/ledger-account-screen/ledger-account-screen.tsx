@@ -2,8 +2,8 @@ import type { EventEmitter } from '@stencil/core';
 import { Component, Event, Fragment, h, Prop } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
+import type { IAccountScreenData } from '../../../ledger/ledger-flow/ledger-flow.types';
 import { renderAccounts } from '../../helpers/renderAccounts';
-import type { IAccountScreenData } from '../../ledger-connect.types';
 
 @Component({
   tag: 'mvx-ledger-account-screen',

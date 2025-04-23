@@ -2,7 +2,7 @@ import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-import type { IConnectScreenData } from '../../ledger-connect.types';
+import type { IConnectScreenData } from '../../../ledger/ledger-flow/ledger-flow.types';
 
 @Component({
   tag: 'mvx-ledger-connect-screen',

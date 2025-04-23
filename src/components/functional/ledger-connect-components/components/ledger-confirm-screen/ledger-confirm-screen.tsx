@@ -1,7 +1,7 @@
 import { Component, h, Prop } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-import type { IConfirmScreenData } from '../../ledger-connect.types';
+import type { IConfirmScreenData } from '../../../ledger/ledger-flow/ledger-flow.types';
 
 @Component({
   tag: 'mvx-ledger-confirm-screen',

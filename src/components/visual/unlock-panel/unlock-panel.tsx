@@ -117,8 +117,7 @@ export class UnlockPanel {
         onBack={this.handleResetLoginState.bind(this)}
       >
         <div id="anchor" ref={element => this.observeContainer(element)} class={{ 'unlock-panel-anchor': this.isLoggingIn }} />
-
-        {this.isIntroScreenVisible && <mvx-intro-screens provider={this.selectedMethod} onAccess={this.handleAccess.bind(this)} />}
+        {this.isIntroScreenVisible && <mvx-unlock-provider-intro provider={this.selectedMethod} onAccess={this.handleAccess.bind(this)} />}
 
         {!this.isLoggingIn && !this.isIntroScreenVisible && (
           <div class="unlock-panel">
@@ -129,7 +128,7 @@ export class UnlockPanel {
 
                   <div class="unlock-panel-group-providers">
                     {detectedProviders.map((provider, providerIndex) => (
-                      <mvx-provider-button
+                      <mvx-unlock-provider-button
                         type={provider}
                         onClick={this.handleLogin.bind(this, provider)}
                         class={classNames('unlock-panel-group-provider', {
@@ -147,7 +146,7 @@ export class UnlockPanel {
 
                 <div class="unlock-panel-group-providers">
                   {otherProviders.map((provider, providerIndex) => (
-                    <mvx-provider-button
+                    <mvx-unlock-provider-button
                       type={provider}
                       onClick={this.handleLogin.bind(this, provider)}
                       class={classNames('unlock-panel-group-provider', {

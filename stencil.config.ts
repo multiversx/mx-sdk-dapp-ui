@@ -9,7 +9,7 @@ const excludeComponents = [
   'mvx-transaction-fee-component',
   'mvx-pending-transactions-panel',
   'mvx-ledger-connect-panel',
-  'mvx-ledger-connect',
+  'mvx-ledger-flow',
   'mvx-ledger-account-screen',
   'mvx-ledger-connect-screen',
   'mvx-ledger-confirm-screen',

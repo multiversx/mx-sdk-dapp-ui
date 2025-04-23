@@ -1,6 +1,12 @@
-const fontVariants = [
+interface FontVariantType {
+  weight: number;
+  name: string;
+}
+
+const fontVariants: FontVariantType[] = [
   { weight: 400, name: `Regular` },
   { weight: 500, name: `Medium` },
+  { weight: 700, name: `Bold` },
 ];
 
 fontVariants.forEach(fontVariant => {

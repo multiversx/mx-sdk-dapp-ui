@@ -1,23 +1,24 @@
 import { Component, Element, forceUpdate, h, Method, Prop, State } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 
-import type { ILedgerConnectPanelData } from './ledger-connect.types';
-import { LedgerConnectEventsEnum } from './ledger-connect.types';
-import { LedgerConnectBase } from './LedgerConnectBase';
+import { LedgerConnectBase } from '../LedgerConnectBase';
+import type { ILedgerConnectPanelData } from './ledger-flow.types';
+import { LedgerConnectEventsEnum } from './ledger-flow.types';
 
 @Component({
-  tag: 'mvx-ledger-connect',
+  tag: 'mvx-ledger-flow',
+  styleUrl: 'ledger-flow.scss',
+  shadow: true,
 })
-export class LedgerConnect {
+export class LedgerFlow {
   @Element() hostElement: HTMLElement;
+  @State() private selectedIndex = 0;
 
   @Prop() data: ILedgerConnectPanelData = {
     accountScreenData: null,
     confirmScreenData: null,
     connectScreenData: {},
   };
-
-  @State() private selectedIndex = 0;
 
   private ledgerConnectBase: LedgerConnectBase;
 
@@ -70,18 +71,21 @@ export class LedgerConnect {
     this.ledgerConnectBase.unsubscribeEventBus(this.getEventSubscription());
   }
 
+  handleIntroConnect(event: MouseEvent) {
+    event.preventDefault();
+    this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.CONNECT_DEVICE);
+  }
+
   render() {
     const { accountScreenData, confirmScreenData, connectScreenData } = this.data;
 
     if (accountScreenData) {
       return (
-        <mvx-ledger-account-screen
+        <mvx-ledger-addresses
           accountScreenData={accountScreenData}
+          onAccessWallet={this.accessWallet}
           selectedIndex={this.selectedIndex}
           onSelectAccount={(event: CustomEvent) => this.selectAccount(event.detail)}
-          onAccessWallet={() => this.accessWallet()}
-          onPrevPage={() => this.prevPage()}
-          onNextPage={() => this.nextPage()}
         />
       );
     }
@@ -90,6 +94,6 @@ export class LedgerConnect {
       return <mvx-ledger-confirm-screen confirmScreenData={confirmScreenData} />;
     }
 
-    return <mvx-ledger-connect-screen connectScreenData={connectScreenData} onConnect={() => this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.CONNECT_DEVICE)} />;
+    return <mvx-ledger-intro connectScreenData={connectScreenData} onConnect={this.handleIntroConnect.bind(this)} />;
   }
 }

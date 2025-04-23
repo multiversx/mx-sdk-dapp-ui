@@ -2,9 +2,9 @@ import { Component, forceUpdate, h, Method, Prop, State } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IEventBus } from 'utils/EventBus';
 
-import type { ILedgerConnectPanelData } from './ledger-connect.types';
-import { LedgerConnectEventsEnum } from './ledger-connect.types';
-import { LedgerConnectBase } from './LedgerConnectBase';
+import type { ILedgerConnectPanelData } from '../ledger/ledger-flow/ledger-flow.types';
+import { LedgerConnectEventsEnum } from '../ledger/ledger-flow/ledger-flow.types';
+import { LedgerConnectBase } from '../ledger/LedgerConnectBase';
 
 @Component({
   tag: 'mvx-ledger-connect-panel',

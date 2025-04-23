@@ -1,6 +1,7 @@
 import { Component, h } from '@stencil/core';
 
 @Component({
+  shadow: true,
   tag: 'mvx-xportal-download-qr-icon',
 })
 export class XPortalDownloadQrIcon {

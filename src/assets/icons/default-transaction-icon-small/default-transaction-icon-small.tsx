@@ -2,6 +2,7 @@ import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'mvx-default-transaction-icon-small',
+  shadow: true,
 })
 export class DefaultTransactionIconSmall {
   render() {

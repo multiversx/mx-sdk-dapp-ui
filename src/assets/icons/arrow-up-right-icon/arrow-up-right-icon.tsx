@@ -2,6 +2,7 @@ import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'mvx-arrow-up-right-icon',
+  shadow: true,
 })
 export class ArrowUpRightIcon {
   render() {
