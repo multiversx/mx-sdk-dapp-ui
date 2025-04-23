@@ -3,3 +3,85 @@
   flex-direction: column;
   flex: 1;
 }
+
+.ledger-addresses {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 16px;
+
+  .ledger-addresses-label {
+    color: #fff;
+    line-height: 1;
+  }
+
+  .ledger-addresses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .ledger-addresses-list-item {
+      border-radius: 8px;
+      display: flex;
+      color: #fff;
+      align-items: center;
+      padding: 12px;
+      height: 64px;
+      width: 100%;
+      position: relative;
+      cursor: pointer;
+      border: 1px solid transparent;
+      gap: 12px;
+
+      &:before {
+        opacity: 30%;
+        content: '';
+        position: absolute;
+        background-color: #353535;
+        left: 0;
+        border-radius: 8px;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        pointer-events: none;
+      }
+
+      .ledger-addresses-list-item-checkbox {
+        position: relative;
+        z-index: 1;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        border: calc(4px / 2) solid #fff;
+
+        &:after {
+          width: calc(12px / 2);
+          height: calc(12px / 2);
+          content: '';
+          transform: translate(-50%, -50%);
+          background-color: #23f7dd;
+          position: absolute;
+          border-radius: 50%;
+          opacity: 0;
+          left: 50%;
+          top: 50%;
+        }
+      }
+
+      .ledger-addresses-list-item-index {
+        position: relative;
+        z-index: 1;
+      }
+
+      .ledger-addresses-list-item-address {
+        position: relative;
+        z-index: 1;
+      }
+
+      .ledger-addresses-list-item-balance {
+        position: relative;
+        z-index: 1;
+      }
+    }
+  }
+}

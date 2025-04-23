@@ -76,6 +76,20 @@ export class LedgerFlow {
     this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.CONNECT_DEVICE);
   }
 
+  handlePageChange(newPage: number) {
+    if (newPage - 1 === this.data.accountScreenData.startIndex + 1) {
+      this.nextPage();
+      return;
+    }
+
+    if (newPage - 1 === this.data.accountScreenData.startIndex - 1) {
+      this.prevPage();
+      return;
+    }
+
+    // onGoToSpecificPage(newPage - 1);
+  }
+
   render() {
     const { accountScreenData, confirmScreenData, connectScreenData } = this.data;
 
@@ -85,6 +99,7 @@ export class LedgerFlow {
           accountScreenData={accountScreenData}
           onAccessWallet={this.accessWallet}
           selectedIndex={this.selectedIndex}
+          onPageChange={(event: CustomEvent) => this.handlePageChange(event.detail)}
           onSelectAccount={(event: CustomEvent) => this.selectAccount(event.detail)}
         />
       );

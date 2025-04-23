@@ -36,6 +36,14 @@ export { ITransactionValue } from "./components/controlled/transactions-table/tr
 export { ProviderTypeEnum } from "./types/provider.types";
 export { IWalletConnectPanelData } from "./components/functional/wallet-connect/wallet-connect-panel/wallet-connect-panel.types";
 export namespace Components {
+    interface MvxAngleLeftIcon {
+    }
+    interface MvxAngleRightIcon {
+    }
+    interface MvxAnglesLeftIcon {
+    }
+    interface MvxAnglesRightIcon {
+    }
     interface MvxArrowUpRightIcon {
     }
     interface MvxBackArrowIcon {
@@ -135,6 +143,12 @@ export namespace Components {
     }
     interface MvxNotificationsFeed {
         "getEventBus": () => Promise<IEventBus>;
+    }
+    interface MvxPagination {
+        "class"?: string;
+        "currentPage": number;
+        "isDisabled"?: boolean;
+        "totalPages": number;
     }
     interface MvxPasskeyProviderIcon {
     }
@@ -324,6 +338,10 @@ export interface MvxLedgerIntroCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxLedgerIntroElement;
 }
+export interface MvxPaginationCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMvxPaginationElement;
+}
 export interface MvxSidePanelCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxSidePanelElement;
@@ -349,6 +367,30 @@ export interface MvxUnlockProviderIntroCustomEvent<T> extends CustomEvent<T> {
     target: HTMLMvxUnlockProviderIntroElement;
 }
 declare global {
+    interface HTMLMvxAngleLeftIconElement extends Components.MvxAngleLeftIcon, HTMLStencilElement {
+    }
+    var HTMLMvxAngleLeftIconElement: {
+        prototype: HTMLMvxAngleLeftIconElement;
+        new (): HTMLMvxAngleLeftIconElement;
+    };
+    interface HTMLMvxAngleRightIconElement extends Components.MvxAngleRightIcon, HTMLStencilElement {
+    }
+    var HTMLMvxAngleRightIconElement: {
+        prototype: HTMLMvxAngleRightIconElement;
+        new (): HTMLMvxAngleRightIconElement;
+    };
+    interface HTMLMvxAnglesLeftIconElement extends Components.MvxAnglesLeftIcon, HTMLStencilElement {
+    }
+    var HTMLMvxAnglesLeftIconElement: {
+        prototype: HTMLMvxAnglesLeftIconElement;
+        new (): HTMLMvxAnglesLeftIconElement;
+    };
+    interface HTMLMvxAnglesRightIconElement extends Components.MvxAnglesRightIcon, HTMLStencilElement {
+    }
+    var HTMLMvxAnglesRightIconElement: {
+        prototype: HTMLMvxAnglesRightIconElement;
+        new (): HTMLMvxAnglesRightIconElement;
+    };
     interface HTMLMvxArrowUpRightIconElement extends Components.MvxArrowUpRightIcon, HTMLStencilElement {
     }
     var HTMLMvxArrowUpRightIconElement: {
@@ -501,6 +543,7 @@ declare global {
     interface HTMLMvxLedgerAddressesElementEventMap {
         "accessWallet": any;
         "selectAccount": any;
+        "pageChange": number;
     }
     interface HTMLMvxLedgerAddressesElement extends Components.MvxLedgerAddresses, HTMLStencilElement {
         addEventListener<K extends keyof HTMLMvxLedgerAddressesElementEventMap>(type: K, listener: (this: HTMLMvxLedgerAddressesElement, ev: MvxLedgerAddressesCustomEvent<HTMLMvxLedgerAddressesElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -597,6 +640,23 @@ declare global {
     var HTMLMvxNotificationsFeedElement: {
         prototype: HTMLMvxNotificationsFeedElement;
         new (): HTMLMvxNotificationsFeedElement;
+    };
+    interface HTMLMvxPaginationElementEventMap {
+        "pageChange": number;
+    }
+    interface HTMLMvxPaginationElement extends Components.MvxPagination, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxPaginationElementEventMap>(type: K, listener: (this: HTMLMvxPaginationElement, ev: MvxPaginationCustomEvent<HTMLMvxPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxPaginationElementEventMap>(type: K, listener: (this: HTMLMvxPaginationElement, ev: MvxPaginationCustomEvent<HTMLMvxPaginationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMvxPaginationElement: {
+        prototype: HTMLMvxPaginationElement;
+        new (): HTMLMvxPaginationElement;
     };
     interface HTMLMvxPasskeyProviderIconElement extends Components.MvxPasskeyProviderIcon, HTMLStencilElement {
     }
@@ -895,6 +955,10 @@ declare global {
         new (): HTMLMvxXportalQrCodePreloaderElement;
     };
     interface HTMLElementTagNameMap {
+        "mvx-angle-left-icon": HTMLMvxAngleLeftIconElement;
+        "mvx-angle-right-icon": HTMLMvxAngleRightIconElement;
+        "mvx-angles-left-icon": HTMLMvxAnglesLeftIconElement;
+        "mvx-angles-right-icon": HTMLMvxAnglesRightIconElement;
         "mvx-arrow-up-right-icon": HTMLMvxArrowUpRightIconElement;
         "mvx-back-arrow-icon": HTMLMvxBackArrowIconElement;
         "mvx-balance-component": HTMLMvxBalanceComponentElement;
@@ -923,6 +987,7 @@ declare global {
         "mvx-metamask-provider-icon": HTMLMvxMetamaskProviderIconElement;
         "mvx-multiversx-logo-icon": HTMLMvxMultiversxLogoIconElement;
         "mvx-notifications-feed": HTMLMvxNotificationsFeedElement;
+        "mvx-pagination": HTMLMvxPaginationElement;
         "mvx-passkey-provider-icon": HTMLMvxPasskeyProviderIconElement;
         "mvx-pending-transactions-panel": HTMLMvxPendingTransactionsPanelElement;
         "mvx-side-panel": HTMLMvxSidePanelElement;
@@ -964,6 +1029,14 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface MvxAngleLeftIcon {
+    }
+    interface MvxAngleRightIcon {
+    }
+    interface MvxAnglesLeftIcon {
+    }
+    interface MvxAnglesRightIcon {
+    }
     interface MvxArrowUpRightIcon {
     }
     interface MvxBackArrowIcon {
@@ -1041,6 +1114,7 @@ declare namespace LocalJSX {
     interface MvxLedgerAddresses {
         "accountScreenData"?: IAccountScreenData;
         "onAccessWallet"?: (event: MvxLedgerAddressesCustomEvent<any>) => void;
+        "onPageChange"?: (event: MvxLedgerAddressesCustomEvent<number>) => void;
         "onSelectAccount"?: (event: MvxLedgerAddressesCustomEvent<any>) => void;
         "selectedIndex"?: number;
     }
@@ -1071,6 +1145,13 @@ declare namespace LocalJSX {
     interface MvxMultiversxLogoIcon {
     }
     interface MvxNotificationsFeed {
+    }
+    interface MvxPagination {
+        "class"?: string;
+        "currentPage"?: number;
+        "isDisabled"?: boolean;
+        "onPageChange"?: (event: MvxPaginationCustomEvent<number>) => void;
+        "totalPages"?: number;
     }
     interface MvxPasskeyProviderIcon {
     }
@@ -1235,6 +1316,10 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface IntrinsicElements {
+        "mvx-angle-left-icon": MvxAngleLeftIcon;
+        "mvx-angle-right-icon": MvxAngleRightIcon;
+        "mvx-angles-left-icon": MvxAnglesLeftIcon;
+        "mvx-angles-right-icon": MvxAnglesRightIcon;
         "mvx-arrow-up-right-icon": MvxArrowUpRightIcon;
         "mvx-back-arrow-icon": MvxBackArrowIcon;
         "mvx-balance-component": MvxBalanceComponent;
@@ -1263,6 +1348,7 @@ declare namespace LocalJSX {
         "mvx-metamask-provider-icon": MvxMetamaskProviderIcon;
         "mvx-multiversx-logo-icon": MvxMultiversxLogoIcon;
         "mvx-notifications-feed": MvxNotificationsFeed;
+        "mvx-pagination": MvxPagination;
         "mvx-passkey-provider-icon": MvxPasskeyProviderIcon;
         "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
         "mvx-side-panel": MvxSidePanel;
@@ -1307,6 +1393,10 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "mvx-angle-left-icon": LocalJSX.MvxAngleLeftIcon & JSXBase.HTMLAttributes<HTMLMvxAngleLeftIconElement>;
+            "mvx-angle-right-icon": LocalJSX.MvxAngleRightIcon & JSXBase.HTMLAttributes<HTMLMvxAngleRightIconElement>;
+            "mvx-angles-left-icon": LocalJSX.MvxAnglesLeftIcon & JSXBase.HTMLAttributes<HTMLMvxAnglesLeftIconElement>;
+            "mvx-angles-right-icon": LocalJSX.MvxAnglesRightIcon & JSXBase.HTMLAttributes<HTMLMvxAnglesRightIconElement>;
             "mvx-arrow-up-right-icon": LocalJSX.MvxArrowUpRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowUpRightIconElement>;
             "mvx-back-arrow-icon": LocalJSX.MvxBackArrowIcon & JSXBase.HTMLAttributes<HTMLMvxBackArrowIconElement>;
             "mvx-balance-component": LocalJSX.MvxBalanceComponent & JSXBase.HTMLAttributes<HTMLMvxBalanceComponentElement>;
@@ -1335,6 +1425,7 @@ declare module "@stencil/core" {
             "mvx-metamask-provider-icon": LocalJSX.MvxMetamaskProviderIcon & JSXBase.HTMLAttributes<HTMLMvxMetamaskProviderIconElement>;
             "mvx-multiversx-logo-icon": LocalJSX.MvxMultiversxLogoIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxLogoIconElement>;
             "mvx-notifications-feed": LocalJSX.MvxNotificationsFeed & JSXBase.HTMLAttributes<HTMLMvxNotificationsFeedElement>;
+            "mvx-pagination": LocalJSX.MvxPagination & JSXBase.HTMLAttributes<HTMLMvxPaginationElement>;
             "mvx-passkey-provider-icon": LocalJSX.MvxPasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLMvxPasskeyProviderIconElement>;
             "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
             "mvx-side-panel": LocalJSX.MvxSidePanel & JSXBase.HTMLAttributes<HTMLMvxSidePanelElement>;
