@@ -72,8 +72,12 @@ export class LedgerConnectPanel {
     this.ledgerConnectBase.nextPage();
   }
 
-  async prevPage() {
+  async selectPrevPage() {
     this.ledgerConnectBase.prevPage();
+  }
+
+  async selectGoToPage(page: number) {
+    this.ledgerConnectBase.goToPage(page);
   }
 
   @Method() async getEventBus(): Promise<IEventBus> {
@@ -125,8 +129,9 @@ export class LedgerConnectPanel {
           selectedIndex={this.selectedIndex}
           onSelectAccount={(event: CustomEvent) => this.selectAccount(event.detail)}
           onAccessWallet={() => this.accessWallet()}
-          onPrevPage={() => this.prevPage()}
+          onPrevPage={() => this.selectPrevPage()}
           onNextPage={() => this.nextPage()}
+          onGoToPage={(event: CustomEvent) => this.selectGoToPage(event.detail)}
         />
       );
     }
@@ -141,6 +146,7 @@ export class LedgerConnectPanel {
   render() {
     const { accountScreenData, confirmScreenData, connectScreenData } = this.data;
     const bodyContent = this.getBodyContent(accountScreenData, confirmScreenData, connectScreenData);
+    console.log('\x1b[42m%s\x1b[0m', 'this is render');
 
     return (
       <mvx-side-panel isOpen={this.isOpen} panelClassName="ledger-connect-panel" onClose={this.handleClose.bind(this)}>

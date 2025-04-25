@@ -41,6 +41,7 @@ export class LedgerConnect {
           onAccessWallet={() => this.accessWallet()}
           onPrevPage={() => this.prevPage()}
           onNextPage={() => this.nextPage()}
+          onGoToPage={(event: CustomEvent) => this.goToPage(event.detail)}
         />
       );
     }
@@ -67,6 +68,10 @@ export class LedgerConnect {
 
   async prevPage() {
     this.ledgerConnectBase.prevPage();
+  }
+
+  async goToPage(page: number) {
+    this.ledgerConnectBase.goToPage(page);
   }
 
   private removeComponent() {

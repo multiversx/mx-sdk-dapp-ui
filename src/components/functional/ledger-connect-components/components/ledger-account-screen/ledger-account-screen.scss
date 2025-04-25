@@ -66,9 +66,26 @@
 
 .navigation {
   display: flex;
-  justify-content: center;
-  gap: 10rem;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
   margin-top: 20px;
+  padding: 0 20px;
+}
+
+.page-input {
+  width: 100px;
+  padding: 5px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.page-go-button {
+  margin-left: 5px;
+  font-weight: bold;
+  color: #1a56db;
 }
 
 .navigation-button {

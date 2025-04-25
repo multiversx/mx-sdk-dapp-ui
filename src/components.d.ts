@@ -452,8 +452,9 @@ declare global {
     };
     interface HTMLMvxLedgerAccountScreenElementEventMap {
         "selectAccount": any;
-        "nextPage": any;
+        "nextPage": number;
         "prevPage": any;
+        "goToPage": number;
         "accessWallet": any;
     }
     interface HTMLMvxLedgerAccountScreenElement extends Components.MvxLedgerAccountScreen, HTMLStencilElement {
@@ -936,7 +937,8 @@ declare namespace LocalJSX {
     interface MvxLedgerAccountScreen {
         "accountScreenData"?: IAccountScreenData;
         "onAccessWallet"?: (event: MvxLedgerAccountScreenCustomEvent<any>) => void;
-        "onNextPage"?: (event: MvxLedgerAccountScreenCustomEvent<any>) => void;
+        "onGoToPage"?: (event: MvxLedgerAccountScreenCustomEvent<number>) => void;
+        "onNextPage"?: (event: MvxLedgerAccountScreenCustomEvent<number>) => void;
         "onPrevPage"?: (event: MvxLedgerAccountScreenCustomEvent<any>) => void;
         "onSelectAccount"?: (event: MvxLedgerAccountScreenCustomEvent<any>) => void;
         "selectedIndex"?: number;

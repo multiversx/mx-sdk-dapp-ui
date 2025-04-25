@@ -13,6 +13,8 @@ export enum DataTestIdsEnum {
   nextBtn = 'nextBtn',
   pendingTransactionsSubtitle = 'pendingTransactionsSubtitle',
   pendingTransactionsTitle = 'pendingTransactionsTitle',
+  pageNumberInput = 'pageNumberInput',
+  goToPageBtn = 'goToPageBtn',
   prevBtn = 'prevBtn',
   receiverShard = 'receiverShard',
   senderShard = 'senderShard',
