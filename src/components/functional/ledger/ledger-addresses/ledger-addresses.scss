@@ -7,6 +7,7 @@
 .ledger-addresses {
   display: flex;
   flex-direction: column;
+  font-family: 'Satoshi', sans-serif;
   flex: 1;
   gap: 16px;
 
@@ -25,12 +26,14 @@
       display: flex;
       color: #fff;
       align-items: center;
-      padding: 12px;
+      padding: 16px;
       height: 64px;
       width: 100%;
       position: relative;
       cursor: pointer;
+      justify-content: space-between;
       border: 1px solid transparent;
+      transition: all 200ms ease;
       gap: 12px;
 
       &:before {
@@ -46,13 +49,20 @@
         pointer-events: none;
       }
 
+      &.checked,
+      &:hover {
+        border-color: #23f7dd;
+      }
+
       .ledger-addresses-list-item-checkbox {
         position: relative;
         z-index: 1;
         border-radius: 50%;
-        width: 16px;
+        transition: all 200ms ease;
+        min-width: 16px;
+        max-width: 16px;
         height: 16px;
-        border: calc(4px / 2) solid #fff;
+        border: 1px solid #fff;
 
         &:after {
           width: calc(12px / 2);
@@ -61,25 +71,50 @@
           transform: translate(-50%, -50%);
           background-color: #23f7dd;
           position: absolute;
+          transition: all 200ms ease;
           border-radius: 50%;
           opacity: 0;
           left: 50%;
           top: 50%;
+        }
+
+        &.checked {
+          border-color: #23f7dd;
+
+          &:after {
+            opacity: 1;
+          }
         }
       }
 
       .ledger-addresses-list-item-index {
         position: relative;
         z-index: 1;
+        color: #a09a93;
+        font-size: 16px;
+        font-weight: 500;
+        transition: all 200ms ease;
+
+        &.checked {
+          color: #23f7dd;
+        }
       }
 
       .ledger-addresses-list-item-address {
         position: relative;
         z-index: 1;
+        max-width: 160px;
+        font-size: 16px;
+
+        .trim-wrapper {
+          align-items: flex-end;
+        }
       }
 
       .ledger-addresses-list-item-balance {
         position: relative;
+        font-weight: 500;
+        font-size: 16px;
         z-index: 1;
       }
     }

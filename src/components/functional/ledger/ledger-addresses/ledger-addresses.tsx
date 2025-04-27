@@ -47,9 +47,15 @@ export class LedgerAddresses {
 
         <div class="ledger-addresses-list">
           {this.accountScreenData.accounts.map((accountDerivation, accountDerivationIndex) => (
-            <div class="ledger-addresses-list-item" onClick={this.handleSelectAccount(accountDerivation.index)}>
-              <div class="ledger-addresses-list-item-checkbox" />
-              <div class="ledger-addresses-list-item-index">#{accountDerivationIndex + 1 + this.accountScreenData.startIndex}</div>
+            <div
+              class={{ 'ledger-addresses-list-item': true, 'checked': accountDerivation.index === this.selectedIndex }}
+              onClick={this.handleSelectAccount(accountDerivation.index)}
+            >
+              <div class={{ 'ledger-addresses-list-item-checkbox': true, 'checked': accountDerivation.index === this.selectedIndex }} />
+              <div class={{ 'ledger-addresses-list-item-index': true, 'checked': accountDerivation.index === this.selectedIndex }}>
+                #{accountDerivationIndex + 1 + this.accountScreenData.startIndex}
+              </div>
+
               <mvx-trim-text text={accountDerivation.address} class="ledger-addresses-list-item-address" />
               <div class="ledger-addresses-list-item-balance">$241,442,49.49</div>
             </div>
