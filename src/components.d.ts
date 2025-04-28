@@ -257,7 +257,9 @@ export namespace Components {
     }
     interface MvxUnlockPanel {
         "allowedProviders"?: ProviderTypeEnum[];
+        "getEventBus": () => Promise<IEventBus>;
         "isOpen": boolean;
+        "reset": () => Promise<void>;
     }
     interface MvxWalletConnect {
         "data": IWalletConnectPanelData;
