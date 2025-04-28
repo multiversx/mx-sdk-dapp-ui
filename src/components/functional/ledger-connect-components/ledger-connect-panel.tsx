@@ -33,6 +33,7 @@ export class LedgerConnectPanel {
   }
 
   disconnectedCallback() {
+    this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.UI_DISCONECTED);
     this.ledgerConnectBase.unsubscribeEventBus(this.getEventBusSubscription());
     this.ledgerConnectBase.eventBus.unsubscribe(LedgerConnectEventsEnum.OPEN_LEDGER_CONNECT_PANEL, this.handleOpen.bind(this));
     this.ledgerConnectBase.eventBus.unsubscribe(LedgerConnectEventsEnum.CLOSE_LEDGER_CONNECT_PANEL, this.onClose.bind(this, { isUserClick: false }));

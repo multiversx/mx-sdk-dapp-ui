@@ -90,6 +90,7 @@ export class LedgerConnect {
   }
 
   disconnectedCallback() {
+    this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.UI_DISCONECTED);
     this.ledgerConnectBase.unsubscribeEventBus(this.getEventSubscription());
   }
 }

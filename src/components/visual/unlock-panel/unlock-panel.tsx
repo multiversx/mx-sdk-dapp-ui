@@ -1,5 +1,5 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, forceUpdate, h, Method, Prop, State } from '@stencil/core';
+import { Component, Element, Event, h, Method, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
 import { ProviderLabelsEnum, ProviderTypeEnum } from 'types/provider.types';
 import type { IEventBus } from 'utils/EventBus';
@@ -29,15 +29,19 @@ export class UnlockPanel {
   @State() hasSlotContent: boolean = false;
   @State() internalIsOpen: boolean = this.isOpen;
   @State() internalAllowedProviders: ProviderTypeEnum[] = this.allowedProviders ?? Object.values(ProviderTypeEnum);
-  @State() renderKey = Date.now();
 
   @Method() async getEventBus() {
     return this.eventBus;
   }
 
-  @Method()
-  async reset() {
-    await this.resetState();
+  @Watch('isOpen')
+  handleIsOpenChange(newValue: boolean) {
+    this.internalIsOpen = newValue;
+  }
+
+  @Watch('allowedProviders')
+  handleAllowedProvidersChange(newValue: ProviderTypeEnum[] | undefined) {
+    this.internalAllowedProviders = newValue ?? Object.values(ProviderTypeEnum);
   }
 
   private isExtensionInstalled(currentProvider: ProviderTypeEnum) {
@@ -61,12 +65,11 @@ export class UnlockPanel {
       this.observer = null;
     }
 
-    this.eventBus.unsubscribe(UnlockPanelEventsEnum.OPEN_UNLOCK_PANEL, this.unlockPanelUpdate.bind(this));
+    this.eventBus.unsubscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
     this.isLoggingIn = false;
     this.selectedMethod = null;
     this.internalIsOpen = false;
     this.internalAllowedProviders = this.allowedProviders ?? Object.values(ProviderTypeEnum);
-    forceUpdate(this);
 
     return new Promise(resolve => setTimeout(resolve, 300));
   }
@@ -107,26 +110,29 @@ export class UnlockPanel {
     while (this.anchor.firstChild) {
       this.anchor.removeChild(this.anchor.firstChild);
     }
+    this.eventBus.publish(UnlockPanelEventsEnum.HANDLE_CANCEL_LOGIN);
   }
 
   handleClose(event: MouseEvent) {
     event.preventDefault();
-    this.renderKey = Date.now();
-    this.eventBus.publish(UnlockPanelEventsEnum.CLOSE_UNLOCK_PANEL);
+    if (this.selectedMethod) {
+      this.eventBus.publish(UnlockPanelEventsEnum.HANDLE_CANCEL_LOGIN);
+    }
+
+    this.eventBus.publish(UnlockPanelEventsEnum.CLOSE);
   }
 
   render() {
-    const detectedProviders: ProviderTypeEnum[] = this.internalAllowedProviders.filter(
+    const detectedProviders: ProviderTypeEnum[] = this.internalAllowedProviders?.filter(
       allowedProvider => this.isExtensionInstalled(allowedProvider) || this.isMetaMaskInstalled(allowedProvider),
     );
 
-    const otherProviders = this.internalAllowedProviders.filter(allowedProvider => !detectedProviders.includes(allowedProvider));
+    const otherProviders = this.internalAllowedProviders?.filter(allowedProvider => !detectedProviders.includes(allowedProvider));
     const panelTitle = this.selectedMethod ? ProviderLabelsEnum[this.selectedMethod] : 'Connect your wallet';
     const hasDetectedProviders = detectedProviders.length > 0;
 
     return (
       <mvx-side-panel
-        key={this.renderKey}
         isOpen={this.internalIsOpen}
         panelTitle={panelTitle}
         withBackButton={this.isLoggingIn}
@@ -202,23 +208,11 @@ export class UnlockPanel {
   }
 
   componentDidLoad() {
-    this.eventBus.subscribe(UnlockPanelEventsEnum.OPEN_UNLOCK_PANEL, this.unlockPanelUpdate.bind(this));
+    this.eventBus.subscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
   }
 
   private unlockPanelUpdate(payload: { isOpen: boolean; allowedProviders: ProviderTypeEnum[] }) {
-    debugger;
-    // Always reset first, so re-opening triggers correctly
-    this.internalIsOpen = false;
-
-    // Let the state fully reset before applying new one
-    requestAnimationFrame(() => {
-      this.internalAllowedProviders = payload.allowedProviders ?? Object.values(ProviderTypeEnum);
-      this.internalIsOpen = payload.isOpen;
-
-      this.isLoggingIn = false;
-      this.selectedMethod = null;
-
-      forceUpdate(this);
-    });
+    this.internalAllowedProviders = payload.allowedProviders ?? Object.values(ProviderTypeEnum);
+    this.internalIsOpen = payload.isOpen;
   }
 }

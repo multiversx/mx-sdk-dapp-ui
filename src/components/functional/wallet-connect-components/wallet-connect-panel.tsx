@@ -29,6 +29,7 @@ export class WalletConnectPanel {
   }
 
   disconnectedCallback() {
+    this.walletConnectBase.eventBus.publish(WalletConnectEventsEnum.UI_DISCONNECTED);
     this.walletConnectBase.unsubscribeEventBus(this.getEventBusSubscription());
     this.walletConnectBase.eventBus.unsubscribe(WalletConnectEventsEnum.OPEN_WALLET_CONNECT_PANEL, this.handleOpen.bind(this));
     this.walletConnectBase.eventBus.unsubscribe(WalletConnectEventsEnum.CLOSE_WALLET_CONNECT_PANEL, this.onClose.bind(this, { isUserClick: false }));

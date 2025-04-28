@@ -17,8 +17,8 @@ export type SafeWindowType<InferredWindowType extends Window = ExtendedWindow> =
 };
 
 export enum UnlockPanelEventsEnum {
-  OPEN_UNLOCK_PANEL = 'OPEN_UNLOCK_PANEL',
-  CLOSE_UNLOCK_PANEL = 'CLOSE_UNLOCK_PANEL',
+  OPEN = 'OPEN',
+  CLOSE = 'CLOSE',
   HANDLE_LOGIN = 'HANDLE_LOGIN',
   HANDLE_CANCEL_LOGIN = 'HANDLE_CANCEL_LOGIN',
 }
