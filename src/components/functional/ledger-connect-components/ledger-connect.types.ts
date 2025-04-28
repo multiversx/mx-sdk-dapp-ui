@@ -31,6 +31,7 @@ export interface ILedgerConnectPanelData {
 export interface ILedgerAccount {
   address: string;
   balance: string;
+  usdValue?: string;
   index: number;
 }
 
