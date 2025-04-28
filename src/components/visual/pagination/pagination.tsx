@@ -17,12 +17,17 @@ export class Pagination {
 
   @Event() pageChange: EventEmitter<number>;
   @State() currentPageIndex: number = this.currentPage;
+  @State() isTooltipOpen: boolean = false;
 
   @Watch('currentPage')
   watchCurrentPage(newValue: number) {
     if (newValue !== this.currentPageIndex) {
       this.currentPageIndex = newValue;
     }
+  }
+
+  private handleTooltipStatus(isOpen: boolean) {
+    this.isTooltipOpen = isOpen;
   }
 
   private handlePageClick(newPageIndex: number) {
@@ -66,10 +71,9 @@ export class Pagination {
 
         <div
           onClick={this.handleEdgePageClick(this.currentPageIndex - 1)}
-          class={{ 'pagination=edge-button': true, 'disabled': this.isDisabled, 'inactive': isLeftToggleDisabled }}
+          class={{ 'pagination-edge-button': true, 'disabled': this.isDisabled, 'inactive': isLeftToggleDisabled }}
         >
           <mvx-angle-left-icon class="pagination-edge-button-icon" />
-          <span class="pagination-edge-button-text">Prev</span>
         </div>
 
         <div class="pagination-items">
@@ -88,7 +92,20 @@ export class Pagination {
                   <span class="pagination-item-text">{paginationItem}</span>
                 </div>
               ) : (
-                <div></div>
+                <mvx-tooltip
+                  triggerOnClick={true}
+                  onTriggerRender={(event: CustomEvent) => this.handleTooltipStatus(event.detail)}
+                  trigger={<mvx-pagination-ellipsis isActive={this.isTooltipOpen} />}
+                >
+                  <mvx-pagination-ellipsis-form
+                    isVisible={this.isTooltipOpen}
+                    maxPageToSearchFor={this.totalPages}
+                    onSearch={(event: CustomEvent) => {
+                      console.log('THIS', event.detail);
+                      this.handlePageClick(event.detail);
+                    }}
+                  />
+                </mvx-tooltip>
               )}
             </div>
           ))}
@@ -96,10 +113,9 @@ export class Pagination {
 
         <div
           onClick={this.handleEdgePageClick(this.currentPageIndex + 1)}
-          class={{ 'pagination=edge-button': true, 'disabled': this.isDisabled, 'inactive': isRightToggleDisabled }}
+          class={{ 'pagination-edge-button': true, 'disabled': this.isDisabled, 'inactive': isRightToggleDisabled }}
         >
           <mvx-angle-right-icon class="pagination-edge-button-icon" />
-          <span class="pagination-edge-button-text">Bext</span>
         </div>
 
         <span onClick={this.handleEdgePageClick(this.totalPages)} class={{ 'pagination-angle': true, 'disabled': isRightToggleDisabled }}>

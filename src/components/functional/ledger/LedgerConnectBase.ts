@@ -45,6 +45,10 @@ export class LedgerConnectBase {
     this.eventBus.publish(LedgerConnectEventsEnum.PREV_PAGE);
   }
 
+  goToPage(page: number) {
+    this.eventBus.publish(LedgerConnectEventsEnum.GO_TO_PAGE, page);
+  }
+
   subscribeEventBus({ closeFn, forceUpdateFn }: ILedgerConnectEventBusProps) {
     this.eventBus.subscribe(LedgerConnectEventsEnum.DATA_UPDATE, (payload: ILedgerConnectPanelData) => this.dataUpdate({ payload, closeFn, forceUpdateFn }));
   }

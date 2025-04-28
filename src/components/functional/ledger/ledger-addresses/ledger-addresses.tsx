@@ -35,8 +35,6 @@ export class LedgerAddresses {
     const isAddressesLoading = this.accountScreenData.isLoading || this.accountScreenData.accounts.length === 0;
     const totalPages = Math.ceil(TOTAL_ADDRESSES_COUNT / this.accountScreenData.addressesPerPage);
 
-    console.log({ selectedIndex: this.selectedIndex });
-
     if (isAddressesLoading) {
       return <mvx-ledger-intro isAwaiting={true} />;
     }
@@ -57,7 +55,7 @@ export class LedgerAddresses {
               </div>
 
               <mvx-trim-text text={accountDerivation.address} class="ledger-addresses-list-item-address" />
-              <div class="ledger-addresses-list-item-balance">$241,442,49.49</div>
+              <div class="ledger-addresses-list-item-balance">$241,442,439.49</div>
             </div>
           ))}
         </div>

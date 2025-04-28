@@ -9,7 +9,7 @@ interface GetPaginationType {
   totalPages: number;
 }
 
-export const getPagination = ({ currentPage, totalPages }: GetPaginationType) => {
+export const getPagination = ({ currentPage, totalPages }: GetPaginationType): string[] => {
   const trimBatch = (batch: number[], comparableBatch: number[]) => (batch.includes(currentPage) ? batch : batch.slice(0, MAX_PAGINATION_SLOTS - comparableBatch.length - 1));
 
   const previousPage = currentPage - 1;

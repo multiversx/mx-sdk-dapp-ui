@@ -43,6 +43,10 @@ export class LedgerFlow {
     this.ledgerConnectBase.prevPage();
   }
 
+  async goToPage(page: number) {
+    this.ledgerConnectBase.goToPage(page);
+  }
+
   private removeComponent() {
     if (this.hostElement?.parentNode) {
       this.hostElement.parentNode.removeChild(this.hostElement);
@@ -87,7 +91,7 @@ export class LedgerFlow {
       return;
     }
 
-    // onGoToSpecificPage(newPage - 1);
+    this.goToPage(newPage - 1);
   }
 
   render() {

@@ -1,7 +1,7 @@
 .pagination {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 8px;
   user-select: none;
   line-height: 1;
   justify-content: center;
@@ -18,11 +18,10 @@
     }
 
     &.disabled {
-      color: #737373;
       pointer-events: none;
 
       .pagination-angle-icon {
-        color: #737373;
+        fill: #737373;
       }
     }
 
@@ -30,12 +29,52 @@
       color: #23f7dd;
 
       .pagination-angle-icon {
-        color: #23f7dd;
+        fill: #23f7dd;
       }
     }
 
     .pagination-angle-icon {
-      color: #e5e5e5;
+      fill: #e5e5e5;
+      font-size: 12px;
+
+      @media (min-width: 375px) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .pagination-edge-button {
+    display: none;
+    gap: 8px;
+    align-items: center;
+    transition: all 200ms ease;
+    cursor: pointer;
+
+    @media (min-width: 576px) {
+      padding: 0;
+      margin: 0 4px;
+      display: flex;
+    }
+
+    &.inactive {
+      pointer-events: none;
+
+      .pagination-edge-button-icon {
+        fill: #737373;
+      }
+    }
+
+    &:hover {
+      color: #23f7dd;
+
+      .pagination-edge-button-icon {
+        fill: #23f7dd;
+      }
+    }
+
+    .pagination-edge-button-icon {
+      transition: all 200ms ease;
+      fill: #e5e5e5;
       font-size: 12px;
 
       @media (min-width: 375px) {
@@ -91,11 +130,12 @@
           top: 50%;
           transform: translate(-50%, -50%);
           transition: all 200ms ease;
-          background-color: #0e0e0e;
+          background-color: #353535;
           border-radius: 50%;
           height: calc(24px + 4px);
           width: calc(24px + 4px);
           pointer-events: none;
+          opacity: 30%;
           z-index: 1;
 
           @media (min-width: 768px) {
@@ -108,6 +148,7 @@
           color: #23f7dd;
 
           &:before {
+            opacity: 100%;
             background-color: #143736;
           }
         }
@@ -135,22 +176,6 @@
         .pagination-item-text {
           position: relative;
           z-index: 2;
-        }
-      }
-
-      .pagination-tooltip {
-        width: 32px;
-        height: 32px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 200ms ease;
-        border-radius: 50%;
-
-        &:hover,
-        &.active {
-          background-color: #143736;
         }
       }
     }
