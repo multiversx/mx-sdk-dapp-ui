@@ -11,6 +11,8 @@ import { LedgerConnectEventsEnum } from './ledger-flow.types';
   shadow: true,
 })
 export class LedgerFlow {
+  private ledgerConnectBase: LedgerConnectBase;
+
   @Element() hostElement: HTMLElement;
   @State() private selectedIndex = 0;
 
@@ -20,31 +22,13 @@ export class LedgerFlow {
     connectScreenData: {},
   };
 
-  private ledgerConnectBase: LedgerConnectBase;
-
   @Method() async getEventBus(): Promise<IEventBus> {
     return this.ledgerConnectBase.getEventBus();
-  }
-
-  private accessWallet() {
-    this.ledgerConnectBase.accessWallet();
   }
 
   private selectAccount(index: number) {
     this.ledgerConnectBase.selectAccount(index);
     this.selectedIndex = this.ledgerConnectBase.selectedIndex;
-  }
-
-  async nextPage() {
-    this.ledgerConnectBase.nextPage();
-  }
-
-  async prevPage() {
-    this.ledgerConnectBase.prevPage();
-  }
-
-  async goToPage(page: number) {
-    this.ledgerConnectBase.goToPage(page);
   }
 
   private removeComponent() {
@@ -80,39 +64,23 @@ export class LedgerFlow {
     this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.CONNECT_DEVICE);
   }
 
-  handlePageChange(newPage: number) {
-    if (newPage - 1 === this.data.accountScreenData.startIndex + 1) {
-      this.nextPage();
-      return;
-    }
-
-    if (newPage - 1 === this.data.accountScreenData.startIndex - 1) {
-      this.prevPage();
-      return;
-    }
-
-    this.goToPage(newPage - 1);
-  }
-
   render() {
-    const { accountScreenData, confirmScreenData, connectScreenData } = this.data;
-
-    if (accountScreenData) {
+    if (this.data.accountScreenData) {
       return (
         <mvx-ledger-addresses
-          accountScreenData={accountScreenData}
-          onAccessWallet={this.accessWallet}
           selectedIndex={this.selectedIndex}
-          onPageChange={(event: CustomEvent) => this.handlePageChange(event.detail)}
+          accountScreenData={this.data.accountScreenData}
+          onAccessWallet={() => this.ledgerConnectBase.accessWallet()}
           onSelectAccount={(event: CustomEvent) => this.selectAccount(event.detail)}
+          onPageChange={(event: CustomEvent) => this.ledgerConnectBase.goToPage(event.detail)}
         />
       );
     }
 
-    if (confirmScreenData) {
-      return <mvx-ledger-confirm-screen confirmScreenData={confirmScreenData} />;
+    if (this.data.confirmScreenData) {
+      return <mvx-ledger-confirm-screen confirmScreenData={this.data.confirmScreenData} />;
     }
 
-    return <mvx-ledger-intro connectScreenData={connectScreenData} onConnect={this.handleIntroConnect.bind(this)} />;
+    return <mvx-ledger-intro connectScreenData={this.data.connectScreenData} onConnect={this.handleIntroConnect.bind(this)} />;
   }
 }

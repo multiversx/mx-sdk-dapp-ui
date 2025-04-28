@@ -16,7 +16,7 @@ export class Pagination {
   @Prop() class?: string;
 
   @Event() pageChange: EventEmitter<number>;
-  @State() currentPageIndex: number = this.currentPage;
+  @State() currentPageIndex: number;
   @State() isTooltipOpen: boolean = false;
 
   @Watch('currentPage')
@@ -54,14 +54,14 @@ export class Pagination {
     return parseFloat(paginationItem) && new BigNumber(paginationItem).isGreaterThanOrEqualTo(100);
   }
 
-  render() {
-    const paginationItems = getPagination({
-      currentPage: this.currentPageIndex,
-      totalPages: this.totalPages,
-    });
+  componentWillLoad() {
+    this.currentPageIndex = this.currentPage;
+  }
 
+  render() {
     const isLeftToggleDisabled = this.currentPageIndex === 1;
     const isRightToggleDisabled = this.currentPageIndex === this.totalPages;
+    const paginationItems = getPagination({ currentPage: this.currentPageIndex, totalPages: this.totalPages });
 
     return (
       <div class={{ pagination: true, [this.class]: Boolean(this.class) }}>
@@ -100,10 +100,7 @@ export class Pagination {
                   <mvx-pagination-ellipsis-form
                     isVisible={this.isTooltipOpen}
                     maxPageToSearchFor={this.totalPages}
-                    onSearch={(event: CustomEvent) => {
-                      console.log('THIS', event.detail);
-                      this.handlePageClick(event.detail);
-                    }}
+                    onSearch={(event: CustomEvent) => this.handlePageClick(event.detail)}
                   />
                 </mvx-tooltip>
               )}

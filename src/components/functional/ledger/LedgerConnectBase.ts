@@ -37,14 +37,6 @@ export class LedgerConnectBase {
     this.selectedAddress = getLedgerAddressByIndex({ accounts: this.data.accountScreenData?.accounts, selectedIndex: this.selectedIndex });
   }
 
-  nextPage() {
-    this.eventBus.publish(LedgerConnectEventsEnum.NEXT_PAGE);
-  }
-
-  prevPage() {
-    this.eventBus.publish(LedgerConnectEventsEnum.PREV_PAGE);
-  }
-
   goToPage(page: number) {
     this.eventBus.publish(LedgerConnectEventsEnum.GO_TO_PAGE, page);
   }

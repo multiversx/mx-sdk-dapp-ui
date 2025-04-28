@@ -55,7 +55,7 @@ export class LedgerAddresses {
               </div>
 
               <mvx-trim-text text={accountDerivation.address} class="ledger-addresses-list-item-address" />
-              <div class="ledger-addresses-list-item-balance">$241,442,439.49</div>
+              <div class="ledger-addresses-list-item-balance">{accountDerivation.usdValue}</div>
             </div>
           ))}
         </div>
@@ -63,7 +63,7 @@ export class LedgerAddresses {
         <mvx-pagination
           totalPages={totalPages}
           class="ledger-address-pagination"
-          currentPage={this.accountScreenData.startIndex + 1}
+          currentPage={this.accountScreenData.startIndex / this.accountScreenData.addressesPerPage + 1}
           onPageChange={(event: CustomEvent) => this.pageChange.emit(event.detail)}
         />
 

@@ -107,13 +107,12 @@ export namespace Components {
     interface MvxGenericToast {
         "toast": CustomToastType;
     }
-    interface MvxLedgerAccountScreen {
-        "accountScreenData": IAccountScreenData;
-        "selectedIndex": number;
-    }
     interface MvxLedgerAddresses {
         "accountScreenData": IAccountScreenData;
         "selectedIndex": number;
+    }
+    interface MvxLedgerConfirm {
+        "confirmScreenData": IConfirmScreenData;
     }
     interface MvxLedgerConfirmScreen {
         "confirmScreenData": IConfirmScreenData;
@@ -121,9 +120,6 @@ export namespace Components {
     interface MvxLedgerConnectPanel {
         "data": ILedgerConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
-    }
-    interface MvxLedgerConnectScreen {
-        "connectScreenData": IConnectScreenData;
     }
     interface MvxLedgerFlow {
         "data": ILedgerConnectPanelData;
@@ -337,17 +333,9 @@ export interface MvxGenericToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxGenericToastElement;
 }
-export interface MvxLedgerAccountScreenCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMvxLedgerAccountScreenElement;
-}
 export interface MvxLedgerAddressesCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxLedgerAddressesElement;
-}
-export interface MvxLedgerConnectScreenCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMvxLedgerConnectScreenElement;
 }
 export interface MvxLedgerIntroCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -543,26 +531,6 @@ declare global {
         prototype: HTMLMvxGenericToastElement;
         new (): HTMLMvxGenericToastElement;
     };
-    interface HTMLMvxLedgerAccountScreenElementEventMap {
-        "selectAccount": any;
-        "nextPage": any;
-        "prevPage": any;
-        "accessWallet": any;
-    }
-    interface HTMLMvxLedgerAccountScreenElement extends Components.MvxLedgerAccountScreen, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxLedgerAccountScreenElementEventMap>(type: K, listener: (this: HTMLMvxLedgerAccountScreenElement, ev: MvxLedgerAccountScreenCustomEvent<HTMLMvxLedgerAccountScreenElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxLedgerAccountScreenElementEventMap>(type: K, listener: (this: HTMLMvxLedgerAccountScreenElement, ev: MvxLedgerAccountScreenCustomEvent<HTMLMvxLedgerAccountScreenElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLMvxLedgerAccountScreenElement: {
-        prototype: HTMLMvxLedgerAccountScreenElement;
-        new (): HTMLMvxLedgerAccountScreenElement;
-    };
     interface HTMLMvxLedgerAddressesElementEventMap {
         "accessWallet": any;
         "selectAccount": any;
@@ -582,6 +550,12 @@ declare global {
         prototype: HTMLMvxLedgerAddressesElement;
         new (): HTMLMvxLedgerAddressesElement;
     };
+    interface HTMLMvxLedgerConfirmElement extends Components.MvxLedgerConfirm, HTMLStencilElement {
+    }
+    var HTMLMvxLedgerConfirmElement: {
+        prototype: HTMLMvxLedgerConfirmElement;
+        new (): HTMLMvxLedgerConfirmElement;
+    };
     interface HTMLMvxLedgerConfirmScreenElement extends Components.MvxLedgerConfirmScreen, HTMLStencilElement {
     }
     var HTMLMvxLedgerConfirmScreenElement: {
@@ -593,23 +567,6 @@ declare global {
     var HTMLMvxLedgerConnectPanelElement: {
         prototype: HTMLMvxLedgerConnectPanelElement;
         new (): HTMLMvxLedgerConnectPanelElement;
-    };
-    interface HTMLMvxLedgerConnectScreenElementEventMap {
-        "connect": any;
-    }
-    interface HTMLMvxLedgerConnectScreenElement extends Components.MvxLedgerConnectScreen, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxLedgerConnectScreenElementEventMap>(type: K, listener: (this: HTMLMvxLedgerConnectScreenElement, ev: MvxLedgerConnectScreenCustomEvent<HTMLMvxLedgerConnectScreenElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxLedgerConnectScreenElementEventMap>(type: K, listener: (this: HTMLMvxLedgerConnectScreenElement, ev: MvxLedgerConnectScreenCustomEvent<HTMLMvxLedgerConnectScreenElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLMvxLedgerConnectScreenElement: {
-        prototype: HTMLMvxLedgerConnectScreenElement;
-        new (): HTMLMvxLedgerConnectScreenElement;
     };
     interface HTMLMvxLedgerFlowElement extends Components.MvxLedgerFlow, HTMLStencilElement {
     }
@@ -1044,11 +1001,10 @@ declare global {
         "mvx-generic-modal": HTMLMvxGenericModalElement;
         "mvx-generic-spinner": HTMLMvxGenericSpinnerElement;
         "mvx-generic-toast": HTMLMvxGenericToastElement;
-        "mvx-ledger-account-screen": HTMLMvxLedgerAccountScreenElement;
         "mvx-ledger-addresses": HTMLMvxLedgerAddressesElement;
+        "mvx-ledger-confirm": HTMLMvxLedgerConfirmElement;
         "mvx-ledger-confirm-screen": HTMLMvxLedgerConfirmScreenElement;
         "mvx-ledger-connect-panel": HTMLMvxLedgerConnectPanelElement;
-        "mvx-ledger-connect-screen": HTMLMvxLedgerConnectScreenElement;
         "mvx-ledger-flow": HTMLMvxLedgerFlowElement;
         "mvx-ledger-icon": HTMLMvxLedgerIconElement;
         "mvx-ledger-intro": HTMLMvxLedgerIntroElement;
@@ -1176,14 +1132,6 @@ declare namespace LocalJSX {
         "onDeleteToast"?: (event: MvxGenericToastCustomEvent<string>) => void;
         "toast"?: CustomToastType;
     }
-    interface MvxLedgerAccountScreen {
-        "accountScreenData"?: IAccountScreenData;
-        "onAccessWallet"?: (event: MvxLedgerAccountScreenCustomEvent<any>) => void;
-        "onNextPage"?: (event: MvxLedgerAccountScreenCustomEvent<any>) => void;
-        "onPrevPage"?: (event: MvxLedgerAccountScreenCustomEvent<any>) => void;
-        "onSelectAccount"?: (event: MvxLedgerAccountScreenCustomEvent<any>) => void;
-        "selectedIndex"?: number;
-    }
     interface MvxLedgerAddresses {
         "accountScreenData"?: IAccountScreenData;
         "onAccessWallet"?: (event: MvxLedgerAddressesCustomEvent<any>) => void;
@@ -1191,15 +1139,14 @@ declare namespace LocalJSX {
         "onSelectAccount"?: (event: MvxLedgerAddressesCustomEvent<any>) => void;
         "selectedIndex"?: number;
     }
+    interface MvxLedgerConfirm {
+        "confirmScreenData"?: IConfirmScreenData;
+    }
     interface MvxLedgerConfirmScreen {
         "confirmScreenData"?: IConfirmScreenData;
     }
     interface MvxLedgerConnectPanel {
         "data"?: ILedgerConnectPanelData;
-    }
-    interface MvxLedgerConnectScreen {
-        "connectScreenData"?: IConnectScreenData;
-        "onConnect"?: (event: MvxLedgerConnectScreenCustomEvent<any>) => void;
     }
     interface MvxLedgerFlow {
         "data"?: ILedgerConnectPanelData;
@@ -1426,11 +1373,10 @@ declare namespace LocalJSX {
         "mvx-generic-modal": MvxGenericModal;
         "mvx-generic-spinner": MvxGenericSpinner;
         "mvx-generic-toast": MvxGenericToast;
-        "mvx-ledger-account-screen": MvxLedgerAccountScreen;
         "mvx-ledger-addresses": MvxLedgerAddresses;
+        "mvx-ledger-confirm": MvxLedgerConfirm;
         "mvx-ledger-confirm-screen": MvxLedgerConfirmScreen;
         "mvx-ledger-connect-panel": MvxLedgerConnectPanel;
-        "mvx-ledger-connect-screen": MvxLedgerConnectScreen;
         "mvx-ledger-flow": MvxLedgerFlow;
         "mvx-ledger-icon": MvxLedgerIcon;
         "mvx-ledger-intro": MvxLedgerIntro;
@@ -1507,11 +1453,10 @@ declare module "@stencil/core" {
             "mvx-generic-modal": LocalJSX.MvxGenericModal & JSXBase.HTMLAttributes<HTMLMvxGenericModalElement>;
             "mvx-generic-spinner": LocalJSX.MvxGenericSpinner & JSXBase.HTMLAttributes<HTMLMvxGenericSpinnerElement>;
             "mvx-generic-toast": LocalJSX.MvxGenericToast & JSXBase.HTMLAttributes<HTMLMvxGenericToastElement>;
-            "mvx-ledger-account-screen": LocalJSX.MvxLedgerAccountScreen & JSXBase.HTMLAttributes<HTMLMvxLedgerAccountScreenElement>;
             "mvx-ledger-addresses": LocalJSX.MvxLedgerAddresses & JSXBase.HTMLAttributes<HTMLMvxLedgerAddressesElement>;
+            "mvx-ledger-confirm": LocalJSX.MvxLedgerConfirm & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmElement>;
             "mvx-ledger-confirm-screen": LocalJSX.MvxLedgerConfirmScreen & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmScreenElement>;
             "mvx-ledger-connect-panel": LocalJSX.MvxLedgerConnectPanel & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectPanelElement>;
-            "mvx-ledger-connect-screen": LocalJSX.MvxLedgerConnectScreen & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectScreenElement>;
             "mvx-ledger-flow": LocalJSX.MvxLedgerFlow & JSXBase.HTMLAttributes<HTMLMvxLedgerFlowElement>;
             "mvx-ledger-icon": LocalJSX.MvxLedgerIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerIconElement>;
             "mvx-ledger-intro": LocalJSX.MvxLedgerIntro & JSXBase.HTMLAttributes<HTMLMvxLedgerIntroElement>;
