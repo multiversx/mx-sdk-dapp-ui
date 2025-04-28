@@ -93,7 +93,7 @@ export class UnlockPanel {
   }
 
   handleLogin(provider: ProviderTypeEnum) {
-    this.eventBus.publish(UnlockPanelEventsEnum.HANDLE_LOGIN, { type: provider, anchor: this.anchor });
+    this.eventBus.publish(UnlockPanelEventsEnum.LOGIN, { type: provider, anchor: this.anchor });
     this.selectedMethod = provider;
   }
 
@@ -110,13 +110,13 @@ export class UnlockPanel {
     while (this.anchor.firstChild) {
       this.anchor.removeChild(this.anchor.firstChild);
     }
-    this.eventBus.publish(UnlockPanelEventsEnum.HANDLE_CANCEL_LOGIN);
+    this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
   }
 
   handleClose(event: MouseEvent) {
     event.preventDefault();
     if (this.selectedMethod) {
-      this.eventBus.publish(UnlockPanelEventsEnum.HANDLE_CANCEL_LOGIN);
+      this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
     }
 
     this.eventBus.publish(UnlockPanelEventsEnum.CLOSE);
