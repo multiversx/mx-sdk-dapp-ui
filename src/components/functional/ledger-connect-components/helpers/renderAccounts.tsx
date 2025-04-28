@@ -22,16 +22,20 @@ export const renderAccounts = ({ shownAccounts = [], onSelectAccount, selectedIn
         <div class="account-header-item">Balance</div>
         <div class="account-header-item">#</div>
       </div>
-      {shownAccounts.map(account => (
-        <div class="account-row" onClick={() => onSelectAccount(account.index)}>
-          <div class="address-row-item-data ">
-            <input type="radio" name="account" checked={account.index === selectedIndex} value={account.index} />
-            <span class="address">{trimAddress(account.address)}</span>
+      {shownAccounts.map(account => {
+        return (
+          <div class="account-row" onClick={() => onSelectAccount(account.index)}>
+            <div class="address-row-item-data ">
+              <input type="radio" name="account" checked={account.index === selectedIndex} value={account.index} />
+              <span class="address">{trimAddress(account.address)}</span>
+            </div>
+            <div class="address-row-item-data">
+              {account.balance}
+              {account.usdValue && ` (${account.usdValue})`}
+            </div>
           </div>
-          <div class="address-row-item-data">{account.balance}</div>
-          <div class="address-row-item-data">{account.index}</div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };
