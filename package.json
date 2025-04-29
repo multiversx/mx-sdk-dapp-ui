@@ -25,16 +25,9 @@
       "require": "./dist/loader/index.cjs",
       "types": "./dist/loader/index.d.ts"
     },
-    "./sdk-dapp-core-ui.css": {
-      "import": "./www/build/sdk-dapp-core-ui.css",
-      "require": "./www/build/sdk-dapp-core-ui.css"
-    },
     "./react": {
       "import": "./dist/react/components.ts",
       "require": "./dist/react/components.ts"
-    },
-    "./tailwind.css": {
-      "import": "./www/assets/tailwind.css"
     }
   },
   "repository": {
@@ -60,7 +53,10 @@
     "@fortawesome/free-solid-svg-icons": ">= 6.7.2",
     "@multiversx/sdk-dapp-utils": ">= 1.0.4",
     "@stencil/react-output-target": "0.8.2",
+    "bignumber.js": "^9.3.0",
     "classnames": ">= 2.5.1",
+    "lodash.inrange": "^3.3.0",
+    "lodash.range": "^3.2.0",
     "qrcode": ">= 1.5.4",
     "sass-embedded": "^1.85.1"
   },
