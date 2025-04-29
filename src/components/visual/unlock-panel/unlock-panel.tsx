@@ -27,21 +27,22 @@ export class UnlockPanel {
   @State() isLoggingIn: boolean = false;
   @State() selectedMethod: ProviderTypeEnum | null = null;
   @State() hasSlotContent: boolean = false;
-  @State() internalIsOpen: boolean = this.isOpen;
-  @State() internalAllowedProviders: ProviderTypeEnum[] = this.allowedProviders ?? Object.values(ProviderTypeEnum);
-
+  @State() panelState = {
+    isOpen: false,
+    allowedProviders: Object.values(ProviderTypeEnum),
+  };
   @Method() async getEventBus() {
     return this.eventBus;
   }
 
   @Watch('isOpen')
   handleIsOpenChange(newValue: boolean) {
-    this.internalIsOpen = newValue;
+    this.panelState = { ...this.panelState, isOpen: newValue };
   }
 
   @Watch('allowedProviders')
   handleAllowedProvidersChange(newValue: ProviderTypeEnum[] | undefined) {
-    this.internalAllowedProviders = newValue ?? Object.values(ProviderTypeEnum);
+    this.panelState = { ...this.panelState, allowedProviders: newValue ?? Object.values(ProviderTypeEnum) };
   }
 
   private isExtensionInstalled(currentProvider: ProviderTypeEnum) {
@@ -68,8 +69,7 @@ export class UnlockPanel {
     this.eventBus.unsubscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
     this.isLoggingIn = false;
     this.selectedMethod = null;
-    this.internalIsOpen = false;
-    this.internalAllowedProviders = this.allowedProviders ?? Object.values(ProviderTypeEnum);
+    this.panelState = { isOpen: false, allowedProviders: Object.values(ProviderTypeEnum) };
 
     return new Promise(resolve => setTimeout(resolve, 300));
   }
@@ -123,17 +123,17 @@ export class UnlockPanel {
   }
 
   render() {
-    const detectedProviders: ProviderTypeEnum[] = this.internalAllowedProviders?.filter(
+    const detectedProviders: ProviderTypeEnum[] = this.panelState.allowedProviders?.filter(
       allowedProvider => this.isExtensionInstalled(allowedProvider) || this.isMetaMaskInstalled(allowedProvider),
     );
 
-    const otherProviders = this.internalAllowedProviders?.filter(allowedProvider => !detectedProviders.includes(allowedProvider));
+    const otherProviders = this.panelState.allowedProviders?.filter(allowedProvider => !detectedProviders.includes(allowedProvider));
     const panelTitle = this.selectedMethod ? ProviderLabelsEnum[this.selectedMethod] : 'Connect your wallet';
     const hasDetectedProviders = detectedProviders.length > 0;
 
     return (
       <mvx-side-panel
-        isOpen={this.internalIsOpen}
+        isOpen={this.panelState.isOpen}
         panelTitle={panelTitle}
         withBackButton={this.isLoggingIn}
         onClose={this.handleClose.bind(this)}
@@ -212,7 +212,9 @@ export class UnlockPanel {
   }
 
   private unlockPanelUpdate(payload: { isOpen: boolean; allowedProviders: ProviderTypeEnum[] }) {
-    this.internalAllowedProviders = payload.allowedProviders ?? Object.values(ProviderTypeEnum);
-    this.internalIsOpen = payload.isOpen;
+    this.panelState = {
+      ...payload,
+      allowedProviders: payload.allowedProviders ?? Object.values(ProviderTypeEnum),
+    };
   }
 }

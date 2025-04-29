@@ -69,7 +69,6 @@ export class SidePanel {
 
     return (
       <div
-        key={Date.now()}
         onClick={this.handleOverlayClick}
         class={classNames('side-panel-wrapper', {
           visible: this.shouldAnimate,
