@@ -1,9 +1,8 @@
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import { getLedgerAddressByIndex } from '../ledger-connect-components/helpers/getLedgerAddressByIndex';
-import type { ILedgerConnectPanelData } from './ledger-flow/ledger-flow.types';
-import { LedgerConnectEventsEnum } from './ledger-flow/ledger-flow.types';
+import type { ILedgerAccount, ILedgerConnectPanelData } from './ledger.types';
+import { LedgerConnectEventsEnum } from './ledger.types';
 
 interface ILedgerConnectEventBusProps {
   forceUpdateFn: () => void;
@@ -13,6 +12,13 @@ interface ILedgerConnectEventBusProps {
 interface ILedgerConnectDataUpdateProps extends ILedgerConnectEventBusProps {
   payload: ILedgerConnectPanelData;
 }
+
+interface GetLedgerAddressByIndexType {
+  accounts?: ILedgerAccount[];
+  selectedIndex: number;
+}
+
+const getLedgerAddressByIndex = ({ accounts, selectedIndex }: GetLedgerAddressByIndexType) => accounts?.find(({ index }) => index === selectedIndex)?.address || '';
 
 export class LedgerConnectBase {
   eventBus: IEventBus = new EventBus();

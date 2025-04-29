@@ -1,7 +1,7 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 
-import type { IConnectScreenData } from '../ledger-flow/ledger-flow.types';
+import type { IConnectScreenData } from '../ledger.types';
 
 @Component({
   tag: 'mvx-ledger-intro',

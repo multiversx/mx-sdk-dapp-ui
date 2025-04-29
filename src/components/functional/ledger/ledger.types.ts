@@ -1,5 +1,3 @@
-// types here need to be synced with the types in sdk-dapp-core ledger.types.ts
-
 export interface IConnectScreenData {
   customContentMarkup?: string;
   disabled?: boolean;
@@ -18,7 +16,7 @@ export interface IConfirmScreenData {
   selectedAddress: string;
   confirmAddressText?: string;
   authText?: string;
-  areShownText?: string | null;
+  addressExplorerLink: string;
 }
 
 export interface ILedgerConnectPanelData {

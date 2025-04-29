@@ -1,9 +1,9 @@
 import { Component, Element, forceUpdate, h, Method, Prop, State } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 
+import type { ILedgerConnectPanelData } from '../ledger.types';
+import { LedgerConnectEventsEnum } from '../ledger.types';
 import { LedgerConnectBase } from '../LedgerConnectBase';
-import type { ILedgerConnectPanelData } from './ledger-flow.types';
-import { LedgerConnectEventsEnum } from './ledger-flow.types';
 
 @Component({
   tag: 'mvx-ledger-flow',
@@ -78,7 +78,7 @@ export class LedgerFlow {
     }
 
     if (this.data.confirmScreenData) {
-      return <mvx-ledger-confirm-screen confirmScreenData={this.data.confirmScreenData} />;
+      return <mvx-ledger-confirm confirmScreenData={this.data.confirmScreenData} />;
     }
 
     return <mvx-ledger-intro connectScreenData={this.data.connectScreenData} onConnect={this.handleIntroConnect.bind(this)} />;

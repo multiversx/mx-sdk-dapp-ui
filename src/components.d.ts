@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { IGenericModalProps } from "./components/common/generic-modal/generic-modal.types";
-import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger-flow/ledger-flow.types";
+import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
 import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
@@ -19,11 +19,11 @@ import { ITransactionListItem } from "./components/visual/transaction-list-item/
 import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 import { ProviderTypeEnum } from "./types/provider.types";
-import { IWalletConnectPanelData } from "./components/functional/wallet-connect/wallet-connect-panel/wallet-connect-panel.types";
+import { IWalletConnectPanelData } from "./components/functional/wallet-connect/wallet-connect.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IGenericModalProps } from "./components/common/generic-modal/generic-modal.types";
-export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger-flow/ledger-flow.types";
+export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
 export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
@@ -34,7 +34,7 @@ export { ITransactionListItem } from "./components/visual/transaction-list-item/
 export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 export { ProviderTypeEnum } from "./types/provider.types";
-export { IWalletConnectPanelData } from "./components/functional/wallet-connect/wallet-connect-panel/wallet-connect-panel.types";
+export { IWalletConnectPanelData } from "./components/functional/wallet-connect/wallet-connect.types";
 export namespace Components {
     interface MvxAngleLeftIcon {
     }
@@ -113,13 +113,6 @@ export namespace Components {
     }
     interface MvxLedgerConfirm {
         "confirmScreenData": IConfirmScreenData;
-    }
-    interface MvxLedgerConfirmScreen {
-        "confirmScreenData": IConfirmScreenData;
-    }
-    interface MvxLedgerConnectPanel {
-        "data": ILedgerConnectPanelData;
-        "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxLedgerFlow {
         "data": ILedgerConnectPanelData;
@@ -277,6 +270,8 @@ export namespace Components {
         "class"?: string;
         "transactions": ITransactionsTableRow[];
     }
+    interface MvxTriangularWarningIcon {
+    }
     interface MvxTrimText {
         "class"?: string;
         "dataTestId"?: string;
@@ -302,10 +297,6 @@ export namespace Components {
     }
     interface MvxWalletConnectFlow {
         "qrCodeSvg": string;
-    }
-    interface MvxWalletConnectPanel {
-        "data": IWalletConnectPanelData;
-        "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxWalletConnectProvider {
         "data": IWalletConnectPanelData;
@@ -555,18 +546,6 @@ declare global {
     var HTMLMvxLedgerConfirmElement: {
         prototype: HTMLMvxLedgerConfirmElement;
         new (): HTMLMvxLedgerConfirmElement;
-    };
-    interface HTMLMvxLedgerConfirmScreenElement extends Components.MvxLedgerConfirmScreen, HTMLStencilElement {
-    }
-    var HTMLMvxLedgerConfirmScreenElement: {
-        prototype: HTMLMvxLedgerConfirmScreenElement;
-        new (): HTMLMvxLedgerConfirmScreenElement;
-    };
-    interface HTMLMvxLedgerConnectPanelElement extends Components.MvxLedgerConnectPanel, HTMLStencilElement {
-    }
-    var HTMLMvxLedgerConnectPanelElement: {
-        prototype: HTMLMvxLedgerConnectPanelElement;
-        new (): HTMLMvxLedgerConnectPanelElement;
     };
     interface HTMLMvxLedgerFlowElement extends Components.MvxLedgerFlow, HTMLStencilElement {
     }
@@ -885,6 +864,12 @@ declare global {
         prototype: HTMLMvxTransactionsTableElement;
         new (): HTMLMvxTransactionsTableElement;
     };
+    interface HTMLMvxTriangularWarningIconElement extends Components.MvxTriangularWarningIcon, HTMLStencilElement {
+    }
+    var HTMLMvxTriangularWarningIconElement: {
+        prototype: HTMLMvxTriangularWarningIconElement;
+        new (): HTMLMvxTriangularWarningIconElement;
+    };
     interface HTMLMvxTrimTextElement extends Components.MvxTrimText, HTMLStencilElement {
     }
     var HTMLMvxTrimTextElement: {
@@ -944,12 +929,6 @@ declare global {
         prototype: HTMLMvxWalletConnectFlowElement;
         new (): HTMLMvxWalletConnectFlowElement;
     };
-    interface HTMLMvxWalletConnectPanelElement extends Components.MvxWalletConnectPanel, HTMLStencilElement {
-    }
-    var HTMLMvxWalletConnectPanelElement: {
-        prototype: HTMLMvxWalletConnectPanelElement;
-        new (): HTMLMvxWalletConnectPanelElement;
-    };
     interface HTMLMvxWalletConnectProviderElement extends Components.MvxWalletConnectProvider, HTMLStencilElement {
     }
     var HTMLMvxWalletConnectProviderElement: {
@@ -1003,8 +982,6 @@ declare global {
         "mvx-generic-toast": HTMLMvxGenericToastElement;
         "mvx-ledger-addresses": HTMLMvxLedgerAddressesElement;
         "mvx-ledger-confirm": HTMLMvxLedgerConfirmElement;
-        "mvx-ledger-confirm-screen": HTMLMvxLedgerConfirmScreenElement;
-        "mvx-ledger-connect-panel": HTMLMvxLedgerConnectPanelElement;
         "mvx-ledger-flow": HTMLMvxLedgerFlowElement;
         "mvx-ledger-icon": HTMLMvxLedgerIconElement;
         "mvx-ledger-intro": HTMLMvxLedgerIntroElement;
@@ -1043,13 +1020,13 @@ declare global {
         "mvx-transaction-toast-progress": HTMLMvxTransactionToastProgressElement;
         "mvx-transaction-value": HTMLMvxTransactionValueElement;
         "mvx-transactions-table": HTMLMvxTransactionsTableElement;
+        "mvx-triangular-warning-icon": HTMLMvxTriangularWarningIconElement;
         "mvx-trim-text": HTMLMvxTrimTextElement;
         "mvx-unlock-button": HTMLMvxUnlockButtonElement;
         "mvx-unlock-panel": HTMLMvxUnlockPanelElement;
         "mvx-unlock-provider-button": HTMLMvxUnlockProviderButtonElement;
         "mvx-unlock-provider-intro": HTMLMvxUnlockProviderIntroElement;
         "mvx-wallet-connect-flow": HTMLMvxWalletConnectFlowElement;
-        "mvx-wallet-connect-panel": HTMLMvxWalletConnectPanelElement;
         "mvx-wallet-connect-provider": HTMLMvxWalletConnectProviderElement;
         "mvx-wallet-provider-icon": HTMLMvxWalletProviderIconElement;
         "mvx-xalias-provider-icon": HTMLMvxXaliasProviderIconElement;
@@ -1141,12 +1118,6 @@ declare namespace LocalJSX {
     }
     interface MvxLedgerConfirm {
         "confirmScreenData"?: IConfirmScreenData;
-    }
-    interface MvxLedgerConfirmScreen {
-        "confirmScreenData"?: IConfirmScreenData;
-    }
-    interface MvxLedgerConnectPanel {
-        "data"?: ILedgerConnectPanelData;
     }
     interface MvxLedgerFlow {
         "data"?: ILedgerConnectPanelData;
@@ -1308,6 +1279,8 @@ declare namespace LocalJSX {
         "class"?: string;
         "transactions"?: ITransactionsTableRow[];
     }
+    interface MvxTriangularWarningIcon {
+    }
     interface MvxTrimText {
         "class"?: string;
         "dataTestId"?: string;
@@ -1336,9 +1309,6 @@ declare namespace LocalJSX {
     }
     interface MvxWalletConnectFlow {
         "qrCodeSvg"?: string;
-    }
-    interface MvxWalletConnectPanel {
-        "data"?: IWalletConnectPanelData;
     }
     interface MvxWalletConnectProvider {
         "data"?: IWalletConnectPanelData;
@@ -1375,8 +1345,6 @@ declare namespace LocalJSX {
         "mvx-generic-toast": MvxGenericToast;
         "mvx-ledger-addresses": MvxLedgerAddresses;
         "mvx-ledger-confirm": MvxLedgerConfirm;
-        "mvx-ledger-confirm-screen": MvxLedgerConfirmScreen;
-        "mvx-ledger-connect-panel": MvxLedgerConnectPanel;
         "mvx-ledger-flow": MvxLedgerFlow;
         "mvx-ledger-icon": MvxLedgerIcon;
         "mvx-ledger-intro": MvxLedgerIntro;
@@ -1415,13 +1383,13 @@ declare namespace LocalJSX {
         "mvx-transaction-toast-progress": MvxTransactionToastProgress;
         "mvx-transaction-value": MvxTransactionValue;
         "mvx-transactions-table": MvxTransactionsTable;
+        "mvx-triangular-warning-icon": MvxTriangularWarningIcon;
         "mvx-trim-text": MvxTrimText;
         "mvx-unlock-button": MvxUnlockButton;
         "mvx-unlock-panel": MvxUnlockPanel;
         "mvx-unlock-provider-button": MvxUnlockProviderButton;
         "mvx-unlock-provider-intro": MvxUnlockProviderIntro;
         "mvx-wallet-connect-flow": MvxWalletConnectFlow;
-        "mvx-wallet-connect-panel": MvxWalletConnectPanel;
         "mvx-wallet-connect-provider": MvxWalletConnectProvider;
         "mvx-wallet-provider-icon": MvxWalletProviderIcon;
         "mvx-xalias-provider-icon": MvxXaliasProviderIcon;
@@ -1455,8 +1423,6 @@ declare module "@stencil/core" {
             "mvx-generic-toast": LocalJSX.MvxGenericToast & JSXBase.HTMLAttributes<HTMLMvxGenericToastElement>;
             "mvx-ledger-addresses": LocalJSX.MvxLedgerAddresses & JSXBase.HTMLAttributes<HTMLMvxLedgerAddressesElement>;
             "mvx-ledger-confirm": LocalJSX.MvxLedgerConfirm & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmElement>;
-            "mvx-ledger-confirm-screen": LocalJSX.MvxLedgerConfirmScreen & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmScreenElement>;
-            "mvx-ledger-connect-panel": LocalJSX.MvxLedgerConnectPanel & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectPanelElement>;
             "mvx-ledger-flow": LocalJSX.MvxLedgerFlow & JSXBase.HTMLAttributes<HTMLMvxLedgerFlowElement>;
             "mvx-ledger-icon": LocalJSX.MvxLedgerIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerIconElement>;
             "mvx-ledger-intro": LocalJSX.MvxLedgerIntro & JSXBase.HTMLAttributes<HTMLMvxLedgerIntroElement>;
@@ -1495,13 +1461,13 @@ declare module "@stencil/core" {
             "mvx-transaction-toast-progress": LocalJSX.MvxTransactionToastProgress & JSXBase.HTMLAttributes<HTMLMvxTransactionToastProgressElement>;
             "mvx-transaction-value": LocalJSX.MvxTransactionValue & JSXBase.HTMLAttributes<HTMLMvxTransactionValueElement>;
             "mvx-transactions-table": LocalJSX.MvxTransactionsTable & JSXBase.HTMLAttributes<HTMLMvxTransactionsTableElement>;
+            "mvx-triangular-warning-icon": LocalJSX.MvxTriangularWarningIcon & JSXBase.HTMLAttributes<HTMLMvxTriangularWarningIconElement>;
             "mvx-trim-text": LocalJSX.MvxTrimText & JSXBase.HTMLAttributes<HTMLMvxTrimTextElement>;
             "mvx-unlock-button": LocalJSX.MvxUnlockButton & JSXBase.HTMLAttributes<HTMLMvxUnlockButtonElement>;
             "mvx-unlock-panel": LocalJSX.MvxUnlockPanel & JSXBase.HTMLAttributes<HTMLMvxUnlockPanelElement>;
             "mvx-unlock-provider-button": LocalJSX.MvxUnlockProviderButton & JSXBase.HTMLAttributes<HTMLMvxUnlockProviderButtonElement>;
             "mvx-unlock-provider-intro": LocalJSX.MvxUnlockProviderIntro & JSXBase.HTMLAttributes<HTMLMvxUnlockProviderIntroElement>;
             "mvx-wallet-connect-flow": LocalJSX.MvxWalletConnectFlow & JSXBase.HTMLAttributes<HTMLMvxWalletConnectFlowElement>;
-            "mvx-wallet-connect-panel": LocalJSX.MvxWalletConnectPanel & JSXBase.HTMLAttributes<HTMLMvxWalletConnectPanelElement>;
             "mvx-wallet-connect-provider": LocalJSX.MvxWalletConnectProvider & JSXBase.HTMLAttributes<HTMLMvxWalletConnectProviderElement>;
             "mvx-wallet-provider-icon": LocalJSX.MvxWalletProviderIcon & JSXBase.HTMLAttributes<HTMLMvxWalletProviderIconElement>;
             "mvx-xalias-provider-icon": LocalJSX.MvxXaliasProviderIcon & JSXBase.HTMLAttributes<HTMLMvxXaliasProviderIconElement>;

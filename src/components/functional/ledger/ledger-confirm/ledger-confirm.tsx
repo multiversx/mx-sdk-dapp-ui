@@ -1,7 +1,7 @@
 import { Component, h, Prop } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-import type { IConfirmScreenData } from '../ledger-flow/ledger-flow.types';
+import type { IConfirmScreenData } from '../ledger.types';
 
 interface LedgerConfirmationItem {
   label: string;
@@ -20,7 +20,7 @@ export class LedgerConfirm {
 
   render() {
     const ledgerConfirmationItems: LedgerConfirmationItem[] = [
-      { label: this.confirmScreenData.confirmAddressText, value: this.confirmScreenData.selectedAddress, explorerLink: '' },
+      { label: this.confirmScreenData.confirmAddressText, value: this.confirmScreenData.selectedAddress, explorerLink: this.confirmScreenData.addressExplorerLink },
       { label: this.confirmScreenData.authText, value: this.confirmScreenData.data, highlighted: true },
     ];
 
@@ -31,22 +31,30 @@ export class LedgerConfirm {
             <div class="ledger-confirm-item">
               <div class="ledger-confirm-item-label">{ledgerConfirmationItem.label}</div>
               <div class="ledger-confirm-item-value">
-                <div class="ledger-confirm-item-value-text">{ledgerConfirmationItem.value}</div>
-                {ledgerConfirmationItem.explorerLink && <mvx-explorer-link link={ledgerConfirmationItem.explorerLink} class="ledger-confirm-item-value-explorer" />}
+                <div class={{ 'ledger-confirm-item-value-text': true, 'highlighted': Boolean(ledgerConfirmationItem.highlighted) }}>{ledgerConfirmationItem.value}</div>
+
+                <div class="ledger-confirm-item-value-actions">
+                  <mvx-copy-button text={ledgerConfirmationItem.value} class="ledger-confirm-item-value-copy" iconClass="ledger-confirm-item-value-copy-icon" />
+
+                  {ledgerConfirmationItem.explorerLink && (
+                    <mvx-explorer-link link={ledgerConfirmationItem.explorerLink} class="ledger-confirm-item-value-explorer" iconClass="ledger-confirm-item-value-explorer-icon" />
+                  )}
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div class="address-footer">
-          <div>Select Approve on your device to confirm.</div>
-          <div>
-            Or, if it does not match, close this page and{' '}
-            <a href="https://help.multiversx.com/en/" target="_blank" rel="noreferrer">
-              contact support
-            </a>
-            .
-          </div>
+        <div class="ledger-confirm-action">
+          Select <strong>Approve</strong> on your device to confirm.
+        </div>
+
+        <div class="ledger-confirm-footer">
+          <mvx-triangular-warning-icon class="ledger-confirm-footer-icon" />
+          <div class="ledger-confirm-footer-description">If the address does not mach close this page and contact support.</div>
+          <a target="_blank" rel="noreferrer" href="https://help.multiversx.com/en/" class="ledger-confirm-footer-button">
+            Contact Support
+          </a>
         </div>
       </div>
     );

@@ -2,8 +2,8 @@ import QRCode from 'qrcode';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import type { IWalletConnectPanelData } from './wallet-connect-panel/wallet-connect-panel.types';
-import { WalletConnectEventsEnum } from './wallet-connect-panel/wallet-connect-panel.types';
+import type { IWalletConnectPanelData } from './wallet-connect.types';
+import { WalletConnectEventsEnum } from './wallet-connect.types';
 
 interface IWalletConnectEventBusProps {
   forceUpdateFn: () => void;

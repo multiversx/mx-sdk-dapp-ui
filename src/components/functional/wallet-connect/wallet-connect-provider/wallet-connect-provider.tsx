@@ -1,7 +1,7 @@
 import { Component, Element, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 
-import type { IWalletConnectPanelData } from '../wallet-connect-panel/wallet-connect-panel.types';
+import type { IWalletConnectPanelData } from '../wallet-connect.types';
 import { WalletConnectBase } from '../WalletConnectBase';
 
 @Component({

@@ -2,7 +2,7 @@ import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-import type { IAccountScreenData } from '../ledger-flow/ledger-flow.types';
+import type { IAccountScreenData } from '../ledger.types';
 import { TOTAL_ADDRESSES_COUNT } from './ledger-addresses.config';
 
 @Component({
