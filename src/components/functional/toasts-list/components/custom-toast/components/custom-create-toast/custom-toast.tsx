@@ -11,7 +11,7 @@ import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDe
 })
 export class CustomToast {
   @Prop() toast: IComponentToast;
-  @Event() deleteToast: EventEmitter<string>;
+  @Event({ bubbles: false, composed: false }) deleteToast: EventEmitter<string>;
 
   private handleDeleteToast() {
     this.deleteToast.emit();
