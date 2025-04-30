@@ -9,6 +9,8 @@ import { processImgSrc } from 'utils/processImgSrc';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
 import { UnlockPanelEventsEnum } from './unlock-panel.types';
 
+const DEFAULT_ALLOWED_PROVIDERS = Object.values(ProviderTypeEnum);
+
 @Component({
   tag: 'mvx-unlock-panel',
   styleUrl: 'unlock-panel.scss',
@@ -19,7 +21,7 @@ export class UnlockPanel {
   @Element() hostElement: HTMLElement;
 
   @Prop() isOpen: boolean = false;
-  @Prop() allowedProviders?: ProviderTypeEnum[] = Object.values(ProviderTypeEnum);
+  @Prop() allowedProviders?: ProviderTypeEnum[] = DEFAULT_ALLOWED_PROVIDERS;
 
   @Event() close: EventEmitter;
   @Event() login: EventEmitter<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>;
@@ -29,7 +31,7 @@ export class UnlockPanel {
   @State() hasSlotContent: boolean = false;
   @State() panelState = {
     isOpen: false,
-    allowedProviders: Object.values(ProviderTypeEnum),
+    allowedProviders: DEFAULT_ALLOWED_PROVIDERS,
   };
   @Method() async getEventBus() {
     return this.eventBus;
@@ -42,7 +44,7 @@ export class UnlockPanel {
 
   @Watch('allowedProviders')
   handleAllowedProvidersChange(newValue: ProviderTypeEnum[] | undefined) {
-    this.panelState = { ...this.panelState, allowedProviders: newValue ?? Object.values(ProviderTypeEnum) };
+    this.panelState = { ...this.panelState, allowedProviders: newValue ?? DEFAULT_ALLOWED_PROVIDERS };
   }
 
   private isExtensionInstalled(currentProvider: ProviderTypeEnum) {
@@ -69,7 +71,7 @@ export class UnlockPanel {
     this.eventBus.unsubscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
     this.isLoggingIn = false;
     this.selectedMethod = null;
-    this.panelState = { isOpen: false, allowedProviders: Object.values(ProviderTypeEnum) };
+    this.panelState = { isOpen: false, allowedProviders: DEFAULT_ALLOWED_PROVIDERS };
 
     return new Promise(resolve => setTimeout(resolve, 300));
   }
@@ -214,7 +216,7 @@ export class UnlockPanel {
   private unlockPanelUpdate(payload: { isOpen: boolean; allowedProviders: ProviderTypeEnum[] }) {
     this.panelState = {
       ...payload,
-      allowedProviders: payload.allowedProviders ?? Object.values(ProviderTypeEnum),
+      allowedProviders: payload.allowedProviders ?? DEFAULT_ALLOWED_PROVIDERS,
     };
   }
 }
