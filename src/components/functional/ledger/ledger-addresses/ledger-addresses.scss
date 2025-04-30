@@ -16,6 +16,41 @@
     line-height: 1;
   }
 
+  .ledger-addresses-preloader {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .ledger-addresses-preloader-item {
+      height: 64px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+
+      .ledger-addresses-preloader-item-checkbox {
+        margin-right: 8px;
+        height: 16px;
+        width: 16px;
+        border-radius: 50%;
+      }
+
+      .ledger-addresses-preloader-item-index {
+        width: 32px;
+        height: 16px;
+      }
+
+      .ledger-addresses-preloader-item-address {
+        width: 160px;
+        height: 16px;
+      }
+
+      .ledger-addresses-preloader-item-address {
+        width: 96px;
+        height: 16px;
+      }
+    }
+  }
+
   .ledger-addresses-list {
     display: flex;
     flex-direction: column;

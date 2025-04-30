@@ -154,6 +154,9 @@ export namespace Components {
         "data": IPendingTransactionsPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
+    interface MvxPreloader {
+        "class"?: string;
+    }
     interface MvxSidePanel {
         "isOpen": boolean;
         "panelClassName"?: string;
@@ -658,6 +661,12 @@ declare global {
         prototype: HTMLMvxPendingTransactionsPanelElement;
         new (): HTMLMvxPendingTransactionsPanelElement;
     };
+    interface HTMLMvxPreloaderElement extends Components.MvxPreloader, HTMLStencilElement {
+    }
+    var HTMLMvxPreloaderElement: {
+        prototype: HTMLMvxPreloaderElement;
+        new (): HTMLMvxPreloaderElement;
+    };
     interface HTMLMvxSidePanelElementEventMap {
         "close": any;
         "back": any;
@@ -995,6 +1004,7 @@ declare global {
         "mvx-pagination-ellipsis-form": HTMLMvxPaginationEllipsisFormElement;
         "mvx-passkey-provider-icon": HTMLMvxPasskeyProviderIconElement;
         "mvx-pending-transactions-panel": HTMLMvxPendingTransactionsPanelElement;
+        "mvx-preloader": HTMLMvxPreloaderElement;
         "mvx-side-panel": HTMLMvxSidePanelElement;
         "mvx-sign-transaction-component": HTMLMvxSignTransactionComponentElement;
         "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
@@ -1158,6 +1168,9 @@ declare namespace LocalJSX {
     }
     interface MvxPendingTransactionsPanel {
         "data"?: IPendingTransactionsPanelData;
+    }
+    interface MvxPreloader {
+        "class"?: string;
     }
     interface MvxSidePanel {
         "isOpen"?: boolean;
@@ -1358,6 +1371,7 @@ declare namespace LocalJSX {
         "mvx-pagination-ellipsis-form": MvxPaginationEllipsisForm;
         "mvx-passkey-provider-icon": MvxPasskeyProviderIcon;
         "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
+        "mvx-preloader": MvxPreloader;
         "mvx-side-panel": MvxSidePanel;
         "mvx-sign-transaction-component": MvxSignTransactionComponent;
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
@@ -1436,6 +1450,7 @@ declare module "@stencil/core" {
             "mvx-pagination-ellipsis-form": LocalJSX.MvxPaginationEllipsisForm & JSXBase.HTMLAttributes<HTMLMvxPaginationEllipsisFormElement>;
             "mvx-passkey-provider-icon": LocalJSX.MvxPasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLMvxPasskeyProviderIconElement>;
             "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
+            "mvx-preloader": LocalJSX.MvxPreloader & JSXBase.HTMLAttributes<HTMLMvxPreloaderElement>;
             "mvx-side-panel": LocalJSX.MvxSidePanel & JSXBase.HTMLAttributes<HTMLMvxSidePanelElement>;
             "mvx-sign-transaction-component": LocalJSX.MvxSignTransactionComponent & JSXBase.HTMLAttributes<HTMLMvxSignTransactionComponentElement>;
             "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;

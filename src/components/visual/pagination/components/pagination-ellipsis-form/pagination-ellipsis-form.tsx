@@ -9,7 +9,7 @@ import { BigNumber } from 'bignumber.js';
 })
 export class PaginationEllipsisForm {
   @State() pageValue: string = '';
-  @Event() search: EventEmitter<number>;
+  @Event({ bubbles: false, composed: false }) search: EventEmitter<number>;
 
   @Prop() maxPageToSearchFor: number;
   @Prop() isVisible: boolean = false;
@@ -61,7 +61,7 @@ export class PaginationEllipsisForm {
 
   render() {
     return (
-      <form class="pagination-ellipsis-form" onSubmit={this.handleSubmit} onClick={(event: MouseEvent) => event.stopPropagation()}>
+      <div class="pagination-ellipsis-form">
         <label htmlFor="paginationSearch" class="pagination-ellipsis-form-field-label">
           Page
         </label>
@@ -84,7 +84,7 @@ export class PaginationEllipsisForm {
             <mvx-magnifying-glass-icon class="pagination-ellipsis-form-button-icon" />
           </div>
         </div>
-      </form>
+      </div>
     );
   }
 }

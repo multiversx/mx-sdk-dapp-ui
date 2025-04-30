@@ -1,0 +1,24 @@
+@keyframes PreloaderPulseAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.preloader {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  transition: all 200ms ease;
+  animation: PreloaderPulseAnimation 2s infinite;
+  background: #262626;
+  overflow: hidden;
+  border-radius: 8px;
+}
