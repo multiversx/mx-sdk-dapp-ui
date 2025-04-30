@@ -1,7 +1,7 @@
 import { Component, Element, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 
-import type { IWalletConnectPanelData } from '../wallet-connect.types';
+import { type IWalletConnectPanelData, WalletConnectEventsEnum } from '../wallet-connect.types';
 import { WalletConnectBase } from '../WalletConnectBase';
 
 @Component({
@@ -55,6 +55,7 @@ export class WalletConnectProvider {
   }
 
   disconnectedCallback() {
+    this.walletConnectBase.eventBus.publish(WalletConnectEventsEnum.UI_DISCONNECTED);
     this.walletConnectBase.unsubscribeEventBus(this.getEventSubscription());
   }
 }

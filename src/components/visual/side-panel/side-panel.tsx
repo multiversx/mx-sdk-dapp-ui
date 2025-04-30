@@ -39,9 +39,11 @@ export class SidePanel {
       this.isVisible = false;
     }, this.ANIMATION_DURATION_MS);
   }
-
   disconnectedCallback() {
     clearTimeout(this.closeTimeout);
+    this.isVisible = false;
+    this.shouldAnimate = false;
+    this.closeTimeout = null;
   }
 
   handleOverlayClick(event: MouseEvent) {
@@ -67,7 +69,7 @@ export class SidePanel {
 
     return (
       <div
-        onClick={this.handleOverlayClick}
+        onClick={this.handleOverlayClick.bind(this)}
         class={classNames('side-panel-wrapper', {
           visible: this.shouldAnimate,
         })}

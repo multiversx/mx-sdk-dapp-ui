@@ -29,6 +29,7 @@ const excludeComponents = [
   'mvx-token-component',
   'mvx-fungible-component',
   'mvx-balance-component',
+  'mvx-unlock-panel',
 ];
 
 export const config: Config = {
