@@ -69,7 +69,7 @@ export class SidePanel {
 
     return (
       <div
-        onClick={this.handleOverlayClick}
+        onClick={this.handleOverlayClick.bind(this)}
         class={classNames('side-panel-wrapper', {
           visible: this.shouldAnimate,
         })}

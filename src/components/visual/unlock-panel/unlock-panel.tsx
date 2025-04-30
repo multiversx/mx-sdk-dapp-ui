@@ -44,7 +44,7 @@ export class UnlockPanel {
   }
 
   @Watch('allowedProviders')
-  handleAllowedProvidersChange(newValue: ProviderTypeEnum[] | undefined) {
+  handleAllowedProvidersChange(newValue?: ProviderTypeEnum[]) {
     this.panelState = { ...this.panelState, allowedProviders: newValue ?? DEFAULT_ALLOWED_PROVIDERS };
   }
 
@@ -60,10 +60,6 @@ export class UnlockPanel {
   private observer: MutationObserver | null = null;
 
   async disconnectedCallback() {
-    await this.resetState();
-  }
-
-  private async resetState() {
     if (this.observer) {
       this.observer.disconnect();
       this.observer = null;
@@ -141,11 +137,11 @@ export class UnlockPanel {
   }
 
   render() {
-    const detectedProviders: ProviderTypeEnum[] = this.panelState.allowedProviders?.filter(
+    const detectedProviders: ProviderTypeEnum[] = this.panelState.allowedProviders.filter(
       allowedProvider => this.isExtensionInstalled(allowedProvider) || this.isMetaMaskInstalled(allowedProvider),
     );
 
-    const otherProviders = this.panelState.allowedProviders?.filter(allowedProvider => !detectedProviders.includes(allowedProvider));
+    const otherProviders = this.panelState.allowedProviders.filter(allowedProvider => !detectedProviders.includes(allowedProvider));
     const panelTitle = this.selectedMethod ? ProviderLabelsEnum[this.selectedMethod] : 'Connect your wallet';
     const hasDetectedProviders = detectedProviders.length > 0;
 
