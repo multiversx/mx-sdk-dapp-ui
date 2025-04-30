@@ -27,6 +27,7 @@ export class UnlockPanel {
   @Event() login: EventEmitter<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>;
 
   @State() isLoggingIn: boolean = false;
+  @State() isIntroScreenVisible: boolean = false;
   @State() selectedMethod: ProviderTypeEnum | null = null;
   @State() hasSlotContent: boolean = false;
   @State() panelState = {
@@ -97,12 +98,21 @@ export class UnlockPanel {
   handleLogin(provider: ProviderTypeEnum) {
     this.eventBus.publish(UnlockPanelEventsEnum.LOGIN, { type: provider, anchor: this.anchor });
     this.selectedMethod = provider;
+
+    switch (provider) {
+      case ProviderTypeEnum.ledger:
+        this.isIntroScreenVisible = true;
+        break;
+      default:
+        this.handleAccess();
+    }
   }
 
   handleResetLoginState(event: MouseEvent) {
     event.preventDefault();
 
     this.isLoggingIn = false;
+    this.isIntroScreenVisible = false;
     this.selectedMethod = null;
 
     if (!this.anchor) {
@@ -124,6 +134,12 @@ export class UnlockPanel {
     this.eventBus.publish(UnlockPanelEventsEnum.CLOSE);
   }
 
+  handleAccess() {
+    this.isIntroScreenVisible = false;
+    this.isLoggingIn = true;
+    this.login.emit({ provider: this.selectedMethod, anchor: this.anchor });
+  }
+
   render() {
     const detectedProviders: ProviderTypeEnum[] = this.panelState.allowedProviders?.filter(
       allowedProvider => this.isExtensionInstalled(allowedProvider) || this.isMetaMaskInstalled(allowedProvider),
@@ -142,8 +158,9 @@ export class UnlockPanel {
         onBack={this.handleResetLoginState.bind(this)}
       >
         <div id="anchor" ref={element => this.observeContainer(element)} class={{ 'unlock-panel-anchor': this.isLoggingIn }} />
+        {this.isIntroScreenVisible && <mvx-unlock-provider-intro provider={this.selectedMethod} onAccess={this.handleAccess.bind(this)} />}
 
-        {!this.isLoggingIn && (
+        {!this.isLoggingIn && !this.isIntroScreenVisible && (
           <div class="unlock-panel">
             <div class="unlock-panel-groups">
               {hasDetectedProviders && (
@@ -152,7 +169,7 @@ export class UnlockPanel {
 
                   <div class="unlock-panel-group-providers">
                     {detectedProviders.map((provider, providerIndex) => (
-                      <mvx-provider-button
+                      <mvx-unlock-provider-button
                         type={provider}
                         onClick={this.handleLogin.bind(this, provider)}
                         class={classNames('unlock-panel-group-provider', {
@@ -170,7 +187,7 @@ export class UnlockPanel {
 
                 <div class="unlock-panel-group-providers">
                   {otherProviders.map((provider, providerIndex) => (
-                    <mvx-provider-button
+                    <mvx-unlock-provider-button
                       type={provider}
                       onClick={this.handleLogin.bind(this, provider)}
                       class={classNames('unlock-panel-group-provider', {
@@ -179,13 +196,7 @@ export class UnlockPanel {
                       })}
                     />
                   ))}
-                </div>
-              </div>
 
-              <div class="unlock-panel-group">
-                <div class="unlock-panel-group-label">External Providers</div>
-
-                <div class="unlock-panel-group-providers">
                   <slot />
                 </div>
               </div>

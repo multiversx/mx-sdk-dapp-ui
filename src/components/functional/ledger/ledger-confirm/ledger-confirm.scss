@@ -1,0 +1,157 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.ledger-confirm {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  color: #fff;
+  gap: 12px;
+  padding-top: 24px;
+
+  .ledger-confirm-items {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .ledger-confirm-item {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .ledger-confirm-item-label {
+        font-size: 16px;
+        line-height: 1;
+      }
+
+      .ledger-confirm-item-value {
+        min-height: 64px;
+        padding: 12px;
+        border-radius: 12px;
+        position: relative;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+
+        &:before {
+          content: '';
+          position: absolute;
+          pointer-events: none;
+          background-color: #353535;
+          border-radius: 12px;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          opacity: 50%;
+        }
+
+        .ledger-confirm-item-value-text {
+          position: relative;
+          z-index: 1;
+          word-break: break-all;
+
+          &.highlighted {
+            color: #23f7dd;
+          }
+        }
+
+        .ledger-confirm-item-value-copy {
+          display: flex;
+
+          .ledger-confirm-item-value-copy-icon {
+            height: 16px;
+            display: flex;
+            width: 16px;
+            justify-content: center;
+            transition: all 200ms ease;
+
+            &:hover {
+              opacity: 80%;
+            }
+          }
+        }
+
+        .ledger-confirm-item-value-explorer {
+          display: flex;
+
+          .ledger-confirm-item-value-explorer-icon {
+            height: 16px;
+            display: flex;
+            width: 16px;
+            color: #fff;
+            transition: all 200ms ease;
+
+            &:hover {
+              opacity: 80%;
+            }
+          }
+        }
+
+        .ledger-confirm-item-value-actions {
+          position: relative;
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          z-index: 1;
+          flex: 1;
+        }
+      }
+    }
+  }
+
+  .ledger-confirm-action {
+    display: initial;
+
+    strong {
+      color: #23f7dd;
+      font-weight: 700;
+    }
+  }
+
+  .ledger-confirm-footer {
+    margin-top: auto;
+    background-color: #dc2626;
+    padding: 0 12px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 64px;
+
+    .ledger-confirm-footer-icon {
+      width: 24px;
+      height: 24px;
+      flex: 1;
+      min-width: 24px;
+      padding: calc(4px / 2);
+      fill: #fff;
+    }
+
+    .ledger-confirm-footer-description {
+      font-size: 12px;
+    }
+
+    .ledger-confirm-footer-button {
+      padding: 12px;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      font-size: 12px;
+      background: #fff;
+      color: #0e0e0e;
+      border-radius: 8px;
+      transition: all 200ms ease;
+      line-height: 1;
+
+      &:hover {
+        opacity: 75%;
+      }
+    }
+  }
+}

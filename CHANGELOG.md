@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Updated the Ledger authentication flow layout](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/85)
 - [Added cancel login](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/84)
 - [Added `usdValue` to ledger accounts](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/83)
 - [Updated xPortal authentication flow layout](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/80)
