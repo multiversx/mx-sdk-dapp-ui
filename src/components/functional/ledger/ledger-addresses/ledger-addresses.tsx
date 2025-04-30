@@ -16,7 +16,7 @@ export class LedgerAddresses {
   @Prop() selectedIndex: number;
 
   @Event() accessWallet: EventEmitter;
-  @Event() selectAccount: EventEmitter;
+  @Event({ bubbles: false, composed: false }) selectAccount: EventEmitter;
   @Event() pageChange: EventEmitter<number>;
 
   handleAccessWallet(event: MouseEvent) {
@@ -25,9 +25,7 @@ export class LedgerAddresses {
   }
 
   handleSelectAccount(accountDerivationIndex: number) {
-    return (event: MouseEvent) => {
-      event.preventDefault();
-      event.stopPropagation();
+    return () => {
       this.selectAccount.emit(accountDerivationIndex);
     };
   }

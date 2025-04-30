@@ -13,7 +13,7 @@ import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
 })
 export class SimpleToast {
   @Prop() toast: ISimpleToast;
-  @Event() deleteToast: EventEmitter<void>;
+  @Event({ bubbles: false, composed: false }) deleteToast: EventEmitter<void>;
 
   private handleDeleteToast() {
     this.deleteToast.emit();
