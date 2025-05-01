@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Fixed sign transactions button states](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/87)
 - [Fixed bubbling events](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/86)
 - [Updated the Ledger authentication flow layout](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/85)
 - [Added cancel login](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/84)
