@@ -289,7 +289,8 @@ export namespace Components {
         "type"?: ProviderTypeEnum;
     }
     interface MvxUnlockPanel {
-        "allowedProviders": ProviderTypeEnum[];
+        "allowedProviders"?: ProviderTypeEnum[];
+        "getEventBus": () => Promise<IEventBus>;
         "isOpen": boolean;
     }
     interface MvxUnlockProviderButton {
