@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [[0.0.0-alpha.13](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/87)] - 2025-05-01
+## [[0.0.0-alpha.13](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/88)] - 2025-05-01
 
 - [Fixed bubbling events](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/86)
 - [Updated the Ledger authentication flow layout](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/85)
