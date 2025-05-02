@@ -9,7 +9,7 @@ const excludeComponents = [
   'mvx-transaction-fee-component',
   'mvx-pending-transactions-panel',
   'mvx-ledger-connect-panel',
-  'mvx-ledger-connect',
+  'mvx-ledger-flow',
   'mvx-ledger-account-screen',
   'mvx-ledger-connect-screen',
   'mvx-ledger-confirm-screen',
@@ -23,16 +23,18 @@ const excludeComponents = [
   'mvx-transaction-toast',
   'mvx-transaction-toast-wrapper',
   'mvx-sign-transaction-component',
-  'mvx-wallet-connect',
+  'mvx-wallet-connect-provider',
   'mvx-wallet-connect-panel',
   'mvx-transaction-toast-progress',
   'mvx-token-component',
   'mvx-fungible-component',
   'mvx-balance-component',
+  'mvx-unlock-panel',
 ];
 
 export const config: Config = {
   namespace: 'sdk-dapp-core-ui',
+  globalScript: './src/global/scripts/fonts-loader.ts',
   plugins: [
     sass(),
     tailwind({
@@ -64,7 +66,7 @@ export const config: Config = {
     // },
   ],
   rollupPlugins: {
-    after: [nodePolyfills()],
+    before: [nodePolyfills()],
   },
   extras: {
     enableImportInjection: true,

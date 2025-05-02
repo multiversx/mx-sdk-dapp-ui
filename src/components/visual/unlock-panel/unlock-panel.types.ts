@@ -15,3 +15,10 @@ export interface ExtendedWindow extends Window {
 export type SafeWindowType<InferredWindowType extends Window = ExtendedWindow> = {
   [Key in keyof InferredWindowType]?: InferredWindowType[Key];
 };
+
+export enum UnlockPanelEventsEnum {
+  OPEN = 'OPEN',
+  CLOSE = 'CLOSE',
+  LOGIN = 'LOGIN',
+  CANCEL_LOGIN = 'CANCEL_LOGIN',
+}

@@ -1,0 +1,147 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.ledger-addresses {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Satoshi', sans-serif;
+  flex: 1;
+  gap: 16px;
+
+  .ledger-addresses-label {
+    color: #fff;
+    line-height: 1;
+  }
+
+  .ledger-addresses-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .ledger-addresses-list-item {
+      border-radius: 8px;
+      display: flex;
+      color: #fff;
+      align-items: center;
+      padding: 16px;
+      height: 64px;
+      width: 100%;
+      position: relative;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 200ms ease;
+
+      &:before {
+        opacity: 30%;
+        content: '';
+        position: absolute;
+        background-color: #353535;
+        left: 0;
+        border-radius: 8px;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        pointer-events: none;
+      }
+
+      &.checked,
+      &:hover {
+        border-color: #23f7dd;
+      }
+
+      .ledger-addresses-list-item-checkbox {
+        position: relative;
+        z-index: 1;
+        border-radius: 50%;
+        transition: all 200ms ease;
+        min-width: 16px;
+        max-width: 16px;
+        height: 16px;
+        border: 1px solid #fff;
+        margin-right: 8px;
+
+        &:after {
+          width: calc(12px / 2);
+          height: calc(12px / 2);
+          content: '';
+          transform: translate(-50%, -50%);
+          background-color: #23f7dd;
+          position: absolute;
+          transition: all 200ms ease;
+          border-radius: 50%;
+          opacity: 0;
+          left: 50%;
+          top: 50%;
+        }
+
+        &.checked {
+          border-color: #23f7dd;
+
+          &:after {
+            opacity: 1;
+          }
+        }
+      }
+
+      .ledger-addresses-list-item-index {
+        position: relative;
+        z-index: 1;
+        color: #a09a93;
+        font-size: 16px;
+        font-weight: 500;
+        transition: all 200ms ease;
+        margin-right: 16px;
+
+        &.checked {
+          color: #23f7dd;
+        }
+      }
+
+      .ledger-addresses-list-item-address {
+        position: relative;
+        z-index: 1;
+        max-width: 160px;
+        font-size: 16px;
+        min-width: 0;
+        margin-right: auto;
+
+        .trim-wrapper {
+          align-items: flex-end;
+        }
+      }
+
+      .ledger-addresses-list-item-balance {
+        position: relative;
+        margin-left: 16px;
+        font-weight: 500;
+        font-size: 16px;
+        z-index: 1;
+      }
+    }
+  }
+
+  .ledger-addresses-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    height: 48px;
+    line-height: 1;
+    font-size: 16px;
+    color: #000000;
+    border-radius: 12px;
+    background-color: #23f7dd;
+    cursor: pointer;
+    border: 1px solid #23f7dd;
+    transition: all 200ms ease;
+    gap: 8px;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}

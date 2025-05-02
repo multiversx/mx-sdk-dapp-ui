@@ -1,0 +1,21 @@
+@keyframes XPortalQrCodePreloaderPulsation {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.xportal-qr-code-preloader {
+  animation: XPortalQrCodePreloaderPulsation 1s infinite;
+  transition: all 200ms ease-out;
+  fill: none;
+  width: 300px;
+  height: 300px;
+}

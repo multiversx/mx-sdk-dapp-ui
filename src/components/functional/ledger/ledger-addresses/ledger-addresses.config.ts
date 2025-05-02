@@ -1,0 +1,1 @@
+export const TOTAL_ADDRESSES_COUNT = 5000;

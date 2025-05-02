@@ -34,6 +34,5 @@ export enum DataTestIdsEnum {
   trim = 'trim',
   walletConnectLoading = 'walletConnectLoading',
   walletConnectQrCode = 'walletConnectQrCode',
-  walletConnetModalSubtitle = 'walletConnetModalSubtitle',
   walletConnetModalTitle = 'walletConnetModalTitle',
 }

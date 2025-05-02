@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.0-alpha.13](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/88)] - 2025-05-02
+
+- [Fixed bubbling events](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/86)
+- [Updated the Ledger authentication flow layout](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/85)
+- [Added cancel login](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/84)
+- [Added `usdValue` to ledger accounts](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/83)
+- [Updated xPortal authentication flow layout](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/80)
+- [Fix stencil-tailwind-plugin build error in monorepo](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/79)
+
 ## [[0.0.0-alpha.12](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/78)] - 2025-04-10
 
 - [Add stencil-tailwind-plugin for tailwind v4](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/77)

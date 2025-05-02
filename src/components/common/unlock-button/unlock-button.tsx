@@ -5,6 +5,7 @@ import { ProviderTypeEnum } from 'types/provider.types';
 @Component({
   tag: 'mvx-unlock-button',
   styleUrl: 'unlock-button.scss',
+  shadow: true,
 })
 export class UnlockButton {
   @Prop() label: string;

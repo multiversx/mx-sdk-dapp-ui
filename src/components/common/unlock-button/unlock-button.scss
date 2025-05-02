@@ -65,6 +65,10 @@
       .unlock-button-status-install-icon {
         display: flex;
         align-items: center;
+
+        svg path {
+          fill: #23f7dd;
+        }
       }
     }
   }

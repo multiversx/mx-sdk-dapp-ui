@@ -1,26 +1,52 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, h, Prop, State } from '@stencil/core';
+import { Component, Element, Event, h, Method, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
-import { ProviderTypeEnum } from 'types/provider.types';
+import { ProviderLabelsEnum, ProviderTypeEnum } from 'types/provider.types';
+import type { IEventBus } from 'utils/EventBus';
+import { EventBus } from 'utils/EventBus';
+import { processImgSrc } from 'utils/processImgSrc';
 
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
+import { UnlockPanelEventsEnum } from './unlock-panel.types';
+
+const DEFAULT_ALLOWED_PROVIDERS = Object.values(ProviderTypeEnum);
 
 @Component({
   tag: 'mvx-unlock-panel',
   styleUrl: 'unlock-panel.scss',
+  shadow: true,
 })
 export class UnlockPanel {
-  @Element() host: HTMLElement;
+  private eventBus: IEventBus = new EventBus();
+  @Element() hostElement: HTMLElement;
 
   @Prop() isOpen: boolean = false;
-  @Prop() allowedProviders?: ProviderTypeEnum[] = Object.values(ProviderTypeEnum);
+  @Prop() allowedProviders?: ProviderTypeEnum[] = DEFAULT_ALLOWED_PROVIDERS;
 
   @Event() close: EventEmitter;
   @Event() login: EventEmitter<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>;
 
   @State() isLoggingIn: boolean = false;
+  @State() isIntroScreenVisible: boolean = false;
   @State() selectedMethod: ProviderTypeEnum | null = null;
-  @State() childElements: Element[] = [];
+  @State() hasSlotContent: boolean = false;
+  @State() panelState = {
+    isOpen: false,
+    allowedProviders: DEFAULT_ALLOWED_PROVIDERS,
+  };
+  @Method() async getEventBus() {
+    return this.eventBus;
+  }
+
+  @Watch('isOpen')
+  handleIsOpenChange(newValue: boolean) {
+    this.panelState = { ...this.panelState, isOpen: newValue };
+  }
+
+  @Watch('allowedProviders')
+  handleAllowedProvidersChange(newValue?: ProviderTypeEnum[]) {
+    this.panelState = { ...this.panelState, allowedProviders: newValue ?? DEFAULT_ALLOWED_PROVIDERS };
+  }
 
   private isExtensionInstalled(currentProvider: ProviderTypeEnum) {
     return currentProvider === ProviderTypeEnum.extension && getIsExtensionAvailable();
@@ -33,16 +59,25 @@ export class UnlockPanel {
   private anchor: HTMLElement | null = null;
   private observer: MutationObserver | null = null;
 
-  disconnectedCallback() {
+  async disconnectedCallback() {
     if (this.observer) {
       this.observer.disconnect();
+      this.observer = null;
     }
+
+    this.eventBus.unsubscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
+    this.isLoggingIn = false;
+    this.selectedMethod = null;
+    this.panelState = { isOpen: false, allowedProviders: DEFAULT_ALLOWED_PROVIDERS };
+
+    return new Promise(resolve => setTimeout(resolve, 300));
   }
 
   private observeContainer(element: HTMLElement | null) {
     if (!element) {
       return;
     }
+
     this.anchor = element;
 
     if (this.observer) {
@@ -57,14 +92,23 @@ export class UnlockPanel {
   }
 
   handleLogin(provider: ProviderTypeEnum) {
-    this.login.emit({ provider, anchor: this.anchor });
+    this.eventBus.publish(UnlockPanelEventsEnum.LOGIN, { type: provider, anchor: this.anchor });
     this.selectedMethod = provider;
+
+    switch (provider) {
+      case ProviderTypeEnum.ledger:
+        this.isIntroScreenVisible = true;
+        break;
+      default:
+        this.handleAccess();
+    }
   }
 
   handleResetLoginState(event: MouseEvent) {
     event.preventDefault();
 
     this.isLoggingIn = false;
+    this.isIntroScreenVisible = false;
     this.selectedMethod = null;
 
     if (!this.anchor) {
@@ -74,37 +118,45 @@ export class UnlockPanel {
     while (this.anchor.firstChild) {
       this.anchor.removeChild(this.anchor.firstChild);
     }
+    this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
   }
 
   handleClose(event: MouseEvent) {
     event.preventDefault();
-    this.close.emit();
+    if (this.selectedMethod) {
+      this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
+    }
+
+    this.eventBus.publish(UnlockPanelEventsEnum.CLOSE);
   }
 
-  componentWillLoad() {
-    this.childElements = [...this.host.children];
-    this.host.innerHTML = '';
+  handleAccess() {
+    this.isIntroScreenVisible = false;
+    this.isLoggingIn = true;
+    this.login.emit({ provider: this.selectedMethod, anchor: this.anchor });
   }
 
   render() {
-    const detectedProviders: ProviderTypeEnum[] = this.allowedProviders.filter(
+    const detectedProviders: ProviderTypeEnum[] = this.panelState.allowedProviders.filter(
       allowedProvider => this.isExtensionInstalled(allowedProvider) || this.isMetaMaskInstalled(allowedProvider),
     );
 
-    const otherProviders = this.allowedProviders.filter(allowedProvider => !detectedProviders.includes(allowedProvider));
+    const otherProviders = this.panelState.allowedProviders.filter(allowedProvider => !detectedProviders.includes(allowedProvider));
+    const panelTitle = this.selectedMethod ? ProviderLabelsEnum[this.selectedMethod] : 'Connect your wallet';
     const hasDetectedProviders = detectedProviders.length > 0;
 
     return (
       <mvx-side-panel
-        isOpen={this.isOpen}
-        panelTitle="Connect your wallet"
+        isOpen={this.panelState.isOpen}
+        panelTitle={panelTitle}
+        withBackButton={this.isLoggingIn}
         onClose={this.handleClose.bind(this)}
         onBack={this.handleResetLoginState.bind(this)}
-        withBackButton={this.isLoggingIn}
       >
-        <div id="anchor" ref={element => this.observeContainer(element)} />
+        <div id="anchor" ref={element => this.observeContainer(element)} class={{ 'unlock-panel-anchor': this.isLoggingIn }} />
+        {this.isIntroScreenVisible && <mvx-unlock-provider-intro provider={this.selectedMethod} onAccess={this.handleAccess.bind(this)} />}
 
-        {!this.isLoggingIn && (
+        {!this.isLoggingIn && !this.isIntroScreenVisible && (
           <div class="unlock-panel">
             <div class="unlock-panel-groups">
               {hasDetectedProviders && (
@@ -113,7 +165,7 @@ export class UnlockPanel {
 
                   <div class="unlock-panel-group-providers">
                     {detectedProviders.map((provider, providerIndex) => (
-                      <mvx-provider-button
+                      <mvx-unlock-provider-button
                         type={provider}
                         onClick={this.handleLogin.bind(this, provider)}
                         class={classNames('unlock-panel-group-provider', {
@@ -131,7 +183,7 @@ export class UnlockPanel {
 
                 <div class="unlock-panel-group-providers">
                   {otherProviders.map((provider, providerIndex) => (
-                    <mvx-provider-button
+                    <mvx-unlock-provider-button
                       type={provider}
                       onClick={this.handleLogin.bind(this, provider)}
                       class={classNames('unlock-panel-group-provider', {
@@ -140,19 +192,38 @@ export class UnlockPanel {
                       })}
                     />
                   ))}
+
+                  <slot />
                 </div>
               </div>
             </div>
 
-            <div>
-              External Providers
-              <mxv-children innerHTML={this.childElements.map(childElement => childElement.innerHTML)} />
-            </div>
+            <div class="unlock-panel-footer">
+              <img src={processImgSrc('unlock-panel-wallet.png')} class="unlock-panel-footer-image" />
 
-            <img src={new URL('../collection/assets/unlock-panel-wallet.png', import.meta.url).href} />
+              <div class="unlock-panel-footer-wrapper">
+                <div class="unlock-panel-footer-title">Don't have a wallet?</div>
+                <div class="unlock-panel-footer-subtitle">
+                  Take full control of <br /> your assets.
+                </div>
+
+                <mvx-arrow-up-right-icon class="unlock-panel-footer-icon" />
+              </div>
+            </div>
           </div>
         )}
       </mvx-side-panel>
     );
+  }
+
+  componentDidLoad() {
+    this.eventBus.subscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
+  }
+
+  private unlockPanelUpdate(payload: { isOpen: boolean; allowedProviders: ProviderTypeEnum[] }) {
+    this.panelState = {
+      ...payload,
+      allowedProviders: payload.allowedProviders ?? DEFAULT_ALLOWED_PROVIDERS,
+    };
   }
 }

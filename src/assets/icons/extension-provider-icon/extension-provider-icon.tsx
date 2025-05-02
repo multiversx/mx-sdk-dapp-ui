@@ -2,6 +2,7 @@ import { Component, h } from '@stencil/core';
 
 @Component({
   tag: 'mvx-extension-provider-icon',
+  shadow: true,
 })
 export class ExtensionProviderIcon {
   render() {
