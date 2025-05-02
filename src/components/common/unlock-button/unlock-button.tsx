@@ -1,5 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from 'components/visual/unlock-panel/helpers';
+import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 
 @Component({
@@ -9,8 +10,10 @@ import { ProviderTypeEnum } from 'types/provider.types';
 })
 export class UnlockButton {
   @Prop() label: string;
-  @Prop() icon: HTMLElement;
-  @Prop() type?: ProviderTypeEnum;
+  @Prop() iconUrl: string;
+  @Prop() icon?: HTMLElement;
+
+  @Prop() type?: IProviderBase['type'];
   @Prop() class?: string;
 
   render() {
@@ -23,14 +26,7 @@ export class UnlockButton {
 
     return (
       <div class={{ 'unlock-button': true, [this.class]: Boolean(this.class) }}>
-        {this.icon ? (
-          <div class="unlock-button-icon">{this.icon}</div>
-        ) : (
-          <div class="unlock-button-icon">
-            <mvx-multiversx-logo-icon />
-          </div>
-        )}
-
+        <div class="unlock-button-icon">{this.icon ? this.icon : <img src={this.iconUrl} alt={this.label} />}</div>
         <div class="unlock-button-label">{this.label}</div>
 
         {isDetectableProvider && (
