@@ -18,7 +18,7 @@ import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-import { ProviderTypeEnum } from "./types/provider.types";
+import { ICustomProviderBase, ProviderTypeEnum } from "./types/provider.types";
 import { IWalletConnectPanelData } from "./components/functional/wallet-connect/wallet-connect.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -33,7 +33,7 @@ export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-export { ProviderTypeEnum } from "./types/provider.types";
+export { ICustomProviderBase, ProviderTypeEnum } from "./types/provider.types";
 export { IWalletConnectPanelData } from "./components/functional/wallet-connect/wallet-connect.types";
 export namespace Components {
     interface MvxAngleLeftIcon {
@@ -279,22 +279,22 @@ export namespace Components {
     }
     interface MvxUnlockButton {
         "class"?: string;
-        "icon": HTMLElement;
+        "icon"?: HTMLElement;
+        "iconUrl": string;
         "label": string;
-        "type"?: ProviderTypeEnum;
+        "type"?: ICustomProviderBase['type'];
     }
     interface MvxUnlockPanel {
-        "allowedProviders"?: ProviderTypeEnum[];
+        "allowedProviders": ICustomProviderBase[];
         "getEventBus": () => Promise<IEventBus>;
         "isOpen": boolean;
     }
     interface MvxUnlockProviderButton {
         "class"?: string;
-        "providers": string[];
-        "type": ProviderTypeEnum;
+        "provider": ICustomProviderBase<ProviderTypeEnum>;
     }
     interface MvxUnlockProviderIntro {
-        "provider": ProviderTypeEnum | null;
+        "provider": ICustomProviderBase | null;
     }
     interface MvxWalletConnectFlow {
         "qrCodeSvg": string;
@@ -885,7 +885,7 @@ declare global {
     };
     interface HTMLMvxUnlockPanelElementEventMap {
         "close": any;
-        "login": { provider: ProviderTypeEnum; anchor?: HTMLElement };
+        "login": { provider: ICustomProviderBase['type']; anchor?: HTMLElement };
     }
     interface HTMLMvxUnlockPanelElement extends Components.MvxUnlockPanel, HTMLStencilElement {
         addEventListener<K extends keyof HTMLMvxUnlockPanelElementEventMap>(type: K, listener: (this: HTMLMvxUnlockPanelElement, ev: MvxUnlockPanelCustomEvent<HTMLMvxUnlockPanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1290,23 +1290,23 @@ declare namespace LocalJSX {
     interface MvxUnlockButton {
         "class"?: string;
         "icon"?: HTMLElement;
+        "iconUrl"?: string;
         "label"?: string;
-        "type"?: ProviderTypeEnum;
+        "type"?: ICustomProviderBase['type'];
     }
     interface MvxUnlockPanel {
-        "allowedProviders"?: ProviderTypeEnum[];
+        "allowedProviders"?: ICustomProviderBase[];
         "isOpen"?: boolean;
         "onClose"?: (event: MvxUnlockPanelCustomEvent<any>) => void;
-        "onLogin"?: (event: MvxUnlockPanelCustomEvent<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>) => void;
+        "onLogin"?: (event: MvxUnlockPanelCustomEvent<{ provider: ICustomProviderBase['type']; anchor?: HTMLElement }>) => void;
     }
     interface MvxUnlockProviderButton {
         "class"?: string;
-        "providers"?: string[];
-        "type"?: ProviderTypeEnum;
+        "provider"?: ICustomProviderBase<ProviderTypeEnum>;
     }
     interface MvxUnlockProviderIntro {
         "onAccess"?: (event: MvxUnlockProviderIntroCustomEvent<any>) => void;
-        "provider"?: ProviderTypeEnum | null;
+        "provider"?: ICustomProviderBase | null;
     }
     interface MvxWalletConnectFlow {
         "qrCodeSvg"?: string;
