@@ -1,8 +1,8 @@
 import { Component, h, Prop } from '@stencil/core';
-import type { ICustomProviderBase } from 'types/provider.types';
+import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 
-const getProviderButtonIcon = (providerType: ICustomProviderBase['type']) => {
+const getProviderButtonIcon = (providerType: IProviderBase['type']) => {
   switch (providerType) {
     case ProviderTypeEnum.extension:
       return <mvx-extension-provider-icon />;
@@ -27,7 +27,7 @@ const getProviderButtonIcon = (providerType: ICustomProviderBase['type']) => {
   shadow: true,
 })
 export class UnlockProviderButton {
-  @Prop() provider: ICustomProviderBase<ProviderTypeEnum>;
+  @Prop() provider: IProviderBase<ProviderTypeEnum>;
   @Prop() class?: string;
 
   render() {

@@ -1,7 +1,7 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Element, Event, h, Method, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
-import type { ICustomProviderBase } from 'types/provider.types';
+import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
@@ -20,14 +20,14 @@ export class UnlockPanel {
   @Element() hostElement: HTMLElement;
 
   @Prop() isOpen: boolean = false;
-  @Prop() allowedProviders: ICustomProviderBase[] = [];
+  @Prop() allowedProviders: IProviderBase[] = [];
 
   @Event() close: EventEmitter;
-  @Event() login: EventEmitter<{ provider: ICustomProviderBase['type']; anchor?: HTMLElement }>;
+  @Event() login: EventEmitter<{ provider: IProviderBase['type']; anchor?: HTMLElement }>;
 
   @State() isLoggingIn: boolean = false;
   @State() isIntroScreenVisible: boolean = false;
-  @State() selectedMethod: ICustomProviderBase | null = null;
+  @State() selectedMethod: IProviderBase | null = null;
   @State() hasSlotContent: boolean = false;
   @State() panelState = {
     isOpen: false,
@@ -43,15 +43,15 @@ export class UnlockPanel {
   }
 
   @Watch('allowedProviders')
-  handleAllowedProvidersChange(newValue: ICustomProviderBase[]) {
+  handleAllowedProvidersChange(newValue: IProviderBase[]) {
     this.panelState = { ...this.panelState, allowedProviders: newValue };
   }
 
-  private isExtensionInstalled(currentProvider: ICustomProviderBase['type']) {
+  private isExtensionInstalled(currentProvider: IProviderBase['type']) {
     return currentProvider === ProviderTypeEnum.extension && getIsExtensionAvailable();
   }
 
-  private isMetaMaskInstalled(currentProvider: ICustomProviderBase['type']) {
+  private isMetaMaskInstalled(currentProvider: IProviderBase['type']) {
     return currentProvider === ProviderTypeEnum.metamask && getIsMetaMaskAvailable();
   }
 
@@ -90,7 +90,7 @@ export class UnlockPanel {
     this.observer.observe(element, { childList: true, subtree: true });
   }
 
-  handleLogin(provider: ICustomProviderBase) {
+  handleLogin(provider: IProviderBase) {
     this.eventBus.publish(UnlockPanelEventsEnum.LOGIN, { type: provider.type, anchor: this.anchor });
     this.selectedMethod = provider;
 
@@ -136,7 +136,7 @@ export class UnlockPanel {
   }
 
   render() {
-    const detectedProviders: ICustomProviderBase[] = this.panelState.allowedProviders.filter(
+    const detectedProviders: IProviderBase[] = this.panelState.allowedProviders.filter(
       allowedProvider => this.isExtensionInstalled(allowedProvider.type) || this.isMetaMaskInstalled(allowedProvider.type),
     );
 
@@ -219,7 +219,7 @@ export class UnlockPanel {
     this.eventBus.subscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
   }
 
-  private unlockPanelUpdate(payload: { isOpen: boolean; allowedProviders: ICustomProviderBase[] }) {
+  private unlockPanelUpdate(payload: { isOpen: boolean; allowedProviders: IProviderBase[] }) {
     this.panelState = {
       ...payload,
       allowedProviders: payload.allowedProviders,

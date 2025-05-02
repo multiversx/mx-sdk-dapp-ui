@@ -1,6 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from 'components/visual/unlock-panel/helpers';
-import type { ICustomProviderBase } from 'types/provider.types';
+import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 
 @Component({
@@ -13,7 +13,7 @@ export class UnlockButton {
   @Prop() iconUrl: string;
   @Prop() icon?: HTMLElement;
 
-  @Prop() type?: ICustomProviderBase['type'];
+  @Prop() type?: IProviderBase['type'];
   @Prop() class?: string;
 
   render() {

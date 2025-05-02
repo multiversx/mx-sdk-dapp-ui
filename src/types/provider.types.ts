@@ -9,7 +9,7 @@ export enum ProviderTypeEnum {
   passkey = 'passkey',
 }
 
-export interface ICustomProviderBase<T extends ProviderTypeEnum = ProviderTypeEnum> {
+export interface IProviderBase<T extends ProviderTypeEnum = ProviderTypeEnum> {
   name: string;
   type: T[keyof T];
   iconUrl?: string;
