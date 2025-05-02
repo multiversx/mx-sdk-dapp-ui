@@ -1,6 +1,5 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
-import { BigNumber } from 'bignumber.js';
 
 @Component({
   tag: 'mvx-pagination-ellipsis-form',
@@ -15,8 +14,8 @@ export class PaginationEllipsisForm {
   @Prop() isVisible: boolean = false;
 
   constructor() {
+    this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleInputReference = this.handleInputReference.bind(this);
   }
@@ -27,19 +26,25 @@ export class PaginationEllipsisForm {
   }
 
   private handleKeyDown(event: KeyboardEvent) {
+    if (event.code === 'Enter') {
+      event.preventDefault();
+      this.handleSubmit(event);
+    }
+
     if (['Equal', 'Minus', 'Period', 'KeyE', 'Comma'].includes(event.code)) {
       event.preventDefault();
       return;
     }
   }
 
-  private handleChange(event: Event) {
+  private handleInput(event: Event) {
     const input = event.target as HTMLInputElement;
-    const valueBigNumber = new BigNumber(input.value);
-    const isBelowMax = valueBigNumber.isLessThanOrEqualTo(this.maxPageToSearchFor);
+    const isBelowMax = parseFloat(input.value) <= this.maxPageToSearchFor;
 
-    if (valueBigNumber.isNaN() || isBelowMax) {
-      this.pageValue = valueBigNumber.toString();
+    if (isBelowMax) {
+      this.pageValue = input.value;
+    } else {
+      input.value = this.pageValue;
     }
   }
 
@@ -61,7 +66,7 @@ export class PaginationEllipsisForm {
 
   render() {
     return (
-      <div class="pagination-ellipsis-form">
+      <div class="pagination-ellipsis-form" onClick={(event: MouseEvent) => event.stopPropagation()}>
         <label htmlFor="paginationSearch" class="pagination-ellipsis-form-field-label">
           Page
         </label>
@@ -74,7 +79,8 @@ export class PaginationEllipsisForm {
             id="paginationSearch"
             value={this.pageValue}
             name="paginationSearch"
-            onInput={this.handleChange}
+            onInput={this.handleInput}
+            max={this.maxPageToSearchFor}
             onKeyDown={this.handleKeyDown}
             ref={this.handleInputReference}
             class="pagination-ellipsis-form-field-input"

@@ -53,7 +53,6 @@
     "@fortawesome/free-solid-svg-icons": ">= 6.7.2",
     "@multiversx/sdk-dapp-utils": ">= 1.0.4",
     "@stencil/react-output-target": "0.8.2",
-    "bignumber.js": "^9.3.0",
     "classnames": ">= 2.5.1",
     "lodash.inrange": "^3.3.0",
     "lodash.range": "^3.2.0",

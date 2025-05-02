@@ -3,7 +3,7 @@ import { Component, h, Prop } from '@stencil/core';
 @Component({
   tag: 'mvx-preloader',
   styleUrl: 'preloader.scss',
-  shadow: true,
+  shadow: false,
 })
 export class Preloader {
   @Prop() class?: string;

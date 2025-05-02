@@ -25,7 +25,8 @@ export class LedgerAddresses {
   }
 
   handleSelectAccount(accountDerivationIndex: number) {
-    return () => {
+    return (event: MouseEvent) => {
+      event.preventDefault();
       this.selectAccount.emit(accountDerivationIndex);
     };
   }
@@ -49,8 +50,8 @@ export class LedgerAddresses {
       <div class="ledger-addresses">
         <div class="ledger-addresses-label">Choose the wallet you want to access</div>
 
-        {isPageChanging ? (
-          <div class="ledger-addresses-preloader">
+        <div class="ledger-addresses-wrapper">
+          <div class={{ 'ledger-addresses-preloader': true, 'visible': isPageChanging }}>
             {Array.from({ length: this.accountScreenData.addressesPerPage }, () => (
               <mvx-preloader class="ledger-addresses-preloader-item">
                 <mvx-preloader class="ledger-addresses-preloader-item-checkbox" />
@@ -60,8 +61,8 @@ export class LedgerAddresses {
               </mvx-preloader>
             ))}
           </div>
-        ) : (
-          <div class="ledger-addresses-list">
+
+          <div class={{ 'ledger-addresses-list': true, 'visible': !isPageChanging }}>
             {this.accountScreenData.accounts.map((accountDerivation, accountDerivationIndex) => (
               <div
                 class={{ 'ledger-addresses-list-item': true, 'checked': accountDerivation.index === this.selectedIndex }}
@@ -77,7 +78,7 @@ export class LedgerAddresses {
               </div>
             ))}
           </div>
-        )}
+        </div>
 
         <mvx-pagination
           totalPages={totalPages}
@@ -87,8 +88,9 @@ export class LedgerAddresses {
           currentPage={this.accountScreenData.startIndex / this.accountScreenData.addressesPerPage + 1}
         />
 
-        <button class={{ 'ledger-addresses-button': true, 'disabled': isPageChanging }} data-testid={DataTestIdsEnum.confirmBtn} onClick={this.handleAccessWallet.bind(this)}>
-          {isPageChanging ? 'Accessing Wallet...' : 'Access Wallet'}
+        <button class={{ 'ledger-addresses-button': true, 'loading': isPageChanging }} data-testid={DataTestIdsEnum.confirmBtn} onClick={this.handleAccessWallet.bind(this)}>
+          <span class="ledger-addresses-button-label">{isPageChanging ? 'Loading Wallets...' : 'Access Wallet'}</span>
+          {isPageChanging && <mvx-spinner-icon />}
         </button>
       </div>
     );

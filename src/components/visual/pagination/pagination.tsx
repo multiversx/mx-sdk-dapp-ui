@@ -1,6 +1,5 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
-import { BigNumber } from 'bignumber.js';
 
 import { getPagination } from './helpers';
 
@@ -15,7 +14,7 @@ export class Pagination {
   @Prop() isDisabled?: boolean = false;
   @Prop() class?: string;
 
-  @Event() pageChange: EventEmitter<number>;
+  @Event({ bubbles: false, composed: false }) pageChange: EventEmitter<number>;
   @State() currentPageIndex: number;
   @State() isTooltipOpen: boolean = false;
 
@@ -47,11 +46,11 @@ export class Pagination {
   }
 
   private isCurrentPageActive(paginationItem: string) {
-    return new BigNumber(paginationItem).isEqualTo(this.currentPageIndex);
+    return parseFloat(paginationItem) === this.currentPageIndex;
   }
 
   private isInTheHundreds(paginationItem: string) {
-    return parseFloat(paginationItem) && new BigNumber(paginationItem).isGreaterThanOrEqualTo(100);
+    return parseFloat(paginationItem) && parseFloat(paginationItem) >= 100;
   }
 
   componentWillLoad() {

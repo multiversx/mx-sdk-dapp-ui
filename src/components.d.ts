@@ -127,6 +127,7 @@ export namespace Components {
     interface MvxLedgerProviderIcon {
     }
     interface MvxMagnifyingGlassIcon {
+        "class"?: string;
     }
     interface MvxMetamaskProviderIcon {
     }
@@ -174,6 +175,7 @@ export namespace Components {
         "toast": ISimpleToast;
     }
     interface MvxSpinnerIcon {
+        "class"?: string;
     }
     interface MvxToastList {
         "customToasts": CustomToastType1[];
@@ -1142,6 +1144,7 @@ declare namespace LocalJSX {
     interface MvxLedgerProviderIcon {
     }
     interface MvxMagnifyingGlassIcon {
+        "class"?: string;
     }
     interface MvxMetamaskProviderIcon {
     }
@@ -1191,6 +1194,7 @@ declare namespace LocalJSX {
         "toast"?: ISimpleToast;
     }
     interface MvxSpinnerIcon {
+        "class"?: string;
     }
     interface MvxToastList {
         "customToasts"?: CustomToastType1[];
