@@ -100,8 +100,6 @@ export namespace Components {
         "valueDecimal": string;
         "valueInteger": string;
     }
-    interface MvxFungibleComponent {
-    }
     interface MvxGenericModal {
         "body": IGenericModalProps['body'];
         "modalSubtitle"?: IGenericModalProps['modalSubtitle'];
@@ -223,6 +221,8 @@ export namespace Components {
         "tooltip"?: string;
     }
     interface MvxTransactionDetails {
+        "amount"?: string;
+        "identifier"?: string;
     }
     interface MvxTransactionDirectionBadge {
         "class"?: string;
@@ -521,12 +521,6 @@ declare global {
     var HTMLMvxFormatAmountElement: {
         prototype: HTMLMvxFormatAmountElement;
         new (): HTMLMvxFormatAmountElement;
-    };
-    interface HTMLMvxFungibleComponentElement extends Components.MvxFungibleComponent, HTMLStencilElement {
-    }
-    var HTMLMvxFungibleComponentElement: {
-        prototype: HTMLMvxFungibleComponentElement;
-        new (): HTMLMvxFungibleComponentElement;
     };
     interface HTMLMvxGenericModalElementEventMap {
         "close": any;
@@ -1059,7 +1053,6 @@ declare global {
         "mvx-extension-provider-icon": HTMLMvxExtensionProviderIconElement;
         "mvx-fa-icon": HTMLMvxFaIconElement;
         "mvx-format-amount": HTMLMvxFormatAmountElement;
-        "mvx-fungible-component": HTMLMvxFungibleComponentElement;
         "mvx-generic-modal": HTMLMvxGenericModalElement;
         "mvx-generic-spinner": HTMLMvxGenericSpinnerElement;
         "mvx-generic-toast": HTMLMvxGenericToastElement;
@@ -1186,8 +1179,6 @@ declare namespace LocalJSX {
         "showLabel"?: boolean;
         "valueDecimal"?: string;
         "valueInteger"?: string;
-    }
-    interface MvxFungibleComponent {
     }
     interface MvxGenericModal {
         "body"?: IGenericModalProps['body'];
@@ -1318,6 +1309,8 @@ declare namespace LocalJSX {
         "tooltip"?: string;
     }
     interface MvxTransactionDetails {
+        "amount"?: string;
+        "identifier"?: string;
     }
     interface MvxTransactionDirectionBadge {
         "class"?: string;
@@ -1458,7 +1451,6 @@ declare namespace LocalJSX {
         "mvx-extension-provider-icon": MvxExtensionProviderIcon;
         "mvx-fa-icon": MvxFaIcon;
         "mvx-format-amount": MvxFormatAmount;
-        "mvx-fungible-component": MvxFungibleComponent;
         "mvx-generic-modal": MvxGenericModal;
         "mvx-generic-spinner": MvxGenericSpinner;
         "mvx-generic-toast": MvxGenericToast;
@@ -1542,7 +1534,6 @@ declare module "@stencil/core" {
             "mvx-extension-provider-icon": LocalJSX.MvxExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxExtensionProviderIconElement>;
             "mvx-fa-icon": LocalJSX.MvxFaIcon & JSXBase.HTMLAttributes<HTMLMvxFaIconElement>;
             "mvx-format-amount": LocalJSX.MvxFormatAmount & JSXBase.HTMLAttributes<HTMLMvxFormatAmountElement>;
-            "mvx-fungible-component": LocalJSX.MvxFungibleComponent & JSXBase.HTMLAttributes<HTMLMvxFungibleComponentElement>;
             "mvx-generic-modal": LocalJSX.MvxGenericModal & JSXBase.HTMLAttributes<HTMLMvxGenericModalElement>;
             "mvx-generic-spinner": LocalJSX.MvxGenericSpinner & JSXBase.HTMLAttributes<HTMLMvxGenericSpinnerElement>;
             "mvx-generic-toast": LocalJSX.MvxGenericToast & JSXBase.HTMLAttributes<HTMLMvxGenericToastElement>;

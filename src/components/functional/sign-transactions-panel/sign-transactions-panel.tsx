@@ -129,7 +129,7 @@ export class SignTransactionsPanel {
               <div class="transaction-content">
                 <mvx-request-origin origin={origin} />
                 <mvx-transaction-preview previewTitle="Sending" previewSubtitle={previewSubtitle} previewAdditionalInfo={usdValue} imageURL={imageURL} />
-                <mvx-transaction-details />
+                <mvx-transaction-details amount={amount} identifier={identifier} />
                 <mvx-action-buttons />
               </div>
             )}

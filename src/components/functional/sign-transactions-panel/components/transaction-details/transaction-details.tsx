@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import state from '../../signTransactionsPanelStore';
 
 @Component({
@@ -6,12 +6,16 @@ import state from '../../signTransactionsPanelStore';
   styleUrl: 'transaction-details.css',
 })
 export class TransactionDetails {
+  @Prop() amount?: string;
+  @Prop() identifier?: string;
+
   getTransactionData() {
     const { tokenTransaction, sftTransaction, nftTransaction } = state;
     const data = sftTransaction || nftTransaction || tokenTransaction;
 
     return {
-      ...data,
+      amount: this.amount || data?.amount || '',
+      identifier: this.identifier || data?.identifier || '',
       usdValue: tokenTransaction?.usdValue || '',
     };
   }
