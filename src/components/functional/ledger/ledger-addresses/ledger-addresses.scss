@@ -185,33 +185,39 @@
     }
   }
 
-  .ledger-addresses-button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    height: 48px;
-    line-height: 1;
-    font-size: 16px;
-    color: #000000;
-    border-radius: 12px;
-    background-color: #23f7dd;
-    cursor: pointer;
-    border: 1px solid #23f7dd;
-    transition: all 200ms ease;
-    gap: 8px;
+  .ledger-addresses-button-wrapper {
+    position: relative;
+    z-index: 1;
 
-    &:hover {
-      opacity: 0.75;
-    }
+    .ledger-addresses-button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      height: 48px;
+      line-height: 1;
+      font-size: 16px;
+      color: #000000;
+      border-radius: 12px;
+      background-color: #23f7dd;
+      cursor: pointer;
+      border: 1px solid #23f7dd;
+      transition: all 200ms ease;
+      gap: 8px;
 
-    &.loading {
-      pointer-events: none;
-      background-color: transparent;
-      border-color: #a09a93;
-      cursor: default;
-      color: #a09a93;
+      &:hover {
+        opacity: 0.75;
+      }
+
+      &.loading,
+      &.disabled {
+        pointer-events: none;
+        background-color: transparent;
+        border-color: #a09a93;
+        cursor: default;
+        color: #a09a93;
+      }
     }
   }
 }

@@ -15,8 +15,9 @@ export class Pagination {
   @Prop() class?: string;
 
   @Event({ bubbles: false, composed: false }) pageChange: EventEmitter<number>;
-  @State() currentPageIndex: number;
+  @State() activeTooltipIndex: number | null = null;
   @State() isTooltipOpen: boolean = false;
+  @State() currentPageIndex: number;
 
   @Watch('currentPage')
   watchCurrentPage(newValue: number) {
@@ -76,7 +77,7 @@ export class Pagination {
         </div>
 
         <div class="pagination-items">
-          {paginationItems.map(paginationItem => (
+          {paginationItems.map((paginationItem, paginationItemIndex) => (
             <div class="pagination-item-wrapper">
               {parseFloat(paginationItem) ? (
                 <div
@@ -93,8 +94,11 @@ export class Pagination {
               ) : (
                 <mvx-tooltip
                   triggerOnClick={true}
-                  onTriggerRender={(event: CustomEvent) => this.handleTooltipStatus(event.detail)}
-                  trigger={<mvx-pagination-ellipsis isActive={this.isTooltipOpen} />}
+                  trigger={<mvx-pagination-ellipsis isActive={this.isTooltipOpen && this.activeTooltipIndex === paginationItemIndex} />}
+                  onTriggerRender={(event: CustomEvent) => {
+                    this.activeTooltipIndex = paginationItemIndex;
+                    this.handleTooltipStatus(event.detail);
+                  }}
                 >
                   <mvx-pagination-ellipsis-form
                     isVisible={this.isTooltipOpen}
