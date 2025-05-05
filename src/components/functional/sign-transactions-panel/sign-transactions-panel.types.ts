@@ -40,6 +40,7 @@ export interface ISignTransactionsPanelCommonData {
   highlight?: string | null;
   scCall?: string | null;
   nextUnsignedTxIndex?: number;
+  providerName?: string;
 }
 
 export interface ISignTransactionsPanelData {

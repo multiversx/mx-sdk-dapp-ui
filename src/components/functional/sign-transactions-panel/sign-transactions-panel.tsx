@@ -7,10 +7,10 @@ import { SignEventsEnum } from './sign-transactions-panel.types';
 import state, { resetState } from './signTransactionsPanelStore';
 
 const signScreens = {
-  FungibleESDT: 'token-component',
-  SemiFungibleESDT: 'fungible-component',
-  NonFungibleESDT: 'fungible-component',
-  MetaESDT: 'token-component',
+  FungibleESDT: 'mvx-token-component',
+  SemiFungibleESDT: 'mvx-fungible-component',
+  NonFungibleESDT: 'mvx-fungible-component',
+  MetaESDT: 'mvx-token-component',
 };
 
 @Component({
