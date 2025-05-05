@@ -1,13 +1,12 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-import { twClasses } from 'utils/twClasses';
 
 import type { IAccountScreenData } from '../ledger.types';
 
 const TOTAL_ADDRESSES_COUNT = 5000;
 const ledgerAddressesClasses: Record<string, string> = {
-  tooltip: twClasses('absolute top-0 h-12 left-0 right-0'),
+  tooltip: 'mvx:absolute mvx:top-0 mvx:h-12 mvx:left-0 mvx:right-0',
 };
 
 @Component({
@@ -47,8 +46,6 @@ export class LedgerAddresses {
     const totalPages = Math.ceil(TOTAL_ADDRESSES_COUNT / this.accountScreenData.addressesPerPage);
     const isSelectedWalletOnPage = this.accountScreenData.accounts.some(accountDerivation => accountDerivation.index === this.selectedIndex);
     const isAccessWalletDisabled = !isSelectedWalletOnPage && !isPageChanging;
-
-    console.log({ accountScreenData: this.accountScreenData, selectedIndex: this.selectedIndex, ledgerAddressesClasses });
 
     if (isAddressesLoadingInitially) {
       return <mvx-ledger-intro isAwaiting={true} />;
@@ -94,7 +91,13 @@ export class LedgerAddresses {
         />
 
         <div class="ledger-addresses-button-wrapper">
-          {isAccessWalletDisabled && <mvx-tooltip trigger={<div class={ledgerAddressesClasses.tooltip} />}>Select a wallet to continue</mvx-tooltip>}
+          {isAccessWalletDisabled && (
+            <div class="ledger-addresses-button-tooltip-wrapper">
+              <mvx-tooltip trigger={<div class={{ 'ledger-addresses-button-tooltip': true, [ledgerAddressesClasses.tooltip]: true }} />}>
+                You have to select a wallet from the list that you want to access.
+              </mvx-tooltip>
+            </div>
+          )}
 
           <button
             data-testid={DataTestIdsEnum.confirmBtn}
