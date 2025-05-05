@@ -1,0 +1,49 @@
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+}
+
+.cancel-button, .confirm-button {
+  flex: 1;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.cancel-button {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: none;
+}
+
+.cancel-button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.confirm-button {
+  background-color: #6beaaf;
+  color: #1e1e1e;
+  border: none;
+}
+
+.confirm-button:hover:not(:disabled) {
+  background-color: #7ffcbf;
+}
+
+.confirm-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.confirm-icon {
+  font-weight: bold;
+} 

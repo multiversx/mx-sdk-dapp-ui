@@ -24,6 +24,7 @@ const initialState: ITransactionState = {
     currentIndex: 0,
     receiver: '',
     ppuOptions: [],
+    origin: '',
   },
   nftTransaction: null,
   sftTransaction: null,

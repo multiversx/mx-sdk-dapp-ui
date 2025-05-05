@@ -41,6 +41,8 @@ export interface ISignTransactionsPanelCommonData {
   scCall?: string | null;
   nextUnsignedTxIndex?: number;
   providerName?: string;
+  origin?: string;
+  address?: string;
 }
 
 export interface ISignTransactionsPanelData {
@@ -50,6 +52,7 @@ export interface ISignTransactionsPanelData {
     identifier?: string;
     amount: string;
     usdValue: string;
+    imageURL?: string;
   } | null;
   nftTransaction: FungibleTransactionType | null;
   sftTransaction: FungibleTransactionType | null;
