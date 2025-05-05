@@ -1,15 +1,14 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Element, Event, h, Method, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
-import { ProviderLabelsEnum, ProviderTypeEnum } from 'types/provider.types';
+import type { IProviderBase } from 'types/provider.types';
+import { ProviderTypeEnum } from 'types/provider.types';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 import { processImgSrc } from 'utils/processImgSrc';
 
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
 import { UnlockPanelEventsEnum } from './unlock-panel.types';
-
-const DEFAULT_ALLOWED_PROVIDERS = Object.values(ProviderTypeEnum);
 
 @Component({
   tag: 'mvx-unlock-panel',
@@ -21,18 +20,18 @@ export class UnlockPanel {
   @Element() hostElement: HTMLElement;
 
   @Prop() isOpen: boolean = false;
-  @Prop() allowedProviders?: ProviderTypeEnum[] = DEFAULT_ALLOWED_PROVIDERS;
+  @Prop() allowedProviders: IProviderBase[] = [];
 
   @Event() close: EventEmitter;
-  @Event() login: EventEmitter<{ provider: ProviderTypeEnum; anchor?: HTMLElement }>;
+  @Event() login: EventEmitter<{ provider: IProviderBase['type']; anchor?: HTMLElement }>;
 
   @State() isLoggingIn: boolean = false;
   @State() isIntroScreenVisible: boolean = false;
-  @State() selectedMethod: ProviderTypeEnum | null = null;
+  @State() selectedMethod: IProviderBase | null = null;
   @State() hasSlotContent: boolean = false;
   @State() panelState = {
     isOpen: false,
-    allowedProviders: DEFAULT_ALLOWED_PROVIDERS,
+    allowedProviders: this.allowedProviders,
   };
   @Method() async getEventBus() {
     return this.eventBus;
@@ -44,15 +43,15 @@ export class UnlockPanel {
   }
 
   @Watch('allowedProviders')
-  handleAllowedProvidersChange(newValue?: ProviderTypeEnum[]) {
-    this.panelState = { ...this.panelState, allowedProviders: newValue ?? DEFAULT_ALLOWED_PROVIDERS };
+  handleAllowedProvidersChange(newValue: IProviderBase[]) {
+    this.panelState = { ...this.panelState, allowedProviders: newValue };
   }
 
-  private isExtensionInstalled(currentProvider: ProviderTypeEnum) {
+  private isExtensionInstalled(currentProvider: IProviderBase['type']) {
     return currentProvider === ProviderTypeEnum.extension && getIsExtensionAvailable();
   }
 
-  private isMetaMaskInstalled(currentProvider: ProviderTypeEnum) {
+  private isMetaMaskInstalled(currentProvider: IProviderBase['type']) {
     return currentProvider === ProviderTypeEnum.metamask && getIsMetaMaskAvailable();
   }
 
@@ -68,7 +67,7 @@ export class UnlockPanel {
     this.eventBus.unsubscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
     this.isLoggingIn = false;
     this.selectedMethod = null;
-    this.panelState = { isOpen: false, allowedProviders: DEFAULT_ALLOWED_PROVIDERS };
+    this.panelState = { isOpen: false, allowedProviders: [] };
 
     return new Promise(resolve => setTimeout(resolve, 300));
   }
@@ -91,11 +90,11 @@ export class UnlockPanel {
     this.observer.observe(element, { childList: true, subtree: true });
   }
 
-  handleLogin(provider: ProviderTypeEnum) {
-    this.eventBus.publish(UnlockPanelEventsEnum.LOGIN, { type: provider, anchor: this.anchor });
+  handleLogin(provider: IProviderBase) {
+    this.eventBus.publish(UnlockPanelEventsEnum.LOGIN, { type: provider.type, anchor: this.anchor });
     this.selectedMethod = provider;
 
-    switch (provider) {
+    switch (provider.type) {
       case ProviderTypeEnum.ledger:
         this.isIntroScreenVisible = true;
         break;
@@ -133,16 +132,16 @@ export class UnlockPanel {
   handleAccess() {
     this.isIntroScreenVisible = false;
     this.isLoggingIn = true;
-    this.login.emit({ provider: this.selectedMethod, anchor: this.anchor });
+    this.login.emit({ provider: this.selectedMethod.type, anchor: this.anchor });
   }
 
   render() {
-    const detectedProviders: ProviderTypeEnum[] = this.panelState.allowedProviders.filter(
-      allowedProvider => this.isExtensionInstalled(allowedProvider) || this.isMetaMaskInstalled(allowedProvider),
+    const detectedProviders: IProviderBase[] = this.panelState.allowedProviders.filter(
+      allowedProvider => this.isExtensionInstalled(allowedProvider.type) || this.isMetaMaskInstalled(allowedProvider.type),
     );
 
     const otherProviders = this.panelState.allowedProviders.filter(allowedProvider => !detectedProviders.includes(allowedProvider));
-    const panelTitle = this.selectedMethod ? ProviderLabelsEnum[this.selectedMethod] : 'Connect your wallet';
+    const panelTitle = this.selectedMethod ? this.selectedMethod.name : 'Connect your wallet';
     const hasDetectedProviders = detectedProviders.length > 0;
 
     return (
@@ -166,7 +165,7 @@ export class UnlockPanel {
                   <div class="unlock-panel-group-providers">
                     {detectedProviders.map((provider, providerIndex) => (
                       <mvx-unlock-provider-button
-                        type={provider}
+                        provider={provider}
                         onClick={this.handleLogin.bind(this, provider)}
                         class={classNames('unlock-panel-group-provider', {
                           first: providerIndex === 0,
@@ -184,7 +183,7 @@ export class UnlockPanel {
                 <div class="unlock-panel-group-providers">
                   {otherProviders.map((provider, providerIndex) => (
                     <mvx-unlock-provider-button
-                      type={provider}
+                      provider={provider}
                       onClick={this.handleLogin.bind(this, provider)}
                       class={classNames('unlock-panel-group-provider', {
                         first: providerIndex === 0,
@@ -220,10 +219,10 @@ export class UnlockPanel {
     this.eventBus.subscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
   }
 
-  private unlockPanelUpdate(payload: { isOpen: boolean; allowedProviders: ProviderTypeEnum[] }) {
+  private unlockPanelUpdate(payload: { isOpen: boolean; allowedProviders: IProviderBase[] }) {
     this.panelState = {
       ...payload,
-      allowedProviders: payload.allowedProviders ?? DEFAULT_ALLOWED_PROVIDERS,
+      allowedProviders: payload.allowedProviders,
     };
   }
 }
