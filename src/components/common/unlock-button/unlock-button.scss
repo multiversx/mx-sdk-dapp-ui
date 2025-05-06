@@ -14,22 +14,18 @@
     background: rgba(53, 53, 53, 1);
   }
 
-  &:first-child {
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-  }
-
-  &:last-child {
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-  }
-
   .unlock-button-icon {
     height: 40px;
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     width: 40px;
+    order: -1;
+
+    &.clipped {
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
   }
 
   .unlock-button-label {

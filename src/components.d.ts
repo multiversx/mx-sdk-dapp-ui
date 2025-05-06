@@ -45,6 +45,7 @@ export namespace Components {
     interface MvxAnglesRightIcon {
     }
     interface MvxArrowUpRightIcon {
+        "class"?: string;
     }
     interface MvxBackArrowIcon {
     }
@@ -1065,6 +1066,7 @@ declare namespace LocalJSX {
     interface MvxAnglesRightIcon {
     }
     interface MvxArrowUpRightIcon {
+        "class"?: string;
     }
     interface MvxBackArrowIcon {
     }

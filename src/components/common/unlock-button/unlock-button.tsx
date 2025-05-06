@@ -1,7 +1,12 @@
 import { Component, h, Prop } from '@stencil/core';
+import classNames from 'classnames';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from 'components/visual/unlock-panel/helpers';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
+
+const unlockButtonClasses: Record<string, string> = {
+  statusIcon: 'mvx:fill-teal-400!',
+};
 
 @Component({
   tag: 'mvx-unlock-button',
@@ -26,13 +31,28 @@ export class UnlockButton {
 
     return (
       <div class={{ 'unlock-button': true, [this.class]: Boolean(this.class) }}>
-        <div class="unlock-button-icon">{this.icon ? this.icon : <img src={this.iconUrl} alt={this.label} />}</div>
         <div class="unlock-button-label">{this.label}</div>
+
+        <div
+          class={{
+            'unlock-button-icon': true,
+            'clipped': isExtensionProvider,
+          }}
+        >
+          {this.icon ? this.icon : <img src={this.iconUrl} alt={this.label} />}
+        </div>
 
         {isDetectableProvider && (
           <div class="unlock-button-status">
             <div class="unlock-button-status-text">{shouldShowOpenLabel ? 'Open' : 'Install'}</div>
-            {!shouldShowOpenLabel && <mvx-arrow-up-right-icon class="unlock-button-status-icon" />}
+
+            {!shouldShowOpenLabel && (
+              <mvx-arrow-up-right-icon
+                class={classNames('unlock-button-status-icon', {
+                  [unlockButtonClasses.statusIcon]: true,
+                })}
+              />
+            )}
           </div>
         )}
       </div>

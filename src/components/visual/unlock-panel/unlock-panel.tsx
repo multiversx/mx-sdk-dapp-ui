@@ -10,6 +10,10 @@ import { processImgSrc } from 'utils/processImgSrc';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
 import { UnlockPanelEventsEnum } from './unlock-panel.types';
 
+const unlockPanelClasses: Record<string, string> = {
+  footerIcon: 'mvx:w-4! mvx:h-auto!',
+};
+
 @Component({
   tag: 'mvx-unlock-panel',
   styleUrl: 'unlock-panel.scss',
@@ -159,8 +163,6 @@ export class UnlockPanel {
     const panelTitle = this.selectedMethod ? this.selectedMethod.name : 'Connect your wallet';
     const hasDetectedProviders = detectedProviders.length > 0;
 
-    console.log(this.isLoggingIn, 'isLoggingIn');
-
     return (
       <mvx-side-panel
         isOpen={this.panelState.isOpen}
@@ -180,15 +182,8 @@ export class UnlockPanel {
                   <div class="unlock-panel-group-label">Detected</div>
 
                   <div class="unlock-panel-group-providers">
-                    {detectedProviders.map((provider, providerIndex) => (
-                      <mvx-unlock-provider-button
-                        provider={provider}
-                        onClick={this.handleLogin.bind(this, provider)}
-                        class={classNames('unlock-panel-group-provider', {
-                          first: providerIndex === 0,
-                          last: providerIndex === detectedProviders.length - 1,
-                        })}
-                      />
+                    {detectedProviders.map(provider => (
+                      <mvx-unlock-provider-button provider={provider} onClick={this.handleLogin.bind(this, provider)} />
                     ))}
                   </div>
                 </div>
@@ -198,15 +193,8 @@ export class UnlockPanel {
                 <div class="unlock-panel-group-label">{hasDetectedProviders ? 'Other Options' : 'Options'}</div>
 
                 <div class="unlock-panel-group-providers">
-                  {otherProviders.map((provider, providerIndex) => (
-                    <mvx-unlock-provider-button
-                      provider={provider}
-                      onClick={this.handleLogin.bind(this, provider)}
-                      class={classNames('unlock-panel-group-provider', {
-                        first: providerIndex === 0,
-                        last: providerIndex === otherProviders.length - 1,
-                      })}
-                    />
+                  {otherProviders.map(provider => (
+                    <mvx-unlock-provider-button provider={provider} onClick={this.handleLogin.bind(this, provider)} />
                   ))}
 
                   <slot />
@@ -223,7 +211,11 @@ export class UnlockPanel {
                   Take full control of <br /> your assets.
                 </div>
 
-                <mvx-arrow-up-right-icon class="unlock-panel-footer-icon" />
+                <mvx-arrow-up-right-icon
+                  class={classNames('unlock-panel-footer-icon', {
+                    [unlockPanelClasses.footerIcon]: true,
+                  })}
+                />
               </div>
             </div>
           </div>
