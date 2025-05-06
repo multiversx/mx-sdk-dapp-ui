@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Added Ledger address table preloaders](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/90)
 - [Added providers customization support](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/89)
 - [Fixed sign transactions button states](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/87)
 
