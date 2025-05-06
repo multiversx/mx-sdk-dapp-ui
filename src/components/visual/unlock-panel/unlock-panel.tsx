@@ -159,8 +159,6 @@ export class UnlockPanel {
     const panelTitle = this.selectedMethod ? this.selectedMethod.name : 'Connect your wallet';
     const hasDetectedProviders = detectedProviders.length > 0;
 
-    console.log(this.isLoggingIn, 'isLoggingIn');
-
     return (
       <mvx-side-panel
         isOpen={this.panelState.isOpen}
@@ -169,8 +167,9 @@ export class UnlockPanel {
         onClose={this.handleClose.bind(this)}
         onBack={this.handleResetLoginState.bind(this)}
       >
-        <div id="anchor" ref={element => this.observeContainer(element)} class={{ 'unlock-panel-anchor': this.isLoggingIn }} />
-        {this.isIntroScreenVisible && <mvx-unlock-provider-intro provider={this.selectedMethod} onAccess={this.handleAccess.bind(this)} />}
+        <div id="anchor" ref={element => this.observeContainer(element)} class={{ 'unlock-panel-anchor': this.isLoggingIn }}>
+          {this.isIntroScreenVisible && <mvx-unlock-provider-intro provider={this.selectedMethod} onAccess={this.handleAccess.bind(this)} />}
+        </div>
 
         {!this.isLoggingIn && !this.isIntroScreenVisible && (
           <div class="unlock-panel">
