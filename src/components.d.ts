@@ -374,10 +374,6 @@ export interface MvxTransactionToastContentCustomEvent<T> extends CustomEvent<T>
     detail: T;
     target: HTMLMvxTransactionToastContentElement;
 }
-export interface MvxUnlockPanelCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMvxUnlockPanelElement;
-}
 export interface MvxUnlockProviderIntroCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxUnlockProviderIntroElement;
@@ -902,19 +898,7 @@ declare global {
         prototype: HTMLMvxUnlockButtonElement;
         new (): HTMLMvxUnlockButtonElement;
     };
-    interface HTMLMvxUnlockPanelElementEventMap {
-        "close": any;
-        "login": { provider: IProviderBase['type']; anchor?: HTMLElement };
-    }
     interface HTMLMvxUnlockPanelElement extends Components.MvxUnlockPanel, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxUnlockPanelElementEventMap>(type: K, listener: (this: HTMLMvxUnlockPanelElement, ev: MvxUnlockPanelCustomEvent<HTMLMvxUnlockPanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxUnlockPanelElementEventMap>(type: K, listener: (this: HTMLMvxUnlockPanelElement, ev: MvxUnlockPanelCustomEvent<HTMLMvxUnlockPanelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLMvxUnlockPanelElement: {
         prototype: HTMLMvxUnlockPanelElement;
@@ -1329,8 +1313,6 @@ declare namespace LocalJSX {
     interface MvxUnlockPanel {
         "allowedProviders"?: IProviderBase[];
         "isOpen"?: boolean;
-        "onClose"?: (event: MvxUnlockPanelCustomEvent<any>) => void;
-        "onLogin"?: (event: MvxUnlockPanelCustomEvent<{ provider: IProviderBase['type']; anchor?: HTMLElement }>) => void;
     }
     interface MvxUnlockProviderButton {
         "class"?: string;

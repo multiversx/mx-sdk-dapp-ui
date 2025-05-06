@@ -21,4 +21,5 @@ export enum UnlockPanelEventsEnum {
   CLOSE = 'CLOSE',
   LOGIN = 'LOGIN',
   CANCEL_LOGIN = 'CANCEL_LOGIN',
+  CANCEL_IN_PROVIDER = 'CANCEL_IN_PROVIDER',
 }
