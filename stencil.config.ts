@@ -26,9 +26,8 @@ const excludeComponents = [
   'mvx-wallet-connect-provider',
   'mvx-wallet-connect-panel',
   'mvx-transaction-toast-progress',
-  'mvx-token-component',
-  'mvx-fungible-component',
-  'mvx-balance-component',
+  'mvx-transaction-details',
+  'mvx-action-buttons',
   'mvx-unlock-panel',
 ];
 
