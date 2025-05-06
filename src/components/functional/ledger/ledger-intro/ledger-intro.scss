@@ -3,93 +3,93 @@
   flex-direction: column;
   overflow: hidden;
   flex: 1;
-}
 
-.ledger-intro {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Satoshi', sans-serif;
-
-  .ledger-intro-wrapper {
+  .ledger-intro {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    text-align: center;
-    font-size: 16px;
+    font-family: 'Satoshi', sans-serif;
 
-    .ledger-intro-icon {
-      margin-left: auto;
-    }
-
-    .ledger-intro-description {
-      line-height: 1.5;
-      font-size: 16px;
-      color: #a09a93;
-    }
-
-    .ledger-intro-button {
-      margin-top: 20px;
-      width: 192px;
+    .ledger-intro-wrapper {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      height: 48px;
-      line-height: 1;
-      color: #000000;
-      border-radius: 12px;
-      background-color: #23f7dd;
-      cursor: pointer;
-      border: 1px solid #23f7dd;
-      transition: all 200ms ease;
-      gap: 8px;
+      gap: 24px;
+      text-align: center;
+      font-size: 16px;
 
-      &:hover {
-        opacity: 0.75;
+      .ledger-intro-icon {
+        margin-left: auto;
       }
 
-      &.loading {
-        pointer-events: none;
-        background-color: transparent;
-        border-color: #a09a93;
-        cursor: default;
+      .ledger-intro-description {
+        line-height: 1.5;
+        font-size: 16px;
         color: #a09a93;
       }
+
+      .ledger-intro-button {
+        margin-top: 20px;
+        width: 192px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        height: 48px;
+        line-height: 1;
+        color: #000000;
+        border-radius: 12px;
+        background-color: #23f7dd;
+        cursor: pointer;
+        border: 1px solid #23f7dd;
+        transition: all 200ms ease;
+        gap: 8px;
+
+        &:hover {
+          opacity: 0.75;
+        }
+
+        &.loading {
+          pointer-events: none;
+          background-color: transparent;
+          border-color: #a09a93;
+          cursor: default;
+          color: #a09a93;
+        }
+      }
+
+      .ledger-intro-error {
+        font-size: 16px;
+        color: #dc2626;
+        max-width: 240px;
+        margin-bottom: 24px;
+        line-height: 1.5;
+      }
     }
 
-    .ledger-intro-error {
+    .ledger-intro-issues {
       font-size: 16px;
-      color: #dc2626;
-      max-width: 240px;
-      margin-bottom: 24px;
-      line-height: 1.5;
-    }
-  }
+      margin: auto auto 0;
+      text-align: center;
+      color: #a09a93;
+      position: relative;
+      padding-bottom: 4px;
 
-  .ledger-intro-issues {
-    font-size: 16px;
-    margin: auto auto 0;
-    text-align: center;
-    color: #a09a93;
-    position: relative;
-    padding-bottom: 4px;
+      &:after {
+        bottom: 0;
+        left: 8px;
+        right: 8px;
+        transition: all 200ms ease;
+        opacity: 0;
+        content: '';
+        background-color: #a09a93;
+        position: absolute;
+        height: 1px;
+      }
 
-    &:after {
-      bottom: 0;
-      left: 8px;
-      right: 8px;
-      transition: all 200ms ease;
-      opacity: 0;
-      content: '';
-      background-color: #a09a93;
-      position: absolute;
-      height: 1px;
-    }
-
-    &:hover:after {
-      opacity: 0.5;
+      &:hover:after {
+        opacity: 0.5;
+      }
     }
   }
 }

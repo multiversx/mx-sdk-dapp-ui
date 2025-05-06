@@ -2,227 +2,227 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-}
 
-.ledger-addresses {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Satoshi', sans-serif;
-  flex: 1;
-  gap: 16px;
+  .ledger-addresses {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Satoshi', sans-serif;
+    flex: 1;
+    gap: 16px;
 
-  .ledger-addresses-label {
-    color: #fff;
-    line-height: 1;
-  }
-
-  .ledger-addresses-wrapper {
-    position: relative;
-
-    .ledger-addresses-preloader {
-      display: flex;
-      flex-direction: column;
-      transition: all 200ms ease;
-      pointer-events: none;
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      opacity: 0;
-      z-index: 1;
-      gap: 4px;
-
-      &.visible {
-        opacity: 1;
-        pointer-events: all;
-      }
-
-      .ledger-addresses-preloader-item {
-        height: 64px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        width: 100%;
-
-        .ledger-addresses-preloader-item-checkbox {
-          margin-right: 8px;
-          height: 16px;
-          width: 16px;
-          border-radius: 50%;
-        }
-
-        .ledger-addresses-preloader-item-index {
-          width: 32px;
-          height: 16px;
-        }
-
-        .ledger-addresses-preloader-item-address {
-          width: 160px;
-          height: 16px;
-        }
-
-        .ledger-addresses-preloader-item-address {
-          width: 96px;
-          height: 16px;
-        }
-      }
+    .ledger-addresses-label {
+      color: #fff;
+      line-height: 1;
     }
 
-    .ledger-addresses-list {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      pointer-events: none;
-      transition: all 200ms ease;
-      opacity: 0;
+    .ledger-addresses-wrapper {
+      position: relative;
 
-      &.visible {
-        opacity: 1;
-        pointer-events: all;
-      }
-
-      .ledger-addresses-list-item {
-        border-radius: 8px;
+      .ledger-addresses-preloader {
         display: flex;
-        color: #fff;
-        align-items: center;
-        padding: 16px;
-        height: 64px;
-        width: 100%;
-        position: relative;
-        cursor: pointer;
-        border: 1px solid transparent;
+        flex-direction: column;
         transition: all 200ms ease;
+        pointer-events: none;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        opacity: 0;
+        z-index: 1;
+        gap: 4px;
 
-        &:before {
-          opacity: 30%;
-          content: '';
-          position: absolute;
-          background-color: #353535;
-          left: 0;
+        &.visible {
+          opacity: 1;
+          pointer-events: all;
+        }
+
+        .ledger-addresses-preloader-item {
+          height: 64px;
           border-radius: 8px;
-          top: 0;
-          bottom: 0;
-          right: 0;
-          pointer-events: none;
-        }
+          display: flex;
+          align-items: center;
+          width: 100%;
 
-        &.checked,
-        &:hover {
-          border-color: #23f7dd;
-        }
-
-        .ledger-addresses-list-item-checkbox {
-          position: relative;
-          z-index: 1;
-          border-radius: 50%;
-          transition: all 200ms ease;
-          min-width: 16px;
-          max-width: 16px;
-          height: 16px;
-          border: 1px solid #fff;
-          margin-right: 8px;
-
-          &:after {
-            width: calc(12px / 2);
-            height: calc(12px / 2);
-            content: '';
-            transform: translate(-50%, -50%);
-            background-color: #23f7dd;
-            position: absolute;
-            transition: all 200ms ease;
+          .ledger-addresses-preloader-item-checkbox {
+            margin-right: 8px;
+            height: 16px;
+            width: 16px;
             border-radius: 50%;
-            opacity: 0;
-            left: 50%;
-            top: 50%;
           }
 
-          &.checked {
+          .ledger-addresses-preloader-item-index {
+            width: 32px;
+            height: 16px;
+          }
+
+          .ledger-addresses-preloader-item-address {
+            width: 160px;
+            height: 16px;
+          }
+
+          .ledger-addresses-preloader-item-address {
+            width: 96px;
+            height: 16px;
+          }
+        }
+      }
+
+      .ledger-addresses-list {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        pointer-events: none;
+        transition: all 200ms ease;
+        opacity: 0;
+
+        &.visible {
+          opacity: 1;
+          pointer-events: all;
+        }
+
+        .ledger-addresses-list-item {
+          border-radius: 8px;
+          display: flex;
+          color: #fff;
+          align-items: center;
+          padding: 16px;
+          height: 64px;
+          width: 100%;
+          position: relative;
+          cursor: pointer;
+          border: 1px solid transparent;
+          transition: all 200ms ease;
+
+          &:before {
+            opacity: 30%;
+            content: '';
+            position: absolute;
+            background-color: #353535;
+            left: 0;
+            border-radius: 8px;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            pointer-events: none;
+          }
+
+          &.checked,
+          &:hover {
             border-color: #23f7dd;
+          }
+
+          .ledger-addresses-list-item-checkbox {
+            position: relative;
+            z-index: 1;
+            border-radius: 50%;
+            transition: all 200ms ease;
+            min-width: 16px;
+            max-width: 16px;
+            height: 16px;
+            border: 1px solid #fff;
+            margin-right: 8px;
 
             &:after {
-              opacity: 1;
+              width: calc(12px / 2);
+              height: calc(12px / 2);
+              content: '';
+              transform: translate(-50%, -50%);
+              background-color: #23f7dd;
+              position: absolute;
+              transition: all 200ms ease;
+              border-radius: 50%;
+              opacity: 0;
+              left: 50%;
+              top: 50%;
+            }
+
+            &.checked {
+              border-color: #23f7dd;
+
+              &:after {
+                opacity: 1;
+              }
             }
           }
+
+          .ledger-addresses-list-item-index {
+            position: relative;
+            z-index: 1;
+            color: #a09a93;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 200ms ease;
+            margin-right: 16px;
+
+            &.checked {
+              color: #23f7dd;
+            }
+          }
+
+          .ledger-addresses-list-item-address {
+            position: relative;
+            z-index: 1;
+            max-width: 160px;
+            font-size: 16px;
+            min-width: 0;
+            margin-right: auto;
+
+            .trim-wrapper {
+              align-items: flex-end;
+            }
+          }
+
+          .ledger-addresses-list-item-balance {
+            position: relative;
+            margin-left: 16px;
+            font-weight: 500;
+            font-size: 16px;
+            z-index: 1;
+          }
+        }
+      }
+    }
+
+    .ledger-addresses-button-wrapper {
+      position: relative;
+      z-index: 2;
+
+      .ledger-addresses-button-tooltip-wrapper {
+        font-size: 12px;
+        color: #737373;
+        text-align: center;
+      }
+
+      .ledger-addresses-button {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        height: 48px;
+        line-height: 1;
+        font-size: 16px;
+        color: #000000;
+        border-radius: 12px;
+        background-color: #23f7dd;
+        cursor: pointer;
+        border: 1px solid #23f7dd;
+        transition: all 200ms ease;
+        gap: 8px;
+
+        &:hover {
+          opacity: 0.75;
         }
 
-        .ledger-addresses-list-item-index {
-          position: relative;
-          z-index: 1;
+        &.loading,
+        &.disabled {
+          pointer-events: none;
+          background-color: transparent;
+          border-color: #a09a93;
+          cursor: default;
           color: #a09a93;
-          font-size: 16px;
-          font-weight: 500;
-          transition: all 200ms ease;
-          margin-right: 16px;
-
-          &.checked {
-            color: #23f7dd;
-          }
         }
-
-        .ledger-addresses-list-item-address {
-          position: relative;
-          z-index: 1;
-          max-width: 160px;
-          font-size: 16px;
-          min-width: 0;
-          margin-right: auto;
-
-          .trim-wrapper {
-            align-items: flex-end;
-          }
-        }
-
-        .ledger-addresses-list-item-balance {
-          position: relative;
-          margin-left: 16px;
-          font-weight: 500;
-          font-size: 16px;
-          z-index: 1;
-        }
-      }
-    }
-  }
-
-  .ledger-addresses-button-wrapper {
-    position: relative;
-    z-index: 2;
-
-    .ledger-addresses-button-tooltip-wrapper {
-      font-size: 12px;
-      color: #737373;
-      text-align: center;
-    }
-
-    .ledger-addresses-button {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      height: 48px;
-      line-height: 1;
-      font-size: 16px;
-      color: #000000;
-      border-radius: 12px;
-      background-color: #23f7dd;
-      cursor: pointer;
-      border: 1px solid #23f7dd;
-      transition: all 200ms ease;
-      gap: 8px;
-
-      &:hover {
-        opacity: 0.75;
-      }
-
-      &.loading,
-      &.disabled {
-        pointer-events: none;
-        background-color: transparent;
-        border-color: #a09a93;
-        cursor: default;
-        color: #a09a93;
       }
     }
   }

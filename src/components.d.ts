@@ -79,6 +79,9 @@ export namespace Components {
         "text"?: string;
     }
     interface MvxExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
     }
     interface MvxFaIcon {
         "class"?: string;
@@ -125,13 +128,16 @@ export namespace Components {
         "isAwaiting"?: boolean;
     }
     interface MvxLedgerProviderIcon {
+        "class"?: string;
     }
     interface MvxMagnifyingGlassIcon {
         "class"?: string;
     }
     interface MvxMetamaskProviderIcon {
+        "class"?: string;
     }
     interface MvxMultiversxLogoIcon {
+        "class"?: string;
     }
     interface MvxNotificationsFeed {
         "getEventBus": () => Promise<IEventBus>;
@@ -150,6 +156,7 @@ export namespace Components {
         "maxPageToSearchFor": number;
     }
     interface MvxPasskeyProviderIcon {
+        "class"?: string;
     }
     interface MvxPendingTransactionsPanel {
         "data": IPendingTransactionsPanelData;
@@ -309,6 +316,7 @@ export namespace Components {
         "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxWalletProviderIcon {
+        "class"?: string;
     }
     interface MvxXaliasProviderIcon {
     }
@@ -1092,6 +1100,9 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface MvxExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
     }
     interface MvxFaIcon {
         "class"?: string;
@@ -1143,13 +1154,16 @@ declare namespace LocalJSX {
         "onConnect"?: (event: MvxLedgerIntroCustomEvent<any>) => void;
     }
     interface MvxLedgerProviderIcon {
+        "class"?: string;
     }
     interface MvxMagnifyingGlassIcon {
         "class"?: string;
     }
     interface MvxMetamaskProviderIcon {
+        "class"?: string;
     }
     interface MvxMultiversxLogoIcon {
+        "class"?: string;
     }
     interface MvxNotificationsFeed {
     }
@@ -1169,6 +1183,7 @@ declare namespace LocalJSX {
         "onSearch"?: (event: MvxPaginationEllipsisFormCustomEvent<number>) => void;
     }
     interface MvxPasskeyProviderIcon {
+        "class"?: string;
     }
     interface MvxPendingTransactionsPanel {
         "data"?: IPendingTransactionsPanelData;
@@ -1332,6 +1347,7 @@ declare namespace LocalJSX {
         "data"?: IWalletConnectPanelData;
     }
     interface MvxWalletProviderIcon {
+        "class"?: string;
     }
     interface MvxXaliasProviderIcon {
     }

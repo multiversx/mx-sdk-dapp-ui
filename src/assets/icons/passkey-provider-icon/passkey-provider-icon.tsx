@@ -1,13 +1,16 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'mvx-passkey-provider-icon',
+  styleUrl: 'passkey-provider-icon.scss',
   shadow: true,
 })
 export class PasskeyProviderIcon {
+  @Prop() class?: string;
+
   render() {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" class={{ 'passkey-provider-icon': true, [this.class]: Boolean(this.class) }}>
         <path
           d="M0.5 20.3198C0.5 15.5916 0.501062 12.0958 0.861658 9.41373C1.22032 6.74604 1.9264 4.95839 3.28249 3.60231C4.63857 2.24623 6.42621 1.54014 9.09391 1.18148C11.776 0.820886 15.2718 0.819824 20 0.819824C24.7282 0.819824 28.224 0.820886 30.9061 1.18148C33.5738 1.54014 35.3614 2.24623 36.7175 3.60231C38.0736 4.95839 38.7797 6.74604 39.1383 9.41373C39.4989 12.0958 39.5 15.5916 39.5 20.3198C39.5 25.048 39.4989 28.5438 39.1383 31.2259C38.7797 33.8936 38.0736 35.6813 36.7175 37.0373C35.3614 38.3934 33.5738 39.0995 30.9061 39.4582C28.224 39.8188 24.7282 39.8198 20 39.8198C15.2718 39.8198 11.776 39.8188 9.09391 39.4582C6.42621 39.0995 4.63857 38.3934 3.28249 37.0373C1.9264 35.6813 1.22032 33.8936 0.861658 31.2259C0.501062 28.5438 0.5 25.048 0.5 20.3198Z"
           fill="white"

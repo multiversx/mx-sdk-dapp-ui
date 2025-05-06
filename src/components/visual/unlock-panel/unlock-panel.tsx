@@ -72,6 +72,17 @@ export class UnlockPanel {
     return new Promise(resolve => setTimeout(resolve, 300));
   }
 
+  componentDidLoad() {
+    this.eventBus.subscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
+  }
+
+  private unlockPanelUpdate(payload: { isOpen: boolean; allowedProviders: IProviderBase[] }) {
+    this.panelState = {
+      ...payload,
+      allowedProviders: payload.allowedProviders,
+    };
+  }
+
   private observeContainer(element: HTMLElement | null) {
     if (!element) {
       return;
@@ -96,6 +107,10 @@ export class UnlockPanel {
 
     switch (provider.type) {
       case ProviderTypeEnum.ledger:
+      case ProviderTypeEnum.crossWindow:
+      case ProviderTypeEnum.extension:
+      case ProviderTypeEnum.metamask:
+      case ProviderTypeEnum.passkey:
         this.isIntroScreenVisible = true;
         break;
       default:
@@ -213,16 +228,5 @@ export class UnlockPanel {
         )}
       </mvx-side-panel>
     );
-  }
-
-  componentDidLoad() {
-    this.eventBus.subscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
-  }
-
-  private unlockPanelUpdate(payload: { isOpen: boolean; allowedProviders: IProviderBase[] }) {
-    this.panelState = {
-      ...payload,
-      allowedProviders: payload.allowedProviders,
-    };
   }
 }
