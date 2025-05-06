@@ -6,6 +6,7 @@
   display: flex;
   transition: all 200ms ease;
   cursor: pointer;
+  font-family: 'Satoshi', sans-serif;
   align-items: center;
   gap: 16px;
 
@@ -43,32 +44,24 @@
     font-size: 12px;
     font-weight: 500;
     line-height: 1;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 4px 8px;
+    border: 1px solid rgba(64, 64, 64, 0.4);
+    background: rgba(11, 11, 11, 0.8);
+    gap: 4px;
 
-    .unlock-button-status-open {
+    .unlock-button-status-text {
       color: #23f7dd;
-      padding: 0 8px;
     }
 
-    .unlock-button-status-install {
-      padding: 4px 8px;
-      border-radius: 20px;
-      border: 1px solid rgba(64, 64, 64, 0.4);
-      background: rgba(11, 11, 11, 0.8);
+    .unlock-button-status-icon {
       display: flex;
       align-items: center;
-      gap: 4px;
 
-      .unlock-button-status-install-label {
-        color: #23f7dd;
-      }
-
-      .unlock-button-status-install-icon {
-        display: flex;
-        align-items: center;
-
-        svg path {
-          fill: #23f7dd;
-        }
+      svg path {
+        fill: #23f7dd;
       }
     }
   }

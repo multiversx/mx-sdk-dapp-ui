@@ -31,14 +31,8 @@ export class UnlockButton {
 
         {isDetectableProvider && (
           <div class="unlock-button-status">
-            {shouldShowOpenLabel ? (
-              <div class="unlock-button-status-open">Open</div>
-            ) : (
-              <div class="unlock-button-status-install">
-                <span class="unlock-button-status-install-label">Install</span>
-                <mvx-arrow-up-right-icon class="unlock-button-status-install-icon" />
-              </div>
-            )}
+            <div class="unlock-button-status-text">{shouldShowOpenLabel ? 'Open' : 'Install'}</div>
+            {!shouldShowOpenLabel && <mvx-arrow-up-right-icon class="unlock-button-status-icon" />}
           </div>
         )}
       </div>

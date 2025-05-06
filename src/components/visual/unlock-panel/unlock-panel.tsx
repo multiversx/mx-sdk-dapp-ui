@@ -159,6 +159,8 @@ export class UnlockPanel {
     const panelTitle = this.selectedMethod ? this.selectedMethod.name : 'Connect your wallet';
     const hasDetectedProviders = detectedProviders.length > 0;
 
+    console.log(this.isLoggingIn, 'isLoggingIn');
+
     return (
       <mvx-side-panel
         isOpen={this.panelState.isOpen}
