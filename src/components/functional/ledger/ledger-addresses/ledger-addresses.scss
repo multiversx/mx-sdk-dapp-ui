@@ -36,36 +36,6 @@
           opacity: 1;
           pointer-events: all;
         }
-
-        .ledger-addresses-preloader-item {
-          height: 64px;
-          border-radius: 8px;
-          display: flex;
-          align-items: center;
-          width: 100%;
-
-          .ledger-addresses-preloader-item-checkbox {
-            margin-right: 8px;
-            height: 16px;
-            width: 16px;
-            border-radius: 50%;
-          }
-
-          .ledger-addresses-preloader-item-index {
-            width: 32px;
-            height: 16px;
-          }
-
-          .ledger-addresses-preloader-item-address {
-            width: 160px;
-            height: 16px;
-          }
-
-          .ledger-addresses-preloader-item-address {
-            width: 96px;
-            height: 16px;
-          }
-        }
       }
 
       .ledger-addresses-list {
@@ -157,6 +127,22 @@
 
             &.checked {
               color: #23f7dd;
+            }
+
+            &.narrow {
+              width: calc(24px + 4px);
+            }
+
+            &.middle {
+              width: 32px;
+            }
+
+            &.larger {
+              width: calc(40px + 4px);
+            }
+
+            &.largest {
+              width: calc(64px - 4px);
             }
           }
 

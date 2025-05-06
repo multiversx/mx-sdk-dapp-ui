@@ -1,5 +1,10 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
+import classNames from 'classnames';
+
+const paginationEllipsisFormClasses: Record<string, string> = {
+  buttonIcon: 'mvx:p-[10px] mvx:hover:!fill-teal-400',
+};
 
 @Component({
   tag: 'mvx-pagination-ellipsis-form',
@@ -87,7 +92,7 @@ export class PaginationEllipsisForm {
           />
 
           <div class="pagination-ellipsis-form-button" onClick={this.handleSubmit}>
-            <mvx-magnifying-glass-icon class="pagination-ellipsis-form-button-icon" />
+            <mvx-magnifying-glass-icon class={classNames('pagination-ellipsis-form-button-icon', paginationEllipsisFormClasses.buttonIcon)} />
           </div>
         </div>
       </div>

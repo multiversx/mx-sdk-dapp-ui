@@ -12,13 +12,20 @@
   }
 }
 
-.preloader {
-  width: 120px;
-  height: 120px;
-  position: relative;
-  transition: all 200ms ease;
-  animation: PreloaderPulseAnimation 2s infinite;
-  background: #262626;
-  overflow: hidden;
-  border-radius: 8px;
+:host {
+  padding: 0 !important;
+  display: flex;
+  border: none !important;
+  background-color: transparent !important;
+
+  .preloader {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    transition: all 200ms ease;
+    animation: PreloaderPulseAnimation 2s infinite;
+    background: #262626;
+    overflow: hidden;
+    border-radius: 8px;
+  }
 }
