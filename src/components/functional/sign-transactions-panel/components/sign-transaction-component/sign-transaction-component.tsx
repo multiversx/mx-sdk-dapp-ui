@@ -1,7 +1,7 @@
 import type { VNode } from '@stencil/core';
 import { Component, h, Prop, State } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-import { formatAddress } from 'utils/utils';
+import { formatAddress } from 'utils/formatAddress';
 
 import state from '../../signTransactionsPanelStore';
 
