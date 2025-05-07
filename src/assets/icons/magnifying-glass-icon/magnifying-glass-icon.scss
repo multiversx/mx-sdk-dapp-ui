@@ -1,0 +1,12 @@
+:host {
+  display: flex;
+  padding: 0 !important;
+
+  .magnifying-glass-icon {
+    transition: all 200ms ease;
+    width: 12px;
+    height: 12px;
+    box-sizing: content-box;
+    fill: #737373;
+  }
+}

@@ -60,12 +60,7 @@
       height: 32px;
       transform: translateY(-50%);
       font-size: 12px;
-      padding: calc(20px / 2);
       top: 50%;
-
-      .pagination-ellipsis-form-button-icon {
-        transition: all 200ms ease;
-      }
 
       &:hover .pagination-ellipsis-form-button-icon {
         fill: #23f7dd;

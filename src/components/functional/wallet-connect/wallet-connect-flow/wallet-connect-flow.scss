@@ -1,6 +1,7 @@
 :host {
   display: flex;
   flex-direction: column;
+  font-family: 'Satoshi', sans-serif;
   flex: 1;
 
   .wallet-connect-flow {
@@ -113,7 +114,7 @@
             line-height: 1;
             text-align: center;
             padding: 8px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             transition: all 200ms ease;
 
