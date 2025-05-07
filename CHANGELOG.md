@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [[0.0.0-alpha.14](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/92)] - 2025-05-07
+## [[0.0.0-alpha.15](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/93)] - 2025-05-07
 
 - [Fixed ledger double screen](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/91)
 - [Added Ledger address table preloaders](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/90)
