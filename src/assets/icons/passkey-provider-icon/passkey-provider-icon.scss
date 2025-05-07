@@ -1,0 +1,11 @@
+:host {
+  display: flex;
+
+  .passkey-provider-icon {
+    fill: none;
+    height: 100%;
+    width: 100%;
+    max-width: 150px;
+    max-height: 150px;
+  }
+}

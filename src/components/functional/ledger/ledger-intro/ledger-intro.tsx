@@ -49,7 +49,7 @@ export class LedgerIntro {
 
           <button class={{ 'ledger-intro-button': true, 'loading': Boolean(this.isAwaiting) }} onClick={this.handleLedgerConnectClick.bind(this)}>
             <span class="ledger-intro-button-label">{buttonLabel}</span>
-            {this.isAwaiting && <mvx-spinner-icon class="ledger-intro-button-spinner" />}
+            {this.isAwaiting && <mvx-spinner-icon />}
           </button>
 
           {showError && <div class="ledger-intro-error">{this.connectScreenData.error}</div>}
