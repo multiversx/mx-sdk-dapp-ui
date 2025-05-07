@@ -1,5 +1,5 @@
 import type { VNode } from '@stencil/core';
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { formatAddress } from 'utils/utils';
 
@@ -12,15 +12,35 @@ import state from '../../signTransactionsPanelStore';
 export class SignTransaction {
   @Prop() header: VNode;
 
+  @State() isConfirming: boolean = false;
+
+  private previousIndex: number = -1;
+
+  componentWillRender() {
+    const { currentIndex } = state.commonData;
+
+    if (this.previousIndex !== -1 && currentIndex !== this.previousIndex) {
+      this.isConfirming = false;
+    }
+
+    this.previousIndex = currentIndex;
+  }
+
+  onConfirm() {
+    this.isConfirming = true;
+    state.onConfirm();
+  }
+
   getSignButtonProps() {
-    const { needsSigning } = state.commonData;
+    const { needsSigning, providerName } = state.commonData;
+    const confirmText = providerName ? `Confirm on ${providerName}` : 'Confirm';
 
     if (needsSigning) {
       return {
-        'signText': 'Sign',
-        'disabled': state.isWaitingForSignature,
+        'signText': this.isConfirming ? confirmText : 'Sign',
+        'disabled': state.isWaitingForSignature || this.isConfirming,
         'data-testid': DataTestIdsEnum.signTransactionBtn,
-        'onClick': state.onConfirm,
+        'onClick': this.onConfirm.bind(this),
       };
     }
 
@@ -28,7 +48,7 @@ export class SignTransaction {
       'signText': 'Next',
       'disabled': false,
       'data-testid': DataTestIdsEnum.signNextTransactionBtn,
-      'onClick': state.onConfirm,
+      'onClick': this.onConfirm.bind(this),
     };
   }
 
@@ -52,7 +72,7 @@ export class SignTransaction {
       'data-testid': DataTestIdsEnum.signBackBtn,
       'backButtonText': 'Back',
       'onClick': state.onBack,
-      'disabled': state.isWaitingForSignature,
+      'disabled': state.isWaitingForSignature || this.isConfirming,
     };
   }
 

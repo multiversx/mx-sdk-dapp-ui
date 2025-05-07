@@ -7,15 +7,10 @@ export enum ProviderTypeEnum {
   walletConnect = 'walletConnect',
   ledger = 'ledger',
   passkey = 'passkey',
-  xalias = 'xalias',
 }
 
-export enum ProviderLabelsEnum {
-  extension = 'MultiversX Wallet Extension',
-  metamask = 'MetaMask Snap',
-  passkey = 'Passkey',
-  walletConnect = 'xPortal App',
-  ledger = 'Ledger',
-  crossWindow = 'MultiversX Web Wallet',
-  xalias = 'Google (xAlias)',
+export interface IProviderBase<T extends ProviderTypeEnum = ProviderTypeEnum> {
+  name: string;
+  type: T[keyof T];
+  iconUrl?: string;
 }
