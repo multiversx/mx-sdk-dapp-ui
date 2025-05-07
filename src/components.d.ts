@@ -45,6 +45,7 @@ export namespace Components {
     interface MvxAnglesRightIcon {
     }
     interface MvxArrowUpRightIcon {
+        "class"?: string;
     }
     interface MvxBackArrowIcon {
     }
@@ -79,6 +80,9 @@ export namespace Components {
         "text"?: string;
     }
     interface MvxExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
     }
     interface MvxFaIcon {
         "class"?: string;
@@ -125,12 +129,16 @@ export namespace Components {
         "isAwaiting"?: boolean;
     }
     interface MvxLedgerProviderIcon {
+        "class"?: string;
     }
     interface MvxMagnifyingGlassIcon {
+        "class"?: string;
     }
     interface MvxMetamaskProviderIcon {
+        "class"?: string;
     }
     interface MvxMultiversxLogoIcon {
+        "class"?: string;
     }
     interface MvxNotificationsFeed {
         "getEventBus": () => Promise<IEventBus>;
@@ -149,10 +157,14 @@ export namespace Components {
         "maxPageToSearchFor": number;
     }
     interface MvxPasskeyProviderIcon {
+        "class"?: string;
     }
     interface MvxPendingTransactionsPanel {
         "data": IPendingTransactionsPanelData;
         "getEventBus": () => Promise<IEventBus>;
+    }
+    interface MvxPreloader {
+        "class"?: string;
     }
     interface MvxSidePanel {
         "isOpen": boolean;
@@ -171,6 +183,7 @@ export namespace Components {
         "toast": ISimpleToast;
     }
     interface MvxSpinnerIcon {
+        "class"?: string;
     }
     interface MvxToastList {
         "customToasts": CustomToastType1[];
@@ -304,6 +317,7 @@ export namespace Components {
         "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxWalletProviderIcon {
+        "class"?: string;
     }
     interface MvxXaliasProviderIcon {
     }
@@ -659,6 +673,12 @@ declare global {
         prototype: HTMLMvxPendingTransactionsPanelElement;
         new (): HTMLMvxPendingTransactionsPanelElement;
     };
+    interface HTMLMvxPreloaderElement extends Components.MvxPreloader, HTMLStencilElement {
+    }
+    var HTMLMvxPreloaderElement: {
+        prototype: HTMLMvxPreloaderElement;
+        new (): HTMLMvxPreloaderElement;
+    };
     interface HTMLMvxSidePanelElementEventMap {
         "close": any;
         "back": any;
@@ -996,6 +1016,7 @@ declare global {
         "mvx-pagination-ellipsis-form": HTMLMvxPaginationEllipsisFormElement;
         "mvx-passkey-provider-icon": HTMLMvxPasskeyProviderIconElement;
         "mvx-pending-transactions-panel": HTMLMvxPendingTransactionsPanelElement;
+        "mvx-preloader": HTMLMvxPreloaderElement;
         "mvx-side-panel": HTMLMvxSidePanelElement;
         "mvx-sign-transaction-component": HTMLMvxSignTransactionComponentElement;
         "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
@@ -1045,6 +1066,7 @@ declare namespace LocalJSX {
     interface MvxAnglesRightIcon {
     }
     interface MvxArrowUpRightIcon {
+        "class"?: string;
     }
     interface MvxBackArrowIcon {
     }
@@ -1080,6 +1102,9 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface MvxExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
     }
     interface MvxFaIcon {
         "class"?: string;
@@ -1131,12 +1156,16 @@ declare namespace LocalJSX {
         "onConnect"?: (event: MvxLedgerIntroCustomEvent<any>) => void;
     }
     interface MvxLedgerProviderIcon {
+        "class"?: string;
     }
     interface MvxMagnifyingGlassIcon {
+        "class"?: string;
     }
     interface MvxMetamaskProviderIcon {
+        "class"?: string;
     }
     interface MvxMultiversxLogoIcon {
+        "class"?: string;
     }
     interface MvxNotificationsFeed {
     }
@@ -1156,9 +1185,13 @@ declare namespace LocalJSX {
         "onSearch"?: (event: MvxPaginationEllipsisFormCustomEvent<number>) => void;
     }
     interface MvxPasskeyProviderIcon {
+        "class"?: string;
     }
     interface MvxPendingTransactionsPanel {
         "data"?: IPendingTransactionsPanelData;
+    }
+    interface MvxPreloader {
+        "class"?: string;
     }
     interface MvxSidePanel {
         "isOpen"?: boolean;
@@ -1179,6 +1212,7 @@ declare namespace LocalJSX {
         "toast"?: ISimpleToast;
     }
     interface MvxSpinnerIcon {
+        "class"?: string;
     }
     interface MvxToastList {
         "customToasts"?: CustomToastType1[];
@@ -1315,6 +1349,7 @@ declare namespace LocalJSX {
         "data"?: IWalletConnectPanelData;
     }
     interface MvxWalletProviderIcon {
+        "class"?: string;
     }
     interface MvxXaliasProviderIcon {
     }
@@ -1359,6 +1394,7 @@ declare namespace LocalJSX {
         "mvx-pagination-ellipsis-form": MvxPaginationEllipsisForm;
         "mvx-passkey-provider-icon": MvxPasskeyProviderIcon;
         "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
+        "mvx-preloader": MvxPreloader;
         "mvx-side-panel": MvxSidePanel;
         "mvx-sign-transaction-component": MvxSignTransactionComponent;
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
@@ -1437,6 +1473,7 @@ declare module "@stencil/core" {
             "mvx-pagination-ellipsis-form": LocalJSX.MvxPaginationEllipsisForm & JSXBase.HTMLAttributes<HTMLMvxPaginationEllipsisFormElement>;
             "mvx-passkey-provider-icon": LocalJSX.MvxPasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLMvxPasskeyProviderIconElement>;
             "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
+            "mvx-preloader": LocalJSX.MvxPreloader & JSXBase.HTMLAttributes<HTMLMvxPreloaderElement>;
             "mvx-side-panel": LocalJSX.MvxSidePanel & JSXBase.HTMLAttributes<HTMLMvxSidePanelElement>;
             "mvx-sign-transaction-component": LocalJSX.MvxSignTransactionComponent & JSXBase.HTMLAttributes<HTMLMvxSignTransactionComponentElement>;
             "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;

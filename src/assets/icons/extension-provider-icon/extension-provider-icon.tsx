@@ -1,13 +1,24 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'mvx-extension-provider-icon',
+  styleUrl: 'extension-provider-icon.scss',
   shadow: true,
 })
 export class ExtensionProviderIcon {
+  @Prop() class?: string;
+  @Prop() width?: number;
+  @Prop() height?: number;
+
   render() {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width="46" height="44" viewBox="0 0 46 44" fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 46 44"
+        width={this.width ?? '46'}
+        height={this.height ?? '44'}
+        class={{ 'extension-provider-icon': true, [this.class]: Boolean(this.class) }}
+      >
         <mask id="mask0_8093_13961" maskUnits="userSpaceOnUse" x="0" y="4" width="40" height="40">
           <path
             fill-rule="evenodd"

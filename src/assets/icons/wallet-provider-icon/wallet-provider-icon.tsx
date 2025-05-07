@@ -1,13 +1,16 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'mvx-wallet-provider-icon',
+  styleUrl: 'wallet-provider-icon.scss',
   shadow: true,
 })
 export class WalletProviderIcon {
+  @Prop() class?: string;
+
   render() {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" height="40" width="40" viewBox="0 0 40 40" fill="none">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" class={{ 'wallet-provider-icon': true, [this.class]: Boolean(this.class) }}>
         <mask id="mask0_7913_1658" maskUnits="userSpaceOnUse" x="0" y="0" width="40" height="41">
           <path
             fill-rule="evenodd"

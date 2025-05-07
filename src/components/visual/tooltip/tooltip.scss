@@ -1,5 +1,6 @@
 .tooltip {
   display: flex;
+  font-family: 'Satoshi', sans-serif;
   position: relative;
 
   .tooltip-content-wrapper {
@@ -18,7 +19,6 @@
 
     .tooltip-content {
       flex-direction: row;
-      text-align: left;
       gap: 8px;
       cursor: default;
       background: #000000;

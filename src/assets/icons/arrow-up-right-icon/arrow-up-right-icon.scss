@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+
+  .arrow-up-right-icon {
+    display: flex;
+    height: calc(20px / 2);
+    fill: #e5e5e5;
+    width: calc(20px / 2);
+  }
+}
