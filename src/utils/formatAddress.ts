@@ -1,7 +1,3 @@
-export function format(first?: string, middle?: string, last?: string): string {
-  return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');
-}
-
 export const formatAddress = (value: string, maxLength = 25) => {
   if (!value) {
     return value;
