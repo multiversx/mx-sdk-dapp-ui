@@ -1,5 +1,5 @@
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { Component, h, State } from '@stencil/core';
+import { Component, h, Host, State } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import state from '../../signTransactionsPanelStore';
@@ -78,28 +78,30 @@ export class SignTransactionsActionButtons {
     const { backButtonText, ...backButtonProps } = this.getBackButtonProps();
 
     return (
-      <div class="footer">
-        <div class="action-buttons">
-          {backButtonText ? (
-            <button class="cancel-button" {...backButtonProps}>
-              <span class="label">{backButtonText}</span>
-            </button>
-          ) : (
-            <button class="cancel-button" onClick={state.onCancel}>
-              <span class="label">Cancel</span>
-            </button>
-          )}
-
-          <button class={`confirm-button ${disabled ? 'disabled' : ''}`} disabled={disabled} {...signButtonProps}>
-            {signText.toLowerCase().includes('confirm') && (
-              <div class="button-icon">
-                <mvx-fa-icon icon={faCheck} class="check-icon" />
-              </div>
+      <Host style={{ width: '100%' }}>
+        <div class="footer">
+          <div class="action-buttons">
+            {backButtonText ? (
+              <button class="cancel-button" {...backButtonProps}>
+                <span class="label">{backButtonText}</span>
+              </button>
+            ) : (
+              <button class="cancel-button" onClick={state.onCancel}>
+                <span class="label">Cancel</span>
+              </button>
             )}
-            <span class="label">{signText}</span>
-          </button>
+
+            <button class={`confirm-button ${disabled ? 'disabled' : ''}`} disabled={disabled} {...signButtonProps}>
+              {signText.toLowerCase().includes('confirm') && (
+                <div class="button-icon">
+                  <mvx-fa-icon icon={faCheck} class="check-icon" />
+                </div>
+              )}
+              <span class="label">{signText}</span>
+            </button>
+          </div>
         </div>
-      </div>
+      </Host>
     );
   }
 }

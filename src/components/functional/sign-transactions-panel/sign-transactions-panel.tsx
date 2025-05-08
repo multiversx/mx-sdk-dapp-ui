@@ -274,7 +274,7 @@ export class SignTransactionsPanel {
               </div>
             )}
 
-            <mvx-sign-transactions-action-buttons></mvx-sign-transactions-action-buttons>
+            <mvx-sign-transactions-action-buttons style={{ width: '100%' }}></mvx-sign-transactions-action-buttons>
 
             <div class="signing-address">
               <div class="address-container">
