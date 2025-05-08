@@ -20,7 +20,7 @@ button {
   align-items: center;
   flex-wrap: nowrap;
   position: relative;
-  width: 400px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 0 48px 0;
   background: #171717;
