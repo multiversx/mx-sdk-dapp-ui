@@ -1,3 +1,4 @@
+import { faArrowUpRightFromSquare, faCheck, faChevronLeft, faChevronRight, faCopy } from '@fortawesome/free-solid-svg-icons';
 import { Component, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
@@ -13,6 +14,7 @@ import state, { resetState } from './signTransactionsPanelStore';
 export class SignTransactionsPanel {
   private eventBus: IEventBus = new EventBus();
   @State() isOpen: boolean = false;
+  @State() activeTab: 'overview' | 'advanced' = 'overview';
 
   @Prop() data: ISignTransactionsPanelData = {
     commonData: {
@@ -29,7 +31,6 @@ export class SignTransactionsPanel {
   };
 
   componentWillLoad() {
-    console.log('componentWillLoad');
     state.onCancel = () => {
       this.onClose({ isUserClick: true });
     };
@@ -93,6 +94,10 @@ export class SignTransactionsPanel {
 
     state.isWaitingForSignature = false;
     state.isLoading = false;
+
+    if (data.shouldClose) {
+      this.onClose({ isUserClick: false });
+    }
   }
 
   @Method() async getEventBus() {
@@ -109,30 +114,200 @@ export class SignTransactionsPanel {
     };
   }
 
+  setActiveTab(tab: 'overview' | 'advanced') {
+    this.activeTab = tab;
+  }
+
   render() {
-    const { commonData, isLoading } = state;
+    const { commonData } = state;
     const { currentIndex, transactionsCount, origin, address } = commonData;
-    const { amount, identifier, imageURL, usdValue } = this.getTransactionData();
-    const previewSubtitle = `${amount} ${identifier}`;
+    const { identifier, usdValue } = this.getTransactionData();
 
     return (
       <mvx-side-panel isOpen={this.isOpen} panelClassName="sign-transactions-panel" onClose={this.handleClose.bind(this)} panelTitle="Confirm Transaction">
-        <div class="transaction-panel-content">
-          <mvx-transaction-header address={address} currentTransaction={currentIndex + 1} totalTransactions={transactionsCount} />
+        <div class="main-container">
+          <div class="transaction-navigation">
+            <div class="transaction-switcher">
+              <div class="navigation-icon">
+                <mvx-fa-icon icon={faChevronLeft} class="icon-angle-left" />
+              </div>
+              <div class="transaction-counter">
+                <div class="counter-label-container">
+                  <span class="transaction">Transaction</span>
+                </div>
+                <div class="counter-value-container">
+                  <span class="counter-text">
+                    {currentIndex + 1} of {transactionsCount}
+                  </span>
+                </div>
+              </div>
+              <div class="navigation-icon">
+                <mvx-fa-icon icon={faChevronRight} class="icon-angle-right" />
+              </div>
+            </div>
+          </div>
 
-          <div class="transaction-panel-body">
-            {isLoading ? (
-              <div class="loading-spinner">
-                <mvx-generic-spinner />
+          <div class="origin-container">
+            <span class="request-from">Request from</span>
+            <div class="origin-details">
+              <div class="origin-logo-container">
+                <img class="origin-logo" src={`${origin}/favicon.ico`} />
+              </div>
+              <span class="origin-name">{origin}</span>
+            </div>
+          </div>
+
+          <div class="sign-transaction-content">
+            <div class="tab-selector">
+              <div class={`tab-item ${this.activeTab === 'overview' ? 'active' : ''}`} onClick={() => this.setActiveTab('overview')}>
+                <span class="tab-text">Overview</span>
+              </div>
+              <div class={`tab-item ${this.activeTab === 'advanced' ? 'active' : ''}`} onClick={() => this.setActiveTab('advanced')}>
+                <span class="tab-text">Advanced</span>
+              </div>
+            </div>
+
+            {this.activeTab === 'overview' ? (
+              <div class="transaction-details">
+                <div class="transaction-info">
+                  <div class="send-section">
+                    <div class="address-row">
+                      <span class="send">Send</span>
+                      <div class="token-info">
+                        <div class="amount-container">
+                          <div class="amount-display">
+                            <div class="currency-amount">
+                              <div class="numbers">
+                                <span class="comma">1</span>
+                                <span class="point-fifty">.12</span>
+                              </div>
+                              <span class="token-identifier">{identifier}</span>
+                            </div>
+                            <span class="dollar-amount">{usdValue}</span>
+                          </div>
+                        </div>
+                        <div class="token-icon">
+                          <div class="token-logo">
+                            <div class="egld-token-logo"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="receiver-section">
+                    <div class="address-row">
+                      <span class="to">To</span>
+                      <div class="receiver-info">
+                        <div class="receiver-logo-container">
+                          <div class="receiver-logo">
+                            <div class="receiver-image"></div>
+                          </div>
+                        </div>
+                        <div class="receiver-details">
+                          <div class="receiver-name-container">
+                            <span class="receiver-name">Staking Agency</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="fee-section">
+                  <div class="fee-row">
+                    <div class="fee-label-container">
+                      <span class="network-fee">Network Fee</span>
+                    </div>
+                    <div class="fee-amount-container">
+                      <span class="currency-amount">~$0.00078</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             ) : (
-              <div class="transaction-content">
-                <mvx-request-origin origin={origin} />
-                <mvx-transaction-preview previewTitle="Sending" previewSubtitle={previewSubtitle} previewAdditionalInfo={usdValue} imageURL={imageURL} />
-                <mvx-transaction-details amount={amount} identifier={identifier} />
-                <mvx-action-buttons />
+              <div class="advanced-details">
+                <div class="advanced-content">
+                  <div class="gas-settings">
+                    <div class="gas-wrapper">
+                      <div class="gas-header">
+                        <span class="gas-price">Gas Price</span>
+                        <span class="gas-price-value">0.000000003 EGLD</span>
+                      </div>
+                      <div class="gas-speed-selector">
+                        <div class="speed-option active">
+                          <span class="speed-text">Standard</span>
+                        </div>
+                        <div class="speed-option">
+                          <span class="speed-text">Fast</span>
+                        </div>
+                        <div class="speed-option">
+                          <span class="speed-text">Faster</span>
+                        </div>
+                      </div>
+                      <div class="gas-limit-row">
+                        <span class="gas-limit">Gas Limit</span>
+                        <span class="gas-limit-value">6,000,000</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="data-section">
+                    <div class="data-container">
+                      <div class="data-header">
+                        <div class="data-title">
+                          <span class="data-label">Data</span>
+                          <div class="data-content">
+                            <div class="data-box">
+                              <div class="data-text-container">
+                                <span class="data-text">
+                                  joinGame@0000000c5745474c442d6264346437390000000c4c45474c442d64373464613900000008299d5f7b060e76ff0000000000000000050000b4c094947e427d79931a8bad81316b797d238cdb3f00000019737761704d756c7469546f6b656e734669786564496e707574000000040000000101000000000000000c5745474c442d6264346437390000000c4c45474c442d6437346461390000000c4c45474c442d6437346461390000000a4f4e452d663939353466000000000000000000000000050000b4c094947e427d79931a8bad81316b797d238cdb3f00000019737761704d756c7469546f6b656e734669786564496e707574000000040000000101000000000000000c4c45474c442d6437346461390000000a4f4e452d6639393534660000000c5745474c442d6264346437390000000a4f4e452d6639393534660000000820a1a52c864889010000000000000000050000b4c094947e427d79931a8bad81316b797d238cdb3f00000019737761704d756c7469546f6b656e734669786564496e707574000000040000000101000000000000000c5745474c442d6264346437390000000a4f4e452d663939353466@0000000c5745474c442d626434643739000000000000000c4c45474c442d643734646139000000000000000a4f4e452d6639393534660000000935c0dc293353bb273b
+                                </span>
+                                <div class="data-cursor"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
+
+            <div class="footer">
+              <div class="action-buttons">
+                <div class="cancel-button" onClick={state.onCancel}>
+                  <div class="button-label">
+                    <span class="label">Cancel</span>
+                  </div>
+                </div>
+                <div class="confirm-button" onClick={state.onConfirm}>
+                  <div class="button-icon">
+                    <div class="icon-container">
+                      <mvx-fa-icon icon={faCheck} class="check-icon" />
+                    </div>
+                  </div>
+                  <div class="button-label">
+                    <span class="label">Confirm</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="signing-address">
+              <div class="address-container">
+                <span class="sign-with">Sign with</span>
+                <span class="wallet-address">{address}</span>
+              </div>
+              <div class="address-actions">
+                <div class="copy-icon">
+                  <mvx-fa-icon icon={faCopy} class="icon" />
+                </div>
+                <div class="explorer-icon">
+                  <mvx-fa-icon icon={faArrowUpRightFromSquare} class="icon" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </mvx-side-panel>
