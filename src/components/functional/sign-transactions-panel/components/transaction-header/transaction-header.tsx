@@ -1,5 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
-import { formatAddress } from 'utils/utils';
+import { formatAddress } from 'utils/formatAddress';
 
 @Component({
   tag: 'mvx-transaction-header',
