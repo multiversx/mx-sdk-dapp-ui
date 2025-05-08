@@ -164,6 +164,8 @@ export namespace Components {
         "panelTitle": string;
         "withBackButton"?: boolean;
     }
+    interface MvxSignTransactionsActionButtons {
+    }
     interface MvxSignTransactionsPanel {
         "data": ISignTransactionsPanelData;
         "getEventBus": () => Promise<IEventBus>;
@@ -666,6 +668,12 @@ declare global {
         prototype: HTMLMvxSidePanelElement;
         new (): HTMLMvxSidePanelElement;
     };
+    interface HTMLMvxSignTransactionsActionButtonsElement extends Components.MvxSignTransactionsActionButtons, HTMLStencilElement {
+    }
+    var HTMLMvxSignTransactionsActionButtonsElement: {
+        prototype: HTMLMvxSignTransactionsActionButtonsElement;
+        new (): HTMLMvxSignTransactionsActionButtonsElement;
+    };
     interface HTMLMvxSignTransactionsPanelElement extends Components.MvxSignTransactionsPanel, HTMLStencilElement {
     }
     var HTMLMvxSignTransactionsPanelElement: {
@@ -955,6 +963,7 @@ declare global {
         "mvx-pending-transactions-panel": HTMLMvxPendingTransactionsPanelElement;
         "mvx-preloader": HTMLMvxPreloaderElement;
         "mvx-side-panel": HTMLMvxSidePanelElement;
+        "mvx-sign-transactions-action-buttons": HTMLMvxSignTransactionsActionButtonsElement;
         "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
         "mvx-simple-toast": HTMLMvxSimpleToastElement;
         "mvx-spinner-icon": HTMLMvxSpinnerIconElement;
@@ -1126,6 +1135,8 @@ declare namespace LocalJSX {
         "panelClassName"?: string;
         "panelTitle"?: string;
         "withBackButton"?: boolean;
+    }
+    interface MvxSignTransactionsActionButtons {
     }
     interface MvxSignTransactionsPanel {
         "data"?: ISignTransactionsPanelData;
@@ -1311,6 +1322,7 @@ declare namespace LocalJSX {
         "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
         "mvx-preloader": MvxPreloader;
         "mvx-side-panel": MvxSidePanel;
+        "mvx-sign-transactions-action-buttons": MvxSignTransactionsActionButtons;
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
         "mvx-simple-toast": MvxSimpleToast;
         "mvx-spinner-icon": MvxSpinnerIcon;
@@ -1385,6 +1397,7 @@ declare module "@stencil/core" {
             "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
             "mvx-preloader": LocalJSX.MvxPreloader & JSXBase.HTMLAttributes<HTMLMvxPreloaderElement>;
             "mvx-side-panel": LocalJSX.MvxSidePanel & JSXBase.HTMLAttributes<HTMLMvxSidePanelElement>;
+            "mvx-sign-transactions-action-buttons": LocalJSX.MvxSignTransactionsActionButtons & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsActionButtonsElement>;
             "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;
             "mvx-simple-toast": LocalJSX.MvxSimpleToast & JSXBase.HTMLAttributes<HTMLMvxSimpleToastElement>;
             "mvx-spinner-icon": LocalJSX.MvxSpinnerIcon & JSXBase.HTMLAttributes<HTMLMvxSpinnerIconElement>;

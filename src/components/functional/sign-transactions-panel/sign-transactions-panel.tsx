@@ -1,4 +1,4 @@
-import { faArrowUpRightFromSquare, faCheck, faChevronLeft, faChevronRight, faCopy } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpRightFromSquare, faChevronLeft, faChevronRight, faCopy } from '@fortawesome/free-solid-svg-icons';
 import { Component, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
@@ -274,25 +274,7 @@ export class SignTransactionsPanel {
               </div>
             )}
 
-            <div class="footer">
-              <div class="action-buttons">
-                <div class="cancel-button" onClick={state.onCancel}>
-                  <div class="button-label">
-                    <span class="label">Cancel</span>
-                  </div>
-                </div>
-                <div class="confirm-button" onClick={state.onConfirm}>
-                  <div class="button-icon">
-                    <div class="icon-container">
-                      <mvx-fa-icon icon={faCheck} class="check-icon" />
-                    </div>
-                  </div>
-                  <div class="button-label">
-                    <span class="label">Confirm</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <mvx-sign-transactions-action-buttons></mvx-sign-transactions-action-buttons>
 
             <div class="signing-address">
               <div class="address-container">
