@@ -146,8 +146,6 @@ export class SignTransactionsPanel {
     const { currentIndex, transactionsCount, origin, address, data } = commonData;
     const overviewProps = this.getTransactionData();
 
-    console.log({ commonData });
-
     return (
       <mvx-side-panel isOpen={this.isOpen} panelClassName="sign-transactions-panel" onClose={this.handleClose.bind(this)} panelTitle="Confirm Transaction">
         <div class="main-container">
