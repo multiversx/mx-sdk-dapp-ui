@@ -20,7 +20,8 @@ interface IOverviewProps {
 
 @Component({
   tag: 'mvx-sign-transactions-panel',
-  styleUrl: 'sign-transactions-panel.css',
+  styleUrl: 'sign-transactions-panel.scss',
+  shadow: true,
 })
 export class SignTransactionsPanel {
   private eventBus: IEventBus = new EventBus();

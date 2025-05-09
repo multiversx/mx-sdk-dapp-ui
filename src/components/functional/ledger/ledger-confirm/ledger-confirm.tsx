@@ -30,6 +30,7 @@ export class LedgerConfirm {
           {ledgerConfirmationItems.map(ledgerConfirmationItem => (
             <div class="ledger-confirm-item">
               <div class="ledger-confirm-item-label">{ledgerConfirmationItem.label}</div>
+
               <div class="ledger-confirm-item-value">
                 <div class={{ 'ledger-confirm-item-value-text': true, 'highlighted': Boolean(ledgerConfirmationItem.highlighted) }}>{ledgerConfirmationItem.value}</div>
 

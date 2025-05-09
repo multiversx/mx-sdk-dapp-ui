@@ -76,7 +76,13 @@ export class SidePanel {
       >
         <div class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}>
           <div class="side-panel-heading">
-            {this.withBackButton && <mvx-back-arrow-icon onClick={this.handleBackClick.bind(this)} class="side-panel-heading-back" />}
+            <mvx-back-arrow-icon
+              onClick={this.handleBackClick.bind(this)}
+              class={classNames('side-panel-heading-back', {
+                visible: this.withBackButton,
+              })}
+            />
+
             <div class="side-panel-heading-title">{this.panelTitle}</div>
             <mvx-close-icon class="side-panel-heading-close" onClick={this.handleCloseClick.bind(this)} />
           </div>

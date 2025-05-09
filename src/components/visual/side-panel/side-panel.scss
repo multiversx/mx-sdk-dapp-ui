@@ -70,8 +70,15 @@
 
     .side-panel-heading-back {
       cursor: pointer;
-      transition: all 200ms ease;
+      transition: opacity 200ms ease;
       margin-right: auto;
+      visibility: hidden;
+      pointer-events: none;
+
+      &.visible {
+        visibility: visible;
+        pointer-events: all;
+      }
 
       &:hover {
         opacity: 0.75;
