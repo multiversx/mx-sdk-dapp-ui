@@ -143,32 +143,34 @@ export class SignTransactionsPanel {
 
   render() {
     const { commonData } = state;
-    const { currentIndex, transactionsCount, origin, address, data } = commonData;
+    const { currentIndex, transactionsCount, origin, address, data, highlight } = commonData;
     const overviewProps = this.getTransactionData();
 
     return (
       <mvx-side-panel isOpen={this.isOpen} panelClassName="sign-transactions-panel" onClose={this.handleClose.bind(this)} panelTitle="Confirm Transaction">
         <div class="main-container">
-          <div class="transaction-navigation">
-            <div class="transaction-switcher">
-              <div class="navigation-icon" onClick={state.onBack}>
-                <mvx-fa-icon icon={faChevronLeft} class="icon-angle-left" />
-              </div>
-              <div class="transaction-counter">
-                <div class="counter-label-container">
-                  <span class="transaction">Transaction</span>
+          {transactionsCount > 1 && (
+            <div class="transaction-navigation">
+              <div class="transaction-switcher">
+                <div class="navigation-icon" onClick={state.onBack}>
+                  <mvx-fa-icon icon={faChevronLeft} class="icon-angle-left" />
                 </div>
-                <div class="counter-value-container">
-                  <span class="counter-text">
-                    {currentIndex + 1} of {transactionsCount}
-                  </span>
+                <div class="transaction-counter">
+                  <div class="counter-label-container">
+                    <span class="transaction">Transaction</span>
+                  </div>
+                  <div class="counter-value-container">
+                    <span class="counter-text">
+                      {currentIndex + 1} of {transactionsCount}
+                    </span>
+                  </div>
                 </div>
-              </div>
-              <div class="navigation-icon" onClick={state.onNext}>
-                <mvx-fa-icon icon={faChevronRight} class="icon-angle-right" />
+                <div class="navigation-icon" onClick={state.onNext}>
+                  <mvx-fa-icon icon={faChevronRight} class="icon-angle-right" />
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
           <div class="origin-container">
             <span class="request-from">Request from</span>
@@ -193,7 +195,7 @@ export class SignTransactionsPanel {
             {this.activeTab === 'overview' ? (
               <mvx-sign-transactions-overview style={{ width: '100%' }} {...overviewProps}></mvx-sign-transactions-overview>
             ) : (
-              <mvx-sign-transactions-advanced style={{ width: '100%' }} data={data}></mvx-sign-transactions-advanced>
+              <mvx-sign-transactions-advanced style={{ width: '100%' }} data={data} highlight={highlight}></mvx-sign-transactions-advanced>
             )}
 
             <mvx-sign-transactions-action-buttons style={{ width: '100%' }}></mvx-sign-transactions-action-buttons>

@@ -42,7 +42,9 @@
 
 .gas-price {
   color: #b5b2af;
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -50,7 +52,9 @@
 
 .gas-price-value {
   color: #b5b2af;
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -80,7 +84,9 @@
 }
 
 .speed-text {
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -100,7 +106,9 @@
 
 .gas-limit {
   color: #b5b2af;
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -108,7 +116,9 @@
 
 .gas-limit-value {
   color: #b5b2af;
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -157,7 +167,9 @@
 
 .data-label {
   color: #b5b2af;
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -220,4 +232,8 @@
   background: #404040;
   overflow: hidden;
   border-radius: 6px;
-} 
+}
+
+.data-highlight {
+  opacity: 0.5;
+}

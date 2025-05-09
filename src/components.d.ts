@@ -168,6 +168,7 @@ export namespace Components {
     }
     interface MvxSignTransactionsAdvanced {
         "data": string;
+        "highlight"?: string;
     }
     interface MvxSignTransactionsOverview {
         "action": string;
@@ -1168,6 +1169,7 @@ declare namespace LocalJSX {
     }
     interface MvxSignTransactionsAdvanced {
         "data"?: string;
+        "highlight"?: string;
     }
     interface MvxSignTransactionsOverview {
         "action"?: string;

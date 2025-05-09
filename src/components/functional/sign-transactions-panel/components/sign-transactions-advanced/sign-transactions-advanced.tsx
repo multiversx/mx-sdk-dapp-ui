@@ -6,11 +6,25 @@ import { Component, h, Prop, State } from '@stencil/core';
 })
 export class SignTransactionsAdvanced {
   @Prop() data: string;
+  @Prop() highlight?: string;
 
   @State() activeSpeed: string = 'Standard';
 
   setActiveSpeed(speed: string) {
     this.activeSpeed = speed;
+  }
+
+  getHighlightedData() {
+    if (!this.highlight || !this.data.includes(this.highlight)) {
+      return this.data;
+    }
+
+    const highlightIndex = this.data.indexOf(this.highlight);
+    const beforeText = this.data.slice(0, highlightIndex);
+    const highlightText = this.data.slice(highlightIndex, highlightIndex + this.highlight.length);
+    const afterText = this.data.slice(highlightIndex + this.highlight.length);
+
+    return [h('span', null, beforeText), h('span', { class: { 'data-highlight': true } }, highlightText), h('span', null, afterText)];
   }
 
   render() {
@@ -43,7 +57,7 @@ export class SignTransactionsAdvanced {
         <div class="data-section">
           <div class="data-label">Data</div>
           <div class="data-content">
-            <span class="data-text">{this.data}</span>
+            <span class="data-text">{this.getHighlightedData()}</span>
           </div>
         </div>
       </div>
