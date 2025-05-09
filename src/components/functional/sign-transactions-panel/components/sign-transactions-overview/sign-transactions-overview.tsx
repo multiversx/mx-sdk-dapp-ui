@@ -29,9 +29,11 @@ export class SignTransactionsOverview {
                 </div>
                 {this.identifier !== 'USD' && <div class="usd-value">{this.usdValue}</div>}
               </div>
-              <div class="token-icon">
-                <img src={this.tokenIconUrl} alt={this.identifier} />
-              </div>
+              {this.tokenIconUrl && (
+                <div class="token-icon">
+                  <img src={this.tokenIconUrl} alt={this.identifier} />
+                </div>
+              )}
             </div>
           </div>
 

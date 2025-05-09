@@ -125,7 +125,7 @@ export class SignTransactionsPanel {
       identifier: txData?.identifier,
       usdValue: tokenTransaction?.usdValue,
       amount: txData?.amount || '0',
-      tokenIconUrl: txData?.imageURL || 'https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-08/XmWBXaMPjX.png', // Remove: used for demo purposes only
+      tokenIconUrl: txData?.imageURL,
       interactor: state.commonData?.receiver,
       interactorIconUrl: state.commonData?.receiverIcon,
       action: state.commonData?.scCall,
