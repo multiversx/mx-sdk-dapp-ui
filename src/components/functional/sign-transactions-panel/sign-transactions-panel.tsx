@@ -120,7 +120,7 @@ export class SignTransactionsPanel {
 
   render() {
     const { commonData } = state;
-    const { currentIndex, transactionsCount, origin, address } = commonData;
+    const { currentIndex, transactionsCount, origin, address, data } = commonData;
     const { identifier, usdValue } = this.getTransactionData();
 
     return (
@@ -170,7 +170,7 @@ export class SignTransactionsPanel {
             {this.activeTab === 'overview' ? (
               <mvx-sign-transactions-overview style={{ width: '100%' }} identifier={identifier} usdValue={usdValue}></mvx-sign-transactions-overview>
             ) : (
-              <mvx-sign-transactions-advanced style={{ width: '100%' }}></mvx-sign-transactions-advanced>
+              <mvx-sign-transactions-advanced style={{ width: '100%' }} data={data}></mvx-sign-transactions-advanced>
             )}
 
             <mvx-sign-transactions-action-buttons style={{ width: '100%' }}></mvx-sign-transactions-action-buttons>

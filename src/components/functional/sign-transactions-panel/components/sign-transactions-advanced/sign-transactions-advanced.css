@@ -2,12 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  align-self: stretch;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  position: relative;
+  width: 100%;
   background: #0a0a0a;
   border-radius: 16px;
+  padding-bottom: 12px;
 }
 
 .advanced-content {
@@ -22,82 +20,48 @@
 }
 
 .gas-settings {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  align-self: stretch;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  gap: -20px;
-  position: relative;
-  padding: 4px 4px 4px 4px;
+  width: 100%;
+  padding: 4px;
 }
 
 .gas-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  align-self: stretch;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
   gap: 16px;
-  position: relative;
-  padding: 30px 20px 30px 20px;
+  padding: 30px 20px;
   background: #191919;
-  overflow: hidden;
   border-radius: 12px;
 }
 
 .gas-header {
   display: flex;
   align-items: center;
-  align-self: stretch;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  gap: 10px;
-  position: relative;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .gas-price {
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  height: 20px;
   color: #b5b2af;
   font-family: Roobert PRO, var(--default-font-family);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-  text-align: left;
-  white-space: nowrap;
 }
 
 .gas-price-value {
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  height: 20px;
   color: #b5b2af;
   font-family: Roobert PRO, var(--default-font-family);
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
-  text-align: left;
-  white-space: nowrap;
 }
 
 .gas-speed-selector {
   display: flex;
-  align-items: flex-start;
-  align-self: stretch;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
+  align-items: center;
   gap: 4px;
-  position: relative;
-  padding: 2px 2px 2px 2px;
+  padding: 2px;
   background: #0a0a0a;
-  overflow: hidden;
   border-radius: 20px;
 }
 
@@ -105,13 +69,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: nowrap;
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 0;
-  gap: 10px;
-  position: relative;
-  padding: 4px 12px 4px 12px;
+  flex: 1;
+  padding: 4px 12px;
   border-radius: 18px;
   cursor: pointer;
 }
@@ -121,16 +80,10 @@
 }
 
 .speed-text {
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  height: 20px;
   font-family: Roobert PRO, var(--default-font-family);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-  text-align: left;
-  white-space: nowrap;
   color: #b5b2af;
 }
 
@@ -141,52 +94,32 @@
 .gas-limit-row {
   display: flex;
   align-items: center;
-  align-self: stretch;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  gap: 10px;
-  position: relative;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .gas-limit {
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  height: 20px;
   color: #b5b2af;
   font-family: Roobert PRO, var(--default-font-family);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-  text-align: left;
-  white-space: nowrap;
 }
 
 .gas-limit-value {
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  height: 20px;
   color: #b5b2af;
   font-family: Roobert PRO, var(--default-font-family);
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
-  text-align: left;
-  white-space: nowrap;
 }
 
 .data-section {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  align-self: stretch;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  gap: 10px;
-  position: relative;
-  padding: 0 12px 12px 24px;
+  flex-direction: row;
+  width: 100%;
+  padding: 12px 24px;
+  gap: 8px;
 }
 
 .data-container {
@@ -223,30 +156,22 @@
 }
 
 .data-label {
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  height: 20px;
   color: #b5b2af;
   font-family: Roobert PRO, var(--default-font-family);
   font-size: 14px;
   font-weight: 400;
-  line-height: 19.6px;
-  text-align: left;
-  white-space: nowrap;
+  line-height: 20px;
+  padding-top: 12px;
 }
 
 .data-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  flex-wrap: nowrap;
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 0;
-  position: relative;
   height: 136px;
+  padding: 8px;
+  background: #0a0a0a;
+  border: 1px solid #262626;
+  border-radius: 8px;
+  overflow-y: auto;
+  width: 100%;
 }
 
 .data-box {
@@ -279,23 +204,12 @@
 }
 
 .data-text {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  align-self: stretch;
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 0;
-  position: relative;
-  width: 270px;
   color: #ffffff;
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family: monospace;
   font-size: 14px;
   font-weight: 400;
   line-height: 19.6px;
-  text-align: left;
   word-break: break-all;
-  font-family: monospace;
 }
 
 .data-cursor {
