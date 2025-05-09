@@ -26,9 +26,10 @@ button {
   background: #171717;
   border: 1px solid rgba(64, 64, 64, 0.4);
   overflow: hidden;
-  border-radius: 24px 24px 0 0;
+  border-radius: 24px;
   backdrop-filter: blur(8px);
   box-shadow: 0 17px 38px 0 rgba(0, 0, 0, 0.13);
+  height: 100%;
 }
 
 .header {
