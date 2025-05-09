@@ -1,4 +1,4 @@
-import { faArrowUpRightFromSquare, faChevronLeft, faChevronRight, faCopy } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { Component, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
@@ -144,12 +144,12 @@ export class SignTransactionsPanel {
 
   render() {
     const { commonData } = state;
-    const { currentIndex, transactionsCount, origin, address, data, highlight } = commonData;
+    const { currentIndex, transactionsCount, origin, address, data, highlight, addressExplorerLink, username } = commonData;
     const overviewProps = this.getTransactionData();
 
     return (
-      <mvx-side-panel isOpen={this.isOpen} panelClassName="sign-transactions-panel" onClose={this.handleClose.bind(this)} panelTitle="Confirm Transaction">
-        <div class="main-container">
+      <mvx-side-panel isOpen={this.isOpen} onClose={this.handleClose.bind(this)} panelTitle="Confirm Transaction">
+        <div class="sign-transactions-panel">
           {transactionsCount > 1 && (
             <div class="transaction-navigation">
               <div class="transaction-switcher">
@@ -200,22 +200,17 @@ export class SignTransactionsPanel {
             )}
 
             <mvx-sign-transactions-action-buttons style={{ width: '100%' }}></mvx-sign-transactions-action-buttons>
-
-            <div class="signing-address">
-              <div class="address-container">
-                <span class="sign-with">Sign with</span>
-                <span class="wallet-address">{address}</span>
-              </div>
-              <div class="address-actions">
-                <div class="copy-icon">
-                  <mvx-fa-icon icon={faCopy} class="icon" />
-                </div>
-                <div class="explorer-icon">
-                  <mvx-fa-icon icon={faArrowUpRightFromSquare} class="icon" />
-                </div>
-              </div>
-            </div>
           </div>
+
+          <mvx-sign-transactions-footer
+            currentIndex={state.commonData.currentIndex}
+            addressExplorerLink={addressExplorerLink}
+            onConfirm={state.onConfirm}
+            onCancel={state.onCancel}
+            onBack={state.onBack}
+            username={username}
+            address={address}
+          />
         </div>
       </mvx-side-panel>
     );

@@ -43,8 +43,10 @@ export interface ISignTransactionsPanelCommonData {
   scCall?: string | null;
   nextUnsignedTxIndex?: number;
   providerName?: string;
-  origin?: string;
   address?: string;
+  username?: string;
+  origin?: string;
+  addressExplorerLink?: string;
 }
 
 export interface ISignTransactionsPanelData {
