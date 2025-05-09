@@ -170,7 +170,14 @@ export namespace Components {
         "data": string;
     }
     interface MvxSignTransactionsOverview {
+        "action": string;
+        "amount": string;
         "identifier": string;
+        "interactor": string;
+        "interactorIconUrl": string;
+        "isApp": boolean;
+        "networkFee": string;
+        "tokenIconUrl": string;
         "usdValue": string;
     }
     interface MvxSignTransactionsPanel {
@@ -1163,7 +1170,14 @@ declare namespace LocalJSX {
         "data"?: string;
     }
     interface MvxSignTransactionsOverview {
+        "action"?: string;
+        "amount"?: string;
         "identifier"?: string;
+        "interactor"?: string;
+        "interactorIconUrl"?: string;
+        "isApp"?: boolean;
+        "networkFee"?: string;
+        "tokenIconUrl"?: string;
         "usdValue"?: string;
     }
     interface MvxSignTransactionsPanel {

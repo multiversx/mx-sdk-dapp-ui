@@ -1,3 +1,4 @@
+import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Prop } from '@stencil/core';
 
 @Component({
@@ -7,63 +8,64 @@ import { Component, h, Prop } from '@stencil/core';
 export class SignTransactionsOverview {
   @Prop() identifier: string;
   @Prop() usdValue: string;
+  @Prop() amount: string;
+  @Prop() tokenIconUrl: string;
+  @Prop() interactor: string;
+  @Prop() interactorIconUrl: string;
+  @Prop() action: string;
+  @Prop() networkFee: string = '~$0.00078';
+  @Prop() isApp: boolean = false;
 
   render() {
     return (
-      <div class="transaction-details">
-        <div class="transaction-info">
-          <div class="send-section">
-            <div class="address-row">
-              <span class="send">Send</span>
-              <div class="token-info">
-                <div class="amount-container">
-                  <div class="amount-display">
-                    <div class="currency-amount">
-                      <div class="numbers">
-                        <span class="comma">1</span>
-                        <span class="point-fifty">.12</span>
-                      </div>
-                      <span class="token-identifier">{this.identifier}</span>
-                    </div>
-                    <span class="dollar-amount">{this.usdValue}</span>
-                  </div>
+      <div class="overview-container">
+        <div class="overview-content">
+          <div class="detail-row amount-row">
+            <div class="detail-label">{this.isApp ? 'Amount' : 'Send'}</div>
+            <div class="amount-display">
+              <div class="amount-value-container">
+                <div class="amount-value">
+                  {this.amount} {this.identifier}
                 </div>
-                <div class="token-icon">
-                  <div class="token-logo">
-                    <div class="egld-token-logo"></div>
-                  </div>
-                </div>
+                {this.identifier !== 'USD' && <div class="usd-value">{this.usdValue}</div>}
+              </div>
+              <div class="token-icon">
+                <img src={this.tokenIconUrl} alt={this.identifier} />
               </div>
             </div>
           </div>
 
-          <div class="receiver-section">
-            <div class="address-row">
-              <span class="to">To</span>
-              <div class="receiver-info">
-                <div class="receiver-logo-container">
-                  <div class="receiver-logo">
-                    <div class="receiver-image"></div>
-                  </div>
+          <div class="direction-indicator">
+            <mvx-fa-icon icon={this.isApp ? faArrowUp : faArrowDown} class="direction-arrow"></mvx-fa-icon>
+          </div>
+
+          <div class="detail-row interactor-row">
+            <div class="detail-label">{this.isApp ? 'App' : 'To'}</div>
+            <div class="interactor-info">
+              {this.interactorIconUrl && (
+                <div class="interactor-icon">
+                  <img src={this.interactorIconUrl} alt={this.interactor} />
                 </div>
-                <div class="receiver-details">
-                  <div class="receiver-name-container">
-                    <span class="receiver-name">Staking Agency</span>
-                  </div>
-                </div>
-              </div>
+              )}
+              <mvx-trim-text class="interactor-name" text={this.interactor}></mvx-trim-text>
             </div>
           </div>
+
+          {this.isApp && (
+            <div class="detail-row action-row">
+              <div class="detail-label">Action</div>
+              <div class="action-value">{this.action}</div>
+            </div>
+          )}
         </div>
 
-        <div class="fee-section">
+        <div class="fee-container">
           <div class="fee-row">
             <div class="fee-label-container">
-              <span class="network-fee">Network Fee</span>
+              <span class="fee-label">Network Fee</span>
+              <div class="info-icon"></div>
             </div>
-            <div class="fee-amount-container">
-              <span class="currency-amount">~$0.00078</span>
-            </div>
+            <div class="fee-value">{this.networkFee}</div>
           </div>
         </div>
       </div>

@@ -7,6 +7,19 @@ import type { ISignTransactionsPanelData } from './sign-transactions-panel.types
 import { SignEventsEnum } from './sign-transactions-panel.types';
 import state, { resetState } from './signTransactionsPanelStore';
 
+// Define a type for the overview component props
+interface IOverviewProps {
+  identifier: string;
+  usdValue: string;
+  amount: string;
+  tokenIconUrl: string;
+  interactor: string;
+  interactorIconUrl: string;
+  action: string;
+  networkFee: string;
+  isApp: boolean;
+}
+
 @Component({
   tag: 'mvx-sign-transactions-panel',
   styleUrl: 'sign-transactions-panel.css',
@@ -104,13 +117,20 @@ export class SignTransactionsPanel {
     return this.eventBus;
   }
 
-  getTransactionData() {
+  getTransactionData(): IOverviewProps {
     const { tokenTransaction, sftTransaction, nftTransaction } = state;
-    const data = sftTransaction || nftTransaction || tokenTransaction;
+    const txData = sftTransaction || nftTransaction || tokenTransaction;
 
     return {
-      ...data,
-      usdValue: tokenTransaction?.usdValue || '',
+      identifier: txData?.identifier,
+      usdValue: tokenTransaction?.usdValue,
+      amount: txData?.amount || '0',
+      tokenIconUrl: txData?.imageURL || 'https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-08/XmWBXaMPjX.png', // Remove: used for demo purposes only
+      interactor: state.commonData?.receiver,
+      interactorIconUrl: state.commonData?.receiverIcon,
+      action: state.commonData?.scCall,
+      networkFee: state.commonData?.feeInFiatLimit,
+      isApp: Boolean(state.commonData?.scCall),
     };
   }
 
@@ -121,7 +141,7 @@ export class SignTransactionsPanel {
   render() {
     const { commonData } = state;
     const { currentIndex, transactionsCount, origin, address, data } = commonData;
-    const { identifier, usdValue } = this.getTransactionData();
+    const overviewProps = this.getTransactionData();
 
     return (
       <mvx-side-panel isOpen={this.isOpen} panelClassName="sign-transactions-panel" onClose={this.handleClose.bind(this)} panelTitle="Confirm Transaction">
@@ -168,7 +188,7 @@ export class SignTransactionsPanel {
             </div>
 
             {this.activeTab === 'overview' ? (
-              <mvx-sign-transactions-overview style={{ width: '100%' }} identifier={identifier} usdValue={usdValue}></mvx-sign-transactions-overview>
+              <mvx-sign-transactions-overview style={{ width: '100%' }} {...overviewProps}></mvx-sign-transactions-overview>
             ) : (
               <mvx-sign-transactions-advanced style={{ width: '100%' }} data={data}></mvx-sign-transactions-advanced>
             )}
