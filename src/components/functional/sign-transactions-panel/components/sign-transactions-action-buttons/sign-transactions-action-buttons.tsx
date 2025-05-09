@@ -29,23 +29,36 @@ export class SignTransactionsActionButtons {
   }
 
   getSignButtonProps() {
-    const { needsSigning, providerName } = state.commonData;
+    const { needsSigning, providerName, currentIndexToSign, currentIndex, highlight } = state.commonData;
     const confirmText = providerName ? `Confirm on ${providerName}` : 'Confirm';
+
+    const baseProps = {
+      'data-testid': DataTestIdsEnum.signNextTransactionBtn,
+      'onClick': this.onConfirm.bind(this),
+    };
+
+    if (currentIndex !== currentIndexToSign) {
+      const signText = highlight && !needsSigning ? 'Confirm' : 'Sign';
+
+      return {
+        ...baseProps,
+        signText,
+        disabled: true,
+      };
+    }
 
     if (needsSigning) {
       return {
-        'signText': this.isConfirming ? confirmText : 'Sign',
-        'disabled': state.isWaitingForSignature || this.isConfirming,
-        'data-testid': DataTestIdsEnum.signTransactionBtn,
-        'onClick': this.onConfirm.bind(this),
+        ...baseProps,
+        signText: this.isConfirming ? confirmText : 'Sign',
+        disabled: state.isWaitingForSignature || this.isConfirming,
       };
     }
 
     return {
-      'signText': 'Next',
-      'disabled': false,
-      'data-testid': DataTestIdsEnum.signNextTransactionBtn,
-      'onClick': this.onConfirm.bind(this),
+      ...baseProps,
+      signText: 'Confirm',
+      disabled: false,
     };
   }
 

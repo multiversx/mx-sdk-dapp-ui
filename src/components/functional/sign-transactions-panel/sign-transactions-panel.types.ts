@@ -36,6 +36,7 @@ export interface ISignTransactionsPanelCommonData {
   feeLimit?: string;
   feeInFiatLimit?: string | null;
   currentIndex: number;
+  currentIndexToSign: number;
   needsSigning?: boolean;
   isEditable?: boolean;
   highlight?: string | null;
@@ -62,6 +63,7 @@ export interface ISignTransactionsPanelData {
 export enum SignEventsEnum {
   CONFIRM = 'CONFIRM', // can be sign or next
   BACK = 'BACK',
+  NEXT = 'NEXT',
   DATA_UPDATE = 'DATA_UPDATE',
   SET_PPU = 'SET_PPU',
   OPEN_SIGN_TRANSACTIONS_PANEL = 'OPEN_SIGN_TRANSACTIONS_PANEL',
