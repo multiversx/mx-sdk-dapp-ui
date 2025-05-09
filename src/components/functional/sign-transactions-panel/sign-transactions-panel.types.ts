@@ -36,7 +36,7 @@ export interface ISignTransactionsPanelCommonData {
   feeLimit?: string;
   feeInFiatLimit?: string | null;
   currentIndex: number;
-  currentIndexToSign: number | null;
+  currentIndexToSign: number;
   needsSigning?: boolean;
   isEditable?: boolean;
   highlight?: string | null;
