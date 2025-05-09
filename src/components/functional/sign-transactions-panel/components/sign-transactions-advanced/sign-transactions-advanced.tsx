@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 
 @Component({
   tag: 'mvx-sign-transactions-advanced',
@@ -6,6 +6,12 @@ import { Component, h, Prop } from '@stencil/core';
 })
 export class SignTransactionsAdvanced {
   @Prop() data: string;
+
+  @State() activeSpeed: string = 'Standard';
+
+  setActiveSpeed(speed: string) {
+    this.activeSpeed = speed;
+  }
 
   render() {
     return (
@@ -17,15 +23,15 @@ export class SignTransactionsAdvanced {
               <span class="gas-price-value">0.000000003 EGLD</span>
             </div>
             <div class="gas-speed-selector">
-              <div class="speed-option active">
+              <button class={`speed-option ${this.activeSpeed === 'Standard' ? 'active' : ''}`} onClick={() => this.setActiveSpeed('Standard')}>
                 <span class="speed-text">Standard</span>
-              </div>
-              <div class="speed-option">
+              </button>
+              <button class={`speed-option ${this.activeSpeed === 'Fast' ? 'active' : ''}`} onClick={() => this.setActiveSpeed('Fast')}>
                 <span class="speed-text">Fast</span>
-              </div>
-              <div class="speed-option">
+              </button>
+              <button class={`speed-option ${this.activeSpeed === 'Faster' ? 'active' : ''}`} onClick={() => this.setActiveSpeed('Faster')}>
                 <span class="speed-text">Faster</span>
-              </div>
+              </button>
             </div>
             <div class="gas-limit-row">
               <span class="gas-limit">Gas Limit</span>

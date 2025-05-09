@@ -330,10 +330,7 @@ button {
   flex-shrink: 0;
   position: relative;
   width: 34px;
-  height: 48px;
-  background: url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-05-08/46iK2vs742.png)
-    no-repeat center;
-  background-size: cover;
+  height: 34px;
 }
 
 .origin-name {

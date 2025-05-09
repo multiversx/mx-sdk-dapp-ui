@@ -6,8 +6,6 @@ import { EventBus } from 'utils/EventBus';
 import type { ISignTransactionsPanelData } from './sign-transactions-panel.types';
 import { SignEventsEnum } from './sign-transactions-panel.types';
 import state, { resetState } from './signTransactionsPanelStore';
-
-// Define a type for the overview component props
 interface IOverviewProps {
   identifier: string;
   usdValue: string;
