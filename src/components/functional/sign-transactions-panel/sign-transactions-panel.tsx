@@ -33,6 +33,7 @@ export class SignTransactionsPanel {
       feeLimit: '',
       feeInFiatLimit: '',
       transactionsCount: 0,
+      currentIndexToSign: 0,
       currentIndex: 0,
       ppuOptions: [],
     },
@@ -44,6 +45,10 @@ export class SignTransactionsPanel {
   componentWillLoad() {
     state.onCancel = () => {
       this.onClose({ isUserClick: true });
+    };
+
+    state.onNext = () => {
+      this.eventBus.publish(SignEventsEnum.NEXT);
     };
 
     state.onConfirm = () => {
@@ -141,12 +146,14 @@ export class SignTransactionsPanel {
     const { currentIndex, transactionsCount, origin, address, data } = commonData;
     const overviewProps = this.getTransactionData();
 
+    console.log({ commonData });
+
     return (
       <mvx-side-panel isOpen={this.isOpen} panelClassName="sign-transactions-panel" onClose={this.handleClose.bind(this)} panelTitle="Confirm Transaction">
         <div class="main-container">
           <div class="transaction-navigation">
             <div class="transaction-switcher">
-              <div class="navigation-icon">
+              <div class="navigation-icon" onClick={state.onBack}>
                 <mvx-fa-icon icon={faChevronLeft} class="icon-angle-left" />
               </div>
               <div class="transaction-counter">
@@ -159,7 +166,7 @@ export class SignTransactionsPanel {
                   </span>
                 </div>
               </div>
-              <div class="navigation-icon">
+              <div class="navigation-icon" onClick={state.onNext}>
                 <mvx-fa-icon icon={faChevronRight} class="icon-angle-right" />
               </div>
             </div>

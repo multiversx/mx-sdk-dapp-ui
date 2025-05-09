@@ -6,6 +6,7 @@ interface ITransactionState extends ISignTransactionsPanelData {
   isWaitingForSignature: boolean;
   onCancel: () => void;
   onBack: () => void;
+  onNext: () => void;
   onConfirm: () => void;
   onSetPpu: (ppu: number) => void;
 }
@@ -22,6 +23,7 @@ const initialState: ITransactionState = {
     feeLimit: '',
     feeInFiatLimit: '',
     currentIndex: 0,
+    currentIndexToSign: 0,
     receiver: '',
     ppuOptions: [],
     origin: '',
@@ -31,6 +33,7 @@ const initialState: ITransactionState = {
   tokenTransaction: null,
   onCancel: null,
   onBack: null,
+  onNext: null,
   onConfirm: null,
   onSetPpu: null,
 };
