@@ -3,6 +3,10 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import state from '../../signTransactionsPanelStore';
 
+const signTransactionsFooterClasses: Record<string, string> = {
+  buttonTooltip: 'mvx:absolute mvx:top-0 mvx:h-12 mvx:left-0 mvx:right-0',
+};
+
 @Component({
   tag: 'mvx-sign-transactions-footer',
   styleUrl: 'sign-transactions-footer.scss',
@@ -12,13 +16,8 @@ export class SignTransactionsFooter {
   @State() awaitsExternalConfirmation: boolean = false;
 
   render() {
-    const {
-      commonData: { currentIndex, currentIndexToSign, needsSigning, username, address, addressExplorerLink },
-      onCancel,
-      onBack,
-      onNext,
-      onConfirm,
-    } = state;
+    const { onCancel, onBack, onNext, onConfirm } = state;
+    const { currentIndex, currentIndexToSign, needsSigning, username, address, addressExplorerLink } = state.commonData;
 
     const isFirstTransaction = currentIndex === 0;
     const currentIndexNeedsSigning = currentIndex === currentIndexToSign;
@@ -30,7 +29,7 @@ export class SignTransactionsFooter {
         <div class="sign-transactions-footer-buttons">
           <div class="sign-transactions-footer-button-wrapper cancel">
             <button
-              class={{ 'sign-transactions-footer-button': true, 'cancel': true }}
+              class={{ 'sign-transactions-footer-button': true, 'cancel': !currentIndexCannotBeSignedYet, 'highlighted': currentIndexCannotBeSignedYet }}
               data-testid={isFirstTransaction ? DataTestIdsEnum.signCancelBtn : DataTestIdsEnum.signBackBtn}
               onClick={isFirstTransaction ? onCancel : onBack}
             >
@@ -41,8 +40,17 @@ export class SignTransactionsFooter {
           <div class="sign-transactions-footer-button-wrapper confirm">
             {currentIndexCannotBeSignedYet && (
               <div class="sign-transactions-footer-button-tooltip-wrapper" onClick={(event: MouseEvent) => event.stopPropagation()}>
-                <mvx-tooltip trigger={<div class={{ 'sign-transactions-footer-button-tooltip': true }} />}>
-                  You cannot sign this transaction yet, please go back and sign consecutively.
+                <mvx-tooltip trigger={<div class={{ 'sign-transactions-footer-button-tooltip': true, [signTransactionsFooterClasses.buttonTooltip]: true }} />}>
+                  {needsSigning ? (
+                    <Fragment>
+                      You cannot sign this transaction yet, <br /> please go back and sign consecutively.
+                    </Fragment>
+                  ) : (
+                    <Fragment>
+                      You cannot confirm this transaction yet, <br />
+                      please go back and confirm consecutively.
+                    </Fragment>
+                  )}
                 </mvx-tooltip>
               </div>
             )}
@@ -50,24 +58,22 @@ export class SignTransactionsFooter {
             <button
               data-testid={DataTestIdsEnum.signNextTransactionBtn}
               onClick={showForwardAction ? onConfirm : onNext}
-              class={{ 'sign-transactions-footer-button': true, 'confirm': true, 'disabled': currentIndexCannotBeSignedYet }}
+              class={{ 'sign-transactions-footer-button': true, 'highlighted': true, 'disabled': currentIndexCannotBeSignedYet }}
             >
               {showForwardAction ? (
-                <Fragment>
-                  <span class="sign-transactions-footer-button-label">{needsSigning ? 'Sign' : 'Confirm'}</span>
-
-                  <span class={{ 'sign-transactions-footer-button-icon': true, 'lighter': currentIndexCannotBeSignedYet }}>
-                    {needsSigning ? <mvx-pencil-icon /> : <mvx-check-icon />}
-                  </span>
-                </Fragment>
+                <span class="sign-transactions-footer-button-label">{needsSigning ? 'Sign' : 'Confirm'}</span>
               ) : (
-                <Fragment>
-                  <span class="sign-transactions-footer-button-label">Next</span>
+                <span class="sign-transactions-footer-button-label">Next</span>
+              )}
 
-                  <span class="sign-transactions-footer-button-icon">
-                    <mvx-arrow-right-icon />
-                  </span>
-                </Fragment>
+              {showForwardAction ? (
+                <span class={{ 'sign-transactions-footer-button-icon': true, 'lighter': currentIndexCannotBeSignedYet }}>
+                  {needsSigning ? <mvx-pencil-icon /> : <mvx-check-icon />}
+                </span>
+              ) : (
+                <span class="sign-transactions-footer-button-icon">
+                  <mvx-arrow-right-icon />
+                </span>
               )}
             </button>
           </div>
@@ -76,15 +82,14 @@ export class SignTransactionsFooter {
         <div class="sign-transactions-footer-identity">
           <div class="sign-transactions-footer-identity-label">Sign in with</div>
 
-          {username ? (
+          {username && (
             <div class="sign-transactions-footer-identity-username">
               <span class="sign-transactions-footer-identity-username-prefix">@</span>
               <span class="sign-transactions-footer-identity-username-text">{username}</span>
             </div>
-          ) : (
-            address && <mvx-trim-text text={address} class="sign-transactions-footer-identity-address" />
           )}
 
+          {!username && address && <mvx-trim-text text={address} class="sign-transactions-footer-identity-address" />}
           <mvx-copy-button text={username ?? address} class="sign-transactions-footer-identity-copy" iconClass="sign-transactions-footer-identity-copy-icon" />
           <mvx-explorer-link link={addressExplorerLink} class="sign-transactions-footer-identity-explorer" iconClass="sign-transactions-footer-identity-explorer-icon" />
         </div>
