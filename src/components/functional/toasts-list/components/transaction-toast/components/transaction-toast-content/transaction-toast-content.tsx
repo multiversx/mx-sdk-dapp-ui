@@ -69,6 +69,7 @@ export class TransactionToastContent {
     const transaction = this.transactions[0];
     const showAmount = this.transactions.length === 1 && transaction?.amount;
     const showExplorerLinkButton = transaction?.link && this.transactions.length === 1;
+    const amount = this.getAmount();
 
     return (
       <div
@@ -89,9 +90,18 @@ export class TransactionToastContent {
                   'transaction-toast-title-short': Boolean(showAmount),
                 }}
               >
-                {title || transaction?.action?.name}
+                {transaction?.action?.name || title}
               </h4>
-              {showAmount && <div class="transaction-toast-amount">{transaction.amount}</div>}
+              {showAmount && (
+                <div class="transaction-toast-amount">
+                  <div class="transaction-amount-integer">{amount.amountInteger}</div>
+                  <div class="transaction-amount-fraction">
+                    {amount.amountFraction && <span>.</span>}
+                    {amount.amountFraction}
+                  </div>
+                  <div class="transaction-amount-token">{amount.token}</div>
+                </div>
+              )}
             </div>
             {this.renderDetails()}
           </div>
@@ -104,5 +114,16 @@ export class TransactionToastContent {
         {!showExplorerLinkButton && <mvx-transaction-toast-details transactions={this.transactions} processedTransactionsStatus={this.processedTransactionsStatus} />}
       </div>
     );
+  }
+
+  private getAmount() {
+    const transaction = this.transactions?.[0];
+    const amount = transaction.amount.split(' ');
+    const value = amount[0].split('.');
+    return {
+      amountInteger: value[0],
+      amountFraction: value[1],
+      token: amount[1],
+    };
   }
 }

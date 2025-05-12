@@ -18,6 +18,8 @@
   --mx-tx-bg-transparent: rgba(53, 53, 53, 0.3);
   --mx-tx-text-primary: #e8e8e8;
   --mx-tx-text-secondary: #737373;
+  --mx-tx-success: #4ADE80;
+  --mx-tx-fail: #ff4747;
 
   /* Toast Colors */
   --mx-toast-backdrop-blur: 38px;

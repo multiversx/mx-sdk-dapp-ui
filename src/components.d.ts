@@ -55,6 +55,8 @@ export namespace Components {
         "ticker": string;
         "usdValue"?: string;
     }
+    interface MvxCircleExclamationIcon {
+    }
     interface MvxCloseIcon {
     }
     interface MvxCopyButton {
@@ -421,6 +423,12 @@ declare global {
     var HTMLMvxBalanceComponentElement: {
         prototype: HTMLMvxBalanceComponentElement;
         new (): HTMLMvxBalanceComponentElement;
+    };
+    interface HTMLMvxCircleExclamationIconElement extends Components.MvxCircleExclamationIcon, HTMLStencilElement {
+    }
+    var HTMLMvxCircleExclamationIconElement: {
+        prototype: HTMLMvxCircleExclamationIconElement;
+        new (): HTMLMvxCircleExclamationIconElement;
     };
     interface HTMLMvxCloseIconElement extends Components.MvxCloseIcon, HTMLStencilElement {
     }
@@ -972,6 +980,7 @@ declare global {
         "mvx-arrow-up-right-icon": HTMLMvxArrowUpRightIconElement;
         "mvx-back-arrow-icon": HTMLMvxBackArrowIconElement;
         "mvx-balance-component": HTMLMvxBalanceComponentElement;
+        "mvx-circle-exclamation-icon": HTMLMvxCircleExclamationIconElement;
         "mvx-close-icon": HTMLMvxCloseIconElement;
         "mvx-copy-button": HTMLMvxCopyButtonElement;
         "mvx-custom-toast": HTMLMvxCustomToastElement;
@@ -1059,6 +1068,8 @@ declare namespace LocalJSX {
         "header"?: string;
         "ticker"?: string;
         "usdValue"?: string;
+    }
+    interface MvxCircleExclamationIcon {
     }
     interface MvxCloseIcon {
     }
@@ -1348,6 +1359,7 @@ declare namespace LocalJSX {
         "mvx-arrow-up-right-icon": MvxArrowUpRightIcon;
         "mvx-back-arrow-icon": MvxBackArrowIcon;
         "mvx-balance-component": MvxBalanceComponent;
+        "mvx-circle-exclamation-icon": MvxCircleExclamationIcon;
         "mvx-close-icon": MvxCloseIcon;
         "mvx-copy-button": MvxCopyButton;
         "mvx-custom-toast": MvxCustomToast;
@@ -1427,6 +1439,7 @@ declare module "@stencil/core" {
             "mvx-arrow-up-right-icon": LocalJSX.MvxArrowUpRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowUpRightIconElement>;
             "mvx-back-arrow-icon": LocalJSX.MvxBackArrowIcon & JSXBase.HTMLAttributes<HTMLMvxBackArrowIconElement>;
             "mvx-balance-component": LocalJSX.MvxBalanceComponent & JSXBase.HTMLAttributes<HTMLMvxBalanceComponentElement>;
+            "mvx-circle-exclamation-icon": LocalJSX.MvxCircleExclamationIcon & JSXBase.HTMLAttributes<HTMLMvxCircleExclamationIconElement>;
             "mvx-close-icon": LocalJSX.MvxCloseIcon & JSXBase.HTMLAttributes<HTMLMvxCloseIconElement>;
             "mvx-copy-button": LocalJSX.MvxCopyButton & JSXBase.HTMLAttributes<HTMLMvxCopyButtonElement>;
             "mvx-custom-toast": LocalJSX.MvxCustomToast & JSXBase.HTMLAttributes<HTMLMvxCustomToastElement>;

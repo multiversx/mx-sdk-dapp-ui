@@ -9,6 +9,12 @@ import type { ITransactionListItem } from './transaction-list-item.types';
 export class TransactionListItem {
   @Prop() transaction: ITransactionListItem;
 
+  handleTransactionClick(event: MouseEvent) {
+    event.preventDefault();
+
+    this.transaction.link;
+  }
+
   private renderPrimaryIcon() {
     if (!this.transaction.asset) {
       return <mvx-default-transaction-icon-large />;
@@ -47,29 +53,48 @@ export class TransactionListItem {
     if (!this.transaction) {
       return null;
     }
+    const amount = this.getAmount();
 
     return (
-      <div class="transaction-item">
-        <div class="transaction-icon">{this.renderPrimaryIcon()}</div>
+      <a class="transaction-link" href={this.transaction.link} target="_blank" rel="noreferrer">
+        <div class="transaction-item">
+          <div class="transaction-icon">{this.renderPrimaryIcon()}</div>
 
-        <div class="transaction-details">
-          <div class="transaction-details-header">
-            <h4 class="transaction-title">{this.transaction.action.name}</h4>
-            {this.transaction.amount && (
-              <div
-                class={{
-                  'transaction-amount': true,
-                  'amount-negative': this.transaction.amount.startsWith('-'),
-                  'amount-positive': !this.transaction.amount.startsWith('-'),
-                }}
-              >
-                {this.transaction.amount}
-              </div>
-            )}
+          <div class="transaction-details">
+            <div class="transaction-details-header">
+              <h4 class="transaction-title">{this.transaction.action.name}</h4>
+              {this.transaction.amount && (
+                <div
+                  class={{
+                    'transaction-amount': true,
+                    'amount-negative': this.transaction.amount.startsWith('-'),
+                    'amount-positive': !this.transaction.amount.startsWith('-'),
+                    'transaction-failed': this.transaction.status === 'fail' || this.transaction.status === 'invalid',
+                  }}
+                >
+                  <div class="transaction-amount-integer">{amount.amountInteger}</div>
+                  <div class="transaction-amount-fraction">
+                    {amount.amountFraction && <span>.</span>}
+                    {amount.amountFraction}
+                  </div>
+                  <div class="transaction-amount-token">{amount.token}</div>
+                </div>
+              )}
+            </div>
+            {this.renderDetails()}
           </div>
-          {this.renderDetails()}
         </div>
-      </div>
+      </a>
     );
+  }
+
+  private getAmount() {
+    const amount = this.transaction.amount.split(' ');
+    const value = amount[0].split('.');
+    return {
+      amountInteger: value[0],
+      amountFraction: value[1],
+      token: amount[1],
+    };
   }
 }

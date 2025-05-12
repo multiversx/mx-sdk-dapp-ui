@@ -44,7 +44,6 @@ export class TransactionDetailsBody {
           <mvx-trim-text text={this.hash} />
         </div>
         <mvx-explorer-link iconClass="transaction-details-list-item-explorer-link-icon" link={this.link} />
-        <mvx-copy-button iconClass="transaction-details-list-item-copy-button-icon" text={this.hash} />
       </div>
     );
   }
