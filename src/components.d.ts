@@ -11,7 +11,7 @@ import { IGenericModalProps } from "./components/common/generic-modal/generic-mo
 import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
 import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
-import { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
+import { ISignTransactionsPanelCommonData, ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
@@ -26,7 +26,7 @@ export { IGenericModalProps } from "./components/common/generic-modal/generic-mo
 export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
 export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
-export { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
+export { ISignTransactionsPanelCommonData, ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
@@ -43,6 +43,9 @@ export namespace Components {
     interface MvxAnglesLeftIcon {
     }
     interface MvxAnglesRightIcon {
+    }
+    interface MvxArrowRightIcon {
+        "class"?: string;
     }
     interface MvxArrowUpRightIcon {
         "class"?: string;
@@ -179,7 +182,7 @@ export namespace Components {
     interface MvxSignTransactionsFooter {
         "address"?: string;
         "addressExplorerLink"?: string;
-        "currentIndex": number;
+        "data": ISignTransactionsPanelCommonData;
         "username"?: string;
     }
     interface MvxSignTransactionsOverview {
@@ -421,6 +424,12 @@ declare global {
     var HTMLMvxAnglesRightIconElement: {
         prototype: HTMLMvxAnglesRightIconElement;
         new (): HTMLMvxAnglesRightIconElement;
+    };
+    interface HTMLMvxArrowRightIconElement extends Components.MvxArrowRightIcon, HTMLStencilElement {
+    }
+    var HTMLMvxArrowRightIconElement: {
+        prototype: HTMLMvxArrowRightIconElement;
+        new (): HTMLMvxArrowRightIconElement;
     };
     interface HTMLMvxArrowUpRightIconElement extends Components.MvxArrowUpRightIcon, HTMLStencilElement {
     }
@@ -1006,6 +1015,7 @@ declare global {
         "mvx-angle-right-icon": HTMLMvxAngleRightIconElement;
         "mvx-angles-left-icon": HTMLMvxAnglesLeftIconElement;
         "mvx-angles-right-icon": HTMLMvxAnglesRightIconElement;
+        "mvx-arrow-right-icon": HTMLMvxArrowRightIconElement;
         "mvx-arrow-up-right-icon": HTMLMvxArrowUpRightIconElement;
         "mvx-back-arrow-icon": HTMLMvxBackArrowIconElement;
         "mvx-check-icon": HTMLMvxCheckIconElement;
@@ -1086,6 +1096,9 @@ declare namespace LocalJSX {
     interface MvxAnglesLeftIcon {
     }
     interface MvxAnglesRightIcon {
+    }
+    interface MvxArrowRightIcon {
+        "class"?: string;
     }
     interface MvxArrowUpRightIcon {
         "class"?: string;
@@ -1230,7 +1243,7 @@ declare namespace LocalJSX {
     interface MvxSignTransactionsFooter {
         "address"?: string;
         "addressExplorerLink"?: string;
-        "currentIndex"?: number;
+        "data"?: ISignTransactionsPanelCommonData;
         "onBack"?: (event: MvxSignTransactionsFooterCustomEvent<any>) => void;
         "onCancel"?: (event: MvxSignTransactionsFooterCustomEvent<any>) => void;
         "onConfirm"?: (event: MvxSignTransactionsFooterCustomEvent<any>) => void;
@@ -1400,6 +1413,7 @@ declare namespace LocalJSX {
         "mvx-angle-right-icon": MvxAngleRightIcon;
         "mvx-angles-left-icon": MvxAnglesLeftIcon;
         "mvx-angles-right-icon": MvxAnglesRightIcon;
+        "mvx-arrow-right-icon": MvxArrowRightIcon;
         "mvx-arrow-up-right-icon": MvxArrowUpRightIcon;
         "mvx-back-arrow-icon": MvxBackArrowIcon;
         "mvx-check-icon": MvxCheckIcon;
@@ -1480,6 +1494,7 @@ declare module "@stencil/core" {
             "mvx-angle-right-icon": LocalJSX.MvxAngleRightIcon & JSXBase.HTMLAttributes<HTMLMvxAngleRightIconElement>;
             "mvx-angles-left-icon": LocalJSX.MvxAnglesLeftIcon & JSXBase.HTMLAttributes<HTMLMvxAnglesLeftIconElement>;
             "mvx-angles-right-icon": LocalJSX.MvxAnglesRightIcon & JSXBase.HTMLAttributes<HTMLMvxAnglesRightIconElement>;
+            "mvx-arrow-right-icon": LocalJSX.MvxArrowRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowRightIconElement>;
             "mvx-arrow-up-right-icon": LocalJSX.MvxArrowUpRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowUpRightIconElement>;
             "mvx-back-arrow-icon": LocalJSX.MvxBackArrowIcon & JSXBase.HTMLAttributes<HTMLMvxBackArrowIconElement>;
             "mvx-check-icon": LocalJSX.MvxCheckIcon & JSXBase.HTMLAttributes<HTMLMvxCheckIconElement>;
