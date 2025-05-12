@@ -198,8 +198,6 @@ export class SignTransactionsPanel {
             ) : (
               <mvx-sign-transactions-advanced style={{ width: '100%' }} data={data} highlight={highlight}></mvx-sign-transactions-advanced>
             )}
-
-            <mvx-sign-transactions-action-buttons style={{ width: '100%' }}></mvx-sign-transactions-action-buttons>
           </div>
 
           <mvx-sign-transactions-footer
