@@ -1,5 +1,5 @@
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { Component, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Method, Prop, State } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
@@ -98,21 +98,16 @@ export class SignTransactionsPanel {
 
   private dataUpdate(payload: ISignTransactionsPanelData) {
     this.data = { ...payload };
-    forceUpdate(this);
-  }
 
-  @Watch('data')
-  onDataChange(data: ISignTransactionsPanelData) {
-    for (const key in data) {
+    for (const key in payload) {
       if (Object.prototype.hasOwnProperty.call(state, key)) {
-        state[key] = data[key];
+        state[key] = payload[key];
       }
     }
 
     state.isWaitingForSignature = false;
-    state.isLoading = false;
 
-    if (data.shouldClose) {
+    if (payload.shouldClose) {
       this.onClose({ isUserClick: false });
     }
   }

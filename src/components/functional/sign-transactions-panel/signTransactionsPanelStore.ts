@@ -2,7 +2,6 @@ import { createStore } from '@stencil/store';
 import type { ISignTransactionsPanelData } from 'components/functional/sign-transactions-panel/sign-transactions-panel.types';
 
 interface ITransactionState extends ISignTransactionsPanelData {
-  isLoading: boolean;
   isWaitingForSignature: boolean;
   onCancel: () => void;
   onBack: () => void;
@@ -12,7 +11,6 @@ interface ITransactionState extends ISignTransactionsPanelData {
 }
 
 const initialState: ITransactionState = {
-  isLoading: true,
   isWaitingForSignature: false,
   commonData: {
     data: '',
