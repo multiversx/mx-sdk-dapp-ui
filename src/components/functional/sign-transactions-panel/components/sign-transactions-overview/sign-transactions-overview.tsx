@@ -49,7 +49,7 @@ export class SignTransactionsOverview {
                   <img src={this.interactorIconUrl} alt={this.interactor} />
                 </div>
               )}
-              <mvx-trim-text class="interactor-name" text={this.interactor}></mvx-trim-text>
+              {this.interactor && <mvx-trim-text class="interactor-name" text={this.interactor}></mvx-trim-text>}
             </div>
           </div>
 

@@ -143,8 +143,8 @@ export class SignTransactionsPanel {
   }
 
   render() {
-    const { commonData } = state;
-    const { currentIndex, transactionsCount, origin, address, data, highlight, addressExplorerLink, username } = commonData;
+    const { commonData, onNext, onBack } = state;
+    const { currentIndex, transactionsCount, origin, data, highlight } = commonData;
     const overviewProps = this.getTransactionData();
 
     return (
@@ -153,7 +153,7 @@ export class SignTransactionsPanel {
           {transactionsCount > 1 && (
             <div class="transaction-navigation">
               <div class="transaction-switcher">
-                <div class="navigation-icon" onClick={state.onBack}>
+                <div class="navigation-icon" onClick={onBack}>
                   <mvx-fa-icon icon={faChevronLeft} class="icon-angle-left" />
                 </div>
                 <div class="transaction-counter">
@@ -166,7 +166,7 @@ export class SignTransactionsPanel {
                     </span>
                   </div>
                 </div>
-                <div class="navigation-icon" onClick={state.onNext}>
+                <div class="navigation-icon" onClick={onNext}>
                   <mvx-fa-icon icon={faChevronRight} class="icon-angle-right" />
                 </div>
               </div>
@@ -200,16 +200,7 @@ export class SignTransactionsPanel {
             )}
           </div>
 
-          <mvx-sign-transactions-footer
-            addressExplorerLink={addressExplorerLink}
-            onConfirm={state.onConfirm}
-            onCancel={state.onCancel}
-            data={state.commonData}
-            onBack={state.onBack}
-            onNext={state.onNext}
-            username={username}
-            address={address}
-          />
+          <mvx-sign-transactions-footer />
         </div>
       </mvx-side-panel>
     );

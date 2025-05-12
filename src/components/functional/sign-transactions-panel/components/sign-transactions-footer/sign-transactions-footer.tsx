@@ -1,8 +1,7 @@
-import type { EventEmitter } from '@stencil/core';
-import { Component, Event, Fragment, h, Prop, State } from '@stencil/core';
+import { Component, Fragment, h, State } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-import type { ISignTransactionsPanelCommonData } from '../../sign-transactions-panel.types';
+import state from '../../signTransactionsPanelStore';
 
 @Component({
   tag: 'mvx-sign-transactions-footer',
@@ -12,45 +11,19 @@ import type { ISignTransactionsPanelCommonData } from '../../sign-transactions-p
 export class SignTransactionsFooter {
   @State() awaitsExternalConfirmation: boolean = false;
 
-  @Prop() data: ISignTransactionsPanelCommonData;
-  @Prop() addressExplorerLink?: string = '';
-  @Prop() username?: string = '';
-  @Prop() address?: string = '';
-
-  @Event() confirm: EventEmitter;
-  @Event() cancel: EventEmitter;
-  @Event() back: EventEmitter;
-  @Event() next: EventEmitter;
-
-  private handleBackButtonClick(event: MouseEvent) {
-    event.preventDefault();
-    this.back.emit(event);
-  }
-
-  private handleCancelButtonClick(event: MouseEvent) {
-    event.preventDefault();
-    this.cancel.emit(event);
-  }
-
-  handleSignButtonClick(event: MouseEvent) {
-    this.awaitsExternalConfirmation = true;
-
-    event.preventDefault();
-    this.confirm.emit(event);
-  }
-
-  handleNextButtonClick(event: MouseEvent) {
-    event.preventDefault();
-    this.next.emit(event);
-  }
-
   render() {
-    const isFirstTransaction = this.data.currentIndex === 0;
-    const currentIndexNeedsSigning = this.data.currentIndex === this.data.currentIndexToSign;
-    const currentIndexCannotBeSignedYet = this.data.currentIndex > this.data.currentIndexToSign;
-    const showForwardAction = currentIndexNeedsSigning || currentIndexCannotBeSignedYet;
+    const {
+      commonData: { currentIndex, currentIndexToSign, needsSigning, username, address, addressExplorerLink },
+      onCancel,
+      onBack,
+      onNext,
+      onConfirm,
+    } = state;
 
-    console.log({ showForwardAction, needsSigning: this.data.needsSigning });
+    const isFirstTransaction = currentIndex === 0;
+    const currentIndexNeedsSigning = currentIndex === currentIndexToSign;
+    const currentIndexCannotBeSignedYet = currentIndex > currentIndexToSign;
+    const showForwardAction = currentIndexNeedsSigning || currentIndexCannotBeSignedYet;
 
     return (
       <div class="sign-transactions-footer">
@@ -59,7 +32,7 @@ export class SignTransactionsFooter {
             <button
               class={{ 'sign-transactions-footer-button': true, 'cancel': true }}
               data-testid={isFirstTransaction ? DataTestIdsEnum.signCancelBtn : DataTestIdsEnum.signBackBtn}
-              onClick={isFirstTransaction ? this.handleCancelButtonClick.bind(this) : this.handleBackButtonClick.bind(this)}
+              onClick={isFirstTransaction ? onCancel : onBack}
             >
               {isFirstTransaction ? 'Cancel' : 'Back'}
             </button>
@@ -76,15 +49,15 @@ export class SignTransactionsFooter {
 
             <button
               data-testid={DataTestIdsEnum.signNextTransactionBtn}
-              onClick={showForwardAction ? this.handleSignButtonClick.bind(this) : this.handleNextButtonClick.bind(this)}
+              onClick={showForwardAction ? onConfirm : onNext}
               class={{ 'sign-transactions-footer-button': true, 'confirm': true, 'disabled': currentIndexCannotBeSignedYet }}
             >
               {showForwardAction ? (
                 <Fragment>
-                  <span class="sign-transactions-footer-button-label">{this.data.needsSigning ? 'Sign' : 'Confirm'}</span>
+                  <span class="sign-transactions-footer-button-label">{needsSigning ? 'Sign' : 'Confirm'}</span>
 
                   <span class={{ 'sign-transactions-footer-button-icon': true, 'lighter': currentIndexCannotBeSignedYet }}>
-                    {this.data.needsSigning ? <mvx-pencil-icon /> : <mvx-check-icon />}
+                    {needsSigning ? <mvx-pencil-icon /> : <mvx-check-icon />}
                   </span>
                 </Fragment>
               ) : (
@@ -103,17 +76,17 @@ export class SignTransactionsFooter {
         <div class="sign-transactions-footer-identity">
           <div class="sign-transactions-footer-identity-label">Sign in with</div>
 
-          {this.username ? (
+          {username ? (
             <div class="sign-transactions-footer-identity-username">
               <span class="sign-transactions-footer-identity-username-prefix">@</span>
-              <span class="sign-transactions-footer-identity-username-text">{this.username}</span>
+              <span class="sign-transactions-footer-identity-username-text">{username}</span>
             </div>
           ) : (
-            <mvx-trim-text text={this.address} class="sign-transactions-footer-identity-address" />
+            <mvx-trim-text text={address} class="sign-transactions-footer-identity-address" />
           )}
 
-          <mvx-copy-button text={this.username ?? this.address} class="sign-transactions-footer-identity-copy" iconClass="sign-transactions-footer-identity-copy-icon" />
-          <mvx-explorer-link link={this.addressExplorerLink} class="sign-transactions-footer-identity-explorer" iconClass="sign-transactions-footer-identity-explorer-icon" />
+          <mvx-copy-button text={username ?? address} class="sign-transactions-footer-identity-copy" iconClass="sign-transactions-footer-identity-copy-icon" />
+          <mvx-explorer-link link={addressExplorerLink} class="sign-transactions-footer-identity-explorer" iconClass="sign-transactions-footer-identity-explorer-icon" />
         </div>
       </div>
     );

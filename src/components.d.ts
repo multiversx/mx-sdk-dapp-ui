@@ -11,7 +11,7 @@ import { IGenericModalProps } from "./components/common/generic-modal/generic-mo
 import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
 import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
-import { ISignTransactionsPanelCommonData, ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
+import { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
@@ -26,7 +26,7 @@ export { IGenericModalProps } from "./components/common/generic-modal/generic-mo
 export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
 export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
-export { ISignTransactionsPanelCommonData, ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
+export { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
@@ -180,10 +180,6 @@ export namespace Components {
         "highlight"?: string;
     }
     interface MvxSignTransactionsFooter {
-        "address"?: string;
-        "addressExplorerLink"?: string;
-        "data": ISignTransactionsPanelCommonData;
-        "username"?: string;
     }
     interface MvxSignTransactionsOverview {
         "action": string;
@@ -375,10 +371,6 @@ export interface MvxPaginationEllipsisFormCustomEvent<T> extends CustomEvent<T> 
 export interface MvxSidePanelCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxSidePanelElement;
-}
-export interface MvxSignTransactionsFooterCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMvxSignTransactionsFooterElement;
 }
 export interface MvxSimpleToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -732,21 +724,7 @@ declare global {
         prototype: HTMLMvxSignTransactionsAdvancedElement;
         new (): HTMLMvxSignTransactionsAdvancedElement;
     };
-    interface HTMLMvxSignTransactionsFooterElementEventMap {
-        "confirm": any;
-        "cancel": any;
-        "back": any;
-        "next": any;
-    }
     interface HTMLMvxSignTransactionsFooterElement extends Components.MvxSignTransactionsFooter, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxSignTransactionsFooterElementEventMap>(type: K, listener: (this: HTMLMvxSignTransactionsFooterElement, ev: MvxSignTransactionsFooterCustomEvent<HTMLMvxSignTransactionsFooterElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxSignTransactionsFooterElementEventMap>(type: K, listener: (this: HTMLMvxSignTransactionsFooterElement, ev: MvxSignTransactionsFooterCustomEvent<HTMLMvxSignTransactionsFooterElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLMvxSignTransactionsFooterElement: {
         prototype: HTMLMvxSignTransactionsFooterElement;
@@ -1242,14 +1220,6 @@ declare namespace LocalJSX {
         "highlight"?: string;
     }
     interface MvxSignTransactionsFooter {
-        "address"?: string;
-        "addressExplorerLink"?: string;
-        "data"?: ISignTransactionsPanelCommonData;
-        "onBack"?: (event: MvxSignTransactionsFooterCustomEvent<any>) => void;
-        "onCancel"?: (event: MvxSignTransactionsFooterCustomEvent<any>) => void;
-        "onConfirm"?: (event: MvxSignTransactionsFooterCustomEvent<any>) => void;
-        "onNext"?: (event: MvxSignTransactionsFooterCustomEvent<any>) => void;
-        "username"?: string;
     }
     interface MvxSignTransactionsOverview {
         "action"?: string;
