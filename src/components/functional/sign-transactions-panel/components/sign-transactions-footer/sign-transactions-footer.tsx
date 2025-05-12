@@ -82,7 +82,7 @@ export class SignTransactionsFooter {
               <span class="sign-transactions-footer-identity-username-text">{username}</span>
             </div>
           ) : (
-            <mvx-trim-text text={address} class="sign-transactions-footer-identity-address" />
+            address && <mvx-trim-text text={address} class="sign-transactions-footer-identity-address" />
           )}
 
           <mvx-copy-button text={username ?? address} class="sign-transactions-footer-identity-copy" iconClass="sign-transactions-footer-identity-copy-icon" />
