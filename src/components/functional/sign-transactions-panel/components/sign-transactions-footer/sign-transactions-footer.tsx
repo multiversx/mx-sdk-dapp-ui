@@ -1,5 +1,5 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Event, h, Prop, State } from '@stencil/core';
+import { Component, Event, Fragment, h, Prop, State } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { ISignTransactionsPanelCommonData } from '../../sign-transactions-panel.types';
@@ -20,6 +20,7 @@ export class SignTransactionsFooter {
   @Event() confirm: EventEmitter;
   @Event() cancel: EventEmitter;
   @Event() back: EventEmitter;
+  @Event() next: EventEmitter;
 
   private handleBackButtonClick(event: MouseEvent) {
     event.preventDefault();
@@ -38,11 +39,18 @@ export class SignTransactionsFooter {
     this.confirm.emit(event);
   }
 
+  handleNextButtonClick(event: MouseEvent) {
+    event.preventDefault();
+    this.next.emit(event);
+  }
+
   render() {
     const isFirstTransaction = this.data.currentIndex === 0;
     const currentIndexNeedsSigning = this.data.currentIndex === this.data.currentIndexToSign;
     const currentIndexCannotBeSignedYet = this.data.currentIndex > this.data.currentIndexToSign;
     const showForwardAction = currentIndexNeedsSigning || currentIndexCannotBeSignedYet;
+
+    console.log({ showForwardAction, needsSigning: this.data.needsSigning });
 
     return (
       <div class="sign-transactions-footer">
@@ -67,24 +75,26 @@ export class SignTransactionsFooter {
             )}
 
             <button
-              onClick={this.handleSignButtonClick.bind(this)}
               data-testid={DataTestIdsEnum.signNextTransactionBtn}
+              onClick={showForwardAction ? this.handleSignButtonClick.bind(this) : this.handleNextButtonClick.bind(this)}
               class={{ 'sign-transactions-footer-button': true, 'confirm': true, 'disabled': currentIndexCannotBeSignedYet }}
             >
               {showForwardAction ? (
-                <span class={{ 'sign-transactions-footer-button-icon': true, 'lighter': currentIndexCannotBeSignedYet }}>
-                  {this.data.needsSigning ? <mvx-pencil-icon /> : <mvx-check-icon />}
-                </span>
-              ) : (
-                <span class="sign-transactions-footer-button-icon next">
-                  <mvx-arrow-right-icon />
-                </span>
-              )}
+                <Fragment>
+                  <span class="sign-transactions-footer-button-label">{this.data.needsSigning ? 'Sign' : 'Confirm'}</span>
 
-              {showForwardAction ? (
-                <span class="sign-transactions-footer-button-label">{this.data.needsSigning ? 'Sign' : 'Confirm'}</span>
+                  <span class={{ 'sign-transactions-footer-button-icon': true, 'lighter': currentIndexCannotBeSignedYet }}>
+                    {this.data.needsSigning ? <mvx-pencil-icon /> : <mvx-check-icon />}
+                  </span>
+                </Fragment>
               ) : (
-                <span class="sign-transactions-footer-button-label">Next</span>
+                <Fragment>
+                  <span class="sign-transactions-footer-button-label">Next</span>
+
+                  <span class="sign-transactions-footer-button-icon">
+                    <mvx-arrow-right-icon />
+                  </span>
+                </Fragment>
               )}
             </button>
           </div>

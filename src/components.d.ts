@@ -736,6 +736,7 @@ declare global {
         "confirm": any;
         "cancel": any;
         "back": any;
+        "next": any;
     }
     interface HTMLMvxSignTransactionsFooterElement extends Components.MvxSignTransactionsFooter, HTMLStencilElement {
         addEventListener<K extends keyof HTMLMvxSignTransactionsFooterElementEventMap>(type: K, listener: (this: HTMLMvxSignTransactionsFooterElement, ev: MvxSignTransactionsFooterCustomEvent<HTMLMvxSignTransactionsFooterElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1247,6 +1248,7 @@ declare namespace LocalJSX {
         "onBack"?: (event: MvxSignTransactionsFooterCustomEvent<any>) => void;
         "onCancel"?: (event: MvxSignTransactionsFooterCustomEvent<any>) => void;
         "onConfirm"?: (event: MvxSignTransactionsFooterCustomEvent<any>) => void;
+        "onNext"?: (event: MvxSignTransactionsFooterCustomEvent<any>) => void;
         "username"?: string;
     }
     interface MvxSignTransactionsOverview {

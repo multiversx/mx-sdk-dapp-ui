@@ -147,8 +147,6 @@ export class SignTransactionsPanel {
     const { currentIndex, transactionsCount, origin, address, data, highlight, addressExplorerLink, username } = commonData;
     const overviewProps = this.getTransactionData();
 
-    console.log({ commonData });
-
     return (
       <mvx-side-panel isOpen={this.isOpen} onClose={this.handleClose.bind(this)} panelTitle="Confirm Transaction">
         <div class="sign-transactions-panel">
@@ -210,6 +208,7 @@ export class SignTransactionsPanel {
             onCancel={state.onCancel}
             data={state.commonData}
             onBack={state.onBack}
+            onNext={state.onNext}
             username={username}
             address={address}
           />

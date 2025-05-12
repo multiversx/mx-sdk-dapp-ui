@@ -39,10 +39,11 @@
 
         .sign-transactions-footer-button {
           border-radius: 12px;
-          padding: 16px;
+          padding: 8px 16px;
           display: flex;
           justify-content: center;
-          height: 40px;
+          max-height: 40px;
+          min-height: 40px;
           align-items: center;
           line-height: 1;
           font-size: 16px;
@@ -106,10 +107,6 @@
 
             &.lighter {
               fill: #a09a93;
-            }
-
-            &.next {
-              order: 1;
             }
           }
         }
