@@ -86,12 +86,11 @@
   letter-spacing: -0.14px;
 }
 
-.transaction-toast-amount .transaction-amount-fraction {
+.transaction-toast-amount .transaction-amount-decimal {
   opacity: 0.7;
 }
 
-.transaction-toast-amount .transaction-amount-token {
-  margin-left: 8px;
+.transaction-toast-amount .transaction-amount-label {
   letter-spacing: -0.32px;
   opacity: 0.7;
 }

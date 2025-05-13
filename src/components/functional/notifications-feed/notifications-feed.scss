@@ -7,7 +7,8 @@
   flex-direction: column;
   position: relative;
   gap: 20px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   .transaction-toast-content-wrapper {
     width: 100%;

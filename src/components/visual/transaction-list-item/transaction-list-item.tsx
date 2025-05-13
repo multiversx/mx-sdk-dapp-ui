@@ -1,4 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
+import classNames from 'classnames';
 
 import type { ITransactionListItem } from './transaction-list-item.types';
 
@@ -9,46 +10,6 @@ import type { ITransactionListItem } from './transaction-list-item.types';
 export class TransactionListItem {
   @Prop() transaction: ITransactionListItem;
 
-  handleTransactionClick(event: MouseEvent) {
-    event.preventDefault();
-
-    this.transaction.link;
-  }
-
-  private renderPrimaryIcon() {
-    if (!this.transaction.asset) {
-      return <mvx-default-transaction-icon-large />;
-    }
-
-    if (this.transaction.asset.imageUrl) {
-      return <img src={this.transaction.asset.imageUrl} alt="Transaction icon" class="icon-image" loading="lazy" />;
-    }
-
-    if (this.transaction.asset.icon) {
-      return <mvx-fa-icon icon={this.transaction.asset.icon} class="icon-text"></mvx-fa-icon>;
-    }
-
-    if (this.transaction.asset.text) {
-      return <span class="icon-text">{this.transaction.asset.text}</span>;
-    }
-
-    return <mvx-default-transaction-icon-large />;
-  }
-
-  private renderDetails() {
-    return (
-      <div class="transaction-details-info">
-        {this.transaction.directionLabel && <span class="transaction-details-info-text">{this.transaction.directionLabel}</span>}
-
-        <div class="transaction-details-info-icon">
-          {this.transaction.interactorAsset ? <img src={this.transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <mvx-default-transaction-icon-small />}
-        </div>
-
-        <mvx-trim-text text={this.transaction.interactor} class="transaction-details-info-text" />
-      </div>
-    );
-  }
-
   render() {
     if (!this.transaction) {
       return null;
@@ -58,30 +19,38 @@ export class TransactionListItem {
     return (
       <a class="transaction-link" href={this.transaction.link} target="_blank" rel="noreferrer">
         <div class="transaction-item">
-          <div class="transaction-icon">{this.renderPrimaryIcon()}</div>
+          <div class="transaction-icon">
+            <mvx-primary-icon transaction={this.transaction} defaultIcon={<mvx-default-transaction-icon-large />} />
+          </div>
 
           <div class="transaction-details">
             <div class="transaction-details-header">
               <h4 class="transaction-title">{this.transaction.action.name}</h4>
               {this.transaction.amount && (
-                <div
-                  class={{
-                    'transaction-amount': true,
+                <mvx-format-amount
+                  class={classNames('transaction-amount', {
                     'amount-negative': this.transaction.amount.startsWith('-'),
                     'amount-positive': !this.transaction.amount.startsWith('-'),
                     'transaction-failed': this.transaction.status === 'fail' || this.transaction.status === 'invalid',
-                  }}
-                >
-                  <div class="transaction-amount-integer">{amount.amountInteger}</div>
-                  <div class="transaction-amount-fraction">
-                    {amount.amountFraction && <span>.</span>}
-                    {amount.amountFraction}
-                  </div>
-                  <div class="transaction-amount-token">{amount.token}</div>
-                </div>
+                  })}
+                  isValid={true}
+                  label={amount.label}
+                  valueDecimal={amount.amountDecimal}
+                  valueInteger={amount.amountInteger}
+                  labelClass="transaction-amount-label"
+                  decimalClass="transaction-amount-decimal"
+                />
               )}
             </div>
-            {this.renderDetails()}
+            <div class="transaction-details-info">
+              {this.transaction.directionLabel && <span class="transaction-details-info-text">{this.transaction.directionLabel}</span>}
+
+              <div class="transaction-details-info-icon">
+                {this.transaction.interactorAsset ? <img src={this.transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <mvx-default-transaction-icon-small />}
+              </div>
+
+              <mvx-trim-text text={this.transaction.interactor} class="transaction-details-info-text" />
+            </div>
           </div>
         </div>
       </a>
@@ -93,8 +62,8 @@ export class TransactionListItem {
     const value = amount[0].split('.');
     return {
       amountInteger: value[0],
-      amountFraction: value[1],
-      token: amount[1],
+      amountDecimal: `.${value[1]}`,
+      label: amount[1],
     };
   }
 }

@@ -11,11 +11,11 @@ import { IGenericModalProps } from "./components/common/generic-modal/generic-mo
 import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
 import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
+import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
-import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 import { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
@@ -26,11 +26,11 @@ export { IGenericModalProps } from "./components/common/generic-modal/generic-mo
 export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
 export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
+export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
-export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 export { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
@@ -94,6 +94,7 @@ export namespace Components {
     interface MvxFormatAmount {
         "class"?: string;
         "dataTestId"?: string;
+        "decimalClass"?: string;
         "isValid": boolean;
         "label"?: string;
         "labelClass"?: string;
@@ -168,6 +169,10 @@ export namespace Components {
     interface MvxPreloader {
         "class"?: string;
     }
+    interface MvxPrimaryIcon {
+        "defaultIcon": JSX.Element;
+        "transaction": ITransactionListItem;
+    }
     interface MvxSidePanel {
         "isOpen": boolean;
         "panelClassName"?: string;
@@ -234,7 +239,7 @@ export namespace Components {
         "iconInfo": ITransactionIconInfo;
     }
     interface MvxTransactionListItem {
-        "transaction": ITransactionListItem;
+        "transaction": ITransactionListItem1;
     }
     interface MvxTransactionMethod {
         "actionDescription": string;
@@ -683,6 +688,12 @@ declare global {
         prototype: HTMLMvxPreloaderElement;
         new (): HTMLMvxPreloaderElement;
     };
+    interface HTMLMvxPrimaryIconElement extends Components.MvxPrimaryIcon, HTMLStencilElement {
+    }
+    var HTMLMvxPrimaryIconElement: {
+        prototype: HTMLMvxPrimaryIconElement;
+        new (): HTMLMvxPrimaryIconElement;
+    };
     interface HTMLMvxSidePanelElementEventMap {
         "close": any;
         "back": any;
@@ -1010,6 +1021,7 @@ declare global {
         "mvx-passkey-provider-icon": HTMLMvxPasskeyProviderIconElement;
         "mvx-pending-transactions-panel": HTMLMvxPendingTransactionsPanelElement;
         "mvx-preloader": HTMLMvxPreloaderElement;
+        "mvx-primary-icon": HTMLMvxPrimaryIconElement;
         "mvx-side-panel": HTMLMvxSidePanelElement;
         "mvx-sign-transaction-component": HTMLMvxSignTransactionComponentElement;
         "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
@@ -1109,6 +1121,7 @@ declare namespace LocalJSX {
     interface MvxFormatAmount {
         "class"?: string;
         "dataTestId"?: string;
+        "decimalClass"?: string;
         "isValid"?: boolean;
         "label"?: string;
         "labelClass"?: string;
@@ -1188,6 +1201,10 @@ declare namespace LocalJSX {
     interface MvxPreloader {
         "class"?: string;
     }
+    interface MvxPrimaryIcon {
+        "defaultIcon"?: JSX.Element;
+        "transaction"?: ITransactionListItem;
+    }
     interface MvxSidePanel {
         "isOpen"?: boolean;
         "onBack"?: (event: MvxSidePanelCustomEvent<any>) => void;
@@ -1256,7 +1273,7 @@ declare namespace LocalJSX {
         "iconInfo"?: ITransactionIconInfo;
     }
     interface MvxTransactionListItem {
-        "transaction"?: ITransactionListItem;
+        "transaction"?: ITransactionListItem1;
     }
     interface MvxTransactionMethod {
         "actionDescription"?: string;
@@ -1389,6 +1406,7 @@ declare namespace LocalJSX {
         "mvx-passkey-provider-icon": MvxPasskeyProviderIcon;
         "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
         "mvx-preloader": MvxPreloader;
+        "mvx-primary-icon": MvxPrimaryIcon;
         "mvx-side-panel": MvxSidePanel;
         "mvx-sign-transaction-component": MvxSignTransactionComponent;
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
@@ -1469,6 +1487,7 @@ declare module "@stencil/core" {
             "mvx-passkey-provider-icon": LocalJSX.MvxPasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLMvxPasskeyProviderIconElement>;
             "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
             "mvx-preloader": LocalJSX.MvxPreloader & JSXBase.HTMLAttributes<HTMLMvxPreloaderElement>;
+            "mvx-primary-icon": LocalJSX.MvxPrimaryIcon & JSXBase.HTMLAttributes<HTMLMvxPrimaryIconElement>;
             "mvx-side-panel": LocalJSX.MvxSidePanel & JSXBase.HTMLAttributes<HTMLMvxSidePanelElement>;
             "mvx-sign-transaction-component": LocalJSX.MvxSignTransactionComponent & JSXBase.HTMLAttributes<HTMLMvxSignTransactionComponentElement>;
             "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;
