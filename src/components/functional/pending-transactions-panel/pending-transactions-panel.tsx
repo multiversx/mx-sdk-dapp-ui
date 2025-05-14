@@ -65,7 +65,7 @@ export class PendingTransactionstPanel {
   render() {
     return (
       <mvx-side-panel isOpen={this.isOpen} panelTitle={this.data.title} panelClassName="pending-transactions-panel" onClose={this.handleClose.bind(this)}>
-        <mvx-provider-pending-screen />
+        <mvx-provider-idle-screen />
       </mvx-side-panel>
     );
   }

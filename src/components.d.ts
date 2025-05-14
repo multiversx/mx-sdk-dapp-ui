@@ -154,7 +154,7 @@ export namespace Components {
         "data": IPendingTransactionsPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
-    interface MvxProviderPendingScreen {
+    interface MvxProviderIdleScreen {
         "provider": IProviderBase | null;
     }
     interface MvxSidePanel {
@@ -341,9 +341,9 @@ export interface MvxPaginationEllipsisFormCustomEvent<T> extends CustomEvent<T> 
     detail: T;
     target: HTMLMvxPaginationEllipsisFormElement;
 }
-export interface MvxProviderPendingScreenCustomEvent<T> extends CustomEvent<T> {
+export interface MvxProviderIdleScreenCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLMvxProviderPendingScreenElement;
+    target: HTMLMvxProviderIdleScreenElement;
 }
 export interface MvxSidePanelCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -659,22 +659,22 @@ declare global {
         prototype: HTMLMvxPendingTransactionsPanelElement;
         new (): HTMLMvxPendingTransactionsPanelElement;
     };
-    interface HTMLMvxProviderPendingScreenElementEventMap {
+    interface HTMLMvxProviderIdleScreenElementEventMap {
         "access": any;
     }
-    interface HTMLMvxProviderPendingScreenElement extends Components.MvxProviderPendingScreen, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxProviderPendingScreenElementEventMap>(type: K, listener: (this: HTMLMvxProviderPendingScreenElement, ev: MvxProviderPendingScreenCustomEvent<HTMLMvxProviderPendingScreenElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLMvxProviderIdleScreenElement extends Components.MvxProviderIdleScreen, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxProviderIdleScreenElementEventMap>(type: K, listener: (this: HTMLMvxProviderIdleScreenElement, ev: MvxProviderIdleScreenCustomEvent<HTMLMvxProviderIdleScreenElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxProviderPendingScreenElementEventMap>(type: K, listener: (this: HTMLMvxProviderPendingScreenElement, ev: MvxProviderPendingScreenCustomEvent<HTMLMvxProviderPendingScreenElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxProviderIdleScreenElementEventMap>(type: K, listener: (this: HTMLMvxProviderIdleScreenElement, ev: MvxProviderIdleScreenCustomEvent<HTMLMvxProviderIdleScreenElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLMvxProviderPendingScreenElement: {
-        prototype: HTMLMvxProviderPendingScreenElement;
-        new (): HTMLMvxProviderPendingScreenElement;
+    var HTMLMvxProviderIdleScreenElement: {
+        prototype: HTMLMvxProviderIdleScreenElement;
+        new (): HTMLMvxProviderIdleScreenElement;
     };
     interface HTMLMvxSidePanelElementEventMap {
         "close": any;
@@ -996,7 +996,7 @@ declare global {
         "mvx-pagination-ellipsis-form": HTMLMvxPaginationEllipsisFormElement;
         "mvx-passkey-provider-icon": HTMLMvxPasskeyProviderIconElement;
         "mvx-pending-transactions-panel": HTMLMvxPendingTransactionsPanelElement;
-        "mvx-provider-pending-screen": HTMLMvxProviderPendingScreenElement;
+        "mvx-provider-idle-screen": HTMLMvxProviderIdleScreenElement;
         "mvx-side-panel": HTMLMvxSidePanelElement;
         "mvx-sign-transaction-component": HTMLMvxSignTransactionComponentElement;
         "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
@@ -1160,8 +1160,8 @@ declare namespace LocalJSX {
     interface MvxPendingTransactionsPanel {
         "data"?: IPendingTransactionsPanelData;
     }
-    interface MvxProviderPendingScreen {
-        "onAccess"?: (event: MvxProviderPendingScreenCustomEvent<any>) => void;
+    interface MvxProviderIdleScreen {
+        "onAccess"?: (event: MvxProviderIdleScreenCustomEvent<any>) => void;
         "provider"?: IProviderBase | null;
     }
     interface MvxSidePanel {
@@ -1359,7 +1359,7 @@ declare namespace LocalJSX {
         "mvx-pagination-ellipsis-form": MvxPaginationEllipsisForm;
         "mvx-passkey-provider-icon": MvxPasskeyProviderIcon;
         "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
-        "mvx-provider-pending-screen": MvxProviderPendingScreen;
+        "mvx-provider-idle-screen": MvxProviderIdleScreen;
         "mvx-side-panel": MvxSidePanel;
         "mvx-sign-transaction-component": MvxSignTransactionComponent;
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
@@ -1437,7 +1437,7 @@ declare module "@stencil/core" {
             "mvx-pagination-ellipsis-form": LocalJSX.MvxPaginationEllipsisForm & JSXBase.HTMLAttributes<HTMLMvxPaginationEllipsisFormElement>;
             "mvx-passkey-provider-icon": LocalJSX.MvxPasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLMvxPasskeyProviderIconElement>;
             "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
-            "mvx-provider-pending-screen": LocalJSX.MvxProviderPendingScreen & JSXBase.HTMLAttributes<HTMLMvxProviderPendingScreenElement>;
+            "mvx-provider-idle-screen": LocalJSX.MvxProviderIdleScreen & JSXBase.HTMLAttributes<HTMLMvxProviderIdleScreenElement>;
             "mvx-side-panel": LocalJSX.MvxSidePanel & JSXBase.HTMLAttributes<HTMLMvxSidePanelElement>;
             "mvx-sign-transaction-component": LocalJSX.MvxSignTransactionComponent & JSXBase.HTMLAttributes<HTMLMvxSignTransactionComponentElement>;
             "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;
