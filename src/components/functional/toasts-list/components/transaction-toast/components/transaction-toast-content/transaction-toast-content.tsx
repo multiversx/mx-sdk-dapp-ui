@@ -20,13 +20,24 @@ export class TransactionToastContent {
     this.deleteToast.emit();
   }
 
+  private getAmount() {
+    const [transaction] = this.transactions || [];
+    const [amount, label] = transaction.amount.split(' ');
+    const [amountInteger, amountDecimal] = amount.split('.');
+    return {
+      amountInteger,
+      amountDecimal: `.${amountDecimal}`,
+      label,
+    };
+  }
+
   render() {
     const { title, hasCloseButton } = this.toastDataState;
-    const transaction = this.transactions[0];
+    const [transaction] = this.transactions;
     const showAmount = this.transactions.length === 1 && transaction?.amount;
     const showExplorerLinkButton = transaction?.link && this.transactions.length === 1;
     const amount = this.getAmount();
-    const showPrimaryIcon = transaction.asset === null || transaction.asset.imageUrl || transaction.asset.icon || transaction.asset.text;
+    const showPrimaryIcon = transaction.asset == null || transaction.asset.imageUrl || transaction.asset.icon || transaction.asset.text;
 
     return (
       <div
@@ -85,16 +96,5 @@ export class TransactionToastContent {
         {!showExplorerLinkButton && <mvx-transaction-toast-details transactions={this.transactions} processedTransactionsStatus={this.processedTransactionsStatus} />}
       </div>
     );
-  }
-
-  private getAmount() {
-    const transaction = this.transactions?.[0];
-    const amount = transaction.amount.split(' ');
-    const value = amount[0].split('.');
-    return {
-      amountInteger: value[0],
-      amountDecimal: `.${value[1]}`,
-      label: amount[1],
-    };
   }
 }
