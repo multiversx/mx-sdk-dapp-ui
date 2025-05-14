@@ -11,7 +11,6 @@ interface ITransactionState extends ISignTransactionsPanelData {
 }
 
 const initialState: ITransactionState = {
-  isLoading: false,
   isWaitingForSignature: false,
   commonData: {
     data: '',
