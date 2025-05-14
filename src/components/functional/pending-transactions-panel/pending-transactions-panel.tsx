@@ -1,5 +1,4 @@
 import { Component, forceUpdate, h, Method, Prop, State } from '@stencil/core';
-import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
@@ -65,18 +64,8 @@ export class PendingTransactionstPanel {
 
   render() {
     return (
-      <mvx-side-panel isOpen={this.isOpen} panelClassName="pending-transactions-panel" onClose={this.handleClose.bind(this)}>
-        <div class="pending-transactions-content">
-          <div class="pending-transactions-header">
-            <h2 data-testid={DataTestIdsEnum.pendingTransactionsTitle}>{this.data.title}</h2>
-            <h4 data-testid={DataTestIdsEnum.pendingTransactionsSubtitle}>{this.data.subtitle}</h4>
-          </div>
-          <div class="pending-transactions-body">
-            <button class="close-button" onClick={this.handleClose.bind(this)}>
-              Close
-            </button>
-          </div>
-        </div>
+      <mvx-side-panel isOpen={this.isOpen} panelTitle={this.data.title} panelClassName="pending-transactions-panel" onClose={this.handleClose.bind(this)}>
+        <mvx-provider-pending-screen />
       </mvx-side-panel>
     );
   }

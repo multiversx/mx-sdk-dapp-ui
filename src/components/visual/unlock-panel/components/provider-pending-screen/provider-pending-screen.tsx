@@ -4,11 +4,11 @@ import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 
 @Component({
-  tag: 'mvx-unlock-provider-intro',
-  styleUrl: 'unlock-provider-intro.scss',
+  tag: 'mvx-provider-pending-screen',
+  styleUrl: 'provider-pending-screen.scss',
   shadow: true,
 })
-export class UnlockProviderIntro {
+export class ProviderPendingScreen {
   @Prop() provider: IProviderBase | null = null;
   @Event() access: EventEmitter;
 
