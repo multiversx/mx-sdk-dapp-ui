@@ -24,27 +24,35 @@ export class SignTransactionsAdvanced {
     this.decodeMethod = method;
   }
 
+  getHighlight(data: string, highlight: string) {
+    const highlightIndex = data.indexOf(highlight);
+    const beforeText = data.slice(0, highlightIndex);
+    const highlightText = data.slice(highlightIndex, highlightIndex + this.highlight.length);
+    const afterText = data.slice(highlightIndex + highlight.length);
+
+    return [h('span', null, beforeText), h('span', { class: { 'data-highlight': true } }, highlightText), h('span', null, afterText)];
+  }
+
   get computedDisplayData() {
     if (this.decodeMethod !== DecodeMethodEnum.raw) {
       const {
         commonData: { decodedData },
       } = state;
 
-      const currentData = decodedData?.[this.decodeMethod];
+      const { displayValue, highlight } = decodedData?.[this.decodeMethod] ?? {};
 
-      return currentData?.displayValue;
+      if (!highlight || !displayValue.includes(highlight)) {
+        return displayValue;
+      }
+
+      return this.getHighlight(displayValue, highlight);
     }
 
     if (!this.highlight || !this.data.includes(this.highlight)) {
       return this.data;
     }
 
-    const highlightIndex = this.data.indexOf(this.highlight);
-    const beforeText = this.data.slice(0, highlightIndex);
-    const highlightText = this.data.slice(highlightIndex, highlightIndex + this.highlight.length);
-    const afterText = this.data.slice(highlightIndex + this.highlight.length);
-
-    return [h('span', null, beforeText), h('span', { class: { 'data-highlight': true } }, highlightText), h('span', null, afterText)];
+    return this.getHighlight(this.data, this.highlight);
   }
 
   render() {

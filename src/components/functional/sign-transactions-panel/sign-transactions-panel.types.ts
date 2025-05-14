@@ -74,6 +74,7 @@ export enum DecodeMethodEnum {
 export interface DecodedDisplayType {
   displayValue: string;
   validationWarnings: string[];
+  highlight?: string | null;
 }
 
 export enum SignEventsEnum {
