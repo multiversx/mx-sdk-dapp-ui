@@ -1,5 +1,4 @@
-import type { EventEmitter } from '@stencil/core';
-import { Component, Element, Event, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
@@ -9,6 +8,10 @@ import { processImgSrc } from 'utils/processImgSrc';
 
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
 import { UnlockPanelEventsEnum } from './unlock-panel.types';
+
+const unlockPanelClasses: Record<string, string> = {
+  footerIcon: 'mvx:w-4! mvx:h-auto!',
+};
 
 @Component({
   tag: 'mvx-unlock-panel',
@@ -21,9 +24,6 @@ export class UnlockPanel {
 
   @Prop() isOpen: boolean = false;
   @Prop() allowedProviders: IProviderBase[] = [];
-
-  @Event() close: EventEmitter;
-  @Event() login: EventEmitter<{ provider: IProviderBase['type']; anchor?: HTMLElement }>;
 
   @State() isLoggingIn: boolean = false;
   @State() isIntroScreenVisible: boolean = false;
@@ -65,47 +65,49 @@ export class UnlockPanel {
     }
 
     this.eventBus.unsubscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
+    this.eventBus.unsubscribe(UnlockPanelEventsEnum.CANCEL_IN_PROVIDER, this.handleResetLoginState.bind(this));
     this.isLoggingIn = false;
     this.selectedMethod = null;
     this.panelState = { isOpen: false, allowedProviders: [] };
 
-    return new Promise(resolve => setTimeout(resolve, 300));
+    const delayClosingAnimation = new Promise(resolve => setTimeout(resolve, 300));
+    return delayClosingAnimation;
   }
 
-  private observeContainer(element: HTMLElement | null) {
-    if (!element) {
-      return;
-    }
+  componentDidLoad() {
+    this.eventBus.subscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
+    this.eventBus.subscribe(UnlockPanelEventsEnum.CANCEL_IN_PROVIDER, this.handleResetLoginState.bind(this));
+  }
 
-    this.anchor = element;
-
-    if (this.observer) {
-      this.observer.disconnect();
-    }
-
-    this.observer = new MutationObserver(() => {
-      this.isLoggingIn = element.childElementCount > 0;
-    });
-
-    this.observer.observe(element, { childList: true, subtree: true });
+  private unlockPanelUpdate(payload: { isOpen: boolean; allowedProviders: IProviderBase[] }) {
+    this.panelState = {
+      ...payload,
+      allowedProviders: payload.allowedProviders,
+    };
   }
 
   handleLogin(provider: IProviderBase) {
-    this.eventBus.publish(UnlockPanelEventsEnum.LOGIN, { type: provider.type, anchor: this.anchor });
     this.selectedMethod = provider;
 
     switch (provider.type) {
       case ProviderTypeEnum.ledger:
         this.isIntroScreenVisible = true;
         break;
+      case ProviderTypeEnum.crossWindow:
+      case ProviderTypeEnum.extension:
+      case ProviderTypeEnum.metamask:
+      case ProviderTypeEnum.passkey:
+        this.isIntroScreenVisible = true;
+        this.isLoggingIn = true;
+        this.eventBus.publish(UnlockPanelEventsEnum.LOGIN, { type: provider.type, anchor: this.anchor });
+        break;
       default:
         this.handleAccess();
     }
   }
 
-  handleResetLoginState(event: MouseEvent) {
-    event.preventDefault();
-
+  handleResetLoginState(event?: MouseEvent) {
+    event?.preventDefault?.();
     this.isLoggingIn = false;
     this.isIntroScreenVisible = false;
     this.selectedMethod = null;
@@ -132,7 +134,7 @@ export class UnlockPanel {
   handleAccess() {
     this.isIntroScreenVisible = false;
     this.isLoggingIn = true;
-    this.login.emit({ provider: this.selectedMethod.type, anchor: this.anchor });
+    this.eventBus.publish(UnlockPanelEventsEnum.LOGIN, { type: this.selectedMethod.type, anchor: this.anchor });
   }
 
   render() {
@@ -144,6 +146,8 @@ export class UnlockPanel {
     const panelTitle = this.selectedMethod ? this.selectedMethod.name : 'Connect your wallet';
     const hasDetectedProviders = detectedProviders.length > 0;
 
+    const isProviderScreenVisible = !this.isLoggingIn && !this.isIntroScreenVisible;
+
     return (
       <mvx-side-panel
         isOpen={this.panelState.isOpen}
@@ -152,10 +156,17 @@ export class UnlockPanel {
         onClose={this.handleClose.bind(this)}
         onBack={this.handleResetLoginState.bind(this)}
       >
-        <div id="anchor" ref={element => this.observeContainer(element)} class={{ 'unlock-panel-anchor': this.isLoggingIn }} />
-        {this.isIntroScreenVisible && <mvx-provider-idle-screen provider={this.selectedMethod} onAccess={this.handleAccess.bind(this)} />}
+        <div
+          id="anchor"
+          ref={el => {
+            this.anchor = el;
+          }}
+          class={{ 'unlock-panel-anchor': this.isLoggingIn }}
+        >
+          {this.isIntroScreenVisible && <mvx-provider-idle-screen provider={this.selectedMethod} onAccess={this.handleAccess.bind(this)} />}
+        </div>
 
-        {!this.isLoggingIn && !this.isIntroScreenVisible && (
+        {isProviderScreenVisible && (
           <div class="unlock-panel">
             <div class="unlock-panel-groups">
               {hasDetectedProviders && (
@@ -163,15 +174,8 @@ export class UnlockPanel {
                   <div class="unlock-panel-group-label">Detected</div>
 
                   <div class="unlock-panel-group-providers">
-                    {detectedProviders.map((provider, providerIndex) => (
-                      <mvx-unlock-provider-button
-                        provider={provider}
-                        onClick={this.handleLogin.bind(this, provider)}
-                        class={classNames('unlock-panel-group-provider', {
-                          first: providerIndex === 0,
-                          last: providerIndex === detectedProviders.length - 1,
-                        })}
-                      />
+                    {detectedProviders.map(provider => (
+                      <mvx-unlock-provider-button provider={provider} onClick={this.handleLogin.bind(this, provider)} />
                     ))}
                   </div>
                 </div>
@@ -181,15 +185,8 @@ export class UnlockPanel {
                 <div class="unlock-panel-group-label">{hasDetectedProviders ? 'Other Options' : 'Options'}</div>
 
                 <div class="unlock-panel-group-providers">
-                  {otherProviders.map((provider, providerIndex) => (
-                    <mvx-unlock-provider-button
-                      provider={provider}
-                      onClick={this.handleLogin.bind(this, provider)}
-                      class={classNames('unlock-panel-group-provider', {
-                        first: providerIndex === 0,
-                        last: providerIndex === otherProviders.length - 1,
-                      })}
-                    />
+                  {otherProviders.map(provider => (
+                    <mvx-unlock-provider-button provider={provider} onClick={this.handleLogin.bind(this, provider)} />
                   ))}
 
                   <slot />
@@ -206,23 +203,16 @@ export class UnlockPanel {
                   Take full control of <br /> your assets.
                 </div>
 
-                <mvx-arrow-up-right-icon class="unlock-panel-footer-icon" />
+                <mvx-arrow-up-right-icon
+                  class={classNames('unlock-panel-footer-icon', {
+                    [unlockPanelClasses.footerIcon]: true,
+                  })}
+                />
               </div>
             </div>
           </div>
         )}
       </mvx-side-panel>
     );
-  }
-
-  componentDidLoad() {
-    this.eventBus.subscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
-  }
-
-  private unlockPanelUpdate(payload: { isOpen: boolean; allowedProviders: IProviderBase[] }) {
-    this.panelState = {
-      ...payload,
-      allowedProviders: payload.allowedProviders,
-    };
   }
 }

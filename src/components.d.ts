@@ -45,6 +45,7 @@ export namespace Components {
     interface MvxAnglesRightIcon {
     }
     interface MvxArrowUpRightIcon {
+        "class"?: string;
     }
     interface MvxBackArrowIcon {
     }
@@ -79,6 +80,9 @@ export namespace Components {
         "text"?: string;
     }
     interface MvxExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
     }
     interface MvxFaIcon {
         "class"?: string;
@@ -125,12 +129,16 @@ export namespace Components {
         "isAwaiting"?: boolean;
     }
     interface MvxLedgerProviderIcon {
+        "class"?: string;
     }
     interface MvxMagnifyingGlassIcon {
+        "class"?: string;
     }
     interface MvxMetamaskProviderIcon {
+        "class"?: string;
     }
     interface MvxMultiversxLogoIcon {
+        "class"?: string;
     }
     interface MvxNotificationsFeed {
         "getEventBus": () => Promise<IEventBus>;
@@ -149,10 +157,14 @@ export namespace Components {
         "maxPageToSearchFor": number;
     }
     interface MvxPasskeyProviderIcon {
+        "class"?: string;
     }
     interface MvxPendingTransactionsPanel {
         "data": IPendingTransactionsPanelData;
         "getEventBus": () => Promise<IEventBus>;
+    }
+    interface MvxPreloader {
+        "class"?: string;
     }
     interface MvxProviderIdleScreen {
         "provider": IProviderBase | null;
@@ -174,6 +186,7 @@ export namespace Components {
         "toast": ISimpleToast;
     }
     interface MvxSpinnerIcon {
+        "class"?: string;
     }
     interface MvxToastList {
         "customToasts": CustomToastType1[];
@@ -304,6 +317,7 @@ export namespace Components {
         "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxWalletProviderIcon {
+        "class"?: string;
     }
     interface MvxXaliasProviderIcon {
     }
@@ -364,10 +378,6 @@ export interface MvxTransactionToastCustomEvent<T> extends CustomEvent<T> {
 export interface MvxTransactionToastContentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxTransactionToastContentElement;
-}
-export interface MvxUnlockPanelCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMvxUnlockPanelElement;
 }
 declare global {
     interface HTMLMvxAngleLeftIconElement extends Components.MvxAngleLeftIcon, HTMLStencilElement {
@@ -659,6 +669,12 @@ declare global {
         prototype: HTMLMvxPendingTransactionsPanelElement;
         new (): HTMLMvxPendingTransactionsPanelElement;
     };
+    interface HTMLMvxPreloaderElement extends Components.MvxPreloader, HTMLStencilElement {
+    }
+    var HTMLMvxPreloaderElement: {
+        prototype: HTMLMvxPreloaderElement;
+        new (): HTMLMvxPreloaderElement;
+    };
     interface HTMLMvxProviderIdleScreenElementEventMap {
         "access": any;
     }
@@ -900,19 +916,7 @@ declare global {
         prototype: HTMLMvxUnlockButtonElement;
         new (): HTMLMvxUnlockButtonElement;
     };
-    interface HTMLMvxUnlockPanelElementEventMap {
-        "close": any;
-        "login": { provider: IProviderBase['type']; anchor?: HTMLElement };
-    }
     interface HTMLMvxUnlockPanelElement extends Components.MvxUnlockPanel, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxUnlockPanelElementEventMap>(type: K, listener: (this: HTMLMvxUnlockPanelElement, ev: MvxUnlockPanelCustomEvent<HTMLMvxUnlockPanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxUnlockPanelElementEventMap>(type: K, listener: (this: HTMLMvxUnlockPanelElement, ev: MvxUnlockPanelCustomEvent<HTMLMvxUnlockPanelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLMvxUnlockPanelElement: {
         prototype: HTMLMvxUnlockPanelElement;
@@ -996,6 +1000,7 @@ declare global {
         "mvx-pagination-ellipsis-form": HTMLMvxPaginationEllipsisFormElement;
         "mvx-passkey-provider-icon": HTMLMvxPasskeyProviderIconElement;
         "mvx-pending-transactions-panel": HTMLMvxPendingTransactionsPanelElement;
+        "mvx-preloader": HTMLMvxPreloaderElement;
         "mvx-provider-idle-screen": HTMLMvxProviderIdleScreenElement;
         "mvx-side-panel": HTMLMvxSidePanelElement;
         "mvx-sign-transaction-component": HTMLMvxSignTransactionComponentElement;
@@ -1045,6 +1050,7 @@ declare namespace LocalJSX {
     interface MvxAnglesRightIcon {
     }
     interface MvxArrowUpRightIcon {
+        "class"?: string;
     }
     interface MvxBackArrowIcon {
     }
@@ -1080,6 +1086,9 @@ declare namespace LocalJSX {
         "text"?: string;
     }
     interface MvxExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
     }
     interface MvxFaIcon {
         "class"?: string;
@@ -1131,12 +1140,16 @@ declare namespace LocalJSX {
         "onConnect"?: (event: MvxLedgerIntroCustomEvent<any>) => void;
     }
     interface MvxLedgerProviderIcon {
+        "class"?: string;
     }
     interface MvxMagnifyingGlassIcon {
+        "class"?: string;
     }
     interface MvxMetamaskProviderIcon {
+        "class"?: string;
     }
     interface MvxMultiversxLogoIcon {
+        "class"?: string;
     }
     interface MvxNotificationsFeed {
     }
@@ -1156,9 +1169,13 @@ declare namespace LocalJSX {
         "onSearch"?: (event: MvxPaginationEllipsisFormCustomEvent<number>) => void;
     }
     interface MvxPasskeyProviderIcon {
+        "class"?: string;
     }
     interface MvxPendingTransactionsPanel {
         "data"?: IPendingTransactionsPanelData;
+    }
+    interface MvxPreloader {
+        "class"?: string;
     }
     interface MvxProviderIdleScreen {
         "onAccess"?: (event: MvxProviderIdleScreenCustomEvent<any>) => void;
@@ -1183,6 +1200,7 @@ declare namespace LocalJSX {
         "toast"?: ISimpleToast;
     }
     interface MvxSpinnerIcon {
+        "class"?: string;
     }
     interface MvxToastList {
         "customToasts"?: CustomToastType1[];
@@ -1301,8 +1319,6 @@ declare namespace LocalJSX {
     interface MvxUnlockPanel {
         "allowedProviders"?: IProviderBase[];
         "isOpen"?: boolean;
-        "onClose"?: (event: MvxUnlockPanelCustomEvent<any>) => void;
-        "onLogin"?: (event: MvxUnlockPanelCustomEvent<{ provider: IProviderBase['type']; anchor?: HTMLElement }>) => void;
     }
     interface MvxUnlockProviderButton {
         "class"?: string;
@@ -1315,6 +1331,7 @@ declare namespace LocalJSX {
         "data"?: IWalletConnectPanelData;
     }
     interface MvxWalletProviderIcon {
+        "class"?: string;
     }
     interface MvxXaliasProviderIcon {
     }
@@ -1359,6 +1376,7 @@ declare namespace LocalJSX {
         "mvx-pagination-ellipsis-form": MvxPaginationEllipsisForm;
         "mvx-passkey-provider-icon": MvxPasskeyProviderIcon;
         "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
+        "mvx-preloader": MvxPreloader;
         "mvx-provider-idle-screen": MvxProviderIdleScreen;
         "mvx-side-panel": MvxSidePanel;
         "mvx-sign-transaction-component": MvxSignTransactionComponent;
@@ -1437,6 +1455,7 @@ declare module "@stencil/core" {
             "mvx-pagination-ellipsis-form": LocalJSX.MvxPaginationEllipsisForm & JSXBase.HTMLAttributes<HTMLMvxPaginationEllipsisFormElement>;
             "mvx-passkey-provider-icon": LocalJSX.MvxPasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLMvxPasskeyProviderIconElement>;
             "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
+            "mvx-preloader": LocalJSX.MvxPreloader & JSXBase.HTMLAttributes<HTMLMvxPreloaderElement>;
             "mvx-provider-idle-screen": LocalJSX.MvxProviderIdleScreen & JSXBase.HTMLAttributes<HTMLMvxProviderIdleScreenElement>;
             "mvx-side-panel": LocalJSX.MvxSidePanel & JSXBase.HTMLAttributes<HTMLMvxSidePanelElement>;
             "mvx-sign-transaction-component": LocalJSX.MvxSignTransactionComponent & JSXBase.HTMLAttributes<HTMLMvxSignTransactionComponentElement>;

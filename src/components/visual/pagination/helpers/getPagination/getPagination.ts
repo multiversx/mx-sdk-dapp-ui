@@ -2,7 +2,7 @@ import { ELLIPSIS } from 'constants/htmlStrings';
 import inRange from 'lodash.inrange';
 import range from 'lodash.range';
 
-import { MAX_PAGINATION_BATCH_LENGTH, MAX_PAGINATION_SLOTS, MIN_PAGINATION_BATCH_LENGTH } from './getPagination.config';
+import { MAX_PAGINATION_BATCH_LENGTH, MAX_PAGINATION_SLOTS, MIN_PAGINATION_BATCH_LENGTH } from './getPagination.constants';
 
 interface GetPaginationType {
   currentPage: number;

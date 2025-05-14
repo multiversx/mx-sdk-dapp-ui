@@ -17,7 +17,7 @@
     position: relative;
 
     .pagination-ellipsis-form-field-input {
-      width: 80px;
+      width: 88px;
       height: calc(40px + 4px);
       border-width: 1px;
       box-shadow: none;
@@ -60,11 +60,10 @@
       height: 32px;
       transform: translateY(-50%);
       font-size: 12px;
-      padding: calc(20px / 2);
       top: 50%;
 
       &:hover .pagination-ellipsis-form-button-icon {
-        color: #23f7dd;
+        fill: #23f7dd;
       }
     }
   }

@@ -1,0 +1,10 @@
+@keyframes SpinnerAnimation {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner {
+  fill: #a09a93;
+  animation: SpinnerAnimation 3000ms linear infinite;
+}
