@@ -29,7 +29,6 @@ export class SignTransactionsPanel {
   @State() activeTab: 'overview' | 'advanced' = 'overview';
 
   @Prop() data: ISignTransactionsPanelData = {
-    isLoading: false,
     commonData: {
       egldLabel: '',
       feeLimit: '',
