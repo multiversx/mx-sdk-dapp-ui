@@ -2,7 +2,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import { IconSizeEnumType } from 'components/common/transaction-asset-icon/transaction-asset-icon.types';
-import { getAmount } from 'components/functional/toasts-list/helpers/getAmount/getAmount';
+import { getAmountParts } from 'components/functional/toasts-list/helpers';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
@@ -27,7 +27,7 @@ export class TransactionToastContent {
     const [transaction] = this.transactions;
     const showAmount = this.transactions.length === 1 && transaction?.amount;
     const showExplorerLinkButton = transaction?.link && this.transactions.length === 1;
-    const amount = transaction && getAmount(transaction);
+    const amount = transaction && getAmountParts(transaction.amount);
     const showPrimaryIcon = transaction.asset == null || transaction.asset.imageUrl || transaction.asset.icon || transaction.asset.text;
 
     return (

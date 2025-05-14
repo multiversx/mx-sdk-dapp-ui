@@ -11,7 +11,6 @@ import { IGenericModalProps } from "./components/common/generic-modal/generic-mo
 import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
 import { IEventBus } from "./utils/EventBus";
 import { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
-import { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 import { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -20,6 +19,7 @@ import { ITransactionListItem } from "./components/visual/transaction-list-item/
 import { IconSizeEnumType } from "./components/common/transaction-asset-icon/transaction-asset-icon.types";
 import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
+import { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
 import { IWalletConnectPanelData } from "./components/functional/wallet-connect/wallet-connect.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -27,7 +27,6 @@ export { IGenericModalProps } from "./components/common/generic-modal/generic-mo
 export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
 export { IEventBus } from "./utils/EventBus";
 export { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
-export { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 export { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -36,6 +35,7 @@ export { ITransactionListItem } from "./components/visual/transaction-list-item/
 export { IconSizeEnumType } from "./components/common/transaction-asset-icon/transaction-asset-icon.types";
 export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
+export { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
 export { IWalletConnectPanelData } from "./components/functional/wallet-connect/wallet-connect.types";
 export namespace Components {
     interface MvxAngleLeftIcon {
@@ -170,9 +170,6 @@ export namespace Components {
     }
     interface MvxPreloader {
         "class"?: string;
-    }
-    interface MvxProviderPendingScreen {
-        "provider": IProviderBase | null;
     }
     interface MvxSidePanel {
         "isOpen": boolean;
@@ -366,10 +363,6 @@ export interface MvxPaginationCustomEvent<T> extends CustomEvent<T> {
 export interface MvxPaginationEllipsisFormCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxPaginationEllipsisFormElement;
-}
-export interface MvxProviderPendingScreenCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMvxProviderPendingScreenElement;
 }
 export interface MvxSidePanelCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -696,23 +689,6 @@ declare global {
     var HTMLMvxPreloaderElement: {
         prototype: HTMLMvxPreloaderElement;
         new (): HTMLMvxPreloaderElement;
-    };
-    interface HTMLMvxProviderPendingScreenElementEventMap {
-        "access": any;
-    }
-    interface HTMLMvxProviderPendingScreenElement extends Components.MvxProviderPendingScreen, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxProviderPendingScreenElementEventMap>(type: K, listener: (this: HTMLMvxProviderPendingScreenElement, ev: MvxProviderPendingScreenCustomEvent<HTMLMvxProviderPendingScreenElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxProviderPendingScreenElementEventMap>(type: K, listener: (this: HTMLMvxProviderPendingScreenElement, ev: MvxProviderPendingScreenCustomEvent<HTMLMvxProviderPendingScreenElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLMvxProviderPendingScreenElement: {
-        prototype: HTMLMvxProviderPendingScreenElement;
-        new (): HTMLMvxProviderPendingScreenElement;
     };
     interface HTMLMvxSidePanelElementEventMap {
         "close": any;
@@ -1047,7 +1023,6 @@ declare global {
         "mvx-passkey-provider-icon": HTMLMvxPasskeyProviderIconElement;
         "mvx-pending-transactions-panel": HTMLMvxPendingTransactionsPanelElement;
         "mvx-preloader": HTMLMvxPreloaderElement;
-        "mvx-provider-pending-screen": HTMLMvxProviderPendingScreenElement;
         "mvx-side-panel": HTMLMvxSidePanelElement;
         "mvx-sign-transaction-component": HTMLMvxSignTransactionComponentElement;
         "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
@@ -1227,10 +1202,6 @@ declare namespace LocalJSX {
     }
     interface MvxPreloader {
         "class"?: string;
-    }
-    interface MvxProviderPendingScreen {
-        "onAccess"?: (event: MvxProviderPendingScreenCustomEvent<any>) => void;
-        "provider"?: IProviderBase | null;
     }
     interface MvxSidePanel {
         "isOpen"?: boolean;
@@ -1437,7 +1408,6 @@ declare namespace LocalJSX {
         "mvx-passkey-provider-icon": MvxPasskeyProviderIcon;
         "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
         "mvx-preloader": MvxPreloader;
-        "mvx-provider-pending-screen": MvxProviderPendingScreen;
         "mvx-side-panel": MvxSidePanel;
         "mvx-sign-transaction-component": MvxSignTransactionComponent;
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
@@ -1519,7 +1489,6 @@ declare module "@stencil/core" {
             "mvx-passkey-provider-icon": LocalJSX.MvxPasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLMvxPasskeyProviderIconElement>;
             "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
             "mvx-preloader": LocalJSX.MvxPreloader & JSXBase.HTMLAttributes<HTMLMvxPreloaderElement>;
-            "mvx-provider-pending-screen": LocalJSX.MvxProviderPendingScreen & JSXBase.HTMLAttributes<HTMLMvxProviderPendingScreenElement>;
             "mvx-side-panel": LocalJSX.MvxSidePanel & JSXBase.HTMLAttributes<HTMLMvxSidePanelElement>;
             "mvx-sign-transaction-component": LocalJSX.MvxSignTransactionComponent & JSXBase.HTMLAttributes<HTMLMvxSignTransactionComponentElement>;
             "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;

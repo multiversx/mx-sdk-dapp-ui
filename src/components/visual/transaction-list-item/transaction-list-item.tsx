@@ -1,7 +1,7 @@
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { IconSizeEnumType } from 'components/common/transaction-asset-icon/transaction-asset-icon.types';
-import { getAmount } from 'components/functional/toasts-list/helpers/getAmount/getAmount';
+import { getAmountParts } from 'components/functional/toasts-list/helpers';
 
 import type { ITransactionListItem } from './transaction-list-item.types';
 
@@ -16,7 +16,7 @@ export class TransactionListItem {
     if (!this.transaction) {
       return null;
     }
-    const amount = this.transaction && getAmount(this.transaction);
+    const amount = this.transaction && getAmountParts(this.transaction.amount);
 
     return (
       <a class="transaction-link" href={this.transaction.link} target="_blank" rel="noreferrer">
