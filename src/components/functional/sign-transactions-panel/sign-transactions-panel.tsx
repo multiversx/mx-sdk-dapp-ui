@@ -98,6 +98,8 @@ export class SignTransactionsPanel {
   }
 
   private dataUpdate(payload: ISignTransactionsPanelData) {
+    this.data = { ...payload };
+
     for (const key in payload) {
       if (Object.prototype.hasOwnProperty.call(state, key)) {
         state[key] = payload[key];
