@@ -1,5 +1,7 @@
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
+import { IconSizeEnumType } from 'components/common/transaction-asset-icon/transaction-asset-icon.types';
+import { getAmount } from 'components/functional/toasts-list/helpers/getAmount/getAmount';
 
 import type { ITransactionListItem } from './transaction-list-item.types';
 
@@ -14,13 +16,13 @@ export class TransactionListItem {
     if (!this.transaction) {
       return null;
     }
-    const amount = this.getAmount();
+    const amount = this.transaction && getAmount(this.transaction);
 
     return (
       <a class="transaction-link" href={this.transaction.link} target="_blank" rel="noreferrer">
         <div class="transaction-item">
           <div class="transaction-icon">
-            <mvx-primary-icon transaction={this.transaction} defaultIcon={<mvx-default-transaction-icon-large />} />
+            <mvx-transaction-asset-icon transaction={this.transaction} iconSize={IconSizeEnumType.large} />
           </div>
 
           <div class="transaction-details">
@@ -33,7 +35,7 @@ export class TransactionListItem {
                     'amount-positive': !this.transaction.amount.startsWith('-'),
                     'transaction-failed': this.transaction.status === 'fail' || this.transaction.status === 'invalid',
                   })}
-                  isValid={true}
+                  isValid
                   label={amount.label}
                   valueDecimal={amount.amountDecimal}
                   valueInteger={amount.amountInteger}
@@ -55,15 +57,5 @@ export class TransactionListItem {
         </div>
       </a>
     );
-  }
-
-  private getAmount() {
-    const amount = this.transaction.amount.split(' ');
-    const value = amount[0].split('.');
-    return {
-      amountInteger: value[0],
-      amountDecimal: `.${value[1]}`,
-      label: amount[1],
-    };
   }
 }

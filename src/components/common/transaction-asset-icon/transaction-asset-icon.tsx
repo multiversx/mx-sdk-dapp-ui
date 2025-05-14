@@ -1,16 +1,18 @@
 import { Component, h, Prop } from '@stencil/core';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 
+import { IconSizeEnumType } from './transaction-asset-icon.types';
+
 @Component({
-  tag: 'mvx-primary-icon',
+  tag: 'mvx-transaction-asset-icon',
 })
-export class PrimaryIcon {
+export class TransactionAssetIcon {
   @Prop() transaction: ITransactionListItem;
-  @Prop() defaultIcon: JSX.Element;
+  @Prop() iconSize: IconSizeEnumType;
 
   render() {
     if (this.transaction?.asset === null) {
-      return this.defaultIcon;
+      return this.iconSize === IconSizeEnumType.small ? <mvx-default-transaction-icon-small /> : <mvx-default-transaction-icon-large />;
     }
 
     if (this.transaction.asset.imageUrl) {
@@ -25,6 +27,6 @@ export class PrimaryIcon {
       return <span>{this.transaction.asset.text}</span>;
     }
 
-    return this.defaultIcon;
+    return this.iconSize === IconSizeEnumType.small ? <mvx-default-transaction-icon-small /> : <mvx-default-transaction-icon-large />;
   }
 }

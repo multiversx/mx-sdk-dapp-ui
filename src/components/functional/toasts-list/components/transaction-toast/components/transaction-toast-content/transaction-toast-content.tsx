@@ -1,6 +1,8 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
+import { IconSizeEnumType } from 'components/common/transaction-asset-icon/transaction-asset-icon.types';
+import { getAmount } from 'components/functional/toasts-list/helpers/getAmount/getAmount';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
@@ -20,23 +22,12 @@ export class TransactionToastContent {
     this.deleteToast.emit();
   }
 
-  private getAmount() {
-    const [transaction] = this.transactions || [];
-    const [amount, label] = transaction.amount.split(' ');
-    const [amountInteger, amountDecimal] = amount.split('.');
-    return {
-      amountInteger,
-      amountDecimal: `.${amountDecimal}`,
-      label,
-    };
-  }
-
   render() {
     const { title, hasCloseButton } = this.toastDataState;
     const [transaction] = this.transactions;
     const showAmount = this.transactions.length === 1 && transaction?.amount;
     const showExplorerLinkButton = transaction?.link && this.transactions.length === 1;
-    const amount = this.getAmount();
+    const amount = transaction && getAmount(transaction);
     const showPrimaryIcon = transaction.asset == null || transaction.asset.imageUrl || transaction.asset.icon || transaction.asset.text;
 
     return (
@@ -52,7 +43,7 @@ export class TransactionToastContent {
             <fa-icon icon={this.toastDataState.icon} class={`transaction-toast-icon ${this.toastDataState.iconClassName ?? ''}`}></fa-icon>
           ) : (
             <div class="transaction-toast-icon">
-              <mvx-primary-icon transaction={transaction} defaultIcon={<mvx-default-transaction-icon-small />} />
+              <mvx-transaction-asset-icon transaction={transaction} iconSize={IconSizeEnumType.small} />
             </div>
           )}
           <div class="transaction-toast-details">
@@ -68,7 +59,7 @@ export class TransactionToastContent {
               {showAmount && (
                 <mvx-format-amount
                   class="transaction-toast-amount"
-                  isValid={true}
+                  isValid
                   label={amount.label}
                   valueDecimal={amount.amountDecimal}
                   valueInteger={amount.amountInteger}
