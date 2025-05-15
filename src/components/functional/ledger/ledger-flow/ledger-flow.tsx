@@ -1,4 +1,5 @@
-import { Component, Element, forceUpdate, h, Method, Prop, State } from '@stencil/core';
+import { Component, Element, forceUpdate, Fragment, h, Method, Prop, State } from '@stencil/core';
+import { providerLabels } from 'constants/providerFactory.constants';
 import type { IEventBus } from 'utils/EventBus';
 
 import type { ILedgerConnectPanelData } from '../ledger.types';
@@ -68,20 +69,45 @@ export class LedgerFlow {
   render() {
     if (this.data.accountScreenData) {
       return (
-        <mvx-ledger-addresses
-          selectedIndex={this.selectedIndex}
-          accountScreenData={this.data.accountScreenData}
-          onAccessWallet={() => this.ledgerConnectBase.accessWallet()}
-          onSelectAccount={(event: CustomEvent) => this.selectAccount(event.detail)}
-          onPageChange={(event: CustomEvent) => this.ledgerConnectBase.goToPage(event.detail)}
-        />
+        <Fragment>
+          <mvx-side-panel-header
+            panelTitle={providerLabels.ledger}
+            hasRightButton={false}
+            onLeftIconClick={() => this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.CLOSE)}
+          ></mvx-side-panel-header>
+          <mvx-ledger-addresses
+            selectedIndex={this.selectedIndex}
+            accountScreenData={this.data.accountScreenData}
+            onAccessWallet={() => this.ledgerConnectBase.accessWallet()}
+            onSelectAccount={(event: CustomEvent) => this.selectAccount(event.detail)}
+            onPageChange={(event: CustomEvent) => this.ledgerConnectBase.goToPage(event.detail)}
+          />
+        </Fragment>
       );
     }
 
     if (this.data.confirmScreenData) {
-      return <mvx-ledger-confirm confirmScreenData={this.data.confirmScreenData} />;
+      return (
+        <Fragment>
+          <mvx-side-panel-header
+            panelTitle={providerLabels.ledger}
+            hasRightButton={false}
+            onLeftIconClick={() => this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.CLOSE)}
+          ></mvx-side-panel-header>
+          <mvx-ledger-confirm confirmScreenData={this.data.confirmScreenData} />
+        </Fragment>
+      );
     }
 
-    return <mvx-ledger-intro connectScreenData={this.data.connectScreenData} onConnect={this.handleIntroConnect.bind(this)} />;
+    return (
+      <Fragment>
+        <mvx-side-panel-header
+          panelTitle={providerLabels.ledger}
+          hasRightButton={false}
+          onLeftIconClick={() => this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.CLOSE)}
+        ></mvx-side-panel-header>
+        <mvx-ledger-intro connectScreenData={this.data.connectScreenData} onConnect={this.handleIntroConnect.bind(this)} />
+      </Fragment>
+    );
   }
 }

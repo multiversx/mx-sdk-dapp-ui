@@ -43,10 +43,7 @@ export class WalletConnectBase {
     this.eventBus.unsubscribe(WalletConnectEventsEnum.DATA_UPDATE, (payload: IWalletConnectPanelData) => this.dataUpdate({ payload, closeFn, forceUpdateFn }));
   }
 
-  private dataUpdate({ payload, closeFn, forceUpdateFn }: IWalletConnectDataUpdateProps) {
-    if (payload.shouldClose) {
-      return closeFn();
-    }
+  private dataUpdate({ payload, forceUpdateFn }: IWalletConnectDataUpdateProps) {
     this.data = { ...payload };
     forceUpdateFn();
   }

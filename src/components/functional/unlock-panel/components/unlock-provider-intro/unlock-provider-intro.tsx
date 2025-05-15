@@ -1,5 +1,6 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Event, h, Prop } from '@stencil/core';
+import { Component, Event, Fragment, h, Prop } from '@stencil/core';
+import { SidePanelHeaderSlotEnum } from 'components/visual/side-panel/components/side-panel-header/side-panel-header.types';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 
@@ -25,7 +26,8 @@ const getProviderIntroText = (providerType?: IProviderBase['type']) => {
 })
 export class UnlockProviderIntro {
   @Prop() provider: IProviderBase | null = null;
-  @Event() access: EventEmitter;
+  @Event({ composed: false, bubbles: false }) close: EventEmitter;
+  @Event({ composed: false, bubbles: false }) access: EventEmitter;
 
   render() {
     const providerType = this.provider ? this.provider.type : null;
@@ -42,22 +44,34 @@ export class UnlockProviderIntro {
     }
 
     if (this.provider.type === ProviderTypeEnum.ledger) {
-      return <mvx-ledger-intro onConnect={this.access.emit} />;
+      return (
+        <Fragment>
+          <mvx-side-panel-header panelTitle={this.provider.name} hasRightButton={false} onLeftIconClick={this.close.emit.bind(this)}>
+            <mvx-close-icon slot={SidePanelHeaderSlotEnum.leftIcon} />
+          </mvx-side-panel-header>
+          <mvx-ledger-intro onConnect={this.access.emit} />
+        </Fragment>
+      );
     }
 
     return (
-      <div class="unlock-provider-intro">
-        {isExtensionProvider ? (
-          <div class="unlock-provider-intro-icon">
-            <mvx-extension-provider-icon width={extensionProviderIconWidth} height={extensionProviderIconHeight} />
-          </div>
-        ) : (
-          <div class="unlock-provider-intro-icon">{providerIntroIcon}</div>
-        )}
+      <Fragment>
+        <mvx-side-panel-header panelTitle={this.provider.name} hasRightButton={false} onLeftIconClick={this.close.emit.bind(this)}>
+          <mvx-close-icon slot={SidePanelHeaderSlotEnum.leftIcon} />
+        </mvx-side-panel-header>
+        <div class="unlock-provider-intro">
+          {isExtensionProvider ? (
+            <div class="unlock-provider-intro-icon">
+              <mvx-extension-provider-icon width={extensionProviderIconWidth} height={extensionProviderIconHeight} />
+            </div>
+          ) : (
+            <div class="unlock-provider-intro-icon">{providerIntroIcon}</div>
+          )}
 
-        <div class="unlock-provider-intro-title">Requesting Connection</div>
-        {providerIntroText && <div class="unlock-provider-intro-text">{providerIntroText}</div>}
-      </div>
+          <div class="unlock-provider-intro-title">Requesting Connection</div>
+          {providerIntroText && <div class="unlock-provider-intro-text">{providerIntroText}</div>}
+        </div>
+      </Fragment>
     );
   }
 }

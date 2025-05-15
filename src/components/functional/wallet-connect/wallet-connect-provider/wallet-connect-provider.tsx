@@ -1,4 +1,6 @@
-import { Component, Element, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, forceUpdate, Fragment, h, Method, Prop, State, Watch } from '@stencil/core';
+import { SidePanelHeaderSlotEnum } from 'components/visual/side-panel/components/side-panel-header/side-panel-header.types';
+import { providerLabels } from 'constants/providerFactory.constants';
 import type { IEventBus } from 'utils/EventBus';
 
 import { type IWalletConnectPanelData, WalletConnectEventsEnum } from '../wallet-connect.types';
@@ -32,7 +34,18 @@ export class WalletConnectProvider {
   }
 
   render() {
-    return <mvx-wallet-connect-flow qrCodeSvg={this.qrCodeSvg} />;
+    return (
+      <Fragment>
+        <mvx-side-panel-header
+          panelTitle={providerLabels.walletConnect}
+          hasRightButton={false}
+          onLeftIconClick={() => this.walletConnectBase.eventBus.publish(WalletConnectEventsEnum.CLOSE)}
+        >
+          <mvx-close-icon slot={SidePanelHeaderSlotEnum.leftIcon} />
+        </mvx-side-panel-header>
+        <mvx-wallet-connect-flow qrCodeSvg={this.qrCodeSvg} />
+      </Fragment>
+    );
   }
 
   private removeComponent() {
