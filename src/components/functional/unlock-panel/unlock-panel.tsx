@@ -22,9 +22,8 @@ export class UnlockPanel {
   @State() isLoggingIn: boolean = false;
   @State() isIntroScreenVisible: boolean = false;
   @State() selectedMethod: IProviderBase | null = null;
-  @State() hasSlotContent: boolean = false;
   @State() panelState = {
-    isOpen: false,
+    isOpen: this.isOpen,
     allowedProviders: this.allowedProviders,
   };
   @Method() async getEventBus() {
@@ -41,6 +40,22 @@ export class UnlockPanel {
     this.panelState = { ...this.panelState, allowedProviders: newValue };
   }
 
+  componentDidLoad() {
+    this.eventBus.subscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
+    this.eventBus.subscribe(UnlockPanelEventsEnum.CANCEL_IN_PROVIDER, this.handleResetLoginState.bind(this));
+  }
+
+  async disconnectedCallback() {
+    this.eventBus.unsubscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
+    this.eventBus.unsubscribe(UnlockPanelEventsEnum.CANCEL_IN_PROVIDER, this.handleResetLoginState.bind(this));
+    this.isLoggingIn = false;
+    this.selectedMethod = null;
+    this.panelState = { isOpen: false, allowedProviders: [] };
+
+    const delayClosingAnimation = new Promise(resolve => setTimeout(resolve, 300));
+    return delayClosingAnimation;
+  }
+
   private isExtensionInstalled(currentProvider: IProviderBase['type']) {
     return currentProvider === ProviderTypeEnum.extension && getIsExtensionAvailable();
   }
@@ -55,29 +70,13 @@ export class UnlockPanel {
 
   private anchor: HTMLElement | null = null;
 
-  async disconnectedCallback() {
-    this.eventBus.unsubscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
-    this.eventBus.unsubscribe(UnlockPanelEventsEnum.CANCEL_IN_PROVIDER, this.handleResetLoginState.bind(this));
-    this.isLoggingIn = false;
-    this.selectedMethod = null;
-    this.panelState = { isOpen: false, allowedProviders: [] };
-
-    const delayClosingAnimation = new Promise(resolve => setTimeout(resolve, 300));
-    return delayClosingAnimation;
-  }
-
-  componentDidLoad() {
-    this.eventBus.subscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
-    this.eventBus.subscribe(UnlockPanelEventsEnum.CANCEL_IN_PROVIDER, this.handleResetLoginState.bind(this));
-  }
-
-  private buildAnchor(element: HTMLElement | null) {
+  private setAnchor(element: HTMLElement | null) {
     if (!element) {
       return;
     }
 
     this.anchor = element;
-    this.anchor.addEventListener('close', this.handleResetLoginState.bind(this));
+    this.anchor.addEventListener(UnlockPanelEventsEnum.ACNHOR_CLOSE, this.handleResetLoginState.bind(this));
   }
 
   private unlockPanelUpdate(payload: { isOpen: boolean; allowedProviders: IProviderBase[] }) {
@@ -87,7 +86,7 @@ export class UnlockPanel {
     };
   }
 
-  handleLogin(provider: IProviderBase) {
+  private handleLogin(provider: IProviderBase) {
     this.selectedMethod = provider;
 
     switch (provider.type) {
@@ -107,7 +106,7 @@ export class UnlockPanel {
     }
   }
 
-  handleResetLoginState(event?: MouseEvent) {
+  private handleResetLoginState(event?: MouseEvent) {
     event?.preventDefault?.();
     this.isLoggingIn = false;
     this.isIntroScreenVisible = false;
@@ -123,7 +122,7 @@ export class UnlockPanel {
     this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
   }
 
-  handleClose(event: MouseEvent) {
+  private handleClose(event: MouseEvent) {
     event.preventDefault();
     if (this.selectedMethod) {
       this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
@@ -132,7 +131,7 @@ export class UnlockPanel {
     this.eventBus.publish(UnlockPanelEventsEnum.CLOSE);
   }
 
-  handleAccess() {
+  private handleAccess() {
     this.isIntroScreenVisible = false;
     this.isLoggingIn = true;
     this.eventBus.publish(UnlockPanelEventsEnum.LOGIN, { type: this.selectedMethod.type, anchor: this.anchor });
@@ -160,7 +159,7 @@ export class UnlockPanel {
         showHeader={isProviderScreenVisible || isCustomProviderActive}
         panelClassName="unlock-panel"
       >
-        <div id="anchor" ref={element => this.buildAnchor(element)} class={{ 'unlock-panel-anchor': this.isLoggingIn }}>
+        <div id="anchor" ref={element => this.setAnchor(element)} class={{ 'unlock-panel-anchor': this.isLoggingIn }}>
           {this.isIntroScreenVisible && (
             <mvx-unlock-provider-intro provider={this.selectedMethod} onAccess={this.handleAccess.bind(this)} onClose={this.handleResetLoginState.bind(this)} />
           )}
