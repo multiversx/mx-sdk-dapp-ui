@@ -715,8 +715,8 @@ declare global {
         new (): HTMLMvxSidePanelElement;
     };
     interface HTMLMvxSidePanelHeaderElementEventMap {
-        "rightIconClick": any;
-        "leftIconClick": any;
+        "rightButtonClick": any;
+        "leftButtonClick": any;
     }
     interface HTMLMvxSidePanelHeaderElement extends Components.MvxSidePanelHeader, HTMLStencilElement {
         addEventListener<K extends keyof HTMLMvxSidePanelHeaderElementEventMap>(type: K, listener: (this: HTMLMvxSidePanelHeaderElement, ev: MvxSidePanelHeaderCustomEvent<HTMLMvxSidePanelHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1255,8 +1255,8 @@ declare namespace LocalJSX {
     interface MvxSidePanelHeader {
         "hasLeftButton"?: boolean;
         "hasRightButton"?: boolean;
-        "onLeftIconClick"?: (event: MvxSidePanelHeaderCustomEvent<any>) => void;
-        "onRightIconClick"?: (event: MvxSidePanelHeaderCustomEvent<any>) => void;
+        "onLeftButtonClick"?: (event: MvxSidePanelHeaderCustomEvent<any>) => void;
+        "onRightButtonClick"?: (event: MvxSidePanelHeaderCustomEvent<any>) => void;
         "panelClassName"?: string;
         "panelTitle"?: string;
     }

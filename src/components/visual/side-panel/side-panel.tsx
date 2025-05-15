@@ -81,8 +81,8 @@ export class SidePanel {
               panelTitle={this.panelTitle}
               panelClassName={this.panelClassName}
               hasLeftButton={this.hasBackButton}
-              onRightIconClick={this.handleCloseClick.bind(this)}
-              onLeftIconClick={this.handleBackClick.bind(this)}
+              onRightButtonClick={this.handleCloseClick.bind(this)}
+              onLeftButtonClick={this.handleBackClick.bind(this)}
             />
           )}
 

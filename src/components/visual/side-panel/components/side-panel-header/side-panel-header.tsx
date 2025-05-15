@@ -14,17 +14,17 @@ export class SidePanelHeader {
   @Prop() hasLeftButton?: boolean = true;
   @Prop() hasRightButton?: boolean = true;
 
-  @Event({ composed: false, bubbles: false }) rightIconClick: EventEmitter;
-  @Event({ composed: false, bubbles: false }) leftIconClick: EventEmitter;
+  @Event({ composed: false, bubbles: false }) rightButtonClick: EventEmitter;
+  @Event({ composed: false, bubbles: false }) leftButtonClick: EventEmitter;
 
   handleRightIconClick(event: MouseEvent) {
     event.preventDefault();
-    this.rightIconClick.emit();
+    this.rightButtonClick.emit();
   }
 
   handleLeftIconClick(event: MouseEvent) {
     event.preventDefault();
-    this.leftIconClick.emit();
+    this.leftButtonClick.emit();
   }
 
   render() {

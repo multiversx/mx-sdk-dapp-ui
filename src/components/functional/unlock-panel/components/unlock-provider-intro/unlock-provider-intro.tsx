@@ -43,12 +43,16 @@ export class UnlockProviderIntro {
       return null;
     }
 
+    const header = (
+      <mvx-side-panel-header panelTitle={this.provider.name} hasRightButton={false} onLeftButtonClick={this.close.emit.bind(this)}>
+        <mvx-close-icon slot={SidePanelHeaderSlotEnum.leftIcon} />
+      </mvx-side-panel-header>
+    );
+
     if (this.provider.type === ProviderTypeEnum.ledger) {
       return (
         <Fragment>
-          <mvx-side-panel-header panelTitle={this.provider.name} hasRightButton={false} onLeftIconClick={this.close.emit.bind(this)}>
-            <mvx-close-icon slot={SidePanelHeaderSlotEnum.leftIcon} />
-          </mvx-side-panel-header>
+          {header}
           <mvx-ledger-intro onConnect={this.access.emit} />
         </Fragment>
       );
@@ -56,9 +60,7 @@ export class UnlockProviderIntro {
 
     return (
       <Fragment>
-        <mvx-side-panel-header panelTitle={this.provider.name} hasRightButton={false} onLeftIconClick={this.close.emit.bind(this)}>
-          <mvx-close-icon slot={SidePanelHeaderSlotEnum.leftIcon} />
-        </mvx-side-panel-header>
+        {header}
         <div class="unlock-provider-intro">
           {isExtensionProvider ? (
             <div class="unlock-provider-intro-icon">

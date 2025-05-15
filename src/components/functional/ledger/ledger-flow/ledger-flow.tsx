@@ -1,4 +1,5 @@
 import { Component, Element, Fragment, h, Method, Prop, State, Watch } from '@stencil/core';
+import { SidePanelHeaderSlotEnum } from 'components/visual/side-panel/components/side-panel-header/side-panel-header.types';
 import { providerLabels } from 'constants/providerFactory.constants';
 import { EventBus, type IEventBus } from 'utils/EventBus';
 
@@ -65,7 +66,11 @@ export class LedgerFlow {
   }
 
   render() {
-    const header = <mvx-side-panel-header panelTitle={providerLabels.ledger} hasRightButton={false} onLeftIconClick={() => this.eventBus.publish(LedgerConnectEventsEnum.CLOSE)} />;
+    const header = (
+      <mvx-side-panel-header panelTitle={providerLabels.ledger} hasRightButton={false} onLeftButtonClick={() => this.eventBus.publish(LedgerConnectEventsEnum.CLOSE)}>
+        <mvx-close-icon slot={SidePanelHeaderSlotEnum.leftIcon} />
+      </mvx-side-panel-header>
+    );
 
     if (this.ledgerDataState.accountScreenData) {
       return (
