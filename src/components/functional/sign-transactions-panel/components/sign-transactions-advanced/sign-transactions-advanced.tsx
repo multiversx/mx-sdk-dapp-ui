@@ -27,7 +27,7 @@ export class SignTransactionsAdvanced {
   getHighlight(data: string, highlight: string) {
     const highlightIndex = data.indexOf(highlight);
     const beforeText = data.slice(0, highlightIndex);
-    const highlightText = data.slice(highlightIndex, highlightIndex + this.highlight.length);
+    const highlightText = data.slice(highlightIndex, highlightIndex + highlight.length);
     const afterText = data.slice(highlightIndex + highlight.length);
 
     return [h('span', null, beforeText), h('span', { class: { 'data-highlight': true } }, highlightText), h('span', null, afterText)];
