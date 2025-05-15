@@ -1,10 +1,10 @@
-import { Component, Element, forceUpdate, Fragment, h, Method, Prop, State } from '@stencil/core';
+import { Component, Element, Fragment, h, Method, Prop, State, Watch } from '@stencil/core';
 import { providerLabels } from 'constants/providerFactory.constants';
-import type { IEventBus } from 'utils/EventBus';
+import { EventBus, type IEventBus } from 'utils/EventBus';
 
+import { getLedgerAddressByIndex } from '../helpers/getLedgerAddressByIndex';
 import type { ILedgerConnectPanelData } from '../ledger.types';
 import { LedgerConnectEventsEnum } from '../ledger.types';
-import { LedgerConnectBase } from '../LedgerConnectBase';
 
 @Component({
   tag: 'mvx-ledger-flow',
@@ -12,10 +12,11 @@ import { LedgerConnectBase } from '../LedgerConnectBase';
   shadow: true,
 })
 export class LedgerFlow {
-  private ledgerConnectBase: LedgerConnectBase;
+  private eventBus: IEventBus = new EventBus();
 
   @Element() hostElement: HTMLElement;
   @State() private selectedIndex = 0;
+  @State() private selectedAddress = '';
 
   @Prop() data: ILedgerConnectPanelData = {
     accountScreenData: null,
@@ -23,90 +24,82 @@ export class LedgerFlow {
     connectScreenData: {},
   };
 
+  @State() ledgerDataState: ILedgerConnectPanelData = {
+    accountScreenData: this.data.accountScreenData,
+    confirmScreenData: this.data.confirmScreenData,
+    connectScreenData: this.data.connectScreenData,
+  };
+
+  @Watch('data')
+  handleAllowedProvidersChange(newValue: ILedgerConnectPanelData) {
+    this.ledgerDataState = { ...newValue };
+  }
+
   @Method() async getEventBus(): Promise<IEventBus> {
-    return this.ledgerConnectBase.getEventBus();
+    return this.eventBus;
   }
 
   private selectAccount(index: number) {
-    this.ledgerConnectBase.selectAccount(index);
-    this.selectedIndex = this.ledgerConnectBase.selectedIndex;
-  }
-
-  private removeComponent() {
-    if (this.hostElement?.parentNode) {
-      this.hostElement.parentNode.removeChild(this.hostElement);
-    }
-  }
-
-  private getEventSubscription() {
-    return {
-      closeFn: () => this.removeComponent(),
-      forceUpdateFn: () => {
-        this.data = this.ledgerConnectBase.data;
-        forceUpdate(this);
-      },
-    };
-  }
-
-  componentWillLoad() {
-    this.ledgerConnectBase = new LedgerConnectBase(this.data);
+    this.selectedIndex = index;
+    this.selectedAddress = getLedgerAddressByIndex({ accounts: this.ledgerDataState.accountScreenData?.accounts, selectedIndex: this.selectedIndex });
   }
 
   componentDidLoad() {
-    this.ledgerConnectBase.subscribeEventBus(this.getEventSubscription());
+    this.eventBus.subscribe(LedgerConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
   }
 
   disconnectedCallback() {
-    this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.UI_DISCONNECTED);
-    this.ledgerConnectBase.unsubscribeEventBus(this.getEventSubscription());
+    this.eventBus.publish(LedgerConnectEventsEnum.UI_DISCONNECTED);
+    this.eventBus = new EventBus();
+  }
+
+  private dataUpdate(payload: ILedgerConnectPanelData) {
+    this.ledgerDataState = { ...payload };
+  }
+
+  accessWallet() {
+    this.eventBus.publish(LedgerConnectEventsEnum.ACCESS_WALLET, {
+      addressIndex: this.selectedIndex,
+      selectedAddress: this.selectedAddress || getLedgerAddressByIndex({ accounts: this.ledgerDataState.accountScreenData?.accounts, selectedIndex: this.selectedIndex }),
+    });
   }
 
   handleIntroConnect(event: MouseEvent) {
     event.preventDefault();
-    this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.CONNECT_DEVICE);
+    this.eventBus.publish(LedgerConnectEventsEnum.CONNECT_DEVICE);
   }
 
   render() {
-    if (this.data.accountScreenData) {
+    const header = <mvx-side-panel-header panelTitle={providerLabels.ledger} hasRightButton={false} onLeftIconClick={() => this.eventBus.publish(LedgerConnectEventsEnum.CLOSE)} />;
+
+    if (this.ledgerDataState.accountScreenData) {
       return (
         <Fragment>
-          <mvx-side-panel-header
-            panelTitle={providerLabels.ledger}
-            hasRightButton={false}
-            onLeftIconClick={() => this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.CLOSE)}
-          ></mvx-side-panel-header>
+          {header}
           <mvx-ledger-addresses
             selectedIndex={this.selectedIndex}
-            accountScreenData={this.data.accountScreenData}
-            onAccessWallet={() => this.ledgerConnectBase.accessWallet()}
+            accountScreenData={this.ledgerDataState.accountScreenData}
+            onAccessWallet={() => this.accessWallet()}
             onSelectAccount={(event: CustomEvent) => this.selectAccount(event.detail)}
-            onPageChange={(event: CustomEvent) => this.ledgerConnectBase.goToPage(event.detail)}
+            onPageChange={(event: CustomEvent) => this.eventBus.publish(LedgerConnectEventsEnum.GO_TO_PAGE, event.detail)}
           />
         </Fragment>
       );
     }
 
-    if (this.data.confirmScreenData) {
+    if (this.ledgerDataState.confirmScreenData) {
       return (
         <Fragment>
-          <mvx-side-panel-header
-            panelTitle={providerLabels.ledger}
-            hasRightButton={false}
-            onLeftIconClick={() => this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.CLOSE)}
-          ></mvx-side-panel-header>
-          <mvx-ledger-confirm confirmScreenData={this.data.confirmScreenData} />
+          {header}
+          <mvx-ledger-confirm confirmScreenData={this.ledgerDataState.confirmScreenData} />
         </Fragment>
       );
     }
 
     return (
       <Fragment>
-        <mvx-side-panel-header
-          panelTitle={providerLabels.ledger}
-          hasRightButton={false}
-          onLeftIconClick={() => this.ledgerConnectBase.eventBus.publish(LedgerConnectEventsEnum.CLOSE)}
-        ></mvx-side-panel-header>
-        <mvx-ledger-intro connectScreenData={this.data.connectScreenData} onConnect={this.handleIntroConnect.bind(this)} />
+        {header}
+        <mvx-ledger-intro connectScreenData={this.ledgerDataState.connectScreenData} onConnect={this.handleIntroConnect.bind(this)} />
       </Fragment>
     );
   }
