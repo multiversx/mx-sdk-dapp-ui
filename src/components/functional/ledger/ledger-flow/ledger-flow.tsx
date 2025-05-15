@@ -15,33 +15,23 @@ export class LedgerFlow {
   private eventBus: IEventBus = new EventBus();
 
   @Element() hostElement: HTMLElement;
-  @State() private selectedIndex = 0;
-  @State() private selectedAddress = '';
-
   @Prop() data: ILedgerConnectPanelData = {
     accountScreenData: null,
     confirmScreenData: null,
     connectScreenData: {},
   };
 
-  @State() ledgerDataState: ILedgerConnectPanelData = {
-    accountScreenData: this.data.accountScreenData,
-    confirmScreenData: this.data.confirmScreenData,
-    connectScreenData: this.data.connectScreenData,
-  };
+  @State() private selectedIndex = 0;
+  @State() private selectedAddress = '';
+  @State() ledgerDataState: ILedgerConnectPanelData = this.data;
 
   @Watch('data')
-  handleAllowedProvidersChange(newValue: ILedgerConnectPanelData) {
+  handleDataChange(newValue: ILedgerConnectPanelData) {
     this.ledgerDataState = { ...newValue };
   }
 
   @Method() async getEventBus(): Promise<IEventBus> {
     return this.eventBus;
-  }
-
-  private selectAccount(index: number) {
-    this.selectedIndex = index;
-    this.selectedAddress = getLedgerAddressByIndex({ accounts: this.ledgerDataState.accountScreenData?.accounts, selectedIndex: this.selectedIndex });
   }
 
   componentDidLoad() {
@@ -53,18 +43,23 @@ export class LedgerFlow {
     this.eventBus = new EventBus();
   }
 
+  private selectAccount(index: number) {
+    this.selectedIndex = index;
+    this.selectedAddress = getLedgerAddressByIndex({ accounts: this.ledgerDataState.accountScreenData?.accounts, selectedIndex: this.selectedIndex });
+  }
+
   private dataUpdate(payload: ILedgerConnectPanelData) {
     this.ledgerDataState = { ...payload };
   }
 
-  accessWallet() {
+  private accessWallet() {
     this.eventBus.publish(LedgerConnectEventsEnum.ACCESS_WALLET, {
       addressIndex: this.selectedIndex,
       selectedAddress: this.selectedAddress || getLedgerAddressByIndex({ accounts: this.ledgerDataState.accountScreenData?.accounts, selectedIndex: this.selectedIndex }),
     });
   }
 
-  handleIntroConnect(event: MouseEvent) {
+  private handleIntroConnect(event: MouseEvent) {
     event.preventDefault();
     this.eventBus.publish(LedgerConnectEventsEnum.CONNECT_DEVICE);
   }
