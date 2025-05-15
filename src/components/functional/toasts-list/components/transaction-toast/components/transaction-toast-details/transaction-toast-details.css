@@ -59,6 +59,7 @@
 .transaction-details-list.expanded {
   max-height: 500px;
   width: 100%;
+  overflow-y: scroll;
 }
 
 .view-all-container {
@@ -73,9 +74,9 @@
   border: none;
   color: var(--mx-tx-text-primary);
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 400;
+  line-height: 16.8px;
   cursor: pointer;
-  padding: 4px 8px;
   border-radius: 4px;
   transition: background-color var(--mx-transition);
 }
