@@ -41,7 +41,7 @@ export class LedgerFlow {
 
   disconnectedCallback() {
     this.eventBus.publish(LedgerConnectEventsEnum.UI_DISCONNECTED);
-    this.eventBus = new EventBus();
+    this.eventBus.unsubscribe(LedgerConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
   }
 
   private selectAccount(index: number) {

@@ -54,7 +54,7 @@ export class WalletConnectProvider {
 
   disconnectedCallback() {
     this.eventBus.publish(WalletConnectEventsEnum.UI_DISCONNECTED);
-    this.eventBus = new EventBus();
+    this.eventBus.unsubscribe(WalletConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
   }
 
   render() {
