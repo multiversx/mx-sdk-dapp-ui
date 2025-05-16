@@ -1,5 +1,5 @@
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { Component, h, Method, Prop, State } from '@stencil/core';
+import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
@@ -25,8 +25,6 @@ interface IOverviewProps {
 })
 export class SignTransactionsPanel {
   private eventBus: IEventBus = new EventBus();
-  @State() isOpen: boolean = false;
-  @State() activeTab: 'overview' | 'advanced' = 'overview';
 
   @Prop() data: ISignTransactionsPanelData = {
     commonData: {
@@ -42,6 +40,18 @@ export class SignTransactionsPanel {
     nftTransaction: null,
     sftTransaction: null,
   };
+
+  @State() isOpen: boolean = false;
+  @State() activeTab: 'overview' | 'advanced' = 'overview';
+
+  @Method() async getEventBus() {
+    return this.eventBus;
+  }
+
+  @Watch('data')
+  updateData(newData: ISignTransactionsPanelData) {
+    this.dataUpdate(newData);
+  }
 
   componentWillLoad() {
     state.onCancel = () => {
@@ -66,6 +76,7 @@ export class SignTransactionsPanel {
   }
 
   componentDidLoad() {
+    this.updateData(this.data);
     this.eventBus.subscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
     this.eventBus.subscribe(SignEventsEnum.OPEN_SIGN_TRANSACTIONS_PANEL, this.handleOpen.bind(this));
     this.eventBus.subscribe(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS_PANEL, this.onClose.bind(this, { isUserClick: false }));
@@ -78,16 +89,16 @@ export class SignTransactionsPanel {
     this.eventBus.unsubscribe(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS_PANEL, this.onClose.bind(this, { isUserClick: false }));
   }
 
-  handleOpen() {
+  private handleOpen() {
     this.isOpen = true;
   }
 
-  handleClose() {
+  private handleClose() {
     this.isOpen = false;
     this.onClose({ isUserClick: true });
   }
 
-  onClose(props = { isUserClick: true }) {
+  private onClose(props = { isUserClick: true }) {
     this.isOpen = false;
     resetState();
 
@@ -110,8 +121,8 @@ export class SignTransactionsPanel {
     }
   }
 
-  @Method() async getEventBus() {
-    return this.eventBus;
+  private setActiveTab(tab: 'overview' | 'advanced') {
+    this.activeTab = tab;
   }
 
   get overviewProps(): IOverviewProps {
@@ -129,10 +140,6 @@ export class SignTransactionsPanel {
       networkFee: state.commonData?.feeInFiatLimit,
       isApp: Boolean(state.commonData?.scCall),
     };
-  }
-
-  setActiveTab(tab: 'overview' | 'advanced') {
-    this.activeTab = tab;
   }
 
   render() {
