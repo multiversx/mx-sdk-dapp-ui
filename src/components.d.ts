@@ -173,8 +173,6 @@ export namespace Components {
         "panelTitle": string;
         "withBackButton"?: boolean;
     }
-    interface MvxSignTransactionsActionButtons {
-    }
     interface MvxSignTransactionsAdvanced {
         "data": string;
         "highlight"?: string;
@@ -712,12 +710,6 @@ declare global {
         prototype: HTMLMvxSidePanelElement;
         new (): HTMLMvxSidePanelElement;
     };
-    interface HTMLMvxSignTransactionsActionButtonsElement extends Components.MvxSignTransactionsActionButtons, HTMLStencilElement {
-    }
-    var HTMLMvxSignTransactionsActionButtonsElement: {
-        prototype: HTMLMvxSignTransactionsActionButtonsElement;
-        new (): HTMLMvxSignTransactionsActionButtonsElement;
-    };
     interface HTMLMvxSignTransactionsAdvancedElement extends Components.MvxSignTransactionsAdvanced, HTMLStencilElement {
     }
     var HTMLMvxSignTransactionsAdvancedElement: {
@@ -1028,7 +1020,6 @@ declare global {
         "mvx-pending-transactions-panel": HTMLMvxPendingTransactionsPanelElement;
         "mvx-preloader": HTMLMvxPreloaderElement;
         "mvx-side-panel": HTMLMvxSidePanelElement;
-        "mvx-sign-transactions-action-buttons": HTMLMvxSignTransactionsActionButtonsElement;
         "mvx-sign-transactions-advanced": HTMLMvxSignTransactionsAdvancedElement;
         "mvx-sign-transactions-footer": HTMLMvxSignTransactionsFooterElement;
         "mvx-sign-transactions-overview": HTMLMvxSignTransactionsOverviewElement;
@@ -1212,8 +1203,6 @@ declare namespace LocalJSX {
         "panelClassName"?: string;
         "panelTitle"?: string;
         "withBackButton"?: boolean;
-    }
-    interface MvxSignTransactionsActionButtons {
     }
     interface MvxSignTransactionsAdvanced {
         "data"?: string;
@@ -1419,7 +1408,6 @@ declare namespace LocalJSX {
         "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
         "mvx-preloader": MvxPreloader;
         "mvx-side-panel": MvxSidePanel;
-        "mvx-sign-transactions-action-buttons": MvxSignTransactionsActionButtons;
         "mvx-sign-transactions-advanced": MvxSignTransactionsAdvanced;
         "mvx-sign-transactions-footer": MvxSignTransactionsFooter;
         "mvx-sign-transactions-overview": MvxSignTransactionsOverview;
@@ -1500,7 +1488,6 @@ declare module "@stencil/core" {
             "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
             "mvx-preloader": LocalJSX.MvxPreloader & JSXBase.HTMLAttributes<HTMLMvxPreloaderElement>;
             "mvx-side-panel": LocalJSX.MvxSidePanel & JSXBase.HTMLAttributes<HTMLMvxSidePanelElement>;
-            "mvx-sign-transactions-action-buttons": LocalJSX.MvxSignTransactionsActionButtons & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsActionButtonsElement>;
             "mvx-sign-transactions-advanced": LocalJSX.MvxSignTransactionsAdvanced & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsAdvancedElement>;
             "mvx-sign-transactions-footer": LocalJSX.MvxSignTransactionsFooter & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsFooterElement>;
             "mvx-sign-transactions-overview": LocalJSX.MvxSignTransactionsOverview & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsOverviewElement>;

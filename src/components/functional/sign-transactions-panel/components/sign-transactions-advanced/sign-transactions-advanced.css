@@ -216,7 +216,7 @@
 }
 
 .data-text {
-  color: #ffffff;
+  color: #B6B3AF;
   font-family: monospace;
   font-size: 14px;
   font-weight: 400;
@@ -235,5 +235,5 @@
 }
 
 .data-highlight {
-  opacity: 0.5;
+  color: #fff;
 }

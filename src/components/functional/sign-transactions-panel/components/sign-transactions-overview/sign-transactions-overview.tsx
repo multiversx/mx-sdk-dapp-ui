@@ -1,5 +1,7 @@
-import { faArrowDown, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Prop } from '@stencil/core';
+
+import { handleAmountResize } from '../../helpers';
 
 @Component({
   tag: 'mvx-sign-transactions-overview',
@@ -16,6 +18,14 @@ export class SignTransactionsOverview {
   @Prop() networkFee: string = '~$0.00078';
   @Prop() isApp: boolean = false;
 
+  private amountValueRef: HTMLElement;
+
+  componentDidRender() {
+    if (this.amountValueRef) {
+      requestAnimationFrame(() => handleAmountResize(this.amountValueRef));
+    }
+  }
+
   render() {
     return (
       <div class="overview-container">
@@ -24,8 +34,10 @@ export class SignTransactionsOverview {
             <div class="detail-label">{this.isApp ? 'Amount' : 'Send'}</div>
             <div class="amount-display">
               <div class="amount-value-container">
-                <div class="amount-value">
-                  {this.amount} {this.identifier}
+                <div class="amount-value" ref={el => (this.amountValueRef = el)}>
+                  <span>
+                    {this.amount} {this.identifier}
+                  </span>
                 </div>
                 {this.identifier !== 'USD' && <div class="usd-value">{this.usdValue}</div>}
               </div>
@@ -38,7 +50,12 @@ export class SignTransactionsOverview {
           </div>
 
           <div class="direction-indicator">
-            <mvx-fa-icon icon={this.isApp ? faArrowUp : faArrowDown} class="direction-arrow"></mvx-fa-icon>
+            <div class="direction-icon">
+              {this.isApp && <mvx-fa-icon icon={faChevronUp} class="direction-arrow" />}
+              <span class="ellipse" />
+              <span class="ellipse" />
+              {!this.isApp && <mvx-fa-icon icon={faChevronDown} class="direction-arrow" />}
+            </div>
           </div>
 
           <div class="detail-row interactor-row">
