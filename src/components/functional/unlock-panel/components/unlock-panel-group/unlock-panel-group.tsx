@@ -12,6 +12,10 @@ export class UnlockPanelGroup {
   @Prop() providers: IProviderBase[] = [];
   @Event({ composed: false, bubbles: false }) login: EventEmitter<IProviderBase>;
 
+  private handleLogin = (provider: IProviderBase) => {
+    this.login.emit(provider);
+  };
+
   render() {
     return (
       <div class="unlock-panel-group">
@@ -19,7 +23,7 @@ export class UnlockPanelGroup {
 
         <div class="unlock-panel-group-providers">
           {this.providers.map(provider => (
-            <mvx-unlock-provider-button provider={provider} onClick={() => this.login.emit(provider)} />
+            <mvx-unlock-provider-button provider={provider} onClick={() => this.handleLogin(provider)} />
           ))}
           <slot />
         </div>
