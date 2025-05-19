@@ -5,6 +5,17 @@ import nodePolyfills from 'rollup-plugin-node-polyfills';
 import tailwind from 'stencil-tailwind-plugin';
 import { getExcludedComponentTags } from './src/global/scripts/exclude-react-components';
 
+/**
+ * A list of component tags to be excluded from the build process.
+ *
+ * This is necessary to exclude functional components (components used by `sdk-dapp-core`)
+ * in order to prevent potential conflicts with the event bus and issues related to
+ * Stencil's state management. By excluding these components, we ensure that the
+ * application remains stable and avoids unintended behavior caused by overlapping
+ * event handling or state inconsistencies.
+ *
+ * The components to be excluded are determined dynamically from the specified directory.
+ */
 const excludeComponents = getExcludedComponentTags('./src/components/functional');
 
 export const config: Config = {
