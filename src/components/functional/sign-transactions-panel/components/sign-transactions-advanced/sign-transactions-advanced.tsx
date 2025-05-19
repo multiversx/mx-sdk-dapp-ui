@@ -1,7 +1,8 @@
-import { Component, h, Prop, State } from '@stencil/core';
+import { Component, Fragment, h, Prop, State } from '@stencil/core';
 
 import { DecodeMethodEnum } from '../../sign-transactions-panel.types';
 import state from '../../signTransactionsPanelStore';
+import type { DataFieldType } from './sign-transactions-advanced.types';
 
 const DECODE_METHODS = Object.values(DecodeMethodEnum);
 
@@ -24,16 +25,16 @@ export class SignTransactionsAdvanced {
     this.decodeMethod = method;
   }
 
-  getHighlight(data: string, highlight: string) {
+  getHighlight(data: string, highlight: string): DataFieldType {
     const highlightIndex = data.indexOf(highlight);
     const beforeText = data.slice(0, highlightIndex);
-    const highlightText = data.slice(highlightIndex, highlightIndex + highlight.length);
+    const text = data.slice(highlightIndex, highlightIndex + highlight.length);
     const afterText = data.slice(highlightIndex + highlight.length);
 
-    return [h('span', null, beforeText), h('span', { class: { 'data-highlight': true } }, highlightText), h('span', null, afterText)];
+    return { beforeText, text, afterText };
   }
 
-  get computedDisplayData() {
+  get computedDisplayData(): DataFieldType {
     if (this.decodeMethod !== DecodeMethodEnum.raw) {
       const {
         commonData: { decodedData },
@@ -42,20 +43,22 @@ export class SignTransactionsAdvanced {
       const { displayValue, highlight } = decodedData?.[this.decodeMethod] ?? {};
 
       if (!highlight || !displayValue.includes(highlight)) {
-        return displayValue;
+        return { text: displayValue };
       }
 
       return this.getHighlight(displayValue, highlight);
     }
 
     if (!this.highlight || !this.data.includes(this.highlight)) {
-      return this.data;
+      return { text: this.data };
     }
 
     return this.getHighlight(this.data, this.highlight);
   }
 
   render() {
+    const { beforeText, afterText, text } = this.computedDisplayData;
+
     return (
       <div class="advanced-details">
         <div class="gas-settings">
@@ -93,7 +96,17 @@ export class SignTransactionsAdvanced {
           <div class="data-field">
             <div class="data-label">Data</div>
             <div class="data-content">
-              <span class="data-text">{this.computedDisplayData}</span>
+              <span class="data-text">
+                {beforeText || afterText ? (
+                  <Fragment>
+                    {beforeText && <span>{beforeText}</span>}
+                    <span class="data-highlight">{text}</span>
+                    {afterText && <span>{afterText}</span>}
+                  </Fragment>
+                ) : (
+                  text
+                )}
+              </span>
             </div>
           </div>
         </div>
