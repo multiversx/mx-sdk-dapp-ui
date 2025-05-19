@@ -1,9 +1,15 @@
-import { Component, forceUpdate, h, Method, Prop, State } from '@stencil/core';
+import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
 import type { IPendingTransactionsPanelData } from './pending-transactions-panel.types';
 import { PendingTransactionsEventsEnum } from './pending-transactions-panel.types';
+
+const initialData: IPendingTransactionsPanelData = {
+  isPending: false,
+  title: '',
+  subtitle: '',
+};
 
 @Component({
   tag: 'mvx-pending-transactions-panel',
@@ -11,13 +17,24 @@ import { PendingTransactionsEventsEnum } from './pending-transactions-panel.type
 })
 export class PendingTransactionstPanel {
   private eventBus: IEventBus = new EventBus();
+
+  @Prop() data = initialData;
+
+  @State() dataState: IPendingTransactionsPanelData = initialData;
   @State() isOpen: boolean = false;
 
-  @Prop() data: IPendingTransactionsPanelData = {
-    isPending: false,
-    title: '',
-    subtitle: '',
-  };
+  @Method() async getEventBus() {
+    return this.eventBus;
+  }
+
+  @Watch('data')
+  handleDataChange(newValue: IPendingTransactionsPanelData) {
+    this.dataState = { ...newValue };
+  }
+
+  cmponentWillLoad() {
+    this.dataState = { ...this.data };
+  }
 
   componentDidLoad() {
     this.eventBus.subscribe(PendingTransactionsEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
@@ -26,9 +43,15 @@ export class PendingTransactionstPanel {
   }
 
   disconnectedCallback() {
+    this.resetState();
     this.eventBus.unsubscribe(PendingTransactionsEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
     this.eventBus.unsubscribe(PendingTransactionsEventsEnum.OPEN_PENDING_TRANSACTIONS_PANEL, this.handleOpen.bind(this));
     this.eventBus.unsubscribe(PendingTransactionsEventsEnum.CLOSE_PENDING_TRANSACTIONS, this.onClose.bind(this, { isUserClick: false }));
+  }
+
+  private resetState() {
+    this.dataState = { ...initialData };
+    this.isOpen = false;
   }
 
   handleOpen() {
@@ -54,12 +77,7 @@ export class PendingTransactionstPanel {
     }
 
     this.isOpen = true;
-    this.data = { ...payload };
-    forceUpdate(this);
-  }
-
-  @Method() async getEventBus() {
-    return this.eventBus;
+    this.dataState = { ...payload };
   }
 
   render() {

@@ -1,17 +1,11 @@
 import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
-import classNames from 'classnames';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
-import { processImgSrc } from 'utils/processImgSrc';
 
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
 import { UnlockPanelEventsEnum } from './unlock-panel.types';
-
-const unlockPanelClasses: Record<string, string> = {
-  footerIcon: 'mvx:w-4! mvx:h-auto!',
-};
 
 @Component({
   tag: 'mvx-unlock-panel',
@@ -28,9 +22,8 @@ export class UnlockPanel {
   @State() isLoggingIn: boolean = false;
   @State() isIntroScreenVisible: boolean = false;
   @State() selectedMethod: IProviderBase | null = null;
-  @State() hasSlotContent: boolean = false;
   @State() panelState = {
-    isOpen: false,
+    isOpen: this.isOpen,
     allowedProviders: this.allowedProviders,
   };
   @Method() async getEventBus() {
@@ -47,23 +40,12 @@ export class UnlockPanel {
     this.panelState = { ...this.panelState, allowedProviders: newValue };
   }
 
-  private isExtensionInstalled(currentProvider: IProviderBase['type']) {
-    return currentProvider === ProviderTypeEnum.extension && getIsExtensionAvailable();
+  componentDidLoad() {
+    this.eventBus.subscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
+    this.eventBus.subscribe(UnlockPanelEventsEnum.CANCEL_IN_PROVIDER, this.handleResetLoginState.bind(this));
   }
-
-  private isMetaMaskInstalled(currentProvider: IProviderBase['type']) {
-    return currentProvider === ProviderTypeEnum.metamask && getIsMetaMaskAvailable();
-  }
-
-  private anchor: HTMLElement | null = null;
-  private observer: MutationObserver | null = null;
 
   async disconnectedCallback() {
-    if (this.observer) {
-      this.observer.disconnect();
-      this.observer = null;
-    }
-
     this.eventBus.unsubscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
     this.eventBus.unsubscribe(UnlockPanelEventsEnum.CANCEL_IN_PROVIDER, this.handleResetLoginState.bind(this));
     this.isLoggingIn = false;
@@ -74,9 +56,27 @@ export class UnlockPanel {
     return delayClosingAnimation;
   }
 
-  componentDidLoad() {
-    this.eventBus.subscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
-    this.eventBus.subscribe(UnlockPanelEventsEnum.CANCEL_IN_PROVIDER, this.handleResetLoginState.bind(this));
+  private isExtensionInstalled(currentProvider: IProviderBase['type']) {
+    return currentProvider === ProviderTypeEnum.extension && getIsExtensionAvailable();
+  }
+
+  private isMetaMaskInstalled(currentProvider: IProviderBase['type']) {
+    return currentProvider === ProviderTypeEnum.metamask && getIsMetaMaskAvailable();
+  }
+
+  private isCustomProvider(currentProvider: IProviderBase['type']) {
+    return !Object.values(ProviderTypeEnum).includes(currentProvider as ProviderTypeEnum);
+  }
+
+  private anchor: HTMLElement | null = null;
+
+  private setAnchor(element: HTMLElement | null) {
+    if (!element) {
+      return;
+    }
+
+    this.anchor = element;
+    this.anchor.addEventListener(UnlockPanelEventsEnum.ACNHOR_CLOSE, this.handleResetLoginState.bind(this));
   }
 
   private unlockPanelUpdate(payload: { isOpen: boolean; allowedProviders: IProviderBase[] }) {
@@ -86,7 +86,7 @@ export class UnlockPanel {
     };
   }
 
-  handleLogin(provider: IProviderBase) {
+  private handleLogin(provider: IProviderBase) {
     this.selectedMethod = provider;
 
     switch (provider.type) {
@@ -106,7 +106,7 @@ export class UnlockPanel {
     }
   }
 
-  handleResetLoginState(event?: MouseEvent) {
+  private handleResetLoginState(event?: MouseEvent) {
     event?.preventDefault?.();
     this.isLoggingIn = false;
     this.isIntroScreenVisible = false;
@@ -122,7 +122,7 @@ export class UnlockPanel {
     this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
   }
 
-  handleClose(event: MouseEvent) {
+  private handleClose(event: MouseEvent) {
     event.preventDefault();
     if (this.selectedMethod) {
       this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
@@ -131,7 +131,7 @@ export class UnlockPanel {
     this.eventBus.publish(UnlockPanelEventsEnum.CLOSE);
   }
 
-  handleAccess() {
+  private handleAccess() {
     this.isIntroScreenVisible = false;
     this.isLoggingIn = true;
     this.eventBus.publish(UnlockPanelEventsEnum.LOGIN, { type: this.selectedMethod.type, anchor: this.anchor });
@@ -147,69 +147,33 @@ export class UnlockPanel {
     const hasDetectedProviders = detectedProviders.length > 0;
 
     const isProviderScreenVisible = !this.isLoggingIn && !this.isIntroScreenVisible;
+    const isCustomProviderActive = this.selectedMethod && this.isCustomProvider(this.selectedMethod.type);
 
     return (
       <mvx-side-panel
         isOpen={this.panelState.isOpen}
         panelTitle={panelTitle}
-        withBackButton={this.isLoggingIn}
         onClose={this.handleClose.bind(this)}
         onBack={this.handleResetLoginState.bind(this)}
+        hasBackButton={isCustomProviderActive}
+        showHeader={isProviderScreenVisible || isCustomProviderActive}
+        panelClassName="unlock-panel"
       >
-        <div
-          id="anchor"
-          ref={el => {
-            this.anchor = el;
-          }}
-          class={{ 'unlock-panel-anchor': this.isLoggingIn }}
-        >
-          {this.isIntroScreenVisible && <mvx-provider-idle-screen provider={this.selectedMethod} onAccess={this.handleAccess.bind(this)} />}
+        <div id="anchor" ref={element => this.setAnchor(element)} class={{ 'unlock-panel-anchor': this.isLoggingIn }}>
+          {this.isIntroScreenVisible && (
+            <mvx-provider-idle-screen provider={this.selectedMethod} onAccess={this.handleAccess.bind(this)} onClose={this.handleResetLoginState.bind(this)} />
+          )}
         </div>
 
         {isProviderScreenVisible && (
           <div class="unlock-panel">
             <div class="unlock-panel-groups">
-              {hasDetectedProviders && (
-                <div class="unlock-panel-group">
-                  <div class="unlock-panel-group-label">Detected</div>
-
-                  <div class="unlock-panel-group-providers">
-                    {detectedProviders.map(provider => (
-                      <mvx-unlock-provider-button provider={provider} onClick={this.handleLogin.bind(this, provider)} />
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              <div class="unlock-panel-group">
-                <div class="unlock-panel-group-label">{hasDetectedProviders ? 'Other Options' : 'Options'}</div>
-
-                <div class="unlock-panel-group-providers">
-                  {otherProviders.map(provider => (
-                    <mvx-unlock-provider-button provider={provider} onClick={this.handleLogin.bind(this, provider)} />
-                  ))}
-
-                  <slot />
-                </div>
-              </div>
+              {hasDetectedProviders && <mvx-unlock-panel-group groupTitle="Detected" providers={detectedProviders} onLogin={event => this.handleLogin(event.detail)} />}
+              <mvx-unlock-panel-group groupTitle={hasDetectedProviders ? 'Other Options' : 'Options'} providers={otherProviders} onLogin={event => this.handleLogin(event.detail)}>
+                <slot />
+              </mvx-unlock-panel-group>
             </div>
-
-            <div class="unlock-panel-footer">
-              <img src={processImgSrc('unlock-panel-wallet.png')} class="unlock-panel-footer-image" />
-
-              <div class="unlock-panel-footer-wrapper">
-                <div class="unlock-panel-footer-title">Don't have a wallet?</div>
-                <div class="unlock-panel-footer-subtitle">
-                  Take full control of <br /> your assets.
-                </div>
-
-                <mvx-arrow-up-right-icon
-                  class={classNames('unlock-panel-footer-icon', {
-                    [unlockPanelClasses.footerIcon]: true,
-                  })}
-                />
-              </div>
-            </div>
+            <mvx-unlock-panel-footer />
           </div>
         )}
       </mvx-side-panel>

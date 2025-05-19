@@ -60,41 +60,6 @@
     }
   }
 
-  .side-panel-heading {
-    display: flex;
-    align-items: center;
-    line-height: 1;
-    font-size: 24px;
-    gap: 12px;
-    margin-bottom: 24px;
-
-    .side-panel-heading-back {
-      cursor: pointer;
-      transition: all 200ms ease;
-      margin-right: auto;
-
-      &:hover {
-        opacity: 0.75;
-      }
-    }
-
-    .side-panel-heading-title {
-      color: #e5e5e5;
-      font-weight: 500;
-      font-family: 'Satoshi', sans-serif;
-    }
-
-    .side-panel-heading-close {
-      transition: all 200ms ease;
-      cursor: pointer;
-      margin-left: auto;
-
-      &:hover {
-        opacity: 0.75;
-      }
-    }
-  }
-
   .side-panel-content {
     flex: 1;
     overflow-y: auto;
