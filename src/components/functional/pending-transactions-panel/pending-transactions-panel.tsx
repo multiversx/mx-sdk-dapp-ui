@@ -1,4 +1,5 @@
 import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
+import { ProviderTypeEnum } from 'types/provider.types';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
@@ -82,8 +83,8 @@ export class PendingTransactionstPanel {
 
   render() {
     return (
-      <mvx-side-panel isOpen={this.isOpen} panelTitle={this.data.title} panelClassName="pending-transactions-panel" onClose={this.handleClose.bind(this)}>
-        <mvx-provider-idle-screen />
+      <mvx-side-panel isOpen={this.isOpen} panelTitle={this.data.title} panelClassName="pending-transactions-panel" showHeader={false}>
+        <mvx-provider-idle-screen provider={{ name: 'Wallet', iconUrl: '', type: ProviderTypeEnum.crossWindow }} onClose={this.handleClose.bind(this)} />
       </mvx-side-panel>
     );
   }
