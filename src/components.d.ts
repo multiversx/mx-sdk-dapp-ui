@@ -10,7 +10,6 @@ import { CustomToastType, IComponentToast, ISimpleToast } from "./components/fun
 import { IGenericModalProps } from "./components/common/generic-modal/generic-modal.types";
 import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
 import { IEventBus } from "./utils/EventBus";
-import { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 import { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
 import { LocalJSX as JSX, VNode } from "@stencil/core";
 import { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
@@ -25,7 +24,6 @@ export { CustomToastType, IComponentToast, ISimpleToast } from "./components/fun
 export { IGenericModalProps } from "./components/common/generic-modal/generic-modal.types";
 export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
 export { IEventBus } from "./utils/EventBus";
-export { IPendingTransactionsPanelData } from "./components/functional/pending-transactions-panel/pending-transactions-panel.types";
 export { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
 export { LocalJSX as JSX, VNode } from "@stencil/core";
 export { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
@@ -160,13 +158,14 @@ export namespace Components {
         "class"?: string;
     }
     interface MvxPendingTransactionsPanel {
-        "data": IPendingTransactionsPanelData;
+        "data": IPendingTransactionsPanelState;
         "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxPreloader {
         "class"?: string;
     }
     interface MvxProviderIdleScreen {
+        "introText": string;
         "provider": IProviderBase | null;
     }
     interface MvxSidePanel {
@@ -1238,12 +1237,13 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface MvxPendingTransactionsPanel {
-        "data"?: IPendingTransactionsPanelData;
+        "data"?: IPendingTransactionsPanelState;
     }
     interface MvxPreloader {
         "class"?: string;
     }
     interface MvxProviderIdleScreen {
+        "introText"?: string;
         "onAccess"?: (event: MvxProviderIdleScreenCustomEvent<any>) => void;
         "onClose"?: (event: MvxProviderIdleScreenCustomEvent<any>) => void;
         "provider"?: IProviderBase | null;

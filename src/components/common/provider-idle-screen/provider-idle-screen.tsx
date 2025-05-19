@@ -8,13 +8,17 @@ import { ProviderTypeEnum } from 'types/provider.types';
 const getProviderIntroText = (providerType?: IProviderBase['type']) => {
   switch (providerType) {
     case ProviderTypeEnum.extension:
-      return 'Open the MultiversX Browser Extension to connect to your wallet.';
+      return 'Open the MultiversX Browser Extension to sign the transaction.';
     case ProviderTypeEnum.metamask:
-      return 'Open the MetaMask Browser Extension to connect to your wallet.';
+      return 'Open the Metamask Browser Extension to sign the transaction.';
     case ProviderTypeEnum.passkey:
-      return 'Use your predefined passkey to connect to your wallet.';
+      return 'Use your predefined passkey to sign the transaction.';
+    case ProviderTypeEnum.walletConnect:
+      return 'Open Xportal to sign the transaction.';
     case ProviderTypeEnum.crossWindow:
-      return 'Follow the steps on MultiversX Web Wallet to connect to your wallet.';
+      return 'Go to MultiversX Web Wallet to sign the transaction.';
+    default:
+      return 'Go to your connected provider to sign the transaction.';
   }
 };
 
@@ -25,6 +29,8 @@ const getProviderIntroText = (providerType?: IProviderBase['type']) => {
 })
 export class ProviderIdleScreen {
   @Prop() provider: IProviderBase | null = null;
+  @Prop() introText: string = '';
+
   @Event({ composed: false, bubbles: false }) close: EventEmitter;
   @Event({ composed: false, bubbles: false }) access: EventEmitter;
 
@@ -36,7 +42,7 @@ export class ProviderIdleScreen {
     const extensionProviderIconHeight = extensionProviderIconBaseSize + (10 / 100) * extensionProviderIconBaseSize;
 
     const providerIntroIcon = getProviderButtonIcon(providerType);
-    const providerIntroText = getProviderIntroText(providerType);
+    const providerIntroText = this.introText || getProviderIntroText(providerType);
 
     if (!this.provider) {
       return null;
@@ -69,8 +75,9 @@ export class ProviderIdleScreen {
             <div class="unlock-provider-intro-icon">{providerIntroIcon}</div>
           )}
 
-          <div class="unlock-provider-intro-title">Requesting Connection</div>
+          <div class="unlock-provider-intro-title">{this.introText ? 'Sign transaction' : 'Requesting Connection'}</div>
           {providerIntroText && <div class="unlock-provider-intro-text">{providerIntroText}</div>}
+          <slot name="close-button" />
         </div>
       </Fragment>
     );
