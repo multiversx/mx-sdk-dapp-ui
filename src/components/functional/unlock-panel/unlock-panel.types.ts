@@ -23,7 +23,7 @@ export enum UnlockPanelEventsEnum {
   CANCEL_LOGIN = 'CANCEL_LOGIN',
   CANCEL_IN_PROVIDER = 'CANCEL_IN_PROVIDER',
   /**
-   * Nottify the Unlock Panel that the constructed anchor was closed.
+   * User clicks Close button inside mounted provider
    */
   ACNHOR_CLOSE = 'ACNHOR_CLOSE',
 }
