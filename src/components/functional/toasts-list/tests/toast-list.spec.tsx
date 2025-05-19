@@ -168,11 +168,11 @@ describe('toast-list', () => {
       html: '<mvx-toast-list></mvx-toast-list>',
     });
 
-    expect(page.rootInstance.transactionToasts).toBeUndefined();
+    expect(page.rootInstance.transactionToasts).toStrictEqual([]);
 
     page.rootInstance.transactionToastUpdate(mockTransactionToasts);
 
-    expect(page.rootInstance.transactionToasts).toEqual(mockTransactionToasts);
+    expect(page.rootInstance.transactionToastsState).toEqual(mockTransactionToasts);
   });
 
   it('updates custom toasts when receiving the update event', async () => {
@@ -181,11 +181,11 @@ describe('toast-list', () => {
       html: '<mvx-toast-list></mvx-toast-list>',
     });
 
-    expect(page.rootInstance.customToasts).toBeUndefined();
+    expect(page.rootInstance.customToasts).toStrictEqual([]);
 
     page.rootInstance.customToastsUpdate(mockCustomToasts);
 
-    expect(page.rootInstance.customToasts).toEqual(mockCustomToasts);
+    expect(page.rootInstance.customToastsState).toEqual(mockCustomToasts);
   });
 
   it('returns the event bus instance when getEventBus is called', async () => {

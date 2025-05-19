@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Remove force update](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/103)
 - [Added scripts for excluded components](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/101)
 - [Refactor and enhance the LedgerFlow, UnlockPanel, and WalletConnect components to improve modularity, maintainability, and user experience.](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/100)
 
