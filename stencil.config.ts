@@ -28,6 +28,7 @@ const excludeComponents = [
   'mvx-transaction-toast-progress',
   'mvx-sign-transactions-footer',
   'mvx-unlock-panel',
+  'mvx-sign-transactions-advanced',
 ];
 
 export const config: Config = {

@@ -19,6 +19,7 @@ export interface ISignTransactionsPanelCommonData {
   receiver?: string;
   receiverIcon?: string;
   data?: string;
+  decodedData?: Partial<Record<DecodeMethodEnum, DecodedDisplayType>>;
   gasPrice?: string;
   /**
    * ppu - Price Per Unit
@@ -61,6 +62,19 @@ export interface ISignTransactionsPanelData {
   } | null;
   nftTransaction: FungibleTransactionType | null;
   sftTransaction: FungibleTransactionType | null;
+}
+
+export enum DecodeMethodEnum {
+  raw = 'raw',
+  text = 'text',
+  decimal = 'decimal',
+  smart = 'smart',
+}
+
+export interface DecodedDisplayType {
+  displayValue: string;
+  validationWarnings: string[];
+  highlight?: string | null;
 }
 
 export enum SignEventsEnum {
