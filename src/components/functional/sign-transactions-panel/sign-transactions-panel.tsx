@@ -121,28 +121,11 @@ export class SignTransactionsPanel {
     }
   }
 
-  setActiveTab(tab: 'overview' | 'advanced') {
+  private setActiveTab(tab: 'overview' | 'advanced') {
     this.activeTab = tab;
   }
 
   get overviewProps(): IOverviewProps {
-    const { tokenTransaction, sftTransaction, nftTransaction } = state;
-    const txData = sftTransaction || nftTransaction || tokenTransaction;
-
-    return {
-      identifier: txData?.identifier,
-      usdValue: tokenTransaction?.usdValue,
-      amount: txData?.amount || '0',
-      tokenIconUrl: txData?.imageURL,
-      interactor: state.commonData?.receiver,
-      interactorIconUrl: state.commonData?.receiverIcon,
-      action: state.commonData?.scCall,
-      networkFee: state.commonData?.feeInFiatLimit,
-      isApp: Boolean(state.commonData?.scCall),
-    };
-  }
-
-  getTransactionData(): IOverviewProps {
     const { tokenTransaction, sftTransaction, nftTransaction } = state;
     const txData = sftTransaction || nftTransaction || tokenTransaction;
 
