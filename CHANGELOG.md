@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [[0.0.0-alpha.15](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/94)] - 2025-05-07
 
+- [Updated provider pending screen in sign flow](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/98)
 - [Fixed build error require utils](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/94)
 
 ## [[0.0.0-alpha.14](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/93)] - 2025-05-07

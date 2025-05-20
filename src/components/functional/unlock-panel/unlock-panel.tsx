@@ -161,7 +161,7 @@ export class UnlockPanel {
       >
         <div id="anchor" ref={element => this.setAnchor(element)} class={{ 'unlock-panel-anchor': this.isLoggingIn }}>
           {this.isIntroScreenVisible && (
-            <mvx-unlock-provider-intro provider={this.selectedMethod} onAccess={this.handleAccess.bind(this)} onClose={this.handleResetLoginState.bind(this)} />
+            <mvx-provider-idle-screen provider={this.selectedMethod} onAccess={this.handleAccess.bind(this)} onClose={this.handleResetLoginState.bind(this)} />
           )}
         </div>
 

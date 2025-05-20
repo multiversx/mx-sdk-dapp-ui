@@ -66,7 +66,7 @@ describe('toast-list', () => {
       html: '<mvx-toast-list></mvx-toast-list>',
     });
 
-    page.rootInstance.transactionToasts = mockTransactionToasts;
+    page.root.transactionToasts = mockTransactionToasts;
     await page.waitForChanges();
 
     const transactionToastElements = page.root.querySelectorAll('mvx-transaction-toast');
@@ -79,7 +79,7 @@ describe('toast-list', () => {
       html: '<mvx-toast-list></mvx-toast-list>',
     });
 
-    page.rootInstance.customToasts = mockCustomToasts;
+    page.root.customToasts = mockCustomToasts;
     await page.waitForChanges();
 
     const genericToastElements = page.root.querySelectorAll('mvx-generic-toast');
@@ -92,8 +92,8 @@ describe('toast-list', () => {
       html: '<mvx-toast-list></mvx-toast-list>',
     });
 
-    page.rootInstance.transactionToasts = mockTransactionToasts;
-    page.rootInstance.customToasts = mockCustomToasts;
+    page.root.transactionToasts = mockTransactionToasts;
+    page.root.customToasts = mockCustomToasts;
     await page.waitForChanges();
 
     const transactionToastElements = page.root.querySelectorAll('mvx-transaction-toast');
@@ -115,7 +115,7 @@ describe('toast-list', () => {
     };
     page.rootInstance.eventBus = eventBusMock;
 
-    page.rootInstance.transactionToasts = mockTransactionToasts;
+    page.root.transactionToasts = mockTransactionToasts;
     await page.waitForChanges();
 
     page.rootInstance.handleTransactionToastDelete('tx1');
@@ -135,7 +135,7 @@ describe('toast-list', () => {
     };
     page.rootInstance.eventBus = eventBusMock;
 
-    page.rootInstance.customToasts = mockCustomToasts;
+    page.root.customToasts = mockCustomToasts;
     await page.waitForChanges();
 
     page.rootInstance.handleCustomToastDelete('custom1');
@@ -170,7 +170,8 @@ describe('toast-list', () => {
 
     expect(page.rootInstance.transactionToasts).toStrictEqual([]);
 
-    page.rootInstance.transactionToastUpdate(mockTransactionToasts);
+    page.root.transactionToasts = mockTransactionToasts;
+    await page.waitForChanges();
 
     expect(page.rootInstance.transactionToastsState).toEqual(mockTransactionToasts);
   });
@@ -183,7 +184,8 @@ describe('toast-list', () => {
 
     expect(page.rootInstance.customToasts).toStrictEqual([]);
 
-    page.rootInstance.customToastsUpdate(mockCustomToasts);
+    page.root.customToasts = mockCustomToasts;
+    await page.waitForChanges();
 
     expect(page.rootInstance.customToastsState).toEqual(mockCustomToasts);
   });
@@ -207,7 +209,7 @@ describe('toast-list', () => {
       html: '<mvx-toast-list></mvx-toast-list>',
     });
 
-    page.rootInstance.transactionToasts = mockTransactionToasts;
+    page.root.transactionToasts = mockTransactionToasts;
     await page.waitForChanges();
 
     const viewAllButton = page.root.querySelector('.view-all-button');
@@ -221,7 +223,7 @@ describe('toast-list', () => {
       html: '<mvx-toast-list></mvx-toast-list>',
     });
 
-    page.rootInstance.customToasts = mockCustomToasts;
+    page.root.customToasts = mockCustomToasts;
     await page.waitForChanges();
 
     const viewAllButton = page.root.querySelector('.view-all-button');
@@ -240,7 +242,7 @@ describe('toast-list', () => {
     };
     page.rootInstance.eventBus = eventBusMock;
 
-    page.rootInstance.transactionToasts = mockTransactionToasts;
+    page.root.transactionToasts = mockTransactionToasts;
     await page.waitForChanges();
 
     page.rootInstance.handleViewAllClick();

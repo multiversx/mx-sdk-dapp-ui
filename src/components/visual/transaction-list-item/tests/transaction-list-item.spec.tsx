@@ -10,7 +10,7 @@ describe('transaction-list-item', () => {
       html: '<mvx-transaction-list-item></mvx-transaction-list-item>',
     });
 
-    page.rootInstance.transaction = transaction;
+    page.root.transaction = transaction;
     await page.waitForChanges();
     return page;
   };
