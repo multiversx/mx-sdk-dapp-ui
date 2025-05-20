@@ -76,7 +76,7 @@ export class UnlockPanel {
     }
 
     this.anchor = element;
-    this.anchor.addEventListener(UnlockPanelEventsEnum.ACNHOR_CLOSE, this.handleResetLoginState.bind(this));
+    this.anchor.addEventListener(UnlockPanelEventsEnum.ANCHOR_CLOSE, this.handleResetLoginState.bind(this));
   }
 
   private unlockPanelUpdate(payload: { isOpen: boolean; allowedProviders: IProviderBase[] }) {

@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - [Add back navigation functionality to SignTransactionsPanel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/105)
+- [Sync anchor with sdk-dapp-core](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/106)
 - [Sign screens enhancements](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/102)
 - [Added sign screens](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/93)
 - [Enhance icon handling to support both `IconDefinition` and string icon names](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/104)
