@@ -1,4 +1,5 @@
 .transaction-toast-content-wrapper {
+  font-family: 'Satoshi', sans-serif;
   position: relative;
   display: flex;
   max-width: 400px;
@@ -60,17 +61,10 @@
 
 .transaction-toast-title {
   color: var(--mx-tx-text-primary);
-  font-family: var(--font-family-roobert);
-  font-size: 16px;
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 700;
-  line-height: 140%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin: 0;
-  max-width: 220px;
+  line-height: 19.6px;
 }
 
 .transaction-toast-title-short {
@@ -84,12 +78,21 @@
 
 .transaction-toast-amount {
   color: var(--mx-tx-text-primary);
-  font-family: var(--font-family-roobert);
-  font-size: 16px;
-  font-size: 16px;
+  display: flex;
+  font-size: 14px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
+  line-height: 16px;
   letter-spacing: -0.14px;
+}
+
+.transaction-toast-amount .transaction-amount-decimal {
+  opacity: 0.7;
+}
+
+.transaction-toast-amount .transaction-amount-label {
+  letter-spacing: -0.32px;
+  opacity: 0.7;
 }
 
 .transaction-toast-details-info {
@@ -101,11 +104,9 @@
 
 .transaction-toast-details-info-text {
   color: var(--mx-tx-text-secondary);
-  font-family: var(--font-family-roobert);
-  font-size: 16px;
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 16px;
   letter-spacing: -0.14px;
   max-width: 160px;
@@ -126,8 +127,8 @@
 .transaction-toast-action-button {
   color: var(--mx-tx-text-primary);
   display: flex;
-  width: 14px;
-  height: 14px;
+  width: 20px;
+  height: 20px;
   flex-direction: column;
   justify-content: center;
   flex-shrink: 0;
@@ -135,6 +136,7 @@
   .svg-inline--fa {
     color: var(--mx-tx-text-primary);
     text-align: center;
-    height: 14px;
+    height: 16px;
+    width: 16px;
   }
 }
