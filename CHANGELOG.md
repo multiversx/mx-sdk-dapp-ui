@@ -14,6 +14,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [Remove force update](https://github.com/multiversx/mx-sdk-dapp-ui/pull/103)
 - [Added scripts for excluded components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/101)
 - [Refactor and enhance the LedgerFlow, UnlockPanel, and WalletConnect components to improve modularity, maintainability, and user experience.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/100)
+- [Add back navigation functionality to SignTransactionsPanel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/105)
+- [Sync anchor with sdk-dapp-core](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/106)
+- [Sign screens enhancements](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/102)
+- [Added sign screens](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/93)
+- [Enhance icon handling to support both `IconDefinition` and string icon names](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/104)
+- [Remove force update](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/103)
+- [Added scripts for excluded components](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/101)
+- [Refactor and enhance the LedgerFlow, UnlockPanel, and WalletConnect components to improve modularity, maintainability, and user experience.](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/100)
 
 ## [[0.0.0-alpha.15](https://github.com/multiversx/mx-sdk-dapp-ui/pull/94)] - 2025-05-07
 
