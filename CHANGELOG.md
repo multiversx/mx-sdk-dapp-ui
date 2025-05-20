@@ -7,110 +7,110 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- [Sync anchor with sdk-dapp-core](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/106)
-- [Sign screens enhancements](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/102)
-- [Added sign screens](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/93)
-- [Enhance icon handling to support both `IconDefinition` and string icon names](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/104)
-- [Remove force update](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/103)
-- [Added scripts for excluded components](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/101)
-- [Refactor and enhance the LedgerFlow, UnlockPanel, and WalletConnect components to improve modularity, maintainability, and user experience.](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/100)
+- [Sync anchor with sdk-dapp-core](https://github.com/multiversx/mx-sdk-dapp-ui/pull/106)
+- [Sign screens enhancements](https://github.com/multiversx/mx-sdk-dapp-ui/pull/102)
+- [Added sign screens](https://github.com/multiversx/mx-sdk-dapp-ui/pull/93)
+- [Enhance icon handling to support both `IconDefinition` and string icon names](https://github.com/multiversx/mx-sdk-dapp-ui/pull/104)
+- [Remove force update](https://github.com/multiversx/mx-sdk-dapp-ui/pull/103)
+- [Added scripts for excluded components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/101)
+- [Refactor and enhance the LedgerFlow, UnlockPanel, and WalletConnect components to improve modularity, maintainability, and user experience.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/100)
 
-## [[0.0.0-alpha.15](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/94)] - 2025-05-07
+## [[0.0.0-alpha.15](https://github.com/multiversx/mx-sdk-dapp-ui/pull/94)] - 2025-05-07
 
-- [Updated styles on notifications feed](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/97)
-- [Updated provider pending screen in sign flow](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/98)
-- [Fixed build error require utils](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/94)
+- [Updated styles on notifications feed](https://github.com/multiversx/mx-sdk-dapp-ui/pull/97)
+- [Updated provider pending screen in sign flow](https://github.com/multiversx/mx-sdk-dapp-ui/pull/98)
+- [Fixed build error require utils](https://github.com/multiversx/mx-sdk-dapp-ui/pull/94)
 
-## [[0.0.0-alpha.14](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/93)] - 2025-05-07
+## [[0.0.0-alpha.14](https://github.com/multiversx/mx-sdk-dapp-ui/pull/93)] - 2025-05-07
 
-- [Fixed ledger double screen](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/91)
-- [Added Ledger address table preloaders](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/90)
-- [Added providers customization support](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/89)
-- [Fixed sign transactions button states](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/87)
+- [Fixed ledger double screen](https://github.com/multiversx/mx-sdk-dapp-ui/pull/91)
+- [Added Ledger address table preloaders](https://github.com/multiversx/mx-sdk-dapp-ui/pull/90)
+- [Added providers customization support](https://github.com/multiversx/mx-sdk-dapp-ui/pull/89)
+- [Fixed sign transactions button states](https://github.com/multiversx/mx-sdk-dapp-ui/pull/87)
 
-## [[0.0.0-alpha.13](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/88)] - 2025-05-02
+## [[0.0.0-alpha.13](https://github.com/multiversx/mx-sdk-dapp-ui/pull/88)] - 2025-05-02
 
-- [Fixed bubbling events](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/86)
-- [Updated the Ledger authentication flow layout](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/85)
-- [Added cancel login](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/84)
-- [Added `usdValue` to ledger accounts](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/83)
-- [Updated xPortal authentication flow layout](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/80)
-- [Fix stencil-tailwind-plugin build error in monorepo](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/79)
+- [Fixed bubbling events](https://github.com/multiversx/mx-sdk-dapp-ui/pull/86)
+- [Updated the Ledger authentication flow layout](https://github.com/multiversx/mx-sdk-dapp-ui/pull/85)
+- [Added cancel login](https://github.com/multiversx/mx-sdk-dapp-ui/pull/84)
+- [Added `usdValue` to ledger accounts](https://github.com/multiversx/mx-sdk-dapp-ui/pull/83)
+- [Updated xPortal authentication flow layout](https://github.com/multiversx/mx-sdk-dapp-ui/pull/80)
+- [Fix stencil-tailwind-plugin build error in monorepo](https://github.com/multiversx/mx-sdk-dapp-ui/pull/79)
 
-## [[0.0.0-alpha.12](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/78)] - 2025-04-10
+## [[0.0.0-alpha.12](https://github.com/multiversx/mx-sdk-dapp-ui/pull/78)] - 2025-04-10
 
-- [Add stencil-tailwind-plugin for tailwind v4](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/77)
+- [Add stencil-tailwind-plugin for tailwind v4](https://github.com/multiversx/mx-sdk-dapp-ui/pull/77)
 
-## [[0.0.0-alpha.11](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/76)] - 2025-04-09
+## [[0.0.0-alpha.11](https://github.com/multiversx/mx-sdk-dapp-ui/pull/76)] - 2025-04-09
 
-- [Added prefix to functional and controlled components](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/75)
-- [Added prefix to common and controlled components](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/72)
-- [Updated the layout for the new unlock panel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/67)
+- [Added prefix to functional and controlled components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/75)
+- [Added prefix to common and controlled components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/72)
+- [Updated the layout for the new unlock panel](https://github.com/multiversx/mx-sdk-dapp-ui/pull/67)
 
-## [[0.0.0-alpha.10](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/70)] - 2025-03-31
+## [[0.0.0-alpha.10](https://github.com/multiversx/mx-sdk-dapp-ui/pull/70)] - 2025-03-31
 
-- [Toasts design](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/66)
-- [Upgrade Tailwind to v4](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/65)
+- [Toasts design](https://github.com/multiversx/mx-sdk-dapp-ui/pull/66)
+- [Upgrade Tailwind to v4](https://github.com/multiversx/mx-sdk-dapp-ui/pull/65)
 
-## [[0.0.0-alpha.9](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/64)] - 2025-03-19
+## [[0.0.0-alpha.9](https://github.com/multiversx/mx-sdk-dapp-ui/pull/64)] - 2025-03-19
 
-- [Fixed sign transactions panel and component](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/63)
-- [Fixed loader export](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/62)
-- [Migrated modals to side panels](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/61)
+- [Fixed sign transactions panel and component](https://github.com/multiversx/mx-sdk-dapp-ui/pull/63)
+- [Fixed loader export](https://github.com/multiversx/mx-sdk-dapp-ui/pull/62)
+- [Migrated modals to side panels](https://github.com/multiversx/mx-sdk-dapp-ui/pull/61)
 
-## [[0.0.0-alpha.8](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/60)] - 2025-03-18
+## [[0.0.0-alpha.8](https://github.com/multiversx/mx-sdk-dapp-ui/pull/60)] - 2025-03-18
 
-- [Fix react output config](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/59)
+- [Fix react output config](https://github.com/multiversx/mx-sdk-dapp-ui/pull/59)
 
-## [[0.0.0-alpha.7](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/58)] - 2025-03-18
+## [[0.0.0-alpha.7](https://github.com/multiversx/mx-sdk-dapp-ui/pull/58)] - 2025-03-18
 
-- [Refactor package compile](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/57)
-- [Added gasPrice PPU editing radios](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/56)
-- [Added gasPrice editing radios](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/52)
-- [Added notifications feed side panel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/50)
+- [Refactor package compile](https://github.com/multiversx/mx-sdk-dapp-ui/pull/57)
+- [Added gasPrice PPU editing radios](https://github.com/multiversx/mx-sdk-dapp-ui/pull/56)
+- [Added gasPrice editing radios](https://github.com/multiversx/mx-sdk-dapp-ui/pull/52)
+- [Added notifications feed side panel](https://github.com/multiversx/mx-sdk-dapp-ui/pull/50)
 - [Added Tailwind CSS support](https://github.com/multiversx/mx-sdk-dapp-core/pull/47)
 
-## [[0.0.0-alpha.6](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/53)] - 2025-03-12
+## [[0.0.0-alpha.6](https://github.com/multiversx/mx-sdk-dapp-ui/pull/53)] - 2025-03-12
 
-- [Added notifications feed side panel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/50)
+- [Added notifications feed side panel](https://github.com/multiversx/mx-sdk-dapp-ui/pull/50)
 - [Added Tailwind CSS support](https://github.com/multiversx/mx-sdk-dapp-core/pull/47)
 - [Added wallet connect side panel component](https://github.com/multiversx/mx-sdk-dapp-core/pull/45)
 
-## [[0.0.0-alpha.5](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/49)] - 2025-02-27
+## [[0.0.0-alpha.5](https://github.com/multiversx/mx-sdk-dapp-ui/pull/49)] - 2025-02-27
 
 - [Added ability to expand/collapse transactions in toast](https://github.com/multiversx/mx-sdk-dapp-core/pull/48)
 - [Added ability to close modal on Escape](https://github.com/multiversx/mx-sdk-dapp-core/pull/46)
 - [Added wallet connect side panel component](https://github.com/multiversx/mx-sdk-dapp-core/pull/45)
 - [Added missing components from excludeComponents stancil config](https://github.com/multiversx/mx-sdk-dapp-core/pull/44)
-- [Added wallet connect side panel support](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/43)
-- [Added unlock panel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/42)
+- [Added wallet connect side panel support](https://github.com/multiversx/mx-sdk-dapp-ui/pull/43)
+- [Added unlock panel](https://github.com/multiversx/mx-sdk-dapp-ui/pull/42)
 
-## [[0.0.0-alpha.4](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/41)] - 2025-02-18
+## [[0.0.0-alpha.4](https://github.com/multiversx/mx-sdk-dapp-ui/pull/41)] - 2025-02-18
 
-- [Added react-output-target](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/41)
+- [Added react-output-target](https://github.com/multiversx/mx-sdk-dapp-ui/pull/41)
 
-## [[0.0.0-alpha.3](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/40)] - 2025-02-18
+## [[0.0.0-alpha.3](https://github.com/multiversx/mx-sdk-dapp-ui/pull/40)] - 2025-02-18
 
-- [Refactored components folders](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/37)
-- [Added tests workflow](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/36)
-- [Added transactions-table test](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/34)
-- [Fixed TrimText component](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/33)
-- [Added copy, trim and explorer link on toasts](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/32)
-- [Enhance toast progress component](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/31)
-- [Added transactions table styling](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/30)
-- [Added react output config](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/29)
-- [Added Trim and CopyButton components](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/28)
-- [Added transaction account](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/27)
-- [Clean package.json export](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/26)
-- [Updated transactions table props](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/25)
+- [Refactored components folders](https://github.com/multiversx/mx-sdk-dapp-ui/pull/37)
+- [Added tests workflow](https://github.com/multiversx/mx-sdk-dapp-ui/pull/36)
+- [Added transactions-table test](https://github.com/multiversx/mx-sdk-dapp-ui/pull/34)
+- [Fixed TrimText component](https://github.com/multiversx/mx-sdk-dapp-ui/pull/33)
+- [Added copy, trim and explorer link on toasts](https://github.com/multiversx/mx-sdk-dapp-ui/pull/32)
+- [Enhance toast progress component](https://github.com/multiversx/mx-sdk-dapp-ui/pull/31)
+- [Added transactions table styling](https://github.com/multiversx/mx-sdk-dapp-ui/pull/30)
+- [Added react output config](https://github.com/multiversx/mx-sdk-dapp-ui/pull/29)
+- [Added Trim and CopyButton components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/28)
+- [Added transaction account](https://github.com/multiversx/mx-sdk-dapp-ui/pull/27)
+- [Clean package.json export](https://github.com/multiversx/mx-sdk-dapp-ui/pull/26)
+- [Updated transactions table props](https://github.com/multiversx/mx-sdk-dapp-ui/pull/25)
 
-## [[0.0.0-alpha.2](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/24)] - 2025-01-27
+## [[0.0.0-alpha.2](https://github.com/multiversx/mx-sdk-dapp-ui/pull/24)] - 2025-01-27
 
-- [Fixed generic modal event warning](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/23)
-- [Added transactions table component](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/22)
-- [Added custom notification support](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/21)
+- [Fixed generic modal event warning](https://github.com/multiversx/mx-sdk-dapp-ui/pull/23)
+- [Added transactions table component](https://github.com/multiversx/mx-sdk-dapp-ui/pull/22)
+- [Added custom notification support](https://github.com/multiversx/mx-sdk-dapp-ui/pull/21)
 
-## [[0.0.0-alpha.1](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/16)] - 2025-01-20
+## [[0.0.0-alpha.1](https://github.com/multiversx/mx-sdk-dapp-ui/pull/16)] - 2025-01-20
 
-- [Updated formatAmount component and removed dependencies](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/17)
-- [Updated formatAmount component](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/15)
+- [Updated formatAmount component and removed dependencies](https://github.com/multiversx/mx-sdk-dapp-ui/pull/17)
+- [Updated formatAmount component](https://github.com/multiversx/mx-sdk-dapp-ui/pull/15)
