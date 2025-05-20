@@ -56,7 +56,7 @@ export class TransactionToastDetails {
           {hasMoreTransactionsToShow && !this.showAllTransactions && (
             <div class="view-all-container">
               <button type="button" class="show-more-button" onClick={this.showMoreTransactions.bind(this)}>
-                Show {hiddenTransactionsCount} more
+                View {hiddenTransactionsCount} more
               </button>
             </div>
           )}

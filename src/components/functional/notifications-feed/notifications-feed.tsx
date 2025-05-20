@@ -1,4 +1,3 @@
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Method, State } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
@@ -59,9 +58,8 @@ export class NotificationsFeed {
       <mvx-side-panel isOpen={this.isOpen} panelTitle="Notifications Feed" onClose={this.handleClose}>
         <div class="feed-content">
           <div class="notifications-info">
-            <mvx-fa-icon class="info-icon" icon={faInfoCircle} />
             This feed is stored in your browser and will be reset when a new session is started.
-            <fa-icon class="info-icon" icon={faInfoCircle} />
+            <mvx-circle-exclamation-icon class="info-icon" />
           </div>
 
           {hasPending && (
