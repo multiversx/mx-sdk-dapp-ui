@@ -1,5 +1,4 @@
 import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { Component, Element, h, Prop, State } from '@stencil/core';
 import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
@@ -32,7 +31,7 @@ export class ExplorerLink {
 
     return (
       <a data-testid={this.dataTestId} href={this.link} target="_blank" class={{ 'mvx:explorer-link': true, [this.class]: Boolean(this.class) }} rel="noreferrer">
-        {this.hasSlotContent ? <slot name="content"></slot> : this.text ?? <mvx-fa-icon icon={this.icon} class={this.iconClass}></mvx-fa-icon>}
+        {this.hasSlotContent ? <slot name="content"></slot> : this.text ?? <mvx-fa-icon icon={icon} class={this.iconClass}></mvx-fa-icon>}
       </a>
     );
   }
