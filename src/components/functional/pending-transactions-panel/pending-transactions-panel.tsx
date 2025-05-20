@@ -45,9 +45,9 @@ export class PendingTransactionstPanel {
     return this.eventBus;
   }
 
-  @Watch('provider')
-  handleDataChange(newProvider: IPendingTransactionsPanelState) {
-    this.state = { ...newProvider };
+  @Watch('data')
+  handleDataChange(newData: IPendingTransactionsPanelState) {
+    this.state = { ...newData };
   }
 
   cmponentWillLoad() {

@@ -17,7 +17,7 @@ describe('pending-transactions-panel', () => {
 
     await page.setContent(`<${tag}></${tag}>`);
     const component = await page.find(tag);
-    component.setProperty('data', { title });
+    component.setProperty('data', { provider: { name: title }, shouldClose: false });
 
     await page.waitForChanges();
     const panel = await page.find('mvx-side-panel');
