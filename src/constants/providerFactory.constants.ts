@@ -1,4 +1,4 @@
-// types here need to be synced with the types in sdk-dapp-core providerFactory.constants.ts
+// types here need to be synced with the types in sdk-dapp providerFactory.constants.ts
 import { ProviderTypeEnum } from 'types/provider.types';
 
 export const providerLabels: Record<string, string> = {
