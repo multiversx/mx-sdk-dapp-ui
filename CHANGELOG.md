@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Renamed project](https://github.com/multiversx/mx-sdk-dapp-ui/pull/107)
 - [Sync anchor with sdk-dapp-core](https://github.com/multiversx/mx-sdk-dapp-ui/pull/106)
 - [Sign screens enhancements](https://github.com/multiversx/mx-sdk-dapp-ui/pull/102)
 - [Added sign screens](https://github.com/multiversx/mx-sdk-dapp-ui/pull/93)
