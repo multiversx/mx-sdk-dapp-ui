@@ -25,8 +25,6 @@ interface IOverviewProps {
 })
 export class SignTransactionsPanel {
   private eventBus: IEventBus = new EventBus();
-  @State() isOpen: boolean = false;
-  @State() activeTab: 'overview' | 'advanced' = 'overview';
 
   @Prop() data: ISignTransactionsPanelData = {
     commonData: {
@@ -42,6 +40,9 @@ export class SignTransactionsPanel {
     nftTransaction: null,
     sftTransaction: null,
   };
+
+  @State() isOpen: boolean = false;
+  @State() activeTab: 'overview' | 'advanced' = 'overview';
 
   @Method() async getEventBus() {
     return this.eventBus;
