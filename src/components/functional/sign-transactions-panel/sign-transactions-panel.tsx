@@ -80,6 +80,7 @@ export class SignTransactionsPanel {
     this.eventBus.subscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
     this.eventBus.subscribe(SignEventsEnum.OPEN_SIGN_TRANSACTIONS_PANEL, this.handleOpen.bind(this));
     this.eventBus.subscribe(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS_PANEL, this.onClose.bind(this, { isUserClick: false }));
+    this.eventBus.subscribe(SignEventsEnum.BACK, this.handleBack.bind(this));
   }
 
   disconnectedCallback() {
@@ -123,6 +124,12 @@ export class SignTransactionsPanel {
 
   private setActiveTab(tab: 'overview' | 'advanced') {
     this.activeTab = tab;
+  }
+
+  private handleBack() {
+    if (state.commonData.currentIndex > 0) {
+      state.commonData.currentIndex -= 1;
+    }
   }
 
   get overviewProps(): IOverviewProps {
