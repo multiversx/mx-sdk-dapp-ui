@@ -57,9 +57,9 @@ export namespace Components {
     }
     interface MvxCopyButton {
         "class"?: string;
-        "copyIcon"?: IconDefinition;
+        "copyIcon"?: IconDefinition | string;
         "iconClass"?: string;
-        "successIcon"?: IconDefinition;
+        "successIcon"?: IconDefinition | string;
         "text": string;
     }
     interface MvxCustomToast {
@@ -72,7 +72,7 @@ export namespace Components {
     interface MvxExplorerLink {
         "class"?: string;
         "dataTestId"?: string;
-        "icon"?: IconDefinition;
+        "icon"?: IconDefinition | string;
         "iconClass"?: string;
         "link": string;
         "text"?: string;
@@ -1129,9 +1129,9 @@ declare namespace LocalJSX {
     }
     interface MvxCopyButton {
         "class"?: string;
-        "copyIcon"?: IconDefinition;
+        "copyIcon"?: IconDefinition | string;
         "iconClass"?: string;
-        "successIcon"?: IconDefinition;
+        "successIcon"?: IconDefinition | string;
         "text"?: string;
     }
     interface MvxCustomToast {
@@ -1145,7 +1145,7 @@ declare namespace LocalJSX {
     interface MvxExplorerLink {
         "class"?: string;
         "dataTestId"?: string;
-        "icon"?: IconDefinition;
+        "icon"?: IconDefinition | string;
         "iconClass"?: string;
         "link"?: string;
         "text"?: string;

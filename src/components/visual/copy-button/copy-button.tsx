@@ -1,7 +1,8 @@
 import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { faCheck, faCopy } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Prop, State } from '@stencil/core';
 import { copyToClipboard } from 'utils/copyToClipboard';
+import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
+import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
 
 @Component({
   tag: 'mvx-copy-button',
@@ -10,8 +11,8 @@ import { copyToClipboard } from 'utils/copyToClipboard';
 export class CopyButton {
   @Prop() class?: string = 'copy-button';
   @Prop() iconClass?: string = 'copy-button-icon';
-  @Prop() copyIcon?: IconDefinition;
-  @Prop() successIcon?: IconDefinition;
+  @Prop() copyIcon?: IconDefinition | string;
+  @Prop() successIcon?: IconDefinition | string;
   @Prop() text: string;
 
   @State() isSuccess: boolean = false;
@@ -43,8 +44,16 @@ export class CopyButton {
   }
 
   render() {
-    const copyIcon = this.copyIcon ?? faCopy;
-    const successIcon = this.successIcon ?? faCheck;
+    let copyIcon = 'faCopy';
+    let successIcon = 'faCheck';
+
+    if (this.copyIcon) {
+      copyIcon = typeof this.copyIcon === 'string' ? getIconHtmlFromIconName(this.copyIcon) : getIconHtmlFromIconDefinition(this.copyIcon);
+    }
+
+    if (this.successIcon) {
+      successIcon = typeof this.successIcon === 'string' ? getIconHtmlFromIconName(this.successIcon) : getIconHtmlFromIconDefinition(this.successIcon);
+    }
 
     return (
       <a href="/#" class={this.class} onClick={this.handleClick}>
