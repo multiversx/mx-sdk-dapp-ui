@@ -17,7 +17,7 @@ export class SignTransactionsFooter {
 
   render() {
     const { onCancel, onBack, onNext, onConfirm } = state;
-    const { currentIndex, currentIndexToSign, needsSigning, username, address, addressExplorerLink } = state.commonData;
+    const { currentIndex, currentIndexToSign, needsSigning, username, address, explorerLink } = state.commonData;
 
     const isFirstTransaction = currentIndex === 0;
     const currentIndexNeedsSigning = currentIndex === currentIndexToSign;
@@ -91,7 +91,7 @@ export class SignTransactionsFooter {
 
           {!username && address && <mvx-trim-text text={address} class="sign-transactions-footer-identity-address" />}
           <mvx-copy-button text={username ?? address} class="sign-transactions-footer-identity-copy" iconClass="sign-transactions-footer-identity-copy-icon" />
-          <mvx-explorer-link link={addressExplorerLink} class="sign-transactions-footer-identity-explorer" iconClass="sign-transactions-footer-identity-explorer-icon" />
+          <mvx-explorer-link link={explorerLink} class="sign-transactions-footer-identity-explorer" iconClass="sign-transactions-footer-identity-explorer-icon" />
         </div>
       </div>
     );

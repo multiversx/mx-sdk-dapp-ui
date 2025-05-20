@@ -16,7 +16,7 @@ export interface IConfirmScreenData {
   selectedAddress: string;
   confirmAddressText?: string;
   authText?: string;
-  addressExplorerLink: string;
+  explorerLink: string;
 }
 
 export interface ILedgerConnectPanelData {
