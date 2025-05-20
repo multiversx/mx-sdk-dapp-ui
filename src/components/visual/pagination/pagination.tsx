@@ -92,7 +92,7 @@ export class Pagination {
                 </div>
               ) : (
                 <mvx-tooltip
-                  triggerOnClick={true}
+                  triggerOnClick
                   trigger={<mvx-pagination-ellipsis isActive={this.isTooltipOpen && this.activeTooltipIndex === paginationItemIndex} />}
                   onTriggerRender={(event: CustomEvent) => {
                     this.activeTooltipIndex = paginationItemIndex;

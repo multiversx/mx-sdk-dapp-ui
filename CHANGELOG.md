@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Added sign screens](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/93)
 - [Enhance icon handling to support both `IconDefinition` and string icon names](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/104)
 - [Remove force update](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/103)
 - [Added scripts for excluded components](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/101)

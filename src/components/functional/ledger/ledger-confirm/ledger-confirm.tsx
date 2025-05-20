@@ -20,7 +20,7 @@ export class LedgerConfirm {
 
   render() {
     const ledgerConfirmationItems: LedgerConfirmationItem[] = [
-      { label: this.confirmScreenData.confirmAddressText, value: this.confirmScreenData.selectedAddress, explorerLink: this.confirmScreenData.addressExplorerLink },
+      { label: this.confirmScreenData.confirmAddressText, value: this.confirmScreenData.selectedAddress, explorerLink: this.confirmScreenData.explorerLink },
       { label: this.confirmScreenData.authText, value: this.confirmScreenData.data, highlighted: true },
     ];
 
@@ -30,6 +30,7 @@ export class LedgerConfirm {
           {ledgerConfirmationItems.map(ledgerConfirmationItem => (
             <div class="ledger-confirm-item">
               <div class="ledger-confirm-item-label">{ledgerConfirmationItem.label}</div>
+
               <div class="ledger-confirm-item-value">
                 <div class={{ 'ledger-confirm-item-value-text': true, 'highlighted': Boolean(ledgerConfirmationItem.highlighted) }}>{ledgerConfirmationItem.value}</div>
 

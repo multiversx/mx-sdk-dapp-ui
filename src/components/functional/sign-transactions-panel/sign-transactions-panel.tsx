@@ -1,25 +1,30 @@
-import { Component, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
 import type { ISignTransactionsPanelData } from './sign-transactions-panel.types';
 import { SignEventsEnum } from './sign-transactions-panel.types';
 import state, { resetState } from './signTransactionsPanelStore';
-
-const signScreens = {
-  FungibleESDT: 'mvx-token-component',
-  SemiFungibleESDT: 'mvx-fungible-component',
-  NonFungibleESDT: 'mvx-fungible-component',
-  MetaESDT: 'mvx-token-component',
-};
+interface IOverviewProps {
+  identifier: string;
+  usdValue: string;
+  amount: string;
+  tokenIconUrl: string;
+  interactor: string;
+  interactorIconUrl: string;
+  action: string;
+  networkFee: string;
+  isApp: boolean;
+}
 
 @Component({
   tag: 'mvx-sign-transactions-panel',
-  styleUrl: 'sign-transactions-panel.css',
+  styleUrl: 'sign-transactions-panel.scss',
+  shadow: true,
 })
 export class SignTransactionsPanel {
   private eventBus: IEventBus = new EventBus();
-  @State() isOpen: boolean = false;
 
   @Prop() data: ISignTransactionsPanelData = {
     commonData: {
@@ -27,6 +32,7 @@ export class SignTransactionsPanel {
       feeLimit: '',
       feeInFiatLimit: '',
       transactionsCount: 0,
+      currentIndexToSign: 0,
       currentIndex: 0,
       ppuOptions: [],
     },
@@ -35,9 +41,25 @@ export class SignTransactionsPanel {
     sftTransaction: null,
   };
 
+  @State() isOpen: boolean = false;
+  @State() activeTab: 'overview' | 'advanced' = 'overview';
+
+  @Method() async getEventBus() {
+    return this.eventBus;
+  }
+
+  @Watch('data')
+  updateData(newData: ISignTransactionsPanelData) {
+    this.dataUpdate(newData);
+  }
+
   componentWillLoad() {
     state.onCancel = () => {
       this.onClose({ isUserClick: true });
+    };
+
+    state.onNext = () => {
+      this.eventBus.publish(SignEventsEnum.NEXT);
     };
 
     state.onConfirm = () => {
@@ -54,6 +76,7 @@ export class SignTransactionsPanel {
   }
 
   componentDidLoad() {
+    this.updateData(this.data);
     this.eventBus.subscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
     this.eventBus.subscribe(SignEventsEnum.OPEN_SIGN_TRANSACTIONS_PANEL, this.handleOpen.bind(this));
     this.eventBus.subscribe(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS_PANEL, this.onClose.bind(this, { isUserClick: false }));
@@ -66,16 +89,16 @@ export class SignTransactionsPanel {
     this.eventBus.unsubscribe(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS_PANEL, this.onClose.bind(this, { isUserClick: false }));
   }
 
-  handleOpen() {
+  private handleOpen() {
     this.isOpen = true;
   }
 
-  handleClose() {
+  private handleClose() {
     this.isOpen = false;
     this.onClose({ isUserClick: true });
   }
 
-  onClose(props = { isUserClick: true }) {
+  private onClose(props = { isUserClick: true }) {
     this.isOpen = false;
     resetState();
 
@@ -85,49 +108,98 @@ export class SignTransactionsPanel {
   }
 
   private dataUpdate(payload: ISignTransactionsPanelData) {
-    this.data = { ...payload };
-    forceUpdate(this);
-  }
-
-  @Watch('data')
-  onDataChange(data: ISignTransactionsPanelData) {
-    for (const key in data) {
+    for (const key in payload) {
       if (Object.prototype.hasOwnProperty.call(state, key)) {
-        state[key] = data[key];
+        state[key] = payload[key];
       }
     }
 
     state.isWaitingForSignature = false;
-    state.isLoading = false;
+
+    if (payload.shouldClose) {
+      this.onClose({ isUserClick: false });
+    }
   }
 
-  @Method() async getEventBus() {
-    return this.eventBus;
+  private setActiveTab(tab: 'overview' | 'advanced') {
+    this.activeTab = tab;
+  }
+
+  get overviewProps(): IOverviewProps {
+    const { tokenTransaction, sftTransaction, nftTransaction } = state;
+    const txData = sftTransaction || nftTransaction || tokenTransaction;
+
+    return {
+      identifier: txData?.identifier,
+      usdValue: tokenTransaction?.usdValue,
+      amount: txData?.amount || '0',
+      tokenIconUrl: txData?.imageURL,
+      interactor: state.commonData?.receiver,
+      interactorIconUrl: state.commonData?.receiverIcon,
+      action: state.commonData?.scCall,
+      networkFee: state.commonData?.feeInFiatLimit,
+      isApp: Boolean(state.commonData?.scCall),
+    };
   }
 
   render() {
-    const { commonData, isLoading } = state;
-    const { tokenType, currentIndex, transactionsCount } = commonData;
-    const SignScreen = signScreens[tokenType];
+    const { commonData, onNext, onBack } = state;
+    const { currentIndex, transactionsCount, origin, data, highlight } = commonData;
 
     return (
-      <mvx-side-panel isOpen={this.isOpen} panelClassName="sign-transactions-panel" onClose={this.handleClose.bind(this)}>
-        <div class="sign-transactions-content">
-          <div class="sign-transactions-header">
-            <h2>Sign transaction</h2>
-            <h4>
-              Transaction {currentIndex + 1} of {transactionsCount}
-            </h4>
-          </div>
-          <div class="sign-transactions-body">
-            {isLoading ? (
-              <div class="loading-spinner">
-                <mvx-generic-spinner></mvx-generic-spinner>
+      <mvx-side-panel isOpen={this.isOpen} onClose={this.handleClose.bind(this)} panelTitle="Confirm Transaction">
+        <div class="sign-transactions-panel">
+          {transactionsCount > 1 && (
+            <div class="transaction-navigation">
+              <div class="transaction-switcher">
+                <div class="navigation-icon" onClick={onBack}>
+                  <mvx-fa-icon icon={faChevronLeft} class="icon-angle-left" />
+                </div>
+                <div class="transaction-counter">
+                  <div class="counter-label-container">
+                    <span class="transaction">Transaction</span>
+                  </div>
+                  <div class="counter-value-container">
+                    <span class="counter-text">
+                      {currentIndex + 1} of {transactionsCount}
+                    </span>
+                  </div>
+                </div>
+                <div class="navigation-icon" onClick={onNext}>
+                  <mvx-fa-icon icon={faChevronRight} class="icon-angle-right" />
+                </div>
               </div>
+            </div>
+          )}
+
+          <div class="origin-container">
+            <span class="request-from">Request from</span>
+            <div class="origin-details">
+              <div class="origin-logo-container">
+                <img class="origin-logo" src={`${origin}/favicon.ico`} alt="favicon" />
+              </div>
+              <span class="origin-name">{origin}</span>
+            </div>
+          </div>
+
+          <div class="sign-transaction-content">
+            <div class="tab-selector">
+              <div class={`tab-item ${this.activeTab === 'overview' ? 'active' : ''}`} onClick={() => this.setActiveTab('overview')}>
+                <span class="tab-text">Overview</span>
+              </div>
+              <div class={`tab-item ${this.activeTab === 'advanced' ? 'active' : ''}`} onClick={() => this.setActiveTab('advanced')}>
+                <span class="tab-text">Advanced</span>
+              </div>
+            </div>
+
+            {this.activeTab === 'overview' ? (
+              <mvx-sign-transactions-overview style={{ width: '100%' }} {...this.overviewProps}></mvx-sign-transactions-overview>
             ) : (
-              <SignScreen></SignScreen>
+              <mvx-sign-transactions-advanced style={{ width: '100%' }} data={data} highlight={highlight}></mvx-sign-transactions-advanced>
             )}
           </div>
+
+          <mvx-sign-transactions-footer />
         </div>
       </mvx-side-panel>
     );

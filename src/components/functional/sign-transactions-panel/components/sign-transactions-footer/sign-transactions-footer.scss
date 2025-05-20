@@ -1,0 +1,186 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .sign-transactions-footer {
+    font-family: 'Satoshi', sans-serif;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+
+    .sign-transactions-footer-buttons {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: 12px;
+
+      .sign-transactions-footer-button-wrapper {
+        position: relative;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+        &.cancel {
+          width: 128px;
+          max-width: 128px;
+        }
+
+        .sign-transactions-footer-button-tooltip-wrapper {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+        }
+
+        .sign-transactions-footer-button {
+          border-radius: 12px;
+          padding: 8px 16px;
+          display: flex;
+          justify-content: center;
+          max-height: 40px;
+          min-height: 40px;
+          align-items: center;
+          line-height: 1;
+          font-size: 16px;
+          font-weight: 700;
+          transition: all 200ms ease;
+          cursor: pointer;
+          gap: 8px;
+          border: 1px solid transparent;
+          width: 100%;
+
+          &.cancel {
+            position: relative;
+            color: #e8e8e8;
+
+            &:before {
+              pointer-events: none;
+              content: '';
+              opacity: 40%;
+              position: absolute;
+              left: -1px;
+              transition: all 200ms ease;
+              top: -1px;
+              right: -1px;
+              bottom: -1px;
+              background-color: #353535;
+              border-radius: 12px;
+              z-index: -1;
+            }
+
+            &:hover {
+              color: #000000;
+
+              &:before {
+                opacity: 1;
+                background-color: #23f7dd;
+              }
+            }
+          }
+
+          &.highlighted {
+            background-color: #23f7dd;
+            flex: 1;
+            color: #000000;
+
+            &:hover {
+              opacity: 0.75;
+            }
+          }
+
+          &.disabled {
+            background-color: transparent;
+            border-color: #a09a93;
+            cursor: default;
+            color: #a09a93;
+            pointer-events: none;
+          }
+
+          .sign-transactions-footer-button-icon {
+            display: flex;
+            transition: all 200ms ease;
+
+            &.lighter {
+              fill: #a09a93;
+            }
+          }
+        }
+      }
+    }
+
+    .sign-transactions-footer-identity {
+      max-width: 256px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      gap: 8px;
+
+      .sign-transactions-footer-identity-label {
+        color: #b6b3af;
+        white-space: nowrap;
+      }
+
+      .sign-transactions-footer-identity-address {
+        color: #ffffff;
+        position: relative;
+        min-width: 0;
+        max-width: none;
+        top: -0.25px;
+
+        .trim-wrapper {
+          align-items: flex-end;
+        }
+      }
+
+      .sign-transactions-footer-identity-username {
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        color: #fff;
+
+        .sign-transactions-footer-identity-username-prefix {
+          color: #23f7dd;
+        }
+      }
+
+      .sign-transactions-footer-identity-copy {
+        display: flex;
+
+        .sign-transactions-footer-identity-copy-icon {
+          height: 16px;
+          display: flex;
+          width: 16px;
+          color: #b6b3af;
+          justify-content: center;
+          transition: all 200ms ease;
+
+          &:hover {
+            opacity: 80%;
+          }
+        }
+      }
+
+      .sign-transactions-footer-identity-explorer {
+        display: flex;
+
+        .sign-transactions-footer-identity-explorer-icon {
+          height: 16px;
+          display: flex;
+          width: 16px;
+          color: #b6b3af;
+          transition: all 200ms ease;
+
+          &:hover {
+            opacity: 80%;
+          }
+        }
+      }
+    }
+  }
+}
