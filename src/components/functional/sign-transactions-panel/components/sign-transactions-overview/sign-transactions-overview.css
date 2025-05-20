@@ -28,7 +28,7 @@
 }
 
 .detail-row::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -40,13 +40,14 @@
 }
 
 .amount-row {
-  border-radius: 12px 12px 0 0;
+  border-radius: 12px;
 }
 
 .interactor-row {
-  border-radius: 0;
+  border-radius: 12px;
   position: relative;
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.1);
+  z-index: 5;
 }
 
 .action-row {
@@ -54,11 +55,14 @@
   padding: 28px 20px 8px 20px;
   border-radius: 0 0 12px 12px;
   min-height: 56px;
+  margin-top: -24px;
 }
 
 .detail-label {
   color: #b5b2af;
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -82,7 +86,9 @@
 }
 
 .amount-value {
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 24px;
   font-weight: 500;
   color: #ffffff;
@@ -98,7 +104,9 @@
 }
 
 .usd-value {
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 14px;
   color: #b5b2af;
 }
@@ -140,10 +148,12 @@
 }
 
 .interactor-name {
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 16px;
-  font-weight: 500;
-  color: #ffffff;
+  font-weight: 400;
+  color: #b6b3af;
   letter-spacing: -0.16px;
   line-height: 22px;
   max-width: 150px;
@@ -156,55 +166,50 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1px;
   width: 23px;
   height: 23px;
   background: #0a0a0a;
   border-radius: 50%;
   left: 21px;
-  top: calc(50% - 12px);
+  top: 76px;
   z-index: 10;
   padding: 6px;
 }
 
 .direction-arrow {
-  color: #B6B3AF;
-}
-
-.arrow-up::before,
-.arrow-down::before {
-  content: '';
-  position: absolute;
-  width: 8px;
+  color: #b6b3af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  flex-basis: auto;
+  position: relative;
+  width: 10px;
   height: 5px;
   color: #b5b2af;
-  font-size: 6px;
-  font-weight: 100;
 }
 
-.arrow-up::before {
-  content: '▲';
-  top: -4px;
-  left: 0;
-}
-
-.arrow-down::before {
-  content: '▼';
-  top: -4px;
-  left: 0;
+.direction-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  align-items: center;
 }
 
 .ellipse {
   width: 2px;
   height: 2px;
-  background: #b5b2af;
+  position: relative;
   border-radius: 50%;
+  background-color: #b5b2af;
 }
 
 /* Action section */
 .action-value {
   margin-left: auto;
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 14px;
   font-weight: 500;
   color: #b5b2af;
@@ -231,7 +236,9 @@
 
 .fee-label {
   color: #b5b2af;
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 14px;
   font-weight: 400;
   line-height: 19.6px;
@@ -244,7 +251,7 @@
 }
 
 .info-icon::before {
-  content: "ⓘ";
+  content: 'ⓘ';
   font-size: 14px;
   color: rgba(255, 255, 255, 0.6);
   position: absolute;
@@ -254,8 +261,10 @@
 
 .fee-value {
   color: #ffffff;
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-} 
+}
