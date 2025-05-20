@@ -121,6 +121,10 @@ export class SignTransactionsPanel {
     }
   }
 
+  setActiveTab(tab: 'overview' | 'advanced') {
+    this.activeTab = tab;
+  }
+
   get overviewProps(): IOverviewProps {
     const { tokenTransaction, sftTransaction, nftTransaction } = state;
     const txData = sftTransaction || nftTransaction || tokenTransaction;
@@ -153,10 +157,6 @@ export class SignTransactionsPanel {
       networkFee: state.commonData?.feeInFiatLimit,
       isApp: Boolean(state.commonData?.scCall),
     };
-  }
-
-  setActiveTab(tab: 'overview' | 'advanced') {
-    this.activeTab = tab;
   }
 
   render() {
