@@ -1,5 +1,5 @@
-import type { Icon,IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { icon,library } from '@fortawesome/fontawesome-svg-core';
+import type { Icon, IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { icon, library } from '@fortawesome/fontawesome-svg-core';
 
 export function getIconHtmlFromIconDefinition(iconDefinition: IconDefinition): string | null {
   if (!iconDefinition) {
