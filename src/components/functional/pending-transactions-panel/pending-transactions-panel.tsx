@@ -1,10 +1,30 @@
-import { Component, forceUpdate, h, Method, Prop, State } from '@stencil/core';
-import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
+import type { IProviderBase } from 'types/provider.types';
+import { ProviderTypeEnum } from 'types/provider.types';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import type { IPendingTransactionsPanelData } from './pending-transactions-panel.types';
 import { PendingTransactionsEventsEnum } from './pending-transactions-panel.types';
+
+const getProviderIntroText = (providerType?: IProviderBase['type']) => {
+  switch (providerType) {
+    case ProviderTypeEnum.extension:
+      return 'Check  the MultiversX Browser Extension to connect to your wallet.';
+    case ProviderTypeEnum.metamask:
+      return 'Open the MetaMask Browser Extension to connect to your wallet.';
+    case ProviderTypeEnum.passkey:
+      return 'Use your predefined passkey to connect to your wallet.';
+    case ProviderTypeEnum.crossWindow:
+      return 'Follow the steps on MultiversX Web Wallet to connect to your wallet.';
+    default:
+      return 'Follow the steps on your selected provider to connect to your wallet.';
+  }
+};
+
+interface IPendingTransactionsPanelState {
+  provider: IProviderBase | null;
+  shouldClose?: boolean;
+}
 
 @Component({
   tag: 'mvx-pending-transactions-panel',
@@ -12,13 +32,27 @@ import { PendingTransactionsEventsEnum } from './pending-transactions-panel.type
 })
 export class PendingTransactionstPanel {
   private eventBus: IEventBus = new EventBus();
+
+  @Prop() data: IPendingTransactionsPanelState = {
+    provider: null,
+    shouldClose: false,
+  };
+
+  @State() state: IPendingTransactionsPanelState = this.data;
   @State() isOpen: boolean = false;
 
-  @Prop() data: IPendingTransactionsPanelData = {
-    isPending: false,
-    title: '',
-    subtitle: '',
-  };
+  @Method() async getEventBus() {
+    return this.eventBus;
+  }
+
+  @Watch('data')
+  handleDataChange(newData: IPendingTransactionsPanelState) {
+    this.state = { ...newData };
+  }
+
+  cmponentWillLoad() {
+    this.state = { ...this.data };
+  }
 
   componentDidLoad() {
     this.eventBus.subscribe(PendingTransactionsEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
@@ -27,9 +61,15 @@ export class PendingTransactionstPanel {
   }
 
   disconnectedCallback() {
+    this.resetState();
     this.eventBus.unsubscribe(PendingTransactionsEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
     this.eventBus.unsubscribe(PendingTransactionsEventsEnum.OPEN_PENDING_TRANSACTIONS_PANEL, this.handleOpen.bind(this));
     this.eventBus.unsubscribe(PendingTransactionsEventsEnum.CLOSE_PENDING_TRANSACTIONS, this.onClose.bind(this, { isUserClick: false }));
+  }
+
+  private resetState() {
+    this.state = null;
+    this.isOpen = false;
   }
 
   handleOpen() {
@@ -49,34 +89,22 @@ export class PendingTransactionstPanel {
     }
   }
 
-  private dataUpdate(payload: IPendingTransactionsPanelData) {
-    if (payload.shouldClose) {
-      return this.onClose({ isUserClick: false });
+  private dataUpdate(newData: IPendingTransactionsPanelState) {
+    this.state = { ...newData };
+
+    if (newData.shouldClose) {
+      this.onClose({ isUserClick: false });
     }
-
-    this.isOpen = true;
-    this.data = { ...payload };
-    forceUpdate(this);
-  }
-
-  @Method() async getEventBus() {
-    return this.eventBus;
   }
 
   render() {
     return (
-      <mvx-side-panel isOpen={this.isOpen} panelClassName="pending-transactions-panel" onClose={this.handleClose.bind(this)}>
-        <div class="pending-transactions-content">
-          <div class="pending-transactions-header">
-            <h2 data-testid={DataTestIdsEnum.pendingTransactionsTitle}>{this.data.title}</h2>
-            <h4 data-testid={DataTestIdsEnum.pendingTransactionsSubtitle}>{this.data.subtitle}</h4>
-          </div>
-          <div class="pending-transactions-body">
-            <button class="close-button" onClick={this.handleClose.bind(this)}>
-              Close
-            </button>
-          </div>
-        </div>
+      <mvx-side-panel isOpen={this.isOpen} panelTitle={this.state.provider?.name} panelClassName="pending-transactions-panel" showHeader={false}>
+        <mvx-provider-idle-screen provider={this.state.provider} onClose={this.handleClose.bind(this)} introText={getProviderIntroText(this.state.provider?.type)}>
+          <button onClick={this.handleClose.bind(this)} slot="close-button">
+            Close
+          </button>
+        </mvx-provider-idle-screen>
       </mvx-side-panel>
     );
   }

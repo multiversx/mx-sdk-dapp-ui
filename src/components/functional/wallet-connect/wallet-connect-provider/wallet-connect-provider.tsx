@@ -1,8 +1,10 @@
-import { Component, Element, forceUpdate, h, Method, Prop, State, Watch } from '@stencil/core';
-import type { IEventBus } from 'utils/EventBus';
+import { Component, Element, Fragment, h, Method, Prop, State, Watch } from '@stencil/core';
+import { SidePanelHeaderSlotEnum } from 'components/visual/side-panel/components/side-panel-header/side-panel-header.types';
+import { providerLabels } from 'constants/providerFactory.constants';
+import QRCode from 'qrcode';
+import { EventBus, type IEventBus } from 'utils/EventBus';
 
 import { type IWalletConnectPanelData, WalletConnectEventsEnum } from '../wallet-connect.types';
-import { WalletConnectBase } from '../WalletConnectBase';
 
 @Component({
   tag: 'mvx-wallet-connect-provider',
@@ -14,48 +16,55 @@ export class WalletConnectProvider {
   @Prop() data: IWalletConnectPanelData = { wcURI: '' };
   @State() qrCodeSvg: string = '';
 
-  private walletConnectBase: WalletConnectBase;
+  private eventBus: IEventBus = new EventBus();
 
-  componentWillLoad() {
-    this.walletConnectBase = new WalletConnectBase(this.data);
+  @Watch('data')
+  async onDataChange(newData: IWalletConnectPanelData) {
+    if (newData.wcURI) {
+      this.qrCodeSvg = await this.generateSVG(newData.wcURI);
+    }
   }
 
   @Method() async getEventBus(): Promise<IEventBus> {
-    return this.walletConnectBase.getEventBus();
+    return this.eventBus;
   }
 
-  @Watch('data')
-  async onDataChange(data: IWalletConnectPanelData) {
-    if (data.wcURI) {
-      this.qrCodeSvg = await this.walletConnectBase.generateSVG(data.wcURI);
+  private async generateSVG(wcURI: string) {
+    try {
+      const svg = await QRCode.toString(wcURI, { type: 'svg' });
+      return svg;
+    } catch (error) {
+      console.error('Error generating QR Code:', error);
+      return '';
     }
   }
 
-  render() {
-    return <mvx-wallet-connect-flow qrCodeSvg={this.qrCodeSvg} />;
-  }
-
-  private removeComponent() {
-    if (this.hostElement?.parentNode) {
-      this.hostElement.parentNode.removeChild(this.hostElement);
+  private async dataUpdate(payload: IWalletConnectPanelData) {
+    if (payload.wcURI) {
+      this.qrCodeSvg = await this.generateSVG(payload.wcURI);
     }
   }
 
-  private getEventSubscription() {
-    return {
-      closeFn: () => this.removeComponent(),
-      forceUpdateFn: () => {
-        this.data = this.walletConnectBase.data;
-        forceUpdate(this);
-      },
-    };
-  }
-  componentDidLoad() {
-    this.walletConnectBase.subscribeEventBus(this.getEventSubscription());
+  async componentDidLoad() {
+    if (this.data.wcURI) {
+      this.qrCodeSvg = await this.generateSVG(this.data.wcURI);
+    }
+    this.eventBus.subscribe(WalletConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
   }
 
   disconnectedCallback() {
-    this.walletConnectBase.eventBus.publish(WalletConnectEventsEnum.UI_DISCONNECTED);
-    this.walletConnectBase.unsubscribeEventBus(this.getEventSubscription());
+    this.eventBus.publish(WalletConnectEventsEnum.UI_DISCONNECTED);
+    this.eventBus.unsubscribe(WalletConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
+  }
+
+  render() {
+    return (
+      <Fragment>
+        <mvx-side-panel-header panelTitle={providerLabels.walletConnect} hasRightButton={false} onLeftButtonClick={() => this.eventBus.publish(WalletConnectEventsEnum.CLOSE)}>
+          <mvx-close-icon slot={SidePanelHeaderSlotEnum.leftIcon} />
+        </mvx-side-panel-header>
+        <mvx-wallet-connect-flow qrCodeSvg={this.qrCodeSvg} />
+      </Fragment>
+    );
   }
 }

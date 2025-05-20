@@ -1,0 +1,18 @@
+.unlock-panel-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .unlock-panel-group-label {
+    line-height: 1;
+    color: #a09a93;
+  }
+
+  .unlock-panel-group-providers {
+    display: flex;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-direction: column;
+    gap: calc(4px / 2);
+  }
+}
