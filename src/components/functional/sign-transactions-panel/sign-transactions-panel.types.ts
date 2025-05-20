@@ -71,11 +71,11 @@ export enum DecodeMethodEnum {
   smart = 'smart',
 }
 
-export interface DecodedDisplayType {
+export type DecodedDisplayType = {
   displayValue: string;
   validationWarnings: string[];
-  highlight?: string | null;
-}
+  highlight: string | null;
+};
 
 export enum SignEventsEnum {
   CONFIRM = 'CONFIRM', // can be sign or next
