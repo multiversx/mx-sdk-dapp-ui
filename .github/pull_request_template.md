@@ -1,7 +1,7 @@
 ### Issue/Feature
 
 ### Reproduce
-Issue exists on version `1.` of sdk-dapp-core-ui.
+Issue exists on version `1.` of sdk-dapp-ui.
 
 ### Root cause
 

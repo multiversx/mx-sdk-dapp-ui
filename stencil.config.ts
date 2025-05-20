@@ -8,7 +8,7 @@ import { getExcludedComponentTags } from './src/global/scripts/exclude-react-com
 /**
  * A list of component tags to be excluded from the build process.
  *
- * This is necessary to exclude functional components (components used by `sdk-dapp-core`)
+ * This is necessary to exclude functional components (components used by `sdk-dapp`)
  * in order to prevent potential conflicts with the event bus and issues related to
  * Stencil's state management. By excluding these components, we ensure that the
  * application remains stable and avoids unintended behavior caused by overlapping
@@ -19,7 +19,7 @@ import { getExcludedComponentTags } from './src/global/scripts/exclude-react-com
 const excludeComponents = getExcludedComponentTags('./src/components/functional');
 
 export const config: Config = {
-  namespace: 'sdk-dapp-core-ui',
+  namespace: 'sdk-dapp-ui',
   globalScript: './src/global/scripts/fonts-loader.ts',
   plugins: [
     sass(),

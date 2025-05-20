@@ -9,7 +9,7 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/components/sdk-dapp-core-ui.esm.js",
+  "unpkg": "dist/components/sdk-dapp-ui.esm.js",
   "exports": {
     ".": {
       "import": "./dist/index.js",
@@ -32,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/multiversx/mx-sdk-dapp-core-ui.git"
+    "url": "https://github.com/multiversx/mx-sdk-dapp-ui.git"
   },
   "files": [
     "dist/"
@@ -41,7 +41,7 @@
     "test": "stencil test --spec --e2e",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "unpublish-verdaccio": "npm unpublish @multiversx/sdk-dapp-core-ui --force --registry http://localhost:4873",
+    "unpublish-verdaccio": "npm unpublish @multiversx/sdk-dapp-ui --force --registry http://localhost:4873",
     "publish-verdaccio": "npm run unpublish-verdaccio && npm run build && npm publish --registry http://localhost:4873/",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",

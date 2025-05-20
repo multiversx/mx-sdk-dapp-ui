@@ -4,12 +4,12 @@ MultiversX Front-End Library for JavaScript and TypeScript (written in TypeScrip
 
 ## Introduction
 
-`sdk-dapp-core-ui` is a library that holds components to display user information from the MultiversX blockchain.
+`sdk-dapp-ui` is a library that holds components to display user information from the MultiversX blockchain.
 
 Since the library is built using [Stencil](https://stenciljs.com/), it can be used in any front-end framework, such as React, Angular, or Vue, but also in back-end frameworks like Next.js.
 
 ## GitHub project
-The GitHub repository can be found here: [https://github.com/multiversx/mx-sdk-dapp-core-ui](https://github.com/multiversx/mx-sdk-dapp-core-ui)
+The GitHub repository can be found here: [https://github.com/multiversx/mx-sdk-dapp-ui](https://github.com/multiversx/mx-sdk-dapp-ui)
 
 ## Live demo: template-dapp
 See [Template dApp](https://template-dapp.multiversx.com/) for live demo or checkout usage in the [Github repo](https://github.com/multiversx/mx-template-dapp)
@@ -21,25 +21,25 @@ See [Template dApp](https://template-dapp.multiversx.com/) for live demo or chec
 
 ## Distribution
 
-[npm](https://www.npmjs.com/package/@multiversx/sdk-dapp-core-ui)
+[npm](https://www.npmjs.com/package/@multiversx/sdk-dapp-ui)
 
 ## Installation
 
 The library can be installed via npm or yarn.
 
 ```bash
-npm install @multiversx/sdk-dapp-core-ui
+npm install @multiversx/sdk-dapp-ui
 ```
 
 or
 
 ```bash
-yarn add @multiversx/sdk-dapp-core-ui
+yarn add @multiversx/sdk-dapp-ui
 ```
 
 ## Usage
 
-`sdk-dapp-core-ui` library is primarily designed to work with [@multiversx/sdk-dapp-core](https://www.npmjs.com/package/@multiversx/sdk-dapp-core), since components are designed to display data and emit user events, but do not hold any business logic.
+`sdk-dapp-ui` library is primarily designed to work with [@multiversx/sdk-dapp](https://www.npmjs.com/package/@multiversx/sdk-dapp), since components are designed to display data and emit user events, but do not hold any business logic.
 
 The library is divided into three main categories:
 There are three types of components in the library: 
@@ -56,8 +56,8 @@ The basic usage of the component would be importing the component and its corres
 React example where the component does not need any processed data:
 
 ```tsx
-import type { CopyButton as CopyButtonPropsType } from '@multiversx/sdk-dapp-core-ui/dist/types/components/visual/copy-button/copy-button.d.ts';
-export { CopyButton as ReactCopyButton } from '@multiversx/sdk-dapp-core-ui/react';
+import type { CopyButton as CopyButtonPropsType } from '@multiversx/sdk-dapp-ui/dist/types/components/visual/copy-button/copy-button.d.ts';
+export { CopyButton as ReactCopyButton } from '@multiversx/sdk-dapp-ui/react';
 
 export const CopyButton = (props: CopyButtonPropsType) => {
   return <ReactCopyButton {...props} />;
@@ -72,13 +72,13 @@ A typycal flow of data would be:
 
 ```mermaid
 flowchart LR
-    A["user data"] <--> B["sdk-dapp-core controller"] <--> C["sdk-dapp-core-ui webcomponent"]
+    A["user data"] <--> B["sdk-dapp controller"] <--> C["sdk-dapp-ui webcomponent"]
 ```
 
-Vanilla example where the component makes use of a controller from `sdk-dapp-core`:
+Vanilla example where the component makes use of a controller from `sdk-dapp`:
 
 ```tsx
-export { FormatAmountController } from "@multiversx/sdk-dapp-core/out/controllers/FormatAmountController";
+export { FormatAmountController } from "@multiversx/sdk-dapp/out/controllers/FormatAmountController";
 import { DIGITS, DECIMALS } from "@multiversx/sdk-dapp-utils/out/constants";
 
 
@@ -110,9 +110,9 @@ export const FormatAmount = (props: {
 
 ### 3. Functional components
 
-Functional components in the `sdk-dapp-core-ui` library are designed to create interactive UIs and handle user events effectively. Typically, these components are embedded in login or signing transactions flows. They typically leverage the functionality provided by the `@multiversx/sdk-dapp-core` library to manage state and actions.
+Functional components in the `sdk-dapp-ui` library are designed to create interactive UIs and handle user events effectively. Typically, these components are embedded in login or signing transactions flows. They typically leverage the functionality provided by the `@multiversx/sdk-dapp` library to manage state and actions.
 
-The way functional components are controlled are trough a [pub-sub pattern](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) called EventBus. Each webcomponent has a method of exposing its EventBus, thus allowing sdk-dapp-core to get a reference to it and use it for communication.
+The way functional components are controlled are trough a [pub-sub pattern](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern) called EventBus. Each webcomponent has a method of exposing its EventBus, thus allowing sdk-dapp to get a reference to it and use it for communication.
 
 ```mermaid
 flowchart LR

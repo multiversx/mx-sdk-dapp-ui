@@ -8,21 +8,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - [Renamed project](https://github.com/multiversx/mx-sdk-dapp-ui/pull/107)
-- [Sync anchor with sdk-dapp-core](https://github.com/multiversx/mx-sdk-dapp-ui/pull/106)
+- [Sync anchor with sdk-dapp](https://github.com/multiversx/mx-sdk-dapp-ui/pull/106)
 - [Sign screens enhancements](https://github.com/multiversx/mx-sdk-dapp-ui/pull/102)
 - [Added sign screens](https://github.com/multiversx/mx-sdk-dapp-ui/pull/93)
 - [Enhance icon handling to support both `IconDefinition` and string icon names](https://github.com/multiversx/mx-sdk-dapp-ui/pull/104)
 - [Remove force update](https://github.com/multiversx/mx-sdk-dapp-ui/pull/103)
 - [Added scripts for excluded components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/101)
 - [Refactor and enhance the LedgerFlow, UnlockPanel, and WalletConnect components to improve modularity, maintainability, and user experience.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/100)
-- [Add back navigation functionality to SignTransactionsPanel](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/105)
-- [Sync anchor with sdk-dapp-core](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/106)
-- [Sign screens enhancements](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/102)
-- [Added sign screens](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/93)
-- [Enhance icon handling to support both `IconDefinition` and string icon names](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/104)
-- [Remove force update](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/103)
-- [Added scripts for excluded components](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/101)
-- [Refactor and enhance the LedgerFlow, UnlockPanel, and WalletConnect components to improve modularity, maintainability, and user experience.](https://github.com/multiversx/mx-sdk-dapp-core-ui/pull/100)
+- [Add back navigation functionality to SignTransactionsPanel](https://github.com/multiversx/mx-sdk-dapp-ui/pull/105)
+- [Sync anchor with sdk-dapp](https://github.com/multiversx/mx-sdk-dapp-ui/pull/106)
+- [Sign screens enhancements](https://github.com/multiversx/mx-sdk-dapp-ui/pull/102)
+- [Added sign screens](https://github.com/multiversx/mx-sdk-dapp-ui/pull/93)
+- [Enhance icon handling to support both `IconDefinition` and string icon names](https://github.com/multiversx/mx-sdk-dapp-ui/pull/104)
+- [Remove force update](https://github.com/multiversx/mx-sdk-dapp-ui/pull/103)
+- [Added scripts for excluded components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/101)
+- [Refactor and enhance the LedgerFlow, UnlockPanel, and WalletConnect components to improve modularity, maintainability, and user experience.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/100)
 
 ## [[0.0.0-alpha.15](https://github.com/multiversx/mx-sdk-dapp-ui/pull/94)] - 2025-05-07
 
@@ -77,20 +77,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [Added gasPrice PPU editing radios](https://github.com/multiversx/mx-sdk-dapp-ui/pull/56)
 - [Added gasPrice editing radios](https://github.com/multiversx/mx-sdk-dapp-ui/pull/52)
 - [Added notifications feed side panel](https://github.com/multiversx/mx-sdk-dapp-ui/pull/50)
-- [Added Tailwind CSS support](https://github.com/multiversx/mx-sdk-dapp-core/pull/47)
+- [Added Tailwind CSS support](https://github.com/multiversx/mx-sdk-dapp/pull/47)
 
 ## [[0.0.0-alpha.6](https://github.com/multiversx/mx-sdk-dapp-ui/pull/53)] - 2025-03-12
 
 - [Added notifications feed side panel](https://github.com/multiversx/mx-sdk-dapp-ui/pull/50)
-- [Added Tailwind CSS support](https://github.com/multiversx/mx-sdk-dapp-core/pull/47)
-- [Added wallet connect side panel component](https://github.com/multiversx/mx-sdk-dapp-core/pull/45)
+- [Added Tailwind CSS support](https://github.com/multiversx/mx-sdk-dapp/pull/47)
+- [Added wallet connect side panel component](https://github.com/multiversx/mx-sdk-dapp/pull/45)
 
 ## [[0.0.0-alpha.5](https://github.com/multiversx/mx-sdk-dapp-ui/pull/49)] - 2025-02-27
 
-- [Added ability to expand/collapse transactions in toast](https://github.com/multiversx/mx-sdk-dapp-core/pull/48)
-- [Added ability to close modal on Escape](https://github.com/multiversx/mx-sdk-dapp-core/pull/46)
-- [Added wallet connect side panel component](https://github.com/multiversx/mx-sdk-dapp-core/pull/45)
-- [Added missing components from excludeComponents stancil config](https://github.com/multiversx/mx-sdk-dapp-core/pull/44)
+- [Added ability to expand/collapse transactions in toast](https://github.com/multiversx/mx-sdk-dapp/pull/48)
+- [Added ability to close modal on Escape](https://github.com/multiversx/mx-sdk-dapp/pull/46)
+- [Added wallet connect side panel component](https://github.com/multiversx/mx-sdk-dapp/pull/45)
+- [Added missing components from excludeComponents stancil config](https://github.com/multiversx/mx-sdk-dapp/pull/44)
 - [Added wallet connect side panel support](https://github.com/multiversx/mx-sdk-dapp-ui/pull/43)
 - [Added unlock panel](https://github.com/multiversx/mx-sdk-dapp-ui/pull/42)
 

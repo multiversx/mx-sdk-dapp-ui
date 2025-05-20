@@ -1,4 +1,4 @@
-// types here need to be synced with the types in sdk-dapp-core pendingTransactions.types.ts
+// types here need to be synced with the types in sdk-dapp pendingTransactions.types.ts
 
 export enum PendingTransactionsEventsEnum {
   CLOSE_PENDING_TRANSACTIONS = 'CLOSE_PENDING_TRANSACTIONS',

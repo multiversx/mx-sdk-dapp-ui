@@ -1,4 +1,4 @@
-// types here need to be synced with the types in sdk-dapp-core signTransactionsModal.types.ts
+// types here need to be synced with the types in sdk-dapp signTransactionsModal.types.ts
 import type { EsdtEnumType, NftEnumType } from 'types/tokens.types';
 
 export interface ITransactionData {
