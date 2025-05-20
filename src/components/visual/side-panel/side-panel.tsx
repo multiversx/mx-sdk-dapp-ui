@@ -11,7 +11,8 @@ export class SidePanel {
   @Prop() isOpen: boolean = false;
   @Prop() panelClassName?: string;
   @Prop() panelTitle: string;
-  @Prop() withBackButton?: boolean;
+  @Prop() hasBackButton?: boolean;
+  @Prop() showHeader?: boolean = true;
 
   @Event() close: EventEmitter;
   @Event() back: EventEmitter;
@@ -75,17 +76,15 @@ export class SidePanel {
         })}
       >
         <div class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}>
-          <div class="side-panel-heading">
-            <mvx-back-arrow-icon
-              onClick={this.handleBackClick.bind(this)}
-              class={classNames('side-panel-heading-back', {
-                visible: this.withBackButton,
-              })}
+          {this.showHeader && (
+            <mvx-side-panel-header
+              panelTitle={this.panelTitle}
+              panelClassName={this.panelClassName}
+              hasLeftButton={this.hasBackButton}
+              onRightButtonClick={this.handleCloseClick.bind(this)}
+              onLeftButtonClick={this.handleBackClick.bind(this)}
             />
-
-            <div class="side-panel-heading-title">{this.panelTitle}</div>
-            <mvx-close-icon class="side-panel-heading-close" onClick={this.handleCloseClick.bind(this)} />
-          </div>
+          )}
 
           <div class="side-panel-content">
             <slot />

@@ -13,7 +13,7 @@ describe('CopyButton', () => {
     expect(page.root).toEqualHtml(`
       <mvx-copy-button text="Copy me">
         <a href="/#" class="copy-button">
-          <mvx-fa-icon class="copy-button-icon"></mvx-fa-icon>
+          <mvx-fa-icon class="copy-button-icon" icon="faCopy"></mvx-fa-icon>
         </a>
       </mvx-copy-button>
     `);
@@ -28,7 +28,7 @@ describe('CopyButton', () => {
     expect(page.root).toEqualHtml(`
       <mvx-copy-button class="custom-class" text="Copy me">
         <a href="/#" class="custom-class">
-          <mvx-fa-icon class="copy-button-icon"></mvx-fa-icon>
+          <mvx-fa-icon class="copy-button-icon" icon="faCopy"></mvx-fa-icon>
         </a>
       </mvx-copy-button>
     `);
@@ -51,7 +51,7 @@ describe('CopyButton', () => {
     expect(copyButton).toEqualHtml(`
       <mvx-copy-button text="Copy me">
         <a href="/#" class="copy-button">
-          <mvx-fa-icon class="copy-button-icon"></mvx-fa-icon>
+          <mvx-fa-icon class="copy-button-icon" icon="faCheck"></mvx-fa-icon>
         </a>
       </mvx-copy-button>
     `);
@@ -74,7 +74,7 @@ describe('CopyButton', () => {
     expect(copyButton).toEqualHtml(`
       <mvx-copy-button text="Copy me">
         <a href="/#" class="copy-button">
-          <mvx-fa-icon class="copy-button-icon"></mvx-fa-icon>
+          <mvx-fa-icon class="copy-button-icon" icon="faCopy"></mvx-fa-icon>
         </a>
       </mvx-copy-button>
     `);

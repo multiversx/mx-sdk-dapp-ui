@@ -1,0 +1,21 @@
+.unlock-panel-anchor {
+  display: flex;
+  font-family: 'Satoshi', sans-serif;
+  flex-direction: column;
+  flex: 1;
+}
+
+.unlock-panel {
+  display: flex;
+  font-family: 'Satoshi', sans-serif;
+  flex-direction: column;
+  flex: 1;
+  justify-content: space-between;
+
+  .unlock-panel-groups {
+    display: flex;
+    margin-bottom: 24px;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

@@ -12,7 +12,7 @@ describe('ExplorerLink', () => {
     expect(page.root).toEqualHtml(`
       <mvx-explorer-link link="https://example.com">
         <a href="https://example.com" target="_blank" class="mvx:explorer-link" rel="noreferrer">
-          <mvx-fa-icon class="explorer-link-icon"></mvx-fa-icon>
+          <mvx-fa-icon class="explorer-link-icon" icon="faArrowUpRightFromSquare"></mvx-fa-icon>
         </a>
       </mvx-explorer-link>
     `);
@@ -40,7 +40,7 @@ describe('ExplorerLink', () => {
     expect(page.root).toEqualHtml(`
       <mvx-explorer-link link="https://example.com" class="custom-class">
         <a href="https://example.com" target="_blank" class="mvx:explorer-link custom-class" rel="noreferrer">
-          <mvx-fa-icon class="explorer-link-icon"></mvx-fa-icon>
+          <mvx-fa-icon class="explorer-link-icon" icon="faArrowUpRightFromSquare"></mvx-fa-icon>
         </a>
       </mvx-explorer-link>
     `);
@@ -55,13 +55,12 @@ describe('ExplorerLink', () => {
     page.root.icon = faCheck;
     await page.waitForChanges();
 
-    expect(page.root).toEqualHtml(`
-      <mvx-explorer-link link="https://example.com">
-        <a href="https://example.com" target="_blank" class="mvx:explorer-link" rel="noreferrer">
-          <mvx-fa-icon class="explorer-link-icon"></mvx-fa-icon>
-        </a>
-      </mvx-explorer-link>
-    `);
+    const iconEl = page.root.querySelector('mvx-fa-icon');
+    expect(iconEl).toBeTruthy();
+    expect(iconEl.getAttribute('class')).toBe('explorer-link-icon');
+    const iconAttr = iconEl.getAttribute('icon');
+    expect(iconAttr).toContain('<svg');
+    expect(iconAttr).toContain('fa-check');
 
     jest.restoreAllMocks();
   });
