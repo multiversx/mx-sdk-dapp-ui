@@ -20,7 +20,7 @@ export class LedgerConfirm {
 
   render() {
     const ledgerConfirmationItems: LedgerConfirmationItem[] = [
-      { label: this.confirmScreenData.confirmAddressText, value: this.confirmScreenData.selectedAddress, explorerLink: this.confirmScreenData.addressExplorerLink },
+      { label: this.confirmScreenData.confirmAddressText, value: this.confirmScreenData.selectedAddress, explorerLink: this.confirmScreenData.explorerLink },
       { label: this.confirmScreenData.authText, value: this.confirmScreenData.data, highlighted: true },
     ];
 

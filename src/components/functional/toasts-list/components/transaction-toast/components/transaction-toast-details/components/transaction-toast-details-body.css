@@ -1,8 +1,10 @@
 .transaction-details-list-item {
+  font-family: 'Satoshi', sans-serif;
   display: flex;
   align-items: center;
   gap: 12px;
   align-self: stretch;
+  width: 364px;
 }
 
 .transaction-details-list-item-icon {
@@ -26,7 +28,7 @@
 
 .transaction-details-list-item-icon-success svg,
 .transaction-details-list-item-icon-success .svg-inline--fa {
-  color: #6AD788;
+  color: #6AD788 !important;
 }
 
 .transaction-details-list-item-icon-pending {
@@ -35,7 +37,7 @@
 
 .transaction-details-list-item-icon-pending svg,
 .transaction-details-list-item-icon-pending .svg-inline--fa {
-  color: #FACC15;
+  color: #FACC15 !important;
 }
 
 .transaction-details-list-item-icon-fail {
@@ -44,25 +46,30 @@
 
 .transaction-details-list-item-icon-fail svg,
 .transaction-details-list-item-icon-fail .svg-inline--fa {
-  color: var(--mx-toast-error-icon);
+  color: var(--mx-toast-error-icon) !important;
 }
 
 .transaction-details-list-item-hash-index {
-  color: var(--mx-tx-text-secondary);
-  font-family: var(--font-family-roobert);
+  color: var(--mx-tx-text-primary);
   font-size: 12px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
+  line-height: 16.8px;
 }
 
 .transaction-details-list-item-hash-value {
   color: var(--mx-tx-text-secondary);
-  font-family: var(--font-family-roobert);
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
+  line-height: 16.8px;
   max-width: 220px;
   width: 100%;
+  margin-top:4px;
+}
+
+.transaction-details-list-item:hover .transaction-details-list-item-hash-value {
+  color: var(--mx-tx-text-primary);
 }
 
 .transaction-details-list-item-copy-button-icon .svg-inline--fa {
@@ -71,8 +78,26 @@
   height: 12px;
 }
 
+.transaction-details-list-item-explorer-link-icon {
+  color: var(--mx-tx-text-primary);
+  display: flex;
+  width: 16px;
+  height: 16px;
+  flex-direction: column;
+  justify-content: end;
+  flex-shrink: 0;
+  margin-left: auto;
+  margin-right: 12px;
+  visibility: hidden;
+}
+
+.transaction-details-list-item:hover .transaction-details-list-item-explorer-link-icon {
+  visibility: visible;
+}
+
 .transaction-details-list-item-explorer-link-icon .svg-inline--fa {
-  color: var(--mx-tx-text-secondary);
-  width: 12px;
-  height: 12px;
+  color: var(--mx-tx-text-primary);
+  text-align: center;
+  width: 14px;
+  height: 14px;
 }

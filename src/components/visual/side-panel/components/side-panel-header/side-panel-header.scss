@@ -1,0 +1,44 @@
+.side-panel-heading {
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  font-size: 24px;
+  gap: 12px;
+  margin-bottom: 24px;
+
+  .side-panel-heading-left {
+    cursor: pointer;
+    transition: all 200ms ease;
+    margin-right: auto;
+
+    &.no-margin {
+      margin-right: 0;
+    }
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  .side-panel-heading-title {
+    color: #e5e5e5;
+    font-weight: 500;
+    font-family: 'Satoshi', sans-serif;
+
+    &.center {
+      padding-right: 24px;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+
+  .side-panel-heading-right {
+    transition: all 200ms ease;
+    cursor: pointer;
+    margin-left: auto;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}

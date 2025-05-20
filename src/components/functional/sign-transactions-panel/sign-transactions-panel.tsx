@@ -1,5 +1,5 @@
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { Component, h, Method, Prop, State } from '@stencil/core';
+import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
@@ -43,6 +43,15 @@ export class SignTransactionsPanel {
     sftTransaction: null,
   };
 
+  @Method() async getEventBus() {
+    return this.eventBus;
+  }
+
+  @Watch('data')
+  updateData(newData: ISignTransactionsPanelData) {
+    this.dataUpdate(newData);
+  }
+
   componentWillLoad() {
     state.onCancel = () => {
       this.onClose({ isUserClick: true });
@@ -66,6 +75,7 @@ export class SignTransactionsPanel {
   }
 
   componentDidLoad() {
+    this.updateData(this.data);
     this.eventBus.subscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
     this.eventBus.subscribe(SignEventsEnum.OPEN_SIGN_TRANSACTIONS_PANEL, this.handleOpen.bind(this));
     this.eventBus.subscribe(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS_PANEL, this.onClose.bind(this, { isUserClick: false }));
@@ -78,16 +88,16 @@ export class SignTransactionsPanel {
     this.eventBus.unsubscribe(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS_PANEL, this.onClose.bind(this, { isUserClick: false }));
   }
 
-  handleOpen() {
+  private handleOpen() {
     this.isOpen = true;
   }
 
-  handleClose() {
+  private handleClose() {
     this.isOpen = false;
     this.onClose({ isUserClick: true });
   }
 
-  onClose(props = { isUserClick: true }) {
+  private onClose(props = { isUserClick: true }) {
     this.isOpen = false;
     resetState();
 
@@ -110,8 +120,21 @@ export class SignTransactionsPanel {
     }
   }
 
-  @Method() async getEventBus() {
-    return this.eventBus;
+  get overviewProps(): IOverviewProps {
+    const { tokenTransaction, sftTransaction, nftTransaction } = state;
+    const txData = sftTransaction || nftTransaction || tokenTransaction;
+
+    return {
+      identifier: txData?.identifier,
+      usdValue: tokenTransaction?.usdValue,
+      amount: txData?.amount || '0',
+      tokenIconUrl: txData?.imageURL,
+      interactor: state.commonData?.receiver,
+      interactorIconUrl: state.commonData?.receiverIcon,
+      action: state.commonData?.scCall,
+      networkFee: state.commonData?.feeInFiatLimit,
+      isApp: Boolean(state.commonData?.scCall),
+    };
   }
 
   getTransactionData(): IOverviewProps {
@@ -138,7 +161,6 @@ export class SignTransactionsPanel {
   render() {
     const { commonData, onNext, onBack } = state;
     const { currentIndex, transactionsCount, origin, data, highlight } = commonData;
-    const overviewProps = this.getTransactionData();
 
     return (
       <mvx-side-panel isOpen={this.isOpen} onClose={this.handleClose.bind(this)} panelTitle="Confirm Transaction">
@@ -170,7 +192,7 @@ export class SignTransactionsPanel {
             <span class="request-from">Request from</span>
             <div class="origin-details">
               <div class="origin-logo-container">
-                <img class="origin-logo" src={`${origin}/favicon.ico`} />
+                <img class="origin-logo" src={`${origin}/favicon.ico`} alt="favicon" />
               </div>
               <span class="origin-name">{origin}</span>
             </div>
@@ -187,7 +209,7 @@ export class SignTransactionsPanel {
             </div>
 
             {this.activeTab === 'overview' ? (
-              <mvx-sign-transactions-overview style={{ width: '100%' }} {...overviewProps}></mvx-sign-transactions-overview>
+              <mvx-sign-transactions-overview style={{ width: '100%' }} {...this.overviewProps}></mvx-sign-transactions-overview>
             ) : (
               <mvx-sign-transactions-advanced style={{ width: '100%' }} data={data} highlight={highlight}></mvx-sign-transactions-advanced>
             )}

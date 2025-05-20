@@ -102,7 +102,7 @@ describe('transaction-toast-details', () => {
 
     const showMoreButton = await page.find('.show-more-button');
     expect(showMoreButton).not.toBeNull();
-    expect(showMoreButton.textContent).toContain('Show 3 more');
+    expect(showMoreButton.textContent).toContain('View 3 more');
 
     await showMoreButton.click();
     await page.waitForChanges();

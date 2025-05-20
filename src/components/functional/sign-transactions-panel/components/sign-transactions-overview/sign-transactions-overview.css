@@ -28,7 +28,7 @@
 }
 
 .detail-row::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -60,7 +60,9 @@
 
 .detail-label {
   color: #b5b2af;
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -84,7 +86,9 @@
 }
 
 .amount-value {
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 24px;
   font-weight: 500;
   color: #ffffff;
@@ -100,7 +104,9 @@
 }
 
 .usd-value {
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 14px;
   color: #b5b2af;
 }
@@ -142,10 +148,12 @@
 }
 
 .interactor-name {
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 16px;
   font-weight: 400;
-  color: #B6B3AF;
+  color: #b6b3af;
   letter-spacing: -0.16px;
   line-height: 22px;
   max-width: 150px;
@@ -168,8 +176,8 @@
   padding: 6px;
 }
 
-.direction-arrow{
-  color: #B6B3AF;
+.direction-arrow {
+  color: #b6b3af;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -181,7 +189,7 @@
   color: #b5b2af;
 }
 
-.direction-icon{
+.direction-icon {
   display: flex;
   flex-direction: column;
   gap: 1px;
@@ -199,7 +207,9 @@
 /* Action section */
 .action-value {
   margin-left: auto;
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 14px;
   font-weight: 500;
   color: #b5b2af;
@@ -226,7 +236,9 @@
 
 .fee-label {
   color: #b5b2af;
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 14px;
   font-weight: 400;
   line-height: 19.6px;
@@ -239,7 +251,7 @@
 }
 
 .info-icon::before {
-  content: "ⓘ";
+  content: 'ⓘ';
   font-size: 14px;
   color: rgba(255, 255, 255, 0.6);
   position: absolute;
@@ -249,8 +261,10 @@
 
 .fee-value {
   color: #ffffff;
-  font-family: Roobert PRO, var(--default-font-family);
+  font-family:
+    Roobert PRO,
+    var(--default-font-family);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-} 
+}

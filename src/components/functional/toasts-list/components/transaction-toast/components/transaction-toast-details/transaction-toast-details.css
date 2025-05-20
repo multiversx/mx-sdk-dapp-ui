@@ -1,8 +1,10 @@
 .transaction-details-container {
+  font-family: 'Satoshi', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   align-self: stretch;
+  gap: 12px;
   width: 100%;
 }
 
@@ -11,7 +13,6 @@
   align-items: center;
   gap: 12px;
   align-self: stretch;
-  margin-bottom: 12px;
   cursor: pointer;
 }
 
@@ -37,11 +38,10 @@
 
 .transaction-details-status-text {
   color: var(--mx-tx-text-primary);
-  font-family: var(--font-family-roobert);
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: 140%; /* 19.6px */
+  line-height: 19.6px
 }
 
 .transaction-details-list {
@@ -53,10 +53,13 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height var(--mx-transition);
+  width: 100%;
 }
 
 .transaction-details-list.expanded {
   max-height: 500px;
+  width: 100%;
+  overflow-y: scroll;
 }
 
 .view-all-container {
@@ -70,11 +73,10 @@
   background: none;
   border: none;
   color: var(--mx-tx-text-primary);
-  font-family: var(--font-family-roobert);
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 400;
+  line-height: 16.8px;
   cursor: pointer;
-  padding: 4px 8px;
   border-radius: 4px;
   transition: background-color var(--mx-transition);
 }

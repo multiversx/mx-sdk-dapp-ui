@@ -19,6 +19,7 @@ export interface ISignTransactionsPanelCommonData {
   receiver?: string;
   receiverIcon?: string;
   data?: string;
+  decodedData?: Partial<Record<DecodeMethodEnum, DecodedDisplayType>>;
   gasPrice?: string;
   /**
    * ppu - Price Per Unit
@@ -46,7 +47,7 @@ export interface ISignTransactionsPanelCommonData {
   address?: string;
   username?: string;
   origin?: string;
-  addressExplorerLink?: string;
+  explorerLink?: string;
 }
 
 export interface ISignTransactionsPanelData {
@@ -62,6 +63,19 @@ export interface ISignTransactionsPanelData {
   nftTransaction: FungibleTransactionType | null;
   sftTransaction: FungibleTransactionType | null;
 }
+
+export enum DecodeMethodEnum {
+  raw = 'raw',
+  text = 'text',
+  decimal = 'decimal',
+  smart = 'smart',
+}
+
+export type DecodedDisplayType = {
+  displayValue: string;
+  validationWarnings: string[];
+  highlight: string | null;
+};
 
 export enum SignEventsEnum {
   CONFIRM = 'CONFIRM', // can be sign or next
