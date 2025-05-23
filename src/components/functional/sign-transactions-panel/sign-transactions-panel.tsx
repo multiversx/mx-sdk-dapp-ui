@@ -125,7 +125,12 @@ export class SignTransactionsPanel {
     const { currentIndex, transactionsCount, origin, data, highlight } = commonData;
 
     return (
-      <mvx-side-panel isOpen={this.isOpen} onClose={this.handleClose} panelTitle="Confirm Transaction">
+      <mvx-side-panel
+        isOpen={this.isOpen}
+        onClose={this.handleClose}
+        panelTitle="Confirm Transaction"
+        hasBackButton={false}
+      >
         <div class="sign-transactions-panel">
           {transactionsCount > 1 && (
             <div class="transaction-navigation">

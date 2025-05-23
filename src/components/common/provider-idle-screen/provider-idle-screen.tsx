@@ -50,11 +50,7 @@ export class ProviderIdleScreen {
     const providerIntroText = this.introText || getProviderIntroText(providerType);
 
     const header = (
-      <mvx-side-panel-header
-        panelTitle={this.provider.name}
-        hasRightButton={false}
-        onLeftButtonClick={() => this.close.emit()}
-      >
+      <mvx-side-panel-header panelTitle={this.provider.name} hasRightButton={false} onLeftButtonClick={this.close.emit}>
         <mvx-close-icon slot={SidePanelHeaderSlotEnum.leftIcon} />
       </mvx-side-panel-header>
     );
@@ -63,7 +59,7 @@ export class ProviderIdleScreen {
       return (
         <Fragment>
           {header}
-          <mvx-ledger-intro onConnect={() => this.access.emit()} />
+          <mvx-ledger-intro onConnect={this.access.emit} />
         </Fragment>
       );
     }
