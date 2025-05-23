@@ -1,6 +1,6 @@
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Method, State } from '@stencil/core';
-import { ANIMATION_DELAY } from 'components/visual/side-panel/side-panel.constants';
+import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
@@ -30,7 +30,7 @@ export class SignTransactionsPanel {
 
   @Method() async closeWithAnimation() {
     this.isOpen = false;
-    const animationDelay = await ANIMATION_DELAY;
+    const animationDelay = await ANIMATION_DELAY_PROMISE;
     return animationDelay;
   }
 

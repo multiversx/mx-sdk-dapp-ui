@@ -1,5 +1,5 @@
 import { Component, h, Method, State } from '@stencil/core';
-import { ANIMATION_DELAY } from 'components/visual/side-panel/side-panel.constants';
+import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 import type { IEventBus } from 'utils/EventBus';
@@ -39,7 +39,7 @@ export class PendingTransactionstPanel {
 
   @Method() async closeWithAnimation() {
     this.isOpen = false;
-    const animationDelay = await ANIMATION_DELAY;
+    const animationDelay = await ANIMATION_DELAY_PROMISE;
     return animationDelay;
   }
 
