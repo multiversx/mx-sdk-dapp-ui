@@ -1,4 +1,4 @@
-import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Method, State } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
@@ -11,64 +11,60 @@ import { ToastEventsEnum } from './toast-list.types';
 })
 export class ToastList {
   private eventBus: IEventBus = new EventBus();
-  @Prop() transactionToasts: ITransactionToast[] = [];
-  @Prop() customToasts: CustomToastType[] = [];
+  private unsubscribeFunctions: (() => void)[] = [];
 
-  @State() transactionToastsState: ITransactionToast[] = [];
-  @State() customToastsState: CustomToastType[] = [];
+  @State() transactionToasts: ITransactionToast[] = [];
+  @State() customToasts: CustomToastType[] = [];
 
-  @Method() async getEventBus() {
+  @Method()
+  async getEventBus() {
     return this.eventBus;
   }
 
-  @Watch('transactionToasts')
-  handleTransactionToastsChange(newValue: ITransactionToast[]) {
-    this.transactionToastsState = [...newValue];
-  }
-
-  @Watch('customToasts')
-  handleCustomToastsChange(newValue: CustomToastType[]) {
-    this.customToastsState = [...newValue];
-  }
-
-  componentWillLoad() {
-    this.transactionToastsState = [...this.transactionToasts];
-    this.customToastsState = [...this.customToasts];
-  }
-
   componentDidLoad() {
-    this.eventBus.subscribe(ToastEventsEnum.TRANSACTION_TOAST_DATA_UPDATE, this.transactionToastUpdate.bind(this));
-    this.eventBus.subscribe(ToastEventsEnum.CUSTOM_TOAST_DATA_UPDATE, this.customToastsUpdate.bind(this));
+    const unsubTransaction = this.eventBus.subscribe(
+      ToastEventsEnum.TRANSACTION_TOAST_DATA_UPDATE,
+      this.transactionToastUpdate,
+    );
+
+    const unsubCustom = this.eventBus.subscribe(ToastEventsEnum.CUSTOM_TOAST_DATA_UPDATE, this.customToastsUpdate);
+
+    this.unsubscribeFunctions.push(unsubTransaction, unsubCustom);
   }
 
   disconnectedCallback() {
     this.resetState();
-    this.eventBus.unsubscribe(ToastEventsEnum.TRANSACTION_TOAST_DATA_UPDATE, this.transactionToastUpdate.bind(this));
-    this.eventBus.unsubscribe(ToastEventsEnum.CUSTOM_TOAST_DATA_UPDATE, this.customToastsUpdate.bind(this));
+    this.unsubscribeFunctions.forEach(unsubscribe => {
+      if (typeof unsubscribe === 'function') {
+        unsubscribe();
+      }
+    });
+    this.unsubscribeFunctions = [];
   }
 
-  private handleCustomToastDelete(toastId: string) {
+  private handleCustomToastDelete = (toastId: string) => {
     this.eventBus.publish(ToastEventsEnum.CLOSE_TOAST, toastId);
-  }
+  };
 
-  private handleTransactionToastDelete(toastId: string) {
+  private handleTransactionToastDelete = (toastId: string) => {
     this.eventBus.publish(ToastEventsEnum.CLOSE_TOAST, toastId);
-  }
+  };
 
-  private handleViewAllClick() {
+  private handleViewAllClick = () => {
     this.eventBus.publish(ToastEventsEnum.OPEN_NOTIFICATIONS_FEED);
-  }
-  private transactionToastUpdate(payload: ITransactionToast[]) {
-    this.transactionToastsState = [...payload];
-  }
+  };
 
-  private customToastsUpdate(payload: CustomToastType[]) {
-    this.customToastsState = [...payload];
-  }
+  private transactionToastUpdate = (payload: ITransactionToast[]) => {
+    this.transactionToasts = [...payload];
+  };
+
+  private customToastsUpdate = (payload: CustomToastType[]) => {
+    this.customToasts = [...payload];
+  };
 
   private resetState() {
-    this.transactionToastsState = [];
-    this.customToastsState = [];
+    this.transactionToasts = [];
+    this.customToasts = [];
   }
 
   render() {
@@ -82,13 +78,17 @@ export class ToastList {
         }}
         id="toast-list"
       >
-        {this.customToastsState?.map(toast => <mvx-generic-toast toast={toast} onDeleteToast={this.handleCustomToastDelete.bind(this, toast.toastId)}></mvx-generic-toast>)}
-        {this.transactionToastsState?.map(toast => (
-          <mvx-transaction-toast {...toast} onDeleteToast={this.handleTransactionToastDelete.bind(this, toast.toastId)}></mvx-transaction-toast>
+        {this.customToasts?.map(toast => (
+          <mvx-generic-toast toast={toast} onDeleteToast={() => this.handleCustomToastDelete(toast.toastId)} />
         ))}
+
+        {this.transactionToasts?.map(toast => (
+          <mvx-transaction-toast {...toast} onDeleteToast={() => this.handleTransactionToastDelete(toast.toastId)} />
+        ))}
+
         {hasTransactionToasts && (
           <div class="view-all-button-container">
-            <button class="view-all-button" onClick={this.handleViewAllClick.bind(this)}>
+            <button class="view-all-button" onClick={this.handleViewAllClick}>
               View All
             </button>
           </div>

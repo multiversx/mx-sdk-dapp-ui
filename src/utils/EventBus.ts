@@ -1,7 +1,7 @@
 import { sendToDevtools } from './devtools';
 
 export interface IEventBus {
-  subscribe(event: string, callback: Function): void;
+  subscribe(event: string, callback: Function): () => void;
   publish(event: string, data?: any): void;
   unsubscribe(event: string, callback: Function): void;
 }
@@ -19,6 +19,10 @@ export class EventBus implements IEventBus {
 
     sendToDevtools(event, 'SUBSCRIBE');
     this.subscribers[event].push(callback);
+
+    return () => {
+      this.unsubscribe(event, callback);
+    };
   }
 
   publish(event: string, data?: any) {

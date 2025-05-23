@@ -30,6 +30,12 @@ export class UnlockPanel {
     return this.eventBus;
   }
 
+  @Method() async closeWithAnimation() {
+    this.panelState = { ...this.panelState, isOpen: false };
+    const animationDelay = await new Promise(resolve => setTimeout(resolve, 300));
+    return animationDelay;
+  }
+
   @Watch('isOpen')
   handleIsOpenChange(newValue: boolean) {
     this.panelState = { ...this.panelState, isOpen: newValue };
@@ -51,9 +57,6 @@ export class UnlockPanel {
     this.isLoggingIn = false;
     this.selectedMethod = null;
     this.panelState = { isOpen: false, allowedProviders: [] };
-
-    const delayClosingAnimation = new Promise(resolve => setTimeout(resolve, 300));
-    return delayClosingAnimation;
   }
 
   private isExtensionInstalled(currentProvider: IProviderBase['type']) {
@@ -139,10 +142,13 @@ export class UnlockPanel {
 
   render() {
     const detectedProviders: IProviderBase[] = this.panelState.allowedProviders.filter(
-      allowedProvider => this.isExtensionInstalled(allowedProvider.type) || this.isMetaMaskInstalled(allowedProvider.type),
+      allowedProvider =>
+        this.isExtensionInstalled(allowedProvider.type) || this.isMetaMaskInstalled(allowedProvider.type),
     );
 
-    const otherProviders = this.panelState.allowedProviders.filter(allowedProvider => !detectedProviders.includes(allowedProvider));
+    const otherProviders = this.panelState.allowedProviders.filter(
+      allowedProvider => !detectedProviders.includes(allowedProvider),
+    );
     const panelTitle = this.selectedMethod ? this.selectedMethod.name : 'Connect your wallet';
     const hasDetectedProviders = detectedProviders.length > 0;
 
@@ -161,15 +167,29 @@ export class UnlockPanel {
       >
         <div id="anchor" ref={element => this.setAnchor(element)} class={{ 'unlock-panel-anchor': this.isLoggingIn }}>
           {this.isIntroScreenVisible && (
-            <mvx-provider-idle-screen provider={this.selectedMethod} onAccess={this.handleAccess.bind(this)} onClose={this.handleResetLoginState.bind(this)} />
+            <mvx-provider-idle-screen
+              provider={this.selectedMethod}
+              onAccess={this.handleAccess.bind(this)}
+              onClose={this.handleResetLoginState.bind(this)}
+            />
           )}
         </div>
 
         {isProviderScreenVisible && (
           <div class="unlock-panel">
             <div class="unlock-panel-groups">
-              {hasDetectedProviders && <mvx-unlock-panel-group groupTitle="Detected" providers={detectedProviders} onLogin={event => this.handleLogin(event.detail)} />}
-              <mvx-unlock-panel-group groupTitle={hasDetectedProviders ? 'Other Options' : 'Options'} providers={otherProviders} onLogin={event => this.handleLogin(event.detail)}>
+              {hasDetectedProviders && (
+                <mvx-unlock-panel-group
+                  groupTitle="Detected"
+                  providers={detectedProviders}
+                  onLogin={event => this.handleLogin(event.detail)}
+                />
+              )}
+              <mvx-unlock-panel-group
+                groupTitle={hasDetectedProviders ? 'Other Options' : 'Options'}
+                providers={otherProviders}
+                onLogin={event => this.handleLogin(event.detail)}
+              >
                 <slot />
               </mvx-unlock-panel-group>
             </div>

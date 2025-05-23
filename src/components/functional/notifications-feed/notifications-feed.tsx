@@ -11,12 +11,23 @@ import { NotificationsFeedEventsEnum } from './notifications-feed.types';
   styleUrl: 'notifications-feed.scss',
 })
 export class NotificationsFeed {
+  private eventBus: IEventBus = new EventBus();
+  private closeEventTimeout: NodeJS.Timeout | null = null;
+
   @State() isOpen: boolean = false;
   @State() pendingTransactions: ITransactionToast[] = [];
   @State() transactionsHistory: ITransactionListItem[] = [];
 
-  private eventBus: IEventBus = new EventBus();
-  private closeEventTimeout: NodeJS.Timeout | null = null;
+  @Method() async closeWithAnimation() {
+    this.isOpen = false;
+    const animationDelay = await new Promise(resolve => setTimeout(resolve, 300));
+    return animationDelay;
+  }
+
+  @Method()
+  async getEventBus() {
+    return this.eventBus;
+  }
 
   private clearTimeouts() {
     if (this.closeEventTimeout) {
@@ -30,11 +41,6 @@ export class NotificationsFeed {
     this.eventBus.unsubscribe(NotificationsFeedEventsEnum.PENDING_TRANSACTIONS_UPDATE, this.pendingTransactionsUpdate.bind(this));
     this.eventBus.unsubscribe(NotificationsFeedEventsEnum.TRANSACTIONS_HISTORY_UPDATE, this.transactionsHistoryUpdate.bind(this));
     this.eventBus.unsubscribe(NotificationsFeedEventsEnum.OPEN_NOTIFICATIONS_FEED, this.handleViewAll.bind(this));
-  }
-
-  @Method()
-  async getEventBus() {
-    return this.eventBus;
   }
 
   handleClose = () => {
@@ -55,7 +61,7 @@ export class NotificationsFeed {
     const hasPending = this.pendingTransactions?.length > 0;
 
     return (
-      <mvx-side-panel isOpen={this.isOpen} panelTitle="Notifications Feed" onClose={this.handleClose}>
+      <mvx-side-panel isOpen={this.isOpen} panelTitle="Notifications Feed" onClose={this.handleClose} hasBackButton={false}>
         <div class="feed-content">
           <div class="notifications-info">
             This feed is stored in your browser and will be reset when a new session is started.

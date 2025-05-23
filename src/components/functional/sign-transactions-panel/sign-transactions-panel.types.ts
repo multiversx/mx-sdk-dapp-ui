@@ -51,7 +51,6 @@ export interface ISignTransactionsPanelCommonData {
 }
 
 export interface ISignTransactionsPanelData {
-  shouldClose?: boolean;
   isLoading?: boolean;
   commonData: ISignTransactionsPanelCommonData;
   tokenTransaction: {
@@ -78,11 +77,10 @@ export type DecodedDisplayType = {
 };
 
 export enum SignEventsEnum {
-  CONFIRM = 'CONFIRM', // can be sign or next
-  BACK = 'BACK',
-  NEXT = 'NEXT',
-  DATA_UPDATE = 'DATA_UPDATE',
-  SET_PPU = 'SET_PPU',
-  OPEN_SIGN_TRANSACTIONS_PANEL = 'OPEN_SIGN_TRANSACTIONS_PANEL',
-  CLOSE_SIGN_TRANSACTIONS_PANEL = 'CLOSE_SIGN_TRANSACTIONS_PANEL',
+  CONFIRM = 'CONFIRM_SIGN_TRANSACTIONS', // can be sign or next
+  BACK = 'BACK_SIGN_TRANSACTIONS',
+  NEXT = 'NEXT_SIGN_TRANSACTIONS',
+  DATA_UPDATE = 'DATA_UPDATE_SIGN_TRANSACTIONS',
+  SET_PPU = 'SET_PPU_SIGN_TRANSACTIONS',
+  CLOSE = 'CLOSE_SIGN_TRANSACTIONS',
 }

@@ -11,13 +11,12 @@ import { IGenericModalProps } from "./components/common/generic-modal/generic-mo
 import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
 import { IEventBus } from "./utils/EventBus";
 import { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
-import { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
-import { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { IconSizeEnumType } from "./components/common/transaction-asset-icon/transaction-asset-icon.types";
 import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { LocalJSX as JSX } from "@stencil/core";
+import { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 import { IWalletConnectPanelData } from "./components/functional/wallet-connect/wallet-connect.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
@@ -26,13 +25,12 @@ export { IGenericModalProps } from "./components/common/generic-modal/generic-mo
 export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
 export { IEventBus } from "./utils/EventBus";
 export { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
-export { ISignTransactionsPanelData } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
-export { CustomToastType as CustomToastType1, IToastDataState, ITransactionProgressState, ITransactionToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { IconSizeEnumType } from "./components/common/transaction-asset-icon/transaction-asset-icon.types";
 export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { LocalJSX as JSX } from "@stencil/core";
+export { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
 export { IWalletConnectPanelData } from "./components/functional/wallet-connect/wallet-connect.types";
 export namespace Components {
@@ -142,6 +140,7 @@ export namespace Components {
         "class"?: string;
     }
     interface MvxNotificationsFeed {
+        "closeWithAnimation": () => Promise<unknown>;
         "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxPagination {
@@ -164,7 +163,7 @@ export namespace Components {
         "class"?: string;
     }
     interface MvxPendingTransactionsPanel {
-        "data": IPendingTransactionsPanelState;
+        "closeWithAnimation": () => Promise<unknown>;
         "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxPreloader {
@@ -172,6 +171,7 @@ export namespace Components {
     }
     interface MvxProviderIdleScreen {
         "introText": string;
+        "introTitle": string;
         "provider": IProviderBase | null;
     }
     interface MvxSidePanel {
@@ -205,7 +205,7 @@ export namespace Components {
         "usdValue": string;
     }
     interface MvxSignTransactionsPanel {
-        "data": ISignTransactionsPanelData;
+        "closeWithAnimation": () => Promise<unknown>;
         "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxSimpleToast {
@@ -215,9 +215,7 @@ export namespace Components {
         "class"?: string;
     }
     interface MvxToastList {
-        "customToasts": CustomToastType1[];
         "getEventBus": () => Promise<IEventBus>;
-        "transactionToasts": ITransactionToast[];
     }
     interface MvxTooltip {
         "class"?: string;
@@ -328,6 +326,7 @@ export namespace Components {
     }
     interface MvxUnlockPanel {
         "allowedProviders": IProviderBase[];
+        "closeWithAnimation": () => Promise<unknown>;
         "getEventBus": () => Promise<IEventBus>;
         "isOpen": boolean;
     }
@@ -1282,13 +1281,13 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface MvxPendingTransactionsPanel {
-        "data"?: IPendingTransactionsPanelState;
     }
     interface MvxPreloader {
         "class"?: string;
     }
     interface MvxProviderIdleScreen {
         "introText"?: string;
+        "introTitle"?: string;
         "onAccess"?: (event: MvxProviderIdleScreenCustomEvent<any>) => void;
         "onClose"?: (event: MvxProviderIdleScreenCustomEvent<any>) => void;
         "provider"?: IProviderBase | null;
@@ -1328,7 +1327,6 @@ declare namespace LocalJSX {
         "usdValue"?: string;
     }
     interface MvxSignTransactionsPanel {
-        "data"?: ISignTransactionsPanelData;
     }
     interface MvxSimpleToast {
         "onDeleteToast"?: (event: MvxSimpleToastCustomEvent<void>) => void;
@@ -1338,8 +1336,6 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface MvxToastList {
-        "customToasts"?: CustomToastType1[];
-        "transactionToasts"?: ITransactionToast[];
     }
     interface MvxTooltip {
         "class"?: string;

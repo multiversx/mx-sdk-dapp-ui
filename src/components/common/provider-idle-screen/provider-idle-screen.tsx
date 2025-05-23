@@ -29,6 +29,7 @@ const getProviderIntroText = (providerType?: IProviderBase['type']) => {
 })
 export class ProviderIdleScreen {
   @Prop() provider: IProviderBase | null = null;
+  @Prop() introTitle: string = 'Requesting Connection';
   @Prop() introText: string = '';
 
   @Event({ composed: false, bubbles: false }) close: EventEmitter;
@@ -49,7 +50,11 @@ export class ProviderIdleScreen {
     }
 
     const header = (
-      <mvx-side-panel-header panelTitle={this.provider.name} hasRightButton={false} onLeftButtonClick={this.close.emit.bind(this)}>
+      <mvx-side-panel-header
+        panelTitle={this.provider.name}
+        hasRightButton={false}
+        onLeftButtonClick={this.close.emit.bind(this)}
+      >
         <mvx-close-icon slot={SidePanelHeaderSlotEnum.leftIcon} />
       </mvx-side-panel-header>
     );
@@ -75,7 +80,7 @@ export class ProviderIdleScreen {
             <div class="unlock-provider-intro-icon">{providerIntroIcon}</div>
           )}
 
-          <div class="unlock-provider-intro-title">{this.introText ? 'Sign transaction' : 'Requesting Connection'}</div>
+          <div class="unlock-provider-intro-title">{this.introTitle}</div>
           {providerIntroText && <div class="unlock-provider-intro-text">{providerIntroText}</div>}
           <slot name="close-button" />
         </div>
