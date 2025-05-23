@@ -1,13 +1,15 @@
-let devTools: any = null;
+interface IDevTools {
+  init: (state?: unknown) => void;
+  send: (action: string, state: unknown) => void;
+}
 
 interface IDevtoolsType extends Window {
   __REDUX_DEVTOOLS_EXTENSION__?: {
-    connect: (options?: { name?: string }) => {
-      init: (state?: unknown) => void;
-      send: (action: string, state: unknown) => void;
-    };
+    connect: (options?: { name?: string }) => IDevTools;
   };
 }
+
+let devTools: IDevTools | null = null;
 
 if (typeof window !== 'undefined') {
   const reduxDevTools = (window as IDevtoolsType).__REDUX_DEVTOOLS_EXTENSION__;
