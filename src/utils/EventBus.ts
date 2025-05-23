@@ -1,3 +1,5 @@
+import { sendToDevtools } from './devtools';
+
 export interface IEventBus {
   subscribe(event: string, callback: Function): void;
   publish(event: string, data?: any): void;
@@ -14,6 +16,8 @@ export class EventBus implements IEventBus {
     if (!this.subscribers[event]) {
       this.subscribers[event] = [];
     }
+
+    sendToDevtools(event, 'SUBSCRIBE');
     this.subscribers[event].push(callback);
   }
 
@@ -21,6 +25,8 @@ export class EventBus implements IEventBus {
     if (!this.subscribers[event]) {
       return;
     }
+
+    sendToDevtools(event, data);
     this.subscribers[event].forEach(callback => callback(data));
   }
 
@@ -28,6 +34,8 @@ export class EventBus implements IEventBus {
     if (!this.subscribers[event]) {
       return;
     }
+
+    sendToDevtools(event, 'UNSUBSCRIBE');
     this.subscribers[event] = this.subscribers[event].filter(cb => cb !== callback);
   }
 }
