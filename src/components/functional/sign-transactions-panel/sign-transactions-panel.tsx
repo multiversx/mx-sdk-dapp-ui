@@ -1,5 +1,6 @@
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { Component, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, h, Method, State } from '@stencil/core';
+import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
@@ -25,21 +26,13 @@ interface IOverviewProps {
 })
 export class SignTransactionsPanel {
   private eventBus: IEventBus = new EventBus();
+  private unsubscribeFunctions: (() => void)[] = [];
 
-  @Prop() data: ISignTransactionsPanelData = {
-    commonData: {
-      egldLabel: '',
-      feeLimit: '',
-      feeInFiatLimit: '',
-      transactionsCount: 0,
-      currentIndexToSign: 0,
-      currentIndex: 0,
-      ppuOptions: [],
-    },
-    tokenTransaction: null,
-    nftTransaction: null,
-    sftTransaction: null,
-  };
+  @Method() async closeWithAnimation() {
+    this.isOpen = false;
+    const animationDelay = await ANIMATION_DELAY_PROMISE;
+    return animationDelay;
+  }
 
   @State() isOpen: boolean = false;
   @State() activeTab: 'overview' | 'advanced' = 'overview';
@@ -48,14 +41,9 @@ export class SignTransactionsPanel {
     return this.eventBus;
   }
 
-  @Watch('data')
-  updateData(newData: ISignTransactionsPanelData) {
-    this.dataUpdate(newData);
-  }
-
   componentWillLoad() {
     state.onCancel = () => {
-      this.onClose({ isUserClick: true });
+      this.handleClose();
     };
 
     state.onNext = () => {
@@ -76,39 +64,26 @@ export class SignTransactionsPanel {
   }
 
   componentDidLoad() {
-    this.updateData(this.data);
-    this.eventBus.subscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
-    this.eventBus.subscribe(SignEventsEnum.OPEN_SIGN_TRANSACTIONS_PANEL, this.handleOpen.bind(this));
-    this.eventBus.subscribe(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS_PANEL, this.onClose.bind(this, { isUserClick: false }));
-    this.eventBus.subscribe(SignEventsEnum.BACK, this.handleBack.bind(this));
+    const unsubDataUpdate = this.eventBus.subscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate);
+    const unsubBack = this.eventBus.subscribe(SignEventsEnum.BACK, this.handleBack);
+    this.unsubscribeFunctions.push(unsubDataUpdate, unsubBack);
   }
 
   disconnectedCallback() {
     resetState();
-    this.eventBus.unsubscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
-    this.eventBus.unsubscribe(SignEventsEnum.OPEN_SIGN_TRANSACTIONS_PANEL, this.handleOpen.bind(this));
-    this.eventBus.unsubscribe(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS_PANEL, this.onClose.bind(this, { isUserClick: false }));
-  }
-
-  private handleOpen() {
-    this.isOpen = true;
-  }
-
-  private handleClose() {
     this.isOpen = false;
-    this.onClose({ isUserClick: true });
+    this.unsubscribeFunctions.forEach(unsub => unsub());
+    this.unsubscribeFunctions = [];
   }
 
-  private onClose(props = { isUserClick: true }) {
+  private handleClose = () => {
     this.isOpen = false;
     resetState();
+    this.eventBus.publish(SignEventsEnum.CLOSE);
+  };
 
-    if (props.isUserClick) {
-      this.eventBus.publish(SignEventsEnum.CLOSE_SIGN_TRANSACTIONS_PANEL);
-    }
-  }
-
-  private dataUpdate(payload: ISignTransactionsPanelData) {
+  private dataUpdate = (payload: ISignTransactionsPanelData) => {
+    this.isOpen = true;
     for (const key in payload) {
       if (Object.prototype.hasOwnProperty.call(state, key)) {
         state[key] = payload[key];
@@ -116,21 +91,17 @@ export class SignTransactionsPanel {
     }
 
     state.isWaitingForSignature = false;
-
-    if (payload.shouldClose) {
-      this.onClose({ isUserClick: false });
-    }
-  }
+  };
 
   private setActiveTab(tab: 'overview' | 'advanced') {
     this.activeTab = tab;
   }
 
-  private handleBack() {
+  private handleBack = () => {
     if (state.commonData.currentIndex > 0) {
       state.commonData.currentIndex -= 1;
     }
-  }
+  };
 
   get overviewProps(): IOverviewProps {
     const { tokenTransaction, sftTransaction, nftTransaction } = state;
@@ -154,7 +125,12 @@ export class SignTransactionsPanel {
     const { currentIndex, transactionsCount, origin, data, highlight } = commonData;
 
     return (
-      <mvx-side-panel isOpen={this.isOpen} onClose={this.handleClose.bind(this)} panelTitle="Confirm Transaction">
+      <mvx-side-panel
+        isOpen={this.isOpen}
+        onClose={this.handleClose}
+        panelTitle="Confirm Transaction"
+        hasBackButton={false}
+      >
         <div class="sign-transactions-panel">
           {transactionsCount > 1 && (
             <div class="transaction-navigation">
@@ -191,18 +167,24 @@ export class SignTransactionsPanel {
 
           <div class="sign-transaction-content">
             <div class="tab-selector">
-              <div class={`tab-item ${this.activeTab === 'overview' ? 'active' : ''}`} onClick={() => this.setActiveTab('overview')}>
+              <div
+                class={`tab-item ${this.activeTab === 'overview' ? 'active' : ''}`}
+                onClick={() => this.setActiveTab('overview')}
+              >
                 <span class="tab-text">Overview</span>
               </div>
-              <div class={`tab-item ${this.activeTab === 'advanced' ? 'active' : ''}`} onClick={() => this.setActiveTab('advanced')}>
+              <div
+                class={`tab-item ${this.activeTab === 'advanced' ? 'active' : ''}`}
+                onClick={() => this.setActiveTab('advanced')}
+              >
                 <span class="tab-text">Advanced</span>
               </div>
             </div>
 
             {this.activeTab === 'overview' ? (
-              <mvx-sign-transactions-overview style={{ width: '100%' }} {...this.overviewProps}></mvx-sign-transactions-overview>
+              <mvx-sign-transactions-overview style={{ width: '100%' }} {...this.overviewProps} />
             ) : (
-              <mvx-sign-transactions-advanced style={{ width: '100%' }} data={data} highlight={highlight}></mvx-sign-transactions-advanced>
+              <mvx-sign-transactions-advanced style={{ width: '100%' }} data={data} highlight={highlight} />
             )}
           </div>
 

@@ -29,13 +29,18 @@ const getProviderIntroText = (providerType?: IProviderBase['type']) => {
 })
 export class ProviderIdleScreen {
   @Prop() provider: IProviderBase | null = null;
+  @Prop() introTitle: string = 'Requesting Connection';
   @Prop() introText: string = '';
 
   @Event({ composed: false, bubbles: false }) close: EventEmitter;
   @Event({ composed: false, bubbles: false }) access: EventEmitter;
 
   render() {
-    const providerType = this.provider ? this.provider.type : null;
+    if (!this.provider) {
+      return null;
+    }
+
+    const providerType = this.provider.type;
     const isExtensionProvider = providerType === ProviderTypeEnum.extension;
     const extensionProviderIconBaseSize = 150;
     const extensionProviderIconWidth = extensionProviderIconBaseSize + (15 / 100) * extensionProviderIconBaseSize;
@@ -44,12 +49,8 @@ export class ProviderIdleScreen {
     const providerIntroIcon = getProviderButtonIcon(providerType);
     const providerIntroText = this.introText || getProviderIntroText(providerType);
 
-    if (!this.provider) {
-      return null;
-    }
-
     const header = (
-      <mvx-side-panel-header panelTitle={this.provider.name} hasRightButton={false} onLeftButtonClick={this.close.emit.bind(this)}>
+      <mvx-side-panel-header panelTitle={this.provider.name} hasRightButton={false} onLeftButtonClick={this.close.emit}>
         <mvx-close-icon slot={SidePanelHeaderSlotEnum.leftIcon} />
       </mvx-side-panel-header>
     );
@@ -75,7 +76,7 @@ export class ProviderIdleScreen {
             <div class="unlock-provider-intro-icon">{providerIntroIcon}</div>
           )}
 
-          <div class="unlock-provider-intro-title">{this.introText ? 'Sign transaction' : 'Requesting Connection'}</div>
+          <div class="unlock-provider-intro-title">{this.introTitle}</div>
           {providerIntroText && <div class="unlock-provider-intro-text">{providerIntroText}</div>}
           <slot name="close-button" />
         </div>
