@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Added devtools for event tracking](https://github.com/multiversx/mx-sdk-dapp-ui/pull/109)
+
 ## [[0.0.0](https://github.com/multiversx/mx-sdk-dapp-ui/pull/108)] - 2025-05-20
 
 - [Renamed project](https://github.com/multiversx/mx-sdk-dapp-ui/pull/107)
