@@ -1,7 +1,7 @@
 export enum NotificationsFeedEventsEnum {
-  CLOSE_NOTIFICATIONS_FEED = 'CLOSE_NOTIFICATIONS_FEED',
-  CLEAR_NOTIFICATIONS_FEED_HISTORY = 'CLEAR_NOTIFICATIONS_FEED_HISTORY',
-  OPEN_NOTIFICATIONS_FEED = 'OPEN_NOTIFICATIONS_FEED',
+  CLOSE = 'CLOSE',
+  CLEAR = 'CLEAR',
+  OPEN = 'OPEN',
   // Event to update the pending transactions list
   PENDING_TRANSACTIONS_UPDATE = 'PENDING_TRANSACTIONS_UPDATE',
   // Event to update the transactions history list

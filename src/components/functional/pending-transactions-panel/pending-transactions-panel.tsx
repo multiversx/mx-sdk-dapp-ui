@@ -1,4 +1,5 @@
 import { Component, h, Method, State } from '@stencil/core';
+import { ANIMATION_DELAY } from 'components/visual/side-panel/side-panel.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 import type { IEventBus } from 'utils/EventBus';
@@ -27,6 +28,7 @@ const getProviderIntroText = (providerType?: IProviderBase['type']) => {
 })
 export class PendingTransactionstPanel {
   private eventBus: IEventBus = new EventBus();
+  private unsubscribeFunctions: (() => void)[] = [];
 
   @State() provider: IProviderBase = null;
   @State() isOpen: boolean = false;
@@ -37,17 +39,19 @@ export class PendingTransactionstPanel {
 
   @Method() async closeWithAnimation() {
     this.isOpen = false;
-    const animationDelay = await new Promise(resolve => setTimeout(resolve, 300));
+    const animationDelay = await new Promise(resolve => setTimeout(resolve, ANIMATION_DELAY));
     return animationDelay;
   }
 
   componentDidLoad() {
-    this.eventBus.subscribe(PendingTransactionsEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
+    const unsubDataUpdate = this.eventBus.subscribe(PendingTransactionsEventsEnum.DATA_UPDATE, this.dataUpdate);
+    this.unsubscribeFunctions.push(unsubDataUpdate);
   }
 
   disconnectedCallback() {
     this.resetState();
-    this.eventBus.unsubscribe(PendingTransactionsEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
+    this.unsubscribeFunctions.forEach(unsub => unsub());
+    this.unsubscribeFunctions = [];
   }
 
   private resetState() {
@@ -59,10 +63,10 @@ export class PendingTransactionstPanel {
     this.eventBus.publish(PendingTransactionsEventsEnum.CLOSE);
   };
 
-  private dataUpdate(newData: IProviderBase) {
+  private dataUpdate = (newData: IProviderBase) => {
     this.provider = newData;
     this.isOpen = true;
-  }
+  };
 
   render() {
     return (
@@ -74,11 +78,11 @@ export class PendingTransactionstPanel {
       >
         <mvx-provider-idle-screen
           provider={this.provider}
-          onClose={() => this.handleClose()}
+          onClose={this.handleClose}
           introTitle="Signing Transaction"
           introText={getProviderIntroText(this.provider?.type)}
         >
-          <button onClick={() => this.handleClose()} slot="close-button">
+          <button onClick={this.handleClose} slot="close-button">
             Close
           </button>
         </mvx-provider-idle-screen>

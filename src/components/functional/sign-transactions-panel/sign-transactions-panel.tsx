@@ -1,5 +1,6 @@
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Method, State } from '@stencil/core';
+import { ANIMATION_DELAY } from 'components/visual/side-panel/side-panel.constants';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
@@ -25,10 +26,11 @@ interface IOverviewProps {
 })
 export class SignTransactionsPanel {
   private eventBus: IEventBus = new EventBus();
+  private unsubscribeFunctions: (() => void)[] = [];
 
   @Method() async closeWithAnimation() {
     this.isOpen = false;
-    const animationDelay = await new Promise(resolve => setTimeout(resolve, 300));
+    const animationDelay = await new Promise(resolve => setTimeout(resolve, ANIMATION_DELAY));
     return animationDelay;
   }
 
@@ -62,13 +64,16 @@ export class SignTransactionsPanel {
   }
 
   componentDidLoad() {
-    this.eventBus.subscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
-    this.eventBus.subscribe(SignEventsEnum.BACK, this.handleBack.bind(this));
+    const unsubDataUpdate = this.eventBus.subscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate);
+    const unsubBack = this.eventBus.subscribe(SignEventsEnum.BACK, this.handleBack);
+    this.unsubscribeFunctions.push(unsubDataUpdate, unsubBack);
   }
 
   disconnectedCallback() {
     resetState();
-    this.eventBus.unsubscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
+    this.isOpen = false;
+    this.unsubscribeFunctions.forEach(unsub => unsub());
+    this.unsubscribeFunctions = [];
   }
 
   private handleClose = () => {
@@ -77,7 +82,7 @@ export class SignTransactionsPanel {
     this.eventBus.publish(SignEventsEnum.CLOSE);
   };
 
-  private dataUpdate(payload: ISignTransactionsPanelData) {
+  private dataUpdate = (payload: ISignTransactionsPanelData) => {
     this.isOpen = true;
     for (const key in payload) {
       if (Object.prototype.hasOwnProperty.call(state, key)) {
@@ -86,17 +91,17 @@ export class SignTransactionsPanel {
     }
 
     state.isWaitingForSignature = false;
-  }
+  };
 
   private setActiveTab(tab: 'overview' | 'advanced') {
     this.activeTab = tab;
   }
 
-  private handleBack() {
+  private handleBack = () => {
     if (state.commonData.currentIndex > 0) {
       state.commonData.currentIndex -= 1;
     }
-  }
+  };
 
   get overviewProps(): IOverviewProps {
     const { tokenTransaction, sftTransaction, nftTransaction } = state;
@@ -120,7 +125,7 @@ export class SignTransactionsPanel {
     const { currentIndex, transactionsCount, origin, data, highlight } = commonData;
 
     return (
-      <mvx-side-panel isOpen={this.isOpen} onClose={() => this.handleClose()} panelTitle="Confirm Transaction">
+      <mvx-side-panel isOpen={this.isOpen} onClose={this.handleClose} panelTitle="Confirm Transaction">
         <div class="sign-transactions-panel">
           {transactionsCount > 1 && (
             <div class="transaction-navigation">
@@ -172,16 +177,9 @@ export class SignTransactionsPanel {
             </div>
 
             {this.activeTab === 'overview' ? (
-              <mvx-sign-transactions-overview
-                style={{ width: '100%' }}
-                {...this.overviewProps}
-              ></mvx-sign-transactions-overview>
+              <mvx-sign-transactions-overview style={{ width: '100%' }} {...this.overviewProps} />
             ) : (
-              <mvx-sign-transactions-advanced
-                style={{ width: '100%' }}
-                data={data}
-                highlight={highlight}
-              ></mvx-sign-transactions-advanced>
+              <mvx-sign-transactions-advanced style={{ width: '100%' }} data={data} highlight={highlight} />
             )}
           </div>
 

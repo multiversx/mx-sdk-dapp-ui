@@ -51,7 +51,7 @@ export class ToastList {
   };
 
   private handleViewAllClick = () => {
-    this.eventBus.publish(ToastEventsEnum.OPEN_NOTIFICATIONS_FEED);
+    this.eventBus.publish(ToastEventsEnum.OPEN);
   };
 
   private transactionToastUpdate = (payload: ITransactionToast[]) => {

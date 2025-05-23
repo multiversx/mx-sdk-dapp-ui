@@ -14,8 +14,8 @@ export class SidePanel {
   @Prop() hasBackButton?: boolean;
   @Prop() showHeader?: boolean = true;
 
-  @Event() close: EventEmitter;
-  @Event() back: EventEmitter;
+  @Event() close: EventEmitter<void>;
+  @Event() back: EventEmitter<void>;
 
   @State() isVisible: boolean = false;
   @State() shouldAnimate: boolean = false;

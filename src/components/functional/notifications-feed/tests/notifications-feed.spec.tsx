@@ -66,7 +66,7 @@ describe('notifications-feed', () => {
     await page.waitForChanges();
 
     expect(page.rootInstance.isOpen).toBe(false);
-    expect(eventBusMock.publish).toHaveBeenCalledWith(NotificationsFeedEventsEnum.CLOSE_NOTIFICATIONS_FEED);
+    expect(eventBusMock.publish).toHaveBeenCalledWith(NotificationsFeedEventsEnum.CLOSE);
   });
 
   it('updates pending transactions', async () => {
@@ -109,7 +109,7 @@ describe('notifications-feed', () => {
     page.rootInstance.handleClear();
     await page.waitForChanges();
 
-    expect(eventBusMock.publish).toHaveBeenCalledWith(NotificationsFeedEventsEnum.CLEAR_NOTIFICATIONS_FEED_HISTORY);
+    expect(eventBusMock.publish).toHaveBeenCalledWith(NotificationsFeedEventsEnum.CLEAR);
   });
 
   it('subscribes to events on componentDidLoad', async () => {
@@ -128,9 +128,15 @@ describe('notifications-feed', () => {
     page.rootInstance.componentDidLoad();
 
     expect(eventBusMock.subscribe).toHaveBeenCalledTimes(3);
-    expect(eventBusMock.subscribe).toHaveBeenCalledWith(NotificationsFeedEventsEnum.PENDING_TRANSACTIONS_UPDATE, expect.any(Function));
-    expect(eventBusMock.subscribe).toHaveBeenCalledWith(NotificationsFeedEventsEnum.TRANSACTIONS_HISTORY_UPDATE, expect.any(Function));
-    expect(eventBusMock.subscribe).toHaveBeenCalledWith(NotificationsFeedEventsEnum.OPEN_NOTIFICATIONS_FEED, expect.any(Function));
+    expect(eventBusMock.subscribe).toHaveBeenCalledWith(
+      NotificationsFeedEventsEnum.PENDING_TRANSACTIONS_UPDATE,
+      expect.any(Function),
+    );
+    expect(eventBusMock.subscribe).toHaveBeenCalledWith(
+      NotificationsFeedEventsEnum.TRANSACTIONS_HISTORY_UPDATE,
+      expect.any(Function),
+    );
+    expect(eventBusMock.subscribe).toHaveBeenCalledWith(NotificationsFeedEventsEnum.OPEN, expect.any(Function));
   });
 
   it('unsubscribes from events on disconnectedCallback', async () => {
@@ -139,18 +145,20 @@ describe('notifications-feed', () => {
       html: '<mvx-notifications-feed></mvx-notifications-feed>',
     });
 
-    const eventBusMock = {
-      publish: jest.fn(),
-      subscribe: jest.fn(),
-      unsubscribe: jest.fn(),
-    };
-    page.rootInstance.eventBus = eventBusMock;
+    const unsubscribe1 = jest.fn();
+    const unsubscribe2 = jest.fn();
+    const unsubscribe3 = jest.fn();
+
+    page.rootInstance.unsubscribeFunctions = [unsubscribe1, unsubscribe2, unsubscribe3];
+
+    const clearTimeoutsSpy = jest.spyOn(page.rootInstance, 'clearTimeouts');
 
     page.rootInstance.disconnectedCallback();
 
-    expect(eventBusMock.unsubscribe).toHaveBeenCalledTimes(3);
-    expect(eventBusMock.unsubscribe).toHaveBeenCalledWith(NotificationsFeedEventsEnum.PENDING_TRANSACTIONS_UPDATE, expect.any(Function));
-    expect(eventBusMock.unsubscribe).toHaveBeenCalledWith(NotificationsFeedEventsEnum.TRANSACTIONS_HISTORY_UPDATE, expect.any(Function));
-    expect(eventBusMock.unsubscribe).toHaveBeenCalledWith(NotificationsFeedEventsEnum.OPEN_NOTIFICATIONS_FEED, expect.any(Function));
+    expect(clearTimeoutsSpy).toHaveBeenCalled();
+    expect(unsubscribe1).toHaveBeenCalled();
+    expect(unsubscribe2).toHaveBeenCalled();
+    expect(unsubscribe3).toHaveBeenCalled();
+    expect(page.rootInstance.unsubscribeFunctions).toEqual([]);
   });
 });

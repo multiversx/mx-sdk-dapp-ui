@@ -36,7 +36,11 @@ export class ProviderIdleScreen {
   @Event({ composed: false, bubbles: false }) access: EventEmitter;
 
   render() {
-    const providerType = this.provider ? this.provider.type : null;
+    if (!this.provider) {
+      return null;
+    }
+
+    const providerType = this.provider.type;
     const isExtensionProvider = providerType === ProviderTypeEnum.extension;
     const extensionProviderIconBaseSize = 150;
     const extensionProviderIconWidth = extensionProviderIconBaseSize + (15 / 100) * extensionProviderIconBaseSize;
@@ -45,15 +49,11 @@ export class ProviderIdleScreen {
     const providerIntroIcon = getProviderButtonIcon(providerType);
     const providerIntroText = this.introText || getProviderIntroText(providerType);
 
-    if (!this.provider) {
-      return null;
-    }
-
     const header = (
       <mvx-side-panel-header
         panelTitle={this.provider.name}
         hasRightButton={false}
-        onLeftButtonClick={this.close.emit.bind(this)}
+        onLeftButtonClick={() => this.close.emit()}
       >
         <mvx-close-icon slot={SidePanelHeaderSlotEnum.leftIcon} />
       </mvx-side-panel-header>
@@ -63,7 +63,7 @@ export class ProviderIdleScreen {
       return (
         <Fragment>
           {header}
-          <mvx-ledger-intro onConnect={this.access.emit} />
+          <mvx-ledger-intro onConnect={() => this.access.emit()} />
         </Fragment>
       );
     }

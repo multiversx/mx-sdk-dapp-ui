@@ -745,8 +745,8 @@ declare global {
         new (): HTMLMvxProviderIdleScreenElement;
     };
     interface HTMLMvxSidePanelElementEventMap {
-        "close": any;
-        "back": any;
+        "close": void;
+        "back": void;
     }
     interface HTMLMvxSidePanelElement extends Components.MvxSidePanel, HTMLStencilElement {
         addEventListener<K extends keyof HTMLMvxSidePanelElementEventMap>(type: K, listener: (this: HTMLMvxSidePanelElement, ev: MvxSidePanelCustomEvent<HTMLMvxSidePanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -1295,8 +1295,8 @@ declare namespace LocalJSX {
     interface MvxSidePanel {
         "hasBackButton"?: boolean;
         "isOpen"?: boolean;
-        "onBack"?: (event: MvxSidePanelCustomEvent<any>) => void;
-        "onClose"?: (event: MvxSidePanelCustomEvent<any>) => void;
+        "onBack"?: (event: MvxSidePanelCustomEvent<void>) => void;
+        "onClose"?: (event: MvxSidePanelCustomEvent<void>) => void;
         "panelClassName"?: string;
         "panelTitle"?: string;
         "showHeader"?: boolean;
