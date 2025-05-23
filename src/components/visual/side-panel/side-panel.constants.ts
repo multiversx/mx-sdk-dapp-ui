@@ -1,1 +1,1 @@
-export const ANIMATION_DELAY = 300;
+export const ANIMATION_DELAY = new Promise(resolve => setTimeout(resolve, 300));

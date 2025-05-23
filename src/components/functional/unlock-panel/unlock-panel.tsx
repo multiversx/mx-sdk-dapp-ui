@@ -33,7 +33,7 @@ export class UnlockPanel {
 
   @Method() async closeWithAnimation() {
     this.panelState = { ...this.panelState, isOpen: false };
-    const animationDelay = await new Promise(resolve => setTimeout(resolve, ANIMATION_DELAY));
+    const animationDelay = await ANIMATION_DELAY;
     return animationDelay;
   }
 

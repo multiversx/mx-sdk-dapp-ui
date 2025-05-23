@@ -39,7 +39,7 @@ export class PendingTransactionstPanel {
 
   @Method() async closeWithAnimation() {
     this.isOpen = false;
-    const animationDelay = await new Promise(resolve => setTimeout(resolve, ANIMATION_DELAY));
+    const animationDelay = await ANIMATION_DELAY;
     return animationDelay;
   }
 

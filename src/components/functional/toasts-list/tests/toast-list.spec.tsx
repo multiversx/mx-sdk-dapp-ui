@@ -120,7 +120,7 @@ describe('toast-list', () => {
 
     page.rootInstance.handleTransactionToastDelete('tx1');
 
-    expect(eventBusMock.publish).toHaveBeenCalledWith(ToastEventsEnum.CLOSE_TOAST, 'tx1');
+    expect(eventBusMock.publish).toHaveBeenCalledWith(ToastEventsEnum.CLOSE, 'tx1');
   });
 
   it('handles custom toast deletion correctly', async () => {
@@ -140,7 +140,7 @@ describe('toast-list', () => {
 
     page.rootInstance.handleCustomToastDelete('custom1');
 
-    expect(eventBusMock.publish).toHaveBeenCalledWith(ToastEventsEnum.CLOSE_TOAST, 'custom1');
+    expect(eventBusMock.publish).toHaveBeenCalledWith(ToastEventsEnum.CLOSE, 'custom1');
   });
 
   it('properly subscribes to events in componentDidLoad', async () => {
@@ -250,6 +250,6 @@ describe('toast-list', () => {
 
     page.rootInstance.handleViewAllClick();
 
-    expect(eventBusMock.publish).toHaveBeenCalledWith(ToastEventsEnum.OPEN);
+    expect(eventBusMock.publish).toHaveBeenCalledWith(ToastEventsEnum.OPEN_NOTIFICATIONS_FEED);
   });
 });

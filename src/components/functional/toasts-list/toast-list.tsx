@@ -43,15 +43,15 @@ export class ToastList {
   }
 
   private handleCustomToastDelete = (toastId: string) => {
-    this.eventBus.publish(ToastEventsEnum.CLOSE_TOAST, toastId);
+    this.eventBus.publish(ToastEventsEnum.CLOSE, toastId);
   };
 
   private handleTransactionToastDelete = (toastId: string) => {
-    this.eventBus.publish(ToastEventsEnum.CLOSE_TOAST, toastId);
+    this.eventBus.publish(ToastEventsEnum.CLOSE, toastId);
   };
 
   private handleViewAllClick = () => {
-    this.eventBus.publish(ToastEventsEnum.OPEN);
+    this.eventBus.publish(ToastEventsEnum.OPEN_NOTIFICATIONS_FEED);
   };
 
   private transactionToastUpdate = (payload: ITransactionToast[]) => {
