@@ -13,14 +13,19 @@ export class CustomToast {
   @Prop() toast: IComponentToast;
   @Event({ bubbles: false, composed: false }) deleteToast: EventEmitter<string>;
 
-  private handleDeleteToast() {
+  private readonly handleDeleteToast = () => {
     this.deleteToast.emit();
-  }
+  };
 
   render() {
     return (
       <div class="toast-wrapper" data-testid={DataTestIdsEnum.transactionToastContent}>
-        <button onClick={this.handleDeleteToast.bind(this)} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>
+        <button
+          onClick={this.handleDeleteToast}
+          type="button"
+          class="icon-close"
+          innerHTML={getIconHtmlFromIconDefinition(faTimes)}
+        ></button>
         <div class="toast-body" ref={container => this.initializeToast(container)}></div>
       </div>
     );

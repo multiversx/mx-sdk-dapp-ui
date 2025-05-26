@@ -18,20 +18,24 @@ export class TransactionToast {
   @Prop() transactionProgressState?: ITransactionProgressState;
   @Event() deleteToast: EventEmitter<void>;
 
-  private handleDeleteToast() {
+  private readonly handleDeleteToast = () => {
     this.deleteToast.emit();
-  }
+  };
 
   render() {
     return (
       <div class="transaction-toast">
-        <mvx-transaction-toast-progress key={this.toastId} startTime={this.transactionProgressState?.startTime} endTime={this.transactionProgressState?.endTime}>
+        <mvx-transaction-toast-progress
+          key={this.toastId}
+          startTime={this.transactionProgressState?.startTime}
+          endTime={this.transactionProgressState?.endTime}
+        >
           <mvx-transaction-toast-content
             fullWidth={this.fullWidth}
             toastDataState={this.toastDataState}
             transactions={this.transactions}
             processedTransactionsStatus={this.processedTransactionsStatus}
-            onDeleteToast={this.handleDeleteToast.bind(this)}
+            onDeleteToast={this.handleDeleteToast}
           />
         </mvx-transaction-toast-progress>
       </div>

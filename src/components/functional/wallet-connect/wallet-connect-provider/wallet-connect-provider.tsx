@@ -39,28 +39,32 @@ export class WalletConnectProvider {
     }
   }
 
-  private async dataUpdate(payload: IWalletConnectPanelData) {
+  private readonly dataUpdate = async (payload: IWalletConnectPanelData) => {
     if (payload.wcURI) {
       this.qrCodeSvg = await this.generateSVG(payload.wcURI);
     }
-  }
+  };
 
   async componentDidLoad() {
     if (this.data.wcURI) {
       this.qrCodeSvg = await this.generateSVG(this.data.wcURI);
     }
-    this.eventBus.subscribe(WalletConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
+    this.eventBus.subscribe(WalletConnectEventsEnum.DATA_UPDATE, this.dataUpdate);
   }
 
   disconnectedCallback() {
     this.eventBus.publish(WalletConnectEventsEnum.UI_DISCONNECTED);
-    this.eventBus.unsubscribe(WalletConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
+    this.eventBus.unsubscribe(WalletConnectEventsEnum.DATA_UPDATE, this.dataUpdate);
   }
 
   render() {
     return (
       <Fragment>
-        <mvx-side-panel-header panelTitle={providerLabels.walletConnect} hasRightButton={false} onLeftButtonClick={() => this.eventBus.publish(WalletConnectEventsEnum.CLOSE)}>
+        <mvx-side-panel-header
+          panelTitle={providerLabels.walletConnect}
+          hasRightButton={false}
+          onLeftButtonClick={() => this.eventBus.publish(WalletConnectEventsEnum.CLOSE)}
+        >
           <mvx-close-icon slot={SidePanelHeaderSlotEnum.leftIcon} />
         </mvx-side-panel-header>
         <mvx-wallet-connect-flow qrCodeSvg={this.qrCodeSvg} />

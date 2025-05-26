@@ -22,11 +22,11 @@ export class WalletConnectFlow {
   @Prop() qrCodeSvg: string = '';
   @State() flipToggle: boolean = false;
 
-  handleFlipToggle(event: MouseEvent) {
+  private readonly handleFlipToggle = (event: MouseEvent) => {
     event.preventDefault();
     event.stopPropagation();
     this.flipToggle = !this.flipToggle;
-  }
+  };
 
   render() {
     return (
@@ -52,12 +52,16 @@ export class WalletConnectFlow {
                 Get the xPortal <br /> mobile app
               </div>
 
-              <div class="wallet-connect-flow-scan-download-button" onClick={this.handleFlipToggle.bind(this)}>
+              <div class="wallet-connect-flow-scan-download-button" onClick={this.handleFlipToggle}>
                 Download now
               </div>
             </div>
 
-            <img src={processImgSrc('wallet-connect-flow-download.png')} class="wallet-connect-flow-scan-download-image" />
+            <img
+              src={processImgSrc('wallet-connect-flow-download.png')}
+              class="wallet-connect-flow-scan-download-image"
+              alt="scan"
+            />
           </div>
         </div>
 
@@ -68,15 +72,24 @@ export class WalletConnectFlow {
               Scan this QR code on your phone <br /> to get the xPortal app
             </div>
 
-            <div class="wallet-connect-flow-download-return" onClick={this.handleFlipToggle.bind(this)}>
+            <div class="wallet-connect-flow-download-return" onClick={this.handleFlipToggle}>
               Connect xPortal
             </div>
           </div>
 
           <div class="wallet-connect-flow-download-options">
             {xPortalDownloadOptions.map(xPortalDownloadOption => (
-              <a class="wallet-connect-flow-download-option" href={xPortalDownloadOption.link} target="_blank" rel="noreferrer">
-                <img src={processImgSrc(xPortalDownloadOption.image)} class="wallet-connect-flow-download-option-image" />
+              <a
+                class="wallet-connect-flow-download-option"
+                href={xPortalDownloadOption.link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={processImgSrc(xPortalDownloadOption.image)}
+                  class="wallet-connect-flow-download-option-image"
+                  alt="download"
+                />
               </a>
             ))}
           </div>

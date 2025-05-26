@@ -15,9 +15,9 @@ export class SimpleToast {
   @Prop() toast: ISimpleToast;
   @Event({ bubbles: false, composed: false }) deleteToast: EventEmitter<void>;
 
-  private handleDeleteToast() {
+  private readonly handleDeleteToast = () => {
     this.deleteToast.emit();
-  }
+  };
 
   private renderIcon() {
     const { icon, iconClassName } = this.toast;
@@ -59,10 +59,17 @@ export class SimpleToast {
                   {title}
                 </h5>
               )}
-              <button onClick={this.handleDeleteToast.bind(this)} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>
+              <button
+                onClick={this.handleDeleteToast}
+                type="button"
+                class="icon-close"
+                innerHTML={getIconHtmlFromIconDefinition(faTimes)}
+              ></button>
             </div>
             {subtitle && <div class="subtitle">{subtitle}</div>}
-            {message && <div class={classNames('content-message', { 'no-margin': !title && !subtitle })}>{message}</div>}
+            {message && (
+              <div class={classNames('content-message', { 'no-margin': !title && !subtitle })}>{message}</div>
+            )}
           </div>
         </div>
       </div>
