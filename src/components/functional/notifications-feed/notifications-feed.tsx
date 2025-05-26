@@ -1,4 +1,3 @@
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Method, State } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
@@ -12,12 +11,57 @@ import { NotificationsFeedEventsEnum } from './notifications-feed.types';
   styleUrl: 'notifications-feed.scss',
 })
 export class NotificationsFeed {
+  private eventBus: IEventBus = new EventBus();
+  private closeEventTimeout: NodeJS.Timeout | null = null;
+  private unsubscribeFunctions: (() => void)[] = [];
+
   @State() isOpen: boolean = false;
   @State() pendingTransactions: ITransactionToast[] = [];
   @State() transactionsHistory: ITransactionListItem[] = [];
 
-  private eventBus: IEventBus = new EventBus();
-  private closeEventTimeout: NodeJS.Timeout | null = null;
+  @Method() async closeWithAnimation() {
+    this.isOpen = false;
+    const animationDelay = await new Promise(resolve => setTimeout(resolve, 300));
+    return animationDelay;
+  }
+
+  @Method()
+  async getEventBus() {
+    return this.eventBus;
+  }
+
+  disconnectedCallback() {
+    this.clearTimeouts();
+    this.unsubscribeFunctions.forEach(unsub => unsub());
+    this.unsubscribeFunctions = [];
+  }
+
+  componentDidLoad() {
+    const unsubPendingTransactions = this.eventBus.subscribe(
+      NotificationsFeedEventsEnum.PENDING_TRANSACTIONS_UPDATE,
+      this.pendingTransactionsUpdate,
+    );
+    const unsubTransactionsHistory = this.eventBus.subscribe(
+      NotificationsFeedEventsEnum.TRANSACTIONS_HISTORY_UPDATE,
+      this.transactionsHistoryUpdate,
+    );
+    const unsubOpen = this.eventBus.subscribe(NotificationsFeedEventsEnum.OPEN, this.handleViewAll);
+
+    this.unsubscribeFunctions.push(unsubPendingTransactions, unsubTransactionsHistory, unsubOpen);
+  }
+
+  private handleClose = () => {
+    this.isOpen = false;
+    this.eventBus.publish(NotificationsFeedEventsEnum.CLOSE);
+  };
+
+  private handleClear = () => {
+    this.eventBus.publish(NotificationsFeedEventsEnum.CLEAR);
+  };
+
+  private handleViewAll = () => {
+    this.isOpen = true;
+  };
 
   private clearTimeouts() {
     if (this.closeEventTimeout) {
@@ -26,29 +70,12 @@ export class NotificationsFeed {
     }
   }
 
-  disconnectedCallback() {
-    this.clearTimeouts();
-    this.eventBus.unsubscribe(NotificationsFeedEventsEnum.PENDING_TRANSACTIONS_UPDATE, this.pendingTransactionsUpdate.bind(this));
-    this.eventBus.unsubscribe(NotificationsFeedEventsEnum.TRANSACTIONS_HISTORY_UPDATE, this.transactionsHistoryUpdate.bind(this));
-    this.eventBus.unsubscribe(NotificationsFeedEventsEnum.OPEN_NOTIFICATIONS_FEED, this.handleViewAll.bind(this));
-  }
-
-  @Method()
-  async getEventBus() {
-    return this.eventBus;
-  }
-
-  handleClose = () => {
-    this.isOpen = false;
-    this.eventBus.publish(NotificationsFeedEventsEnum.CLOSE_NOTIFICATIONS_FEED);
+  private pendingTransactionsUpdate = (payload: ITransactionToast[]) => {
+    this.pendingTransactions = [...payload];
   };
 
-  handleClear = () => {
-    this.eventBus.publish(NotificationsFeedEventsEnum.CLEAR_NOTIFICATIONS_FEED_HISTORY);
-  };
-
-  handleViewAll = () => {
-    this.isOpen = true;
+  private transactionsHistoryUpdate = (payload: ITransactionListItem[]) => {
+    this.transactionsHistory = [...payload];
   };
 
   render() {
@@ -56,12 +83,16 @@ export class NotificationsFeed {
     const hasPending = this.pendingTransactions?.length > 0;
 
     return (
-      <mvx-side-panel isOpen={this.isOpen} panelTitle="Notifications Feed" onClose={this.handleClose}>
+      <mvx-side-panel
+        isOpen={this.isOpen}
+        panelTitle="Notifications Feed"
+        onClose={this.handleClose}
+        hasBackButton={false}
+      >
         <div class="feed-content">
           <div class="notifications-info">
-            <mvx-fa-icon class="info-icon" icon={faInfoCircle} />
             This feed is stored in your browser and will be reset when a new session is started.
-            <fa-icon class="info-icon" icon={faInfoCircle} />
+            <mvx-circle-exclamation-icon class="info-icon" />
           </div>
 
           {hasPending && (
@@ -92,19 +123,5 @@ export class NotificationsFeed {
         </div>
       </mvx-side-panel>
     );
-  }
-
-  private pendingTransactionsUpdate(payload: ITransactionToast[]) {
-    this.pendingTransactions = [...payload];
-  }
-
-  private transactionsHistoryUpdate(payload: ITransactionListItem[]) {
-    this.transactionsHistory = [...payload];
-  }
-
-  componentDidLoad() {
-    this.eventBus.subscribe(NotificationsFeedEventsEnum.PENDING_TRANSACTIONS_UPDATE, this.pendingTransactionsUpdate.bind(this));
-    this.eventBus.subscribe(NotificationsFeedEventsEnum.TRANSACTIONS_HISTORY_UPDATE, this.transactionsHistoryUpdate.bind(this));
-    this.eventBus.subscribe(NotificationsFeedEventsEnum.OPEN_NOTIFICATIONS_FEED, this.handleViewAll.bind(this));
   }
 }

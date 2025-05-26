@@ -120,7 +120,7 @@ describe('toast-list', () => {
 
     page.rootInstance.handleTransactionToastDelete('tx1');
 
-    expect(eventBusMock.publish).toHaveBeenCalledWith(ToastEventsEnum.CLOSE_TOAST, 'tx1');
+    expect(eventBusMock.publish).toHaveBeenCalledWith(ToastEventsEnum.CLOSE, 'tx1');
   });
 
   it('handles custom toast deletion correctly', async () => {
@@ -140,7 +140,7 @@ describe('toast-list', () => {
 
     page.rootInstance.handleCustomToastDelete('custom1');
 
-    expect(eventBusMock.publish).toHaveBeenCalledWith(ToastEventsEnum.CLOSE_TOAST, 'custom1');
+    expect(eventBusMock.publish).toHaveBeenCalledWith(ToastEventsEnum.CLOSE, 'custom1');
   });
 
   it('properly subscribes to events in componentDidLoad', async () => {
@@ -158,7 +158,10 @@ describe('toast-list', () => {
     page.rootInstance.componentDidLoad();
 
     expect(eventBusMock.subscribe).toHaveBeenCalledTimes(2);
-    expect(eventBusMock.subscribe).toHaveBeenCalledWith(ToastEventsEnum.TRANSACTION_TOAST_DATA_UPDATE, expect.any(Function));
+    expect(eventBusMock.subscribe).toHaveBeenCalledWith(
+      ToastEventsEnum.TRANSACTION_TOAST_DATA_UPDATE,
+      expect.any(Function),
+    );
     expect(eventBusMock.subscribe).toHaveBeenCalledWith(ToastEventsEnum.CUSTOM_TOAST_DATA_UPDATE, expect.any(Function));
   });
 
@@ -168,9 +171,10 @@ describe('toast-list', () => {
       html: '<mvx-toast-list></mvx-toast-list>',
     });
 
-    expect(page.rootInstance.transactionToasts).toBeUndefined();
+    expect(page.rootInstance.transactionToasts).toStrictEqual([]);
 
-    page.rootInstance.transactionToastUpdate(mockTransactionToasts);
+    page.rootInstance.transactionToasts = mockTransactionToasts;
+    await page.waitForChanges();
 
     expect(page.rootInstance.transactionToasts).toEqual(mockTransactionToasts);
   });
@@ -181,9 +185,10 @@ describe('toast-list', () => {
       html: '<mvx-toast-list></mvx-toast-list>',
     });
 
-    expect(page.rootInstance.customToasts).toBeUndefined();
+    expect(page.rootInstance.customToasts).toStrictEqual([]);
 
-    page.rootInstance.customToastsUpdate(mockCustomToasts);
+    page.rootInstance.customToasts = mockCustomToasts;
+    await page.waitForChanges();
 
     expect(page.rootInstance.customToasts).toEqual(mockCustomToasts);
   });
@@ -221,14 +226,14 @@ describe('toast-list', () => {
       html: '<mvx-toast-list></mvx-toast-list>',
     });
 
-    page.rootInstance.customToasts = mockCustomToasts;
+    page.root.customToasts = mockCustomToasts;
     await page.waitForChanges();
 
     const viewAllButton = page.root.querySelector('.view-all-button');
     expect(viewAllButton).toBeNull();
   });
 
-  it('publishes OPEN_NOTIFICATIONS_FEED event when View All button is clicked', async () => {
+  it('publishes OPEN event when View All button is clicked', async () => {
     const page = await newSpecPage({
       components: [ToastList],
       html: '<mvx-toast-list></mvx-toast-list>',

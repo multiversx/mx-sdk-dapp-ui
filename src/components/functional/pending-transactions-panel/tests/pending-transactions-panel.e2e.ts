@@ -1,9 +1,9 @@
-import { newE2EPage } from '@stencil/core/testing';
-import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import { newE2EPage, newSpecPage } from '@stencil/core/testing';
+
+import { PendingTransactionstPanel } from '../pending-transactions-panel';
 
 const tag = 'mvx-pending-transactions-panel';
-const title = 'Pending Transaction';
-const subtitle = 'Confirm transaction on wallet';
+const title = 'Confirm on MultiversX DeFi wallet';
 
 describe('pending-transactions-panel', () => {
   it(`renders ${tag}`, async () => {
@@ -15,17 +15,18 @@ describe('pending-transactions-panel', () => {
   });
 
   it('check title & subtitle', async () => {
-    const page = await newE2EPage();
+    const page = await newSpecPage({
+      components: [PendingTransactionstPanel],
+      html: `<${tag}></${tag}>`,
+    });
 
-    await page.setContent(`<${tag}></${tag}>`);
-    const component = await page.find(tag);
-    component.setProperty('data', { title, subtitle });
-
+    page.rootInstance.provider = { name: title };
     await page.waitForChanges();
-    const titleElement = await page.find(`[data-testid=${DataTestIdsEnum.pendingTransactionsTitle}]`);
-    expect(titleElement.textContent).toContain(title);
 
-    const subtitleElement = await page.find(`[data-testid=${DataTestIdsEnum.pendingTransactionsSubtitle}]`);
-    expect(subtitleElement.textContent).toContain(subtitle);
+    const panel = page.root.querySelector('mvx-side-panel');
+    expect(panel).toBeTruthy();
+
+    const panelTitle = panel.getAttribute('panelTitle');
+    expect(panelTitle).toBe(title);
   });
 });

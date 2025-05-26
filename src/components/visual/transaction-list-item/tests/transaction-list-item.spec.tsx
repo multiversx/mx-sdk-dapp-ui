@@ -1,4 +1,6 @@
 import { newSpecPage } from '@stencil/core/testing';
+import { TransactionAssetIcon } from 'components/common/transaction-asset-icon/transaction-asset-icon';
+import { FormatAmount } from 'components/controlled/format-amount/format-amount';
 
 import { TransactionListItem } from '../transaction-list-item';
 import type { ITransactionListItem } from '../transaction-list-item.types';
@@ -6,11 +8,11 @@ import type { ITransactionListItem } from '../transaction-list-item.types';
 describe('transaction-list-item', () => {
   const createPage = async (transaction: ITransactionListItem) => {
     const page = await newSpecPage({
-      components: [TransactionListItem],
+      components: [TransactionListItem, TransactionAssetIcon, FormatAmount],
       html: '<mvx-transaction-list-item></mvx-transaction-list-item>',
     });
 
-    page.rootInstance.transaction = transaction;
+    page.root.transaction = transaction;
     await page.waitForChanges();
     return page;
   };
@@ -47,7 +49,8 @@ describe('transaction-list-item', () => {
   describe('primary icon rendering', () => {
     it('renders with asset image', async () => {
       const page = await createPage(baseTransaction);
-      const iconImg = page.root.querySelector('.icon-image');
+      const transactionIcon = page.root.querySelector('.transaction-icon');
+      const iconImg = transactionIcon.querySelector('img');
       expect(iconImg.getAttribute('src')).toBe(baseTransaction.asset.imageUrl);
       expect(iconImg.getAttribute('alt')).toBe('Transaction icon');
       expect(iconImg.getAttribute('loading')).toBe('lazy');
@@ -64,7 +67,6 @@ describe('transaction-list-item', () => {
       const iconComponent = page.root.querySelector('mvx-fa-icon');
       expect(iconComponent).toBeTruthy();
       expect(iconComponent.getAttribute('icon')).toBe('faArrowsRotate');
-      expect(iconComponent.className).toBe('icon-text');
     });
 
     it('renders with asset text', async () => {
@@ -75,7 +77,8 @@ describe('transaction-list-item', () => {
         },
       };
       const page = await createPage(transaction);
-      const iconText = page.root.querySelector('.icon-text');
+      const transactionIcon = page.root.querySelector('.transaction-icon');
+      const iconText = transactionIcon.querySelector('span');
       expect(iconText.textContent).toBe('TX');
     });
 
@@ -150,7 +153,7 @@ describe('transaction-list-item', () => {
 
       expect(amount).toHaveClass('amount-positive');
       expect(amount).not.toHaveClass('amount-negative');
-      expect(amount.textContent.trim()).toBe(baseTransaction.amount);
+      expect(amount.textContent.trim()).toBe(baseTransaction.amount.replace(' ', ''));
     });
 
     it('renders amount with correct styling for negative value', async () => {
@@ -160,7 +163,7 @@ describe('transaction-list-item', () => {
 
       expect(amount).toHaveClass('amount-negative');
       expect(amount).not.toHaveClass('amount-positive');
-      expect(amount.textContent.trim()).toBe(transaction.amount);
+      expect(amount.textContent.trim()).toBe(transaction.amount.replace(' ', ''));
     });
   });
 });

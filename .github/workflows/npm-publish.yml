@@ -1,4 +1,4 @@
-name: Publish sdk-dapp-core-ui
+name: Publish sdk-dapp-ui
 
 on:
   push:

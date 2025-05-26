@@ -15,6 +15,7 @@ export class FormatAmount {
   @Prop() showLabel?: boolean = true;
   @Prop() valueDecimal: string;
   @Prop() valueInteger: string;
+  @Prop() decimalClass?: string;
 
   render() {
     return this.isValid ? this.renderValid() : this.renderInvalid();
@@ -37,7 +38,7 @@ export class FormatAmount {
           {this.valueInteger}
         </span>
         {this.valueDecimal && (
-          <span class="decimals" data-testid={DataTestIdsEnum.formatAmountDecimals}>
+          <span class={{ decimals: true, [this.decimalClass]: Boolean(this.decimalClass) }} data-testid={DataTestIdsEnum.formatAmountDecimals}>
             {this.valueDecimal}
           </span>
         )}

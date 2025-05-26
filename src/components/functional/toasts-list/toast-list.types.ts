@@ -1,6 +1,6 @@
 export enum ToastEventsEnum {
   OPEN_NOTIFICATIONS_FEED = 'OPEN_NOTIFICATIONS_FEED',
-  CLOSE_TOAST = 'CLOSE_TOAST',
+  CLOSE = 'CLOSE_TOAST',
   // Event to update the transaction toast data
   TRANSACTION_TOAST_DATA_UPDATE = 'TRANSACTION_TOAST_DATA_UPDATE',
   // Event to update the custom toast data
