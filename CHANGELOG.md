@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [[0.0.1](https://github.com/multiversx/mx-sdk-dapp-ui/pull/108)] - 2025-05-26
+## [[0.0.4](https://github.com/multiversx/mx-sdk-dapp-ui/pull/112)] - 2025-05-26
 
 - [Clean up unlock panel](https://github.com/multiversx/mx-sdk-dapp-ui/pull/111)
 - [Improve maintainability and user experience for transaction-related panels, notifications, and event handling](https://github.com/multiversx/mx-sdk-dapp-ui/pull/110)
