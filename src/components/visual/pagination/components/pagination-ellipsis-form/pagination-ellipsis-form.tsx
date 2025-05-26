@@ -18,19 +18,12 @@ export class PaginationEllipsisForm {
   @Prop() maxPageToSearchFor: number;
   @Prop() isVisible: boolean = false;
 
-  constructor() {
-    this.handleInput = this.handleInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.handleInputReference = this.handleInputReference.bind(this);
-  }
-
   private inputElement!: HTMLInputElement;
-  private handleInputReference(inputElement: HTMLInputElement) {
+  private readonly handleInputReference = (inputElement: HTMLInputElement) => {
     this.inputElement = inputElement;
-  }
+  };
 
-  private handleKeyDown(event: KeyboardEvent) {
+  private readonly handleKeyDown = (event: KeyboardEvent) => {
     if (event.code === 'Enter') {
       event.preventDefault();
       this.handleSubmit(event);
@@ -40,9 +33,9 @@ export class PaginationEllipsisForm {
       event.preventDefault();
       return;
     }
-  }
+  };
 
-  private handleInput(event: Event) {
+  private readonly handleInput = (event: Event) => {
     const input = event.target as HTMLInputElement;
     const isBelowMax = parseFloat(input.value) <= this.maxPageToSearchFor;
 
@@ -51,16 +44,16 @@ export class PaginationEllipsisForm {
     } else {
       input.value = this.pageValue;
     }
-  }
+  };
 
-  private handleSubmit(event: Event) {
+  private readonly handleSubmit = (event: Event) => {
     if (!this.pageValue) {
       return;
     }
 
     event.preventDefault();
     this.search.emit(parseInt(this.pageValue === '0' ? '1' : this.pageValue));
-  }
+  };
 
   @Watch('isVisible')
   handleVisibilityChange(newValue: boolean) {
@@ -92,7 +85,9 @@ export class PaginationEllipsisForm {
           />
 
           <div class="pagination-ellipsis-form-button" onClick={this.handleSubmit}>
-            <mvx-magnifying-glass-icon class={classNames('pagination-ellipsis-form-button-icon', paginationEllipsisFormClasses.buttonIcon)} />
+            <mvx-magnifying-glass-icon
+              class={classNames('pagination-ellipsis-form-button-icon', paginationEllipsisFormClasses.buttonIcon)}
+            />
           </div>
         </div>
       </div>

@@ -15,33 +15,28 @@ export class Tooltip {
   @Prop() trigger: HTMLElement;
   @Prop() class?: string;
 
-  constructor() {
-    this.handleEllipsisClick = this.handleEllipsisClick.bind(this);
-    this.handleFocusOut = this.handleFocusOut.bind(this);
-  }
-
   private setTooltipVisible(isTooltipVisible: boolean) {
     this.isTooltipVisible = isTooltipVisible;
     this.triggerRender.emit(this.isTooltipVisible);
   }
 
-  private handleEllipsisClick(event: MouseEvent) {
+  private readonly handleEllipsisClick = (event: MouseEvent) => {
     if (!this.triggerOnClick) {
       return;
     }
 
     event.preventDefault();
     this.setTooltipVisible(!this.isTooltipVisible);
-  }
+  };
 
-  private handleFocusOut(event: FocusEvent) {
+  private readonly handleFocusOut = (event: FocusEvent) => {
     const relatedTarget = event.relatedTarget as Node;
     const currentTarget = event.currentTarget as HTMLElement;
 
     if (!currentTarget.contains(relatedTarget)) {
       this.setTooltipVisible(false);
     }
-  }
+  };
 
   private handleMouseEvent(isTooltipVisible: boolean) {
     if (this.triggerOnClick) {
@@ -64,7 +59,12 @@ export class Tooltip {
       >
         {this.isTooltipVisible && (
           <div class={{ 'tooltip-content-wrapper': true, [this.position]: true }}>
-            <div class={{ 'tooltip-content': true, [this.position]: true }} tabIndex={-1} onFocusout={this.handleFocusOut} onClick={(event: MouseEvent) => event.stopPropagation()}>
+            <div
+              class={{ 'tooltip-content': true, [this.position]: true }}
+              tabIndex={-1}
+              onFocusout={this.handleFocusOut}
+              onClick={(event: MouseEvent) => event.stopPropagation()}
+            >
               <slot />
             </div>
           </div>
