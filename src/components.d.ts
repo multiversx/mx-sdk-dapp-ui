@@ -325,10 +325,8 @@ export namespace Components {
         "type"?: IProviderBase['type'];
     }
     interface MvxUnlockPanel {
-        "allowedProviders": IProviderBase[];
         "closeWithAnimation": () => Promise<unknown>;
         "getEventBus": () => Promise<IEventBus>;
-        "isOpen": boolean;
     }
     interface MvxUnlockPanelFooter {
     }
@@ -1448,8 +1446,6 @@ declare namespace LocalJSX {
         "type"?: IProviderBase['type'];
     }
     interface MvxUnlockPanel {
-        "allowedProviders"?: IProviderBase[];
-        "isOpen"?: boolean;
     }
     interface MvxUnlockPanelFooter {
     }

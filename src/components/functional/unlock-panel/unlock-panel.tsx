@@ -1,4 +1,4 @@
-import { Component, Element, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Method, State } from '@stencil/core';
 import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
@@ -15,49 +15,44 @@ import { UnlockPanelEventsEnum } from './unlock-panel.types';
 })
 export class UnlockPanel {
   private eventBus: IEventBus = new EventBus();
+  private unsubscribeFunctions: (() => void)[] = [];
+
   @Element() hostElement: HTMLElement;
 
-  @Prop() isOpen: boolean = false;
-  @Prop() allowedProviders: IProviderBase[] = [];
+  @State() isOpen: boolean = false;
+  @State() allowedProviders: IProviderBase[] = [];
 
   @State() isLoggingIn: boolean = false;
   @State() isIntroScreenVisible: boolean = false;
   @State() selectedMethod: IProviderBase | null = null;
-  @State() panelState = {
-    isOpen: this.isOpen,
-    allowedProviders: this.allowedProviders,
-  };
+
   @Method() async getEventBus() {
     return this.eventBus;
   }
 
   @Method() async closeWithAnimation() {
-    this.panelState = { ...this.panelState, isOpen: false };
+    this.isOpen = false;
     const animationDelay = await ANIMATION_DELAY_PROMISE;
     return animationDelay;
   }
 
-  @Watch('isOpen')
-  handleIsOpenChange(newValue: boolean) {
-    this.panelState = { ...this.panelState, isOpen: newValue };
-  }
-
-  @Watch('allowedProviders')
-  handleAllowedProvidersChange(newValue: IProviderBase[]) {
-    this.panelState = { ...this.panelState, allowedProviders: newValue };
-  }
-
   componentDidLoad() {
-    this.eventBus.subscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
-    this.eventBus.subscribe(UnlockPanelEventsEnum.CANCEL_IN_PROVIDER, this.handleResetLoginState.bind(this));
+    const unsubDataUpdate = this.eventBus.subscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate);
+    const unsubCancelInProvider = this.eventBus.subscribe(
+      UnlockPanelEventsEnum.CANCEL_IN_PROVIDER,
+      this.handleResetLoginState,
+    );
+    this.unsubscribeFunctions.push(unsubDataUpdate, unsubCancelInProvider);
   }
 
   async disconnectedCallback() {
-    this.eventBus.unsubscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate.bind(this));
-    this.eventBus.unsubscribe(UnlockPanelEventsEnum.CANCEL_IN_PROVIDER, this.handleResetLoginState.bind(this));
+    this.unsubscribeFunctions.forEach(unsub => unsub());
+    this.unsubscribeFunctions = [];
     this.isLoggingIn = false;
     this.selectedMethod = null;
-    this.panelState = { isOpen: false, allowedProviders: [] };
+    this.isOpen = false;
+    this.isIntroScreenVisible = false;
+    this.allowedProviders = [];
   }
 
   private isExtensionInstalled(currentProvider: IProviderBase['type']) {
@@ -80,15 +75,13 @@ export class UnlockPanel {
     }
 
     this.anchor = element;
-    this.anchor.addEventListener(UnlockPanelEventsEnum.ANCHOR_CLOSE, this.handleResetLoginState.bind(this));
+    this.anchor.addEventListener(UnlockPanelEventsEnum.ANCHOR_CLOSE, this.handleResetLoginState);
   }
 
-  private unlockPanelUpdate(payload: { isOpen: boolean; allowedProviders: IProviderBase[] }) {
-    this.panelState = {
-      ...payload,
-      allowedProviders: payload.allowedProviders,
-    };
-  }
+  private unlockPanelUpdate = (allowedProviders: IProviderBase[]) => {
+    this.isOpen = true;
+    this.allowedProviders = allowedProviders;
+  };
 
   private handleLogin(provider: IProviderBase) {
     this.selectedMethod = provider;
@@ -110,8 +103,7 @@ export class UnlockPanel {
     }
   }
 
-  private handleResetLoginState(event?: MouseEvent) {
-    event?.preventDefault?.();
+  private handleResetLoginState = () => {
     this.isLoggingIn = false;
     this.isIntroScreenVisible = false;
     this.selectedMethod = null;
@@ -124,30 +116,29 @@ export class UnlockPanel {
       this.anchor.removeChild(this.anchor.firstChild);
     }
     this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
-  }
+  };
 
-  private handleClose(event: MouseEvent) {
-    event.preventDefault();
+  private handleClose = () => {
     if (this.selectedMethod) {
       this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
     }
 
     this.eventBus.publish(UnlockPanelEventsEnum.CLOSE);
-  }
+  };
 
-  private handleAccess() {
+  private handleAccess = () => {
     this.isIntroScreenVisible = false;
     this.isLoggingIn = true;
     this.eventBus.publish(UnlockPanelEventsEnum.LOGIN, { type: this.selectedMethod.type, anchor: this.anchor });
-  }
+  };
 
   render() {
-    const detectedProviders: IProviderBase[] = this.panelState.allowedProviders.filter(
+    const detectedProviders: IProviderBase[] = this.allowedProviders.filter(
       allowedProvider =>
         this.isExtensionInstalled(allowedProvider.type) || this.isMetaMaskInstalled(allowedProvider.type),
     );
 
-    const otherProviders = this.panelState.allowedProviders.filter(
+    const otherProviders = this.allowedProviders.filter(
       allowedProvider => !detectedProviders.includes(allowedProvider),
     );
     const panelTitle = this.selectedMethod ? this.selectedMethod.name : 'Connect your wallet';
@@ -158,10 +149,10 @@ export class UnlockPanel {
 
     return (
       <mvx-side-panel
-        isOpen={this.panelState.isOpen}
+        isOpen={this.isOpen}
         panelTitle={panelTitle}
-        onClose={this.handleClose.bind(this)}
-        onBack={this.handleResetLoginState.bind(this)}
+        onClose={this.handleClose}
+        onBack={this.handleResetLoginState}
         hasBackButton={isCustomProviderActive}
         showHeader={isProviderScreenVisible || isCustomProviderActive}
         panelClassName="unlock-panel"
@@ -170,8 +161,8 @@ export class UnlockPanel {
           {this.isIntroScreenVisible && (
             <mvx-provider-idle-screen
               provider={this.selectedMethod}
-              onAccess={this.handleAccess.bind(this)}
-              onClose={this.handleResetLoginState.bind(this)}
+              onAccess={this.handleAccess}
+              onClose={this.handleResetLoginState}
             />
           )}
         </div>
