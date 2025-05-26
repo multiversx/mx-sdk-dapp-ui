@@ -45,9 +45,9 @@
     "publish-verdaccio": "npm run unpublish-verdaccio && npm run build && npm publish --registry http://localhost:4873/",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
-    "build:dev": "BUILD_ENV=dev stencil build",
-    "build": "BUILD_ENV=prod stencil build",
-    "start": "stencil build --dev --watch --serve "
+    "build:dev": "stencil build --dev",
+    "build": "stencil build --prod",
+    "start": "yarn run build:dev --watch --serve "
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": ">= 6.7.2",

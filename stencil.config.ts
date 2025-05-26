@@ -18,7 +18,7 @@ import { getExcludedComponentTags } from './src/global/scripts/exclude-react-com
  */
 const excludeComponents = getExcludedComponentTags('./src/components/functional');
 
-const isDev = process.env.BUILD_ENV === 'dev';
+const isDev = process.argv.includes('--dev');
 
 export const config: Config = {
   namespace: 'sdk-dapp-ui',
