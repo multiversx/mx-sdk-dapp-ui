@@ -14,13 +14,13 @@ export class LedgerIntro {
   @Prop() connectScreenData?: IConnectScreenData;
   @Prop() isAwaiting?: boolean = false;
 
-  handleLedgerConnectClick(event: MouseEvent) {
+  private readonly handleLedgerConnectClick = (event: MouseEvent) => {
     event.preventDefault();
 
     if (this.connect) {
       this.connect.emit(event);
     }
-  }
+  };
 
   render() {
     const showError = this.connectScreenData && this.connectScreenData.error;
@@ -47,7 +47,10 @@ export class LedgerIntro {
             and open the MultiversX App
           </div>
 
-          <button class={{ 'ledger-intro-button': true, 'loading': Boolean(this.isAwaiting) }} onClick={this.handleLedgerConnectClick.bind(this)}>
+          <button
+            class={{ 'ledger-intro-button': true, 'loading': Boolean(this.isAwaiting) }}
+            onClick={this.handleLedgerConnectClick}
+          >
             <span class="ledger-intro-button-label">{buttonLabel}</span>
             {this.isAwaiting && <mvx-spinner-icon />}
           </button>

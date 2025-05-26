@@ -36,38 +36,50 @@ export class LedgerFlow {
   }
 
   componentDidLoad() {
-    this.eventBus.subscribe(LedgerConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
+    this.eventBus.subscribe(LedgerConnectEventsEnum.DATA_UPDATE, this.dataUpdate);
   }
 
   disconnectedCallback() {
     this.eventBus.publish(LedgerConnectEventsEnum.UI_DISCONNECTED);
-    this.eventBus.unsubscribe(LedgerConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
+    this.eventBus.unsubscribe(LedgerConnectEventsEnum.DATA_UPDATE, this.dataUpdate);
   }
 
   private selectAccount(index: number) {
     this.selectedIndex = index;
-    this.selectedAddress = getLedgerAddressByIndex({ accounts: this.ledgerDataState.accountScreenData?.accounts, selectedIndex: this.selectedIndex });
+    this.selectedAddress = getLedgerAddressByIndex({
+      accounts: this.ledgerDataState.accountScreenData?.accounts,
+      selectedIndex: this.selectedIndex,
+    });
   }
 
-  private dataUpdate(payload: ILedgerConnectPanelData) {
+  private readonly dataUpdate = (payload: ILedgerConnectPanelData) => {
     this.ledgerDataState = { ...payload };
-  }
+  };
 
   private accessWallet() {
     this.eventBus.publish(LedgerConnectEventsEnum.ACCESS_WALLET, {
       addressIndex: this.selectedIndex,
-      selectedAddress: this.selectedAddress || getLedgerAddressByIndex({ accounts: this.ledgerDataState.accountScreenData?.accounts, selectedIndex: this.selectedIndex }),
+      selectedAddress:
+        this.selectedAddress ||
+        getLedgerAddressByIndex({
+          accounts: this.ledgerDataState.accountScreenData?.accounts,
+          selectedIndex: this.selectedIndex,
+        }),
     });
   }
 
-  private handleIntroConnect(event: MouseEvent) {
+  private readonly handleIntroConnect = (event: CustomEvent) => {
     event.preventDefault();
     this.eventBus.publish(LedgerConnectEventsEnum.CONNECT_DEVICE);
-  }
+  };
 
   render() {
     const header = (
-      <mvx-side-panel-header panelTitle={providerLabels.ledger} hasRightButton={false} onLeftButtonClick={() => this.eventBus.publish(LedgerConnectEventsEnum.CLOSE)}>
+      <mvx-side-panel-header
+        panelTitle={providerLabels.ledger}
+        hasRightButton={false}
+        onLeftButtonClick={() => this.eventBus.publish(LedgerConnectEventsEnum.CLOSE)}
+      >
         <mvx-close-icon slot={SidePanelHeaderSlotEnum.leftIcon} />
       </mvx-side-panel-header>
     );
@@ -81,7 +93,9 @@ export class LedgerFlow {
             accountScreenData={this.ledgerDataState.accountScreenData}
             onAccessWallet={() => this.accessWallet()}
             onSelectAccount={(event: CustomEvent) => this.selectAccount(event.detail)}
-            onPageChange={(event: CustomEvent) => this.eventBus.publish(LedgerConnectEventsEnum.GO_TO_PAGE, event.detail)}
+            onPageChange={(event: CustomEvent) =>
+              this.eventBus.publish(LedgerConnectEventsEnum.GO_TO_PAGE, event.detail)
+            }
           />
         </Fragment>
       );
@@ -99,7 +113,10 @@ export class LedgerFlow {
     return (
       <Fragment>
         {header}
-        <mvx-ledger-intro connectScreenData={this.ledgerDataState.connectScreenData} onConnect={this.handleIntroConnect.bind(this)} />
+        <mvx-ledger-intro
+          connectScreenData={this.ledgerDataState.connectScreenData}
+          onConnect={this.handleIntroConnect}
+        />
       </Fragment>
     );
   }
