@@ -27,6 +27,7 @@ export const config: Config = {
       tailwindCssPath: './src/global/tailwind.css',
     }),
   ],
+  sourceMap: false,
   outputTargets: [
     reactOutputTarget({
       outDir: './dist/react',
@@ -45,11 +46,6 @@ export const config: Config = {
       copy: [{ src: 'assets', dest: 'assets' }],
       esmLoaderPath: './loader',
     },
-    // this is only for testing purposes
-    // {
-    //   type: 'www',
-    //   serviceWorker: null,
-    // },
   ],
   rollupPlugins: {
     before: [nodePolyfills()],
