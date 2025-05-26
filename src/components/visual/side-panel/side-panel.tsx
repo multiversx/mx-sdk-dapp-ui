@@ -47,21 +47,23 @@ export class SidePanel {
     this.closeTimeout = null;
   }
 
-  handleOverlayClick(event: MouseEvent) {
+  private readonly handleOverlayClick = (event: MouseEvent) => {
     if (event.target === event.currentTarget) {
       this.close.emit();
     }
-  }
+  };
 
-  handleCloseClick(event: MouseEvent) {
+  private readonly handleCloseClick = (event: CustomEvent) => {
     event.preventDefault();
+
     this.close.emit();
-  }
+  };
 
-  handleBackClick(event: MouseEvent) {
+  private readonly handleBackClick = (event: CustomEvent) => {
     event.preventDefault();
+
     this.back.emit();
-  }
+  };
 
   render() {
     if (!this.isVisible) {
@@ -70,7 +72,7 @@ export class SidePanel {
 
     return (
       <div
-        onClick={this.handleOverlayClick.bind(this)}
+        onClick={this.handleOverlayClick}
         class={classNames('side-panel-wrapper', {
           visible: this.shouldAnimate,
         })}
@@ -81,8 +83,8 @@ export class SidePanel {
               panelTitle={this.panelTitle}
               panelClassName={this.panelClassName}
               hasLeftButton={this.hasBackButton}
-              onRightButtonClick={this.handleCloseClick.bind(this)}
-              onLeftButtonClick={this.handleBackClick.bind(this)}
+              onRightButtonClick={this.handleCloseClick}
+              onLeftButtonClick={this.handleBackClick}
             />
           )}
 
