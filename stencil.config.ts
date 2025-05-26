@@ -18,6 +18,8 @@ import { getExcludedComponentTags } from './src/global/scripts/exclude-react-com
  */
 const excludeComponents = getExcludedComponentTags('./src/components/functional');
 
+const isDev = process.env.BUILD_ENV === 'dev';
+
 export const config: Config = {
   namespace: 'sdk-dapp-ui',
   globalScript: './src/global/scripts/fonts-loader.ts',
@@ -27,7 +29,7 @@ export const config: Config = {
       tailwindCssPath: './src/global/tailwind.css',
     }),
   ],
-  sourceMap: false,
+  sourceMap: isDev,
   outputTargets: [
     reactOutputTarget({
       outDir: './dist/react',
