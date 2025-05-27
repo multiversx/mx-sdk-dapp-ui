@@ -6,17 +6,25 @@
   gap: 12px;
   margin-bottom: 24px;
 
-  .side-panel-heading-left {
+  .side-panel-heading-left,
+  .side-panel-heading-right {
+    width: 16px;
     cursor: pointer;
-    transition: all 200ms ease;
-    margin-right: auto;
-
-    &.no-margin {
-      margin-right: 0;
-    }
+    opacity: 0;
+    pointer-events: none;
 
     &:hover {
       opacity: 0.75;
+    }
+
+    &.visible {
+      opacity: 1;
+      transition: all 200ms ease;
+      pointer-events: all;
+
+      &:hover {
+        opacity: 0.75;
+      }
     }
   }
 
@@ -24,21 +32,6 @@
     color: #e5e5e5;
     font-weight: 500;
     font-family: 'Satoshi', sans-serif;
-
-    &.center {
-      padding-right: 24px;
-      text-align: center;
-      margin: 0 auto;
-    }
-  }
-
-  .side-panel-heading-right {
-    transition: all 200ms ease;
-    cursor: pointer;
-    margin-left: auto;
-
-    &:hover {
-      opacity: 0.75;
-    }
+    margin: auto;
   }
 }

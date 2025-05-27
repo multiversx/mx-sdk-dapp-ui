@@ -104,7 +104,7 @@
 
           .sign-transactions-footer-button-icon {
             display: flex;
-            transition: all 200ms ease;
+            // transition: all 200ms ease;
 
             &.lighter {
               fill: #a09a93;
@@ -131,10 +131,11 @@
         position: relative;
         min-width: 0;
         max-width: none;
-        top: -0.25px;
+        top: 0.25px;
 
         .trim-wrapper {
           align-items: flex-end;
+          line-height: 1;
         }
       }
 

@@ -7,7 +7,6 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-import { IGenericModalProps } from "./components/common/generic-modal/generic-modal.types";
 import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
 import { IEventBus } from "./utils/EventBus";
 import { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
@@ -18,10 +17,9 @@ import { ITransactionListItem as ITransactionListItem1 } from "./components/visu
 import { LocalJSX as JSX } from "@stencil/core";
 import { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-import { IWalletConnectPanelData } from "./components/functional/wallet-connect/wallet-connect.types";
+import { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-export { IGenericModalProps } from "./components/common/generic-modal/generic-modal.types";
 export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
 export { IEventBus } from "./utils/EventBus";
 export { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
@@ -32,7 +30,7 @@ export { ITransactionListItem as ITransactionListItem1 } from "./components/visu
 export { LocalJSX as JSX } from "@stencil/core";
 export { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
-export { IWalletConnectPanelData } from "./components/functional/wallet-connect/wallet-connect.types";
+export { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
 export namespace Components {
     interface MvxAngleLeftIcon {
     }
@@ -100,15 +98,12 @@ export namespace Components {
         "valueDecimal": string;
         "valueInteger": string;
     }
-    interface MvxGenericModal {
-        "body": IGenericModalProps['body'];
-        "modalSubtitle"?: IGenericModalProps['modalSubtitle'];
-        "modalTitle": IGenericModalProps['modalTitle'];
-    }
-    interface MvxGenericSpinner {
-    }
     interface MvxGenericToast {
         "toast": CustomToastType;
+    }
+    interface MvxLedger {
+        "data": ILedgerConnectPanelData;
+        "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxLedgerAddresses {
         "accountScreenData": IAccountScreenData;
@@ -116,10 +111,6 @@ export namespace Components {
     }
     interface MvxLedgerConfirm {
         "confirmScreenData": IConfirmScreenData;
-    }
-    interface MvxLedgerFlow {
-        "data": ILedgerConnectPanelData;
-        "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxLedgerIcon {
     }
@@ -338,12 +329,15 @@ export namespace Components {
         "class"?: string;
         "provider": IProviderBase<ProviderTypeEnum>;
     }
-    interface MvxWalletConnectFlow {
-        "qrCodeSvg": string;
-    }
-    interface MvxWalletConnectProvider {
+    interface MvxWalletConnect {
         "data": IWalletConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
+        "qrCodeSvg": string;
+    }
+    interface MvxWalletConnectDownload {
+    }
+    interface MvxWalletConnectScan {
+        "qrCodeSvg": string;
     }
     interface MvxWalletProviderIcon {
         "class"?: string;
@@ -359,10 +353,6 @@ export namespace Components {
 export interface MvxCustomToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxCustomToastElement;
-}
-export interface MvxGenericModalCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMvxGenericModalElement;
 }
 export interface MvxGenericToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -415,6 +405,10 @@ export interface MvxTransactionToastContentCustomEvent<T> extends CustomEvent<T>
 export interface MvxUnlockPanelGroupCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxUnlockPanelGroupElement;
+}
+export interface MvxWalletConnectScanCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMvxWalletConnectScanElement;
 }
 declare global {
     interface HTMLMvxAngleLeftIconElement extends Components.MvxAngleLeftIcon, HTMLStencilElement {
@@ -536,29 +530,6 @@ declare global {
         prototype: HTMLMvxFormatAmountElement;
         new (): HTMLMvxFormatAmountElement;
     };
-    interface HTMLMvxGenericModalElementEventMap {
-        "close": any;
-    }
-    interface HTMLMvxGenericModalElement extends Components.MvxGenericModal, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxGenericModalElementEventMap>(type: K, listener: (this: HTMLMvxGenericModalElement, ev: MvxGenericModalCustomEvent<HTMLMvxGenericModalElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxGenericModalElementEventMap>(type: K, listener: (this: HTMLMvxGenericModalElement, ev: MvxGenericModalCustomEvent<HTMLMvxGenericModalElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLMvxGenericModalElement: {
-        prototype: HTMLMvxGenericModalElement;
-        new (): HTMLMvxGenericModalElement;
-    };
-    interface HTMLMvxGenericSpinnerElement extends Components.MvxGenericSpinner, HTMLStencilElement {
-    }
-    var HTMLMvxGenericSpinnerElement: {
-        prototype: HTMLMvxGenericSpinnerElement;
-        new (): HTMLMvxGenericSpinnerElement;
-    };
     interface HTMLMvxGenericToastElementEventMap {
         "deleteToast": string;
     }
@@ -575,6 +546,12 @@ declare global {
     var HTMLMvxGenericToastElement: {
         prototype: HTMLMvxGenericToastElement;
         new (): HTMLMvxGenericToastElement;
+    };
+    interface HTMLMvxLedgerElement extends Components.MvxLedger, HTMLStencilElement {
+    }
+    var HTMLMvxLedgerElement: {
+        prototype: HTMLMvxLedgerElement;
+        new (): HTMLMvxLedgerElement;
     };
     interface HTMLMvxLedgerAddressesElementEventMap {
         "accessWallet": any;
@@ -600,12 +577,6 @@ declare global {
     var HTMLMvxLedgerConfirmElement: {
         prototype: HTMLMvxLedgerConfirmElement;
         new (): HTMLMvxLedgerConfirmElement;
-    };
-    interface HTMLMvxLedgerFlowElement extends Components.MvxLedgerFlow, HTMLStencilElement {
-    }
-    var HTMLMvxLedgerFlowElement: {
-        prototype: HTMLMvxLedgerFlowElement;
-        new (): HTMLMvxLedgerFlowElement;
     };
     interface HTMLMvxLedgerIconElement extends Components.MvxLedgerIcon, HTMLStencilElement {
     }
@@ -1025,17 +996,34 @@ declare global {
         prototype: HTMLMvxUnlockProviderButtonElement;
         new (): HTMLMvxUnlockProviderButtonElement;
     };
-    interface HTMLMvxWalletConnectFlowElement extends Components.MvxWalletConnectFlow, HTMLStencilElement {
+    interface HTMLMvxWalletConnectElement extends Components.MvxWalletConnect, HTMLStencilElement {
     }
-    var HTMLMvxWalletConnectFlowElement: {
-        prototype: HTMLMvxWalletConnectFlowElement;
-        new (): HTMLMvxWalletConnectFlowElement;
+    var HTMLMvxWalletConnectElement: {
+        prototype: HTMLMvxWalletConnectElement;
+        new (): HTMLMvxWalletConnectElement;
     };
-    interface HTMLMvxWalletConnectProviderElement extends Components.MvxWalletConnectProvider, HTMLStencilElement {
+    interface HTMLMvxWalletConnectDownloadElement extends Components.MvxWalletConnectDownload, HTMLStencilElement {
     }
-    var HTMLMvxWalletConnectProviderElement: {
-        prototype: HTMLMvxWalletConnectProviderElement;
-        new (): HTMLMvxWalletConnectProviderElement;
+    var HTMLMvxWalletConnectDownloadElement: {
+        prototype: HTMLMvxWalletConnectDownloadElement;
+        new (): HTMLMvxWalletConnectDownloadElement;
+    };
+    interface HTMLMvxWalletConnectScanElementEventMap {
+        "downloadClick": any;
+    }
+    interface HTMLMvxWalletConnectScanElement extends Components.MvxWalletConnectScan, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxWalletConnectScanElementEventMap>(type: K, listener: (this: HTMLMvxWalletConnectScanElement, ev: MvxWalletConnectScanCustomEvent<HTMLMvxWalletConnectScanElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxWalletConnectScanElementEventMap>(type: K, listener: (this: HTMLMvxWalletConnectScanElement, ev: MvxWalletConnectScanCustomEvent<HTMLMvxWalletConnectScanElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMvxWalletConnectScanElement: {
+        prototype: HTMLMvxWalletConnectScanElement;
+        new (): HTMLMvxWalletConnectScanElement;
     };
     interface HTMLMvxWalletProviderIconElement extends Components.MvxWalletProviderIcon, HTMLStencilElement {
     }
@@ -1080,12 +1068,10 @@ declare global {
         "mvx-extension-provider-icon": HTMLMvxExtensionProviderIconElement;
         "mvx-fa-icon": HTMLMvxFaIconElement;
         "mvx-format-amount": HTMLMvxFormatAmountElement;
-        "mvx-generic-modal": HTMLMvxGenericModalElement;
-        "mvx-generic-spinner": HTMLMvxGenericSpinnerElement;
         "mvx-generic-toast": HTMLMvxGenericToastElement;
+        "mvx-ledger": HTMLMvxLedgerElement;
         "mvx-ledger-addresses": HTMLMvxLedgerAddressesElement;
         "mvx-ledger-confirm": HTMLMvxLedgerConfirmElement;
-        "mvx-ledger-flow": HTMLMvxLedgerFlowElement;
         "mvx-ledger-icon": HTMLMvxLedgerIconElement;
         "mvx-ledger-intro": HTMLMvxLedgerIntroElement;
         "mvx-ledger-provider-icon": HTMLMvxLedgerProviderIconElement;
@@ -1135,8 +1121,9 @@ declare global {
         "mvx-unlock-panel-footer": HTMLMvxUnlockPanelFooterElement;
         "mvx-unlock-panel-group": HTMLMvxUnlockPanelGroupElement;
         "mvx-unlock-provider-button": HTMLMvxUnlockProviderButtonElement;
-        "mvx-wallet-connect-flow": HTMLMvxWalletConnectFlowElement;
-        "mvx-wallet-connect-provider": HTMLMvxWalletConnectProviderElement;
+        "mvx-wallet-connect": HTMLMvxWalletConnectElement;
+        "mvx-wallet-connect-download": HTMLMvxWalletConnectDownloadElement;
+        "mvx-wallet-connect-scan": HTMLMvxWalletConnectScanElement;
         "mvx-wallet-provider-icon": HTMLMvxWalletProviderIconElement;
         "mvx-xalias-provider-icon": HTMLMvxXaliasProviderIconElement;
         "mvx-xportal-download-qr-icon": HTMLMvxXportalDownloadQrIconElement;
@@ -1211,17 +1198,12 @@ declare namespace LocalJSX {
         "valueDecimal"?: string;
         "valueInteger"?: string;
     }
-    interface MvxGenericModal {
-        "body"?: IGenericModalProps['body'];
-        "modalSubtitle"?: IGenericModalProps['modalSubtitle'];
-        "modalTitle"?: IGenericModalProps['modalTitle'];
-        "onClose"?: (event: MvxGenericModalCustomEvent<any>) => void;
-    }
-    interface MvxGenericSpinner {
-    }
     interface MvxGenericToast {
         "onDeleteToast"?: (event: MvxGenericToastCustomEvent<string>) => void;
         "toast"?: CustomToastType;
+    }
+    interface MvxLedger {
+        "data"?: ILedgerConnectPanelData;
     }
     interface MvxLedgerAddresses {
         "accountScreenData"?: IAccountScreenData;
@@ -1232,9 +1214,6 @@ declare namespace LocalJSX {
     }
     interface MvxLedgerConfirm {
         "confirmScreenData"?: IConfirmScreenData;
-    }
-    interface MvxLedgerFlow {
-        "data"?: ILedgerConnectPanelData;
     }
     interface MvxLedgerIcon {
     }
@@ -1458,11 +1437,15 @@ declare namespace LocalJSX {
         "class"?: string;
         "provider"?: IProviderBase<ProviderTypeEnum>;
     }
-    interface MvxWalletConnectFlow {
+    interface MvxWalletConnect {
+        "data"?: IWalletConnectPanelData;
         "qrCodeSvg"?: string;
     }
-    interface MvxWalletConnectProvider {
-        "data"?: IWalletConnectPanelData;
+    interface MvxWalletConnectDownload {
+    }
+    interface MvxWalletConnectScan {
+        "onDownloadClick"?: (event: MvxWalletConnectScanCustomEvent<any>) => void;
+        "qrCodeSvg"?: string;
     }
     interface MvxWalletProviderIcon {
         "class"?: string;
@@ -1493,12 +1476,10 @@ declare namespace LocalJSX {
         "mvx-extension-provider-icon": MvxExtensionProviderIcon;
         "mvx-fa-icon": MvxFaIcon;
         "mvx-format-amount": MvxFormatAmount;
-        "mvx-generic-modal": MvxGenericModal;
-        "mvx-generic-spinner": MvxGenericSpinner;
         "mvx-generic-toast": MvxGenericToast;
+        "mvx-ledger": MvxLedger;
         "mvx-ledger-addresses": MvxLedgerAddresses;
         "mvx-ledger-confirm": MvxLedgerConfirm;
-        "mvx-ledger-flow": MvxLedgerFlow;
         "mvx-ledger-icon": MvxLedgerIcon;
         "mvx-ledger-intro": MvxLedgerIntro;
         "mvx-ledger-provider-icon": MvxLedgerProviderIcon;
@@ -1548,8 +1529,9 @@ declare namespace LocalJSX {
         "mvx-unlock-panel-footer": MvxUnlockPanelFooter;
         "mvx-unlock-panel-group": MvxUnlockPanelGroup;
         "mvx-unlock-provider-button": MvxUnlockProviderButton;
-        "mvx-wallet-connect-flow": MvxWalletConnectFlow;
-        "mvx-wallet-connect-provider": MvxWalletConnectProvider;
+        "mvx-wallet-connect": MvxWalletConnect;
+        "mvx-wallet-connect-download": MvxWalletConnectDownload;
+        "mvx-wallet-connect-scan": MvxWalletConnectScan;
         "mvx-wallet-provider-icon": MvxWalletProviderIcon;
         "mvx-xalias-provider-icon": MvxXaliasProviderIcon;
         "mvx-xportal-download-qr-icon": MvxXportalDownloadQrIcon;
@@ -1578,12 +1560,10 @@ declare module "@stencil/core" {
             "mvx-extension-provider-icon": LocalJSX.MvxExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxExtensionProviderIconElement>;
             "mvx-fa-icon": LocalJSX.MvxFaIcon & JSXBase.HTMLAttributes<HTMLMvxFaIconElement>;
             "mvx-format-amount": LocalJSX.MvxFormatAmount & JSXBase.HTMLAttributes<HTMLMvxFormatAmountElement>;
-            "mvx-generic-modal": LocalJSX.MvxGenericModal & JSXBase.HTMLAttributes<HTMLMvxGenericModalElement>;
-            "mvx-generic-spinner": LocalJSX.MvxGenericSpinner & JSXBase.HTMLAttributes<HTMLMvxGenericSpinnerElement>;
             "mvx-generic-toast": LocalJSX.MvxGenericToast & JSXBase.HTMLAttributes<HTMLMvxGenericToastElement>;
+            "mvx-ledger": LocalJSX.MvxLedger & JSXBase.HTMLAttributes<HTMLMvxLedgerElement>;
             "mvx-ledger-addresses": LocalJSX.MvxLedgerAddresses & JSXBase.HTMLAttributes<HTMLMvxLedgerAddressesElement>;
             "mvx-ledger-confirm": LocalJSX.MvxLedgerConfirm & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmElement>;
-            "mvx-ledger-flow": LocalJSX.MvxLedgerFlow & JSXBase.HTMLAttributes<HTMLMvxLedgerFlowElement>;
             "mvx-ledger-icon": LocalJSX.MvxLedgerIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerIconElement>;
             "mvx-ledger-intro": LocalJSX.MvxLedgerIntro & JSXBase.HTMLAttributes<HTMLMvxLedgerIntroElement>;
             "mvx-ledger-provider-icon": LocalJSX.MvxLedgerProviderIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerProviderIconElement>;
@@ -1633,8 +1613,9 @@ declare module "@stencil/core" {
             "mvx-unlock-panel-footer": LocalJSX.MvxUnlockPanelFooter & JSXBase.HTMLAttributes<HTMLMvxUnlockPanelFooterElement>;
             "mvx-unlock-panel-group": LocalJSX.MvxUnlockPanelGroup & JSXBase.HTMLAttributes<HTMLMvxUnlockPanelGroupElement>;
             "mvx-unlock-provider-button": LocalJSX.MvxUnlockProviderButton & JSXBase.HTMLAttributes<HTMLMvxUnlockProviderButtonElement>;
-            "mvx-wallet-connect-flow": LocalJSX.MvxWalletConnectFlow & JSXBase.HTMLAttributes<HTMLMvxWalletConnectFlowElement>;
-            "mvx-wallet-connect-provider": LocalJSX.MvxWalletConnectProvider & JSXBase.HTMLAttributes<HTMLMvxWalletConnectProviderElement>;
+            "mvx-wallet-connect": LocalJSX.MvxWalletConnect & JSXBase.HTMLAttributes<HTMLMvxWalletConnectElement>;
+            "mvx-wallet-connect-download": LocalJSX.MvxWalletConnectDownload & JSXBase.HTMLAttributes<HTMLMvxWalletConnectDownloadElement>;
+            "mvx-wallet-connect-scan": LocalJSX.MvxWalletConnectScan & JSXBase.HTMLAttributes<HTMLMvxWalletConnectScanElement>;
             "mvx-wallet-provider-icon": LocalJSX.MvxWalletProviderIcon & JSXBase.HTMLAttributes<HTMLMvxWalletProviderIconElement>;
             "mvx-xalias-provider-icon": LocalJSX.MvxXaliasProviderIcon & JSXBase.HTMLAttributes<HTMLMvxXaliasProviderIconElement>;
             "mvx-xportal-download-qr-icon": LocalJSX.MvxXportalDownloadQrIcon & JSXBase.HTMLAttributes<HTMLMvxXportalDownloadQrIconElement>;

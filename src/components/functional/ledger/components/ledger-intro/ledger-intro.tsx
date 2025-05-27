@@ -1,7 +1,7 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 
-import type { IConnectScreenData } from '../ledger.types';
+import type { IConnectScreenData } from '../../ledger.types';
 
 @Component({
   tag: 'mvx-ledger-intro',
@@ -47,7 +47,10 @@ export class LedgerIntro {
             and open the MultiversX App
           </div>
 
-          <button class={{ 'ledger-intro-button': true, 'loading': Boolean(this.isAwaiting) }} onClick={this.handleLedgerConnectClick.bind(this)}>
+          <button
+            class={{ 'ledger-intro-button': true, 'loading': Boolean(this.isAwaiting) }}
+            onClick={this.handleLedgerConnectClick.bind(this)}
+          >
             <span class="ledger-intro-button-label">{buttonLabel}</span>
             {this.isAwaiting && <mvx-spinner-icon />}
           </button>
