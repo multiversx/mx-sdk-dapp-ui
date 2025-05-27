@@ -33,8 +33,10 @@ export { ITransactionValue } from "./components/controlled/transactions-table/tr
 export { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
 export namespace Components {
     interface MvxAngleLeftIcon {
+        "class"?: string;
     }
     interface MvxAngleRightIcon {
+        "class"?: string;
     }
     interface MvxAnglesLeftIcon {
     }
@@ -183,6 +185,11 @@ export namespace Components {
         "highlight"?: string;
     }
     interface MvxSignTransactionsFooter {
+    }
+    interface MvxSignTransactionsHeader {
+        "currentIndex": number;
+        "origin": string;
+        "transactionsCount": number;
     }
     interface MvxSignTransactionsOverview {
         "action": string;
@@ -385,6 +392,10 @@ export interface MvxSidePanelCustomEvent<T> extends CustomEvent<T> {
 export interface MvxSidePanelHeaderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxSidePanelHeaderElement;
+}
+export interface MvxSignTransactionsHeaderCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMvxSignTransactionsHeaderElement;
 }
 export interface MvxSimpleToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -761,6 +772,24 @@ declare global {
         prototype: HTMLMvxSignTransactionsFooterElement;
         new (): HTMLMvxSignTransactionsFooterElement;
     };
+    interface HTMLMvxSignTransactionsHeaderElementEventMap {
+        "nextClick": any;
+        "backClick": any;
+    }
+    interface HTMLMvxSignTransactionsHeaderElement extends Components.MvxSignTransactionsHeader, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxSignTransactionsHeaderElementEventMap>(type: K, listener: (this: HTMLMvxSignTransactionsHeaderElement, ev: MvxSignTransactionsHeaderCustomEvent<HTMLMvxSignTransactionsHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxSignTransactionsHeaderElementEventMap>(type: K, listener: (this: HTMLMvxSignTransactionsHeaderElement, ev: MvxSignTransactionsHeaderCustomEvent<HTMLMvxSignTransactionsHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMvxSignTransactionsHeaderElement: {
+        prototype: HTMLMvxSignTransactionsHeaderElement;
+        new (): HTMLMvxSignTransactionsHeaderElement;
+    };
     interface HTMLMvxSignTransactionsOverviewElement extends Components.MvxSignTransactionsOverview, HTMLStencilElement {
     }
     var HTMLMvxSignTransactionsOverviewElement: {
@@ -1091,6 +1120,7 @@ declare global {
         "mvx-side-panel-header": HTMLMvxSidePanelHeaderElement;
         "mvx-sign-transactions-advanced": HTMLMvxSignTransactionsAdvancedElement;
         "mvx-sign-transactions-footer": HTMLMvxSignTransactionsFooterElement;
+        "mvx-sign-transactions-header": HTMLMvxSignTransactionsHeaderElement;
         "mvx-sign-transactions-overview": HTMLMvxSignTransactionsOverviewElement;
         "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
         "mvx-simple-toast": HTMLMvxSimpleToastElement;
@@ -1132,8 +1162,10 @@ declare global {
 }
 declare namespace LocalJSX {
     interface MvxAngleLeftIcon {
+        "class"?: string;
     }
     interface MvxAngleRightIcon {
+        "class"?: string;
     }
     interface MvxAnglesLeftIcon {
     }
@@ -1291,6 +1323,13 @@ declare namespace LocalJSX {
         "highlight"?: string;
     }
     interface MvxSignTransactionsFooter {
+    }
+    interface MvxSignTransactionsHeader {
+        "currentIndex"?: number;
+        "onBackClick"?: (event: MvxSignTransactionsHeaderCustomEvent<any>) => void;
+        "onNextClick"?: (event: MvxSignTransactionsHeaderCustomEvent<any>) => void;
+        "origin"?: string;
+        "transactionsCount"?: number;
     }
     interface MvxSignTransactionsOverview {
         "action"?: string;
@@ -1499,6 +1538,7 @@ declare namespace LocalJSX {
         "mvx-side-panel-header": MvxSidePanelHeader;
         "mvx-sign-transactions-advanced": MvxSignTransactionsAdvanced;
         "mvx-sign-transactions-footer": MvxSignTransactionsFooter;
+        "mvx-sign-transactions-header": MvxSignTransactionsHeader;
         "mvx-sign-transactions-overview": MvxSignTransactionsOverview;
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
         "mvx-simple-toast": MvxSimpleToast;
@@ -1583,6 +1623,7 @@ declare module "@stencil/core" {
             "mvx-side-panel-header": LocalJSX.MvxSidePanelHeader & JSXBase.HTMLAttributes<HTMLMvxSidePanelHeaderElement>;
             "mvx-sign-transactions-advanced": LocalJSX.MvxSignTransactionsAdvanced & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsAdvancedElement>;
             "mvx-sign-transactions-footer": LocalJSX.MvxSignTransactionsFooter & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsFooterElement>;
+            "mvx-sign-transactions-header": LocalJSX.MvxSignTransactionsHeader & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsHeaderElement>;
             "mvx-sign-transactions-overview": LocalJSX.MvxSignTransactionsOverview & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsOverviewElement>;
             "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;
             "mvx-simple-toast": LocalJSX.MvxSimpleToast & JSXBase.HTMLAttributes<HTMLMvxSimpleToastElement>;

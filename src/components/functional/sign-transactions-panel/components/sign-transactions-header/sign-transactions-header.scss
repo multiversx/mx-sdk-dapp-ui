@@ -1,0 +1,124 @@
+:host {
+  display: flex;
+  font-family: 'Satoshi', sans-serif;
+  flex-direction: column;
+
+  .sign-transactions-header {
+    display: flex;
+    flex: 1;
+    gap: 20px;
+    padding: 20px 0;
+    flex-direction: column;
+
+    .sign-transactions-header-pager {
+      position: relative;
+      border-radius: 16px;
+      height: calc(32px + 4px);
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      justify-content: center;
+      margin: 0 auto;
+      gap: 20px;
+
+      &:before {
+        opacity: 40%;
+        content: '';
+        position: absolute;
+        background-color: #353535;
+        left: 0;
+        border-radius: 16px;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        pointer-events: none;
+      }
+
+      .sign-transactions-header-pager-icon {
+        position: relative;
+        z-index: 1;
+        cursor: pointer;
+        width: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        fill: #b6b3af;
+        transition: all 200ms ease;
+
+        &:hover {
+          fill: white;
+        }
+
+        &.disabled {
+          pointer-events: none;
+          opacity: 0.5;
+        }
+      }
+
+      .sign-transactions-header-pager-text {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        font-size: 16px;
+        line-height: 1;
+        user-select: none;
+        align-items: center;
+        gap: 8px;
+
+        .sign-transactions-header-pager-text-label {
+          color: #b6b3af;
+        }
+
+        .sign-transactions-header-pager-text-value {
+          color: #fff;
+          font-weight: 500;
+          width: calc(20px / 2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &.large {
+            width: 20px;
+          }
+        }
+      }
+    }
+
+    .sign-transactions-header-origin {
+      padding: 24px 0;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      line-height: 1;
+      font-size: 16px;
+
+      &.centered {
+        margin: auto;
+      }
+
+      .sign-transactions-header-origin-label {
+        color: #b6b3af;
+        user-select: none;
+      }
+
+      .sign-transactions-header-origin-image {
+        display: flex;
+        align-items: center;
+        border-radius: 24px;
+        background: #000000;
+        justify-content: center;
+        border: 1px solid #212121;
+        width: calc(64px + 8px);
+        height: calc(64px + 8px);
+      }
+
+      .sign-transactions-header-origin-name {
+        color: #ffffff;
+      }
+    }
+  }
+}

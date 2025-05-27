@@ -19,6 +19,7 @@ export class UnlockPanel {
 
         <div class="unlock-panel-footer-wrapper">
           <div class="unlock-panel-footer-title">Don't have a wallet?</div>
+
           <div class="unlock-panel-footer-subtitle">
             Take full control of <br /> your assets.
           </div>

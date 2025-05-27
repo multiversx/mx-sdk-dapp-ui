@@ -29,13 +29,13 @@ export class SignTransactionsFooter {
         <div class="sign-transactions-footer-buttons">
           <div class="sign-transactions-footer-button-wrapper cancel">
             <button
+              data-testid={isFirstTransaction ? DataTestIdsEnum.signCancelBtn : DataTestIdsEnum.signBackBtn}
+              onClick={isFirstTransaction ? onCancel : onBack}
               class={{
                 'sign-transactions-footer-button': true,
                 'cancel': !currentIndexCannotBeSignedYet,
                 'highlighted': currentIndexCannotBeSignedYet,
               }}
-              data-testid={isFirstTransaction ? DataTestIdsEnum.signCancelBtn : DataTestIdsEnum.signBackBtn}
-              onClick={isFirstTransaction ? onCancel : onBack}
             >
               {isFirstTransaction ? 'Cancel' : 'Back'}
             </button>
