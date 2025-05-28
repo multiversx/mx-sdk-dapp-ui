@@ -150,175 +150,12 @@
   white-space: nowrap;
 }
 
-.transaction-counter {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  gap: 8px;
-  position: relative;
-  width: 120px;
-  padding: 4px 0 4px 0;
-}
-
-.counter-label-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  gap: 12px;
-  position: relative;
-  width: 120px;
-}
-
-.counter-label-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  gap: 4px;
-  position: relative;
-  width: 75px;
-}
-
 .transaction {
   flex-shrink: 0;
   flex-basis: auto;
   position: relative;
   height: 20px;
   color: #b5b2af;
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 19.6px;
-  text-align: left;
-  white-space: nowrap;
-}
-
-.counter-value-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  gap: 2px;
-  position: relative;
-  width: 33px;
-  border-radius: 8px;
-}
-
-.counter-text {
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  height: 20px;
-  color: #ffffff;
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-  text-align: left;
-  white-space: nowrap;
-}
-
-.icon-angle-right {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  width: 20px;
-  height: 19px;
-  color: #b5b2af;
-  font-family:
-    Font Awesome 6 Pro,
-    var(--default-font-family);
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 19px;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.origin-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-self: stretch;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  gap: 12px;
-  position: relative;
-  min-width: 0;
-  padding: 24px 24px 24px 24px;
-}
-
-.request-from {
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  height: 20px;
-  color: #b5b2af;
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  text-align: left;
-  white-space: nowrap;
-}
-
-.origin-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  gap: 4px;
-  position: relative;
-  width: 100px;
-}
-
-.origin-logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  gap: 10px;
-  position: relative;
-  width: 72px;
-  height: 72px;
-  padding: 0 3px 0 3px;
-  background: #0a0a0a;
-  border: 1px solid #212121;
-  border-radius: 22px;
-  box-sizing: content-box;
-}
-
-.origin-logo {
-  flex-shrink: 0;
-  position: relative;
-  width: 34px;
-  height: 34px;
-}
-
-.origin-name {
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  height: 20px;
-  color: #ffffff;
   font-family:
     Roobert PRO,
     var(--default-font-family);
@@ -340,59 +177,58 @@
   position: relative;
   min-width: 0;
   padding: 0 12px 0 12px;
-}
 
-.tab-selector {
-  display: flex;
-  align-items: center;
-  align-self: stretch;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  position: relative;
-  padding: 0 12px 0 12px;
-}
+  .sign-transactions-tabs {
+    padding: 0 16px;
+    gap: 8px;
+    display: flex;
+    margin-right: auto;
+    font-family: 'Satoshi', sans-serif;
 
-.tab-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  gap: 8px;
-  position: relative;
-  height: 32px;
-  padding: 6px 12px 6px 12px;
-  opacity: 0.9;
-  border-radius: 24px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
+    .sign-transactions-tab {
+      padding: 0 16px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      line-height: 1;
+      justify-content: center;
+      transition: all 200ms ease;
+      border-radius: 24px;
+      cursor: pointer;
+      position: relative;
+      color: #b6b3af;
 
-.tab-item.active {
-  background: #1f1f1f;
-}
+      &:before {
+        opacity: 0%;
+        transition: all 200ms ease;
+        content: '';
+        position: absolute;
+        background-color: #202020;
+        left: 0;
+        border-radius: 24px;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        pointer-events: none;
+      }
 
-.tab-text {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  height: 20px;
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  text-align: center;
-  white-space: nowrap;
-  color: #b5b2af;
-}
+      &:hover,
+      &.active {
+        color: #23f7dd;
 
-.tab-item.active .tab-text {
-  color: #23f7dd;
+        &:before {
+          opacity: 90%;
+        }
+      }
+
+      .sign-transactions-tab-text {
+        text-transform: capitalize;
+        position: relative;
+        font-size: 16px;
+        z-index: 1;
+      }
+    }
+  }
 }
 
 .overview {

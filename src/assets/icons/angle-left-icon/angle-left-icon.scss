@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+
+  .angle-left-icon {
+    display: flex;
+    height: 16px;
+    width: calc(20px / 2);
+  }
+}

@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Satoshi', sans-serif;
+  flex: 1;
+
+  .wallet-connect {
+    display: flex;
+    flex-direction: column;
+    transform-style: preserve-3d;
+    transition: all 400ms ease;
+    height: max(100%, 680px);
+    flex: 1;
+
+    &.flipped {
+      transform: rotateY(180deg);
+    }
+  }
+}

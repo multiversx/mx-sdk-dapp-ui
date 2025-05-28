@@ -131,10 +131,11 @@
         position: relative;
         min-width: 0;
         max-width: none;
-        top: -0.25px;
+        top: 0.25px;
 
         .trim-wrapper {
           align-items: flex-end;
+          line-height: 1;
         }
       }
 

@@ -141,6 +141,7 @@ export class UnlockPanel {
     const otherProviders = this.allowedProviders.filter(
       allowedProvider => !detectedProviders.includes(allowedProvider),
     );
+
     const panelTitle = this.selectedMethod ? this.selectedMethod.name : 'Connect your wallet';
     const hasDetectedProviders = detectedProviders.length > 0;
 
@@ -157,11 +158,15 @@ export class UnlockPanel {
         showHeader={isProviderScreenVisible || isCustomProviderActive}
         panelClassName="unlock-panel"
       >
-        <div id="anchor" ref={element => this.setAnchor(element)} class={{ 'unlock-panel-anchor': this.isLoggingIn }}>
+        <div
+          id="anchor"
+          ref={(element: HTMLDivElement) => this.setAnchor(element)}
+          class={{ 'unlock-panel-anchor': this.isLoggingIn || this.isIntroScreenVisible }}
+        >
           {this.isIntroScreenVisible && (
             <mvx-provider-idle-screen
-              provider={this.selectedMethod}
               onAccess={this.handleAccess}
+              provider={this.selectedMethod}
               onClose={this.handleResetLoginState}
             />
           )}
@@ -174,17 +179,19 @@ export class UnlockPanel {
                 <mvx-unlock-panel-group
                   groupTitle="Detected"
                   providers={detectedProviders}
-                  onLogin={event => this.handleLogin(event.detail)}
+                  onLogin={(event: CustomEvent) => this.handleLogin(event.detail)}
                 />
               )}
+
               <mvx-unlock-panel-group
-                groupTitle={hasDetectedProviders ? 'Other Options' : 'Options'}
                 providers={otherProviders}
-                onLogin={event => this.handleLogin(event.detail)}
+                groupTitle={hasDetectedProviders ? 'Other Options' : 'Options'}
+                onLogin={(event: CustomEvent) => this.handleLogin(event.detail)}
               >
                 <slot />
               </mvx-unlock-panel-group>
             </div>
+
             <mvx-unlock-panel-footer />
           </div>
         )}
