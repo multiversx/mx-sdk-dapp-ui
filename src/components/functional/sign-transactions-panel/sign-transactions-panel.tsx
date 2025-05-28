@@ -1,23 +1,12 @@
-import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Method, State } from '@stencil/core';
 import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import type { ISignTransactionsPanelData } from './sign-transactions-panel.types';
+import type { IOverviewProps, ISignTransactionsPanelData } from './sign-transactions-panel.types';
+import { TransactionTabsEnum } from './sign-transactions-panel.types';
 import { SignEventsEnum } from './sign-transactions-panel.types';
 import state, { resetState } from './signTransactionsPanelStore';
-interface IOverviewProps {
-  identifier: string;
-  usdValue: string;
-  amount: string;
-  tokenIconUrl: string;
-  interactor: string;
-  interactorIconUrl: string;
-  action: string;
-  networkFee: string;
-  isApp: boolean;
-}
 
 @Component({
   tag: 'mvx-sign-transactions-panel',
@@ -35,7 +24,7 @@ export class SignTransactionsPanel {
   }
 
   @State() isOpen: boolean = false;
-  @State() activeTab: 'overview' | 'advanced' = 'overview';
+  @State() activeTab: TransactionTabsEnum = TransactionTabsEnum.overview;
 
   @Method() async getEventBus() {
     return this.eventBus;
@@ -93,7 +82,7 @@ export class SignTransactionsPanel {
     state.isWaitingForSignature = false;
   };
 
-  private setActiveTab(tab: 'overview' | 'advanced') {
+  private setActiveTab(tab: TransactionTabsEnum) {
     this.activeTab = tab;
   }
 
@@ -121,8 +110,10 @@ export class SignTransactionsPanel {
   }
 
   render() {
-    const { commonData, onNext, onBack } = state;
-    const { currentIndex, transactionsCount, origin, data, highlight } = commonData;
+    const transactionTabs = Object.values(TransactionTabsEnum);
+
+    const { commonData } = state;
+    const { data, highlight } = commonData;
 
     return (
       <mvx-side-panel
@@ -132,56 +123,21 @@ export class SignTransactionsPanel {
         hasBackButton={false}
       >
         <div class="sign-transactions-panel">
-          {transactionsCount > 1 && (
-            <div class="transaction-navigation">
-              <div class="transaction-switcher">
-                <div class="navigation-icon" onClick={onBack}>
-                  <mvx-fa-icon icon={faChevronLeft} class="icon-angle-left" />
-                </div>
-                <div class="transaction-counter">
-                  <div class="counter-label-container">
-                    <span class="transaction">Transaction</span>
-                  </div>
-                  <div class="counter-value-container">
-                    <span class="counter-text">
-                      {currentIndex + 1} of {transactionsCount}
-                    </span>
-                  </div>
-                </div>
-                <div class="navigation-icon" onClick={onNext}>
-                  <mvx-fa-icon icon={faChevronRight} class="icon-angle-right" />
-                </div>
-              </div>
-            </div>
-          )}
-
-          <div class="origin-container">
-            <span class="request-from">Request from</span>
-            <div class="origin-details">
-              <div class="origin-logo-container">
-                <img class="origin-logo" src={`${origin}/favicon.ico`} alt="favicon" />
-              </div>
-              <span class="origin-name">{origin}</span>
-            </div>
-          </div>
+          <mvx-sign-transactions-header />
 
           <div class="sign-transaction-content">
-            <div class="tab-selector">
-              <div
-                class={`tab-item ${this.activeTab === 'overview' ? 'active' : ''}`}
-                onClick={() => this.setActiveTab('overview')}
-              >
-                <span class="tab-text">Overview</span>
-              </div>
-              <div
-                class={`tab-item ${this.activeTab === 'advanced' ? 'active' : ''}`}
-                onClick={() => this.setActiveTab('advanced')}
-              >
-                <span class="tab-text">Advanced</span>
-              </div>
+            <div class="sign-transactions-tabs">
+              {transactionTabs.map(transactionTab => (
+                <div
+                  class={{ 'sign-transactions-tab': true, 'active': transactionTab === this.activeTab }}
+                  onClick={() => this.setActiveTab(transactionTab)}
+                >
+                  <div class="sign-transactions-tab-text">{transactionTab}</div>
+                </div>
+              ))}
             </div>
 
-            {this.activeTab === 'overview' ? (
+            {this.activeTab === TransactionTabsEnum.overview ? (
               <mvx-sign-transactions-overview style={{ width: '100%' }} {...this.overviewProps} />
             ) : (
               <mvx-sign-transactions-advanced style={{ width: '100%' }} data={data} highlight={highlight} />

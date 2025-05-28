@@ -30,23 +30,25 @@ export class SidePanelHeader {
   render() {
     return (
       <div class="side-panel-heading">
-        {this.hasLeftButton && (
-          <div class={{ 'side-panel-heading-left': true, 'no-margin': !this.hasRightButton }} onClick={this.handleLeftIconClick.bind(this)}>
-            <slot name={SidePanelHeaderSlotEnum.leftIcon}>
-              <mvx-back-arrow-icon />
-            </slot>
-          </div>
-        )}
+        <div
+          class={{ 'side-panel-heading-left': true, 'visible': this.hasLeftButton }}
+          onClick={this.handleLeftIconClick.bind(this)}
+        >
+          <slot name={SidePanelHeaderSlotEnum.leftIcon}>
+            <mvx-back-arrow-icon />
+          </slot>
+        </div>
 
-        <div class={{ 'side-panel-heading-title': true, 'center': this.hasLeftButton && !this.hasRightButton }}>{this.panelTitle}</div>
+        <div class="side-panel-heading-title">{this.panelTitle}</div>
 
-        {this.hasRightButton && (
-          <div class="side-panel-heading-right" onClick={this.handleRightIconClick.bind(this)}>
-            <slot name={SidePanelHeaderSlotEnum.rightIcon}>
-              <mvx-close-icon />
-            </slot>
-          </div>
-        )}
+        <div
+          class={{ 'side-panel-heading-right': true, 'visible': this.hasRightButton }}
+          onClick={this.handleRightIconClick.bind(this)}
+        >
+          <slot name={SidePanelHeaderSlotEnum.rightIcon}>
+            <mvx-close-icon />
+          </slot>
+        </div>
       </div>
     );
   }

@@ -1,22 +1,24 @@
 import { Component, Element, Fragment, h, Method, Prop, State, Watch } from '@stencil/core';
+import type { IEventBus, IWalletConnectPanelData } from 'components';
 import { SidePanelHeaderSlotEnum } from 'components/visual/side-panel/components/side-panel-header/side-panel-header.types';
 import { providerLabels } from 'constants/providerFactory.constants';
 import QRCode from 'qrcode';
-import { EventBus, type IEventBus } from 'utils/EventBus';
+import { EventBus } from 'utils/EventBus';
 
-import { type IWalletConnectPanelData, WalletConnectEventsEnum } from '../wallet-connect.types';
+import { WalletConnectEventsEnum } from './wallet-connect.types';
 
 @Component({
-  tag: 'mvx-wallet-connect-provider',
-  styleUrl: 'wallet-connect-provider.scss',
+  tag: 'mvx-wallet-connect',
+  styleUrl: 'wallet-connect.scss',
   shadow: true,
 })
-export class WalletConnectProvider {
-  @Element() hostElement: HTMLElement;
-  @Prop() data: IWalletConnectPanelData = { wcURI: '' };
-  @State() qrCodeSvg: string = '';
-
+export class WalletConnect {
   private eventBus: IEventBus = new EventBus();
+
+  @Prop() data: IWalletConnectPanelData = { wcURI: '' };
+  @State() showScanPage: boolean = true;
+  @Element() hostElement: HTMLElement;
+  @Prop() qrCodeSvg: string = '';
 
   @Watch('data')
   async onDataChange(newData: IWalletConnectPanelData) {
@@ -57,13 +59,33 @@ export class WalletConnectProvider {
     this.eventBus.unsubscribe(WalletConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
   }
 
+  handlePageToggle(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.showScanPage = !this.showScanPage;
+  }
+
   render() {
     return (
       <Fragment>
-        <mvx-side-panel-header panelTitle={providerLabels.walletConnect} hasRightButton={false} onLeftButtonClick={() => this.eventBus.publish(WalletConnectEventsEnum.CLOSE)}>
-          <mvx-close-icon slot={SidePanelHeaderSlotEnum.leftIcon} />
+        <mvx-side-panel-header
+          panelTitle={providerLabels.walletConnect}
+          hasRightButton={true}
+          hasLeftButton={!this.showScanPage}
+          onRightButtonClick={() => this.eventBus.publish(WalletConnectEventsEnum.CLOSE)}
+          onLeftButtonClick={this.handlePageToggle.bind(this)}
+        >
+          {!this.showScanPage && <mvx-back-arrow-icon slot={SidePanelHeaderSlotEnum.leftIcon} />}
+          <mvx-close-icon slot={SidePanelHeaderSlotEnum.rightIcon} />
         </mvx-side-panel-header>
-        <mvx-wallet-connect-flow qrCodeSvg={this.qrCodeSvg} />
+
+        <div class="wallet-connect">
+          {this.showScanPage ? (
+            <mvx-wallet-connect-scan qrCodeSvg={this.qrCodeSvg} onDownloadClick={this.handlePageToggle.bind(this)} />
+          ) : (
+            <mvx-wallet-connect-download />
+          )}
+        </div>
       </Fragment>
     );
   }

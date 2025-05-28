@@ -1,7 +1,6 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, Fragment, h, Prop } from '@stencil/core';
 import { getProviderButtonIcon } from 'components/functional/unlock-panel/helpers';
-import { SidePanelHeaderSlotEnum } from 'components/visual/side-panel/components/side-panel-header/side-panel-header.types';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 
@@ -49,16 +48,15 @@ export class ProviderIdleScreen {
     const providerIntroIcon = getProviderButtonIcon(providerType);
     const providerIntroText = this.introText || getProviderIntroText(providerType);
 
-    const header = (
-      <mvx-side-panel-header panelTitle={this.provider.name} hasRightButton={false} onLeftButtonClick={this.close.emit}>
-        <mvx-close-icon slot={SidePanelHeaderSlotEnum.leftIcon} />
-      </mvx-side-panel-header>
-    );
-
     if (this.provider.type === ProviderTypeEnum.ledger) {
       return (
         <Fragment>
-          {header}
+          <mvx-side-panel-header
+            hasLeftButton={false}
+            panelTitle={this.provider.name}
+            onRightButtonClick={this.close.emit}
+          />
+
           <mvx-ledger-intro onConnect={this.access.emit} />
         </Fragment>
       );
@@ -66,7 +64,12 @@ export class ProviderIdleScreen {
 
     return (
       <Fragment>
-        {header}
+        <mvx-side-panel-header
+          hasLeftButton={false}
+          panelTitle={this.provider.name}
+          onRightButtonClick={this.close.emit}
+        />
+
         <div class="unlock-provider-intro">
           {isExtensionProvider ? (
             <div class="unlock-provider-intro-icon">

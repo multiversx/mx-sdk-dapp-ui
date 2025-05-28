@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.5](https://github.com/multiversx/mx-sdk-dapp-ui/pull/112)] - 2025-05-26
+
+- [Updated Sign Transactions layout][https://github.com/multiversx/mx-sdk-dapp-ui/pull/114]
+- [Disable sourceMap files][https://github.com/multiversx/mx-sdk-dapp-ui/pull/113]
+
 ## [[0.0.4](https://github.com/multiversx/mx-sdk-dapp-ui/pull/112)] - 2025-05-26
 
 - [Clean up unlock panel](https://github.com/multiversx/mx-sdk-dapp-ui/pull/111)
