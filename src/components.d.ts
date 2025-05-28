@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
+import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
 import { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
 import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
@@ -20,7 +20,7 @@ import { ITransactionValue } from "./components/controlled/transactions-table/tr
 import { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger/ledger.types";
+export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
 export { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
 export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
@@ -103,16 +103,16 @@ export namespace Components {
     interface MvxGenericToast {
         "toast": CustomToastType;
     }
-    interface MvxLedger {
-        "data": ILedgerConnectPanelData;
-        "getEventBus": () => Promise<IEventBus>;
-    }
     interface MvxLedgerAddresses {
         "accountScreenData": IAccountScreenData;
         "selectedIndex": number;
     }
     interface MvxLedgerConfirm {
         "confirmScreenData": IConfirmScreenData;
+    }
+    interface MvxLedgerConnect {
+        "data": ILedgerConnectPanelData;
+        "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxLedgerIcon {
     }
@@ -551,12 +551,6 @@ declare global {
         prototype: HTMLMvxGenericToastElement;
         new (): HTMLMvxGenericToastElement;
     };
-    interface HTMLMvxLedgerElement extends Components.MvxLedger, HTMLStencilElement {
-    }
-    var HTMLMvxLedgerElement: {
-        prototype: HTMLMvxLedgerElement;
-        new (): HTMLMvxLedgerElement;
-    };
     interface HTMLMvxLedgerAddressesElementEventMap {
         "accessWallet": any;
         "selectAccount": any;
@@ -581,6 +575,12 @@ declare global {
     var HTMLMvxLedgerConfirmElement: {
         prototype: HTMLMvxLedgerConfirmElement;
         new (): HTMLMvxLedgerConfirmElement;
+    };
+    interface HTMLMvxLedgerConnectElement extends Components.MvxLedgerConnect, HTMLStencilElement {
+    }
+    var HTMLMvxLedgerConnectElement: {
+        prototype: HTMLMvxLedgerConnectElement;
+        new (): HTMLMvxLedgerConnectElement;
     };
     interface HTMLMvxLedgerIconElement extends Components.MvxLedgerIcon, HTMLStencilElement {
     }
@@ -1079,9 +1079,9 @@ declare global {
         "mvx-fa-icon": HTMLMvxFaIconElement;
         "mvx-format-amount": HTMLMvxFormatAmountElement;
         "mvx-generic-toast": HTMLMvxGenericToastElement;
-        "mvx-ledger": HTMLMvxLedgerElement;
         "mvx-ledger-addresses": HTMLMvxLedgerAddressesElement;
         "mvx-ledger-confirm": HTMLMvxLedgerConfirmElement;
+        "mvx-ledger-connect": HTMLMvxLedgerConnectElement;
         "mvx-ledger-icon": HTMLMvxLedgerIconElement;
         "mvx-ledger-intro": HTMLMvxLedgerIntroElement;
         "mvx-ledger-provider-icon": HTMLMvxLedgerProviderIconElement;
@@ -1215,9 +1215,6 @@ declare namespace LocalJSX {
         "onDeleteToast"?: (event: MvxGenericToastCustomEvent<string>) => void;
         "toast"?: CustomToastType;
     }
-    interface MvxLedger {
-        "data"?: ILedgerConnectPanelData;
-    }
     interface MvxLedgerAddresses {
         "accountScreenData"?: IAccountScreenData;
         "onAccessWallet"?: (event: MvxLedgerAddressesCustomEvent<any>) => void;
@@ -1227,6 +1224,9 @@ declare namespace LocalJSX {
     }
     interface MvxLedgerConfirm {
         "confirmScreenData"?: IConfirmScreenData;
+    }
+    interface MvxLedgerConnect {
+        "data"?: ILedgerConnectPanelData;
     }
     interface MvxLedgerIcon {
     }
@@ -1492,9 +1492,9 @@ declare namespace LocalJSX {
         "mvx-fa-icon": MvxFaIcon;
         "mvx-format-amount": MvxFormatAmount;
         "mvx-generic-toast": MvxGenericToast;
-        "mvx-ledger": MvxLedger;
         "mvx-ledger-addresses": MvxLedgerAddresses;
         "mvx-ledger-confirm": MvxLedgerConfirm;
+        "mvx-ledger-connect": MvxLedgerConnect;
         "mvx-ledger-icon": MvxLedgerIcon;
         "mvx-ledger-intro": MvxLedgerIntro;
         "mvx-ledger-provider-icon": MvxLedgerProviderIcon;
@@ -1577,9 +1577,9 @@ declare module "@stencil/core" {
             "mvx-fa-icon": LocalJSX.MvxFaIcon & JSXBase.HTMLAttributes<HTMLMvxFaIconElement>;
             "mvx-format-amount": LocalJSX.MvxFormatAmount & JSXBase.HTMLAttributes<HTMLMvxFormatAmountElement>;
             "mvx-generic-toast": LocalJSX.MvxGenericToast & JSXBase.HTMLAttributes<HTMLMvxGenericToastElement>;
-            "mvx-ledger": LocalJSX.MvxLedger & JSXBase.HTMLAttributes<HTMLMvxLedgerElement>;
             "mvx-ledger-addresses": LocalJSX.MvxLedgerAddresses & JSXBase.HTMLAttributes<HTMLMvxLedgerAddressesElement>;
             "mvx-ledger-confirm": LocalJSX.MvxLedgerConfirm & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmElement>;
+            "mvx-ledger-connect": LocalJSX.MvxLedgerConnect & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectElement>;
             "mvx-ledger-icon": LocalJSX.MvxLedgerIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerIconElement>;
             "mvx-ledger-intro": LocalJSX.MvxLedgerIntro & JSXBase.HTMLAttributes<HTMLMvxLedgerIntroElement>;
             "mvx-ledger-provider-icon": LocalJSX.MvxLedgerProviderIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerProviderIconElement>;

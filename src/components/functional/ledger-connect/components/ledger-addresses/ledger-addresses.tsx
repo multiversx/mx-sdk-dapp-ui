@@ -3,7 +3,7 @@ import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-import type { IAccountScreenData, ILedgerAccount } from '../../ledger.types';
+import type { IAccountScreenData, ILedgerAccount } from '../../ledger-connect.types';
 
 const TOTAL_ADDRESSES_COUNT = 5000;
 

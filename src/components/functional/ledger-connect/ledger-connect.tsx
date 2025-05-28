@@ -3,15 +3,15 @@ import { providerLabels } from 'constants/providerFactory.constants';
 import { EventBus, type IEventBus } from 'utils/EventBus';
 
 import { getLedgerAddressByIndex } from './helpers/getLedgerAddressByIndex';
-import type { ILedgerConnectPanelData } from './ledger.types';
-import { LedgerConnectEventsEnum } from './ledger.types';
+import type { ILedgerConnectPanelData } from './ledger-connect.types';
+import { LedgerConnectEventsEnum } from './ledger-connect.types';
 
 @Component({
-  tag: 'mvx-ledger',
-  styleUrl: 'ledger.scss',
+  tag: 'mvx-ledger-connect',
+  styleUrl: 'ledger-connect.scss',
   shadow: true,
 })
-export class Ledger {
+export class LedgerConnect {
   private eventBus: IEventBus = new EventBus();
 
   @Element() hostElement: HTMLElement;

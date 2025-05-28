@@ -1,9 +1,9 @@
 import { Component, h, Prop } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-import type { IConfirmScreenData } from '../../ledger.types';
+import type { IConfirmScreenData } from '../../ledger-connect.types';
 
-interface LedgerConfirmationItem {
+interface LedgerConfirmationItemType {
   label: string;
   value: string;
   highlighted?: boolean;
@@ -19,13 +19,17 @@ export class LedgerConfirm {
   @Prop() confirmScreenData: IConfirmScreenData;
 
   render() {
-    const ledgerConfirmationItems: LedgerConfirmationItem[] = [
+    const ledgerConfirmationItems: LedgerConfirmationItemType[] = [
       {
         label: this.confirmScreenData.confirmAddressText,
         value: this.confirmScreenData.selectedAddress,
         explorerLink: this.confirmScreenData.explorerLink,
       },
-      { label: this.confirmScreenData.authText, value: this.confirmScreenData.data, highlighted: true },
+      {
+        label: this.confirmScreenData.authText,
+        value: this.confirmScreenData.data,
+        highlighted: true,
+      },
     ];
 
     return (
