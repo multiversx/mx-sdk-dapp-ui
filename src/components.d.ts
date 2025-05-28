@@ -187,9 +187,6 @@ export namespace Components {
     interface MvxSignTransactionsFooter {
     }
     interface MvxSignTransactionsHeader {
-        "currentIndex": number;
-        "origin": string;
-        "transactionsCount": number;
     }
     interface MvxSignTransactionsOverview {
         "action": string;
@@ -392,10 +389,6 @@ export interface MvxSidePanelCustomEvent<T> extends CustomEvent<T> {
 export interface MvxSidePanelHeaderCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxSidePanelHeaderElement;
-}
-export interface MvxSignTransactionsHeaderCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMvxSignTransactionsHeaderElement;
 }
 export interface MvxSimpleToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -772,19 +765,7 @@ declare global {
         prototype: HTMLMvxSignTransactionsFooterElement;
         new (): HTMLMvxSignTransactionsFooterElement;
     };
-    interface HTMLMvxSignTransactionsHeaderElementEventMap {
-        "nextClick": any;
-        "backClick": any;
-    }
     interface HTMLMvxSignTransactionsHeaderElement extends Components.MvxSignTransactionsHeader, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxSignTransactionsHeaderElementEventMap>(type: K, listener: (this: HTMLMvxSignTransactionsHeaderElement, ev: MvxSignTransactionsHeaderCustomEvent<HTMLMvxSignTransactionsHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxSignTransactionsHeaderElementEventMap>(type: K, listener: (this: HTMLMvxSignTransactionsHeaderElement, ev: MvxSignTransactionsHeaderCustomEvent<HTMLMvxSignTransactionsHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLMvxSignTransactionsHeaderElement: {
         prototype: HTMLMvxSignTransactionsHeaderElement;
@@ -1325,11 +1306,6 @@ declare namespace LocalJSX {
     interface MvxSignTransactionsFooter {
     }
     interface MvxSignTransactionsHeader {
-        "currentIndex"?: number;
-        "onBackClick"?: (event: MvxSignTransactionsHeaderCustomEvent<any>) => void;
-        "onNextClick"?: (event: MvxSignTransactionsHeaderCustomEvent<any>) => void;
-        "origin"?: string;
-        "transactionsCount"?: number;
     }
     interface MvxSignTransactionsOverview {
         "action"?: string;

@@ -1,116 +1,62 @@
 :host {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  width: 100%;
+  @apply mvx:flex mvx:flex-1 mvx:flex-col mvx:w-full;
 
   .wallet-connect-scan {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 12px;
-    flex: 1;
-    width: 100%;
+    @apply mvx:flex mvx:items-center mvx:flex-col mvx:gap-3 mvx:flex-1 mvx:w-full;
 
     .wallet-connect-scan-qr {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 300px;
-      height: 300px;
-      margin-top: auto;
-      position: relative;
+      @apply mvx:flex mvx:justify-center mvx:items-center mvx:mt-auto mvx:relative mvx:w-75 mvx:h-75;
 
       .wallet-connect-scan-qr-embed {
-        width: 100%;
-        height: auto;
-        position: absolute;
-        left: calc(20px * -1);
-        top: calc(20px * -1);
-        width: calc(300px + 40px);
-        height: calc(300px + 40px);
-        opacity: 0;
-        transition: all 200ms ease;
-        pointer-events: none;
+        @apply mvx:w-full mvx:h-auto mvx:absolute mvx:opacity-0 mvx:transition-all mvx:duration-200 mvx:pointer-events-none mvx:w-85 mvx:h-85;
+        transition-timing-function: ease;
 
         &:before {
-          pointer-events: none;
-          left: 0;
-          bottom: 0;
-          top: 0;
-          right: 0;
+          @apply mvx:pointer-events-none mvx:left-0 mvx:bottom-0 mvx:top-0 mvx:right-0 mvx:absolute;
           content: '';
-          position: absolute;
           border: calc(12px / 4) solid #101010;
         }
 
         path {
+          @apply mvx:stroke-white;
           fill: #101010;
-          stroke: #fff;
         }
 
         &.visible {
-          opacity: 1;
+          @apply mvx:opacity-100;
         }
       }
     }
 
     .wallet-connect-scan-description {
-      line-height: 1.25;
-      font-weight: 500;
+      @apply mvx:leading-5 mvx:font-medium mvx:text-base mvx:h-16 mvx:z-1 mvx:mb-auto;
       color: #a09a93;
-      font-size: 16px;
-      height: 64px;
-      z-index: 1;
-      margin-bottom: auto;
     }
 
     .wallet-connect-scan-download {
+      @apply mvx:rounded-xl mvx:w-full mvx:flex mvx:gap-6 mvx:items-center mvx:p-6 mvx:relative mvx:mt-16 mvx:h-44;
       background: #0a0a0a;
-      border-radius: 16px;
-      width: 100%;
-      display: flex;
-      gap: 24px;
-      align-items: center;
-      padding: 24px;
-      position: relative;
-      height: 176px;
-      margin-top: 64px;
 
       .wallet-connect-scan-download-wrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        align-items: flex-start;
+        @apply mvx:flex mvx:flex-col mvx:gap-4 mvx:items-start;
 
         .wallet-connect-scan-download-title {
-          color: #fff;
-          font-size: 16px;
-          line-height: 1.25;
-          font-weight: 500;
+          @apply mvx:text-white mvx:text-base mvx:leading-5 mvx:font-medium;
         }
 
         .wallet-connect-scan-download-button {
+          @apply mvx:rounded-lg mvx:text-xs mvx:leading-none mvx:text-center mvx:p-2 mvx:font-bold mvx:cursor-pointer mvx:transition-all mvx:duration-200;
           background: #23f7dd;
-          border-radius: 8px;
-          font-size: 12px;
-          line-height: 1;
-          text-align: center;
-          padding: 8px;
-          font-weight: 700;
-          cursor: pointer;
-          transition: all 200ms ease;
+          transition-timing-function: ease;
 
           &:hover {
-            opacity: 0.75;
+            @apply mvx:opacity-75;
           }
         }
       }
 
       .wallet-connect-scan-download-image {
-        position: absolute;
-        right: 0;
-        bottom: 0;
+        @apply mvx:absolute mvx:right-0 mvx:bottom-0;
       }
     }
   }

@@ -112,8 +112,8 @@ export class SignTransactionsPanel {
   render() {
     const transactionTabs = Object.values(TransactionTabsEnum);
 
-    const { commonData, onNext, onBack } = state;
-    const { currentIndex, transactionsCount, origin, data, highlight } = commonData;
+    const { commonData } = state;
+    const { data, highlight } = commonData;
 
     return (
       <mvx-side-panel
@@ -123,13 +123,7 @@ export class SignTransactionsPanel {
         hasBackButton={false}
       >
         <div class="sign-transactions-panel">
-          <mvx-sign-transactions-header
-            transactionsCount={transactionsCount}
-            currentIndex={currentIndex}
-            onNextClick={onNext}
-            onBackClick={onBack}
-            origin={origin}
-          />
+          <mvx-sign-transactions-header />
 
           <div class="sign-transaction-content">
             <div class="sign-transactions-tabs">

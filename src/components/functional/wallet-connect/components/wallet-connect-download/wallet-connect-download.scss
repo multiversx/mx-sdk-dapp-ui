@@ -1,63 +1,33 @@
 :host {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  width: 100%;
+  @apply mvx:flex mvx:flex-1 mvx:flex-col mvx:w-full;
 
   .wallet-connect-download {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-    flex: 1;
+    @apply mvx:flex mvx:flex-col mvx:items-center mvx:gap-3 mvx:w-full mvx:flex-1;
 
     .wallet-connect-download-wrapper {
-      display: flex;
-      margin: auto 0;
-      flex-direction: column;
-      align-items: center;
+      @apply mvx:flex mvx:my-auto mvx:mx-0 mvx:flex-col mvx:items-center;
 
       .wallet-connect-download-description {
-        line-height: 1.25;
-        font-weight: 500;
+        @apply mvx:leading-5 mvx:font-medium mvx:text-base mvx:text-center mvx:mt-3;
         color: #a09a93;
-        font-size: 16px;
-        text-align: center;
-        margin-top: 12px;
       }
     }
 
     .wallet-connect-download-options {
-      height: 240px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      align-items: center;
-      justify-content: flex-end;
-      margin: auto 0;
+      @apply mvx:h-60 mvx:flex mvx:flex-col mvx:gap-4 mvx:items-center mvx:justify-end mvx:my-auto mvx:mx-0;
 
       .wallet-connect-download-option {
-        width: 192px;
-        height: 64px;
-        border-radius: 8px;
+        @apply mvx:flex mvx:w-48 mvx:h-16 mvx:items-center mvx:justify-center mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:rounded-lg mvx:p-3;
+        transition-timing-function: ease;
         border: 1px solid #262626;
         background-color: #0a0a0a;
-        padding: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 200ms ease;
 
         &:hover {
           background-color: #262626;
         }
 
         .wallet-connect-download-option-image {
-          height: auto;
-          width: 100%;
-          max-height: 100%;
+          @apply mvx:h-auto mvx:w-full mvx:max-h-full;
         }
       }
     }
