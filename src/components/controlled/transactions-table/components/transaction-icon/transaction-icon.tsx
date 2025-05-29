@@ -20,7 +20,7 @@ export class TransactionIcon {
       <mvx-fa-icon
         class={classNames(
           {
-            'fa-sm': this.iconInfo.icon === faTimes,
+            'fa-sm': this.iconInfo.icon === (faTimes as unknown as string),
           },
           this.class,
           'transaction-icon',
