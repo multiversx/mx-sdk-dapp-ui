@@ -17,6 +17,7 @@
       gap: 24px;
       text-align: center;
       font-size: 16px;
+      margin-bottom: auto;
 
       .ledger-intro-icon {
         margin-left: auto;
@@ -69,12 +70,11 @@
 
     .ledger-intro-issues {
       font-size: 16px;
-      margin: auto auto 0;
+      margin: 40px auto 0;
       text-align: center;
       color: #a09a93;
       position: relative;
       padding-bottom: 4px;
-      padding-top: 40px;
 
       &:after {
         bottom: 0;

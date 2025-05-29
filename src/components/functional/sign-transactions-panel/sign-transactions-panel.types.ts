@@ -84,3 +84,20 @@ export enum SignEventsEnum {
   SET_PPU = 'SET_PPU_SIGN_TRANSACTIONS',
   CLOSE = 'CLOSE_SIGN_TRANSACTIONS',
 }
+
+export enum TransactionTabsEnum {
+  overview = 'overview',
+  advanced = 'advanced',
+}
+
+export interface IOverviewProps {
+  identifier: string;
+  usdValue: string;
+  amount: string;
+  tokenIconUrl: string;
+  interactor: string;
+  interactorIconUrl: string;
+  action: string;
+  networkFee: string;
+  isApp: boolean;
+}

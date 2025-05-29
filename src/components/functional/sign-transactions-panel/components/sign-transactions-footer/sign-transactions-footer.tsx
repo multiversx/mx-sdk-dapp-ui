@@ -29,9 +29,13 @@ export class SignTransactionsFooter {
         <div class="sign-transactions-footer-buttons">
           <div class="sign-transactions-footer-button-wrapper cancel">
             <button
-              class={{ 'sign-transactions-footer-button': true, 'cancel': !currentIndexCannotBeSignedYet, 'highlighted': currentIndexCannotBeSignedYet }}
               data-testid={isFirstTransaction ? DataTestIdsEnum.signCancelBtn : DataTestIdsEnum.signBackBtn}
               onClick={isFirstTransaction ? onCancel : onBack}
+              class={{
+                'sign-transactions-footer-button': true,
+                'cancel': !currentIndexCannotBeSignedYet,
+                'highlighted': currentIndexCannotBeSignedYet,
+              }}
             >
               {isFirstTransaction ? 'Cancel' : 'Back'}
             </button>
@@ -39,8 +43,20 @@ export class SignTransactionsFooter {
 
           <div class="sign-transactions-footer-button-wrapper confirm">
             {currentIndexCannotBeSignedYet && (
-              <div class="sign-transactions-footer-button-tooltip-wrapper" onClick={(event: MouseEvent) => event.stopPropagation()}>
-                <mvx-tooltip trigger={<div class={{ 'sign-transactions-footer-button-tooltip': true, [signTransactionsFooterClasses.buttonTooltip]: true }} />}>
+              <div
+                class="sign-transactions-footer-button-tooltip-wrapper"
+                onClick={(event: MouseEvent) => event.stopPropagation()}
+              >
+                <mvx-tooltip
+                  trigger={
+                    <div
+                      class={{
+                        'sign-transactions-footer-button-tooltip': true,
+                        [signTransactionsFooterClasses.buttonTooltip]: true,
+                      }}
+                    />
+                  }
+                >
                   {needsSigning ? (
                     <Fragment>
                       You cannot sign this transaction yet, <br /> please go back and sign consecutively.
@@ -58,7 +74,11 @@ export class SignTransactionsFooter {
             <button
               data-testid={DataTestIdsEnum.signNextTransactionBtn}
               onClick={showForwardAction ? onConfirm : onNext}
-              class={{ 'sign-transactions-footer-button': true, 'highlighted': true, 'disabled': currentIndexCannotBeSignedYet }}
+              class={{
+                'sign-transactions-footer-button': true,
+                'highlighted': true,
+                'disabled': currentIndexCannotBeSignedYet,
+              }}
             >
               {showForwardAction ? (
                 <span class="sign-transactions-footer-button-label">{needsSigning ? 'Sign' : 'Confirm'}</span>
@@ -67,7 +87,9 @@ export class SignTransactionsFooter {
               )}
 
               {showForwardAction ? (
-                <span class={{ 'sign-transactions-footer-button-icon': true, 'lighter': currentIndexCannotBeSignedYet }}>
+                <span
+                  class={{ 'sign-transactions-footer-button-icon': true, 'lighter': currentIndexCannotBeSignedYet }}
+                >
                   {needsSigning ? <mvx-pencil-icon /> : <mvx-check-icon />}
                 </span>
               ) : (
@@ -90,8 +112,17 @@ export class SignTransactionsFooter {
           )}
 
           {!username && address && <mvx-trim-text text={address} class="sign-transactions-footer-identity-address" />}
-          <mvx-copy-button text={username ?? address} class="sign-transactions-footer-identity-copy" iconClass="sign-transactions-footer-identity-copy-icon" />
-          <mvx-explorer-link link={explorerLink} class="sign-transactions-footer-identity-explorer" iconClass="sign-transactions-footer-identity-explorer-icon" />
+
+          <mvx-copy-button
+            text={username ?? address}
+            class="sign-transactions-footer-identity-copy"
+            iconClass="sign-transactions-footer-identity-copy-icon"
+          />
+          <mvx-explorer-link
+            link={explorerLink}
+            class="sign-transactions-footer-identity-explorer"
+            iconClass="sign-transactions-footer-identity-explorer-icon"
+          />
         </div>
       </div>
     );
