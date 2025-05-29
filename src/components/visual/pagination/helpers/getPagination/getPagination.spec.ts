@@ -1,6 +1,6 @@
 import { ELLIPSIS } from 'constants/htmlStrings';
 
-import { getPagination } from '../getPagination';
+import { getPagination } from '.';
 
 describe('Pagination control function.', () => {
   const stringifyPaginationItems = <PaginationItemType>(paginateItems: PaginationItemType[]) => paginateItems.map(paginationItem => String(paginationItem));

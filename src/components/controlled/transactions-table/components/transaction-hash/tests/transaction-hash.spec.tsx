@@ -4,10 +4,10 @@ import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-import type { ITransactionAccount, ITransactionsTableRow } from '../../../transactions-table.type';
+import type { TransactionAccountType, TransactionRowType } from '../../../transactions-table.type';
 import { TransactionHash } from '../transaction-hash';
 
-const account: ITransactionAccount = {
+const account: TransactionAccountType = {
   address: 'erd...',
   name: 'test',
   description: 'test',
@@ -21,7 +21,7 @@ const account: ITransactionAccount = {
 
 describe('TransactionHash', () => {
   it('renders with transaction data', async () => {
-    const transaction: ITransactionsTableRow = {
+    const transaction: TransactionRowType = {
       age: {
         timeAgo: '1h',
         tooltip: '1 hour ago',
@@ -59,7 +59,7 @@ describe('TransactionHash', () => {
   });
 
   it('updates when transaction prop changes', async () => {
-    const initialTransactionData: ITransactionsTableRow = {
+    const initialTransactionData: TransactionRowType = {
       age: {
         timeAgo: '1h',
         tooltip: '1 hour ago',
@@ -95,7 +95,7 @@ describe('TransactionHash', () => {
       </mvx-transaction-hash>
     `);
 
-    const updatedTransactionData: ITransactionsTableRow = {
+    const updatedTransactionData: TransactionRowType = {
       age: {
         timeAgo: '2h',
         tooltip: '2 hours ago',

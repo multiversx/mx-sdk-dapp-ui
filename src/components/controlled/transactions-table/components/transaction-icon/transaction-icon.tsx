@@ -2,14 +2,14 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 
-import type { ITransactionIconInfo } from '../../transactions-table.type';
+import type { TransactionIconInfoType } from '../../transactions-table.type';
 
 @Component({
   tag: 'mvx-transaction-icon',
 })
 export class TransactionIcon {
   @Prop() class?: string;
-  @Prop() iconInfo: ITransactionIconInfo;
+  @Prop() iconInfo: TransactionIconInfoType;
 
   render() {
     if (!this.iconInfo) {

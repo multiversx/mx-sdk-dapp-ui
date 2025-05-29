@@ -2,11 +2,11 @@ import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-import type { ITransactionsTableRow } from '../../../transactions-table.type';
+import type { TransactionRowType } from '../../../transactions-table.type';
 import { TransactionShards } from '../transaction-shards';
 
 describe('TransactionShards', () => {
-  const createMockTransaction = (senderShard: string, receiverShard: string): ITransactionsTableRow => ({
+  const createMockTransaction = (senderShard: string, receiverShard: string): TransactionRowType => ({
     age: { timeAgo: '1 min ago', tooltip: '1 minute ago' },
     method: { name: 'transfer' },
     iconInfo: { tooltip: 'Transfer' },

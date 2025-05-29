@@ -3,10 +3,10 @@ import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
 import { TransactionsTable } from '../transactions-table';
-import type { ITransactionsTableRow } from '../transactions-table.type';
+import type { TransactionRowType } from '../transactions-table.type';
 
 describe('TransactionsTable', () => {
-  const mockTransactions: ITransactionsTableRow[] = [
+  const mockTransactions: TransactionRowType[] = [
     {
       age: { timeAgo: '5 minutes ago', tooltip: 'Feb 7, 2025, 4:55 PM' },
       direction: 'in',
@@ -110,7 +110,9 @@ describe('TransactionsTable', () => {
   it('applies custom class', async () => {
     const page = await newSpecPage({
       components: [TransactionsTable],
-      template: () => <mvx-transactions-table class="custom-class" transactions={mockTransactions}></mvx-transactions-table>,
+      template: () => (
+        <mvx-transactions-table class="custom-class" transactions={mockTransactions}></mvx-transactions-table>
+      ),
     });
 
     expect(page.root.querySelector('table').classList.contains('custom-class')).toBeTruthy();
@@ -136,7 +138,9 @@ describe('TransactionsTable', () => {
 
       // Check some specific values
       expect(row.querySelector('mvx-transaction-age').getAttribute('age')).toBe(mockTransactions[index].age.timeAgo);
-      expect(row.querySelector('mvx-transaction-method').getAttribute('method')).toBe(mockTransactions[index].method.name);
+      expect(row.querySelector('mvx-transaction-method').getAttribute('method')).toBe(
+        mockTransactions[index].method.name,
+      );
     });
   });
 });

@@ -2,7 +2,7 @@ import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-import type { ITransactionsTableRow } from '../../transactions-table.type';
+import type { TransactionRowType } from '../../transactions-table.type';
 
 @Component({
   tag: 'mvx-transaction-hash',
@@ -10,7 +10,7 @@ import type { ITransactionsTableRow } from '../../transactions-table.type';
 })
 export class TransactionHash {
   @Prop() class?: string;
-  @Prop() transaction: ITransactionsTableRow;
+  @Prop() transaction: TransactionRowType;
 
   render() {
     if (!this.transaction) {
@@ -20,7 +20,11 @@ export class TransactionHash {
     return (
       <div class={classNames(this.class, 'transaction-hash')}>
         <mvx-transaction-icon iconInfo={this.transaction.iconInfo}></mvx-transaction-icon>
-        <mvx-explorer-link dataTestId={DataTestIdsEnum.transactionLink} link={this.transaction.link} text={this.transaction.txHash}></mvx-explorer-link>
+        <mvx-explorer-link
+          dataTestId={DataTestIdsEnum.transactionLink}
+          link={this.transaction.link}
+          text={this.transaction.txHash}
+        ></mvx-explorer-link>
       </div>
     );
   }
