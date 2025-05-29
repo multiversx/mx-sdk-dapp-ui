@@ -1,5 +1,3 @@
-import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
-
 export type TransactionRowType = {
   age: TransactionAgeType;
   direction?: string;
@@ -18,7 +16,7 @@ type TransactionAgeType = {
 };
 
 export type TransactionIconInfoType = {
-  icon?: IconDefinition;
+  icon?: string;
   tooltip: string;
 };
 
