@@ -1,9 +1,10 @@
 import { ELLIPSIS } from 'constants/htmlStrings';
 
-import { getPagination } from '.';
+import { getPagination } from '../getPagination/getPagination';
 
 describe('Pagination control function.', () => {
-  const stringifyPaginationItems = <PaginationItemType>(paginateItems: PaginationItemType[]) => paginateItems.map(paginationItem => String(paginationItem));
+  const stringifyPaginationItems = <PaginationItemType>(paginateItems: PaginationItemType[]) =>
+    paginateItems.map(paginationItem => String(paginationItem));
 
   test('Watching page 1 of 2.', () => {
     const expectedResult = stringifyPaginationItems([1, 2]);
