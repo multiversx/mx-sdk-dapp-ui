@@ -8,4 +8,4 @@
  * to consume components of this package as outlined in the `README.md`.
  */
 
-export type * from './components.js';
+export type * from './components.d.ts';
