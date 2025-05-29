@@ -1,0 +1,56 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Satoshi', sans-serif;
+  width: 100%;
+
+  .sign-transactions-advanced-data {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+
+    .sign-transactions-advanced-data-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+
+      .sign-transactions-advanced-data-label {
+        color: #b6b3af;
+        margin-bottom: auto;
+        font-size: 16px;
+        text-align: right;
+      }
+
+      .sign-transactions-advanced-data-tooltip {
+        color: #ffffff;
+        text-transform: capitalize;
+        font-size: 16px;
+      }
+    }
+
+    .sign-transactions-advanced-data-right {
+      flex: 1;
+
+      .sign-transactions-advanced-data-wrapper {
+        height: 120px;
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px solid #262626;
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        word-break: break-all;
+        font-size: 16px;
+
+        .sign-transactions-advanced-data-text {
+          color: #b6b3af;
+        }
+
+        .sign-transactions-advanced-data-highlight {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
