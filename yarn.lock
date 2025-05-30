@@ -3765,7 +3765,7 @@ postcss-colormin@^7.0.3:
     colord "^2.9.3"
     postcss-value-parser "^4.2.0"
 
-"postcss-combine-duplicated-selectors@github:poimen/postcss-combine-duplicated-selectors#duplicated-keyframes-fix":
+postcss-combine-duplicated-selectors@poimen/postcss-combine-duplicated-selectors#duplicated-keyframes-fix:
   version "10.0.3"
   resolved "https://codeload.github.com/poimen/postcss-combine-duplicated-selectors/tar.gz/bdf9223342b6b1da8a91d6727b6e4cf719f7def7"
   dependencies:
