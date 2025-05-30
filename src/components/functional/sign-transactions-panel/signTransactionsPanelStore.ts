@@ -7,7 +7,7 @@ interface ITransactionState extends ISignTransactionsPanelData {
   onBack: () => void;
   onNext: () => void;
   onConfirm: () => void;
-  onSetPpu: (ppu: number) => void;
+  setPpuOption: (ppu: number) => void;
 }
 
 const initialState: ITransactionState = {
@@ -33,7 +33,7 @@ const initialState: ITransactionState = {
   onBack: null,
   onNext: null,
   onConfirm: null,
-  onSetPpu: null,
+  setPpuOption: null,
 };
 
 const store = createStore<ITransactionState>({

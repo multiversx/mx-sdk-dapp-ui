@@ -51,7 +51,7 @@ export class SignTransactionsAdvanced {
     return this.getHighlight(this.data, this.highlight);
   }
 
-  get activeSpeed() {
+  get pricePerUnitOption() {
     const {
       commonData: { ppu, ppuOptions },
     } = state;
@@ -83,8 +83,8 @@ export class SignTransactionsAdvanced {
                 <button
                   key={ppuOption.label}
                   disabled={!needsSigning}
-                  class={`speed-option ${this.activeSpeed === ppuOption.value ? 'active' : ''}`}
-                  onClick={() => state.onSetPpu(ppuOption.value)}
+                  class={`speed-option ${this.pricePerUnitOption === ppuOption.value ? 'active' : ''}`}
+                  onClick={() => state.setPpuOption(ppuOption.value)}
                 >
                   <span class="speed-text">{ppuOption.label}</span>
                 </button>
