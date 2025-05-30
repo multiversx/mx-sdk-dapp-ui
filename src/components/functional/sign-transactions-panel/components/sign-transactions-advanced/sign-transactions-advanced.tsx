@@ -1,4 +1,3 @@
-import { DECIMALS, DIGITS, formatAmount } from '@multiversx/sdk-dapp-utils/out';
 import { Component, Fragment, h, Prop, State } from '@stencil/core';
 
 import { DecodeMethodEnum } from '../../sign-transactions-panel.types';
@@ -52,16 +51,6 @@ export class SignTransactionsAdvanced {
     return this.getHighlight(this.data, this.highlight);
   }
 
-  get gasPrice() {
-    const { commonData } = state;
-
-    if (!commonData.gasPrice) {
-      return '';
-    }
-
-    return formatAmount({ input: commonData.gasPrice, decimals: DECIMALS, addCommas: true, digits: DIGITS });
-  }
-
   get activeSpeed() {
     const {
       commonData: { ppu, ppuOptions },
@@ -78,7 +67,7 @@ export class SignTransactionsAdvanced {
   render() {
     const { beforeText, afterText, text } = this.computedDisplayData;
     const {
-      commonData: { needsSigning, ppuOptions, gasLimit },
+      commonData: { needsSigning, ppuOptions, gasLimit, gasPrice },
     } = state;
 
     return (
@@ -87,7 +76,7 @@ export class SignTransactionsAdvanced {
           <div class="gas-wrapper">
             <div class="gas-header">
               <span class="gas-price">Gas Price</span>
-              <span class="gas-price-value">{this.gasPrice} EGLD</span>
+              <span class="gas-price-value">{gasPrice} EGLD</span>
             </div>
             <div class="gas-speed-selector">
               {ppuOptions.map(ppuOption => (
