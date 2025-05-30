@@ -1,3 +1,4 @@
+import { DECIMALS, DIGITS, formatAmount } from '@multiversx/sdk-dapp-utils/out';
 import { Component, Fragment, h, Prop, State } from '@stencil/core';
 
 import { DecodeMethodEnum } from '../../sign-transactions-panel.types';
@@ -14,12 +15,7 @@ export class SignTransactionsAdvanced {
   @Prop() data: string;
   @Prop() highlight?: string;
 
-  @State() activeSpeed: string = 'Standard';
   @State() decodeMethod: DecodeMethodEnum = DecodeMethodEnum.raw;
-
-  setActiveSpeed(speed: string) {
-    this.activeSpeed = speed;
-  }
 
   setDecodeMethod(method: DecodeMethodEnum) {
     this.decodeMethod = method;
@@ -56,8 +52,34 @@ export class SignTransactionsAdvanced {
     return this.getHighlight(this.data, this.highlight);
   }
 
+  get gasPrice() {
+    const { commonData } = state;
+
+    if (!commonData.gasPrice) {
+      return '';
+    }
+
+    return formatAmount({ input: commonData.gasPrice, decimals: DECIMALS, addCommas: true, digits: DIGITS });
+  }
+
+  get activeSpeed() {
+    const {
+      commonData: { ppu, ppuOptions },
+    } = state;
+
+    if (ppuOptions.length === 0) {
+      return ppu;
+    }
+
+    const currentOption = ppuOptions.find(option => option.value === ppu);
+    return currentOption.value;
+  }
+
   render() {
     const { beforeText, afterText, text } = this.computedDisplayData;
+    const {
+      commonData: { needsSigning, ppuOptions, gasLimit },
+    } = state;
 
     return (
       <div class="advanced-details">
@@ -65,28 +87,32 @@ export class SignTransactionsAdvanced {
           <div class="gas-wrapper">
             <div class="gas-header">
               <span class="gas-price">Gas Price</span>
-              <span class="gas-price-value">0.000000003 EGLD</span>
+              <span class="gas-price-value">{this.gasPrice} EGLD</span>
             </div>
             <div class="gas-speed-selector">
-              <button class={`speed-option ${this.activeSpeed === 'Standard' ? 'active' : ''}`} onClick={() => this.setActiveSpeed('Standard')}>
-                <span class="speed-text">Standard</span>
-              </button>
-              <button class={`speed-option ${this.activeSpeed === 'Fast' ? 'active' : ''}`} onClick={() => this.setActiveSpeed('Fast')}>
-                <span class="speed-text">Fast</span>
-              </button>
-              <button class={`speed-option ${this.activeSpeed === 'Faster' ? 'active' : ''}`} onClick={() => this.setActiveSpeed('Faster')}>
-                <span class="speed-text">Faster</span>
-              </button>
+              {ppuOptions.map(ppuOption => (
+                <button
+                  key={ppuOption.label}
+                  disabled={!needsSigning}
+                  class={`speed-option ${this.activeSpeed === ppuOption.value ? 'active' : ''}`}
+                  onClick={() => state.onSetPpu(ppuOption.value)}
+                >
+                  <span class="speed-text">{ppuOption.label}</span>
+                </button>
+              ))}
             </div>
             <div class="gas-limit-row">
               <span class="gas-limit">Gas Limit</span>
-              <span class="gas-limit-value">6,000,000</span>
+              <span class="gas-limit-value">{gasLimit}</span>
             </div>
           </div>
         </div>
 
         <div class="data-section">
-          <select class="data-decode-method-select" onInput={(e: Event) => this.setDecodeMethod((e.target as HTMLSelectElement).value as DecodeMethodEnum)}>
+          <select
+            class="data-decode-method-select"
+            onInput={(e: Event) => this.setDecodeMethod((e.target as HTMLSelectElement).value as DecodeMethodEnum)}
+          >
             {DECODE_METHODS.map(method => (
               <option value={method} selected={this.decodeMethod === method}>
                 {method.toUpperCase()}

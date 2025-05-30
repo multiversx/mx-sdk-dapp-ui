@@ -46,9 +46,8 @@ const store = createStore<ITransactionState>({
 */
 const state = store.state;
 
-export const resetState = () => ({
-  ...state,
-  ...initialState,
-});
+export const resetState = () => {
+  Object.assign(state, initialState);
+};
 
 export default state;
