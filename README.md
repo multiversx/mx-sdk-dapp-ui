@@ -6,7 +6,7 @@ MultiversX Front-End Library for JavaScript and TypeScript (written in TypeScrip
 
 `sdk-dapp-ui` is a library that holds components to display user information from the MultiversX blockchain.
 
-Since the library is built using [Stencil](https://stenciljs.com/), it can be used in any front-end framework, such as React, Angular, or Vue, but also in back-end frameworks like Next.js.
+Since the library is built using [Stencil](https://stenciljs.com/), it can be used in any front-end framework, such as [React](https://github.com/multiversx/mx-template-dapp), Angular, or [Solid.js](https://github.com/multiversx/mx-solidjs-template-dapp), but also in back-end frameworks like [Next.js](https://github.com/multiversx/mx-template-dapp-nextjs).
 
 ## GitHub project
 The GitHub repository can be found here: [https://github.com/multiversx/mx-sdk-dapp-ui](https://github.com/multiversx/mx-sdk-dapp-ui)
