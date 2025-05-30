@@ -2,7 +2,7 @@ import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-import type { ITransactionsTableRow } from '../../transactions-table.type';
+import type { TransactionRowType } from '../../transactions-table.type';
 
 @Component({
   tag: 'mvx-transaction-shards',
@@ -10,12 +10,16 @@ import type { ITransactionsTableRow } from '../../transactions-table.type';
 })
 export class TransactionShards {
   @Prop() class?: string;
-  @Prop() transaction: ITransactionsTableRow;
+  @Prop() transaction: TransactionRowType;
 
   render() {
     return (
       <div class={classNames(this.class, 'transaction-shards')}>
-        <mvx-explorer-link link={this.transaction.sender.shardLink} class="transactions-table-body-cell-link" data-testid={DataTestIdsEnum.shardFromLink}>
+        <mvx-explorer-link
+          link={this.transaction.sender.shardLink}
+          class="transactions-table-body-cell-link"
+          data-testid={DataTestIdsEnum.shardFromLink}
+        >
           <span slot="content" data-testid={DataTestIdsEnum.senderShard}>
             {this.transaction.sender.shard}
           </span>
@@ -23,7 +27,11 @@ export class TransactionShards {
 
         <span class="transaction-shards-arrow">&#10132;</span>
 
-        <mvx-explorer-link class="transactions-table-body-cell-link" link={this.transaction.receiver.shardLink} data-testid={DataTestIdsEnum.shardToLink}>
+        <mvx-explorer-link
+          class="transactions-table-body-cell-link"
+          link={this.transaction.receiver.shardLink}
+          data-testid={DataTestIdsEnum.shardToLink}
+        >
           <span slot="content" data-testid={DataTestIdsEnum.receiverShard}>
             {this.transaction.receiver.shard}
           </span>

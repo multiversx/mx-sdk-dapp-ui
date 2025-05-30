@@ -1,33 +1,31 @@
-import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
-
-export interface ITransactionsTableRow {
-  age: ITransactionAge;
+export type TransactionRowType = {
+  age: TransactionAgeType;
   direction?: string;
-  method: ITransactionMethod;
-  iconInfo: ITransactionIconInfo;
+  method: TransactionMethodType;
+  iconInfo: TransactionIconInfoType;
   link: string;
-  receiver: ITransactionAccount;
-  sender: ITransactionAccount;
+  receiver: TransactionAccountType;
+  sender: TransactionAccountType;
   txHash: string;
-  value: ITransactionValue;
-}
+  value: TransactionValueType;
+};
 
-export interface ITransactionAge {
+type TransactionAgeType = {
   timeAgo: string;
   tooltip: string;
-}
+};
 
-export interface ITransactionIconInfo {
-  icon?: IconDefinition;
+export type TransactionIconInfoType = {
+  icon?: string;
   tooltip: string;
-}
+};
 
-export interface ITransactionMethod {
+type TransactionMethodType = {
   name: string;
   actionDescription?: string;
-}
+};
 
-export interface ITransactionAccount {
+export type TransactionAccountType = {
   address: string;
   description: string;
   isContract: boolean;
@@ -37,9 +35,9 @@ export interface ITransactionAccount {
   shard?: string;
   shardLink?: string;
   showLink: boolean;
-}
+};
 
-export interface ITransactionValue {
+export type TransactionValueType = {
   badge?: string;
   collection?: string;
   egldLabel: string;
@@ -52,4 +50,4 @@ export interface ITransactionValue {
   titleText?: string;
   valueDecimal: string;
   valueInteger: string;
-}
+};

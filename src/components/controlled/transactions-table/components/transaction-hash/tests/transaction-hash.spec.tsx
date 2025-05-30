@@ -4,10 +4,10 @@ import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-import type { ITransactionAccount, ITransactionsTableRow } from '../../../transactions-table.type';
+import type { TransactionAccountType, TransactionRowType } from '../../../transactions-table.type';
 import { TransactionHash } from '../transaction-hash';
 
-const account: ITransactionAccount = {
+const account: TransactionAccountType = {
   address: 'erd...',
   name: 'test',
   description: 'test',
@@ -21,13 +21,13 @@ const account: ITransactionAccount = {
 
 describe('TransactionHash', () => {
   it('renders with transaction data', async () => {
-    const transaction: ITransactionsTableRow = {
+    const transaction: TransactionRowType = {
       age: {
         timeAgo: '1h',
         tooltip: '1 hour ago',
       },
       direction: 'in',
-      iconInfo: { icon: faCircleInfo, tooltip: 'Test' },
+      iconInfo: { icon: faCircleInfo as unknown as string, tooltip: 'Test' },
       link: 'https://example.com/tx/123',
       method: {
         name: 'Smart Contract',
@@ -59,13 +59,13 @@ describe('TransactionHash', () => {
   });
 
   it('updates when transaction prop changes', async () => {
-    const initialTransactionData: ITransactionsTableRow = {
+    const initialTransactionData: TransactionRowType = {
       age: {
         timeAgo: '1h',
         tooltip: '1 hour ago',
       },
       direction: 'in',
-      iconInfo: { icon: faCircleInfo, tooltip: 'Initial' },
+      iconInfo: { icon: faCircleInfo as unknown as string, tooltip: 'Initial' },
       link: 'https://example.com/tx/initial',
       method: {
         name: 'Smart Contract',
@@ -95,13 +95,13 @@ describe('TransactionHash', () => {
       </mvx-transaction-hash>
     `);
 
-    const updatedTransactionData: ITransactionsTableRow = {
+    const updatedTransactionData: TransactionRowType = {
       age: {
         timeAgo: '2h',
         tooltip: '2 hours ago',
       },
       direction: 'out',
-      iconInfo: { icon: faCircleCheck, tooltip: 'Updated' },
+      iconInfo: { icon: faCircleCheck as unknown as string, tooltip: 'Updated' },
       link: 'https://example.com/tx/updated',
       method: {
         name: 'Transfer',
