@@ -2,7 +2,7 @@ import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 
 import { DataTestIdsEnum } from '../../../constants/dataTestIds.enum';
-import type { ITransactionsTableRow } from './transactions-table.type';
+import type { TransactionRowType } from './transactions-table.type';
 
 const COLUMNS = ['TxHash', 'Age', 'Shard', 'From', 'To', 'Method', 'Value'];
 
@@ -12,7 +12,7 @@ const COLUMNS = ['TxHash', 'Age', 'Shard', 'From', 'To', 'Method', 'Value'];
 })
 export class TransactionsTable {
   @Prop() class?: string;
-  @Prop() transactions: ITransactionsTableRow[];
+  @Prop() transactions: TransactionRowType[];
 
   render() {
     return (
@@ -33,7 +33,10 @@ export class TransactionsTable {
                 <mvx-transaction-hash transaction={transaction}></mvx-transaction-hash>
               </td>
               <td class="transactions-table-body-cell">
-                <mvx-transaction-age age={transaction.age.timeAgo} tooltip={transaction.age.tooltip}></mvx-transaction-age>
+                <mvx-transaction-age
+                  age={transaction.age.timeAgo}
+                  tooltip={transaction.age.tooltip}
+                ></mvx-transaction-age>
               </td>
               <td class="transactions-table-body-cell">
                 <mvx-transaction-shards transaction={transaction}></mvx-transaction-shards>
@@ -55,7 +58,10 @@ export class TransactionsTable {
                 ></mvx-transaction-account>
               </td>
               <td class="transactions-table-body-cell">
-                <mvx-transaction-method method={transaction.method.name} actionDescription={transaction.method.actionDescription}></mvx-transaction-method>
+                <mvx-transaction-method
+                  method={transaction.method.name}
+                  actionDescription={transaction.method.actionDescription}
+                ></mvx-transaction-method>
               </td>
               <td class="transactions-table-body-cell">
                 <mvx-transaction-value value={transaction.value}></mvx-transaction-value>

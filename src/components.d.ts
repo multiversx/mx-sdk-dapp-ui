@@ -10,26 +10,26 @@ import { CustomToastType, IComponentToast, ISimpleToast } from "./components/fun
 import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
 import { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
-import { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
+import { TransactionAccountType, TransactionIconInfoType, TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { IconSizeEnumType } from "./components/common/transaction-asset-icon/transaction-asset-icon.types";
 import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { LocalJSX as JSX } from "@stencil/core";
 import { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-import { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
+import { TransactionValueType } from "./components/controlled/transactions-table/transactions-table.type";
 import { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
 export { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
-export { ITransactionAccount, ITransactionIconInfo, ITransactionsTableRow } from "./components/controlled/transactions-table/transactions-table.type";
+export { TransactionAccountType, TransactionIconInfoType, TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { IconSizeEnumType } from "./components/common/transaction-asset-icon/transaction-asset-icon.types";
 export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { LocalJSX as JSX } from "@stencil/core";
 export { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-export { ITransactionValue } from "./components/controlled/transactions-table/transactions-table.type";
+export { TransactionValueType } from "./components/controlled/transactions-table/transactions-table.type";
 export { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
 export namespace Components {
     interface MvxAngleLeftIcon {
@@ -219,7 +219,7 @@ export namespace Components {
         "triggerOnClick"?: boolean;
     }
     interface MvxTransactionAccount {
-        "account": ITransactionAccount;
+        "account": TransactionAccountType;
         "class"?: string;
         "dataTestId"?: string;
         "scope": 'receiver' | 'sender';
@@ -247,11 +247,11 @@ export namespace Components {
     }
     interface MvxTransactionHash {
         "class"?: string;
-        "transaction": ITransactionsTableRow;
+        "transaction": TransactionRowType;
     }
     interface MvxTransactionIcon {
         "class"?: string;
-        "iconInfo": ITransactionIconInfo;
+        "iconInfo": TransactionIconInfoType;
     }
     interface MvxTransactionListItem {
         "transaction": ITransactionListItem1;
@@ -263,7 +263,7 @@ export namespace Components {
     }
     interface MvxTransactionShards {
         "class"?: string;
-        "transaction": ITransactionsTableRow;
+        "transaction": TransactionRowType;
     }
     interface MvxTransactionToast {
         "fullWidth"?: boolean;
@@ -299,11 +299,11 @@ export namespace Components {
     }
     interface MvxTransactionValue {
         "class"?: string;
-        "value": ITransactionValue;
+        "value": TransactionValueType;
     }
     interface MvxTransactionsTable {
         "class"?: string;
-        "transactions": ITransactionsTableRow[];
+        "transactions": TransactionRowType[];
     }
     interface MvxTriangularWarningIcon {
     }
@@ -1337,7 +1337,7 @@ declare namespace LocalJSX {
         "triggerOnClick"?: boolean;
     }
     interface MvxTransactionAccount {
-        "account"?: ITransactionAccount;
+        "account"?: TransactionAccountType;
         "class"?: string;
         "dataTestId"?: string;
         "scope"?: 'receiver' | 'sender';
@@ -1365,11 +1365,11 @@ declare namespace LocalJSX {
     }
     interface MvxTransactionHash {
         "class"?: string;
-        "transaction"?: ITransactionsTableRow;
+        "transaction"?: TransactionRowType;
     }
     interface MvxTransactionIcon {
         "class"?: string;
-        "iconInfo"?: ITransactionIconInfo;
+        "iconInfo"?: TransactionIconInfoType;
     }
     interface MvxTransactionListItem {
         "transaction"?: ITransactionListItem1;
@@ -1381,7 +1381,7 @@ declare namespace LocalJSX {
     }
     interface MvxTransactionShards {
         "class"?: string;
-        "transaction"?: ITransactionsTableRow;
+        "transaction"?: TransactionRowType;
     }
     interface MvxTransactionToast {
         "fullWidth"?: boolean;
@@ -1419,11 +1419,11 @@ declare namespace LocalJSX {
     }
     interface MvxTransactionValue {
         "class"?: string;
-        "value"?: ITransactionValue;
+        "value"?: TransactionValueType;
     }
     interface MvxTransactionsTable {
         "class"?: string;
-        "transactions"?: ITransactionsTableRow[];
+        "transactions"?: TransactionRowType[];
     }
     interface MvxTriangularWarningIcon {
     }

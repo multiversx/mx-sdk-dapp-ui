@@ -1,12 +1,12 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
-import type { ITransactionValue } from 'components/controlled/transactions-table/transactions-table.type';
+import type { TransactionValueType } from 'components/controlled/transactions-table/transactions-table.type';
 
 import { TransactionValue } from '../transaction-value';
 
 describe('TransactionValue', () => {
   it('renders with minimal props', async () => {
-    const value: ITransactionValue = {
+    const value: TransactionValueType = {
       egldLabel: '',
       link: '',
       linkText: '',
@@ -29,7 +29,7 @@ describe('TransactionValue', () => {
   });
 
   it('renders with badge', async () => {
-    const value: ITransactionValue = {
+    const value: TransactionValueType = {
       badge: 'NFT',
       egldLabel: '',
       link: '',
@@ -57,7 +57,7 @@ describe('TransactionValue', () => {
   });
 
   it('renders with formatted amount', async () => {
-    const value: ITransactionValue = {
+    const value: TransactionValueType = {
       showFormattedAmount: true,
       egldLabel: 'xEGLD',
       valueDecimal: '123',
@@ -83,7 +83,7 @@ describe('TransactionValue', () => {
   });
 
   it('renders with explorer link', async () => {
-    const value: ITransactionValue = {
+    const value: TransactionValueType = {
       egldLabel: '',
       link: 'https://example.com',
       linkText: 'Example Link',
@@ -112,7 +112,7 @@ describe('TransactionValue', () => {
   });
 
   it('renders with SVG icon', async () => {
-    const value: ITransactionValue = {
+    const value: TransactionValueType = {
       egldLabel: '',
       link: 'https://example.com',
       linkText: 'Example Link',
@@ -143,7 +143,7 @@ describe('TransactionValue', () => {
   });
 
   it('renders with truncated text', async () => {
-    const value: ITransactionValue = {
+    const value: TransactionValueType = {
       egldLabel: '',
       link: 'https://example.com',
       linkText: 'Example Link',
@@ -173,7 +173,7 @@ describe('TransactionValue', () => {
   });
 
   it('renders with titleText', async () => {
-    const value: ITransactionValue = {
+    const value: TransactionValueType = {
       egldLabel: '',
       link: 'https://example.com',
       linkText: 'Example Link',
