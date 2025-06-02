@@ -1,111 +1,59 @@
 @import '../../../global/variables.css';
 
 .feed-content {
+  @apply mvx:h-full mvx:flex mvx:flex-col mvx:relative mvx:gap-5 mvx:overflow-x-hidden mvx:overflow-y-scroll;
   font-family: 'Satoshi', sans-serif;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  gap: 20px;
-  overflow-x: hidden;
-  overflow-y: scroll;
 
   .transaction-toast-content-wrapper {
-    width: 100%;
+    @apply mvx:w-full;
     background: var(--mx-tx-bg-transparent);
     border-color: var(--mx-tx-bg-transparent);
   }
 }
 
 .notifications-info {
-  display: flex;
-  align-items: start;
-  gap: 10px;
-
+  @apply mvx:flex mvx:items-start mvx:gap-2.5 mvx:text-xs mvx:font-normal mvx:leading-4;
   color: var(--mx-warning-text);
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16.8px;
 
   .info-icon {
+    @apply mvx:text-center mvx:text-base mvx:font-normal mvx:leading-none mvx:w-5 mvx:h-5;
     color: var(--mx-warning-text) !important;
-    text-align: center;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    width: 18.8px;
-    height: 18.8px;
   }
 }
 
 .notifications-container {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  @apply mvx:flex mvx:flex-col mvx:gap-3;
 
   .processing-status {
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22.4px;
-    letter-spacing: -0.16px;
+    @apply mvx:text-base mvx:font-normal mvx:leading-6 mvx:tracking-tight;
     color: var(--mx-body-label-color);
   }
 }
 
 .activity-section {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  @apply mvx:flex mvx:flex-col mvx:gap-3;
 }
 
 .activity-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding-top: 12px;
+  @apply mvx:flex mvx:items-center mvx:justify-between mvx:gap-2.5 mvx:pt-3;
 
   .activity-title {
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 22.4px;
-    letter-spacing: -0.16px;
-    margin: 0;
+    @apply mvx:text-base mvx:font-normal mvx:m-0 mvx:leading-6 mvx:tracking-tight;
     color: var(--mx-body-label-color);
   }
 
   .clear-button {
-    color: #fff;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 16.8px;
-    text-decoration-line: underline;
-    text-decoration-style: solid;
+    @apply mvx:text-white mvx:text-xs mvx:font-normal mvx:underline mvx:cursor-pointer mvx:leading-4;
     text-decoration-skip-ink: none;
-    text-decoration-thickness: auto;
-    text-underline-offset: auto;
     text-underline-position: from-font;
-    cursor: pointer;
   }
 }
 
 .activity-list {
-  flex: 1;
-  overflow-y: auto;
-  overflow-x: hidden;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  @apply mvx:flex mvx:flex-col mvx:gap-1 mvx:flex-1 mvx:overflow-y-auto mvx:overflow-x-hidden mvx:min-h-0;
 
   .no-activity {
-    padding: 16px;
-    text-align: center;
+    @apply mvx:p-4 mvx:text-center;
     color: #666666;
   }
 
@@ -125,8 +73,6 @@
 
   // Ensure children don't cause horizontal scroll
   > * {
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
+    @apply mvx:w-full mvx:max-w-full mvx:box-border;
   }
 }
