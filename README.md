@@ -6,7 +6,7 @@ MultiversX Front-End Library for JavaScript and TypeScript (written in TypeScrip
 
 `sdk-dapp-ui` is a library that holds components to display user information from the MultiversX blockchain.
 
-Since the library is built using [Stencil](https://stenciljs.com/), it can be used in any front-end framework, such as React, Angular, or Vue, but also in back-end frameworks like Next.js.
+Since the library is built using [Stencil](https://stenciljs.com/), it can be used in any front-end framework, such as [React](https://github.com/multiversx/mx-template-dapp), Angular, or [Solid.js](https://github.com/multiversx/mx-solidjs-template-dapp), but also in back-end frameworks like [Next.js](https://github.com/multiversx/mx-template-dapp-nextjs).
 
 ## GitHub project
 The GitHub repository can be found here: [https://github.com/multiversx/mx-sdk-dapp-ui](https://github.com/multiversx/mx-sdk-dapp-ui)
@@ -41,6 +41,17 @@ yarn add @multiversx/sdk-dapp-ui
 `sdk-dapp-ui` library is primarily designed to work with [@multiversx/sdk-dapp](https://www.npmjs.com/package/@multiversx/sdk-dapp), since components are designed to display data and emit user events, but do not hold any business logic.
 
 The library is divided into three main categories of components:
+
+1. The ones that only display data (visual)
+2. The ones that display data provided by a controller (controlled)
+3. The ones that are designed for user interaction (functional)
+
+### 1. Visual components
+
+Te full list of visual components is:
+
+
+The basic usage of the component would be importing the component and its corresponding interface and creating a wrapper for it in your application.
 
 ### 1. Visual Components
 Visual components are the most basic building blocks that handle pure presentation. They are controlled through props and don't contain any business logic. These components focus on consistent styling and user interface elements.
@@ -116,7 +127,6 @@ export const ExplorerLink = ({
 
 ### Controlled Component Example
 ```tsx
-import { createEffect, createMemo } from 'solid-js';
 import {
   TransactionsTableController,
   networkSelector,
