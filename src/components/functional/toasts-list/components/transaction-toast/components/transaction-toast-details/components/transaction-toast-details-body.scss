@@ -5,6 +5,16 @@
   gap: 12px;
   align-self: stretch;
   width: 364px;
+
+  &:hover {
+    .transaction-details-list-item-hash-value {
+      color: var(--mx-tx-text-primary);
+    }
+
+    .transaction-details-list-item-explorer-link-icon {
+      visibility: visible;
+    }
+  }
 }
 
 .transaction-details-list-item-icon {
@@ -14,40 +24,44 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  svg,
+  .svg-inline--fa {
+    width: 12px;
+    height: 12px;
+  }
 }
 
-.transaction-details-list-item-icon svg,
-.transaction-details-list-item-icon .svg-inline--fa {
-  width: 12px;
-  height: 12px;
-}
 
 .transaction-details-list-item-icon-success {
   background-color: #2B6C39;
+  
+  svg,
+  .svg-inline--fa {
+    color: #6AD788 !important;
+  }
 }
 
-.transaction-details-list-item-icon-success svg,
-.transaction-details-list-item-icon-success .svg-inline--fa {
-  color: #6AD788 !important;
-}
 
 .transaction-details-list-item-icon-pending {
   background-color: #453412;
+
+  svg,
+  .svg-inline--fa {
+    color: #FACC15 !important;
+  }
 }
 
-.transaction-details-list-item-icon-pending svg,
-.transaction-details-list-item-icon-pending .svg-inline--fa {
-  color: #FACC15 !important;
-}
 
 .transaction-details-list-item-icon-fail {
   background-color: var(--mx-toast-error-bg);
+
+  svg,
+  .svg-inline--fa {
+    color: var(--mx-toast-error-icon) !important;
+  }
 }
 
-.transaction-details-list-item-icon-fail svg,
-.transaction-details-list-item-icon-fail .svg-inline--fa {
-  color: var(--mx-toast-error-icon) !important;
-}
 
 .transaction-details-list-item-hash-index {
   color: var(--mx-tx-text-primary);
@@ -65,17 +79,15 @@
   line-height: 16.8px;
   max-width: 220px;
   width: 100%;
-  margin-top:4px;
+  margin-top: 4px;
 }
 
-.transaction-details-list-item:hover .transaction-details-list-item-hash-value {
-  color: var(--mx-tx-text-primary);
+.transaction-details-list-item-copy-button-icon {
+  .svg-inline--fa {
+    color: var(--mx-tx-text-primary);
+    width: 12px;
+    height: 12px;
 }
-
-.transaction-details-list-item-copy-button-icon .svg-inline--fa {
-  color: var(--mx-tx-text-primary);
-  width: 12px;
-  height: 12px;
 }
 
 .transaction-details-list-item-explorer-link-icon {
@@ -89,15 +101,11 @@
   margin-left: auto;
   margin-right: 12px;
   visibility: hidden;
-}
 
-.transaction-details-list-item:hover .transaction-details-list-item-explorer-link-icon {
-  visibility: visible;
-}
-
-.transaction-details-list-item-explorer-link-icon .svg-inline--fa {
-  color: var(--mx-tx-text-primary);
-  text-align: center;
-  width: 14px;
-  height: 14px;
+  .svg-inline--fa {
+    color: var(--mx-tx-text-primary);
+    text-align: center;
+    width: 14px;
+    height: 14px;
+  }
 }

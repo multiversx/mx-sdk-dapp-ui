@@ -45,10 +45,16 @@ export class TransactionListItem {
               )}
             </div>
             <div class="transaction-details-info">
-              {this.transaction.directionLabel && <span class="transaction-details-info-text">{this.transaction.directionLabel}</span>}
+              {this.transaction.directionLabel && (
+                <span class="transaction-details-info-text">{this.transaction.directionLabel}</span>
+              )}
 
               <div class="transaction-details-info-icon">
-                {this.transaction.interactorAsset ? <img src={this.transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <mvx-default-transaction-icon-small />}
+                {this.transaction.interactorAsset ? (
+                  <img src={this.transaction.interactorAsset} alt="Service icon" loading="lazy" />
+                ) : (
+                  <mvx-default-transaction-icon-small />
+                )}
               </div>
 
               <mvx-trim-text text={this.transaction.interactor} class="transaction-details-info-text" />

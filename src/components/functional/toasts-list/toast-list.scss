@@ -10,15 +10,16 @@
   gap: 8px;
   max-width: 100%;
   pointer-events: none;
+
+  > * {
+   pointer-events: auto;
+  }
 }
 
 .toast-list-bottom {
   bottom: 64px;
 }
 
-.toast-list > * {
-  pointer-events: auto;
-}
 
 .view-all-button-container {
   position: absolute;
@@ -41,8 +42,9 @@
   line-height: 140%;
   cursor: pointer;
   transition: opacity 0.2s ease;
+  
+  &:hover {
+    opacity: 0.9;
+  }
 }
 
-.view-all-button:hover {
-  opacity: 0.9;
-}

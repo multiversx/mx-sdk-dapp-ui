@@ -9,7 +9,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IToastDataState } from '../../transaction-toast.type';
 @Component({
   tag: 'mvx-transaction-toast-content',
-  styleUrl: 'transaction-toast-content.css',
+  styleUrl: 'transaction-toast-content.scss',
 })
 export class TransactionToastContent {
   @Prop() transactions: ITransactionListItem[];
@@ -28,7 +28,8 @@ export class TransactionToastContent {
     const showAmount = this.transactions.length === 1 && transaction?.amount;
     const showExplorerLinkButton = transaction?.link && this.transactions.length === 1;
     const amount = transaction && getAmountParts(transaction.amount);
-    const showPrimaryIcon = transaction.asset == null || transaction.asset.imageUrl || transaction.asset.icon || transaction.asset.text;
+    const showPrimaryIcon =
+      transaction.asset == null || transaction.asset.imageUrl || transaction.asset.icon || transaction.asset.text;
 
     return (
       <div
@@ -40,7 +41,10 @@ export class TransactionToastContent {
       >
         <div class="transaction-toast-content">
           {!showPrimaryIcon && this.toastDataState.icon ? (
-            <fa-icon icon={this.toastDataState.icon} class={`transaction-toast-icon ${this.toastDataState.iconClassName ?? ''}`}></fa-icon>
+            <fa-icon
+              icon={this.toastDataState.icon}
+              class={`transaction-toast-icon ${this.toastDataState.iconClassName ?? ''}`}
+            ></fa-icon>
           ) : (
             <div class="transaction-toast-icon">
               <mvx-transaction-asset-icon transaction={transaction} iconSize={IconSizeEnumType.small} />
@@ -70,21 +74,40 @@ export class TransactionToastContent {
             </div>
             {transaction && (
               <div class="transaction-toast-details-info">
-                {transaction.directionLabel && <span class="transaction-toast-details-info-text">{transaction.directionLabel}</span>}
+                {transaction.directionLabel && (
+                  <span class="transaction-toast-details-info-text">{transaction.directionLabel}</span>
+                )}
                 <div class="transaction-toast-details-info-icon">
-                  {transaction.interactorAsset ? <img src={transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <mvx-default-transaction-icon-small />}
+                  {transaction.interactorAsset ? (
+                    <img src={transaction.interactorAsset} alt="Service icon" loading="lazy" />
+                  ) : (
+                    <mvx-default-transaction-icon-small />
+                  )}
                 </div>
                 <mvx-trim-text text={transaction.interactor} class="transaction-toast-details-info-text" />
               </div>
             )}
           </div>
 
-          {hasCloseButton && <fa-icon icon={faTimes} class="transaction-toast-close-icon" onClick={this.handleDeleteToast.bind(this)}></fa-icon>}
+          {hasCloseButton && (
+            <fa-icon
+              icon={faTimes}
+              class="transaction-toast-close-icon"
+              onClick={this.handleDeleteToast.bind(this)}
+            ></fa-icon>
+          )}
 
-          {!hasCloseButton && showExplorerLinkButton && <mvx-explorer-link link={transaction.link} class="transaction-toast-action-button"></mvx-explorer-link>}
+          {!hasCloseButton && showExplorerLinkButton && (
+            <mvx-explorer-link link={transaction.link} class="transaction-toast-action-button"></mvx-explorer-link>
+          )}
         </div>
 
-        {!showExplorerLinkButton && <mvx-transaction-toast-details transactions={this.transactions} processedTransactionsStatus={this.processedTransactionsStatus} />}
+        {!showExplorerLinkButton && (
+          <mvx-transaction-toast-details
+            transactions={this.transactions}
+            processedTransactionsStatus={this.processedTransactionsStatus}
+          />
+        )}
       </div>
     );
   }

@@ -16,10 +16,15 @@
   .svg-inline--fa {
     color: var(--mx-tx-text-primary);
   }
-}
 
-.transaction-toast-content-wrapper.full-width {
-  max-width: 100%;
+
+  &.full-width {
+    max-width: 100%;
+  
+    .transaction-toast-title {
+      max-width: 100%;
+    }
+  }
 }
 
 .transaction-toast-content {
@@ -71,11 +76,6 @@
   max-width: 160px;
 }
 
-.transaction-toast-content-wrapper.full-width .transaction-toast-title {
-  max-width: 100%;
-}
-
-
 .transaction-toast-amount {
   color: var(--mx-tx-text-primary);
   display: flex;
@@ -84,15 +84,15 @@
   font-weight: 500;
   line-height: 16px;
   letter-spacing: -0.14px;
-}
 
-.transaction-toast-amount .transaction-amount-decimal {
-  opacity: 0.7;
-}
+  .transaction-amount-decimal {
+    opacity: 0.7;
+  }
 
-.transaction-toast-amount .transaction-amount-label {
-  letter-spacing: -0.32px;
-  opacity: 0.7;
+  .transaction-amount-label {
+    letter-spacing: -0.32px;
+    opacity: 0.7;
+  }
 }
 
 .transaction-toast-details-info {
