@@ -41,15 +41,15 @@ yarn add @multiversx/sdk-dapp-ui
 
 `sdk-dapp-ui` library is primarily designed to work with [@multiversx/sdk-dapp](https://www.npmjs.com/package/@multiversx/sdk-dapp), since components are designed to display data and emit user events, but do not hold any business logic.
 
-The library is divided into three main categories:
 There are three types of components in the library: 
 1. The ones that only display data (visual) 
 2. The ones that display data provided by a controller (controlled)
 3. The ones that are designed for user interaction (functional). 
 
-Below we will detail these categories:
-
 ### 1. Visual components
+
+Te full list of visual components is:
+
 
 The basic usage of the component would be importing the component and its corresponding interface and creating a wrapper for it in your application.
 
