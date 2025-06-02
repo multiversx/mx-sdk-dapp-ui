@@ -29,7 +29,7 @@ export const config: Config = {
       tailwindCssPath: './src/global/tailwind.css',
     }),
   ],
-  sourceMap: true,
+  sourceMap: isDev,
   outputTargets: [
     reactOutputTarget({
       outDir: './dist/react',
