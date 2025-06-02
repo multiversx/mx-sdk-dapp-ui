@@ -10,17 +10,16 @@ export interface IDataHightlight {
   afterHighlight?: string;
 }
 
-const signTransactionsAdvancedDataClasses: Record<string, string> = {
-  tooltipTrigger: 'mvx:text-white mvx:capitalize',
-};
-
 @Component({
   tag: 'mvx-sign-transactions-advanced-data',
   styleUrl: 'sign-transactions-advanced-data.scss',
   shadow: true,
 })
 export class SignTransactionsAdvancedData {
+  private highlightElement: HTMLElement;
+
   @State() decodeMethod: DecodeMethodEnum = DecodeMethodEnum.raw;
+  @State() isDecodeTooltipOpen: boolean = false;
 
   @Prop() highlight?: string;
   @Prop() data: string;
@@ -45,40 +44,62 @@ export class SignTransactionsAdvancedData {
       : getProcessedHighlightedData({ data: displayValue, highlightedData: highlight });
   }
 
+  componentDidRender() {
+    const { beforeHighlight, afterHighlight } = this.computedDisplayData;
+
+    if ((beforeHighlight || afterHighlight) && this.highlightElement) {
+      this.highlightElement.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+    }
+  }
+
   render() {
     const { beforeHighlight, afterHighlight, highlight } = this.computedDisplayData;
 
     return (
       <div class="sign-transactions-advanced-data">
-        <div class="sign-transactions-advanced-data-left">
+        <div class="sign-transactions-advanced-data-top">
           <div class="sign-transactions-advanced-data-label">Data</div>
 
           <mvx-tooltip
+            onTriggerRender={(event: CustomEvent) => {
+              this.isDecodeTooltipOpen = event.detail;
+            }}
             trigger={
-              <div
-                class={{
-                  'sign-transactions-advanced-data-tooltip-trigger': true,
-                  [signTransactionsAdvancedDataClasses.tooltipTrigger]: true,
-                }}
-              >
-                Decimal
-              </div>
+              <mvx-sign-transactions-advanced-data-decode
+                isToggled={this.isDecodeTooltipOpen}
+                currentDecodeMethod={this.decodeMethod}
+              />
             }
           >
-            <div class={{ 'sign-transactions-advanced-data-tooltip': true }}>
-              {Object.values(DecodeMethodEnum).map(decodeMethod => (
-                <div class={{ 'sign-transactions-advanced-data-tooltip-option': true }}>{decodeMethod}</div>
+            <div
+              class="sign-transactions-advanced-data-decode-options"
+              onClick={(event: MouseEvent) => event.stopPropagation()}
+            >
+              {Object.values(DecodeMethodEnum).map((decodeMethod: DecodeMethodEnum) => (
+                <div
+                  onClick={() => this.setDecodeMethod(decodeMethod)}
+                  class={{
+                    'sign-transactions-advanced-data-decode-option': true,
+                    'active': decodeMethod === this.decodeMethod,
+                  }}
+                >
+                  {decodeMethod}
+                </div>
               ))}
             </div>
           </mvx-tooltip>
         </div>
 
-        <div class="sign-transactions-advanced-data-right">
+        <div class="sign-transactions-advanced-data-bottom">
           <div class="sign-transactions-advanced-data-wrapper">
             {beforeHighlight || afterHighlight ? (
               <Fragment>
                 {beforeHighlight && <div class="sign-transactions-advanced-data-text">{beforeHighlight}</div>}
-                <div class="sign-transactions-advanced-data-highlight">{highlight}</div>
+
+                <div class="sign-transactions-advanced-data-highlight bolded" ref={el => (this.highlightElement = el)}>
+                  {highlight}
+                </div>
+
                 {afterHighlight && <div class="sign-transactions-advanced-data-text">{afterHighlight}</div>}
               </Fragment>
             ) : (

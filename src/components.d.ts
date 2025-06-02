@@ -10,6 +10,7 @@ import { CustomToastType, IComponentToast, ISimpleToast } from "./components/fun
 import { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
 import { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
+import { DecodeMethodEnum } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 import { TransactionAccountType, TransactionIconInfoType, TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { IconSizeEnumType } from "./components/common/transaction-asset-icon/transaction-asset-icon.types";
@@ -23,6 +24,7 @@ export { CustomToastType, IComponentToast, ISimpleToast } from "./components/fun
 export { IAccountScreenData, IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
 export { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
+export { DecodeMethodEnum } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 export { TransactionAccountType, TransactionIconInfoType, TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { IconSizeEnumType } from "./components/common/transaction-asset-icon/transaction-asset-icon.types";
@@ -236,6 +238,16 @@ export namespace Components {
         "data": string;
         "highlight"?: string;
     }
+    interface MvxSignTransactionsAdvancedDataDecode {
+        /**
+          * @default DecodeMethodEnum.decimal
+         */
+        "currentDecodeMethod": DecodeMethodEnum;
+        /**
+          * @default false
+         */
+        "isToggled": boolean;
+    }
     interface MvxSignTransactionsFooter {
     }
     interface MvxSignTransactionsHeader {
@@ -263,6 +275,9 @@ export namespace Components {
     }
     interface MvxSimpleToast {
         "toast": ISimpleToast;
+    }
+    interface MvxSingleAngleDownIcon {
+        "class"?: string;
     }
     interface MvxSingleAngleLeftIcon {
         "class"?: string;
@@ -856,6 +871,12 @@ declare global {
         prototype: HTMLMvxSignTransactionsAdvancedDataElement;
         new (): HTMLMvxSignTransactionsAdvancedDataElement;
     };
+    interface HTMLMvxSignTransactionsAdvancedDataDecodeElement extends Components.MvxSignTransactionsAdvancedDataDecode, HTMLStencilElement {
+    }
+    var HTMLMvxSignTransactionsAdvancedDataDecodeElement: {
+        prototype: HTMLMvxSignTransactionsAdvancedDataDecodeElement;
+        new (): HTMLMvxSignTransactionsAdvancedDataDecodeElement;
+    };
     interface HTMLMvxSignTransactionsFooterElement extends Components.MvxSignTransactionsFooter, HTMLStencilElement {
     }
     var HTMLMvxSignTransactionsFooterElement: {
@@ -896,6 +917,12 @@ declare global {
     var HTMLMvxSimpleToastElement: {
         prototype: HTMLMvxSimpleToastElement;
         new (): HTMLMvxSimpleToastElement;
+    };
+    interface HTMLMvxSingleAngleDownIconElement extends Components.MvxSingleAngleDownIcon, HTMLStencilElement {
+    }
+    var HTMLMvxSingleAngleDownIconElement: {
+        prototype: HTMLMvxSingleAngleDownIconElement;
+        new (): HTMLMvxSingleAngleDownIconElement;
     };
     interface HTMLMvxSingleAngleLeftIconElement extends Components.MvxSingleAngleLeftIcon, HTMLStencilElement {
     }
@@ -1208,11 +1235,13 @@ declare global {
         "mvx-side-panel-header": HTMLMvxSidePanelHeaderElement;
         "mvx-sign-transactions-advanced": HTMLMvxSignTransactionsAdvancedElement;
         "mvx-sign-transactions-advanced-data": HTMLMvxSignTransactionsAdvancedDataElement;
+        "mvx-sign-transactions-advanced-data-decode": HTMLMvxSignTransactionsAdvancedDataDecodeElement;
         "mvx-sign-transactions-footer": HTMLMvxSignTransactionsFooterElement;
         "mvx-sign-transactions-header": HTMLMvxSignTransactionsHeaderElement;
         "mvx-sign-transactions-overview": HTMLMvxSignTransactionsOverviewElement;
         "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
         "mvx-simple-toast": HTMLMvxSimpleToastElement;
+        "mvx-single-angle-down-icon": HTMLMvxSingleAngleDownIconElement;
         "mvx-single-angle-left-icon": HTMLMvxSingleAngleLeftIconElement;
         "mvx-single-angle-right-icon": HTMLMvxSingleAngleRightIconElement;
         "mvx-spinner-icon": HTMLMvxSpinnerIconElement;
@@ -1465,6 +1494,16 @@ declare namespace LocalJSX {
         "data"?: string;
         "highlight"?: string;
     }
+    interface MvxSignTransactionsAdvancedDataDecode {
+        /**
+          * @default DecodeMethodEnum.decimal
+         */
+        "currentDecodeMethod"?: DecodeMethodEnum;
+        /**
+          * @default false
+         */
+        "isToggled"?: boolean;
+    }
     interface MvxSignTransactionsFooter {
     }
     interface MvxSignTransactionsHeader {
@@ -1491,6 +1530,9 @@ declare namespace LocalJSX {
     interface MvxSimpleToast {
         "onDeleteToast"?: (event: MvxSimpleToastCustomEvent<void>) => void;
         "toast"?: ISimpleToast;
+    }
+    interface MvxSingleAngleDownIcon {
+        "class"?: string;
     }
     interface MvxSingleAngleLeftIcon {
         "class"?: string;
@@ -1725,11 +1767,13 @@ declare namespace LocalJSX {
         "mvx-side-panel-header": MvxSidePanelHeader;
         "mvx-sign-transactions-advanced": MvxSignTransactionsAdvanced;
         "mvx-sign-transactions-advanced-data": MvxSignTransactionsAdvancedData;
+        "mvx-sign-transactions-advanced-data-decode": MvxSignTransactionsAdvancedDataDecode;
         "mvx-sign-transactions-footer": MvxSignTransactionsFooter;
         "mvx-sign-transactions-header": MvxSignTransactionsHeader;
         "mvx-sign-transactions-overview": MvxSignTransactionsOverview;
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
         "mvx-simple-toast": MvxSimpleToast;
+        "mvx-single-angle-down-icon": MvxSingleAngleDownIcon;
         "mvx-single-angle-left-icon": MvxSingleAngleLeftIcon;
         "mvx-single-angle-right-icon": MvxSingleAngleRightIcon;
         "mvx-spinner-icon": MvxSpinnerIcon;
@@ -1811,11 +1855,13 @@ declare module "@stencil/core" {
             "mvx-side-panel-header": LocalJSX.MvxSidePanelHeader & JSXBase.HTMLAttributes<HTMLMvxSidePanelHeaderElement>;
             "mvx-sign-transactions-advanced": LocalJSX.MvxSignTransactionsAdvanced & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsAdvancedElement>;
             "mvx-sign-transactions-advanced-data": LocalJSX.MvxSignTransactionsAdvancedData & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsAdvancedDataElement>;
+            "mvx-sign-transactions-advanced-data-decode": LocalJSX.MvxSignTransactionsAdvancedDataDecode & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsAdvancedDataDecodeElement>;
             "mvx-sign-transactions-footer": LocalJSX.MvxSignTransactionsFooter & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsFooterElement>;
             "mvx-sign-transactions-header": LocalJSX.MvxSignTransactionsHeader & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsHeaderElement>;
             "mvx-sign-transactions-overview": LocalJSX.MvxSignTransactionsOverview & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsOverviewElement>;
             "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;
             "mvx-simple-toast": LocalJSX.MvxSimpleToast & JSXBase.HTMLAttributes<HTMLMvxSimpleToastElement>;
+            "mvx-single-angle-down-icon": LocalJSX.MvxSingleAngleDownIcon & JSXBase.HTMLAttributes<HTMLMvxSingleAngleDownIconElement>;
             "mvx-single-angle-left-icon": LocalJSX.MvxSingleAngleLeftIcon & JSXBase.HTMLAttributes<HTMLMvxSingleAngleLeftIconElement>;
             "mvx-single-angle-right-icon": LocalJSX.MvxSingleAngleRightIcon & JSXBase.HTMLAttributes<HTMLMvxSingleAngleRightIconElement>;
             "mvx-spinner-icon": LocalJSX.MvxSpinnerIcon & JSXBase.HTMLAttributes<HTMLMvxSpinnerIconElement>;
