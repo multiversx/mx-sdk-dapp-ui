@@ -4,10 +4,10 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { ELLIPSIS } from 'constants/htmlStrings';
 
 @Component({
-  tag: 'mvx-trim-text',
-  styleUrl: 'trim-text.css',
+  tag: 'mvx-trim',
+  styleUrl: 'trim.css',
 })
-export class TrimText {
+export class Trim {
   @Element() el: HTMLElement;
 
   @Prop() text: string;
@@ -55,7 +55,11 @@ export class TrimText {
     const trimmedText = this.getTrimmedText();
 
     return (
-      <span ref={el => (this.trimRef = el)} class={classNames('trim', this.class, { overflow: this.overflow })} data-testid={this.dataTestId ?? DataTestIdsEnum.trim}>
+      <span
+        ref={el => (this.trimRef = el)}
+        class={classNames('trim', this.class, { overflow: this.overflow })}
+        data-testid={this.dataTestId ?? DataTestIdsEnum.trim}
+      >
         <span ref={el => (this.hiddenTextRef = el)} class="hidden-text-ref">
           {this.text}
         </span>

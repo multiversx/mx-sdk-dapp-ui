@@ -57,7 +57,7 @@ export class TransactionListItem {
                 )}
               </div>
 
-              <mvx-trim-text text={this.transaction.interactor} class="transaction-details-info-text" />
+              <mvx-trim text={this.transaction.interactor} class="transaction-details-info-text" />
             </div>
           </div>
         </div>
