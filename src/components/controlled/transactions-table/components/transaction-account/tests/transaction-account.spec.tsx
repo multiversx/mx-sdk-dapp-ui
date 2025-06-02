@@ -1,11 +1,11 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
-import type { ITransactionAccount } from '../../../transactions-table.type';
+import type { TransactionAccountType } from '../../../transactions-table.type';
 import { TransactionAccount } from '../transaction-account';
 
 describe('TransactionAccount Component', () => {
-  const baseAccount: ITransactionAccount = {
+  const baseAccount: TransactionAccountType = {
     address: '0x1234567890123456789012345678901234567890',
     name: 'John Doe',
     description: 'Test Account',
@@ -28,11 +28,17 @@ describe('TransactionAccount Component', () => {
   });
 
   it('should render locked account icon when showLockedAccounts is true and account is locked', async () => {
-    const lockedAccount: ITransactionAccount = { ...baseAccount, isTokenLocked: true };
+    const lockedAccount: TransactionAccountType = { ...baseAccount, isTokenLocked: true };
 
     const page = await newSpecPage({
       components: [TransactionAccount],
-      template: () => <mvx-transaction-account account={lockedAccount} showLockedAccounts={true} scope="receiver"></mvx-transaction-account>,
+      template: () => (
+        <mvx-transaction-account
+          account={lockedAccount}
+          showLockedAccounts={true}
+          scope="receiver"
+        ></mvx-transaction-account>
+      ),
     });
 
     const lockedIcon = page.root.querySelector('mvx-fa-icon');
@@ -40,7 +46,7 @@ describe('TransactionAccount Component', () => {
   });
 
   it('should render contract icon when account is a contract', async () => {
-    const contractAccount: ITransactionAccount = { ...baseAccount, isContract: true };
+    const contractAccount: TransactionAccountType = { ...baseAccount, isContract: true };
 
     const page = await newSpecPage({
       components: [TransactionAccount],
@@ -52,7 +58,7 @@ describe('TransactionAccount Component', () => {
   });
 
   it('should render explorer link when showLink is true', async () => {
-    const linkedAccount: ITransactionAccount = { ...baseAccount, showLink: true };
+    const linkedAccount: TransactionAccountType = { ...baseAccount, showLink: true };
 
     const page = await newSpecPage({
       components: [TransactionAccount],
@@ -68,7 +74,14 @@ describe('TransactionAccount Component', () => {
   it('should apply custom class and data-testid', async () => {
     const page = await newSpecPage({
       components: [TransactionAccount],
-      template: () => <mvx-transaction-account account={baseAccount} class="custom-class" dataTestId="test-id" scope="sender"></mvx-transaction-account>,
+      template: () => (
+        <mvx-transaction-account
+          account={baseAccount}
+          class="custom-class"
+          dataTestId="test-id"
+          scope="sender"
+        ></mvx-transaction-account>
+      ),
     });
 
     const div = page.root.querySelector('div');
