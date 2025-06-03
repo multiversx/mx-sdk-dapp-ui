@@ -138,7 +138,7 @@ export class LedgerAddresses {
                   #{this.processLedgerAddressIndex(accountDerivation)}
                 </div>
 
-                <mvx-trim-text text={accountDerivation.address} class="ledger-addresses-list-item-address" />
+                <mvx-trim text={accountDerivation.address} class="ledger-addresses-list-item-address" />
                 <div class="ledger-addresses-list-item-balance">{accountDerivation.usdValue}</div>
               </div>
             ))}

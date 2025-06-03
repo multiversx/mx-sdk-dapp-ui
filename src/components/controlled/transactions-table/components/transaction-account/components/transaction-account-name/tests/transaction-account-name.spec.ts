@@ -35,7 +35,7 @@ describe('transaction-account-name', () => {
       `,
     });
 
-    const trimElement = root?.querySelector('mvx-trim-text');
+    const trimElement = root?.querySelector('mvx-trim');
     expect(trimElement).not.toBeNull();
     expect(trimElement?.getAttribute('text')).toBe('erd1q...');
     expect(trimElement?.getAttribute('datatestid')).toBe('account-trim');
@@ -52,7 +52,7 @@ describe('transaction-account-name', () => {
       `,
     });
 
-    const trimElement = root?.querySelector('mvx-trim-text');
+    const trimElement = root?.querySelector('mvx-trim');
     expect(trimElement).not.toBeNull();
   });
 
