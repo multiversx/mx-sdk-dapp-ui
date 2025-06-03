@@ -84,7 +84,7 @@ export class TransactionToastContent {
                     <mvx-default-transaction-icon-small />
                   )}
                 </div>
-                <mvx-trim-text text={transaction.interactor} class="transaction-toast-details-info-text" />
+                <mvx-trim text={transaction.interactor} class="transaction-toast-details-info-text" />
               </div>
             )}
           </div>

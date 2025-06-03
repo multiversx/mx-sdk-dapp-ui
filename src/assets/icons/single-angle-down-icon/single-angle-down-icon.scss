@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  height: auto !important;
+  width: auto !important;
+  transform: none !important;
+  rotate: none !important;
+
+  .single-angle-down-icon {
+    width: 16px;
+    display: flex;
+    fill: #b6b3af;
+    height: calc(20px / 2);
+  }
+}

@@ -16,7 +16,7 @@ export class TransactionListItem {
     if (!this.transaction) {
       return null;
     }
-    const amount = this.transaction && getAmountParts(this.transaction.amount);
+    const amount = getAmountParts(this.transaction?.amount ?? '');
 
     return (
       <a class="transaction-link" href={this.transaction.link} target="_blank" rel="noreferrer">
@@ -57,7 +57,7 @@ export class TransactionListItem {
                 )}
               </div>
 
-              <mvx-trim-text text={this.transaction.interactor} class="transaction-details-info-text" />
+              <mvx-trim text={this.transaction.interactor} class="transaction-details-info-text" />
             </div>
           </div>
         </div>

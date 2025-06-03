@@ -6,7 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-
+- [Added "data" field decoding methods support](https://github.com/multiversx/mx-sdk-dapp-ui/pull/121)
+- [Updated README](https://github.com/multiversx/mx-sdk-dapp-ui/pull/120)
 - [Migrate styles from css to tailwind](https://github.com/multiversx/mx-sdk-dapp-ui/pull/119)
 - [Added dynamic gas](https://github.com/multiversx/mx-sdk-dapp-ui/pull/118)
 

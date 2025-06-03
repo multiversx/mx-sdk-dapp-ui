@@ -41,7 +41,7 @@ export class TransactionDetailsBody {
         )}
         <div class="transaction-details-list-item-hash-index">{this.index}</div>
         <div class="transaction-details-list-item-hash-value">
-          <mvx-trim-text text={this.hash} />
+          <mvx-trim text={this.hash} />
         </div>
         <div class="transaction-details-list-item-explorer-link-icon">
           <mvx-explorer-link link={this.link} />
