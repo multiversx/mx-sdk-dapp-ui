@@ -120,7 +120,7 @@ describe('transaction-list-item', () => {
       expect(interactorAsset.getAttribute('alt')).toBe('Service icon');
       expect(interactorAsset.getAttribute('loading')).toBe('lazy');
 
-      const interactor = page.root.querySelector('mvx-trim-text');
+      const interactor = page.root.querySelector('mvx-trim');
       expect(interactor.getAttribute('text')).toBe(baseTransaction.interactor);
       expect(interactor.className).toBe('transaction-details-info-text');
     });
@@ -131,7 +131,7 @@ describe('transaction-list-item', () => {
         directionLabel: undefined,
       };
       const page = await createPage(transaction);
-      const directionLabel = page.root.querySelector('.transaction-details-info-text:not(mvx-trim-text)');
+      const directionLabel = page.root.querySelector('.transaction-details-info-text:not(mvx-trim)');
       expect(directionLabel).toBeFalsy();
     });
 

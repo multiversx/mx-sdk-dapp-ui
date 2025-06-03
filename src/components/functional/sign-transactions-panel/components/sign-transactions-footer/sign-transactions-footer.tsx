@@ -111,7 +111,7 @@ export class SignTransactionsFooter {
             </div>
           )}
 
-          {!username && address && <mvx-trim-text text={address} class="sign-transactions-footer-identity-address" />}
+          {!username && address && <mvx-trim text={address} class="sign-transactions-footer-identity-address" />}
 
           <mvx-copy-button
             text={username ?? address}
