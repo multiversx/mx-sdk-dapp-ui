@@ -1,11 +1,10 @@
 :host {
-  display: flex;
+  @apply mvx:flex;
 
   .metamask-provider-icon {
-    fill: none;
-    height: 100%;
-    width: 100%;
+    @apply mvx:w-full mvx:h-full;
     max-width: 150px;
     max-height: 150px;
+    fill: none;
   }
 }

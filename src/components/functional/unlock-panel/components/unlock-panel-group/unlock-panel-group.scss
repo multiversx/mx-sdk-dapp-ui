@@ -1,18 +1,12 @@
 .unlock-panel-group {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  @apply mvx:flex mvx:flex-col mvx:gap-3;
 
   .unlock-panel-group-label {
-    line-height: 1;
+    @apply mvx:leading-none;
     color: #a09a93;
   }
 
   .unlock-panel-group-providers {
-    display: flex;
-    border-radius: 12px;
-    overflow: hidden;
-    flex-direction: column;
-    gap: calc(4px / 2);
+    @apply mvx:flex mvx:rounded-lg mvx:overflow-hidden mvx:flex-col mvx:gap-0.5;
   }
 }

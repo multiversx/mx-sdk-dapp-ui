@@ -4,7 +4,6 @@ export const handleAmountResize = (element: HTMLElement | null) => {
   }
 
   const getElementWidth = (element: HTMLElement) => element.getBoundingClientRect().width;
-
   const getFontSize = (element: HTMLElement) => parseInt(getComputedStyle(element).getPropertyValue('font-size'));
 
   const firstChild = element.firstChild as HTMLElement;

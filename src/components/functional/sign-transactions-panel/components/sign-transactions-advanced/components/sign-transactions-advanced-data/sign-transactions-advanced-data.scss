@@ -78,7 +78,7 @@
         }
 
         &:before {
-          @apply mvx:absolute mvx:pointer-events-none mvx:right-4 mvx:border mvx:border-l-0 mvx:rounded-lg;
+          @apply mvx:absolute mvx:pointer-events-none mvx:right-4 mvx:border-l-0 mvx:rounded-lg;
           left: 1px;
           top: 1px;
           bottom: 1px;

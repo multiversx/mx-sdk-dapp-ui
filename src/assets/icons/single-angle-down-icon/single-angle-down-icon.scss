@@ -1,14 +1,12 @@
 :host {
-  display: flex;
+  @apply mvx:flex;
   height: auto !important;
   width: auto !important;
   transform: none !important;
   rotate: none !important;
 
   .single-angle-down-icon {
-    width: 16px;
-    display: flex;
+    @apply mvx:flex mvx:w-4 mvx:h-2.5;
     fill: #b6b3af;
-    height: calc(20px / 2);
   }
 }

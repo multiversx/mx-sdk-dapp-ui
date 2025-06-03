@@ -1,16 +1,12 @@
 :host {
-  display: flex;
-  flex-direction: column;
+  @apply mvx:flex mvx:flex-col mvx:flex-1;
   font-family: 'Satoshi', sans-serif;
-  flex: 1;
 
   .wallet-connect {
-    display: flex;
-    flex-direction: column;
+    @apply mvx:flex mvx:flex-col mvx:transition-all mvx:duration-400 mvx:flex-1;
     transform-style: preserve-3d;
-    transition: all 400ms ease;
+    transition-timing-function: ease;
     height: max(100%, 680px);
-    flex: 1;
 
     &.flipped {
       transform: rotateY(180deg);

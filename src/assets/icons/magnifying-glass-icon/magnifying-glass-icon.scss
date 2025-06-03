@@ -1,11 +1,10 @@
 :host {
-  display: flex;
+  @apply mvx:flex;
   padding: 0 !important;
 
   .magnifying-glass-icon {
-    transition: all 200ms ease;
-    width: 12px;
-    height: 12px;
+    @apply mvx:transition-all mvx:duration-200 mvx:w-3 mvx:h-3;
+    transition-timing-function: ease;
     box-sizing: content-box;
     fill: #737373;
   }

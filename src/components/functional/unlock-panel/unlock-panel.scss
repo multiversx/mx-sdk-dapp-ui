@@ -1,21 +1,13 @@
 .unlock-panel-anchor {
-  display: flex;
+  @apply mvx:flex mvx:flex-col mvx:flex-1;
   font-family: 'Satoshi', sans-serif;
-  flex-direction: column;
-  flex: 1;
 }
 
 .unlock-panel {
-  display: flex;
+  @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:justify-between;
   font-family: 'Satoshi', sans-serif;
-  flex-direction: column;
-  flex: 1;
-  justify-content: space-between;
 
   .unlock-panel-groups {
-    display: flex;
-    margin-bottom: 24px;
-    flex-direction: column;
-    gap: 16px;
+    @apply mvx:flex mvx:flex-col mvx:gap-4 mvx:mb-6;
   }
 }
