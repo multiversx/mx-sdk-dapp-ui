@@ -20,7 +20,8 @@
         }
 
         .sign-transactions-footer-button {
-          @apply mvx:rounded-xl mvx:px-4 mvx:py-2 mvx:flex mvx:justify-center mvx:items-center mvx:max-h-10 mvx:min-h-10 mvx:leading-none mvx:text-base mvx:font-bold mvx:transition-all mvx:duration-200 mvx:cursor-pointer mvx:gap-2 mvx:w-full;
+          @apply mvx:rounded-xl mvx:px-4 mvx:py-2 mvx:flex mvx:justify-center mvx:items-center mvx:max-h-10 mvx:min-h-10;
+          @apply mvx:leading-none mvx:text-base mvx:font-bold mvx:transition-all mvx:duration-200 mvx:cursor-pointer mvx:gap-2 mvx:w-full;
           border: 1px solid transparent;
           transition-timing-function: ease;
 
