@@ -1,14 +1,12 @@
-import { Component, Fragment, h, Prop, State } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 
 import { DecodeMethodEnum } from '../../sign-transactions-panel.types';
 import state from '../../signTransactionsPanelStore';
-import type { DataFieldType } from './sign-transactions-advanced.types';
-
-const DECODE_METHODS = Object.values(DecodeMethodEnum);
 
 @Component({
   tag: 'mvx-sign-transactions-advanced',
-  styleUrl: 'sign-transactions-advanced.css',
+  styleUrl: 'sign-transactions-advanced.scss',
+  shadow: true,
 })
 export class SignTransactionsAdvanced {
   @Prop() data: string;
@@ -18,37 +16,6 @@ export class SignTransactionsAdvanced {
 
   setDecodeMethod(method: DecodeMethodEnum) {
     this.decodeMethod = method;
-  }
-
-  getHighlight(data: string, highlight: string): DataFieldType {
-    const highlightIndex = data.indexOf(highlight);
-    const beforeText = data.slice(0, highlightIndex);
-    const text = data.slice(highlightIndex, highlightIndex + highlight.length);
-    const afterText = data.slice(highlightIndex + highlight.length);
-
-    return { beforeText, text, afterText };
-  }
-
-  get computedDisplayData(): DataFieldType {
-    if (this.decodeMethod !== DecodeMethodEnum.raw) {
-      const {
-        commonData: { decodedData },
-      } = state;
-
-      const { displayValue, highlight } = decodedData?.[this.decodeMethod] ?? {};
-
-      if (!highlight || !displayValue.includes(highlight)) {
-        return { text: displayValue };
-      }
-
-      return this.getHighlight(displayValue, highlight);
-    }
-
-    if (!this.highlight || !this.data.includes(this.highlight)) {
-      return { text: this.data };
-    }
-
-    return this.getHighlight(this.data, this.highlight);
   }
 
   get pricePerUnitOption() {
@@ -65,7 +32,6 @@ export class SignTransactionsAdvanced {
   }
 
   render() {
-    const { beforeText, afterText, text } = this.computedDisplayData;
     const {
       commonData: { needsSigning, ppuOptions, gasLimit, gasPrice },
     } = state;
@@ -97,34 +63,7 @@ export class SignTransactionsAdvanced {
           </div>
         </div>
 
-        <div class="data-section">
-          <select
-            class="data-decode-method-select"
-            onInput={(e: Event) => this.setDecodeMethod((e.target as HTMLSelectElement).value as DecodeMethodEnum)}
-          >
-            {DECODE_METHODS.map(method => (
-              <option value={method} selected={this.decodeMethod === method}>
-                {method.toUpperCase()}
-              </option>
-            ))}
-          </select>
-          <div class="data-field">
-            <div class="data-label">Data</div>
-            <div class="data-content">
-              <span class="data-text">
-                {beforeText || afterText ? (
-                  <Fragment>
-                    {beforeText && <span>{beforeText}</span>}
-                    <span class="data-highlight">{text}</span>
-                    {afterText && <span>{afterText}</span>}
-                  </Fragment>
-                ) : (
-                  text
-                )}
-              </span>
-            </div>
-          </div>
-        </div>
+        <mvx-sign-transactions-advanced-data highlight={this.highlight} data={this.data} />
       </div>
     );
   }

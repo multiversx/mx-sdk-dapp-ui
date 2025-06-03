@@ -20,15 +20,14 @@ export class SignTransactionsHeader {
     return (
       <div class="sign-transactions-header">
         {transactionsCount > 1 && (
-          <div class="sign-transactions-header-pager">
-            <mvx-angle-left-icon
+          <div class="sign-transactions-header-pager" onClick={(event: MouseEvent) => event.stopPropagation()}>
+            <mvx-single-angle-left-icon
               onClick={onBack}
               class={classNames('sign-transactions-header-pager-icon', {
                 [signTransactionsHeaderClasses.pagerIcon]: true,
                 disabled: currentIndex === 0,
               })}
             />
-
             <div class="sign-transactions-header-pager-text">
               <div class="sign-transactions-header-pager-text-label">Transaction</div>
               <div class={{ 'sign-transactions-header-pager-text-value': true, 'large': transactionsCount >= 10 }}>
@@ -41,7 +40,7 @@ export class SignTransactionsHeader {
               </div>
             </div>
 
-            <mvx-angle-right-icon
+            <mvx-single-angle-right-icon
               onClick={onNext}
               class={classNames('sign-transactions-header-pager-icon', {
                 disabled: currentIndex + 1 === transactionsCount,
