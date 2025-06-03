@@ -7,7 +7,7 @@ import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDe
 
 @Component({
   tag: 'mvx-custom-toast',
-  styleUrl: 'custom-toast.css',
+  styleUrl: 'custom-toast.scss',
 })
 export class CustomToast {
   @Prop() toast: IComponentToast;
@@ -20,7 +20,12 @@ export class CustomToast {
   render() {
     return (
       <div class="toast-wrapper" data-testid={DataTestIdsEnum.transactionToastContent}>
-        <button onClick={this.handleDeleteToast.bind(this)} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>
+        <button
+          onClick={this.handleDeleteToast.bind(this)}
+          type="button"
+          class="icon-close"
+          innerHTML={getIconHtmlFromIconDefinition(faTimes)}
+        ></button>
         <div class="toast-body" ref={container => this.initializeToast(container)}></div>
       </div>
     );

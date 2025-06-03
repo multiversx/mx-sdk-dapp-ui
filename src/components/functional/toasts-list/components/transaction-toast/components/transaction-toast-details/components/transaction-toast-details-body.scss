@@ -1,9 +1,6 @@
 .transaction-details-list-item {
+  @apply mvx:flex mvx:items-center mvx:gap-3 mvx:self-stretch;
   font-family: 'Satoshi', sans-serif;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  align-self: stretch;
   width: 364px;
 
   &:hover {
@@ -12,23 +9,17 @@
     }
 
     .transaction-details-list-item-explorer-link-icon {
-      visibility: visible;
+      @apply mvx:visible;
     }
   }
 }
 
 .transaction-details-list-item-icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply mvx:w-6 mvx:h-6 mvx:rounded-full mvx:flex mvx:items-center mvx:justify-center;
 
   svg,
   .svg-inline--fa {
-    width: 12px;
-    height: 12px;
+    @apply mvx:w-3 mvx:h-3;
   }
 }
 
@@ -64,48 +55,29 @@
 
 
 .transaction-details-list-item-hash-index {
+  @apply mvx:text-xs mvx:font-medium mvx:leading-4;
   color: var(--mx-tx-text-primary);
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 16.8px;
 }
 
 .transaction-details-list-item-hash-value {
+  @apply mvx:text-xs mvx:font-normal mvx:leading-4 mvx:w-full mvx:mt-1;
   color: var(--mx-tx-text-secondary);
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 16.8px;
   max-width: 220px;
-  width: 100%;
-  margin-top: 4px;
 }
 
 .transaction-details-list-item-copy-button-icon {
   .svg-inline--fa {
+    @apply mvx:w-3 mvx:h-3;
     color: var(--mx-tx-text-primary);
-    width: 12px;
-    height: 12px;
 }
 }
 
 .transaction-details-list-item-explorer-link-icon {
+  @apply mvx:flex mvx:flex-col mvx:justify-end mvx:shrink-0 mvx:ml-auto mvx:mr-3 mvx:invisible mvx:w-4 mvx:h-4;
   color: var(--mx-tx-text-primary);
-  display: flex;
-  width: 16px;
-  height: 16px;
-  flex-direction: column;
-  justify-content: end;
-  flex-shrink: 0;
-  margin-left: auto;
-  margin-right: 12px;
-  visibility: hidden;
 
   .svg-inline--fa {
+    @apply mvx:text-center mvx:w-3.5 mvx:h-3.5;
     color: var(--mx-tx-text-primary);
-    text-align: center;
-    width: 14px;
-    height: 14px;
   }
 }

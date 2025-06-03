@@ -29,46 +29,28 @@
 }
 
 .transaction-toast-progress {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: block;
+  @apply mvx:relative mvx:w-full mvx:h-full mvx:block;
 }
 
 .transaction-toast-bar-wrapper {
-  position: absolute;
-  left: 4px;
-  right: 4px;
+  @apply mvx:absolute mvx:left-1 mvx:right-1 mvx:flex mvx:overflow-hidden mvx:pointer-events-none mvx:h-1 mvx:opacity-100 mvx:transition-opacity mvx:duration-300 mvx:ease-in mvx:m-0;
   bottom: 5px;
-  display: flex;
-  overflow: hidden;
-  pointer-events: none;
   background: var(--mx-tx-text-secondary);
   border-radius: 20px;
-  height: 4px;
-  opacity: 1;
-  transition: opacity 250ms ease-in;
-  margin: 0;
   z-index: 9999;
 }
 
 .transaction-toast-bar {
-  height: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
+  @apply mvx:h-full mvx:absolute mvx:top-0 mvx:bottom-0 mvx:left-0;
   border-radius: 20px;
 
   &.infinite {
+    @apply mvx:flex;
     width: 20%;
-    display: flex;
     background: var(--mx-accent);
 
     .transaction-toast-bar-line {
-      width: 0;
-      height: 100%;
-      position: relative;
+      @apply mvx:w-0 mvx:h-full mvx:relative;
       background: var(--mx-accent);
       border-radius: 20px;
       animation: progressiveInfiniteWidthExpansion var(--animation-duration, 60s) cubic-bezier(0.1, 0.95, 0.25, 0.75) forwards;
@@ -77,8 +59,7 @@
   }
 
   &.fill {
-    width: 0;
-    position: absolute;
+    @apply mvx:w-0 mvx:absolute;
     background: var(--mx-accent);
     border-radius: 20px;
 
@@ -95,7 +76,5 @@
 }
 
 .transaction-toast-bar-content {
-  position: relative;
-  z-index: 10;
-  padding-bottom: 4px;
+  @apply mvx:relative mvx:z-10 mvx:pb-1;
 }

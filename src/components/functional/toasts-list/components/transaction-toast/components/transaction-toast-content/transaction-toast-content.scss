@@ -1,16 +1,9 @@
 .transaction-toast-content-wrapper {
+  @apply mvx:relative mvx:flex mvx:p-3 mvx:flex-col mvx:items-start mvx:gap-1 mvx:rounded-xl mvx:backdrop-blur-2xl;
   font-family: 'Satoshi', sans-serif;
-  position: relative;
-  display: flex;
   max-width: 400px;
-  padding: 12px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
-  border-radius: 12px;
   border: 0.5px solid var(--mx-tx-bg);
   background: var(--mx-tx-bg);
-  backdrop-filter: blur(38px);
   color: var(--mx-tx-text-primary);
 
   .svg-inline--fa {
@@ -19,57 +12,39 @@
 
 
   &.full-width {
-    max-width: 100%;
+    @apply mvx:max-w-full;
   
     .transaction-toast-title {
-      max-width: 100%;
+      @apply mvx:max-w-full;
     }
   }
 }
 
 .transaction-toast-content {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  align-self: stretch;
+  @apply mvx:flex mvx:items-start mvx:gap-3 mvx:self-stretch;
 }
 
 .transaction-toast-icon {
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
+  @apply mvx:rounded-full mvx:w-5 mvx:h-5;
 
   svg, img, .svg-inline--fa {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
+    @apply mvx:rounded-full mvx:w-5 mvx:h-5;
   }
 }
 
 .transaction-toast-details {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
+  @apply mvx:flex mvx:flex-col mvx:items-start mvx:gap-1;
   flex: 1 0 0;
 }
 
 .transaction-toast-details-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  align-self: stretch;
-  justify-content: space-between;
-  padding: 0;
-  padding: 0;
+  @apply mvx:flex mvx:items-center mvx:gap-3 mvx:self-stretch mvx:justify-between mvx:p-0;
+
 }
 
 .transaction-toast-title {
+  @apply mvx:text-sm mvx:font-bold mvx:leading-5;
   color: var(--mx-tx-text-primary);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 19.6px;
 }
 
 .transaction-toast-title-short {
@@ -77,66 +52,42 @@
 }
 
 .transaction-toast-amount {
+  @apply mvx:flex mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight;
   color: var(--mx-tx-text-primary);
-  display: flex;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 16px;
-  letter-spacing: -0.14px;
 
   .transaction-amount-decimal {
-    opacity: 0.7;
+    @apply mvx:opacity-70;
   }
 
   .transaction-amount-label {
-    letter-spacing: -0.32px;
-    opacity: 0.7;
+    @apply mvx:tracking-tight mvx:opacity-70;
   }
 }
 
 .transaction-toast-details-info {
-  display: flex;
-  align-items: flex-start;
-  gap: 4px;
-  align-self: stretch;
+  @apply mvx:flex mvx:items-start mvx:gap-1 mvx:self-stretch;
 }
 
 .transaction-toast-details-info-text {
+  @apply mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight;
   color: var(--mx-tx-text-secondary);
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 16px;
-  letter-spacing: -0.14px;
   max-width: 160px;
 }
 
 .transaction-toast-details-info-icon {
-  border-radius: 50%;
-  width: 16px;
-  height: 16px;
+  @apply mvx:rounded-full mvx:w-4 mvx:h-4;
 
   img {
-    border-radius: 50%;
-    width: 16px;
-    height: 16px;
+    @apply mvx:rounded-full mvx:w-4 mvx:h-4;
   }
 }
 
 .transaction-toast-action-button {
+  @apply mvx:flex mvx:flex-col mvx:justify-center mvx:shrink-0 mvx:w-5 mvx:h-5;
   color: var(--mx-tx-text-primary);
-  display: flex;
-  width: 20px;
-  height: 20px;
-  flex-direction: column;
-  justify-content: center;
-  flex-shrink: 0;
 
   .svg-inline--fa {
+    @apply mvx:text-center mvx:h-4 mvx:w-4;
     color: var(--mx-tx-text-primary);
-    text-align: center;
-    height: 16px;
-    width: 16px;
   }
 }

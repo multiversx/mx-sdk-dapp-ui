@@ -1,15 +1,8 @@
 .toast-wrapper {
-  position: relative;
-  display: flex;
+  @apply mvx:relative mvx:flex mvx:flex-col mvx:p-3 mvx:items-start mvx:gap-3 mvx:rounded-xl mvx:backdrop-blur-2xl;
   width: 315px;
-  padding: 12px;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-  border-radius: 12px;
   border: 0.5px solid var(--mx-tx-bg);
   background: var(--mx-tx-bg);
-  backdrop-filter: blur(38px);
 }
 
 .icon-close {
@@ -27,12 +20,13 @@
   position: absolute;
   right: 12px;
   top: 12px;
+  
+  .svg-inline--fa {
+    color: var(--mx-tx-text-primary);
+    text-align: center;
+  }
 }
 
-.icon-close .svg-inline--fa {
-  color: var(--mx-tx-text-primary);
-  text-align: center;
-}
 
 .toast-body {
   display: flex;
