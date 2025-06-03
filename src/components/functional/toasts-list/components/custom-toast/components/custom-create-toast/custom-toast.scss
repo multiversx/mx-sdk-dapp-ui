@@ -6,32 +6,17 @@
 }
 
 .icon-close {
+  @apply mvx:flex mvx:w-5 mvx:h-5 mvx:flex-col mvx:justify-center mvx:shrink-0 mvx:p-0 mvx:cursor-pointer mvx:absolute mvx:right-3 mvx:top-3;
   color: var(--mx-tx-text-primary);
-  display: flex;
-  width: 20px;
-  height: 20px;
-  flex-direction: column;
-  justify-content: center;
-  flex-shrink: 0;
   background: none;
   border: none;
-  padding: 0;
-  cursor: pointer;
-  position: absolute;
-  right: 12px;
-  top: 12px;
   
   .svg-inline--fa {
+    @apply mvx:text-center;
     color: var(--mx-tx-text-primary);
-    text-align: center;
   }
 }
 
-
 .toast-body {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  align-self: stretch;
-  width: 100%;
+  @apply mvx:flex mvx:items-start mvx:gap-3 mvx:self-stretch mvx:w-full;
 }

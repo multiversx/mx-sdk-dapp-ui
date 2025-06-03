@@ -185,13 +185,7 @@ export namespace Components {
         "highlight"?: string;
     }
     interface MvxSignTransactionsAdvancedDataDecode {
-        /**
-          * @default DecodeMethodEnum.decimal
-         */
         "currentDecodeMethod": DecodeMethodEnum;
-        /**
-          * @default false
-         */
         "isToggled": boolean;
     }
     interface MvxSignTransactionsFooter {
@@ -1342,13 +1336,7 @@ declare namespace LocalJSX {
         "highlight"?: string;
     }
     interface MvxSignTransactionsAdvancedDataDecode {
-        /**
-          * @default DecodeMethodEnum.decimal
-         */
         "currentDecodeMethod"?: DecodeMethodEnum;
-        /**
-          * @default false
-         */
         "isToggled"?: boolean;
     }
     interface MvxSignTransactionsFooter {
