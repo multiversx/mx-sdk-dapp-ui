@@ -5,7 +5,7 @@ const DEFAULT_INFINITE_ANIMATION_DURATION = 30;
 
 @Component({
   tag: 'mvx-transaction-toast-progress',
-  styleUrl: 'transaction-toast-progress.css',
+  styleUrl: 'transaction-toast-progress.scss',
 })
 export class ToastProgress {
   private timeElapsedTimeoutReference?: ReturnType<typeof setTimeout>;
@@ -22,7 +22,8 @@ export class ToastProgress {
   @State() shouldQuickFill: boolean = false;
   @State() infiniteProgressDelay: number = 0;
   @State() infinitePercentagePassedSinceStart: number = 0;
-  @State() infinitePercentageAnimationDuration: number = DEFAULT_INFINITE_ANIMATION_DURATION + (this.endTime - this.startTime) * 2;
+  @State() infinitePercentageAnimationDuration: number =
+    DEFAULT_INFINITE_ANIMATION_DURATION + (this.endTime - this.startTime) * 2;
 
   componentWillLoad() {
     this.updateProgress();
@@ -46,9 +47,14 @@ export class ToastProgress {
     this.currentTimestamp = Date.now() / 1000;
     this.expectedTransactionDuration = this.endTime - this.startTime;
     this.secondsPassedSinceStart = this.currentTimestamp - this.startTime;
-    this.percentagePassedSinceStart = this.expectedTransactionDuration > 0 ? (this.secondsPassedSinceStart / this.expectedTransactionDuration) * 100 : 0;
+    this.percentagePassedSinceStart =
+      this.expectedTransactionDuration > 0
+        ? (this.secondsPassedSinceStart / this.expectedTransactionDuration) * 100
+        : 0;
     this.infiniteProgressDelay = Math.max(0, this.expectedTransactionDuration - this.secondsPassedSinceStart);
-    this.infinitePercentagePassedSinceStart = (this.secondsPassedSinceStart / (this.expectedTransactionDuration + this.infinitePercentageAnimationDuration)) * 100;
+    this.infinitePercentagePassedSinceStart =
+      (this.secondsPassedSinceStart / (this.expectedTransactionDuration + this.infinitePercentageAnimationDuration)) *
+      100;
   }
 
   disconnectedCallback() {

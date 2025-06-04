@@ -9,7 +9,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IToastDataState } from '../../transaction-toast.type';
 @Component({
   tag: 'mvx-transaction-toast-content',
-  styleUrl: 'transaction-toast-content.css',
+  styleUrl: 'transaction-toast-content.scss',
 })
 export class TransactionToastContent {
   @Prop() transactions: ITransactionListItem[];

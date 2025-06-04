@@ -6,7 +6,7 @@ import type { IToastDataState, ITransactionProgressState } from './transaction-t
 
 @Component({
   tag: 'mvx-transaction-toast',
-  styleUrl: './transaction-toast.css',
+  styleUrl: './transaction-toast.scss',
 })
 export class TransactionToast {
   @Prop() toastId: string = '';
@@ -25,7 +25,11 @@ export class TransactionToast {
   render() {
     return (
       <div class="transaction-toast">
-        <mvx-transaction-toast-progress key={this.toastId} startTime={this.transactionProgressState?.startTime} endTime={this.transactionProgressState?.endTime}>
+        <mvx-transaction-toast-progress
+          key={this.toastId}
+          startTime={this.transactionProgressState?.startTime}
+          endTime={this.transactionProgressState?.endTime}
+        >
           <mvx-transaction-toast-content
             fullWidth={this.fullWidth}
             toastDataState={this.toastDataState}
