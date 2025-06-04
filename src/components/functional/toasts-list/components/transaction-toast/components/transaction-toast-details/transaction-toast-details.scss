@@ -33,7 +33,7 @@
   transition: max-height var(--mx-transition);
 
   &.expanded {
-    @apply mvx:w-full mvx:overflow-y-scroll mvx:max-h-128;
+    @apply mvx:w-full mvx:overflow-y-scroll mvx:max-h-125;
   }
 }
 

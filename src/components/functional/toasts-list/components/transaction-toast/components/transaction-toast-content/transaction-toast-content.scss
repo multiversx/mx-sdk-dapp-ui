@@ -1,5 +1,5 @@
 .transaction-toast-content-wrapper {
-  @apply mvx:relative mvx:flex mvx:p-3 mvx:flex-col mvx:items-start mvx:gap-1 mvx:rounded-xl mvx:backdrop-blur-2xl mvx:max-w-sm;
+  @apply mvx:relative mvx:flex mvx:p-3 mvx:flex-col mvx:items-start mvx:gap-1 mvx:rounded-xl mvx:backdrop-blur-2xl mvx:max-w-100;
   font-family: 'Satoshi', sans-serif;
   border: 0.5px solid var(--mx-tx-bg);
   background: var(--mx-tx-bg);
