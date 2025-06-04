@@ -1,6 +1,5 @@
 .content {
-  @apply mvx:relative mvx:flex mvx:p-3 mvx:flex-col mvx:items-start mvx:gap-3 mvx:rounded-xl mvx:backdrop-blur-2xl;
-  width: 315px;
+  @apply mvx:relative mvx:flex mvx:p-3 mvx:flex-col mvx:items-start mvx:gap-3 mvx:rounded-xl mvx:backdrop-blur-2xl mvx:w-80;
   border: 0.5px solid var(--mx-tx-bg);
   background: var(--mx-tx-bg);
 }
@@ -47,10 +46,8 @@
 }
 
 .icon-close {
-  @apply mvx:flex mvx:w-5 mvx:h-5 mvx:flex-col mvx:justify-center mvx:shrink-0 mvx:p-0 mvx:cursor-pointer;
+  @apply mvx:flex mvx:w-5 mvx:h-5 mvx:flex-col mvx:justify-center mvx:shrink-0 mvx:p-0 mvx:cursor-pointer mvx:bg-none mvx:border-0;
   color: var(--mx-tx-text-primary);
-  background: none;
-  border: none;
 
   .svg-inline--fa {
     @apply mvx:text-center;

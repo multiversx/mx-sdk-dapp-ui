@@ -1,7 +1,6 @@
 .transaction-details-list-item {
-  @apply mvx:flex mvx:items-center mvx:gap-3 mvx:self-stretch;
+  @apply mvx:flex mvx:items-center mvx:gap-3 mvx:self-stretch mvx:w-90;
   font-family: 'Satoshi', sans-serif;
-  width: 364px;
 
   &:hover {
     .transaction-details-list-item-hash-value {
@@ -60,9 +59,8 @@
 }
 
 .transaction-details-list-item-hash-value {
-  @apply mvx:text-xs mvx:font-normal mvx:leading-4 mvx:w-full mvx:mt-1;
+  @apply mvx:text-xs mvx:font-normal mvx:leading-4 mvx:w-full mvx:mt-1 mvx:max-w-56;
   color: var(--mx-tx-text-secondary);
-  max-width: 220px;
 }
 
 .transaction-details-list-item-copy-button-icon {

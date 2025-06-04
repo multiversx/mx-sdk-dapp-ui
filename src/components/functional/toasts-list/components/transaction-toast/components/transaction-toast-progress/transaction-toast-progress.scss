@@ -45,8 +45,7 @@
   border-radius: 20px;
 
   &.infinite {
-    @apply mvx:flex;
-    width: 20%;
+    @apply mvx:flex mvx:w-1/5;
     background: var(--mx-accent);
 
     .transaction-toast-bar-line {

@@ -1,7 +1,6 @@
 .transaction-toast-content-wrapper {
-  @apply mvx:relative mvx:flex mvx:p-3 mvx:flex-col mvx:items-start mvx:gap-1 mvx:rounded-xl mvx:backdrop-blur-2xl;
+  @apply mvx:relative mvx:flex mvx:p-3 mvx:flex-col mvx:items-start mvx:gap-1 mvx:rounded-xl mvx:backdrop-blur-2xl mvx:max-w-sm;
   font-family: 'Satoshi', sans-serif;
-  max-width: 400px;
   border: 0.5px solid var(--mx-tx-bg);
   background: var(--mx-tx-bg);
   color: var(--mx-tx-text-primary);
@@ -33,8 +32,7 @@
 }
 
 .transaction-toast-details {
-  @apply mvx:flex mvx:flex-col mvx:items-start mvx:gap-1;
-  flex: 1 0 0;
+  @apply mvx:flex mvx:flex-col mvx:items-start mvx:gap-1 mvx:grow mvx:shrink-0 mvx:basis-0;
 }
 
 .transaction-toast-details-header {
@@ -48,7 +46,7 @@
 }
 
 .transaction-toast-title-short {
-  max-width: 160px;
+  @apply mvx:max-w-40;
 }
 
 .transaction-toast-amount {
@@ -69,9 +67,8 @@
 }
 
 .transaction-toast-details-info-text {
-  @apply mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight;
+  @apply mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight mvx:max-w-40;
   color: var(--mx-tx-text-secondary);
-  max-width: 160px;
 }
 
 .transaction-toast-details-info-icon {

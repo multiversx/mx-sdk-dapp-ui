@@ -15,18 +15,17 @@
 
 
 .view-all-button-container {
-  @apply mvx:absolute mvx:-bottom-12 mvx:right-0;
-  z-index: 1;
+  @apply mvx:absolute mvx:-bottom-12 mvx:right-0 mvx:z-1;
 }
 
 .view-all-button {
-  @apply mvx:backdrop-blur-2xl mvx:py-2 mvx:px-4 mvx:text-base mvx:font-normal mvx:leading-6 mvx:cursor-pointer;
+  @apply mvx:backdrop-blur-2xl mvx:py-2 mvx:px-4 mvx:text-base mvx:font-normal mvx:leading-6 mvx:cursor-pointer mvx:transition-opacity mvx:duration-200;
   border-radius: 100px;
   border: 0.5px solid var(--mx-tx-bg);
   background: var(--mx-tx-bg);
   color: var(--mx-tx-text-primary);
   font-family: 'Satoshi', sans-serif;
-  transition: opacity 0.2s ease;
+  transition-timing-function: ease;
   
   &:hover {
     @apply mvx:opacity-90;

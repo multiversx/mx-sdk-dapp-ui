@@ -33,8 +33,7 @@
   transition: max-height var(--mx-transition);
 
   &.expanded {
-    @apply mvx:w-full mvx:overflow-y-scroll;
-    max-height: 500px;
+    @apply mvx:w-full mvx:overflow-y-scroll mvx:max-h-128;
   }
 }
 
@@ -43,9 +42,7 @@
 }
 
 .show-more-button {
-  @apply mvx:text-xs mvx:font-normal mvx:leading-4 mvx:cursor-pointer mvx:rounded-sm;
-  background: none;
-  border: none;
+  @apply mvx:text-xs mvx:font-normal mvx:leading-4 mvx:cursor-pointer mvx:rounded-sm mvx:bg-none mvx:border-0;
   color: var(--mx-tx-text-primary);
   transition: background-color var(--mx-transition);
 
