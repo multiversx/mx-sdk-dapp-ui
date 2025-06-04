@@ -46,8 +46,8 @@
 
         .wallet-connect-scan-download-button {
           @apply mvx:rounded-lg mvx:text-xs mvx:leading-none mvx:text-center mvx:p-2 mvx:font-bold mvx:cursor-pointer mvx:transition-all mvx:duration-200;
-          background: #23f7dd;
           transition-timing-function: ease;
+          background: #23f7dd;
 
           &:hover {
             @apply mvx:opacity-75;

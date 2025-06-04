@@ -1,9 +1,7 @@
 :host {
-  display: flex;
+  @apply mvx:flex;
 
   .single-angle-right-icon {
-    display: flex;
-    height: 16px;
-    width: calc(20px / 2);
+    @apply mvx:flex mvx:h-4 mvx:w-2.5;
   }
 }

@@ -1,5 +1,5 @@
 :host {
-  display: flex;
+  @apply mvx:flex;
 
   .extension-provider-icon {
     fill: none;

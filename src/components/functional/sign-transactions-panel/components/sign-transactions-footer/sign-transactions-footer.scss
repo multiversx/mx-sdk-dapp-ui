@@ -1,110 +1,74 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  @apply mvx:flex mvx:flex-col mvx:flex-1;
 
   .sign-transactions-footer {
+    @apply mvx:mt-auto mvx:flex mvx:flex-col mvx:items-center mvx:pt-5 mvx:gap-5 mvx:text-center;
     font-family: 'Satoshi', sans-serif;
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
-    align-items: center;
-    gap: 20px;
-    text-align: center;
 
     .sign-transactions-footer-buttons {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      gap: 12px;
+      @apply mvx:flex mvx:items-center mvx:w-full mvx:gap-3;
 
       .sign-transactions-footer-button-wrapper {
-        position: relative;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
+        @apply mvx:relative mvx:flex mvx:flex-col mvx:flex-1;
 
         &.cancel {
-          width: 128px;
-          max-width: 128px;
+          @apply mvx:w-32 mvx:max-w-32;
         }
 
         .sign-transactions-footer-button-tooltip-wrapper {
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 0;
-          bottom: 0;
+          @apply mvx:absolute mvx:inset-0;
         }
 
         .sign-transactions-footer-button {
-          border-radius: 12px;
-          padding: 8px 16px;
-          display: flex;
-          justify-content: center;
-          max-height: 40px;
-          min-height: 40px;
-          align-items: center;
-          line-height: 1;
-          font-size: 16px;
-          font-weight: 700;
-          transition: all 200ms ease;
-          cursor: pointer;
-          gap: 8px;
+          @apply mvx:rounded-xl mvx:px-4 mvx:py-2 mvx:flex mvx:justify-center mvx:items-center mvx:max-h-10 mvx:min-h-10;
+          @apply mvx:leading-none mvx:text-base mvx:font-bold mvx:transition-all mvx:duration-200 mvx:cursor-pointer mvx:gap-2 mvx:w-full;
           border: 1px solid transparent;
-          width: 100%;
+          transition-timing-function: ease;
 
           &.cancel {
-            position: relative;
+            @apply mvx:relative;
             color: #e8e8e8;
 
             &:before {
-              pointer-events: none;
-              content: '';
-              opacity: 40%;
-              position: absolute;
-              left: -1px;
-              transition: all 200ms ease;
-              top: -1px;
-              right: -1px;
-              bottom: -1px;
+              @apply mvx:absolute mvx:rounded-xl mvx:opacity-40 mvx:transition-all mvx:duration-200 mvx:pointer-events-none;
+              transition-timing-function: ease;
               background-color: #353535;
-              border-radius: 12px;
+              bottom: -1px;
+              content: '';
               z-index: -1;
+              right: -1px;
+              left: -1px;
+              top: -1px;
             }
 
             &:hover {
-              color: #000000;
+              @apply mvx:text-black;
 
               &:before {
-                opacity: 1;
+                @apply mvx:opacity-100;
                 background-color: #23f7dd;
               }
             }
           }
 
           &.highlighted {
+            @apply mvx:flex-1 mvx:text-black;
             background-color: #23f7dd;
-            flex: 1;
-            color: #000000;
 
             &:hover {
-              opacity: 0.75;
+              @apply mvx:opacity-75;
             }
           }
 
           &.disabled {
-            background-color: transparent;
+            @apply mvx:bg-transparent mvx:cursor-default mvx:pointer-events-none;
             border-color: #a09a93;
-            cursor: default;
             color: #a09a93;
-            pointer-events: none;
           }
 
           .sign-transactions-footer-button-icon {
-            display: flex;
-            transition: all 200ms ease;
+            @apply mvx:flex mvx:transition-all mvx:duration-200;
+            transition-timing-function: ease;
 
             &.lighter {
               fill: #a09a93;
@@ -115,70 +79,42 @@
     }
 
     .sign-transactions-footer-identity {
-      max-width: 256px;
-      display: flex;
-      align-items: center;
-      font-size: 16px;
-      gap: 8px;
+      @apply mvx:max-w-64 mvx:flex mvx:items-center mvx:text-base mvx:gap-2;
 
       .sign-transactions-footer-identity-label {
+        @apply mvx:whitespace-nowrap;
         color: #b6b3af;
-        white-space: nowrap;
       }
 
       .sign-transactions-footer-identity-address {
-        color: #ffffff;
-        position: relative;
-        min-width: 0;
-        max-width: none;
+        @apply mvx:text-white mvx:relative mvx:min-w-0 mvx:max-w-none;
         top: 0.25px;
 
         .trim-wrapper {
-          align-items: flex-end;
-          line-height: 1;
+          @apply mvx:items-end mvx:leading-none;
         }
       }
 
       .sign-transactions-footer-identity-username {
-        display: flex;
-        align-items: center;
-        font-size: 16px;
-        color: #fff;
+        @apply mvx:flex mvx:items-center mvx:text-base mvx:text-white;
 
         .sign-transactions-footer-identity-username-prefix {
           color: #23f7dd;
         }
       }
 
-      .sign-transactions-footer-identity-copy {
-        display: flex;
-
-        .sign-transactions-footer-identity-copy-icon {
-          height: 16px;
-          display: flex;
-          width: 16px;
-          color: #b6b3af;
-          justify-content: center;
-          transition: all 200ms ease;
-
-          &:hover {
-            opacity: 80%;
-          }
-        }
-      }
-
+      .sign-transactions-footer-identity-copy,
       .sign-transactions-footer-identity-explorer {
-        display: flex;
+        @apply mvx:flex;
 
+        .sign-transactions-footer-identity-copy-icon,
         .sign-transactions-footer-identity-explorer-icon {
-          height: 16px;
-          display: flex;
-          width: 16px;
+          @apply mvx:h-4 mvx:w-4 mvx:flex mvx:justify-center mvx:transition-all mvx:duration-200;
+          transition-timing-function: ease;
           color: #b6b3af;
-          transition: all 200ms ease;
 
           &:hover {
-            opacity: 80%;
+            @apply mvx:opacity-80;
           }
         }
       }

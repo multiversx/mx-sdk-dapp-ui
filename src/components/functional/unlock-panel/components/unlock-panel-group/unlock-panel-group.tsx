@@ -25,6 +25,7 @@ export class UnlockPanelGroup {
           {this.providers.map(provider => (
             <mvx-unlock-provider-button provider={provider} onClick={() => this.handleLogin(provider)} />
           ))}
+
           <slot />
         </div>
       </div>

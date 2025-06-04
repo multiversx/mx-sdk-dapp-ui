@@ -1,10 +1,8 @@
 :host {
-  display: flex;
+  @apply mvx:flex;
 
   .arrow-up-right-icon {
-    display: flex;
-    height: calc(20px / 2);
+    @apply mvx:flex mvx:h-2.5 mvx:w-2.5;
     fill: #e5e5e5;
-    width: calc(20px / 2);
   }
 }

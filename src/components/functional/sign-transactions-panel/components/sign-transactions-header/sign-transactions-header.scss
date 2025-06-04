@@ -9,8 +9,7 @@
       @apply mvx:flex mvx:relative mvx:rounded-2xl mvx:h-9 mvx:items-center mvx:px-5 mvx:justify-center mvx:mx-auto mvx:gap-5;
 
       &:before {
-        @apply mvx:absolute mvx:left-0 mvx:top-0 mvx:bottom-0 mvx:right-0 mvx:pointer-events-none mvx:rounded-2xl;
-        opacity: 40%;
+        @apply mvx:absolute mvx:left-0 mvx:top-0 mvx:bottom-0 mvx:right-0 mvx:pointer-events-none mvx:rounded-2xl mvx:opacity-40;
         content: '';
         background-color: #353535;
       }
@@ -37,8 +36,7 @@
         }
 
         .sign-transactions-header-pager-text-value {
-          @apply mvx:text-white mvx:font-medium mvx:flex mvx:items-center mvx:justify-center;
-          width: calc(20px / 2);
+          @apply mvx:text-white mvx:font-medium mvx:flex mvx:items-center mvx:justify-center mvx:w-2.5;
 
           &.large {
             @apply mvx:w-5;
@@ -59,7 +57,7 @@
       }
 
       .sign-transactions-header-origin-image {
-        @apply mvx:flex mvx:items-center mvx:rounded-3xl mvx:bg-black mvx:justify-center mvx:border mvx:w-18 mvx:h-18;
+        @apply mvx:flex mvx:items-center mvx:rounded-3xl mvx:bg-black mvx:justify-center mvx:w-18 mvx:h-18;
         border: 1px solid #212121;
       }
 
