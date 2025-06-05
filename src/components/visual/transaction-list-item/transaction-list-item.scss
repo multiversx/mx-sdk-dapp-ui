@@ -42,11 +42,11 @@
   color: var(--mx-tx-text-primary);
 
   @media (min-width:375px) {
-      @apply mvx:text-sm;
+    @apply mvx:text-sm;
   }
 
   @media (min-width:440px) {
-      @apply mvx:text-base;
+    @apply mvx:text-base;
   }
 }
 
@@ -96,6 +96,14 @@
   @apply mvx:flex mvx:text-xs mvx:font-medium mvx:leading-6 mvx:tracking-tight;
   color: var(--mx-tx-text-primary);
 
+  @media (min-width:375px) {
+    @apply mvx:text-sm;
+  }
+
+  @media (min-width:440) {
+    @apply mvx:text-base;
+  }
+
   &.amount-positive{
     color: var(--mx-tx-success);
   }
@@ -110,18 +118,6 @@
 
   .transaction-amount-label {
     @apply mvx:opacity-70 mvx:tracking-tight;
-  }
-
-  @media (min-width:375px) {
-    .transaction-amount {
-      @apply mvx:text-sm;
-    }
-  }
-
-  @media (min-width:440) {
-    .transaction-amount {
-      @apply mvx:text-base;
-    }
   }
 }
 
