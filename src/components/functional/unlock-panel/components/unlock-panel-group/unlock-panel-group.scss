@@ -6,23 +6,21 @@
     overflow: unset;
   }
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
   .unlock-panel-group {
-    @apply mvx:flex mvx:flex-col mvx:gap-3;
+    @apply mvx:flex mvx:flex-col;
     flex: 1;
     overflow: hidden;
 
     .unlock-panel-group-label {
       @apply mvx:leading-none;
       color: #a09a93;
+      position: relative;
     }
 
     .unlock-panel-group-providers {
       @apply mvx:flex mvx:overflow-hidden mvx:flex-col mvx:gap-0.5 mvx:rounded-tl-lg mvx:rounded-tr-lg;
       padding-bottom: 24px;
+      padding-top: 12px;
       overflow: auto;
 
       &::-webkit-scrollbar {
