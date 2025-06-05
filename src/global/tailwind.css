@@ -1,1 +1,5 @@
 @import 'tailwindcss' prefix(mvx);
+
+@theme {
+  --breakpoint-xs: 30rem; /* 480px */
+}

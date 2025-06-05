@@ -6,8 +6,19 @@
 .unlock-panel {
   @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:justify-between;
   font-family: 'Satoshi', sans-serif;
+  overflow: hidden;
 
   .unlock-panel-groups {
-    @apply mvx:flex mvx:flex-col mvx:gap-4 mvx:mb-6;
+    @apply mvx:flex mvx:flex-col mvx:gap-4;
+    box-shadow: 0px -8px 12px 12px #171717;
+    overflow: hidden;
+
+    @media (min-width: 480px) {
+      overflow: auto;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }

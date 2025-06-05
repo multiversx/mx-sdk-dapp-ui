@@ -6,7 +6,12 @@ import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
+import type { IUnlockPanelManagerData } from './unlock-panel.types';
 import { UnlockPanelEventsEnum } from './unlock-panel.types';
+
+const unlockPanelClasses: Record<string, string> = {
+  detectedPanelGroup: 'mvx:hidden mvx:sm:flex',
+};
 
 @Component({
   tag: 'mvx-unlock-panel',
@@ -14,13 +19,14 @@ import { UnlockPanelEventsEnum } from './unlock-panel.types';
   shadow: true,
 })
 export class UnlockPanel {
+  @Element() hostElement: HTMLElement;
+
   private eventBus: IEventBus = new EventBus();
   private unsubscribeFunctions: (() => void)[] = [];
 
-  @Element() hostElement: HTMLElement;
-
   @State() isOpen: boolean = false;
-  @State() allowedProviders: IProviderBase[] = [];
+  @State() walletAddress: IUnlockPanelManagerData['walletAddress'] = null;
+  @State() allowedProviders: IUnlockPanelManagerData['providers'] = [];
 
   @State() isLoggingIn: boolean = false;
   @State() isIntroScreenVisible: boolean = false;
@@ -78,9 +84,10 @@ export class UnlockPanel {
     this.anchor.addEventListener(UnlockPanelEventsEnum.ANCHOR_CLOSE, this.handleResetLoginState);
   }
 
-  private unlockPanelUpdate = (allowedProviders: IProviderBase[]) => {
+  private unlockPanelUpdate = ({ providers, walletAddress }: IUnlockPanelManagerData) => {
     this.isOpen = true;
-    this.allowedProviders = allowedProviders;
+    this.walletAddress = walletAddress;
+    this.allowedProviders = providers;
   };
 
   private handleLogin(provider: IProviderBase) {
@@ -142,7 +149,7 @@ export class UnlockPanel {
       allowedProvider => !detectedProviders.includes(allowedProvider),
     );
 
-    const panelTitle = this.selectedMethod ? this.selectedMethod.name : 'Connect your wallet';
+    const panelTitle = this.selectedMethod ? this.selectedMethod.name : 'Connect a wallet';
     const hasDetectedProviders = detectedProviders.length > 0;
 
     const isProviderScreenVisible = !this.isLoggingIn && !this.isIntroScreenVisible;
@@ -180,6 +187,7 @@ export class UnlockPanel {
                   groupTitle="Detected"
                   providers={detectedProviders}
                   onLogin={(event: CustomEvent) => this.handleLogin(event.detail)}
+                  class={unlockPanelClasses.detectedPanelGroup}
                 />
               )}
 
@@ -192,7 +200,7 @@ export class UnlockPanel {
               </mvx-unlock-panel-group>
             </div>
 
-            <mvx-unlock-panel-footer />
+            <mvx-unlock-panel-footer walletAddress={this.walletAddress} />
           </div>
         )}
       </mvx-side-panel>

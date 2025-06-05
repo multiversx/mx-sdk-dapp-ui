@@ -1,6 +1,12 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
-import type { IProviderBase } from 'types/provider.types';
+import classNames from 'classnames';
+import { type IProviderBase, ProviderTypeEnum } from 'types/provider.types';
+
+const unlockPanelGroupClasses: Record<string, string> = {
+  detectedPanelGroup: 'mvx:hidden mvx:sm:flex',
+  lastProviderButton: 'mvx:rounded-bl-lg mvx:rounded-br-lg',
+};
 
 @Component({
   tag: 'mvx-unlock-panel-group',
@@ -8,22 +14,34 @@ import type { IProviderBase } from 'types/provider.types';
   shadow: true,
 })
 export class UnlockPanelGroup {
-  @Prop() groupTitle: string = '';
-  @Prop() providers: IProviderBase[] = [];
   @Event({ composed: false, bubbles: false }) login: EventEmitter<IProviderBase>;
+
+  @Prop() providers: IProviderBase[] = [];
+  @Prop() groupTitle: string = '';
+  @Prop() class?: string;
 
   private handleLogin = (provider: IProviderBase) => {
     this.login.emit(provider);
   };
 
   render() {
+    const isInstallableExtension = (provider: IProviderBase<ProviderTypeEnum>) =>
+      [ProviderTypeEnum.extension, ProviderTypeEnum.metamask].includes(provider.type as ProviderTypeEnum);
+
     return (
-      <div class="unlock-panel-group">
+      <div class={{ 'unlock-panel-group': true, [this.class]: Boolean(this.class) }}>
         <div class="unlock-panel-group-label">{this.groupTitle}</div>
 
         <div class="unlock-panel-group-providers">
-          {this.providers.map(provider => (
-            <mvx-unlock-provider-button provider={provider} onClick={() => this.handleLogin(provider)} />
+          {this.providers.map((provider, providerIndex) => (
+            <mvx-unlock-provider-button
+              provider={provider}
+              onClick={() => this.handleLogin(provider)}
+              class={classNames({
+                [unlockPanelGroupClasses.detectedPanelGroup]: isInstallableExtension(provider),
+                [unlockPanelGroupClasses.lastProviderButton]: providerIndex === this.providers.length - 1,
+              })}
+            />
           ))}
 
           <slot />
