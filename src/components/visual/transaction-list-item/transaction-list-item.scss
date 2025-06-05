@@ -1,11 +1,15 @@
 .transaction-item {
-  @apply mvx:flex mvx:items-center mvx:py-5 mvx:px-4 mvx:gap-4 mvx:rounded-lg;
+  @apply mvx:flex mvx:items-center mvx:py-5 mvx:px-3 mvx:gap-3 mvx:rounded-lg;
   font-family: 'Satoshi', sans-serif;
   background: var(--mx-tx-bg-transparent);
 
   &:hover {
     background-color: var(--mx-tx-bg);
   }
+
+   @media (min-width:375px) {
+      @apply mvx:gap-4 mvx:px-4;
+    }
 }
 
 .transaction-icon {
@@ -34,8 +38,16 @@
 }
 
 .transaction-title {
-  @apply mvx:text-base mvx:font-medium mvx:leading-6 mvx:tracking-tight mvx:m-0;
+  @apply mvx:text-xs mvx:font-medium mvx:leading-6 mvx:tracking-tight mvx:m-0;
   color: var(--mx-tx-text-primary);
+
+  @media (min-width:375px) {
+      @apply mvx:text-sm;
+  }
+
+  @media (min-width:440px) {
+      @apply mvx:text-base;
+  }
 }
 
 .transaction-details-info {
@@ -81,7 +93,7 @@
 }
 
 .transaction-amount {
-  @apply mvx:flex mvx:text-base mvx:font-medium mvx:leading-6 mvx:tracking-tight;
+  @apply mvx:flex mvx:text-xs mvx:font-medium mvx:leading-6 mvx:tracking-tight;
   color: var(--mx-tx-text-primary);
 
   &.amount-positive{
@@ -98,6 +110,18 @@
 
   .transaction-amount-label {
     @apply mvx:opacity-70 mvx:tracking-tight;
+  }
+
+  @media (min-width:375px) {
+    .transaction-amount {
+      @apply mvx:text-sm;
+    }
+  }
+
+  @media (min-width:440) {
+    .transaction-amount {
+      @apply mvx:text-base;
+    }
   }
 }
 
