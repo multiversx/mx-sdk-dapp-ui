@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Mobile version for notifications feed](https://github.com/multiversx/mx-sdk-dapp-ui/pull/123)
 - [Updated the CSS to leverage on Tailwind classes in multiple elements](https://github.com/multiversx/mx-sdk-dapp-ui/pull/122)
 - [Added "data" field decoding methods support](https://github.com/multiversx/mx-sdk-dapp-ui/pull/121)
 - [Updated README](https://github.com/multiversx/mx-sdk-dapp-ui/pull/120)
