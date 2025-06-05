@@ -1,3 +1,12 @@
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .transaction-details-list-item {
   @apply mvx:flex mvx:items-center mvx:gap-3 mvx:self-stretch mvx:w-64;
   font-family: 'Satoshi', sans-serif;
@@ -51,6 +60,7 @@
   svg,
   .svg-inline--fa {
     color: #FACC15 !important;
+    animation: rotate 2s cubic-bezier(1, 0, 0.5, 1) infinite;
   }
 }
 
