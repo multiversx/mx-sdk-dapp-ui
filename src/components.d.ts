@@ -239,7 +239,13 @@ export namespace Components {
         "highlight"?: string;
     }
     interface MvxSignTransactionsAdvancedDataDecode {
+        /**
+          * @default DecodeMethodEnum.decimal
+         */
         "currentDecodeMethod": DecodeMethodEnum;
+        /**
+          * @default false
+         */
         "isToggled": boolean;
     }
     interface MvxSignTransactionsFooter {
@@ -421,8 +427,10 @@ export namespace Components {
         "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxUnlockPanelFooter {
+        "walletAddress": string;
     }
     interface MvxUnlockPanelGroup {
+        "class"?: string;
         /**
           * @default ''
          */
@@ -1489,7 +1497,13 @@ declare namespace LocalJSX {
         "highlight"?: string;
     }
     interface MvxSignTransactionsAdvancedDataDecode {
+        /**
+          * @default DecodeMethodEnum.decimal
+         */
         "currentDecodeMethod"?: DecodeMethodEnum;
+        /**
+          * @default false
+         */
         "isToggled"?: boolean;
     }
     interface MvxSignTransactionsFooter {
@@ -1670,8 +1684,10 @@ declare namespace LocalJSX {
     interface MvxUnlockPanel {
     }
     interface MvxUnlockPanelFooter {
+        "walletAddress"?: string;
     }
     interface MvxUnlockPanelGroup {
+        "class"?: string;
         /**
           * @default ''
          */
