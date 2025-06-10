@@ -2,7 +2,6 @@
 
 .feed-content {
   @apply mvx:h-full mvx:w-full mvx:flex mvx:flex-col mvx:relative mvx:gap-5 mvx:overflow-x-hidden mvx:overflow-y-scroll;
-  font-family: 'Satoshi', sans-serif;
 
   .transaction-toast-content-wrapper {
     @apply mvx:w-full;
@@ -10,7 +9,7 @@
     border-color: var(--mx-tx-bg-transparent);
   }
 
-  @media (min-width:375px) {
+  @media (min-width: 375px) {
     @apply mvx:max-w-110;
   }
 }

@@ -22,7 +22,7 @@ const isDev = process.argv.includes('--dev');
 
 export const config: Config = {
   namespace: 'sdk-dapp-ui',
-  globalScript: './src/global/scripts/fonts-loader.ts',
+  globalStyle: './src/global/style.css',
   plugins: [
     sass(),
     tailwind({

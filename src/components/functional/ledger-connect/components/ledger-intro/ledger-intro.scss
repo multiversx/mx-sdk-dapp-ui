@@ -3,7 +3,6 @@
 
   .ledger-intro {
     @apply mvx:flex-1 mvx:flex mvx:flex-col;
-    font-family: 'Satoshi', sans-serif;
 
     .ledger-intro-wrapper {
       @apply mvx:flex mvx:flex-col mvx:items-center mvx:gap-6 mvx:text-center mvx:text-base mvx:mb-auto;

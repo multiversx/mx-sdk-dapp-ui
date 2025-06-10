@@ -13,7 +13,6 @@
   @apply mvx:bottom-16;
 }
 
-
 .view-all-button-container {
   @apply mvx:absolute mvx:-bottom-12 mvx:right-0 mvx:z-1;
 }
@@ -24,11 +23,9 @@
   border: 0.5px solid var(--mx-tx-bg);
   background: var(--mx-tx-bg);
   color: var(--mx-tx-text-primary);
-  font-family: 'Satoshi', sans-serif;
   transition-timing-function: ease;
-  
+
   &:hover {
     @apply mvx:opacity-90;
   }
 }
-

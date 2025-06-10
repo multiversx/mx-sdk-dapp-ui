@@ -1,6 +1,5 @@
 :host {
   @apply mvx:flex mvx:flex-col mvx:flex-1;
-  font-family: 'Satoshi', sans-serif;
 
   .wallet-connect {
     @apply mvx:flex mvx:flex-col mvx:transition-all mvx:duration-400 mvx:flex-1;
