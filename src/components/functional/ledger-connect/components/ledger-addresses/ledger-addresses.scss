@@ -3,7 +3,6 @@
 
   .ledger-addresses {
     @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:gap-4;
-    font-family: 'Satoshi', sans-serif;
 
     .ledger-addresses-label {
       @apply mvx:text-white mvx:leading-none;

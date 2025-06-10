@@ -1,6 +1,5 @@
 .transaction-details-container {
   @apply mvx:flex mvx:flex-col mvx:items-start mvx:self-stretch mvx:gap-3 mvx:w-full;
-  font-family: 'Satoshi', sans-serif;
 }
 
 .transaction-details-status {
@@ -16,12 +15,11 @@
     @apply mvx:h-3.5 mvx:w-3.5;
     color: var(--mx-tx-text-primary);
   }
-  
+
   &.rotate-up {
     @apply mvx:rotate-90;
   }
 }
-
 
 .transaction-details-status-text {
   @apply mvx:text-sm mvx:font-normal mvx:leading-5;

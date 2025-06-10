@@ -1,15 +1,14 @@
 .transaction-item {
   @apply mvx:flex mvx:items-center mvx:py-5 mvx:px-3 mvx:gap-3 mvx:rounded-lg;
-  font-family: 'Satoshi', sans-serif;
   background: var(--mx-tx-bg-transparent);
 
   &:hover {
     background-color: var(--mx-tx-bg);
   }
 
-   @media (min-width:375px) {
-      @apply mvx:gap-4 mvx:px-4;
-    }
+  @media (min-width: 375px) {
+    @apply mvx:gap-4 mvx:px-4;
+  }
 }
 
 .transaction-icon {
@@ -19,7 +18,8 @@
     @apply mvx:w-full mvx:h-full mvx:object-cover;
   }
 
-  span, i {
+  span,
+  i {
     @apply mvx:text-xl mvx:w-10 mvx:h-10;
     color: var(--mx-tx-text-primary);
   }
@@ -41,11 +41,11 @@
   @apply mvx:text-xs mvx:font-medium mvx:leading-6 mvx:tracking-tight mvx:m-0;
   color: var(--mx-tx-text-primary);
 
-  @media (min-width:375px) {
+  @media (min-width: 375px) {
     @apply mvx:text-sm;
   }
 
-  @media (min-width:440px) {
+  @media (min-width: 440px) {
     @apply mvx:text-base;
   }
 }
@@ -96,15 +96,15 @@
   @apply mvx:flex mvx:text-xs mvx:font-medium mvx:leading-6 mvx:tracking-tight;
   color: var(--mx-tx-text-primary);
 
-  @media (min-width:375px) {
+  @media (min-width: 375px) {
     @apply mvx:text-sm;
   }
 
-  @media (min-width:440) {
+  @media (min-width: 440) {
     @apply mvx:text-base;
   }
 
-  &.amount-positive{
+  &.amount-positive {
     color: var(--mx-tx-success);
   }
 

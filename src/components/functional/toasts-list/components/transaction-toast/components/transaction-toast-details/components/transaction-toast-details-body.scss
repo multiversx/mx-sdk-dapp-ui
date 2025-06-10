@@ -9,7 +9,6 @@
 
 .transaction-details-list-item {
   @apply mvx:flex mvx:items-center mvx:gap-3 mvx:self-stretch mvx:w-64;
-  font-family: 'Satoshi', sans-serif;
 
   &:hover {
     .transaction-details-list-item-hash-value {
@@ -21,12 +20,12 @@
     }
   }
 
-  @media (min-width:375px) {
-      @apply mvx:w-80;
+  @media (min-width: 375px) {
+    @apply mvx:w-80;
   }
 
-  @media (min-width:440px) {
-      @apply mvx:w-90;
+  @media (min-width: 440px) {
+    @apply mvx:w-90;
   }
 }
 
@@ -38,32 +37,29 @@
     @apply mvx:w-3 mvx:h-3;
   }
 
-  @media (min-width:375px) {
-      @apply mvx:w-6 mvx:h-6;
+  @media (min-width: 375px) {
+    @apply mvx:w-6 mvx:h-6;
   }
 }
-
 
 .transaction-details-list-item-icon-success {
-  background-color: #2B6C39;
-  
+  background-color: #2b6c39;
+
   svg,
   .svg-inline--fa {
-    color: #6AD788 !important;
+    color: #6ad788 !important;
   }
 }
-
 
 .transaction-details-list-item-icon-pending {
   background-color: #453412;
 
   svg,
   .svg-inline--fa {
-    color: #FACC15 !important;
+    color: #facc15 !important;
     animation: rotate 2s cubic-bezier(1, 0, 0.5, 1) infinite;
   }
 }
-
 
 .transaction-details-list-item-icon-fail {
   background-color: var(--mx-toast-error-bg);
@@ -73,7 +69,6 @@
     color: var(--mx-toast-error-icon) !important;
   }
 }
-
 
 .transaction-details-list-item-hash-index {
   @apply mvx:text-xs mvx:font-medium mvx:leading-4;
@@ -89,7 +84,7 @@
   .svg-inline--fa {
     @apply mvx:w-3 mvx:h-3;
     color: var(--mx-tx-text-primary);
-}
+  }
 }
 
 .transaction-details-list-item-explorer-link-icon {

@@ -3,7 +3,6 @@
 
   .sign-transactions-footer {
     @apply mvx:mt-auto mvx:flex mvx:flex-col mvx:items-center mvx:pt-5 mvx:gap-5 mvx:text-center;
-    font-family: 'Satoshi', sans-serif;
 
     .sign-transactions-footer-buttons {
       @apply mvx:flex mvx:items-center mvx:w-full mvx:gap-3;
