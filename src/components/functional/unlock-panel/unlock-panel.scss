@@ -1,11 +1,9 @@
 .unlock-panel-anchor {
   @apply mvx:flex mvx:flex-col mvx:flex-1;
-  font-family: 'Satoshi', sans-serif;
 }
 
 .unlock-panel {
   @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:justify-between;
-  font-family: 'Satoshi', sans-serif;
   overflow: hidden;
 
   .unlock-panel-groups {
