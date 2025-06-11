@@ -1,4 +1,4 @@
-import { Component, Element, h, Method, State } from '@stencil/core';
+import { Component, Element, Fragment, h, Method, State } from '@stencil/core';
 import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
@@ -11,6 +11,8 @@ import { UnlockPanelEventsEnum } from './unlock-panel.types';
 
 const unlockPanelClasses: Record<string, string> = {
   detectedPanelGroup: 'mvx:hidden mvx:sm:flex',
+  desktopPanelGroupTitle: 'mvx:hidden mvx:sm:flex',
+  mobilePanelGroupTitle: 'mvx:sm:hidden',
 };
 
 @Component({
@@ -23,6 +25,7 @@ export class UnlockPanel {
 
   private eventBus: IEventBus = new EventBus();
   private unsubscribeFunctions: (() => void)[] = [];
+  private anchor: HTMLElement | null = null;
 
   @State() isOpen: boolean = false;
   @State() walletAddress: IUnlockPanelManagerData['walletAddress'] = null;
@@ -72,8 +75,6 @@ export class UnlockPanel {
   private isCustomProvider(currentProvider: IProviderBase['type']) {
     return !Object.values(ProviderTypeEnum).includes(currentProvider as ProviderTypeEnum);
   }
-
-  private anchor: HTMLElement | null = null;
 
   private setAnchor(element: HTMLElement | null) {
     if (!element) {
@@ -193,8 +194,15 @@ export class UnlockPanel {
 
               <mvx-unlock-panel-group
                 providers={otherProviders}
-                groupTitle={hasDetectedProviders ? 'Other Options' : 'Options'}
                 onLogin={(event: CustomEvent) => this.handleLogin(event.detail)}
+                groupTitle={
+                  <Fragment>
+                    <div class={unlockPanelClasses.mobilePanelGroupTitle}>Options</div>
+                    <div class={unlockPanelClasses.desktopPanelGroupTitle}>
+                      {hasDetectedProviders ? 'Other Options' : 'Options'}
+                    </div>
+                  </Fragment>
+                }
               >
                 <slot />
               </mvx-unlock-panel-group>

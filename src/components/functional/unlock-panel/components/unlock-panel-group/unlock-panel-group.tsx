@@ -17,7 +17,7 @@ export class UnlockPanelGroup {
   @Event({ composed: false, bubbles: false }) login: EventEmitter<IProviderBase>;
 
   @Prop() providers: IProviderBase[] = [];
-  @Prop() groupTitle: string = '';
+  @Prop() groupTitle: JSX.Element;
   @Prop() class?: string;
 
   private handleLogin = (provider: IProviderBase) => {

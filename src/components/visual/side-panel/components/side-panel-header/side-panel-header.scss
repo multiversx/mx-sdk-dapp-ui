@@ -4,8 +4,10 @@
   line-height: 1;
   font-size: 24px;
   gap: 12px;
-  margin-bottom: 24px;
   padding: 8px 0;
+  box-shadow: 0px 8px 12px 12px #171717;
+  position: relative;
+  z-index: 1;
 
   .side-panel-heading-left {
     margin-right: auto;

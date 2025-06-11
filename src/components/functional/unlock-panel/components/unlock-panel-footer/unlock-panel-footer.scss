@@ -1,5 +1,5 @@
 .unlock-panel-footer {
-  @apply mvx:mt-auto mvx:relative mvx:flex mvx:cursor-pointer mvx:relative mvx:items-center mvx:p-6;
+  @apply mvx:mt-auto mvx:relative mvx:flex mvx:cursor-pointer mvx:relative mvx:p-6;
   border: 1px solid #212121;
   border-radius: 16px;
   background: #0a0a0a;
@@ -18,7 +18,7 @@
   }
 
   .unlock-panel-footer-wrapper {
-    @apply mvx:flex mvx:flex-col mvx:transition-all mvx:duration-200 mvx:gap-2 mvx:flex-1 mvx:h-full;
+    @apply mvx:flex mvx:flex-col mvx:transition-all mvx:duration-200 mvx:gap-2 mvx:flex-1;
     transition-timing-function: ease;
 
     @media (min-width: 480px) {

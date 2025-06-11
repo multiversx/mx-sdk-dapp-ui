@@ -20,7 +20,7 @@
     .unlock-panel-group-providers {
       @apply mvx:flex mvx:overflow-hidden mvx:flex-col mvx:gap-0.5 mvx:rounded-tl-lg mvx:rounded-tr-lg;
       padding-bottom: 24px;
-      padding-top: 12px;
+      margin-top: 12px;
       overflow: auto;
 
       &::-webkit-scrollbar {
