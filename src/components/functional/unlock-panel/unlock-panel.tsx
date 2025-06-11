@@ -186,11 +186,12 @@ export class UnlockPanel {
             <div class="unlock-panel-groups">
               {hasDetectedProviders && (
                 <mvx-unlock-panel-group
-                  groupTitle="Detected"
                   providers={detectedProviders}
                   onLogin={(event: CustomEvent) => this.handleLogin(event.detail)}
                   class={unlockPanelClasses.detectedPanelGroup}
-                />
+                >
+                  <div slot={UnlockPanelGroupSlotEnum.groupLabel}>Detected</div>
+                </mvx-unlock-panel-group>
               )}
 
               <mvx-unlock-panel-group

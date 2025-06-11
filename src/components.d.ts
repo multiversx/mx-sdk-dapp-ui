@@ -431,7 +431,6 @@ export namespace Components {
     }
     interface MvxUnlockPanelGroup {
         "class"?: string;
-        "groupTitle": JSX.Element;
         /**
           * @default []
          */
@@ -1685,7 +1684,6 @@ declare namespace LocalJSX {
     }
     interface MvxUnlockPanelGroup {
         "class"?: string;
-        "groupTitle"?: JSX.Element;
         "onLogin"?: (event: MvxUnlockPanelGroupCustomEvent<IProviderBase>) => void;
         /**
           * @default []

@@ -21,7 +21,6 @@ export class UnlockPanelGroup {
   @Event({ composed: false, bubbles: false }) login: EventEmitter<IProviderBase>;
 
   @Prop() providers: IProviderBase[] = [];
-  @Prop() groupTitle: JSX.Element;
   @Prop() class?: string;
 
   private handleLogin = (provider: IProviderBase) => {
@@ -35,7 +34,7 @@ export class UnlockPanelGroup {
     return (
       <div class={{ 'unlock-panel-group': true, [this.class]: Boolean(this.class) }}>
         <div class="unlock-panel-group-label">
-          {this.groupTitle ?? <slot name={UnlockPanelGroupSlotEnum.groupLabel} />}
+          <slot name={UnlockPanelGroupSlotEnum.groupLabel} />
         </div>
 
         <div class="unlock-panel-group-providers">
