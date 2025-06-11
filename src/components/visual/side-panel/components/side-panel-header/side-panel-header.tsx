@@ -1,7 +1,10 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 
-import { SidePanelHeaderSlotEnum } from './side-panel-header.types';
+export enum SidePanelHeaderSlotEnum {
+  leftIcon = 'left-icon',
+  rightIcon = 'right-icon',
+}
 
 @Component({
   tag: 'mvx-side-panel-header',

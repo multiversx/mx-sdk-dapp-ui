@@ -1,12 +1,31 @@
-.unlock-panel-group {
-  @apply mvx:flex mvx:flex-col mvx:gap-3;
+:host {
+  display: flex;
+  overflow: hidden;
 
-  .unlock-panel-group-label {
-    @apply mvx:leading-none;
-    color: #a09a93;
+  @media (min-width: 480px) {
+    overflow: unset;
   }
 
-  .unlock-panel-group-providers {
-    @apply mvx:flex mvx:rounded-lg mvx:overflow-hidden mvx:flex-col mvx:gap-0.5;
+  .unlock-panel-group {
+    @apply mvx:flex mvx:flex-col;
+    flex: 1;
+    overflow: hidden;
+
+    .unlock-panel-group-label {
+      @apply mvx:leading-none;
+      color: #a09a93;
+      position: relative;
+    }
+
+    .unlock-panel-group-providers {
+      @apply mvx:flex mvx:overflow-hidden mvx:flex-col mvx:gap-0.5 mvx:rounded-tl-lg mvx:rounded-tr-lg;
+      padding-bottom: 24px;
+      margin-top: 12px;
+      overflow: auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
   }
 }
