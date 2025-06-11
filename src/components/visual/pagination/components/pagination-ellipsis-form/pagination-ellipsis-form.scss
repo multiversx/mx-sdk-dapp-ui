@@ -7,7 +7,7 @@
   .pagination-ellipsis-form-field-label {
     margin-bottom: 8px;
     font-size: 12px;
-    color: #a3a3a3;
+    color: var(--mx-pagination-ellipsis-label);
     cursor: pointer;
   }
 
@@ -26,7 +26,7 @@
       padding-right: 40px;
       text-align: center;
       transition: all 200ms ease;
-      background: #171717;
+      background: var(--mx-pagination-ellipsis-input-bg);
       border-radius: 8px;
       border-color: transparent;
       appearance: none;
@@ -35,7 +35,7 @@
       appearance: none;
       -moz-appearance: textfield;
       margin: 0;
-      color: #fff;
+      color: var(--mx-pagination-ellipsis-input-color);
 
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
@@ -44,7 +44,7 @@
       }
 
       &:focus {
-        border-color: #23f7dd;
+        border-color: var(--mx-pagination-ellipsis-input-border);
       }
     }
 
@@ -63,7 +63,7 @@
       top: 50%;
 
       &:hover .pagination-ellipsis-form-button-icon {
-        fill: #23f7dd;
+        fill: var(--mx-pagination-ellipsis-button);
       }
     }
   }

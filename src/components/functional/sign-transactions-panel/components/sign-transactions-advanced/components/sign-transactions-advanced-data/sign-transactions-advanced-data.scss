@@ -9,7 +9,7 @@
 
       .sign-transactions-advanced-data-label {
         @apply mvx:text-base mvx:leading-none mvx:text-right;
-        color: #b6b3af;
+        color: var(--mx-sign-transactions-secondary);
       }
 
       .sign-transactions-advanced-data-decode-options {
@@ -89,11 +89,11 @@
         }
 
         .sign-transactions-advanced-data-text {
-          color: #b6b3af;
+          color: var(--mx-sign-transactions-secondary);
         }
 
         .sign-transactions-advanced-data-highlight {
-          @apply mvx:text-white;
+          color: var(--mx-sign-transactions-primary);
 
           &.bolded {
             @apply mvx:font-medium;

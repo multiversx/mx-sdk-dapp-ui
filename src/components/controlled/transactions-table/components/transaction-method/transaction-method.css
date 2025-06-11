@@ -38,57 +38,57 @@ a.badge:hover, a.badge:focus {
 }
 
 .badge-primary {
-  color: #fff;
-  background-color: #007bff;
+  color: var(--mx-badge-color);
+  background-color: var(--mx-badge-primary-bg);
 }
 
 a.badge-primary:hover, a.badge-primary:focus {
-  color: #fff;
-  background-color: #0062cc;
+  color: var(--mx-badge-color);
+  background-color: var(--mx-badge-primary-hover-bg);
 }
 
 a.badge-primary:focus, a.badge-primary.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  box-shadow: 0 0 0 0.2rem var(--mx-badge-primary-focus-bg);
 }
 
 .badge-secondary {
-  color: #fff;
-  background-color: #6c757d;
+  color: var(--mx-badge-color);
+  background-color: var(--mx-badge-secondary-bg);
 }
 
 a.badge-secondary:hover, a.badge-secondary:focus {
-  color: #fff;
-  background-color: #545b62;
+  color: var(--mx-badge-color);
+  background-color: var(--mx-badge-secondary-hover-bg);
 }
 
 a.badge-secondary:focus, a.badge-secondary.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+  box-shadow: 0 0 0 0.2rem var(--mx-badge-secondary-focus-bg);
 }
 
 .badge-success {
-  color: #fff;
-  background-color: #28a745;
+  color: var(--mx-badge-color);
+  background-color: var(--mx-badge-success-bg);
 }
 
 a.badge-success:hover, a.badge-success:focus {
-  color: #fff;
-  background-color: #1e7e34;
+  color: var(--mx-badge-color);
+  background-color: var(--mx-badge-success-hover-bg);
 }
 
 a.badge-success:focus, a.badge-success.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+  box-shadow: 0 0 0 0.2rem var(--mx-badge-success-focus-bg);
 }
 
 .badge-info {
-  color: #fff;
+  color: var(--mx-badge-color);
   background-color: #17a2b8;
 }
 
 a.badge-info:hover, a.badge-info:focus {
-  color: #fff;
+  color: var(--mx-badge-color);
   background-color: #117a8b;
 }
 
@@ -113,12 +113,12 @@ a.badge-warning:focus, a.badge-warning.focus {
 }
 
 .badge-danger {
-  color: #fff;
+  color: var(--mx-badge-color);
   background-color: #dc3545;
 }
 
 a.badge-danger:hover, a.badge-danger:focus {
-  color: #fff;
+  color: var(--mx-badge-color);
   background-color: #bd2130;
 }
 
@@ -143,12 +143,12 @@ a.badge-light:focus, a.badge-light.focus {
 }
 
 .badge-dark {
-  color: #fff;
+  color: var(--mx-badge-color);
   background-color: #343a40;
 }
 
 a.badge-dark:hover, a.badge-dark:focus {
-  color: #fff;
+  color: var(--mx-badge-color);
   background-color: #1d2124;
 }
 
@@ -168,5 +168,5 @@ a.badge-dark:focus, a.badge-dark.focus {
 }
 
 .text-white {
-  color: #fff;
+  color: var(--mx-transaction-text-color);
 }

@@ -34,22 +34,6 @@
   position: relative;
 }
 
-.confirm-transaction {
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  height: 24px;
-  color: #ffffff;
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 24px;
-  text-align: left;
-  white-space: nowrap;
-  letter-spacing: -0.72px;
-}
 
 .frame-2 {
   display: flex;
@@ -72,26 +56,6 @@
   height: 30px;
 }
 
-.icon-close {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  width: 24px;
-  height: 24px;
-  color: #b5b2af;
-  font-family:
-    Font Awesome 6 Pro,
-    var(--default-font-family);
-  font-size: 24px;
-  font-weight: 300;
-  line-height: 24px;
-  text-align: center;
-  white-space: nowrap;
-}
-
 .transaction-navigation {
   display: flex;
   align-items: flex-start;
@@ -105,20 +69,6 @@
   padding: 0 24px 0 24px;
 }
 
-.transaction-switcher {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  gap: 16px;
-  position: relative;
-  width: 232px;
-  padding: 4px 16px 4px 16px;
-  background: rgba(53, 53, 53, 0.3);
-  border-radius: 16px;
-}
-
 .navigation-icon {
   display: flex;
   align-items: center;
@@ -130,41 +80,6 @@
   height: 25px;
 }
 
-.icon-angle-left {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  width: 20px;
-  height: 19px;
-  color: #b5b2af;
-  font-family:
-    Font Awesome 6 Pro,
-    var(--default-font-family);
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 19px;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.transaction {
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  height: 20px;
-  color: #b5b2af;
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 19.6px;
-  text-align: left;
-  white-space: nowrap;
-}
 
 .sign-transaction-content {
   display: flex;
@@ -194,14 +109,14 @@
       border-radius: 24px;
       cursor: pointer;
       position: relative;
-      color: #b6b3af;
+      color: var(--mx-sign-transactions-secondary);
 
       &:before {
         opacity: 0%;
         transition: all 200ms ease;
         content: '';
         position: absolute;
-        background-color: #202020;
+        background-color: var(--mx-sign-transactions-bg);
         left: 0;
         border-radius: 24px;
         top: 0;
@@ -212,7 +127,7 @@
 
       &:hover,
       &.active {
-        color: #23f7dd;
+        color: var(--mx-sign-transactions-accent);
 
         &:before {
           opacity: 90%;
@@ -229,25 +144,6 @@
   }
 }
 
-.overview {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  width: 60px;
-  height: 20px;
-  color: #23f7dd;
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  text-align: center;
-  white-space: nowrap;
-}
 
 @media (max-width: 480px) {
   .main-container {

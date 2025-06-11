@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  background: #0a0a0a;
+  background: var(--mx-overview-bg);
   border-radius: 16px;
   overflow: hidden;
 }
@@ -21,7 +21,7 @@
   display: flex;
   align-items: center;
   padding: 16px 20px;
-  background: #1f1f1f;
+  background: var(--mx-detail-row-bg);
   position: relative;
   overflow: hidden;
   min-height: 80px;
@@ -51,7 +51,7 @@
 }
 
 .action-row {
-  background: #191919;
+  background: var(--mx-action-row-bg);
   padding: 28px 20px 8px 20px;
   border-radius: 0 0 12px 12px;
   min-height: 56px;
@@ -59,10 +59,7 @@
 }
 
 .detail-label {
-  color: #b5b2af;
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
+  color: var(--mx-sign-transactions-secondary);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -86,12 +83,9 @@
 }
 
 .amount-value {
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
   font-size: 24px;
   font-weight: 500;
-  color: #ffffff;
+  color: var(--mx-sign-transaction-amount-color);
   letter-spacing: -0.24px;
   line-height: 24px;
   text-align: right;
@@ -100,15 +94,12 @@
 
 .identifier {
   font-size: 14px;
-  color: #a3a3a3;
+  color: var(--mx-sign-transactions-primary);
 }
 
 .usd-value {
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
   font-size: 14px;
-  color: #b5b2af;
+  color: var(--mx-sign-transactions-secondary);
 }
 
 .token-icon {
@@ -116,7 +107,7 @@
   height: 40px;
   border-radius: 2px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--mx-token-icon-border);
 }
 
 .token-icon img {
@@ -148,12 +139,9 @@
 }
 
 .interactor-name {
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
   font-size: 16px;
   font-weight: 400;
-  color: #b6b3af;
+  color: var(--mx-sign-transactions-primary);
   letter-spacing: -0.16px;
   line-height: 22px;
   max-width: 150px;
@@ -168,7 +156,7 @@
   justify-content: center;
   width: 23px;
   height: 23px;
-  background: #0a0a0a;
+  background: var(--mx-overview-bg);
   border-radius: 50%;
   left: 21px;
   top: 76px;
@@ -177,7 +165,7 @@
 }
 
 .direction-arrow {
-  color: #b6b3af;
+  color: var(--mx-sign-transactions-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -186,7 +174,6 @@
   position: relative;
   width: 10px;
   height: 5px;
-  color: #b5b2af;
 }
 
 .direction-icon {
@@ -201,18 +188,15 @@
   height: 2px;
   position: relative;
   border-radius: 50%;
-  background-color: #b5b2af;
+  background-color: var(--mx-sign-transactions-secondary);
 }
 
 /* Action section */
 .action-value {
   margin-left: auto;
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
   font-size: 14px;
   font-weight: 500;
-  color: #b5b2af;
+  color:  var(--mx-sign-transaction-text-color);
   z-index: 1;
 }
 
@@ -235,10 +219,7 @@
 }
 
 .fee-label {
-  color: #b5b2af;
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
+  color: var(--mx-sign-transaction-text-color);
   font-size: 14px;
   font-weight: 400;
   line-height: 19.6px;
@@ -253,17 +234,14 @@
 .info-icon::before {
   content: 'ⓘ';
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--mx-info-icon-color);
   position: absolute;
   top: -2px;
   left: 0;
 }
 
 .fee-value {
-  color: #ffffff;
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
+  color: var(--mx-sign-transaction-amount-color);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;

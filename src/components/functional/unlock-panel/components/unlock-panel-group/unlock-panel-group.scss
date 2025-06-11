@@ -3,7 +3,7 @@
 
   .unlock-panel-group-label {
     @apply mvx:leading-none;
-    color: #a09a93;
+    color: var(--unlock-panel-group-label);
   }
 
   .unlock-panel-group-providers {

@@ -54,17 +54,17 @@
 }
 
 .badge-primary {
-  color: #fff;
-  background-color: #007bff;
+  color: var(--mx-badge-color);
+  background-color: var(--mx-badge-primary-bg);
 }
 
 .badge-secondary {
-  color: #fff;
-  background-color: #6c757d;
+  color: var(--mx-badge-color);
+  background-color: var(--mx-badge-secondary-bg);
 }
 
 .badge-danger {
-  color: #fff;
+  color: var(--mx-badge-color);
   background-color: #dc3545;
 }
 
@@ -84,5 +84,5 @@
 }
 
 .text-white {
-  color: #fff;
+  color: var(--mx-transaction-text-color);
 }

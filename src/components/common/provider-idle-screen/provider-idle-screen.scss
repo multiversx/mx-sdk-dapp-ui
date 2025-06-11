@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: #fff;
+    color: var(--mx-unlock-provider-primary);
     padding: 48px;
     gap: 16px;
 
@@ -31,7 +31,7 @@
 
     .unlock-provider-intro-text {
       font-size: 16px;
-      color: #a09a93;
+      color: var(--mx-unlock-provider-secondary);
       font-weight: 500;
       line-height: 1.25;
     }

@@ -18,18 +18,18 @@
   }
 
   &.success {
-    color: var(--mx-toast-success-color);
-    background: var(--mx-toast-success-bg);
+    color: var(--mx-success-color);
+    background: var(--mx-success-bg-color);
   }
 
   &.warning {
-    color: var(--mx-toast-pending-color);
-    background: var(--mx-toast-pending-bg);
+    color: var(--mx-pending-color);
+    background: var(--mx-pending-bg-color);
   }
 
   &.danger {
-    color: var(--mx-toast-error-color);
-    background: var(--mx-toast-error-bg);
+    color: var(--mx-error-color);
+    background: var(--mx-error-bg-color);
   }
 }
 
@@ -43,27 +43,27 @@
 
 .content-heading-title {
   @apply mvx:text-base mvx:font-bold mvx:m-0;
-  color: var(--mx-tx-text-primary);
+  color: var(--mx-toast-primary-color);
 }
 
 .icon-close {
   @apply mvx:flex mvx:w-5 mvx:h-5 mvx:flex-col mvx:justify-center mvx:shrink-0 mvx:p-0 mvx:cursor-pointer mvx:bg-none mvx:border-0;
-  color: var(--mx-tx-text-primary);
+  color: var(--mx-toast-primary-color);
 
   .svg-inline--fa {
     @apply mvx:text-center;
-    color: var(--mx-tx-text-primary);
+    color: var(--mx-toast-primary-color);
   }
 }
 
 .subtitle {
   @apply mvx:text-sm mvx:font-normal mvx:leading-3.5 mvx:tracking-tight;
-  color: var(--mx-tx-text-secondary);
+  color: var(--mx-toast-secondary-color);
 }
 
 .content-message {
   @apply mvx:text-sm mvx:font-normal mvx:leading-4 mvx:tracking-tight;
-  color: var(--mx-tx-text-secondary);
+  color: var(--mx-toast-secondary-color);
 
   &.no-margin {
     @apply mvx:mt-0;

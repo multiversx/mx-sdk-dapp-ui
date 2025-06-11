@@ -50,8 +50,8 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    border: 1px solid #404040;
-    background-color: #101010;
+    border: 1px solid var(--mx-panel-border-color);
+    background-color: var(--mx-panel-bg-color);
     height: 100%;
 
     &.visible {

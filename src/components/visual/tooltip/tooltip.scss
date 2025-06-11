@@ -20,19 +20,19 @@
       flex-direction: row;
       gap: 8px;
       cursor: default;
-      background: #000000;
+      background: var(--mx-tooltip-bg);
       border-radius: 12px;
-      border: 1px solid #262626;
+      border: 1px solid var(--mx-tootip-border);
       padding: 8px;
       font-size: 12px;
-      color: #737373;
+      color: var(--mx-tooltip-text);
       white-space: nowrap;
 
       &:after {
         width: 8px;
         height: 8px;
-        border: 1px solid #262626;
-        background-color: #000000;
+        border: 1px solid var(--mx-tootip-border);
+        background-color: var(--mx-tooltip-bg);
         position: absolute;
         content: '';
         left: 50%;
