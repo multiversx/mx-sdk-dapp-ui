@@ -1,3 +1,5 @@
+import type { IProviderBase } from 'components';
+
 // Extend the Window interface globally to include custom properties
 export interface ExtendedWindow extends Window {
   elrondWallet?: {
@@ -26,4 +28,9 @@ export enum UnlockPanelEventsEnum {
    * User clicks Close button inside mounted provider
    */
   ANCHOR_CLOSE = 'ANCHOR_CLOSE',
+}
+
+export interface IUnlockPanelManagerData {
+  providers: IProviderBase[] | null;
+  walletAddress: string | null;
 }
