@@ -3,6 +3,10 @@ import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { type IProviderBase, ProviderTypeEnum } from 'types/provider.types';
 
+export enum UnlockPanelGroupSlotEnum {
+  groupLabel = 'group-label',
+}
+
 const unlockPanelGroupClasses: Record<string, string> = {
   detectedPanelGroup: 'mvx:hidden mvx:sm:flex',
   lastProviderButton: 'mvx:rounded-bl-lg mvx:rounded-br-lg',
@@ -30,7 +34,9 @@ export class UnlockPanelGroup {
 
     return (
       <div class={{ 'unlock-panel-group': true, [this.class]: Boolean(this.class) }}>
-        <div class="unlock-panel-group-label">{this.groupTitle}</div>
+        <div class="unlock-panel-group-label">
+          {this.groupTitle ?? <slot name={UnlockPanelGroupSlotEnum.groupLabel} />}
+        </div>
 
         <div class="unlock-panel-group-providers">
           {this.providers.map((provider, providerIndex) => (

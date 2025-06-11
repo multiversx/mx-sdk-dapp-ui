@@ -1,10 +1,11 @@
-import { Component, Element, Fragment, h, Method, State } from '@stencil/core';
+import { Component, Element, h, Method, State } from '@stencil/core';
 import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
+import { UnlockPanelGroupSlotEnum } from './components/unlock-panel-group/unlock-panel-group';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
 import type { IUnlockPanelManagerData } from './unlock-panel.types';
 import { UnlockPanelEventsEnum } from './unlock-panel.types';
@@ -195,15 +196,14 @@ export class UnlockPanel {
               <mvx-unlock-panel-group
                 providers={otherProviders}
                 onLogin={(event: CustomEvent) => this.handleLogin(event.detail)}
-                groupTitle={
-                  <Fragment>
-                    <div class={unlockPanelClasses.mobilePanelGroupTitle}>Options</div>
-                    <div class={unlockPanelClasses.desktopPanelGroupTitle}>
-                      {hasDetectedProviders ? 'Other Options' : 'Options'}
-                    </div>
-                  </Fragment>
-                }
               >
+                <div slot={UnlockPanelGroupSlotEnum.groupLabel}>
+                  <div class={unlockPanelClasses.mobilePanelGroupTitle}>Options</div>
+                  <div class={unlockPanelClasses.desktopPanelGroupTitle}>
+                    {hasDetectedProviders ? 'Other Options' : 'Options'}
+                  </div>
+                </div>
+
                 <slot />
               </mvx-unlock-panel-group>
             </div>
