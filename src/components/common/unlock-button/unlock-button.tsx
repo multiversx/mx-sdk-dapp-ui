@@ -5,7 +5,7 @@ import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 
 const unlockButtonClasses: Record<string, string> = {
-  statusIcon: 'mvx:fill-teal-400!',
+  statusIcon: 'mvx:fill-accent!',
 };
 
 @Component({

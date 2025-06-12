@@ -29,7 +29,7 @@
 
   .processing-status {
     @apply mvx:text-base mvx:font-normal mvx:leading-6 mvx:tracking-tight;
-    color: var(--mx-body-label-color);
+    color: var(--mx-notifications-section-color);
   }
 }
 
@@ -42,11 +42,12 @@
 
   .activity-title {
     @apply mvx:text-base mvx:font-normal mvx:m-0 mvx:leading-6 mvx:tracking-tight;
-    color: var(--mx-body-label-color);
+    color: var(--mx-notifications-section-color);
   }
 
   .clear-button {
-    @apply mvx:text-white mvx:text-xs mvx:font-normal mvx:underline mvx:cursor-pointer mvx:leading-4;
+    @apply mvx:text-xs mvx:font-normal mvx:underline mvx:cursor-pointer mvx:leading-4;
+    color: var(--mx-notifications-clear-color);
     text-decoration-skip-ink: none;
     text-underline-position: from-font;
   }
@@ -57,7 +58,7 @@
 
   .no-activity {
     @apply mvx:p-4 mvx:text-center;
-    color: #666666;
+    color: var(--mx-notifications-no-activity);
   }
 
   &::-webkit-scrollbar {

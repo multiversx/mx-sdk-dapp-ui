@@ -21,7 +21,7 @@
   span,
   i {
     @apply mvx:text-xl mvx:w-10 mvx:h-10;
-    color: var(--mx-tx-text-primary);
+    color: var(--mx-toast-primary-color);
   }
 
   .svg-inline--fa {
@@ -39,7 +39,7 @@
 
 .transaction-title {
   @apply mvx:text-xs mvx:font-medium mvx:leading-6 mvx:tracking-tight mvx:m-0;
-  color: var(--mx-tx-text-primary);
+  color: var(--mx-toast-primary-color);
 
   @media (min-width: 375px) {
     @apply mvx:text-sm;
@@ -52,16 +52,16 @@
 
 .transaction-details-info {
   @apply mvx:flex mvx:items-center mvx:gap-1 mvx:self-stretch mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight;
-  color: var(--mx-tx-text-secondary);
+  color: var(--mx-transaction-secondary-color);
 }
 
 .transaction-details-info-text {
   @apply mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight mvx:max-w-64;
-  color: var(--mx-tx-text-secondary);
+  color: var(--mx-transaction-secondary-color);
 
   span {
     @apply mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight;
-    color: var(--mx-tx-text-secondary);
+    color: var(--mx-transaction-secondary-color);
   }
 
   .trim-wrapper {
@@ -71,12 +71,12 @@
   .left,
   .right {
     @apply mvx:mt-1 mvx:font-normal mvx:leading-4 mvx:tracking-tight;
-    color: var(--mx-tx-text-secondary);
+    color: var(--mx-transaction-secondary-color);
   }
 
   .ellipsis {
     @apply mvx:text-base mvx:font-normal mvx:leading-4 mvx:tracking-tight;
-    color: var(--mx-tx-text-secondary);
+    color: var(--mx-transaction-secondary-color);
   }
 }
 
@@ -94,7 +94,7 @@
 
 .transaction-amount {
   @apply mvx:flex mvx:text-xs mvx:font-medium mvx:leading-6 mvx:tracking-tight;
-  color: var(--mx-tx-text-primary);
+  color: var(--mx-toast-primary-color);
 
   @media (min-width: 375px) {
     @apply mvx:text-sm;
@@ -105,11 +105,11 @@
   }
 
   &.amount-positive {
-    color: var(--mx-tx-success);
+    color: var(--mx-success-color);
   }
 
   &.transaction-failed {
-    color: var(--mx-tx-fail);
+    color: var(--mx-error-color);
   }
 
   .transaction-amount-decimal {
@@ -125,21 +125,21 @@
   @apply mvx:flex mvx:items-center;
 }
 
-.asset {
-  @apply mvx:w-7 mvx:h-7 mvx:rounded-full mvx:flex mvx:items-center mvx:justify-center mvx:-ml-2 mvx:border-2 mvx:overflow-hidden;
-  background-color: var(--mx-dapp-core-bg-secondary, #f3f4f6);
-  border-color: var(--mx-dapp-core-bg-primary, white);
+// .asset {
+//   @apply mvx:w-7 mvx:h-7 mvx:rounded-full mvx:flex mvx:items-center mvx:justify-center mvx:-ml-2 mvx:border-2 mvx:overflow-hidden;
+//   background-color: var(--mx-dapp-core-bg-secondary, #f3f4f6);
+//   border-color: var(--mx-dapp-core-bg-primary, white);
 
-  &:first-child {
-    @apply mvx:ml-0;
-  }
+//   &:first-child {
+//     @apply mvx:ml-0;
+//   }
 
-  .asset-image {
-    @apply mvx:w-full mvx:h-full mvx:object-cover;
-  }
-}
+//   .asset-image {
+//     @apply mvx:w-full mvx:h-full mvx:object-cover;
+//   }
+// }
 
-.asset-more {
-  @apply mvx:font-semibold mvx:text-white;
-  background-color: var(--mx-dapp-core-color-indigo, #5045e4);
-}
+// .asset-more {
+//   @apply mvx:font-semibold mvx:text-white;
+//   background-color: var(--mx-dapp-core-color-indigo, #5045e4);
+// }
