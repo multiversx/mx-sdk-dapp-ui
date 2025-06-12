@@ -8,6 +8,7 @@
     --mx-neutral-450: #868686;
     --mx-neutral-500: #737373;
     --mx-neutral-700: #353535;
+    --mx-neutral-700-20: rgba(64, 64, 64, 0.20);
     --mx-neutral-700-40: rgba(64, 64, 64, 0.40);
     --mx-neutral-800: #262626;
     --mx-neutral-800-30: rgba(53, 53, 53, 0.30);
@@ -34,7 +35,7 @@
     --mx-stone-100: #E2DEDC;
     --mx-stone-350: #b6b3af;
     --mx-stone-450: #88817a;
-    --mx-teal-400: #000100;
+    --mx-teal-400: #23f7dd;
     --mx-blue-600: #007bff;
     --mx-blue-600-50: rgba(0, 123, 255, 0.5);
     --mx-blue-700: #0062cc;
@@ -120,4 +121,6 @@
     --mx-action-row-bg: var(--mx-white-60);
     --mx-token-icon-border: var(--mx-neutral-700);
     --unlock-panel-group-label: var(--mx-stone-450);
+    --mx-unlock-footer-bg: var(--mx-white);
+    --mx-unlock-footer-border: var(--mx-neutral-700-20);
 }

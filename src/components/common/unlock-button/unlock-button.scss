@@ -48,16 +48,12 @@
     gap: 4px;
 
     .unlock-button-status-text {
-      color: var(--mx-unlock-button-status-text);
+      color: var(--mvx-text-accent-color);
     }
 
     .unlock-button-status-icon {
       display: flex;
       align-items: center;
-
-      svg path {
-        fill: var(--mx-unlock-button-status-text);
-      }
     }
   }
 }

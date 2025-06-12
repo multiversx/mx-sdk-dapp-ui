@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { processImgSrc } from 'utils/processImgSrc';
 
 const unlockPanelClasses: Record<string, string> = {
-  footerIcon: 'mvx:w-4! mvx:h-auto! mvx:hidden mvx:xs:flex',
+  footerIcon: 'mvx:w-4! mvx:h-auto! mvx:hidden mvx:xs:flex mvx:ml-auto mvx:mt-auto mvx:fill-basic!',
 };
 
 @Component({
@@ -35,7 +35,7 @@ export class UnlockPanel {
           </div>
 
           <div class="unlock-panel-footer-subtitle mobile">
-            <span>See which one to get or </span>
+            <span>See which one to get on </span>
 
             <a target="_blank" rel="noreferrer" class="unlock-panel-footer-subtitle-link" href={this.walletAddress}>
               {processedWalletAddress}
