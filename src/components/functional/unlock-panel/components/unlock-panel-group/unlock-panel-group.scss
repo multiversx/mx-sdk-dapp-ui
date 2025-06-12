@@ -10,10 +10,10 @@
     @apply mvx:flex mvx:flex-col;
     flex: 1;
     overflow: hidden;
+    color: var(--mvx-text-color-secondary);
 
     .unlock-panel-group-label {
       @apply mvx:leading-none;
-      color: var(--unlock-panel-group-label);
       position: relative;
     }
 

@@ -84,10 +84,7 @@
   --mx-black-5: rgba(0, 0, 0, 0.05);
   
   /* Dark Theme Variables */
-  --mx-panel-title-color: var(--mx-white);
-  --mx-panel-bg-color: var(--mx-neutral-900);
-  --mx-panel-border-color: var(--mx-gray-700);
-  --mx-success-color: var(--mx-green-400);
+  /* --mx-success-color: var(--mx-green-400);
   --mx-success-bg-color: var(--mx-green-850);
   --mx-pending-color: var(--mx-yellow-400);
   --mx-pending-bg-color: var(--mx-brown-900);
@@ -144,34 +141,29 @@
   --mx-sign-transaction-image-border: var(--mx-neutral-900);
   --mx-info-icon-color: var(--mx-white-60);
   --mx-sign-transaction-text-color: var(--mx-stone-350);
-  --mx-unlock-provider-primary: var(--mx-white);
-  --mx-unlock-provider-secondary: var(--mx-stone-350);
-  --mx-unlock-button-bg: var(--mx-neutral-800-30);
-  --mx-unlock-button-hover-bg: var(--mx-neutral-800);
-  --mx-unlock-button-label: var(--mx-neutral-200);
-  --mx-unlock-button-status-bg: var(--mx-neutral-900);
-  --mx-unlock-button-status-border: var(--mx-neutral-700-40);
-  --mx-unlock-button-status-text: var(--mx-teal-400);
   --mx-tooltip-bg: var(--mx-black);
   --mx-tootip-border: var(--mx-neutral-800);
   --mx-tooltip-text: var(--mx-neutral-500);
   --mx-overview-bg: var(--mx-neutral-950);
   --mx-detail-row-bg: var(--mx-neutral-920);
   --mx-action-row-bg: var(--mx-neutral-910);
-  --mx-token-icon-border: var(--mx-neutral-700);
-  --unlock-panel-group-label: var(--mx-stone-350);
-  --mx-unlock-footer-bg: var(--mx-neutral-950);
-  --mx-unlock-footer-border: var(--mx-neutral-700-40);
+  --mx-token-icon-border: var(--mx-neutral-700); */
 
+/* -----------New----------------------------- */
+  /* --mvx-text-color-primary: var(--mx-white); 
+  --mvx-text-color-secondary: var(--mx-stone-350);
   --mvx-text-accent-color: var(--mx-teal-400);
-  --mvx-text-color: var(--mx-white);
+
+  --mvx-bg-color-primary: var(--mx-neutral-900);
+  --mvx-bg-color-secondary: var(--mx-neutral-800-30);
+  --mvx-bg-accent-color: var(--mx-neutral-950);
+
+  --mvx-border-color-primary: var(--mx-neutral-700-40);
+
+  --mvx-hover-color-secondary: var(--mx-neutral-800); */
   
 
-
   /* Light Theme Variables */
-  /* --mx-panel-title-color: var(--mx-black);
-  --mx-panel-bg-color: var(--mx-neutral-100);
-  --mx-panel-border-color: var(--mx-gray-700);
   --mx-success-color: var(--mx-white);
   --mx-success-bg-color: var(--mx-green-600);
   --mx-pending-color: var(--mx-yellow-400);
@@ -229,14 +221,6 @@
   --mx-sign-transaction-image-border: var(--mx-neutral-900);
   --mx-info-icon-color: var(--mx-stone-450);
   --mx-sign-transaction-text-color: var(--mx-stone-450);
-  --mx-unlock-provider-primary: var(--mx-black);
-  --mx-unlock-provider-secondary: var(--mx-stone-450);
-  --mx-unlock-button-bg: var(--mx-white);
-  --mx-unlock-button-hover-bg: var(--mx-neutral-100);
-  --mx-unlock-button-label: var(--mx-neutral-800);
-  --mx-unlock-button-status-bg: var(--mx-neutral-100);
-  --mx-unlock-button-status-border: var(--mx-gray-700);
-  --mx-unlock-button-status-text: var(--mx-black);
   --mx-tooltip-bg: var(--mx-white);
   --mx-tootip-border: var(--mx-neutral-400);
   --mx-tooltip-text: var(--mx-neutral-700);
@@ -244,11 +228,18 @@
   --mx-detail-row-bg: var(--mx-white);
   --mx-action-row-bg: var(--mx-white-60);
   --mx-token-icon-border: var(--mx-neutral-700);
-  --unlock-panel-group-label: var(--mx-stone-450);
-  --mx-unlock-footer-bg: var(--mx-white);
-  --mx-unlock-footer-border: var(--mx-neutral-700-20);
 
+  /* ------------------New------------------- */
+  --mvx-text-color-primary: var(--mx-black);
+  --mvx-text-color-secondary: var(--mx-stone-450);
+  --mvx-text-accent-color: var(--mx-black);
+  
+  --mvx-bg-color-primary: var(--mx-neutral-100);
+  --mvx-bg-color-secondary: var(--mx-white);
+  --mvx-bg-accent-color: var(--mx-white);
+  
+  --mvx-border-color-primary: var(--mx-neutral-700-20);
+  
+  --mvx-hover-color-secondary: var(--mx-neutral-200); 
 
-  --mvx-text-color: var(--mx-black);
-  --mvx-text-accent-color: var(--mx-black); */
 }

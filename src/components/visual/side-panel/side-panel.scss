@@ -54,8 +54,8 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--mx-panel-border-color);
-    background-color: var(--mx-panel-bg-color);
+    border: 1px solid var(--mvx-border-color-primary);
+    background-color: var(--mvx-bg-color-primary);
     height: 64vh;
 
     @media (min-width: 480px) {

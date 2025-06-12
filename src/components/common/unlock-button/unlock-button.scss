@@ -2,7 +2,7 @@
   padding: 0 12px;
   padding-right: 16px;
   height: 60px;
-  background: var(--mx-unlock-button-bg);
+  background: var(--mvx-bg-color-secondary);
   display: flex;
   transition: all 200ms ease;
   cursor: pointer;
@@ -10,7 +10,7 @@
   gap: 16px;
 
   &:hover {
-    background: var(--mx-unlock-button-hover-bg);
+    background: var(--mvx-hover-color-secondary);
   }
 
   .unlock-button-icon {
@@ -28,7 +28,7 @@
   }
 
   .unlock-button-label {
-    color: var(--mx-unlock-button-label);
+    color: var(--mvx-text-color-primary);
     font-size: 16px;
     line-height: 1;
   }
@@ -43,8 +43,8 @@
     align-items: center;
     border-radius: 20px;
     padding: 4px 8px;
-    border: 1px solid var(--mx-unlock-button-status-border);
-    background: var(--mx-unlock-button-status-bg);
+    border: 1px solid var(--mvx-border-color-primary);
+    background: var(--mvx-bg-color-primary);
     gap: 4px;
 
     .unlock-button-status-text {
