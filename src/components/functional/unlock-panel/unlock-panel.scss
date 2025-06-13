@@ -1,9 +1,11 @@
 .unlock-panel-anchor {
   @apply mvx:flex mvx:flex-col mvx:flex-1;
+  overflow: hidden;
 }
 
 .unlock-panel {
   @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:justify-between;
+  padding-bottom: 24px;
   overflow: hidden;
 
   .unlock-panel-groups {
@@ -11,7 +13,7 @@
     overflow: hidden;
     padding-top: 24px;
 
-    @media (min-width: 480px) {
+    @media (min-width: 640px) {
       overflow: auto;
     }
 

@@ -1,14 +1,23 @@
 :host {
   @apply mvx:flex mvx:flex-col mvx:overflow-hidden mvx:flex-1;
+  overflow: hidden;
 
   .ledger-intro {
     @apply mvx:flex-1 mvx:flex mvx:flex-col;
+    padding: 24px 0;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     .ledger-intro-wrapper {
       @apply mvx:flex mvx:flex-col mvx:items-center mvx:gap-6 mvx:text-center mvx:text-base mvx:mb-auto;
 
       .ledger-intro-icon {
-        @apply mvx:ml-auto;
+        @apply mvx:mx-auto;
+        align-self: flex-start;
+        width: auto !important;
       }
 
       .ledger-intro-description {
@@ -18,11 +27,15 @@
       }
 
       .ledger-intro-button {
-        @apply mvx:mt-5 mvx:w-48 mvx:flex mvx:items-center mvx:justify-center mvx:font-bold mvx:h-12 mvx:leading-none mvx:text-black;
+        @apply mvx:w-48 mvx:flex mvx:items-center mvx:justify-center mvx:font-bold mvx:h-12 mvx:leading-none mvx:text-black;
         @apply mvx:rounded-lg mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:gap-2;
         transition-timing-function: ease;
         background-color: #23f7dd;
         border: 1px solid #23f7dd;
+
+        @media (min-width: 480px) {
+          @apply mvx:mt-5;
+        }
 
         &:hover {
           @apply mvx:opacity-75;

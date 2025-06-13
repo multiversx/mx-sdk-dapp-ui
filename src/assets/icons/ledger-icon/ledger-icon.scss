@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  .ledger-icon {
+    @apply mvx:w-100 mvx:h-85;
+    fill: none;
+  }
+}

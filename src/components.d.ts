@@ -129,6 +129,7 @@ export namespace Components {
         "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxLedgerIcon {
+        "class"?: string;
     }
     interface MvxLedgerIntro {
         "connectScreenData"?: IConnectScreenData;
@@ -1378,6 +1379,7 @@ declare namespace LocalJSX {
         "data"?: ILedgerConnectPanelData;
     }
     interface MvxLedgerIcon {
+        "class"?: string;
     }
     interface MvxLedgerIntro {
         "connectScreenData"?: IConnectScreenData;
