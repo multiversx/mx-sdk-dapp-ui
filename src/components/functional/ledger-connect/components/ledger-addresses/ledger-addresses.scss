@@ -1,20 +1,34 @@
 :host {
-  @apply mvx:flex mvx:flex-col mvx:flex-1;
+  @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:overflow-hidden;
 
   .ledger-addresses {
-    @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:gap-4;
+    @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:overflow-hidden mvx:py-6;
 
-    .ledger-addresses-label {
-      @apply mvx:text-white mvx:leading-none;
+    .ledger-addresses-label-wrapper {
+      @apply mvx:relative mvx:z-2;
+
+      &:after {
+        @apply mvx:absolute mvx:left-0 mvx:right-0 mvx:h-0;
+        content: '';
+        top: calc(100% - 4px);
+        box-shadow: 0px 8px 12px 16px #171717;
+      }
+
+      .ledger-addresses-label {
+        @apply mvx:text-white mvx:leading-none mvx:relative mvx:z-1;
+      }
     }
 
     .ledger-addresses-wrapper {
-      @apply mvx:relative;
+      @apply mvx:relative mvx:mb-auto mvx:py-5 mvx:overflow-auto;
+
+      &::-webkit-scrollbar {
+        @apply mvx:hidden;
+      }
 
       .ledger-addresses-preloader {
         @apply mvx:flex mvx:flex-col mvx:pointer-events-none mvx:absolute mvx:inset-0 mvx:opacity-0 mvx:z-1 mvx:gap-1;
-        @apply mvx:transition mvx:duration-200;
-        transition-timing-function: ease;
+        @apply mvx:transition mvx:duration-200 mvx:ease-in-out;
 
         &.visible {
           @apply mvx:opacity-100 mvx:pointer-events-auto;
@@ -22,8 +36,8 @@
       }
 
       .ledger-addresses-list {
-        @apply mvx:flex mvx:flex-col mvx:gap-1 mvx:pointer-events-none mvx:transition mvx:duration-200 mvx:opacity-0;
-        transition-timing-function: ease;
+        @apply mvx:flex mvx:flex-col mvx:gap-1 mvx:pointer-events-none mvx:transition mvx:ease-in-out;
+        @apply mvx:duration-200 mvx:opacity-0;
 
         &.visible {
           @apply mvx:opacity-100 mvx:pointer-events-auto;
@@ -31,8 +45,8 @@
 
         .ledger-addresses-list-item {
           @apply mvx:rounded-lg mvx:flex mvx:items-center mvx:text-white mvx:p-4 mvx:h-16 mvx:w-full;
-          @apply mvx:relative mvx:cursor-pointer mvx:transition mvx:duration-200;
-          transition-timing-function: ease;
+          @apply mvx:relative mvx:cursor-pointer mvx:transition mvx:duration-200 mvx:ease-in-out;
+
           border: 1px solid transparent;
 
           &:before {
@@ -47,14 +61,14 @@
           }
 
           .ledger-addresses-list-item-checkbox {
-            @apply mvx:relative mvx:z-1 mvx:cursor-pointer mvx:transition mvx:duration-200 mvx:rounded-full mvx:mr-2 mvx:min-w-4 mvx:max-w-4 mvx:h-4;
-            transition-timing-function: ease;
+            @apply mvx:relative mvx:z-1 mvx:cursor-pointer mvx:transition mvx:duration-200 mvx:rounded-full;
+            @apply mvx:ease-in-out mvx:mr-2 mvx:min-w-4 mvx:max-w-4 mvx:h-4;
             border: 1px solid #ffffff;
 
             &:after {
               @apply mvx:absolute mvx:left-1/2 mvx:top-1/2 mvx:rounded-full mvx:opacity-0 mvx:transition-all mvx:duration-200;
+              @apply mvx:ease-in-out;
               transform: translate(-50%, -50%);
-              transition-timing-function: ease;
               background-color: #23f7dd;
               width: calc(12px / 2);
               height: calc(12px / 2);
@@ -71,8 +85,7 @@
           }
 
           .ledger-addresses-list-item-index {
-            @apply mvx:relative mvx:z-1 mvx:text-base mvx:font-medium mvx:transition mvx:duration-200 mvx:mr-4;
-            transition-timing-function: ease;
+            @apply mvx:relative mvx:z-1 mvx:text-base mvx:font-medium mvx:transition mvx:duration-200 mvx:mr-4 mvx:ease-in-out;
             color: #a09a93;
 
             &.checked {
@@ -97,8 +110,7 @@
           }
 
           .ledger-addresses-list-item-address {
-            @apply mvx:relative mvx:z-1 mvx:max-w-40 mvx:text-base mvx:mr-auto;
-            min-width: 0;
+            @apply mvx:relative mvx:z-1 mvx:max-w-40 mvx:text-base mvx:mr-auto mvx:min-w-0;
 
             .trim-wrapper {
               @apply mvx:leading-none;
@@ -112,8 +124,19 @@
       }
     }
 
+    .ledger-addresses-pagination {
+      @apply mvx:relative mvx:z-1;
+
+      &:after {
+        @apply mvx:absolute mvx:left-0 mvx:right-0 mvx:h-0;
+        content: '';
+        bottom: calc(100% - 4px);
+        box-shadow: 0px -8px 12px 16px #171717;
+      }
+    }
+
     .ledger-addresses-button-wrapper {
-      @apply mvx:relative mvx:z-2;
+      @apply mvx:relative mvx:z-2 mvx:mt-4;
 
       .ledger-addresses-button-tooltip-wrapper {
         @apply mvx:text-xs mvx:text-center;
@@ -121,9 +144,8 @@
       }
 
       .ledger-addresses-button {
-        @apply mvx:w-full mvx:flex mvx:items-center mvx:justify-center mvx:font-bold mvx:h-12 mvx:leading-none mvx:text-base mvx:text-black;
-        @apply mvx:rounded-lg mvx:cursor-pointer mvx:transition mvx:duration-200 mvx:gap-2;
-        transition-timing-function: ease;
+        @apply mvx:w-full mvx:flex mvx:items-center mvx:justify-center mvx:font-bold mvx:h-12 mvx:leading-none mvx:text-base;
+        @apply mvx:text-black mvx:rounded-lg mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:gap-2;
         background-color: #23f7dd;
         border: 1px solid #23f7dd;
 

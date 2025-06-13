@@ -20,17 +20,17 @@
 
         .sign-transactions-footer-button {
           @apply mvx:rounded-xl mvx:px-4 mvx:py-2 mvx:flex mvx:justify-center mvx:items-center mvx:max-h-10 mvx:min-h-10;
-          @apply mvx:leading-none mvx:text-base mvx:font-bold mvx:transition-all mvx:duration-200 mvx:cursor-pointer mvx:gap-2 mvx:w-full;
+          @apply mvx:leading-none mvx:text-base mvx:font-bold mvx:transition-all mvx:duration-200 mvx:cursor-pointer;
+          @apply mvx:ease-in-out mvx:gap-2 mvx:w-full;
           border: 1px solid transparent;
-          transition-timing-function: ease;
 
           &.cancel {
             @apply mvx:relative;
             color: #e8e8e8;
 
             &:before {
-              @apply mvx:absolute mvx:rounded-xl mvx:opacity-40 mvx:transition-all mvx:duration-200 mvx:pointer-events-none;
-              transition-timing-function: ease;
+              @apply mvx:absolute mvx:rounded-xl mvx:opacity-40 mvx:transition-all mvx:duration-200;
+              @apply mvx:ease-in-out mvx:pointer-events-none;
               background-color: #353535;
               bottom: -1px;
               content: '';
@@ -66,8 +66,7 @@
           }
 
           .sign-transactions-footer-button-icon {
-            @apply mvx:flex mvx:transition-all mvx:duration-200;
-            transition-timing-function: ease;
+            @apply mvx:flex mvx:transition-all mvx:duration-200 mvx:ease-in-out;
 
             &.lighter {
               fill: #a09a93;
@@ -108,8 +107,7 @@
 
         .sign-transactions-footer-identity-copy-icon,
         .sign-transactions-footer-identity-explorer-icon {
-          @apply mvx:h-4 mvx:w-4 mvx:flex mvx:justify-center mvx:transition-all mvx:duration-200;
-          transition-timing-function: ease;
+          @apply mvx:h-4 mvx:w-4 mvx:flex mvx:justify-center mvx:transition-all mvx:duration-200 mvx:ease-in-out;
           color: #b6b3af;
 
           &:hover {

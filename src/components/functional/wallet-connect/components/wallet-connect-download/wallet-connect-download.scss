@@ -17,8 +17,8 @@
       @apply mvx:h-60 mvx:flex mvx:flex-col mvx:gap-4 mvx:items-center mvx:justify-end mvx:my-auto mvx:mx-0;
 
       .wallet-connect-download-option {
-        @apply mvx:flex mvx:w-48 mvx:h-16 mvx:items-center mvx:justify-center mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:rounded-lg mvx:p-3;
-        transition-timing-function: ease;
+        @apply mvx:flex mvx:w-48 mvx:h-16 mvx:items-center mvx:justify-center mvx:cursor-pointer mvx:transition-all;
+        @apply mvx:ease-in-out mvx:duration-200 mvx:rounded-lg mvx:p-3;
         border: 1px solid #262626;
         background-color: #0a0a0a;
 

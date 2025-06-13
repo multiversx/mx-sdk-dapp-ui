@@ -13,9 +13,7 @@
 }
 
 .xportal-qr-code-preloader {
-  @apply mvx:transition-all mvx:duration-200 mvx:w-75 mvx:h-75;
+  @apply mvx:transition-all mvx:duration-200 mvx:w-75 mvx:h-75 mvx:ease-in-out;
   animation: XPortalQrCodePreloaderPulsation 1s infinite;
-  transition-timing-function: ease;
-  transition: all 200ms ease-out;
   fill: none;
 }

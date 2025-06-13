@@ -165,7 +165,6 @@ export class UnlockPanel {
         onBack={this.handleResetLoginState}
         hasBackButton={isCustomProviderActive}
         showHeader={isProviderScreenVisible || isCustomProviderActive}
-        panelClassName="unlock-panel"
       >
         <div
           id="anchor"

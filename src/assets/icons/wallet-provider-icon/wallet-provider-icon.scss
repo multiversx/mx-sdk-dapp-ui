@@ -2,9 +2,7 @@
   @mvx:flex;
 
   .wallet-provider-icon {
-    @apply mvx:w-full mvx:h-full;
+    @apply mvx:w-full mvx:h-full mvx:max-w-37.5 mvx:max-h-37.5;
     fill: none;
-    max-width: 150px;
-    max-height: 150px;
   }
 }

@@ -18,8 +18,7 @@
   }
 
   .unlock-panel-footer-wrapper {
-    @apply mvx:flex mvx:flex-col mvx:transition-all mvx:duration-200 mvx:gap-2 mvx:flex-1;
-    transition-timing-function: ease;
+    @apply mvx:flex mvx:flex-col mvx:transition-all mvx:duration-200 mvx:gap-2 mvx:flex-1 mvx:ease-in-out;
 
     @media (min-width: 480px) {
       @apply mvx:gap-4;
