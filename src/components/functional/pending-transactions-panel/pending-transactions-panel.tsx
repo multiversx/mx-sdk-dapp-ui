@@ -24,7 +24,8 @@ const getProviderIntroText = (providerType?: IProviderBase['type']) => {
 
 @Component({
   tag: 'mvx-pending-transactions-panel',
-  styleUrl: 'pending-transactions-panel.css',
+  styleUrl: 'pending-transactions-panel.scss',
+  shadow: true,
 })
 export class PendingTransactionstPanel {
   private eventBus: IEventBus = new EventBus();

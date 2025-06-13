@@ -1,9 +1,7 @@
 :host {
-  display: flex;
-  flex-direction: column;
+  @apply mvx:flex mvx:flex-col;
 
   .ledger-icon {
-    @apply mvx:w-100 mvx:h-85;
     fill: none;
   }
 }

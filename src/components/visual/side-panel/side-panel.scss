@@ -1,31 +1,16 @@
 .side-panel-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  pointer-events: none;
-  z-index: 1;
-  justify-content: flex-end;
-  align-items: flex-end;
+  @apply mvx:fixed mvx:top-0 mvx:left-0 mvx:right-0 mvx:bottom-0 mvx:flex mvx:pointer-events-none mvx:z-1;
+  @apply mvx:justify-end mvx:items-end;
 
   @media (min-width: 480px) {
-    padding: 16px;
-    align-items: center;
+    @apply mvx:p-4 mvx:items-center;
   }
 
   &:before {
+    @apply mvx:opacity-0 mvx:left-0 mvx:top-0 mvx:right-0 mvx:bottom-0 mvx:transition-all mvx:absolute mvx:duration-200;
+    @apply mvx:pointer-events-none mvx:ease-in-out;
     background: rgba(23, 23, 23, 0.9);
     content: '';
-    pointer-events: none;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    transition: all 200ms ease;
-    opacity: 0;
 
     @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
       background: rgba(23, 23, 23, 0.5);
@@ -35,44 +20,31 @@
   }
 
   &.visible {
-    pointer-events: auto;
-    visibility: visible;
+    @apply mvx:pointer-events-auto mvx:visible;
 
     &:before {
-      opacity: 0.9;
+      @apply mvx:opacity-90;
     }
   }
 
   .side-panel {
+    @apply mvx:p-6 mvx:w-full mvx:flex mvx:overflow-hidden mvx:flex-col mvx:transition-all mvx:ease-in-out mvx:duration-200;
+    @apply mvx:pb-0 mvx:rounded-tl-3xl mvx:rounded-tr-3xl mvx:backdrop-blur;
     transform: translateY(60vh);
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
-    padding: 24px;
-    padding-bottom: 0;
-    width: 100%;
-    transition: all 200ms ease;
-    backdrop-filter: blur(8px);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
     border: 1px solid #404040;
     background-color: #171717;
     height: 64vh;
 
     @media (min-width: 480px) {
+      @apply mvx:w-110 mvx:h-full;
       transform: translateX(calc(100% + 48px));
       border-radius: 20px;
-      width: calc(400px + 40px);
-      height: 100%;
     }
 
     &:after {
+      @apply mvx:left-0 mvx:right-0 mvx:h-0 mvx:absolute;
       content: '';
-      position: absolute;
-      left: 0;
-      right: 0;
       bottom: calc(4px * -1);
-      height: 0;
       box-shadow: 0px -8px 12px 16px #171717;
     }
 
@@ -86,13 +58,10 @@
   }
 
   .side-panel-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    @apply mvx:flex-1 mvx:flex mvx:flex-col mvx:overflow-hidden;
 
     &::-webkit-scrollbar {
-      display: none;
+      @apply mvx:hidden;
     }
   }
 }

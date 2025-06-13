@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import type { IConnectScreenData } from '../../ledger-connect.types';
 
 const ledgerIntroClasses: Record<string, string> = {
-  icon: 'mvx:w-50! mvx:h-auto!',
+  icon: 'mvx:w-50 mvx:h-auto mvx:xs:w-100 mvx:xs:h-85',
 };
 
 @Component({

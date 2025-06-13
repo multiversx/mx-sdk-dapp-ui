@@ -5,7 +5,8 @@ import { handleAmountResize } from '../../helpers';
 
 @Component({
   tag: 'mvx-sign-transactions-overview',
-  styleUrl: 'sign-transactions-overview.css',
+  styleUrl: 'sign-transactions-overview.scss',
+  shadow: true,
 })
 export class SignTransactionsOverview {
   @Prop() identifier: string;

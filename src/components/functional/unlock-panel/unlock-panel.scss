@@ -1,24 +1,19 @@
 .unlock-panel-anchor {
-  @apply mvx:flex mvx:flex-col mvx:flex-1;
-  overflow: hidden;
+  @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:overflow-hidden;
 }
 
 .unlock-panel {
-  @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:justify-between;
-  padding-bottom: 24px;
-  overflow: hidden;
+  @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:justify-between mvx:overflow-hidden mvx:pb-6;
 
   .unlock-panel-groups {
-    @apply mvx:flex mvx:flex-col mvx:gap-4;
-    overflow: hidden;
-    padding-top: 24px;
+    @apply mvx:flex mvx:flex-col mvx:gap-4 mvx:pt-6 mvx:overflow-hidden;
 
     @media (min-width: 640px) {
-      overflow: auto;
+      @apply mvx:overflow-auto;
     }
 
     &::-webkit-scrollbar {
-      display: none;
+      @apply mvx:hidden;
     }
   }
 }

@@ -2,11 +2,9 @@
   @apply mvx:flex mvx:flex-col mvx:flex-1;
 
   .wallet-connect {
-    @apply mvx:flex mvx:flex-col mvx:transition-all mvx:duration-400 mvx:flex-1;
+    @apply mvx:flex mvx:flex-col mvx:transition-all mvx:duration-400 mvx:flex-1 mvx:pt-6 mvx:ease-in-out;
     transform-style: preserve-3d;
-    transition-timing-function: ease;
     height: max(100%, 680px);
-    padding-top: 24px;
 
     &.flipped {
       transform: rotateY(180deg);
