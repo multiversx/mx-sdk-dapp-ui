@@ -17,7 +17,7 @@
   }
 
   .unlock-button-label {
-    @mvx:text-base mvx:leading-none;
+    @apply mvx:text-base mvx:leading-none;
     color:  var(--mvx-text-color-primary);
   }
 
@@ -36,7 +36,7 @@
       @apply mvx:flex mvx:items-center;
 
       svg path {
-        fill: #23f7dd;
+        fill: var(--mvx-teal-400);
       }
     }
   }

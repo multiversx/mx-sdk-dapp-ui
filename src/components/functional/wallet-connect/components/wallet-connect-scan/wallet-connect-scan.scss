@@ -8,18 +8,18 @@
       @apply mvx:flex mvx:justify-center mvx:items-center mvx:mt-auto mvx:relative mvx:w-75 mvx:h-75;
 
       .wallet-connect-scan-qr-embed {
-        @apply mvx:w-full mvx:h-auto mvx:absolute mvx:opacity-0 mvx:transition-all mvx:duration-200;
+        @apply mvx:w-full mvx:h-auto mvx:absolute mvx:opacity-0 mvx:transition-all mvx:duration-200 mvx:p-3;
         @apply mvx:ease-in-out mvx:pointer-events-none mvx:w-85 mvx:h-85;
 
         &:before {
           @apply mvx:pointer-events-none mvx:left-0 mvx:bottom-0 mvx:top-0 mvx:right-0 mvx:absolute;
           content: '';
-          border: calc(12px / 4) solid #101010;
+          border: calc(12px / 4) solid var(--mvx-bg-color-primary);
         }
 
         path {
-          @apply mvx:stroke-white;
-          fill: #101010;
+          stroke: var(--mvx-white);
+          fill: var(--mvx-black);
         }
 
         &.visible {
@@ -30,24 +30,26 @@
 
     .wallet-connect-scan-description {
       @apply mvx:leading-5 mvx:font-medium mvx:text-base mvx:h-16 mvx:z-1 mvx:mb-auto;
-      color: #a09a93;
+      color: var(--mvx-text-color-secondary);
     }
 
     .wallet-connect-scan-download {
       @apply mvx:rounded-xl mvx:w-full mvx:flex mvx:gap-6 mvx:items-center mvx:p-6 mvx:relative mvx:mt-16 mvx:h-44;
-      background: #0a0a0a;
+      background: var(--mvx-bg-accent-color);
 
       .wallet-connect-scan-download-wrapper {
         @apply mvx:flex mvx:flex-col mvx:gap-4 mvx:items-start;
 
         .wallet-connect-scan-download-title {
-          @apply mvx:text-white mvx:text-base mvx:leading-5 mvx:font-medium;
+          @apply mvx:text-base mvx:leading-5 mvx:font-medium;
+          color: var(--mvx-text-color-primary);
         }
 
         .wallet-connect-scan-download-button {
           @apply mvx:rounded-lg mvx:text-xs mvx:leading-none mvx:text-center mvx:p-2 mvx:font-bold mvx:cursor-pointer;
           @apply mvx:ease-in-out mvx:transition-all mvx:duration-200;
-          background: #23f7dd;
+          background: var(--mvx-button-bg-primary);
+          color: var(--mvx-button-text-primary);
 
           &:hover {
             @apply mvx:opacity-75;

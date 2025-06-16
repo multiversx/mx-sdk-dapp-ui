@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  background: #0a0a0a;
+  background: var(--mvx-bg-accent-variant-color);
   border-radius: 16px;
   padding-bottom: 12px;
 }
@@ -29,7 +29,7 @@
   flex-direction: column;
   gap: 16px;
   padding: 30px 20px;
-  background: #191919;
+  background: var(--mvx-bg-color-tertiary);
   border-radius: 12px;
 }
 
@@ -41,20 +41,14 @@
 }
 
 .gas-price {
-  color: #b5b2af;
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
+  color: var(--mvx-text-color-secondary);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
 }
 
 .gas-price-value {
-  color: #b5b2af;
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
+  color: var(--mvx-text-color-secondary);
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -65,7 +59,7 @@
   align-items: center;
   gap: 4px;
   padding: 2px;
-  background: #0a0a0a;
+  background: var(--mvx-bg-accent-variant-color);
   border-radius: 20px;
 }
 
@@ -80,21 +74,18 @@
 }
 
 .speed-option.active {
-  background: #23f7dd;
+  background: var(--mvx-button-bg-primary);
 }
 
 .speed-text {
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-  color: #b5b2af;
+  color: var(--mvx-text-color-secondary);
 }
 
 .speed-option.active .speed-text {
-  color: #000000;
+  color: var(--mvx-button-text-primary);
 }
 
 .gas-limit-row {
@@ -105,155 +96,15 @@
 }
 
 .gas-limit {
-  color: #b5b2af;
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
+  color: var(--mvx-text-color-secondary);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
 }
 
 .gas-limit-value {
-  color: #b5b2af;
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
+  color: var(--mvx-text-color-secondary);
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
-}
-
-.data-section {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 12px 24px;
-  gap: 8px;
-}
-
-.data-field {
-  display: flex;
-  width: 100%;
-  gap: 8px;
-}
-
-.data-decode-method-select {
-  display: flex;
-  align-self: flex-end;
-  color: #b5b2af;
-  padding: 0;
-  text-align: center;
-  border-radius: 8px;
-  font-size: 12px;
-  width: 120px;
-  min-height: 32px;
-  border: none;
-  background-color: #262626;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  cursor: pointer;
-}
-
-.data-container {
-  display: flex;
-  align-items: flex-start;
-  align-self: stretch;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  gap: 10px;
-  position: relative;
-}
-
-.data-header {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 0;
-  gap: 8px;
-  position: relative;
-}
-
-.data-title {
-  display: flex;
-  align-items: flex-start;
-  flex-wrap: nowrap;
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 0;
-  gap: 8px;
-  position: relative;
-  padding: 12px 0 0 0;
-}
-
-.data-label {
-  color: #b5b2af;
-  font-family:
-    Roobert PRO,
-    var(--default-font-family);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  padding-top: 12px;
-}
-
-.data-content {
-  height: 136px;
-  padding: 8px;
-  background: #0a0a0a;
-  border: 1px solid #262626;
-  border-radius: 8px;
-  overflow-y: auto;
-  width: 100%;
-}
-
-.data-box {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  align-self: stretch;
-  flex-wrap: nowrap;
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 0;
-  gap: 16px;
-  position: relative;
-  min-height: 0;
-  padding: 8px 8px 8px 8px;
-  border: 1px solid #262626;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.data-text-container {
-  display: flex;
-  align-items: flex-start;
-  align-self: stretch;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  gap: 8px;
-  position: relative;
-  overflow: hidden;
-}
-
-.data-text {
-  color: #b6b3af;
-  font-family: monospace;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 19.6px;
-  word-break: break-all;
-}
-
-.data-cursor {
-  flex-shrink: 0;
-  position: relative;
-  width: 7px;
-  height: 36px;
-  background: #404040;
-  overflow: hidden;
-  border-radius: 6px;
 }

@@ -45,7 +45,7 @@
         }
 
         .ledger-addresses-list-item {
-          @apply mvx:rounded-lg mvx:flex mvx:items-center mvx:text-white mvx:p-4 mvx:h-16 mvx:w-full;
+          @apply mvx:rounded-lg mvx:flex mvx:items-center mvx:p-4 mvx:h-16 mvx:w-full;
           @apply mvx:relative mvx:cursor-pointer mvx:transition mvx:duration-200 mvx:ease-in-out;
 
           border: 1px solid transparent;

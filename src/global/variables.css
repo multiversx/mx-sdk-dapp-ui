@@ -12,6 +12,7 @@
   --mvx-neutral-700-40: rgba(64, 64, 64, 0.40);
   --mvx-neutral-800: #262626;
   --mvx-neutral-800-30: rgba(53, 53, 53, 0.30);
+  --mvx-neutral-800-40: rgba(53, 53, 53, 0.40);
   --mvx-neutral-900: #171717;
   --mvx-neutral-910: #191919;
   --mvx-neutral-920: #202020;
@@ -35,6 +36,7 @@
   --mvx-stone-100: #E2DEDC;
   --mvx-stone-350: #b6b3af;
   --mvx-stone-450: #88817a;
+  --mvx-teal-200: #a5fcf0;
   --mvx-teal-400: #23f7dd;
   --mvx-blue-600: #007bff;
   --mvx-blue-600-50: rgba(0, 123, 255, 0.5);
@@ -43,6 +45,7 @@
   --mvx-white-60: rgba(255, 255, 255, 0.6);
   --mvx-white-5: rgba(255, 255, 255, 0.05);
   --mvx-black-5: rgba(0, 0, 0, 0.05);
+  --mvx-zinc-800: #262626;
 
 
     /* Explorer Link Colors */
@@ -73,8 +76,18 @@
   
   --mvx-button-bg-primary: var(--mvx-teal-400);
   --mvx-button-text-primary: var(--mvx-black);
+  --mvx-button-bg-secondary: var(--mvx-neutral-800-40);
+  --mvx-button-text-secondary: var(--mvx-neutral-200);
+  --mvx-button-bg-hover-secondary: var(--mvx-teal-400);
+
+  --mvx-select-bg: var(--mvx-neutral-800);
+  --mvx-select-color: var(--mvx-gray-200);
+  --mvx-select-option-color: var(--mvx-teal-200);
+  --mvx-select-option-bg: var(--mvx-black);
+  --mvx-select-option-bg-mobile: var(--mvx-zinc-800);
   
   --mvx-warning-text: var(--mvx-yellow-400);
+  --mvx-link-color: var(--mvx-stone-350);
   
   --mvx-progress-color: var(--mvx-gray-650);
   --mvx-progress-accent-color: var(--mvx-teal-400);
@@ -137,8 +150,19 @@
   
   --mvx-button-bg-primary: var(--mvx-black);
   --mvx-button-text-primary: var(--mvx-white); 
+  --mvx-button-bg-secondary: var(--mvx-white);
+  --mvx-button-text-secondary: var(--mvx-neutral-800);
+
+  --mvx-select-bg: var(--mvx-white);
+  --mvx-select-color: var(--mvx-neutral-700);
+  --mvx-select-option-color: var(--mvx-black);
+  --mvx-select-option-bg: var(--mvx-neutral-400);
+  --mvx-select-option-bg-mobile: var(--mvx-neutral-400);
+  
   
   --mvx-warning-text: var(--mvx-amber-650);
+  --mvx-link-color: var(--mvx-neutral-700);
+  
 
   --mvx-progress-color: var(--mvx-gray-350);
   --mvx-progress-accent-color: var(--mvx-black);

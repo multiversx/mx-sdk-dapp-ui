@@ -7,9 +7,14 @@
     .wallet-connect-download-wrapper {
       @apply mvx:flex mvx:my-auto mvx:mx-0 mvx:flex-col mvx:items-center;
 
+      .wallet-connect-download-qr {
+        @apply mvx:p-3;
+        background-color: var(--mvx-black);
+      }
+
       .wallet-connect-download-description {
         @apply mvx:leading-5 mvx:font-medium mvx:text-base mvx:text-center mvx:mt-3;
-        color: #a09a93;
+        color: var(--mvx-text-color-secondary);
       }
     }
 
@@ -19,11 +24,11 @@
       .wallet-connect-download-option {
         @apply mvx:flex mvx:w-48 mvx:h-16 mvx:items-center mvx:justify-center mvx:cursor-pointer mvx:transition-all;
         @apply mvx:ease-in-out mvx:duration-200 mvx:rounded-lg mvx:p-3;
-        border: 1px solid #262626;
-        background-color: #0a0a0a;
+        border: 1px solid var(--mvx-neutral-800);
+        background-color: var(--mvx-neutral-950);
 
         &:hover {
-          background-color: #262626;
+          background-color: var(--mvx-neutral-800);
         }
 
         .wallet-connect-download-option-image {

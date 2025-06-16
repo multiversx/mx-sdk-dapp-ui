@@ -102,7 +102,7 @@ export class SignTransactionsFooter {
         </div>
 
         <div class="sign-transactions-footer-identity">
-          <div class="sign-transactions-footer-identity-label">Sign in with</div>
+          <div class="sign-transactions-footer-identity-label">Sign with</div>
 
           {username && (
             <div class="sign-transactions-footer-identity-username">

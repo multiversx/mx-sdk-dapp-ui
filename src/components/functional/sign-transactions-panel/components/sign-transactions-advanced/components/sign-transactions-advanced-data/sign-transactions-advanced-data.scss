@@ -22,12 +22,12 @@
           &:hover,
           &:focus,
           &.active {
-            @apply mvx:bg-black;
-            color: #23f7dd;
+            background-color: var(--mvx-select-option-bg);
+            color: var(--mvx-text-accent-color);
 
             @media (min-width: 768px) {
-              background-color: #262626;
-              color: #a5fcf0;
+              background-color: var(--mvx-select-option-bg-mobile);
+              color: var(--mvx-select-option-color);
             }
           }
         }
@@ -39,7 +39,7 @@
 
       .sign-transactions-advanced-data-wrapper {
         @apply mvx:h-30 mvx:p-2 mvx:rounded-lg mvx:overflow-auto mvx:flex mvx:flex-col mvx:break-words mvx:text-base;
-        border: 1px solid #262626;
+        border: 1px solid var(--mvx-neutral-800);
 
         &::-webkit-scrollbar,
         &::-webkit-scrollbar-track,
@@ -65,7 +65,7 @@
           border: 4px solid transparent;
           background-clip: padding-box;
           border-radius: 9999px;
-          background-color: #404040;
+          background-color: var(--mvx-neutral-700);
         }
 
         &::-webkit-scrollbar-button {
@@ -81,7 +81,7 @@
           left: 1px;
           top: 1px;
           bottom: 1px;
-          border: calc((24px + 4px) / 4) solid #0a0a0a;
+          border: calc((24px + 4px) / 4) solid transparent;
           border-bottom-width: calc(20px / 2);
           border-top-width: calc(20px / 2);
           border-right: 0;

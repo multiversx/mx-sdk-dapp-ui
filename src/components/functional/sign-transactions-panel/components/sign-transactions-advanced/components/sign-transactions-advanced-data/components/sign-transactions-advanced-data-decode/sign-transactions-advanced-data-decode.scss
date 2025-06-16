@@ -3,14 +3,14 @@
 
   &:before {
     @apply mvx:absolute mvx:left-0 mvx:right-0 mvx:top-2.5 mvx:h-6 mvx:opacity-90;
-    background-color: #202020;
+     background-color: var(--mvx-select-bg);
     border-radius: 24px;
     content: '';
   }
 
   .sign-transactions-advanced-data-decode-label {
     @apply mvx:relative mvx:text-xs mvx:capitalize mvx:m-auto mvx:z-1;
-    color: #b6b3af;
+    color: var(--mvx-select-color);
   }
 
   .sign-transactions-advanced-data-decode-icon {
