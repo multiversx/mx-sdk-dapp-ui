@@ -1,7 +1,7 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
-import { IconSizeEnumType } from 'components/common/transaction-asset-icon/transaction-asset-icon.types';
+import { IconSizeEnumType } from 'components/common/transaction-asset-icon/transaction-asset-icon';
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
@@ -98,7 +98,7 @@ export class TransactionToastContent {
           )}
 
           {!hasCloseButton && showExplorerLinkButton && (
-            <mvx-explorer-link link={transaction.link} class="transaction-toast-action-button"></mvx-explorer-link>
+            <mvx-explorer-link link={transaction.link} class="transaction-toast-action-button" />
           )}
         </div>
 

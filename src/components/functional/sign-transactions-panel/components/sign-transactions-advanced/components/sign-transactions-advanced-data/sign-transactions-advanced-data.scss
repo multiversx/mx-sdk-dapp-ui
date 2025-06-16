@@ -16,8 +16,8 @@
         @apply mvx:text-base mvx:-m-1 mvx:gap-1 mvx:flex mvx:flex-col;
 
         .sign-transactions-advanced-data-decode-option {
-          @apply mvx:capitalize mvx:text-center mvx:leading-none mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:px-3 mvx:py-2 mvx:text-xs mvx:rounded-lg;
-          transition-timing-function: ease;
+          @apply mvx:capitalize mvx:text-center mvx:leading-none mvx:cursor-pointer mvx:transition-all mvx:duration-200;
+          @apply mvx:ease-in-out mvx:px-3 mvx:py-2 mvx:text-xs mvx:rounded-lg;
 
           &:hover,
           &:focus,

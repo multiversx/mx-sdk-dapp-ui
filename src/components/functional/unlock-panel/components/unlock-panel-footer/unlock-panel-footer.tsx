@@ -24,7 +24,7 @@ export class UnlockPanel {
     const processedWalletAddress = String(this.walletAddress).replace('https://', '');
 
     return (
-      <div class="unlock-panel-footer">
+      <div class="unlock-panel-footer" onClick={this.handleWalletClick}>
         <img src={processImgSrc('unlock-panel-wallet.png')} class="unlock-panel-footer-image" />
 
         <div class="unlock-panel-footer-wrapper">

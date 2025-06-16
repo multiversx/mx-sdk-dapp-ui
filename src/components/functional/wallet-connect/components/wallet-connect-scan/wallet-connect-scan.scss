@@ -8,8 +8,8 @@
       @apply mvx:flex mvx:justify-center mvx:items-center mvx:mt-auto mvx:relative mvx:w-75 mvx:h-75;
 
       .wallet-connect-scan-qr-embed {
-        @apply mvx:w-full mvx:h-auto mvx:absolute mvx:opacity-0 mvx:transition-all mvx:duration-200 mvx:pointer-events-none mvx:w-85 mvx:h-85;
-        transition-timing-function: ease;
+        @apply mvx:w-full mvx:h-auto mvx:absolute mvx:opacity-0 mvx:transition-all mvx:duration-200;
+        @apply mvx:ease-in-out mvx:pointer-events-none mvx:w-85 mvx:h-85;
 
         &:before {
           @apply mvx:pointer-events-none mvx:left-0 mvx:bottom-0 mvx:top-0 mvx:right-0 mvx:absolute;
@@ -45,8 +45,8 @@
         }
 
         .wallet-connect-scan-download-button {
-          @apply mvx:rounded-lg mvx:text-xs mvx:leading-none mvx:text-center mvx:p-2 mvx:font-bold mvx:cursor-pointer mvx:transition-all mvx:duration-200;
-          transition-timing-function: ease;
+          @apply mvx:rounded-lg mvx:text-xs mvx:leading-none mvx:text-center mvx:p-2 mvx:font-bold mvx:cursor-pointer;
+          @apply mvx:ease-in-out mvx:transition-all mvx:duration-200;
           background: #23f7dd;
 
           &:hover {

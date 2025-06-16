@@ -1,41 +1,28 @@
 .pagination-ellipsis-form {
-  text-align: left;
-  cursor: default;
-  display: flex;
-  flex-direction: column;
+  @apply mvx:cursor-default mvx:flex mvx:flex-col mvx:text-left;
 
   .pagination-ellipsis-form-field-label {
-    margin-bottom: 8px;
+    @apply mvx:cursor-pointer mvx:mb-2;
     font-size: 12px;
     color: #a3a3a3;
-    cursor: pointer;
   }
 
   .pagination-ellipsis-form-field {
-    display: flex;
-    gap: 8px;
-    position: relative;
+    @apply mvx:relative mvx:gap-2 mvx:flex;
 
     .pagination-ellipsis-form-field-input {
-      width: 88px;
-      height: calc(40px + 4px);
+      @apply mvx:w-22 mvx:h-11 mvx:p-3 mvx:text-center mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:pr-10 mvx:m-0;
+      @apply mvx:text-white;
       border-width: 1px;
       box-shadow: none;
       font-size: 1rem;
-      padding: 12px;
-      padding-right: 40px;
-      text-align: center;
-      transition: all 200ms ease;
       background: #171717;
       border-radius: 8px;
       border-color: transparent;
       appearance: none;
       outline: none;
       -webkit-appearance: none;
-      appearance: none;
       -moz-appearance: textfield;
-      margin: 0;
-      color: #fff;
 
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
@@ -49,18 +36,12 @@
     }
 
     .pagination-ellipsis-form-button {
+      @apply mvx:leading-none mvx:h-8 mvx:right-1 mvx:absolute mvx:cursor-pointer mvx:flex mvx:top-1/2;
       outline: none;
       border: none;
       background-color: transparent;
-      line-height: 1;
-      cursor: pointer;
-      position: absolute;
-      right: 4px;
-      display: flex;
-      height: 32px;
       transform: translateY(-50%);
       font-size: 12px;
-      top: 50%;
 
       &:hover .pagination-ellipsis-form-button-icon {
         fill: #23f7dd;

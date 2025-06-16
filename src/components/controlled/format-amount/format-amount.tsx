@@ -4,7 +4,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
   tag: 'mvx-format-amount',
-  styleUrl: 'format-amount.css',
+  styleUrl: 'format-amount.scss',
 })
 export class FormatAmount {
   @Prop() class?: string;
@@ -38,7 +38,10 @@ export class FormatAmount {
           {this.valueInteger}
         </span>
         {this.valueDecimal && (
-          <span class={{ decimals: true, [this.decimalClass]: Boolean(this.decimalClass) }} data-testid={DataTestIdsEnum.formatAmountDecimals}>
+          <span
+            class={{ decimals: true, [this.decimalClass]: Boolean(this.decimalClass) }}
+            data-testid={DataTestIdsEnum.formatAmountDecimals}
+          >
             {this.valueDecimal}
           </span>
         )}

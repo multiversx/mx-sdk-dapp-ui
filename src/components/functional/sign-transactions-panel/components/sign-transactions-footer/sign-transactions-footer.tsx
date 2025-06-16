@@ -118,6 +118,7 @@ export class SignTransactionsFooter {
             class="sign-transactions-footer-identity-copy"
             iconClass="sign-transactions-footer-identity-copy-icon"
           />
+
           <mvx-explorer-link
             link={explorerLink}
             class="sign-transactions-footer-identity-explorer"

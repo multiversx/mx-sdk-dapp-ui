@@ -1,6 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
-import { IconSizeEnumType } from 'components/common/transaction-asset-icon/transaction-asset-icon.types';
+import { IconSizeEnumType } from 'components/common/transaction-asset-icon/transaction-asset-icon';
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
 
 import type { ITransactionListItem } from './transaction-list-item.types';

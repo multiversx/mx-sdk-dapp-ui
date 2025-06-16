@@ -13,7 +13,7 @@ import { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
 import { DecodeMethodEnum } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 import { TransactionAccountType, TransactionIconInfoType, TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
-import { IconSizeEnumType } from "./components/common/transaction-asset-icon/transaction-asset-icon.types";
+import { IconSizeEnumType } from "./components/common/transaction-asset-icon/transaction-asset-icon";
 import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { LocalJSX as JSX } from "@stencil/core";
 import { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -27,7 +27,7 @@ export { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
 export { DecodeMethodEnum } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 export { TransactionAccountType, TransactionIconInfoType, TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
-export { IconSizeEnumType } from "./components/common/transaction-asset-icon/transaction-asset-icon.types";
+export { IconSizeEnumType } from "./components/common/transaction-asset-icon/transaction-asset-icon";
 export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { LocalJSX as JSX } from "@stencil/core";
 export { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
@@ -129,6 +129,7 @@ export namespace Components {
         "getEventBus": () => Promise<IEventBus>;
     }
     interface MvxLedgerIcon {
+        "class"?: string;
     }
     interface MvxLedgerIntro {
         "connectScreenData"?: IConnectScreenData;
@@ -1378,6 +1379,7 @@ declare namespace LocalJSX {
         "data"?: ILedgerConnectPanelData;
     }
     interface MvxLedgerIcon {
+        "class"?: string;
     }
     interface MvxLedgerIntro {
         "connectScreenData"?: IConnectScreenData;

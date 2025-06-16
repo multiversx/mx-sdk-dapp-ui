@@ -24,9 +24,10 @@ const getProviderIntroText = (providerType?: IProviderBase['type']) => {
 
 @Component({
   tag: 'mvx-pending-transactions-panel',
-  styleUrl: 'pending-transactions-panel.css',
+  styleUrl: 'pending-transactions-panel.scss',
+  shadow: true,
 })
-export class PendingTransactionstPanel {
+export class PendingTransactionsPanel {
   private eventBus: IEventBus = new EventBus();
   private unsubscribeFunctions: (() => void)[] = [];
 
