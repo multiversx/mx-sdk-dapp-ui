@@ -27,7 +27,7 @@ const getProviderIntroText = (providerType?: IProviderBase['type']) => {
   styleUrl: 'pending-transactions-panel.scss',
   shadow: true,
 })
-export class PendingTransactionstPanel {
+export class PendingTransactionsPanel {
   private eventBus: IEventBus = new EventBus();
   private unsubscribeFunctions: (() => void)[] = [];
 
