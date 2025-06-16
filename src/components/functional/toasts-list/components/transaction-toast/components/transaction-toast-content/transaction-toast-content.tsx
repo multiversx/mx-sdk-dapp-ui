@@ -98,7 +98,7 @@ export class TransactionToastContent {
           )}
 
           {!hasCloseButton && showExplorerLinkButton && (
-            <mvx-explorer-link link={transaction.link} class="transaction-toast-action-button"></mvx-explorer-link>
+            <mvx-explorer-link link={transaction.link} class="transaction-toast-action-button" />
           )}
         </div>
 
