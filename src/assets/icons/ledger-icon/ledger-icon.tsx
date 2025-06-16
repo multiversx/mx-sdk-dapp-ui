@@ -1,13 +1,20 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 
 @Component({
   shadow: true,
+  styleUrl: 'ledger-icon.scss',
   tag: 'mvx-ledger-icon',
 })
 export class LedgerIcon {
+  @Prop() class?: string;
+
   render() {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" width="403" height="341" viewBox="0 0 403 341" fill="none">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 403 341"
+        class={{ 'ledger-icon': true, [this.class]: Boolean(this.class) }}
+      >
         <path
           fill-rule="evenodd"
           clip-rule="evenodd"
@@ -88,7 +95,14 @@ export class LedgerIcon {
           fill="#A09A93"
         />
         <defs>
-          <linearGradient id="paint0_linear_7216_19377" x1="290.016" y1="188.319" x2="391.635" y2="129.649" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="paint0_linear_7216_19377"
+            x1="290.016"
+            y1="188.319"
+            x2="391.635"
+            y2="129.649"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop stop-color="#706B65" />
             <stop offset="1" stop-color="#2F2F2F" stop-opacity="0" />
           </linearGradient>

@@ -1,30 +1,24 @@
 :host {
-  display: flex;
-  overflow: hidden;
+  @apply mvx:overflow-hidden mvx:flex;
 
-  @media (min-width: 480px) {
+  @media (min-width: 640px) {
     overflow: unset;
   }
 
   .unlock-panel-group {
-    @apply mvx:flex mvx:flex-col;
-    flex: 1;
-    overflow: hidden;
-    color: var(--mvx-text-color-secondary);
+    @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:overflow-hidden;
 
     .unlock-panel-group-label {
-      @apply mvx:leading-none;
-      position: relative;
+      @apply mvx:leading-none mvx:relative;
+      color: var(--mvx-text-color-secondary);;
     }
 
     .unlock-panel-group-providers {
-      @apply mvx:flex mvx:overflow-hidden mvx:flex-col mvx:gap-0.5 mvx:rounded-tl-lg mvx:rounded-tr-lg;
-      padding-bottom: 24px;
-      margin-top: 12px;
-      overflow: auto;
+      @apply mvx:flex mvx:flex-col mvx:gap-0.5 mvx:rounded-tl-lg mvx:rounded-tr-lg mvx:overflow-auto;
+      @apply mvx:pb-6 mvx:mt-3;
 
       &::-webkit-scrollbar {
-        display: none;
+        @apply mvx:hidden;
       }
     }
   }

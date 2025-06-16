@@ -14,8 +14,8 @@
       }
 
       .sign-transactions-header-pager-icon {
-        @apply mvx:relative mvx:z-1 mvx:cursor-pointer mvx:flex mvx:items-center mvx:justify-center mvx:transition-all mvx:duration-200 mvx:w-5;
-        transition-timing-function: ease;
+        @apply mvx:relative mvx:z-1 mvx:cursor-pointer mvx:flex mvx:items-center mvx:justify-center mvx:transition-all;
+        @apply mvx:ease-in-out mvx:duration-200 mvx:w-5;
         fill: var(--mvx-text-color-secondary);
 
         &:hover {
@@ -46,7 +46,8 @@
     }
 
     .sign-transactions-header-origin {
-      @apply mvx:py-6 mvx:flex mvx:flex-col mvx:mx-auto mvx:text-center mvx:justify-center mvx:items-center mvx:select-none mvx:gap-3 mvx:leading-none mvx:text-base;
+      @apply mvx:py-6 mvx:flex mvx:flex-col mvx:mx-auto mvx:text-center mvx:justify-center mvx:items-center;
+      @apply mvx:select-none mvx:gap-3 mvx:leading-none mvx:text-base;
 
       &.centered {
         @apply mvx:m-auto;

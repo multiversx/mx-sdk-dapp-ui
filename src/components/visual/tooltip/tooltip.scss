@@ -1,12 +1,9 @@
 .tooltip {
-  display: flex;
-  position: relative;
+  @apply mvx:flex mvx:relative;
 
   .tooltip-content-wrapper {
-    left: 50%;
+    @apply mvx:left-1/2 mvx:absolute mvx:z-1;
     transform: translateX(-50%);
-    position: absolute;
-    z-index: 1;
 
     &.top {
       bottom: calc(100% + 16px);
@@ -17,26 +14,18 @@
     }
 
     .tooltip-content {
-      flex-direction: row;
-      gap: 8px;
-      cursor: default;
+      @apply mvx:flex-row mvx:cursor-default mvx:p-2 mvx:whitespace-nowrap;
       background: var(--mvx-tooltip-bg);
       border-radius: 12px;
       border: 1px solid var(--mvx-tootip-border);
-      padding: 8px;
       font-size: 12px;
       color: var(--mvx-tooltip-text);
-      white-space: nowrap;
 
       &:after {
-        width: 8px;
-        height: 8px;
+        @apply mvx:left-1/2 mvx:origin-center mvx:w-2 mvx:h-2 mvx:absolute;
         border: 1px solid var(--mvx-tootip-border);
         background-color: var(--mvx-tooltip-bg);
-        position: absolute;
         content: '';
-        left: 50%;
-        transform-origin: center;
         transform: translateX(calc(50% - 8px)) rotateZ(calc(45deg * -1));
       }
 

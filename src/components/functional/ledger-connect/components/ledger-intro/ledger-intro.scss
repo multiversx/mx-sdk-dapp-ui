@@ -1,29 +1,35 @@
 :host {
-  @apply mvx:flex mvx:flex-col mvx:overflow-hidden mvx:flex-1;
+  @apply mvx:flex mvx:flex-col mvx:overflow-hidden mvx:flex-1 mvx:overflow-hidden;
 
   .ledger-intro {
-    @apply mvx:flex-1 mvx:flex mvx:flex-col;
+    @apply mvx:flex-1 mvx:flex mvx:flex-col mvx:py-6 mvx:overflow-auto;
+
+    &::-webkit-scrollbar {
+      @apply mvx:hidden;
+    }
 
     .ledger-intro-wrapper {
       @apply mvx:flex mvx:flex-col mvx:items-center mvx:gap-6 mvx:text-center mvx:text-base mvx:mb-auto;
 
       .ledger-intro-icon {
-        @apply mvx:ml-auto;
+        @apply mvx:mx-auto mvx:self-start mvx:w-auto! mvx:h-auto!;
       }
 
       .ledger-intro-description {
-        @apply mvx:text-base;
-        line-height: 1.5;
+        @apply mvx:text-base mvx:leading-6;
         color: var(--mvx-text-color-secondary);
       }
 
       .ledger-intro-button {
-        @apply mvx:mt-5 mvx:w-48 mvx:flex mvx:items-center mvx:justify-center mvx:font-bold mvx:h-12 mvx:leading-none;
-        @apply mvx:rounded-lg mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:gap-2;
-        transition-timing-function: ease;
+        @apply mvx:w-48 mvx:flex mvx:items-center mvx:justify-center mvx:font-bold mvx:h-12 mvx:leading-none;
+        @apply mvx:rounded-lg mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:gap-2 mvx:ease-in-out;
         color: var(--mvx-button-text-primary);
         background-color: var(--mvx-button-bg-primary);
         border: 1px solid var(--mvx-button-bg-primary);
+
+        @media (min-width: 480px) {
+          @apply mvx:mt-5;
+        }
 
         &:hover {
           @apply mvx:opacity-75;
@@ -37,9 +43,8 @@
       }
 
       .ledger-intro-error {
-        @apply mvx:text-base mvx:max-w-60 mvx:mb-6;
+        @apply mvx:text-base mvx:max-w-60 mvx:mb-6 mvx:leading-6;
         color: var(--mvx-error-color);
-        line-height: 1.5;
       }
     }
 
@@ -48,8 +53,7 @@
       color: var(--mvx-text-color-secondary);
 
       &:after {
-        @apply mvx:absolute mvx:bottom-0 mvx:left-8 mvx:right-8 mvx:h-px mvx:transition-all mvx:duration-200 mvx:opacity-0;
-        transition-timing-function: ease;
+        @apply mvx:absolute mvx:bottom-0 mvx:left-8 mvx:right-8 mvx:h-px mvx:transition-all mvx:duration-200 mvx:opacity-0 mvx:ease-in-out;
         background-color: var(--mvx-text-color-secondary);
         content: '';
       }

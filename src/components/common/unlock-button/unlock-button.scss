@@ -1,59 +1,43 @@
 .unlock-button {
-  padding: 0 12px;
-  padding-right: 16px;
-  height: 60px;
+  @apply mvx:pl-3 mvx:pr-4 mvx:h-15 mvx:flex! mvx:gap-4 mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:items-center;
+  @apply mvx:ease-in-out;
   background: var(--mvx-bg-color-secondary);
-  display: flex;
-  transition: all 200ms ease;
-  cursor: pointer;
-  align-items: center;
-  gap: 16px;
 
   &:hover {
     background: var(--mvx-hover-color-primary);
   }
 
   .unlock-button-icon {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
+    @apply mvx:h-10 mvx:flex mvx:items-center mvx:justify-center mvx:w-10;
     order: -1;
 
     &.clipped {
-      align-items: flex-end;
-      justify-content: flex-start;
+      @apply mvx:items-end mvx:justify-start;
     }
   }
 
   .unlock-button-label {
-    color: var(--mvx-text-color-primary);
-    font-size: 16px;
-    line-height: 1;
+    @mvx:text-base mvx:leading-none;
+    color:  var(--mvx-text-color-primary);
   }
 
   .unlock-button-status {
-    margin-left: auto;
-    font-weight: 500;
+    @apply mvx:ml-auto mvx:leading-none mvx:flex mvx:items-center mvx:py-1 mvx:px-2 mvx:font-medium mvx:gap-1;
     font-size: 12px;
-    font-weight: 500;
-    line-height: 1;
-    display: flex;
-    align-items: center;
     border-radius: 20px;
-    padding: 4px 8px;
     border: 1px solid var(--mvx-border-color-primary);
     background: var(--mvx-bg-color-primary);
-    gap: 4px;
 
     .unlock-button-status-text {
       color: var(--mvx-text-accent-color);
     }
 
     .unlock-button-status-icon {
-      display: flex;
-      align-items: center;
+      @apply mvx:flex mvx:items-center;
+
+      svg path {
+        fill: #23f7dd;
+      }
     }
   }
 }

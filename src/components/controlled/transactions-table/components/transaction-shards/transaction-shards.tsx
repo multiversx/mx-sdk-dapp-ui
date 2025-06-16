@@ -1,5 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
+import { EXPLORER_LINK_SLOT_NAME } from 'components/visual/explorer-link/explorer-link.constants';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionRowType } from '../../transactions-table.type';
@@ -20,7 +21,7 @@ export class TransactionShards {
           class="transactions-table-body-cell-link"
           data-testid={DataTestIdsEnum.shardFromLink}
         >
-          <span slot="content" data-testid={DataTestIdsEnum.senderShard}>
+          <span slot={EXPLORER_LINK_SLOT_NAME} data-testid={DataTestIdsEnum.senderShard}>
             {this.transaction.sender.shard}
           </span>
         </mvx-explorer-link>
@@ -32,7 +33,7 @@ export class TransactionShards {
           link={this.transaction.receiver.shardLink}
           data-testid={DataTestIdsEnum.shardToLink}
         >
-          <span slot="content" data-testid={DataTestIdsEnum.receiverShard}>
+          <span slot={EXPLORER_LINK_SLOT_NAME} data-testid={DataTestIdsEnum.receiverShard}>
             {this.transaction.receiver.shard}
           </span>
         </mvx-explorer-link>
