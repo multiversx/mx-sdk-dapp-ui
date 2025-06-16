@@ -185,8 +185,14 @@ To run the unit tests, run:
 npm test
 ```
 
-To run an individual test in Stencil, run:
+To run a specific test file in Stencil, run:
 
 ```bash
 npx stencil test src/components/visual/transaction-list-item/tests/transaction-list-item.spec.tsx --spec
+```
+
+To run an individual test from a specific test file in Stencil, run:
+
+```bash
+npx stencil test src/components/visual/transaction-list-item/tests/transaction-list-item.spec.tsx --spec -t 'renders with asset icon'
 ```
