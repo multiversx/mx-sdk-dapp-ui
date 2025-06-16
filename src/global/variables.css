@@ -1,245 +1,184 @@
 :root {
-  /* Base Colors */
-  --mx-accent: #ffffff;
-  --mx-white: #ffffff;
-  --mx-black: #000000;
-  --mx-neutral-900: #171717;
-  --mx-neutral-50: #fafafa;
-  --mx-neutral-400: #a3a3a3;
+  /* Theme Colors */
+  --mvx-white: #ffffff;
+  --mvx-black: #000000;
+  --mvx-neutral-100: #f3efed;
+  --mvx-neutral-200: #e8e8e8;
+  --mvx-neutral-400: #a3a3a3;
+  --mvx-neutral-450: #868686;
+  --mvx-neutral-500: #737373;
+  --mvx-neutral-700: #404040;
+  --mvx-neutral-700-20: rgba(64, 64, 64, 0.20);
+  --mvx-neutral-700-40: rgba(64, 64, 64, 0.40);
+  --mvx-neutral-800: #262626;
+  --mvx-neutral-800-30: rgba(53, 53, 53, 0.30);
+  --mvx-neutral-900: #171717;
+  --mvx-neutral-910: #191919;
+  --mvx-neutral-920: #202020;
+  --mvx-neutral-950: #0a0a0a;
+  --mvx-gray-50: #f9fafb;
+  --mvx-gray-200: #e5e7eb;
+  --mvx-gray-350: #c7c7c7;
+  --mvx-gray-500: #6b7280;
+  --mvx-gray-500-50: rgba(108, 117, 125, 0.5);
+  --mvx-gray-650: #5e5e5e;
+  --mvx-gray-700: rgba(64, 64, 64, 0.20);
+  --mvx-green-400:#4ade80;
+  --mvx-green-600: #14aa3e;
+  --mvx-green-600-50: rgba(40, 167, 69, 0.5);
+  --mvx-green-850: #1d6030;
+  --mvx-yellow-400:#facc15;
+  --mvx-amber-650: #d68700;
+  --mvx-brown-900:#453412;
+  --mvx-red-400: #f87171;
+  --mvx-red-900: #582424;
+  --mvx-stone-100: #E2DEDC;
+  --mvx-stone-350: #b6b3af;
+  --mvx-stone-450: #88817a;
+  --mvx-teal-400: #23f7dd;
+  --mvx-blue-600: #007bff;
+  --mvx-blue-600-50: rgba(0, 123, 255, 0.5);
+  --mvx-blue-700: #0062cc;
+  --mvx-slate-500: #545b62;
+  --mvx-white-60: rgba(255, 255, 255, 0.6);
+  --mvx-white-5: rgba(255, 255, 255, 0.05);
+  --mvx-black-5: rgba(0, 0, 0, 0.05);
 
-  /* Text Colors */
-  --mx-text: var(--mx-white);
-  --mx-primary-text: #262626;
-  --mx-secondary-text: #868686;
-  --mx-warning-text: #facc15;
-  --mx-body-label-color: #a09a93;
-  --mx-warning-text: #facc15;
-  --mx-tx-bg: rgba(53, 53, 53);
-  --mx-tx-bg-transparent: rgba(53, 53, 53, 0.3);
-  --mx-tx-text-primary: #e8e8e8;
-  --mx-tx-text-secondary: #737373;
-  --mx-tx-success: #4ade80;
-  --mx-tx-fail: #ff4747;
 
-  /* Toast Colors */
-  --mx-toast-backdrop-blur: 38px;
-  --mx-toast-success-bg: #1d6030;
-  --mx-toast-success-color: #4ade80;
-  --mx-toast-pending-bg: #453412;
-  --mx-toast-pending-color: #facc15;
-  --mx-toast-error-bg: rgba(255, 71, 71, 0.2);
-  --mx-toast-error-color: #ff4747;
+    /* Explorer Link Colors */
+  --mvx-explorer-link-color: var(--mvx-neutral-800);
 
-  /* Explorer Link Colors */
-  --mx-explorer-link-color: var(--mx-primary-text);
 
   /* Transition */
-  --mx-transition: 0.3s ease-in-out;
-
-
+  --mvx-transition: 0.3s ease-in-out;
   
-  /* Theme Colors */
-  --mx-white: #ffffff;
-  --mx-black: #000000;
-  --mx-neutral-100: #f3efed;
-  --mx-neutral-200: #e8e8e8;
-  --mx-neutral-400: #a3a3a3;
-  --mx-neutral-450: #868686;
-  --mx-neutral-500: #737373;
-  --mx-neutral-700: #353535;
-  --mx-neutral-700-20: rgba(64, 64, 64, 0.20);
-  --mx-neutral-700-40: rgba(64, 64, 64, 0.40);
-  --mx-neutral-800: #262626;
-  --mx-neutral-800-30: rgba(53, 53, 53, 0.30);
-  --mx-neutral-900: #171717;
-  --mx-neutral-910: #191919;
-  --mx-neutral-920: #202020;
-  --mx-neutral-950: #0a0a0a;
-  --mx-gray-50: #f9fafb;
-  --mx-gray-200: #e5e7eb;
-  --mx-gray-350: #c7c7c7;
-  --mx-gray-500: #6b7280;
-  --mx-gray-500-50: rgba(108, 117, 125, 0.5);
-  --mx-gray-650: #5e5e5e;
-  --mx-gray-700: rgba(64, 64, 64, 0.20);
-  --mx-green-400:#4ade80;
-  --mx-green-600: #14aa3e;
-  --mx-green-600-50: rgba(40, 167, 69, 0.5);
-  --mx-green-850: #1d6030;
-  --mx-yellow-400:#facc15;
-  --mx-amber-650: #d68700;
-  --mx-brown-900:#453412;
-  --mx-red-400: #f87171;
-  --mx-red-900: #582424;
-  --mx-stone-100: #E2DEDC;
-  --mx-stone-350: #b6b3af;
-  --mx-stone-450: #88817a;
-  --mx-teal-400: #23f7dd;
-  --mx-blue-600: #007bff;
-  --mx-blue-600-50: rgba(0, 123, 255, 0.5);
-  --mx-blue-700: #0062cc;
-  --mx-slate-500: #545b62;
-  --mx-white-60: rgba(255, 255, 255, 0.6);
-  --mx-white-5: rgba(255, 255, 255, 0.05);
-  --mx-black-5: rgba(0, 0, 0, 0.05);
-  
+
   /* Dark Theme Variables */
-  /* --mx-success-color: var(--mx-green-400);
-  --mx-success-bg-color: var(--mx-green-850);
-  --mx-pending-color: var(--mx-yellow-400);
-  --mx-pending-bg-color: var(--mx-brown-900);
-  --mx-error-color: var(--mx-red-400);
-  --mx-error-bg-color: var(--mx-red-900);
-  --mx-notifications-section-color: var(--mx-stone-350);
-  --mx-notifications-clear-color: var(--mx-white);
-  --mx-notifications-no-activity: var(--mx-neutral-500);
-  --mx-warning-text: var(--mx-yellow-400);
-  --mx-toast-primary-color: var(--mx-neutral-200);
-  --mx-toast-secondary-color: var(--mx-neutral-400);
-  --mx-toast-view-more-hover: var(--mx-white-5);
-  --mx-transaction-secondary-color: var(--mx-neutral-500);
-  --mx-progress-bar-bg: var(--mx-gray-650);
-  --mx-progress-bar-accent: var(--mx-teal-400);
-  --mx-transaction-table-header-cell: var(--mx-gray-500);
-  --mx-transaction-table-header-bg: var(--mx-gray-50);
-  --mx-transaction-table-bg: var(--mx-white);
-  --mx-transaction-table-border: var(--mx-gray-200);
-  --mx-transaction-text-color: var(--mx-white);
-  --mx-badge-color: var(--mx-white);
-  --mx-badge-primary-bg: var(--mx-blue-600);
-  --mx-badge-primary-focus-bg: var(--mx-blue-600-50);
-  --mx-badge-primary-hover-bg: var(--mx-blue-700);
-  --mx-badge-secondary-bg: var(--mx-gray-500);
-  --mx-badge-secondary-hover-bg: var(--mx-slate-500);
-  --mx-badge-secondary-focus-bg: var(--mx-gray-500-50);
-  --mx-badge-success-bg: var(--mx-green-600);
-  --mx-badge-success-hover-bg: var(--mx-green-850);
-  --mx-badge-success-focus-bg: var(--mx-green-600-50);
-  --mx-ledger-label: var(--mx-white);
-  --mx-ledger-checkbox-default: var(--mx-white);
-  --mx-ledger-checkbox-checked: var(--mx-teal-400);
-  --mx-ledger-address-item-color: var(--mx-white);
-  --mx-ledger-address-item-bg: var(--mx-neutral-700);
-  --mx-ledger-address-item-index-color: var(--mx-stone-350);
-  --mx-ledger-button-tooltip: var(--mx-neutral-500);
-  --mx-ledger-button-text: var(--mx-black);
-  --mx-ledger-button-bg: var(--mx-teal-400);
-  --mx-ledger-button-loading: var(--mx-stone-350);
-  --mx-pagination-ellipsis-input-color: var(--mx-white);
-  --mx-pagination-ellipsis-input-bg: var(--mx-neutral-900);
-  --mx-pagination-ellipsis-input-border: var(--mx-teal-400);
-  --mx-pagination-ellipsis-button: var(--mx-teal-400);
-  --mx-pagination-ellipsis-label: var(--mx-neutral-400);
-  --mx-sign-transaction-amount-color: var(--mx-white);
-  --mx-sign-transactions-primary: var(--mx-white);
-  --mx-sign-transactions-secondary: var(--mx-stone-350);
-  --mx-sign-transactions-accent: var(--mx-teal-400);
-  --mx-sign-transactions-bg: var(--mx-neutral-900);
-  --mx-sign-transactions-header-bg: var(--mx-neutral-800-30);
-  --mx-sign-transaction-header-icon: var(--mx-stone-350);
-  --mx-sign-transaction-image-bg: var(--mx-black);
-  --mx-sign-transaction-image-border: var(--mx-neutral-900);
-  --mx-info-icon-color: var(--mx-white-60);
-  --mx-sign-transaction-text-color: var(--mx-stone-350);
-  --mx-tooltip-bg: var(--mx-black);
-  --mx-tootip-border: var(--mx-neutral-800);
-  --mx-tooltip-text: var(--mx-neutral-500);
-  --mx-overview-bg: var(--mx-neutral-950);
-  --mx-detail-row-bg: var(--mx-neutral-920);
-  --mx-action-row-bg: var(--mx-neutral-910);
-  --mx-token-icon-border: var(--mx-neutral-700); */
-
-/* -----------New----------------------------- */
-  /* --mvx-text-color-primary: var(--mx-white); 
-  --mvx-text-color-secondary: var(--mx-stone-350);
-  --mvx-text-accent-color: var(--mx-teal-400);
-
-  --mvx-bg-color-primary: var(--mx-neutral-900);
-  --mvx-bg-color-secondary: var(--mx-neutral-800-30);
-  --mvx-bg-accent-color: var(--mx-neutral-950);
-
-  --mvx-border-color-primary: var(--mx-neutral-700-40);
-
-  --mvx-hover-color-secondary: var(--mx-neutral-800); */
+  --mvx-text-color-primary: var(--mvx-white); 
+  --mvx-text-color-secondary: var(--mvx-stone-350);
+  --mvx-text-color-tertiary: var(--mvx-neutral-200);
+  --mvx-text-accent-color: var(--mvx-teal-400);
+  --mvx-label-color: var(--mvx-neutral-400);
   
+  --mvx-bg-color-primary: var(--mvx-neutral-900);
+  --mvx-bg-color-secondary: var(--mvx-neutral-800-30);
+  --mvx-bg-color-tertiary: var(--mvx-neutral-910);
+  --mvx-bg-accent-color: var(--mvx-neutral-950);
+  --mvx-bg-accent-variant-color: var(--mvx-neutral-950);
+  
+  --mvx-border-color-primary: var(--mvx-neutral-700-40);
+  
+  --mvx-hover-color-primary: var(--mvx-neutral-800); 
+  --mvx-hover-bg-primary: var(--mvx-white-5);
+  
+  --mvx-button-bg-primary: var(--mvx-teal-400);
+  --mvx-button-text-primary: var(--mvx-black);
+  
+  --mvx-warning-text: var(--mvx-yellow-400);
+  
+  --mvx-progress-color: var(--mvx-gray-650);
+  --mvx-progress-accent-color: var(--mvx-teal-400);
+  
+  --mvx-success-color: var(--mvx-green-400);
+  --mvx-success-bg-color: var(--mvx-green-850);
+  --mvx-pending-color: var(--mvx-yellow-400);
+  --mvx-pending-bg-color: var(--mvx-brown-900);
+  --mvx-error-color: var(--mvx-red-400);
+  --mvx-error-bg-color: var(--mvx-red-900);
+
+
+  /* ??? */
+  --mvx-transaction-table-header-cell: var(--mvx-gray-500);
+  --mvx-transaction-table-header-bg: var(--mvx-gray-50);
+  --mvx-transaction-table-bg: var(--mvx-white);
+  --mvx-transaction-table-border: var(--mvx-gray-200);
+  --mvx-transaction-text-color: var(--mvx-white);
+  --mvx-badge-color: var(--mvx-white);
+  --mvx-badge-primary-bg: var(--mvx-blue-600);
+  --mvx-badge-primary-focus-bg: var(--mvx-blue-600-50);
+  --mvx-badge-primary-hover-bg: var(--mvx-blue-700);
+  --mvx-badge-secondary-bg: var(--mvx-gray-500);
+  --mvx-badge-secondary-hover-bg: var(--mvx-slate-500);
+  --mvx-badge-secondary-focus-bg: var(--mvx-gray-500-50);
+  --mvx-badge-success-bg: var(--mvx-green-600);
+  --mvx-badge-success-hover-bg: var(--mvx-green-850);
+  --mvx-badge-success-focus-bg: var(--mvx-green-600-50);
+
+  --mvx-pagination-ellipsis-input-color: var(--mvx-white);
+  --mvx-pagination-ellipsis-input-bg: var(--mvx-neutral-900);
+  --mvx-pagination-ellipsis-input-border: var(--mvx-teal-400);
+  --mvx-pagination-ellipsis-button: var(--mvx-teal-400);
+  --mvx-pagination-ellipsis-label: var(--mvx-neutral-400);
+  
+  --mvx-ledger-button-tooltip: var(--mvx-neutral-500);
+  --mvx-tooltip-bg: var(--mvx-black);
+  --mvx-tootip-border: var(--mvx-neutral-800);
+  --mvx-tooltip-text: var(--mvx-neutral-500);
+/* ??? */
+
 
   /* Light Theme Variables */
-  --mx-success-color: var(--mx-white);
-  --mx-success-bg-color: var(--mx-green-600);
-  --mx-pending-color: var(--mx-yellow-400);
-  --mx-pending-bg-color: var(--mx-brown-900);
-  --mx-error-color: var(--mx-red-400);
-  --mx-error-bg-color: var(--mx-red-900);
-  --mx-notifications-section-color: var(--mx-stone-450);
-  --mx-notifications-clear-color: var(--mx-black);
-  --mx-notifications-no-activity: var(--mx-neutral-500);
-  --mx-warning-text: var(--mx-amber-650);
-  --mx-toast-primary-color: var(--mx-neutral-800);
-  --mx-toast-secondary-color: var(--mx-neutral-450);
-  --mx-toast-view-more-hover: var(--mx-black-5);
-  --mx-transaction-secondary-color: var(--mx-neutral-500);
-  --mx-progress-bar-bg: var(--mx-gray-350);
-  --mx-progress-bar-accent: var(--mx-black);
-  --mx-transaction-table-header-cell: var(--mx-gray-500);
-  --mx-transaction-table-header-bg: var(--mx-gray-50);
-  --mx-transaction-table-bg: var(--mx-white);
-  --mx-transaction-table-border: var(--mx-gray-200);
-  --mx-transaction-text-color: var(--mx-white);
-  --mx-badge-color: var(--mx-white);
-  --mx-badge-primary-bg: var(--mx-blue-600);
-  --mx-badge-primary-hover-bg: var(--mx-blue-700);
-  --mx-badge-primary-focus-bg: var(--mx-blue-600-50);
-  --mx-badge-secondary-bg: var(--mx-gray-500);
-  --mx-badge-secondary-hover-bg: var(--mx-slate-500);
-  --mx-badge-secondary-focus-bg: var(--mx-gray-500-50);
-  --mx-badge-success-bg: var(--mx-green-600);
-  --mx-badge-success-hover-bg: var(--mx-green-850);
-  --mx-badge-success-focus-bg: var(--mx-green-600-50);
-  --mx-ledger-label: var(--mx-black);
-  --mx-ledger-checkbox-default: var(--mx-black);
-  --mx-ledger-checkbox-checked: var(--mx-black);
-  --mx-ledger-address-item-color: var(--mx-black);
-  --mx-ledger-address-item-bg: var(--mx-white);
-  --mx-ledger-address-item-index-color: var(--mx-stone-450);
-  --mx-ledger-button-tooltip: var(--mx-neutral-500);
-  --mx-ledger-button-text: var(--mx-white);
-  --mx-ledger-button-bg: var(--mx-black);
-  --mx-ledger-button-loading: var(--mx-stone-450);
-  --mx-pagination-ellipsis-input-color: var(--mx-white);
-  --mx-pagination-ellipsis-input-bg: var(--mx-neutral-900);
-  --mx-pagination-ellipsis-input-border: var(--mx-teal-400);
-  --mx-pagination-ellipsis-button: var(--mx-teal-400);
-  --mx-pagination-ellipsis-label: var(--mx-neutral-400);
-  --mx-sign-transaction-amount-color: var(--mx-black);
-  --mx-sign-transactions-primary: var(--mx-black);
-  --mx-sign-transactions-secondary: var(--mx-stone-450);
-  --mx-sign-transactions-accent: var(--mx-black);
-  --mx-sign-transactions-bg: var(--mx-white);
-  --mx-sign-transactions-header-bg: var(--mx-white);
-  --mx-sign-transaction-header-icon: var(--mx-neutral-700);
-  --mx-sign-transaction-image-bg: var(--mx-black);
-  --mx-sign-transaction-image-border: var(--mx-neutral-900);
-  --mx-info-icon-color: var(--mx-stone-450);
-  --mx-sign-transaction-text-color: var(--mx-stone-450);
-  --mx-tooltip-bg: var(--mx-white);
-  --mx-tootip-border: var(--mx-neutral-400);
-  --mx-tooltip-text: var(--mx-neutral-700);
-  --mx-overview-bg: var(--mx-stone-100);
-  --mx-detail-row-bg: var(--mx-white);
-  --mx-action-row-bg: var(--mx-white-60);
-  --mx-token-icon-border: var(--mx-neutral-700);
+  /* --mvx-text-color-primary: var(--mvx-black);
+  --mvx-text-color-secondary: var(--mvx-stone-450);
+  --mvx-text-color-tertiary: var(--mvx-neutral-800);
+  --mvx-text-accent-color: var(--mvx-black);
+  --mvx-label-color: var(--mvx-neutral-450);
+  
+  --mvx-bg-color-primary: var(--mvx-neutral-100);
+  --mvx-bg-color-secondary: var(--mvx-white);
+  --mvx-bg-color-tertiary: var(--mvx-white-60);
+  --mvx-bg-accent-color: var(--mvx-white);
+  --mvx-bg-accent-variant-color: var(--mvx-stone-100);
+  
+  --mvx-border-color-primary: var(--mvx-neutral-700-20);
+  
+  --mvx-hover-color-primary: var(--mvx-neutral-200); 
+  --mvx-hover-bg-primary: var(--mvx-black-5);
+  
+  --mvx-button-bg-primary: var(--mvx-black);
+  --mvx-button-text-primary: var(--mvx-white); 
+  
+  --mvx-warning-text: var(--mvx-amber-650);
 
-  /* ------------------New------------------- */
-  --mvx-text-color-primary: var(--mx-black);
-  --mvx-text-color-secondary: var(--mx-stone-450);
-  --mvx-text-accent-color: var(--mx-black);
-  
-  --mvx-bg-color-primary: var(--mx-neutral-100);
-  --mvx-bg-color-secondary: var(--mx-white);
-  --mvx-bg-accent-color: var(--mx-white);
-  
-  --mvx-border-color-primary: var(--mx-neutral-700-20);
-  
-  --mvx-hover-color-secondary: var(--mx-neutral-200); 
+  --mvx-progress-color: var(--mvx-gray-350);
+  --mvx-progress-accent-color: var(--mvx-black);
 
+  --mvx-success-color: var(--mvx-white);
+  --mvx-success-bg-color: var(--mvx-green-600);
+  --mvx-pending-color: var(--mvx-yellow-400);
+  --mvx-pending-bg-color: var(--mvx-brown-900);
+  --mvx-error-color: var(--mvx-red-400);
+  --mvx-error-bg-color: var(--mvx-red-900); */
+  
+
+/* ??? */
+  /* --mvx-transaction-table-header-cell: var(--mvx-gray-500);
+  --mvx-transaction-table-header-bg: var(--mvx-gray-50);
+  --mvx-transaction-table-bg: var(--mvx-white);
+  --mvx-transaction-table-border: var(--mvx-gray-200);
+  --mvx-transaction-text-color: var(--mvx-white);
+
+  --mvx-badge-color: var(--mvx-white);
+  --mvx-badge-primary-bg: var(--mvx-blue-600);
+  --mvx-badge-primary-hover-bg: var(--mvx-blue-700);
+  --mvx-badge-primary-focus-bg: var(--mvx-blue-600-50);
+  --mvx-badge-secondary-bg: var(--mvx-gray-500);
+  --mvx-badge-secondary-hover-bg: var(--mvx-slate-500);
+  --mvx-badge-secondary-focus-bg: var(--mvx-gray-500-50);
+  --mvx-badge-success-bg: var(--mvx-green-600);
+  --mvx-badge-success-hover-bg: var(--mvx-green-850);
+  --mvx-badge-success-focus-bg: var(--mvx-green-600-50);
+  
+  --mvx-pagination-ellipsis-input-color: var(--mvx-white);
+  --mvx-pagination-ellipsis-input-bg: var(--mvx-neutral-900);
+  --mvx-pagination-ellipsis-input-border: var(--mvx-teal-400);
+  --mvx-pagination-ellipsis-button: var(--mvx-teal-400);
+  --mvx-pagination-ellipsis-label: var(--mvx-neutral-400);
+  
+  
+  --mvx-ledger-button-tooltip: var(--mvx-neutral-500);
+  --mvx-tooltip-bg: var(--mvx-white);
+  --mvx-tootip-border: var(--mvx-neutral-400);
+  --mvx-tooltip-text: var(--mvx-neutral-700); */
+/* ??? */
 }

@@ -20,9 +20,9 @@
 .view-all-button {
   @apply mvx:backdrop-blur-2xl mvx:py-2 mvx:px-4 mvx:text-base mvx:font-normal mvx:leading-6 mvx:cursor-pointer mvx:transition-opacity mvx:duration-200;
   border-radius: 100px;
-  border: 0.5px solid var(--mx-tx-bg);
-  background: var(--mx-tx-bg);
-  color: var(--mx-toast-primary-color);
+  border: 0.5px solid var(--mvx-bg-accent-variant-color);
+  background: var(--mvx-bg-color-primary);
+  color: var(--mvx-text-color-primary);
   transition-timing-function: ease;
 
   &:hover {

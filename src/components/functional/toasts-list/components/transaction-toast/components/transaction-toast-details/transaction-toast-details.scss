@@ -8,12 +8,12 @@
 
 .transaction-details-status-icon {
   @apply mvx:items-center mvx:flex mvx:h-5 mvx:w-5 mvx:justify-center;
-  color: var(--mx-toast-primary-color);
-  transition: transform var(--mx-transition);
+  color: var(--mvx-text-color-tertiary);
+  transition: transform var(--mvx-transition);
 
   .svg-inline--fa {
     @apply mvx:h-3.5 mvx:w-3.5;
-    color: var(--mx-toast-primary-color);
+    color: var(--mvx-text-color-tertiary);
   }
 
   &.rotate-up {
@@ -23,12 +23,12 @@
 
 .transaction-details-status-text {
   @apply mvx:text-sm mvx:font-normal mvx:leading-5;
-  color: var(--mx-toast-primary-color);
+  color: var(--mvx-text-color-tertiary);
 }
 
 .transaction-details-list {
   @apply mvx:flex mvx:flex-col mvx:items-start mvx:gap-1 mvx:self-stretch mvx:max-h-0 mvx:overflow-hidden mvx:w-full;
-  transition: max-height var(--mx-transition);
+  transition: max-height var(--mvx-transition);
 
   &.expanded {
     @apply mvx:w-full mvx:overflow-y-scroll mvx:max-h-125;
@@ -41,10 +41,10 @@
 
 .show-more-button {
   @apply mvx:text-xs mvx:font-normal mvx:leading-4 mvx:cursor-pointer mvx:rounded-sm mvx:bg-none mvx:border-0;
-  color: var(--mx-toast-primary-color);
-  transition: background-color var(--mx-transition);
+  color: var(--mvx-text-color-tertiary);
+  transition: background-color var(--mvx-transition);
 
   &:hover {
-    background-color: var(--mx-toast-view-more-hover);
+    background-color: var(--mvx-hover-bg-primary);
   }
 }

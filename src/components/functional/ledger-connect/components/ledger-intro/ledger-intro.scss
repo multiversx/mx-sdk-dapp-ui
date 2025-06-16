@@ -21,9 +21,9 @@
         @apply mvx:mt-5 mvx:w-48 mvx:flex mvx:items-center mvx:justify-center mvx:font-bold mvx:h-12 mvx:leading-none;
         @apply mvx:rounded-lg mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:gap-2;
         transition-timing-function: ease;
-        color: var(--mx-ledger-button-text);
-        background-color: var(--mx-ledger-button-bg);
-        border: 1px solid var(--mx-ledger-button-bg);
+        color: var(--mvx-button-text-primary);
+        background-color: var(--mvx-button-bg-primary);
+        border: 1px solid var(--mvx-button-bg-primary);
 
         &:hover {
           @apply mvx:opacity-75;
@@ -31,26 +31,26 @@
 
         &.loading {
           @apply mvx:pointer-events-none mvx:bg-transparent mvx:cursor-default;
-          border-color: var(--mx-ledger-button-loading);
-          color: var(--mx-ledger-button-loading);
+          border-color: var(--mvx-text-color-secondary);
+          color: var(--mvx-text-color-secondary);
         }
       }
 
       .ledger-intro-error {
         @apply mvx:text-base mvx:max-w-60 mvx:mb-6;
-        color: var(--mx-error-color);
+        color: var(--mvx-error-color);
         line-height: 1.5;
       }
     }
 
     .ledger-intro-issues {
       @apply mvx:text-base mvx:mt-10 mvx:mx-auto mvx:text-center mvx:relative mvx:pb-1;
-      color: var(--mx-ledger-button-loading);
+      color: var(--mvx-text-color-secondary);
 
       &:after {
         @apply mvx:absolute mvx:bottom-0 mvx:left-8 mvx:right-8 mvx:h-px mvx:transition-all mvx:duration-200 mvx:opacity-0;
         transition-timing-function: ease;
-        background-color: var(--mx-ledger-button-loading);
+        background-color: var(--mvx-text-color-secondary);
         content: '';
       }
 

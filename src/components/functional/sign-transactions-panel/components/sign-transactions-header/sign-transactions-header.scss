@@ -10,16 +10,16 @@
       &:before {
         @apply mvx:absolute mvx:left-0 mvx:top-0 mvx:bottom-0 mvx:right-0 mvx:pointer-events-none mvx:rounded-2xl mvx:opacity-40;
         content: '';
-        background-color: var(--mx-sign-transactions-header-bg);
+        background-color: var(--mvx-bg-color-secondary);
       }
 
       .sign-transactions-header-pager-icon {
         @apply mvx:relative mvx:z-1 mvx:cursor-pointer mvx:flex mvx:items-center mvx:justify-center mvx:transition-all mvx:duration-200 mvx:w-5;
         transition-timing-function: ease;
-        fill: var(--mx-sign-transaction-header-icon);
+        fill: var(--mvx-text-color-secondary);
 
         &:hover {
-          fill: var(--mx-sign-transactions-primary);
+          fill: var(--mvx-text-color-primary);
         }
 
         &.disabled {
@@ -31,12 +31,12 @@
         @apply mvx:relative mvx:z-1 mvx:flex mvx:text-base mvx:leading-none mvx:select-none mvx:items-center mvx:gap-2;
 
         .sign-transactions-header-pager-text-label {
-          color: var(--mx-sign-transactions-secondary);
+          color: var(--mvx-text-color-secondary);
         }
 
         .sign-transactions-header-pager-text-value {
           @apply mvx:font-medium mvx:flex mvx:items-center mvx:justify-center mvx:w-2.5;
-          color: var(--mx-sign-transactions-primary);
+          color: var(--mvx-text-color-primary);
 
           &.large {
             @apply mvx:w-5;
@@ -53,17 +53,17 @@
       }
 
       .sign-transactions-header-origin-label {
-        color: var(--mx-sign-transactions-secondary);
+        color: var(--mvx-text-color-secondary);
       }
 
       .sign-transactions-header-origin-image {
         @apply mvx:flex mvx:items-center mvx:rounded-3xl mvx:justify-center mvx:w-18 mvx:h-18;
-        background: var(--mx-sign-transaction-image-bg);
-        border: 1px solid var(--mx-sign-transaction-image-border);
+        background: var(--mvx-neutral-950);
+        border: 1px solid var(--mvx-neutral-900);
       }
 
       .sign-transactions-header-origin-name {
-        color: var(--mx-sign-transactions-primary);
+        color: var(--mvx-text-color-primary);
       }
     }
   }

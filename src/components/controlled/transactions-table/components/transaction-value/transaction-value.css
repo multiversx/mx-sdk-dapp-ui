@@ -54,17 +54,17 @@
 }
 
 .badge-primary {
-  color: var(--mx-badge-color);
-  background-color: var(--mx-badge-primary-bg);
+  color: var(--mvx-badge-color);
+  background-color: var(--mvx-badge-primary-bg);
 }
 
 .badge-secondary {
-  color: var(--mx-badge-color);
-  background-color: var(--mx-badge-secondary-bg);
+  color: var(--mvx-badge-color);
+  background-color: var(--mvx-badge-secondary-bg);
 }
 
 .badge-danger {
-  color: var(--mx-badge-color);
+  color: var(--mvx-badge-color);
   background-color: #dc3545;
 }
 
@@ -84,5 +84,5 @@
 }
 
 .text-white {
-  color: var(--mx-transaction-text-color);
+  color: var(--mvx-transaction-text-color);
 }

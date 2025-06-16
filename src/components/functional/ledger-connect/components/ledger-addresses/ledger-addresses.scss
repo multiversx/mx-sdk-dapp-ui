@@ -6,7 +6,7 @@
 
     .ledger-addresses-label {
       @apply mvx:leading-none;
-      color: var(--mx-ledger-label);
+      color: var(--mvx-text-color-primary);
     }
 
     .ledger-addresses-wrapper {
@@ -35,36 +35,36 @@
           @apply mvx:relative mvx:cursor-pointer mvx:transition mvx:duration-200;
           transition-timing-function: ease;
           border: 1px solid transparent;
-          color: var(--mx-ledger-address-item-color);
+          color: var(--mvx-text-color-primary);
 
           &:before {
             @apply mvx:absolute mvx:left-0 mvx:top-0 mvx:bottom-0 mvx:right-0 mvx:pointer-events-none mvx:rounded-lg mvx:opacity-30;
-            background-color: var(--mx-ledger-address-item-bg);
+            background-color: var(--mvx-bg-color-secondary);
             content: '';
           }
 
           &.checked,
           &:hover {
-            border-color: var(--mx-ledger-checkbox-checked);
+            border-color: var(--mvx-text-accent-color);
           }
 
           .ledger-addresses-list-item-checkbox {
             @apply mvx:relative mvx:z-1 mvx:cursor-pointer mvx:transition mvx:duration-200 mvx:rounded-full mvx:mr-2 mvx:min-w-4 mvx:max-w-4 mvx:h-4;
             transition-timing-function: ease;
-            border: 1px solid var(--mx-ledger-checkbox-default);
+            border: 1px solid var(--mvx-text-color-primary);
 
             &:after {
               @apply mvx:absolute mvx:left-1/2 mvx:top-1/2 mvx:rounded-full mvx:opacity-0 mvx:transition-all mvx:duration-200;
               transform: translate(-50%, -50%);
               transition-timing-function: ease;
-              background-color: var(--mx-ledger-checkbox-checked);
+              background-color: var(--mvx-text-accent-color);
               width: calc(12px / 2);
               height: calc(12px / 2);
               content: '';
             }
 
             &.checked {
-              border-color: var(--mx-ledger-checkbox-checked);
+              border-color: var(--mvx-text-accent-color);
 
               &:after {
                 @apply mvx:opacity-100;
@@ -75,10 +75,10 @@
           .ledger-addresses-list-item-index {
             @apply mvx:relative mvx:z-1 mvx:text-base mvx:font-medium mvx:transition mvx:duration-200 mvx:mr-4;
             transition-timing-function: ease;
-            color: var(--mx-ledger-address-item-index-color);
+            color: var(--mvx-text-color-secondary);
 
             &.checked {
-              color: var(--mx-ledger-checkbox-checked);
+              color: var(--mvx-text-accent-color);
             }
 
             &.narrow {
@@ -119,16 +119,16 @@
 
       .ledger-addresses-button-tooltip-wrapper {
         @apply mvx:text-xs mvx:text-center;
-        color: var(--mx-ledger-button-tooltip);
+        color: var(--mvx-ledger-button-tooltip);
       }
 
       .ledger-addresses-button {
         @apply mvx:w-full mvx:flex mvx:items-center mvx:justify-center mvx:font-bold mvx:h-12 mvx:leading-none mvx:text-base;
         @apply mvx:rounded-lg mvx:cursor-pointer mvx:transition mvx:duration-200 mvx:gap-2;
         transition-timing-function: ease;
-        color: var(--mx-ledger-button-text);
-        background-color: var(--mx-ledger-button-bg);
-        border: 1px solid var(--mx-ledger-button-bg);
+        color: var(--mvx-button-text-primary);
+        background-color: var(--mvx-button-bg-primary);
+        border: 1px solid var(---mvx-button-bg-primary);
 
         &:hover {
           @apply mvx:opacity-75;
@@ -137,8 +137,8 @@
         &.loading,
         &.disabled {
           @apply mvx:pointer-events-none mvx:bg-transparent mvx:cursor-default;
-          border-color: var(--mx-ledger-button-loading);
-          color: var(--mx-ledger-button-loading);
+          border-color: var(--mvx-text-color-secondary);
+          color: var(--mvx-text-color-secondary);
         }
       }
     }

@@ -12,7 +12,7 @@
 
   &:hover {
     .transaction-details-list-item-hash-value {
-      color: var(--mx-toast-primary-color);
+      color: var(--mvx-text-color-tertiary);
     }
 
     .transaction-details-list-item-explorer-link-icon {
@@ -43,49 +43,49 @@
 }
 
 .transaction-details-list-item-icon-success {
-  background-color: var(--mx-success-bg-color);
+  background-color: var(--mvx-success-bg-color);
   
   svg,
   .svg-inline--fa {
-    color: var(--mx-success-color) !important;
+    color: var(--mvx-success-color) !important;
   }
 }
 
 .transaction-details-list-item-icon-pending {
-  background-color: var(--mx-pending-bg-color);
+  background-color: var(--mvx-pending-bg-color);
 
   svg,
   .svg-inline--fa {
-    color: var(--mx-pending-color) !important;
+    color: var(--mvx-pending-color) !important;
     animation: rotate 2s cubic-bezier(1, 0, 0.5, 1) infinite;
   }
 }
 
 .transaction-details-list-item-icon-fail {
-  background-color: var(--mx-error-bg-color);
+  background-color: var(--mvx-error-bg-color);
 
   svg,
   .svg-inline--fa {
-    color: var(--mx-error-color) !important;
+    color: var(--mvx-error-color) !important;
   }
 }
 
 .transaction-details-list-item-hash-index {
   @apply mvx:text-xs mvx:font-medium mvx:leading-4;
-  color: var(--mx-toast-primary-color);
+  color: var(--mvx-text-color-tertiary);
 }
 
 .transaction-details-list-item-hash-value {
   @apply mvx:text-xs mvx:font-normal mvx:leading-4 mvx:w-full mvx:mt-1 mvx:max-w-55;
-  color: var(--mx-toast-secondary-color);
+  color: var(--mvx-label-color);
 }
 
 .transaction-details-list-item-explorer-link-icon {
   @apply mvx:flex mvx:flex-col mvx:justify-end mvx:shrink-0 mvx:ml-auto mvx:mr-3 mvx:invisible mvx:w-4 mvx:h-4;
-  color: var(--mx-toast-primary-color);
+  color: var(--mvx-text-color-tertiary);
 
   .svg-inline--fa {
     @apply mvx:text-center mvx:w-3.5 mvx:h-3.5;
-    color: var(--mx-toast-primary-color);
+    color: var(--mvx-text-color-tertiary);
   }
 }
