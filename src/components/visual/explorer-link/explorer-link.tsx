@@ -20,7 +20,6 @@ export class ExplorerLink {
   @State() hasSlotContent: boolean = false;
 
   componentDidLoad() {
-    console.log({ host: this.hostElement });
     this.hasSlotContent = this.hostElement.childNodes.length > 0;
   }
 

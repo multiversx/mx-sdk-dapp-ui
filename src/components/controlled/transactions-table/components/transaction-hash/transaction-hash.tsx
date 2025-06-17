@@ -20,7 +20,7 @@ export class TransactionHash {
         <mvx-transaction-icon iconInfo={this.transaction.iconInfo} />
 
         <mvx-explorer-link dataTestId={DataTestIdsEnum.transactionLink} link={this.transaction.link}>
-          <div>{this.transaction.txHash}</div>
+          <span>{this.transaction.txHash}</span>
         </mvx-explorer-link>
       </div>
     );
