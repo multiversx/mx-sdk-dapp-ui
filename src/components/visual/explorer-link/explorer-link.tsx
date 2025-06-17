@@ -1,8 +1,6 @@
 import { Component, Element, h, Prop, State } from '@stencil/core';
 import classNames from 'classnames';
 
-import { EXPLORER_LINK_SLOT_NAME } from './explorer-link.constants';
-
 const explorerLinkClasses: Record<string, string> = {
   icon: 'mvx:flex mvx:justify-center mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80 mvx:fill-white',
 };
@@ -22,7 +20,7 @@ export class ExplorerLink {
   @State() hasSlotContent: boolean = false;
 
   componentWillLoad() {
-    this.hasSlotContent = !!this.hostElement.querySelector(`[slot="${EXPLORER_LINK_SLOT_NAME}"]`);
+    this.hasSlotContent = this.hostElement.children.length > 0;
   }
 
   render() {
@@ -35,7 +33,7 @@ export class ExplorerLink {
         class={{ 'explorer-link': true, [this.class]: Boolean(this.class) }}
       >
         {this.hasSlotContent ? (
-          <slot name={EXPLORER_LINK_SLOT_NAME} />
+          <slot />
         ) : (
           <mvx-arrow-up-right-from-square-icon
             class={classNames('explorer-link-icon', {

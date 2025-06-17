@@ -102,7 +102,7 @@ describe('TransactionValue', () => {
       <mvx-transaction-value>
           <div class="transaction-value">
             <mvx-explorer-link class="transaction-value-link text-truncate" link="https://example.com">
-              <div class="transaction-value-content" slot="explorer-link-slot">
+              <div class="transaction-value-content">
                 <span class="transaction-value-link-text">Example Link</span>
               </div>
             </mvx-explorer-link>
@@ -132,7 +132,7 @@ describe('TransactionValue', () => {
       <mvx-transaction-value>
           <div class="transaction-value">
             <mvx-explorer-link class="transaction-value-link side-link d-flex" link="https://example.com">
-              <div class="transaction-value-content" slot="explorer-link-slot">
+              <div class="transaction-value-content">
                 <img alt="Example Icon" class="transaction-value-img" src="https://example.com/icon.svg">
                 <span class="transaction-value-link-text">Example Link</span>
               </div>
@@ -163,7 +163,7 @@ describe('TransactionValue', () => {
       <mvx-transaction-value>
           <div class="transaction-value">
             <mvx-explorer-link class="transaction-value-link text-truncate" link="https://example.com">
-              <div class="transaction-value-content" slot="explorer-link-slot">
+              <div class="transaction-value-content">
                 <span class="transaction-value-link-text truncate">Example Link</span>
               </div>
             </mvx-explorer-link>
@@ -193,7 +193,7 @@ describe('TransactionValue', () => {
       <mvx-transaction-value>
           <div class="transaction-value">
             <mvx-explorer-link class="transaction-value-link text-truncate" link="https://example.com">
-              <div class="transaction-value-content" slot="explorer-link-slot">
+              <div class="transaction-value-content">
                 <span class="transaction-value-link-text">Example Link</span>
               </div>
             </mvx-explorer-link>

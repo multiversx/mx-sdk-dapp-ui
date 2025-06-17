@@ -1,5 +1,4 @@
 import { Component, h, Prop } from '@stencil/core';
-import { EXPLORER_LINK_SLOT_NAME } from 'components/visual/explorer-link/explorer-link.constants';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionRowType } from '../../transactions-table.type';
@@ -21,7 +20,7 @@ export class TransactionHash {
         <mvx-transaction-icon iconInfo={this.transaction.iconInfo} />
 
         <mvx-explorer-link dataTestId={DataTestIdsEnum.transactionLink} link={this.transaction.link}>
-          <div slot={EXPLORER_LINK_SLOT_NAME}>{this.transaction.txHash}</div>
+          <div>{this.transaction.txHash}</div>
         </mvx-explorer-link>
       </div>
     );
