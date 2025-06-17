@@ -3,6 +3,7 @@
 
   .pagination-angle {
     @apply mvx:hidden mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:cursor-pointer;
+    color: var(--mvx-text-color-primary);
 
     @media (min-width: 576px) {
       @apply mvx:flex;
@@ -11,9 +12,10 @@
     &.disabled,
     &.inactive {
       @apply mvx:pointer-events-none;
+      color: var(--mvx-text-color-secondary);
 
       .pagination-angle-icon {
-        fill: #737373;
+        fill: var(--mvx-text-color-secondary);
       }
     }
 
@@ -22,15 +24,15 @@
     }
 
     &:hover {
-      color: #23f7dd;
+      color: var(--mvx-text-accent-color);
 
       .pagination-angle-icon {
-        fill: #23f7dd;
+        fill: var(--mvx-text-accent-color);
       }
     }
 
     .pagination-angle-icon {
-      fill: #e5e5e5;
+      fill: var(--mvx-text-color-primary);
       font-size: 12px;
 
       @media (min-width: 375px) {
@@ -41,6 +43,7 @@
 
   .pagination-edge-button {
     @apply mvx:hidden mvx:gap-2 mvx:items-center mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:ease-in-out;
+    color: var(--mvx-text-color-primary);
 
     @media (min-width: 576px) {
       @apply mvx:p-0 mvx:my-0 mvx:mx-1 mvx:flex;
@@ -49,9 +52,10 @@
     &.inactive,
     &.disabled {
       @apply mvx:pointer-events-none;
+      color: var(--mvx-text-color-secondary);
 
       .pagination-edge-button-icon {
-        fill: #737373;
+        fill: var(--mvx-text-color-secondary);
       }
     }
 
@@ -60,16 +64,16 @@
     }
 
     &:hover {
-      color: #23f7dd;
+      color: var(--mvx-text-accent-color);
 
       .pagination-edge-button-icon {
-        fill: #23f7dd;
+        fill: var(--mvx-text-accent-color);
       }
     }
 
     .pagination-edge-button-icon {
       @apply mvx:transition-all mvx:duration-200 mvx:ease-in-out;
-      fill: #e5e5e5;
+      fill: var(--mvx-text-color-primary);
       font-size: 12px;
 
       @media (min-width: 375px) {
@@ -96,7 +100,7 @@
       .pagination-item {
         @apply mvx:relative mvx:flex mvx:justify-center mvx:items-center mvx:py-2 mvx:px-0 mvx:text-center mvx:w-7 mvx:h-7;
         @apply mvx:transition-colors mvx:duration-200 mvx:ease-out;
-        color: #e5e5e5;
+        color: var(--mvx-text-color-primary);
         border-radius: 4px;
         font-size: 12px;
 
@@ -109,7 +113,7 @@
           @apply mvx:left-1/2 mvx:top-1/2 mvx:h-7 mvx:z-1 mvx:rounded-full mvx:opacity-30;
           content: '';
           transform: translate(-50%, -50%);
-          background-color: #353535;
+          background-color: var(--mvx-pagination-item-bg);
 
           @media (min-width: 768px) {
             @apply mvx:h-8 mvx:w-8;
@@ -117,11 +121,11 @@
         }
 
         &:hover {
-          color: #23f7dd;
+          color: var(--mvx-text-accent-color);
 
           &:before {
             @apply mvx:opacity-100;
-            background-color: #143736;
+            background-color: var(--mvx-pagination-item-bg-hover);
           }
         }
 
@@ -134,11 +138,11 @@
         }
 
         &.active {
-          color: #23f7dd;
+          color: var(--mvx-text-accent-color);
 
           &:before {
             @apply mvx:opacity-100;
-            background-color: #143736;
+            background-color: var(--mvx-pagination-item-bg-hover);
           }
         }
 

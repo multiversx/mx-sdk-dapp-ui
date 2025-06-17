@@ -18,6 +18,6 @@
   .preloader {
     @apply mvx:w-30 mvx:h-30 mvx:relative mvx:transition-all mvx:duration-200 mvx:overflow-hidden mvx:rounded-lg mvx:ease-in-out;
     animation: PreloaderPulseAnimation 2s infinite;
-    background: #262626;
+    background: var(--mvx-preloader-bg);
   }
 }

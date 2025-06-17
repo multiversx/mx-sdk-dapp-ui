@@ -7,9 +7,9 @@
 
 .close-button {
   cursor: pointer;
-  color: #ffff;
-  background-color: #343a40;
-  border-color: #343a40;
+  color: var(--mvx-text-color-primary);
+  background-color: var(--mvx-bg-color-primary);
+  border-color: var(--mvx-bg-color-primary);
   border-radius: 0.25rem;
   padding: 0.375rem 0.75rem;
   border: 1px solid rgba(0, 0, 0, 0);
@@ -19,7 +19,7 @@
   width: 450px;
   max-width: 100%;
   padding: 0;
-  background-color: #ffffff;
+  background-color: var(--mvx-bg-color-primary);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
