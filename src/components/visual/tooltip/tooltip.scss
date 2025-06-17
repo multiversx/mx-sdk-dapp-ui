@@ -15,16 +15,16 @@
 
     .tooltip-content {
       @apply mvx:flex-row mvx:cursor-default mvx:p-2 mvx:whitespace-nowrap;
-      background: var(--mvx-tooltip-bg);
+      background: var(--mvx-black);
       border-radius: 12px;
-      border: 1px solid var(--mvx-tootip-border);
+      border: 1px solid var(--mvx-neutral-800);
       font-size: 12px;
-      color: var(--mvx-tooltip-text);
+      color: var(--mvx-neutral-200);
 
       &:after {
         @apply mvx:left-1/2 mvx:origin-center mvx:w-2 mvx:h-2 mvx:absolute;
-        border: 1px solid var(--mvx-tootip-border);
-        background-color: var(--mvx-tooltip-bg);
+        border: 1px solid var(--mvx-neutral-800);
+        background-color: var(--mvx-black);
         content: '';
         transform: translateX(calc(50% - 8px)) rotateZ(calc(45deg * -1));
       }

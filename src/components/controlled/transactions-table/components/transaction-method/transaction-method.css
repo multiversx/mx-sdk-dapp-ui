@@ -38,58 +38,58 @@ a.badge:hover, a.badge:focus {
 }
 
 .badge-primary {
-  color: var(--mvx-badge-color);
-  background-color: var(--mvx-badge-primary-bg);
+  color: var(--mvx-white);
+  background-color: var(--mvx-blue-600);
 }
 
 a.badge-primary:hover, a.badge-primary:focus {
-  color: var(--mvx-badge-color);
-  background-color: var(--mvx-badge-primary-hover-bg);
+  color: var(--mvx-white);
+  background-color: var(--mvx-blue-700);
 }
 
 a.badge-primary:focus, a.badge-primary.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem var(--mvx-badge-primary-focus-bg);
+  box-shadow: 0 0 0 0.2rem var(--mvx-blue-600-50);
 }
 
 .badge-secondary {
-  color: var(--mvx-badge-color);
-  background-color: var(--mvx-badge-secondary-bg);
+  color: var(--mvx-white);
+  background-color: var(--mvx-gray-500);
 }
 
 a.badge-secondary:hover, a.badge-secondary:focus {
-  color: var(--mvx-badge-color);
-  background-color: var(--mvx-badge-secondary-hover-bg);
+  color: var(--mvx-white);
+  background-color: var(--mvx-slate-500);
 }
 
 a.badge-secondary:focus, a.badge-secondary.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem var(--mvx-badge-secondary-focus-bg);
+  box-shadow: 0 0 0 0.2rem var(--mvx-gray-500-50);
 }
 
 .badge-success {
-  color: var(--mvx-badge-color);
-  background-color: var(--mvx-badge-success-bg);
+  color: var(--mvx-white);
+  background-color: var(--mvx-green-600);
 }
 
 a.badge-success:hover, a.badge-success:focus {
-  color: var(--mvx-badge-color);
-  background-color: var(--mvx-badge-success-hover-bg);
+  color: var(--mvx-white);
+  background-color: var(--mvx-green-850);
 }
 
 a.badge-success:focus, a.badge-success.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem var(--mvx-badge-success-focus-bg);
+  box-shadow: 0 0 0 0.2rem var(--mvx-green-600-50);
 }
 
 .badge-info {
-  color: var(--mvx-badge-color);
-  background-color: #17a2b8;
+  color: var(--mvx-white);
+  background-color: var(--mvx-cyan-500);
 }
 
 a.badge-info:hover, a.badge-info:focus {
-  color: var(--mvx-badge-color);
-  background-color: #117a8b;
+  color: var(--mvx-white);
+  background-color: var(--mvx-cyan-500);
 }
 
 a.badge-info:focus, a.badge-info.focus {
@@ -98,13 +98,13 @@ a.badge-info:focus, a.badge-info.focus {
 }
 
 .badge-warning {
-  color: #212529;
-  background-color: #ffc107;
+  color: var(--mvx-gray-900);
+  background-color: var(--mvx-yellow-400);
 }
 
 a.badge-warning:hover, a.badge-warning:focus {
-  color: #212529;
-  background-color: #d39e00;
+  color: var(--mvx-gray-900);
+  background-color: var(--mvx-yellow-600);
 }
 
 a.badge-warning:focus, a.badge-warning.focus {
@@ -113,13 +113,13 @@ a.badge-warning:focus, a.badge-warning.focus {
 }
 
 .badge-danger {
-  color: var(--mvx-badge-color);
-  background-color: #dc3545;
+  color: var(--mvx-white);
+  background-color: var(--mvx-red-600);
 }
 
 a.badge-danger:hover, a.badge-danger:focus {
-  color: var(--mvx-badge-color);
-  background-color: #bd2130;
+  color: var(--mvx-white);
+  background-color: var(--mvx-red-700);
 }
 
 a.badge-danger:focus, a.badge-danger.focus {
@@ -128,13 +128,13 @@ a.badge-danger:focus, a.badge-danger.focus {
 }
 
 .badge-light {
-  color: #212529;
-  background-color: #f8f9fa;
+  color: var(--mvx-gray-900);
+  background-color: var(--mvx-gray-100);
 }
 
 a.badge-light:hover, a.badge-light:focus {
-  color: #212529;
-  background-color: #dae0e5;
+  color: var(--mvx-gray-900);
+  background-color: var(--mvx-gray-300);
 }
 
 a.badge-light:focus, a.badge-light.focus {
@@ -143,13 +143,13 @@ a.badge-light:focus, a.badge-light.focus {
 }
 
 .badge-dark {
-  color: var(--mvx-badge-color);
-  background-color: #343a40;
+  color: var(--mvx-white);
+  background-color: var(--mvx-gray-800);
 }
 
 a.badge-dark:hover, a.badge-dark:focus {
-  color: var(--mvx-badge-color);
-  background-color: #1d2124;
+  color: var(--mvx-white);
+  background-color: var(--mvx-gray-900);
 }
 
 a.badge-dark:focus, a.badge-dark.focus {
@@ -168,5 +168,5 @@ a.badge-dark:focus, a.badge-dark.focus {
 }
 
 .text-white {
-  color: var(--mvx-transaction-text-color);
+  color: var(--mvx-white);
 }

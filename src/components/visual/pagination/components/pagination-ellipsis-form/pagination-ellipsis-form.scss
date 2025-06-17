@@ -4,7 +4,7 @@
   .pagination-ellipsis-form-field-label {
     @apply mvx:cursor-pointer mvx:mb-2;
     font-size: 12px;
-    color: var(--mvx-pagination-ellipsis-label);
+    color: var(--mvx-text-color-secondary);
   }
 
   .pagination-ellipsis-form-field {
@@ -15,15 +15,14 @@
       border-width: 1px;
       box-shadow: none;
       font-size: 1rem;
-      background: var(--mvx-pagination-ellipsis-input-bg);
+      background: var(--mvx-bg-color-primary);
       border-radius: 8px;
       border-color: transparent;
       appearance: none;
       outline: none;
       -webkit-appearance: none;
       -moz-appearance: textfield;
-      margin: 0;
-      color: var(--mvx-pagination-ellipsis-input-color);
+      color: var(--mvx-text-color-primary);
 
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
@@ -32,7 +31,7 @@
       }
 
       &:focus {
-        border-color: var(--mvx-pagination-ellipsis-input-border);
+        border-color: var(--mvx-text-accent-color);
       }
     }
 
@@ -45,7 +44,7 @@
       font-size: 12px;
 
       &:hover .pagination-ellipsis-form-button-icon {
-        fill: var(--mvx-pagination-ellipsis-button);
+        fill: var(--mvx-text-accent-color);
       }
     }
   }

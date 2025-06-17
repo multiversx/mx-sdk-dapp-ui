@@ -9,11 +9,11 @@
   &:before {
     @apply mvx:opacity-0 mvx:left-0 mvx:top-0 mvx:right-0 mvx:bottom-0 mvx:transition-all mvx:absolute mvx:duration-200;
     @apply mvx:pointer-events-none mvx:ease-in-out;
-    background: rgba(23, 23, 23, 0.9);
+    background: var(--mvx-neutral-900-90);
     content: '';
 
     @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-      background: rgba(23, 23, 23, 0.5);
+      background: var(--mvx-neutral-900-50);
       -webkit-backdrop-filter: blur(0.375rem);
       backdrop-filter: blur(0.375rem);
     }
