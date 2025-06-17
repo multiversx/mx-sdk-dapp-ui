@@ -1,21 +1,22 @@
-import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Component, Element, h, Prop, State } from '@stencil/core';
-import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
-import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
+import classNames from 'classnames';
 
 import { EXPLORER_LINK_SLOT_NAME } from './explorer-link.constants';
+
+const explorerLinkClasses: Record<string, string> = {
+  icon: 'mvx:flex mvx:justify-center mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80 mvx:fill-white',
+};
 
 @Component({
   tag: 'mvx-explorer-link',
   styleUrl: 'explorer-link.scss',
+  shadow: true,
 })
 export class ExplorerLink {
   @Prop() class?: string;
-  @Prop() iconClass?: string = 'explorer-link-icon';
+  @Prop() iconClass?: string;
   @Prop() dataTestId?: string;
-  @Prop() icon?: IconDefinition | string;
   @Prop() link: string;
-  @Prop() text?: string;
 
   @Element() hostElement: HTMLElement;
   @State() hasSlotContent: boolean = false;
@@ -25,25 +26,23 @@ export class ExplorerLink {
   }
 
   render() {
-    let icon = 'faArrowUpRightFromSquare';
-
-    if (this.icon) {
-      icon =
-        typeof this.icon === 'string' ? getIconHtmlFromIconName(this.icon) : getIconHtmlFromIconDefinition(this.icon);
-    }
-
     return (
       <a
-        data-testid={this.dataTestId}
-        href={this.link}
         target="_blank"
-        class={{ 'explorer-link': true, [this.class]: Boolean(this.class) }}
         rel="noreferrer"
+        href={this.link}
+        data-testid={this.dataTestId}
+        class={{ 'explorer-link': true, [this.class]: Boolean(this.class) }}
       >
         {this.hasSlotContent ? (
           <slot name={EXPLORER_LINK_SLOT_NAME} />
         ) : (
-          this.text ?? <mvx-fa-icon icon={icon} class={this.iconClass}></mvx-fa-icon>
+          <mvx-arrow-up-right-from-square-icon
+            class={classNames('explorer-link-icon', {
+              [explorerLinkClasses.icon]: true,
+              [this.iconClass]: Boolean(this.iconClass),
+            })}
+          />
         )}
       </a>
     );

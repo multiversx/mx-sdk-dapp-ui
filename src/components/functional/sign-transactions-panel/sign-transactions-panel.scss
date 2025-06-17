@@ -257,7 +257,5 @@
 }
 
 .sign-transactions-panel {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
+  @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:pb-6;
 }

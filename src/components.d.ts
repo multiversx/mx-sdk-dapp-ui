@@ -41,6 +41,9 @@ export namespace Components {
     interface MvxArrowRightIcon {
         "class"?: string;
     }
+    interface MvxArrowUpRightFromSquareIcon {
+        "class"?: string;
+    }
     interface MvxArrowUpRightIcon {
         "class"?: string;
     }
@@ -76,13 +79,8 @@ export namespace Components {
     interface MvxExplorerLink {
         "class"?: string;
         "dataTestId"?: string;
-        "icon"?: IconDefinition | string;
-        /**
-          * @default 'explorer-link-icon'
-         */
         "iconClass"?: string;
         "link": string;
-        "text"?: string;
     }
     interface MvxExtensionProviderIcon {
         "class"?: string;
@@ -549,6 +547,12 @@ declare global {
     var HTMLMvxArrowRightIconElement: {
         prototype: HTMLMvxArrowRightIconElement;
         new (): HTMLMvxArrowRightIconElement;
+    };
+    interface HTMLMvxArrowUpRightFromSquareIconElement extends Components.MvxArrowUpRightFromSquareIcon, HTMLStencilElement {
+    }
+    var HTMLMvxArrowUpRightFromSquareIconElement: {
+        prototype: HTMLMvxArrowUpRightFromSquareIconElement;
+        new (): HTMLMvxArrowUpRightFromSquareIconElement;
     };
     interface HTMLMvxArrowUpRightIconElement extends Components.MvxArrowUpRightIcon, HTMLStencilElement {
     }
@@ -1198,6 +1202,7 @@ declare global {
         "mvx-angles-left-icon": HTMLMvxAnglesLeftIconElement;
         "mvx-angles-right-icon": HTMLMvxAnglesRightIconElement;
         "mvx-arrow-right-icon": HTMLMvxArrowRightIconElement;
+        "mvx-arrow-up-right-from-square-icon": HTMLMvxArrowUpRightFromSquareIconElement;
         "mvx-arrow-up-right-icon": HTMLMvxArrowUpRightIconElement;
         "mvx-back-arrow-icon": HTMLMvxBackArrowIconElement;
         "mvx-check-icon": HTMLMvxCheckIconElement;
@@ -1287,6 +1292,9 @@ declare namespace LocalJSX {
     interface MvxArrowRightIcon {
         "class"?: string;
     }
+    interface MvxArrowUpRightFromSquareIcon {
+        "class"?: string;
+    }
     interface MvxArrowUpRightIcon {
         "class"?: string;
     }
@@ -1323,13 +1331,8 @@ declare namespace LocalJSX {
     interface MvxExplorerLink {
         "class"?: string;
         "dataTestId"?: string;
-        "icon"?: IconDefinition | string;
-        /**
-          * @default 'explorer-link-icon'
-         */
         "iconClass"?: string;
         "link"?: string;
-        "text"?: string;
     }
     interface MvxExtensionProviderIcon {
         "class"?: string;
@@ -1729,6 +1732,7 @@ declare namespace LocalJSX {
         "mvx-angles-left-icon": MvxAnglesLeftIcon;
         "mvx-angles-right-icon": MvxAnglesRightIcon;
         "mvx-arrow-right-icon": MvxArrowRightIcon;
+        "mvx-arrow-up-right-from-square-icon": MvxArrowUpRightFromSquareIcon;
         "mvx-arrow-up-right-icon": MvxArrowUpRightIcon;
         "mvx-back-arrow-icon": MvxBackArrowIcon;
         "mvx-check-icon": MvxCheckIcon;
@@ -1817,6 +1821,7 @@ declare module "@stencil/core" {
             "mvx-angles-left-icon": LocalJSX.MvxAnglesLeftIcon & JSXBase.HTMLAttributes<HTMLMvxAnglesLeftIconElement>;
             "mvx-angles-right-icon": LocalJSX.MvxAnglesRightIcon & JSXBase.HTMLAttributes<HTMLMvxAnglesRightIconElement>;
             "mvx-arrow-right-icon": LocalJSX.MvxArrowRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowRightIconElement>;
+            "mvx-arrow-up-right-from-square-icon": LocalJSX.MvxArrowUpRightFromSquareIcon & JSXBase.HTMLAttributes<HTMLMvxArrowUpRightFromSquareIconElement>;
             "mvx-arrow-up-right-icon": LocalJSX.MvxArrowUpRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowUpRightIconElement>;
             "mvx-back-arrow-icon": LocalJSX.MvxBackArrowIcon & JSXBase.HTMLAttributes<HTMLMvxBackArrowIconElement>;
             "mvx-check-icon": LocalJSX.MvxCheckIcon & JSXBase.HTMLAttributes<HTMLMvxCheckIconElement>;
