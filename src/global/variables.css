@@ -16,6 +16,7 @@
   --mvx-neutral-900: #171717;
   --mvx-neutral-910: #191919;
   --mvx-neutral-920: #202020;
+  --mvx-neutral-925: #0E0E0E;
   --mvx-neutral-950: #0a0a0a;
   --mvx-gray-50: #f9fafb;
   --mvx-gray-200: #e5e7eb;
@@ -32,6 +33,7 @@
   --mvx-amber-650: #d68700;
   --mvx-brown-900:#453412;
   --mvx-red-400: #f87171;
+  --mvx-red-600: #DC2626;
   --mvx-red-900: #582424;
   --mvx-stone-100: #E2DEDC;
   --mvx-stone-350: #b6b3af;
@@ -57,7 +59,7 @@
   
 
   /* Dark Theme Variables */
-  --mvx-text-color-primary: var(--mvx-white); 
+  /* --mvx-text-color-primary: var(--mvx-white); 
   --mvx-text-color-secondary: var(--mvx-stone-350);
   --mvx-text-color-tertiary: var(--mvx-neutral-200);
   --mvx-text-accent-color: var(--mvx-teal-400);
@@ -97,11 +99,11 @@
   --mvx-pending-color: var(--mvx-yellow-400);
   --mvx-pending-bg-color: var(--mvx-brown-900);
   --mvx-error-color: var(--mvx-red-400);
-  --mvx-error-bg-color: var(--mvx-red-900);
+  --mvx-error-bg-color: var(--mvx-red-900); */
 
 
   /* ??? */
-  --mvx-transaction-table-header-cell: var(--mvx-gray-500);
+  /* --mvx-transaction-table-header-cell: var(--mvx-gray-500);
   --mvx-transaction-table-header-bg: var(--mvx-gray-50);
   --mvx-transaction-table-bg: var(--mvx-white);
   --mvx-transaction-table-border: var(--mvx-gray-200);
@@ -126,12 +128,12 @@
   --mvx-ledger-button-tooltip: var(--mvx-neutral-500);
   --mvx-tooltip-bg: var(--mvx-black);
   --mvx-tootip-border: var(--mvx-neutral-800);
-  --mvx-tooltip-text: var(--mvx-neutral-500);
+  --mvx-tooltip-text: var(--mvx-neutral-500); */
 /* ??? */
 
 
   /* Light Theme Variables */
-  /* --mvx-text-color-primary: var(--mvx-black);
+  --mvx-text-color-primary: var(--mvx-black);
   --mvx-text-color-secondary: var(--mvx-stone-450);
   --mvx-text-color-tertiary: var(--mvx-neutral-800);
   --mvx-text-accent-color: var(--mvx-black);
@@ -172,11 +174,11 @@
   --mvx-pending-color: var(--mvx-yellow-400);
   --mvx-pending-bg-color: var(--mvx-brown-900);
   --mvx-error-color: var(--mvx-red-400);
-  --mvx-error-bg-color: var(--mvx-red-900); */
+  --mvx-error-bg-color: var(--mvx-red-900);
   
 
 /* ??? */
-  /* --mvx-transaction-table-header-cell: var(--mvx-gray-500);
+  --mvx-transaction-table-header-cell: var(--mvx-gray-500);
   --mvx-transaction-table-header-bg: var(--mvx-gray-50);
   --mvx-transaction-table-bg: var(--mvx-white);
   --mvx-transaction-table-border: var(--mvx-gray-200);
@@ -203,6 +205,6 @@
   --mvx-ledger-button-tooltip: var(--mvx-neutral-500);
   --mvx-tooltip-bg: var(--mvx-white);
   --mvx-tootip-border: var(--mvx-neutral-400);
-  --mvx-tooltip-text: var(--mvx-neutral-700); */
+  --mvx-tooltip-text: var(--mvx-neutral-700);
 /* ??? */
 }

@@ -2,7 +2,8 @@
   @apply mvx:flex mvx:flex-col mvx:flex-1  mvx:overflow-hidden;
 
   .ledger-confirm {
-    @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:text-white mvx:gap-3 mvx:overflow-auto mvx:py-6;
+    @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:gap-3 mvx:overflow-auto mvx:py-6;
+    color: var(--mvx-text-color-primary);
 
     &::-webkit-scrollbar {
       @apply mvx:hidden;
@@ -23,7 +24,7 @@
 
           &:before {
             @apply mvx:absolute mvx:pointer-events-none mvx:rounded-xl mvx:left-0 mvx:top-0 mvx:right-0 mvx:bottom-0 mvx:opacity-50;
-            background-color: #353535;
+            background-color: var(--mvx-bg-color-secondary);
             content: '';
           }
 
@@ -31,7 +32,7 @@
             @apply mvx:relative mvx:break-all;
 
             &.highlighted {
-              color: #23f7dd;
+              color: var(--mvx-text-accent-color);
             }
           }
 
@@ -51,7 +52,8 @@
             @apply mvx:flex;
 
             .ledger-confirm-item-value-explorer-icon {
-              @apply mvx:w-4 mvx:h-4 mvx:flex mvx:text-white mvx:transition-all mvx:duration-200 mvx:ease-in-out;
+              @apply mvx:w-4 mvx:h-4 mvx:flex mvx:transition-all mvx:duration-200 mvx:ease-in-out;
+              color: var(--mvx-text-color-primary);
 
               &:hover {
                 @apply mvx:opacity-80;
@@ -71,19 +73,21 @@
 
       strong {
         @apply mvx:font-bold;
-        color: #23f7dd;
+        color: var(--mvx-text-accent-color);
       }
     }
 
     .ledger-confirm-footer {
-      @apply mvx:mt-auto mvx:bg-red-600 mvx:p-3 mvx:rounded-xl mvx:flex mvx:items-center mvx:gap-2;
+      @apply mvx:mt-auto mvx:p-3 mvx:rounded-xl mvx:flex mvx:items-center mvx:gap-2;
+      background: var(--mvx-red-600);
 
       @media (min-width: 480px) {
         @apply mvx:min-h-16;
       }
 
       .ledger-confirm-footer-icon {
-        @apply mvx:w-6 mvx:h-6 mvx:flex-1 mvx:min-w-6 mvx:p-0.5 mvx:fill-white;
+        @apply mvx:w-6 mvx:h-6 mvx:flex-1 mvx:min-w-6 mvx:p-0.5;
+        fill: var(--mvx-white);
       }
 
       .ledger-confirm-footer-description {
@@ -91,9 +95,10 @@
       }
 
       .ledger-confirm-footer-button {
-        @apply mvx:px-3 mvx:py-3 mvx:whitespace-nowrap mvx:flex mvx:items-center mvx:font-bold mvx:text-xs mvx:bg-white;
+        @apply mvx:px-3 mvx:py-3 mvx:whitespace-nowrap mvx:flex mvx:items-center mvx:font-bold mvx:text-xs;
         @apply mvx:rounded-lg mvx:transition-all mvx:leading-none mvx:duration-200 mvx:ease-in-out;
-        color: #0e0e0e;
+        color: var(--mvx-neutral-925);
+        background: var(--mvx-white);
 
         &:hover {
           @apply mvx:opacity-75;

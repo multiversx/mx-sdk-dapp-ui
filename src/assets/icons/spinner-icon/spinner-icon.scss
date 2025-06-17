@@ -5,6 +5,6 @@
 }
 
 .spinner {
-  fill: #a09a93;
+  fill: var(--mvx-text-accent-color);
   animation: SpinnerAnimation 3000ms linear infinite;
 }
