@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - [Updated the Ledger mobile layout and converted styles to Tailwind](https://github.com/multiversx/mx-sdk-dapp-ui/pull/127)
+- [Unify colors in global variables for light / dark themes](https://github.com/multiversx/mx-sdk-dapp-ui/pull/126)
 - [Removed Satoshi font and allow custom fonts from dApp](https://github.com/multiversx/mx-sdk-dapp-ui/pull/125)
 - [Updated Unlock Panel to be responsive and mobile friendly](https://github.com/multiversx/mx-sdk-dapp-ui/pull/124)
 - [Mobile version for notifications feed](https://github.com/multiversx/mx-sdk-dapp-ui/pull/123)
