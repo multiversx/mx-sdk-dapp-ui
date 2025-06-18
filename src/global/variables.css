@@ -17,8 +17,8 @@
   --mvx-neutral-700: #404040;
   --mvx-neutral-700-20: rgba(64, 64, 64, 0.2);
   --mvx-neutral-700-40: rgba(64, 64, 64, 0.4);
+  --mvx-neutral-750: #353535;
   --mvx-neutral-800: #262626;
-  --mvx-neutral-800-30: rgba(53, 53, 53, 0.3);
   --mvx-neutral-800-40: rgba(53, 53, 53, 0.4);
   --mvx-neutral-900: #171717;
   --mvx-neutral-900-50: rgba(23, 23, 23, 0.5);
@@ -73,7 +73,7 @@
   --mvx-label-color: var(--mvx-neutral-400);
 
   --mvx-bg-color-primary: var(--mvx-neutral-900);
-  --mvx-bg-color-secondary: var(--mvx-neutral-800-30);
+  --mvx-bg-color-secondary: var(--mvx-neutral-750);
   --mvx-bg-color-tertiary: var(--mvx-neutral-910);
   --mvx-bg-accent-color: var(--mvx-neutral-950);
   --mvx-bg-accent-variant-color: var(--mvx-neutral-950);

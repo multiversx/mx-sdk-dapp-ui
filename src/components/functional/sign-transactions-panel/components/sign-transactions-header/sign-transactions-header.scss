@@ -9,8 +9,8 @@
 
       &:before {
         @apply mvx:absolute mvx:left-0 mvx:top-0 mvx:bottom-0 mvx:right-0 mvx:pointer-events-none mvx:rounded-2xl mvx:opacity-40;
-        content: '';
         background-color: var(--mvx-bg-color-secondary);
+        content: '';
       }
 
       .sign-transactions-header-pager-icon {

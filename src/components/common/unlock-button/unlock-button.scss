@@ -1,14 +1,20 @@
 .unlock-button {
-  @apply mvx:pl-3 mvx:pr-4 mvx:h-15 mvx:flex! mvx:gap-4 mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:items-center;
-  @apply mvx:ease-in-out;
-  background: var(--mvx-bg-color-secondary);
+  @apply mvx:pl-3 mvx:pr-4 mvx:h-15 mvx:flex! mvx:gap-4 mvx:cursor-pointer mvx:items-center mvx:relative;
 
-  &:hover {
+  &:before {
+    @apply mvx:absolute mvx:opacity-30 mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:left-0 mvx:right-0;
+    @apply mvx:top-0 mvx:bottom-0;
+    background: var(--mvx-bg-color-secondary);
+    content: '';
+  }
+
+  &:hover:before {
+    @apply mvx:opacity-100;
     background: var(--mvx-hover-color-primary);
   }
 
   .unlock-button-icon {
-    @apply mvx:h-10 mvx:flex mvx:items-center mvx:justify-center mvx:w-10;
+    @apply mvx:h-10 mvx:flex mvx:relative mvx:z-1 mvx:items-center mvx:justify-center mvx:w-10;
     order: -1;
 
     &.clipped {
@@ -17,12 +23,12 @@
   }
 
   .unlock-button-label {
-    @apply mvx:text-base mvx:leading-none;
-    color:  var(--mvx-text-color-primary);
+    @apply mvx:text-base mvx:relative mvx:z-1 mvx:leading-none;
+    color: var(--mvx-text-color-primary);
   }
 
   .unlock-button-status {
-    @apply mvx:ml-auto mvx:leading-none mvx:flex mvx:items-center mvx:py-1 mvx:px-2 mvx:font-medium mvx:gap-1;
+    @apply mvx:ml-auto mvx:relative mvx:z-1 mvx:leading-none mvx:flex mvx:items-center mvx:py-1 mvx:px-2 mvx:font-medium mvx:gap-1;
     font-size: 12px;
     border-radius: 20px;
     border: 1px solid var(--mvx-border-color-primary);

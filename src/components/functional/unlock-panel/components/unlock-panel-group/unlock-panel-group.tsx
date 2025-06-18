@@ -9,7 +9,7 @@ export enum UnlockPanelGroupSlotEnum {
 
 const unlockPanelGroupClasses: Record<string, string> = {
   detectedPanelGroup: 'mvx:hidden mvx:sm:block',
-  lastProviderButton: 'mvx:rounded-bl-lg mvx:rounded-br-lg',
+  lastProviderButton: 'mvx:rounded-bl-lg mvx:rounded-br-lg mvx:overflow-hidden',
 };
 
 @Component({

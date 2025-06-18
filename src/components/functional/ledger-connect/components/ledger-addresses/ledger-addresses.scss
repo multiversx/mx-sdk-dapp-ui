@@ -29,7 +29,7 @@
 
       .ledger-addresses-preloader {
         @apply mvx:flex mvx:flex-col mvx:pointer-events-none mvx:absolute mvx:inset-0 mvx:opacity-0 mvx:z-1 mvx:gap-1;
-        @apply mvx:transition mvx:duration-200 mvx:ease-in-out;
+        @apply mvx:transition-all mvx:duration-200 mvx:ease-in-out;
 
         &.visible {
           @apply mvx:opacity-100 mvx:pointer-events-auto;
@@ -37,7 +37,7 @@
       }
 
       .ledger-addresses-list {
-        @apply mvx:flex mvx:flex-col mvx:gap-1 mvx:pointer-events-none mvx:transition mvx:ease-in-out;
+        @apply mvx:flex mvx:flex-col mvx:gap-1 mvx:pointer-events-none mvx:transition-all mvx:ease-in-out;
         @apply mvx:duration-200 mvx:opacity-0;
 
         &.visible {
@@ -46,8 +46,7 @@
 
         .ledger-addresses-list-item {
           @apply mvx:rounded-lg mvx:flex mvx:items-center mvx:p-4 mvx:h-16 mvx:w-full;
-          @apply mvx:relative mvx:cursor-pointer mvx:transition mvx:duration-200 mvx:ease-in-out;
-
+          @apply mvx:relative mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:ease-in-out;
           border: 1px solid transparent;
           color: var(--mvx-text-color-primary);
 
@@ -63,7 +62,7 @@
           }
 
           .ledger-addresses-list-item-checkbox {
-            @apply mvx:relative mvx:z-1 mvx:cursor-pointer mvx:transition mvx:duration-200 mvx:rounded-full;
+            @apply mvx:relative mvx:z-1 mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:rounded-full;
             @apply mvx:ease-in-out mvx:mr-2 mvx:min-w-4 mvx:max-w-4 mvx:h-4;
             border: 1px solid var(--mvx-text-color-primary);
 
@@ -88,7 +87,7 @@
           }
 
           .ledger-addresses-list-item-index {
-            @apply mvx:relative mvx:z-1 mvx:text-base mvx:font-medium mvx:transition mvx:duration-200 mvx:mr-4 mvx:ease-in-out;
+            @apply mvx:relative mvx:z-1 mvx:text-base mvx:font-medium mvx:transition-all mvx:duration-200 mvx:mr-4 mvx:ease-in-out;
             color: var(--mvx-text-color-secondary);
 
             &.checked {
