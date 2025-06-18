@@ -1,4 +1,4 @@
 .explorer-link {
-  @apply mvx:decoration-0;
-  color: var(--mvx-neutral-800, -webkit-link);
+  @apply mvx:decoration-0 mvx:flex;
+  color: var(--mx-explorer-link-color);
 }

@@ -2,7 +2,6 @@ import { faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import type { TransactionValueType } from 'components/controlled/transactions-table/transactions-table.type';
-import { EXPLORER_LINK_SLOT_NAME } from 'components/visual/explorer-link/explorer-link.constants';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
@@ -44,7 +43,7 @@ export class TransactionValue {
               'text-truncate': !this.value.svgUrl,
             })}
           >
-            <div class="transaction-value-content" slot={EXPLORER_LINK_SLOT_NAME}>
+            <div class="transaction-value-content">
               {this.value.svgUrl && (
                 <img src={this.value.svgUrl} alt={this.value.name ?? ''} class="transaction-value-img" />
               )}

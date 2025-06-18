@@ -5,6 +5,7 @@ import state from '../../signTransactionsPanelStore';
 
 const signTransactionsFooterClasses: Record<string, string> = {
   buttonTooltip: 'mvx:absolute mvx:top-0 mvx:h-12 mvx:left-0 mvx:right-0',
+  explorerLinkIcon: 'mvx:fill-[#b6b3af]',
 };
 
 @Component({
@@ -119,11 +120,7 @@ export class SignTransactionsFooter {
             iconClass="sign-transactions-footer-identity-copy-icon"
           />
 
-          <mvx-explorer-link
-            link={explorerLink}
-            class="sign-transactions-footer-identity-explorer"
-            iconClass="sign-transactions-footer-identity-explorer-icon"
-          />
+          <mvx-explorer-link link={explorerLink} iconClass={signTransactionsFooterClasses.explorerLinkIcon} />
         </div>
       </div>
     );

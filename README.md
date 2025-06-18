@@ -104,7 +104,7 @@ export const ExplorerLink = ({
   const network = networkSelector(store.getState());
   return (
     <mvx-explorer-link link={`${network.explorerAddress}${page}`} class={className} data-testid={dataTestId} {...rest}>
-      {children ? <div slot="explorer-link-slot">{children}</div> : null}
+      {children ? <div>{children}</div> : null}
     </mvx-explorer-link>
   );
 };
