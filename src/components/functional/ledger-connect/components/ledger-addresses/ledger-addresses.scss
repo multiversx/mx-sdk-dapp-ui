@@ -28,8 +28,8 @@
       }
 
       .ledger-addresses-preloader {
-        @apply mvx:flex mvx:flex-col mvx:pointer-events-none mvx:absolute mvx:inset-0 mvx:opacity-0 mvx:z-1 mvx:gap-1;
-        @apply mvx:transition-all mvx:duration-200 mvx:ease-in-out;
+        @apply mvx:flex mvx:flex-col mvx:pointer-events-none mvx:absolute mvx:opacity-0 mvx:z-1 mvx:gap-1;
+        @apply mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:left-0 mvx:right-0 mvx:bottom-0 mvx:top-5;
 
         &.visible {
           @apply mvx:opacity-100 mvx:pointer-events-auto;
@@ -155,7 +155,7 @@
         &.loading,
         &.disabled {
           @apply mvx:pointer-events-none mvx:bg-transparent mvx:cursor-default;
-          border-color: var(--mvx-text-color-secondary);
+          border: 1px solid var(--mvx-text-color-secondary);
           color: var(--mvx-text-color-secondary);
         }
       }
