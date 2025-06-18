@@ -70,7 +70,6 @@ export class LedgerAddresses {
         'mvx:w-13!': isIndexInTheHundreds,
         'mvx:w-17!': isIndexInTheThousands,
       }),
-      spinner: 'mvx:fill-accent!',
     };
 
     if (isAddressesLoadingInitially) {
@@ -180,7 +179,7 @@ export class LedgerAddresses {
             class={{ 'ledger-addresses-button': true, 'loading': isPageChanging, 'disabled': isAccessWalletDisabled }}
           >
             <span class="ledger-addresses-button-label">{isPageChanging ? 'Loading Wallets...' : 'Access Wallet'}</span>
-            {isPageChanging && <mvx-spinner-icon class={ledgerAddressesClasses.spinner} />}
+            {isPageChanging && <mvx-spinner-icon />}
           </button>
         </div>
       </div>
