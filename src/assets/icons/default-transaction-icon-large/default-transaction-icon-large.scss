@@ -1,0 +1,10 @@
+:host {
+    .default-transaction-icon-large-container {
+      fill: var(--mvx-neutral-500);
+      fill-opacity: 0.2;
+   } 
+
+    .default-transaction-icon-large {
+      fill: var(--mvx-text-color-primary);
+  }
+}
