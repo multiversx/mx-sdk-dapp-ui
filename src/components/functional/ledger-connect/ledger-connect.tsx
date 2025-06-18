@@ -72,11 +72,19 @@ export class LedgerConnect {
     this.eventBus.publish(LedgerConnectEventsEnum.CONNECT_DEVICE);
   }
 
+  private handleClose() {
+    this.eventBus.publish(LedgerConnectEventsEnum.CLOSE);
+  }
+
   render() {
     if (this.ledgerDataState.accountScreenData) {
       return (
         <Fragment>
-          <mvx-side-panel-header panelTitle={providerLabels.ledger} hasLeftButton={false} />
+          <mvx-side-panel-header
+            panelTitle={providerLabels.ledger}
+            hasLeftButton={false}
+            onRightButtonClick={this.handleClose.bind(this)}
+          />
 
           <mvx-ledger-addresses
             selectedIndex={this.selectedIndex}
@@ -94,7 +102,11 @@ export class LedgerConnect {
     if (this.ledgerDataState.confirmScreenData) {
       return (
         <Fragment>
-          <mvx-side-panel-header panelTitle={providerLabels.ledger} hasLeftButton={false} />
+          <mvx-side-panel-header
+            panelTitle={providerLabels.ledger}
+            hasLeftButton={false}
+            onRightButtonClick={this.handleClose.bind(this)}
+          />
           <mvx-ledger-confirm confirmScreenData={this.ledgerDataState.confirmScreenData} />
         </Fragment>
       );
@@ -102,7 +114,11 @@ export class LedgerConnect {
 
     return (
       <Fragment>
-        <mvx-side-panel-header panelTitle={providerLabels.ledger} hasLeftButton={false} />
+        <mvx-side-panel-header
+          panelTitle={providerLabels.ledger}
+          hasLeftButton={false}
+          onRightButtonClick={this.handleClose.bind(this)}
+        />
 
         <mvx-ledger-intro
           connectScreenData={this.ledgerDataState.connectScreenData}
