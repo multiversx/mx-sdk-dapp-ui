@@ -12,7 +12,7 @@
         @apply mvx:ease-in-out mvx:pointer-events-none mvx:w-85 mvx:h-85;
 
         &:before {
-          @apply mvx:pointer-events-none mvx:left-0 mvx:bottom-0 mvx:top-0 mvx:right-0 mvx:absolute;
+          @apply mvx:pointer-events-none mvx:left-3 mvx:bottom-3 mvx:top-3 mvx:right-3 mvx:absolute;
           content: '';
           border: calc(12px / 4) solid var(--mvx-bg-color-primary);
         }
