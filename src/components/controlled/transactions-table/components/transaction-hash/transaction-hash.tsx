@@ -1,12 +1,10 @@
 import { Component, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionRowType } from '../../transactions-table.type';
 
 @Component({
   tag: 'mvx-transaction-hash',
-  styleUrl: 'transaction-hash.css',
 })
 export class TransactionHash {
   @Prop() class?: string;
@@ -18,14 +16,12 @@ export class TransactionHash {
     }
 
     return (
-      <div class={classNames(this.class, 'transaction-hash')}>
+      <div class={{ 'transaction-hash': true, [this.class]: Boolean(this.class) }}>
         <mvx-transaction-icon iconInfo={this.transaction.iconInfo} />
 
-        <mvx-explorer-link
-          dataTestId={DataTestIdsEnum.transactionLink}
-          link={this.transaction.link}
-          text={this.transaction.txHash}
-        />
+        <mvx-explorer-link dataTestId={DataTestIdsEnum.transactionLink} link={this.transaction.link}>
+          <span>{this.transaction.txHash}</span>
+        </mvx-explorer-link>
       </div>
     );
   }

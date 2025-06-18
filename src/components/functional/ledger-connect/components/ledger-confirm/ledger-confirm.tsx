@@ -57,11 +57,7 @@ export class LedgerConfirm {
                   />
 
                   {ledgerConfirmationItem.explorerLink && (
-                    <mvx-explorer-link
-                      link={ledgerConfirmationItem.explorerLink}
-                      class="ledger-confirm-item-value-explorer"
-                      iconClass="ledger-confirm-item-value-explorer-icon"
-                    />
+                    <mvx-explorer-link link={ledgerConfirmationItem.explorerLink} />
                   )}
                 </div>
               </div>

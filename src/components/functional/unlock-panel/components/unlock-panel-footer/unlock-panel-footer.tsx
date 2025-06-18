@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { processImgSrc } from 'utils/processImgSrc';
 
 const unlockPanelClasses: Record<string, string> = {
-  footerIcon: 'mvx:w-4! mvx:h-auto! mvx:hidden mvx:xs:flex',
+  footerIcon: 'mvx:w-4! mvx:h-auto! mvx:hidden mvx:xs:flex mvx:ml-auto mvx:mt-auto',
 };
 
 @Component({
