@@ -70,7 +70,6 @@
               @apply mvx:absolute mvx:left-1/2 mvx:top-1/2 mvx:rounded-full mvx:opacity-0 mvx:transition-all mvx:duration-200;
               @apply mvx:ease-in-out;
               transform: translate(-50%, -50%);
-              transition-timing-function: ease;
               background-color: var(--mvx-text-accent-color);
               width: calc(12px / 2);
               height: calc(12px / 2);

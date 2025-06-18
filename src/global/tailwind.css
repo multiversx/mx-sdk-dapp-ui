@@ -2,7 +2,6 @@
 
 @theme {
   --breakpoint-xs: 30rem; /* 480px */
-  --color-basic: var(--mvx-text-color-primary);
   --color-accent: var(--mvx-text-accent-color);
   --color-preloader: var(--mvx-preloader-item-bg);
 }
