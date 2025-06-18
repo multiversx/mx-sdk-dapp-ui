@@ -7,7 +7,7 @@ import type { TransactionAccountType } from '../../transactions-table.type';
 
 @Component({
   tag: 'mvx-transaction-account',
-  styleUrl: 'transaction-account.css',
+  styleUrl: 'transaction-account.scss',
 })
 export class TransactionAccount {
   @Prop() account: TransactionAccountType;
@@ -17,15 +17,17 @@ export class TransactionAccount {
   @Prop() showLockedAccounts: boolean = false;
 
   render() {
+    const explorerLinkDataTestId = this.scope === 'receiver' ? 'receiverLink' : 'senderLink';
+
     return (
       <div class={classNames(this.class, 'transaction-account')} data-testid={this.dataTestId}>
         {this.showLockedAccounts && this.account.isTokenLocked && (
           <mvx-fa-icon icon={faLock} description={this.account.name} />
         )}
-        {this.account.isContract && <mvx-fa-icon icon={faFileAlt} description="Smart Contract"></mvx-fa-icon>}
-        Test?
+
+        {this.account.isContract && <mvx-fa-icon icon={faFileAlt} description="Smart Contract" />}
         {this.account.showLink ? (
-          <mvx-explorer-link link={this.account.link} data-testid={`${this.scope}Link`}></mvx-explorer-link>
+          <mvx-explorer-link link={this.account.link} data-testid={explorerLinkDataTestId} />
         ) : (
           <mvx-transaction-account-name
             name={this.account.name}
