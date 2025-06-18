@@ -2,6 +2,7 @@ import { faFileAlt } from '@fortawesome/free-solid-svg-icons/faFileAlt';
 import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionAccountType } from '../../transactions-table.type';
 
@@ -17,7 +18,8 @@ export class TransactionAccount {
   @Prop() showLockedAccounts: boolean = false;
 
   render() {
-    const explorerLinkDataTestId = this.scope === 'receiver' ? 'receiverLink' : 'senderLink';
+    const explorerLinkDataTestId =
+      this.scope === 'receiver' ? DataTestIdsEnum.receiverLink : DataTestIdsEnum.senderLink;
 
     return (
       <div class={classNames(this.class, 'transaction-account')} data-testid={this.dataTestId}>
