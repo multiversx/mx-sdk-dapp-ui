@@ -8,7 +8,7 @@ const COLUMNS = ['TxHash', 'Age', 'Shard', 'From', 'To', 'Method', 'Value'];
 
 @Component({
   tag: 'mvx-transactions-table',
-  styleUrl: 'transactions-table.css',
+  styleUrl: 'transactions-table.scss',
 })
 export class TransactionsTable {
   @Prop() class?: string;

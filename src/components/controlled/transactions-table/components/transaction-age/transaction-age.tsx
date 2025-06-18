@@ -4,7 +4,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
   tag: 'mvx-transaction-age',
-  styleUrl: 'transaction-age.css',
+  styleUrl: 'transaction-age.scss',
 })
 export class TransactionAge {
   @Prop() age: string;
@@ -13,7 +13,11 @@ export class TransactionAge {
 
   render() {
     const component = this.tooltip ? (
-      <div class={classNames(this.class, 'transaction-age')} title={this.tooltip} data-testid={DataTestIdsEnum.transactionAge}>
+      <div
+        class={classNames(this.class, 'transaction-age')}
+        title={this.tooltip}
+        data-testid={DataTestIdsEnum.transactionAge}
+      >
         {this.age}
       </div>
     ) : (

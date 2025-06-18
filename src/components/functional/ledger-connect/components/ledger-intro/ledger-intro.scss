@@ -53,7 +53,8 @@
       color: var(--mvx-text-color-secondary);
 
       &:after {
-        @apply mvx:absolute mvx:bottom-0 mvx:left-8 mvx:right-8 mvx:h-px mvx:transition-all mvx:duration-200 mvx:opacity-0 mvx:ease-in-out;
+        @apply mvx:absolute mvx:bottom-0 mvx:left-8 mvx:right-8 mvx:h-px mvx:transition-all mvx:duration-200;
+        @apply mvx:opacity-0 mvx:ease-in-out;
         background-color: var(--mvx-text-color-secondary);
         content: '';
       }

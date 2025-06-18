@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 @Component({
   tag: 'mvx-transaction-account-name',
-  styleUrl: 'transaction-account-name.css',
+  styleUrl: 'transaction-account-name.scss',
 })
 export class TransactionAccountName {
   @Prop() address: string;
