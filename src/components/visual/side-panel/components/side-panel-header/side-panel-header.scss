@@ -1,6 +1,5 @@
 .side-panel-heading {
-  @apply mvx:flex mvx:items-center mvx:leading-none mvx:gap-3 mvx:z-1 mvx:relative mvx:px-0 mvx:py-2;
-  font-size: 24px;
+  @apply mvx:flex mvx:items-center mvx:leading-none mvx:gap-3 mvx:z-1 mvx:relative mvx:px-0 mvx:py-2 mvx:text-2xl;
   box-shadow: 0px 8px 12px 12px var(--mvx-bg-color-primary);
 
   .side-panel-heading-left {

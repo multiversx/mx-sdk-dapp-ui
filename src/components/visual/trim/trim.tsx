@@ -5,7 +5,7 @@ import { ELLIPSIS } from 'constants/htmlStrings';
 
 @Component({
   tag: 'mvx-trim',
-  styleUrl: 'trim.css',
+  styleUrl: 'trim.scss',
 })
 export class Trim {
   @Element() el: HTMLElement;
