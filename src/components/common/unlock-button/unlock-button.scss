@@ -29,7 +29,7 @@
 
   .unlock-button-status {
     @apply mvx:ml-auto mvx:relative mvx:z-1 mvx:leading-none mvx:flex mvx:items-center mvx:py-1 mvx:px-2 mvx:font-medium mvx:gap-1;
-    font-size: 12px;
+    @apply mvx:text-xs;
     border-radius: 20px;
     border: 1px solid var(--mvx-border-color-primary);
     background: var(--mvx-bg-color-primary);

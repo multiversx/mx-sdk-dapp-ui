@@ -68,11 +68,8 @@
 
             &:after {
               @apply mvx:absolute mvx:left-1/2 mvx:top-1/2 mvx:rounded-full mvx:opacity-0 mvx:transition-all mvx:duration-200;
-              @apply mvx:ease-in-out;
-              transform: translate(-50%, -50%);
+              @apply mvx:ease-in-out mvx:w-1.5 mvx:h-1.5 mvx:transform mvx:-translate-x-1/2 mvx:-translate-y-1/2;
               background-color: var(--mvx-text-accent-color);
-              width: calc(12px / 2);
-              height: calc(12px / 2);
               content: '';
             }
 

@@ -16,7 +16,8 @@
   @apply mvx:p-0! mvx:flex mvx:border-0! mvx:bg-transparent!;
 
   .preloader {
-    @apply mvx:w-30 mvx:h-30 mvx:relative mvx:transition-all mvx:duration-200 mvx:overflow-hidden mvx:rounded-lg mvx:ease-in-out;
+    @apply mvx:w-30 mvx:h-30 mvx:relative mvx:transition-all mvx:duration-200 mvx:overflow-hidden;
+    @apply mvx:rounded-lg mvx:ease-in-out;
     animation: PreloaderPulseAnimation 2s infinite;
     background: var(--mvx-preloader-bg);
   }

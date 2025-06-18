@@ -49,10 +49,10 @@
     }
 
     &.visible {
-      transform: translateY(0);
+      @apply mvx:transform mvx:translate-y-0;
 
       @media (min-width: 480px) {
-        transform: translateX(0);
+        @apply mvx:translate-x-0;
       }
     }
   }

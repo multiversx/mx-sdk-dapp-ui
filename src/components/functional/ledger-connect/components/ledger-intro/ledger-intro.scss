@@ -1,8 +1,8 @@
 :host {
-  @apply mvx:flex mvx:flex-col mvx:overflow-hidden mvx:flex-1 mvx:overflow-hidden;
+  @apply mvx:flex mvx:flex-col mvx:overflow-hidden mvx:flex-1;
 
   .ledger-intro {
-    @apply mvx:flex-1 mvx:flex mvx:flex-col mvx:py-6 mvx:overflow-auto;
+    @apply mvx:flex-1 mvx:flex mvx:flex-col mvx:py-6 mvx:overflow-auto mvx:overflow-x-hidden;
 
     &::-webkit-scrollbar {
       @apply mvx:hidden;
@@ -53,7 +53,8 @@
       color: var(--mvx-text-color-secondary);
 
       &:after {
-        @apply mvx:absolute mvx:bottom-0 mvx:left-8 mvx:right-8 mvx:h-px mvx:transition-all mvx:duration-200 mvx:opacity-0 mvx:ease-in-out;
+        @apply mvx:absolute mvx:bottom-0 mvx:left-8 mvx:right-8 mvx:h-px mvx:transition-all mvx:duration-200;
+        @apply mvx:opacity-0 mvx:ease-in-out;
         background-color: var(--mvx-text-color-secondary);
         content: '';
       }
