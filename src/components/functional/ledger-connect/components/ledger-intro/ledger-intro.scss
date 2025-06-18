@@ -1,8 +1,8 @@
 :host {
-  @apply mvx:flex mvx:flex-col mvx:overflow-hidden mvx:flex-1 mvx:overflow-hidden;
+  @apply mvx:flex mvx:flex-col mvx:overflow-hidden mvx:flex-1;
 
   .ledger-intro {
-    @apply mvx:flex-1 mvx:flex mvx:flex-col mvx:py-6 mvx:overflow-auto;
+    @apply mvx:flex-1 mvx:flex mvx:flex-col mvx:py-6 mvx:overflow-auto mvx:overflow-x-hidden;
 
     &::-webkit-scrollbar {
       @apply mvx:hidden;
