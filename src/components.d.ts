@@ -70,6 +70,7 @@ export namespace Components {
         "class"?: string;
     }
     interface MvxDefaultTransactionIconSmall {
+        "class"?: string;
     }
     interface MvxExplorerLink {
         "class"?: string;
@@ -1224,6 +1225,7 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface MvxDefaultTransactionIconSmall {
+        "class"?: string;
     }
     interface MvxExplorerLink {
         "class"?: string;

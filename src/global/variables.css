@@ -12,6 +12,7 @@
   --mvx-neutral-100: #f3efed;
   --mvx-neutral-200: #e8e8e8;
   --mvx-neutral-300: #d4d4d4;
+  --mvx-neutral-350: #dddddd;
   --mvx-neutral-400: #a3a3a3;
   --mvx-neutral-450: #868686;
   --mvx-neutral-500: #737373;
@@ -30,14 +31,13 @@
   --mvx-neutral-950: #0a0a0a;
   --mvx-gray-50: #f9fafb;
   --mvx-gray-100: #f8f9fa;
-  --mvx-gray-150: #ebebeb;
   --mvx-gray-200: #e5e7eb;
   --mvx-gray-300: #dae0e5;
   --mvx-gray-350: #c7c7c7;
   --mvx-gray-500: #6b7280;
   --mvx-gray-500-50: rgba(108, 117, 125, 0.5);
   --mvx-gray-650: #5e5e5e;
-  --mvx-gray-750: #282828;
+  --mvx-gray-750: #3a3a3a;
   --mvx-gray-800: #343a40;
   --mvx-gray-900: #212529;
   --mvx-stone-100: #e2dedc;
@@ -169,5 +169,5 @@
   --mvx-progress-color: var(--mvx-gray-350);
   --mvx-progress-accent-color: var(--mvx-black); 
 
-  --mvx-icon-bg: var(--mvx-gray-150);  */
+  --mvx-icon-bg: var(--mvx-neutral-350);  */
 }
