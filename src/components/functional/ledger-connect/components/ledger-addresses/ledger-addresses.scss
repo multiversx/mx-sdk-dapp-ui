@@ -46,15 +46,10 @@
 
         .ledger-addresses-list-item {
           @apply mvx:rounded-lg mvx:flex mvx:items-center mvx:p-4 mvx:h-16 mvx:w-full;
-          @apply mvx:relative mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:ease-in-out;
+          @apply mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:ease-in-out;
           border: 1px solid transparent;
           color: var(--mvx-text-color-primary);
-
-          &:before {
-            @apply mvx:absolute mvx:left-0 mvx:top-0 mvx:bottom-0 mvx:right-0 mvx:pointer-events-none mvx:rounded-lg mvx:opacity-30;
-            background-color: var(--mvx-bg-color-secondary);
-            content: '';
-          }
+          background-color: var(--mvx-bg-color-secondary);
 
           &.checked,
           &:hover {

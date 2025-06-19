@@ -20,13 +20,8 @@
         }
 
         .ledger-confirm-item-value {
-          @apply mvx:min-h-16 mvx:p-3 mvx:rounded-xl mvx:relative mvx:flex mvx:gap-3 mvx:items-center mvx:justify-between;
-
-          &:before {
-            @apply mvx:absolute mvx:pointer-events-none mvx:rounded-xl mvx:left-0 mvx:top-0 mvx:right-0 mvx:bottom-0 mvx:opacity-50;
-            background-color: var(--mvx-bg-color-secondary);
-            content: '';
-          }
+          @apply mvx:min-h-16 mvx:p-3 mvx:rounded-xl mvx:flex mvx:gap-3 mvx:items-center mvx:justify-between;
+          background-color: var(--mvx-bg-color-secondary);
 
           .ledger-confirm-item-value-text {
             @apply mvx:relative mvx:break-all;
@@ -93,6 +88,7 @@
 
       .ledger-confirm-footer-description {
         @apply mvx:text-xs;
+        color: var(--mvx-white);
       }
 
       .ledger-confirm-footer-button {

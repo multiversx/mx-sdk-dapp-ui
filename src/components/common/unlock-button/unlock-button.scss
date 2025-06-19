@@ -1,15 +1,9 @@
 .unlock-button {
-  @apply mvx:pl-3 mvx:pr-4 mvx:h-15 mvx:flex! mvx:gap-4 mvx:cursor-pointer mvx:items-center mvx:relative;
+  @apply mvx:pl-3 mvx:pr-4 mvx:h-15 mvx:flex! mvx:gap-4 mvx:cursor-pointer mvx:items-center;
+  @apply mvx:transition-all mvx:duration-200 mvx:ease-in-out;
+  background: var(--mvx-bg-color-secondary);
 
-  &:before {
-    @apply mvx:absolute mvx:opacity-30 mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:left-0 mvx:right-0;
-    @apply mvx:top-0 mvx:bottom-0;
-    background: var(--mvx-bg-color-secondary);
-    content: '';
-  }
-
-  &:hover:before {
-    @apply mvx:opacity-100;
+  &:hover {
     background: var(--mvx-hover-color-primary);
   }
 

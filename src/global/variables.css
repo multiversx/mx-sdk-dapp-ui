@@ -73,7 +73,7 @@
   --mvx-label-color: var(--mvx-neutral-400);
 
   --mvx-bg-color-primary: var(--mvx-neutral-900);
-  --mvx-bg-color-secondary: var(--mvx-neutral-750);
+  --mvx-bg-color-secondary: var(--mvx-neutral-920);
   --mvx-bg-color-tertiary: var(--mvx-neutral-910);
   --mvx-bg-accent-color: var(--mvx-neutral-950);
   --mvx-bg-accent-variant-color: var(--mvx-neutral-950);
@@ -116,25 +116,25 @@
   --mvx-progress-accent-color: var(--mvx-teal-400);
 
   /* Light Theme Variables */
-  /* --mvx-text-color-primary: var(--mvx-black);
+  --mvx-text-color-primary: var(--mvx-black);
   --mvx-text-color-secondary: var(--mvx-stone-450);
   --mvx-text-color-tertiary: var(--mvx-neutral-800);
   --mvx-text-accent-color: var(--mvx-black);
   --mvx-label-color: var(--mvx-neutral-450);
-  
+
   --mvx-bg-color-primary: var(--mvx-neutral-100);
   --mvx-bg-color-secondary: var(--mvx-white);
   --mvx-bg-color-tertiary: var(--mvx-white-60);
   --mvx-bg-accent-color: var(--mvx-white);
   --mvx-bg-accent-variant-color: var(--mvx-stone-100);
-  
-  --mvx-hover-color-primary: var(--mvx-neutral-200); 
+
+  --mvx-hover-color-primary: var(--mvx-neutral-200);
   --mvx-hover-bg-primary: var(--mvx-black-5);
-  
+
   --mvx-border-color-primary: var(--mvx-neutral-700-20);
 
   --mvx-button-bg-primary: var(--mvx-black);
-  --mvx-button-text-primary: var(--mvx-white); 
+  --mvx-button-text-primary: var(--mvx-white);
   --mvx-button-bg-secondary: var(--mvx-white);
   --mvx-button-text-secondary: var(--mvx-neutral-800);
 
@@ -143,24 +143,24 @@
   --mvx-select-option-color: var(--mvx-black);
   --mvx-select-option-bg: var(--mvx-neutral-400);
   --mvx-select-option-bg-mobile: var(--mvx-neutral-400);
-  
+
   --mvx-success-color: var(--mvx-white);
   --mvx-success-bg-color: var(--mvx-green-600);
   --mvx-pending-color: var(--mvx-yellow-400);
   --mvx-pending-bg-color: var(--mvx-brown-900);
   --mvx-error-color: var(--mvx-red-400);
-  --mvx-error-bg-color: var(--mvx-red-900); 
+  --mvx-error-bg-color: var(--mvx-red-900);
 
   --mvx-pagination-item-bg: var(--mvx-neutral-700-20);
-  --mvx-pagination-item-bg-hover: var(--mvx-neutral-900);
-  
+  --mvx-pagination-item-bg-hover: var(--mvx-neutral-400);
+
   --mvx-preloader-bg: var(--mvx-neutral-400);
   --mvx-preloader-item-bg: var(--mvx-neutral-200);
-  
+
   --mvx-warning-text: var(--mvx-amber-650);
-  
+
   --mvx-link-color: var(--mvx-neutral-700);
 
   --mvx-progress-color: var(--mvx-gray-350);
-  --mvx-progress-accent-color: var(--mvx-black);  */
+  --mvx-progress-accent-color: var(--mvx-black);
 }

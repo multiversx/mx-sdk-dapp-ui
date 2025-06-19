@@ -89,21 +89,12 @@
       @apply mvx:px-4 mvx:h-8 mvx:flex mvx:items-center mvx:leading-none mvx:justify-center mvx:transition-all mvx:duration-200;
       @apply mvx:ease-in-out mvx:cursor-pointer mvx:relative mvx:rounded-3xl;
       color: var(--mvx-text-color-secondary);
-
-      &:before {
-        @apply mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:absolute mvx:opacity-0 mvx:rounded-3xl mvx:left-0;
-        @apply mvx:top-0 mvx:pointer-events-none mvx:right-0 mvx:bottom-0;
-        background-color: var(--mvx-neutral-920);
-        content: '';
-      }
+      background-color: var(----mvx-bg-color-secondary);
 
       &:hover,
       &.active {
         color: var(--mvx-text-accent-color);
-
-        &:before {
-          @apply mvx:opacity-90;
-        }
+        background: var(--mvx-hover-color-primary);
       }
 
       .sign-transactions-tab-text {

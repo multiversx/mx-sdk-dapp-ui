@@ -25,28 +25,12 @@
           border: 1px solid transparent;
 
           &.cancel {
-            @apply mvx:relative;
             color: var(--mvx-button-text-secondary);
-
-            &:before {
-              @apply mvx:absolute mvx:rounded-xl mvx:opacity-40 mvx:transition-all mvx:duration-200;
-              @apply mvx:ease-in-out mvx:pointer-events-none;
-              background-color: var(--mvx-button-bg-secondary);
-              bottom: -1px;
-              content: '';
-              z-index: -1;
-              right: -1px;
-              left: -1px;
-              top: -1px;
-            }
+            background-color: var(--mvx-button-bg-secondary);
 
             &:hover {
               color: var(--mvx-button-text-primary);
-
-              &:before {
-                @apply mvx:opacity-100;
-                background-color: var(--mvx-button-bg-primary);
-              }
+              background-color: var(--mvx-button-bg-primary);
             }
           }
 
