@@ -12,14 +12,21 @@
         @apply mvx:ease-in-out mvx:pointer-events-none mvx:w-85 mvx:h-85;
 
         &:before {
-          @apply mvx:pointer-events-none mvx:left-3 mvx:bottom-3 mvx:top-3 mvx:right-3 mvx:absolute;
+          @apply mvx:pointer-events-none mvx:left-2 mvx:bottom-2 mvx:top-2 mvx:right-2 mvx:absolute;
           content: '';
-          border: calc(12px / 4) solid var(--mvx-bg-color-primary);
+          border: 8px solid var(--mvx-bg-color-primary);
+          content: '';
+          pointer-events: none;
+          border-radius: 16px;
         }
 
-        path {
-          stroke: var(--mvx-white);
-          fill: var(--mvx-black);
+        svg {
+          border-radius: 12px;
+
+          path {
+            stroke: var(--mvx-white);
+            fill: var(--mvx-black);
+          }
         }
 
         &.visible {

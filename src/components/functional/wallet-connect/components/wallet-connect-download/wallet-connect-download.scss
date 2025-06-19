@@ -8,7 +8,7 @@
       @apply mvx:flex mvx:my-auto mvx:mx-0 mvx:flex-col mvx:items-center;
 
       .wallet-connect-download-qr {
-        @apply mvx:p-3;
+        @apply mvx:p-3 mvx:rounded-xl;
         background-color: var(--mvx-black);
       }
 
