@@ -1,10 +1,14 @@
 :host {
-    .default-transaction-icon-large-container {
-      fill: var(--mvx-neutral-500);
-      fill-opacity: 0.2;
-   } 
+  .default-transaction-icon-large {
+    @apply mvx:h-10 mvx:w-10;
+    fill: none;
 
-    .default-transaction-icon-large {
+    rect {
+      fill: var(--mvx-icon-bg)
+    }
+
+    path {
       fill: var(--mvx-text-color-primary);
+    }
   }
 }

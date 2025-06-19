@@ -11,6 +11,7 @@
   --mvx-black-60: rgba(0, 0, 0, 0.6);
   --mvx-neutral-100: #f3efed;
   --mvx-neutral-200: #e8e8e8;
+  --mvx-neutral-300: #d4d4d4;
   --mvx-neutral-400: #a3a3a3;
   --mvx-neutral-450: #868686;
   --mvx-neutral-500: #737373;
@@ -29,12 +30,14 @@
   --mvx-neutral-950: #0a0a0a;
   --mvx-gray-50: #f9fafb;
   --mvx-gray-100: #f8f9fa;
+  --mvx-gray-150: #ebebeb;
   --mvx-gray-200: #e5e7eb;
   --mvx-gray-300: #dae0e5;
   --mvx-gray-350: #c7c7c7;
   --mvx-gray-500: #6b7280;
   --mvx-gray-500-50: rgba(108, 117, 125, 0.5);
   --mvx-gray-650: #5e5e5e;
+  --mvx-gray-750: #282828;
   --mvx-gray-800: #343a40;
   --mvx-gray-900: #212529;
   --mvx-stone-100: #e2dedc;
@@ -115,8 +118,10 @@
   --mvx-progress-color: var(--mvx-gray-650);
   --mvx-progress-accent-color: var(--mvx-teal-400);
 
+  --mvx-icon-bg: var(--mvx-gray-750);
+  
   /* Light Theme Variables */
-  --mvx-text-color-primary: var(--mvx-black);
+  /* --mvx-text-color-primary: var(--mvx-black);
   --mvx-text-color-secondary: var(--mvx-stone-450);
   --mvx-text-color-tertiary: var(--mvx-neutral-800);
   --mvx-text-accent-color: var(--mvx-black);
@@ -132,12 +137,12 @@
   --mvx-hover-bg-primary: var(--mvx-black-5);
 
   --mvx-border-color-primary: var(--mvx-neutral-700-20);
-
+  
   --mvx-button-bg-primary: var(--mvx-black);
   --mvx-button-text-primary: var(--mvx-white);
   --mvx-button-bg-secondary: var(--mvx-white);
   --mvx-button-text-secondary: var(--mvx-neutral-800);
-
+  
   --mvx-select-bg: var(--mvx-white);
   --mvx-select-color: var(--mvx-neutral-700);
   --mvx-select-option-color: var(--mvx-black);
@@ -160,7 +165,9 @@
   --mvx-warning-text: var(--mvx-amber-650);
 
   --mvx-link-color: var(--mvx-neutral-700);
-
+  
   --mvx-progress-color: var(--mvx-gray-350);
-  --mvx-progress-accent-color: var(--mvx-black);
+  --mvx-progress-accent-color: var(--mvx-black); 
+
+  --mvx-icon-bg: var(--mvx-gray-150);  */
 }
