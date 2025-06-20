@@ -2,7 +2,7 @@
   @apply mvx:overflow-hidden mvx:flex;
 
   @media (min-width: 640px) {
-    overflow: unset;
+    @apply mvx:overflow-visible;
   }
 
   .unlock-panel-group {
@@ -10,7 +10,7 @@
 
     .unlock-panel-group-label {
       @apply mvx:leading-none mvx:relative;
-      color: #a09a93;
+      color: var(--mvx-text-color-secondary);
     }
 
     .unlock-panel-group-providers {

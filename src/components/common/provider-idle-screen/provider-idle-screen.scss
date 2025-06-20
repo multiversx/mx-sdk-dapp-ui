@@ -2,7 +2,8 @@
   @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:overflow-hidden;
 
   .unlock-provider-intro {
-    @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:justify-center mvx:items-center mvx:text-center mvx:text-white mvx:p-12 mvx:gap-4;
+    @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:justify-center mvx:items-center mvx:text-center mvx:p-12 mvx:gap-4;
+    color: var(--mvx-text-color-primary);
 
     .unlock-provider-intro-icon {
       @apply mvx:mb-6 mvx:h-37.5 mvx:items-end mvx:flex mvx:justify-start mvx:w-37.5;
@@ -14,7 +15,7 @@
 
     .unlock-provider-intro-text {
       @apply mvx:text-base mvx:font-medium mvx:leading-5;
-      color: #a09a93;
+      color: var(--mvx-text-color-secondary);
     }
   }
 }

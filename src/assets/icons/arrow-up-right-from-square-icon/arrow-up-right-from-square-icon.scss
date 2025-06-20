@@ -1,8 +1,8 @@
 :host {
-  display: flex;
+  @apply mvx:flex;
 
   .arrow-up-right-from-square-icon {
-    width: 16px;
-    height: 16px;
+    @apply mvx:w-4 mvx:h-4 mvx:flex;
+    fill: var(--mvx-text-color-primary);
   }
 }

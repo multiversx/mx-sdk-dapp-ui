@@ -5,7 +5,7 @@ import state from '../../signTransactionsPanelStore';
 
 const signTransactionsFooterClasses: Record<string, string> = {
   buttonTooltip: 'mvx:absolute mvx:top-0 mvx:h-12 mvx:left-0 mvx:right-0',
-  explorerLinkIcon: 'mvx:fill-[#b6b3af]',
+  explorerLinkIcon: 'mvx:fill-link!',
 };
 
 @Component({
@@ -38,7 +38,7 @@ export class SignTransactionsFooter {
                 'highlighted': currentIndexCannotBeSignedYet,
               }}
             >
-              {isFirstTransaction ? 'Cancel' : 'Back'}
+              <span class="sign-transactions-footer-button-label">{isFirstTransaction ? 'Cancel' : 'Back'}</span>
             </button>
           </div>
 
@@ -103,7 +103,7 @@ export class SignTransactionsFooter {
         </div>
 
         <div class="sign-transactions-footer-identity">
-          <div class="sign-transactions-footer-identity-label">Sign in with</div>
+          <div class="sign-transactions-footer-identity-label">Sign with</div>
 
           {username && (
             <div class="sign-transactions-footer-identity-username">

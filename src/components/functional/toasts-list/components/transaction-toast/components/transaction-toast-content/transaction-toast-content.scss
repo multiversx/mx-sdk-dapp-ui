@@ -1,11 +1,11 @@
 .transaction-toast-content-wrapper {
   @apply mvx:relative mvx:flex mvx:p-3 mvx:flex-col mvx:items-start mvx:gap-1 mvx:rounded-xl mvx:backdrop-blur-2xl mvx:max-w-100;
-  border: 0.5px solid var(--mx-tx-bg);
-  background: var(--mx-tx-bg);
-  color: var(--mx-tx-text-primary);
+  border: 0.5px solid var(--mvx-bg-accent-variant-color);
+  background: var(--mvx-bg-color-primary);
+  color: var(--mvx-text-color-primary);
 
   .svg-inline--fa {
-    color: var(--mx-tx-text-primary);
+    color: var(--mvx-text-color-primary);
   }
 
   &.full-width {
@@ -41,7 +41,7 @@
 
 .transaction-toast-title {
   @apply mvx:text-sm mvx:font-bold mvx:leading-5;
-  color: var(--mx-tx-text-primary);
+  color: var(--mvx-text-color-primary);
 }
 
 .transaction-toast-title-short {
@@ -50,7 +50,7 @@
 
 .transaction-toast-amount {
   @apply mvx:flex mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight;
-  color: var(--mx-tx-text-primary);
+  color: var(--mvx-text-color-primary);
 
   .transaction-amount-decimal {
     @apply mvx:opacity-70;
@@ -67,7 +67,7 @@
 
 .transaction-toast-details-info-text {
   @apply mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight mvx:max-w-40;
-  color: var(--mx-tx-text-secondary);
+  color: var(--mvx-text-color-secondary);
 }
 
 .transaction-toast-details-info-icon {
@@ -80,10 +80,10 @@
 
 .transaction-toast-action-button {
   @apply mvx:flex mvx:flex-col mvx:justify-center mvx:shrink-0 mvx:w-5 mvx:h-5;
-  color: var(--mx-tx-text-primary);
+  color: var(--mvx-text-color-primary);
 
   .svg-inline--fa {
     @apply mvx:text-center mvx:h-4 mvx:w-4;
-    color: var(--mx-tx-text-primary);
+    color: var(--mvx-text-color-primary);
   }
 }

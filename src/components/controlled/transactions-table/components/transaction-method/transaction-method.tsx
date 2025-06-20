@@ -4,7 +4,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
   tag: 'mvx-transaction-method',
-  styleUrl: 'transaction-method.css',
+  styleUrl: 'transaction-method.scss',
 })
 export class TransactionMethod {
   @Prop() class?: string;

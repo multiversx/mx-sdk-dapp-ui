@@ -6,20 +6,15 @@
 
     .sign-transactions-header-pager {
       @apply mvx:flex mvx:relative mvx:rounded-2xl mvx:h-9 mvx:items-center mvx:px-5 mvx:justify-center mvx:mx-auto mvx:gap-5;
-
-      &:before {
-        @apply mvx:absolute mvx:left-0 mvx:top-0 mvx:bottom-0 mvx:right-0 mvx:pointer-events-none mvx:rounded-2xl mvx:opacity-40;
-        content: '';
-        background-color: #353535;
-      }
+      background-color: var(--mvx-bg-color-secondary);
 
       .sign-transactions-header-pager-icon {
         @apply mvx:relative mvx:z-1 mvx:cursor-pointer mvx:flex mvx:items-center mvx:justify-center mvx:transition-all;
         @apply mvx:ease-in-out mvx:duration-200 mvx:w-5;
-        fill: #b6b3af;
+        fill: var(--mvx-text-color-secondary);
 
         &:hover {
-          @apply mvx:fill-white;
+          fill: var(--mvx-text-color-primary);
         }
 
         &.disabled {
@@ -31,11 +26,12 @@
         @apply mvx:relative mvx:z-1 mvx:flex mvx:text-base mvx:leading-none mvx:select-none mvx:items-center mvx:gap-2;
 
         .sign-transactions-header-pager-text-label {
-          color: #b6b3af;
+          color: var(--mvx-text-color-secondary);
         }
 
         .sign-transactions-header-pager-text-value {
-          @apply mvx:text-white mvx:font-medium mvx:flex mvx:items-center mvx:justify-center mvx:w-2.5;
+          @apply mvx:font-medium mvx:flex mvx:items-center mvx:justify-center mvx:w-2.5;
+          color: var(--mvx-text-color-primary);
 
           &.large {
             @apply mvx:w-5;
@@ -53,16 +49,17 @@
       }
 
       .sign-transactions-header-origin-label {
-        color: #b6b3af;
+        color: var(--mvx-text-color-secondary);
       }
 
       .sign-transactions-header-origin-image {
-        @apply mvx:flex mvx:items-center mvx:rounded-3xl mvx:bg-black mvx:justify-center mvx:w-18 mvx:h-18;
-        border: 1px solid #212121;
+        @apply mvx:flex mvx:items-center mvx:rounded-3xl mvx:justify-center mvx:w-18 mvx:h-18;
+        background: var(--mvx-neutral-950);
+        border: 1px solid var(--mvx-neutral-900);
       }
 
       .sign-transactions-header-origin-name {
-        @apply mvx:text-white;
+        color: var(--mvx-text-color-primary);
       }
     }
   }

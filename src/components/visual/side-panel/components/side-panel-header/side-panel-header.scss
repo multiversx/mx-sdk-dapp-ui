@@ -1,7 +1,6 @@
 .side-panel-heading {
-  @apply mvx:flex mvx:items-center mvx:leading-none mvx:gap-3 mvx:z-1 mvx:relative mvx:px-0 mvx:py-2;
-  font-size: 24px;
-  box-shadow: 0px 8px 12px 12px #171717;
+  @apply mvx:flex mvx:items-center mvx:leading-none mvx:gap-3 mvx:z-1 mvx:relative mvx:px-0 mvx:py-2 mvx:text-2xl;
+  box-shadow: 0px 8px 12px 12px var(--mvx-bg-color-primary);
 
   .side-panel-heading-left {
     @apply mvx:mr-auto;
@@ -14,6 +13,7 @@
   .side-panel-heading-left,
   .side-panel-heading-right {
     @apply mvx:hidden mvx:pointer-events-none mvx:cursor-pointer mvx:opacity-0;
+    color: var(--mvx-text-color-secondary);
 
     @media (min-width: 480px) {
       @apply mvx:w-4 mvx:flex;
@@ -34,6 +34,6 @@
 
   .side-panel-heading-title {
     @apply mvx:font-medium;
-    color: #e5e5e5;
+    color: var(--mvx-text-color-primary);
   }
 }

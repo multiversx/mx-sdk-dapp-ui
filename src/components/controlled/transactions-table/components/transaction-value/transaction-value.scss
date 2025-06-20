@@ -23,7 +23,7 @@
   color: transparent;
   border-radius: 50%;
   overflow: hidden;
-  border: 1px solid #dee2e6;
+  border: 1px solid var(--mvx-gray-200);
 }
 
 .badge {
@@ -54,23 +54,23 @@
 }
 
 .badge-primary {
-  color: #fff;
-  background-color: #007bff;
+  color: var(--mvx-white);
+  background-color: var(--mvx-blue-600);
 }
 
 .badge-secondary {
-  color: #fff;
-  background-color: #6c757d;
+  color: var(--mvx-white);
+  background-color: var(--mvx-gray-500);
 }
 
 .badge-danger {
-  color: #fff;
-  background-color: #dc3545;
+  color: var(--mvx-white);
+  background-color: var(--mvx-red-600);
 }
 
 .badge-light {
-  color: #212529;
-  background-color: #f8f9fa;
+  color: var(--mvx-gray-900);
+  background-color: var(--mvx-gray-100);
 }
 
 .text-truncate {
@@ -84,5 +84,5 @@
 }
 
 .text-white {
-  color: #fff;
+  color: var(--mvx-white);
 }

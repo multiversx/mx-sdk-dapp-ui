@@ -3,6 +3,6 @@
 
   .magnifying-glass-icon {
     @apply mvx:transition-all mvx:duration-200 mvx:w-3 mvx:h-3 mvx:box-content mvx:ease-in-out;
-    fill: #737373;
+    fill: var(--mvx-neutral-500);
   }
 }

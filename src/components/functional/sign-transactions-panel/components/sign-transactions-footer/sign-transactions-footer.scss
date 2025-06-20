@@ -26,33 +26,28 @@
 
           &.cancel {
             @apply mvx:relative;
-            color: #e8e8e8;
+            color: var(--mvx-button-text-secondary);
 
-            &:before {
-              @apply mvx:absolute mvx:rounded-xl mvx:opacity-40 mvx:transition-all mvx:duration-200;
-              @apply mvx:ease-in-out mvx:pointer-events-none;
-              background-color: #353535;
-              bottom: -1px;
+            &:after {
+              @apply mvx:absolute mvx:inset-0 mvx:rounded-xl mvx:opacity-40 mvx:transition-all mvx:duration-200 mvx:ease-in-out;
+              background-color: var(--mvx-button-bg-secondary);
               content: '';
-              z-index: -1;
-              right: -1px;
-              left: -1px;
-              top: -1px;
             }
 
             &:hover {
-              @apply mvx:text-black;
+              color: var(--mvx-button-text-primary);
 
-              &:before {
+              &:after {
                 @apply mvx:opacity-100;
-                background-color: #23f7dd;
+                background-color: var(--mvx-button-bg-primary);
               }
             }
           }
 
           &.highlighted {
-            @apply mvx:flex-1 mvx:text-black;
-            background-color: #23f7dd;
+            @apply mvx:flex-1;
+            color: var(--mvx-button-text-primary);
+            background-color: var(--mvx-button-bg-primary);
 
             &:hover {
               @apply mvx:opacity-75;
@@ -61,15 +56,19 @@
 
           &.disabled {
             @apply mvx:bg-transparent mvx:cursor-default mvx:pointer-events-none;
-            border-color: #a09a93;
-            color: #a09a93;
+            border-color: var(--mvx-text-color-secondary);
+            color: var(--mvx-text-color-secondary);
+          }
+
+          .sign-transactions-footer-button-label {
+            @apply mvx:relative mvx:z-1;
           }
 
           .sign-transactions-footer-button-icon {
             @apply mvx:flex mvx:transition-all mvx:duration-200 mvx:ease-in-out;
 
             &.lighter {
-              fill: #a09a93;
+              fill: var(--mvx-text-color-secondary);
             }
           }
         }
@@ -81,12 +80,13 @@
 
       .sign-transactions-footer-identity-label {
         @apply mvx:whitespace-nowrap;
-        color: #b6b3af;
+        color: var(--mvx-text-color-secondary);
       }
 
       .sign-transactions-footer-identity-address {
-        @apply mvx:text-white mvx:relative mvx:min-w-0 mvx:max-w-none;
+        @apply mvx:relative mvx:min-w-0 mvx:max-w-none;
         top: 0.25px;
+        color: var(--mvx-text-color-primary);
 
         .trim-wrapper {
           @apply mvx:items-end mvx:leading-none;
@@ -94,10 +94,11 @@
       }
 
       .sign-transactions-footer-identity-username {
-        @apply mvx:flex mvx:items-center mvx:text-base mvx:text-white;
+        @apply mvx:flex mvx:items-center mvx:text-base;
+        color: var(--mvx-text-color-primary);
 
         .sign-transactions-footer-identity-username-prefix {
-          color: #23f7dd;
+          color: var(--mvx-text-accent-color);
         }
       }
 
@@ -106,7 +107,7 @@
 
         .sign-transactions-footer-identity-copy-icon {
           @apply mvx:h-4 mvx:w-4 mvx:flex mvx:justify-center mvx:transition-all mvx:duration-200 mvx:ease-in-out;
-          color: #b6b3af;
+          color: var(--mvx-link-color);
 
           &:hover {
             @apply mvx:opacity-80;

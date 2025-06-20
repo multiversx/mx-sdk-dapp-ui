@@ -61,10 +61,10 @@ export class LedgerAddresses {
       buttonTooltip: 'mvx:absolute mvx:top-0 mvx:h-12 mvx:left-0 mvx:right-0',
       preloaderItem:
         'mvx:h-16! mvx:border mvx:border-solid mvx:border-transparent mvx:rounded-lg! mvx:flex mvx:items-center mvx:w-full! mvx:p-4',
-      preloaderItemCheckbox: 'mvx:h-4! mvx:mr-2 mvx:min-w-4! mvx:w-4! mvx:rounded-full! mvx:bg-neutral-700!',
-      preloaderItemAddress: 'mvx:w-40! mvx:h-4! mvx:bg-neutral-700! mvx:rounded-lg! mvx:mr-auto',
-      preloaderItemBalance: 'mvx:w-24! mvx:h-4! mvx:bg-neutral-700! mvx:rounded-lg! mvx:ml-2',
-      preloaderItemIndex: classNames('mvx:mr-2 mvx:h-4! mvx:bg-neutral-700! mvx:rounded-lg!', {
+      preloaderItemCheckbox: 'mvx:h-4! mvx:mr-2 mvx:min-w-4! mvx:w-4! mvx:rounded-full! mvx:bg-preloader!',
+      preloaderItemAddress: 'mvx:w-40! mvx:h-4! mvx:bg-preloader! mvx:rounded-lg! mvx:mr-auto',
+      preloaderItemBalance: 'mvx:w-24! mvx:h-4! mvx:bg-preloader! mvx:rounded-lg! mvx:ml-2',
+      preloaderItemIndex: classNames('mvx:mr-2 mvx:h-4! mvx:bg-preloader! mvx:rounded-lg!', {
         'mvx:w-9!': isSingleDigitIndex,
         'mvx:w-10!': isIndexBelowOneHundred,
         'mvx:w-13!': isIndexInTheHundreds,

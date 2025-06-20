@@ -1,12 +1,12 @@
 @import '../../../global/variables.css';
 
 .feed-content {
-  @apply mvx:h-full mvx:w-full mvx:flex mvx:flex-col mvx:relative mvx:gap-5 mvx:overflow-x-hidden mvx:overflow-y-scroll;
+  @apply mvx:h-full mvx:w-full mvx:flex mvx:flex-col mvx:relative mvx:gap-5 mvx:overflow-x-hidden mvx:overflow-y-scroll mvx:pt-6;
 
   .transaction-toast-content-wrapper {
     @apply mvx:w-full;
-    background: var(--mx-tx-bg-transparent);
-    border-color: var(--mx-tx-bg-transparent);
+    background: var(--mvx-bg-color-secondary);
+    border-color: var(--mvx-bg-color-secondary);
   }
 
   @media (min-width: 375px) {
@@ -16,11 +16,11 @@
 
 .notifications-info {
   @apply mvx:flex mvx:items-start mvx:gap-2.5 mvx:text-xs mvx:font-normal mvx:leading-4;
-  color: var(--mx-warning-text);
+  color: var(--mvx-warning-text);
 
   .info-icon {
     @apply mvx:text-center mvx:text-base mvx:font-normal mvx:leading-none mvx:w-5 mvx:h-5;
-    color: var(--mx-warning-text) !important;
+    color: var(--mvx-warning-text) !important;
   }
 }
 
@@ -29,7 +29,7 @@
 
   .processing-status {
     @apply mvx:text-base mvx:font-normal mvx:leading-6 mvx:tracking-tight;
-    color: var(--mx-body-label-color);
+    color: var(--mvx-text-color-secondary);
   }
 }
 
@@ -42,11 +42,12 @@
 
   .activity-title {
     @apply mvx:text-base mvx:font-normal mvx:m-0 mvx:leading-6 mvx:tracking-tight;
-    color: var(--mx-body-label-color);
+    color: var(--mvx-text-color-secondary);
   }
 
   .clear-button {
-    @apply mvx:text-white mvx:text-xs mvx:font-normal mvx:underline mvx:cursor-pointer mvx:leading-4;
+    @apply mvx:text-xs mvx:font-normal mvx:underline mvx:cursor-pointer mvx:leading-4;
+    color: var(--mvx-text-color-primary);
     text-decoration-skip-ink: none;
     text-underline-position: from-font;
   }
@@ -57,21 +58,41 @@
 
   .no-activity {
     @apply mvx:p-4 mvx:text-center;
-    color: #666666;
+    color: var(--mvx-neutral-500);
+  }
+
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-track:hover,
+  &::-webkit-scrollbar-corner {
+    @apply mvx:bg-transparent;
   }
 
   &::-webkit-scrollbar {
-    width: 4px;
+    @apply mvx:w-4;
   }
 
-  &::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 2px;
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-track:hover {
+    @apply mvx:bg-transparent mvx:bg-clip-padding;
+    border: 4px solid transparent;
+    border-radius: 9999px;
   }
 
-  &::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 2px;
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-thumb:hover {
+    @apply mvx:bg-clip-padding;
+    border: 4px solid transparent;
+    background-color: var(--mvx-neutral-700);
+    border-radius: 9999px;
+  }
+
+  &::-webkit-scrollbar-button {
+    @apply mvx:hidden;
+  }
+
+  &::-webkit-resizer {
+    @apply mvx:bg-transparent;
   }
 
   // Ensure children don't cause horizontal scroll

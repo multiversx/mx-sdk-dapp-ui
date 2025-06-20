@@ -35,7 +35,7 @@ export class UnlockPanel {
           </div>
 
           <div class="unlock-panel-footer-subtitle mobile">
-            <span>See which one to get or </span>
+            <span>See which one to get on </span>
 
             <a target="_blank" rel="noreferrer" class="unlock-panel-footer-subtitle-link" href={this.walletAddress}>
               {processedWalletAddress}

@@ -1,38 +1,155 @@
 :root {
-  /* Base Colors */
-  --mx-accent: #ffffff;
-  --mx-white: #ffffff;
-  --mx-black: #000000;
-  --mx-neutral-900: #171717;
-  --mx-neutral-50: #fafafa;
-  --mx-neutral-400: #a3a3a3;
+  /* Theme Colors */
+  --mvx-white: #ffffff;
+  --mvx-black: #000000;
+  --mvx-neutral-100: #f3efed;
+  --mvx-neutral-200: #e8e8e8;
+  --mvx-neutral-300: #d4d4d4;
+  --mvx-neutral-350: #dddddd;
+  --mvx-neutral-400: #a3a3a3;
+  --mvx-neutral-450: #868686;
+  --mvx-neutral-500: #737373;
+  --mvx-neutral-700: #404040;
+  --mvx-neutral-750: #353535;
+  --mvx-neutral-800: #262626;
+  --mvx-neutral-900: #171717;
+  --mvx-neutral-910: #191919;
+  --mvx-neutral-920: #202020;
+  --mvx-neutral-925: #0e0e0e;
+  --mvx-neutral-950: #0a0a0a;
+  --mvx-gray-50: #f9fafb;
+  --mvx-gray-100: #f8f9fa;
+  --mvx-gray-200: #e5e7eb;
+  --mvx-gray-300: #dae0e5;
+  --mvx-gray-350: #c7c7c7;
+  --mvx-gray-500: #6b7280;
+  --mvx-gray-650: #5e5e5e;
+  --mvx-gray-750: #3a3a3a;
+  --mvx-gray-800: #343a40;
+  --mvx-gray-900: #212529;
+  --mvx-stone-100: #e2dedc;
+  --mvx-stone-350: #b6b3af;
+  --mvx-stone-450: #88817a;
+  --mvx-slate-500: #545b62;
+  --mvx-zinc-800: #262626;
+  --mvx-green-400: #4ade80;
+  --mvx-green-600: #14aa3e;
+  --mvx-green-850: #1d6030;
+  --mvx-yellow-400: #facc15;
+  --mvx-yellow-600: #d39e00;
+  --mvx-amber-650: #d68700;
+  --mvx-brown-900: #453412;
+  --mvx-red-400: #f87171;
+  --mvx-red-600: #dc2626;
+  --mvx-red-700: #bd2130;
+  --mvx-red-900: #582424;
+  --mvx-teal-200: #a5fcf0;
+  --mvx-teal-400: #23f7dd;
+  --mvx-teal-900: #143736;
+  --mvx-blue-600: #007bff;
+  --mvx-blue-700: #0062cc;
+  --mvx-cyan-500: #17a2b8;
 
-  /* Text Colors */
-  --mx-text: var(--mx-white);
-  --mx-primary-text: #262626;
-  --mx-secondary-text: #868686;
-  --mx-warning-text: #facc15;
-  --mx-body-label-color: #a09a93;
-  --mx-warning-text: #facc15;
-  --mx-tx-bg: rgba(53, 53, 53);
-  --mx-tx-bg-transparent: rgba(53, 53, 53, 0.3);
-  --mx-tx-text-primary: #e8e8e8;
-  --mx-tx-text-secondary: #737373;
-  --mx-tx-success: #4ade80;
-  --mx-tx-fail: #ff4747;
+  /* Light Theme Variables */
+  --mvx-text-color-primary: var(--mvx-black);
+  --mvx-text-color-secondary: var(--mvx-stone-450);
+  --mvx-text-color-tertiary: var(--mvx-neutral-800);
+  --mvx-text-accent-color: var(--mvx-black);
+  --mvx-label-color: var(--mvx-neutral-450);
 
-  /* Toast Colors */
-  --mx-toast-backdrop-blur: 38px;
-  --mx-toast-success-bg: #1d6030;
-  --mx-toast-success-color: #4ade80;
-  --mx-toast-pending-bg: #453412;
-  --mx-toast-pending-color: #facc15;
-  --mx-toast-error-bg: rgba(255, 71, 71, 0.2);
-  --mx-toast-error-color: #ff4747;
+  --mvx-bg-color-primary: var(--mvx-neutral-100);
+  --mvx-bg-color-secondary: var(--mvx-white);
+  --mvx-bg-color-tertiary: var(--mvx-white);
+  --mvx-bg-accent-color: var(--mvx-white);
+  --mvx-bg-accent-variant-color: var(--mvx-stone-100);
 
-  /* Explorer Link Colors */
-  --mx-explorer-link-color: var(--mx-primary-text);
+  --mvx-hover-color-primary: var(--mvx-neutral-200);
+  --mvx-hover-bg-primary: var(--mvx-black);
 
-  /* Transition */
-  --mx-transition: 0.3s ease-in-out;
+  --mvx-border-color-primary: var(--mvx-neutral-200);
+
+  --mvx-button-bg-primary: var(--mvx-black);
+  --mvx-button-text-primary: var(--mvx-white);
+  --mvx-button-bg-secondary: var(--mvx-white);
+  --mvx-button-text-secondary: var(--mvx-neutral-800);
+
+  --mvx-select-bg: var(--mvx-white);
+  --mvx-select-color: var(--mvx-neutral-700);
+  --mvx-select-option-color: var(--mvx-black);
+  --mvx-select-option-bg: var(--mvx-neutral-400);
+  --mvx-select-option-bg-mobile: var(--mvx-neutral-400);
+
+  --mvx-success-color: var(--mvx-white);
+  --mvx-success-bg-color: var(--mvx-green-600);
+  --mvx-pending-color: var(--mvx-yellow-400);
+  --mvx-pending-bg-color: var(--mvx-brown-900);
+  --mvx-error-color: var(--mvx-red-400);
+  --mvx-error-bg-color: var(--mvx-red-900);
+
+  --mvx-pagination-item-bg: var(--mvx-neutral-200);
+  --mvx-pagination-item-bg-hover: var(--mvx-neutral-400);
+
+  --mvx-preloader-bg: var(--mvx-neutral-400);
+  --mvx-preloader-item-bg: var(--mvx-neutral-200);
+
+  --mvx-warning-text: var(--mvx-amber-650);
+
+  --mvx-link-color: var(--mvx-neutral-700);
+
+  --mvx-progress-color: var(--mvx-gray-350);
+  --mvx-progress-accent-color: var(--mvx-black);
+
+  --mvx-icon-bg: var(--mvx-neutral-350);
+
+  /* Dark Theme Variables */
+  --mvx-text-color-primary: var(--mvx-white);
+  --mvx-text-color-secondary: var(--mvx-stone-350);
+  --mvx-text-color-tertiary: var(--mvx-neutral-200);
+  --mvx-text-accent-color: var(--mvx-teal-400);
+  --mvx-label-color: var(--mvx-neutral-400);
+
+  --mvx-bg-color-primary: var(--mvx-neutral-900);
+  --mvx-bg-color-secondary: var(--mvx-neutral-920);
+  --mvx-bg-color-tertiary: var(--mvx-neutral-910);
+  --mvx-bg-accent-color: var(--mvx-neutral-950);
+  --mvx-bg-accent-variant-color: var(--mvx-neutral-950);
+
+  --mvx-hover-color-primary: var(--mvx-neutral-800);
+  --mvx-hover-bg-primary: var(--mvx-white);
+
+  --mvx-border-color-primary: var(--mvx-neutral-800);
+
+  --mvx-button-bg-primary: var(--mvx-teal-400);
+  --mvx-button-text-primary: var(--mvx-black);
+  --mvx-button-bg-secondary: var(--mvx-neutral-800);
+  --mvx-button-text-secondary: var(--mvx-neutral-200);
+  --mvx-button-bg-hover-secondary: var(--mvx-teal-400);
+
+  --mvx-select-bg: var(--mvx-neutral-800);
+  --mvx-select-color: var(--mvx-gray-200);
+  --mvx-select-option-color: var(--mvx-teal-200);
+  --mvx-select-option-bg: var(--mvx-black);
+  --mvx-select-option-bg-mobile: var(--mvx-zinc-800);
+
+  --mvx-success-color: var(--mvx-green-400);
+  --mvx-success-bg-color: var(--mvx-green-850);
+  --mvx-pending-color: var(--mvx-yellow-400);
+  --mvx-pending-bg-color: var(--mvx-brown-900);
+  --mvx-error-color: var(--mvx-red-400);
+  --mvx-error-bg-color: var(--mvx-red-900);
+
+  --mvx-pagination-item-bg: var(--mvx-neutral-700);
+  --mvx-pagination-item-bg-hover: var(--mvx-teal-900);
+
+  --mvx-preloader-bg: var(--mvx-neutral-800);
+  --mvx-preloader-item-bg: var(--mvx-neutral-700);
+
+  --mvx-warning-text: var(--mvx-yellow-400);
+
+  --mvx-link-color: var(--mvx-stone-350);
+
+  --mvx-progress-color: var(--mvx-gray-650);
+  --mvx-progress-accent-color: var(--mvx-teal-400);
+
+  --mvx-icon-bg: var(--mvx-gray-750);
 }

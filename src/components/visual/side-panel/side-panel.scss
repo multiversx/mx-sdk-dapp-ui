@@ -9,11 +9,12 @@
   &:before {
     @apply mvx:opacity-0 mvx:left-0 mvx:top-0 mvx:right-0 mvx:bottom-0 mvx:transition-all mvx:absolute mvx:duration-200;
     @apply mvx:pointer-events-none mvx:ease-in-out;
-    background: rgba(23, 23, 23, 0.9);
+    background: var(--mvx-neutral-900);
     content: '';
 
     @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-      background: rgba(23, 23, 23, 0.5);
+      @apply mvx:opacity-50;
+      background: var(--mvx-neutral-900);
       -webkit-backdrop-filter: blur(0.375rem);
       backdrop-filter: blur(0.375rem);
     }
@@ -24,15 +25,19 @@
 
     &:before {
       @apply mvx:opacity-90;
+
+      @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+        @apply mvx:opacity-50;
+      }
     }
   }
 
   .side-panel {
     @apply mvx:p-6 mvx:w-full mvx:flex mvx:overflow-hidden mvx:flex-col mvx:transition-all mvx:ease-in-out mvx:duration-200;
-    @apply mvx:pb-0 mvx:rounded-tl-3xl mvx:rounded-tr-3xl mvx:backdrop-blur;
+    @apply mvx:rounded-tl-3xl mvx:rounded-tr-3xl mvx:backdrop-blur mvx:pb-0;
     transform: translateY(60vh);
-    border: 1px solid #404040;
-    background-color: #171717;
+    border: 1px solid var(--mvx-border-color-primary);
+    background-color: var(--mvx-bg-color-primary);
     height: 64vh;
 
     @media (min-width: 480px) {
@@ -43,16 +48,16 @@
 
     &:after {
       @apply mvx:left-0 mvx:right-0 mvx:h-0 mvx:absolute;
-      content: '';
+      box-shadow: 0px -8px 12px 16px var(--mvx-bg-color-primary);
       bottom: calc(4px * -1);
-      box-shadow: 0px -8px 12px 16px #171717;
+      content: '';
     }
 
     &.visible {
-      transform: translateY(0);
+      @apply mvx:transform mvx:translate-y-0;
 
       @media (min-width: 480px) {
-        transform: translateX(0);
+        @apply mvx:translate-x-0;
       }
     }
   }

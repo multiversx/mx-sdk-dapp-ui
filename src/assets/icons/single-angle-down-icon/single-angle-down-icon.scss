@@ -4,6 +4,6 @@
 
   .single-angle-down-icon {
     @apply mvx:flex mvx:w-4 mvx:h-2.5;
-    fill: #b6b3af;
+    fill: var(--mvx-text-color-secondary);
   }
 }

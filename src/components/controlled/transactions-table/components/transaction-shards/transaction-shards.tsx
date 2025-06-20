@@ -6,7 +6,7 @@ import type { TransactionRowType } from '../../transactions-table.type';
 
 @Component({
   tag: 'mvx-transaction-shards',
-  styleUrl: 'transaction-shards.css',
+  styleUrl: 'transaction-shards.scss',
 })
 export class TransactionShards {
   @Prop() class?: string;
