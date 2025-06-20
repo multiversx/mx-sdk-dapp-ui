@@ -1,7 +1,7 @@
 :root {
   /* Theme Colors */
   --mvx-white: #ffffff;
-  --mvx-black: #000000;  
+  --mvx-black: #000000;
   --mvx-neutral-100: #f3efed;
   --mvx-neutral-200: #e8e8e8;
   --mvx-neutral-300: #d4d4d4;
@@ -49,6 +49,57 @@
   --mvx-blue-600: #007bff;
   --mvx-blue-700: #0062cc;
   --mvx-cyan-500: #17a2b8;
+
+  /* Light Theme Variables */
+  --mvx-text-color-primary: var(--mvx-black);
+  --mvx-text-color-secondary: var(--mvx-stone-450);
+  --mvx-text-color-tertiary: var(--mvx-neutral-800);
+  --mvx-text-accent-color: var(--mvx-black);
+  --mvx-label-color: var(--mvx-neutral-450);
+
+  --mvx-bg-color-primary: var(--mvx-neutral-100);
+  --mvx-bg-color-secondary: var(--mvx-white);
+  --mvx-bg-color-tertiary: var(--mvx-white);
+  --mvx-bg-accent-color: var(--mvx-white);
+  --mvx-bg-accent-variant-color: var(--mvx-stone-100);
+
+  --mvx-hover-color-primary: var(--mvx-neutral-200);
+  --mvx-hover-bg-primary: var(--mvx-black);
+
+  --mvx-border-color-primary: var(--mvx-neutral-200);
+
+  --mvx-button-bg-primary: var(--mvx-black);
+  --mvx-button-text-primary: var(--mvx-white);
+  --mvx-button-bg-secondary: var(--mvx-white);
+  --mvx-button-text-secondary: var(--mvx-neutral-800);
+
+  --mvx-select-bg: var(--mvx-white);
+  --mvx-select-color: var(--mvx-neutral-700);
+  --mvx-select-option-color: var(--mvx-black);
+  --mvx-select-option-bg: var(--mvx-neutral-400);
+  --mvx-select-option-bg-mobile: var(--mvx-neutral-400);
+
+  --mvx-success-color: var(--mvx-white);
+  --mvx-success-bg-color: var(--mvx-green-600);
+  --mvx-pending-color: var(--mvx-yellow-400);
+  --mvx-pending-bg-color: var(--mvx-brown-900);
+  --mvx-error-color: var(--mvx-red-400);
+  --mvx-error-bg-color: var(--mvx-red-900);
+
+  --mvx-pagination-item-bg: var(--mvx-neutral-200);
+  --mvx-pagination-item-bg-hover: var(--mvx-neutral-400);
+
+  --mvx-preloader-bg: var(--mvx-neutral-400);
+  --mvx-preloader-item-bg: var(--mvx-neutral-200);
+
+  --mvx-warning-text: var(--mvx-amber-650);
+
+  --mvx-link-color: var(--mvx-neutral-700);
+
+  --mvx-progress-color: var(--mvx-gray-350);
+  --mvx-progress-accent-color: var(--mvx-black);
+
+  --mvx-icon-bg: var(--mvx-neutral-350);
 
   /* Dark Theme Variables */
   --mvx-text-color-primary: var(--mvx-white);
@@ -101,55 +152,4 @@
   --mvx-progress-accent-color: var(--mvx-teal-400);
 
   --mvx-icon-bg: var(--mvx-gray-750);
-
-  /* Light Theme Variables */
-  --mvx-text-color-primary: var(--mvx-black);
-  --mvx-text-color-secondary: var(--mvx-stone-450);
-  --mvx-text-color-tertiary: var(--mvx-neutral-800);
-  --mvx-text-accent-color: var(--mvx-black);
-  --mvx-label-color: var(--mvx-neutral-450);
-
-  --mvx-bg-color-primary: var(--mvx-neutral-100);
-  --mvx-bg-color-secondary: var(--mvx-white);
-  --mvx-bg-color-tertiary: var(--mvx-white);
-  --mvx-bg-accent-color: var(--mvx-white);
-  --mvx-bg-accent-variant-color: var(--mvx-stone-100);
-
-  --mvx-hover-color-primary: var(--mvx-neutral-200);
-  --mvx-hover-bg-primary: var(--mvx-black);
-
-  --mvx-border-color-primary: var(--mvx-neutral-200);
-
-  --mvx-button-bg-primary: var(--mvx-black);
-  --mvx-button-text-primary: var(--mvx-white);
-  --mvx-button-bg-secondary: var(--mvx-white);
-  --mvx-button-text-secondary: var(--mvx-neutral-800);
-
-  --mvx-select-bg: var(--mvx-white);
-  --mvx-select-color: var(--mvx-neutral-700);
-  --mvx-select-option-color: var(--mvx-black);
-  --mvx-select-option-bg: var(--mvx-neutral-400);
-  --mvx-select-option-bg-mobile: var(--mvx-neutral-400);
-
-  --mvx-success-color: var(--mvx-white);
-  --mvx-success-bg-color: var(--mvx-green-600);
-  --mvx-pending-color: var(--mvx-yellow-400);
-  --mvx-pending-bg-color: var(--mvx-brown-900);
-  --mvx-error-color: var(--mvx-red-400);
-  --mvx-error-bg-color: var(--mvx-red-900);
-
-  --mvx-pagination-item-bg: var(--mvx-neutral-200);
-  --mvx-pagination-item-bg-hover: var(--mvx-neutral-400);
-
-  --mvx-preloader-bg: var(--mvx-neutral-400);
-  --mvx-preloader-item-bg: var(--mvx-neutral-200);
-
-  --mvx-warning-text: var(--mvx-amber-650);
-
-  --mvx-link-color: var(--mvx-neutral-700);
-
-  --mvx-progress-color: var(--mvx-gray-350);
-  --mvx-progress-accent-color: var(--mvx-black);
-
-  --mvx-icon-bg: var(--mvx-neutral-350);
 }
