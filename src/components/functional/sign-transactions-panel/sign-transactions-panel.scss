@@ -89,12 +89,11 @@
       @apply mvx:px-4 mvx:h-8 mvx:flex mvx:items-center mvx:leading-none mvx:justify-center mvx:transition-all mvx:duration-200;
       @apply mvx:ease-in-out mvx:cursor-pointer mvx:relative mvx:rounded-3xl;
       color: var(--mvx-text-color-secondary);
-      background-color: var(----mvx-bg-color-secondary);
 
       &:hover,
       &.active {
         color: var(--mvx-text-accent-color);
-        background: var(--mvx-hover-color-primary);
+        background-color: var(--mvx-bg-color-secondary);
       }
 
       .sign-transactions-tab-text {

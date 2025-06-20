@@ -1,9 +1,10 @@
 .transaction-item {
   @apply mvx:flex mvx:items-center mvx:py-5 mvx:px-3 mvx:gap-3 mvx:rounded-lg;
-  background: var(--mvx-bg-color-secondary);
+  @apply mvx:transition-all mvx:duration-200 mvx:ease-in-out ;
+  background-color: var(--mvx-bg-color-secondary);
 
   &:hover {
-    background-color: var(--mvx-bg-color-tertiary);
+    background-color: var(--mvx-hover-color-primary);
   }
 
   @media (min-width: 375px) {
