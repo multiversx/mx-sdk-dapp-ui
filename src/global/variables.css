@@ -1,12 +1,7 @@
 :root {
   /* Theme Colors */
   --mvx-white: #ffffff;
-  --mvx-black: #000000;
-  --mvx-black-5: rgba(0, 0, 0, 0.05);
-  --mvx-black-10: rgba(0, 0, 0, 0.1);
-  --mvx-black-15: rgba(0, 0, 0, 0.15);
-  --mvx-black-20: rgba(0, 0, 0, 0.2);
-  --mvx-black-60: rgba(0, 0, 0, 0.6);
+  --mvx-black: #000000;  
   --mvx-neutral-100: #f3efed;
   --mvx-neutral-200: #e8e8e8;
   --mvx-neutral-300: #d4d4d4;

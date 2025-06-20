@@ -15,37 +15,11 @@
   border: 1px solid transparent;
 }
 
-.pending-transactions-panel {
-  width: 450px;
-  max-width: 100%;
-  padding: 0;
-  background-color: var(--mvx-bg-color-primary);
-  box-shadow: 0 4px 12px var(--mvx-black-15);
-}
-
 .pending-transactions-content {
   display: flex;
   flex-direction: column;
   height: 100%;
   padding: 24px;
-}
-
-.pending-transactions-header {
-  margin-bottom: 24px;
-  border-bottom: 1px solid var(--mvx-black-10);
-  padding-bottom: 16px;
-}
-
-.pending-transactions-header h2 {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.pending-transactions-header h4 {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--mvx-black-60);
 }
 
 .pending-transactions-body {
