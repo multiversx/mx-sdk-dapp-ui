@@ -107,7 +107,7 @@
 
         &:before {
           @apply mvx:absolute mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:pointer-events-none mvx:transform mvx:w-7;
-          @apply mvx:left-1/2 mvx:top-1/2 mvx:h-7 mvx:z-1 mvx:rounded-full mvx:opacity-30 mvx:-translate-y-1/2 mvx:-translate-x-1/2;
+          @apply mvx:left-1/2 mvx:top-1/2 mvx:h-7 mvx:z-1 mvx:rounded-full mvx:opacity-20 mvx:-translate-y-1/2 mvx:-translate-x-1/2;
           background-color: var(--mvx-pagination-item-bg);
           content: '';
 
