@@ -39,11 +39,18 @@
 }
 
 .action-row {
-  background: var(--mvx-bg-color-tertiary);
   padding: 28px 20px 8px 20px;
   border-radius: 0 0 12px 12px;
   min-height: 56px;
   margin-top: -24px;
+  position: relative;
+  
+  &:before {
+    @apply mvx:absolute mvx:opacity-60 mvx:top-0 mvx:bottom-0 mvx:left-0 mvx:right-0 mvx:transition-all mvx:duration-200;
+    @apply mvx:rounded-b-xl mvx:pointer-events-none mvx:ease-in-out;
+    content: '';
+    background: var(--mvx-bg-color-tertiary);
+  }
 }
 
 .detail-label {
@@ -51,6 +58,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
+  position: relative;
   z-index: 1;
 }
 
@@ -185,6 +193,7 @@
   font-size: 14px;
   font-weight: 500;
   color:  var(--mvx-text-color-secondary);
+  position: relative;
   z-index: 1;
 }
 

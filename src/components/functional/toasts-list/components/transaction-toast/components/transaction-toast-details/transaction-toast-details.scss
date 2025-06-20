@@ -40,11 +40,14 @@
 }
 
 .show-more-button {
-  @apply mvx:text-xs mvx:font-normal mvx:leading-4 mvx:cursor-pointer mvx:rounded-sm mvx:bg-none mvx:border-0;
+  @apply mvx:text-xs mvx:font-normal mvx:leading-4 mvx:cursor-pointer mvx:rounded-sm mvx:bg-none mvx:border-0 mvx:relative;;
   color: var(--mvx-text-color-tertiary);
   transition: background-color var(--mvx-transition);
 
-  &:hover {
-    background-color: var(--mvx-hover-bg-primary);
+  &:hover::before {
+      @apply mvx:absolute mvx:opacity-5 mvx:top-0 mvx:bottom-0 mvx:left-0 mvx:right-0 mvx:transition-all mvx:duration-200;
+      @apply mvx:pointer-events-none mvx:ease-in-out;
+      content: '';
+      background-color: var(--mvx-hover-bg-primary);
   }
 }
