@@ -11,6 +11,10 @@ const iconData: Record<string, IconDefinition> = {
   invalid: faTimes,
 };
 
+const transactionToastDetailsBodyClasses: Record<string, string> = {
+  explorerLinkIcon: 'mvx:fill-primary!',
+};
+
 @Component({
   tag: 'mvx-transaction-toast-details-body',
   styleUrl: 'transaction-toast-details-body.scss',
@@ -44,7 +48,7 @@ export class TransactionDetailsBody {
           <mvx-trim text={this.hash} />
         </div>
         <div class="transaction-details-list-item-explorer-link-icon">
-          <mvx-explorer-link link={this.link} />
+          <mvx-explorer-link link={this.link} class={transactionToastDetailsBodyClasses.explorerLinkIcon} />
         </div>
       </div>
     );
