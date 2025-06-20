@@ -6,12 +6,7 @@
 
     .sign-transactions-header-pager {
       @apply mvx:flex mvx:relative mvx:rounded-2xl mvx:h-9 mvx:items-center mvx:px-5 mvx:justify-center mvx:mx-auto mvx:gap-5;
-
-      &:before {
-        @apply mvx:absolute mvx:left-0 mvx:top-0 mvx:bottom-0 mvx:right-0 mvx:pointer-events-none mvx:rounded-2xl mvx:opacity-40;
-        background-color: var(--mvx-bg-color-secondary);
-        content: '';
-      }
+      background-color: var(--mvx-bg-color-secondary);
 
       .sign-transactions-header-pager-icon {
         @apply mvx:relative mvx:z-1 mvx:cursor-pointer mvx:flex mvx:items-center mvx:justify-center mvx:transition-all;
