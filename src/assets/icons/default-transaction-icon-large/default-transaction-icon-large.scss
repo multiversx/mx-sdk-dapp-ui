@@ -1,10 +1,12 @@
 :host {
+  @apply mvx:flex;
+
   .default-transaction-icon-large {
     @apply mvx:h-10 mvx:w-10;
     fill: none;
 
     rect {
-      fill: var(--mvx-icon-bg)
+      fill: var(--mvx-icon-bg);
     }
 
     path {
