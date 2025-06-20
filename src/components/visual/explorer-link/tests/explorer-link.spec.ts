@@ -13,7 +13,7 @@ describe('ExplorerLink', () => {
       <mvx-explorer-link link="https://example.com">
         <template shadowrootmode="open">
           <a href="https://example.com" target="_blank" class="explorer-link" rel="noreferrer">
-            <mvx-arrow-up-right-from-square-icon class="explorer-link-icon mvx:duration-200 mvx:ease-in-out mvx:fill-white mvx:flex mvx:hover:opacity-80 mvx:justify-center mvx:transition-all"></mvx-arrow-up-right-from-square-icon>
+            <mvx-arrow-up-right-from-square-icon class="explorer-link-icon mvx:duration-200 mvx:ease-in-out mvx:flex mvx:hover:opacity-80 mvx:justify-center mvx:transition-all"></mvx-arrow-up-right-from-square-icon>
           </a>
         </template>
       </mvx-explorer-link>
@@ -48,7 +48,7 @@ describe('ExplorerLink', () => {
       <mvx-explorer-link link="https://example.com" class="custom-class">
         <template shadowrootmode="open">
           <a href="https://example.com" target="_blank" class="explorer-link custom-class" rel="noreferrer">
-            <mvx-arrow-up-right-from-square-icon class="explorer-link-icon mvx:duration-200 mvx:ease-in-out mvx:fill-white mvx:flex mvx:hover:opacity-80 mvx:justify-center mvx:transition-all"></mvx-arrow-up-right-from-square-icon>
+            <mvx-arrow-up-right-from-square-icon class="explorer-link-icon mvx:duration-200 mvx:ease-in-out mvx:flex mvx:hover:opacity-80 mvx:justify-center mvx:transition-all"></mvx-arrow-up-right-from-square-icon>
           </a>
         </template>
       </mvx-explorer-link>
