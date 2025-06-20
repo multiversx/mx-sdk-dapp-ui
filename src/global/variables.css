@@ -55,9 +55,6 @@
   --mvx-blue-700: #0062cc;
   --mvx-cyan-500: #17a2b8;
 
-  /* Transition */
-  --mvx-transition: 0.3s ease-in-out;
-
   /* Dark Theme Variables */
   --mvx-text-color-primary: var(--mvx-white);
   --mvx-text-color-secondary: var(--mvx-stone-350);
