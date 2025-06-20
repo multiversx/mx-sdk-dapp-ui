@@ -1,8 +1,6 @@
 :root {
   /* Theme Colors */
   --mvx-white: #ffffff;
-  --mvx-white-60: rgba(255, 255, 255, 0.6);
-  --mvx-white-5: rgba(255, 255, 255, 0.05);
   --mvx-black: #000000;
   --mvx-black-5: rgba(0, 0, 0, 0.05);
   --mvx-black-10: rgba(0, 0, 0, 0.1);
@@ -76,7 +74,7 @@
   --mvx-bg-accent-variant-color: var(--mvx-neutral-950);
 
   --mvx-hover-color-primary: var(--mvx-neutral-800);
-  --mvx-hover-bg-primary: var(--mvx-white-5);
+  --mvx-hover-bg-primary: var(--mvx-white);
 
   --mvx-border-color-primary: var(--mvx-neutral-700-40);
 
@@ -123,12 +121,12 @@
 
   --mvx-bg-color-primary: var(--mvx-neutral-100);
   --mvx-bg-color-secondary: var(--mvx-white);
-  --mvx-bg-color-tertiary: var(--mvx-white-60);
+  --mvx-bg-color-tertiary: var(--mvx-white);
   --mvx-bg-accent-color: var(--mvx-white);
   --mvx-bg-accent-variant-color: var(--mvx-stone-100);
 
   --mvx-hover-color-primary: var(--mvx-neutral-200);
-  --mvx-hover-bg-primary: var(--mvx-black-5);
+  --mvx-hover-bg-primary: var(--mvx-black);
 
   --mvx-border-color-primary: var(--mvx-neutral-700-20);
   
