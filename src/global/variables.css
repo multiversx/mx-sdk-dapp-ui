@@ -21,10 +21,7 @@
   --mvx-neutral-700-40: rgba(64, 64, 64, 0.4);
   --mvx-neutral-750: #353535;
   --mvx-neutral-800: #262626;
-  --mvx-neutral-800-40: rgba(53, 53, 53, 0.4);
   --mvx-neutral-900: #171717;
-  --mvx-neutral-900-50: rgba(23, 23, 23, 0.5);
-  --mvx-neutral-900-90: rgba(23, 23, 23, 0.9);
   --mvx-neutral-910: #191919;
   --mvx-neutral-920: #202020;
   --mvx-neutral-925: #0e0e0e;
@@ -35,7 +32,6 @@
   --mvx-gray-300: #dae0e5;
   --mvx-gray-350: #c7c7c7;
   --mvx-gray-500: #6b7280;
-  --mvx-gray-500-50: rgba(108, 117, 125, 0.5);
   --mvx-gray-650: #5e5e5e;
   --mvx-gray-750: #3a3a3a;
   --mvx-gray-800: #343a40;
@@ -47,7 +43,6 @@
   --mvx-zinc-800: #262626;
   --mvx-green-400: #4ade80;
   --mvx-green-600: #14aa3e;
-  --mvx-green-600-50: rgba(40, 167, 69, 0.5);
   --mvx-green-850: #1d6030;
   --mvx-yellow-400: #facc15;
   --mvx-yellow-600: #d39e00;
@@ -61,7 +56,6 @@
   --mvx-teal-400: #23f7dd;
   --mvx-teal-900: #143736;
   --mvx-blue-600: #007bff;
-  --mvx-blue-600-50: rgba(0, 123, 255, 0.5);
   --mvx-blue-700: #0062cc;
   --mvx-cyan-500: #17a2b8;
 
@@ -88,7 +82,7 @@
 
   --mvx-button-bg-primary: var(--mvx-teal-400);
   --mvx-button-text-primary: var(--mvx-black);
-  --mvx-button-bg-secondary: var(--mvx-neutral-800-40);
+  --mvx-button-bg-secondary: var(--mvx-neutral-800);
   --mvx-button-text-secondary: var(--mvx-neutral-200);
   --mvx-button-bg-hover-secondary: var(--mvx-teal-400);
 
@@ -119,7 +113,7 @@
   --mvx-progress-accent-color: var(--mvx-teal-400);
 
   --mvx-icon-bg: var(--mvx-gray-750);
-  
+
   /* Light Theme Variables */
   /* --mvx-text-color-primary: var(--mvx-black);
   --mvx-text-color-secondary: var(--mvx-stone-450);

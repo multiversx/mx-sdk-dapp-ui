@@ -38,7 +38,7 @@ export class SignTransactionsFooter {
                 'highlighted': currentIndexCannotBeSignedYet,
               }}
             >
-              {isFirstTransaction ? 'Cancel' : 'Back'}
+              <span class="sign-transactions-footer-button-label">{isFirstTransaction ? 'Cancel' : 'Back'}</span>
             </button>
           </div>
 

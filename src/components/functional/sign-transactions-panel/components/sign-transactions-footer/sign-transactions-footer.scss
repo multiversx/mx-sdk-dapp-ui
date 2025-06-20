@@ -25,12 +25,22 @@
           border: 1px solid transparent;
 
           &.cancel {
+            @apply mvx:relative;
             color: var(--mvx-button-text-secondary);
-            background-color: var(--mvx-button-bg-secondary);
+
+            &:after {
+              @apply mvx:absolute mvx:inset-0 mvx:rounded-xl mvx:opacity-40 mvx:transition-all mvx:duration-200 mvx:ease-in-out;
+              background-color: var(--mvx-button-bg-secondary);
+              content: '';
+            }
 
             &:hover {
               color: var(--mvx-button-text-primary);
-              background-color: var(--mvx-button-bg-primary);
+
+              &:after {
+                @apply mvx:opacity-100;
+                background-color: var(--mvx-button-bg-primary);
+              }
             }
           }
 
@@ -48,6 +58,10 @@
             @apply mvx:bg-transparent mvx:cursor-default mvx:pointer-events-none;
             border-color: var(--mvx-text-color-secondary);
             color: var(--mvx-text-color-secondary);
+          }
+
+          .sign-transactions-footer-button-label {
+            @apply mvx:relative mvx:z-1;
           }
 
           .sign-transactions-footer-button-icon {
