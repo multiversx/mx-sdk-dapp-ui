@@ -40,6 +40,7 @@ export class SidePanel {
       this.isVisible = false;
     }, this.ANIMATION_DURATION_MS);
   }
+
   disconnectedCallback() {
     clearTimeout(this.closeTimeout);
     this.isVisible = false;

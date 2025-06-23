@@ -1,103 +1,64 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  @apply mvx:flex mvx:flex-col mvx:flex-1  mvx:overflow-hidden;
 
   .ledger-confirm {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    color: #fff;
-    gap: 12px;
-    padding-top: 24px;
+    @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:gap-3 mvx:overflow-auto mvx:py-6;
+    color: var(--mvx-text-color-primary);
+
+    &::-webkit-scrollbar {
+      @apply mvx:hidden;
+    }
 
     .ledger-confirm-items {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
+      @apply mvx:flex mvx:flex-col mvx:gap-5;
 
       .ledger-confirm-item {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
+        @apply mvx:flex mvx:flex-col mvx:gap-4;
 
         .ledger-confirm-item-label {
-          font-size: 16px;
-          line-height: 1;
+          @apply mvx:text-base mvx:leading-none;
         }
 
         .ledger-confirm-item-value {
-          min-height: 64px;
-          padding: 12px;
-          border-radius: 12px;
-          position: relative;
-          display: flex;
-          gap: 12px;
-          align-items: center;
-          justify-content: space-between;
-
-          &:before {
-            content: '';
-            position: absolute;
-            pointer-events: none;
-            background-color: #353535;
-            border-radius: 12px;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 50%;
-          }
+          @apply mvx:min-h-16 mvx:p-3 mvx:rounded-xl mvx:flex mvx:gap-3 mvx:items-center mvx:justify-between;
+          background-color: var(--mvx-bg-color-secondary);
 
           .ledger-confirm-item-value-text {
-            position: relative;
-            z-index: 1;
-            word-break: break-all;
+            @apply mvx:relative mvx:break-all;
 
             &.highlighted {
-              color: #23f7dd;
+              color: var(--mvx-text-accent-color);
             }
           }
 
           .ledger-confirm-item-value-copy {
-            display: flex;
+            @apply mvx:flex;
 
             .ledger-confirm-item-value-copy-icon {
-              height: 16px;
-              display: flex;
-              width: 16px;
-              justify-content: center;
-              transition: all 200ms ease;
+              @apply mvx:w-4 mvx:h-4 mvx:flex mvx:justify-center mvx:transition-all mvx:duration-200 mvx:ease-in-out;
+              color: var(--mvx-text-color-primary);
 
               &:hover {
-                opacity: 80%;
+                @apply mvx:opacity-80;
               }
             }
           }
 
           .ledger-confirm-item-value-explorer {
-            display: flex;
+            @apply mvx:flex;
 
             .ledger-confirm-item-value-explorer-icon {
-              height: 16px;
-              display: flex;
-              width: 16px;
-              color: #fff;
-              transition: all 200ms ease;
+              @apply mvx:w-4 mvx:h-4 mvx:flex mvx:transition-all mvx:duration-200 mvx:ease-in-out;
+              color: var(--mvx-text-color-primary);
 
               &:hover {
-                opacity: 80%;
+                @apply mvx:opacity-80;
               }
             }
           }
 
           .ledger-confirm-item-value-actions {
-            position: relative;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 1;
-            flex: 1;
+            @apply mvx:relative mvx:flex mvx:items-center mvx:gap-3 mvx:z-1 mvx:flex-1;
           }
         }
       }
@@ -107,49 +68,37 @@
       display: initial;
 
       strong {
-        color: #23f7dd;
-        font-weight: 700;
+        @apply mvx:font-bold;
+        color: var(--mvx-text-accent-color);
       }
     }
 
     .ledger-confirm-footer {
-      margin-top: auto;
-      background-color: #dc2626;
-      padding: 0 12px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      height: 64px;
+      @apply mvx:mt-auto mvx:p-3 mvx:rounded-xl mvx:flex mvx:items-center mvx:gap-2;
+      background: var(--mvx-red-600);
+
+      @media (min-width: 480px) {
+        @apply mvx:min-h-16;
+      }
 
       .ledger-confirm-footer-icon {
-        width: 24px;
-        height: 24px;
-        flex: 1;
-        min-width: 24px;
-        padding: calc(4px / 2);
-        fill: #fff;
+        @apply mvx:w-6 mvx:h-6 mvx:flex-1 mvx:min-w-6 mvx:p-0.5;
+        fill: var(--mvx-white);
       }
 
       .ledger-confirm-footer-description {
-        font-size: 12px;
+        @apply mvx:text-xs;
+        color: var(--mvx-white);
       }
 
       .ledger-confirm-footer-button {
-        padding: 12px;
-        white-space: nowrap;
-        display: flex;
-        align-items: center;
-        font-weight: 700;
-        font-size: 12px;
-        background: #fff;
-        color: #0e0e0e;
-        border-radius: 8px;
-        transition: all 200ms ease;
-        line-height: 1;
+        @apply mvx:px-3 mvx:py-3 mvx:whitespace-nowrap mvx:flex mvx:items-center mvx:font-bold mvx:text-xs;
+        @apply mvx:rounded-lg mvx:transition-all mvx:leading-none mvx:duration-200 mvx:ease-in-out;
+        color: var(--mvx-neutral-925);
+        background: var(--mvx-white);
 
         &:hover {
-          opacity: 75%;
+          @apply mvx:opacity-75;
         }
       }
     }

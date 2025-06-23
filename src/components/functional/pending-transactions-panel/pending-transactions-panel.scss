@@ -1,0 +1,31 @@
+.modal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+.close-button {
+  cursor: pointer;
+  color: var(--mvx-text-color-primary);
+  background-color: var(--mvx-bg-color-primary);
+  border-color: var(--mvx-bg-color-primary);
+  border-radius: 0.25rem;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid transparent;
+}
+
+.pending-transactions-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px;
+}
+
+.pending-transactions-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding: 16px;
+}

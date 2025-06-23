@@ -57,13 +57,14 @@ export class LedgerAddresses {
     const isIndexInTheThousands = lastIndexOfPage >= 1000;
 
     const ledgerAddressesClasses: Record<string, string> = {
+      pagination: 'mvx:relative mvx:z-1',
       buttonTooltip: 'mvx:absolute mvx:top-0 mvx:h-12 mvx:left-0 mvx:right-0',
       preloaderItem:
         'mvx:h-16! mvx:border mvx:border-solid mvx:border-transparent mvx:rounded-lg! mvx:flex mvx:items-center mvx:w-full! mvx:p-4',
-      preloaderItemCheckbox: 'mvx:h-4! mvx:mr-2 mvx:min-w-4! mvx:w-4! mvx:rounded-full! mvx:bg-neutral-700!',
-      preloaderItemAddress: 'mvx:w-40! mvx:h-4! mvx:bg-neutral-700! mvx:rounded-lg! mvx:mr-auto',
-      preloaderItemBalance: 'mvx:w-24! mvx:h-4! mvx:bg-neutral-700! mvx:rounded-lg! mvx:ml-2',
-      preloaderItemIndex: classNames('mvx:mr-2 mvx:h-4! mvx:bg-neutral-700! mvx:rounded-lg!', {
+      preloaderItemCheckbox: 'mvx:h-4! mvx:mr-2 mvx:min-w-4! mvx:w-4! mvx:rounded-full! mvx:bg-preloader!',
+      preloaderItemAddress: 'mvx:w-40! mvx:h-4! mvx:bg-preloader! mvx:rounded-lg! mvx:mr-auto',
+      preloaderItemBalance: 'mvx:w-24! mvx:h-4! mvx:bg-preloader! mvx:rounded-lg! mvx:ml-2',
+      preloaderItemIndex: classNames('mvx:mr-2 mvx:h-4! mvx:bg-preloader! mvx:rounded-lg!', {
         'mvx:w-9!': isSingleDigitIndex,
         'mvx:w-10!': isIndexBelowOneHundred,
         'mvx:w-13!': isIndexInTheHundreds,
@@ -77,7 +78,9 @@ export class LedgerAddresses {
 
     return (
       <div class="ledger-addresses">
-        <div class="ledger-addresses-label">Choose the wallet you want to access</div>
+        <div class="ledger-addresses-label-wrapper">
+          <div class="ledger-addresses-label">Choose the wallet you want to access</div>
+        </div>
 
         <div class="ledger-addresses-wrapper">
           <div class={{ 'ledger-addresses-preloader': true, 'visible': isPageChanging }}>
@@ -138,19 +141,22 @@ export class LedgerAddresses {
                   #{this.processLedgerAddressIndex(accountDerivation)}
                 </div>
 
-                <mvx-trim-text text={accountDerivation.address} class="ledger-addresses-list-item-address" />
+                <mvx-trim text={accountDerivation.address} class="ledger-addresses-list-item-address" />
                 <div class="ledger-addresses-list-item-balance">{accountDerivation.usdValue}</div>
               </div>
             ))}
           </div>
         </div>
 
-        <mvx-pagination
-          totalPages={totalPages}
-          isDisabled={isPageChanging}
-          onPageChange={(event: CustomEvent) => this.handlePageChange(event)}
-          currentPage={this.accountScreenData.startIndex / this.accountScreenData.addressesPerPage + 1}
-        />
+        <div class="ledger-addresses-pagination">
+          <mvx-pagination
+            totalPages={totalPages}
+            isDisabled={isPageChanging}
+            class={ledgerAddressesClasses.pagination}
+            onPageChange={(event: CustomEvent) => this.handlePageChange(event)}
+            currentPage={this.accountScreenData.startIndex / this.accountScreenData.addressesPerPage + 1}
+          />
+        </div>
 
         <div class="ledger-addresses-button-wrapper">
           {isAccessWalletDisabled && (

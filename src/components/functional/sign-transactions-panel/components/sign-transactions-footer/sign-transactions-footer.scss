@@ -1,113 +1,74 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  @apply mvx:flex mvx:flex-col mvx:flex-1;
 
   .sign-transactions-footer {
-    font-family: 'Satoshi', sans-serif;
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    padding-top: 20px;
-    align-items: center;
-    gap: 20px;
-    text-align: center;
+    @apply mvx:mt-auto mvx:flex mvx:flex-col mvx:items-center mvx:pt-5 mvx:gap-5 mvx:text-center;
 
     .sign-transactions-footer-buttons {
-      display: flex;
-      align-items: center;
-      width: 100%;
-      gap: 12px;
+      @apply mvx:flex mvx:items-center mvx:w-full mvx:gap-3;
 
       .sign-transactions-footer-button-wrapper {
-        position: relative;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
+        @apply mvx:relative mvx:flex mvx:flex-col mvx:flex-1;
 
         &.cancel {
-          width: 128px;
-          max-width: 128px;
+          @apply mvx:w-32 mvx:max-w-32;
         }
 
         .sign-transactions-footer-button-tooltip-wrapper {
-          position: absolute;
-          left: 0;
-          right: 0;
-          top: 0;
-          bottom: 0;
+          @apply mvx:absolute mvx:inset-0;
         }
 
         .sign-transactions-footer-button {
-          border-radius: 12px;
-          padding: 8px 16px;
-          display: flex;
-          justify-content: center;
-          max-height: 40px;
-          min-height: 40px;
-          align-items: center;
-          line-height: 1;
-          font-size: 16px;
-          font-weight: 700;
-          transition: all 200ms ease;
-          cursor: pointer;
-          gap: 8px;
+          @apply mvx:rounded-xl mvx:px-4 mvx:py-2 mvx:flex mvx:justify-center mvx:items-center mvx:max-h-10 mvx:min-h-10;
+          @apply mvx:leading-none mvx:text-base mvx:font-bold mvx:transition-all mvx:duration-200 mvx:cursor-pointer;
+          @apply mvx:ease-in-out mvx:gap-2 mvx:w-full;
           border: 1px solid transparent;
-          width: 100%;
 
           &.cancel {
-            position: relative;
-            color: #e8e8e8;
+            @apply mvx:relative;
+            color: var(--mvx-button-text-secondary);
 
-            &:before {
-              pointer-events: none;
+            &:after {
+              @apply mvx:absolute mvx:inset-0 mvx:rounded-xl mvx:opacity-40 mvx:transition-all mvx:duration-200 mvx:ease-in-out;
+              background-color: var(--mvx-button-bg-secondary);
               content: '';
-              opacity: 40%;
-              position: absolute;
-              left: -1px;
-              transition: all 200ms ease;
-              top: -1px;
-              right: -1px;
-              bottom: -1px;
-              background-color: #353535;
-              border-radius: 12px;
-              z-index: -1;
             }
 
             &:hover {
-              color: #000000;
+              color: var(--mvx-button-text-primary);
 
-              &:before {
-                opacity: 1;
-                background-color: #23f7dd;
+              &:after {
+                @apply mvx:opacity-100;
+                background-color: var(--mvx-button-bg-primary);
               }
             }
           }
 
           &.highlighted {
-            background-color: #23f7dd;
-            flex: 1;
-            color: #000000;
+            @apply mvx:flex-1;
+            color: var(--mvx-button-text-primary);
+            background-color: var(--mvx-button-bg-primary);
 
             &:hover {
-              opacity: 0.75;
+              @apply mvx:opacity-75;
             }
           }
 
           &.disabled {
-            background-color: transparent;
-            border-color: #a09a93;
-            cursor: default;
-            color: #a09a93;
-            pointer-events: none;
+            @apply mvx:bg-transparent mvx:cursor-default mvx:pointer-events-none;
+            border-color: var(--mvx-text-color-secondary);
+            color: var(--mvx-text-color-secondary);
+          }
+
+          .sign-transactions-footer-button-label {
+            @apply mvx:relative mvx:z-1;
           }
 
           .sign-transactions-footer-button-icon {
-            display: flex;
-            transition: all 200ms ease;
+            @apply mvx:flex mvx:transition-all mvx:duration-200 mvx:ease-in-out;
 
             &.lighter {
-              fill: #a09a93;
+              fill: var(--mvx-text-color-secondary);
             }
           }
         }
@@ -115,70 +76,41 @@
     }
 
     .sign-transactions-footer-identity {
-      max-width: 256px;
-      display: flex;
-      align-items: center;
-      font-size: 16px;
-      gap: 8px;
+      @apply mvx:max-w-64 mvx:flex mvx:items-center mvx:text-base mvx:gap-2;
 
       .sign-transactions-footer-identity-label {
-        color: #b6b3af;
-        white-space: nowrap;
+        @apply mvx:whitespace-nowrap;
+        color: var(--mvx-text-color-secondary);
       }
 
       .sign-transactions-footer-identity-address {
-        color: #ffffff;
-        position: relative;
-        min-width: 0;
-        max-width: none;
+        @apply mvx:relative mvx:min-w-0 mvx:max-w-none;
         top: 0.25px;
+        color: var(--mvx-text-color-primary);
 
         .trim-wrapper {
-          align-items: flex-end;
-          line-height: 1;
+          @apply mvx:items-end mvx:leading-none;
         }
       }
 
       .sign-transactions-footer-identity-username {
-        display: flex;
-        align-items: center;
-        font-size: 16px;
-        color: #fff;
+        @apply mvx:flex mvx:items-center mvx:text-base;
+        color: var(--mvx-text-color-primary);
 
         .sign-transactions-footer-identity-username-prefix {
-          color: #23f7dd;
+          color: var(--mvx-text-accent-color);
         }
       }
 
       .sign-transactions-footer-identity-copy {
-        display: flex;
+        @apply mvx:flex;
 
         .sign-transactions-footer-identity-copy-icon {
-          height: 16px;
-          display: flex;
-          width: 16px;
-          color: #b6b3af;
-          justify-content: center;
-          transition: all 200ms ease;
+          @apply mvx:h-4 mvx:w-4 mvx:flex mvx:justify-center mvx:transition-all mvx:duration-200 mvx:ease-in-out;
+          color: var(--mvx-link-color);
 
           &:hover {
-            opacity: 80%;
-          }
-        }
-      }
-
-      .sign-transactions-footer-identity-explorer {
-        display: flex;
-
-        .sign-transactions-footer-identity-explorer-icon {
-          height: 16px;
-          display: flex;
-          width: 16px;
-          color: #b6b3af;
-          transition: all 200ms ease;
-
-          &:hover {
-            opacity: 80%;
+            @apply mvx:opacity-80;
           }
         }
       }

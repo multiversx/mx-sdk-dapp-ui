@@ -1,13 +1,8 @@
 .tooltip {
-  display: flex;
-  font-family: 'Satoshi', sans-serif;
-  position: relative;
+  @apply mvx:flex mvx:relative;
 
   .tooltip-content-wrapper {
-    left: 50%;
-    transform: translateX(-50%);
-    position: absolute;
-    z-index: 1;
+    @apply mvx:left-1/2 mvx:absolute mvx:z-1 mvx:transform mvx:-translate-x-1/2;
 
     &.top {
       bottom: calc(100% + 16px);
@@ -18,39 +13,27 @@
     }
 
     .tooltip-content {
-      flex-direction: row;
-      gap: 8px;
-      cursor: default;
-      background: #000000;
-      border-radius: 12px;
-      border: 1px solid #262626;
-      padding: 8px;
-      font-size: 12px;
-      color: #737373;
-      white-space: nowrap;
+      @apply mvx:flex-row mvx:cursor-default mvx:p-2 mvx:whitespace-nowrap mvx:text-xs mvx:rounded-xl;
+      background: var(--mvx-bg-accent-color);
+      border: 1px solid var(--mvx-neutral-800);
+      color: var(--mvx-text-color-primary);
 
       &:after {
-        width: 8px;
-        height: 8px;
-        border: 1px solid #262626;
-        background-color: #000000;
-        position: absolute;
+        @apply mvx:left-1/2 mvx:origin-center mvx:w-2 mvx:h-2 mvx:absolute;
+        border: 1px solid var(--mvx-neutral-800);
+        background-color: var(--mvx-bg-accent-color);
         content: '';
-        left: 50%;
-        transform-origin: center;
         transform: translateX(calc(50% - 8px)) rotateZ(calc(45deg * -1));
       }
 
       &.top:after {
+        @apply mvx:border-t-0 mvx:border-r-0;
         bottom: calc(4px * -1);
-        border-top: none;
-        border-right: none;
       }
 
       &.bottom:after {
+        @apply mvx:border-b-0 mvx:border-l-0;
         top: calc(4px * -1);
-        border-bottom: none;
-        border-left: none;
       }
     }
   }

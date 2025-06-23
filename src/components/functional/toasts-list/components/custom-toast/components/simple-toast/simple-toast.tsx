@@ -9,7 +9,7 @@ import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
 
 @Component({
   tag: 'mvx-simple-toast',
-  styleUrl: 'simple-toast.css',
+  styleUrl: 'simple-toast.scss',
 })
 export class SimpleToast {
   @Prop() toast: ISimpleToast;
@@ -59,10 +59,17 @@ export class SimpleToast {
                   {title}
                 </h5>
               )}
-              <button onClick={this.handleDeleteToast.bind(this)} type="button" class="icon-close" innerHTML={getIconHtmlFromIconDefinition(faTimes)}></button>
+              <button
+                onClick={this.handleDeleteToast.bind(this)}
+                type="button"
+                class="icon-close"
+                innerHTML={getIconHtmlFromIconDefinition(faTimes)}
+              ></button>
             </div>
             {subtitle && <div class="subtitle">{subtitle}</div>}
-            {message && <div class={classNames('content-message', { 'no-margin': !title && !subtitle })}>{message}</div>}
+            {message && (
+              <div class={classNames('content-message', { 'no-margin': !title && !subtitle })}>{message}</div>
+            )}
           </div>
         </div>
       </div>

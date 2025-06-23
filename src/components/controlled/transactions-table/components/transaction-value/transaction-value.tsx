@@ -6,7 +6,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
   tag: 'mvx-transaction-value',
-  styleUrl: 'transaction-value.css',
+  styleUrl: 'transaction-value.scss',
 })
 export class TransactionValue {
   @Prop() class?: string;
@@ -26,9 +26,7 @@ export class TransactionValue {
 
         {this.value.showFormattedAmount && (
           <mvx-format-amount
-            class={classNames('mr-1', {
-              'text-truncate': this.value.svgUrl,
-            })}
+            class={classNames('mr-1', { 'text-truncate': this.value.svgUrl })}
             dataTestId={DataTestIdsEnum.transactionActionFormattedAmount}
             isValid={true}
             label={this.value.egldLabel}
@@ -45,10 +43,11 @@ export class TransactionValue {
               'text-truncate': !this.value.svgUrl,
             })}
           >
-            <div class="transaction-value-content" slot="content">
+            <div class="transaction-value-content">
               {this.value.svgUrl && (
                 <img src={this.value.svgUrl} alt={this.value.name ?? ''} class="transaction-value-img" />
               )}
+
               {this.value.linkText && (
                 <span
                   class={classNames('transaction-value-link-text', {
@@ -61,6 +60,7 @@ export class TransactionValue {
             </div>
           </mvx-explorer-link>
         )}
+
         {this.value.titleText && (
           <mvx-fa-icon icon={faLayerGroup} class="transaction-value-icon" title={this.value.titleText} />
         )}

@@ -4,8 +4,7 @@ import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
 import type { IOverviewProps, ISignTransactionsPanelData } from './sign-transactions-panel.types';
-import { TransactionTabsEnum } from './sign-transactions-panel.types';
-import { SignEventsEnum } from './sign-transactions-panel.types';
+import { SignEventsEnum, TransactionTabsEnum } from './sign-transactions-panel.types';
 import state, { resetState } from './signTransactionsPanelStore';
 
 @Component({
@@ -47,7 +46,7 @@ export class SignTransactionsPanel {
       this.eventBus.publish(SignEventsEnum.BACK);
     };
 
-    state.onSetPpu = (ppu: number) => {
+    state.setPpuOption = (ppu: number) => {
       this.eventBus.publish(SignEventsEnum.SET_PPU, ppu);
     };
   }

@@ -5,7 +5,7 @@ import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
 
 @Component({
   tag: 'mvx-fa-icon',
-  styleUrl: 'fa-icon.css',
+  styleUrl: 'fa-icon.scss',
 })
 export class FaIcon {
   @Prop() class?: string = 'fa-icon';
@@ -17,7 +17,8 @@ export class FaIcon {
       return null;
     }
 
-    const iconHtml = typeof this.icon === 'string' ? getIconHtmlFromIconName(this.icon) : getIconHtmlFromIconDefinition(this.icon);
+    const iconHtml =
+      typeof this.icon === 'string' ? getIconHtmlFromIconName(this.icon) : getIconHtmlFromIconDefinition(this.icon);
 
     return <i class={this.class} innerHTML={iconHtml} title={this.description}></i>;
   }

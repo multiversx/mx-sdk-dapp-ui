@@ -1,6 +1,6 @@
 {
   "name": "@multiversx/sdk-dapp-ui",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A library to hold UI components for a dApp on the MultiversX blockchain",
   "author": "MultiversX",
   "license": "MIT",
@@ -28,6 +28,10 @@
     "./react": {
       "import": "./dist/react/components.ts",
       "require": "./dist/react/components.ts"
+    },
+    "./react/constants": {
+      "import": "./dist/react/constants.ts",
+      "require": "./dist/react/constants.ts"
     }
   },
   "repository": {

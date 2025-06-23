@@ -64,7 +64,12 @@ export class Tooltip {
       >
         {this.isTooltipVisible && (
           <div class={{ 'tooltip-content-wrapper': true, [this.position]: true }}>
-            <div class={{ 'tooltip-content': true, [this.position]: true }} tabIndex={-1} onFocusout={this.handleFocusOut} onClick={(event: MouseEvent) => event.stopPropagation()}>
+            <div
+              class={{ 'tooltip-content': true, [this.position]: true }}
+              tabIndex={-1}
+              onFocusout={this.handleFocusOut}
+              onClick={(event: MouseEvent) => event.stopPropagation()}
+            >
               <slot />
             </div>
           </div>

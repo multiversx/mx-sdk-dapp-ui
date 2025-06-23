@@ -1,0 +1,16 @@
+:host {
+  @apply mvx:flex;
+
+  .default-transaction-icon-small {
+    @apply mvx:h-4 mvx:w-4;
+    fill: none;
+
+    rect {
+      fill: var(--mvx-icon-bg);
+    }
+
+    path {
+      fill: var(--mvx-text-color-primary);
+    }
+  }
+}

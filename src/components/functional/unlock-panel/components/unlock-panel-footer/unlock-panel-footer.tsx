@@ -1,9 +1,9 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { processImgSrc } from 'utils/processImgSrc';
 
 const unlockPanelClasses: Record<string, string> = {
-  footerIcon: 'mvx:w-4! mvx:h-auto!',
+  footerIcon: 'mvx:w-4! mvx:h-auto! mvx:hidden mvx:xs:flex mvx:ml-auto mvx:mt-auto',
 };
 
 @Component({
@@ -12,16 +12,34 @@ const unlockPanelClasses: Record<string, string> = {
   shadow: true,
 })
 export class UnlockPanel {
+  @Prop() walletAddress: string;
+
+  handleWalletClick = (event: MouseEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    window.open(this.walletAddress, '_blank');
+  };
+
   render() {
+    const processedWalletAddress = String(this.walletAddress).replace('https://', '');
+
     return (
-      <div class="unlock-panel-footer">
+      <div class="unlock-panel-footer" onClick={this.handleWalletClick}>
         <img src={processImgSrc('unlock-panel-wallet.png')} class="unlock-panel-footer-image" />
 
         <div class="unlock-panel-footer-wrapper">
           <div class="unlock-panel-footer-title">Don't have a wallet?</div>
 
-          <div class="unlock-panel-footer-subtitle">
+          <div class="unlock-panel-footer-subtitle desktop">
             Take full control of <br /> your assets.
+          </div>
+
+          <div class="unlock-panel-footer-subtitle mobile">
+            <span>See which one to get on </span>
+
+            <a target="_blank" rel="noreferrer" class="unlock-panel-footer-subtitle-link" href={this.walletAddress}>
+              {processedWalletAddress}
+            </a>
           </div>
 
           <mvx-arrow-up-right-icon

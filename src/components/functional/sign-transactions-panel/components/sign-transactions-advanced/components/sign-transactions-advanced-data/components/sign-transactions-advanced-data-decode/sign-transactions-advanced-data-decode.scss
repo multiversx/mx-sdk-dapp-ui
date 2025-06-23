@@ -1,0 +1,19 @@
+.sign-transactions-advanced-data-decode {
+  @apply mvx:relative mvx:flex mvx:justify-center mvx:items-end mvx:gap-1 mvx:px-3 mvx:pt-4 mvx:-mt-4 mvx:mb-2;
+  @apply mvx:w-22 mvx:cursor-pointer mvx:capitalize mvx:leading-none;
+
+  &:before {
+    @apply mvx:absolute mvx:left-0 mvx:right-0 mvx:top-2.5 mvx:h-6 mvx:opacity-90 mvx:rounded-3xl;
+    background-color: var(--mvx-select-bg);
+    content: '';
+  }
+
+  .sign-transactions-advanced-data-decode-label {
+    @apply mvx:relative mvx:text-xs mvx:capitalize mvx:m-auto mvx:z-1;
+    color: var(--mvx-select-color);
+  }
+
+  .sign-transactions-advanced-data-decode-icon {
+    @apply mvx:ml-auto;
+  }
+}

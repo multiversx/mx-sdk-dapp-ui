@@ -1,5 +1,3 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:overflow-hidden;
 }

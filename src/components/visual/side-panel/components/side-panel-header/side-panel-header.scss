@@ -1,37 +1,39 @@
 .side-panel-heading {
-  display: flex;
-  align-items: center;
-  line-height: 1;
-  font-size: 24px;
-  gap: 12px;
-  margin-bottom: 24px;
+  @apply mvx:flex mvx:items-center mvx:leading-none mvx:gap-3 mvx:z-1 mvx:relative mvx:px-0 mvx:py-2 mvx:text-2xl;
+  box-shadow: 0px 8px 12px 12px var(--mvx-bg-color-primary);
+
+  .side-panel-heading-left {
+    @apply mvx:mr-auto;
+  }
+
+  .side-panel-heading-right {
+    @apply mvx:ml-auto;
+  }
 
   .side-panel-heading-left,
   .side-panel-heading-right {
-    width: 16px;
-    cursor: pointer;
-    opacity: 0;
-    pointer-events: none;
+    @apply mvx:hidden mvx:pointer-events-none mvx:cursor-pointer mvx:opacity-0;
+    color: var(--mvx-text-color-secondary);
+
+    @media (min-width: 480px) {
+      @apply mvx:w-4 mvx:flex;
+    }
 
     &:hover {
-      opacity: 0.75;
+      @apply mvx:opacity-75;
     }
 
     &.visible {
-      opacity: 1;
-      transition: all 200ms ease;
-      pointer-events: all;
+      @apply mvx:transition-all mvx:opacity-100 mvx:duration-200 mvx:ease-in-out mvx:pointer-events-auto mvx:flex;
 
       &:hover {
-        opacity: 0.75;
+        @apply mvx:opacity-75;
       }
     }
   }
 
   .side-panel-heading-title {
-    color: #e5e5e5;
-    font-weight: 500;
-    font-family: 'Satoshi', sans-serif;
-    margin: auto;
+    @apply mvx:font-medium;
+    color: var(--mvx-text-color-primary);
   }
 }

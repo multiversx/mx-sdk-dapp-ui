@@ -24,9 +24,10 @@ const getProviderIntroText = (providerType?: IProviderBase['type']) => {
 
 @Component({
   tag: 'mvx-pending-transactions-panel',
-  styleUrl: 'pending-transactions-panel.css',
+  styleUrl: 'pending-transactions-panel.scss',
+  shadow: true,
 })
-export class PendingTransactionstPanel {
+export class PendingTransactionsPanel {
   private eventBus: IEventBus = new EventBus();
   private unsubscribeFunctions: (() => void)[] = [];
 
@@ -70,12 +71,7 @@ export class PendingTransactionstPanel {
 
   render() {
     return (
-      <mvx-side-panel
-        isOpen={this.isOpen}
-        panelTitle={this?.provider?.name}
-        panelClassName="pending-transactions-panel"
-        showHeader={false}
-      >
+      <mvx-side-panel isOpen={this.isOpen} panelTitle={this?.provider?.name} showHeader={false}>
         <mvx-provider-idle-screen
           provider={this.provider}
           onClose={this.handleClose}

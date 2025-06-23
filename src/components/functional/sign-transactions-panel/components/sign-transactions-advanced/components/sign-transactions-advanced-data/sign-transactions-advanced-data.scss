@@ -1,0 +1,103 @@
+:host {
+  @apply mvx:flex mvx:flex-col mvx:w-full;
+
+  .sign-transactions-advanced-data {
+    @apply mvx:flex mvx:flex-col mvx:gap-2 mvx:w-full mvx:p-3;
+
+    .sign-transactions-advanced-data-top {
+      @apply mvx:flex mvx:justify-between mvx:items-center mvx:px-2;
+
+      .sign-transactions-advanced-data-label {
+        @apply mvx:text-base mvx:leading-none mvx:text-right;
+        color: var(--mvx-text-color-secondary);
+      }
+
+      .sign-transactions-advanced-data-decode-options {
+        @apply mvx:text-base mvx:-m-1 mvx:gap-1 mvx:flex mvx:flex-col;
+
+        .sign-transactions-advanced-data-decode-option {
+          @apply mvx:capitalize mvx:text-center mvx:leading-none mvx:cursor-pointer mvx:transition-all mvx:duration-200;
+          @apply mvx:ease-in-out mvx:px-3 mvx:py-2 mvx:text-xs mvx:rounded-lg;
+
+          &:hover,
+          &:focus,
+          &.active {
+            background-color: var(--mvx-select-option-bg);
+            color: var(--mvx-text-accent-color);
+
+            @media (min-width: 768px) {
+              background-color: var(--mvx-select-option-bg-mobile);
+              color: var(--mvx-select-option-color);
+            }
+          }
+        }
+      }
+    }
+
+    .sign-transactions-advanced-data-bottom {
+      @apply mvx:flex-1 mvx:relative;
+
+      .sign-transactions-advanced-data-wrapper {
+        @apply mvx:h-30 mvx:p-2 mvx:rounded-lg mvx:overflow-auto mvx:flex mvx:flex-col mvx:break-words mvx:text-base;
+        border: 1px solid var(--mvx-neutral-800);
+
+        &::-webkit-scrollbar,
+        &::-webkit-scrollbar-track,
+        &::-webkit-scrollbar-track:hover,
+        &::-webkit-scrollbar-corner {
+          @apply mvx:bg-transparent;
+        }
+
+        &::-webkit-scrollbar {
+          @apply mvx:w-4;
+        }
+
+        &::-webkit-scrollbar-track,
+        &::-webkit-scrollbar-track:hover {
+          @apply mvx:bg-transparent mvx:bg-clip-padding;
+          border: 4px solid transparent;
+          border-radius: 9999px;
+        }
+
+        &::-webkit-scrollbar-thumb,
+        &::-webkit-scrollbar-thumb:hover {
+          @apply mvx:bg-clip-padding;
+          border: 4px solid transparent;
+          background-color: var(--mvx-neutral-700);
+          border-radius: 9999px;
+        }
+
+        &::-webkit-scrollbar-button {
+          @apply mvx:hidden;
+        }
+
+        &::-webkit-resizer {
+          @apply mvx:bg-transparent;
+        }
+
+        &:before {
+          @apply mvx:absolute mvx:pointer-events-none mvx:right-4 mvx:border-l-0 mvx:rounded-lg mvx:border-r-0;
+          left: 1px;
+          top: 1px;
+          bottom: 1px;
+          border: calc((24px + 4px) / 4) solid transparent;
+          border-bottom-width: calc(20px / 2);
+          border-top-width: calc(20px / 2);
+          content: '';
+        }
+
+        .sign-transactions-advanced-data-text {
+          color: var(--mvx-text-color-secondary);
+        }
+
+        .sign-transactions-advanced-data-highlight {
+          color: var(--mvx-text-color-primary);
+
+          &.bolded {
+            @apply mvx:font-medium;
+          }
+        }
+      }
+    }
+  }
+}

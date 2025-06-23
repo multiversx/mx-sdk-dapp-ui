@@ -1,0 +1,7 @@
+:host {
+  @apply mvx:flex;
+
+  .single-angle-left-icon {
+    @apply mvx:flex mvx:h-4 mvx:w-2.5;
+  }
+}

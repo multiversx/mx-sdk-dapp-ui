@@ -1,95 +1,66 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  flex: 1;
+  @apply mvx:flex mvx:flex-col mvx:overflow-hidden mvx:flex-1;
 
   .ledger-intro {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Satoshi', sans-serif;
+    @apply mvx:flex-1 mvx:flex mvx:flex-col mvx:py-6 mvx:overflow-auto mvx:overflow-x-hidden;
+
+    &::-webkit-scrollbar {
+      @apply mvx:hidden;
+    }
 
     .ledger-intro-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-      text-align: center;
-      font-size: 16px;
-      margin-bottom: auto;
+      @apply mvx:flex mvx:flex-col mvx:items-center mvx:gap-6 mvx:text-center mvx:text-base mvx:mb-auto;
 
       .ledger-intro-icon {
-        margin-left: auto;
+        @apply mvx:mx-auto mvx:self-start mvx:w-auto! mvx:h-auto!;
       }
 
       .ledger-intro-description {
-        line-height: 1.5;
-        font-size: 16px;
-        color: #a09a93;
+        @apply mvx:text-base mvx:leading-6;
+        color: var(--mvx-text-color-secondary);
       }
 
       .ledger-intro-button {
-        margin-top: 20px;
-        width: 192px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        height: 48px;
-        line-height: 1;
-        color: #000000;
-        border-radius: 12px;
-        background-color: #23f7dd;
-        cursor: pointer;
-        border: 1px solid #23f7dd;
-        transition: all 200ms ease;
-        gap: 8px;
+        @apply mvx:w-48 mvx:flex mvx:items-center mvx:justify-center mvx:font-bold mvx:h-12 mvx:leading-none;
+        @apply mvx:rounded-lg mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:gap-2 mvx:ease-in-out;
+        color: var(--mvx-button-text-primary);
+        background-color: var(--mvx-button-bg-primary);
+        border: 1px solid var(--mvx-button-bg-primary);
+
+        @media (min-width: 480px) {
+          @apply mvx:mt-5;
+        }
 
         &:hover {
-          opacity: 0.75;
+          @apply mvx:opacity-75;
         }
 
         &.loading {
-          pointer-events: none;
-          background-color: transparent;
-          border-color: #a09a93;
-          cursor: default;
-          color: #a09a93;
+          @apply mvx:pointer-events-none mvx:bg-transparent mvx:cursor-default;
+          border-color: var(--mvx-text-color-secondary);
+          color: var(--mvx-text-color-secondary);
         }
       }
 
       .ledger-intro-error {
-        font-size: 16px;
-        color: #dc2626;
-        max-width: 240px;
-        margin-bottom: 24px;
-        line-height: 1.5;
+        @apply mvx:text-base mvx:max-w-60 mvx:mb-6 mvx:leading-6;
+        color: var(--mvx-error-color);
       }
     }
 
     .ledger-intro-issues {
-      font-size: 16px;
-      margin: 40px auto 0;
-      text-align: center;
-      color: #a09a93;
-      position: relative;
-      padding-bottom: 4px;
+      @apply mvx:text-base mvx:mt-10 mvx:mx-auto mvx:text-center mvx:relative mvx:pb-1;
+      color: var(--mvx-text-color-secondary);
 
       &:after {
-        bottom: 0;
-        left: 8px;
-        right: 8px;
-        transition: all 200ms ease;
-        opacity: 0;
+        @apply mvx:absolute mvx:bottom-0 mvx:left-8 mvx:right-8 mvx:h-px mvx:transition-all mvx:duration-200;
+        @apply mvx:opacity-0 mvx:ease-in-out;
+        background-color: var(--mvx-text-color-secondary);
         content: '';
-        background-color: #a09a93;
-        position: absolute;
-        height: 1px;
       }
 
       &:hover:after {
-        opacity: 0.5;
+        @apply mvx:opacity-50;
       }
     }
   }

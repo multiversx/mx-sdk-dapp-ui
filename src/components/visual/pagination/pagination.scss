@@ -1,172 +1,127 @@
 .pagination {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  user-select: none;
-  line-height: 1;
-  justify-content: center;
-  font-size: 16px;
-  max-width: 480px;
+  @apply mvx:flex mvx:items-center mvx:gap-2 mvx:leading-none mvx:select-none mvx:justify-center mvx:text-base mvx:max-w-120;
 
   .pagination-angle {
-    cursor: pointer;
-    transition: all 200ms ease;
-    display: none;
+    @apply mvx:hidden mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:cursor-pointer;
+    color: var(--mvx-text-color-primary);
 
     @media (min-width: 576px) {
-      display: flex;
+      @apply mvx:flex;
     }
 
     &.disabled,
     &.inactive {
-      pointer-events: none;
+      @apply mvx:pointer-events-none;
+      color: var(--mvx-text-color-secondary);
 
       .pagination-angle-icon {
-        fill: #737373;
+        fill: var(--mvx-text-color-secondary);
       }
     }
 
     &.disabled {
-      opacity: 0.5;
+      @apply mvx:opacity-50;
     }
 
     &:hover {
-      color: #23f7dd;
+      color: var(--mvx-text-accent-color);
 
       .pagination-angle-icon {
-        fill: #23f7dd;
+        fill: var(--mvx-text-accent-color);
       }
     }
 
     .pagination-angle-icon {
-      fill: #e5e5e5;
-      font-size: 12px;
+      @apply mvx:text-xs;
+      fill: var(--mvx-text-color-primary);
 
       @media (min-width: 375px) {
-        font-size: 16px;
+        @apply mvx:text-base mvx:leading-none;
       }
     }
   }
 
   .pagination-edge-button {
-    display: none;
-    gap: 8px;
-    align-items: center;
-    transition: all 200ms ease;
-    cursor: pointer;
+    @apply mvx:hidden mvx:gap-2 mvx:items-center mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:ease-in-out;
+    color: var(--mvx-text-color-primary);
 
     @media (min-width: 576px) {
-      padding: 0;
-      margin: 0 4px;
-      display: flex;
+      @apply mvx:p-0 mvx:my-0 mvx:mx-1 mvx:flex;
     }
 
     &.inactive,
     &.disabled {
-      pointer-events: none;
+      @apply mvx:pointer-events-none;
+      color: var(--mvx-text-color-secondary);
 
       .pagination-edge-button-icon {
-        fill: #737373;
+        fill: var(--mvx-text-color-secondary);
       }
     }
 
     &.disabled {
-      opacity: 0.5;
+      @apply mvx:opacity-50;
     }
 
     &:hover {
-      color: #23f7dd;
+      color: var(--mvx-text-accent-color);
 
       .pagination-edge-button-icon {
-        fill: #23f7dd;
+        fill: var(--mvx-text-accent-color);
       }
     }
 
     .pagination-edge-button-icon {
-      transition: all 200ms ease;
-      fill: #e5e5e5;
-      font-size: 12px;
+      @apply mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:text-xs;
+      fill: var(--mvx-text-color-primary);
 
       @media (min-width: 375px) {
-        font-size: 16px;
+        @apply mvx:text-base;
       }
     }
   }
 
   .pagination-items {
-    display: flex;
-    gap: 8px;
-    margin: 0 4px;
-    align-items: center;
+    @apply mvx:flex mvx:gap-2 mvx:my-0 mvx:mx-1 mvx:items-center;
 
     .pagination-item-wrapper {
-      cursor: pointer;
-      text-align: center;
-      height: calc(24px + 4px);
-      width: calc(24px + 4px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 200ms ease;
+      @apply mvx:cursor-pointer mvx:text-center mvx:h-7 mvx:w-7 mvx:flex mvx:items-center mvx:justify-center;
+      @apply mvx:transition-all mvx:duration-200 mvx:ease-in-out;
 
       @media (min-width: 768px) {
-        height: 32px;
-        width: 32px;
+        @apply mvx:w-8 mvx:h-8;
       }
 
       &.disabled {
-        opacity: 0.5;
-        pointer-events: none;
-        cursor: default;
+        @apply mvx:pointer-events-none mvx:cursor-default mvx:opacity-50;
       }
 
       .pagination-item {
-        color: #e5e5e5;
-        transition: color 0.2s ease-out;
-        position: relative;
-        border-radius: 4px;
-        text-align: center;
-        padding: 8px 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-        height: calc(24px + 4px);
-        width: calc(24px + 4px);
+        @apply mvx:relative mvx:flex mvx:justify-center mvx:items-center mvx:py-2 mvx:px-0 mvx:text-center mvx:w-7 mvx:h-7;
+        @apply mvx:transition-colors mvx:duration-200 mvx:ease-in-out mvx:rounded mvx:text-xs;
+        color: var(--mvx-text-color-primary);
 
         @media (min-width: 768px) {
-          font-size: 16px;
-          height: 32px;
-          width: 32px;
+          @apply mvx:text-base mvx:h-8 mvx:w-8;
         }
 
         &:before {
+          @apply mvx:absolute mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:pointer-events-none mvx:transform mvx:w-7;
+          @apply mvx:left-1/2 mvx:top-1/2 mvx:h-7 mvx:z-1 mvx:rounded-full mvx:opacity-20 mvx:-translate-y-1/2 mvx:-translate-x-1/2;
+          background-color: var(--mvx-pagination-item-bg);
           content: '';
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          transform: translate(-50%, -50%);
-          transition: all 200ms ease;
-          background-color: #353535;
-          border-radius: 50%;
-          height: calc(24px + 4px);
-          width: calc(24px + 4px);
-          pointer-events: none;
-          opacity: 30%;
-          z-index: 1;
 
           @media (min-width: 768px) {
-            height: 32px;
-            width: 32px;
+            @apply mvx:h-8 mvx:w-8;
           }
         }
 
         &:hover {
-          color: #23f7dd;
+          color: var(--mvx-text-accent-color);
 
           &:before {
-            opacity: 100%;
-            background-color: #143736;
+            @apply mvx:opacity-100;
+            background-color: var(--mvx-pagination-item-bg-hover);
           }
         }
 
@@ -179,17 +134,16 @@
         }
 
         &.active {
-          color: #23f7dd;
+          color: var(--mvx-text-accent-color);
 
           &:before {
-            background-color: #143736;
-            opacity: 100%;
+            @apply mvx:opacity-100;
+            background-color: var(--mvx-pagination-item-bg-hover);
           }
         }
 
         .pagination-item-text {
-          position: relative;
-          z-index: 2;
+          @apply mvx:z-2 mvx:relative;
         }
       }
     }

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 @Component({
   tag: 'mvx-transaction-direction-badge',
-  styleUrl: 'transaction-direction-badge.css',
+  styleUrl: 'transaction-direction-badge.scss',
 })
 export class TransactionDirectionBadge {
   @Prop() class?: string;

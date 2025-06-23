@@ -1,11 +1,8 @@
 :host {
-  display: flex;
+  @apply mvx:flex;
 
   .ledger-provider-icon {
+    @apply mvx:w-full mvx:h-full mvx:max-w-37.5 mvx:max-h-37.5;
     fill: none;
-    height: 100%;
-    width: 100%;
-    max-width: 150px;
-    max-height: 150px;
   }
 }

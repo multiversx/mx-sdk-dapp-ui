@@ -1,6 +1,6 @@
 import { Component, Element, Fragment, h, Method, Prop, State, Watch } from '@stencil/core';
 import type { IEventBus, IWalletConnectPanelData } from 'components';
-import { SidePanelHeaderSlotEnum } from 'components/visual/side-panel/components/side-panel-header/side-panel-header.types';
+import { SidePanelHeaderSlotEnum } from 'components/visual/side-panel/components/side-panel-header/side-panel-header';
 import { providerLabels } from 'constants/providerFactory.constants';
 import QRCode from 'qrcode';
 import { EventBus } from 'utils/EventBus';

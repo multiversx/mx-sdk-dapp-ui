@@ -92,7 +92,9 @@ export class PaginationEllipsisForm {
           />
 
           <div class="pagination-ellipsis-form-button" onClick={this.handleSubmit}>
-            <mvx-magnifying-glass-icon class={classNames('pagination-ellipsis-form-button-icon', paginationEllipsisFormClasses.buttonIcon)} />
+            <mvx-magnifying-glass-icon
+              class={classNames('pagination-ellipsis-form-button-icon', paginationEllipsisFormClasses.buttonIcon)}
+            />
           </div>
         </div>
       </div>

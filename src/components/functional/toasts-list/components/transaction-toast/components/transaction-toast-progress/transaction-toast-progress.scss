@@ -1,0 +1,79 @@
+@keyframes progressiveFixedWidthExpansion {
+  from {
+    width: min(var(--start-width, 0%), 80%);
+  }
+
+  to {
+    width: 80%;
+  }
+}
+
+@keyframes progressiveInfiniteWidthExpansion {
+  from {
+    width: min(var(--start-width, 0%), 100%);
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes quickWidthExpansion {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+.transaction-toast-progress {
+  @apply mvx:relative mvx:w-full mvx:h-full mvx:block;
+}
+
+.transaction-toast-bar-wrapper {
+  @apply mvx:absolute mvx:left-1 mvx:right-1 mvx:flex mvx:overflow-hidden mvx:pointer-events-none mvx:h-1 mvx:opacity-100 mvx:transition-opacity mvx:duration-300 mvx:ease-in mvx:m-0;
+  bottom: 5px;
+  background: var(--mvx-progress-color);
+  border-radius: 20px;
+  z-index: 9999;
+}
+
+.transaction-toast-bar {
+  @apply mvx:h-full mvx:absolute mvx:top-0 mvx:bottom-0 mvx:left-0;
+  border-radius: 20px;
+
+  &.infinite {
+    @apply mvx:flex mvx:w-1/5;
+    background: var(--mvx-progress-accent-color);
+
+    .transaction-toast-bar-line {
+      @apply mvx:w-0 mvx:h-full mvx:relative;
+      background: var(--mvx-progress-accent-color);
+      border-radius: 20px;
+      animation: progressiveInfiniteWidthExpansion var(--animation-duration, 60s) cubic-bezier(0.1, 0.95, 0.25, 0.75) forwards;
+      animation-delay: var(--animation-delay, 6s);
+    }
+  }
+
+  &.fill {
+    @apply mvx:w-0 mvx:absolute;
+    background: var(--mvx-progress-accent-color);
+    border-radius: 20px;
+
+    &.animate {
+      animation: quickWidthExpansion 250ms linear forwards;
+    }
+  }
+}
+
+.transaction-toast-bar-fixed {
+  width: min(var(--start-width, 0%), 50%);
+  background: var(--mvx-progress-accent-color);
+  animation: progressiveFixedWidthExpansion var(--animation-duration, 6s) cubic-bezier(0.5, 0.95, 0, 0.35) forwards;
+}
+
+.transaction-toast-bar-content {
+  @apply mvx:relative mvx:z-10 mvx:pb-1;
+}

@@ -1,0 +1,89 @@
+.transaction-toast-content-wrapper {
+  @apply mvx:relative mvx:flex mvx:p-3 mvx:flex-col mvx:items-start mvx:gap-1 mvx:rounded-xl mvx:backdrop-blur-2xl mvx:max-w-100;
+  border: 0.5px solid var(--mvx-bg-accent-variant-color);
+  background: var(--mvx-bg-color-primary);
+  color: var(--mvx-text-color-primary);
+
+  .svg-inline--fa {
+    color: var(--mvx-text-color-primary);
+  }
+
+  &.full-width {
+    @apply mvx:max-w-full;
+
+    .transaction-toast-title {
+      @apply mvx:max-w-full;
+    }
+  }
+}
+
+.transaction-toast-content {
+  @apply mvx:flex mvx:items-start mvx:gap-3 mvx:self-stretch;
+}
+
+.transaction-toast-icon {
+  @apply mvx:rounded-full mvx:w-5 mvx:h-5;
+
+  svg,
+  img,
+  .svg-inline--fa {
+    @apply mvx:rounded-full mvx:w-5 mvx:h-5;
+  }
+}
+
+.transaction-toast-details {
+  @apply mvx:flex mvx:flex-col mvx:items-start mvx:gap-1 mvx:grow mvx:shrink-0 mvx:basis-0;
+}
+
+.transaction-toast-details-header {
+  @apply mvx:flex mvx:items-center mvx:gap-3 mvx:self-stretch mvx:justify-between mvx:p-0;
+}
+
+.transaction-toast-title {
+  @apply mvx:text-sm mvx:font-bold mvx:leading-5;
+  color: var(--mvx-text-color-primary);
+}
+
+.transaction-toast-title-short {
+  @apply mvx:max-w-40;
+}
+
+.transaction-toast-amount {
+  @apply mvx:flex mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight;
+  color: var(--mvx-text-color-primary);
+
+  .transaction-amount-decimal {
+    @apply mvx:opacity-70;
+  }
+
+  .transaction-amount-label {
+    @apply mvx:tracking-tight mvx:opacity-70;
+  }
+}
+
+.transaction-toast-details-info {
+  @apply mvx:flex mvx:items-start mvx:gap-1 mvx:self-stretch;
+}
+
+.transaction-toast-details-info-text {
+  @apply mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight mvx:max-w-40;
+  color: var(--mvx-text-color-secondary);
+}
+
+.transaction-toast-details-info-icon {
+  @apply mvx:rounded-full mvx:w-4 mvx:h-4;
+
+  img {
+    @apply mvx:rounded-full mvx:w-4 mvx:h-4;
+  }
+}
+
+.transaction-toast-action-button {
+  @apply mvx:flex mvx:flex-col mvx:justify-center mvx:shrink-0 mvx:w-5 mvx:h-5;
+  color: var(--mvx-text-color-primary);
+
+  .svg-inline--fa {
+    @apply mvx:text-center mvx:h-4 mvx:w-4;
+    color: var(--mvx-text-color-primary);
+  }
+}

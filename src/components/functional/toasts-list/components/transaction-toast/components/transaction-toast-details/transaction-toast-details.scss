@@ -1,0 +1,52 @@
+.transaction-details-container {
+  @apply mvx:flex mvx:flex-col mvx:items-start mvx:self-stretch mvx:gap-3 mvx:w-full;
+}
+
+.transaction-details-status {
+  @apply mvx:flex mvx:items-center mvx:gap-3 mvx:self-stretch mvx:cursor-pointer;
+}
+
+.transaction-details-status-icon {
+  @apply mvx:items-center mvx:flex mvx:h-5 mvx:w-5 mvx:justify-center mvx:transition-transform mvx:duration-200 mvx:ease-in-out;
+  color: var(--mvx-text-color-tertiary);
+
+  .svg-inline--fa {
+    @apply mvx:h-3.5 mvx:w-3.5;
+    color: var(--mvx-text-color-tertiary);
+  }
+
+  &.rotate-up {
+    @apply mvx:rotate-90;
+  }
+}
+
+.transaction-details-status-text {
+  @apply mvx:text-sm mvx:font-normal mvx:leading-5;
+  color: var(--mvx-text-color-tertiary);
+}
+
+.transaction-details-list {
+  @apply mvx:flex mvx:flex-col mvx:items-start mvx:gap-1 mvx:self-stretch mvx:max-h-0 mvx:overflow-hidden mvx:w-full;
+  @apply mvx:transition-all mvx:duration-200 mvx:ease-in-out;
+
+  &.expanded {
+    @apply mvx:w-full mvx:overflow-y-scroll mvx:max-h-125;
+  }
+}
+
+.view-all-container {
+  @apply mvx:w-full mvx:flex mvx:justify-center mvx:mt-2;
+}
+
+.show-more-button {
+  @apply mvx:text-xs mvx:font-normal mvx:leading-4 mvx:cursor-pointer mvx:rounded-sm mvx:bg-none mvx:border-0 mvx:relative;
+  @apply mvx:transition-colors mvx:duration-200 mvx:ease-in-out;
+  color: var(--mvx-text-color-tertiary);
+
+  &:hover::before {
+    @apply mvx:absolute mvx:opacity-5 mvx:top-0 mvx:bottom-0 mvx:left-0 mvx:right-0 mvx:transition-all mvx:duration-200;
+    @apply mvx:pointer-events-none mvx:ease-in-out;
+    content: '';
+    background-color: var(--mvx-hover-bg-primary);
+  }
+}

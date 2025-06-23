@@ -1,63 +1,42 @@
 .unlock-button {
-  padding: 0 12px;
-  padding-right: 16px;
-  height: 60px;
-  background: rgba(53, 53, 53, 0.3);
-  display: flex;
-  transition: all 200ms ease;
-  cursor: pointer;
-  font-family: 'Satoshi', sans-serif;
-  align-items: center;
-  gap: 16px;
+  @apply mvx:pl-3 mvx:pr-4 mvx:h-15 mvx:flex! mvx:gap-4 mvx:cursor-pointer mvx:items-center;
+  @apply mvx:transition-all mvx:duration-200 mvx:ease-in-out;
+  background: var(--mvx-bg-color-secondary);
 
   &:hover {
-    background: rgba(53, 53, 53, 1);
+    background: var(--mvx-hover-color-primary);
   }
 
   .unlock-button-icon {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
+    @apply mvx:h-10 mvx:flex mvx:relative mvx:z-1 mvx:items-center mvx:justify-center mvx:w-10;
     order: -1;
 
     &.clipped {
-      align-items: flex-end;
-      justify-content: flex-start;
+      @apply mvx:items-end mvx:justify-start;
     }
   }
 
   .unlock-button-label {
-    color: #e8e8e8;
-    font-size: 16px;
-    line-height: 1;
+    @apply mvx:text-base mvx:relative mvx:z-1 mvx:leading-none;
+    color: var(--mvx-text-color-primary);
   }
 
   .unlock-button-status {
-    margin-left: auto;
-    font-weight: 500;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1;
-    display: flex;
-    align-items: center;
+    @apply mvx:ml-auto mvx:relative mvx:z-1 mvx:leading-none mvx:flex mvx:items-center mvx:py-1 mvx:px-2 mvx:font-medium mvx:gap-1;
+    @apply mvx:text-xs;
     border-radius: 20px;
-    padding: 4px 8px;
-    border: 1px solid rgba(64, 64, 64, 0.4);
-    background: rgba(11, 11, 11, 0.8);
-    gap: 4px;
+    border: 1px solid var(--mvx-border-color-primary);
+    background: var(--mvx-bg-color-primary);
 
     .unlock-button-status-text {
-      color: #23f7dd;
+      color: var(--mvx-text-accent-color);
     }
 
     .unlock-button-status-icon {
-      display: flex;
-      align-items: center;
+      @apply mvx:flex mvx:items-center;
 
       svg path {
-        fill: #23f7dd;
+        fill: var(--mvx-teal-400);
       }
     }
   }

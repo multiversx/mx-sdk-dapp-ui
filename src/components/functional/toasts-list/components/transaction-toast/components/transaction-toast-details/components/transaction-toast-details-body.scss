@@ -1,0 +1,91 @@
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.transaction-details-list-item {
+  @apply mvx:flex mvx:items-center mvx:gap-3 mvx:self-stretch mvx:w-64;
+
+  &:hover {
+    .transaction-details-list-item-hash-value {
+      color: var(--mvx-text-color-tertiary);
+    }
+
+    .transaction-details-list-item-explorer-link-icon {
+      @apply mvx:visible;
+    }
+  }
+
+  @media (min-width: 375px) {
+    @apply mvx:w-80;
+  }
+
+  @media (min-width: 440px) {
+    @apply mvx:w-90;
+  }
+}
+
+.transaction-details-list-item-icon {
+  @apply mvx:w-4 mvx:h-4 mvx:rounded-full mvx:flex mvx:items-center mvx:justify-center;
+
+  svg,
+  .svg-inline--fa {
+    @apply mvx:w-3 mvx:h-3;
+  }
+
+  @media (min-width: 375px) {
+    @apply mvx:w-6 mvx:h-6;
+  }
+}
+
+.transaction-details-list-item-icon-success {
+  background-color: var(--mvx-success-bg-color);
+  
+  svg,
+  .svg-inline--fa {
+    color: var(--mvx-success-color) !important;
+  }
+}
+
+.transaction-details-list-item-icon-pending {
+  background-color: var(--mvx-pending-bg-color);
+
+  svg,
+  .svg-inline--fa {
+    color: var(--mvx-pending-color) !important;
+    animation: rotate 2s cubic-bezier(1, 0, 0.5, 1) infinite;
+  }
+}
+
+.transaction-details-list-item-icon-fail {
+  background-color: var(--mvx-error-bg-color);
+
+  svg,
+  .svg-inline--fa {
+    color: var(--mvx-error-color) !important;
+  }
+}
+
+.transaction-details-list-item-hash-index {
+  @apply mvx:text-xs mvx:font-medium mvx:leading-4;
+  color: var(--mvx-text-color-tertiary);
+}
+
+.transaction-details-list-item-hash-value {
+  @apply mvx:text-xs mvx:font-normal mvx:leading-4 mvx:w-full mvx:mt-1 mvx:max-w-55;
+  color: var(--mvx-label-color);
+}
+
+.transaction-details-list-item-explorer-link-icon {
+  @apply mvx:flex mvx:flex-col mvx:justify-end mvx:shrink-0 mvx:ml-auto mvx:mr-3 mvx:invisible mvx:w-4 mvx:h-4;
+  color: var(--mvx-text-color-tertiary);
+
+  .svg-inline--fa {
+    @apply mvx:text-center mvx:w-3.5 mvx:h-3.5;
+    color: var(--mvx-text-color-tertiary);
+  }
+}

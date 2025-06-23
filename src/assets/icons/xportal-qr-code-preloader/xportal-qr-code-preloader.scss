@@ -4,7 +4,7 @@
   }
 
   50% {
-    opacity: 0.5;
+    opacity: 0.75;
   }
 
   100% {
@@ -12,10 +12,20 @@
   }
 }
 
-.xportal-qr-code-preloader {
-  animation: XPortalQrCodePreloaderPulsation 1s infinite;
-  transition: all 200ms ease-out;
-  fill: none;
-  width: 300px;
-  height: 300px;
+:host {
+  @apply mvx:relative;
+  background-color: var(--mvx-bg-accent-color);
+
+  &:before {
+    @apply mvx:absolute mvx:rounded-lg mvx:w-77 mvx:h-77 mvx:transform mvx:-translate-x-1/2 mvx:-translate-y-1/2;
+    @apply mvx:top-1/2 mvx:left-1/2;
+    border: calc((24px + 4px) / 2) solid var(--mvx-bg-accent-color) !important;
+    content: '';
+  }
+
+  .xportal-qr-code-preloader {
+    @apply mvx:transition-all mvx:duration-200 mvx:w-70 mvx:h-70 mvx:ease-in-out;
+    animation: XPortalQrCodePreloaderPulsation 1s infinite;
+    fill: none;
+  }
 }

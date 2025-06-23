@@ -1,213 +1,157 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:overflow-hidden;
 
   .ledger-addresses {
-    display: flex;
-    flex-direction: column;
-    font-family: 'Satoshi', sans-serif;
-    flex: 1;
-    gap: 16px;
+    @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:overflow-hidden mvx:py-6;
 
-    .ledger-addresses-label {
-      color: #fff;
-      line-height: 1;
+    .ledger-addresses-label-wrapper {
+      @apply mvx:relative mvx:z-2;
+
+      &:after {
+        @apply mvx:absolute mvx:left-0 mvx:right-0 mvx:h-0;
+        content: '';
+        top: calc(100% - 4px);
+        box-shadow: 0px 8px 12px 16px var(--mvx-bg-color-primary);
+      }
+
+      .ledger-addresses-label {
+        @apply mvx:leading-none mvx:relative mvx:z-1;
+        color: var(--mvx-text-color-primary);
+      }
     }
 
     .ledger-addresses-wrapper {
-      position: relative;
+      @apply mvx:relative mvx:mb-auto mvx:py-5 mvx:overflow-auto;
+
+      &::-webkit-scrollbar {
+        @apply mvx:hidden;
+      }
 
       .ledger-addresses-preloader {
-        display: flex;
-        flex-direction: column;
-        transition: all 200ms ease;
-        pointer-events: none;
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        opacity: 0;
-        z-index: 1;
-        gap: 4px;
+        @apply mvx:flex mvx:flex-col mvx:pointer-events-none mvx:absolute mvx:opacity-0 mvx:z-1 mvx:gap-1;
+        @apply mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:left-0 mvx:right-0 mvx:bottom-0 mvx:top-5;
 
         &.visible {
-          opacity: 1;
-          pointer-events: all;
+          @apply mvx:opacity-100 mvx:pointer-events-auto;
         }
       }
 
       .ledger-addresses-list {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        pointer-events: none;
-        transition: all 200ms ease;
-        opacity: 0;
+        @apply mvx:flex mvx:flex-col mvx:gap-1 mvx:pointer-events-none mvx:transition-all mvx:ease-in-out;
+        @apply mvx:duration-200 mvx:opacity-0;
 
         &.visible {
-          opacity: 1;
-          pointer-events: all;
+          @apply mvx:opacity-100 mvx:pointer-events-auto;
         }
 
         .ledger-addresses-list-item {
-          border-radius: 8px;
-          display: flex;
-          color: #fff;
-          align-items: center;
-          padding: 16px;
-          height: 64px;
-          width: 100%;
-          position: relative;
-          cursor: pointer;
+          @apply mvx:rounded-lg mvx:flex mvx:items-center mvx:p-4 mvx:h-16 mvx:w-full;
+          @apply mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:ease-in-out;
           border: 1px solid transparent;
-          transition: all 200ms ease;
-
-          &:before {
-            opacity: 30%;
-            content: '';
-            position: absolute;
-            background-color: #353535;
-            left: 0;
-            border-radius: 8px;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            pointer-events: none;
-          }
+          color: var(--mvx-text-color-primary);
+          background-color: var(--mvx-bg-color-secondary);
 
           &.checked,
           &:hover {
-            border-color: #23f7dd;
+            border-color: var(--mvx-text-accent-color);
           }
 
           .ledger-addresses-list-item-checkbox {
-            position: relative;
-            z-index: 1;
-            border-radius: 50%;
-            transition: all 200ms ease;
-            min-width: 16px;
-            max-width: 16px;
-            height: 16px;
-            border: 1px solid #fff;
-            margin-right: 8px;
+            @apply mvx:relative mvx:z-1 mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:rounded-full;
+            @apply mvx:ease-in-out mvx:mr-2 mvx:min-w-4 mvx:max-w-4 mvx:h-4;
+            border: 1px solid var(--mvx-text-color-primary);
 
             &:after {
-              width: calc(12px / 2);
-              height: calc(12px / 2);
+              @apply mvx:absolute mvx:left-1/2 mvx:top-1/2 mvx:rounded-full mvx:opacity-0 mvx:transition-all mvx:duration-200;
+              @apply mvx:ease-in-out mvx:w-1.5 mvx:h-1.5 mvx:transform mvx:-translate-x-1/2 mvx:-translate-y-1/2;
+              background-color: var(--mvx-text-accent-color);
               content: '';
-              transform: translate(-50%, -50%);
-              background-color: #23f7dd;
-              position: absolute;
-              transition: all 200ms ease;
-              border-radius: 50%;
-              opacity: 0;
-              left: 50%;
-              top: 50%;
             }
 
             &.checked {
-              border-color: #23f7dd;
+              border-color: var(--mvx-text-accent-color);
 
               &:after {
-                opacity: 1;
+                @apply mvx:opacity-100;
               }
             }
           }
 
           .ledger-addresses-list-item-index {
-            position: relative;
-            z-index: 1;
-            color: #a09a93;
-            font-size: 16px;
-            font-weight: 500;
-            transition: all 200ms ease;
-            margin-right: 16px;
+            @apply mvx:relative mvx:z-1 mvx:text-base mvx:font-medium mvx:transition-all mvx:duration-200 mvx:mr-4 mvx:ease-in-out;
+            color: var(--mvx-text-color-secondary);
 
             &.checked {
-              color: #23f7dd;
+              color: var(--mvx-text-accent-color);
             }
 
             &.narrow {
-              width: calc(24px + 4px);
+              @apply mvx:w-7;
             }
 
             &.middle {
-              width: 32px;
+              @apply mvx:w-8;
             }
 
             &.larger {
-              width: calc(40px + 4px);
+              @apply mvx:w-11;
             }
 
             &.largest {
-              width: calc(64px - 4px);
+              @apply mvx:w-15;
             }
           }
 
           .ledger-addresses-list-item-address {
-            position: relative;
-            z-index: 1;
-            max-width: 160px;
-            font-size: 16px;
-            min-width: 0;
-            margin-right: auto;
+            @apply mvx:relative mvx:z-1 mvx:max-w-40 mvx:text-base mvx:mr-auto mvx:min-w-0;
 
             .trim-wrapper {
-              align-items: flex-end;
+              @apply mvx:leading-none;
             }
           }
 
           .ledger-addresses-list-item-balance {
-            position: relative;
-            margin-left: 16px;
-            font-weight: 500;
-            font-size: 16px;
-            z-index: 1;
+            @apply mvx:relative mvx:ml-4 mvx:font-medium mvx:text-base mvx:z-1;
           }
         }
       }
     }
 
+    .ledger-addresses-pagination {
+      @apply mvx:relative mvx:z-1;
+
+      &:after {
+        @apply mvx:absolute mvx:left-0 mvx:right-0 mvx:h-0;
+        content: '';
+        bottom: calc(100% - 4px);
+        box-shadow: 0px -8px 12px 16px var(--mvx-bg-color-primary);
+      }
+    }
+
     .ledger-addresses-button-wrapper {
-      position: relative;
-      z-index: 2;
+      @apply mvx:relative mvx:z-2 mvx:mt-4;
 
       .ledger-addresses-button-tooltip-wrapper {
-        font-size: 12px;
-        color: #737373;
-        text-align: center;
+        @apply mvx:text-xs mvx:text-center;
+        color: var(--mvx-neutral-500);
       }
 
       .ledger-addresses-button {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        height: 48px;
-        line-height: 1;
-        font-size: 16px;
-        color: #000000;
-        border-radius: 12px;
-        background-color: #23f7dd;
-        cursor: pointer;
-        border: 1px solid #23f7dd;
-        transition: all 200ms ease;
-        gap: 8px;
+        @apply mvx:w-full mvx:flex mvx:items-center mvx:justify-center mvx:font-bold mvx:h-12 mvx:leading-none mvx:text-base;
+        @apply mvx:rounded-lg mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:gap-2;
+        color: var(--mvx-button-text-primary);
+        background-color: var(--mvx-button-bg-primary);
+        border: 1px solid var(---mvx-button-bg-primary);
 
         &:hover {
-          opacity: 0.75;
+          @apply mvx:opacity-75;
         }
 
         &.loading,
         &.disabled {
-          pointer-events: none;
-          background-color: transparent;
-          border-color: #a09a93;
-          cursor: default;
-          color: #a09a93;
+          @apply mvx:pointer-events-none mvx:bg-transparent mvx:cursor-default;
+          border: 1px solid var(--mvx-text-color-secondary);
+          color: var(--mvx-text-color-secondary);
         }
       }
     }

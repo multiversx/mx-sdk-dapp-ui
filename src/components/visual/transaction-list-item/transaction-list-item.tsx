@@ -1,6 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
-import { IconSizeEnumType } from 'components/common/transaction-asset-icon/transaction-asset-icon.types';
+import { IconSizeEnumType } from 'components/common/transaction-asset-icon/transaction-asset-icon';
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
 
 import type { ITransactionListItem } from './transaction-list-item.types';
@@ -16,7 +16,7 @@ export class TransactionListItem {
     if (!this.transaction) {
       return null;
     }
-    const amount = this.transaction && getAmountParts(this.transaction.amount);
+    const amount = getAmountParts(this.transaction?.amount ?? '');
 
     return (
       <a class="transaction-link" href={this.transaction.link} target="_blank" rel="noreferrer">
@@ -45,13 +45,19 @@ export class TransactionListItem {
               )}
             </div>
             <div class="transaction-details-info">
-              {this.transaction.directionLabel && <span class="transaction-details-info-text">{this.transaction.directionLabel}</span>}
+              {this.transaction.directionLabel && (
+                <span class="transaction-details-info-text">{this.transaction.directionLabel}</span>
+              )}
 
               <div class="transaction-details-info-icon">
-                {this.transaction.interactorAsset ? <img src={this.transaction.interactorAsset} alt="Service icon" loading="lazy" /> : <mvx-default-transaction-icon-small />}
+                {this.transaction.interactorAsset ? (
+                  <img src={this.transaction.interactorAsset} alt="Service icon" loading="lazy" />
+                ) : (
+                  <mvx-default-transaction-icon-small />
+                )}
               </div>
 
-              <mvx-trim-text text={this.transaction.interactor} class="transaction-details-info-text" />
+              <mvx-trim text={this.transaction.interactor} class="transaction-details-info-text" />
             </div>
           </div>
         </div>

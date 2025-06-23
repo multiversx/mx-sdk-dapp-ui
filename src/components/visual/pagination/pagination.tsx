@@ -65,7 +65,10 @@ export class Pagination {
 
     return (
       <div class={{ pagination: true, [this.class]: Boolean(this.class) }}>
-        <span onClick={this.handleEdgePageClick(1)} class={{ 'pagination-angle': true, 'disabled': this.isDisabled, 'inactive': isLeftToggleDisabled }}>
+        <span
+          onClick={this.handleEdgePageClick(1)}
+          class={{ 'pagination-angle': true, 'disabled': this.isDisabled, 'inactive': isLeftToggleDisabled }}
+        >
           <mvx-angles-left-icon class="pagination-angle-icon" />
         </span>
 
@@ -73,7 +76,7 @@ export class Pagination {
           onClick={this.handleEdgePageClick(this.currentPageIndex - 1)}
           class={{ 'pagination-edge-button': true, 'disabled': this.isDisabled, 'inactive': isLeftToggleDisabled }}
         >
-          <mvx-angle-left-icon class="pagination-edge-button-icon" />
+          <mvx-single-angle-left-icon class="pagination-edge-button-icon" />
         </div>
 
         <div class="pagination-items">
@@ -93,7 +96,11 @@ export class Pagination {
               ) : (
                 <mvx-tooltip
                   triggerOnClick
-                  trigger={<mvx-pagination-ellipsis isActive={this.isTooltipOpen && this.activeTooltipIndex === paginationItemIndex} />}
+                  trigger={
+                    <mvx-pagination-ellipsis
+                      isActive={this.isTooltipOpen && this.activeTooltipIndex === paginationItemIndex}
+                    />
+                  }
                   onTriggerRender={(event: CustomEvent) => {
                     this.activeTooltipIndex = paginationItemIndex;
                     this.handleTooltipStatus(event.detail);
@@ -116,10 +123,13 @@ export class Pagination {
           onClick={this.handleEdgePageClick(this.currentPageIndex + 1)}
           class={{ 'pagination-edge-button': true, 'disabled': this.isDisabled, 'inactive': isRightToggleDisabled }}
         >
-          <mvx-angle-right-icon class="pagination-edge-button-icon" />
+          <mvx-single-angle-right-icon class="pagination-edge-button-icon" />
         </div>
 
-        <span onClick={this.handleEdgePageClick(this.totalPages)} class={{ 'pagination-angle': true, 'disabled': this.isDisabled, 'inactive': isRightToggleDisabled }}>
+        <span
+          onClick={this.handleEdgePageClick(this.totalPages)}
+          class={{ 'pagination-angle': true, 'disabled': this.isDisabled, 'inactive': isRightToggleDisabled }}
+        >
           <mvx-angles-right-icon class="pagination-angle-icon" />
         </span>
       </div>

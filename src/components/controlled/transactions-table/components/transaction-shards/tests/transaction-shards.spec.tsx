@@ -54,11 +54,11 @@ describe('TransactionShards', () => {
       <mvx-transaction-shards>
           <div class="transaction-shards">
             <mvx-explorer-link class="transactions-table-body-cell-link" data-testid="${DataTestIdsEnum.shardFromLink}" link="/blocks?shard=0">
-              <span data-testid="${DataTestIdsEnum.senderShard}" slot="content">0</span>
+              <span data-testid="${DataTestIdsEnum.senderShard}">0</span>
             </mvx-explorer-link>
             <span class="transaction-shards-arrow">&#10132;</span>
             <mvx-explorer-link class="transactions-table-body-cell-link" data-testid="${DataTestIdsEnum.shardToLink}" link="/blocks?shard=1">
-              <span data-testid="${DataTestIdsEnum.receiverShard}" slot="content">1</span>
+              <span data-testid="${DataTestIdsEnum.receiverShard}">1</span>
             </mvx-explorer-link>
           </div>
       </mvx-transaction-shards>
@@ -77,11 +77,11 @@ describe('TransactionShards', () => {
       <mvx-transaction-shards class="custom-class">
           <div class="custom-class transaction-shards">
             <mvx-explorer-link class="transactions-table-body-cell-link" data-testid="${DataTestIdsEnum.shardFromLink}" link="/blocks?shard=0">
-              <span data-testid="${DataTestIdsEnum.senderShard}" slot="content">0</span>
+              <span data-testid="${DataTestIdsEnum.senderShard}">0</span>
             </mvx-explorer-link>
             <span class="transaction-shards-arrow">&#10132;</span>
             <mvx-explorer-link class="transactions-table-body-cell-link" data-testid="${DataTestIdsEnum.shardToLink}" link="/blocks?shard=1">
-              <span data-testid="${DataTestIdsEnum.receiverShard}" slot="content">1</span>
+              <span data-testid="${DataTestIdsEnum.receiverShard}">1</span>
             </mvx-explorer-link>
           </div>
       </mvx-transaction-shards>

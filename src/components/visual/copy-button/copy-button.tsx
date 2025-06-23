@@ -6,7 +6,7 @@ import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
 
 @Component({
   tag: 'mvx-copy-button',
-  styleUrl: 'copy-button.css',
+  styleUrl: 'copy-button.scss',
 })
 export class CopyButton {
   @Prop() class?: string = 'copy-button';
@@ -48,11 +48,17 @@ export class CopyButton {
     let successIcon = 'faCheck';
 
     if (this.copyIcon) {
-      copyIcon = typeof this.copyIcon === 'string' ? getIconHtmlFromIconName(this.copyIcon) : getIconHtmlFromIconDefinition(this.copyIcon);
+      copyIcon =
+        typeof this.copyIcon === 'string'
+          ? getIconHtmlFromIconName(this.copyIcon)
+          : getIconHtmlFromIconDefinition(this.copyIcon);
     }
 
     if (this.successIcon) {
-      successIcon = typeof this.successIcon === 'string' ? getIconHtmlFromIconName(this.successIcon) : getIconHtmlFromIconDefinition(this.successIcon);
+      successIcon =
+        typeof this.successIcon === 'string'
+          ? getIconHtmlFromIconName(this.successIcon)
+          : getIconHtmlFromIconDefinition(this.successIcon);
     }
 
     return (
