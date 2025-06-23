@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- [Fixed ledger connect header close button not working](https://github.com/multiversx/mx-sdk-dapp-ui/pull/129)
+- [Fixed Ledger connect header close button not working](https://github.com/multiversx/mx-sdk-dapp-ui/pull/129)
 - [Fixed the ExplorerLink shadow DOM status and layout](https://github.com/multiversx/mx-sdk-dapp-ui/pull/128)
 - [Updated the Ledger mobile layout and converted styles to Tailwind](https://github.com/multiversx/mx-sdk-dapp-ui/pull/127)
 - [Unify colors in global variables for light / dark themes](https://github.com/multiversx/mx-sdk-dapp-ui/pull/126)
