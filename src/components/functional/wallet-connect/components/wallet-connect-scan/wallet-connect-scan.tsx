@@ -39,7 +39,10 @@ export class WalletConnectScan {
             Scan this QR code with your app
           </div>
 
-          <a href={this.walletConnectDeepLink} class="wallet-connect-scan-connect">
+          <a
+            href={this.walletConnectDeepLink}
+            class={{ 'wallet-connect-scan-connect': true, 'disabled': !this.qrCodeSvg }}
+          >
             Connect xPortal
           </a>
         </div>

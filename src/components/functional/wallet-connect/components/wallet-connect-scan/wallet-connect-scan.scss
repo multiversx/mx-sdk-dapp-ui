@@ -44,8 +44,13 @@
       }
 
       .wallet-connect-scan-connect {
-        @apply mvx:font-medium mvx:leading-none mvx:sm:hidden;
+        @apply mvx:font-medium mvx:leading-none mvx:sm:hidden mvx:transition-all mvx:duration-200 mvx:ease-in-out;
         color: var(--mvx-text-accent-color);
+
+        &.disabled {
+          @apply mvx:pointer-events-none;
+          color: var(--mvx-text-color-secondary);
+        }
       }
     }
 
