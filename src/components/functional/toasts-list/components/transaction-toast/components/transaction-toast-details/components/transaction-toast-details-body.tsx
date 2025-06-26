@@ -47,6 +47,13 @@ export class TransactionDetailsBody {
         <div class="transaction-details-list-item-hash-value">
           <mvx-trim text={this.hash} />
         </div>
+
+        <mvx-copy-button
+          text={this.hash}
+          class="transaction-details-list-item-copy"
+          iconClass="transaction-details-list-item-copy-icon"
+        />
+
         <div class="transaction-details-list-item-explorer-link-icon">
           <mvx-explorer-link link={this.link} class={transactionToastDetailsBodyClasses.explorerLinkIcon} />
         </div>
