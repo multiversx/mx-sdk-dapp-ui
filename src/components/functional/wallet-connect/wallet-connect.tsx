@@ -15,11 +15,9 @@ import { WalletConnectEventsEnum } from './wallet-connect.types';
 export class WalletConnect {
   private eventBus: IEventBus = new EventBus();
 
-  @State() showScanPage: boolean = true;
-  @State() walletConnectDeepLink: string = '';
-  @Element() hostElement: HTMLElement;
-
   @Prop() data: IWalletConnectPanelData = { wcURI: '' };
+  @State() showScanPage: boolean = true;
+  @Element() hostElement: HTMLElement;
   @Prop() qrCodeSvg: string = '';
 
   @Watch('data')
@@ -44,10 +42,6 @@ export class WalletConnect {
   }
 
   private async dataUpdate(payload: IWalletConnectPanelData) {
-    if (payload.walletConnectDeepLink) {
-      this.walletConnectDeepLink = payload.walletConnectDeepLink;
-    }
-
     if (payload.wcURI) {
       this.qrCodeSvg = await this.generateSVG(payload.wcURI);
     }
@@ -75,11 +69,11 @@ export class WalletConnect {
     return (
       <Fragment>
         <mvx-side-panel-header
+          panelTitle={providerLabels.walletConnect}
           hasRightButton={true}
           hasLeftButton={!this.showScanPage}
-          panelTitle={providerLabels.walletConnect}
-          onLeftButtonClick={this.handlePageToggle.bind(this)}
           onRightButtonClick={() => this.eventBus.publish(WalletConnectEventsEnum.CLOSE)}
+          onLeftButtonClick={this.handlePageToggle.bind(this)}
         >
           {!this.showScanPage && <mvx-back-arrow-icon slot={SidePanelHeaderSlotEnum.leftIcon} />}
           <mvx-close-icon slot={SidePanelHeaderSlotEnum.rightIcon} />
@@ -87,11 +81,7 @@ export class WalletConnect {
 
         <div class="wallet-connect">
           {this.showScanPage ? (
-            <mvx-wallet-connect-scan
-              qrCodeSvg={this.qrCodeSvg}
-              onDownloadClick={this.handlePageToggle.bind(this)}
-              walletConnectDeepLink={this.walletConnectDeepLink}
-            />
+            <mvx-wallet-connect-scan qrCodeSvg={this.qrCodeSvg} onDownloadClick={this.handlePageToggle.bind(this)} />
           ) : (
             <mvx-wallet-connect-download />
           )}

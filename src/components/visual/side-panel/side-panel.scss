@@ -35,9 +35,10 @@
   .side-panel {
     @apply mvx:p-6 mvx:w-full mvx:flex mvx:overflow-hidden mvx:flex-col mvx:transition-all mvx:ease-in-out mvx:duration-200;
     @apply mvx:rounded-tl-3xl mvx:rounded-tr-3xl mvx:backdrop-blur mvx:pb-0;
+    transform: translateY(60vh);
     border: 1px solid var(--mvx-border-color-primary);
     background-color: var(--mvx-bg-color-primary);
-    max-height: calc(100% - 16px);
+    height: 64vh;
 
     @media (min-width: 480px) {
       @apply mvx:w-110 mvx:h-full;
