@@ -21,11 +21,11 @@
         }
 
         svg {
-          border-radius: 12px;
+          @apply mvx:rounded-lg;
 
           path {
-            stroke: var(--mvx-white);
-            fill: var(--mvx-black);
+            stroke: var(--mvx-black);
+            fill: var(--mvx-white);
           }
         }
 
@@ -35,9 +35,23 @@
       }
     }
 
-    .wallet-connect-scan-description {
-      @apply mvx:leading-5 mvx:font-medium mvx:text-base mvx:h-16 mvx:z-1 mvx:mb-auto;
-      color: var(--mvx-text-color-secondary);
+    .wallet-connect-scan-wrapper {
+      @apply mvx:flex mvx:flex-col mvx:h-16 mvx:gap-4 mvx:items-center mvx:mb-auto;
+
+      .wallet-connect-scan-description {
+        @apply mvx:leading-5 mvx:font-medium mvx:text-base mvx:z-1;
+        color: var(--mvx-text-color-secondary);
+      }
+
+      .wallet-connect-scan-connect {
+        @apply mvx:font-medium mvx:leading-none mvx:sm:hidden mvx:transition-all mvx:duration-200 mvx:ease-in-out;
+        color: var(--mvx-text-accent-color);
+
+        &.disabled {
+          @apply mvx:pointer-events-none;
+          color: var(--mvx-text-color-secondary);
+        }
+      }
     }
 
     .wallet-connect-scan-download {
