@@ -473,6 +473,10 @@ export namespace Components {
     interface MvxXaliasProviderIcon {
     }
     interface MvxXportalDownloadQrIcon {
+        /**
+          * @default ''
+         */
+        "class"?: string;
     }
     interface MvxXportalQrCodePreloader {
         "class"?: string;
@@ -1742,6 +1746,10 @@ declare namespace LocalJSX {
     interface MvxXaliasProviderIcon {
     }
     interface MvxXportalDownloadQrIcon {
+        /**
+          * @default ''
+         */
+        "class"?: string;
     }
     interface MvxXportalQrCodePreloader {
         "class"?: string;
