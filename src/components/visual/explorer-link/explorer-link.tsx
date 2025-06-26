@@ -2,7 +2,7 @@ import { Component, Element, h, Prop, State } from '@stencil/core';
 import classNames from 'classnames';
 
 const explorerLinkClasses: Record<string, string> = {
-  icon: 'mvx:flex mvx:justify-center mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80',
+  icon: 'mvx:flex mvx:justify-center mvx:transition-opacity mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80',
 };
 
 @Component({
