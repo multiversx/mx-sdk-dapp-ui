@@ -2,7 +2,7 @@ import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-import { processImgSrc } from '../../../../../utils/processImgSrc';
+import walletConnectDownloadImg from '../../../../../assets/wallet-connect-download.webp';
 
 @Component({
   tag: 'mvx-wallet-connect-scan',
@@ -58,7 +58,7 @@ export class WalletConnectScan {
             </div>
           </div>
 
-          <img src={processImgSrc('wallet-connect-download.png')} class="wallet-connect-scan-download-image" />
+          <img src={walletConnectDownloadImg} class="wallet-connect-scan-download-image" />
         </div>
       </div>
     );

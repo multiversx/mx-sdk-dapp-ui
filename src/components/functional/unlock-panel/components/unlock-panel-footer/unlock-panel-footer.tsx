@@ -1,6 +1,7 @@
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
-import { processImgSrc } from 'utils/processImgSrc';
+
+import unlockPanelWalletImg from '../../../../../assets/unlock-panel-wallet.webp';
 
 const unlockPanelClasses: Record<string, string> = {
   footerIcon: 'mvx:w-4! mvx:h-auto! mvx:hidden mvx:xs:flex mvx:ml-auto mvx:mt-auto',
@@ -25,7 +26,7 @@ export class UnlockPanel {
 
     return (
       <div class="unlock-panel-footer" onClick={this.handleWalletClick}>
-        <img src={processImgSrc('unlock-panel-wallet.png')} class="unlock-panel-footer-image" />
+        <img src={unlockPanelWalletImg} class="unlock-panel-footer-image" />
 
         <div class="unlock-panel-footer-wrapper">
           <div class="unlock-panel-footer-title">Don't have a wallet?</div>

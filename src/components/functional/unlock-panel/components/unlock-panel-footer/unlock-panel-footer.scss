@@ -9,7 +9,7 @@
   }
 
   .unlock-panel-footer-image {
-    @apply mvx:pointer-events-none mvx:-mt-6 mvx:mr-6 mvx:-mb-6 mvx:-ml-6 mvx:hidden;
+    @apply mvx:pointer-events-none mvx:-mt-8 mvx:mr-12 mvx:-mb-8 mvx:-ml-20 mvx:hidden mvx:max-h-48;
 
     @media (min-width: 480px) {
       @apply mvx:flex;

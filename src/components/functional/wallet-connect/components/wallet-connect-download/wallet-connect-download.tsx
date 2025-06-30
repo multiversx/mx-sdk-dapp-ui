@@ -1,20 +1,19 @@
+import type { JSX } from '@stencil/core';
 import { Component, h, Prop } from '@stencil/core';
-
-import { processImgSrc } from '../../../../../utils/processImgSrc';
 
 const XPORTAL_APP_GALLERY_LINK = 'https://appgallery.huawei.com/app/C104325151';
 const XPORTAL_APP_STORE_LINK = 'https://apps.apple.com/us/app/xportal/id1519405832';
 const XPORTAL_PLAY_STORE_LINK = 'https://play.google.com/store/apps/details?id=com.elrond.maiar.wallet&hl=ro&pli=1';
 
 interface XPortalDownloadOptionType {
-  image: string;
+  image: JSX.Element;
   link: string;
 }
 
 const xPortalDownloadOptions: XPortalDownloadOptionType[] = [
-  { image: 'wallet-connect-app-store.svg', link: XPORTAL_APP_STORE_LINK },
-  { image: 'wallet-connect-play-store.png', link: XPORTAL_PLAY_STORE_LINK },
-  { image: 'wallet-connect-app-gallery.png', link: XPORTAL_APP_GALLERY_LINK },
+  { image: <mvx-wallet-connect-app-store-icon />, link: XPORTAL_APP_STORE_LINK },
+  { image: <mvx-wallet-connect-google-play-icon />, link: XPORTAL_PLAY_STORE_LINK },
+  { image: <mvx-wallet-connect-app-gallery-icon />, link: XPORTAL_APP_GALLERY_LINK },
 ];
 
 @Component({
@@ -44,7 +43,7 @@ export class WalletConnect {
               target="_blank"
               rel="noreferrer"
             >
-              <img src={processImgSrc(xPortalDownloadOption.image)} class="wallet-connect-download-option-image" />
+              {xPortalDownloadOption.image}
             </a>
           ))}
         </div>

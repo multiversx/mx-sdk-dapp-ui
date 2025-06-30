@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Fixed images not displaying in the unlock panel.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/137)
 - [Added deep link xPortal connection support on mobile](https://github.com/multiversx/mx-sdk-dapp-ui/pull/136)
 - [Added copy button for transaction hash in toasts.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/135)
 - [Updated variables for switching the theme.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/134)

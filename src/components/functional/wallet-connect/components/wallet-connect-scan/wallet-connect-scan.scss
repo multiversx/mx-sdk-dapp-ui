@@ -79,7 +79,7 @@
       }
 
       .wallet-connect-scan-download-image {
-        @apply mvx:absolute mvx:right-0 mvx:bottom-0;
+        @apply mvx:absolute mvx:right-0 mvx:bottom-0 mvx:max-h-50;
       }
     }
   }
