@@ -48,6 +48,7 @@ export namespace Components {
         "class"?: string;
     }
     interface MvxBackArrowIcon {
+        "class"?: string;
     }
     interface MvxCheckIcon {
         "class"?: string;
@@ -459,15 +460,21 @@ export namespace Components {
         "class"?: string;
     }
     interface MvxWalletConnectDownload {
+        "class"?: string;
     }
     interface MvxWalletConnectGooglePlayIcon {
         "class"?: string;
     }
     interface MvxWalletConnectScan {
+        "class"?: string;
         /**
           * @default ''
          */
         "qrCodeSvg": string;
+        /**
+          * @default ''
+         */
+        "walletConnectDeepLink"?: string;
     }
     interface MvxWalletProviderIcon {
         "class"?: string;
@@ -475,6 +482,10 @@ export namespace Components {
     interface MvxXaliasProviderIcon {
     }
     interface MvxXportalDownloadQrIcon {
+        /**
+          * @default ''
+         */
+        "class"?: string;
     }
     interface MvxXportalQrCodePreloader {
         "class"?: string;
@@ -1331,6 +1342,7 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface MvxBackArrowIcon {
+        "class"?: string;
     }
     interface MvxCheckIcon {
         "class"?: string;
@@ -1750,16 +1762,22 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface MvxWalletConnectDownload {
+        "class"?: string;
     }
     interface MvxWalletConnectGooglePlayIcon {
         "class"?: string;
     }
     interface MvxWalletConnectScan {
+        "class"?: string;
         "onDownloadClick"?: (event: MvxWalletConnectScanCustomEvent<any>) => void;
         /**
           * @default ''
          */
         "qrCodeSvg"?: string;
+        /**
+          * @default ''
+         */
+        "walletConnectDeepLink"?: string;
     }
     interface MvxWalletProviderIcon {
         "class"?: string;
@@ -1767,6 +1785,10 @@ declare namespace LocalJSX {
     interface MvxXaliasProviderIcon {
     }
     interface MvxXportalDownloadQrIcon {
+        /**
+          * @default ''
+         */
+        "class"?: string;
     }
     interface MvxXportalQrCodePreloader {
         "class"?: string;

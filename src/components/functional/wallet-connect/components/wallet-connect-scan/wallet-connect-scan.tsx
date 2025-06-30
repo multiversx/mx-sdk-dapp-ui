@@ -11,7 +11,10 @@ import walletConnectDownloadImg from '../../../../../assets/wallet-connect-downl
 })
 export class WalletConnectScan {
   @Event() downloadClick: EventEmitter;
+
+  @Prop() walletConnectDeepLink?: string = '';
   @Prop() qrCodeSvg: string = '';
+  @Prop() class?: string;
 
   handleDownloadClick(event: MouseEvent) {
     event.preventDefault();
@@ -20,7 +23,7 @@ export class WalletConnectScan {
 
   render() {
     return (
-      <div class="wallet-connect-scan">
+      <div class={{ 'wallet-connect-scan': true, [this.class]: Boolean(this.class) }}>
         <div class="wallet-connect-scan-qr">
           <mvx-xportal-qr-code-preloader data-testid={DataTestIdsEnum.walletConnectLoading} />
 
@@ -31,8 +34,17 @@ export class WalletConnectScan {
           />
         </div>
 
-        <div class="wallet-connect-scan-description" data-testid={DataTestIdsEnum.walletConnetModalTitle}>
-          Scan this QR code with your app
+        <div class="wallet-connect-scan-wrapper">
+          <div class="wallet-connect-scan-description" data-testid={DataTestIdsEnum.walletConnetModalTitle}>
+            Scan this QR code with your app
+          </div>
+
+          <a
+            href={this.walletConnectDeepLink}
+            class={{ 'wallet-connect-scan-connect': true, 'disabled': !this.qrCodeSvg }}
+          >
+            Connect xPortal
+          </a>
         </div>
 
         <div class="wallet-connect-scan-download">
