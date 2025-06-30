@@ -1,5 +1,5 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, Event, h, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
 
 @Component({
@@ -8,6 +8,8 @@ import classNames from 'classnames';
   shadow: true,
 })
 export class SidePanel {
+  @Element() el: HTMLElement;
+
   @Prop() isOpen: boolean = false;
   @Prop() panelClassName?: string;
   @Prop() panelTitle: string;
@@ -22,6 +24,7 @@ export class SidePanel {
 
   private closeTimeout: NodeJS.Timeout | null = null;
   private readonly ANIMATION_DURATION_MS = 300;
+  private sidePanelIdentifier = 'side-panel';
 
   @Watch('isOpen')
   handleOpenChange(newValue: boolean) {
@@ -65,33 +68,38 @@ export class SidePanel {
   }
 
   render() {
-    if (!this.isVisible) {
-      return null;
-    }
-
     return (
-      <div
-        onClick={this.handleOverlayClick.bind(this)}
-        class={classNames('side-panel-wrapper', {
-          visible: this.shouldAnimate,
-        })}
+      <mvx-bottom-sheet
+        open={this.shouldAnimate}
+        onSheetDismiss={() => this.close.emit()}
+        sidePanelIdentifier={this.sidePanelIdentifier}
       >
-        <div class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}>
-          {this.showHeader && (
-            <mvx-side-panel-header
-              panelTitle={this.panelTitle}
-              panelClassName={this.panelClassName}
-              hasLeftButton={this.hasBackButton}
-              onRightButtonClick={this.handleCloseClick.bind(this)}
-              onLeftButtonClick={this.handleBackClick.bind(this)}
-            />
-          )}
+        <div
+          onClick={this.handleOverlayClick.bind(this)}
+          class={classNames('side-panel-wrapper', {
+            visible: this.shouldAnimate,
+          })}
+        >
+          <div
+            id={this.sidePanelIdentifier}
+            class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}
+          >
+            {this.showHeader && (
+              <mvx-side-panel-header
+                panelTitle={this.panelTitle}
+                panelClassName={this.panelClassName}
+                hasLeftButton={this.hasBackButton}
+                onRightButtonClick={this.handleCloseClick.bind(this)}
+                onLeftButtonClick={this.handleBackClick.bind(this)}
+              />
+            )}
 
-          <div class="side-panel-content">
-            <slot />
+            <div class="side-panel-content">
+              <slot />
+            </div>
           </div>
         </div>
-      </div>
+      </mvx-bottom-sheet>
     );
   }
 }
