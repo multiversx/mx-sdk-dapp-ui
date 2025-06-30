@@ -32,29 +32,13 @@ export class SidePanelSwiper {
   componentDidLoad() {
     this.isVisible = this.open;
 
-    if (this.sheetElement) {
+    if (this.sheetElement && window.innerWidth <= 480) {
       this.sheetElement.style.transform = 'translateY(100%)';
     }
 
     if (this.open) {
       this.openToSnapPoint(this.currentSnapIndex);
     }
-  }
-
-  @Watch('isVisible')
-  onSheetOpening(isVisible: boolean) {
-    if (!isVisible) {
-      return;
-    }
-
-    setTimeout(() => {
-      const sidePanelElement: HTMLElement = this.sidePanelSwipeElement.querySelector(`#${this.sidePanelIdentifier}`);
-      const remainingHeightMinusPanel = window.innerHeight - sidePanelElement.offsetHeight;
-      const sidePanelHeightPercentage = (remainingHeightMinusPanel / window.innerHeight) * 100;
-      const fullScreenSnapPercentage = 100 + sidePanelHeightPercentage;
-
-      this.snapPointsArray = [...this.snapPointsArray, `${fullScreenSnapPercentage}%`];
-    }, 100);
   }
 
   @Watch('open')
@@ -238,18 +222,23 @@ export class SidePanelSwiper {
 
   render() {
     return (
-      <div class={`bottom-sheet-container ${this.isVisible ? 'visible' : 'hidden'}`}>
-        <div class="bottom-sheet" ref={el => (this.sheetElement = el!)} onClick={e => e.stopPropagation()}>
-          <div class="bottom-sheet-header">
+      <div class={{ 'side-panel-swiper-wrapper': true, 'visible': this.isVisible, 'hidden': !this.isVisible }}>
+        <div
+          class="side-panel-swiper"
+          ref={el => (this.sheetElement = el!)}
+          onClick={(event: MouseEvent) => event.stopPropagation()}
+        >
+          <div class="side-panel-swiper-handle-wrapper">
             <div
-              class="bottom-sheet-drag-handle-container"
+              class="side-panel-swiper-handle-container"
               onMouseDown={this.handleDragStart}
               onTouchStart={this.handleDragStart}
             >
-              <div class="bottom-sheet-drag-handle"></div>
+              <div class="side-panel-swiper-handle" />
             </div>
           </div>
-          <div class="bottom-sheet-content">
+
+          <div class="side-panel-swiper-content">
             <slot />
           </div>
         </div>

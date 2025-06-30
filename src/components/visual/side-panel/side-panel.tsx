@@ -69,16 +69,16 @@ export class SidePanel {
 
   render() {
     return (
-      <mvx-bottom-sheet
-        open={this.shouldAnimate}
-        onSheetDismiss={() => this.close.emit()}
-        sidePanelIdentifier={this.sidePanelIdentifier}
+      <div
+        onClick={this.handleOverlayClick.bind(this)}
+        class={classNames('side-panel-wrapper', {
+          visible: this.shouldAnimate,
+        })}
       >
-        <div
-          onClick={this.handleOverlayClick.bind(this)}
-          class={classNames('side-panel-wrapper', {
-            visible: this.shouldAnimate,
-          })}
+        <mvx-side-panel-swiper
+          open={this.shouldAnimate}
+          onSheetDismiss={() => this.close.emit()}
+          sidePanelIdentifier={this.sidePanelIdentifier}
         >
           <div
             id={this.sidePanelIdentifier}
@@ -98,8 +98,8 @@ export class SidePanel {
               <slot />
             </div>
           </div>
-        </div>
-      </mvx-bottom-sheet>
+        </mvx-side-panel-swiper>
+      </div>
     );
   }
 }
