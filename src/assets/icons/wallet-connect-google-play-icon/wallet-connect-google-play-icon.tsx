@@ -2,8 +2,8 @@ import { Component, h, Prop } from '@stencil/core';
 
 @Component({
   shadow: true,
-  tag: 'mvx-wallet-connect-google-play',
-  styleUrl: 'wallet-connect-google-play.scss',
+  tag: 'mvx-wallet-connect-google-play-icon',
+  styleUrl: 'wallet-connect-google-play-icon.scss',
 })
 export class WalletConnectGooglePlay {
   @Prop() class?: string;
@@ -12,9 +12,8 @@ export class WalletConnectGooglePlay {
     return (
       <svg
         viewBox="0 0 180 56"
-        fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        class={{ 'mvx-wallet-connect-google-play': true, [this.class]: Boolean(this.class) }}
+        class={{ 'wallet-connect-google-play-icon': true, [this.class]: Boolean(this.class) }}
       >
         <rect width="180" height="56" rx="8" fill="black" />
         <rect x="0.5" y="0.5" width="179" height="55" rx="7.5" stroke="white" stroke-opacity="0.4" />

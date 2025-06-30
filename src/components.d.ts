@@ -452,15 +452,15 @@ export namespace Components {
          */
         "qrCodeSvg": string;
     }
-    interface MvxWalletConnectAppGallery {
+    interface MvxWalletConnectAppGalleryIcon {
         "class"?: string;
     }
-    interface MvxWalletConnectAppStore {
+    interface MvxWalletConnectAppStoreIcon {
         "class"?: string;
     }
     interface MvxWalletConnectDownload {
     }
-    interface MvxWalletConnectGooglePlay {
+    interface MvxWalletConnectGooglePlayIcon {
         "class"?: string;
     }
     interface MvxWalletConnectScan {
@@ -1162,17 +1162,17 @@ declare global {
         prototype: HTMLMvxWalletConnectElement;
         new (): HTMLMvxWalletConnectElement;
     };
-    interface HTMLMvxWalletConnectAppGalleryElement extends Components.MvxWalletConnectAppGallery, HTMLStencilElement {
+    interface HTMLMvxWalletConnectAppGalleryIconElement extends Components.MvxWalletConnectAppGalleryIcon, HTMLStencilElement {
     }
-    var HTMLMvxWalletConnectAppGalleryElement: {
-        prototype: HTMLMvxWalletConnectAppGalleryElement;
-        new (): HTMLMvxWalletConnectAppGalleryElement;
+    var HTMLMvxWalletConnectAppGalleryIconElement: {
+        prototype: HTMLMvxWalletConnectAppGalleryIconElement;
+        new (): HTMLMvxWalletConnectAppGalleryIconElement;
     };
-    interface HTMLMvxWalletConnectAppStoreElement extends Components.MvxWalletConnectAppStore, HTMLStencilElement {
+    interface HTMLMvxWalletConnectAppStoreIconElement extends Components.MvxWalletConnectAppStoreIcon, HTMLStencilElement {
     }
-    var HTMLMvxWalletConnectAppStoreElement: {
-        prototype: HTMLMvxWalletConnectAppStoreElement;
-        new (): HTMLMvxWalletConnectAppStoreElement;
+    var HTMLMvxWalletConnectAppStoreIconElement: {
+        prototype: HTMLMvxWalletConnectAppStoreIconElement;
+        new (): HTMLMvxWalletConnectAppStoreIconElement;
     };
     interface HTMLMvxWalletConnectDownloadElement extends Components.MvxWalletConnectDownload, HTMLStencilElement {
     }
@@ -1180,11 +1180,11 @@ declare global {
         prototype: HTMLMvxWalletConnectDownloadElement;
         new (): HTMLMvxWalletConnectDownloadElement;
     };
-    interface HTMLMvxWalletConnectGooglePlayElement extends Components.MvxWalletConnectGooglePlay, HTMLStencilElement {
+    interface HTMLMvxWalletConnectGooglePlayIconElement extends Components.MvxWalletConnectGooglePlayIcon, HTMLStencilElement {
     }
-    var HTMLMvxWalletConnectGooglePlayElement: {
-        prototype: HTMLMvxWalletConnectGooglePlayElement;
-        new (): HTMLMvxWalletConnectGooglePlayElement;
+    var HTMLMvxWalletConnectGooglePlayIconElement: {
+        prototype: HTMLMvxWalletConnectGooglePlayIconElement;
+        new (): HTMLMvxWalletConnectGooglePlayIconElement;
     };
     interface HTMLMvxWalletConnectScanElementEventMap {
         "downloadClick": any;
@@ -1305,10 +1305,10 @@ declare global {
         "mvx-unlock-panel-group": HTMLMvxUnlockPanelGroupElement;
         "mvx-unlock-provider-button": HTMLMvxUnlockProviderButtonElement;
         "mvx-wallet-connect": HTMLMvxWalletConnectElement;
-        "mvx-wallet-connect-app-gallery": HTMLMvxWalletConnectAppGalleryElement;
-        "mvx-wallet-connect-app-store": HTMLMvxWalletConnectAppStoreElement;
+        "mvx-wallet-connect-app-gallery-icon": HTMLMvxWalletConnectAppGalleryIconElement;
+        "mvx-wallet-connect-app-store-icon": HTMLMvxWalletConnectAppStoreIconElement;
         "mvx-wallet-connect-download": HTMLMvxWalletConnectDownloadElement;
-        "mvx-wallet-connect-google-play": HTMLMvxWalletConnectGooglePlayElement;
+        "mvx-wallet-connect-google-play-icon": HTMLMvxWalletConnectGooglePlayIconElement;
         "mvx-wallet-connect-scan": HTMLMvxWalletConnectScanElement;
         "mvx-wallet-provider-icon": HTMLMvxWalletProviderIconElement;
         "mvx-xalias-provider-icon": HTMLMvxXaliasProviderIconElement;
@@ -1743,15 +1743,15 @@ declare namespace LocalJSX {
          */
         "qrCodeSvg"?: string;
     }
-    interface MvxWalletConnectAppGallery {
+    interface MvxWalletConnectAppGalleryIcon {
         "class"?: string;
     }
-    interface MvxWalletConnectAppStore {
+    interface MvxWalletConnectAppStoreIcon {
         "class"?: string;
     }
     interface MvxWalletConnectDownload {
     }
-    interface MvxWalletConnectGooglePlay {
+    interface MvxWalletConnectGooglePlayIcon {
         "class"?: string;
     }
     interface MvxWalletConnectScan {
@@ -1849,10 +1849,10 @@ declare namespace LocalJSX {
         "mvx-unlock-panel-group": MvxUnlockPanelGroup;
         "mvx-unlock-provider-button": MvxUnlockProviderButton;
         "mvx-wallet-connect": MvxWalletConnect;
-        "mvx-wallet-connect-app-gallery": MvxWalletConnectAppGallery;
-        "mvx-wallet-connect-app-store": MvxWalletConnectAppStore;
+        "mvx-wallet-connect-app-gallery-icon": MvxWalletConnectAppGalleryIcon;
+        "mvx-wallet-connect-app-store-icon": MvxWalletConnectAppStoreIcon;
         "mvx-wallet-connect-download": MvxWalletConnectDownload;
-        "mvx-wallet-connect-google-play": MvxWalletConnectGooglePlay;
+        "mvx-wallet-connect-google-play-icon": MvxWalletConnectGooglePlayIcon;
         "mvx-wallet-connect-scan": MvxWalletConnectScan;
         "mvx-wallet-provider-icon": MvxWalletProviderIcon;
         "mvx-xalias-provider-icon": MvxXaliasProviderIcon;
@@ -1941,10 +1941,10 @@ declare module "@stencil/core" {
             "mvx-unlock-panel-group": LocalJSX.MvxUnlockPanelGroup & JSXBase.HTMLAttributes<HTMLMvxUnlockPanelGroupElement>;
             "mvx-unlock-provider-button": LocalJSX.MvxUnlockProviderButton & JSXBase.HTMLAttributes<HTMLMvxUnlockProviderButtonElement>;
             "mvx-wallet-connect": LocalJSX.MvxWalletConnect & JSXBase.HTMLAttributes<HTMLMvxWalletConnectElement>;
-            "mvx-wallet-connect-app-gallery": LocalJSX.MvxWalletConnectAppGallery & JSXBase.HTMLAttributes<HTMLMvxWalletConnectAppGalleryElement>;
-            "mvx-wallet-connect-app-store": LocalJSX.MvxWalletConnectAppStore & JSXBase.HTMLAttributes<HTMLMvxWalletConnectAppStoreElement>;
+            "mvx-wallet-connect-app-gallery-icon": LocalJSX.MvxWalletConnectAppGalleryIcon & JSXBase.HTMLAttributes<HTMLMvxWalletConnectAppGalleryIconElement>;
+            "mvx-wallet-connect-app-store-icon": LocalJSX.MvxWalletConnectAppStoreIcon & JSXBase.HTMLAttributes<HTMLMvxWalletConnectAppStoreIconElement>;
             "mvx-wallet-connect-download": LocalJSX.MvxWalletConnectDownload & JSXBase.HTMLAttributes<HTMLMvxWalletConnectDownloadElement>;
-            "mvx-wallet-connect-google-play": LocalJSX.MvxWalletConnectGooglePlay & JSXBase.HTMLAttributes<HTMLMvxWalletConnectGooglePlayElement>;
+            "mvx-wallet-connect-google-play-icon": LocalJSX.MvxWalletConnectGooglePlayIcon & JSXBase.HTMLAttributes<HTMLMvxWalletConnectGooglePlayIconElement>;
             "mvx-wallet-connect-scan": LocalJSX.MvxWalletConnectScan & JSXBase.HTMLAttributes<HTMLMvxWalletConnectScanElement>;
             "mvx-wallet-provider-icon": LocalJSX.MvxWalletProviderIcon & JSXBase.HTMLAttributes<HTMLMvxWalletProviderIconElement>;
             "mvx-xalias-provider-icon": LocalJSX.MvxXaliasProviderIcon & JSXBase.HTMLAttributes<HTMLMvxXaliasProviderIconElement>;

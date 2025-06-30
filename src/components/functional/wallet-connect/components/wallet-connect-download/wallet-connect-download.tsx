@@ -5,9 +5,9 @@ const XPORTAL_APP_STORE_LINK = 'https://apps.apple.com/us/app/xportal/id15194058
 const XPORTAL_PLAY_STORE_LINK = 'https://play.google.com/store/apps/details?id=com.elrond.maiar.wallet&hl=ro&pli=1';
 
 const xPortalDownloadOptions = [
-  { image: <mvx-wallet-connect-app-store />, link: XPORTAL_APP_STORE_LINK },
-  { image: <mvx-wallet-connect-google-play />, link: XPORTAL_PLAY_STORE_LINK },
-  { image: <mvx-wallet-connect-app-gallery />, link: XPORTAL_APP_GALLERY_LINK },
+  { image: <mvx-wallet-connect-app-store-icon />, link: XPORTAL_APP_STORE_LINK },
+  { image: <mvx-wallet-connect-google-play-icon />, link: XPORTAL_PLAY_STORE_LINK },
+  { image: <mvx-wallet-connect-app-gallery-icon />, link: XPORTAL_APP_GALLERY_LINK },
 ];
 
 @Component({

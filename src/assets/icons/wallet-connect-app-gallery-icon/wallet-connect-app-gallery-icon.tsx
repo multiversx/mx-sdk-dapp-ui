@@ -2,8 +2,8 @@ import { Component, h, Prop } from '@stencil/core';
 
 @Component({
   shadow: true,
-  tag: 'mvx-wallet-connect-app-gallery',
-  styleUrl: 'wallet-connect-app-gallery.scss',
+  tag: 'mvx-wallet-connect-app-gallery-icon',
+  styleUrl: 'wallet-connect-app-gallery-icon.scss',
 })
 export class WalletConnectAppGallery {
   @Prop() class?: string;
@@ -13,7 +13,7 @@ export class WalletConnectAppGallery {
       <svg
         viewBox="0 0 180 56"
         xmlns="http://www.w3.org/2000/svg"
-        class={{ 'wallet-connect-app-gallery': true, [this.class]: Boolean(this.class) }}
+        class={{ 'wallet-connect-app-gallery-icon': true, [this.class]: Boolean(this.class) }}
       >
         <rect width="180" height="56" rx="8" fill="black" />
         <rect x="0.5" y="0.5" width="179" height="55" rx="7.5" stroke="white" stroke-opacity="0.4" />
