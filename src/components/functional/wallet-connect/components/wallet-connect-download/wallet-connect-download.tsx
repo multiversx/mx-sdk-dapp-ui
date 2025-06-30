@@ -1,3 +1,4 @@
+import type { JSX } from '@stencil/core';
 import { Component, h, Prop } from '@stencil/core';
 
 const XPORTAL_APP_GALLERY_LINK = 'https://appgallery.huawei.com/app/C104325151';
