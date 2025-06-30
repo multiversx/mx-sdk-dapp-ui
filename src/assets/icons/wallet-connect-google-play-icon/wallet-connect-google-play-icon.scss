@@ -1,0 +1,13 @@
+:host {
+  @apply mvx:flex;
+
+  .wallet-connect-google-play-icon {
+    @apply mvx:w-48 mvx:h-16 mvx:flex mvx:fill-none;
+
+    rect {
+        &:hover {
+            fill: var(--mvx-neutral-800);
+        }
+    }
+  }
+}

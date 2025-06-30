@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.8](https://github.com/multiversx/mx-sdk-dapp-ui/pull/138)] - 2025-06-30
+
+- [Fixed images not displaying in the unlock panel.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/137)
+- [Added deep link xPortal connection support on mobile](https://github.com/multiversx/mx-sdk-dapp-ui/pull/136)
+- [Added copy button for transaction hash in toasts.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/135)
+- [Updated variables for switching the theme.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/134)
+
 ## [[0.0.7](https://github.com/multiversx/mx-sdk-dapp-ui/pull/130)] - 2025-06-23
 
 - [Fixed Ledger connect header close button not working](https://github.com/multiversx/mx-sdk-dapp-ui/pull/129)

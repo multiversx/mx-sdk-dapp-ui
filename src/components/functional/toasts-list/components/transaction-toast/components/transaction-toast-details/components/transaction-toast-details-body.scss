@@ -18,6 +18,10 @@
     .transaction-details-list-item-explorer-link-icon {
       @apply mvx:visible;
     }
+
+    .transaction-details-list-item-copy {
+      @apply mvx:visible;
+    }
   }
 
   @media (min-width: 375px) {
@@ -80,8 +84,21 @@
   color: var(--mvx-label-color);
 }
 
+.transaction-details-list-item-copy {
+  @apply mvx:flex mvx:invisible;
+
+  .transaction-details-list-item-copy-icon {
+    @apply mvx:h-4 mvx:w-4 mvx:flex mvx:flex-col mvx:justify-end mvx:shrink-0 mvx:transition-opacity mvx:duration-200 mvx:ease-in-out ;
+    color: var(--mvx-text-color-tertiary);
+
+    &:hover {
+      @apply mvx:opacity-80;
+    }
+  }
+}
+
 .transaction-details-list-item-explorer-link-icon {
-  @apply mvx:flex mvx:flex-col mvx:justify-end mvx:shrink-0 mvx:ml-auto mvx:mr-3 mvx:invisible mvx:w-4 mvx:h-4;
+  @apply mvx:flex mvx:flex-col mvx:justify-end mvx:shrink-0 mvx:mr-3 mvx:invisible mvx:w-4 mvx:h-4;
   color: var(--mvx-text-color-tertiary);
 
   .svg-inline--fa {
