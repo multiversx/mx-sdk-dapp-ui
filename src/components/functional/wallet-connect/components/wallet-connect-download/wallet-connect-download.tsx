@@ -5,7 +5,7 @@ const XPORTAL_APP_STORE_LINK = 'https://apps.apple.com/us/app/xportal/id15194058
 const XPORTAL_PLAY_STORE_LINK = 'https://play.google.com/store/apps/details?id=com.elrond.maiar.wallet&hl=ro&pli=1';
 
 interface XPortalDownloadOptionType {
-  image: string;
+  image: JSX.Element;
   link: string;
 }
 

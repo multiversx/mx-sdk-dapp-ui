@@ -5,7 +5,7 @@ import { Component, h, Prop } from '@stencil/core';
   tag: 'mvx-wallet-connect-app-store-icon',
   styleUrl: 'wallet-connect-app-store-icon.scss',
 })
-export class WalletConnectAppStore {
+export class WalletConnectAppStoreIcon {
   @Prop() class?: string;
 
   render() {
