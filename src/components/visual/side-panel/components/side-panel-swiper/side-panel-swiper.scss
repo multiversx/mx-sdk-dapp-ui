@@ -1,0 +1,93 @@
+:host {
+  @apply mvx:flex;
+
+  @media (min-width: 480px) {
+    @apply mvx:flex-col mvx:h-full;
+  }
+
+  .side-panel-swiper-wrapper {
+    @apply mvx:fixed mvx:left-0 mvx:top-0 mvx:bottom-0 mvx:right-0 mvx:z-50;
+
+    @media (min-width: 480px) {
+      @apply mvx:static mvx:h-full;
+    }
+
+    &:before {
+      @apply mvx:opacity-90 mvx:left-0 mvx:top-0 mvx:right-0 mvx:bottom-0 mvx:transition-all mvx:duration-200;
+      @apply mvx:pointer-events-none mvx:absolute mvx:ease-in-out;
+      background: var(--mvx-neutral-900);
+      content: '';
+
+      @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+        @apply mvx:opacity-50;
+        background: var(--mvx-neutral-900);
+        -webkit-backdrop-filter: blur(0.375rem);
+        backdrop-filter: blur(0.375rem);
+      }
+
+      @media (min-width: 480px) {
+        content: none;
+      }
+    }
+
+    &.visible {
+      @apply mvx:block;
+    }
+
+    &.hidden {
+      @apply mvx:hidden;
+
+      @media (min-width: 480px) {
+        @apply mvx:block;
+      }
+
+      .side-panel-swiper {
+        @apply mvx:translate-y-full;
+      }
+    }
+
+    .side-panel-swiper {
+      @apply mvx:bottom-0 mvx:absolute mvx:left-0 mvx:right-0 mvx:flex mvx:flex-col mvx:justify-end mvx:touch-pan-y;
+      @apply mvx:h-auto mvx:min-h-dvh mvx:rounded-t-3xl mvx:transition-none;
+      backface-visibility: hidden;
+      will-change: transform;
+
+      @media (min-width: 480px) {
+        @apply mvx:h-full mvx:static mvx:rounded-none mvx:transform-none;
+        justify-content: unset;
+        min-height: auto;
+      }
+
+      .side-panel-swiper-handle-wrapper {
+        @apply mvx:top-8 mvx:relative mvx:h-8 mvx:w-full mvx:z-12;
+
+        @media (min-width: 480px) {
+          @apply mvx:hidden;
+        }
+
+        .side-panel-swiper-handle-container {
+          @apply mvx:flex mvx:top-0 mvx:bottom-0 mvx:absolute mvx:right-0 mvx:left-0 mvx:justify-center;
+          @apply mvx:touch-none mvx:select-none mvx:cursor-grab;
+
+          &:active {
+            @apply mvx:cursor-grabbing;
+          }
+
+          .side-panel-swiper-handle {
+            @apply mvx:w-32 mvx:mt-3 mvx:h-1 mvx:rounded;
+            background-color: var(--mvx-text-color-primary);
+          }
+        }
+      }
+
+      .side-panel-swiper-content {
+        @apply mvx:overflow-y-auto;
+        max-height: calc(100dvh - 4rem);
+
+        @media (min-width: 480px) {
+          @apply mvx:max-h-none mvx:h-full;
+        }
+      }
+    }
+  }
+}

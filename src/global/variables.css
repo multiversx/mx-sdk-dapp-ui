@@ -51,9 +51,9 @@
   --mvx-cyan-500: #17a2b8;
 }
 
-
-  /* Dark Theme Variables */
-:root, :root[data-theme="mvx:dark-theme"] {
+/* Dark Theme Variables */
+:root,
+:root[data-theme='mvx:dark-theme'] {
   --mvx-text-color-primary: var(--mvx-white);
   --mvx-text-color-secondary: var(--mvx-stone-350);
   --mvx-text-color-tertiary: var(--mvx-neutral-200);
@@ -95,7 +95,7 @@
 }
 
 /* Light Theme Variables */
-:root[data-theme="mvx:light-theme"] {
+:root[data-theme='mvx:light-theme'] {
   --mvx-text-color-primary: var(--mvx-black);
   --mvx-text-color-secondary: var(--mvx-stone-450);
   --mvx-text-color-tertiary: var(--mvx-neutral-800);
