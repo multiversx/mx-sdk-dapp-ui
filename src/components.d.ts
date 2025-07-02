@@ -338,6 +338,7 @@ export namespace Components {
     }
     interface MvxUnlockButton {
         "class"?: string;
+        "dataTestId"?: string;
         "icon"?: HTMLElement;
         "iconUrl": string;
         "label": string;
@@ -1566,6 +1567,7 @@ declare namespace LocalJSX {
     }
     interface MvxUnlockButton {
         "class"?: string;
+        "dataTestId"?: string;
         "icon"?: HTMLElement;
         "iconUrl"?: string;
         "label"?: string;
