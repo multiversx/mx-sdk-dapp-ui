@@ -44,19 +44,19 @@ a.badge:focus {
 
 .badge-primary {
   color: var(--mvx-white);
-  background-color: var(--mvx-blue-600);
+  background-color: var(--mvx-blue-650);
 }
 
 a.badge-primary:hover,
 a.badge-primary:focus {
   color: var(--mvx-white);
-  background-color: var(--mvx-blue-700);
+  background-color: var(--mvx-blue-750);
 }
 
 a.badge-primary:focus,
 a.badge-primary.focus {
   outline: 0;
-  box-shadow: 0 0 0 0.2rem var(--mvx-blue-600-50);
+  box-shadow: 0 0 0 0.2rem var(--mvx-blue-650);
 }
 
 .badge-secondary {
@@ -67,7 +67,7 @@ a.badge-primary.focus {
 a.badge-secondary:hover,
 a.badge-secondary:focus {
   color: var(--mvx-white);
-  background-color: var(--mvx-slate-500);
+  background-color: var(--mvx-slate-550);
 }
 
 a.badge-secondary:focus,
@@ -77,7 +77,7 @@ a.badge-secondary.focus {
 
 .badge-success {
   color: var(--mvx-white);
-  background-color: var(--mvx-green-600);
+  background-color: var(--mvx-green-650);
 }
 
 a.badge-success:hover,
@@ -93,13 +93,13 @@ a.badge-success.focus {
 
 .badge-info {
   color: var(--mvx-white);
-  background-color: var(--mvx-cyan-500);
+  background-color: var(--mvx-cyan-550);
 }
 
 a.badge-info:hover,
 a.badge-info:focus {
   color: var(--mvx-white);
-  background-color: var(--mvx-cyan-500);
+  background-color: var(--mvx-cyan-550);
 }
 
 a.badge-info:focus,
@@ -109,14 +109,14 @@ a.badge-info.focus {
 }
 
 .badge-warning {
-  color: var(--mvx-gray-900);
+  color: var(--mvx-gray-925);
   background-color: var(--mvx-yellow-400);
 }
 
 a.badge-warning:hover,
 a.badge-warning:focus {
-  color: var(--mvx-gray-900);
-  background-color: var(--mvx-yellow-600);
+  color: var(--mvx-gray-925);
+  background-color: var(--mvx-yellow-650);
 }
 
 a.badge-warning:focus,
@@ -133,7 +133,7 @@ a.badge-warning.focus {
 a.badge-danger:hover,
 a.badge-danger:focus {
   color: var(--mvx-white);
-  background-color: var(--mvx-red-700);
+  background-color: var(--mvx-red-750);
 }
 
 a.badge-danger:focus,
@@ -143,14 +143,14 @@ a.badge-danger.focus {
 }
 
 .badge-light {
-  color: var(--mvx-gray-900);
-  background-color: var(--mvx-gray-100);
+  color: var(--mvx-gray-925);
+  background-color: var(--mvx-gray-150);
 }
 
 a.badge-light:hover,
 a.badge-light:focus {
-  color: var(--mvx-gray-900);
-  background-color: var(--mvx-gray-300);
+  color: var(--mvx-gray-925);
+  background-color: var(--mvx-gray-250);
 }
 
 a.badge-light:focus,
@@ -161,13 +161,13 @@ a.badge-light.focus {
 
 .badge-dark {
   color: var(--mvx-white);
-  background-color: var(--mvx-gray-800);
+  background-color: var(--mvx-gray-725);
 }
 
 a.badge-dark:hover,
 a.badge-dark:focus {
   color: var(--mvx-white);
-  background-color: var(--mvx-gray-900);
+  background-color: var(--mvx-gray-925);
 }
 
 a.badge-dark:focus,
