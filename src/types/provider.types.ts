@@ -12,4 +12,5 @@ export interface IProviderBase<T extends ProviderTypeEnum = ProviderTypeEnum> {
   name: string;
   type: T[keyof T];
   iconUrl?: string;
+  dataTestId?: string;
 }

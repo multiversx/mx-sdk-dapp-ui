@@ -46,6 +46,7 @@ export class UnlockPanelGroup {
                 [unlockPanelGroupClasses.detectedPanelGroup]: isInstallableExtension(provider),
                 [unlockPanelGroupClasses.lastProviderButton]: providerIndex === this.providers.length - 1,
               })}
+              dataTestId={provider.dataTestId}
             />
           ))}
 

@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Added dataTestId to unlock panel provider button](https://github.com/multiversx/mx-sdk-dapp-ui/pull/141)
 - [Added swipe functionality for the mobile side panel](https://github.com/multiversx/mx-sdk-dapp-ui/pull/140)
 
 ## [[0.0.8](https://github.com/multiversx/mx-sdk-dapp-ui/pull/138)] - 2025-06-30
