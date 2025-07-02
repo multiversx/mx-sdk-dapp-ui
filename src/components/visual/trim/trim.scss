@@ -92,7 +92,7 @@
 }
 
 a:hover > .trim span {
-  color: var(--mvx-blue-600);
+  color: var(--mvx-blue-650);
 
   &.hidden-text-ref {
     color: transparent;
@@ -101,7 +101,7 @@ a:hover > .trim span {
 
 a > .trim span,
 .text-primary > .trim span {
-  color: var(--mvx-blue-600);
+  color: var(--mvx-blue-650);
 
   &.hidden-text-ref {
     color: transparent;
