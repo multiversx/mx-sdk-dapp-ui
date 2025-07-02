@@ -1,5 +1,5 @@
 .side-panel-wrapper {
-  @apply mvx:flex mvx:pointer-events-none mvx:z-1;
+  @apply mvx:flex mvx:pointer-events-none mvx:z-50;
   @apply mvx:justify-end mvx:items-start;
 
   @media (min-width: 480px) {
