@@ -48,7 +48,7 @@
 
 .transaction-details-list-item-icon-success {
   background-color: var(--mvx-success-bg-color);
-  
+
   svg,
   .svg-inline--fa {
     color: var(--mvx-success-color) !important;
@@ -88,7 +88,7 @@
   @apply mvx:flex mvx:invisible!;
 
   .transaction-details-list-item-copy-icon {
-    @apply mvx:h-4 mvx:w-4 mvx:flex mvx:flex-col mvx:justify-end mvx:shrink-0 mvx:transition-opacity mvx:duration-200 mvx:ease-in-out ;
+    @apply mvx:h-4 mvx:w-4 mvx:flex mvx:flex-col mvx:justify-end mvx:shrink-0 mvx:transition-opacity mvx:duration-200 mvx:ease-in-out;
     color: var(--mvx-text-color-tertiary);
 
     &:hover {
