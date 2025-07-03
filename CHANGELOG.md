@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Fixed batch transactions order in toast.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/148)
+
 ## [[0.0.9](https://github.com/multiversx/mx-sdk-dapp-ui/pull/145)] - 2025-07-03
 
 - [Fixed icons max width / height in toasts.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/143)
