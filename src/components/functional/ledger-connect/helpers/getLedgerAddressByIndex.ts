@@ -1,7 +1,7 @@
-import type { IAccount } from 'types/addresses-table.types';
+import type { IIndexedAccount } from 'types/addresses-table.types';
 
 interface GetLedgerAddressByIndexType {
-  accounts?: IAccount[];
+  accounts?: IIndexedAccount[];
   selectedIndex: number;
 }
 
