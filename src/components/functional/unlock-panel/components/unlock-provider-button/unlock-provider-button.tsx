@@ -31,6 +31,7 @@ export class UnlockProviderButton {
         type={this.provider.type}
         class={classNames(this.class, unlockProviderButtonClasses.button)}
         icon={icon}
+        dataTestId={this.provider.type.toString()}
       />
     );
   }

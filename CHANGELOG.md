@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.9](https://github.com/multiversx/mx-sdk-dapp-ui/pull/145)] - 2025-07-03
+
+- [Fixed icons max width / height in toasts.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/143)
+- [Refactor color variable names to avoid Tailwind naming conflicts](https://github.com/multiversx/mx-sdk-dapp-ui/pull/142)
+- [Added dataTestId to unlock panel provider button](https://github.com/multiversx/mx-sdk-dapp-ui/pull/141)
+- [Added swipe functionality for the mobile side panel](https://github.com/multiversx/mx-sdk-dapp-ui/pull/140)
+
 ## [[0.0.8](https://github.com/multiversx/mx-sdk-dapp-ui/pull/138)] - 2025-06-30
 
 - [Fixed images not displaying in the unlock panel.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/137)
