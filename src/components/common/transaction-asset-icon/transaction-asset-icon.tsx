@@ -8,6 +8,7 @@ export enum IconSizeEnumType {
 
 @Component({
   tag: 'mvx-transaction-asset-icon',
+  styleUrl: 'transaction-asset-icon.scss',
   shadow: true,
 })
 export class TransactionAssetIcon {
@@ -24,7 +25,14 @@ export class TransactionAssetIcon {
     }
 
     if (this.transaction.asset.imageUrl) {
-      return <img src={this.transaction.asset.imageUrl} alt="Transaction icon" loading="lazy" />;
+      return (
+        <img
+          src={this.transaction.asset.imageUrl}
+          alt="Transaction icon"
+          loading="lazy"
+          class="transaction-asset-image"
+        />
+      );
     }
 
     if (this.transaction.asset.icon) {

@@ -20,7 +20,7 @@
     }
 
     .transaction-details-list-item-copy {
-      @apply mvx:visible;
+      @apply mvx:visible!;
     }
   }
 
@@ -85,7 +85,7 @@
 }
 
 .transaction-details-list-item-copy {
-  @apply mvx:flex mvx:invisible;
+  @apply mvx:flex mvx:invisible!;
 
   .transaction-details-list-item-copy-icon {
     @apply mvx:h-4 mvx:w-4 mvx:flex mvx:flex-col mvx:justify-end mvx:shrink-0 mvx:transition-opacity mvx:duration-200 mvx:ease-in-out ;
