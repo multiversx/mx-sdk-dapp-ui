@@ -27,6 +27,20 @@ export class TransactionToastDetails {
     this.showAllTransactions = true;
   }
 
+  private initialTransactionsOrder = new Map<string, number>();
+
+  private getOrderedTransactions(transactions: ITransactionListItem[]) {
+    transactions.forEach((transaction, index) => {
+      if (!this.initialTransactionsOrder.has(transaction.hash)) {
+        this.initialTransactionsOrder.set(transaction.hash, index + 1);
+      }
+    });
+
+    return [...transactions].sort(
+      (a, b) => this.initialTransactionsOrder.get(a.hash) - this.initialTransactionsOrder.get(b.hash),
+    );
+  }
+
   render() {
     if (this.transactions == null) {
       return null;
@@ -34,9 +48,10 @@ export class TransactionToastDetails {
 
     const hasMoreTransactionsToShow = this.transactions.length > this.maxShownTransactions;
     const hiddenTransactionsCount = this.transactions.length - this.maxShownTransactions;
+    const orderedTransactions = this.getOrderedTransactions(this.transactions);
     const visibleTransactions = this.showAllTransactions
-      ? this.transactions
-      : this.transactions.slice(0, this.maxShownTransactions);
+      ? orderedTransactions
+      : orderedTransactions.slice(0, this.maxShownTransactions);
 
     return (
       <div class="transaction-details-container">
@@ -54,13 +69,13 @@ export class TransactionToastDetails {
             'expanded': this.isExpanded,
           }}
         >
-          {visibleTransactions.map(({ hash, status, link }, index) => (
+          {visibleTransactions.map(({ hash, status, link }) => (
             <mvx-transaction-toast-details-body
               transactionClass={this.transactionClass}
               hash={hash}
               status={status}
               link={link}
-              index={`#${index + 1}`}
+              index={`#${this.initialTransactionsOrder.get(hash)}`}
               key={hash}
             />
           ))}
