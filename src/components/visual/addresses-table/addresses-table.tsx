@@ -2,7 +2,7 @@ import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-import type { IAccount, IAccountScreenData } from 'types/addresses-table.types';
+import type { IAccountScreenData, IIndexedAccount } from 'types/addresses-table.types';
 
 const TOTAL_ADDRESSES_COUNT = 5000;
 
@@ -37,7 +37,7 @@ export class AddressSelect {
     this.pageChange.emit(event.detail);
   }
 
-  private processLedgerAddressIndex(accountDerivation: IAccount) {
+  private processLedgerAddressIndex(accountDerivation: IIndexedAccount) {
     return Number(accountDerivation.index + 1).toLocaleString();
   }
 
