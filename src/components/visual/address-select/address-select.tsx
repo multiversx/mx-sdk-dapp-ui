@@ -151,7 +151,7 @@ export class AddressSelect {
             isDisabled={isPageChanging}
             class={ledgerAddressesClasses.pagination}
             onPageChange={(event: CustomEvent) => this.handlePageChange(event)}
-            currentPage={this.accountScreenData.startIndex / this.accountScreenData.addressesPerPage + 1}
+            currentPage={Math.floor(this.accountScreenData.startIndex / this.accountScreenData.addressesPerPage) + 1}
           />
         </div>
 

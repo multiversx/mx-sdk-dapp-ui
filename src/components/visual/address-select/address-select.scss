@@ -141,7 +141,7 @@
         @apply mvx:rounded-lg mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:gap-2;
         color: var(--mvx-button-text-primary);
         background-color: var(--mvx-button-bg-primary);
-        border: 1px solid var(---mvx-button-bg-primary);
+        border: 1px solid var(--mvx-button-bg-primary);
 
         &:hover {
           @apply mvx:opacity-75;
