@@ -17,7 +17,7 @@ export class UnlockButton {
   @Prop() label: string;
   @Prop() iconUrl: string;
   @Prop() icon?: HTMLElement;
-
+  @Prop() dataTestId?: string;
   @Prop() type?: IProviderBase['type'];
   @Prop() class?: string;
 
@@ -30,7 +30,7 @@ export class UnlockButton {
     const shouldShowOpenLabel = isDetectableProvider && (isExtensionInstalled || isMetaMaskInstalled);
 
     return (
-      <div class={{ 'unlock-button': true, [this.class]: Boolean(this.class) }}>
+      <div data-testid={this.dataTestId} class={{ 'unlock-button': true, [this.class]: Boolean(this.class) }}>
         <div class="unlock-button-label">{this.label}</div>
 
         <div
