@@ -2,13 +2,13 @@ import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-import type { IAccount, IAccountScreenData } from 'types/address-select.types';
+import type { IAccount, IAccountScreenData } from 'types/addresses-table.types';
 
 const TOTAL_ADDRESSES_COUNT = 5000;
 
 @Component({
-  tag: 'mvx-address-select',
-  styleUrl: 'address-select.scss',
+  tag: 'mvx-addresses-table',
+  styleUrl: 'addresses-table.scss',
   shadow: true,
 })
 export class AddressSelect {
@@ -76,33 +76,33 @@ export class AddressSelect {
     }
 
     return (
-      <div class="address-select">
-        <div class="address-select-label-wrapper">
-          <div class="address-select-label">Choose the wallet you want to access</div>
+      <div class="addresses-table">
+        <div class="addresses-table-label-wrapper">
+          <div class="addresses-table-label">Choose the wallet you want to access</div>
         </div>
 
-        <div class="address-select-wrapper">
-          <div class={{ 'address-select-preloader': true, 'visible': isPageChanging }}>
+        <div class="addresses-table-wrapper">
+          <div class={{ 'addresses-table-preloader': true, 'visible': isPageChanging }}>
             {Array.from({ length: this.accountScreenData.addressesPerPage }, () => (
-              <mvx-preloader class={classNames('address-select-preloader-item', ledgerAddressesClasses.preloaderItem)}>
+              <mvx-preloader class={classNames('addresses-table-preloader-item', ledgerAddressesClasses.preloaderItem)}>
                 <mvx-preloader
                   class={classNames(
-                    'address-select-preloader-item-checkbox',
+                    'addresses-table-preloader-item-checkbox',
                     ledgerAddressesClasses.preloaderItemCheckbox,
                   )}
                 />
                 <mvx-preloader
-                  class={classNames('address-select-preloader-item-index', ledgerAddressesClasses.preloaderItemIndex)}
+                  class={classNames('addresses-table-preloader-item-index', ledgerAddressesClasses.preloaderItemIndex)}
                 />
                 <mvx-preloader
                   class={classNames(
-                    'address-select-preloader-item-address',
+                    'addresses-table-preloader-item-address',
                     ledgerAddressesClasses.preloaderItemAddress,
                   )}
                 />
                 <mvx-preloader
                   class={classNames(
-                    'address-select-preloader-item-balance',
+                    'addresses-table-preloader-item-balance',
                     ledgerAddressesClasses.preloaderItemBalance,
                   )}
                 />
@@ -110,24 +110,24 @@ export class AddressSelect {
             ))}
           </div>
 
-          <div class={{ 'address-select-list': true, 'visible': !isPageChanging }}>
+          <div class={{ 'addresses-table-list': true, 'visible': !isPageChanging }}>
             {this.accountScreenData.accounts.map(accountDerivation => (
               <div
                 class={{
-                  'address-select-list-item': true,
+                  'addresses-table-list-item': true,
                   'checked': accountDerivation.index === this.selectedIndex,
                 }}
                 onClick={this.handleSelectAccount(accountDerivation.index)}
               >
                 <div
                   class={{
-                    'address-select-list-item-checkbox': true,
+                    'addresses-table-list-item-checkbox': true,
                     'checked': accountDerivation.index === this.selectedIndex,
                   }}
                 />
                 <div
                   class={{
-                    'address-select-list-item-index': true,
+                    'addresses-table-list-item-index': true,
                     'checked': accountDerivation.index === this.selectedIndex,
                     'narrow': isSingleDigitIndex,
                     'middle': isIndexBelowOneHundred,
@@ -138,14 +138,14 @@ export class AddressSelect {
                   #{this.processLedgerAddressIndex(accountDerivation)}
                 </div>
 
-                <mvx-trim text={accountDerivation.address} class="address-select-list-item-address" />
-                <div class="address-select-list-item-balance">{accountDerivation.usdValue}</div>
+                <mvx-trim text={accountDerivation.address} class="addresses-table-list-item-address" />
+                <div class="addresses-table-list-item-balance">{accountDerivation.usdValue}</div>
               </div>
             ))}
           </div>
         </div>
 
-        <div class="address-select-pagination">
+        <div class="addresses-table-pagination">
           <mvx-pagination
             totalPages={totalPages}
             isDisabled={isPageChanging}
@@ -155,13 +155,13 @@ export class AddressSelect {
           />
         </div>
 
-        <div class="address-select-button-wrapper">
+        <div class="addresses-table-button-wrapper">
           {isAccessWalletDisabled && (
-            <div class="address-select-button-tooltip-wrapper">
+            <div class="addresses-table-button-tooltip-wrapper">
               <mvx-tooltip
                 trigger={
                   <div
-                    class={{ 'address-select-button-tooltip': true, [ledgerAddressesClasses.buttonTooltip]: true }}
+                    class={{ 'addresses-table-button-tooltip': true, [ledgerAddressesClasses.buttonTooltip]: true }}
                   />
                 }
               >
@@ -173,9 +173,9 @@ export class AddressSelect {
           <button
             data-testid={DataTestIdsEnum.confirmBtn}
             onClick={this.handleAccessWallet.bind(this)}
-            class={{ 'address-select-button': true, 'loading': isPageChanging, 'disabled': isAccessWalletDisabled }}
+            class={{ 'addresses-table-button': true, 'loading': isPageChanging, 'disabled': isAccessWalletDisabled }}
           >
-            <span class="address-select-button-label">{isPageChanging ? 'Loading Wallets...' : 'Access Wallet'}</span>
+            <span class="addresses-table-button-label">{isPageChanging ? 'Loading Wallets...' : 'Access Wallet'}</span>
             {isPageChanging && <mvx-spinner-icon />}
           </button>
         </div>

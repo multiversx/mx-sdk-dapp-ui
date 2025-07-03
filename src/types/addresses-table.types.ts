@@ -1,4 +1,4 @@
-export interface IAccount {
+export interface IIndexedAccount {
   address: string;
   balance: string;
   usdValue?: string;
@@ -6,7 +6,7 @@ export interface IAccount {
 }
 
 export interface IAccountScreenData {
-  accounts: IAccount[];
+  accounts: IIndexedAccount[];
   startIndex: number;
   addressesPerPage: number;
   isLoading: boolean;

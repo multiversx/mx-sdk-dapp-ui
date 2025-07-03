@@ -1,4 +1,4 @@
-import type { IAccountScreenData } from 'types/address-select.types';
+import type { IAccountScreenData } from 'types/addresses-table.types';
 
 export interface IConnectScreenData {
   customContentMarkup?: string;

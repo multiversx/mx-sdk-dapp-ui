@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { IAccountScreenData } from "./types/address-select.types";
+import { IAccountScreenData } from "./types/addresses-table.types";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
@@ -20,7 +20,7 @@ import { LocalJSX as JSX } from "@stencil/core";
 import { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { TransactionValueType } from "./components/controlled/transactions-table/transactions-table.type";
 import { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
-export { IAccountScreenData } from "./types/address-select.types";
+export { IAccountScreenData } from "./types/addresses-table.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
@@ -36,7 +36,7 @@ export { IToastDataState, ITransactionProgressState } from "./components/functio
 export { TransactionValueType } from "./components/controlled/transactions-table/transactions-table.type";
 export { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
 export namespace Components {
-    interface MvxAddressSelect {
+    interface MvxAddressesTable {
         "accountScreenData": IAccountScreenData;
         "selectedIndex": number;
     }
@@ -395,9 +395,9 @@ export namespace Components {
         "class"?: string;
     }
 }
-export interface MvxAddressSelectCustomEvent<T> extends CustomEvent<T> {
+export interface MvxAddressesTableCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLMvxAddressSelectElement;
+    target: HTMLMvxAddressesTableElement;
 }
 export interface MvxCustomToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -460,24 +460,24 @@ export interface MvxWalletConnectScanCustomEvent<T> extends CustomEvent<T> {
     target: HTMLMvxWalletConnectScanElement;
 }
 declare global {
-    interface HTMLMvxAddressSelectElementEventMap {
+    interface HTMLMvxAddressesTableElementEventMap {
         "accessWallet": any;
         "selectAccount": any;
         "pageChange": number;
     }
-    interface HTMLMvxAddressSelectElement extends Components.MvxAddressSelect, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxAddressSelectElementEventMap>(type: K, listener: (this: HTMLMvxAddressSelectElement, ev: MvxAddressSelectCustomEvent<HTMLMvxAddressSelectElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+    interface HTMLMvxAddressesTableElement extends Components.MvxAddressesTable, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxAddressesTableElementEventMap>(type: K, listener: (this: HTMLMvxAddressesTableElement, ev: MvxAddressesTableCustomEvent<HTMLMvxAddressesTableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
         addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxAddressSelectElementEventMap>(type: K, listener: (this: HTMLMvxAddressSelectElement, ev: MvxAddressSelectCustomEvent<HTMLMvxAddressSelectElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxAddressesTableElementEventMap>(type: K, listener: (this: HTMLMvxAddressesTableElement, ev: MvxAddressesTableCustomEvent<HTMLMvxAddressesTableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
         removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
-    var HTMLMvxAddressSelectElement: {
-        prototype: HTMLMvxAddressSelectElement;
-        new (): HTMLMvxAddressSelectElement;
+    var HTMLMvxAddressesTableElement: {
+        prototype: HTMLMvxAddressesTableElement;
+        new (): HTMLMvxAddressesTableElement;
     };
     interface HTMLMvxAnglesLeftIconElement extends Components.MvxAnglesLeftIcon, HTMLStencilElement {
     }
@@ -1165,7 +1165,7 @@ declare global {
         new (): HTMLMvxXportalQrCodePreloaderElement;
     };
     interface HTMLElementTagNameMap {
-        "mvx-address-select": HTMLMvxAddressSelectElement;
+        "mvx-addresses-table": HTMLMvxAddressesTableElement;
         "mvx-angles-left-icon": HTMLMvxAnglesLeftIconElement;
         "mvx-angles-right-icon": HTMLMvxAnglesRightIconElement;
         "mvx-arrow-right-icon": HTMLMvxArrowRightIconElement;
@@ -1255,11 +1255,11 @@ declare global {
     }
 }
 declare namespace LocalJSX {
-    interface MvxAddressSelect {
+    interface MvxAddressesTable {
         "accountScreenData"?: IAccountScreenData;
-        "onAccessWallet"?: (event: MvxAddressSelectCustomEvent<any>) => void;
-        "onPageChange"?: (event: MvxAddressSelectCustomEvent<number>) => void;
-        "onSelectAccount"?: (event: MvxAddressSelectCustomEvent<any>) => void;
+        "onAccessWallet"?: (event: MvxAddressesTableCustomEvent<any>) => void;
+        "onPageChange"?: (event: MvxAddressesTableCustomEvent<number>) => void;
+        "onSelectAccount"?: (event: MvxAddressesTableCustomEvent<any>) => void;
         "selectedIndex"?: number;
     }
     interface MvxAnglesLeftIcon {
@@ -1623,7 +1623,7 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface IntrinsicElements {
-        "mvx-address-select": MvxAddressSelect;
+        "mvx-addresses-table": MvxAddressesTable;
         "mvx-angles-left-icon": MvxAnglesLeftIcon;
         "mvx-angles-right-icon": MvxAnglesRightIcon;
         "mvx-arrow-right-icon": MvxArrowRightIcon;
@@ -1716,7 +1716,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "mvx-address-select": LocalJSX.MvxAddressSelect & JSXBase.HTMLAttributes<HTMLMvxAddressSelectElement>;
+            "mvx-addresses-table": LocalJSX.MvxAddressesTable & JSXBase.HTMLAttributes<HTMLMvxAddressesTableElement>;
             "mvx-angles-left-icon": LocalJSX.MvxAnglesLeftIcon & JSXBase.HTMLAttributes<HTMLMvxAnglesLeftIconElement>;
             "mvx-angles-right-icon": LocalJSX.MvxAnglesRightIcon & JSXBase.HTMLAttributes<HTMLMvxAnglesRightIconElement>;
             "mvx-arrow-right-icon": LocalJSX.MvxArrowRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowRightIconElement>;

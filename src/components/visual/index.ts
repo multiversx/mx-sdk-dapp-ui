@@ -1,1 +1,1 @@
-export * from './address-select/address-select';
+export * from './addresses-table/addresses-table';
