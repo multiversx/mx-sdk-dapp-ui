@@ -5,7 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { IAccountScreenData } from "./types/address-table.types";
+import { IAddressTableData } from "./types/address-table.types";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
@@ -20,7 +20,7 @@ import { LocalJSX as JSX } from "@stencil/core";
 import { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { TransactionValueType } from "./components/controlled/transactions-table/transactions-table.type";
 import { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
-export { IAccountScreenData } from "./types/address-table.types";
+export { IAddressTableData } from "./types/address-table.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
@@ -37,7 +37,7 @@ export { TransactionValueType } from "./components/controlled/transactions-table
 export { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
 export namespace Components {
     interface MvxAddressTable {
-        "accountScreenData": IAccountScreenData;
+        "accountScreenData": IAddressTableData;
         "selectedIndex": number;
     }
     interface MvxAnglesLeftIcon {
@@ -1256,7 +1256,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface MvxAddressTable {
-        "accountScreenData"?: IAccountScreenData;
+        "accountScreenData"?: IAddressTableData;
         "onAccessWallet"?: (event: MvxAddressTableCustomEvent<any>) => void;
         "onPageChange"?: (event: MvxAddressTableCustomEvent<number>) => void;
         "onSelectAccount"?: (event: MvxAddressTableCustomEvent<any>) => void;
