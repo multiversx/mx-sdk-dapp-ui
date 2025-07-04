@@ -1,4 +1,4 @@
-import type { IAccountScreenData } from 'types/address-table.types';
+import type { IAddressTableData } from 'types/address-table.types';
 
 export interface IConnectScreenData {
   customContentMarkup?: string;
@@ -16,7 +16,7 @@ export interface IConfirmScreenData {
 
 export interface ILedgerConnectPanelData {
   connectScreenData: IConnectScreenData | null;
-  accountScreenData: IAccountScreenData | null;
+  accountScreenData: IAddressTableData | null;
   confirmScreenData: IConfirmScreenData | null;
 }
 
