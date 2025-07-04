@@ -86,7 +86,7 @@ export class LedgerConnect {
             onRightButtonClick={this.handleClose.bind(this)}
           />
 
-          <mvx-addresses-table
+          <mvx-address-table
             selectedIndex={this.selectedIndex}
             accountScreenData={this.ledgerDataState.accountScreenData}
             onAccessWallet={() => this.accessWallet()}

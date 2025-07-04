@@ -1,1 +1,1 @@
-export * from './addresses-table/addresses-table';
+export * from './address-table/address-table';
