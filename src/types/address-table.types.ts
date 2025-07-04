@@ -5,7 +5,7 @@ export interface IndexedAccountType {
   index: number;
 }
 
-export interface IAccountScreenData {
+export interface IAddressTableData {
   accounts: IndexedAccountType[];
   startIndex: number;
   addressesPerPage: number;

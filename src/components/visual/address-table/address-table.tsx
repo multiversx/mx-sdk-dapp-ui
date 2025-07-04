@@ -2,7 +2,7 @@ import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-import type { IAccountScreenData, IndexedAccountType } from 'types/address-table.types';
+import type { IAddressTableData, IndexedAccountType } from 'types/address-table.types';
 
 const TOTAL_ADDRESSES_COUNT = 5000;
 
@@ -12,7 +12,7 @@ const TOTAL_ADDRESSES_COUNT = 5000;
   shadow: true,
 })
 export class AddressTable {
-  @Prop() accountScreenData: IAccountScreenData;
+  @Prop() accountScreenData: IAddressTableData;
   @Prop() selectedIndex: number;
 
   @Event() accessWallet: EventEmitter;
