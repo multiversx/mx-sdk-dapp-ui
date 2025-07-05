@@ -1,7 +1,7 @@
-import type { ILedgerAccount } from '../ledger-connect.types';
+import type { IndexedAccountType } from 'types/address-table.types';
 
 interface GetLedgerAddressByIndexType {
-  accounts?: ILedgerAccount[];
+  accounts?: IndexedAccountType[];
   selectedIndex: number;
 }
 

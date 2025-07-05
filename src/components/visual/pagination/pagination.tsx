@@ -1,5 +1,6 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import { getPagination } from './helpers';
 
@@ -68,6 +69,7 @@ export class Pagination {
         <span
           onClick={this.handleEdgePageClick(1)}
           class={{ 'pagination-angle': true, 'disabled': this.isDisabled, 'inactive': isLeftToggleDisabled }}
+          data-testid={DataTestIdsEnum.firstBtn}
         >
           <mvx-angles-left-icon class="pagination-angle-icon" />
         </span>
@@ -75,6 +77,7 @@ export class Pagination {
         <div
           onClick={this.handleEdgePageClick(this.currentPageIndex - 1)}
           class={{ 'pagination-edge-button': true, 'disabled': this.isDisabled, 'inactive': isLeftToggleDisabled }}
+          data-testid={DataTestIdsEnum.prevBtn}
         >
           <mvx-single-angle-left-icon class="pagination-edge-button-icon" />
         </div>
@@ -90,6 +93,7 @@ export class Pagination {
                     'active': this.isCurrentPageActive(paginationItem),
                     'hundreds': this.isInTheHundreds(paginationItem),
                   }}
+                  data-testid={`${DataTestIdsEnum.paginationItem}-${paginationItem}`}
                 >
                   <span class="pagination-item-text">{paginationItem}</span>
                 </div>
@@ -122,6 +126,7 @@ export class Pagination {
         <div
           onClick={this.handleEdgePageClick(this.currentPageIndex + 1)}
           class={{ 'pagination-edge-button': true, 'disabled': this.isDisabled, 'inactive': isRightToggleDisabled }}
+          data-testid={DataTestIdsEnum.nextBtn}
         >
           <mvx-single-angle-right-icon class="pagination-edge-button-icon" />
         </div>
@@ -129,6 +134,7 @@ export class Pagination {
         <span
           onClick={this.handleEdgePageClick(this.totalPages)}
           class={{ 'pagination-angle': true, 'disabled': this.isDisabled, 'inactive': isRightToggleDisabled }}
+          data-testid={DataTestIdsEnum.lastBtn}
         >
           <mvx-angles-right-icon class="pagination-angle-icon" />
         </span>
