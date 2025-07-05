@@ -1,6 +1,6 @@
 .side-panel-wrapper {
-  @apply mvx:flex mvx:pointer-events-none mvx:z-50;
-  @apply mvx:justify-end mvx:items-start;
+  @apply mvx:flex mvx:justify-end mvx:items-start mvx:z-50;
+  @apply mvx:pointer-events-none mvx:invisible;
 
   @media (min-width: 480px) {
     @apply mvx:fixed mvx:top-0 mvx:left-0 mvx:right-0 mvx:bottom-0 mvx:p-4 mvx:pr-0 mvx:items-center;
@@ -20,13 +20,15 @@
     }
   }
 
-  @apply mvx:pointer-events-auto mvx:visible;
+  &.visible {
+    @apply mvx:pointer-events-auto mvx:visible;
 
-  &:before {
-    @apply mvx:opacity-90;
+    &:before {
+      @apply mvx:opacity-90;
 
-    @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
-      @apply mvx:opacity-50;
+      @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+        @apply mvx:opacity-50;
+      }
     }
   }
 

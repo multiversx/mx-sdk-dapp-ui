@@ -1,14 +1,9 @@
+import type { IAddressTableData } from 'types/address-table.types';
+
 export interface IConnectScreenData {
   customContentMarkup?: string;
   disabled?: boolean;
   error?: string;
-}
-
-export interface IAccountScreenData {
-  accounts: ILedgerAccount[];
-  startIndex: number;
-  addressesPerPage: number;
-  isLoading: boolean;
 }
 
 export interface IConfirmScreenData {
@@ -21,15 +16,8 @@ export interface IConfirmScreenData {
 
 export interface ILedgerConnectPanelData {
   connectScreenData: IConnectScreenData | null;
-  accountScreenData: IAccountScreenData | null;
+  accountScreenData: IAddressTableData | null;
   confirmScreenData: IConfirmScreenData | null;
-}
-
-export interface ILedgerAccount {
-  address: string;
-  balance: string;
-  usdValue?: string;
-  index: number;
 }
 
 export enum LedgerConnectEventsEnum {
