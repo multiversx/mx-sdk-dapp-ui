@@ -1,6 +1,10 @@
 export enum DataTestIdsEnum {
   accessWalletBtn = 'accessWalletBtn',
   addressTableContainer = 'addressTableContainer',
+  addressTableItem = 'addressTableItem',
+  firstBtn = 'firstBtn',
+  lastBtn = 'lastBtn',
+  paginationItem = 'paginationItem',
   confirmBtn = 'confirmBtn',
   formatAmountComponent = 'formatAmountComponent',
   formatAmountDecimals = 'formatAmountDecimals',

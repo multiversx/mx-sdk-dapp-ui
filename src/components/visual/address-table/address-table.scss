@@ -1,10 +1,10 @@
 :host {
   @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:overflow-hidden;
 
-  .ledger-addresses {
+  .address-table {
     @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:overflow-hidden mvx:py-6;
 
-    .ledger-addresses-label-wrapper {
+    .address-table-label-wrapper {
       @apply mvx:relative mvx:z-2;
 
       &:after {
@@ -14,20 +14,20 @@
         box-shadow: 0px 8px 12px 16px var(--mvx-bg-color-primary);
       }
 
-      .ledger-addresses-label {
+      .address-table-label {
         @apply mvx:leading-none mvx:relative mvx:z-1;
         color: var(--mvx-text-color-primary);
       }
     }
 
-    .ledger-addresses-wrapper {
+    .address-table-wrapper {
       @apply mvx:relative mvx:mb-auto mvx:py-5 mvx:overflow-auto;
 
       &::-webkit-scrollbar {
         @apply mvx:hidden;
       }
 
-      .ledger-addresses-preloader {
+      .address-table-preloader {
         @apply mvx:flex mvx:flex-col mvx:pointer-events-none mvx:absolute mvx:opacity-0 mvx:z-1 mvx:gap-1;
         @apply mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:left-0 mvx:right-0 mvx:bottom-0 mvx:top-5;
 
@@ -36,7 +36,7 @@
         }
       }
 
-      .ledger-addresses-list {
+      .address-table-list {
         @apply mvx:flex mvx:flex-col mvx:gap-1 mvx:pointer-events-none mvx:transition-all mvx:ease-in-out;
         @apply mvx:duration-200 mvx:opacity-0;
 
@@ -44,7 +44,7 @@
           @apply mvx:opacity-100 mvx:pointer-events-auto;
         }
 
-        .ledger-addresses-list-item {
+        .address-table-list-item {
           @apply mvx:rounded-lg mvx:flex mvx:items-center mvx:p-4 mvx:h-16 mvx:w-full;
           @apply mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:ease-in-out;
           border: 1px solid transparent;
@@ -56,7 +56,7 @@
             border-color: var(--mvx-text-accent-color);
           }
 
-          .ledger-addresses-list-item-checkbox {
+          .address-table-list-item-checkbox {
             @apply mvx:relative mvx:z-1 mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:rounded-full;
             @apply mvx:ease-in-out mvx:mr-2 mvx:min-w-4 mvx:max-w-4 mvx:h-4;
             border: 1px solid var(--mvx-text-color-primary);
@@ -77,7 +77,7 @@
             }
           }
 
-          .ledger-addresses-list-item-index {
+          .address-table-list-item-index {
             @apply mvx:relative mvx:z-1 mvx:text-base mvx:font-medium mvx:transition-all mvx:duration-200 mvx:mr-4 mvx:ease-in-out;
             color: var(--mvx-text-color-secondary);
 
@@ -102,7 +102,7 @@
             }
           }
 
-          .ledger-addresses-list-item-address {
+          .address-table-list-item-address {
             @apply mvx:relative mvx:z-1 mvx:max-w-40 mvx:text-base mvx:mr-auto mvx:min-w-0;
 
             .trim-wrapper {
@@ -110,14 +110,14 @@
             }
           }
 
-          .ledger-addresses-list-item-balance {
+          .address-table-list-item-balance {
             @apply mvx:relative mvx:ml-4 mvx:font-medium mvx:text-base mvx:z-1;
           }
         }
       }
     }
 
-    .ledger-addresses-pagination {
+    .address-table-pagination {
       @apply mvx:relative mvx:z-1;
 
       &:after {
@@ -128,20 +128,20 @@
       }
     }
 
-    .ledger-addresses-button-wrapper {
+    .address-table-button-wrapper {
       @apply mvx:relative mvx:z-2 mvx:mt-4;
 
-      .ledger-addresses-button-tooltip-wrapper {
+      .address-table-button-tooltip-wrapper {
         @apply mvx:text-xs mvx:text-center;
         color: var(--mvx-neutral-500);
       }
 
-      .ledger-addresses-button {
+      .address-table-button {
         @apply mvx:w-full mvx:flex mvx:items-center mvx:justify-center mvx:font-bold mvx:h-12 mvx:leading-none mvx:text-base;
         @apply mvx:rounded-lg mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:gap-2;
         color: var(--mvx-button-text-primary);
         background-color: var(--mvx-button-bg-primary);
-        border: 1px solid var(---mvx-button-bg-primary);
+        border: 1px solid var(--mvx-button-bg-primary);
 
         &:hover {
           @apply mvx:opacity-75;
