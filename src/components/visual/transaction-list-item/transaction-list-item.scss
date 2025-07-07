@@ -13,7 +13,7 @@
 }
 
 .transaction-icon {
-  @apply mvx:w-10 mvx:h-10 mvx:rounded-full mvx:flex mvx:items-center mvx:justify-center mvx:shrink-0 mvx:overflow-hidden;
+  @apply mvx:w-10 mvx:h-10 mvx:rounded-full;
 
   img {
     @apply mvx:w-full mvx:h-full mvx:object-cover;
