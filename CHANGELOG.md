@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.11](https://github.com/multiversx/mx-sdk-dapp-ui/pull/152)] - 2025-07-08
+
 - [UI fixes on scrollbar, icons and unlock panel.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/150)
 
 ## [[0.0.10](https://github.com/multiversx/mx-sdk-dapp-ui/pull/149)] - 2025-07-04
