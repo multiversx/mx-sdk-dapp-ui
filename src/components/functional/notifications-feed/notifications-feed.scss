@@ -12,6 +12,42 @@
   @media (min-width: 375px) {
     @apply mvx:max-w-110;
   }
+
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-track:hover
+  &::-webkit-scrollbar-corner 
+  {
+    @apply mvx:bg-transparent;
+  }
+
+  &::-webkit-scrollbar {
+    @apply mvx:w-1.5;
+  }
+
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-track:hover {
+    @apply mvx:bg-clip-padding;
+    border: 4px solid transparent;
+    border-radius: 9999px;
+  }
+
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-thumb:hover {
+    @apply mvx:bg-clip-padding;
+    border: 4px solid transparent;
+    background: var(--mvx-scrollbar-thumb) !important;
+    border-radius: 9999px;
+  }
+
+  &::-webkit-scrollbar-button {
+    @apply mvx:hidden;
+  }
+
+  &::-webkit-resizer {
+    @apply mvx:bg-transparent;
+  }
+
 }
 
 .notifications-info {
@@ -61,39 +97,6 @@
     color: var(--mvx-neutral-500);
   }
 
-  &::-webkit-scrollbar,
-  &::-webkit-scrollbar-track,
-  &::-webkit-scrollbar-track:hover,
-  &::-webkit-scrollbar-corner {
-    @apply mvx:bg-transparent;
-  }
-
-  &::-webkit-scrollbar {
-    @apply mvx:w-4;
-  }
-
-  &::-webkit-scrollbar-track,
-  &::-webkit-scrollbar-track:hover {
-    @apply mvx:bg-transparent mvx:bg-clip-padding;
-    border: 4px solid transparent;
-    border-radius: 9999px;
-  }
-
-  &::-webkit-scrollbar-thumb,
-  &::-webkit-scrollbar-thumb:hover {
-    @apply mvx:bg-clip-padding;
-    border: 4px solid transparent;
-    background-color: var(--mvx-neutral-700);
-    border-radius: 9999px;
-  }
-
-  &::-webkit-scrollbar-button {
-    @apply mvx:hidden;
-  }
-
-  &::-webkit-resizer {
-    @apply mvx:bg-transparent;
-  }
 
   // Ensure children don't cause horizontal scroll
   > * {

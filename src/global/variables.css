@@ -91,6 +91,7 @@
   --mvx-progress-color: var(--mvx-gray-650);
   --mvx-progress-accent-color: var(--mvx-teal-350);
   --mvx-icon-bg: var(--mvx-gray-750);
+  --mvx-scrollbar-thumb: var(--mvx-neutral-750);
 }
 
 /* Light Theme Variables */
@@ -132,4 +133,5 @@
   --mvx-progress-color: var(--mvx-gray-350);
   --mvx-progress-accent-color: var(--mvx-black);
   --mvx-icon-bg: var(--mvx-neutral-250);
+  --mvx-scrollbar-thumb: var(--mvx-neutral-400);
 }

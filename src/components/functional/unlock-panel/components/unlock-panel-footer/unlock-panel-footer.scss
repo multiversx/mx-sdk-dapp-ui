@@ -1,5 +1,5 @@
 .unlock-panel-footer {
-  @apply mvx:mt-auto mvx:flex mvx:cursor-pointer mvx:relative mvx:p-6 mvx:z-1 mvx:rounded-2xl mvx:overflow-hidden;
+  @apply mvx:mt-12 mvx:flex mvx:cursor-pointer mvx:relative mvx:p-6 mvx:z-1 mvx:rounded-2xl mvx:overflow-hidden;
   border: 1px solid var(--mvx-border-color-primary);
   background: var(--mvx-bg-accent-color);
   box-shadow: 0px -8px 12px 12px var(--mvx-bg-color-primary);
