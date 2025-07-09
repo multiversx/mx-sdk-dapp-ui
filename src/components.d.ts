@@ -414,6 +414,7 @@ export namespace Components {
     }
     interface MvxTransactionToastProgress {
         "endTime"?: number;
+        "isStatusPending"?: boolean;
         "startTime"?: number;
     }
     interface MvxTransactionValue {
@@ -1754,6 +1755,7 @@ declare namespace LocalJSX {
     }
     interface MvxTransactionToastProgress {
         "endTime"?: number;
+        "isStatusPending"?: boolean;
         "startTime"?: number;
     }
     interface MvxTransactionValue {
