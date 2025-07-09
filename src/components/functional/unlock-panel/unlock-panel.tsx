@@ -24,7 +24,7 @@ const unlockPanelClasses: Record<string, string> = {
 export class UnlockPanel {
   @Element() hostElement: HTMLElement;
 
-  private eventBus: IEventBus = new EventBus();
+  private readonly eventBus: IEventBus = new EventBus();
   private unsubscribeFunctions: (() => void)[] = [];
   private anchor: HTMLElement | null = null;
 
@@ -47,6 +47,11 @@ export class UnlockPanel {
   }
 
   componentDidLoad() {
+    // Listen to 'beforeunload' to ensure login state is properly reset when the user
+    // refreshes or navigates away from the page. This prevents reopening stale login panels
+    // or lingering provider instances when the app is reloaded.
+    window.addEventListener('beforeunload', this.handleClose);
+
     const unsubDataUpdate = this.eventBus.subscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate);
     const unsubCancelInProvider = this.eventBus.subscribe(
       UnlockPanelEventsEnum.CANCEL_IN_PROVIDER,
@@ -56,6 +61,8 @@ export class UnlockPanel {
   }
 
   async disconnectedCallback() {
+    window.removeEventListener('beforeunload', this.handleClose);
+
     this.unsubscribeFunctions.forEach(unsub => unsub());
     this.unsubscribeFunctions = [];
     this.isLoggingIn = false;
@@ -86,7 +93,7 @@ export class UnlockPanel {
     this.anchor.addEventListener(UnlockPanelEventsEnum.ANCHOR_CLOSE, this.handleResetLoginState);
   }
 
-  private unlockPanelUpdate = ({ providers, walletAddress }: IUnlockPanelManagerData) => {
+  private readonly unlockPanelUpdate = ({ providers, walletAddress }: IUnlockPanelManagerData) => {
     this.isOpen = true;
     this.walletAddress = walletAddress;
     this.allowedProviders = providers;
@@ -112,7 +119,7 @@ export class UnlockPanel {
     }
   }
 
-  private handleResetLoginState = () => {
+  private readonly handleResetLoginState = () => {
     this.isLoggingIn = false;
     this.isIntroScreenVisible = false;
     this.selectedMethod = null;
@@ -127,15 +134,12 @@ export class UnlockPanel {
     this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
   };
 
-  private handleClose = () => {
-    if (this.selectedMethod) {
-      this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
-    }
-
+  private readonly handleClose = () => {
+    this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
     this.eventBus.publish(UnlockPanelEventsEnum.CLOSE);
   };
 
-  private handleAccess = () => {
+  private readonly handleAccess = () => {
     this.isIntroScreenVisible = false;
     this.isLoggingIn = true;
     this.eventBus.publish(UnlockPanelEventsEnum.LOGIN, { type: this.selectedMethod.type, anchor: this.anchor });
