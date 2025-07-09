@@ -1,5 +1,6 @@
 import { Component, Element, h, Method, State } from '@stencil/core';
 import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
+import { safeWindow } from 'constants/window.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 import type { IEventBus } from 'utils/EventBus';
@@ -50,7 +51,7 @@ export class UnlockPanel {
     // Listen to 'beforeunload' to ensure login state is properly reset when the user
     // refreshes or navigates away from the page. This prevents reopening stale login panels
     // or lingering provider instances when the app is reloaded.
-    window.addEventListener('beforeunload', this.handleClose);
+    safeWindow.addEventListener('beforeunload', this.handleClose);
 
     const unsubDataUpdate = this.eventBus.subscribe(UnlockPanelEventsEnum.OPEN, this.unlockPanelUpdate);
     const unsubCancelInProvider = this.eventBus.subscribe(
@@ -61,7 +62,7 @@ export class UnlockPanel {
   }
 
   async disconnectedCallback() {
-    window.removeEventListener('beforeunload', this.handleClose);
+    safeWindow.removeEventListener('beforeunload', this.handleClose);
 
     this.unsubscribeFunctions.forEach(unsub => unsub());
     this.unsubscribeFunctions = [];
