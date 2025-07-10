@@ -43,9 +43,9 @@ export class UnlockButton {
       }
 
       if (isExtensionProvider) {
-        safeWindow.open(isFirefox() ? FIREFOX_ADDON_LINK : CHROME_EXTENSION_LINK);
+        safeWindow?.open(isFirefox() ? FIREFOX_ADDON_LINK : CHROME_EXTENSION_LINK);
       } else if (isMetaMaskProvider) {
-        safeWindow.open(isFirefox() ? FIREFOX_METAMASK_ADDON_LINK : CHROME_METAMASK_EXTENSION_LINK);
+        safeWindow?.open(isFirefox() ? FIREFOX_METAMASK_ADDON_LINK : CHROME_METAMASK_EXTENSION_LINK);
       }
     };
 
