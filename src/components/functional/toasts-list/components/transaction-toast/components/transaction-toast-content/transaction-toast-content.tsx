@@ -90,11 +90,11 @@ export class TransactionToastContent {
           </div>
 
           {hasCloseButton && (
-            <fa-icon
+            <mvx-fa-icon
               icon={faTimes}
               class="transaction-toast-close-icon"
               onClick={this.handleDeleteToast.bind(this)}
-            ></fa-icon>
+            />
           )}
 
           {!hasCloseButton && showExplorerLinkButton && (

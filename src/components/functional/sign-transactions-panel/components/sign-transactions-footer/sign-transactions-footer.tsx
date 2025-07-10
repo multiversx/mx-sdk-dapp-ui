@@ -15,15 +15,50 @@ const signTransactionsFooterClasses: Record<string, string> = {
 })
 export class SignTransactionsFooter {
   @State() awaitsExternalConfirmation: boolean = false;
+  @State() isWaitingForSignature: boolean = false;
+  @State() lastCommonData = { ...state.commonData };
+
+  componentWillLoad() {
+    this.lastCommonData = { ...state.commonData };
+  }
+
+  componentWillRender() {
+    const currentCommonData = { ...state.commonData };
+    const hasChanged = JSON.stringify(currentCommonData) !== JSON.stringify(this.lastCommonData);
+
+    if (hasChanged && this.isWaitingForSignature) {
+      // Reset the waiting state when data changes
+      this.isWaitingForSignature = false;
+    }
+
+    this.lastCommonData = currentCommonData;
+  }
+
+  private handleSignClick = () => {
+    if (state.onConfirm) {
+      this.isWaitingForSignature = true;
+      setTimeout(() => {
+        state.onConfirm();
+      }, 2000);
+    }
+  };
 
   render() {
-    const { onCancel, onBack, onNext, onConfirm } = state;
+    const { onCancel, onBack, onNext } = state;
     const { currentIndex, currentIndexToSign, needsSigning, username, address, explorerLink } = state.commonData;
 
     const isFirstTransaction = currentIndex === 0;
     const currentIndexNeedsSigning = currentIndex === currentIndexToSign;
     const currentIndexCannotBeSignedYet = currentIndex > currentIndexToSign;
     const showForwardAction = currentIndexNeedsSigning || currentIndexCannotBeSignedYet;
+
+    let confirmText = needsSigning ? 'Sign' : 'Confirm';
+    let icon = needsSigning ? <mvx-pencil-icon /> : <mvx-check-icon />;
+
+    if (this.isWaitingForSignature) {
+      confirmText = 'Check your device';
+      icon = <mvx-spinner-icon />;
+    }
 
     return (
       <div class="sign-transactions-footer">
@@ -74,15 +109,15 @@ export class SignTransactionsFooter {
 
             <button
               data-testid={DataTestIdsEnum.signNextTransactionBtn}
-              onClick={showForwardAction ? onConfirm : onNext}
+              onClick={showForwardAction ? this.handleSignClick : onNext}
               class={{
                 'sign-transactions-footer-button': true,
                 'highlighted': true,
-                'disabled': currentIndexCannotBeSignedYet,
+                'disabled': currentIndexCannotBeSignedYet || this.isWaitingForSignature,
               }}
             >
               {showForwardAction ? (
-                <span class="sign-transactions-footer-button-label">{needsSigning ? 'Sign' : 'Confirm'}</span>
+                <span class="sign-transactions-footer-button-label">{confirmText}</span>
               ) : (
                 <span class="sign-transactions-footer-button-label">Next</span>
               )}
@@ -91,7 +126,7 @@ export class SignTransactionsFooter {
                 <span
                   class={{ 'sign-transactions-footer-button-icon': true, 'lighter': currentIndexCannotBeSignedYet }}
                 >
-                  {needsSigning ? <mvx-pencil-icon /> : <mvx-check-icon />}
+                  {icon}
                 </span>
               ) : (
                 <span class="sign-transactions-footer-button-icon">

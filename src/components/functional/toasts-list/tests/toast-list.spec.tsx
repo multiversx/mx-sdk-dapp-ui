@@ -157,7 +157,7 @@ describe('toast-list', () => {
 
     page.rootInstance.componentDidLoad();
 
-    expect(eventBusMock.subscribe).toHaveBeenCalledTimes(2);
+    expect(eventBusMock.subscribe).toHaveBeenCalledTimes(4);
     expect(eventBusMock.subscribe).toHaveBeenCalledWith(
       ToastEventsEnum.TRANSACTION_TOAST_DATA_UPDATE,
       expect.any(Function),

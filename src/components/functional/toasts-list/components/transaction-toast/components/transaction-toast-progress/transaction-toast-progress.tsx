@@ -12,6 +12,7 @@ export class ToastProgress {
 
   @Prop() startTime?: number;
   @Prop() endTime?: number;
+  @Prop() isStatusPending?: boolean;
 
   @State() currentTimestamp: number = Date.now() / 1000;
   @State() hasTimeElapsed: boolean = false;
@@ -31,6 +32,7 @@ export class ToastProgress {
 
   @Watch('startTime')
   @Watch('endTime')
+  @Watch('isStatusPending')
   handleTimeChange() {
     this.updateProgress();
   }
@@ -40,12 +42,24 @@ export class ToastProgress {
 
     if (!this.shouldShowProgressBar) {
       this.shouldQuickFill = true;
-      this.timeElapsedTimeoutReference = setTimeout(() => (this.hasTimeElapsed = true), 500);
+      clearTimeout(this.timeElapsedTimeoutReference);
+      this.timeElapsedTimeoutReference = setTimeout(() => {
+        this.hasTimeElapsed = true;
+      }, 500);
+
       return;
     }
 
     this.currentTimestamp = Date.now() / 1000;
     this.expectedTransactionDuration = this.endTime - this.startTime;
+
+    if (this.expectedTransactionDuration > 0 && !this.isStatusPending) {
+      clearTimeout(this.timeElapsedTimeoutReference);
+      this.timeElapsedTimeoutReference = setTimeout(() => {
+        this.hasTimeElapsed = true;
+      }, this.expectedTransactionDuration + 2000);
+    }
+
     this.secondsPassedSinceStart = this.currentTimestamp - this.startTime;
     this.percentagePassedSinceStart =
       this.expectedTransactionDuration > 0

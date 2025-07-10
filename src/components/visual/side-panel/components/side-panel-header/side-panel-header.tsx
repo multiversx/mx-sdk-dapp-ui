@@ -37,9 +37,11 @@ export class SidePanelHeader {
           class={{ 'side-panel-heading-left': true, 'visible': this.hasLeftButton }}
           onClick={this.handleLeftIconClick.bind(this)}
         >
-          <slot name={SidePanelHeaderSlotEnum.leftIcon}>
-            <mvx-back-arrow-icon />
-          </slot>
+          {this.hasLeftButton && (
+            <slot name={SidePanelHeaderSlotEnum.leftIcon}>
+              <mvx-back-arrow-icon />
+            </slot>
+          )}
         </div>
 
         <div class="side-panel-heading-title">{this.panelTitle}</div>
