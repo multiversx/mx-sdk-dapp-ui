@@ -206,9 +206,8 @@ export class UnlockPanel {
 
                 <slot />
               </mvx-unlock-panel-group>
-
-              <mvx-unlock-panel-footer walletAddress={this.walletAddress} />
             </div>
+            <mvx-unlock-panel-footer walletAddress={this.walletAddress} />
           </div>
         )}
       </mvx-side-panel>
