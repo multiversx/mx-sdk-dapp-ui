@@ -87,3 +87,13 @@
     color: var(--mvx-text-color-primary);
   }
 }
+
+.transaction-toast-close-icon {
+  @apply mvx:flex mvx:flex-col mvx:justify-center mvx:shrink-0 mvx:w-5 mvx:h-5 mvx:cursor-pointer;
+  color: var(--mvx-text-color-primary);
+
+  .svg-inline--fa {
+    @apply mvx:text-center mvx:h-4 mvx:w-4;
+    color: var(--mvx-text-color-primary);
+  }
+}
