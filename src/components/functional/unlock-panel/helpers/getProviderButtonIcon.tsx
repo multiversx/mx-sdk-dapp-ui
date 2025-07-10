@@ -1,11 +1,12 @@
 import { h } from '@stencil/core';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
+import { isFirefox } from 'utils/isFirefox';
 
 export const getProviderButtonIcon = (providerType: IProviderBase['type']): HTMLElement => {
   switch (providerType) {
     case ProviderTypeEnum.extension:
-      return <mvx-extension-provider-icon />;
+      return isFirefox() ? <mvx-wallet-provider-icon /> : <mvx-extension-provider-icon />;
     case ProviderTypeEnum.metamask:
       return <mvx-metamask-provider-icon />;
     case ProviderTypeEnum.passkey:

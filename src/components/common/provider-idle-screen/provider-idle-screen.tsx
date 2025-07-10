@@ -3,6 +3,7 @@ import { Component, Event, Fragment, h, Prop } from '@stencil/core';
 import { getProviderButtonIcon } from 'components/functional/unlock-panel/helpers';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
+import { isFirefox } from 'utils/isFirefox';
 
 const getProviderIntroText = (providerType?: IProviderBase['type']) => {
   switch (providerType) {
@@ -71,7 +72,7 @@ export class ProviderIdleScreen {
         />
 
         <div class="unlock-provider-intro">
-          {isExtensionProvider ? (
+          {isExtensionProvider && !isFirefox() ? (
             <div class="unlock-provider-intro-icon">
               <mvx-extension-provider-icon width={extensionProviderIconWidth} height={extensionProviderIconHeight} />
             </div>

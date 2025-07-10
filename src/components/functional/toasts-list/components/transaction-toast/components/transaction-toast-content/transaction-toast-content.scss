@@ -24,6 +24,10 @@
 .transaction-toast-icon {
   @apply mvx:rounded-full mvx:w-5 mvx:h-5;
 
+  &.transaction-toast-icon-failed {
+    color: var(--mvx-error-color);
+  }
+
   svg,
   img,
   .svg-inline--fa {
@@ -51,6 +55,14 @@
 .transaction-toast-amount {
   @apply mvx:flex mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight;
   color: var(--mvx-text-color-primary);
+
+  &.amount-positive {
+    color: var(--mvx-success-color);
+  }
+
+  &.transaction-toast-failed {
+    color: var(--mvx-error-color);
+  }
 
   .transaction-amount-decimal {
     @apply mvx:opacity-70;

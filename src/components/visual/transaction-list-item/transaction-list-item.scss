@@ -16,6 +16,10 @@
   @apply mvx:w-8 mvx:h-8 mvx:rounded-full;
   color: var(--mvx-text-color-primary);
 
+  &.transaction-icon-failed {
+    color: var(--mvx-error-color);
+  }
+
   img {
     @apply mvx:w-full mvx:h-full mvx:object-cover;
   }
