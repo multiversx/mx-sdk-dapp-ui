@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Fixed close button on transaction toast.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/157)
 - [Fixed transaction toast loading](https://github.com/multiversx/mx-sdk-dapp-ui/pull/155)
 
 ## [[0.0.11](https://github.com/multiversx/mx-sdk-dapp-ui/pull/152)] - 2025-07-08
