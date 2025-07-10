@@ -13,6 +13,10 @@
   @apply mvx:bottom-16;
 }
 
+.hidden {
+  display: none;
+}
+
 .view-all-button-container {
   @apply mvx:absolute mvx:-bottom-12 mvx:right-0 mvx:z-1;
 }
