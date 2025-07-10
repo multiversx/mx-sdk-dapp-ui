@@ -1,8 +1,16 @@
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from 'components/functional/unlock-panel/helpers';
+import {
+  CHROME_EXTENSION_LINK,
+  CHROME_METAMASK_EXTENSION_LINK,
+  FIREFOX_ADDON_LINK,
+  FIREFOX_METAMASK_ADDON_LINK,
+} from 'constants/installExtensionsLinks';
+import { safeWindow } from 'constants/window.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
+import { isFirefox } from 'utils/isFirefox';
 
 const unlockButtonClasses: Record<string, string> = {
   statusIcon: 'mvx:fill-accent!',
@@ -29,8 +37,24 @@ export class UnlockButton {
     const isMetaMaskInstalled = isMetaMaskProvider && getIsMetaMaskAvailable();
     const shouldShowOpenLabel = isDetectableProvider && (isExtensionInstalled || isMetaMaskInstalled);
 
+    const handleInstallButtonClick = () => {
+      if (shouldShowOpenLabel) {
+        return;
+      }
+
+      if (isExtensionProvider) {
+        safeWindow?.open(isFirefox() ? FIREFOX_ADDON_LINK : CHROME_EXTENSION_LINK);
+      } else if (isMetaMaskProvider) {
+        safeWindow?.open(isFirefox() ? FIREFOX_METAMASK_ADDON_LINK : CHROME_METAMASK_EXTENSION_LINK);
+      }
+    };
+
     return (
-      <div data-testid={this.dataTestId} class={{ 'unlock-button': true, [this.class]: Boolean(this.class) }}>
+      <div
+        data-testid={this.dataTestId}
+        class={{ 'unlock-button': true, [this.class]: Boolean(this.class) }}
+        onClick={handleInstallButtonClick}
+      >
         <div class="unlock-button-label">{this.label}</div>
 
         <div
