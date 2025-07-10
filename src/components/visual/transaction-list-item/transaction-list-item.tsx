@@ -21,7 +21,11 @@ export class TransactionListItem {
     return (
       <a class="transaction-link" href={this.transaction.link} target="_blank" rel="noreferrer">
         <div class="transaction-item">
-          <div class="transaction-icon">
+          <div
+            class={classNames('transaction-icon', {
+              'transaction-icon-failed': this.transaction.status === 'fail' || this.transaction.status === 'invalid',
+            })}
+          >
             <mvx-transaction-asset-icon transaction={this.transaction} iconSize={IconSizeEnumType.large} />
           </div>
 

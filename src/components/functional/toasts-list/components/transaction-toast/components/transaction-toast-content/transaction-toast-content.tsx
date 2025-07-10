@@ -1,6 +1,7 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
+import classNames from 'classnames';
 import { IconSizeEnumType } from 'components/common/transaction-asset-icon/transaction-asset-icon';
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
@@ -46,7 +47,11 @@ export class TransactionToastContent {
               class={`transaction-toast-icon ${this.toastDataState.iconClassName ?? ''}`}
             ></fa-icon>
           ) : (
-            <div class="transaction-toast-icon">
+            <div
+              class={classNames('transaction-toast-icon', {
+                'transaction-toast-icon-failed': transaction.status === 'fail' || transaction.status === 'invalid',
+              })}
+            >
               <mvx-transaction-asset-icon transaction={transaction} iconSize={IconSizeEnumType.small} />
             </div>
           )}
@@ -62,7 +67,11 @@ export class TransactionToastContent {
               </h4>
               {showAmount && (
                 <mvx-format-amount
-                  class="transaction-toast-amount"
+                  class={classNames('transaction-toast-amount', {
+                    'amount-negative': transaction.amount.startsWith('-'),
+                    'amount-positive': !transaction.amount.startsWith('-'),
+                    'transaction-toast-failed': transaction.status === 'fail' || transaction.status === 'invalid',
+                  })}
                   isValid
                   label={amount.label}
                   valueDecimal={amount.amountDecimal}
