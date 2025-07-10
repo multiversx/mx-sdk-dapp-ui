@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Added Check your device text on ledger connect](https://github.com/multiversx/mx-sdk-dapp-ui/pull/158)
 - [Fixed close button on transaction toast.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/157)
 - [Fixed transaction toast loading](https://github.com/multiversx/mx-sdk-dapp-ui/pull/155)
 
