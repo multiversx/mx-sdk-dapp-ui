@@ -7,6 +7,7 @@ import {
   FIREFOX_ADDON_LINK,
   FIREFOX_METAMASK_ADDON_LINK,
 } from 'constants/installExtensionsLinks';
+import { safeWindow } from 'constants/window.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 import { isFirefox } from 'utils/isFirefox';
@@ -42,9 +43,9 @@ export class UnlockButton {
       }
 
       if (isExtensionProvider) {
-        window.open(isFirefox() ? FIREFOX_ADDON_LINK : CHROME_EXTENSION_LINK);
+        safeWindow.open(isFirefox() ? FIREFOX_ADDON_LINK : CHROME_EXTENSION_LINK);
       } else if (isMetaMaskProvider) {
-        window.open(isFirefox() ? FIREFOX_METAMASK_ADDON_LINK : CHROME_METAMASK_EXTENSION_LINK);
+        safeWindow.open(isFirefox() ? FIREFOX_METAMASK_ADDON_LINK : CHROME_METAMASK_EXTENSION_LINK);
       }
     };
 
