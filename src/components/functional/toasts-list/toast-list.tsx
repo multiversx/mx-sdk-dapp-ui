@@ -15,6 +15,7 @@ export class ToastList {
 
   @State() transactionToasts: ITransactionToast[] = [];
   @State() customToasts: CustomToastType[] = [];
+  @State() isVisible: boolean = true;
 
   @Method()
   async getEventBus() {
@@ -29,7 +30,11 @@ export class ToastList {
 
     const unsubCustom = this.eventBus.subscribe(ToastEventsEnum.CUSTOM_TOAST_DATA_UPDATE, this.customToastsUpdate);
 
-    this.unsubscribeFunctions.push(unsubTransaction, unsubCustom);
+    const unsubHide = this.eventBus.subscribe(ToastEventsEnum.HIDE, this.handleHide);
+
+    const unsubShow = this.eventBus.subscribe(ToastEventsEnum.SHOW, this.handleShow);
+
+    this.unsubscribeFunctions.push(unsubTransaction, unsubCustom, unsubHide, unsubShow);
   }
 
   disconnectedCallback() {
@@ -41,6 +46,14 @@ export class ToastList {
     });
     this.unsubscribeFunctions = [];
   }
+
+  private handleHide = () => {
+    this.isVisible = false;
+  };
+
+  private handleShow = () => {
+    this.isVisible = true;
+  };
 
   private handleCustomToastDelete = (toastId: string) => {
     this.eventBus.publish(ToastEventsEnum.CLOSE, toastId);
@@ -65,6 +78,7 @@ export class ToastList {
   private resetState() {
     this.transactionToasts = [];
     this.customToasts = [];
+    this.isVisible = true;
   }
 
   render() {
@@ -75,6 +89,7 @@ export class ToastList {
         class={{
           'toast-list': true,
           'toast-list-bottom': hasTransactionToasts,
+          'hidden': !this.isVisible,
         }}
         id="toast-list"
       >
