@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Updates on styles for templates.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/162)
+
 ## [[0.0.13](https://github.com/multiversx/mx-sdk-dapp-ui/pull/161)] - 2025-07-10
 
 - [UI updates on icons for failed transactions and Firefox extension.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/160)
