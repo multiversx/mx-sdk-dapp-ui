@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.14](https://github.com/multiversx/mx-sdk-dapp-ui/pull/163)] - 2025-07-14
+
 - [Updates on styles for templates.](https://github.com/multiversx/mx-sdk-dapp-ui/pull/162)
 
 ## [[0.0.13](https://github.com/multiversx/mx-sdk-dapp-ui/pull/161)] - 2025-07-10
