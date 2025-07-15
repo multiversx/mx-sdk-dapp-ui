@@ -1,7 +1,7 @@
 import { Component, h, Method, State } from '@stencil/core';
+import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
-import { ReadyHelper } from 'utils/ReadyHelper';
 
 import type { CustomToastType, ITransactionToast } from './components/transaction-toast/transaction-toast.type';
 import { ToastEventsEnum } from './toast-list.types';
@@ -13,7 +13,7 @@ import { ToastEventsEnum } from './toast-list.types';
 export class ToastList {
   private readonly eventBus: IEventBus = new EventBus();
   private unsubscribeFunctions: (() => void)[] = [];
-  private readonly readyHelper = new ReadyHelper();
+  private readonly connectionMonitor = new ConnectionMonitor();
 
   @State() transactionToasts: ITransactionToast[] = [];
   @State() customToasts: CustomToastType[] = [];
@@ -21,7 +21,7 @@ export class ToastList {
 
   @Method()
   async getEventBus() {
-    await this.readyHelper.readyPromise;
+    await this.connectionMonitor.waitForConnection();
     return this.eventBus;
   }
 
@@ -39,7 +39,7 @@ export class ToastList {
 
     this.unsubscribeFunctions.push(unsubTransaction, unsubCustom, unsubHide, unsubShow);
 
-    this.readyHelper.readyResolver();
+    this.connectionMonitor.connect();
   }
 
   disconnectedCallback() {

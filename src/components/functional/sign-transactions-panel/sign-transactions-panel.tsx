@@ -1,8 +1,8 @@
 import { Component, h, Method, State } from '@stencil/core';
 import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
+import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
-import { ReadyHelper } from 'utils/ReadyHelper';
 
 import type { IOverviewProps, ISignTransactionsPanelData } from './sign-transactions-panel.types';
 import { SignEventsEnum, TransactionTabsEnum } from './sign-transactions-panel.types';
@@ -16,7 +16,7 @@ import state, { resetState } from './signTransactionsPanelStore';
 export class SignTransactionsPanel {
   private readonly eventBus: IEventBus = new EventBus();
   private unsubscribeFunctions: (() => void)[] = [];
-  private readonly readyHelper = new ReadyHelper();
+  private readonly connectionMonitor = new ConnectionMonitor();
 
   @Method() async closeWithAnimation() {
     this.isOpen = false;
@@ -28,7 +28,7 @@ export class SignTransactionsPanel {
   @State() activeTab: TransactionTabsEnum = TransactionTabsEnum.overview;
 
   @Method() async getEventBus() {
-    await this.readyHelper.readyPromise;
+    await this.connectionMonitor.waitForConnection();
     return this.eventBus;
   }
 
@@ -58,7 +58,7 @@ export class SignTransactionsPanel {
     const unsubDataUpdate = this.eventBus.subscribe(SignEventsEnum.DATA_UPDATE, this.dataUpdate);
     const unsubBack = this.eventBus.subscribe(SignEventsEnum.BACK, this.handleBack);
     this.unsubscribeFunctions.push(unsubDataUpdate, unsubBack);
-    this.readyHelper.readyResolver();
+    this.connectionMonitor.connect();
   }
 
   disconnectedCallback() {

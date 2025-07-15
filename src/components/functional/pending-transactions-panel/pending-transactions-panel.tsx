@@ -2,9 +2,9 @@ import { Component, h, Method, State } from '@stencil/core';
 import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
+import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
-import { ReadyHelper } from 'utils/ReadyHelper';
 
 import { PendingTransactionsEventsEnum } from './pending-transactions-panel.types';
 
@@ -31,13 +31,13 @@ const getProviderIntroText = (providerType?: IProviderBase['type']) => {
 export class PendingTransactionsPanel {
   private readonly eventBus: IEventBus = new EventBus();
   private unsubscribeFunctions: (() => void)[] = [];
-  private readonly readyHelper = new ReadyHelper();
+  private readonly connectionMonitor = new ConnectionMonitor();
 
   @State() provider: IProviderBase = null;
   @State() isOpen: boolean = false;
 
   @Method() async getEventBus() {
-    await this.readyHelper.readyPromise;
+    await this.connectionMonitor.waitForConnection();
     return this.eventBus;
   }
 
@@ -50,7 +50,7 @@ export class PendingTransactionsPanel {
   componentDidLoad() {
     const unsubDataUpdate = this.eventBus.subscribe(PendingTransactionsEventsEnum.DATA_UPDATE, this.dataUpdate);
     this.unsubscribeFunctions.push(unsubDataUpdate);
-    this.readyHelper.readyResolver();
+    this.connectionMonitor.connect();
   }
 
   disconnectedCallback() {

@@ -1,7 +1,7 @@
 import { Component, Element, Fragment, h, Method, Prop, State, Watch } from '@stencil/core';
 import { providerLabels } from 'constants/providerFactory.constants';
+import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import { EventBus, type IEventBus } from 'utils/EventBus';
-import { ReadyHelper } from 'utils/ReadyHelper';
 
 import { getLedgerAddressByIndex } from './helpers/getLedgerAddressByIndex';
 import type { ILedgerConnectPanelData } from './ledger-connect.types';
@@ -14,7 +14,7 @@ import { LedgerConnectEventsEnum } from './ledger-connect.types';
 })
 export class LedgerConnect {
   private readonly eventBus: IEventBus = new EventBus();
-  private readonly readyHelper = new ReadyHelper();
+  private readonly connectionMonitor = new ConnectionMonitor();
 
   @Element() hostElement: HTMLElement;
   @Prop() data: ILedgerConnectPanelData = {
@@ -33,13 +33,13 @@ export class LedgerConnect {
   }
 
   @Method() async getEventBus(): Promise<IEventBus> {
-    await this.readyHelper.readyPromise;
+    await this.connectionMonitor.waitForConnection();
     return this.eventBus;
   }
 
   componentDidLoad() {
     this.eventBus.subscribe(LedgerConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
-    this.readyHelper.resolveReady();
+    this.connectionMonitor.connect();
   }
 
   disconnectedCallback() {

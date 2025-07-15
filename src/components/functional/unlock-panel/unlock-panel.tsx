@@ -2,9 +2,9 @@ import { Component, Element, h, Method, State } from '@stencil/core';
 import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
+import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
-import { ReadyHelper } from 'utils/ReadyHelper';
 
 import { UnlockPanelGroupSlotEnum } from './components/unlock-panel-group/unlock-panel-group';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
@@ -28,7 +28,7 @@ export class UnlockPanel {
   private readonly eventBus: IEventBus = new EventBus();
   private unsubscribeFunctions: (() => void)[] = [];
   private anchor: HTMLElement | null = null;
-  private readonly readyHelper = new ReadyHelper();
+  private readonly connectionMonitor = new ConnectionMonitor();
 
   @State() isOpen: boolean = false;
   @State() walletAddress: IUnlockPanelManagerData['walletAddress'] = null;
@@ -39,7 +39,7 @@ export class UnlockPanel {
   @State() selectedMethod: IProviderBase | null = null;
 
   @Method() async getEventBus() {
-    await this.readyHelper.readyPromise;
+    await this.connectionMonitor.waitForConnection();
     return this.eventBus;
   }
 
@@ -57,7 +57,7 @@ export class UnlockPanel {
     );
     this.unsubscribeFunctions.push(unsubDataUpdate, unsubCancelInProvider);
 
-    this.readyHelper.readyResolver();
+    this.connectionMonitor.connect();
   }
 
   async disconnectedCallback() {

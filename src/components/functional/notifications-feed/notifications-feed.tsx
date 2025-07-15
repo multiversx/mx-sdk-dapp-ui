@@ -1,7 +1,7 @@
 import { Component, h, Method, State } from '@stencil/core';
+import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
-import { ReadyHelper } from 'utils/ReadyHelper';
 
 import type { ITransactionListItem } from '../../visual/transaction-list-item/transaction-list-item.types';
 import type { ITransactionToast } from '../toasts-list/components/transaction-toast/transaction-toast.type';
@@ -14,7 +14,7 @@ import { NotificationsFeedEventsEnum } from './notifications-feed.types';
 })
 export class NotificationsFeed {
   private readonly eventBus: IEventBus = new EventBus();
-  private readonly readyHelper = new ReadyHelper();
+  private readonly connectionMonitor = new ConnectionMonitor();
 
   private closeEventTimeout: NodeJS.Timeout | null = null;
   private unsubscribeFunctions: (() => void)[] = [];
@@ -31,7 +31,7 @@ export class NotificationsFeed {
 
   @Method()
   async getEventBus() {
-    await this.readyHelper.readyPromise;
+    await this.connectionMonitor.waitForConnection();
     return this.eventBus;
   }
 
@@ -54,7 +54,7 @@ export class NotificationsFeed {
 
     this.unsubscribeFunctions.push(unsubPendingTransactions, unsubTransactionsHistory, unsubOpen);
 
-    this.readyHelper.resolveReady();
+    this.connectionMonitor.connect();
   }
 
   private readonly handleClose = () => {
