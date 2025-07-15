@@ -2,6 +2,7 @@ import { Component, Element, h, Method, State } from '@stencil/core';
 import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
+import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
@@ -24,9 +25,10 @@ const unlockPanelClasses: Record<string, string> = {
 export class UnlockPanel {
   @Element() hostElement: HTMLElement;
 
-  private eventBus: IEventBus = new EventBus();
+  private readonly eventBus: IEventBus = new EventBus();
   private unsubscribeFunctions: (() => void)[] = [];
   private anchor: HTMLElement | null = null;
+  private readonly connectionMonitor = new ConnectionMonitor();
 
   @State() isOpen: boolean = false;
   @State() walletAddress: IUnlockPanelManagerData['walletAddress'] = null;
@@ -37,6 +39,7 @@ export class UnlockPanel {
   @State() selectedMethod: IProviderBase | null = null;
 
   @Method() async getEventBus() {
+    await this.connectionMonitor.waitForConnection();
     return this.eventBus;
   }
 
@@ -53,6 +56,8 @@ export class UnlockPanel {
       this.handleResetLoginState,
     );
     this.unsubscribeFunctions.push(unsubDataUpdate, unsubCancelInProvider);
+
+    this.connectionMonitor.connect();
   }
 
   async disconnectedCallback() {
@@ -86,7 +91,7 @@ export class UnlockPanel {
     this.anchor.addEventListener(UnlockPanelEventsEnum.ANCHOR_CLOSE, this.handleResetLoginState);
   }
 
-  private unlockPanelUpdate = ({ providers, walletAddress }: IUnlockPanelManagerData) => {
+  private readonly unlockPanelUpdate = ({ providers, walletAddress }: IUnlockPanelManagerData) => {
     this.isOpen = true;
     this.walletAddress = walletAddress;
     this.allowedProviders = providers;
@@ -112,7 +117,7 @@ export class UnlockPanel {
     }
   }
 
-  private handleResetLoginState = () => {
+  private readonly handleResetLoginState = () => {
     this.isLoggingIn = false;
     this.isIntroScreenVisible = false;
     this.selectedMethod = null;
@@ -127,7 +132,7 @@ export class UnlockPanel {
     this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
   };
 
-  private handleClose = () => {
+  private readonly handleClose = () => {
     if (this.selectedMethod) {
       this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
     }
@@ -135,7 +140,7 @@ export class UnlockPanel {
     this.eventBus.publish(UnlockPanelEventsEnum.CLOSE);
   };
 
-  private handleAccess = () => {
+  private readonly handleAccess = () => {
     this.isIntroScreenVisible = false;
     this.isLoggingIn = true;
     this.eventBus.publish(UnlockPanelEventsEnum.LOGIN, { type: this.selectedMethod.type, anchor: this.anchor });
