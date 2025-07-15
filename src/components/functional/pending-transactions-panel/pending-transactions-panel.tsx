@@ -4,6 +4,7 @@ import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
+import { ReadyHelper } from 'utils/ReadyHelper';
 
 import { PendingTransactionsEventsEnum } from './pending-transactions-panel.types';
 
@@ -28,13 +29,15 @@ const getProviderIntroText = (providerType?: IProviderBase['type']) => {
   shadow: true,
 })
 export class PendingTransactionsPanel {
-  private eventBus: IEventBus = new EventBus();
+  private readonly eventBus: IEventBus = new EventBus();
   private unsubscribeFunctions: (() => void)[] = [];
+  private readonly readyHelper = new ReadyHelper();
 
   @State() provider: IProviderBase = null;
   @State() isOpen: boolean = false;
 
   @Method() async getEventBus() {
+    await this.readyHelper.readyPromise;
     return this.eventBus;
   }
 
@@ -47,6 +50,7 @@ export class PendingTransactionsPanel {
   componentDidLoad() {
     const unsubDataUpdate = this.eventBus.subscribe(PendingTransactionsEventsEnum.DATA_UPDATE, this.dataUpdate);
     this.unsubscribeFunctions.push(unsubDataUpdate);
+    this.readyHelper.readyResolver();
   }
 
   disconnectedCallback() {
@@ -60,11 +64,11 @@ export class PendingTransactionsPanel {
     this.isOpen = false;
   }
 
-  private handleClose = () => {
+  private readonly handleClose = () => {
     this.eventBus.publish(PendingTransactionsEventsEnum.CLOSE);
   };
 
-  private dataUpdate = (newData: IProviderBase) => {
+  private readonly dataUpdate = (newData: IProviderBase) => {
     this.provider = newData;
     this.isOpen = true;
   };

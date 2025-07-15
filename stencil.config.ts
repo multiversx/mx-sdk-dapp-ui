@@ -24,6 +24,7 @@ const isDev = process.argv.includes('--dev');
 export const config: Config = {
   namespace: 'sdk-dapp-ui',
   globalStyle: './src/global/style.css',
+  buildEs5: false,
   plugins: [
     sass(),
     tailwind({
@@ -42,12 +43,9 @@ export const config: Config = {
       type: 'dist-custom-elements',
       externalRuntime: false,
       generateTypeDeclarations: true,
+      customElementsExportBehavior: 'bundle',
       dir: './dist/web-components',
-    },
-    {
-      type: 'dist',
-      copy: [{ src: 'assets', dest: 'assets' }],
-      esmLoaderPath: './loader',
+      copy: [{ src: 'assets', dest: 'dist/assets' }],
     },
   ],
   rollupPlugins: {

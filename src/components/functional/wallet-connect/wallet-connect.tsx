@@ -4,6 +4,7 @@ import { SidePanelHeaderSlotEnum } from 'components/visual/side-panel/components
 import { providerLabels } from 'constants/providerFactory.constants';
 import QRCode from 'qrcode';
 import { EventBus } from 'utils/EventBus';
+import { ReadyHelper } from 'utils/ReadyHelper';
 
 import { WalletConnectEventsEnum } from './wallet-connect.types';
 
@@ -14,6 +15,7 @@ import { WalletConnectEventsEnum } from './wallet-connect.types';
 })
 export class WalletConnect {
   private eventBus: IEventBus = new EventBus();
+  private readonly readyHelper = new ReadyHelper();
 
   @State() showScanPage: boolean = true;
   @State() walletConnectDeepLink: string = '';
@@ -30,6 +32,7 @@ export class WalletConnect {
   }
 
   @Method() async getEventBus(): Promise<IEventBus> {
+    await this.readyHelper.readyPromise;
     return this.eventBus;
   }
 
@@ -58,6 +61,8 @@ export class WalletConnect {
       this.qrCodeSvg = await this.generateSVG(this.data.wcURI);
     }
     this.eventBus.subscribe(WalletConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
+
+    this.readyHelper.readyResolver();
   }
 
   disconnectedCallback() {

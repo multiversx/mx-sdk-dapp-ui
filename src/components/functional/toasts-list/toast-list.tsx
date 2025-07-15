@@ -1,6 +1,7 @@
 import { Component, h, Method, State } from '@stencil/core';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
+import { ReadyHelper } from 'utils/ReadyHelper';
 
 import type { CustomToastType, ITransactionToast } from './components/transaction-toast/transaction-toast.type';
 import { ToastEventsEnum } from './toast-list.types';
@@ -10,8 +11,9 @@ import { ToastEventsEnum } from './toast-list.types';
   styleUrl: 'toast-list.scss',
 })
 export class ToastList {
-  private eventBus: IEventBus = new EventBus();
+  private readonly eventBus: IEventBus = new EventBus();
   private unsubscribeFunctions: (() => void)[] = [];
+  private readonly readyHelper = new ReadyHelper();
 
   @State() transactionToasts: ITransactionToast[] = [];
   @State() customToasts: CustomToastType[] = [];
@@ -19,6 +21,7 @@ export class ToastList {
 
   @Method()
   async getEventBus() {
+    await this.readyHelper.readyPromise;
     return this.eventBus;
   }
 
@@ -35,6 +38,8 @@ export class ToastList {
     const unsubShow = this.eventBus.subscribe(ToastEventsEnum.SHOW, this.handleShow);
 
     this.unsubscribeFunctions.push(unsubTransaction, unsubCustom, unsubHide, unsubShow);
+
+    this.readyHelper.readyResolver();
   }
 
   disconnectedCallback() {
@@ -47,31 +52,31 @@ export class ToastList {
     this.unsubscribeFunctions = [];
   }
 
-  private handleHide = () => {
+  private readonly handleHide = () => {
     this.isVisible = false;
   };
 
-  private handleShow = () => {
+  private readonly handleShow = () => {
     this.isVisible = true;
   };
 
-  private handleCustomToastDelete = (toastId: string) => {
+  private readonly handleCustomToastDelete = (toastId: string) => {
     this.eventBus.publish(ToastEventsEnum.CLOSE, toastId);
   };
 
-  private handleTransactionToastDelete = (toastId: string) => {
+  private readonly handleTransactionToastDelete = (toastId: string) => {
     this.eventBus.publish(ToastEventsEnum.CLOSE, toastId);
   };
 
-  private handleViewAllClick = () => {
+  private readonly handleViewAllClick = () => {
     this.eventBus.publish(ToastEventsEnum.OPEN_NOTIFICATIONS_FEED);
   };
 
-  private transactionToastUpdate = (payload: ITransactionToast[]) => {
+  private readonly transactionToastUpdate = (payload: ITransactionToast[]) => {
     this.transactionToasts = [...payload];
   };
 
-  private customToastsUpdate = (payload: CustomToastType[]) => {
+  private readonly customToastsUpdate = (payload: CustomToastType[]) => {
     this.customToasts = [...payload];
   };
 
