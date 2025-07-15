@@ -4,6 +4,7 @@
   --breakpoint-xs: 30rem; /* 480px */
   --color-primary: var(--mvx-text-color-primary);
   --color-link: var(--mvx-link-color);
+  --color-blue-link: var(--mvx-blue-600);
   --color-accent: var(--mvx-text-accent-color);
   --color-preloader: var(--mvx-preloader-item-bg);
 }

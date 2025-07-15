@@ -6,6 +6,10 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionAccountType } from '../../transactions-table.type';
 
+const transactionAccountClasses: Record<string, string> = {
+  explorerLink: 'mvx:text-blue-link!',
+};
+
 @Component({
   tag: 'mvx-transaction-account',
   styleUrl: 'transaction-account.scss',
@@ -29,7 +33,13 @@ export class TransactionAccount {
 
         {this.account.isContract && <mvx-fa-icon icon={faFileAlt} description="Smart Contract" />}
         {this.account.showLink ? (
-          <mvx-explorer-link link={this.account.link} data-testid={explorerLinkDataTestId} />
+          <mvx-explorer-link
+            link={this.account.link}
+            data-testid={explorerLinkDataTestId}
+            class={transactionAccountClasses.explorerLink}
+          >
+            <span>{this.account.address}</span>
+          </mvx-explorer-link>
         ) : (
           <mvx-transaction-account-name
             name={this.account.name}
