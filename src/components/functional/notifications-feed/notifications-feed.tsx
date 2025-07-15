@@ -1,4 +1,5 @@
 import { Component, h, Method, State } from '@stencil/core';
+import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
@@ -12,7 +13,9 @@ import { NotificationsFeedEventsEnum } from './notifications-feed.types';
   shadow: true,
 })
 export class NotificationsFeed {
-  private eventBus: IEventBus = new EventBus();
+  private readonly eventBus: IEventBus = new EventBus();
+  private readonly connectionMonitor = new ConnectionMonitor();
+
   private closeEventTimeout: NodeJS.Timeout | null = null;
   private unsubscribeFunctions: (() => void)[] = [];
 
@@ -28,6 +31,7 @@ export class NotificationsFeed {
 
   @Method()
   async getEventBus() {
+    await this.connectionMonitor.waitForConnection();
     return this.eventBus;
   }
 
@@ -49,18 +53,20 @@ export class NotificationsFeed {
     const unsubOpen = this.eventBus.subscribe(NotificationsFeedEventsEnum.OPEN, this.handleViewAll);
 
     this.unsubscribeFunctions.push(unsubPendingTransactions, unsubTransactionsHistory, unsubOpen);
+
+    this.connectionMonitor.connect();
   }
 
-  private handleClose = () => {
+  private readonly handleClose = () => {
     this.isOpen = false;
     this.eventBus.publish(NotificationsFeedEventsEnum.CLOSE);
   };
 
-  private handleClear = () => {
+  private readonly handleClear = () => {
     this.eventBus.publish(NotificationsFeedEventsEnum.CLEAR);
   };
 
-  private handleViewAll = () => {
+  private readonly handleViewAll = () => {
     this.isOpen = true;
   };
 
@@ -71,11 +77,11 @@ export class NotificationsFeed {
     }
   }
 
-  private pendingTransactionsUpdate = (payload: ITransactionToast[]) => {
+  private readonly pendingTransactionsUpdate = (payload: ITransactionToast[]) => {
     this.pendingTransactions = [...payload];
   };
 
-  private transactionsHistoryUpdate = (payload: ITransactionListItem[]) => {
+  private readonly transactionsHistoryUpdate = (payload: ITransactionListItem[]) => {
     this.transactionsHistory = [...payload];
   };
 

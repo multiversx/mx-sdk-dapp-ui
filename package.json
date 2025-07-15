@@ -4,34 +4,23 @@
   "description": "A library to hold UI components for a dApp on the MultiversX blockchain",
   "author": "MultiversX",
   "license": "MIT",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.js",
+  "module": "dist/web-components/index.js",
   "types": "dist/types/index.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
-  "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/components/sdk-dapp-ui.esm.js",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs.js",
+      "import": "./dist/web-components/index.js",
       "types": "./dist/types/index.d.ts"
+    },
+    "./types/*": {
+      "types": "./dist/types/*.d.ts"
     },
     "./web-components/*": {
       "import": "./dist/web-components/*.js",
       "types": "./dist/web-components/*.d.ts"
     },
-    "./dist/loader": {
-      "import": "./dist/loader/index.js",
-      "require": "./dist/loader/index.cjs",
-      "types": "./dist/loader/index.d.ts"
-    },
     "./react": {
       "import": "./dist/react/components.ts",
       "require": "./dist/react/components.ts"
-    },
-    "./react/constants": {
-      "import": "./dist/react/constants.ts",
-      "require": "./dist/react/constants.ts"
     }
   },
   "repository": {
@@ -51,17 +40,17 @@
     "generate": "stencil generate",
     "build:dev": "stencil build --dev",
     "build": "stencil build --prod",
-    "start": "yarn run build:dev --watch --serve "
+    "start": "yarn run build:dev --watch --serve"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": ">= 6.7.2",
-    "@fortawesome/free-solid-svg-icons": ">= 6.7.2",
+    "@fortawesome/fontawesome-svg-core": ">=6.7.2",
+    "@fortawesome/free-solid-svg-icons": ">=6.7.2",
     "@rollup/plugin-image": "^3.0.3",
-    "@stencil/react-output-target": "0.8.2",
-    "classnames": ">= 2.5.1",
+    "@stencil/react-output-target": "1.2.0",
+    "classnames": ">=2.5.1",
     "lodash.inrange": "^3.3.0",
     "lodash.range": "^3.2.0",
-    "qrcode": ">= 1.5.4",
+    "qrcode": ">=1.5.4",
     "sass-embedded": "^1.85.1"
   },
   "devDependencies": {
