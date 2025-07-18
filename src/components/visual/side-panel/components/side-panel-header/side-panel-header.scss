@@ -30,6 +30,10 @@
         @apply mvx:opacity-75;
       }
     }
+
+    .close-icon {
+      @apply mvx:p-2;
+    }
   }
 
   .side-panel-heading-title {

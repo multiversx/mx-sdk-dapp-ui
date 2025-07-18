@@ -1,0 +1,7 @@
+:host {
+  @apply mvx:flex;
+
+  .close-icon {
+    @apply mvx:w-4 mvx:h-4 mvx:fill-none;
+  }
+}
