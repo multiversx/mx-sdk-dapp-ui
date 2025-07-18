@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Added browser detection](https://github.com/multiversx/mx-sdk-dapp-ui/pull/166)
+
 ## [[0.0.15](https://github.com/multiversx/mx-sdk-dapp-ui/pull/165)] - 2025-07-15
 
 - [Removed cjs from bundle](https://github.com/multiversx/mx-sdk-dapp-ui/pull/164)

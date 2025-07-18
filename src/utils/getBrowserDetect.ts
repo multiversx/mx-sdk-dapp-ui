@@ -18,15 +18,14 @@ export const getBrowserDetect = () => {
   };
 
   const isArc = () => {
-    const testElement = document.createElement('div');
-    document.body.appendChild(testElement);
+    const el = document.createElement('div');
+    document.body.appendChild(el);
 
-    const computedStyle = getComputedStyle(testElement);
+    const computedStyle = getComputedStyle(el);
     const hasArcPalette = computedStyle.getPropertyValue('--arc-palette-background') !== '';
 
-    document.body.removeChild(testElement);
+    document.body.removeChild(el);
 
-    console.log('hasArcPalette', hasArcPalette);
     return hasArcPalette;
   };
 
