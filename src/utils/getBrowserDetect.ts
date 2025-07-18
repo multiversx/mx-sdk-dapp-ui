@@ -17,5 +17,18 @@ export const getBrowserDetect = () => {
     return userAgent && userAgent.toLowerCase().includes('brave');
   };
 
-  return { isChrome, isFirefox, isEdge, isBrave };
+  const isArc = () => {
+    const testElement = document.createElement('div');
+    document.body.appendChild(testElement);
+
+    const computedStyle = getComputedStyle(testElement);
+    const hasArcPalette = computedStyle.getPropertyValue('--arc-palette-background') !== '';
+
+    document.body.removeChild(testElement);
+
+    console.log('hasArcPalette', hasArcPalette);
+    return hasArcPalette;
+  };
+
+  return { isChrome, isFirefox, isEdge, isBrave, isArc };
 };

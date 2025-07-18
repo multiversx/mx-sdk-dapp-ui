@@ -44,6 +44,11 @@ export namespace Components {
     }
     interface MvxAnglesRightIcon {
     }
+    interface MvxArcExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
+    }
     interface MvxArrowRightIcon {
         "class"?: string;
     }
@@ -67,7 +72,6 @@ export namespace Components {
     interface MvxCircleExclamationIcon {
     }
     interface MvxCloseIcon {
-        "class"?: string;
     }
     interface MvxCopyButton {
         /**
@@ -618,6 +622,12 @@ declare global {
     var HTMLMvxAnglesRightIconElement: {
         prototype: HTMLMvxAnglesRightIconElement;
         new (): HTMLMvxAnglesRightIconElement;
+    };
+    interface HTMLMvxArcExtensionProviderIconElement extends Components.MvxArcExtensionProviderIcon, HTMLStencilElement {
+    }
+    var HTMLMvxArcExtensionProviderIconElement: {
+        prototype: HTMLMvxArcExtensionProviderIconElement;
+        new (): HTMLMvxArcExtensionProviderIconElement;
     };
     interface HTMLMvxArrowRightIconElement extends Components.MvxArrowRightIcon, HTMLStencilElement {
     }
@@ -1314,6 +1324,7 @@ declare global {
         "mvx-address-table": HTMLMvxAddressTableElement;
         "mvx-angles-left-icon": HTMLMvxAnglesLeftIconElement;
         "mvx-angles-right-icon": HTMLMvxAnglesRightIconElement;
+        "mvx-arc-extension-provider-icon": HTMLMvxArcExtensionProviderIconElement;
         "mvx-arrow-right-icon": HTMLMvxArrowRightIconElement;
         "mvx-arrow-up-right-from-square-icon": HTMLMvxArrowUpRightFromSquareIconElement;
         "mvx-arrow-up-right-icon": HTMLMvxArrowUpRightIconElement;
@@ -1415,6 +1426,11 @@ declare namespace LocalJSX {
     }
     interface MvxAnglesRightIcon {
     }
+    interface MvxArcExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
+    }
     interface MvxArrowRightIcon {
         "class"?: string;
     }
@@ -1438,7 +1454,6 @@ declare namespace LocalJSX {
     interface MvxCircleExclamationIcon {
     }
     interface MvxCloseIcon {
-        "class"?: string;
     }
     interface MvxCopyButton {
         /**
@@ -1903,6 +1918,7 @@ declare namespace LocalJSX {
         "mvx-address-table": MvxAddressTable;
         "mvx-angles-left-icon": MvxAnglesLeftIcon;
         "mvx-angles-right-icon": MvxAnglesRightIcon;
+        "mvx-arc-extension-provider-icon": MvxArcExtensionProviderIcon;
         "mvx-arrow-right-icon": MvxArrowRightIcon;
         "mvx-arrow-up-right-from-square-icon": MvxArrowUpRightFromSquareIcon;
         "mvx-arrow-up-right-icon": MvxArrowUpRightIcon;
@@ -1999,6 +2015,7 @@ declare module "@stencil/core" {
             "mvx-address-table": LocalJSX.MvxAddressTable & JSXBase.HTMLAttributes<HTMLMvxAddressTableElement>;
             "mvx-angles-left-icon": LocalJSX.MvxAnglesLeftIcon & JSXBase.HTMLAttributes<HTMLMvxAnglesLeftIconElement>;
             "mvx-angles-right-icon": LocalJSX.MvxAnglesRightIcon & JSXBase.HTMLAttributes<HTMLMvxAnglesRightIconElement>;
+            "mvx-arc-extension-provider-icon": LocalJSX.MvxArcExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxArcExtensionProviderIconElement>;
             "mvx-arrow-right-icon": LocalJSX.MvxArrowRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowRightIconElement>;
             "mvx-arrow-up-right-from-square-icon": LocalJSX.MvxArrowUpRightFromSquareIcon & JSXBase.HTMLAttributes<HTMLMvxArrowUpRightFromSquareIconElement>;
             "mvx-arrow-up-right-icon": LocalJSX.MvxArrowUpRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowUpRightIconElement>;
