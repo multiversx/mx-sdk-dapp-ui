@@ -85,27 +85,55 @@ export class ExtensionProviderIcon {
           />
         </g>
         <defs>
-          <filter id="filter0_dddd_8093_13961" x="-4.9996" y="12.398" width="34.9035" height="31.9416" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+          <filter
+            id="filter0_dddd_8093_13961"
+            x="-4.9996"
+            y="12.398"
+            width="34.9035"
+            height="31.9416"
+            filterUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB"
+          >
             <feFlood flood-opacity="0" result="BackgroundImageFix" />
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha"
+            />
             <feOffset dy="0.970874" />
             <feGaussianBlur stdDeviation="1.26214" />
             <feComposite in2="hardAlpha" operator="out" />
             <feColorMatrix type="matrix" values="0 0 0 0 0.137255 0 0 0 0 0.968627 0 0 0 0 0.866667 0 0 0 0.1 0" />
             <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_8093_13961" />
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha"
+            />
             <feOffset dy="2.13592" />
             <feGaussianBlur stdDeviation="5.53398" />
             <feComposite in2="hardAlpha" operator="out" />
             <feColorMatrix type="matrix" values="0 0 0 0 0.137255 0 0 0 0 0.968627 0 0 0 0 0.866667 0 0 0 0.3 0" />
             <feBlend mode="normal" in2="effect1_dropShadow_8093_13961" result="effect2_dropShadow_8093_13961" />
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha"
+            />
             <feOffset dy="0.291262" />
             <feGaussianBlur stdDeviation="0.533981" />
             <feComposite in2="hardAlpha" operator="out" />
             <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0" />
             <feBlend mode="normal" in2="effect2_dropShadow_8093_13961" result="effect3_dropShadow_8093_13961" />
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha"
+            />
             <feOffset dy="0.194175" />
             <feGaussianBlur stdDeviation="0.0970874" />
             <feComposite in2="hardAlpha" operator="out" />
@@ -113,31 +141,80 @@ export class ExtensionProviderIcon {
             <feBlend mode="normal" in2="effect3_dropShadow_8093_13961" result="effect4_dropShadow_8093_13961" />
             <feBlend mode="normal" in="SourceGraphic" in2="effect4_dropShadow_8093_13961" result="shape" />
           </filter>
-          <linearGradient id="paint0_linear_8093_13961" x1="20.2306" y1="19.1846" x2="20.2306" y2="39.6748" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="paint0_linear_8093_13961"
+            x1="20.2306"
+            y1="19.1846"
+            x2="20.2306"
+            y2="39.6748"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop stop-color="#00FFE0" />
             <stop offset="1" stop-color="#00FFE0" />
           </linearGradient>
-          <linearGradient id="paint1_linear_8093_13961" x1="6.49826" y1="30.7502" x2="42.1154" y2="27.4436" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="paint1_linear_8093_13961"
+            x1="6.49826"
+            y1="30.7502"
+            x2="42.1154"
+            y2="27.4436"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop stop-color="#00FFE0" />
             <stop offset="1" stop-color="#4CFFE9" />
           </linearGradient>
-          <linearGradient id="paint2_linear_8093_13961" x1="20.2306" y1="25.3497" x2="20.2306" y2="45.8399" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="paint2_linear_8093_13961"
+            x1="20.2306"
+            y1="25.3497"
+            x2="20.2306"
+            y2="45.8399"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop stop-color="#00FFE0" />
             <stop offset="1" stop-color="#00FFE0" />
           </linearGradient>
-          <linearGradient id="paint3_linear_8093_13961" x1="6.49826" y1="36.9152" x2="42.1154" y2="33.6087" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="paint3_linear_8093_13961"
+            x1="6.49826"
+            y1="36.9152"
+            x2="42.1154"
+            y2="33.6087"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop stop-color="#00FFE0" />
             <stop offset="1" stop-color="#4CFFE9" />
           </linearGradient>
-          <linearGradient id="paint4_linear_8093_13961" x1="31.0723" y1="5.00001" x2="44.9269" y2="5.00001" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="paint4_linear_8093_13961"
+            x1="31.0723"
+            y1="5.00001"
+            x2="44.9269"
+            y2="5.00001"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop stop-color="#D93025" />
             <stop offset="1" stop-color="#EA4335" />
           </linearGradient>
-          <linearGradient id="paint5_linear_8093_13961" x1="36.9065" y1="15.893" x2="43.8339" y2="3.89451" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="paint5_linear_8093_13961"
+            x1="36.9065"
+            y1="15.893"
+            x2="43.8339"
+            y2="3.89451"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop stop-color="#FCC934" />
             <stop offset="1" stop-color="#FBBC04" />
           </linearGradient>
-          <linearGradient id="paint6_linear_8093_13961" x1="38.8655" y1="15.5005" x2="31.9381" y2="3.50195" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="paint6_linear_8093_13961"
+            x1="38.8655"
+            y1="15.5005"
+            x2="31.9381"
+            y2="3.50195"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop stop-color="#1E8E3E" />
             <stop offset="1" stop-color="#34A853" />
           </linearGradient>

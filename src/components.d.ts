@@ -56,16 +56,28 @@ export namespace Components {
     interface MvxBackArrowIcon {
         "class"?: string;
     }
+    interface MvxBraveExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
+    }
     interface MvxCheckIcon {
         "class"?: string;
     }
     interface MvxCircleExclamationIcon {
     }
     interface MvxCloseIcon {
+        "class"?: string;
     }
     interface MvxCopyButton {
+        /**
+          * @default 'copy-button'
+         */
         "class"?: string;
         "copyIcon"?: IconDefinition | string;
+        /**
+          * @default 'copy-button-icon'
+         */
         "iconClass"?: string;
         "successIcon"?: IconDefinition | string;
         "text": string;
@@ -79,6 +91,11 @@ export namespace Components {
     interface MvxDefaultTransactionIconSmall {
         "class"?: string;
     }
+    interface MvxEdgeExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
+    }
     interface MvxExplorerLink {
         "class"?: string;
         "dataTestId"?: string;
@@ -91,9 +108,17 @@ export namespace Components {
         "width"?: number;
     }
     interface MvxFaIcon {
+        /**
+          * @default 'fa-icon'
+         */
         "class"?: string;
         "description"?: string;
         "icon": IconDefinition | string;
+    }
+    interface MvxFirefoxExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
     }
     interface MvxFormatAmount {
         "class"?: string;
@@ -102,6 +127,9 @@ export namespace Components {
         "isValid": boolean;
         "label"?: string;
         "labelClass"?: string;
+        /**
+          * @default true
+         */
         "showLabel"?: boolean;
         "valueDecimal": string;
         "valueInteger": string;
@@ -113,6 +141,9 @@ export namespace Components {
         "confirmScreenData": IConfirmScreenData;
     }
     interface MvxLedgerConnect {
+        /**
+          * @default {     accountScreenData: null,     confirmScreenData: null,     connectScreenData: {},   }
+         */
         "data": ILedgerConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
@@ -121,6 +152,9 @@ export namespace Components {
     }
     interface MvxLedgerIntro {
         "connectScreenData"?: IConnectScreenData;
+        /**
+          * @default false
+         */
         "isAwaiting"?: boolean;
     }
     interface MvxLedgerProviderIcon {
@@ -141,14 +175,26 @@ export namespace Components {
     }
     interface MvxPagination {
         "class"?: string;
+        /**
+          * @default 1
+         */
         "currentPage": number;
+        /**
+          * @default false
+         */
         "isDisabled"?: boolean;
         "totalPages": number;
     }
     interface MvxPaginationEllipsis {
+        /**
+          * @default false
+         */
         "isActive": boolean;
     }
     interface MvxPaginationEllipsisForm {
+        /**
+          * @default false
+         */
         "isVisible": boolean;
         "maxPageToSearchFor": number;
     }
@@ -166,27 +212,54 @@ export namespace Components {
         "class"?: string;
     }
     interface MvxProviderIdleScreen {
+        /**
+          * @default ''
+         */
         "introText": string;
+        /**
+          * @default 'Requesting Connection'
+         */
         "introTitle": string;
+        /**
+          * @default null
+         */
         "provider": IProviderBase | null;
     }
     interface MvxSidePanel {
         "hasBackButton"?: boolean;
+        /**
+          * @default false
+         */
         "isOpen": boolean;
         "panelClassName"?: string;
         "panelTitle": string;
+        /**
+          * @default true
+         */
         "showHeader"?: boolean;
     }
     interface MvxSidePanelHeader {
+        /**
+          * @default true
+         */
         "hasLeftButton"?: boolean;
+        /**
+          * @default true
+         */
         "hasRightButton"?: boolean;
         "panelClassName"?: string;
         "panelTitle": string;
     }
     interface MvxSidePanelSwiper {
         "close": () => Promise<void>;
+        /**
+          * @default false
+         */
         "open": boolean;
         "openToSnapPoint": (snapIndex?: number) => Promise<void>;
+        /**
+          * @default ''
+         */
         "sidePanelIdentifier": string;
     }
     interface MvxSignTransactionsAdvanced {
@@ -198,7 +271,13 @@ export namespace Components {
         "highlight"?: string;
     }
     interface MvxSignTransactionsAdvancedDataDecode {
+        /**
+          * @default DecodeMethodEnum.decimal
+         */
         "currentDecodeMethod": DecodeMethodEnum;
+        /**
+          * @default false
+         */
         "isToggled": boolean;
     }
     interface MvxSignTransactionsFooter {
@@ -211,7 +290,13 @@ export namespace Components {
         "identifier": string;
         "interactor": string;
         "interactorIconUrl": string;
+        /**
+          * @default false
+         */
         "isApp": boolean;
+        /**
+          * @default '~$0.00078'
+         */
         "networkFee": string;
         "tokenIconUrl": string;
         "usdValue": string;
@@ -240,8 +325,14 @@ export namespace Components {
     }
     interface MvxTooltip {
         "class"?: string;
+        /**
+          * @default 'top'
+         */
         "position": 'top' | 'bottom';
         "trigger": HTMLElement;
+        /**
+          * @default false
+         */
         "triggerOnClick"?: boolean;
     }
     interface MvxTransactionAccount {
@@ -249,6 +340,9 @@ export namespace Components {
         "class"?: string;
         "dataTestId"?: string;
         "scope": 'receiver' | 'sender';
+        /**
+          * @default false
+         */
         "showLockedAccounts": boolean;
     }
     interface MvxTransactionAccountName {
@@ -293,10 +387,19 @@ export namespace Components {
     }
     interface MvxTransactionToast {
         "fullWidth"?: boolean;
+        /**
+          * @default ''
+         */
         "processedTransactionsStatus": string | JSX.Element;
         "toastDataState": IToastDataState;
+        /**
+          * @default ''
+         */
         "toastId": string;
         "transactionProgressState"?: ITransactionProgressState;
+        /**
+          * @default []
+         */
         "transactions": ITransactionListItem[];
         "wrapperClass": string;
     }
@@ -307,6 +410,9 @@ export namespace Components {
         "transactions": ITransactionListItem[];
     }
     interface MvxTransactionToastDetails {
+        /**
+          * @default 5
+         */
         "maxShownTransactions": number;
         "processedTransactionsStatus"?: string | JSX.Element;
         "transactionClass": string;
@@ -317,6 +423,9 @@ export namespace Components {
         "index": string;
         "link": string;
         "status"?: string;
+        /**
+          * @default 'transaction-details-list-item'
+         */
         "transactionClass"?: string;
     }
     interface MvxTransactionToastProgress {
@@ -356,6 +465,9 @@ export namespace Components {
     }
     interface MvxUnlockPanelGroup {
         "class"?: string;
+        /**
+          * @default []
+         */
         "providers": IProviderBase[];
     }
     interface MvxUnlockProviderButton {
@@ -363,8 +475,14 @@ export namespace Components {
         "provider": IProviderBase<ProviderTypeEnum>;
     }
     interface MvxWalletConnect {
+        /**
+          * @default { wcURI: '' }
+         */
         "data": IWalletConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
+        /**
+          * @default ''
+         */
         "qrCodeSvg": string;
     }
     interface MvxWalletConnectAppGalleryIcon {
@@ -381,7 +499,13 @@ export namespace Components {
     }
     interface MvxWalletConnectScan {
         "class"?: string;
+        /**
+          * @default ''
+         */
         "qrCodeSvg": string;
+        /**
+          * @default ''
+         */
         "walletConnectDeepLink"?: string;
     }
     interface MvxWalletProviderIcon {
@@ -390,6 +514,9 @@ export namespace Components {
     interface MvxXaliasProviderIcon {
     }
     interface MvxXportalDownloadQrIcon {
+        /**
+          * @default ''
+         */
         "class"?: string;
     }
     interface MvxXportalQrCodePreloader {
@@ -516,6 +643,12 @@ declare global {
         prototype: HTMLMvxBackArrowIconElement;
         new (): HTMLMvxBackArrowIconElement;
     };
+    interface HTMLMvxBraveExtensionProviderIconElement extends Components.MvxBraveExtensionProviderIcon, HTMLStencilElement {
+    }
+    var HTMLMvxBraveExtensionProviderIconElement: {
+        prototype: HTMLMvxBraveExtensionProviderIconElement;
+        new (): HTMLMvxBraveExtensionProviderIconElement;
+    };
     interface HTMLMvxCheckIconElement extends Components.MvxCheckIcon, HTMLStencilElement {
     }
     var HTMLMvxCheckIconElement: {
@@ -569,6 +702,12 @@ declare global {
         prototype: HTMLMvxDefaultTransactionIconSmallElement;
         new (): HTMLMvxDefaultTransactionIconSmallElement;
     };
+    interface HTMLMvxEdgeExtensionProviderIconElement extends Components.MvxEdgeExtensionProviderIcon, HTMLStencilElement {
+    }
+    var HTMLMvxEdgeExtensionProviderIconElement: {
+        prototype: HTMLMvxEdgeExtensionProviderIconElement;
+        new (): HTMLMvxEdgeExtensionProviderIconElement;
+    };
     interface HTMLMvxExplorerLinkElement extends Components.MvxExplorerLink, HTMLStencilElement {
     }
     var HTMLMvxExplorerLinkElement: {
@@ -586,6 +725,12 @@ declare global {
     var HTMLMvxFaIconElement: {
         prototype: HTMLMvxFaIconElement;
         new (): HTMLMvxFaIconElement;
+    };
+    interface HTMLMvxFirefoxExtensionProviderIconElement extends Components.MvxFirefoxExtensionProviderIcon, HTMLStencilElement {
+    }
+    var HTMLMvxFirefoxExtensionProviderIconElement: {
+        prototype: HTMLMvxFirefoxExtensionProviderIconElement;
+        new (): HTMLMvxFirefoxExtensionProviderIconElement;
     };
     interface HTMLMvxFormatAmountElement extends Components.MvxFormatAmount, HTMLStencilElement {
     }
@@ -1173,6 +1318,7 @@ declare global {
         "mvx-arrow-up-right-from-square-icon": HTMLMvxArrowUpRightFromSquareIconElement;
         "mvx-arrow-up-right-icon": HTMLMvxArrowUpRightIconElement;
         "mvx-back-arrow-icon": HTMLMvxBackArrowIconElement;
+        "mvx-brave-extension-provider-icon": HTMLMvxBraveExtensionProviderIconElement;
         "mvx-check-icon": HTMLMvxCheckIconElement;
         "mvx-circle-exclamation-icon": HTMLMvxCircleExclamationIconElement;
         "mvx-close-icon": HTMLMvxCloseIconElement;
@@ -1180,9 +1326,11 @@ declare global {
         "mvx-custom-toast": HTMLMvxCustomToastElement;
         "mvx-default-transaction-icon-large": HTMLMvxDefaultTransactionIconLargeElement;
         "mvx-default-transaction-icon-small": HTMLMvxDefaultTransactionIconSmallElement;
+        "mvx-edge-extension-provider-icon": HTMLMvxEdgeExtensionProviderIconElement;
         "mvx-explorer-link": HTMLMvxExplorerLinkElement;
         "mvx-extension-provider-icon": HTMLMvxExtensionProviderIconElement;
         "mvx-fa-icon": HTMLMvxFaIconElement;
+        "mvx-firefox-extension-provider-icon": HTMLMvxFirefoxExtensionProviderIconElement;
         "mvx-format-amount": HTMLMvxFormatAmountElement;
         "mvx-generic-toast": HTMLMvxGenericToastElement;
         "mvx-ledger-confirm": HTMLMvxLedgerConfirmElement;
@@ -1279,16 +1427,28 @@ declare namespace LocalJSX {
     interface MvxBackArrowIcon {
         "class"?: string;
     }
+    interface MvxBraveExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
+    }
     interface MvxCheckIcon {
         "class"?: string;
     }
     interface MvxCircleExclamationIcon {
     }
     interface MvxCloseIcon {
+        "class"?: string;
     }
     interface MvxCopyButton {
+        /**
+          * @default 'copy-button'
+         */
         "class"?: string;
         "copyIcon"?: IconDefinition | string;
+        /**
+          * @default 'copy-button-icon'
+         */
         "iconClass"?: string;
         "successIcon"?: IconDefinition | string;
         "text"?: string;
@@ -1303,6 +1463,11 @@ declare namespace LocalJSX {
     interface MvxDefaultTransactionIconSmall {
         "class"?: string;
     }
+    interface MvxEdgeExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
+    }
     interface MvxExplorerLink {
         "class"?: string;
         "dataTestId"?: string;
@@ -1315,9 +1480,17 @@ declare namespace LocalJSX {
         "width"?: number;
     }
     interface MvxFaIcon {
+        /**
+          * @default 'fa-icon'
+         */
         "class"?: string;
         "description"?: string;
         "icon"?: IconDefinition | string;
+    }
+    interface MvxFirefoxExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
     }
     interface MvxFormatAmount {
         "class"?: string;
@@ -1326,6 +1499,9 @@ declare namespace LocalJSX {
         "isValid"?: boolean;
         "label"?: string;
         "labelClass"?: string;
+        /**
+          * @default true
+         */
         "showLabel"?: boolean;
         "valueDecimal"?: string;
         "valueInteger"?: string;
@@ -1338,6 +1514,9 @@ declare namespace LocalJSX {
         "confirmScreenData"?: IConfirmScreenData;
     }
     interface MvxLedgerConnect {
+        /**
+          * @default {     accountScreenData: null,     confirmScreenData: null,     connectScreenData: {},   }
+         */
         "data"?: ILedgerConnectPanelData;
     }
     interface MvxLedgerIcon {
@@ -1345,6 +1524,9 @@ declare namespace LocalJSX {
     }
     interface MvxLedgerIntro {
         "connectScreenData"?: IConnectScreenData;
+        /**
+          * @default false
+         */
         "isAwaiting"?: boolean;
         "onConnect"?: (event: MvxLedgerIntroCustomEvent<any>) => void;
     }
@@ -1364,15 +1546,27 @@ declare namespace LocalJSX {
     }
     interface MvxPagination {
         "class"?: string;
+        /**
+          * @default 1
+         */
         "currentPage"?: number;
+        /**
+          * @default false
+         */
         "isDisabled"?: boolean;
         "onPageChange"?: (event: MvxPaginationCustomEvent<number>) => void;
         "totalPages"?: number;
     }
     interface MvxPaginationEllipsis {
+        /**
+          * @default false
+         */
         "isActive"?: boolean;
     }
     interface MvxPaginationEllipsisForm {
+        /**
+          * @default false
+         */
         "isVisible"?: boolean;
         "maxPageToSearchFor"?: number;
         "onSearch"?: (event: MvxPaginationEllipsisFormCustomEvent<number>) => void;
@@ -1389,23 +1583,44 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface MvxProviderIdleScreen {
+        /**
+          * @default ''
+         */
         "introText"?: string;
+        /**
+          * @default 'Requesting Connection'
+         */
         "introTitle"?: string;
         "onAccess"?: (event: MvxProviderIdleScreenCustomEvent<any>) => void;
         "onClose"?: (event: MvxProviderIdleScreenCustomEvent<any>) => void;
+        /**
+          * @default null
+         */
         "provider"?: IProviderBase | null;
     }
     interface MvxSidePanel {
         "hasBackButton"?: boolean;
+        /**
+          * @default false
+         */
         "isOpen"?: boolean;
         "onBack"?: (event: MvxSidePanelCustomEvent<void>) => void;
         "onClose"?: (event: MvxSidePanelCustomEvent<void>) => void;
         "panelClassName"?: string;
         "panelTitle"?: string;
+        /**
+          * @default true
+         */
         "showHeader"?: boolean;
     }
     interface MvxSidePanelHeader {
+        /**
+          * @default true
+         */
         "hasLeftButton"?: boolean;
+        /**
+          * @default true
+         */
         "hasRightButton"?: boolean;
         "onLeftButtonClick"?: (event: MvxSidePanelHeaderCustomEvent<any>) => void;
         "onRightButtonClick"?: (event: MvxSidePanelHeaderCustomEvent<any>) => void;
@@ -1415,7 +1630,13 @@ declare namespace LocalJSX {
     interface MvxSidePanelSwiper {
         "onSheetDismiss"?: (event: MvxSidePanelSwiperCustomEvent<void>) => void;
         "onSheetSnapChange"?: (event: MvxSidePanelSwiperCustomEvent<{ index: number; snapPoint: string }>) => void;
+        /**
+          * @default false
+         */
         "open"?: boolean;
+        /**
+          * @default ''
+         */
         "sidePanelIdentifier"?: string;
     }
     interface MvxSignTransactionsAdvanced {
@@ -1427,7 +1648,13 @@ declare namespace LocalJSX {
         "highlight"?: string;
     }
     interface MvxSignTransactionsAdvancedDataDecode {
+        /**
+          * @default DecodeMethodEnum.decimal
+         */
         "currentDecodeMethod"?: DecodeMethodEnum;
+        /**
+          * @default false
+         */
         "isToggled"?: boolean;
     }
     interface MvxSignTransactionsFooter {
@@ -1440,7 +1667,13 @@ declare namespace LocalJSX {
         "identifier"?: string;
         "interactor"?: string;
         "interactorIconUrl"?: string;
+        /**
+          * @default false
+         */
         "isApp"?: boolean;
+        /**
+          * @default '~$0.00078'
+         */
         "networkFee"?: string;
         "tokenIconUrl"?: string;
         "usdValue"?: string;
@@ -1468,8 +1701,14 @@ declare namespace LocalJSX {
     interface MvxTooltip {
         "class"?: string;
         "onTriggerRender"?: (event: MvxTooltipCustomEvent<boolean>) => void;
+        /**
+          * @default 'top'
+         */
         "position"?: 'top' | 'bottom';
         "trigger"?: HTMLElement;
+        /**
+          * @default false
+         */
         "triggerOnClick"?: boolean;
     }
     interface MvxTransactionAccount {
@@ -1477,6 +1716,9 @@ declare namespace LocalJSX {
         "class"?: string;
         "dataTestId"?: string;
         "scope"?: 'receiver' | 'sender';
+        /**
+          * @default false
+         */
         "showLockedAccounts"?: boolean;
     }
     interface MvxTransactionAccountName {
@@ -1522,10 +1764,19 @@ declare namespace LocalJSX {
     interface MvxTransactionToast {
         "fullWidth"?: boolean;
         "onDeleteToast"?: (event: MvxTransactionToastCustomEvent<void>) => void;
+        /**
+          * @default ''
+         */
         "processedTransactionsStatus"?: string | JSX.Element;
         "toastDataState"?: IToastDataState;
+        /**
+          * @default ''
+         */
         "toastId"?: string;
         "transactionProgressState"?: ITransactionProgressState;
+        /**
+          * @default []
+         */
         "transactions"?: ITransactionListItem[];
         "wrapperClass"?: string;
     }
@@ -1537,6 +1788,9 @@ declare namespace LocalJSX {
         "transactions"?: ITransactionListItem[];
     }
     interface MvxTransactionToastDetails {
+        /**
+          * @default 5
+         */
         "maxShownTransactions"?: number;
         "processedTransactionsStatus"?: string | JSX.Element;
         "transactionClass"?: string;
@@ -1547,6 +1801,9 @@ declare namespace LocalJSX {
         "index"?: string;
         "link"?: string;
         "status"?: string;
+        /**
+          * @default 'transaction-details-list-item'
+         */
         "transactionClass"?: string;
     }
     interface MvxTransactionToastProgress {
@@ -1585,6 +1842,9 @@ declare namespace LocalJSX {
     interface MvxUnlockPanelGroup {
         "class"?: string;
         "onLogin"?: (event: MvxUnlockPanelGroupCustomEvent<IProviderBase>) => void;
+        /**
+          * @default []
+         */
         "providers"?: IProviderBase[];
     }
     interface MvxUnlockProviderButton {
@@ -1592,7 +1852,13 @@ declare namespace LocalJSX {
         "provider"?: IProviderBase<ProviderTypeEnum>;
     }
     interface MvxWalletConnect {
+        /**
+          * @default { wcURI: '' }
+         */
         "data"?: IWalletConnectPanelData;
+        /**
+          * @default ''
+         */
         "qrCodeSvg"?: string;
     }
     interface MvxWalletConnectAppGalleryIcon {
@@ -1610,7 +1876,13 @@ declare namespace LocalJSX {
     interface MvxWalletConnectScan {
         "class"?: string;
         "onDownloadClick"?: (event: MvxWalletConnectScanCustomEvent<any>) => void;
+        /**
+          * @default ''
+         */
         "qrCodeSvg"?: string;
+        /**
+          * @default ''
+         */
         "walletConnectDeepLink"?: string;
     }
     interface MvxWalletProviderIcon {
@@ -1619,6 +1891,9 @@ declare namespace LocalJSX {
     interface MvxXaliasProviderIcon {
     }
     interface MvxXportalDownloadQrIcon {
+        /**
+          * @default ''
+         */
         "class"?: string;
     }
     interface MvxXportalQrCodePreloader {
@@ -1632,6 +1907,7 @@ declare namespace LocalJSX {
         "mvx-arrow-up-right-from-square-icon": MvxArrowUpRightFromSquareIcon;
         "mvx-arrow-up-right-icon": MvxArrowUpRightIcon;
         "mvx-back-arrow-icon": MvxBackArrowIcon;
+        "mvx-brave-extension-provider-icon": MvxBraveExtensionProviderIcon;
         "mvx-check-icon": MvxCheckIcon;
         "mvx-circle-exclamation-icon": MvxCircleExclamationIcon;
         "mvx-close-icon": MvxCloseIcon;
@@ -1639,9 +1915,11 @@ declare namespace LocalJSX {
         "mvx-custom-toast": MvxCustomToast;
         "mvx-default-transaction-icon-large": MvxDefaultTransactionIconLarge;
         "mvx-default-transaction-icon-small": MvxDefaultTransactionIconSmall;
+        "mvx-edge-extension-provider-icon": MvxEdgeExtensionProviderIcon;
         "mvx-explorer-link": MvxExplorerLink;
         "mvx-extension-provider-icon": MvxExtensionProviderIcon;
         "mvx-fa-icon": MvxFaIcon;
+        "mvx-firefox-extension-provider-icon": MvxFirefoxExtensionProviderIcon;
         "mvx-format-amount": MvxFormatAmount;
         "mvx-generic-toast": MvxGenericToast;
         "mvx-ledger-confirm": MvxLedgerConfirm;
@@ -1725,6 +2003,7 @@ declare module "@stencil/core" {
             "mvx-arrow-up-right-from-square-icon": LocalJSX.MvxArrowUpRightFromSquareIcon & JSXBase.HTMLAttributes<HTMLMvxArrowUpRightFromSquareIconElement>;
             "mvx-arrow-up-right-icon": LocalJSX.MvxArrowUpRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowUpRightIconElement>;
             "mvx-back-arrow-icon": LocalJSX.MvxBackArrowIcon & JSXBase.HTMLAttributes<HTMLMvxBackArrowIconElement>;
+            "mvx-brave-extension-provider-icon": LocalJSX.MvxBraveExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxBraveExtensionProviderIconElement>;
             "mvx-check-icon": LocalJSX.MvxCheckIcon & JSXBase.HTMLAttributes<HTMLMvxCheckIconElement>;
             "mvx-circle-exclamation-icon": LocalJSX.MvxCircleExclamationIcon & JSXBase.HTMLAttributes<HTMLMvxCircleExclamationIconElement>;
             "mvx-close-icon": LocalJSX.MvxCloseIcon & JSXBase.HTMLAttributes<HTMLMvxCloseIconElement>;
@@ -1732,9 +2011,11 @@ declare module "@stencil/core" {
             "mvx-custom-toast": LocalJSX.MvxCustomToast & JSXBase.HTMLAttributes<HTMLMvxCustomToastElement>;
             "mvx-default-transaction-icon-large": LocalJSX.MvxDefaultTransactionIconLarge & JSXBase.HTMLAttributes<HTMLMvxDefaultTransactionIconLargeElement>;
             "mvx-default-transaction-icon-small": LocalJSX.MvxDefaultTransactionIconSmall & JSXBase.HTMLAttributes<HTMLMvxDefaultTransactionIconSmallElement>;
+            "mvx-edge-extension-provider-icon": LocalJSX.MvxEdgeExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxEdgeExtensionProviderIconElement>;
             "mvx-explorer-link": LocalJSX.MvxExplorerLink & JSXBase.HTMLAttributes<HTMLMvxExplorerLinkElement>;
             "mvx-extension-provider-icon": LocalJSX.MvxExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxExtensionProviderIconElement>;
             "mvx-fa-icon": LocalJSX.MvxFaIcon & JSXBase.HTMLAttributes<HTMLMvxFaIconElement>;
+            "mvx-firefox-extension-provider-icon": LocalJSX.MvxFirefoxExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxFirefoxExtensionProviderIconElement>;
             "mvx-format-amount": LocalJSX.MvxFormatAmount & JSXBase.HTMLAttributes<HTMLMvxFormatAmountElement>;
             "mvx-generic-toast": LocalJSX.MvxGenericToast & JSXBase.HTMLAttributes<HTMLMvxGenericToastElement>;
             "mvx-ledger-confirm": LocalJSX.MvxLedgerConfirm & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmElement>;
