@@ -10,7 +10,7 @@ import {
 import { safeWindow } from 'constants/window.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
-import { isFirefox } from 'utils/isFirefox';
+import { getBrowserDetect } from 'utils/getBrowserDetect';
 
 const unlockButtonClasses: Record<string, string> = {
   statusIcon: 'mvx:fill-accent!',
@@ -36,6 +36,8 @@ export class UnlockButton {
     const isExtensionInstalled = isExtensionProvider && getIsExtensionAvailable();
     const isMetaMaskInstalled = isMetaMaskProvider && getIsMetaMaskAvailable();
     const shouldShowOpenLabel = isDetectableProvider && (isExtensionInstalled || isMetaMaskInstalled);
+
+    const { isFirefox } = getBrowserDetect();
 
     const handleInstallButtonClick = () => {
       if (shouldShowOpenLabel) {

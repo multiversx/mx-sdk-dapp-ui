@@ -44,6 +44,11 @@ export namespace Components {
     }
     interface MvxAnglesRightIcon {
     }
+    interface MvxArcExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
+    }
     interface MvxArrowRightIcon {
         "class"?: string;
     }
@@ -55,6 +60,11 @@ export namespace Components {
     }
     interface MvxBackArrowIcon {
         "class"?: string;
+    }
+    interface MvxBraveExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
     }
     interface MvxCheckIcon {
         "class"?: string;
@@ -86,6 +96,11 @@ export namespace Components {
     interface MvxDefaultTransactionIconSmall {
         "class"?: string;
     }
+    interface MvxEdgeExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
+    }
     interface MvxExplorerLink {
         "class"?: string;
         "dataTestId"?: string;
@@ -104,6 +119,11 @@ export namespace Components {
         "class"?: string;
         "description"?: string;
         "icon": IconDefinition | string;
+    }
+    interface MvxFirefoxExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
     }
     interface MvxFormatAmount {
         "class"?: string;
@@ -604,6 +624,12 @@ declare global {
         prototype: HTMLMvxAnglesRightIconElement;
         new (): HTMLMvxAnglesRightIconElement;
     };
+    interface HTMLMvxArcExtensionProviderIconElement extends Components.MvxArcExtensionProviderIcon, HTMLStencilElement {
+    }
+    var HTMLMvxArcExtensionProviderIconElement: {
+        prototype: HTMLMvxArcExtensionProviderIconElement;
+        new (): HTMLMvxArcExtensionProviderIconElement;
+    };
     interface HTMLMvxArrowRightIconElement extends Components.MvxArrowRightIcon, HTMLStencilElement {
     }
     var HTMLMvxArrowRightIconElement: {
@@ -627,6 +653,12 @@ declare global {
     var HTMLMvxBackArrowIconElement: {
         prototype: HTMLMvxBackArrowIconElement;
         new (): HTMLMvxBackArrowIconElement;
+    };
+    interface HTMLMvxBraveExtensionProviderIconElement extends Components.MvxBraveExtensionProviderIcon, HTMLStencilElement {
+    }
+    var HTMLMvxBraveExtensionProviderIconElement: {
+        prototype: HTMLMvxBraveExtensionProviderIconElement;
+        new (): HTMLMvxBraveExtensionProviderIconElement;
     };
     interface HTMLMvxCheckIconElement extends Components.MvxCheckIcon, HTMLStencilElement {
     }
@@ -681,6 +713,12 @@ declare global {
         prototype: HTMLMvxDefaultTransactionIconSmallElement;
         new (): HTMLMvxDefaultTransactionIconSmallElement;
     };
+    interface HTMLMvxEdgeExtensionProviderIconElement extends Components.MvxEdgeExtensionProviderIcon, HTMLStencilElement {
+    }
+    var HTMLMvxEdgeExtensionProviderIconElement: {
+        prototype: HTMLMvxEdgeExtensionProviderIconElement;
+        new (): HTMLMvxEdgeExtensionProviderIconElement;
+    };
     interface HTMLMvxExplorerLinkElement extends Components.MvxExplorerLink, HTMLStencilElement {
     }
     var HTMLMvxExplorerLinkElement: {
@@ -698,6 +736,12 @@ declare global {
     var HTMLMvxFaIconElement: {
         prototype: HTMLMvxFaIconElement;
         new (): HTMLMvxFaIconElement;
+    };
+    interface HTMLMvxFirefoxExtensionProviderIconElement extends Components.MvxFirefoxExtensionProviderIcon, HTMLStencilElement {
+    }
+    var HTMLMvxFirefoxExtensionProviderIconElement: {
+        prototype: HTMLMvxFirefoxExtensionProviderIconElement;
+        new (): HTMLMvxFirefoxExtensionProviderIconElement;
     };
     interface HTMLMvxFormatAmountElement extends Components.MvxFormatAmount, HTMLStencilElement {
     }
@@ -1281,10 +1325,12 @@ declare global {
         "mvx-address-table": HTMLMvxAddressTableElement;
         "mvx-angles-left-icon": HTMLMvxAnglesLeftIconElement;
         "mvx-angles-right-icon": HTMLMvxAnglesRightIconElement;
+        "mvx-arc-extension-provider-icon": HTMLMvxArcExtensionProviderIconElement;
         "mvx-arrow-right-icon": HTMLMvxArrowRightIconElement;
         "mvx-arrow-up-right-from-square-icon": HTMLMvxArrowUpRightFromSquareIconElement;
         "mvx-arrow-up-right-icon": HTMLMvxArrowUpRightIconElement;
         "mvx-back-arrow-icon": HTMLMvxBackArrowIconElement;
+        "mvx-brave-extension-provider-icon": HTMLMvxBraveExtensionProviderIconElement;
         "mvx-check-icon": HTMLMvxCheckIconElement;
         "mvx-circle-exclamation-icon": HTMLMvxCircleExclamationIconElement;
         "mvx-close-icon": HTMLMvxCloseIconElement;
@@ -1292,9 +1338,11 @@ declare global {
         "mvx-custom-toast": HTMLMvxCustomToastElement;
         "mvx-default-transaction-icon-large": HTMLMvxDefaultTransactionIconLargeElement;
         "mvx-default-transaction-icon-small": HTMLMvxDefaultTransactionIconSmallElement;
+        "mvx-edge-extension-provider-icon": HTMLMvxEdgeExtensionProviderIconElement;
         "mvx-explorer-link": HTMLMvxExplorerLinkElement;
         "mvx-extension-provider-icon": HTMLMvxExtensionProviderIconElement;
         "mvx-fa-icon": HTMLMvxFaIconElement;
+        "mvx-firefox-extension-provider-icon": HTMLMvxFirefoxExtensionProviderIconElement;
         "mvx-format-amount": HTMLMvxFormatAmountElement;
         "mvx-generic-toast": HTMLMvxGenericToastElement;
         "mvx-ledger-confirm": HTMLMvxLedgerConfirmElement;
@@ -1379,6 +1427,11 @@ declare namespace LocalJSX {
     }
     interface MvxAnglesRightIcon {
     }
+    interface MvxArcExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
+    }
     interface MvxArrowRightIcon {
         "class"?: string;
     }
@@ -1390,6 +1443,11 @@ declare namespace LocalJSX {
     }
     interface MvxBackArrowIcon {
         "class"?: string;
+    }
+    interface MvxBraveExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
     }
     interface MvxCheckIcon {
         "class"?: string;
@@ -1422,6 +1480,11 @@ declare namespace LocalJSX {
     interface MvxDefaultTransactionIconSmall {
         "class"?: string;
     }
+    interface MvxEdgeExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
+    }
     interface MvxExplorerLink {
         "class"?: string;
         "dataTestId"?: string;
@@ -1440,6 +1503,11 @@ declare namespace LocalJSX {
         "class"?: string;
         "description"?: string;
         "icon"?: IconDefinition | string;
+    }
+    interface MvxFirefoxExtensionProviderIcon {
+        "class"?: string;
+        "height"?: number;
+        "width"?: number;
     }
     interface MvxFormatAmount {
         "class"?: string;
@@ -1852,10 +1920,12 @@ declare namespace LocalJSX {
         "mvx-address-table": MvxAddressTable;
         "mvx-angles-left-icon": MvxAnglesLeftIcon;
         "mvx-angles-right-icon": MvxAnglesRightIcon;
+        "mvx-arc-extension-provider-icon": MvxArcExtensionProviderIcon;
         "mvx-arrow-right-icon": MvxArrowRightIcon;
         "mvx-arrow-up-right-from-square-icon": MvxArrowUpRightFromSquareIcon;
         "mvx-arrow-up-right-icon": MvxArrowUpRightIcon;
         "mvx-back-arrow-icon": MvxBackArrowIcon;
+        "mvx-brave-extension-provider-icon": MvxBraveExtensionProviderIcon;
         "mvx-check-icon": MvxCheckIcon;
         "mvx-circle-exclamation-icon": MvxCircleExclamationIcon;
         "mvx-close-icon": MvxCloseIcon;
@@ -1863,9 +1933,11 @@ declare namespace LocalJSX {
         "mvx-custom-toast": MvxCustomToast;
         "mvx-default-transaction-icon-large": MvxDefaultTransactionIconLarge;
         "mvx-default-transaction-icon-small": MvxDefaultTransactionIconSmall;
+        "mvx-edge-extension-provider-icon": MvxEdgeExtensionProviderIcon;
         "mvx-explorer-link": MvxExplorerLink;
         "mvx-extension-provider-icon": MvxExtensionProviderIcon;
         "mvx-fa-icon": MvxFaIcon;
+        "mvx-firefox-extension-provider-icon": MvxFirefoxExtensionProviderIcon;
         "mvx-format-amount": MvxFormatAmount;
         "mvx-generic-toast": MvxGenericToast;
         "mvx-ledger-confirm": MvxLedgerConfirm;
@@ -1945,10 +2017,12 @@ declare module "@stencil/core" {
             "mvx-address-table": LocalJSX.MvxAddressTable & JSXBase.HTMLAttributes<HTMLMvxAddressTableElement>;
             "mvx-angles-left-icon": LocalJSX.MvxAnglesLeftIcon & JSXBase.HTMLAttributes<HTMLMvxAnglesLeftIconElement>;
             "mvx-angles-right-icon": LocalJSX.MvxAnglesRightIcon & JSXBase.HTMLAttributes<HTMLMvxAnglesRightIconElement>;
+            "mvx-arc-extension-provider-icon": LocalJSX.MvxArcExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxArcExtensionProviderIconElement>;
             "mvx-arrow-right-icon": LocalJSX.MvxArrowRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowRightIconElement>;
             "mvx-arrow-up-right-from-square-icon": LocalJSX.MvxArrowUpRightFromSquareIcon & JSXBase.HTMLAttributes<HTMLMvxArrowUpRightFromSquareIconElement>;
             "mvx-arrow-up-right-icon": LocalJSX.MvxArrowUpRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowUpRightIconElement>;
             "mvx-back-arrow-icon": LocalJSX.MvxBackArrowIcon & JSXBase.HTMLAttributes<HTMLMvxBackArrowIconElement>;
+            "mvx-brave-extension-provider-icon": LocalJSX.MvxBraveExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxBraveExtensionProviderIconElement>;
             "mvx-check-icon": LocalJSX.MvxCheckIcon & JSXBase.HTMLAttributes<HTMLMvxCheckIconElement>;
             "mvx-circle-exclamation-icon": LocalJSX.MvxCircleExclamationIcon & JSXBase.HTMLAttributes<HTMLMvxCircleExclamationIconElement>;
             "mvx-close-icon": LocalJSX.MvxCloseIcon & JSXBase.HTMLAttributes<HTMLMvxCloseIconElement>;
@@ -1956,9 +2030,11 @@ declare module "@stencil/core" {
             "mvx-custom-toast": LocalJSX.MvxCustomToast & JSXBase.HTMLAttributes<HTMLMvxCustomToastElement>;
             "mvx-default-transaction-icon-large": LocalJSX.MvxDefaultTransactionIconLarge & JSXBase.HTMLAttributes<HTMLMvxDefaultTransactionIconLargeElement>;
             "mvx-default-transaction-icon-small": LocalJSX.MvxDefaultTransactionIconSmall & JSXBase.HTMLAttributes<HTMLMvxDefaultTransactionIconSmallElement>;
+            "mvx-edge-extension-provider-icon": LocalJSX.MvxEdgeExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxEdgeExtensionProviderIconElement>;
             "mvx-explorer-link": LocalJSX.MvxExplorerLink & JSXBase.HTMLAttributes<HTMLMvxExplorerLinkElement>;
             "mvx-extension-provider-icon": LocalJSX.MvxExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxExtensionProviderIconElement>;
             "mvx-fa-icon": LocalJSX.MvxFaIcon & JSXBase.HTMLAttributes<HTMLMvxFaIconElement>;
+            "mvx-firefox-extension-provider-icon": LocalJSX.MvxFirefoxExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxFirefoxExtensionProviderIconElement>;
             "mvx-format-amount": LocalJSX.MvxFormatAmount & JSXBase.HTMLAttributes<HTMLMvxFormatAmountElement>;
             "mvx-generic-toast": LocalJSX.MvxGenericToast & JSXBase.HTMLAttributes<HTMLMvxGenericToastElement>;
             "mvx-ledger-confirm": LocalJSX.MvxLedgerConfirm & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmElement>;
