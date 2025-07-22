@@ -72,7 +72,7 @@ export class LedgerConfirm {
         <div class="ledger-confirm-footer">
           <mvx-triangular-warning-icon class="ledger-confirm-footer-icon" />
           <div class="ledger-confirm-footer-description">
-            If the address does not macth close this page and contact support.
+            If the address does not match, close this page and contact support.
           </div>
 
           <a
