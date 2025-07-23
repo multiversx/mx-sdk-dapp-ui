@@ -1,7 +1,6 @@
 /**
  * Core shadow DOM traversal logic that can be reused across different testing frameworks.
  * Note: Requires browser support for Shadow DOM APIs (customElements, shadowRoot, etc.).
- * Most modern browsers support these features, but older browsers may not.
  */
 
 /**
@@ -37,7 +36,6 @@ export function walkShadowDom(root: Document | ShadowRoot, selector: string): El
     return found;
   }
 
-  // Traverse children to enter shadow roots
   const all: Element[] = Array.from(root.querySelectorAll('*'));
 
   for (const el of all) {
@@ -57,7 +55,6 @@ export function walkShadowDom(root: Document | ShadowRoot, selector: string): El
  * @returns {string} - CSS selector for the data-testid
  */
 export function createDataTestIdSelector(testId: string): string {
-  // Use CSS.escape if available, otherwise fallback to a basic escape
   const escape =
     window.CSS && typeof window.CSS.escape === 'function'
       ? window.CSS.escape

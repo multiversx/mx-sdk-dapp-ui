@@ -1,8 +1,5 @@
 import { walkShadowDom } from './shadowDomTraversal';
 
-// Note: JSDOM does not support shadow DOM natively. These tests simulate shadow DOM by mocking shadowRoot properties.
-// For full shadow DOM support, run in a browser environment or use a polyfill.
-
 describe('walkShadowDom', () => {
   let root: Document;
   beforeEach(() => {
@@ -23,18 +20,17 @@ describe('walkShadowDom', () => {
     const shadowChild = document.createElement('span');
     shadowChild.setAttribute('data-testid', 'bar');
     shadowRoot.appendChild(shadowChild);
-    // Simulate shadowRoot property
     (host as any).shadowRoot = shadowRoot;
     document.body.appendChild(host);
-    // Patch querySelectorAll to include host for traversal
     const origQuerySelectorAll = document.querySelectorAll;
     document.querySelectorAll = function (sel) {
-      // If selector is '*', include host
       if (sel === '*') {
         return [host] as any;
       }
+
       return origQuerySelectorAll.call(this, sel);
     };
+
     expect(walkShadowDom(document, '[data-testid="bar"]')).toBe(shadowChild);
     document.querySelectorAll = origQuerySelectorAll;
   });
