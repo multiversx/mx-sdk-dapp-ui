@@ -16,9 +16,11 @@ export async function getElementByDataTestIdDeep(page: any, dataTestId: string) 
 
   // If nothing found, return null
   const element = handle.asElement();
+
   if (!element) {
     await handle.dispose();
     return null;
   }
+
   return element;
 }
