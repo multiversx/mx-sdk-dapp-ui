@@ -14,7 +14,6 @@ export async function getElementByDataTestIdDeep(page: any, dataTestId: string) 
     dataTestId,
   );
 
-  // If nothing found, return null
   const element = handle.asElement();
 
   if (!element) {

@@ -1,4 +1,8 @@
-import { getByDataTestIdDeep, getElementByDataTestIdDeep, queryByDataTestIdDeep } from './getElementByDataTestIdDeep.jest';
+import {
+  getByDataTestIdDeep,
+  getElementByDataTestIdDeep,
+  queryByDataTestIdDeep,
+} from './getElementByDataTestIdDeep.jest';
 
 describe('getElementByDataTestIdDeep', () => {
   let mockElement: any;
@@ -6,7 +10,6 @@ describe('getElementByDataTestIdDeep', () => {
   let mockDocument: any;
 
   beforeEach(() => {
-    // Create mock shadow DOM structure
     mockElement = {
       querySelector: jest.fn(),
       querySelectorAll: jest.fn(),
@@ -23,7 +26,6 @@ describe('getElementByDataTestIdDeep', () => {
       querySelectorAll: jest.fn(),
     };
 
-    // Setup global document mock
     global.document = mockDocument as any;
   });
 
@@ -46,11 +48,9 @@ describe('getElementByDataTestIdDeep', () => {
     const testElement = { id: 'shadow-element' };
     const elementWithShadow = { ...mockElement, shadowRoot: mockShadowRoot };
 
-    // Document doesn't have the element
     mockDocument.querySelector.mockReturnValue(null);
     mockDocument.querySelectorAll.mockReturnValue([elementWithShadow]);
 
-    // Shadow root has the element
     mockShadowRoot.querySelector.mockReturnValue(testElement);
     mockShadowRoot.querySelectorAll.mockReturnValue([]);
 
@@ -82,9 +82,7 @@ describe('getElementByDataTestIdDeep', () => {
     mockDocument.querySelector.mockReturnValue(null);
     mockDocument.querySelectorAll.mockReturnValue([]);
 
-    expect(() => getByDataTestIdDeep('non-existent')).toThrow(
-      'Unable to find element with data-testid: non-existent'
-    );
+    expect(() => getByDataTestIdDeep('non-existent')).toThrow('Unable to find element with data-testid: non-existent');
   });
 
   it('getByDataTestIdDeep should return element when found', () => {
@@ -98,7 +96,6 @@ describe('getElementByDataTestIdDeep', () => {
   });
 });
 
-// Integration test demonstrating how the utility would work
 describe('getElementByDataTestIdDeep usage examples', () => {
   it('should demonstrate typical usage patterns', () => {
     const mockRoot = {
@@ -107,7 +104,7 @@ describe('getElementByDataTestIdDeep usage examples', () => {
     };
 
     const result = getElementByDataTestIdDeep('test-id', mockRoot as any);
-    
+
     expect(result).toEqual({ id: 'found-element' });
     expect(mockRoot.querySelector).toHaveBeenCalledWith('[data-testid="test-id"]');
   });
