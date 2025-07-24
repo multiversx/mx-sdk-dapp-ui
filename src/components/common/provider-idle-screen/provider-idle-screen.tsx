@@ -3,7 +3,6 @@ import { Component, Event, Fragment, h, Prop } from '@stencil/core';
 import { getProviderButtonIcon } from 'components/functional/unlock-panel/helpers';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
-import { getBrowserDetect } from 'utils/getBrowserDetect';
 
 const getProviderIntroText = (providerType?: IProviderBase['type']) => {
   switch (providerType) {
@@ -46,10 +45,10 @@ export class ProviderIdleScreen {
     const extensionProviderIconWidth = extensionProviderIconBaseSize + (15 / 100) * extensionProviderIconBaseSize;
     const extensionProviderIconHeight = extensionProviderIconBaseSize + (10 / 100) * extensionProviderIconBaseSize;
 
-    const providerIntroIcon = getProviderButtonIcon(providerType);
+    const providerIntroIcon = isExtensionProvider
+      ? getProviderButtonIcon({ providerType, extensionProviderIconWidth, extensionProviderIconHeight })
+      : getProviderButtonIcon({ providerType });
     const providerIntroText = this.introText || getProviderIntroText(providerType);
-
-    const { isFirefox } = getBrowserDetect();
 
     if (this.provider.type === ProviderTypeEnum.ledger) {
       return (
@@ -74,13 +73,7 @@ export class ProviderIdleScreen {
         />
 
         <div class="unlock-provider-intro">
-          {isExtensionProvider && !isFirefox() ? (
-            <div class="unlock-provider-intro-icon">
-              <mvx-extension-provider-icon width={extensionProviderIconWidth} height={extensionProviderIconHeight} />
-            </div>
-          ) : (
-            <div class="unlock-provider-intro-icon">{providerIntroIcon}</div>
-          )}
+          <div class="unlock-provider-intro-icon">{providerIntroIcon}</div>
 
           <div class="unlock-provider-intro-title">{this.introTitle}</div>
           {providerIntroText && <div class="unlock-provider-intro-text">{providerIntroText}</div>}

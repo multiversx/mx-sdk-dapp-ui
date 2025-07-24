@@ -3,21 +3,42 @@ import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 import { getBrowserDetect } from 'utils/getBrowserDetect';
 
-export const getProviderButtonIcon = (providerType: IProviderBase['type']): HTMLElement => {
+interface IProviderButtonIcon {
+  providerType: IProviderBase['type'];
+  extensionProviderIconWidth?: number;
+  extensionProviderIconHeight?: number;
+}
+
+export const getProviderButtonIcon = ({
+  providerType,
+  extensionProviderIconWidth,
+  extensionProviderIconHeight,
+}: IProviderButtonIcon): HTMLElement => {
   const { isFirefox, isChrome, isEdge, isBrave, isArc } = getBrowserDetect();
 
   switch (providerType) {
     case ProviderTypeEnum.extension:
       if (isEdge()) {
-        return <mvx-edge-extension-provider-icon />;
+        return (
+          <mvx-edge-extension-provider-icon width={extensionProviderIconWidth} height={extensionProviderIconHeight} />
+        );
       } else if (isFirefox()) {
-        return <mvx-firefox-extension-provider-icon />;
+        return (
+          <mvx-firefox-extension-provider-icon
+            width={extensionProviderIconWidth}
+            height={extensionProviderIconHeight}
+          />
+        );
       } else if (isBrave()) {
-        return <mvx-brave-extension-provider-icon />;
+        return (
+          <mvx-brave-extension-provider-icon width={extensionProviderIconWidth} height={extensionProviderIconHeight} />
+        );
       } else if (isArc()) {
-        return <mvx-arc-extension-provider-icon />;
+        return (
+          <mvx-arc-extension-provider-icon width={extensionProviderIconWidth} height={extensionProviderIconHeight} />
+        );
       } else if (isChrome()) {
-        return <mvx-extension-provider-icon />;
+        return <mvx-extension-provider-icon width={extensionProviderIconWidth} height={extensionProviderIconHeight} />;
       } else {
         return <mvx-wallet-provider-icon />;
       }
