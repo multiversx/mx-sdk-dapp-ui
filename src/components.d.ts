@@ -72,6 +72,7 @@ export namespace Components {
     interface MvxCircleExclamationIcon {
     }
     interface MvxCloseIcon {
+        "class"?: string;
     }
     interface MvxCopyButton {
         /**
@@ -1454,6 +1455,7 @@ declare namespace LocalJSX {
     interface MvxCircleExclamationIcon {
     }
     interface MvxCloseIcon {
+        "class"?: string;
     }
     interface MvxCopyButton {
         /**

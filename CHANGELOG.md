@@ -9,6 +9,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [Added browser detection](https://github.com/multiversx/mx-sdk-dapp-ui/pull/166)
 
+## [[0.0.19](https://github.com/multiversx/mx-sdk-dapp-ui/pull/173)] - 2025-07-23
+
+- [Added getElementByDataTestIdDeep utility function for tests](https://github.com/multiversx/mx-sdk-dapp-ui/pull/172)
+
+- [Updated data-theme](https://github.com/multiversx/mx-sdk-dapp-ui/pull/171)
+
+## [[0.0.18](https://github.com/multiversx/mx-sdk-dapp-ui/pull/170)] - 2025-07-22
+
+- [Fixed typo in ledger confirm](https://github.com/multiversx/mx-sdk-dapp-ui/pull/170)
+
+## [[0.0.17](https://github.com/multiversx/mx-sdk-dapp-ui/pull/169)] - 2025-07-21
+
+- [Fixed typo in ledger confirm](https://github.com/multiversx/mx-sdk-dapp-ui/pull/169)
+
+## [[0.0.16](https://github.com/multiversx/mx-sdk-dapp-ui/pull/168)] - 2025-07-18
+
+- [Updated styles on close icon](https://github.com/multiversx/mx-sdk-dapp-ui/pull/167)
+
+
 ## [[0.0.15](https://github.com/multiversx/mx-sdk-dapp-ui/pull/165)] - 2025-07-15
 
 - [Removed cjs from bundle](https://github.com/multiversx/mx-sdk-dapp-ui/pull/164)
