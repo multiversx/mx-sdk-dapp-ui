@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Added browser detection](https://github.com/multiversx/mx-sdk-dapp-ui/pull/166)
+
 ## [[0.0.19](https://github.com/multiversx/mx-sdk-dapp-ui/pull/173)] - 2025-07-23
 
 - [Added getElementByDataTestIdDeep utility function for tests](https://github.com/multiversx/mx-sdk-dapp-ui/pull/172)

@@ -1,6 +1,7 @@
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from 'components/functional/unlock-panel/helpers';
+import { BrowserEnum } from 'constants/browser.enum';
 import {
   CHROME_EXTENSION_LINK,
   CHROME_METAMASK_EXTENSION_LINK,
@@ -10,7 +11,7 @@ import {
 import { safeWindow } from 'constants/window.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
-import { isFirefox } from 'utils/isFirefox';
+import { getDetectedBrowser } from 'utils/getDetectedBrowser';
 
 const unlockButtonClasses: Record<string, string> = {
   statusIcon: 'mvx:fill-accent!',
@@ -37,15 +38,18 @@ export class UnlockButton {
     const isMetaMaskInstalled = isMetaMaskProvider && getIsMetaMaskAvailable();
     const shouldShowOpenLabel = isDetectableProvider && (isExtensionInstalled || isMetaMaskInstalled);
 
+    const detectedBrowser = getDetectedBrowser();
+    const isFirefox = detectedBrowser === BrowserEnum.Firefox;
+
     const handleInstallButtonClick = () => {
       if (shouldShowOpenLabel) {
         return;
       }
 
       if (isExtensionProvider) {
-        safeWindow?.open(isFirefox() ? FIREFOX_ADDON_LINK : CHROME_EXTENSION_LINK);
+        safeWindow?.open(isFirefox ? FIREFOX_ADDON_LINK : CHROME_EXTENSION_LINK);
       } else if (isMetaMaskProvider) {
-        safeWindow?.open(isFirefox() ? FIREFOX_METAMASK_ADDON_LINK : CHROME_METAMASK_EXTENSION_LINK);
+        safeWindow?.open(isFirefox ? FIREFOX_METAMASK_ADDON_LINK : CHROME_METAMASK_EXTENSION_LINK);
       }
     };
 

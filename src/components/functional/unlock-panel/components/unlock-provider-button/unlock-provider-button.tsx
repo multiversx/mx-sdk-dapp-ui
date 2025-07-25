@@ -22,7 +22,9 @@ export class UnlockProviderButton {
       return null;
     }
 
-    const icon: HTMLElement | null = !this.provider.iconUrl ? getProviderButtonIcon(this.provider.type) : null;
+    const icon: HTMLElement | null = !this.provider.iconUrl
+      ? getProviderButtonIcon({ providerType: this.provider.type })
+      : null;
 
     return (
       <mvx-unlock-button
