@@ -16,7 +16,7 @@
     color: var(--mvx-text-color-secondary);
 
     @media (min-width: 480px) {
-      @apply mvx:w-4 mvx:flex;
+      @apply mvx:flex;
     }
 
     &:hover {
