@@ -1,5 +1,6 @@
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Prop } from '@stencil/core';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import { handleAmountResize } from '../../helpers';
 
@@ -29,18 +30,18 @@ export class SignTransactionsOverview {
 
   render() {
     return (
-      <div class="overview-container">
+      <div class="overview-container" data-testid={DataTestIdsEnum.signTransactionsOverview}>
         <div class="overview-content">
-          <div class="detail-row amount-row">
+          <div class="detail-row amount-row" data-testid={DataTestIdsEnum.signTransactionsOverviewAmountRow}>
             <div class="detail-label">{this.isApp ? 'Amount' : 'Send'}</div>
             <div class="amount-display">
               <div class="amount-value-container">
-                <div class="amount-value" ref={el => (this.amountValueRef = el)}>
+                <div class="amount-value" data-testid={DataTestIdsEnum.signTransactionsOverviewAmountValue} ref={el => (this.amountValueRef = el)}>
                   <span>
                     {this.amount} {this.identifier}
                   </span>
                 </div>
-                {this.identifier !== 'USD' && <div class="usd-value">{this.usdValue}</div>}
+                {this.identifier !== 'USD' && <div class="usd-value" data-testid={DataTestIdsEnum.signTransactionsOverviewUsdValue}>{this.usdValue}</div>}
               </div>
               {this.tokenIconUrl && (
                 <div class="token-icon">
@@ -59,7 +60,7 @@ export class SignTransactionsOverview {
             </div>
           </div>
 
-          <div class="detail-row interactor-row">
+          <div class="detail-row interactor-row" data-testid={DataTestIdsEnum.signTransactionsOverviewInteractorRow}>
             <div class="detail-label">{this.isApp ? 'App' : 'To'}</div>
             <div class="interactor-info">
               {this.interactorIconUrl && (
@@ -67,14 +68,14 @@ export class SignTransactionsOverview {
                   <img src={this.interactorIconUrl} alt={this.interactor} />
                 </div>
               )}
-              {this.interactor && <mvx-trim class="interactor-name" text={this.interactor}></mvx-trim>}
+              {this.interactor && <mvx-trim class="interactor-name" data-testid={DataTestIdsEnum.signTransactionsOverviewInteractorName} text={this.interactor}></mvx-trim>}
             </div>
           </div>
 
           {this.isApp && (
-            <div class="detail-row action-row">
+            <div class="detail-row action-row" data-testid={DataTestIdsEnum.signTransactionsOverviewActionRow}>
               <div class="detail-label">Action</div>
-              <div class="action-value">{this.action}</div>
+              <div class="action-value" data-testid={DataTestIdsEnum.signTransactionsOverviewActionValue}>{this.action}</div>
             </div>
           )}
         </div>
@@ -85,7 +86,7 @@ export class SignTransactionsOverview {
               <span class="fee-label">Network Fee</span>
               <div class="info-icon"></div>
             </div>
-            <div class="fee-value">{this.networkFee}</div>
+            <div class="fee-value" data-testid={DataTestIdsEnum.signTransactionsOverviewNetworkFee}>{this.networkFee}</div>
           </div>
         </div>
       </div>

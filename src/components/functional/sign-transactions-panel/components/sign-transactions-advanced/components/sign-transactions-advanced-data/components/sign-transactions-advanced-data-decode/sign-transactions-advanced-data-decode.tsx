@@ -1,6 +1,7 @@
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { DecodeMethodEnum } from 'components/functional/sign-transactions-panel/sign-transactions-panel.types';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 const signTransactionsAdvancedDataDecodeClasses: Record<string, string> = {
   icon: 'mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:relative mvx:h-3! mvx:w-auto!',
@@ -18,8 +19,16 @@ export class SignTransactionsAdvancedDataDecode {
 
   render() {
     return (
-      <div class="sign-transactions-advanced-data-decode">
-        <div class="sign-transactions-advanced-data-decode-label">{this.currentDecodeMethod}</div>
+      <div
+        class="sign-transactions-advanced-data-decode"
+        data-testid={DataTestIdsEnum.signTransactionsAdvancedDataDecode}
+      >
+        <div
+          class="sign-transactions-advanced-data-decode-label"
+          data-testid={DataTestIdsEnum.signTransactionsAdvancedDataDecodeLabel}
+        >
+          {this.currentDecodeMethod}
+        </div>
 
         <mvx-single-angle-down-icon
           class={classNames('sign-transactions-advanced-data-decode-icon', {

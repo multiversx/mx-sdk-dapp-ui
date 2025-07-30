@@ -61,8 +61,8 @@ export class SignTransactionsFooter {
     }
 
     return (
-      <div class="sign-transactions-footer">
-        <div class="sign-transactions-footer-buttons">
+      <div class="sign-transactions-footer" data-testid={DataTestIdsEnum.signTransactionsFooter}>
+        <div class="sign-transactions-footer-buttons" data-testid={DataTestIdsEnum.signTransactionsFooterButtons}>
           <div class="sign-transactions-footer-button-wrapper cancel">
             <button
               data-testid={isFirstTransaction ? DataTestIdsEnum.signCancelBtn : DataTestIdsEnum.signBackBtn}
@@ -137,17 +137,26 @@ export class SignTransactionsFooter {
           </div>
         </div>
 
-        <div class="sign-transactions-footer-identity">
+        <div class="sign-transactions-footer-identity" data-testid={DataTestIdsEnum.signTransactionsFooterIdentity}>
           <div class="sign-transactions-footer-identity-label">Sign with</div>
 
           {username && (
-            <div class="sign-transactions-footer-identity-username">
+            <div
+              class="sign-transactions-footer-identity-username"
+              data-testid={DataTestIdsEnum.signTransactionsFooterIdentityUsername}
+            >
               <span class="sign-transactions-footer-identity-username-prefix">@</span>
               <span class="sign-transactions-footer-identity-username-text">{username}</span>
             </div>
           )}
 
-          {!username && address && <mvx-trim text={address} class="sign-transactions-footer-identity-address" />}
+          {!username && address && (
+            <mvx-trim
+              text={address}
+              class="sign-transactions-footer-identity-address"
+              data-testid={DataTestIdsEnum.signTransactionsFooterIdentityAddress}
+            />
+          )}
 
           <mvx-copy-button
             text={username ?? address}

@@ -1,6 +1,7 @@
 import { Component, Fragment, h, Prop, State } from '@stencil/core';
 import { DecodeMethodEnum } from 'components/functional/sign-transactions-panel/sign-transactions-panel.types';
 import state from 'components/functional/sign-transactions-panel/signTransactionsPanelStore';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import { getProcessedHighlightedData } from './helpers/getProcessedHighlightedData';
 
@@ -56,7 +57,7 @@ export class SignTransactionsAdvancedData {
     const { beforeHighlight, afterHighlight, highlight } = this.computedDisplayData;
 
     return (
-      <div class="sign-transactions-advanced-data">
+      <div class="sign-transactions-advanced-data" data-testid={DataTestIdsEnum.signTransactionsAdvancedData}>
         <div class="sign-transactions-advanced-data-top">
           <div class="sign-transactions-advanced-data-label">Data</div>
 
@@ -73,11 +74,13 @@ export class SignTransactionsAdvancedData {
           >
             <div
               class="sign-transactions-advanced-data-decode-options"
+              data-testid={DataTestIdsEnum.signTransactionsAdvancedDataDecodeOptions}
               onClick={(event: MouseEvent) => event.stopPropagation()}
             >
               {Object.values(DecodeMethodEnum).map((decodeMethod: DecodeMethodEnum) => (
                 <div
                   onClick={() => this.setDecodeMethod(decodeMethod)}
+                  data-testid={DataTestIdsEnum.signTransactionsAdvancedDataDecodeOption}
                   class={{
                     'sign-transactions-advanced-data-decode-option': true,
                     'active': decodeMethod === this.decodeMethod,
@@ -94,16 +97,39 @@ export class SignTransactionsAdvancedData {
           <div class="sign-transactions-advanced-data-wrapper">
             {beforeHighlight || afterHighlight ? (
               <Fragment>
-                {beforeHighlight && <div class="sign-transactions-advanced-data-text">{beforeHighlight}</div>}
+                {beforeHighlight && (
+                  <div
+                    class="sign-transactions-advanced-data-text"
+                    data-testid={DataTestIdsEnum.signTransactionsAdvancedDataText}
+                  >
+                    {beforeHighlight}
+                  </div>
+                )}
 
-                <div class="sign-transactions-advanced-data-highlight bolded" ref={el => (this.highlightElement = el)}>
+                <div
+                  class="sign-transactions-advanced-data-highlight bolded"
+                  data-testid={DataTestIdsEnum.signTransactionsAdvancedDataHighlight}
+                  ref={el => (this.highlightElement = el)}
+                >
                   {highlight}
                 </div>
 
-                {afterHighlight && <div class="sign-transactions-advanced-data-text">{afterHighlight}</div>}
+                {afterHighlight && (
+                  <div
+                    class="sign-transactions-advanced-data-text"
+                    data-testid={DataTestIdsEnum.signTransactionsAdvancedDataText}
+                  >
+                    {afterHighlight}
+                  </div>
+                )}
               </Fragment>
             ) : (
-              <div class="sign-transactions-advanced-data-highlight">{highlight}</div>
+              <div
+                class="sign-transactions-advanced-data-highlight"
+                data-testid={DataTestIdsEnum.signTransactionsAdvancedDataHighlight}
+              >
+                {highlight}
+              </div>
             )}
           </div>
         </div>
