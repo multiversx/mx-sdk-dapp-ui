@@ -5,9 +5,12 @@ import type { Pagination } from './pagination';
 
 // Decorator for custom background and font
 const withCustomStyles = (Story, context) => {
-  const { background = '#fff', fontFamily = 'inherit' } = context.args;
+  const { background = '#f00', fontFamily = 'inherit' } = context.args;
+
+  console.log({ Story, context });
+
   return (
-    <div style={{ background, fontFamily, padding: '2rem' }}>
+    <div style={{ background, fontFamily, padding: '2rem' }} class="mvx-flex mvx-pt-40 mvx-pb-4 pb-4">
       <Story />
     </div>
   );
@@ -23,7 +26,6 @@ export default {
     totalPages: 10,
     isDisabled: false,
     class: '',
-    background: '#fff', // for decorator
     fontFamily: 'inherit', // for decorator
   },
   argTypes: {
@@ -31,41 +33,18 @@ export default {
     totalPages: { control: { type: 'number', min: 1 } },
     isDisabled: { control: 'boolean' },
     class: { control: 'text' },
-    background: { control: 'color' },
     fontFamily: { control: 'text' },
   },
 } as Meta<Pagination>;
 
-export const Default: StoryObj<Pagination> = {
-  args: { currentPage: 1, totalPages: 10, isDisabled: false, class: '' },
-  render: props => <mvx-pagination {...props} />,
-};
+const processStory = (args: Partial<Pagination>): StoryObj<Pagination> => ({
+  args,
+  render: properties => <mvx-pagination {...properties} />,
+});
 
-export const Disabled: StoryObj<Pagination> = {
-  args: { currentPage: 5, totalPages: 20, isDisabled: true, class: 'custom-pagination' },
-  render: props => <mvx-pagination {...props} />,
-};
-
-// First Page
-export const FirstPage: StoryObj<Pagination> = {
-  args: { currentPage: 1 },
-  render: props => <mvx-pagination {...props} />,
-};
-
-// Last Page
-export const LastPage: StoryObj<Pagination> = {
-  args: { currentPage: 10 },
-  render: props => <mvx-pagination {...props} />,
-};
-
-// Single Page
-export const SinglePage: StoryObj<Pagination> = {
-  args: { totalPages: 1 },
-  render: props => <mvx-pagination {...props} />,
-};
-
-// Many Pages
-export const ManyPages: StoryObj<Pagination> = {
-  args: { totalPages: 100, currentPage: 50 },
-  render: props => <mvx-pagination {...props} />,
-};
+export const Default = processStory({ currentPage: 1, totalPages: 10, isDisabled: false, class: '' });
+export const Disabled = processStory({ currentPage: 5, totalPages: 20, isDisabled: true, class: 'custom-pagination' });
+export const FirstPage = processStory({ currentPage: 1 });
+export const LastPage = processStory({ currentPage: 10 });
+export const SinglePage = processStory({ totalPages: 1 });
+export const ManyPages = processStory({ currentPage: 520, totalPages: 1000 });
