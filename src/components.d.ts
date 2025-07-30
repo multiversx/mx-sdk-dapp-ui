@@ -79,11 +79,17 @@ export namespace Components {
           * @default 'copy-button'
          */
         "class"?: string;
+        /**
+          * @default 'faCopy'
+         */
         "copyIcon"?: IconDefinition | string;
         /**
           * @default 'copy-button-icon'
          */
         "iconClass"?: string;
+        /**
+          * @default 'faCheck'
+         */
         "successIcon"?: IconDefinition | string;
         "text": string;
     }
@@ -1462,11 +1468,17 @@ declare namespace LocalJSX {
           * @default 'copy-button'
          */
         "class"?: string;
+        /**
+          * @default 'faCopy'
+         */
         "copyIcon"?: IconDefinition | string;
         /**
           * @default 'copy-button-icon'
          */
         "iconClass"?: string;
+        /**
+          * @default 'faCheck'
+         */
         "successIcon"?: IconDefinition | string;
         "text"?: string;
     }
