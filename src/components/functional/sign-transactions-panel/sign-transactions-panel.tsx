@@ -129,12 +129,12 @@ export class SignTransactionsPanel {
         <div class="sign-transactions-panel" data-testid={DataTestIdsEnum.signTransactionsPanel}>
           <mvx-sign-transactions-header />
 
-          <div class="sign-transaction-content" data-testid={DataTestIdsEnum.signTransactionsPanelContent}>
+          <div class="sign-transaction-content">
             <div class="sign-transactions-tabs">
               {transactionTabs.map(transactionTab => (
                 <div
                   class={{ 'sign-transactions-tab': true, 'active': transactionTab === this.activeTab }}
-                  data-testid={DataTestIdsEnum.signTransactionsTab}
+                  data-testid={`${DataTestIdsEnum.signTransactionsTab}-${transactionTab.toLowerCase()}`}
                   onClick={() => this.setActiveTab(transactionTab)}
                 >
                   <div class="sign-transactions-tab-text" data-testid={DataTestIdsEnum.signTransactionsTabText}>

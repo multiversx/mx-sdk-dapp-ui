@@ -17,23 +17,27 @@ jobs:
       contents: write
       packages: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          clean: true
       - uses: actions/setup-node@v1
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org/
 
-      - name: Setup yarn
-        run: npm install -g yarn
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
 
       - name: Run tests
-        run: yarn test
+        run: pnpm test
 
       - name: Build project
-        run: yarn build
+        run: pnpm build
 
       - name: Get package info
         id: package
@@ -43,10 +47,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         if: ${{ steps.package.outputs.is-prerelease == 'true'}}
-        run: echo ${{ steps.package.outputs.is-prerelease}} && npm publish --tag next
+        run: echo ${{ steps.package.outputs.is-prerelease}} && pnpm publish --tag next --no-git-checks
 
       - name: Publish to npmjs
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         if: ${{ steps.package.outputs.is-prerelease == 'false' }}
-        run: npm publish
+        run: pnpm publish --no-git-checks
