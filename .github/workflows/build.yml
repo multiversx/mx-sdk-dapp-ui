@@ -22,20 +22,24 @@ jobs:
       contents: write
       packages: write
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          clean: true
       - uses: actions/setup-node@v1
         with:
           node-version: 18
           registry-url: https://registry.npmjs.org/
 
-      - name: Setup yarn
-        run: npm install -g yarn
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
 
       - name: Run tests
-        run: yarn test --silent
+        run: pnpm test --silent
 
       - name: Build project
-        run: yarn build
+        run: pnpm build

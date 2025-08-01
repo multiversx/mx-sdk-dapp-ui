@@ -19,22 +19,23 @@ jobs:
   run-unit-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
-          if: ${{ !github.event.pull_request.draft }}
+          clean: true
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: Setup yarn
-        run: npm install -g yarn
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
       - name: Clean up
         run: |
           rm -rf node_modules build
       - name: Install Dependencies
-        run: yarn install
+        run: pnpm install
       - name: Build
-        run: yarn build
+        run: pnpm build
       - name: Run unit tests
-        run: yarn test
+        run: pnpm test
