@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- [Fixed issue with icon parser in copy-button][https://github.com/multiversx/mx-sdk-dapp-ui/pull/177]
+- [Fixed side panel overflow and testids](https://github.com/multiversx/mx-sdk-dapp-ui/pull/178)
+- [Fixed issue with icon parser in copy-button](https://github.com/multiversx/mx-sdk-dapp-ui/pull/177)
 
 ## [[0.0.21](https://github.com/multiversx/mx-sdk-dapp-ui/pull/177)] - 2025-07-30
 
