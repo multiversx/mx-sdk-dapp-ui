@@ -1,4 +1,3 @@
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 
@@ -20,7 +19,8 @@ export class TransactionIcon {
       <mvx-fa-icon
         class={classNames(
           {
-            'fa-sm': this.iconInfo.icon === (faTimes as unknown as string),
+            'mvx:text-error': this.iconInfo.icon === 'faTimes',
+            'mvx:text-pending': this.iconInfo.icon === 'faHourglass',
           },
           this.class,
           'transaction-icon',

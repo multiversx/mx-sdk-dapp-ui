@@ -1,41 +1,39 @@
 .transactions-table {
   width: 100%;
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-  border-color: var(--mvx-gray-200);
   overflow: auto;
   table-layout: auto;
 }
 
 .transactions-table-header {
-  background-color: var(--mvx-gray-50);
+  background-color: var(--mvx-bg-color-secondary);
 }
 
 .transactions-table-header-cell {
-  padding: 0.75rem 1rem;
+  padding: 1rem;
   text-align: left;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   line-height: 1rem;
-  font-weight: 500;
-  color: var(--mvx-gray-500);
-  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--mvx-text-color-secondary);
   letter-spacing: 0.05em;
   width: 16.666667%;
 }
 
 .transactions-table-body {
-  background-color: var(--mvx-white);
+  background-color: var(--mvx-bg-color-primary);
   border-top-width: 1px;
   border-bottom-width: 1px;
-  border-color: var(--mvx-gray-200);
+  border-color: var(--mvx-border-color-secondary);
 }
 
 .transactions-table-body-row {
-  color: rgb(107 114 128);
+  color: var(--mvx-label-color);
+  border-bottom-width: 1px;
+  border-bottom-color: var(--mvx-border-color-secondary);
 }
 
 .transactions-table-body-cell {
-  padding: 0.5rem;
+  padding: 1rem;
   width: max-content;
 }
 

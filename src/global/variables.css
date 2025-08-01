@@ -67,6 +67,7 @@
   --mvx-hover-color-primary: var(--mvx-neutral-800);
   --mvx-hover-bg-primary: var(--mvx-white);
   --mvx-border-color-primary: var(--mvx-neutral-800);
+  --mvx-border-color-secondary: var(--mvx-neutral-750);
   --mvx-button-bg-primary: var(--mvx-teal-350);
   --mvx-button-text-primary: var(--mvx-black);
   --mvx-button-bg-secondary: var(--mvx-neutral-800);
@@ -110,6 +111,7 @@
   --mvx-hover-color-primary: var(--mvx-neutral-225);
   --mvx-hover-bg-primary: var(--mvx-black);
   --mvx-border-color-primary: var(--mvx-neutral-225);
+  --mvx-border-color-secondary: var(--mvx-neutral-300);
   --mvx-button-bg-primary: var(--mvx-black);
   --mvx-button-text-primary: var(--mvx-white);
   --mvx-button-bg-secondary: var(--mvx-white);

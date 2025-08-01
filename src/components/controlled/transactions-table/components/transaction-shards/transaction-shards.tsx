@@ -5,7 +5,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { TransactionRowType } from '../../transactions-table.type';
 
 const transactionShardsClasses: Record<string, string> = {
-  explorerLink: 'mvx:text-blue-link!',
+  explorerLink: 'mvx:text-primary!',
 };
 
 @Component({
@@ -27,7 +27,9 @@ export class TransactionShards {
           <span data-testid={DataTestIdsEnum.senderShard}>{this.transaction.sender.shard}</span>
         </mvx-explorer-link>
 
-        <span class="transaction-shards-arrow">&#10132;</span>
+        <span class="transaction-shards-arrow">
+          <mvx-arrow-right-icon />
+        </span>
 
         <mvx-explorer-link
           link={this.transaction.receiver.shardLink}

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { DataTestIdsEnum } from '../../../constants/dataTestIds.enum';
 import type { TransactionRowType } from './transactions-table.type';
 
-const COLUMNS = ['TxHash', 'Age', 'Shard', 'From', 'To', 'Method', 'Value'];
+const COLUMNS = ['Txn Hash', 'Age', 'Shard', 'From', 'To', 'Method', 'Value'];
 
 @Component({
   tag: 'mvx-transactions-table',
