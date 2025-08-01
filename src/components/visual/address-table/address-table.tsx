@@ -5,6 +5,9 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IAddressTableData, IndexedAccountType } from 'types/address-table.types';
 
 const TOTAL_ADDRESSES_COUNT = 5000;
+const addressTableClasses: Record<string, string> = {
+  button: 'mvx:w-full',
+};
 
 @Component({
   tag: 'mvx-address-table',
@@ -88,12 +91,15 @@ export class AddressTable {
                 <mvx-preloader
                   class={classNames('address-table-preloader-item-checkbox', addressClasses.preloaderItemCheckbox)}
                 />
+
                 <mvx-preloader
                   class={classNames('address-table-preloader-item-index', addressClasses.preloaderItemIndex)}
                 />
+
                 <mvx-preloader
                   class={classNames('address-table-preloader-item-address', addressClasses.preloaderItemAddress)}
                 />
+
                 <mvx-preloader
                   class={classNames('address-table-preloader-item-balance', addressClasses.preloaderItemBalance)}
                 />
@@ -104,12 +110,12 @@ export class AddressTable {
           <div class={{ 'address-table-list': true, 'visible': !isPageChanging }}>
             {this.accountScreenData.accounts.map(accountDerivation => (
               <div
+                data-testid={`${DataTestIdsEnum.addressTableItem}-${accountDerivation.address}`}
+                onClick={this.handleSelectAccount(accountDerivation.index)}
                 class={{
                   'address-table-list-item': true,
                   'checked': accountDerivation.index === this.selectedIndex,
                 }}
-                data-testid={`${DataTestIdsEnum.addressTableItem}-${accountDerivation.address}`}
-                onClick={this.handleSelectAccount(accountDerivation.index)}
               >
                 <div
                   class={{
@@ -158,14 +164,15 @@ export class AddressTable {
             </div>
           )}
 
-          <button
+          <mvx-button
             data-testid={DataTestIdsEnum.confirmBtn}
-            onClick={this.handleAccessWallet.bind(this)}
-            class={{ 'address-table-button': true, 'loading': isPageChanging, 'disabled': isAccessWalletDisabled }}
+            onButtonClick={this.handleAccessWallet.bind(this)}
+            disabled={isPageChanging || isAccessWalletDisabled}
+            class={classNames('address-table-button', addressTableClasses.button)}
           >
             <span class="address-table-button-label">{isPageChanging ? 'Loading Wallets...' : 'Access Wallet'}</span>
             {isPageChanging && <mvx-spinner-icon />}
-          </button>
+          </mvx-button>
         </div>
       </div>
     );
