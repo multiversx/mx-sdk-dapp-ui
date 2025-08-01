@@ -1,6 +1,7 @@
 import { Component, h, Method, State } from '@stencil/core';
 import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
@@ -127,8 +128,10 @@ export class SignTransactionsPanel {
         hasBackButton={false}
       >
         <div class="sign-transactions-panel" data-testid={DataTestIdsEnum.signTransactionsPanel}>
+        <div class="sign-transactions-panel" data-testid={DataTestIdsEnum.signTransactionsPanel}>
           <mvx-sign-transactions-header />
 
+          <div class="sign-transaction-content" data-testid={DataTestIdsEnum.signTransactionsPanelContent}>
           <div class="sign-transaction-content" data-testid={DataTestIdsEnum.signTransactionsPanelContent}>
             <div class="sign-transactions-tabs">
               {transactionTabs.map(transactionTab => (
@@ -137,7 +140,9 @@ export class SignTransactionsPanel {
                   data-testid={`${DataTestIdsEnum.signTransactionsTab}-${transactionTab.toLowerCase()}`}
                   onClick={() => this.setActiveTab(transactionTab)}
                 >
-                  <div class="sign-transactions-tab-text">{transactionTab}</div>
+                  <div class="sign-transactions-tab-text" data-testid={DataTestIdsEnum.signTransactionsTabText}>
+                    {transactionTab}
+                  </div>
                 </div>
               ))}
             </div>
