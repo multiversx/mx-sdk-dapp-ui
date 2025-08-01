@@ -61,7 +61,7 @@
   }
 
   .side-panel-content {
-    @apply mvx:flex-1 mvx:flex mvx:flex-col mvx:overflow-hidden;
+    @apply mvx:flex-1 mvx:flex mvx:flex-col mvx:overflow-auto;
 
     &::-webkit-scrollbar {
       @apply mvx:hidden;
