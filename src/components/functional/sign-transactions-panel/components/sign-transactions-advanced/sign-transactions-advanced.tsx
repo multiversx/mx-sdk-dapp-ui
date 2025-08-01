@@ -34,7 +34,7 @@ export class SignTransactionsAdvanced {
 
   render() {
     const {
-      commonData: { needsSigning, ppuOptions, gasLimit, gasPrice },
+      commonData: { needsSigning, ppuOptions, gasLimit, gasPrice, egldLabel },
     } = state;
 
     return (
@@ -43,7 +43,9 @@ export class SignTransactionsAdvanced {
           <div class="gas-wrapper">
             <div class="gas-header" data-testid={DataTestIdsEnum.signTransactionsAdvancedGasPrice}>
               <span class="gas-price">Gas Price</span>
-              <span class="gas-price-value">{gasPrice} EGLD</span>
+              <span class="gas-price-value">
+                {gasPrice} {egldLabel}
+              </span>
             </div>
             <div class="gas-speed-selector" data-testid={DataTestIdsEnum.signTransactionsAdvancedGasSpeedSelector}>
               {ppuOptions.map(ppuOption => (

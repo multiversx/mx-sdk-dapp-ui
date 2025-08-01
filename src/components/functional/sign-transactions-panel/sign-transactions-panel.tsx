@@ -134,12 +134,10 @@ export class SignTransactionsPanel {
               {transactionTabs.map(transactionTab => (
                 <div
                   class={{ 'sign-transactions-tab': true, 'active': transactionTab === this.activeTab }}
-                  data-testid={DataTestIdsEnum.signTransactionsTab}
+                  data-testid={`${DataTestIdsEnum.signTransactionsTab}-${transactionTab.toLowerCase()}`}
                   onClick={() => this.setActiveTab(transactionTab)}
                 >
-                  <div class="sign-transactions-tab-text" data-testid={DataTestIdsEnum.signTransactionsTabText}>
-                    {transactionTab}
-                  </div>
+                  <div class="sign-transactions-tab-text">{transactionTab}</div>
                 </div>
               ))}
             </div>
