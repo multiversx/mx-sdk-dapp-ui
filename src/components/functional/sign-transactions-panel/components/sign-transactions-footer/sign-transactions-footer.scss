@@ -18,58 +18,11 @@
           @apply mvx:absolute mvx:inset-0;
         }
 
-        .sign-transactions-footer-button {
-          @apply mvx:rounded-xl mvx:px-4 mvx:py-2 mvx:flex mvx:justify-center mvx:items-center mvx:max-h-10 mvx:min-h-10;
-          @apply mvx:leading-none mvx:text-base mvx:font-bold mvx:transition-all mvx:duration-200 mvx:cursor-pointer;
-          @apply mvx:ease-in-out mvx:gap-2 mvx:w-full;
-          border: 1px solid transparent;
+        .sign-transactions-footer-button-icon {
+          @apply mvx:flex mvx:transition-all mvx:duration-200 mvx:ease-in-out;
 
-          &.cancel {
-            @apply mvx:relative;
-            color: var(--mvx-button-text-secondary);
-
-            &:after {
-              @apply mvx:absolute mvx:inset-0 mvx:rounded-xl mvx:opacity-40 mvx:transition-all mvx:duration-200 mvx:ease-in-out;
-              background-color: var(--mvx-button-bg-secondary);
-              content: '';
-            }
-
-            &:hover {
-              color: var(--mvx-button-text-primary);
-
-              &:after {
-                @apply mvx:opacity-100;
-                background-color: var(--mvx-button-bg-primary);
-              }
-            }
-          }
-
-          &.highlighted {
-            @apply mvx:flex-1;
-            color: var(--mvx-button-text-primary);
-            background-color: var(--mvx-button-bg-primary);
-
-            &:hover {
-              @apply mvx:opacity-75;
-            }
-          }
-
-          &.disabled {
-            @apply mvx:bg-transparent mvx:cursor-default mvx:pointer-events-none;
-            border-color: var(--mvx-text-color-secondary);
-            color: var(--mvx-text-color-secondary);
-          }
-
-          .sign-transactions-footer-button-label {
-            @apply mvx:relative mvx:z-1;
-          }
-
-          .sign-transactions-footer-button-icon {
-            @apply mvx:flex mvx:transition-all mvx:duration-200 mvx:ease-in-out;
-
-            &.lighter {
-              fill: var(--mvx-text-color-secondary);
-            }
+          &.lighter {
+            fill: var(--mvx-text-color-secondary);
           }
         }
       }

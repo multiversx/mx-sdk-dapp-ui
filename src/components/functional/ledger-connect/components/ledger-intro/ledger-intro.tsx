@@ -56,13 +56,15 @@ export class LedgerIntro {
             and open the MultiversX App
           </div>
 
-          <button
-            class={{ 'ledger-intro-button': true, 'loading': Boolean(this.isAwaiting) }}
-            onClick={this.handleLedgerConnectClick.bind(this)}
+          <mvx-button
+            variant="primary"
+            size="large"
+            loading={this.isAwaiting}
+            onButtonClick={this.handleLedgerConnectClick.bind(this)}
           >
-            <span class="ledger-intro-button-label">{buttonLabel}</span>
-            {this.isAwaiting && <mvx-spinner-icon />}
-          </button>
+            WHAT?
+            {buttonLabel}
+          </mvx-button>
 
           {showError && <div class="ledger-intro-error">{this.connectScreenData.error}</div>}
         </div>

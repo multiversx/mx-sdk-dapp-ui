@@ -158,14 +158,17 @@ export class AddressTable {
             </div>
           )}
 
-          <button
-            data-testid={DataTestIdsEnum.confirmBtn}
-            onClick={this.handleAccessWallet.bind(this)}
-            class={{ 'address-table-button': true, 'loading': isPageChanging, 'disabled': isAccessWalletDisabled }}
+          <mvx-button
+            data-test-id={DataTestIdsEnum.confirmBtn}
+            onButtonClick={this.handleAccessWallet.bind(this)}
+            variant="primary"
+            size="large"
+            fullWidth
+            loading={isPageChanging}
+            disabled={isAccessWalletDisabled}
           >
-            <span class="address-table-button-label">{isPageChanging ? 'Loading Wallets...' : 'Access Wallet'}</span>
-            {isPageChanging && <mvx-spinner-icon />}
-          </button>
+            {isPageChanging ? 'Loading Wallets...' : 'Access Wallet'}
+          </mvx-button>
         </div>
       </div>
     );

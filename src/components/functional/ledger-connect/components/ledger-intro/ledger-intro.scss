@@ -20,27 +20,6 @@
         color: var(--mvx-text-color-secondary);
       }
 
-      .ledger-intro-button {
-        @apply mvx:w-48 mvx:flex mvx:items-center mvx:justify-center mvx:font-bold mvx:h-12 mvx:leading-none;
-        @apply mvx:rounded-lg mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:gap-2 mvx:ease-in-out;
-        color: var(--mvx-button-text-primary);
-        background-color: var(--mvx-button-bg-primary);
-        border: 1px solid var(--mvx-button-bg-primary);
-
-        @media (min-width: 480px) {
-          @apply mvx:mt-5;
-        }
-
-        &:hover {
-          @apply mvx:opacity-75;
-        }
-
-        &.loading {
-          @apply mvx:pointer-events-none mvx:bg-transparent mvx:cursor-default;
-          border-color: var(--mvx-text-color-secondary);
-          color: var(--mvx-text-color-secondary);
-        }
-      }
 
       .ledger-intro-error {
         @apply mvx:text-base mvx:max-w-60 mvx:mb-6 mvx:leading-6;

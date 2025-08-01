@@ -136,24 +136,6 @@
         color: var(--mvx-neutral-500);
       }
 
-      .address-table-button {
-        @apply mvx:w-full mvx:flex mvx:items-center mvx:justify-center mvx:font-bold mvx:h-12 mvx:leading-none mvx:text-base;
-        @apply mvx:rounded-lg mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:gap-2;
-        color: var(--mvx-button-text-primary);
-        background-color: var(--mvx-button-bg-primary);
-        border: 1px solid var(--mvx-button-bg-primary);
-
-        &:hover {
-          @apply mvx:opacity-75;
-        }
-
-        &.loading,
-        &.disabled {
-          @apply mvx:pointer-events-none mvx:bg-transparent mvx:cursor-default;
-          border: 1px solid var(--mvx-text-color-secondary);
-          color: var(--mvx-text-color-secondary);
-        }
-      }
     }
   }
 }
