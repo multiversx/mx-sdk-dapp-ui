@@ -75,13 +75,14 @@ export class LedgerConfirm {
             If the address does not match, close this page and contact support.
           </div>
 
-          <mvx-button
-            variant="danger"
-            size="small"
-            onButtonClick={() => window.open('https://help.multiversx.com/en/', '_blank', 'noopener,noreferrer')}
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://help.multiversx.com/en/"
+            class="ledger-confirm-footer-button"
           >
             Contact Support
-          </mvx-button>
+          </a>
         </div>
       </div>
     );
