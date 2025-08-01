@@ -1,4 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
+import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { IConfirmScreenData } from '../../ledger-connect.types';
@@ -10,6 +11,10 @@ interface LedgerConfirmationItemType {
   explorerLink?: string;
 }
 
+const ledgerConfirmClasses: Record<string, string> = {
+  button: 'mvx:whitespace-nowrap mvx:rounded-lg!',
+};
+
 @Component({
   tag: 'mvx-ledger-confirm',
   styleUrl: 'ledger-confirm.scss',
@@ -17,6 +22,11 @@ interface LedgerConfirmationItemType {
 })
 export class LedgerConfirm {
   @Prop() confirmScreenData: IConfirmScreenData;
+
+  handleSupportButtonClick(event: MouseEvent) {
+    event.preventDefault();
+    window.open('https://help.multiversx.com/en/');
+  }
 
   render() {
     const ledgerConfirmationItems: LedgerConfirmationItemType[] = [
@@ -75,14 +85,14 @@ export class LedgerConfirm {
             If the address does not match, close this page and contact support.
           </div>
 
-          <a
-            target="_blank"
-            rel="noreferrer"
-            href="https://help.multiversx.com/en/"
-            class="ledger-confirm-footer-button"
+          <mvx-button
+            size="small"
+            variant="neutral"
+            onButtonClick={this.handleSupportButtonClick.bind(this)}
+            class={classNames('ledger-confirm-footer-button', ledgerConfirmClasses.button)}
           >
             Contact Support
-          </a>
+          </mvx-button>
         </div>
       </div>
     );
