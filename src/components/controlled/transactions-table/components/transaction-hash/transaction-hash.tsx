@@ -5,6 +5,7 @@ import type { TransactionRowType } from '../../transactions-table.type';
 
 const transactionHashClasses: Record<string, string> = {
   explorerLink: 'mvx:text-primary!',
+  transactionHash: 'mvx:flex mvx:items-center mvx:justify-center',
 };
 
 @Component({
@@ -27,10 +28,7 @@ export class TransactionHash {
           [this.class]: Boolean(this.class),
         }}
       >
-        <mvx-transaction-icon
-          iconInfo={this.transaction.iconInfo}
-          class="mvx:flex mvx:items-center mvx:justify-center"
-        />
+        <mvx-transaction-icon iconInfo={this.transaction.iconInfo} class={transactionHashClasses.transactionHash} />
 
         <mvx-explorer-link
           dataTestId={DataTestIdsEnum.transactionLink}
