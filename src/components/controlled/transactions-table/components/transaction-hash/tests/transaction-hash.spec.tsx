@@ -120,8 +120,6 @@ describe('TransactionHash', () => {
     page.root.transaction = updatedTransactionData;
     await page.waitForChanges();
 
-    console.log('page root', page.root.getHTML);
-
     expect(page.root).toEqualHtml(`
       <mvx-transaction-hash>
           <div class="transaction-hash">
