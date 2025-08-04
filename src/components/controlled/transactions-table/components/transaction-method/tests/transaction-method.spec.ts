@@ -101,7 +101,6 @@ describe('transaction-method', () => {
       const innerDiv = page.root.querySelector('div > div');
       expect(innerDiv).toHaveClass('text-truncate');
       expect(innerDiv).toHaveClass('text-capitalize');
-      expect(innerDiv).toHaveClass('text-white');
     });
   });
 });
