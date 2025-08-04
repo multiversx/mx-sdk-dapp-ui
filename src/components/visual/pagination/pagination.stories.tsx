@@ -1,19 +1,12 @@
 import { h } from '@stencil/core';
-import type { Meta, StencilRenderer, StoryObj } from '@stencil/storybook-plugin';
-import type { PartialStoryFn, StoryContext } from 'storybook/internal/csf';
+import type { Meta, StoryObj } from '@stencil/storybook-plugin';
 
 import type { Pagination } from './pagination';
-
-const themeDecorator = (Story: PartialStoryFn<StencilRenderer<Pagination>, Pagination>, context: StoryContext) => (
-  <div data-mvx-theme={`mvx:${context.globals.backgrounds.value}-theme`} class="mvx:pt-40">
-    <Story />
-  </div>
-);
+import './pagination.scss';
 
 const storySettings: Meta<Pagination> = {
   tags: ['autodocs'],
   title: 'Components/Pagination',
-  decorators: [themeDecorator],
   render: properties => <mvx-pagination {...properties} />,
   args: {
     currentPage: 1,
@@ -27,6 +20,13 @@ const storySettings: Meta<Pagination> = {
     isDisabled: { control: 'boolean' },
     class: { control: 'text' },
   },
+  decorators: [
+    Story => (
+      <div class="pagination-storybook">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 const processStory = (storyArguments: Partial<Pagination>): StoryObj<Pagination> => ({

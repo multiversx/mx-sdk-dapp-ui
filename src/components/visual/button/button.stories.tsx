@@ -1,20 +1,14 @@
 import { h } from '@stencil/core';
-import type { Meta, StencilRenderer, StoryObj } from '@stencil/storybook-plugin';
+import type { Meta, StoryObj } from '@stencil/storybook-plugin';
+import capitalize from 'lodash/capitalize';
+
 import { ButtonSizeEnum, ButtonVariantEnum } from './button.types';
-import type { PartialStoryFn, StoryContext } from 'storybook/internal/csf';
-
 import type { Button } from './button';
-
-const themeDecorator = (Story: PartialStoryFn<StencilRenderer<Button>, Button>, context: StoryContext) => (
-  <div data-mvx-theme={`mvx:${context.globals.backgrounds.value}-theme`} class="mvx:pt-40">
-    <Story />
-  </div>
-);
+import './button.scss';
 
 const storySettings: Meta<Button> = {
   tags: ['autodocs'],
   title: 'Components/Button',
-  decorators: [themeDecorator],
   render: properties => <mvx-button {...properties}>Button Text</mvx-button>,
   args: { variant: 'primary', size: 'large', disabled: false },
   argTypes: {
@@ -25,31 +19,42 @@ const storySettings: Meta<Button> = {
   },
 };
 
-const processStory = (storyArguments: Partial<Button>): StoryObj<Button> => ({
-  args: storyArguments,
-  render: properties => <mvx-button {...properties} />,
-});
+export const Primary: StoryObj<Button> = {
+  render: () => <mvx-button>Button</mvx-button>,
+};
 
-const processHoverStory = (storyArguments: Partial<Button>): StoryObj<Button> => ({
-  args: storyArguments,
-  render: properties => <mvx-button {...properties}>Hover Me</mvx-button>,
-  parameters: { pseudo: { hover: true } },
-});
+export const DefaultSize: StoryObj<Button> = {
+  render: () => (
+    <div class="button-storybook">
+      {Object.values(ButtonVariantEnum).map(variant => (
+        <mvx-button variant={variant}>{capitalize(variant)}</mvx-button>
+      ))}
+    </div>
+  ),
+};
 
-export const Primary = processStory({ variant: 'primary', size: 'large' });
-export const Secondary = processStory({ variant: 'secondary', size: 'large' });
-export const Neutral = processStory({ variant: 'neutral', size: 'large' });
-export const Small = processStory({ variant: 'primary', size: 'small' });
-export const Large = processStory({ variant: 'primary', size: 'large' });
+export const SmallSize: StoryObj<Button> = {
+  render: () => (
+    <div class="button-storybook">
+      {Object.values(ButtonVariantEnum).map(variant => (
+        <mvx-button variant={variant} size="small">
+          {capitalize(variant)}
+        </mvx-button>
+      ))}
+    </div>
+  ),
+};
 
-export const HoverLargePrimary = processHoverStory({ variant: 'primary', size: 'large' });
-export const HoverLargeSecondary = processHoverStory({ variant: 'secondary', size: 'large' });
-export const HoverLargeNeutral = processHoverStory({ variant: 'neutral', size: 'large' });
-export const HoverSmallPrimary = processHoverStory({ variant: 'neutral', size: 'small' });
-export const HoverSmallSecondary = processHoverStory({ variant: 'neutral', size: 'small' });
-export const HoverSmallNeutral = processHoverStory({ variant: 'neutral', size: 'small' });
-
-export const HoverLargeDisabled = processHoverStory({ variant: 'primary', size: 'large', disabled: true });
-export const HoverSmallDisabled = processHoverStory({ variant: 'primary', size: 'small', disabled: true });
+export const DisabledVariants: StoryObj<Button> = {
+  render: () => (
+    <div class="button-storybook">
+      {Object.values(ButtonVariantEnum).map(variant => (
+        <mvx-button variant={variant} disabled={true}>
+          {capitalize(variant)}
+        </mvx-button>
+      ))}
+    </div>
+  ),
+};
 
 export default storySettings;

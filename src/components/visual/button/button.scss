@@ -24,8 +24,12 @@
       color: var(--mvx-button-text-secondary);
       border: 1px solid transparent;
 
+      &.small:after {
+        @apply mvx:rounded-xl;
+      }
+
       &:after {
-        @apply mvx:absolute mvx:inset-0 mvx:rounded-xl mvx:opacity-40 mvx:transition-all mvx:duration-200 mvx:ease-in-out;
+        @apply mvx:absolute mvx:inset-0 mvx:rounded-lg mvx:opacity-40 mvx:transition-all mvx:duration-200 mvx:ease-in-out;
         background-color: var(--mvx-button-bg-secondary);
         content: '';
         z-index: -1;
@@ -62,4 +66,10 @@
       }
     }
   }
+}
+
+// This needs to be default SCSS
+.button-storybook {
+  display: flex;
+  gap: 16px;
 }

@@ -149,3 +149,10 @@
     }
   }
 }
+
+// This needs to be default SCSS
+.pagination-storybook {
+  display: flex;
+  justify-content: center;
+  padding-top: 64px;
+}
