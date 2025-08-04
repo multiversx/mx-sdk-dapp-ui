@@ -1,6 +1,6 @@
 import { h } from '@stencil/core';
 import type { Meta, StencilRenderer, StoryObj } from '@stencil/storybook-plugin';
-import { ButtonSizeEnum, ButtonVariantEnum } from 'components';
+import { ButtonSizeEnum, ButtonVariantEnum } from './button.types';
 import type { PartialStoryFn, StoryContext } from 'storybook/internal/csf';
 
 import type { Button } from './button';
