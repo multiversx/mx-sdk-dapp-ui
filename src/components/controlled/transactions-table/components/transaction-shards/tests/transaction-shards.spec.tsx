@@ -56,7 +56,9 @@ describe('TransactionShards', () => {
             <mvx-explorer-link class="mvx:text-primary!" data-testid="${DataTestIdsEnum.shardFromLink}" link="/blocks?shard=0">
               <span data-testid="${DataTestIdsEnum.senderShard}">0</span>
             </mvx-explorer-link>
-            <span class="transaction-shards-arrow">&#10132;</span>
+            <span class="transaction-shards-arrow">
+              <mvx-arrow-right-icon />
+            </span>
             <mvx-explorer-link class="mvx:text-primary!" data-testid="${DataTestIdsEnum.shardToLink}" link="/blocks?shard=1">
               <span data-testid="${DataTestIdsEnum.receiverShard}">1</span>
             </mvx-explorer-link>
