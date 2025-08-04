@@ -51,8 +51,8 @@ describe('TransactionHash', () => {
     expect(page.root).toEqualHtml(`
       <mvx-transaction-hash>
           <div class="transaction-hash">
-            <mvx-transaction-icon></mvx-transaction-icon>
-            <mvx-explorer-link class="mvx:text-blue-link!" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/123"><span>0x123456789abcdef</span></mvx-explorer-link>
+            <mvx-transaction-icon class="mvx:flex mvx:items-center mvx:justify-center"></mvx-transaction-icon>
+            <mvx-explorer-link class="mvx:text-primary!" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/123"><mvx-trim text="0x123456789abcdef"></mvx-trim></mvx-explorer-link>
           </div>
       </mvx-transaction-hash>
     `);
@@ -89,8 +89,8 @@ describe('TransactionHash', () => {
     expect(page.root).toEqualHtml(`
       <mvx-transaction-hash>
           <div class="transaction-hash">
-            <mvx-transaction-icon></mvx-transaction-icon>
-            <mvx-explorer-link class="mvx:text-blue-link!" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/initial"><span>0xInitialHash</span></mvx-explorer-link>
+            <mvx-transaction-icon class="mvx:flex mvx:items-center mvx:justify-center"></mvx-transaction-icon>
+            <mvx-explorer-link class="mvx:text-primary!" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/initial"><mvx-trim text="0xInitialHash"></mvx-trim></mvx-explorer-link>
           </div>
       </mvx-transaction-hash>
     `);
@@ -123,8 +123,8 @@ describe('TransactionHash', () => {
     expect(page.root).toEqualHtml(`
       <mvx-transaction-hash>
           <div class="transaction-hash">
-            <mvx-transaction-icon></mvx-transaction-icon>
-            <mvx-explorer-link class="mvx:text-blue-link!" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/updated"><span>0xUpdatedHash</span></mvx-explorer-link>
+            <mvx-transaction-icon class="mvx:flex mvx:items-center mvx:justify-center"></mvx-transaction-icon>
+            <mvx-explorer-link class="mvx:text-primary!" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/updated"><mvx-trim text="0xUpdatedHash"></mvx-trim></mvx-explorer-link>
           </div>
       </mvx-transaction-hash>
     `);
