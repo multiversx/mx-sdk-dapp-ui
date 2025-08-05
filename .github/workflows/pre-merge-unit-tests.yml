@@ -1,7 +1,7 @@
 name: 'Stencil Unit Tests'
 on:
   pull_request:
-    branches: [main]
+    branches: [main, development]
     paths:
       - 'src/**'
       - '**.js'
@@ -19,6 +19,11 @@ jobs:
   run-unit-tests:
     runs-on: ubuntu-latest
     steps:
+      - name: Fix permissions
+        run: |
+          sudo chown -R $USER:$USER ${{ github.workspace }}
+          sudo chmod -R 755 ${{ github.workspace }}
+        continue-on-error: true
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
@@ -27,12 +32,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9
-      - name: Clean up
-        run: |
-          rm -rf node_modules build
+      - name: Setup pnpm
+        run: npm install -g pnpm
+      - name: Remove node_modules
+        run: rm -rf node_modules
       - name: Install Dependencies
         run: pnpm install
       - name: Build
