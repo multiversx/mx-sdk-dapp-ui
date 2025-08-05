@@ -1,8 +1,13 @@
+import './pagination.scss';
+
 import { h } from '@stencil/core';
 import type { Meta, StoryObj } from '@stencil/storybook-plugin';
 
 import type { Pagination } from './pagination';
-import './pagination.scss';
+
+const paginationStoryClasses: Record<string, string> = {
+  wrapper: 'mvx:justify-center mvx:gap-4 mvx:pt-20',
+};
 
 const storySettings: Meta<Pagination> = {
   tags: ['autodocs'],
@@ -22,7 +27,7 @@ const storySettings: Meta<Pagination> = {
   },
   decorators: [
     Story => (
-      <div class="pagination-storybook">
+      <div class={paginationStoryClasses.wrapper}>
         <Story />
       </div>
     ),

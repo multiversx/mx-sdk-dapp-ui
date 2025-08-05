@@ -41,7 +41,8 @@
     "build:dev": "stencil build --dev",
     "build": "stencil build --prod",
     "start": "yarn run build:dev --watch --serve",
-    "storybook": "storybook dev -p 6006 --no-open"
+    "storybook-tailwind": "npx @tailwindcss/cli -i src/global/tailwind.css -o .storybook/tailwind.css",
+    "storybook": "yarn run storybook-tailwind && storybook dev -p 6006 --no-open"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": ">=6.7.2",
