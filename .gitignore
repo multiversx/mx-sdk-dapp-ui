@@ -26,3 +26,4 @@ UserInterfaceState.xcuserstate
 
 *storybook.log
 storybook-static
+.storybook/tailwind.css

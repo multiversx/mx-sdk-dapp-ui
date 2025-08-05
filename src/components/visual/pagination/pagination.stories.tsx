@@ -6,7 +6,7 @@ import type { Meta, StoryObj } from '@stencil/storybook-plugin';
 import type { Pagination } from './pagination';
 
 const paginationStoryClasses: Record<string, string> = {
-  wrapper: 'mvx:justify-center mvx:gap-4 mvx:pt-20',
+  wrapper: 'mvx:justify-center mvx:flex mvx:gap-4 mvx:pt-24',
 };
 
 const storySettings: Meta<Pagination> = {
