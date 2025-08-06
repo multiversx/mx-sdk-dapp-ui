@@ -2,7 +2,7 @@ import './button.scss';
 
 import { h } from '@stencil/core';
 import type { Meta, StoryObj } from '@stencil/storybook-plugin';
-import capitalize from 'lodash/capitalize';
+import capitalize from 'lodash.capitalize';
 
 import type { Button } from './button';
 import { ButtonSizeEnum, ButtonVariantEnum } from './button.types';
