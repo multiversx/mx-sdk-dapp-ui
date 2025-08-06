@@ -41,7 +41,7 @@
     "build:dev": "stencil build --dev",
     "build": "stencil build --prod",
     "start": "yarn run build:dev --watch --serve",
-    "storybook-tailwind": "npx @tailwindcss/cli -i src/global/tailwind.css -o .storybook/tailwind.css",
+    "storybook-tailwind": "npx ts-node .storybook/generate-safelist.ts && npx @tailwindcss/cli -i src/global/tailwind.css -o .storybook/tailwind.css --content '.storybook/tailwind-safelist.html' && rm -f .storybook/tailwind-safelist.html",
     "storybook": "yarn run storybook-tailwind && storybook dev -p 6006 --no-open"
   },
   "dependencies": {
