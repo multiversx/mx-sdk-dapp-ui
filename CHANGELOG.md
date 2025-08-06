@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Removed debounce from sign transactions button](https://github.com/multiversx/mx-sdk-dapp-ui/pull/184)
 - [Added generic Button component](https://github.com/multiversx/mx-sdk-dapp-ui/pull/183)
 - [Added Storybook support](https://github.com/multiversx/mx-sdk-dapp-ui/pull/180)
 
