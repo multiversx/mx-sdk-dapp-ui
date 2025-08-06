@@ -23,3 +23,7 @@ $RECYCLE.BIN/
 Thumbs.db
 UserInterfaceState.xcuserstate
 .env
+
+*storybook.log
+storybook-static
+.storybook/tailwind.css

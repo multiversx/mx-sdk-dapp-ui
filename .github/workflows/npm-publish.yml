@@ -17,20 +17,24 @@ jobs:
       contents: write
       packages: write
     steps:
+      - name: Fix permissions
+        run: |
+          sudo chown -R $USER:$USER ${{ github.workspace }}
+          sudo chmod -R 755 ${{ github.workspace }}
+        continue-on-error: true
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
           clean: true
-      - uses: actions/setup-node@v1
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 18
-          registry-url: https://registry.npmjs.org/
-
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9
-
-      - name: Install dependencies
+      - name: Setup pnpm
+        run: npm install -g pnpm
+      - name: Remove node_modules
+        run: rm -rf node_modules
+      - name: Install Dependencies
         run: pnpm install
 
       - name: Run tests
@@ -47,10 +51,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         if: ${{ steps.package.outputs.is-prerelease == 'true'}}
-        run: echo ${{ steps.package.outputs.is-prerelease}} && pnpm publish --tag next --no-git-checks
+        run: echo ${{ steps.package.outputs.is-prerelease}} && npm publish --tag next --no-git-checks
 
       - name: Publish to npmjs
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         if: ${{ steps.package.outputs.is-prerelease == 'false' }}
-        run: pnpm publish --no-git-checks
+        run: npm publish --no-git-checks
