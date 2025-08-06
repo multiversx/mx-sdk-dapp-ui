@@ -1,9 +1,7 @@
-#!/usr/bin/env node
-
 const fs = require('fs').promises;
 const path = require('path');
 
-async function findFiles(dir: string, extensions: string[]): Promise<string[]> {
+const findFiles = async (dir: string, extensions: string[]): Promise<string[]> => {
   const files: string[] = [];
 
   async function scan(currentDir: string): Promise<void> {
@@ -25,7 +23,7 @@ async function findFiles(dir: string, extensions: string[]): Promise<string[]> {
 
   await scan(dir);
   return files;
-}
+};
 
 async function main(): Promise<void> {
   const sourceDir = 'src';
@@ -71,8 +69,6 @@ async function main(): Promise<void> {
 
   await fs.mkdir(path.dirname(outputPath), { recursive: true });
   await fs.writeFile(outputPath, htmlContent, 'utf-8');
-
-  console.log(`Generated safelist with ${utilities.size} utilities`);
 }
 
 main().catch(console.error);
