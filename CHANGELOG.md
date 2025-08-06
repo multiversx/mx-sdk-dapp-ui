@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Added generic Button component](https://github.com/multiversx/mx-sdk-dapp-ui/pull/183)
 - [Added Storybook support](https://github.com/multiversx/mx-sdk-dapp-ui/pull/180)
 
 ## [[0.0.23](https://github.com/multiversx/mx-sdk-dapp-ui/pull/182)] - 2025-08-04
