@@ -39,9 +39,7 @@ export class SignTransactionsFooter {
   private handleSignClick = () => {
     if (state.onConfirm) {
       this.isWaitingForSignature = true;
-      setTimeout(() => {
-        state.onConfirm();
-      }, 2000);
+      state.onConfirm();
     }
   };
 

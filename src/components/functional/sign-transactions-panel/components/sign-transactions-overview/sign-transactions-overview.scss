@@ -43,7 +43,7 @@
   min-height: 56px;
   margin-top: -24px;
   position: relative;
-  
+
   &:before {
     @apply mvx:absolute mvx:opacity-60 mvx:top-0 mvx:bottom-0 mvx:left-0 mvx:right-0 mvx:transition-all mvx:duration-200;
     @apply mvx:rounded-b-xl mvx:pointer-events-none mvx:ease-in-out;
@@ -139,7 +139,7 @@
   color: var(--mvx-text-color-primary);
   letter-spacing: -0.16px;
   line-height: 22px;
-  max-width: 150px;
+  max-width: 300px;
 }
 
 /* Direction indicator */
@@ -191,7 +191,7 @@
   margin-left: auto;
   font-size: 14px;
   font-weight: 500;
-  color:  var(--mvx-text-color-secondary);
+  color: var(--mvx-text-color-secondary);
   position: relative;
   z-index: 1;
 }
