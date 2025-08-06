@@ -1,10 +1,12 @@
 import { Component, Fragment, h, State } from '@stencil/core';
+import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import state from '../../signTransactionsPanelStore';
 
 const signTransactionsFooterClasses: Record<string, string> = {
   buttonTooltip: 'mvx:absolute mvx:top-0 mvx:h-12 mvx:left-0 mvx:right-0',
+  actionButton: 'mvx:text-base! mvx:w-full',
   explorerLinkIcon: 'mvx:fill-link!',
 };
 
@@ -52,29 +54,19 @@ export class SignTransactionsFooter {
     const currentIndexCannotBeSignedYet = currentIndex > currentIndexToSign;
     const showForwardAction = currentIndexNeedsSigning || currentIndexCannotBeSignedYet;
 
-    let confirmText = needsSigning ? 'Sign' : 'Confirm';
-    let icon = needsSigning ? <mvx-pencil-icon /> : <mvx-check-icon />;
-
-    if (this.isWaitingForSignature) {
-      confirmText = 'Check your device';
-      icon = <mvx-spinner-icon />;
-    }
-
     return (
       <div class="sign-transactions-footer" data-testid={DataTestIdsEnum.signTransactionsFooter}>
         <div class="sign-transactions-footer-buttons" data-testid={DataTestIdsEnum.signTransactionsFooterButtons}>
           <div class="sign-transactions-footer-button-wrapper cancel">
-            <button
+            <mvx-button
+              size="small"
+              onButtonClick={isFirstTransaction ? onCancel : onBack}
+              variant={currentIndexCannotBeSignedYet ? 'primary' : 'secondary'}
               data-testid={isFirstTransaction ? DataTestIdsEnum.signCancelBtn : DataTestIdsEnum.signBackBtn}
-              onClick={isFirstTransaction ? onCancel : onBack}
-              class={{
-                'sign-transactions-footer-button': true,
-                'cancel': !currentIndexCannotBeSignedYet,
-                'highlighted': currentIndexCannotBeSignedYet,
-              }}
+              class={classNames('sign-transactions-footer-button', signTransactionsFooterClasses.actionButton)}
             >
-              <span class="sign-transactions-footer-button-label">{isFirstTransaction ? 'Cancel' : 'Back'}</span>
-            </button>
+              {isFirstTransaction ? 'Cancel' : 'Back'}
+            </mvx-button>
           </div>
 
           <div class="sign-transactions-footer-button-wrapper confirm">
@@ -107,33 +99,52 @@ export class SignTransactionsFooter {
               </div>
             )}
 
-            <button
+            <mvx-button
+              size="small"
               data-testid={DataTestIdsEnum.signNextTransactionBtn}
               onClick={showForwardAction ? this.handleSignClick : onNext}
-              class={{
-                'sign-transactions-footer-button': true,
-                'highlighted': true,
-                'disabled': currentIndexCannotBeSignedYet || this.isWaitingForSignature,
-              }}
+              disabled={currentIndexCannotBeSignedYet || this.isWaitingForSignature}
+              class={classNames('sign-transactions-footer-button', signTransactionsFooterClasses.actionButton)}
             >
               {showForwardAction ? (
-                <span class="sign-transactions-footer-button-label">{confirmText}</span>
+                <span class="sign-transactions-footer-button-label-wrapper">
+                  {this.isWaitingForSignature ? (
+                    <span class="sign-transactions-footer-button-label">Check your device</span>
+                  ) : (
+                    <span class="sign-transactions-footer-button-label">{needsSigning ? 'Sign' : 'Confirm'}</span>
+                  )}
+                </span>
               ) : (
-                <span class="sign-transactions-footer-button-label">Next</span>
+                <span class="sign-transactions-footer-button-label-wrapper">
+                  <span class="sign-transactions-footer-button-label">Next</span>
+                </span>
               )}
 
               {showForwardAction ? (
                 <span
-                  class={{ 'sign-transactions-footer-button-icon': true, 'lighter': currentIndexCannotBeSignedYet }}
+                  class={{
+                    'sign-transactions-footer-button-icon-wrapper': true,
+                    'lighter': currentIndexCannotBeSignedYet,
+                  }}
                 >
-                  {icon}
+                  {this.isWaitingForSignature ? (
+                    <span class="sign-transactions-footer-button-icon">
+                      <mvx-spinner-icon />
+                    </span>
+                  ) : (
+                    <span class="sign-transactions-footer-button-icon">
+                      {needsSigning ? <mvx-pencil-icon /> : <mvx-check-icon />}
+                    </span>
+                  )}
                 </span>
               ) : (
-                <span class="sign-transactions-footer-button-icon">
-                  <mvx-arrow-right-icon />
+                <span class="sign-transactions-footer-button-icon-wrapper">
+                  <span class="sign-transactions-footer-button-icon">
+                    <mvx-arrow-right-icon />
+                  </span>
                 </span>
               )}
-            </button>
+            </mvx-button>
           </div>
         </div>
 

@@ -6,6 +6,7 @@ import type { IConnectScreenData } from '../../ledger-connect.types';
 
 const ledgerIntroClasses: Record<string, string> = {
   icon: 'mvx:w-50 mvx:h-auto mvx:xs:w-100 mvx:xs:h-85',
+  button: 'mvx:w-48 mvx:xs:mt-5',
 };
 
 @Component({
@@ -30,18 +31,6 @@ export class LedgerIntro {
   render() {
     const showError = this.connectScreenData && this.connectScreenData.error;
 
-    const buttonLabel = (() => {
-      if (this.isAwaiting) {
-        return 'Connecting...';
-      }
-
-      if (showError) {
-        return 'Retry Connection';
-      }
-
-      return 'Connect Ledger';
-    })();
-
     return (
       <div class="ledger-intro">
         <div class="ledger-intro-wrapper">
@@ -56,13 +45,19 @@ export class LedgerIntro {
             and open the MultiversX App
           </div>
 
-          <button
-            class={{ 'ledger-intro-button': true, 'loading': Boolean(this.isAwaiting) }}
+          <mvx-button
+            disabled={Boolean(this.isAwaiting)}
             onClick={this.handleLedgerConnectClick.bind(this)}
+            class={classNames('ledger-intro-button', ledgerIntroClasses.button)}
           >
-            <span class="ledger-intro-button-label">{buttonLabel}</span>
+            {this.isAwaiting ? (
+              <span class="ledger-intro-button-label">Connecting...</span>
+            ) : (
+              <span class="ledger-intro-button-label">{showError ? 'Retry Connection' : 'Connect Ledger'}</span>
+            )}
+
             {this.isAwaiting && <mvx-spinner-icon />}
-          </button>
+          </mvx-button>
 
           {showError && <div class="ledger-intro-error">{this.connectScreenData.error}</div>}
         </div>
