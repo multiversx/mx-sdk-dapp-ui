@@ -159,7 +159,6 @@ export class UnlockPanel {
 
     const panelTitle = this.selectedMethod ? this.selectedMethod.name : 'Connect a wallet';
     const hasDetectedProviders = detectedProviders.length > 0;
-
     const isProviderScreenVisible = !this.isLoggingIn && !this.isIntroScreenVisible;
     const isCustomProviderActive = this.selectedMethod && this.isCustomProvider(this.selectedMethod.type);
 
