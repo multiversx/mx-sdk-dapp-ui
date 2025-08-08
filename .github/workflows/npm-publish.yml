@@ -13,9 +13,6 @@ permissions:
 jobs:
   publish-npm:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      packages: write
     steps:
       - name: Fix permissions
         run: |
@@ -32,50 +29,22 @@ jobs:
           node-version: 18
       - name: Setup pnpm
         run: npm install -g pnpm
-      - name: Install Chrome dependencies and Chrome
+      - name: Remove node_modules
+        run: rm -rf node_modules
+      - name: Install Chrome for Puppeteer
         run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            ca-certificates \
-            fonts-liberation \
-            libasound2 \
-            libatk-bridge2.0-0 \
-            libatk1.0-0 \
-            libatspi2.0-0 \
-            libcups2 \
-            libdbus-1-3 \
-            libdrm2 \
-            libgtk-3-0 \
-            libnspr4 \
-            libnss3 \
-            libwayland-client0 \
-            libx11-6 \
-            libxcomposite1 \
-            libxdamage1 \
-            libxext6 \
-            libxfixes3 \
-            libxkbcommon0 \
-            libxrandr2 \
-            xdg-utils \
-            libu2f-udev \
-            libvulkan1 \
-            wget
           wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
           sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
-      - name: Remove node_modules
-        run: rm -rf node_modules
       - name: Install Dependencies
         run: pnpm install
-
-      - name: Run tests
-        env:
-          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
-        run: pnpm test
-
-      - name: Build project
+      - name: Build
         run: pnpm build
+      - name: Run unit tests
+        run: pnpm test
+        env:
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable
 
       - name: Get package info
         id: package
