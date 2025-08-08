@@ -55,8 +55,8 @@ export class UnlockPanel {
       UnlockPanelEventsEnum.CANCEL_IN_PROVIDER,
       this.handleResetLoginState,
     );
-    this.unsubscribeFunctions.push(unsubDataUpdate, unsubCancelInProvider);
 
+    this.unsubscribeFunctions.push(unsubDataUpdate, unsubCancelInProvider);
     this.connectionMonitor.connect();
   }
 
