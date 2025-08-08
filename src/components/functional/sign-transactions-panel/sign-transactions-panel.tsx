@@ -77,6 +77,7 @@ export class SignTransactionsPanel {
 
   private readonly dataUpdate = (payload: ISignTransactionsPanelData) => {
     this.isOpen = true;
+
     for (const key in payload) {
       if (Object.prototype.hasOwnProperty.call(state, key)) {
         state[key] = payload[key];
