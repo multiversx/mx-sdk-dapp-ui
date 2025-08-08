@@ -129,6 +129,7 @@ export class UnlockPanel {
     while (this.anchor.firstChild) {
       this.anchor.removeChild(this.anchor.firstChild);
     }
+
     this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
   };
 
