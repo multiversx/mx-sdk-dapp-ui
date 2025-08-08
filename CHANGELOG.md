@@ -7,8 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [[0.0.24](https://github.com/multiversx/mx-sdk-dapp-ui/pull/186)] - 2025-08-06
+## [[0.0.24](https://github.com/multiversx/mx-sdk-dapp-ui/pull/191)] - 2025-08-06
 
+- [Fixed conflicts in main from development](https://github.com/multiversx/mx-sdk-dapp-ui/pull/190)
 - [Fixed chrome setup in github workflow](https://github.com/multiversx/mx-sdk-dapp-ui/pull/189)
 - [Fixed the Storybook manually outputted Tailwind file to scan SCSS files](https://github.com/multiversx/mx-sdk-dapp-ui/pull/185)
 - [Removed debounce from sign transactions button](https://github.com/multiversx/mx-sdk-dapp-ui/pull/184)
