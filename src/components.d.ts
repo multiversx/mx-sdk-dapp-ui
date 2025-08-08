@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IAddressTableData } from "./types/address-table.types";
+import { ButtonSizeEnum, ButtonVariantEnum } from "./components/visual/button/button.types";
 import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
@@ -21,6 +22,7 @@ import { IToastDataState, ITransactionProgressState } from "./components/functio
 import { TransactionValueType } from "./components/controlled/transactions-table/transactions-table.type";
 import { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
 export { IAddressTableData } from "./types/address-table.types";
+export { ButtonSizeEnum, ButtonVariantEnum } from "./components/visual/button/button.types";
 export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
@@ -65,6 +67,28 @@ export namespace Components {
         "class"?: string;
         "height"?: number;
         "width"?: number;
+    }
+    interface MvxButton {
+        /**
+          * @default ''
+         */
+        "class"?: string;
+        /**
+          * @default ''
+         */
+        "dataTestId"?: string;
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * @default 'large'
+         */
+        "size"?: `${ButtonSizeEnum}`;
+        /**
+          * @default 'primary'
+         */
+        "variant"?: `${ButtonVariantEnum}`;
     }
     interface MvxCheckIcon {
         "class"?: string;
@@ -538,6 +562,10 @@ export interface MvxAddressTableCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxAddressTableElement;
 }
+export interface MvxButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMvxButtonElement;
+}
 export interface MvxCustomToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxCustomToastElement;
@@ -665,6 +693,23 @@ declare global {
     var HTMLMvxBraveExtensionProviderIconElement: {
         prototype: HTMLMvxBraveExtensionProviderIconElement;
         new (): HTMLMvxBraveExtensionProviderIconElement;
+    };
+    interface HTMLMvxButtonElementEventMap {
+        "buttonClick": MouseEvent;
+    }
+    interface HTMLMvxButtonElement extends Components.MvxButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxButtonElementEventMap>(type: K, listener: (this: HTMLMvxButtonElement, ev: MvxButtonCustomEvent<HTMLMvxButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxButtonElementEventMap>(type: K, listener: (this: HTMLMvxButtonElement, ev: MvxButtonCustomEvent<HTMLMvxButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMvxButtonElement: {
+        prototype: HTMLMvxButtonElement;
+        new (): HTMLMvxButtonElement;
     };
     interface HTMLMvxCheckIconElement extends Components.MvxCheckIcon, HTMLStencilElement {
     }
@@ -1337,6 +1382,7 @@ declare global {
         "mvx-arrow-up-right-icon": HTMLMvxArrowUpRightIconElement;
         "mvx-back-arrow-icon": HTMLMvxBackArrowIconElement;
         "mvx-brave-extension-provider-icon": HTMLMvxBraveExtensionProviderIconElement;
+        "mvx-button": HTMLMvxButtonElement;
         "mvx-check-icon": HTMLMvxCheckIconElement;
         "mvx-circle-exclamation-icon": HTMLMvxCircleExclamationIconElement;
         "mvx-close-icon": HTMLMvxCloseIconElement;
@@ -1454,6 +1500,29 @@ declare namespace LocalJSX {
         "class"?: string;
         "height"?: number;
         "width"?: number;
+    }
+    interface MvxButton {
+        /**
+          * @default ''
+         */
+        "class"?: string;
+        /**
+          * @default ''
+         */
+        "dataTestId"?: string;
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        "onButtonClick"?: (event: MvxButtonCustomEvent<MouseEvent>) => void;
+        /**
+          * @default 'large'
+         */
+        "size"?: `${ButtonSizeEnum}`;
+        /**
+          * @default 'primary'
+         */
+        "variant"?: `${ButtonVariantEnum}`;
     }
     interface MvxCheckIcon {
         "class"?: string;
@@ -1938,6 +2007,7 @@ declare namespace LocalJSX {
         "mvx-arrow-up-right-icon": MvxArrowUpRightIcon;
         "mvx-back-arrow-icon": MvxBackArrowIcon;
         "mvx-brave-extension-provider-icon": MvxBraveExtensionProviderIcon;
+        "mvx-button": MvxButton;
         "mvx-check-icon": MvxCheckIcon;
         "mvx-circle-exclamation-icon": MvxCircleExclamationIcon;
         "mvx-close-icon": MvxCloseIcon;
@@ -2035,6 +2105,7 @@ declare module "@stencil/core" {
             "mvx-arrow-up-right-icon": LocalJSX.MvxArrowUpRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowUpRightIconElement>;
             "mvx-back-arrow-icon": LocalJSX.MvxBackArrowIcon & JSXBase.HTMLAttributes<HTMLMvxBackArrowIconElement>;
             "mvx-brave-extension-provider-icon": LocalJSX.MvxBraveExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxBraveExtensionProviderIconElement>;
+            "mvx-button": LocalJSX.MvxButton & JSXBase.HTMLAttributes<HTMLMvxButtonElement>;
             "mvx-check-icon": LocalJSX.MvxCheckIcon & JSXBase.HTMLAttributes<HTMLMvxCheckIconElement>;
             "mvx-circle-exclamation-icon": LocalJSX.MvxCircleExclamationIcon & JSXBase.HTMLAttributes<HTMLMvxCircleExclamationIconElement>;
             "mvx-close-icon": LocalJSX.MvxCloseIcon & JSXBase.HTMLAttributes<HTMLMvxCloseIconElement>;

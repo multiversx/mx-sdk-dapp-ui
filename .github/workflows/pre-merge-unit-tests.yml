@@ -1,7 +1,7 @@
 name: 'Stencil Unit Tests'
 on:
   pull_request:
-    branches: [main]
+    branches: [main, development]
     paths:
       - 'src/**'
       - '**.js'
@@ -19,6 +19,11 @@ jobs:
   run-unit-tests:
     runs-on: ubuntu-latest
     steps:
+      - name: Fix permissions
+        run: |
+          sudo chown -R $USER:$USER ${{ github.workspace }}
+          sudo chmod -R 755 ${{ github.workspace }}
+        continue-on-error: true
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
@@ -27,15 +32,21 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9
-      - name: Clean up
+      - name: Setup pnpm
+        run: npm install -g pnpm
+      - name: Remove node_modules
+        run: rm -rf node_modules
+      - name: Install Chrome for Puppeteer
         run: |
-          rm -rf node_modules build
+          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
       - name: Install Dependencies
         run: pnpm install
       - name: Build
         run: pnpm build
       - name: Run unit tests
         run: pnpm test
+        env:
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable

@@ -90,17 +90,6 @@
         @apply mvx:text-xs;
         color: var(--mvx-white);
       }
-
-      .ledger-confirm-footer-button {
-        @apply mvx:px-3 mvx:py-3 mvx:whitespace-nowrap mvx:flex mvx:items-center mvx:font-bold mvx:text-xs;
-        @apply mvx:rounded-lg mvx:transition-all mvx:leading-none mvx:duration-200 mvx:ease-in-out;
-        color: var(--mvx-neutral-925);
-        background: var(--mvx-white);
-
-        &:hover {
-          @apply mvx:opacity-75;
-        }
-      }
     }
   }
 }
