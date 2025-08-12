@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.25](https://github.com/multiversx/mx-sdk-dapp-ui/pull/199)] - 2025-08-12
+
+- [Fixed issue with transaction toast progress](https://github.com/multiversx/mx-sdk-dapp-ui/pull/198)
+
 ## [[0.0.24](https://github.com/multiversx/mx-sdk-dapp-ui/pull/197)] - 2025-08-08
 
 - [Fixed publish registry](https://github.com/multiversx/mx-sdk-dapp-ui/pull/196)

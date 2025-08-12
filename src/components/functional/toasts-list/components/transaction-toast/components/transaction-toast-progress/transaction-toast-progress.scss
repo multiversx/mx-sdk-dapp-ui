@@ -52,7 +52,8 @@
       @apply mvx:w-0 mvx:h-full mvx:relative;
       background: var(--mvx-progress-accent-color);
       border-radius: 20px;
-      animation: progressiveInfiniteWidthExpansion var(--animation-duration, 60s) cubic-bezier(0.1, 0.95, 0.25, 0.75) forwards;
+      animation: progressiveInfiniteWidthExpansion var(--animation-duration, 60s) cubic-bezier(0.1, 0.95, 0.25, 0.75)
+        forwards;
       animation-delay: var(--animation-delay, 6s);
     }
   }
@@ -69,9 +70,9 @@
 }
 
 .transaction-toast-bar-fixed {
-  width: min(var(--start-width, 0%), 50%);
+  width: var(--start-width, 0%);
   background: var(--mvx-progress-accent-color);
-  animation: progressiveFixedWidthExpansion var(--animation-duration, 6s) cubic-bezier(0.5, 0.95, 0, 0.35) forwards;
+  transition: width 1s linear;
 }
 
 .transaction-toast-bar-content {

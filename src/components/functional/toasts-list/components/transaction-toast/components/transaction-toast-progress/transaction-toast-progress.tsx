@@ -9,6 +9,7 @@ const DEFAULT_INFINITE_ANIMATION_DURATION = 30;
 })
 export class ToastProgress {
   private timeElapsedTimeoutReference?: ReturnType<typeof setTimeout>;
+  private intervalId?: ReturnType<typeof setInterval>;
 
   @Prop() startTime?: number;
   @Prop() endTime?: number;
@@ -23,11 +24,26 @@ export class ToastProgress {
   @State() shouldQuickFill: boolean = false;
   @State() infiniteProgressDelay: number = 0;
   @State() infinitePercentagePassedSinceStart: number = 0;
-  @State() infinitePercentageAnimationDuration: number =
-    DEFAULT_INFINITE_ANIMATION_DURATION + (this.endTime - this.startTime) * 2;
+  @State() infinitePercentageAnimationDuration: number = DEFAULT_INFINITE_ANIMATION_DURATION;
 
   componentWillLoad() {
     this.updateProgress();
+  }
+
+  componentDidLoad() {
+    this.intervalId = setInterval(() => {
+      this.updateProgress();
+    }, 1000);
+  }
+
+  disconnectedCallback() {
+    if (this.timeElapsedTimeoutReference) {
+      clearTimeout(this.timeElapsedTimeoutReference);
+    }
+
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
   }
 
   @Watch('startTime')
@@ -38,42 +54,43 @@ export class ToastProgress {
   }
 
   private updateProgress() {
-    this.shouldShowProgressBar = Boolean(this.endTime) && Boolean(this.startTime);
+    const hasValidTimestamps = typeof this.startTime === 'number' && typeof this.endTime === 'number';
 
-    if (!this.shouldShowProgressBar) {
+    if (!hasValidTimestamps || this.startTime >= this.endTime) {
+      this.shouldShowProgressBar = false;
       this.shouldQuickFill = true;
       clearTimeout(this.timeElapsedTimeoutReference);
       this.timeElapsedTimeoutReference = setTimeout(() => {
         this.hasTimeElapsed = true;
       }, 500);
-
       return;
     }
 
+    this.shouldShowProgressBar = true;
     this.currentTimestamp = Date.now() / 1000;
     this.expectedTransactionDuration = this.endTime - this.startTime;
-
-    if (this.expectedTransactionDuration > 0 && !this.isStatusPending) {
-      clearTimeout(this.timeElapsedTimeoutReference);
-      this.timeElapsedTimeoutReference = setTimeout(() => {
-        this.hasTimeElapsed = true;
-      }, this.expectedTransactionDuration + 2000);
-    }
-
     this.secondsPassedSinceStart = this.currentTimestamp - this.startTime;
     this.percentagePassedSinceStart =
       this.expectedTransactionDuration > 0
-        ? (this.secondsPassedSinceStart / this.expectedTransactionDuration) * 100
+        ? Math.min((this.secondsPassedSinceStart / this.expectedTransactionDuration) * 100, 100)
         : 0;
+
+    this.infinitePercentageAnimationDuration =
+      DEFAULT_INFINITE_ANIMATION_DURATION + this.expectedTransactionDuration * 2;
+
     this.infiniteProgressDelay = Math.max(0, this.expectedTransactionDuration - this.secondsPassedSinceStart);
     this.infinitePercentagePassedSinceStart =
       (this.secondsPassedSinceStart / (this.expectedTransactionDuration + this.infinitePercentageAnimationDuration)) *
       100;
-  }
 
-  disconnectedCallback() {
-    if (this.timeElapsedTimeoutReference) {
+    if (this.expectedTransactionDuration > 0 && !this.isStatusPending) {
       clearTimeout(this.timeElapsedTimeoutReference);
+      this.timeElapsedTimeoutReference = setTimeout(
+        () => {
+          this.hasTimeElapsed = true;
+        },
+        this.expectedTransactionDuration * 1000 + 2000,
+      );
     }
   }
 
@@ -84,7 +101,6 @@ export class ToastProgress {
           <div
             class="transaction-toast-bar-fixed"
             style={{
-              '--animation-duration': `${this.expectedTransactionDuration}s`,
               '--start-width': `${this.percentagePassedSinceStart}%`,
             }}
           />
