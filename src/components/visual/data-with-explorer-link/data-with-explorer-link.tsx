@@ -23,7 +23,7 @@ export class DataWithExplorerLink {
         {(this.showCopyButton || this.showExplorerButton) && (
           <div class="data-with-explorer-link-buttons" onClick={event => event.stopPropagation()}>
             {this.showCopyButton && <mvx-copy-button text={this.data} />}
-            {this.showExplorerButton && <mvx-explorer-link class="mvx:text-primary" link={this.explorerLink} />}
+            {this.showExplorerButton && <mvx-explorer-link link={this.explorerLink} />}
           </div>
         )}
       </div>

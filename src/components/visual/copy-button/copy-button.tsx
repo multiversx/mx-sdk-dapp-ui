@@ -2,23 +2,23 @@ import { Component, h, Prop, State } from '@stencil/core';
 import classNames from 'classnames';
 import { copyToClipboard } from 'utils/copyToClipboard';
 
-const copyButtonClasses: Record<string, string> = {
-  icon: 'mvx:flex mvx:justify-center mvx:transition-opacity mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80',
-};
+// prettier-ignore
+const styles = {
+  copyButton: 'copy-button mvx:flex',
+  copyButtonIcon: 'copy-button-icon mvx:flex mvx:cursor-pointer mvx:justify-center mvx:transition-opacity mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80',
+} satisfies Record<string, string>;
 
 @Component({
   tag: 'mvx-copy-button',
-  styleUrl: 'copy-button.scss',
-  shadow: true,
+  shadow: false,
 })
 export class CopyButton {
-  @State() isSuccess: boolean = false;
+  private timeoutId: number | null = null;
 
+  @State() isSuccess: boolean = false;
   @Prop() iconClass?: string;
   @Prop() class?: string;
   @Prop() text: string;
-
-  private timeoutId: number | null = null;
 
   async handleClick(event: MouseEvent) {
     const trimmedText = this.text ? this.text.trim() : this.text;
@@ -49,8 +49,7 @@ export class CopyButton {
       <div
         onClick={this.handleClick.bind(this)}
         class={{
-          'copy-button': true,
-          'hoverable': this.isSuccess,
+          [styles.copyButton]: true,
           [this.class]: Boolean(this.class),
         }}
       >
@@ -59,7 +58,7 @@ export class CopyButton {
         ) : (
           <mvx-copy-icon
             class={classNames({
-              [copyButtonClasses.icon]: true,
+              [styles.copyButtonIcon]: true,
               [this.iconClass]: Boolean(this.iconClass),
             })}
           />
