@@ -1,0 +1,19 @@
+:host {
+  @apply mvx:flex;
+
+  .data-with-explorer-link {
+    display: flex;
+
+    .data-with-explorer-link-trim-wrapper {
+      display: flex;
+
+      .data-with-explorer-link-trim {
+        color: var(--mvx-text-color-primary);
+      }
+    }
+  }
+
+  .data-with-explorer-link-buttons {
+    display: flex;
+  }
+}

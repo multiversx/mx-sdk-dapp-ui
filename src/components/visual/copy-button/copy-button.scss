@@ -1,3 +1,11 @@
-.copy-button {
-  color: var(--mvx-text-color-primary);
+:host {
+  @apply mvx:flex;
+
+  .copy-button {
+    @apply mvx:flex;
+
+    &.hoverable {
+      @apply mvx:cursor-pointer;
+    }
+  }
 }

@@ -1,8 +1,12 @@
 :host {
   @apply mvx:flex;
 
-  .check-icon {
+  .copy-icon {
     @apply mvx:w-4 mvx:h-4;
     fill: var(--mvx-text-color-primary);
+
+    path {
+      @apply mvx:origin-center mvx:scale-125;
+    }
   }
 }

@@ -36,7 +36,7 @@ export class ExplorerLink {
           <slot />
         ) : (
           <mvx-arrow-up-right-from-square-icon
-            class={classNames('explorer-link-icon', {
+            class={classNames({
               [explorerLinkClasses.icon]: true,
               [this.iconClass]: Boolean(this.iconClass),
             })}
