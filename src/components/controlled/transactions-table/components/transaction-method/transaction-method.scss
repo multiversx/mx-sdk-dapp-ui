@@ -37,9 +37,8 @@ a.badge:focus {
 }
 
 .badge-pill {
-  padding-right: 0.6em;
-  padding-left: 0.6em;
-  border-radius: 10rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
 }
 
 .badge-primary {
@@ -60,8 +59,10 @@ a.badge-primary.focus {
 }
 
 .badge-secondary {
-  color: var(--mvx-white);
-  background-color: var(--mvx-label-color);
+  color: var(--mvx-transaction-method);
+  border-width: 1px;
+  border-color: var(--mvx-transaction-method);
+  background-color: transparent;
 }
 
 a.badge-secondary:hover,
