@@ -2,11 +2,11 @@
   @apply mvx:flex;
 
   .button {
-    @apply mvx:flex mvx:items-center mvx:justify-center mvx:font-bold mvx:leading-none mvx:px-4;
-    @apply mvx:rounded-lg mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:gap-2;
+    @apply mvx:flex mvx:items-center mvx:justify-center mvx:font-bold mvx:leading-none mvx:px-4 mvx:max-h-full;
+    @apply mvx:rounded-xl mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:gap-2;
 
     &.large {
-      @apply mvx:h-12 mvx:text-base;
+      @apply mvx:h-12 mvx:text-base mvx:px-6;
     }
 
     &.small {

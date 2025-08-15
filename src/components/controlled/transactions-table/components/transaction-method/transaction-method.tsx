@@ -18,9 +18,7 @@ export class TransactionMethod {
         data-testid={DataTestIdsEnum.method}
         title={this.actionDescription}
       >
-        <div class="badge badge-secondary badge-pill">
-          <div class="text-truncate text-capitalize">{this.method}</div>
-        </div>
+        <div class="text-truncate text-capitalize">{this.method}</div>
       </span>
     );
   }

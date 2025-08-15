@@ -63,7 +63,7 @@ export class TransactionToastContent {
                   'transaction-toast-title-short': Boolean(showAmount),
                 }}
               >
-                {transaction?.action?.name || title}
+                {title}
               </h4>
               {showAmount && (
                 <mvx-format-amount

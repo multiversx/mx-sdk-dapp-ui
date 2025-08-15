@@ -7,8 +7,8 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IAddressTableData } from "./types/address-table.types";
 import { ButtonSizeEnum, ButtonVariantEnum } from "./components/visual/button/button.types";
-import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
 import { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
@@ -23,8 +23,8 @@ import { TransactionValueType } from "./components/controlled/transactions-table
 import { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
 export { IAddressTableData } from "./types/address-table.types";
 export { ButtonSizeEnum, ButtonVariantEnum } from "./components/visual/button/button.types";
-export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
 export { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
@@ -99,26 +99,29 @@ export namespace Components {
         "class"?: string;
     }
     interface MvxCopyButton {
-        /**
-          * @default 'copy-button'
-         */
         "class"?: string;
-        /**
-          * @default 'faCopy'
-         */
-        "copyIcon"?: IconDefinition | string;
-        /**
-          * @default 'copy-button-icon'
-         */
         "iconClass"?: string;
-        /**
-          * @default 'faCheck'
-         */
-        "successIcon"?: IconDefinition | string;
         "text": string;
+    }
+    interface MvxCopyIcon {
+        "class"?: string;
     }
     interface MvxCustomToast {
         "toast": IComponentToast;
+    }
+    interface MvxDataWithExplorerLink {
+        "class"?: string;
+        "data": string;
+        "dataTestId"?: string;
+        "explorerLink": string;
+        /**
+          * @default true
+         */
+        "showCopyButton"?: boolean;
+        /**
+          * @default true
+         */
+        "showExplorerButton"?: boolean;
     }
     interface MvxDefaultTransactionIconLarge {
         "class"?: string;
@@ -202,6 +205,9 @@ export namespace Components {
         "class"?: string;
     }
     interface MvxMultiversxLogoIcon {
+        "class"?: string;
+    }
+    interface MvxMultiversxSymbolIcon {
         "class"?: string;
     }
     interface MvxNotificationsFeed {
@@ -735,6 +741,12 @@ declare global {
         prototype: HTMLMvxCopyButtonElement;
         new (): HTMLMvxCopyButtonElement;
     };
+    interface HTMLMvxCopyIconElement extends Components.MvxCopyIcon, HTMLStencilElement {
+    }
+    var HTMLMvxCopyIconElement: {
+        prototype: HTMLMvxCopyIconElement;
+        new (): HTMLMvxCopyIconElement;
+    };
     interface HTMLMvxCustomToastElementEventMap {
         "deleteToast": string;
     }
@@ -751,6 +763,12 @@ declare global {
     var HTMLMvxCustomToastElement: {
         prototype: HTMLMvxCustomToastElement;
         new (): HTMLMvxCustomToastElement;
+    };
+    interface HTMLMvxDataWithExplorerLinkElement extends Components.MvxDataWithExplorerLink, HTMLStencilElement {
+    }
+    var HTMLMvxDataWithExplorerLinkElement: {
+        prototype: HTMLMvxDataWithExplorerLinkElement;
+        new (): HTMLMvxDataWithExplorerLinkElement;
     };
     interface HTMLMvxDefaultTransactionIconLargeElement extends Components.MvxDefaultTransactionIconLarge, HTMLStencilElement {
     }
@@ -875,6 +893,12 @@ declare global {
     var HTMLMvxMultiversxLogoIconElement: {
         prototype: HTMLMvxMultiversxLogoIconElement;
         new (): HTMLMvxMultiversxLogoIconElement;
+    };
+    interface HTMLMvxMultiversxSymbolIconElement extends Components.MvxMultiversxSymbolIcon, HTMLStencilElement {
+    }
+    var HTMLMvxMultiversxSymbolIconElement: {
+        prototype: HTMLMvxMultiversxSymbolIconElement;
+        new (): HTMLMvxMultiversxSymbolIconElement;
     };
     interface HTMLMvxNotificationsFeedElement extends Components.MvxNotificationsFeed, HTMLStencilElement {
     }
@@ -1387,7 +1411,9 @@ declare global {
         "mvx-circle-exclamation-icon": HTMLMvxCircleExclamationIconElement;
         "mvx-close-icon": HTMLMvxCloseIconElement;
         "mvx-copy-button": HTMLMvxCopyButtonElement;
+        "mvx-copy-icon": HTMLMvxCopyIconElement;
         "mvx-custom-toast": HTMLMvxCustomToastElement;
+        "mvx-data-with-explorer-link": HTMLMvxDataWithExplorerLinkElement;
         "mvx-default-transaction-icon-large": HTMLMvxDefaultTransactionIconLargeElement;
         "mvx-default-transaction-icon-small": HTMLMvxDefaultTransactionIconSmallElement;
         "mvx-edge-extension-provider-icon": HTMLMvxEdgeExtensionProviderIconElement;
@@ -1405,6 +1431,7 @@ declare global {
         "mvx-magnifying-glass-icon": HTMLMvxMagnifyingGlassIconElement;
         "mvx-metamask-provider-icon": HTMLMvxMetamaskProviderIconElement;
         "mvx-multiversx-logo-icon": HTMLMvxMultiversxLogoIconElement;
+        "mvx-multiversx-symbol-icon": HTMLMvxMultiversxSymbolIconElement;
         "mvx-notifications-feed": HTMLMvxNotificationsFeedElement;
         "mvx-pagination": HTMLMvxPaginationElement;
         "mvx-pagination-ellipsis": HTMLMvxPaginationEllipsisElement;
@@ -1533,27 +1560,30 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface MvxCopyButton {
-        /**
-          * @default 'copy-button'
-         */
         "class"?: string;
-        /**
-          * @default 'faCopy'
-         */
-        "copyIcon"?: IconDefinition | string;
-        /**
-          * @default 'copy-button-icon'
-         */
         "iconClass"?: string;
-        /**
-          * @default 'faCheck'
-         */
-        "successIcon"?: IconDefinition | string;
         "text"?: string;
+    }
+    interface MvxCopyIcon {
+        "class"?: string;
     }
     interface MvxCustomToast {
         "onDeleteToast"?: (event: MvxCustomToastCustomEvent<string>) => void;
         "toast"?: IComponentToast;
+    }
+    interface MvxDataWithExplorerLink {
+        "class"?: string;
+        "data"?: string;
+        "dataTestId"?: string;
+        "explorerLink"?: string;
+        /**
+          * @default true
+         */
+        "showCopyButton"?: boolean;
+        /**
+          * @default true
+         */
+        "showExplorerButton"?: boolean;
     }
     interface MvxDefaultTransactionIconLarge {
         "class"?: string;
@@ -1638,6 +1668,9 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface MvxMultiversxLogoIcon {
+        "class"?: string;
+    }
+    interface MvxMultiversxSymbolIcon {
         "class"?: string;
     }
     interface MvxNotificationsFeed {
@@ -2012,7 +2045,9 @@ declare namespace LocalJSX {
         "mvx-circle-exclamation-icon": MvxCircleExclamationIcon;
         "mvx-close-icon": MvxCloseIcon;
         "mvx-copy-button": MvxCopyButton;
+        "mvx-copy-icon": MvxCopyIcon;
         "mvx-custom-toast": MvxCustomToast;
+        "mvx-data-with-explorer-link": MvxDataWithExplorerLink;
         "mvx-default-transaction-icon-large": MvxDefaultTransactionIconLarge;
         "mvx-default-transaction-icon-small": MvxDefaultTransactionIconSmall;
         "mvx-edge-extension-provider-icon": MvxEdgeExtensionProviderIcon;
@@ -2030,6 +2065,7 @@ declare namespace LocalJSX {
         "mvx-magnifying-glass-icon": MvxMagnifyingGlassIcon;
         "mvx-metamask-provider-icon": MvxMetamaskProviderIcon;
         "mvx-multiversx-logo-icon": MvxMultiversxLogoIcon;
+        "mvx-multiversx-symbol-icon": MvxMultiversxSymbolIcon;
         "mvx-notifications-feed": MvxNotificationsFeed;
         "mvx-pagination": MvxPagination;
         "mvx-pagination-ellipsis": MvxPaginationEllipsis;
@@ -2110,7 +2146,9 @@ declare module "@stencil/core" {
             "mvx-circle-exclamation-icon": LocalJSX.MvxCircleExclamationIcon & JSXBase.HTMLAttributes<HTMLMvxCircleExclamationIconElement>;
             "mvx-close-icon": LocalJSX.MvxCloseIcon & JSXBase.HTMLAttributes<HTMLMvxCloseIconElement>;
             "mvx-copy-button": LocalJSX.MvxCopyButton & JSXBase.HTMLAttributes<HTMLMvxCopyButtonElement>;
+            "mvx-copy-icon": LocalJSX.MvxCopyIcon & JSXBase.HTMLAttributes<HTMLMvxCopyIconElement>;
             "mvx-custom-toast": LocalJSX.MvxCustomToast & JSXBase.HTMLAttributes<HTMLMvxCustomToastElement>;
+            "mvx-data-with-explorer-link": LocalJSX.MvxDataWithExplorerLink & JSXBase.HTMLAttributes<HTMLMvxDataWithExplorerLinkElement>;
             "mvx-default-transaction-icon-large": LocalJSX.MvxDefaultTransactionIconLarge & JSXBase.HTMLAttributes<HTMLMvxDefaultTransactionIconLargeElement>;
             "mvx-default-transaction-icon-small": LocalJSX.MvxDefaultTransactionIconSmall & JSXBase.HTMLAttributes<HTMLMvxDefaultTransactionIconSmallElement>;
             "mvx-edge-extension-provider-icon": LocalJSX.MvxEdgeExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxEdgeExtensionProviderIconElement>;
@@ -2128,6 +2166,7 @@ declare module "@stencil/core" {
             "mvx-magnifying-glass-icon": LocalJSX.MvxMagnifyingGlassIcon & JSXBase.HTMLAttributes<HTMLMvxMagnifyingGlassIconElement>;
             "mvx-metamask-provider-icon": LocalJSX.MvxMetamaskProviderIcon & JSXBase.HTMLAttributes<HTMLMvxMetamaskProviderIconElement>;
             "mvx-multiversx-logo-icon": LocalJSX.MvxMultiversxLogoIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxLogoIconElement>;
+            "mvx-multiversx-symbol-icon": LocalJSX.MvxMultiversxSymbolIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxSymbolIconElement>;
             "mvx-notifications-feed": LocalJSX.MvxNotificationsFeed & JSXBase.HTMLAttributes<HTMLMvxNotificationsFeedElement>;
             "mvx-pagination": LocalJSX.MvxPagination & JSXBase.HTMLAttributes<HTMLMvxPaginationElement>;
             "mvx-pagination-ellipsis": LocalJSX.MvxPaginationEllipsis & JSXBase.HTMLAttributes<HTMLMvxPaginationEllipsisElement>;
