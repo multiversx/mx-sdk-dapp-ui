@@ -12,9 +12,9 @@ describe('CopyButton', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-copy-button text="Copy me">
-        <a href="/#" class="copy-button">
-          <mvx-fa-icon class="copy-button-icon" icon="faCopy"></mvx-fa-icon>
-        </a>
+        <div class="copy-button mvx:flex">
+          <mvx-copy-icon class="copy-button-icon mvx:flex mvx:cursor-pointer mvx:justify-center mvx:transition-opacity mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80"></mvx-copy-icon>
+        </div>
       </mvx-copy-button>
     `);
   });
@@ -27,9 +27,9 @@ describe('CopyButton', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-copy-button class="custom-class" text="Copy me">
-        <a href="/#" class="custom-class">
-          <mvx-fa-icon class="copy-button-icon" icon="faCopy"></mvx-fa-icon>
-        </a>
+        <div class="copy-button mvx:flex custom-class">
+          <mvx-copy-icon class="copy-button-icon mvx:flex mvx:cursor-pointer mvx:justify-center mvx:transition-opacity mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80"></mvx-copy-icon>
+        </div>
       </mvx-copy-button>
     `);
   });
@@ -43,16 +43,16 @@ describe('CopyButton', () => {
     });
 
     const copyButton = page.root;
-    const anchor = copyButton.querySelector('a');
-
-    await anchor.click();
+    const component = page.rootInstance as CopyButton;
+    
+    await component.handleClick(new MouseEvent('click') as any);
     await page.waitForChanges();
 
     expect(copyButton).toEqualHtml(`
       <mvx-copy-button text="Copy me">
-        <a href="/#" class="copy-button">
-          <mvx-fa-icon class="copy-button-icon" icon="faCheck"></mvx-fa-icon>
-        </a>
+        <div class="copy-button mvx:flex">
+          <mvx-check-icon></mvx-check-icon>
+        </div>
       </mvx-copy-button>
     `);
   });
@@ -66,16 +66,16 @@ describe('CopyButton', () => {
     });
 
     const copyButton = page.root;
-    const anchor = copyButton.querySelector('a');
-
-    await anchor.click();
+    const component = page.rootInstance as CopyButton;
+    
+    await component.handleClick(new MouseEvent('click') as any);
     await page.waitForChanges();
 
     expect(copyButton).toEqualHtml(`
       <mvx-copy-button text="Copy me">
-        <a href="/#" class="copy-button">
-          <mvx-fa-icon class="copy-button-icon" icon="faCopy"></mvx-fa-icon>
-        </a>
+        <div class="copy-button mvx:flex">
+          <mvx-copy-icon class="copy-button-icon mvx:flex mvx:cursor-pointer mvx:justify-center mvx:transition-opacity mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80"></mvx-copy-icon>
+        </div>
       </mvx-copy-button>
     `);
   });
@@ -86,15 +86,13 @@ describe('CopyButton', () => {
       html: '<mvx-copy-button text="Copy me"></mvx-copy-button>',
     });
 
-    const copyButton = page.root;
-    const anchor = copyButton.querySelector('a');
-
     const mockEvent = {
       preventDefault: jest.fn(),
       stopPropagation: jest.fn(),
     };
 
-    anchor.dispatchEvent(new MouseEvent('click', mockEvent as any));
+    const component = page.rootInstance as CopyButton;
+    await component.handleClick(mockEvent as any);
 
     expect(mockEvent.preventDefault).toHaveBeenCalledTimes(1);
     expect(mockEvent.stopPropagation).toHaveBeenCalledTimes(1);
