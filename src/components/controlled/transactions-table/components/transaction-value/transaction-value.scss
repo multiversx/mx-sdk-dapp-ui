@@ -88,3 +88,14 @@
 .text-white {
   color: var(--mvx-white);
 }
+
+
+.amount {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.amount-symbol {
+  color: var(--mvx-text-color-primary);
+}

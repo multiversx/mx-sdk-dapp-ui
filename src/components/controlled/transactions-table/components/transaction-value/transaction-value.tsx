@@ -25,16 +25,20 @@ export class TransactionValue {
         )}
 
         {this.value.showFormattedAmount && (
-          <mvx-format-amount
-            class={classNames('mr-1 mvx:text-primary', { 'text-truncate': this.value.svgUrl })}
-            dataTestId={DataTestIdsEnum.transactionActionFormattedAmount}
-            isValid={true}
-            label={this.value.egldLabel}
-            valueDecimal={this.value.valueDecimal}
-            valueInteger={this.value.valueInteger}
-            decimalClass="opacity-70"
-            labelClass="opacity-70"
-          />
+          <div class="amount">
+            {this.value.egldLabel && <mvx-multiversx-symbol-icon class="amount-symbol" />}
+
+            <mvx-format-amount
+              class={classNames('mr-1 mvx:text-primary', { 'text-truncate': this.value.svgUrl })}
+              dataTestId={DataTestIdsEnum.transactionActionFormattedAmount}
+              isValid={true}
+              label={this.value.egldLabel}
+              valueDecimal={this.value.valueDecimal}
+              valueInteger={this.value.valueInteger}
+              decimalClass="opacity-70"
+              labelClass="opacity-70"
+            />
+          </div>
         )}
 
         {this.value.link && (
