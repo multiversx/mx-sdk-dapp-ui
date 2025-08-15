@@ -207,6 +207,9 @@ export namespace Components {
     interface MvxMultiversxLogoIcon {
         "class"?: string;
     }
+    interface MvxMultiversxSymbolIcon {
+        "class"?: string;
+    }
     interface MvxNotificationsFeed {
         "closeWithAnimation": () => Promise<unknown>;
         "getEventBus": () => Promise<IEventBus>;
@@ -891,6 +894,12 @@ declare global {
         prototype: HTMLMvxMultiversxLogoIconElement;
         new (): HTMLMvxMultiversxLogoIconElement;
     };
+    interface HTMLMvxMultiversxSymbolIconElement extends Components.MvxMultiversxSymbolIcon, HTMLStencilElement {
+    }
+    var HTMLMvxMultiversxSymbolIconElement: {
+        prototype: HTMLMvxMultiversxSymbolIconElement;
+        new (): HTMLMvxMultiversxSymbolIconElement;
+    };
     interface HTMLMvxNotificationsFeedElement extends Components.MvxNotificationsFeed, HTMLStencilElement {
     }
     var HTMLMvxNotificationsFeedElement: {
@@ -1422,6 +1431,7 @@ declare global {
         "mvx-magnifying-glass-icon": HTMLMvxMagnifyingGlassIconElement;
         "mvx-metamask-provider-icon": HTMLMvxMetamaskProviderIconElement;
         "mvx-multiversx-logo-icon": HTMLMvxMultiversxLogoIconElement;
+        "mvx-multiversx-symbol-icon": HTMLMvxMultiversxSymbolIconElement;
         "mvx-notifications-feed": HTMLMvxNotificationsFeedElement;
         "mvx-pagination": HTMLMvxPaginationElement;
         "mvx-pagination-ellipsis": HTMLMvxPaginationEllipsisElement;
@@ -1658,6 +1668,9 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface MvxMultiversxLogoIcon {
+        "class"?: string;
+    }
+    interface MvxMultiversxSymbolIcon {
         "class"?: string;
     }
     interface MvxNotificationsFeed {
@@ -2052,6 +2065,7 @@ declare namespace LocalJSX {
         "mvx-magnifying-glass-icon": MvxMagnifyingGlassIcon;
         "mvx-metamask-provider-icon": MvxMetamaskProviderIcon;
         "mvx-multiversx-logo-icon": MvxMultiversxLogoIcon;
+        "mvx-multiversx-symbol-icon": MvxMultiversxSymbolIcon;
         "mvx-notifications-feed": MvxNotificationsFeed;
         "mvx-pagination": MvxPagination;
         "mvx-pagination-ellipsis": MvxPaginationEllipsis;
@@ -2152,6 +2166,7 @@ declare module "@stencil/core" {
             "mvx-magnifying-glass-icon": LocalJSX.MvxMagnifyingGlassIcon & JSXBase.HTMLAttributes<HTMLMvxMagnifyingGlassIconElement>;
             "mvx-metamask-provider-icon": LocalJSX.MvxMetamaskProviderIcon & JSXBase.HTMLAttributes<HTMLMvxMetamaskProviderIconElement>;
             "mvx-multiversx-logo-icon": LocalJSX.MvxMultiversxLogoIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxLogoIconElement>;
+            "mvx-multiversx-symbol-icon": LocalJSX.MvxMultiversxSymbolIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxSymbolIconElement>;
             "mvx-notifications-feed": LocalJSX.MvxNotificationsFeed & JSXBase.HTMLAttributes<HTMLMvxNotificationsFeedElement>;
             "mvx-pagination": LocalJSX.MvxPagination & JSXBase.HTMLAttributes<HTMLMvxPaginationElement>;
             "mvx-pagination-ellipsis": LocalJSX.MvxPaginationEllipsis & JSXBase.HTMLAttributes<HTMLMvxPaginationEllipsisElement>;

@@ -76,7 +76,10 @@ describe('TransactionValue', () => {
     expect(page.root).toEqualHtml(`
       <mvx-transaction-value>
           <div class="transaction-value">
-            <mvx-format-amount class="mr-1" datatestid="transactionActionFormattedAmount" isvalid="" label="xEGLD" valuedecimal="123" valueinteger="123"></mvx-format-amount>
+           <div class="amount">
+            <mvx-multiversx-symbol-icon class="amount-symbol"></mvx-multiversx-symbol-icon>
+            <mvx-format-amount class="mr-1 mvx:text-primary" datatestid="transactionActionFormattedAmount" decimalclass="opacity-70" isvalid="" label="xEGLD" labelclass="opacity-70" valuedecimal="123" valueinteger="123"></mvx-format-amount>
+            </div>
           </div>
       </mvx-transaction-value>
     `);

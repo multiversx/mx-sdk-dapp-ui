@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Updated transactions table styles](https://github.com/multiversx/mx-sdk-dapp-ui/pull/203)
 - [Updated the "copy-button" component for easier customisation](https://github.com/multiversx/mx-sdk-dapp-ui/pull/202)
 - [Removed Trim unrelated styling](https://github.com/multiversx/mx-sdk-dapp-ui/pull/201)
 - [Fixed issue with transaction toast title](https://github.com/multiversx/mx-sdk-dapp-ui/pull/200)

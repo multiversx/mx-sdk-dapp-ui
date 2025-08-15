@@ -1,0 +1,7 @@
+:host {
+  @apply mvx:flex;
+
+  .multiversx-symbol-icon {
+    @apply mvx:w-3 mvx:h-3 mvx:fill-current;
+  }
+}
