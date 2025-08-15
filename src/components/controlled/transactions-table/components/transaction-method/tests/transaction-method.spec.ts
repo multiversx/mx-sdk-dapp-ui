@@ -98,7 +98,7 @@ describe('transaction-method', () => {
         html: '<mvx-transaction-method></mvx-transaction-method>',
       });
 
-      const innerDiv = page.root.querySelector('div > div');
+      const innerDiv = page.root.querySelector('span > div');
       expect(innerDiv).toHaveClass('text-truncate');
       expect(innerDiv).toHaveClass('text-capitalize');
     });
