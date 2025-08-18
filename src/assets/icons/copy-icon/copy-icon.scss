@@ -1,0 +1,7 @@
+.copy-icon {
+  @apply mvx:w-auto mvx:h-full mvx:text-primary mvx:fill-current;
+
+  .copy-icon-path {
+    @apply mvx:origin-center mvx:scale-125 mvx:fill-current;
+  }
+}
