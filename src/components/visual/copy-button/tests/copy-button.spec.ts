@@ -12,8 +12,8 @@ describe('CopyButton', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-copy-button text="Copy me">
-        <div class="copy-button mvx:flex">
-          <mvx-copy-icon class="copy-button-icon mvx:flex mvx:cursor-pointer mvx:justify-center mvx:transition-opacity mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80"></mvx-copy-icon>
+        <div class="copy-button">
+          <mvx-copy-icon class="copy-button-icon"></mvx-copy-icon>
         </div>
       </mvx-copy-button>
     `);
@@ -27,8 +27,8 @@ describe('CopyButton', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-copy-button class="custom-class" text="Copy me">
-        <div class="copy-button mvx:flex custom-class">
-          <mvx-copy-icon class="copy-button-icon mvx:flex mvx:cursor-pointer mvx:justify-center mvx:transition-opacity mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80"></mvx-copy-icon>
+        <div class="copy-button custom-class">
+          <mvx-copy-icon class="copy-button-icon"></mvx-copy-icon>
         </div>
       </mvx-copy-button>
     `);
@@ -50,8 +50,8 @@ describe('CopyButton', () => {
 
     expect(copyButton).toEqualHtml(`
       <mvx-copy-button text="Copy me">
-        <div class="copy-button mvx:flex">
-          <mvx-check-icon></mvx-check-icon>
+        <div class="copy-button">
+          <mvx-check-icon class="check copy-button-icon"></mvx-check-icon>
         </div>
       </mvx-copy-button>
     `);
@@ -73,8 +73,8 @@ describe('CopyButton', () => {
 
     expect(copyButton).toEqualHtml(`
       <mvx-copy-button text="Copy me">
-        <div class="copy-button mvx:flex">
-          <mvx-copy-icon class="copy-button-icon mvx:flex mvx:cursor-pointer mvx:justify-center mvx:transition-opacity mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80"></mvx-copy-icon>
+        <div class="copy-button">
+          <mvx-copy-icon class="copy-button-icon"></mvx-copy-icon>
         </div>
       </mvx-copy-button>
     `);
