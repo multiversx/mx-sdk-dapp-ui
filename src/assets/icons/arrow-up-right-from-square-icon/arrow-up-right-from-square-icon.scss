@@ -1,5 +1,6 @@
 .arrow-up-right-from-square-icon {
-  @apply mvx:w-auto mvx:h-full mvx:text-primary mvx:fill-current;
+  @apply mvx:w-auto mvx:h-full mvx:fill-current;
+  color: var(--mvx-text-color-primary);
 
   .arrow-up-right-from-square-icon-path {
     @apply mvx:fill-current;

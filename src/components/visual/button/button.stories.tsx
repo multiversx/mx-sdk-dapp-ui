@@ -7,9 +7,10 @@ import capitalize from 'lodash.capitalize';
 import type { Button } from './button';
 import { ButtonSizeEnum, ButtonVariantEnum } from './button.types';
 
-const buttonStoryClasses: Record<string, string> = {
-  wrapper: 'mvx:flex mvx:gap-4',
-};
+// prettier-ignore
+const styles = {
+  buttonStoriesGrid: 'button-stories-grid mvx:flex mvx:gap-4 mvx:flex-wrap',
+} satisfies Record<string, string>;
 
 const storySettings: Meta<Button> = {
   tags: ['autodocs'],
@@ -30,7 +31,7 @@ export const Primary: StoryObj<Button> = {
 
 export const DefaultSize: StoryObj<Button> = {
   render: () => (
-    <div class={buttonStoryClasses.wrapper}>
+    <div class={styles.buttonStoriesGrid}>
       {Object.values(ButtonVariantEnum).map(variant => (
         <mvx-button variant={variant}>{capitalize(variant)}</mvx-button>
       ))}
@@ -40,7 +41,7 @@ export const DefaultSize: StoryObj<Button> = {
 
 export const SmallSize: StoryObj<Button> = {
   render: () => (
-    <div class={buttonStoryClasses.wrapper}>
+    <div class={styles.buttonStoriesGrid}>
       {Object.values(ButtonVariantEnum).map(variant => (
         <mvx-button variant={variant} size="small">
           {capitalize(variant)}
@@ -52,7 +53,7 @@ export const SmallSize: StoryObj<Button> = {
 
 export const DisabledVariants: StoryObj<Button> = {
   render: () => (
-    <div class={buttonStoryClasses.wrapper}>
+    <div class={styles.buttonStoriesGrid}>
       {Object.values(ButtonVariantEnum).map(variant => (
         <mvx-button variant={variant} disabled={true}>
           {capitalize(variant)}
