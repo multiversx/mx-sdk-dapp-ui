@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Updated the CopyButton and ExplorerLink to be more flexible, adding Storybook stories](https://github.com/multiversx/mx-sdk-dapp-ui/pull/206)
+
 ## [[0.0.26](https://github.com/multiversx/mx-sdk-dapp-ui/pull/204)] - 2025-08-15
 
 - [Updated transactions table styles](https://github.com/multiversx/mx-sdk-dapp-ui/pull/203)
