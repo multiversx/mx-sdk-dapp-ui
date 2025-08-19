@@ -2,6 +2,41 @@
   width: 100%;
   overflow: auto;
   table-layout: auto;
+
+  &::-webkit-scrollbar,
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-track:hover,
+  &::-webkit-scrollbar-corner 
+  {
+    @apply mvx:bg-transparent;
+  }
+
+  &::-webkit-scrollbar {
+    @apply mvx:h-1.5;
+  }
+
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-track:hover {
+    @apply mvx:bg-clip-padding;
+    border: 4px solid transparent;
+    border-radius: 9999px;
+  }
+
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-thumb:hover {
+    @apply mvx:bg-clip-padding;
+    border: 4px solid transparent;
+    background: var(--mvx-scrollbar-thumb) !important;
+    border-radius: 9999px;
+  }
+
+  &::-webkit-scrollbar-button {
+    @apply mvx:hidden;
+  }
+
+  &::-webkit-resizer {
+    @apply mvx:bg-transparent;
+  }
 }
 
 .transactions-table-header {
