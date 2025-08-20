@@ -5,9 +5,10 @@ import type { Meta, StoryObj } from '@stencil/storybook-plugin';
 
 import type { Pagination } from './pagination';
 
-const paginationStoryClasses: Record<string, string> = {
-  wrapper: 'mvx:justify-center mvx:flex mvx:gap-4 mvx:pt-24',
-};
+// prettier-ignore
+const styles = {
+  paginationStoriesWrapper: 'pagination-stories-wrapper mvx:justify-center mvx:flex mvx:gap-4 mvx:pt-24',
+} satisfies Record<string, string>;
 
 const storySettings: Meta<Pagination> = {
   tags: ['autodocs'],
@@ -27,35 +28,49 @@ const storySettings: Meta<Pagination> = {
   },
   decorators: [
     Story => (
-      <div class={paginationStoryClasses.wrapper}>
+      <div class={styles.paginationStoriesWrapper}>
         <Story />
       </div>
     ),
   ],
 };
 
-const processStory = (storyArguments: Partial<Pagination>): StoryObj<Pagination> => ({
-  args: storyArguments,
-  render: properties => <mvx-pagination {...properties} />,
-});
+export const Default: StoryObj<Pagination> = {
+  render: () => (
+    <mvx-pagination
+      currentPage={1}
+      totalPages={10}
+      isDisabled={false}
+      class=""
+    />
+  ),
+};
 
-export const Default = processStory({
-  currentPage: 1,
-  totalPages: 10,
-  isDisabled: false,
-  class: '',
-});
+export const Disabled: StoryObj<Pagination> = {
+  render: () => (
+    <mvx-pagination
+      currentPage={5}
+      totalPages={20}
+      isDisabled={true}
+      class="custom-pagination"
+    />
+  ),
+};
 
-export const Disabled = processStory({
-  currentPage: 5,
-  totalPages: 20,
-  isDisabled: true,
-  class: 'custom-pagination',
-});
+export const FirstPage: StoryObj<Pagination> = {
+  render: () => <mvx-pagination currentPage={1} totalPages={10} />,
+};
 
-export const FirstPage = processStory({ currentPage: 1 });
-export const LastPage = processStory({ currentPage: 10 });
-export const SinglePage = processStory({ totalPages: 1 });
-export const ManyPages = processStory({ currentPage: 520, totalPages: 1000 });
+export const LastPage: StoryObj<Pagination> = {
+  render: () => <mvx-pagination currentPage={10} totalPages={10} />,
+};
+
+export const SinglePage: StoryObj<Pagination> = {
+  render: () => <mvx-pagination currentPage={1} totalPages={1} />,
+};
+
+export const ManyPages: StoryObj<Pagination> = {
+  render: () => <mvx-pagination currentPage={520} totalPages={1000} />,
+};
 
 export default storySettings;
