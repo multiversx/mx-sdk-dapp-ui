@@ -1,53 +1,37 @@
 .trim {
-  display: flex;
-  position: relative;
-  max-width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
+  @apply mvx:flex mvx:relative mvx:max-w-full mvx:overflow-hidden mvx:whitespace-nowrap;
 
   .trim-full {
-    color: transparent;
-    position: absolute;
+    @apply mvx:text-transparent mvx:absolute mvx:leading-5;
 
     &.visible {
-      color: inherit;
-      position: relative;
+      @apply mvx:text-inherit mvx:relative;
     }
   }
 
   .trim-wrapper {
-    display: none;
+    @apply mvx:hidden;
 
     &.visible {
-      overflow: hidden;
-      max-width: 100%;
-      display: flex;
+      @apply mvx:overflow-hidden mvx:max-w-full mvx:flex;
     }
 
     .trim-ellipsis-wrapper {
-      display: block;
-      flex-shrink: 0;
-      pointer-events: none;
-      user-select: none;
+      @apply mvx:block mvx:flex-shrink-0 mvx:pointer-events-none mvx:select-none;
 
       .trim-ellipsis {
-        display: block;
+        @apply mvx:block mvx:leading-5;
       }
     }
 
     .trim-left-wrapper,
     .trim-right-wrapper {
+      @apply mvx:flex-shrink mvx:text-ellipsis mvx:overflow-hidden;
       font-size: 1px;
-      text-overflow: ellipsis;
-      flex-shrink: 1;
-      overflow: hidden;
 
       .trim-left,
       .trim-right {
-        user-select: none;
-        pointer-events: none;
-        display: inline;
-        font-size: 1rem;
+        @apply mvx:select-none mvx:pointer-events-none mvx:inline mvx:text-base mvx:leading-5;
 
         @supports (-webkit-hyphens: none) {
           letter-spacing: -0.001em;
@@ -56,21 +40,20 @@
     }
 
     .trim-left-wrapper {
-      text-align: left;
+      @apply mvx:text-left;
     }
 
     .trim-right-wrapper {
-      white-space: nowrap;
+      @apply mvx:whitespace-nowrap mvx:text-right;
       direction: rtl;
-      text-align: right;
 
       .trim-right {
         @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-          text-overflow: clip;
+          @apply mvx:text-clip;
         }
 
         @supports (-webkit-hyphens: none) {
-          text-overflow: clip;
+          @apply mvx:text-clip;
         }
       }
     }

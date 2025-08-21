@@ -122,6 +122,10 @@ export namespace Components {
           * @default true
          */
         "showExplorerButton"?: boolean;
+        /**
+          * @default false
+         */
+        "withTooltip"?: boolean;
     }
     interface MvxDefaultTransactionIconLarge {
         "class"?: string;
@@ -1587,6 +1591,10 @@ declare namespace LocalJSX {
           * @default true
          */
         "showExplorerButton"?: boolean;
+        /**
+          * @default false
+         */
+        "withTooltip"?: boolean;
     }
     interface MvxDefaultTransactionIconLarge {
         "class"?: string;

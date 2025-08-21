@@ -13,15 +13,15 @@
     }
 
     .tooltip-content {
-      @apply mvx:flex-row mvx:cursor-default mvx:p-2 mvx:whitespace-nowrap mvx:text-xs mvx:rounded-xl;
-      background: var(--mvx-bg-accent-color);
-      border: 1px solid var(--mvx-neutral-800);
+      @apply mvx:flex-row mvx:cursor-default mvx:p-2 mvx:whitespace-nowrap mvx:text-xs mvx:rounded-xl mvx:leading-none;
+      background: var(--mvx-bg-color-primary);
+      border: 1px solid var(--mvx-border-color-secondary);
       color: var(--mvx-text-color-primary);
 
       &:after {
         @apply mvx:left-1/2 mvx:origin-center mvx:w-2 mvx:h-2 mvx:absolute;
-        border: 1px solid var(--mvx-neutral-800);
-        background-color: var(--mvx-bg-accent-color);
+        border: 1px solid var(--mvx-border-color-secondary);
+        background-color: var(--mvx-bg-color-primary);
         content: '';
         transform: translateX(calc(50% - 8px)) rotateZ(calc(45deg * -1));
       }

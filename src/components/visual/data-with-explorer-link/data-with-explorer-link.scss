@@ -1,19 +1,11 @@
-:host {
-  @apply mvx:flex;
+.data-with-explorer-link {
+  @apply mvx:flex mvx:gap-3;
 
-  .data-with-explorer-link {
-    display: flex;
-
-    .data-with-explorer-link-trim-wrapper {
-      display: flex;
-
-      .data-with-explorer-link-trim {
-        color: var(--mvx-text-color-primary);
-      }
-    }
+  .data-with-explorer-link-trim {
+    @apply mvx:text-primary mvx:min-w-0;
   }
 
   .data-with-explorer-link-buttons {
-    display: flex;
+    @apply mvx:flex mvx:items-center mvx:gap-3;
   }
 }
