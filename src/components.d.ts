@@ -486,6 +486,9 @@ export namespace Components {
     }
     interface MvxTrim {
         "class"?: string;
+        /**
+          * @default DataTestIdsEnum.trim
+         */
         "dataTestId"?: string;
         "text": string;
     }
@@ -1954,6 +1957,9 @@ declare namespace LocalJSX {
     }
     interface MvxTrim {
         "class"?: string;
+        /**
+          * @default DataTestIdsEnum.trim
+         */
         "dataTestId"?: string;
         "text"?: string;
     }

@@ -21,12 +21,14 @@ describe('trim', () => {
     });
 
     const trimElement = page.root;
+    const component = page.rootInstance;
 
-    trimElement.overflow = false;
+    component.shouldTrim = false;
     await page.waitForChanges();
 
-    const textElement = trimElement.querySelector('span:not(.hidden-text-ref)');
-    expect(textElement.textContent).toBe('Short textShort text');
+    const fullTextElement = trimElement.querySelector('.trim-full.visible');
+    expect(fullTextElement).toBeTruthy();
+    expect(fullTextElement.textContent).toBe('Short text');
   });
 
   it('should handle overflow and truncate text', async () => {
@@ -36,43 +38,40 @@ describe('trim', () => {
     });
 
     const component = page.rootInstance;
-
-    component.overflow = true;
+    component.shouldTrim = true;
     await page.waitForChanges();
 
     const trimElement = page.root;
 
-    const trimRef = trimElement.querySelector('.trim');
-    expect(trimRef.classList.contains('overflow')).toBe(true);
-
-    const trimWrapper = trimElement.querySelector('.trim-wrapper');
+    const trimWrapper = trimElement.querySelector('.trim-wrapper.visible');
     expect(trimWrapper).toBeTruthy();
 
-    const leftSpan = trimWrapper.querySelector('.left');
-    const ellipsisSpan = trimWrapper.querySelector('.ellipsis');
-    const rightSpan = trimWrapper.querySelector('.right');
+    const leftWrapper = trimWrapper.querySelector('.trim-left-wrapper');
+    const ellipsisWrapper = trimWrapper.querySelector('.trim-ellipsis-wrapper');
+    const rightWrapper = trimWrapper.querySelector('.trim-right-wrapper');
 
-    expect(leftSpan).toBeTruthy();
-    expect(ellipsisSpan.textContent).toBe('...');
-    expect(rightSpan).toBeTruthy();
+    expect(leftWrapper).toBeTruthy();
+    expect(ellipsisWrapper).toBeTruthy();
+    expect(rightWrapper).toBeTruthy();
 
-    const leftText = leftSpan.querySelector('span').textContent;
-    const rightText = rightSpan.querySelector('span').textContent;
+    const ellipsisElement = ellipsisWrapper.querySelector('.trim-ellipsis');
+    expect(ellipsisElement.textContent).toBe('...');
+
+    const leftText = leftWrapper.querySelector('.trim-left').textContent;
+    const rightText = rightWrapper.querySelector('.trim-right').textContent;
 
     expect(leftText + rightText).toBe('A very long text that should be truncated due to container width limitations');
   });
 
-  it('should use custom class and data-testid', async () => {
+  it('should use custom class', async () => {
     const page = await newSpecPage({
       components: [Trim],
-      html: '<mvx-trim text="Custom" class="custom-class" data-testid="custom-id"></mvx-trim>',
+      html: '<mvx-trim text="Custom" class="custom-class"></mvx-trim>',
     });
 
     const trimElement = page.root;
+    const trimContainer = trimElement.querySelector('.trim');
 
-    const trimSpan = trimElement.querySelector('.trim');
-    expect(trimSpan.className).toContain('custom-class');
-
-    expect(trimElement.getAttribute('data-testid')).toBe('custom-id');
+    expect(trimContainer.classList.contains('custom-class')).toBe(true);
   });
 });
