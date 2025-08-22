@@ -47,10 +47,12 @@ const storySettings: Meta<DataWithExplorerLink> = {
 
 export const Default: StoryObj<DataWithExplorerLink> = {
   render: () => (
-    <mvx-data-with-explorer-link
-      data="erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3zpz3hypefsdd8ssycr6th"
-      explorerLink={`${DEVNET_EXPLORER_URL}/accounts/erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3zpz3hypefsdd8ssycr6th`}
-    />
+    <div class={styles.dataWithExplorerLinkStoriesWrapper}>
+      <mvx-data-with-explorer-link
+        data="erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3zpz3hypefsdd8ssycr6th"
+        explorerLink={`${DEVNET_EXPLORER_URL}/accounts/erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3zpz3hypefsdd8ssycr6th`}
+      />
+    </div>
   ),
 };
 
