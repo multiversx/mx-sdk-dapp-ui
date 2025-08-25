@@ -44,7 +44,6 @@ describe('CopyButton', () => {
 
     const copyButton = page.root;
     const component = page.rootInstance as CopyButton;
-
     await component.handleClick(new MouseEvent('click') as any);
     await page.waitForChanges();
 
@@ -67,7 +66,6 @@ describe('CopyButton', () => {
 
     const copyButton = page.root;
     const component = page.rootInstance as CopyButton;
-
     await component.handleClick(new MouseEvent('click') as any);
     await page.waitForChanges();
 
