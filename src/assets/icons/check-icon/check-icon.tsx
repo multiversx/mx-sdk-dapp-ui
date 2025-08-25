@@ -1,10 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
 
-// prettier-ignore
-const styles = {
-  checkIcon: 'check-icon mvx:w-auto mvx:h-full mvx:text-primary mvx:fill-current',
-} satisfies Record<string, string>;
-
 @Component({
   shadow: false,
   styleUrl: 'check-icon.scss',

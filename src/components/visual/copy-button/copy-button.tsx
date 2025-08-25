@@ -2,12 +2,6 @@ import { Component, h, Prop, State } from '@stencil/core';
 import classNames from 'classnames';
 import { copyToClipboard } from 'utils/copyToClipboard';
 
-// prettier-ignore
-const styles = {
-  copyButton: 'copy-button mvx:flex',
-  copyButtonIcon: 'copy-button-icon mvx:flex mvx:cursor-pointer mvx:justify-center mvx:transition-opacity mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80',
-} satisfies Record<string, string>;
-
 @Component({
   tag: 'mvx-copy-button',
   styleUrl: 'copy-button.scss',
