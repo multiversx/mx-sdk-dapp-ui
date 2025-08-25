@@ -122,10 +122,6 @@ export namespace Components {
           * @default true
          */
         "showExplorerButton"?: boolean;
-        /**
-          * @default false
-         */
-        "withTooltip"?: boolean;
     }
     interface MvxDefaultTransactionIconLarge {
         "class"?: string;
@@ -490,9 +486,6 @@ export namespace Components {
     }
     interface MvxTrim {
         "class"?: string;
-        /**
-          * @default DataTestIdsEnum.trim
-         */
         "dataTestId"?: string;
         "text": string;
     }
@@ -1591,10 +1584,6 @@ declare namespace LocalJSX {
           * @default true
          */
         "showExplorerButton"?: boolean;
-        /**
-          * @default false
-         */
-        "withTooltip"?: boolean;
     }
     interface MvxDefaultTransactionIconLarge {
         "class"?: string;
@@ -1965,9 +1954,6 @@ declare namespace LocalJSX {
     }
     interface MvxTrim {
         "class"?: string;
-        /**
-          * @default DataTestIdsEnum.trim
-         */
         "dataTestId"?: string;
         "text"?: string;
     }
