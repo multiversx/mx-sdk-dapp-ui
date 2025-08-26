@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Updated styles on toast](https://github.com/multiversx/mx-sdk-dapp-ui/pull/213)
+
 ## [[0.0.27](https://github.com/multiversx/mx-sdk-dapp-ui/pull/209)] - 2025-08-26
 
 - [Added the "DataWithExplorerLink" component and enhanced the "Trim" component](https://github.com/multiversx/mx-sdk-dapp-ui/pull/208)
