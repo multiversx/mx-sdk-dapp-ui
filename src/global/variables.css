@@ -129,8 +129,8 @@
   --mvx-select-option-color: var(--mvx-black);
   --mvx-select-option-bg: var(--mvx-neutral-400);
   --mvx-select-option-bg-mobile: var(--mvx-neutral-400);
-  --mvx-success-color: var(--mvx-white);
-  --mvx-success-bg-color: var(--mvx-green-650);
+  --mvx-success-color: var(--mvx-green-650);
+  --mvx-success-bg-color: var(--mvx-green-850);
   --mvx-pending-color: var(--mvx-yellow-400);
   --mvx-pending-bg-color: var(--mvx-brown-900);
   --mvx-error-color: var(--mvx-red-400);
