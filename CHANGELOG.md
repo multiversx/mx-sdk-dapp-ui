@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.27](https://github.com/multiversx/mx-sdk-dapp-ui/pull/209)] - 2025-08-26
+
+- [Added the "DataWithExplorerLink" component and enhanced the "Trim" component](https://github.com/multiversx/mx-sdk-dapp-ui/pull/208)
+- [Fixed issue with consecutive custom toasts](https://github.com/multiversx/mx-sdk-dapp-ui/pull/207)
+- [Updated the CopyButton and ExplorerLink to be more flexible, adding Storybook stories](https://github.com/multiversx/mx-sdk-dapp-ui/pull/206)
+- [Added slider to transactions table](https://github.com/multiversx/mx-sdk-dapp-ui/pull/205)
+
 ## [[0.0.26](https://github.com/multiversx/mx-sdk-dapp-ui/pull/204)] - 2025-08-15
 
 - [Updated transactions table styles](https://github.com/multiversx/mx-sdk-dapp-ui/pull/203)

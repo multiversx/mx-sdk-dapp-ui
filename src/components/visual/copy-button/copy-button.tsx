@@ -2,14 +2,9 @@ import { Component, h, Prop, State } from '@stencil/core';
 import classNames from 'classnames';
 import { copyToClipboard } from 'utils/copyToClipboard';
 
-// prettier-ignore
-const styles = {
-  copyButton: 'copy-button mvx:flex',
-  copyButtonIcon: 'copy-button-icon mvx:flex mvx:cursor-pointer mvx:justify-center mvx:transition-opacity mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80',
-} satisfies Record<string, string>;
-
 @Component({
   tag: 'mvx-copy-button',
+  styleUrl: 'copy-button.scss',
   shadow: false,
 })
 export class CopyButton {
@@ -49,16 +44,22 @@ export class CopyButton {
       <div
         onClick={this.handleClick.bind(this)}
         class={{
-          [styles.copyButton]: true,
+          'copy-button': true,
           [this.class]: Boolean(this.class),
         }}
       >
         {this.isSuccess ? (
-          <mvx-check-icon class={this.iconClass} />
+          <mvx-check-icon
+            class={classNames({
+              'copy-button-icon': true,
+              'check': true,
+              [this.iconClass]: Boolean(this.iconClass),
+            })}
+          />
         ) : (
           <mvx-copy-icon
             class={classNames({
-              [styles.copyButtonIcon]: true,
+              'copy-button-icon': true,
               [this.iconClass]: Boolean(this.iconClass),
             })}
           />

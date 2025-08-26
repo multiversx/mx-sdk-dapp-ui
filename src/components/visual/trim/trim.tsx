@@ -1,33 +1,40 @@
-import { Component, Element, h, Prop, State } from '@stencil/core';
-import classNames from 'classnames';
+import { Component, h, Prop, State } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { ELLIPSIS } from 'constants/htmlStrings';
+import { safeWindow } from 'constants/window.constants';
 
 @Component({
   tag: 'mvx-trim',
   styleUrl: 'trim.scss',
+  shadow: false,
 })
 export class Trim {
-  @Element() el: HTMLElement;
+  @State() shouldTrim: boolean = false;
+  @State() trimFontSize: string = '1rem';
 
-  @Prop() text: string;
+  @Prop() dataTestId?: string = DataTestIdsEnum.trim;
   @Prop() class?: string;
-  @Prop() dataTestId?: string;
+  @Prop() text: string;
 
-  @State() overflow: boolean = false;
-
-  private trimRef: HTMLSpanElement;
-  private hiddenTextRef: HTMLSpanElement;
+  private fullWidthUntrimmedElementReference: HTMLDivElement;
+  private trimElementReference: HTMLDivElement;
   private resizeObserver: ResizeObserver;
 
   componentDidLoad() {
     this.setupResizeObserver();
-    // Initial check after DOM elements exist
-    requestAnimationFrame(() => this.checkOverflow());
+    requestAnimationFrame(this.checkOverflow);
   }
 
   disconnectedCallback() {
-    this.resizeObserver?.disconnect();
+    this.resizeObserver.disconnect();
+  }
+
+  private handleTrimElementReference(element: HTMLDivElement) {
+    this.trimElementReference = element;
+  }
+
+  private handleFullWidthTrimElementReference(element: HTMLDivElement) {
+    this.fullWidthUntrimmedElementReference = element;
   }
 
   private setupResizeObserver() {
@@ -35,57 +42,65 @@ export class Trim {
       this.checkOverflow();
     });
 
-    if (this.trimRef) {
-      this.resizeObserver.observe(this.trimRef);
+    if (this.trimElementReference) {
+      this.resizeObserver.observe(this.trimElementReference);
     }
   }
 
   private checkOverflow = () => {
-    if (this.hiddenTextRef && this.trimRef) {
-      const hiddenWidth = this.hiddenTextRef.offsetWidth;
-      const containerWidth = this.trimRef.offsetWidth;
-      // Batch state updates to minimize re-renders
-      if (this.overflow !== hiddenWidth > containerWidth) {
-        this.overflow = hiddenWidth > containerWidth;
-      }
+    if (!this.fullWidthUntrimmedElementReference || !this.trimElementReference) {
+      return;
+    }
+
+    const hiddenFullWidthElementWidth = this.fullWidthUntrimmedElementReference.offsetWidth;
+    const trimmedElementWidth = this.trimElementReference.offsetWidth;
+    const isTrimElementOverflowing = hiddenFullWidthElementWidth > trimmedElementWidth;
+
+    if (safeWindow) {
+      this.trimFontSize = safeWindow.getComputedStyle(this.trimElementReference).fontSize;
+    }
+
+    if (this.shouldTrim !== isTrimElementOverflowing) {
+      this.shouldTrim = isTrimElementOverflowing;
     }
   };
 
   render() {
-    const trimmedText = this.getTrimmedText();
+    const middleTextIndex = Math.floor(this.text.length / 2);
+    const leftHandText = this.text.slice(0, middleTextIndex);
+    const rightHandText = this.text.slice(middleTextIndex);
 
     return (
-      <span
-        ref={el => (this.trimRef = el)}
-        class={classNames('trim', this.class, { overflow: this.overflow })}
-        data-testid={this.dataTestId ?? DataTestIdsEnum.trim}
+      <div
+        data-testid={this.dataTestId}
+        ref={this.handleTrimElementReference.bind(this)}
+        class={{ trim: true, [this.class]: Boolean(this.class) }}
       >
-        <span ref={el => (this.hiddenTextRef = el)} class="hidden-text-ref">
+        <div
+          ref={this.handleFullWidthTrimElementReference.bind(this)}
+          class={{ 'trim-full': true, 'visible': !this.shouldTrim }}
+        >
           {this.text}
-        </span>
+        </div>
 
-        {this.overflow ? (
-          <div class="trim-wrapper">
-            <span class="left">
-              <span>{trimmedText.left}</span>
-            </span>
-            <span class="ellipsis">{ELLIPSIS}</span>
-            <span class="right">
-              <span>{trimmedText.right}</span>
-            </span>
+        <div class={{ 'trim-wrapper': true, 'visible': this.shouldTrim }}>
+          <div class="trim-left-wrapper">
+            <div class="trim-left" style={{ fontSize: this.trimFontSize }}>
+              {leftHandText}
+            </div>
           </div>
-        ) : (
-          <span>{this.text}</span>
-        )}
-      </span>
-    );
-  }
 
-  private getTrimmedText() {
-    const middleIndex = Math.floor(this.text.length / 2);
-    return {
-      left: this.text.slice(0, middleIndex),
-      right: this.text.slice(middleIndex),
-    };
+          <div class="trim-ellipsis-wrapper">
+            <div class="trim-ellipsis">{ELLIPSIS}</div>
+          </div>
+
+          <div class="trim-right-wrapper">
+            <div class="trim-right" style={{ fontSize: this.trimFontSize }}>
+              {rightHandText}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 }

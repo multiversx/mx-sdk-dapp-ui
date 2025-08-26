@@ -32,9 +32,15 @@ export class CustomToast {
   }
 
   private initializeToast(container: HTMLElement) {
-    if (!container || container.hasChildNodes()) {
+    if (!container) {
       return;
     }
+
+    // Clear previous toast element
+    if (container.hasChildNodes()) {
+      container.innerHTML = '';
+    }
+
     const customElement = this.toast.instantiateToastElement();
     if (!customElement) {
       return;

@@ -1,76 +1,65 @@
 .trim {
-  display: flex;
-  max-width: 100%;
-  overflow: hidden;
-  position: relative;
-  white-space: nowrap;
+  @apply mvx:flex mvx:relative mvx:max-w-full mvx:overflow-hidden mvx:whitespace-nowrap;
 
-  &.overflow {
-    .ellipsis {
-      display: block;
+  .trim-full {
+    @apply mvx:text-transparent mvx:absolute mvx:leading-5;
+
+    &.visible {
+      @apply mvx:text-inherit mvx:relative;
     }
   }
 
-  .left {
-    flex-shrink: 1;
-    font-size: 1px;
+  .trim-wrapper {
+    @apply mvx:hidden;
 
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: left;
-  }
-
-  .right {
-    flex-shrink: 1;
-    font-size: 1px;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    direction: rtl;
-    text-align: right;
-  }
-
-  .left span,
-  .right span {
-    font-size: 0.875rem;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  .ellipsis {
-    flex-shrink: 0;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  /* IE fix */
-  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-    .right {
-      text-overflow: clip;
+    &.visible {
+      @apply mvx:overflow-hidden mvx:max-w-full mvx:flex;
     }
-  }
 
-  /* SAFARI fix */
-  @supports (-webkit-hyphens: none) {
-    .right,
-    .left {
-      letter-spacing: -0.001em;
-    }
-    .right {
-      text-overflow: clip;
-    }
-  }
+    .trim-ellipsis-wrapper {
+      @apply mvx:block mvx:flex-shrink-0 mvx:pointer-events-none mvx:select-none;
 
-  .hidden-text-ref {
-    position: absolute;
-    display: block;
-    color: transparent;
+      .trim-ellipsis {
+        @apply mvx:block mvx:leading-5;
+      }
+    }
+
+    .trim-left-wrapper,
+    .trim-right-wrapper {
+      @apply mvx:flex-shrink mvx:text-ellipsis mvx:overflow-hidden;
+      font-size: 1px;
+
+      .trim-left,
+      .trim-right {
+        @apply mvx:select-none mvx:pointer-events-none mvx:inline mvx:text-base mvx:leading-5;
+
+        @supports (-webkit-hyphens: none) {
+          letter-spacing: -0.001em;
+        }
+      }
+    }
+
+    .trim-left-wrapper {
+      @apply mvx:text-left;
+    }
+
+    .trim-right-wrapper {
+      @apply mvx:whitespace-nowrap mvx:text-right;
+      direction: rtl;
+
+      .trim-right {
+        @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+          @apply mvx:text-clip;
+        }
+
+        @supports (-webkit-hyphens: none) {
+          @apply mvx:text-clip;
+        }
+      }
+    }
   }
 }
 
-.trim-wrapper {
-  display: flex;
-  max-width: 100%;
-  overflow: hidden;
+.trim-stories-wrapper {
+  color: var(--mvx-text-color-primary);
 }
