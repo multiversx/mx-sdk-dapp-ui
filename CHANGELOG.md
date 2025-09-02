@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Enhanced toast styles for long identifier case](https://github.com/multiversx/mx-sdk-dapp-ui/pull/214)
 - [Updated styles on toast](https://github.com/multiversx/mx-sdk-dapp-ui/pull/213)
 
 ## [[0.0.27](https://github.com/multiversx/mx-sdk-dapp-ui/pull/209)] - 2025-08-26

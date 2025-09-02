@@ -31,6 +31,7 @@ export class TransactionToastContent {
     const amount = transaction && getAmountParts(transaction.amount);
     const showPrimaryIcon =
       transaction.asset == null || transaction.asset.imageUrl || transaction.asset.icon || transaction.asset.text;
+    const showTooltip = showAmount && amount.label.length > 10;
 
     return (
       <div
@@ -57,14 +58,23 @@ export class TransactionToastContent {
           )}
           <div class="transaction-toast-details">
             <div class="transaction-toast-details-header">
-              <h4
-                class={{
-                  'transaction-toast-title': true,
-                  'transaction-toast-title-short': Boolean(showAmount),
-                }}
-              >
-                {title}
-              </h4>
+              <div class="transaction-toast-header-left">
+                <h4
+                  class={{
+                    'transaction-toast-title': true,
+                    'transaction-toast-title-short': Boolean(showAmount),
+                    'truncate': showTooltip,
+                  }}
+                >
+                  {title}
+                </h4>
+
+                {showTooltip && (
+                  <mvx-tooltip position="bottom" trigger={<mvx-circle-info-icon />}>
+                    {amount.label}
+                  </mvx-tooltip>
+                )}
+              </div>
               {showAmount && (
                 <mvx-format-amount
                   class={classNames('transaction-toast-amount', {
