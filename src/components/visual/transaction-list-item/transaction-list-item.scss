@@ -44,9 +44,17 @@
   @apply mvx:flex mvx:items-center mvx:justify-between;
 }
 
+.transaction-header-left {
+  @apply mvx:flex mvx:gap-1 mvx:items-center mvx:justify-center mvx:fill-link;
+}
+
 .transaction-title {
   @apply mvx:text-xs mvx:font-medium mvx:leading-6 mvx:tracking-tight mvx:m-0;
   color: var(--mvx-text-color-tertiary);
+
+  &.truncate {
+  @apply mvx:truncate mvx:max-w-30 mvx:shrink-0;
+  }
 
   @media (min-width: 375px) {
     @apply mvx:text-sm;
@@ -124,7 +132,7 @@
   }
 
   .transaction-amount-label {
-    @apply mvx:opacity-70 mvx:tracking-tight;
+    @apply mvx:opacity-70 mvx:tracking-tight mvx:truncate mvx:max-w-30 mvx:shrink-0;
   }
 }
 
