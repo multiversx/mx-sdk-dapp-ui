@@ -31,7 +31,11 @@
     "url": "https://github.com/multiversx/mx-sdk-dapp-ui.git"
   },
   "files": [
-    "dist/"
+    "dist/",
+    "!**/*.stories.*",
+    "!**/*.test.*",
+    "!**/__mocks__/**",
+    "!**/__tests__/**"
   ],
   "scripts": {
     "test": "stencil test --spec --e2e",
