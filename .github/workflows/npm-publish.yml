@@ -24,9 +24,11 @@ jobs:
           node-version: 22
           registry-url: https://registry.npmjs.org/
       - name: Install Dependencies
-        run: yarn install
+        run: pnpm install
+      - name: Clean dist
+        run: rm -rf dist
       - name: Build
-        run: yarn run build
+        run: pnpm run build
 
       - name: Get package info
         id: package
