@@ -32,6 +32,7 @@
   },
   "files": [
     "dist/",
+    "package.json",
     "!**/*.stories.*",
     "!**/*.test.*",
     "!**/__mocks__/**",
