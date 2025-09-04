@@ -30,7 +30,7 @@ jobs:
       - name: Clean dist
         run: rm -rf dist
       - name: Build
-        run: pnpm run build
+        run: pnpm build
 
       - name: Get package info
         id: package
