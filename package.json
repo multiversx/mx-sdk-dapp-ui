@@ -31,13 +31,7 @@
     "url": "https://github.com/multiversx/mx-sdk-dapp-ui.git"
   },
   "files": [
-    "dist/web-components/mvx-*.js",
-    "dist/web-components/p-*.js",
-    "dist/web-components/index.js",
-    "dist/web-components/index.d.ts",
-    "dist/react/**/*",
-    "dist/assets/**/*",
-    "dist/types/**/*",
+    "dist/*",
     "!**/*.stories.*",
     "!**/*.test.*",
     "!**/__mocks__/**",
