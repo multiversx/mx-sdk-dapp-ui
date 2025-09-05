@@ -26,7 +26,7 @@ export class Trim {
   }
 
   disconnectedCallback() {
-    this.resizeObserver.disconnect();
+    this.resizeObserver?.disconnect?.();
   }
 
   private handleTrimElementReference(element: HTMLDivElement) {
