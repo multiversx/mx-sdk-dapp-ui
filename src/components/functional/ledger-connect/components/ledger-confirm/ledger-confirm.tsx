@@ -1,5 +1,4 @@
 import { Component, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { IConfirmScreenData } from '../../ledger-connect.types';
@@ -10,10 +9,6 @@ interface LedgerConfirmationItemType {
   highlighted?: boolean;
   explorerLink?: string;
 }
-
-const ledgerConfirmClasses: Record<string, string> = {
-  button: 'mvx:whitespace-nowrap mvx:rounded-lg!',
-};
 
 @Component({
   tag: 'mvx-ledger-confirm',
@@ -82,17 +77,11 @@ export class LedgerConfirm {
         <div class="ledger-confirm-footer">
           <mvx-triangular-warning-icon class="ledger-confirm-footer-icon" />
           <div class="ledger-confirm-footer-description">
-            If the address does not match, close this page and contact support.
+            <span>If the address above does not match the one on your device, close this page and </span>
+            <span class="ledger-contact-support" onClick={this.handleSupportButtonClick.bind(this)}>
+              contact support.
+            </span>
           </div>
-
-          <mvx-button
-            size="small"
-            variant="neutral"
-            onButtonClick={this.handleSupportButtonClick.bind(this)}
-            class={classNames('ledger-confirm-footer-button', ledgerConfirmClasses.button)}
-          >
-            Contact Support
-          </mvx-button>
         </div>
       </div>
     );
