@@ -1,21 +1,32 @@
-import type { Icon, IconName } from '@fortawesome/fontawesome-svg-core';
-import { icon, library } from '@fortawesome/fontawesome-svg-core';
-import * as solidIcons from '@fortawesome/free-solid-svg-icons';
+import type { Icon, IconDefinition, IconName } from '@fortawesome/fontawesome-svg-core';
+import { icon } from '@fortawesome/fontawesome-svg-core';
 
-export function getIconHtmlFromIconName(iconName: IconName | string): string | null {
-  let faIcon: Icon;
+const iconCache = new Map<string, IconDefinition>();
+
+export async function getIconHtmlFromIconName(iconName: IconName | string): Promise<string | null> {
   const usedIconName = iconName.includes('fa') ? iconName : `fa${capitalize(iconName)}`;
-  const dynamicIcon = solidIcons[usedIconName];
 
-  if (!dynamicIcon) {
-    console.error(`Icon "${iconName}" not found"`);
+  try {
+    let iconDefinition: IconDefinition | undefined = iconCache.get(usedIconName);
+    if (!iconDefinition) {
+      const module = await import(`@fortawesome/free-solid-svg-icons/${usedIconName}`);
+      iconDefinition = module?.[usedIconName] as IconDefinition | undefined;
+      if (iconDefinition) {
+        iconCache.set(usedIconName, iconDefinition);
+      }
+    }
+
+    if (!iconDefinition) {
+      console.error(`Icon "${iconName}" not found"`);
+      return null;
+    }
+
+    const faIcon: Icon = icon(iconDefinition);
+    return faIcon ? faIcon.html[0] : null;
+  } catch (err) {
+    console.error(`Failed to load icon "${iconName}":`, err);
     return null;
   }
-
-  library.add(dynamicIcon);
-  faIcon = icon(dynamicIcon);
-
-  return faIcon ? faIcon.html[0] : null;
 }
 
 function capitalize(iconName: string): string {
