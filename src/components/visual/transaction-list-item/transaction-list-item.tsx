@@ -24,7 +24,7 @@ export class TransactionListItem {
         <div class="transaction-item">
           <div
             class={classNames('transaction-icon', {
-              'transaction-icon-failed': this.transaction.status === 'fail' || this.transaction.status === 'invalid',
+              'transaction-icon-failed': ['fail', 'invalid'].includes(this.transaction.status),
             })}
           >
             <mvx-transaction-asset-icon transaction={this.transaction} iconSize={IconSizeEnumType.large} />

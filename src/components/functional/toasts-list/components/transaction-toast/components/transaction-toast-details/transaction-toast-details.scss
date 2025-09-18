@@ -15,7 +15,7 @@
     color: var(--mvx-text-color-tertiary);
   }
 
-  &.rotate-up {
+  &.rotated {
     @apply mvx:rotate-90;
   }
 }

@@ -1,4 +1,3 @@
-import { faLayerGroup } from '@fortawesome/free-solid-svg-icons';
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import type { TransactionValueType } from 'components/controlled/transactions-table/transactions-table.type';
@@ -67,9 +66,7 @@ export class TransactionValue {
           </mvx-explorer-link>
         )}
 
-        {this.value.titleText && (
-          <mvx-fa-icon icon={faLayerGroup} class="transaction-value-icon" title={this.value.titleText} />
-        )}
+        {this.value.titleText && <mvx-layers-icon class="transaction-value-icon" title={this.value.titleText} />}
       </div>
     );
   }

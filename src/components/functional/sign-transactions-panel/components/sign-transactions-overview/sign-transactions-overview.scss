@@ -151,8 +151,16 @@
     @apply mvx:flex mvx:flex-col mvx:items-center mvx:gap-px;
 
     .sign-transactions-direction-icon-arrow {
-      @apply mvx:flex mvx:items-center mvx:justify-center mvx:relative mvx:w-2.5 mvx:shrink-0 mvx:basis-auto mvx:h-auto mvx:-my-0.5;
+      @apply mvx:flex mvx:items-center mvx:justify-center mvx:relative mvx:shrink-0 mvx:basis-auto mvx:h-auto mvx:-my-0.5;
       color: var(--mvx-text-color-secondary);
+
+      &.up {
+        @apply mvx:w-3;
+      }
+
+      &.down {
+        @apply mvx:w-2.5;
+      }
     }
 
     .sign-transactions-direction-icon-dot {

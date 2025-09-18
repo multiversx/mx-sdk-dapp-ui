@@ -1,5 +1,8 @@
 .transaction-account {
-  align-items: center;
-  display: flex;
-  gap: 0.5rem;
+  @apply mvx:flex mvx:items-center mvx:gap-2;
+
+  .transaction-account-lock,
+  .transaction-account-contract {
+    @apply mvx:w-4 mvx:h-4;
+  }
 }

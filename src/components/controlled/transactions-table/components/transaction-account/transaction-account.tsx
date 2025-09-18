@@ -1,5 +1,3 @@
-import { faFileAlt } from '@fortawesome/free-solid-svg-icons/faFileAlt';
-import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
@@ -28,10 +26,10 @@ export class TransactionAccount {
     return (
       <div class={classNames(this.class, 'transaction-account')} data-testid={this.dataTestId}>
         {this.showLockedAccounts && this.account.isTokenLocked && (
-          <mvx-fa-icon icon={faLock} description={this.account.name} />
+          <mvx-lock-icon class="transaction-account-lock" title={this.account.name} />
         )}
 
-        {this.account.isContract && <mvx-fa-icon icon={faFileAlt} description="Smart Contract" />}
+        {this.account.isContract && <mvx-contract-icon class="transaction-account-contract" title="Smart Contract" />}
         {this.account.showLink ? (
           <mvx-explorer-link
             link={this.account.link}

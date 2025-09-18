@@ -103,6 +103,8 @@ export namespace Components {
     interface MvxCloseIcon {
         "class"?: string;
     }
+    interface MvxContractIcon {
+    }
     interface MvxCopyButton {
         "class"?: string;
         "iconClass"?: string;
@@ -184,6 +186,8 @@ export namespace Components {
     interface MvxGenericToast {
         "toast": CustomToastType;
     }
+    interface MvxLayersIcon {
+    }
     interface MvxLedgerConfirm {
         "confirmScreenData": IConfirmScreenData;
     }
@@ -206,6 +210,8 @@ export namespace Components {
     }
     interface MvxLedgerProviderIcon {
         "class"?: string;
+    }
+    interface MvxLockIcon {
     }
     interface MvxMagnifyingGlassIcon {
         "class"?: string;
@@ -762,6 +768,12 @@ declare global {
         prototype: HTMLMvxCloseIconElement;
         new (): HTMLMvxCloseIconElement;
     };
+    interface HTMLMvxContractIconElement extends Components.MvxContractIcon, HTMLStencilElement {
+    }
+    var HTMLMvxContractIconElement: {
+        prototype: HTMLMvxContractIconElement;
+        new (): HTMLMvxContractIconElement;
+    };
     interface HTMLMvxCopyButtonElement extends Components.MvxCopyButton, HTMLStencilElement {
     }
     var HTMLMvxCopyButtonElement: {
@@ -862,6 +874,12 @@ declare global {
         prototype: HTMLMvxGenericToastElement;
         new (): HTMLMvxGenericToastElement;
     };
+    interface HTMLMvxLayersIconElement extends Components.MvxLayersIcon, HTMLStencilElement {
+    }
+    var HTMLMvxLayersIconElement: {
+        prototype: HTMLMvxLayersIconElement;
+        new (): HTMLMvxLayersIconElement;
+    };
     interface HTMLMvxLedgerConfirmElement extends Components.MvxLedgerConfirm, HTMLStencilElement {
     }
     var HTMLMvxLedgerConfirmElement: {
@@ -902,6 +920,12 @@ declare global {
     var HTMLMvxLedgerProviderIconElement: {
         prototype: HTMLMvxLedgerProviderIconElement;
         new (): HTMLMvxLedgerProviderIconElement;
+    };
+    interface HTMLMvxLockIconElement extends Components.MvxLockIcon, HTMLStencilElement {
+    }
+    var HTMLMvxLockIconElement: {
+        prototype: HTMLMvxLockIconElement;
+        new (): HTMLMvxLockIconElement;
     };
     interface HTMLMvxMagnifyingGlassIconElement extends Components.MvxMagnifyingGlassIcon, HTMLStencilElement {
     }
@@ -1445,6 +1469,7 @@ declare global {
         "mvx-circle-exclamation-icon": HTMLMvxCircleExclamationIconElement;
         "mvx-circle-info-icon": HTMLMvxCircleInfoIconElement;
         "mvx-close-icon": HTMLMvxCloseIconElement;
+        "mvx-contract-icon": HTMLMvxContractIconElement;
         "mvx-copy-button": HTMLMvxCopyButtonElement;
         "mvx-copy-icon": HTMLMvxCopyIconElement;
         "mvx-custom-toast": HTMLMvxCustomToastElement;
@@ -1458,11 +1483,13 @@ declare global {
         "mvx-firefox-extension-provider-icon": HTMLMvxFirefoxExtensionProviderIconElement;
         "mvx-format-amount": HTMLMvxFormatAmountElement;
         "mvx-generic-toast": HTMLMvxGenericToastElement;
+        "mvx-layers-icon": HTMLMvxLayersIconElement;
         "mvx-ledger-confirm": HTMLMvxLedgerConfirmElement;
         "mvx-ledger-connect": HTMLMvxLedgerConnectElement;
         "mvx-ledger-icon": HTMLMvxLedgerIconElement;
         "mvx-ledger-intro": HTMLMvxLedgerIntroElement;
         "mvx-ledger-provider-icon": HTMLMvxLedgerProviderIconElement;
+        "mvx-lock-icon": HTMLMvxLockIconElement;
         "mvx-magnifying-glass-icon": HTMLMvxMagnifyingGlassIconElement;
         "mvx-metamask-provider-icon": HTMLMvxMetamaskProviderIconElement;
         "mvx-multiversx-logo-icon": HTMLMvxMultiversxLogoIconElement;
@@ -1600,6 +1627,8 @@ declare namespace LocalJSX {
     interface MvxCloseIcon {
         "class"?: string;
     }
+    interface MvxContractIcon {
+    }
     interface MvxCopyButton {
         "class"?: string;
         "iconClass"?: string;
@@ -1683,6 +1712,8 @@ declare namespace LocalJSX {
         "onDeleteToast"?: (event: MvxGenericToastCustomEvent<string>) => void;
         "toast"?: CustomToastType;
     }
+    interface MvxLayersIcon {
+    }
     interface MvxLedgerConfirm {
         "confirmScreenData"?: IConfirmScreenData;
     }
@@ -1705,6 +1736,8 @@ declare namespace LocalJSX {
     }
     interface MvxLedgerProviderIcon {
         "class"?: string;
+    }
+    interface MvxLockIcon {
     }
     interface MvxMagnifyingGlassIcon {
         "class"?: string;
@@ -2097,6 +2130,7 @@ declare namespace LocalJSX {
         "mvx-circle-exclamation-icon": MvxCircleExclamationIcon;
         "mvx-circle-info-icon": MvxCircleInfoIcon;
         "mvx-close-icon": MvxCloseIcon;
+        "mvx-contract-icon": MvxContractIcon;
         "mvx-copy-button": MvxCopyButton;
         "mvx-copy-icon": MvxCopyIcon;
         "mvx-custom-toast": MvxCustomToast;
@@ -2110,11 +2144,13 @@ declare namespace LocalJSX {
         "mvx-firefox-extension-provider-icon": MvxFirefoxExtensionProviderIcon;
         "mvx-format-amount": MvxFormatAmount;
         "mvx-generic-toast": MvxGenericToast;
+        "mvx-layers-icon": MvxLayersIcon;
         "mvx-ledger-confirm": MvxLedgerConfirm;
         "mvx-ledger-connect": MvxLedgerConnect;
         "mvx-ledger-icon": MvxLedgerIcon;
         "mvx-ledger-intro": MvxLedgerIntro;
         "mvx-ledger-provider-icon": MvxLedgerProviderIcon;
+        "mvx-lock-icon": MvxLockIcon;
         "mvx-magnifying-glass-icon": MvxMagnifyingGlassIcon;
         "mvx-metamask-provider-icon": MvxMetamaskProviderIcon;
         "mvx-multiversx-logo-icon": MvxMultiversxLogoIcon;
@@ -2201,6 +2237,7 @@ declare module "@stencil/core" {
             "mvx-circle-exclamation-icon": LocalJSX.MvxCircleExclamationIcon & JSXBase.HTMLAttributes<HTMLMvxCircleExclamationIconElement>;
             "mvx-circle-info-icon": LocalJSX.MvxCircleInfoIcon & JSXBase.HTMLAttributes<HTMLMvxCircleInfoIconElement>;
             "mvx-close-icon": LocalJSX.MvxCloseIcon & JSXBase.HTMLAttributes<HTMLMvxCloseIconElement>;
+            "mvx-contract-icon": LocalJSX.MvxContractIcon & JSXBase.HTMLAttributes<HTMLMvxContractIconElement>;
             "mvx-copy-button": LocalJSX.MvxCopyButton & JSXBase.HTMLAttributes<HTMLMvxCopyButtonElement>;
             "mvx-copy-icon": LocalJSX.MvxCopyIcon & JSXBase.HTMLAttributes<HTMLMvxCopyIconElement>;
             "mvx-custom-toast": LocalJSX.MvxCustomToast & JSXBase.HTMLAttributes<HTMLMvxCustomToastElement>;
@@ -2214,11 +2251,13 @@ declare module "@stencil/core" {
             "mvx-firefox-extension-provider-icon": LocalJSX.MvxFirefoxExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxFirefoxExtensionProviderIconElement>;
             "mvx-format-amount": LocalJSX.MvxFormatAmount & JSXBase.HTMLAttributes<HTMLMvxFormatAmountElement>;
             "mvx-generic-toast": LocalJSX.MvxGenericToast & JSXBase.HTMLAttributes<HTMLMvxGenericToastElement>;
+            "mvx-layers-icon": LocalJSX.MvxLayersIcon & JSXBase.HTMLAttributes<HTMLMvxLayersIconElement>;
             "mvx-ledger-confirm": LocalJSX.MvxLedgerConfirm & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmElement>;
             "mvx-ledger-connect": LocalJSX.MvxLedgerConnect & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectElement>;
             "mvx-ledger-icon": LocalJSX.MvxLedgerIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerIconElement>;
             "mvx-ledger-intro": LocalJSX.MvxLedgerIntro & JSXBase.HTMLAttributes<HTMLMvxLedgerIntroElement>;
             "mvx-ledger-provider-icon": LocalJSX.MvxLedgerProviderIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerProviderIconElement>;
+            "mvx-lock-icon": LocalJSX.MvxLockIcon & JSXBase.HTMLAttributes<HTMLMvxLockIconElement>;
             "mvx-magnifying-glass-icon": LocalJSX.MvxMagnifyingGlassIcon & JSXBase.HTMLAttributes<HTMLMvxMagnifyingGlassIconElement>;
             "mvx-metamask-provider-icon": LocalJSX.MvxMetamaskProviderIcon & JSXBase.HTMLAttributes<HTMLMvxMetamaskProviderIconElement>;
             "mvx-multiversx-logo-icon": LocalJSX.MvxMultiversxLogoIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxLogoIconElement>;
