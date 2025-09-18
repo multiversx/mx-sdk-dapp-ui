@@ -43,10 +43,10 @@ export class TransactionToastContent {
       >
         <div class="transaction-toast-content">
           {!showPrimaryIcon && this.toastDataState.icon ? (
-            <fa-icon
+            <mvx-fa-icon
               icon={this.toastDataState.icon}
               class={`transaction-toast-icon ${this.toastDataState.iconClassName ?? ''}`}
-            ></fa-icon>
+            ></mvx-fa-icon>
           ) : (
             <div
               class={classNames('transaction-toast-icon', {
