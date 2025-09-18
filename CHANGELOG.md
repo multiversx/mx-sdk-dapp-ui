@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Updated warning banner on ledger confirm screen](https://github.com/multiversx/mx-sdk-dapp-ui/pull/216)
+- [Moved unnecessary dependencies to devDependencies](https://github.com/multiversx/mx-sdk-dapp-ui/pull/215)
+- [Enhanced toast styles for long identifier case](https://github.com/multiversx/mx-sdk-dapp-ui/pull/214)
+- [Updated styles on toast](https://github.com/multiversx/mx-sdk-dapp-ui/pull/213)
+
+## [[0.0.27](https://github.com/multiversx/mx-sdk-dapp-ui/pull/209)] - 2025-08-26
+
 - [Added the "DataWithExplorerLink" component and enhanced the "Trim" component](https://github.com/multiversx/mx-sdk-dapp-ui/pull/208)
 - [Fixed issue with consecutive custom toasts](https://github.com/multiversx/mx-sdk-dapp-ui/pull/207)
 - [Updated the CopyButton and ExplorerLink to be more flexible, adding Storybook stories](https://github.com/multiversx/mx-sdk-dapp-ui/pull/206)

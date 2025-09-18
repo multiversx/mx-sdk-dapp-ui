@@ -1,0 +1,7 @@
+:host {
+  @apply mvx:flex;
+
+  .circle-info-icon {
+    @apply mvx:w-4 mvx:h-4 mvx:fill-inherit;
+  }
+}
