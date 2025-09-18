@@ -3,7 +3,7 @@ import { Component, h, Prop } from '@stencil/core';
 @Component({
   tag: 'mvx-single-angle-down-icon',
   styleUrl: 'single-angle-down-icon.scss',
-  shadow: true,
+  shadow: false,
 })
 export class SingleAngleDownIcon {
   @Prop() class?: string;

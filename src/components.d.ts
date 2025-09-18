@@ -42,6 +42,8 @@ export namespace Components {
         "accountScreenData": IAddressTableData;
         "selectedIndex": number;
     }
+    interface MvxAnglesDownIcon {
+    }
     interface MvxAnglesLeftIcon {
     }
     interface MvxAnglesRightIcon {
@@ -365,6 +367,9 @@ export namespace Components {
     interface MvxSingleAngleRightIcon {
         "class"?: string;
     }
+    interface MvxSingleAngleUpIcon {
+        "class"?: string;
+    }
     interface MvxSpinnerIcon {
         "class"?: string;
     }
@@ -661,6 +666,12 @@ declare global {
     var HTMLMvxAddressTableElement: {
         prototype: HTMLMvxAddressTableElement;
         new (): HTMLMvxAddressTableElement;
+    };
+    interface HTMLMvxAnglesDownIconElement extends Components.MvxAnglesDownIcon, HTMLStencilElement {
+    }
+    var HTMLMvxAnglesDownIconElement: {
+        prototype: HTMLMvxAnglesDownIconElement;
+        new (): HTMLMvxAnglesDownIconElement;
     };
     interface HTMLMvxAnglesLeftIconElement extends Components.MvxAnglesLeftIcon, HTMLStencilElement {
     }
@@ -1135,6 +1146,12 @@ declare global {
         prototype: HTMLMvxSingleAngleRightIconElement;
         new (): HTMLMvxSingleAngleRightIconElement;
     };
+    interface HTMLMvxSingleAngleUpIconElement extends Components.MvxSingleAngleUpIcon, HTMLStencilElement {
+    }
+    var HTMLMvxSingleAngleUpIconElement: {
+        prototype: HTMLMvxSingleAngleUpIconElement;
+        new (): HTMLMvxSingleAngleUpIconElement;
+    };
     interface HTMLMvxSpinnerIconElement extends Components.MvxSpinnerIcon, HTMLStencilElement {
     }
     var HTMLMvxSpinnerIconElement: {
@@ -1414,6 +1431,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "mvx-address-table": HTMLMvxAddressTableElement;
+        "mvx-angles-down-icon": HTMLMvxAnglesDownIconElement;
         "mvx-angles-left-icon": HTMLMvxAnglesLeftIconElement;
         "mvx-angles-right-icon": HTMLMvxAnglesRightIconElement;
         "mvx-arc-extension-provider-icon": HTMLMvxArcExtensionProviderIconElement;
@@ -1472,6 +1490,7 @@ declare global {
         "mvx-single-angle-down-icon": HTMLMvxSingleAngleDownIconElement;
         "mvx-single-angle-left-icon": HTMLMvxSingleAngleLeftIconElement;
         "mvx-single-angle-right-icon": HTMLMvxSingleAngleRightIconElement;
+        "mvx-single-angle-up-icon": HTMLMvxSingleAngleUpIconElement;
         "mvx-spinner-icon": HTMLMvxSpinnerIconElement;
         "mvx-toast-list": HTMLMvxToastListElement;
         "mvx-tooltip": HTMLMvxTooltipElement;
@@ -1518,6 +1537,8 @@ declare namespace LocalJSX {
         "onPageChange"?: (event: MvxAddressTableCustomEvent<number>) => void;
         "onSelectAccount"?: (event: MvxAddressTableCustomEvent<any>) => void;
         "selectedIndex"?: number;
+    }
+    interface MvxAnglesDownIcon {
     }
     interface MvxAnglesLeftIcon {
     }
@@ -1848,6 +1869,9 @@ declare namespace LocalJSX {
     interface MvxSingleAngleRightIcon {
         "class"?: string;
     }
+    interface MvxSingleAngleUpIcon {
+        "class"?: string;
+    }
     interface MvxSpinnerIcon {
         "class"?: string;
     }
@@ -2059,6 +2083,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "mvx-address-table": MvxAddressTable;
+        "mvx-angles-down-icon": MvxAnglesDownIcon;
         "mvx-angles-left-icon": MvxAnglesLeftIcon;
         "mvx-angles-right-icon": MvxAnglesRightIcon;
         "mvx-arc-extension-provider-icon": MvxArcExtensionProviderIcon;
@@ -2117,6 +2142,7 @@ declare namespace LocalJSX {
         "mvx-single-angle-down-icon": MvxSingleAngleDownIcon;
         "mvx-single-angle-left-icon": MvxSingleAngleLeftIcon;
         "mvx-single-angle-right-icon": MvxSingleAngleRightIcon;
+        "mvx-single-angle-up-icon": MvxSingleAngleUpIcon;
         "mvx-spinner-icon": MvxSpinnerIcon;
         "mvx-toast-list": MvxToastList;
         "mvx-tooltip": MvxTooltip;
@@ -2161,6 +2187,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "mvx-address-table": LocalJSX.MvxAddressTable & JSXBase.HTMLAttributes<HTMLMvxAddressTableElement>;
+            "mvx-angles-down-icon": LocalJSX.MvxAnglesDownIcon & JSXBase.HTMLAttributes<HTMLMvxAnglesDownIconElement>;
             "mvx-angles-left-icon": LocalJSX.MvxAnglesLeftIcon & JSXBase.HTMLAttributes<HTMLMvxAnglesLeftIconElement>;
             "mvx-angles-right-icon": LocalJSX.MvxAnglesRightIcon & JSXBase.HTMLAttributes<HTMLMvxAnglesRightIconElement>;
             "mvx-arc-extension-provider-icon": LocalJSX.MvxArcExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxArcExtensionProviderIconElement>;
@@ -2219,6 +2246,7 @@ declare module "@stencil/core" {
             "mvx-single-angle-down-icon": LocalJSX.MvxSingleAngleDownIcon & JSXBase.HTMLAttributes<HTMLMvxSingleAngleDownIconElement>;
             "mvx-single-angle-left-icon": LocalJSX.MvxSingleAngleLeftIcon & JSXBase.HTMLAttributes<HTMLMvxSingleAngleLeftIconElement>;
             "mvx-single-angle-right-icon": LocalJSX.MvxSingleAngleRightIcon & JSXBase.HTMLAttributes<HTMLMvxSingleAngleRightIconElement>;
+            "mvx-single-angle-up-icon": LocalJSX.MvxSingleAngleUpIcon & JSXBase.HTMLAttributes<HTMLMvxSingleAngleUpIconElement>;
             "mvx-spinner-icon": LocalJSX.MvxSpinnerIcon & JSXBase.HTMLAttributes<HTMLMvxSpinnerIconElement>;
             "mvx-toast-list": LocalJSX.MvxToastList & JSXBase.HTMLAttributes<HTMLMvxToastListElement>;
             "mvx-tooltip": LocalJSX.MvxTooltip & JSXBase.HTMLAttributes<HTMLMvxTooltipElement>;
