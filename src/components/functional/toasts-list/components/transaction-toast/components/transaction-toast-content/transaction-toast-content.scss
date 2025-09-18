@@ -1,6 +1,6 @@
 .transaction-toast-content-wrapper {
   @apply mvx:relative mvx:flex mvx:p-3 mvx:flex-col mvx:items-start mvx:gap-1 mvx:rounded-xl mvx:backdrop-blur-2xl mvx:max-w-100;
-  border: 2px solid var(--mvx-border-color-secondary);
+  border: 1px solid var(--mvx-border-color-tertiary);
   background: var(--mvx-bg-color-primary);
   color: var(--mvx-text-color-primary);
 
