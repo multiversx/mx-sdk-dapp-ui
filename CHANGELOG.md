@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [[0.0.28](https://github.com/multiversx/mx-sdk-dapp-ui/pull/220)] - 2025-09-19
 
+- [Added testIds on toast details](https://github.com/multiversx/mx-sdk-dapp-ui/pull/221)
 - [Updated icon and styles on toast](https://github.com/multiversx/mx-sdk-dapp-ui/pull/218)
 - [Added exports for individual components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/217)
 - [Updated warning banner on ledger confirm screen](https://github.com/multiversx/mx-sdk-dapp-ui/pull/216)
