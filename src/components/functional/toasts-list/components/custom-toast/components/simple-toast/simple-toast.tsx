@@ -1,6 +1,6 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter } from '@stencil/core';
-import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
+import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import type { ISimpleToast } from 'components/functional/toasts-list/components/transaction-toast/transaction-toast.type';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
@@ -14,41 +14,23 @@ import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
 export class SimpleToast {
   @Prop() toast: ISimpleToast;
   @Event({ bubbles: false, composed: false }) deleteToast: EventEmitter<void>;
-  @State() private iconHtml?: string | null;
 
   private handleDeleteToast() {
     this.deleteToast.emit();
   }
 
-  async componentWillLoad() {
-    await this.updateIconHtml(this.toast.icon);
-  }
+  private renderIcon() {
+    const { icon, iconClassName } = this.toast;
 
-  @Watch('toast')
-  async onToastChange(newValue: ISimpleToast) {
-    await this.updateIconHtml(newValue?.icon);
-  }
-
-  private async updateIconHtml(icon: ISimpleToast['icon']) {
-    if (!icon) {
-      this.iconHtml = null;
-      return;
-    }
+    let iconHtml = null;
     if (typeof icon === 'string') {
-      this.iconHtml = await getIconHtmlFromIconName(icon);
-      return;
+      iconHtml = getIconHtmlFromIconName(icon);
     }
     if (icon instanceof HTMLElement) {
-      this.iconHtml = icon.outerHTML;
-      return;
+      iconHtml = icon.outerHTML;
     }
-    this.iconHtml = null;
-  }
 
-  private renderIcon() {
-    const { iconClassName } = this.toast;
-
-    if (!this.iconHtml) {
+    if (!iconHtml) {
       return null;
     }
 
@@ -58,7 +40,7 @@ export class SimpleToast {
           'content-icon': true,
           [iconClassName]: Boolean(iconClassName),
         }}
-        innerHTML={this.iconHtml}
+        innerHTML={iconHtml}
       ></div>
     );
   }
