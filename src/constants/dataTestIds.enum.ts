@@ -39,6 +39,7 @@ export enum DataTestIdsEnum {
   transactionActionFormattedAmount = 'transactionActionFormattedAmount',
   transactionDetailsStatus = 'transactionDetailsStatus',
   trim = 'trim',
+  trimFullAddress = 'trimFullAddress',
   walletConnectLoading = 'walletConnectLoading',
   walletConnectQrCode = 'walletConnectQrCode',
   walletConnetModalTitle = 'walletConnetModalTitle',
