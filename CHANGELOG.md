@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.28](https://github.com/multiversx/mx-sdk-dapp-ui/pull/220)] - 2025-09-19
+
+- [Added testIds on toast details](https://github.com/multiversx/mx-sdk-dapp-ui/pull/221)
+- [Updated icon and styles on toast](https://github.com/multiversx/mx-sdk-dapp-ui/pull/218)
+- [Added exports for individual components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/217)
+- [Updated warning banner on ledger confirm screen](https://github.com/multiversx/mx-sdk-dapp-ui/pull/216)
+- [Moved unnecessary dependencies to devDependencies](https://github.com/multiversx/mx-sdk-dapp-ui/pull/215)
+- [Enhanced toast styles for long identifier case](https://github.com/multiversx/mx-sdk-dapp-ui/pull/214)
+- [Updated styles on toast](https://github.com/multiversx/mx-sdk-dapp-ui/pull/213)
+
 ## [[0.0.27](https://github.com/multiversx/mx-sdk-dapp-ui/pull/209)] - 2025-08-26
 
 - [Added the "DataWithExplorerLink" component and enhanced the "Trim" component](https://github.com/multiversx/mx-sdk-dapp-ui/pull/208)
