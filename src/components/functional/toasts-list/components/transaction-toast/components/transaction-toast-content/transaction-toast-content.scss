@@ -1,6 +1,6 @@
 .transaction-toast-content-wrapper {
   @apply mvx:relative mvx:flex mvx:p-3 mvx:flex-col mvx:items-start mvx:gap-1 mvx:rounded-xl mvx:backdrop-blur-2xl mvx:max-w-100;
-  border: 0.5px solid var(--mvx-bg-accent-variant-color);
+  border: 1px solid var(--mvx-border-color-tertiary);
   background: var(--mvx-bg-color-primary);
   color: var(--mvx-text-color-primary);
 
@@ -43,6 +43,10 @@
   @apply mvx:flex mvx:items-center mvx:gap-3 mvx:self-stretch mvx:justify-between mvx:p-0;
 }
 
+.transaction-toast-header-left {
+  @apply mvx:flex mvx:gap-1 mvx:items-center mvx:justify-center mvx:fill-link;
+}
+
 .transaction-toast-title {
   @apply mvx:text-sm mvx:font-bold mvx:leading-5;
   color: var(--mvx-text-color-primary);
@@ -50,6 +54,10 @@
 
 .transaction-toast-title-short {
   @apply mvx:max-w-40;
+}
+
+.truncate {
+  @apply mvx:truncate mvx:!max-w-25 mvx:shrink-0;
 }
 
 .transaction-toast-amount {
@@ -69,7 +77,7 @@
   }
 
   .transaction-amount-label {
-    @apply mvx:tracking-tight mvx:opacity-70;
+    @apply mvx:tracking-tight mvx:opacity-70 mvx:truncate mvx:max-w-25 mvx:shrink-0;
   }
 }
 

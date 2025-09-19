@@ -17,6 +17,7 @@ export class TransactionListItem {
       return null;
     }
     const amount = getAmountParts(this.transaction?.amount ?? '');
+    const showTooltip = this.transaction.amount && amount.label.length > 12;
 
     return (
       <a class="transaction-link" href={this.transaction.link} target="_blank" rel="noreferrer">
@@ -31,7 +32,18 @@ export class TransactionListItem {
 
           <div class="transaction-details">
             <div class="transaction-details-header">
-              <h4 class="transaction-title">{this.transaction.action.name}</h4>
+              <div class="transaction-header-left">
+                <h4 class={classNames('transaction-title', { truncate: showTooltip })}>
+                  {this.transaction.action.name}
+                </h4>
+
+                {showTooltip && (
+                  <mvx-tooltip position="bottom" trigger={<mvx-circle-info-icon />}>
+                    {amount.label}
+                  </mvx-tooltip>
+                )}
+              </div>
+
               {this.transaction.amount && (
                 <mvx-format-amount
                   class={classNames('transaction-amount', {

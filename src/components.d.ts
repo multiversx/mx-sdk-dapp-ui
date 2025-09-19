@@ -93,6 +93,9 @@ export namespace Components {
     }
     interface MvxCircleExclamationIcon {
     }
+    interface MvxCircleInfoIcon {
+        "class"?: string;
+    }
     interface MvxCloseIcon {
         "class"?: string;
     }
@@ -729,6 +732,12 @@ declare global {
     var HTMLMvxCircleExclamationIconElement: {
         prototype: HTMLMvxCircleExclamationIconElement;
         new (): HTMLMvxCircleExclamationIconElement;
+    };
+    interface HTMLMvxCircleInfoIconElement extends Components.MvxCircleInfoIcon, HTMLStencilElement {
+    }
+    var HTMLMvxCircleInfoIconElement: {
+        prototype: HTMLMvxCircleInfoIconElement;
+        new (): HTMLMvxCircleInfoIconElement;
     };
     interface HTMLMvxCloseIconElement extends Components.MvxCloseIcon, HTMLStencilElement {
     }
@@ -1404,6 +1413,7 @@ declare global {
         "mvx-button": HTMLMvxButtonElement;
         "mvx-check-icon": HTMLMvxCheckIconElement;
         "mvx-circle-exclamation-icon": HTMLMvxCircleExclamationIconElement;
+        "mvx-circle-info-icon": HTMLMvxCircleInfoIconElement;
         "mvx-close-icon": HTMLMvxCloseIconElement;
         "mvx-copy-button": HTMLMvxCopyButtonElement;
         "mvx-copy-icon": HTMLMvxCopyIconElement;
@@ -1549,6 +1559,9 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface MvxCircleExclamationIcon {
+    }
+    interface MvxCircleInfoIcon {
+        "class"?: string;
     }
     interface MvxCloseIcon {
         "class"?: string;
@@ -2040,6 +2053,7 @@ declare namespace LocalJSX {
         "mvx-button": MvxButton;
         "mvx-check-icon": MvxCheckIcon;
         "mvx-circle-exclamation-icon": MvxCircleExclamationIcon;
+        "mvx-circle-info-icon": MvxCircleInfoIcon;
         "mvx-close-icon": MvxCloseIcon;
         "mvx-copy-button": MvxCopyButton;
         "mvx-copy-icon": MvxCopyIcon;
@@ -2140,6 +2154,7 @@ declare module "@stencil/core" {
             "mvx-button": LocalJSX.MvxButton & JSXBase.HTMLAttributes<HTMLMvxButtonElement>;
             "mvx-check-icon": LocalJSX.MvxCheckIcon & JSXBase.HTMLAttributes<HTMLMvxCheckIconElement>;
             "mvx-circle-exclamation-icon": LocalJSX.MvxCircleExclamationIcon & JSXBase.HTMLAttributes<HTMLMvxCircleExclamationIconElement>;
+            "mvx-circle-info-icon": LocalJSX.MvxCircleInfoIcon & JSXBase.HTMLAttributes<HTMLMvxCircleInfoIconElement>;
             "mvx-close-icon": LocalJSX.MvxCloseIcon & JSXBase.HTMLAttributes<HTMLMvxCloseIconElement>;
             "mvx-copy-button": LocalJSX.MvxCopyButton & JSXBase.HTMLAttributes<HTMLMvxCopyButtonElement>;
             "mvx-copy-icon": LocalJSX.MvxCopyIcon & JSXBase.HTMLAttributes<HTMLMvxCopyIconElement>;

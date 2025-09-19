@@ -26,7 +26,7 @@ export class Trim {
   }
 
   disconnectedCallback() {
-    this.resizeObserver.disconnect();
+    this.resizeObserver?.disconnect?.();
   }
 
   private handleTrimElementReference(element: HTMLDivElement) {
@@ -77,6 +77,7 @@ export class Trim {
         class={{ trim: true, [this.class]: Boolean(this.class) }}
       >
         <div
+          data-testid={DataTestIdsEnum.trimFullAddress}
           ref={this.handleFullWidthTrimElementReference.bind(this)}
           class={{ 'trim-full': true, 'visible': !this.shouldTrim }}
         >

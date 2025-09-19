@@ -74,8 +74,12 @@
     }
 
     .ledger-confirm-footer {
-      @apply mvx:mt-auto mvx:p-3 mvx:rounded-xl mvx:flex mvx:items-center mvx:gap-2;
-      background: var(--mvx-red-600);
+      @apply mvx:mt-auto mvx:p-3 mvx:rounded-xl mvx:flex mvx:items-center mvx:gap-2 mvx:relative;
+      
+      &:before {
+        @apply mvx:absolute mvx:content-[''] mvx:inset-0 mvx:-z-1 mvx:opacity-30 mvx:rounded-xl;
+        background: var(--mvx-ledger-warning-bg);
+      }
 
       @media (min-width: 480px) {
         @apply mvx:min-h-16;
@@ -83,12 +87,17 @@
 
       .ledger-confirm-footer-icon {
         @apply mvx:w-6 mvx:h-6 mvx:flex-1 mvx:min-w-6 mvx:p-0.5;
-        fill: var(--mvx-white);
+        fill: var(--mvx-ledger-warning-color);
       }
 
       .ledger-confirm-footer-description {
         @apply mvx:text-xs;
-        color: var(--mvx-white);
+        color: var(--mvx-text-color-secondary);
+      }
+
+      .ledger-contact-support{
+        @apply mvx:underline;
+        color: var(--mvx-ledger-warning-color)
       }
     }
   }

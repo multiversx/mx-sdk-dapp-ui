@@ -1,4 +1,4 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, State } from '@stencil/core';
 import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
@@ -14,6 +14,8 @@ const signTransactionsHeaderClasses: Record<string, string> = {
   shadow: true,
 })
 export class SignTransactionsHeader {
+  @State() showFavicon: boolean = true;
+
   render() {
     const { onBack, onNext } = state;
     const { currentIndex, transactionsCount, origin } = state.commonData;
@@ -65,11 +67,18 @@ export class SignTransactionsHeader {
           data-testid={DataTestIdsEnum.signTransactionsHeaderOrigin}
         >
           <div class="sign-transactions-header-origin-label">Request from</div>
-
-          <div class="sign-transactions-header-origin-image">
-            <img class="sign-transactions-header-origin-image-icon" src={`${origin}/favicon.ico`} alt="favicon" />
-          </div>
-
+          {this.showFavicon && (
+            <div class="sign-transactions-header-origin-image">
+              <img
+                class="sign-transactions-header-origin-image-icon"
+                src={`${origin}/favicon.ico`}
+                alt="favicon"
+                onError={() => {
+                  this.showFavicon = false;
+                }}
+              />
+            </div>
+          )}
           <span
             class="sign-transactions-header-origin-name"
             data-testid={DataTestIdsEnum.signTransactionsHeaderOriginName}
