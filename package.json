@@ -14,6 +14,34 @@
       "import": "./dist/web-components/index.js",
       "types": "./dist/types/index.d.ts"
     },
+    "./mvx-unlock-panel": {
+      "import": "./dist/web-components/mvx-unlock-panel.js",
+      "types": "./dist/web-components/mvx-unlock-panel.d.ts"
+    },
+    "./mvx-wallet-connect": {
+      "import": "./dist/web-components/mvx-wallet-connect.js",
+      "types": "./dist/web-components/mvx-wallet-connect.d.ts"
+    },
+    "./mvx-toast-list": {
+      "import": "./dist/web-components/mvx-toast-list.js",
+      "types": "./dist/web-components/mvx-toast-list.d.ts"
+    },
+    "./mvx-ledger-connect": {
+      "import": "./dist/web-components/mvx-ledger-connect.js",
+      "types": "./dist/web-components/mvx-ledger-connect.d.ts"
+    },
+    "./mvx-notifications-feed": {
+      "import": "./dist/web-components/mvx-notifications-feed.js",
+      "types": "./dist/web-components/mvx-notifications-feed.d.ts"
+    },
+    "./mvx-pending-transactions-panel": {
+      "import": "./dist/web-components/mvx-pending-transactions-panel.js",
+      "types": "./dist/web-components/mvx-pending-transactions-panel.d.ts"
+    },
+    "./mvx-sign-transactions-panel": {
+      "import": "./dist/web-components/mvx-sign-transactions-panel.js",
+      "types": "./dist/web-components/mvx-sign-transactions-panel.d.ts"
+    },
     "./types/*": {
       "types": "./dist/types/*.d.ts"
     },
