@@ -1,5 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
+import { Icon } from 'common/Icon';
 import { DecodeMethodEnum } from 'components/functional/sign-transactions-panel/sign-transactions-panel.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
@@ -30,8 +31,8 @@ export class SignTransactionsAdvancedDataDecode {
           {this.currentDecodeMethod}
         </div>
 
-        <mvx-icon
-          name="single-angle-down"
+        <Icon
+          name="angle-down"
           class={classNames('sign-transactions-advanced-data-decode-icon', {
             [signTransactionsAdvancedDataDecodeClasses.icon]: true,
             [signTransactionsAdvancedDataDecodeClasses.iconRotated]: this.isToggled,

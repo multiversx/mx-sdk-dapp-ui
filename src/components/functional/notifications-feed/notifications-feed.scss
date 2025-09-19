@@ -15,9 +15,7 @@
 
   &::-webkit-scrollbar,
   &::-webkit-scrollbar-track,
-  &::-webkit-scrollbar-track:hover
-  &::-webkit-scrollbar-corner 
-  {
+  &::-webkit-scrollbar-track:hover &::-webkit-scrollbar-corner {
     @apply mvx:bg-transparent;
   }
 
@@ -47,7 +45,6 @@
   &::-webkit-resizer {
     @apply mvx:bg-transparent;
   }
-
 }
 
 .notifications-info {
@@ -55,7 +52,7 @@
   color: var(--mvx-warning-text);
 
   .info-icon {
-    @apply mvx:text-center mvx:text-base mvx:font-normal mvx:leading-none mvx:w-5 mvx:h-5;
+    @apply mvx:text-center mvx:text-base mvx:font-normal mvx:leading-none;
     color: var(--mvx-warning-text) !important;
   }
 }
@@ -96,7 +93,6 @@
     @apply mvx:p-4 mvx:text-center;
     color: var(--mvx-neutral-500);
   }
-
 
   // Ensure children don't cause horizontal scroll
   > * {

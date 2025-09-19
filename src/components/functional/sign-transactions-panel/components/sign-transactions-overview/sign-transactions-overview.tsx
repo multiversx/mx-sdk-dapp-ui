@@ -1,4 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
+import { Icon } from 'common/Icon';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import { handleAmountResize } from '../../helpers';
@@ -57,14 +58,19 @@ export class SignTransactionsOverview {
               )}
             </div>
           </div>
+
           <div class="sign-transactions-direction">
             <div class="sign-transactions-direction-icon">
-              {!this.isApp && <mvx-icon name="single-angle-up" class="sign-transactions-direction-icon-arrow up" />}
+              <Icon
+                name={this.isApp ? 'angle-up' : 'angle-down'}
+                class={{ 'sign-transactions-direction-icon-arrow': true, 'down': !this.isApp }}
+              />
+
               <span class="sign-transactions-direction-icon-dot" />
               <span class="sign-transactions-direction-icon-dot" />
-              {this.isApp && <mvx-icon name="single-angle-down" class="sign-transactions-direction-icon-arrow down" />}
             </div>
           </div>
+
           <div class="detail-row interactor-row" data-testid={DataTestIdsEnum.signTransactionsOverviewInteractorRow}>
             <div class="detail-label">{this.isApp ? 'App' : 'To'}</div>
             <div class="interactor-info">

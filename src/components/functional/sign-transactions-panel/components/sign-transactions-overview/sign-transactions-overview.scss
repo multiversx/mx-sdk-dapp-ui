@@ -151,15 +151,11 @@
     @apply mvx:flex mvx:flex-col mvx:items-center mvx:gap-px;
 
     .sign-transactions-direction-icon-arrow {
-      @apply mvx:flex mvx:items-center mvx:justify-center mvx:relative mvx:shrink-0 mvx:basis-auto mvx:h-auto mvx:-my-0.5 mvx:h-2.5;
+      @apply mvx:flex mvx:items-center mvx:justify-center mvx:relative mvx:shrink-0 mvx:w-3 mvx:basis-auto mvx:-mt-1 mvx:-mb-0.5;
       color: var(--mvx-text-color-secondary);
 
-      &.up {
-        @apply mvx:w-3;
-      }
-
       &.down {
-        @apply mvx:w-2.5;
+        @apply mvx:-mt-0.5 mvx:-mb-1 mvx:order-1;
       }
     }
 
