@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { TransactionAssetIcon } from 'components/common/transaction-asset-icon/transaction-asset-icon';
+import { TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
 import { FormatAmount } from 'components/controlled/format-amount/format-amount';
 
 import { TransactionListItem } from '../transaction-list-item';
