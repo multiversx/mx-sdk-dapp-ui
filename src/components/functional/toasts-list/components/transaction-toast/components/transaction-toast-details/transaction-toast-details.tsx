@@ -2,6 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Prop, State } from '@stencil/core';
 import classNames from 'classnames';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({
   tag: 'mvx-transaction-toast-details',
@@ -62,7 +63,9 @@ export class TransactionToastDetails {
             })}
           />
 
-          <span class="transaction-details-status-text">{this.processedTransactionsStatus}</span>
+          <span data-testid={DataTestIdsEnum.transactionDetailsStatus} class="transaction-details-status-text">
+            {this.processedTransactionsStatus}
+          </span>
         </div>
 
         <div
