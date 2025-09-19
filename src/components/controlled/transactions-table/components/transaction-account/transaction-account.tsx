@@ -29,7 +29,9 @@ export class TransactionAccount {
           <mvx-lock-icon class="transaction-account-lock" title={this.account.name} />
         )}
 
-        {this.account.isContract && <mvx-contract-icon class="transaction-account-contract" title="Smart Contract" />}
+        {this.account.isContract && (
+          <mvx-icon class="transaction-account-contract" title="Smart Contract" name="contract" />
+        )}
         {this.account.showLink ? (
           <mvx-explorer-link
             link={this.account.link}

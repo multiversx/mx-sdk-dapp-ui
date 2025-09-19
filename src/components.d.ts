@@ -103,8 +103,6 @@ export namespace Components {
     interface MvxCloseIcon {
         "class"?: string;
     }
-    interface MvxContractIcon {
-    }
     interface MvxCopyButton {
         "class"?: string;
         "iconClass"?: string;
@@ -185,6 +183,9 @@ export namespace Components {
     }
     interface MvxGenericToast {
         "toast": CustomToastType;
+    }
+    interface MvxIcon {
+        "name": string;
     }
     interface MvxLayersIcon {
     }
@@ -768,12 +769,6 @@ declare global {
         prototype: HTMLMvxCloseIconElement;
         new (): HTMLMvxCloseIconElement;
     };
-    interface HTMLMvxContractIconElement extends Components.MvxContractIcon, HTMLStencilElement {
-    }
-    var HTMLMvxContractIconElement: {
-        prototype: HTMLMvxContractIconElement;
-        new (): HTMLMvxContractIconElement;
-    };
     interface HTMLMvxCopyButtonElement extends Components.MvxCopyButton, HTMLStencilElement {
     }
     var HTMLMvxCopyButtonElement: {
@@ -873,6 +868,12 @@ declare global {
     var HTMLMvxGenericToastElement: {
         prototype: HTMLMvxGenericToastElement;
         new (): HTMLMvxGenericToastElement;
+    };
+    interface HTMLMvxIconElement extends Components.MvxIcon, HTMLStencilElement {
+    }
+    var HTMLMvxIconElement: {
+        prototype: HTMLMvxIconElement;
+        new (): HTMLMvxIconElement;
     };
     interface HTMLMvxLayersIconElement extends Components.MvxLayersIcon, HTMLStencilElement {
     }
@@ -1469,7 +1470,6 @@ declare global {
         "mvx-circle-exclamation-icon": HTMLMvxCircleExclamationIconElement;
         "mvx-circle-info-icon": HTMLMvxCircleInfoIconElement;
         "mvx-close-icon": HTMLMvxCloseIconElement;
-        "mvx-contract-icon": HTMLMvxContractIconElement;
         "mvx-copy-button": HTMLMvxCopyButtonElement;
         "mvx-copy-icon": HTMLMvxCopyIconElement;
         "mvx-custom-toast": HTMLMvxCustomToastElement;
@@ -1483,6 +1483,7 @@ declare global {
         "mvx-firefox-extension-provider-icon": HTMLMvxFirefoxExtensionProviderIconElement;
         "mvx-format-amount": HTMLMvxFormatAmountElement;
         "mvx-generic-toast": HTMLMvxGenericToastElement;
+        "mvx-icon": HTMLMvxIconElement;
         "mvx-layers-icon": HTMLMvxLayersIconElement;
         "mvx-ledger-confirm": HTMLMvxLedgerConfirmElement;
         "mvx-ledger-connect": HTMLMvxLedgerConnectElement;
@@ -1627,8 +1628,6 @@ declare namespace LocalJSX {
     interface MvxCloseIcon {
         "class"?: string;
     }
-    interface MvxContractIcon {
-    }
     interface MvxCopyButton {
         "class"?: string;
         "iconClass"?: string;
@@ -1711,6 +1710,9 @@ declare namespace LocalJSX {
     interface MvxGenericToast {
         "onDeleteToast"?: (event: MvxGenericToastCustomEvent<string>) => void;
         "toast"?: CustomToastType;
+    }
+    interface MvxIcon {
+        "name"?: string;
     }
     interface MvxLayersIcon {
     }
@@ -2130,7 +2132,6 @@ declare namespace LocalJSX {
         "mvx-circle-exclamation-icon": MvxCircleExclamationIcon;
         "mvx-circle-info-icon": MvxCircleInfoIcon;
         "mvx-close-icon": MvxCloseIcon;
-        "mvx-contract-icon": MvxContractIcon;
         "mvx-copy-button": MvxCopyButton;
         "mvx-copy-icon": MvxCopyIcon;
         "mvx-custom-toast": MvxCustomToast;
@@ -2144,6 +2145,7 @@ declare namespace LocalJSX {
         "mvx-firefox-extension-provider-icon": MvxFirefoxExtensionProviderIcon;
         "mvx-format-amount": MvxFormatAmount;
         "mvx-generic-toast": MvxGenericToast;
+        "mvx-icon": MvxIcon;
         "mvx-layers-icon": MvxLayersIcon;
         "mvx-ledger-confirm": MvxLedgerConfirm;
         "mvx-ledger-connect": MvxLedgerConnect;
@@ -2237,7 +2239,6 @@ declare module "@stencil/core" {
             "mvx-circle-exclamation-icon": LocalJSX.MvxCircleExclamationIcon & JSXBase.HTMLAttributes<HTMLMvxCircleExclamationIconElement>;
             "mvx-circle-info-icon": LocalJSX.MvxCircleInfoIcon & JSXBase.HTMLAttributes<HTMLMvxCircleInfoIconElement>;
             "mvx-close-icon": LocalJSX.MvxCloseIcon & JSXBase.HTMLAttributes<HTMLMvxCloseIconElement>;
-            "mvx-contract-icon": LocalJSX.MvxContractIcon & JSXBase.HTMLAttributes<HTMLMvxContractIconElement>;
             "mvx-copy-button": LocalJSX.MvxCopyButton & JSXBase.HTMLAttributes<HTMLMvxCopyButtonElement>;
             "mvx-copy-icon": LocalJSX.MvxCopyIcon & JSXBase.HTMLAttributes<HTMLMvxCopyIconElement>;
             "mvx-custom-toast": LocalJSX.MvxCustomToast & JSXBase.HTMLAttributes<HTMLMvxCustomToastElement>;
@@ -2251,6 +2252,7 @@ declare module "@stencil/core" {
             "mvx-firefox-extension-provider-icon": LocalJSX.MvxFirefoxExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxFirefoxExtensionProviderIconElement>;
             "mvx-format-amount": LocalJSX.MvxFormatAmount & JSXBase.HTMLAttributes<HTMLMvxFormatAmountElement>;
             "mvx-generic-toast": LocalJSX.MvxGenericToast & JSXBase.HTMLAttributes<HTMLMvxGenericToastElement>;
+            "mvx-icon": LocalJSX.MvxIcon & JSXBase.HTMLAttributes<HTMLMvxIconElement>;
             "mvx-layers-icon": LocalJSX.MvxLayersIcon & JSXBase.HTMLAttributes<HTMLMvxLayersIconElement>;
             "mvx-ledger-confirm": LocalJSX.MvxLedgerConfirm & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmElement>;
             "mvx-ledger-connect": LocalJSX.MvxLedgerConnect & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectElement>;
