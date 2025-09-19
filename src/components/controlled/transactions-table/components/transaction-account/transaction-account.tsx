@@ -26,12 +26,13 @@ export class TransactionAccount {
     return (
       <div class={classNames(this.class, 'transaction-account')} data-testid={this.dataTestId}>
         {this.showLockedAccounts && this.account.isTokenLocked && (
-          <mvx-lock-icon class="transaction-account-lock" title={this.account.name} />
+          <mvx-icon name="lock" class="transaction-account-lock" title={this.account.name} />
         )}
 
         {this.account.isContract && (
           <mvx-icon class="transaction-account-contract" title="Smart Contract" name="contract" />
         )}
+
         {this.account.showLink ? (
           <mvx-explorer-link
             link={this.account.link}

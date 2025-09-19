@@ -30,7 +30,8 @@ export class SignTransactionsAdvancedDataDecode {
           {this.currentDecodeMethod}
         </div>
 
-        <mvx-single-angle-down-icon
+        <mvx-icon
+          name="single-angle-down"
           class={classNames('sign-transactions-advanced-data-decode-icon', {
             [signTransactionsAdvancedDataDecodeClasses.icon]: true,
             [signTransactionsAdvancedDataDecodeClasses.iconRotated]: this.isToggled,

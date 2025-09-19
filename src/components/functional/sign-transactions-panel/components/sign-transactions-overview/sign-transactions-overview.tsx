@@ -59,10 +59,10 @@ export class SignTransactionsOverview {
           </div>
           <div class="sign-transactions-direction">
             <div class="sign-transactions-direction-icon">
-              {this.isApp && <mvx-single-angle-up-icon class="sign-transactions-direction-icon-arrow up" />}
+              {!this.isApp && <mvx-icon name="single-angle-up" class="sign-transactions-direction-icon-arrow up" />}
               <span class="sign-transactions-direction-icon-dot" />
               <span class="sign-transactions-direction-icon-dot" />
-              {!this.isApp && <mvx-single-angle-down-icon class="sign-transactions-direction-icon-arrow down" />}
+              {this.isApp && <mvx-icon name="single-angle-down" class="sign-transactions-direction-icon-arrow down" />}
             </div>
           </div>
           <div class="detail-row interactor-row" data-testid={DataTestIdsEnum.signTransactionsOverviewInteractorRow}>

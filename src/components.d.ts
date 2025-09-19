@@ -187,8 +187,6 @@ export namespace Components {
     interface MvxIcon {
         "name": string;
     }
-    interface MvxLayersIcon {
-    }
     interface MvxLedgerConfirm {
         "confirmScreenData": IConfirmScreenData;
     }
@@ -211,8 +209,6 @@ export namespace Components {
     }
     interface MvxLedgerProviderIcon {
         "class"?: string;
-    }
-    interface MvxLockIcon {
     }
     interface MvxMagnifyingGlassIcon {
         "class"?: string;
@@ -372,9 +368,6 @@ export namespace Components {
         "class"?: string;
     }
     interface MvxSingleAngleRightIcon {
-        "class"?: string;
-    }
-    interface MvxSingleAngleUpIcon {
         "class"?: string;
     }
     interface MvxSpinnerIcon {
@@ -875,12 +868,6 @@ declare global {
         prototype: HTMLMvxIconElement;
         new (): HTMLMvxIconElement;
     };
-    interface HTMLMvxLayersIconElement extends Components.MvxLayersIcon, HTMLStencilElement {
-    }
-    var HTMLMvxLayersIconElement: {
-        prototype: HTMLMvxLayersIconElement;
-        new (): HTMLMvxLayersIconElement;
-    };
     interface HTMLMvxLedgerConfirmElement extends Components.MvxLedgerConfirm, HTMLStencilElement {
     }
     var HTMLMvxLedgerConfirmElement: {
@@ -921,12 +908,6 @@ declare global {
     var HTMLMvxLedgerProviderIconElement: {
         prototype: HTMLMvxLedgerProviderIconElement;
         new (): HTMLMvxLedgerProviderIconElement;
-    };
-    interface HTMLMvxLockIconElement extends Components.MvxLockIcon, HTMLStencilElement {
-    }
-    var HTMLMvxLockIconElement: {
-        prototype: HTMLMvxLockIconElement;
-        new (): HTMLMvxLockIconElement;
     };
     interface HTMLMvxMagnifyingGlassIconElement extends Components.MvxMagnifyingGlassIcon, HTMLStencilElement {
     }
@@ -1170,12 +1151,6 @@ declare global {
     var HTMLMvxSingleAngleRightIconElement: {
         prototype: HTMLMvxSingleAngleRightIconElement;
         new (): HTMLMvxSingleAngleRightIconElement;
-    };
-    interface HTMLMvxSingleAngleUpIconElement extends Components.MvxSingleAngleUpIcon, HTMLStencilElement {
-    }
-    var HTMLMvxSingleAngleUpIconElement: {
-        prototype: HTMLMvxSingleAngleUpIconElement;
-        new (): HTMLMvxSingleAngleUpIconElement;
     };
     interface HTMLMvxSpinnerIconElement extends Components.MvxSpinnerIcon, HTMLStencilElement {
     }
@@ -1484,13 +1459,11 @@ declare global {
         "mvx-format-amount": HTMLMvxFormatAmountElement;
         "mvx-generic-toast": HTMLMvxGenericToastElement;
         "mvx-icon": HTMLMvxIconElement;
-        "mvx-layers-icon": HTMLMvxLayersIconElement;
         "mvx-ledger-confirm": HTMLMvxLedgerConfirmElement;
         "mvx-ledger-connect": HTMLMvxLedgerConnectElement;
         "mvx-ledger-icon": HTMLMvxLedgerIconElement;
         "mvx-ledger-intro": HTMLMvxLedgerIntroElement;
         "mvx-ledger-provider-icon": HTMLMvxLedgerProviderIconElement;
-        "mvx-lock-icon": HTMLMvxLockIconElement;
         "mvx-magnifying-glass-icon": HTMLMvxMagnifyingGlassIconElement;
         "mvx-metamask-provider-icon": HTMLMvxMetamaskProviderIconElement;
         "mvx-multiversx-logo-icon": HTMLMvxMultiversxLogoIconElement;
@@ -1518,7 +1491,6 @@ declare global {
         "mvx-single-angle-down-icon": HTMLMvxSingleAngleDownIconElement;
         "mvx-single-angle-left-icon": HTMLMvxSingleAngleLeftIconElement;
         "mvx-single-angle-right-icon": HTMLMvxSingleAngleRightIconElement;
-        "mvx-single-angle-up-icon": HTMLMvxSingleAngleUpIconElement;
         "mvx-spinner-icon": HTMLMvxSpinnerIconElement;
         "mvx-toast-list": HTMLMvxToastListElement;
         "mvx-tooltip": HTMLMvxTooltipElement;
@@ -1714,8 +1686,6 @@ declare namespace LocalJSX {
     interface MvxIcon {
         "name"?: string;
     }
-    interface MvxLayersIcon {
-    }
     interface MvxLedgerConfirm {
         "confirmScreenData"?: IConfirmScreenData;
     }
@@ -1738,8 +1708,6 @@ declare namespace LocalJSX {
     }
     interface MvxLedgerProviderIcon {
         "class"?: string;
-    }
-    interface MvxLockIcon {
     }
     interface MvxMagnifyingGlassIcon {
         "class"?: string;
@@ -1902,9 +1870,6 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface MvxSingleAngleRightIcon {
-        "class"?: string;
-    }
-    interface MvxSingleAngleUpIcon {
         "class"?: string;
     }
     interface MvxSpinnerIcon {
@@ -2146,13 +2111,11 @@ declare namespace LocalJSX {
         "mvx-format-amount": MvxFormatAmount;
         "mvx-generic-toast": MvxGenericToast;
         "mvx-icon": MvxIcon;
-        "mvx-layers-icon": MvxLayersIcon;
         "mvx-ledger-confirm": MvxLedgerConfirm;
         "mvx-ledger-connect": MvxLedgerConnect;
         "mvx-ledger-icon": MvxLedgerIcon;
         "mvx-ledger-intro": MvxLedgerIntro;
         "mvx-ledger-provider-icon": MvxLedgerProviderIcon;
-        "mvx-lock-icon": MvxLockIcon;
         "mvx-magnifying-glass-icon": MvxMagnifyingGlassIcon;
         "mvx-metamask-provider-icon": MvxMetamaskProviderIcon;
         "mvx-multiversx-logo-icon": MvxMultiversxLogoIcon;
@@ -2180,7 +2143,6 @@ declare namespace LocalJSX {
         "mvx-single-angle-down-icon": MvxSingleAngleDownIcon;
         "mvx-single-angle-left-icon": MvxSingleAngleLeftIcon;
         "mvx-single-angle-right-icon": MvxSingleAngleRightIcon;
-        "mvx-single-angle-up-icon": MvxSingleAngleUpIcon;
         "mvx-spinner-icon": MvxSpinnerIcon;
         "mvx-toast-list": MvxToastList;
         "mvx-tooltip": MvxTooltip;
@@ -2253,13 +2215,11 @@ declare module "@stencil/core" {
             "mvx-format-amount": LocalJSX.MvxFormatAmount & JSXBase.HTMLAttributes<HTMLMvxFormatAmountElement>;
             "mvx-generic-toast": LocalJSX.MvxGenericToast & JSXBase.HTMLAttributes<HTMLMvxGenericToastElement>;
             "mvx-icon": LocalJSX.MvxIcon & JSXBase.HTMLAttributes<HTMLMvxIconElement>;
-            "mvx-layers-icon": LocalJSX.MvxLayersIcon & JSXBase.HTMLAttributes<HTMLMvxLayersIconElement>;
             "mvx-ledger-confirm": LocalJSX.MvxLedgerConfirm & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmElement>;
             "mvx-ledger-connect": LocalJSX.MvxLedgerConnect & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectElement>;
             "mvx-ledger-icon": LocalJSX.MvxLedgerIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerIconElement>;
             "mvx-ledger-intro": LocalJSX.MvxLedgerIntro & JSXBase.HTMLAttributes<HTMLMvxLedgerIntroElement>;
             "mvx-ledger-provider-icon": LocalJSX.MvxLedgerProviderIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerProviderIconElement>;
-            "mvx-lock-icon": LocalJSX.MvxLockIcon & JSXBase.HTMLAttributes<HTMLMvxLockIconElement>;
             "mvx-magnifying-glass-icon": LocalJSX.MvxMagnifyingGlassIcon & JSXBase.HTMLAttributes<HTMLMvxMagnifyingGlassIconElement>;
             "mvx-metamask-provider-icon": LocalJSX.MvxMetamaskProviderIcon & JSXBase.HTMLAttributes<HTMLMvxMetamaskProviderIconElement>;
             "mvx-multiversx-logo-icon": LocalJSX.MvxMultiversxLogoIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxLogoIconElement>;
@@ -2287,7 +2247,6 @@ declare module "@stencil/core" {
             "mvx-single-angle-down-icon": LocalJSX.MvxSingleAngleDownIcon & JSXBase.HTMLAttributes<HTMLMvxSingleAngleDownIconElement>;
             "mvx-single-angle-left-icon": LocalJSX.MvxSingleAngleLeftIcon & JSXBase.HTMLAttributes<HTMLMvxSingleAngleLeftIconElement>;
             "mvx-single-angle-right-icon": LocalJSX.MvxSingleAngleRightIcon & JSXBase.HTMLAttributes<HTMLMvxSingleAngleRightIconElement>;
-            "mvx-single-angle-up-icon": LocalJSX.MvxSingleAngleUpIcon & JSXBase.HTMLAttributes<HTMLMvxSingleAngleUpIconElement>;
             "mvx-spinner-icon": LocalJSX.MvxSpinnerIcon & JSXBase.HTMLAttributes<HTMLMvxSpinnerIconElement>;
             "mvx-toast-list": LocalJSX.MvxToastList & JSXBase.HTMLAttributes<HTMLMvxToastListElement>;
             "mvx-tooltip": LocalJSX.MvxTooltip & JSXBase.HTMLAttributes<HTMLMvxTooltipElement>;

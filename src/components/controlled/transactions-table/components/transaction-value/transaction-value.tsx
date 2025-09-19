@@ -66,7 +66,7 @@ export class TransactionValue {
           </mvx-explorer-link>
         )}
 
-        {this.value.titleText && <mvx-layers-icon class="transaction-value-icon" title={this.value.titleText} />}
+        {this.value.titleText && <mvx-icon name="layers" class="transaction-value-icon" title={this.value.titleText} />}
       </div>
     );
   }

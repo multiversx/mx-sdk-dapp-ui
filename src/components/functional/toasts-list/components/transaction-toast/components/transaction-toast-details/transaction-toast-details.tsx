@@ -57,7 +57,8 @@ export class TransactionToastDetails {
     return (
       <div class="transaction-details-container">
         <div class="transaction-details-status" onClick={this.toggleExpand.bind(this)}>
-          <mvx-single-angle-down-icon
+          <mvx-icon
+            name="single-angle-down"
             class={classNames('transaction-details-status-icon', {
               rotated: this.isExpanded,
             })}
