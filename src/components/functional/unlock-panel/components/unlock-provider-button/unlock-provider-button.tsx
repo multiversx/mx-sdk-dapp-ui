@@ -1,5 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
+import { UnlockButton } from 'common/UnlockButton/UnlockButton';
 import type { IProviderBase } from 'types/provider.types';
 import type { ProviderTypeEnum } from 'types/provider.types';
 
@@ -27,7 +28,7 @@ export class UnlockProviderButton {
       : null;
 
     return (
-      <mvx-unlock-button
+      <UnlockButton
         iconUrl={this.provider.iconUrl}
         label={this.provider.name}
         type={this.provider.type}
