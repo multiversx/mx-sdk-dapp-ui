@@ -1,5 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
+import { Icon } from 'common/Icon';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionAccountType } from '../../transactions-table.type';
@@ -25,13 +26,8 @@ export class TransactionAccount {
 
     return (
       <div class={classNames(this.class, 'transaction-account')} data-testid={this.dataTestId}>
-        {this.showLockedAccounts && this.account.isTokenLocked && (
-          <mvx-icon name="lock" class="transaction-account-lock" title={this.account.name} />
-        )}
-
-        {this.account.isContract && (
-          <mvx-icon class="transaction-account-contract" title="Smart Contract" name="contract" />
-        )}
+        {this.showLockedAccounts && this.account.isTokenLocked && <Icon name="lock" class="transaction-account-lock" />}
+        {this.account.isContract && <Icon class="transaction-account-contract" name="contract" />}
 
         {this.account.showLink ? (
           <mvx-explorer-link

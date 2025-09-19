@@ -1,6 +1,11 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State } from '@stencil/core';
 
+// prettier-ignore
+const styles = {
+  tooltip: 'tooltip mvx:flex mvx:relative',
+} satisfies Record<string, string>;
+
 @Component({
   tag: 'mvx-tooltip',
   styleUrl: 'tooltip.scss',
@@ -60,7 +65,7 @@ export class Tooltip {
         onClick={this.handleEllipsisClick}
         onMouseEnter={this.handleMouseEvent(true)}
         onMouseLeave={this.handleMouseEvent(false)}
-        class={{ tooltip: true, [this.class]: Boolean(this.class) }}
+        class={{ [styles.tooltip]: true, [this.class]: Boolean(this.class) }}
       >
         {this.isTooltipVisible && (
           <div class={{ 'tooltip-content-wrapper': true, [this.position]: true }}>

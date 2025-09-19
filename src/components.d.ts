@@ -182,9 +182,6 @@ export namespace Components {
     interface MvxGenericToast {
         "toast": CustomToastType;
     }
-    interface MvxIcon {
-        "name": string;
-    }
     interface MvxLedgerConfirm {
         "confirmScreenData": IConfirmScreenData;
     }
@@ -856,12 +853,6 @@ declare global {
         prototype: HTMLMvxGenericToastElement;
         new (): HTMLMvxGenericToastElement;
     };
-    interface HTMLMvxIconElement extends Components.MvxIcon, HTMLStencilElement {
-    }
-    var HTMLMvxIconElement: {
-        prototype: HTMLMvxIconElement;
-        new (): HTMLMvxIconElement;
-    };
     interface HTMLMvxLedgerConfirmElement extends Components.MvxLedgerConfirm, HTMLStencilElement {
     }
     var HTMLMvxLedgerConfirmElement: {
@@ -1446,7 +1437,6 @@ declare global {
         "mvx-firefox-extension-provider-icon": HTMLMvxFirefoxExtensionProviderIconElement;
         "mvx-format-amount": HTMLMvxFormatAmountElement;
         "mvx-generic-toast": HTMLMvxGenericToastElement;
-        "mvx-icon": HTMLMvxIconElement;
         "mvx-ledger-confirm": HTMLMvxLedgerConfirmElement;
         "mvx-ledger-connect": HTMLMvxLedgerConnectElement;
         "mvx-ledger-icon": HTMLMvxLedgerIconElement;
@@ -1669,9 +1659,6 @@ declare namespace LocalJSX {
     interface MvxGenericToast {
         "onDeleteToast"?: (event: MvxGenericToastCustomEvent<string>) => void;
         "toast"?: CustomToastType;
-    }
-    interface MvxIcon {
-        "name"?: string;
     }
     interface MvxLedgerConfirm {
         "confirmScreenData"?: IConfirmScreenData;
@@ -2093,7 +2080,6 @@ declare namespace LocalJSX {
         "mvx-firefox-extension-provider-icon": MvxFirefoxExtensionProviderIcon;
         "mvx-format-amount": MvxFormatAmount;
         "mvx-generic-toast": MvxGenericToast;
-        "mvx-icon": MvxIcon;
         "mvx-ledger-confirm": MvxLedgerConfirm;
         "mvx-ledger-connect": MvxLedgerConnect;
         "mvx-ledger-icon": MvxLedgerIcon;
@@ -2196,7 +2182,6 @@ declare module "@stencil/core" {
             "mvx-firefox-extension-provider-icon": LocalJSX.MvxFirefoxExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxFirefoxExtensionProviderIconElement>;
             "mvx-format-amount": LocalJSX.MvxFormatAmount & JSXBase.HTMLAttributes<HTMLMvxFormatAmountElement>;
             "mvx-generic-toast": LocalJSX.MvxGenericToast & JSXBase.HTMLAttributes<HTMLMvxGenericToastElement>;
-            "mvx-icon": LocalJSX.MvxIcon & JSXBase.HTMLAttributes<HTMLMvxIconElement>;
             "mvx-ledger-confirm": LocalJSX.MvxLedgerConfirm & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmElement>;
             "mvx-ledger-connect": LocalJSX.MvxLedgerConnect & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectElement>;
             "mvx-ledger-icon": LocalJSX.MvxLedgerIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerIconElement>;
