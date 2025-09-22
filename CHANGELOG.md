@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.29](https://github.com/multiversx/mx-sdk-dapp-ui/pull/223)] - 2025-09-22
+
+- [Fixed stencil/core dependency and added hasCloseButton flag to custom toasts](https://github.com/multiversx/mx-sdk-dapp-ui/pull/222)
+
 ## [[0.0.28](https://github.com/multiversx/mx-sdk-dapp-ui/pull/220)] - 2025-09-19
 
 - [Added testIds on toast details](https://github.com/multiversx/mx-sdk-dapp-ui/pull/221)

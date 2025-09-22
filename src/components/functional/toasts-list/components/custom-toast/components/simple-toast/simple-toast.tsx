@@ -59,12 +59,14 @@ export class SimpleToast {
                   {title}
                 </h5>
               )}
-              <button
-                onClick={this.handleDeleteToast.bind(this)}
-                type="button"
-                class="icon-close"
-                innerHTML={getIconHtmlFromIconDefinition(faTimes)}
-              ></button>
+              {this.toast.hasCloseButton !== false && (
+                <button
+                  onClick={this.handleDeleteToast.bind(this)}
+                  type="button"
+                  class="icon-close"
+                  innerHTML={getIconHtmlFromIconDefinition(faTimes)}
+                />
+              )}
             </div>
             {subtitle && <div class="subtitle">{subtitle}</div>}
             {message && (
