@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Refactored icons to leverage on new centralised component](https://github.com/multiversx/mx-sdk-dapp-ui/pull/219)
+
 ## [[0.0.30](https://github.com/multiversx/mx-sdk-dapp-ui/pull/224)] - 2025-09-22
 
 - [Bring back stencil/react-output-target](https://github.com/multiversx/mx-sdk-dapp-ui/pull/224)
