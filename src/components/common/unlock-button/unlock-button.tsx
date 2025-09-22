@@ -1,10 +1,9 @@
-import { Component, h, Prop } from '@stencil/core';
-import { UnlockButton as UnlockButtonFunction } from 'common/UnlockButton/UnlockButton';
+import { Component, Fragment, h, Prop } from '@stencil/core';
+import { UnlockButton as UnlockButtonComponent } from 'common/UnlockButton/UnlockButton';
 import type { IProviderBase } from 'types/provider.types';
 
 @Component({
   tag: 'mvx-unlock-button',
-  shadow: true,
 })
 export class UnlockButton {
   @Prop() label: string;
@@ -16,13 +15,13 @@ export class UnlockButton {
 
   render() {
     return (
-      <UnlockButtonFunction
+      <UnlockButtonComponent
+        type={this.type}
+        icon={this.icon}
+        class={this.class}
         label={this.label}
         iconUrl={this.iconUrl}
-        icon={this.icon}
         dataTestId={this.dataTestId}
-        type={this.type}
-        class={this.class}
       />
     );
   }
