@@ -17,6 +17,9 @@ importers:
       '@stencil/core':
         specifier: ^4.36.2
         version: 4.36.3
+      '@stencil/react-output-target':
+        specifier: 1.2.0
+        version: 1.2.0(@stencil/core@4.36.3)(@types/react@19.1.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       classnames:
         specifier: '>=2.5.1'
         version: 2.5.1
@@ -36,9 +39,6 @@ importers:
       '@rollup/plugin-image':
         specifier: ^3.0.3
         version: 3.0.3
-      '@stencil/react-output-target':
-        specifier: 1.2.0
-        version: 1.2.0(@stencil/core@4.36.3)(@types/react@19.1.12)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@stencil/sass':
         specifier: ^3.0.12
         version: 3.2.2(@stencil/core@4.36.3)
