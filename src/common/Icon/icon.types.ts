@@ -11,6 +11,7 @@ export enum IconNameEnum {
   anglesRight = 'angles-right',
   triangularWarning = 'triangular-warning',
   circleExclamation = 'circle-exclamation',
+  arrowUpRight = 'arrow-up-right',
 }
 
 export type IconPropsType = JSXBase.IntrinsicElements['svg'] & {

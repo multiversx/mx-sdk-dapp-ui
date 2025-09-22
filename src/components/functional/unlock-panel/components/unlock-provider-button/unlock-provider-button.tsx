@@ -12,6 +12,7 @@ const unlockProviderButtonClasses: Record<string, string> = {
 
 @Component({
   tag: 'mvx-unlock-provider-button',
+  styleUrl: 'unlock-provider-button.scss',
   shadow: true,
 })
 export class UnlockProviderButton {

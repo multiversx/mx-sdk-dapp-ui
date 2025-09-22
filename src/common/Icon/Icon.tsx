@@ -4,6 +4,7 @@ import { AngleDownIcon } from './components/AngleDownIcon';
 import { AnglesLeftIcon } from './components/AnglesLeftIcon';
 import { AnglesRightIcon } from './components/AnglesRightIcon';
 import { AngleUpIcon } from './components/AngleUpIcon';
+import { ArrowUpRightIcon } from './components/ArrowUpRightIcon';
 import { CircleExclamationIcon } from './components/CircleExclamationIcon';
 import { ContractIcon } from './components/ContractIcon';
 import { LayersIcon } from './components/LayersIcon';
@@ -43,6 +44,9 @@ export const Icon = ({ name, ...properties }: IconPropsType) => {
 
     case 'circle-exclamation':
       return <CircleExclamationIcon {...properties} />;
+
+    case 'arrow-up-right':
+      return <ArrowUpRightIcon {...properties} />;
 
     default:
       console.error(`No data for the ${name} icon.`);

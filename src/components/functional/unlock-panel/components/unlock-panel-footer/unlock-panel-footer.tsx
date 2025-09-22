@@ -1,11 +1,12 @@
 import { Component, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
+import { Icon } from 'common/Icon';
 
 import unlockPanelWalletImg from '../../../../../assets/unlock-panel-wallet.webp';
 
-const unlockPanelClasses: Record<string, string> = {
-  footerIcon: 'mvx:w-4! mvx:h-auto! mvx:hidden mvx:xs:flex mvx:ml-auto mvx:mt-auto',
-};
+// prettier-ignore
+const styles = {
+  unlockButton: 'unlock-panel-footer-icon mvx:text-primary mvx:w-4 mvx:h-auto mvx:hidden mvx:xs:flex mvx:ml-auto mvx:mt-auto',
+} satisfies Record<string, string>;
 
 @Component({
   tag: 'mvx-unlock-panel-footer',
@@ -48,11 +49,7 @@ export class UnlockPanel {
             </a>
           </div>
 
-          <mvx-arrow-up-right-icon
-            class={classNames('unlock-panel-footer-icon', {
-              [unlockPanelClasses.footerIcon]: true,
-            })}
-          />
+          <Icon name="arrow-up-right" class={styles.unlockButton} />
         </div>
       </div>
     );

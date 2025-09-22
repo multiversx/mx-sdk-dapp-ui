@@ -1,4 +1,4 @@
-import { Component, Fragment, h, Prop } from '@stencil/core';
+import { Component, h, Prop } from '@stencil/core';
 import { UnlockButton as UnlockButtonComponent } from 'common/UnlockButton/UnlockButton';
 import type { IProviderBase } from 'types/provider.types';
 
