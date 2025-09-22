@@ -29,6 +29,7 @@ interface ISharedCustomToast {
   toastId: string;
   type?: string;
   onClose?: () => void;
+  hasCloseButton?: boolean;
 }
 
 export interface ISimpleToast extends ISharedCustomToast {
