@@ -31,19 +31,6 @@
             }
           }
 
-          .ledger-confirm-item-value-copy {
-            @apply mvx:flex;
-
-            .ledger-confirm-item-value-copy-icon {
-              @apply mvx:w-4 mvx:h-4 mvx:flex mvx:justify-center mvx:transition-all mvx:duration-200 mvx:ease-in-out;
-              color: var(--mvx-text-color-primary);
-
-              &:hover {
-                @apply mvx:opacity-80;
-              }
-            }
-          }
-
           .ledger-confirm-item-value-explorer {
             @apply mvx:flex;
 

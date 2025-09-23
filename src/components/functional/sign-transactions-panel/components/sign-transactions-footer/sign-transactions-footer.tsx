@@ -132,7 +132,7 @@ export class SignTransactionsFooter {
                     </span>
                   ) : (
                     <span class="sign-transactions-footer-button-icon">
-                      {needsSigning ? <Icon name="pencil" /> : <mvx-check-icon />}
+                      <Icon name={!needsSigning ? 'pencil' : 'check'} />
                     </span>
                   )}
                 </span>
@@ -168,12 +168,7 @@ export class SignTransactionsFooter {
             />
           )}
 
-          <mvx-copy-button
-            text={username ?? address}
-            class="sign-transactions-footer-identity-copy"
-            iconClass="sign-transactions-footer-identity-copy-icon"
-          />
-
+          <mvx-copy-button text={username ?? address} class="sign-transactions-footer-identity-copy" />
           <mvx-explorer-link link={explorerLink} iconClass={signTransactionsFooterClasses.explorerLinkIcon} />
         </div>
       </div>

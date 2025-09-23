@@ -60,16 +60,7 @@
       }
 
       .sign-transactions-footer-identity-copy {
-        @apply mvx:flex;
-
-        .sign-transactions-footer-identity-copy-icon {
-          @apply mvx:h-4 mvx:w-4 mvx:flex mvx:justify-center mvx:transition-all mvx:duration-200 mvx:ease-in-out;
-          color: var(--mvx-link-color);
-
-          &:hover {
-            @apply mvx:opacity-80;
-          }
-        }
+        color: var(--mvx-text-color-primary);
       }
     }
   }

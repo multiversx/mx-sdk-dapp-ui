@@ -95,9 +95,6 @@ export namespace Components {
         "iconClass"?: string;
         "text": string;
     }
-    interface MvxCopyIcon {
-        "class"?: string;
-    }
     interface MvxCustomToast {
         "toast": IComponentToast;
     }
@@ -691,12 +688,6 @@ declare global {
     var HTMLMvxCopyButtonElement: {
         prototype: HTMLMvxCopyButtonElement;
         new (): HTMLMvxCopyButtonElement;
-    };
-    interface HTMLMvxCopyIconElement extends Components.MvxCopyIcon, HTMLStencilElement {
-    }
-    var HTMLMvxCopyIconElement: {
-        prototype: HTMLMvxCopyIconElement;
-        new (): HTMLMvxCopyIconElement;
     };
     interface HTMLMvxCustomToastElementEventMap {
         "deleteToast": string;
@@ -1317,7 +1308,6 @@ declare global {
         "mvx-circle-info-icon": HTMLMvxCircleInfoIconElement;
         "mvx-close-icon": HTMLMvxCloseIconElement;
         "mvx-copy-button": HTMLMvxCopyButtonElement;
-        "mvx-copy-icon": HTMLMvxCopyIconElement;
         "mvx-custom-toast": HTMLMvxCustomToastElement;
         "mvx-data-with-explorer-link": HTMLMvxDataWithExplorerLinkElement;
         "mvx-default-transaction-icon-large": HTMLMvxDefaultTransactionIconLargeElement;
@@ -1458,9 +1448,6 @@ declare namespace LocalJSX {
         "class"?: string;
         "iconClass"?: string;
         "text"?: string;
-    }
-    interface MvxCopyIcon {
-        "class"?: string;
     }
     interface MvxCustomToast {
         "onDeleteToast"?: (event: MvxCustomToastCustomEvent<string>) => void;
@@ -1916,7 +1903,6 @@ declare namespace LocalJSX {
         "mvx-circle-info-icon": MvxCircleInfoIcon;
         "mvx-close-icon": MvxCloseIcon;
         "mvx-copy-button": MvxCopyButton;
-        "mvx-copy-icon": MvxCopyIcon;
         "mvx-custom-toast": MvxCustomToast;
         "mvx-data-with-explorer-link": MvxDataWithExplorerLink;
         "mvx-default-transaction-icon-large": MvxDefaultTransactionIconLarge;
@@ -2009,7 +1995,6 @@ declare module "@stencil/core" {
             "mvx-circle-info-icon": LocalJSX.MvxCircleInfoIcon & JSXBase.HTMLAttributes<HTMLMvxCircleInfoIconElement>;
             "mvx-close-icon": LocalJSX.MvxCloseIcon & JSXBase.HTMLAttributes<HTMLMvxCloseIconElement>;
             "mvx-copy-button": LocalJSX.MvxCopyButton & JSXBase.HTMLAttributes<HTMLMvxCopyButtonElement>;
-            "mvx-copy-icon": LocalJSX.MvxCopyIcon & JSXBase.HTMLAttributes<HTMLMvxCopyIconElement>;
             "mvx-custom-toast": LocalJSX.MvxCustomToast & JSXBase.HTMLAttributes<HTMLMvxCustomToastElement>;
             "mvx-data-with-explorer-link": LocalJSX.MvxDataWithExplorerLink & JSXBase.HTMLAttributes<HTMLMvxDataWithExplorerLinkElement>;
             "mvx-default-transaction-icon-large": LocalJSX.MvxDefaultTransactionIconLarge & JSXBase.HTMLAttributes<HTMLMvxDefaultTransactionIconLargeElement>;

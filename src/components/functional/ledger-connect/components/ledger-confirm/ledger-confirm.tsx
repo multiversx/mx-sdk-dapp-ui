@@ -56,11 +56,7 @@ export class LedgerConfirm {
                 </div>
 
                 <div class="ledger-confirm-item-value-actions">
-                  <mvx-copy-button
-                    text={ledgerConfirmationItem.value}
-                    class="ledger-confirm-item-value-copy"
-                    iconClass="ledger-confirm-item-value-copy-icon"
-                  />
+                  <mvx-copy-button text={ledgerConfirmationItem.value} />
 
                   {ledgerConfirmationItem.explorerLink && (
                     <mvx-explorer-link link={ledgerConfirmationItem.explorerLink} />

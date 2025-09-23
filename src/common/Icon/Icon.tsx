@@ -5,8 +5,10 @@ import { AnglesLeftIcon } from './components/AnglesLeftIcon';
 import { AnglesRightIcon } from './components/AnglesRightIcon';
 import { AngleUpIcon } from './components/AngleUpIcon';
 import { ArrowUpRightIcon } from './components/ArrowUpRightIcon';
+import { CheckIcon } from './components/CheckIcon';
 import { CircleExclamationIcon } from './components/CircleExclamationIcon';
 import { ContractIcon } from './components/ContractIcon';
+import { CopyIcon } from './components/CopyIcon';
 import { LayersIcon } from './components/LayersIcon';
 import { LockIcon } from './components/LockIcon';
 import { PencilIcon } from './components/PencilIcon';
@@ -47,6 +49,12 @@ export const Icon = ({ name, ...properties }: IconPropsType) => {
 
     case 'arrow-up-right':
       return <ArrowUpRightIcon {...properties} />;
+
+    case 'copy':
+      return <CopyIcon {...properties} />;
+
+    case 'check':
+      return <CheckIcon {...properties} />;
 
     default:
       console.error(`No data for the ${name} icon.`);
