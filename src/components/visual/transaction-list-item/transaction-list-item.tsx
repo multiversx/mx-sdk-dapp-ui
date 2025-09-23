@@ -1,6 +1,6 @@
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
-import { IconSizeEnumType } from 'components/common/transaction-asset-icon/transaction-asset-icon';
+import { IconSizeEnumType, TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
 
 import type { ITransactionListItem } from './transaction-list-item.types';
@@ -24,10 +24,10 @@ export class TransactionListItem {
         <div class="transaction-item">
           <div
             class={classNames('transaction-icon', {
-              'transaction-icon-failed': this.transaction.status === 'fail' || this.transaction.status === 'invalid',
+              'transaction-icon-failed': ['fail', 'invalid'].includes(this.transaction.status),
             })}
           >
-            <mvx-transaction-asset-icon transaction={this.transaction} iconSize={IconSizeEnumType.large} />
+            <TransactionAssetIcon transaction={this.transaction} iconSize={IconSizeEnumType.large} />
           </div>
 
           <div class="transaction-details">

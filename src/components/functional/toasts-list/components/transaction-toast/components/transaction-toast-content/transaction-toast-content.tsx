@@ -2,7 +2,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
-import { IconSizeEnumType } from 'components/common/transaction-asset-icon/transaction-asset-icon';
+import { IconSizeEnumType, TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
@@ -53,7 +53,7 @@ export class TransactionToastContent {
                 'transaction-toast-icon-failed': transaction.status === 'fail' || transaction.status === 'invalid',
               })}
             >
-              <mvx-transaction-asset-icon transaction={transaction} iconSize={IconSizeEnumType.small} />
+              <TransactionAssetIcon transaction={transaction} iconSize={IconSizeEnumType.small} />
             </div>
           )}
           <div class="transaction-toast-details">

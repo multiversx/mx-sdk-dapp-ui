@@ -10,12 +10,7 @@
   @apply mvx:items-center mvx:flex mvx:h-5 mvx:w-5 mvx:justify-center mvx:transition-transform mvx:duration-200 mvx:ease-in-out;
   color: var(--mvx-text-color-tertiary);
 
-  .svg-inline--fa {
-    @apply mvx:h-3.5 mvx:w-3.5;
-    color: var(--mvx-text-color-tertiary);
-  }
-
-  &.rotate-up {
+  &.rotated {
     @apply mvx:rotate-90;
   }
 }

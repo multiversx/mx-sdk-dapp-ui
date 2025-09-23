@@ -200,7 +200,9 @@ describe('TransactionValue', () => {
                 <span class="transaction-value-link-text">Example Link</span>
               </div>
             </mvx-explorer-link>
-            <mvx-fa-icon class="transaction-value-icon" title="Title Text"></mvx-fa-icon>
+            <mvx-tooltip>
+              Title Text
+            </mvx-tooltip>
           </div>
       </mvx-transaction-value>
     `);

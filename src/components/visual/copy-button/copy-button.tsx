@@ -1,10 +1,16 @@
 import { Component, h, Prop, State } from '@stencil/core';
-import classNames from 'classnames';
+import { Icon } from 'common/Icon';
 import { copyToClipboard } from 'utils/copyToClipboard';
+
+// prettier-ignore
+const styles = {
+  copyButton: 'copy-button mvx:flex',
+  copyButtonIcon: 'copy-button-icon mvx:flex mvx:cursor-pointer mvx:justify-center mvx:transition-opacity mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80',
+  copyButtonIconCheck: 'copy-button-icon-check mvx:hover:opacity-100! mvx:cursor-default!',
+} satisfies Record<string, string>;
 
 @Component({
   tag: 'mvx-copy-button',
-  styleUrl: 'copy-button.scss',
   shadow: false,
 })
 export class CopyButton {
@@ -44,26 +50,18 @@ export class CopyButton {
       <div
         onClick={this.handleClick.bind(this)}
         class={{
-          'copy-button': true,
+          [styles.copyButton]: true,
           [this.class]: Boolean(this.class),
         }}
       >
-        {this.isSuccess ? (
-          <mvx-check-icon
-            class={classNames({
-              'copy-button-icon': true,
-              'check': true,
-              [this.iconClass]: Boolean(this.iconClass),
-            })}
-          />
-        ) : (
-          <mvx-copy-icon
-            class={classNames({
-              'copy-button-icon': true,
-              [this.iconClass]: Boolean(this.iconClass),
-            })}
-          />
-        )}
+        <Icon
+          name={this.isSuccess ? 'check' : 'copy'}
+          class={{
+            [styles.copyButtonIcon]: true,
+            [styles.copyButtonIconCheck]: this.isSuccess,
+            [this.iconClass]: Boolean(this.iconClass),
+          }}
+        />
       </div>
     );
   }
