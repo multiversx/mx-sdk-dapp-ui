@@ -1,4 +1,4 @@
-import { Fragment, h } from '@stencil/core';
+import { h } from '@stencil/core';
 import classNames from 'classnames';
 import { Icon } from 'common/Icon';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from 'components/functional/unlock-panel/helpers';
@@ -58,29 +58,23 @@ export function UnlockButton({ label, iconUrl, icon, dataTestId, type, class: cl
   };
 
   return (
-    <Fragment>
+    <div data-testid={dataTestId} onClick={handleInstallButtonClick} class={classNames(styles.unlockButton, className)}>
+      <div class={styles.unlockButtonLabel}>{label}</div>
+
       <div
-        data-testid={dataTestId}
-        onClick={handleInstallButtonClick}
-        class={classNames(styles.unlockButton, className)}
+        class={classNames(styles.unlockButtonIcon, {
+          [styles.unlockButtonIconClipped]: isExtensionProvider,
+        })}
       >
-        <div class={styles.unlockButtonLabel}>{label}</div>
-
-        <div
-          class={classNames(styles.unlockButtonIcon, {
-            [styles.unlockButtonIconClipped]: isExtensionProvider,
-          })}
-        >
-          {icon ? icon : <img src={iconUrl} alt={label} />}
-        </div>
-
-        {isDetectableProvider && (
-          <div class={styles.unlockButtonStatus}>
-            <div class={styles.unlockButtonStatusText}>{shouldShowOpenLabel ? 'Open' : 'Install'}</div>
-            {!shouldShowOpenLabel && <Icon name="arrow-up-right" class={styles.unlockButtonStatusIcon} />}
-          </div>
-        )}
+        {icon ? icon : <img src={iconUrl} alt={label} />}
       </div>
-    </Fragment>
+
+      {isDetectableProvider && (
+        <div class={styles.unlockButtonStatus}>
+          <div class={styles.unlockButtonStatusText}>{shouldShowOpenLabel ? 'Open' : 'Install'}</div>
+          {!shouldShowOpenLabel && <Icon name="arrow-up-right" class={styles.unlockButtonStatusIcon} />}
+        </div>
+      )}
+    </div>
   );
 }
