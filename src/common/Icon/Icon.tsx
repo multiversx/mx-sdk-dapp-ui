@@ -1,6 +1,8 @@
 import { h } from '@stencil/core';
 
 import { AngleDownIcon } from './components/AngleDownIcon';
+import { AngleLeftIcon } from './components/AngleLeftIcon';
+import { AngleRightIcon } from './components/AngleRightIcon';
 import { AnglesLeftIcon } from './components/AnglesLeftIcon';
 import { AnglesRightIcon } from './components/AnglesRightIcon';
 import { AngleUpIcon } from './components/AngleUpIcon';
@@ -55,6 +57,12 @@ export const Icon = ({ name, ...properties }: IconPropsType) => {
 
     case 'check':
       return <CheckIcon {...properties} />;
+
+    case 'angle-left':
+      return <AngleLeftIcon {...properties} />;
+
+    case 'angle-right':
+      return <AngleRightIcon {...properties} />;
 
     default:
       console.error(`No data for the ${name} icon.`);
