@@ -19,4 +19,6 @@
   --color-surface: var(--mvx-bg-color-primary);
   --color-outline: var(--mvx-border-color-primary);
   --color-hover: var(--mvx-hover-color-primary);
+  --color-pagination-item: var(--mvx-pagination-item-bg);
+  --color-pagination-item-hover: var(--mvx-pagination-item-bg-hover);
 }
