@@ -322,12 +322,6 @@ export namespace Components {
     interface MvxSimpleToast {
         "toast": ISimpleToast;
     }
-    interface MvxSingleAngleLeftIcon {
-        "class"?: string;
-    }
-    interface MvxSingleAngleRightIcon {
-        "class"?: string;
-    }
     interface MvxSpinnerIcon {
         "class"?: string;
     }
@@ -1010,18 +1004,6 @@ declare global {
         prototype: HTMLMvxSimpleToastElement;
         new (): HTMLMvxSimpleToastElement;
     };
-    interface HTMLMvxSingleAngleLeftIconElement extends Components.MvxSingleAngleLeftIcon, HTMLStencilElement {
-    }
-    var HTMLMvxSingleAngleLeftIconElement: {
-        prototype: HTMLMvxSingleAngleLeftIconElement;
-        new (): HTMLMvxSingleAngleLeftIconElement;
-    };
-    interface HTMLMvxSingleAngleRightIconElement extends Components.MvxSingleAngleRightIcon, HTMLStencilElement {
-    }
-    var HTMLMvxSingleAngleRightIconElement: {
-        prototype: HTMLMvxSingleAngleRightIconElement;
-        new (): HTMLMvxSingleAngleRightIconElement;
-    };
     interface HTMLMvxSpinnerIconElement extends Components.MvxSpinnerIcon, HTMLStencilElement {
     }
     var HTMLMvxSpinnerIconElement: {
@@ -1336,8 +1318,6 @@ declare global {
         "mvx-sign-transactions-overview": HTMLMvxSignTransactionsOverviewElement;
         "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
         "mvx-simple-toast": HTMLMvxSimpleToastElement;
-        "mvx-single-angle-left-icon": HTMLMvxSingleAngleLeftIconElement;
-        "mvx-single-angle-right-icon": HTMLMvxSingleAngleRightIconElement;
         "mvx-spinner-icon": HTMLMvxSpinnerIconElement;
         "mvx-toast-list": HTMLMvxToastListElement;
         "mvx-tooltip": HTMLMvxTooltipElement;
@@ -1669,12 +1649,6 @@ declare namespace LocalJSX {
         "onDeleteToast"?: (event: MvxSimpleToastCustomEvent<void>) => void;
         "toast"?: ISimpleToast;
     }
-    interface MvxSingleAngleLeftIcon {
-        "class"?: string;
-    }
-    interface MvxSingleAngleRightIcon {
-        "class"?: string;
-    }
     interface MvxSpinnerIcon {
         "class"?: string;
     }
@@ -1927,8 +1901,6 @@ declare namespace LocalJSX {
         "mvx-sign-transactions-overview": MvxSignTransactionsOverview;
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
         "mvx-simple-toast": MvxSimpleToast;
-        "mvx-single-angle-left-icon": MvxSingleAngleLeftIcon;
-        "mvx-single-angle-right-icon": MvxSingleAngleRightIcon;
         "mvx-spinner-icon": MvxSpinnerIcon;
         "mvx-toast-list": MvxToastList;
         "mvx-tooltip": MvxTooltip;
@@ -2018,8 +1990,6 @@ declare module "@stencil/core" {
             "mvx-sign-transactions-overview": LocalJSX.MvxSignTransactionsOverview & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsOverviewElement>;
             "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;
             "mvx-simple-toast": LocalJSX.MvxSimpleToast & JSXBase.HTMLAttributes<HTMLMvxSimpleToastElement>;
-            "mvx-single-angle-left-icon": LocalJSX.MvxSingleAngleLeftIcon & JSXBase.HTMLAttributes<HTMLMvxSingleAngleLeftIconElement>;
-            "mvx-single-angle-right-icon": LocalJSX.MvxSingleAngleRightIcon & JSXBase.HTMLAttributes<HTMLMvxSingleAngleRightIconElement>;
             "mvx-spinner-icon": LocalJSX.MvxSpinnerIcon & JSXBase.HTMLAttributes<HTMLMvxSpinnerIconElement>;
             "mvx-toast-list": LocalJSX.MvxToastList & JSXBase.HTMLAttributes<HTMLMvxToastListElement>;
             "mvx-tooltip": LocalJSX.MvxTooltip & JSXBase.HTMLAttributes<HTMLMvxTooltipElement>;

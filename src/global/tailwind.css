@@ -21,4 +21,6 @@
   --color-hover: var(--mvx-hover-color-primary);
   --color-pagination-item: var(--mvx-pagination-item-bg);
   --color-pagination-item-hover: var(--mvx-pagination-item-bg-hover);
+  --color-neutral-950: var(--mvx-neutral-950);
+  --color-neutral-900: var(--mvx-neutral-900);
 }
