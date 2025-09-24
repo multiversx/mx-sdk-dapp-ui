@@ -7,6 +7,7 @@ import { AnglesLeftIcon } from './components/AnglesLeftIcon';
 import { AnglesRightIcon } from './components/AnglesRightIcon';
 import { AngleUpIcon } from './components/AngleUpIcon';
 import { ArrowUpRightIcon } from './components/ArrowUpRightIcon';
+import { BackArrowIcon } from './components/BackArrowIcon';
 import { CheckIcon } from './components/CheckIcon';
 import { CircleExclamationIcon } from './components/CircleExclamationIcon';
 import { ContractIcon } from './components/ContractIcon';
@@ -63,6 +64,9 @@ export const Icon = ({ name, ...properties }: IconPropsType) => {
 
     case 'angle-right':
       return <AngleRightIcon {...properties} />;
+
+    case 'back-arrow':
+      return <BackArrowIcon {...properties} />;
 
     default:
       console.error(`No data for the ${name} icon.`);

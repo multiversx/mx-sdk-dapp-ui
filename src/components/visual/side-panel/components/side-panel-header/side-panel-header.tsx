@@ -1,5 +1,6 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
+import { Icon } from 'common/Icon';
 
 export enum SidePanelHeaderSlotEnum {
   leftIcon = 'left-icon',
@@ -39,7 +40,7 @@ export class SidePanelHeader {
         >
           {this.hasLeftButton && (
             <slot name={SidePanelHeaderSlotEnum.leftIcon}>
-              <mvx-back-arrow-icon />
+              <Icon name="back-arrow" />
             </slot>
           )}
         </div>

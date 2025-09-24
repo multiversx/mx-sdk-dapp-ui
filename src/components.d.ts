@@ -51,9 +51,6 @@ export namespace Components {
     interface MvxArrowUpRightFromSquareIcon {
         "class"?: string;
     }
-    interface MvxBackArrowIcon {
-        "class"?: string;
-    }
     interface MvxBraveExtensionProviderIcon {
         "class"?: string;
         "height"?: number;
@@ -626,12 +623,6 @@ declare global {
     var HTMLMvxArrowUpRightFromSquareIconElement: {
         prototype: HTMLMvxArrowUpRightFromSquareIconElement;
         new (): HTMLMvxArrowUpRightFromSquareIconElement;
-    };
-    interface HTMLMvxBackArrowIconElement extends Components.MvxBackArrowIcon, HTMLStencilElement {
-    }
-    var HTMLMvxBackArrowIconElement: {
-        prototype: HTMLMvxBackArrowIconElement;
-        new (): HTMLMvxBackArrowIconElement;
     };
     interface HTMLMvxBraveExtensionProviderIconElement extends Components.MvxBraveExtensionProviderIcon, HTMLStencilElement {
     }
@@ -1274,7 +1265,6 @@ declare global {
         "mvx-arc-extension-provider-icon": HTMLMvxArcExtensionProviderIconElement;
         "mvx-arrow-right-icon": HTMLMvxArrowRightIconElement;
         "mvx-arrow-up-right-from-square-icon": HTMLMvxArrowUpRightFromSquareIconElement;
-        "mvx-back-arrow-icon": HTMLMvxBackArrowIconElement;
         "mvx-brave-extension-provider-icon": HTMLMvxBraveExtensionProviderIconElement;
         "mvx-button": HTMLMvxButtonElement;
         "mvx-circle-info-icon": HTMLMvxCircleInfoIconElement;
@@ -1372,9 +1362,6 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface MvxArrowUpRightFromSquareIcon {
-        "class"?: string;
-    }
-    interface MvxBackArrowIcon {
         "class"?: string;
     }
     interface MvxBraveExtensionProviderIcon {
@@ -1857,7 +1844,6 @@ declare namespace LocalJSX {
         "mvx-arc-extension-provider-icon": MvxArcExtensionProviderIcon;
         "mvx-arrow-right-icon": MvxArrowRightIcon;
         "mvx-arrow-up-right-from-square-icon": MvxArrowUpRightFromSquareIcon;
-        "mvx-back-arrow-icon": MvxBackArrowIcon;
         "mvx-brave-extension-provider-icon": MvxBraveExtensionProviderIcon;
         "mvx-button": MvxButton;
         "mvx-circle-info-icon": MvxCircleInfoIcon;
@@ -1946,7 +1932,6 @@ declare module "@stencil/core" {
             "mvx-arc-extension-provider-icon": LocalJSX.MvxArcExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxArcExtensionProviderIconElement>;
             "mvx-arrow-right-icon": LocalJSX.MvxArrowRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowRightIconElement>;
             "mvx-arrow-up-right-from-square-icon": LocalJSX.MvxArrowUpRightFromSquareIcon & JSXBase.HTMLAttributes<HTMLMvxArrowUpRightFromSquareIconElement>;
-            "mvx-back-arrow-icon": LocalJSX.MvxBackArrowIcon & JSXBase.HTMLAttributes<HTMLMvxBackArrowIconElement>;
             "mvx-brave-extension-provider-icon": LocalJSX.MvxBraveExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxBraveExtensionProviderIconElement>;
             "mvx-button": LocalJSX.MvxButton & JSXBase.HTMLAttributes<HTMLMvxButtonElement>;
             "mvx-circle-info-icon": LocalJSX.MvxCircleInfoIcon & JSXBase.HTMLAttributes<HTMLMvxCircleInfoIconElement>;
