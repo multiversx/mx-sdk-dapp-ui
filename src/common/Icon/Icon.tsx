@@ -11,6 +11,7 @@ import { ArrowUpRightIcon } from './components/ArrowUpRightIcon';
 import { BackArrowIcon } from './components/BackArrowIcon';
 import { CheckIcon } from './components/CheckIcon';
 import { CircleExclamationIcon } from './components/CircleExclamationIcon';
+import { CloseIcon } from './components/CloseIcon';
 import { ContractIcon } from './components/ContractIcon';
 import { CopyIcon } from './components/CopyIcon';
 import { LayersIcon } from './components/LayersIcon';
@@ -71,6 +72,9 @@ export const Icon = ({ name, ...properties }: IconPropsType) => {
 
     case 'arrow-up-right-from-square-icon':
       return <ArrowUpRightFromSquareIcon {...properties} />;
+
+    case 'close':
+      return <CloseIcon {...properties} />;
 
     default:
       console.error(`No data for the ${name} icon.`);

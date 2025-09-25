@@ -52,7 +52,7 @@ export class SidePanelHeader {
           onClick={this.handleRightIconClick.bind(this)}
         >
           <slot name={SidePanelHeaderSlotEnum.rightIcon}>
-            <mvx-close-icon class="close-icon" />
+            <Icon name="close" />
           </slot>
         </div>
       </div>

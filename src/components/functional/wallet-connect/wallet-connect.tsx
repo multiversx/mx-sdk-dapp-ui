@@ -88,7 +88,7 @@ export class WalletConnect {
           onRightButtonClick={() => this.eventBus.publish(WalletConnectEventsEnum.CLOSE)}
         >
           {!this.showScanPage && <Icon name="back-arrow" slot={SidePanelHeaderSlotEnum.leftIcon} />}
-          <mvx-close-icon slot={SidePanelHeaderSlotEnum.rightIcon} class="close-icon" />
+          <Icon name="close" slot={SidePanelHeaderSlotEnum.rightIcon} />
         </mvx-side-panel-header>
 
         <div class="wallet-connect">

@@ -18,6 +18,7 @@ export enum IconNameEnum {
   angleRight = 'angle-right',
   backArrow = 'back-arrow',
   arrowUpRightFromSquare = 'arrow-up-right-from-square-icon',
+  close = 'close',
 }
 
 export type IconPropsType = JSXBase.IntrinsicElements['svg'] & {
