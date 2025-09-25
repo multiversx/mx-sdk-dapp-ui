@@ -142,48 +142,28 @@
   max-width: 300px;
 }
 
-/* Direction indicator */
-.direction-indicator {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 23px;
-  height: 23px;
+.sign-transactions-direction {
+  @apply mvx:absolute mvx:flex mvx:flex-col mvx:items-center mvx:justify-center mvx:w-6 mvx:h-6 mvx:rounded-full mvx:left-5 mvx:z-10;
   background: var(--mvx-bg-accent-variant-color);
-  border-radius: 50%;
-  left: 21px;
-  top: 76px;
-  z-index: 10;
-  padding: 6px;
-}
+  top: calc(50% - 12px);
 
-.direction-arrow {
-  color: var(--mvx-text-color-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  flex-basis: auto;
-  position: relative;
-  width: 10px;
-  height: 5px;
-}
+  .sign-transactions-direction-icon {
+    @apply mvx:flex mvx:flex-col mvx:items-center mvx:gap-px;
 
-.direction-icon {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  align-items: center;
-}
+    .sign-transactions-direction-icon-arrow {
+      @apply mvx:flex mvx:items-center mvx:justify-center mvx:relative mvx:shrink-0 mvx:w-3 mvx:basis-auto mvx:-mt-1 mvx:-mb-0.5;
+      color: var(--mvx-text-color-secondary);
 
-.ellipse {
-  width: 2px;
-  height: 2px;
-  position: relative;
-  border-radius: 50%;
-  background-color: var(--mvx-text-color-secondary);
+      &.down {
+        @apply mvx:-mt-0.5 mvx:-mb-1 mvx:order-1;
+      }
+    }
+
+    .sign-transactions-direction-icon-dot {
+      @apply mvx:relative mvx:rounded-full mvx:w-0.5 mvx:h-0.5;
+      background-color: var(--mvx-text-color-secondary);
+    }
+  }
 }
 
 /* Action section */

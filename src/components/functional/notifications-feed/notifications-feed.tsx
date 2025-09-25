@@ -1,4 +1,5 @@
 import { Component, h, Method, State } from '@stencil/core';
+import { Icon } from 'common/Icon';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
@@ -99,7 +100,7 @@ export class NotificationsFeed {
         <div class="feed-content">
           <div class="notifications-info">
             This feed is stored in your browser and will be reset when a new session is started.
-            <mvx-circle-exclamation-icon class="info-icon" />
+            <Icon name="circle-exclamation" class="info-icon" />
           </div>
 
           {hasPending && (

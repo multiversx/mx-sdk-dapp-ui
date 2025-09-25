@@ -31,19 +31,6 @@
             }
           }
 
-          .ledger-confirm-item-value-copy {
-            @apply mvx:flex;
-
-            .ledger-confirm-item-value-copy-icon {
-              @apply mvx:w-4 mvx:h-4 mvx:flex mvx:justify-center mvx:transition-all mvx:duration-200 mvx:ease-in-out;
-              color: var(--mvx-text-color-primary);
-
-              &:hover {
-                @apply mvx:opacity-80;
-              }
-            }
-          }
-
           .ledger-confirm-item-value-explorer {
             @apply mvx:flex;
 
@@ -75,7 +62,7 @@
 
     .ledger-confirm-footer {
       @apply mvx:mt-auto mvx:p-3 mvx:rounded-xl mvx:flex mvx:items-center mvx:gap-2 mvx:relative;
-      
+
       &:before {
         @apply mvx:absolute mvx:content-[''] mvx:inset-0 mvx:-z-1 mvx:opacity-30 mvx:rounded-xl;
         background: var(--mvx-ledger-warning-bg);
@@ -86,8 +73,8 @@
       }
 
       .ledger-confirm-footer-icon {
-        @apply mvx:w-6 mvx:h-6 mvx:flex-1 mvx:min-w-6 mvx:p-0.5;
-        fill: var(--mvx-ledger-warning-color);
+        @apply mvx:flex-1 mvx:min-w-6 mvx:p-0.5;
+        color: var(--mvx-ledger-warning-color);
       }
 
       .ledger-confirm-footer-description {
@@ -95,9 +82,9 @@
         color: var(--mvx-text-color-secondary);
       }
 
-      .ledger-contact-support{
+      .ledger-contact-support {
         @apply mvx:underline;
-        color: var(--mvx-ledger-warning-color)
+        color: var(--mvx-ledger-warning-color);
       }
     }
   }

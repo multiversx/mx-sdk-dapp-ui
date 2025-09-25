@@ -2,10 +2,14 @@
 
 @theme {
   --breakpoint-xs: 30rem; /* 480px */
-  --color-primary: var(--mvx-text-color-primary);
   --color-link: var(--mvx-link-color);
   --color-accent: var(--mvx-text-accent-color);
   --color-preloader: var(--mvx-preloader-item-bg);
   --color-pending: var(--mvx-pending-color);
+  --color-secondary: var(--mvx-bg-color-secondary);
   --color-error: var(--mvx-error-color);
+  --color-primary: var(--mvx-text-color-primary);
+  --color-surface: var(--mvx-bg-color-primary);
+  --color-outline: var(--mvx-border-color-primary);
+  --color-hover: var(--mvx-hover-color-primary);
 }

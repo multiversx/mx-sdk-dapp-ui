@@ -1,5 +1,5 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { TransactionAssetIcon } from 'components/common/transaction-asset-icon/transaction-asset-icon';
+import { TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
 import { FormatAmount } from 'components/controlled/format-amount/format-amount';
 
 import { TransactionListItem } from '../transaction-list-item';
@@ -50,10 +50,7 @@ describe('transaction-list-item', () => {
     it('renders with asset image', async () => {
       const page = await createPage(baseTransaction);
 
-      const assetIcon = page.root.querySelector('mvx-transaction-asset-icon');
-      expect(assetIcon).not.toBeNull();
-
-      const iconImg = assetIcon.shadowRoot.querySelector('img');
+      const iconImg = page.root.querySelector('img');
       expect(iconImg).not.toBeNull();
       expect(iconImg.getAttribute('src')).toBe(baseTransaction.asset.imageUrl);
       expect(iconImg.getAttribute('alt')).toBe('Transaction icon');
@@ -63,10 +60,7 @@ describe('transaction-list-item', () => {
     it('renders with asset icon', async () => {
       const transaction = { ...baseTransaction, asset: { icon: 'faArrowsRotate' } };
       const page = await createPage(transaction);
-      const assetIcon = page.root.querySelector('mvx-transaction-asset-icon');
-
-      expect(assetIcon).not.toBeNull();
-      const iconComponent = assetIcon.shadowRoot.querySelector('mvx-fa-icon');
+      const iconComponent = page.root.querySelector('mvx-fa-icon');
       expect(iconComponent).not.toBeNull();
       expect(iconComponent.getAttribute('icon')).toBe('faArrowsRotate');
     });
@@ -74,10 +68,7 @@ describe('transaction-list-item', () => {
     it('renders with asset text', async () => {
       const transaction = { ...baseTransaction, asset: { text: 'TX' } };
       const page = await createPage(transaction);
-      const assetIcon = page.root.querySelector('mvx-transaction-asset-icon');
-
-      expect(assetIcon).not.toBeNull();
-      const iconText = assetIcon.shadowRoot.querySelector('span');
+      const iconText = page.root.querySelector('span');
       expect(iconText).not.toBeNull();
       expect(iconText.textContent).toBe('TX');
     });
@@ -86,10 +77,7 @@ describe('transaction-list-item', () => {
       const transaction = { ...baseTransaction, asset: {} };
       const page = await createPage(transaction);
 
-      const assetIcon = page.root.querySelector('mvx-transaction-asset-icon');
-      expect(assetIcon).not.toBeNull();
-
-      const defaultIcon = assetIcon.shadowRoot.querySelector('mvx-default-transaction-icon-large');
+      const defaultIcon = page.root.querySelector('mvx-default-transaction-icon-large');
       expect(defaultIcon).not.toBeNull();
     });
 
@@ -100,10 +88,7 @@ describe('transaction-list-item', () => {
       const regularIcon = page.root.querySelector('.icon-text');
       expect(regularIcon).toBeFalsy();
 
-      const assetIcon = page.root.querySelector('mvx-transaction-asset-icon');
-      expect(assetIcon).not.toBeNull();
-
-      const defaultIcon = assetIcon.shadowRoot.querySelector('mvx-default-transaction-icon-large');
+      const defaultIcon = page.root.querySelector('mvx-default-transaction-icon-large');
       expect(defaultIcon).not.toBeNull();
     });
   });

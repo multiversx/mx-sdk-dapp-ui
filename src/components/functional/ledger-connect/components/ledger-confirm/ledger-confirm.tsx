@@ -1,4 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
+import { Icon } from 'common/Icon';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { IConfirmScreenData } from '../../ledger-connect.types';
@@ -55,11 +56,7 @@ export class LedgerConfirm {
                 </div>
 
                 <div class="ledger-confirm-item-value-actions">
-                  <mvx-copy-button
-                    text={ledgerConfirmationItem.value}
-                    class="ledger-confirm-item-value-copy"
-                    iconClass="ledger-confirm-item-value-copy-icon"
-                  />
+                  <mvx-copy-button text={ledgerConfirmationItem.value} />
 
                   {ledgerConfirmationItem.explorerLink && (
                     <mvx-explorer-link link={ledgerConfirmationItem.explorerLink} />
@@ -75,9 +72,11 @@ export class LedgerConfirm {
         </div>
 
         <div class="ledger-confirm-footer">
-          <mvx-triangular-warning-icon class="ledger-confirm-footer-icon" />
+          <Icon name="triangular-warning" class="ledger-confirm-footer-icon" />
+
           <div class="ledger-confirm-footer-description">
             <span>If the address above does not match the one on your device, close this page and </span>
+
             <span class="ledger-contact-support" onClick={this.handleSupportButtonClick.bind(this)}>
               contact support.
             </span>

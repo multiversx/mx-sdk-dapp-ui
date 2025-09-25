@@ -14,6 +14,7 @@
   }
 
   .sign-transactions-advanced-data-decode-icon {
-    @apply mvx:ml-auto;
+    @apply mvx:ml-auto mvx:flex mvx:w-4 mvx:h-2.5;
+    color: var(--mvx-text-color-secondary);
   }
 }

@@ -1,5 +1,6 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
+import { Icon } from 'common/Icon';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import { getPagination } from './helpers';
@@ -71,7 +72,7 @@ export class Pagination {
           class={{ 'pagination-angle': true, 'disabled': this.isDisabled, 'inactive': isLeftToggleDisabled }}
           data-testid={DataTestIdsEnum.firstBtn}
         >
-          <mvx-angles-left-icon class="pagination-angle-icon" />
+          <Icon name="angles-left" class="pagination-angle-icon" />
         </span>
 
         <div
@@ -136,7 +137,7 @@ export class Pagination {
           class={{ 'pagination-angle': true, 'disabled': this.isDisabled, 'inactive': isRightToggleDisabled }}
           data-testid={DataTestIdsEnum.lastBtn}
         >
-          <mvx-angles-right-icon class="pagination-angle-icon" />
+          <Icon name="angles-right" class="pagination-angle-icon" />
         </span>
       </div>
     );

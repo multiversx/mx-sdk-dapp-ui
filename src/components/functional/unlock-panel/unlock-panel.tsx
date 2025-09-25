@@ -1,4 +1,5 @@
 import { Component, Element, h, Method, State } from '@stencil/core';
+import { ProviderIdleScreen } from 'common/ProviderIdleScreen/ProviderIdleScreen';
 import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
@@ -177,7 +178,7 @@ export class UnlockPanel {
           class={{ 'unlock-panel-anchor': this.isLoggingIn || this.isIntroScreenVisible }}
         >
           {this.isIntroScreenVisible && (
-            <mvx-provider-idle-screen
+            <ProviderIdleScreen
               onAccess={this.handleAccess}
               provider={this.selectedMethod}
               onClose={this.handleResetLoginState}

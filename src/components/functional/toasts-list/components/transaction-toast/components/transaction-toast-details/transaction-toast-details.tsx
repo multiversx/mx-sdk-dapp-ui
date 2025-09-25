@@ -1,6 +1,7 @@
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import type { JSX } from '@stencil/core';
 import { Component, h, Prop, State } from '@stencil/core';
+import classNames from 'classnames';
+import { Icon } from 'common/Icon';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
@@ -57,10 +58,13 @@ export class TransactionToastDetails {
     return (
       <div class="transaction-details-container">
         <div class="transaction-details-status" onClick={this.toggleExpand.bind(this)}>
-          <mvx-fa-icon
-            icon={faChevronDown}
-            class={`transaction-details-status-icon ${this.isExpanded ? 'rotate-up' : ''}`}
-          ></mvx-fa-icon>
+          <Icon
+            name="angle-down"
+            class={classNames('transaction-details-status-icon', {
+              rotated: this.isExpanded,
+            })}
+          />
+
           <span data-testid={DataTestIdsEnum.transactionDetailsStatus} class="transaction-details-status-text">
             {this.processedTransactionsStatus}
           </span>

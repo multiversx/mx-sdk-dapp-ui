@@ -9,7 +9,8 @@
   display: flex;
 }
 
-.transaction-value, .transaction-value-content {
+.transaction-value,
+.transaction-value-content {
   align-items: center;
   display: flex;
   gap: 0.25rem;
@@ -37,7 +38,11 @@
   word-break: break-all;
   vertical-align: baseline;
   border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
   width: max-content;
 }
 
@@ -89,7 +94,6 @@
   color: var(--mvx-white);
 }
 
-
 .amount {
   display: flex;
   align-items: center;
@@ -98,4 +102,8 @@
 
 .amount-symbol {
   color: var(--mvx-text-color-primary);
+}
+
+.transaction-value-icon {
+  @apply mvx:w-4 mvx:h-4;
 }

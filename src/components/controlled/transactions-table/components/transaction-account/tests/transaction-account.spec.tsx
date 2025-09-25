@@ -41,7 +41,7 @@ describe('TransactionAccount Component', () => {
       ),
     });
 
-    const lockedIcon = page.root.querySelector('mvx-fa-icon');
+    const lockedIcon = page.root.querySelector('svg');
     expect(lockedIcon).not.toBeNull();
   });
 
@@ -53,7 +53,7 @@ describe('TransactionAccount Component', () => {
       template: () => <mvx-transaction-account account={contractAccount} scope="sender"></mvx-transaction-account>,
     });
 
-    const contractIcon = page.root.querySelector('mvx-fa-icon');
+    const contractIcon = page.root.querySelector('svg');
     expect(contractIcon).not.toBeNull();
   });
 
