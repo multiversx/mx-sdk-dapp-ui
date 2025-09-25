@@ -12,9 +12,9 @@ describe('ExplorerLink', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-explorer-link link="https://example.com">
-        <a href="https://example.com" target="_blank" class="explorer-link" rel="noreferrer">
+        <a href="https://example.com" target="_blank" class="explorer-link mvx:decoration-0 mvx:flex" rel="noreferrer">
           <slot-fb>
-            <mvx-arrow-up-right-from-square-icon class="explorer-link-icon"></mvx-arrow-up-right-from-square-icon>
+            <mvx-arrow-up-right-from-square-icon class="explorer-link-icon mvx:duration-200 mvx:ease-in-out mvx:flex mvx:h-4 mvx:hover:opacity-80 mvx:justify-center mvx:transition-opacity mvx:w-4"></mvx-arrow-up-right-from-square-icon>
           </slot-fb>
         </a>
       </mvx-explorer-link>
@@ -29,9 +29,9 @@ describe('ExplorerLink', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-explorer-link link="https://example.com">
-        <a href="https://example.com" target="_blank" class="explorer-link" rel="noreferrer">
+        <a href="https://example.com" target="_blank" class="explorer-link mvx:decoration-0 mvx:flex" rel="noreferrer">
           <slot-fb hidden="">
-            <mvx-arrow-up-right-from-square-icon class="explorer-link-icon"></mvx-arrow-up-right-from-square-icon>
+            <mvx-arrow-up-right-from-square-icon class="explorer-link-icon mvx:duration-200 mvx:ease-in-out mvx:flex mvx:h-4 mvx:hover:opacity-80 mvx:justify-center mvx:transition-opacity mvx:w-4"></mvx-arrow-up-right-from-square-icon>
           </slot-fb>
           View on Explorer
         </a>
@@ -47,9 +47,9 @@ describe('ExplorerLink', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-explorer-link link="https://example.com" class="custom-class">
-        <a href="https://example.com" target="_blank" class="explorer-link custom-class" rel="noreferrer">
+        <a href="https://example.com" target="_blank" class="custom-class explorer-link mvx:decoration-0 mvx:flex" rel="noreferrer">
           <slot-fb>
-            <mvx-arrow-up-right-from-square-icon class="explorer-link-icon"></mvx-arrow-up-right-from-square-icon>
+            <mvx-arrow-up-right-from-square-icon class="explorer-link-icon mvx:duration-200 mvx:ease-in-out mvx:flex mvx:h-4 mvx:hover:opacity-80 mvx:justify-center mvx:transition-opacity mvx:w-4"></mvx-arrow-up-right-from-square-icon>
           </slot-fb>
         </a>
       </mvx-explorer-link>
@@ -64,9 +64,9 @@ describe('ExplorerLink', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-explorer-link link="https://example.com">
-        <a class="explorer-link" href="https://example.com" rel="noreferrer" target="_blank">
+        <a class="explorer-link mvx:decoration-0 mvx:flex" href="https://example.com" rel="noreferrer" target="_blank">
           <slot-fb hidden="">
-            <mvx-arrow-up-right-from-square-icon class="explorer-link-icon"></mvx-arrow-up-right-from-square-icon>
+            <mvx-arrow-up-right-from-square-icon class="explorer-link-icon mvx:duration-200 mvx:ease-in-out mvx:flex mvx:h-4 mvx:hover:opacity-80 mvx:justify-center mvx:transition-opacity mvx:w-4"></mvx-arrow-up-right-from-square-icon>
           </slot-fb>
           <mvx-arrow-right-icon>
             <svg class="arrow-right-icon" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
