@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.31](https://github.com/multiversx/mx-sdk-dapp-ui/pull/229)] - 2025-09-25
+
 - [Updated simple toast styles](https://github.com/multiversx/mx-sdk-dapp-ui/pull/228)
 - [Updated custom toast styles](https://github.com/multiversx/mx-sdk-dapp-ui/pull/226)
 - [Refactored icons to leverage on new centralised component](https://github.com/multiversx/mx-sdk-dapp-ui/pull/219)
