@@ -48,9 +48,6 @@ export namespace Components {
     interface MvxArrowRightIcon {
         "class"?: string;
     }
-    interface MvxArrowUpRightFromSquareIcon {
-        "class"?: string;
-    }
     interface MvxBraveExtensionProviderIcon {
         "class"?: string;
         "height"?: number;
@@ -510,8 +507,6 @@ export namespace Components {
     interface MvxWalletProviderIcon {
         "class"?: string;
     }
-    interface MvxXaliasProviderIcon {
-    }
     interface MvxXportalDownloadQrIcon {
         /**
           * @default ''
@@ -617,12 +612,6 @@ declare global {
     var HTMLMvxArrowRightIconElement: {
         prototype: HTMLMvxArrowRightIconElement;
         new (): HTMLMvxArrowRightIconElement;
-    };
-    interface HTMLMvxArrowUpRightFromSquareIconElement extends Components.MvxArrowUpRightFromSquareIcon, HTMLStencilElement {
-    }
-    var HTMLMvxArrowUpRightFromSquareIconElement: {
-        prototype: HTMLMvxArrowUpRightFromSquareIconElement;
-        new (): HTMLMvxArrowUpRightFromSquareIconElement;
     };
     interface HTMLMvxBraveExtensionProviderIconElement extends Components.MvxBraveExtensionProviderIcon, HTMLStencilElement {
     }
@@ -1242,12 +1231,6 @@ declare global {
         prototype: HTMLMvxWalletProviderIconElement;
         new (): HTMLMvxWalletProviderIconElement;
     };
-    interface HTMLMvxXaliasProviderIconElement extends Components.MvxXaliasProviderIcon, HTMLStencilElement {
-    }
-    var HTMLMvxXaliasProviderIconElement: {
-        prototype: HTMLMvxXaliasProviderIconElement;
-        new (): HTMLMvxXaliasProviderIconElement;
-    };
     interface HTMLMvxXportalDownloadQrIconElement extends Components.MvxXportalDownloadQrIcon, HTMLStencilElement {
     }
     var HTMLMvxXportalDownloadQrIconElement: {
@@ -1264,7 +1247,6 @@ declare global {
         "mvx-address-table": HTMLMvxAddressTableElement;
         "mvx-arc-extension-provider-icon": HTMLMvxArcExtensionProviderIconElement;
         "mvx-arrow-right-icon": HTMLMvxArrowRightIconElement;
-        "mvx-arrow-up-right-from-square-icon": HTMLMvxArrowUpRightFromSquareIconElement;
         "mvx-brave-extension-provider-icon": HTMLMvxBraveExtensionProviderIconElement;
         "mvx-button": HTMLMvxButtonElement;
         "mvx-circle-info-icon": HTMLMvxCircleInfoIconElement;
@@ -1340,7 +1322,6 @@ declare global {
         "mvx-wallet-connect-google-play-icon": HTMLMvxWalletConnectGooglePlayIconElement;
         "mvx-wallet-connect-scan": HTMLMvxWalletConnectScanElement;
         "mvx-wallet-provider-icon": HTMLMvxWalletProviderIconElement;
-        "mvx-xalias-provider-icon": HTMLMvxXaliasProviderIconElement;
         "mvx-xportal-download-qr-icon": HTMLMvxXportalDownloadQrIconElement;
         "mvx-xportal-qr-code-preloader": HTMLMvxXportalQrCodePreloaderElement;
     }
@@ -1359,9 +1340,6 @@ declare namespace LocalJSX {
         "width"?: number;
     }
     interface MvxArrowRightIcon {
-        "class"?: string;
-    }
-    interface MvxArrowUpRightFromSquareIcon {
         "class"?: string;
     }
     interface MvxBraveExtensionProviderIcon {
@@ -1828,8 +1806,6 @@ declare namespace LocalJSX {
     interface MvxWalletProviderIcon {
         "class"?: string;
     }
-    interface MvxXaliasProviderIcon {
-    }
     interface MvxXportalDownloadQrIcon {
         /**
           * @default ''
@@ -1843,7 +1819,6 @@ declare namespace LocalJSX {
         "mvx-address-table": MvxAddressTable;
         "mvx-arc-extension-provider-icon": MvxArcExtensionProviderIcon;
         "mvx-arrow-right-icon": MvxArrowRightIcon;
-        "mvx-arrow-up-right-from-square-icon": MvxArrowUpRightFromSquareIcon;
         "mvx-brave-extension-provider-icon": MvxBraveExtensionProviderIcon;
         "mvx-button": MvxButton;
         "mvx-circle-info-icon": MvxCircleInfoIcon;
@@ -1919,7 +1894,6 @@ declare namespace LocalJSX {
         "mvx-wallet-connect-google-play-icon": MvxWalletConnectGooglePlayIcon;
         "mvx-wallet-connect-scan": MvxWalletConnectScan;
         "mvx-wallet-provider-icon": MvxWalletProviderIcon;
-        "mvx-xalias-provider-icon": MvxXaliasProviderIcon;
         "mvx-xportal-download-qr-icon": MvxXportalDownloadQrIcon;
         "mvx-xportal-qr-code-preloader": MvxXportalQrCodePreloader;
     }
@@ -1931,7 +1905,6 @@ declare module "@stencil/core" {
             "mvx-address-table": LocalJSX.MvxAddressTable & JSXBase.HTMLAttributes<HTMLMvxAddressTableElement>;
             "mvx-arc-extension-provider-icon": LocalJSX.MvxArcExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxArcExtensionProviderIconElement>;
             "mvx-arrow-right-icon": LocalJSX.MvxArrowRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowRightIconElement>;
-            "mvx-arrow-up-right-from-square-icon": LocalJSX.MvxArrowUpRightFromSquareIcon & JSXBase.HTMLAttributes<HTMLMvxArrowUpRightFromSquareIconElement>;
             "mvx-brave-extension-provider-icon": LocalJSX.MvxBraveExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxBraveExtensionProviderIconElement>;
             "mvx-button": LocalJSX.MvxButton & JSXBase.HTMLAttributes<HTMLMvxButtonElement>;
             "mvx-circle-info-icon": LocalJSX.MvxCircleInfoIcon & JSXBase.HTMLAttributes<HTMLMvxCircleInfoIconElement>;
@@ -2007,7 +1980,6 @@ declare module "@stencil/core" {
             "mvx-wallet-connect-google-play-icon": LocalJSX.MvxWalletConnectGooglePlayIcon & JSXBase.HTMLAttributes<HTMLMvxWalletConnectGooglePlayIconElement>;
             "mvx-wallet-connect-scan": LocalJSX.MvxWalletConnectScan & JSXBase.HTMLAttributes<HTMLMvxWalletConnectScanElement>;
             "mvx-wallet-provider-icon": LocalJSX.MvxWalletProviderIcon & JSXBase.HTMLAttributes<HTMLMvxWalletProviderIconElement>;
-            "mvx-xalias-provider-icon": LocalJSX.MvxXaliasProviderIcon & JSXBase.HTMLAttributes<HTMLMvxXaliasProviderIconElement>;
             "mvx-xportal-download-qr-icon": LocalJSX.MvxXportalDownloadQrIcon & JSXBase.HTMLAttributes<HTMLMvxXportalDownloadQrIconElement>;
             "mvx-xportal-qr-code-preloader": LocalJSX.MvxXportalQrCodePreloader & JSXBase.HTMLAttributes<HTMLMvxXportalQrCodePreloaderElement>;
         }

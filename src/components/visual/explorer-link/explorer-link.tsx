@@ -1,10 +1,10 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
+import { Icon } from 'common/Icon';
 
 // prettier-ignore
 const styles = {
   explorerLink: 'explorer-link mvx:decoration-0 mvx:flex',
-  explorerLinkIcon: 'explorer-link-icon mvx:flex mvx:justify-center mvx:transition-opacity mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80 mvx:w-4 mvx:h-4'
+  explorerLinkIcon: 'explorer-link-icon mvx:flex mvx:justify-center mvx:transition-opacity mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80'
 } satisfies Record<string, string>;
 
 @Component({
@@ -30,11 +30,9 @@ export class ExplorerLink {
         class={{ [styles.explorerLink]: true, [this.class]: Boolean(this.class) }}
       >
         <slot>
-          <mvx-arrow-up-right-from-square-icon
-            class={classNames({
-              [styles.explorerLinkIcon]: true,
-              [this.iconClass]: Boolean(this.iconClass),
-            })}
+          <Icon
+            name="arrow-up-right-from-square-icon"
+            class={{ [styles.explorerLinkIcon]: true, [this.iconClass]: Boolean(this.iconClass) }}
           />
         </slot>
       </a>
