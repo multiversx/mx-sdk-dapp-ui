@@ -11,7 +11,11 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "resolveJsonModule": false,
-    "lib": ["ES2020", "DOM"]
+    "lib": ["ES2020", "DOM"],
+    "baseUrl": "src",
+    "paths": {
+      "constants/*": ["constants/*"]
+    }
   },
   "include": [
     "src/utils/getDetectedBrowser.ts",
@@ -19,5 +23,3 @@
     "src/constants/window.constants.ts"
   ]
 }
-
-
