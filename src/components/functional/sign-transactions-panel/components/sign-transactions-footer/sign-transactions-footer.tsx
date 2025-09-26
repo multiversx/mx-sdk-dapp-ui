@@ -46,12 +46,14 @@ export class SignTransactionsFooter {
 
   render() {
     const { onCancel, onBack, onNext } = state;
-    const { currentIndex, currentIndexToSign, needsSigning, username, address, explorerLink } = state.commonData;
+    const { currentIndex, currentIndexToSign, needsSigning, username, address, explorerLink, providerName } =
+      state.commonData;
 
     const isFirstTransaction = currentIndex === 0;
     const currentIndexNeedsSigning = currentIndex === currentIndexToSign;
     const currentIndexCannotBeSignedYet = currentIndex > currentIndexToSign;
     const showForwardAction = currentIndexNeedsSigning || currentIndexCannotBeSignedYet;
+    const checkButtonText = providerName ? `Check ${providerName}` : 'Check your device';
 
     return (
       <div class="sign-transactions-footer" data-testid={DataTestIdsEnum.signTransactionsFooter}>
@@ -108,7 +110,7 @@ export class SignTransactionsFooter {
               {showForwardAction ? (
                 <span class="sign-transactions-footer-button-label-wrapper">
                   {this.isWaitingForSignature ? (
-                    <span class="sign-transactions-footer-button-label">Check your device</span>
+                    <span class="sign-transactions-footer-button-label">{checkButtonText}</span>
                   ) : (
                     <span class="sign-transactions-footer-button-label">{needsSigning ? 'Sign' : 'Confirm'}</span>
                   )}
