@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Display provider name in advanced signing](https://github.com/multiversx/mx-sdk-dapp-ui/pull/232)
+
 ## [[0.0.32](https://github.com/multiversx/mx-sdk-dapp-ui/pull/231)] - 2025-09-26
 
 - [Expose `getDetectedBrowser`](https://github.com/multiversx/mx-sdk-dapp-ui/pull/230)
