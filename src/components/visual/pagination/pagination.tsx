@@ -4,6 +4,7 @@ import { Icon } from 'common/Icon';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import { getPagination } from './helpers';
+import styles from './pagination.styles';
 
 @Component({
   tag: 'mvx-pagination',
@@ -60,43 +61,77 @@ export class Pagination {
     this.currentPageIndex = this.currentPage;
   }
 
+  /**
+   * Generates CSS classes for pagination edge buttons (previous/next)
+   * @param isInactive - Whether the button should be inactive
+   * @returns Object with CSS class mappings
+   */
+
+  private getPaginationEdgeButtonClasses(isInactive: boolean) {
+    return {
+      [styles.paginationEdgeButton]: true,
+      [styles.paginationEdgeButtonDisabled]: this.isDisabled,
+      [styles.paginationEdgeButtonInactive]: isInactive,
+    };
+  }
+
+  /**
+   * Generates CSS classes for pagination angle buttons (first/last)
+   * @param isInactive - Whether the button should be inactive/disabled
+   * @returns Object with CSS class mappings
+   */
+
+  private getPaginationAngleClasses(isInactive: boolean) {
+    return {
+      [styles.paginationAngle]: true,
+      [styles.paginationAngleDisabled]: this.isDisabled,
+      [styles.paginationAngleInactive]: isInactive,
+    };
+  }
+
   render() {
     const isLeftToggleDisabled = this.currentPageIndex === 1;
     const isRightToggleDisabled = this.currentPageIndex === this.totalPages;
     const paginationItems = getPagination({ currentPage: this.currentPageIndex, totalPages: this.totalPages });
 
     return (
-      <div class={{ pagination: true, [this.class]: Boolean(this.class) }}>
+      <div class={{ [styles.pagination]: true, [this.class]: Boolean(this.class) }}>
         <span
           onClick={this.handleEdgePageClick(1)}
-          class={{ 'pagination-angle': true, 'disabled': this.isDisabled, 'inactive': isLeftToggleDisabled }}
           data-testid={DataTestIdsEnum.firstBtn}
+          class={this.getPaginationAngleClasses(isLeftToggleDisabled)}
         >
-          <Icon name="angles-left" class="pagination-angle-icon" />
+          <Icon name="angles-left" class={styles.paginationAngleIcon} />
         </span>
 
         <div
-          onClick={this.handleEdgePageClick(this.currentPageIndex - 1)}
-          class={{ 'pagination-edge-button': true, 'disabled': this.isDisabled, 'inactive': isLeftToggleDisabled }}
           data-testid={DataTestIdsEnum.prevBtn}
+          onClick={this.handleEdgePageClick(this.currentPageIndex - 1)}
+          class={this.getPaginationEdgeButtonClasses(isLeftToggleDisabled)}
         >
-          <mvx-single-angle-left-icon class="pagination-edge-button-icon" />
+          <Icon name="angle-left" class={styles.paginationEdgeButtonIcon} />
         </div>
 
-        <div class="pagination-items">
+        <div class={styles.paginationItems}>
           {paginationItems.map((paginationItem, paginationItemIndex) => (
-            <div class={{ 'pagination-item-wrapper': true, 'disabled': this.isDisabled }}>
+            <div
+              class={{
+                [styles.paginationItemWrapper]: true,
+                [styles.paginationItemWrapperDisabled]: this.isDisabled,
+              }}
+            >
               {parseFloat(paginationItem) ? (
                 <div
                   onClick={() => this.handlePageClick(Number(paginationItem))}
-                  class={{
-                    'pagination-item': true,
-                    'active': this.isCurrentPageActive(paginationItem),
-                    'hundreds': this.isInTheHundreds(paginationItem),
-                  }}
                   data-testid={`${DataTestIdsEnum.paginationItem}-${paginationItem}`}
+                  class={{
+                    [styles.paginationItem]: true,
+                    [styles.paginationItemBefore]: true,
+                    [styles.paginationItemActive]: this.isCurrentPageActive(paginationItem),
+                    [styles.paginationItemHundreds]: this.isInTheHundreds(paginationItem),
+                  }}
                 >
-                  <span class="pagination-item-text">{paginationItem}</span>
+                  <span class={styles.paginationItemText}>{paginationItem}</span>
                 </div>
               ) : (
                 <mvx-tooltip
@@ -125,19 +160,19 @@ export class Pagination {
         </div>
 
         <div
-          onClick={this.handleEdgePageClick(this.currentPageIndex + 1)}
-          class={{ 'pagination-edge-button': true, 'disabled': this.isDisabled, 'inactive': isRightToggleDisabled }}
           data-testid={DataTestIdsEnum.nextBtn}
+          onClick={this.handleEdgePageClick(this.currentPageIndex + 1)}
+          class={this.getPaginationEdgeButtonClasses(isRightToggleDisabled)}
         >
-          <mvx-single-angle-right-icon class="pagination-edge-button-icon" />
+          <Icon name="angle-right" class={styles.paginationEdgeButtonIcon} />
         </div>
 
         <span
-          onClick={this.handleEdgePageClick(this.totalPages)}
-          class={{ 'pagination-angle': true, 'disabled': this.isDisabled, 'inactive': isRightToggleDisabled }}
           data-testid={DataTestIdsEnum.lastBtn}
+          onClick={this.handleEdgePageClick(this.totalPages)}
+          class={this.getPaginationAngleClasses(isRightToggleDisabled)}
         >
-          <Icon name="angles-right" class="pagination-angle-icon" />
+          <Icon name="angles-right" class={styles.paginationAngleIcon} />
         </span>
       </div>
     );

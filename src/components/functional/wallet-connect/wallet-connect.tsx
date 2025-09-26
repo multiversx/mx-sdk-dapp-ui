@@ -1,4 +1,5 @@
 import { Component, Element, Fragment, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Icon } from 'common/Icon';
 import type { IEventBus, IWalletConnectPanelData } from 'components';
 import { SidePanelHeaderSlotEnum } from 'components/visual/side-panel/components/side-panel-header/side-panel-header';
 import { providerLabels } from 'constants/providerFactory.constants';
@@ -60,8 +61,8 @@ export class WalletConnect {
     if (this.data.wcURI) {
       this.qrCodeSvg = await this.generateSVG(this.data.wcURI);
     }
-    this.eventBus.subscribe(WalletConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
 
+    this.eventBus.subscribe(WalletConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
     this.connectionMonitor.connect();
   }
 
@@ -86,8 +87,8 @@ export class WalletConnect {
           onLeftButtonClick={this.handlePageToggle.bind(this)}
           onRightButtonClick={() => this.eventBus.publish(WalletConnectEventsEnum.CLOSE)}
         >
-          {!this.showScanPage && <mvx-back-arrow-icon slot={SidePanelHeaderSlotEnum.leftIcon} />}
-          <mvx-close-icon slot={SidePanelHeaderSlotEnum.rightIcon} class="close-icon" />
+          {!this.showScanPage && <Icon name="back-arrow" slot={SidePanelHeaderSlotEnum.leftIcon} />}
+          <Icon name="close" slot={SidePanelHeaderSlotEnum.rightIcon} />
         </mvx-side-panel-header>
 
         <div class="wallet-connect">

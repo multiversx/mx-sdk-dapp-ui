@@ -1,8 +1,1 @@
-.transaction-account {
-  @apply mvx:flex mvx:items-center mvx:gap-2;
-
-  .transaction-account-lock,
-  .transaction-account-contract {
-    @apply mvx:w-4 mvx:h-4;
-  }
-}
+// This is needed to trigger the Stecil Tailwind compilation for inline Tailwind classes.

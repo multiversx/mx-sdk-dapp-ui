@@ -3,6 +3,7 @@ import { Icon } from 'common/Icon';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { IConfirmScreenData } from '../../ledger-connect.types';
+import styles from './ledger-confirm.styles';
 
 interface LedgerConfirmationItemType {
   label: string;
@@ -39,17 +40,17 @@ export class LedgerConfirm {
     ];
 
     return (
-      <div data-testid={DataTestIdsEnum.ledgerConfirmAddress} class="ledger-confirm">
-        <div class="ledger-confirm-items">
+      <div data-testid={DataTestIdsEnum.ledgerConfirmAddress} class={styles.ledgerConfirm}>
+        <div class={styles.ledgerConfirmItems}>
           {ledgerConfirmationItems.map(ledgerConfirmationItem => (
-            <div class="ledger-confirm-item">
-              <div class="ledger-confirm-item-label">{ledgerConfirmationItem.label}</div>
+            <div class={styles.ledgerConfirmItem}>
+              <div class={styles.ledgerConfirmItemLabel}>{ledgerConfirmationItem.label}</div>
 
-              <div class="ledger-confirm-item-value">
+              <div class={styles.ledgerConfirmItemValue}>
                 <div
                   class={{
-                    'ledger-confirm-item-value-text': true,
-                    'highlighted': Boolean(ledgerConfirmationItem.highlighted),
+                    [styles.ledgerConfirmItemValueText]: true,
+                    [styles.ledgerConfirmItemValueTextHighlighted]: Boolean(ledgerConfirmationItem.highlighted),
                   }}
                 >
                   {ledgerConfirmationItem.value}
@@ -71,13 +72,16 @@ export class LedgerConfirm {
           Select <strong>Approve</strong> on your device to confirm.
         </div>
 
-        <div class="ledger-confirm-footer">
-          <Icon name="triangular-warning" class="ledger-confirm-footer-icon" />
+        <div class={styles.ledgerConfirmFooter}>
+          <Icon name="triangular-warning" class={styles.ledgerConfirmFooterIcon} />
 
-          <div class="ledger-confirm-footer-description">
+          <div class={styles.ledgerConfirmFooterDescription}>
             <span>If the address above does not match the one on your device, close this page and </span>
 
-            <span class="ledger-contact-support" onClick={this.handleSupportButtonClick.bind(this)}>
+            <span
+              class={styles.ledgerConfirmFooterDescriptionSupport}
+              onClick={this.handleSupportButtonClick.bind(this)}
+            >
               contact support.
             </span>
           </div>

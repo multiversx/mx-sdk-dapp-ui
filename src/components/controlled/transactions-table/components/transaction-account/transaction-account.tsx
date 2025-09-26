@@ -1,13 +1,14 @@
 import { Component, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
 import { Icon } from 'common/Icon';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionAccountType } from '../../transactions-table.type';
 
-const transactionAccountClasses: Record<string, string> = {
-  explorerLink: 'mvx:text-primary!',
-};
+// prettier-ignore
+const styles = {
+  transactionAccount: 'transaction-account mvx:flex mvx:items-center mvx:gap-2',
+  transactionAccountExplorerLink: 'transaction-account-explorer-link mvx:text-primary!'
+} satisfies Record<string, string>;
 
 @Component({
   tag: 'mvx-transaction-account',
@@ -25,15 +26,18 @@ export class TransactionAccount {
       this.scope === 'receiver' ? DataTestIdsEnum.receiverLink : DataTestIdsEnum.senderLink;
 
     return (
-      <div class={classNames(this.class, 'transaction-account')} data-testid={this.dataTestId}>
-        {this.showLockedAccounts && this.account.isTokenLocked && <Icon name="lock" class="transaction-account-lock" />}
-        {this.account.isContract && <Icon class="transaction-account-contract" name="contract" />}
+      <div
+        data-testid={this.dataTestId}
+        class={{ [styles.transactionAccount]: true, [this.class]: Boolean(this.class) }}
+      >
+        {this.showLockedAccounts && this.account.isTokenLocked && <Icon name="lock" />}
+        {this.account.isContract && <Icon name="contract" />}
 
         {this.account.showLink ? (
           <mvx-explorer-link
             link={this.account.link}
             data-testid={explorerLinkDataTestId}
-            class={transactionAccountClasses.explorerLink}
+            class={styles.transactionAccountExplorerLink}
           >
             <span>{this.account.address}</span>
           </mvx-explorer-link>
