@@ -14,6 +14,10 @@
       "import": "./dist/web-components/index.js",
       "types": "./dist/types/index.d.ts"
     },
+    "./utils/getDetectedBrowser": {
+      "import": "./dist/utils/utils/getDetectedBrowser.js",
+      "types": "./dist/types/utils/getDetectedBrowser.d.ts"
+    },
     "./mvx-unlock-panel": {
       "import": "./dist/web-components/mvx-unlock-panel.js",
       "types": "./dist/web-components/mvx-unlock-panel.d.ts"
@@ -74,7 +78,7 @@
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "build:dev": "stencil build --dev",
-    "build": "stencil build --prod",
+    "build": "stencil build --prod && tsc -p tsconfig.utils.json",
     "start": "yarn run build:dev --watch --serve",
     "storybook-tailwind": "npx ts-node .storybook/generate-safelist.ts && npx @tailwindcss/cli -i src/global/tailwind.css -o .storybook/tailwind.css --content '.storybook/tailwind-safelist.html' && rm -f .storybook/tailwind-safelist.html",
     "storybook": "yarn run storybook-tailwind && storybook dev -p 6006 --no-open"
