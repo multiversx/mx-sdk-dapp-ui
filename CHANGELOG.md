@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.32](https://github.com/multiversx/mx-sdk-dapp-ui/pull/231)] - 2025-09-26
+
+- [Expose `getDetectedBrowser`](https://github.com/multiversx/mx-sdk-dapp-ui/pull/230)
+
 ## [[0.0.31](https://github.com/multiversx/mx-sdk-dapp-ui/pull/229)] - 2025-09-25
 
 - [Updated simple toast styles](https://github.com/multiversx/mx-sdk-dapp-ui/pull/228)
