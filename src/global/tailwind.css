@@ -26,3 +26,14 @@
   --color-ledger-warning: var(--mvx-ledger-warning-bg);
   --color-ledger-warning-message: var(--mvx-ledger-warning-color);
 }
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
