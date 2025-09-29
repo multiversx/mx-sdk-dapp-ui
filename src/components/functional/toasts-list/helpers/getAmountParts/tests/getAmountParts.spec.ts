@@ -63,4 +63,13 @@ describe('getAmountParts', () => {
       label: 'xEGLD',
     });
   });
+
+  it('should return correct amount when amount is a correct string with separation dot and negative sign', () => {
+    const amountParts = getAmountParts('-1,000 xEGLD');
+    expect(amountParts).toEqual({
+      amountInteger: '-1,000',
+      amountDecimal: '',
+      label: 'xEGLD',
+    });
+  });
 });
