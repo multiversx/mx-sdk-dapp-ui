@@ -1,12 +1,17 @@
 import { h } from '@stencil/core';
 
 import { AngleDownIcon } from './components/AngleDownIcon';
+import { AngleLeftIcon } from './components/AngleLeftIcon';
+import { AngleRightIcon } from './components/AngleRightIcon';
 import { AnglesLeftIcon } from './components/AnglesLeftIcon';
 import { AnglesRightIcon } from './components/AnglesRightIcon';
 import { AngleUpIcon } from './components/AngleUpIcon';
+import { ArrowUpRightFromSquareIcon } from './components/ArrowUpRightFromSquare';
 import { ArrowUpRightIcon } from './components/ArrowUpRightIcon';
+import { BackArrowIcon } from './components/BackArrowIcon';
 import { CheckIcon } from './components/CheckIcon';
 import { CircleExclamationIcon } from './components/CircleExclamationIcon';
+import { CloseIcon } from './components/CloseIcon';
 import { ContractIcon } from './components/ContractIcon';
 import { CopyIcon } from './components/CopyIcon';
 import { LayersIcon } from './components/LayersIcon';
@@ -55,6 +60,21 @@ export const Icon = ({ name, ...properties }: IconPropsType) => {
 
     case 'check':
       return <CheckIcon {...properties} />;
+
+    case 'angle-left':
+      return <AngleLeftIcon {...properties} />;
+
+    case 'angle-right':
+      return <AngleRightIcon {...properties} />;
+
+    case 'back-arrow':
+      return <BackArrowIcon {...properties} />;
+
+    case 'arrow-up-right-from-square-icon':
+      return <ArrowUpRightFromSquareIcon {...properties} />;
+
+    case 'close':
+      return <CloseIcon {...properties} />;
 
     default:
       console.error(`No data for the ${name} icon.`);

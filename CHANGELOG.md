@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Updated Tailwind classes to be accessed from the markup instead of CSS files](https://github.com/multiversx/mx-sdk-dapp-ui/pull/227)
+
 ## [[0.0.33](https://github.com/multiversx/mx-sdk-dapp-ui/pull/235)] - 2025-09-29
 
 - [Fixed toast large amount not showing](https://github.com/multiversx/mx-sdk-dapp-ui/pull/234)
@@ -21,7 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [Updated simple toast styles](https://github.com/multiversx/mx-sdk-dapp-ui/pull/228)
 - [Updated custom toast styles](https://github.com/multiversx/mx-sdk-dapp-ui/pull/226)
-- [Refactored icons to leverage on new centralised component](https://github.com/multiversx/mx-sdk-dapp-ui/pull/219)
+- [Updated icons to leverage on new centralised component](https://github.com/multiversx/mx-sdk-dapp-ui/pull/219)
 
 ## [[0.0.30](https://github.com/multiversx/mx-sdk-dapp-ui/pull/224)] - 2025-09-22
 

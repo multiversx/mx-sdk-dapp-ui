@@ -32,13 +32,7 @@ describe('TransactionAccount Component', () => {
 
     const page = await newSpecPage({
       components: [TransactionAccount],
-      template: () => (
-        <mvx-transaction-account
-          account={lockedAccount}
-          showLockedAccounts={true}
-          scope="receiver"
-        ></mvx-transaction-account>
-      ),
+      template: () => <mvx-transaction-account account={lockedAccount} showLockedAccounts={true} scope="receiver" />,
     });
 
     const lockedIcon = page.root.querySelector('svg');
@@ -85,7 +79,7 @@ describe('TransactionAccount Component', () => {
     });
 
     const div = page.root.querySelector('div');
-    expect(div.className).toBe('custom-class transaction-account');
+    expect(div.className).toBe('transaction-account mvx:flex mvx:items-center mvx:gap-2 custom-class');
     expect(div.getAttribute('data-testid')).toBe('test-id');
   });
 });

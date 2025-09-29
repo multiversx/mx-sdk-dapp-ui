@@ -1,4 +1,4 @@
-import { Component, Element, Fragment, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { providerLabels } from 'constants/providerFactory.constants';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import { EventBus, type IEventBus } from 'utils/EventBus';
@@ -6,6 +6,11 @@ import { EventBus, type IEventBus } from 'utils/EventBus';
 import { getLedgerAddressByIndex } from './helpers/getLedgerAddressByIndex';
 import type { ILedgerConnectPanelData } from './ledger-connect.types';
 import { LedgerConnectEventsEnum } from './ledger-connect.types';
+
+// prettier-ignore
+const styles = {
+  ledgerConnectHost: 'ledger-connect-host mvx:flex mvx:flex-col mvx:flex-1 mvx:overflow-hidden'
+} satisfies Record<string, string>;
 
 @Component({
   tag: 'mvx-ledger-connect',
@@ -83,7 +88,7 @@ export class LedgerConnect {
   render() {
     if (this.ledgerDataState.accountScreenData) {
       return (
-        <Fragment>
+        <Host class={styles.ledgerConnectHost}>
           <mvx-side-panel-header
             panelTitle={providerLabels.ledger}
             hasLeftButton={false}
@@ -99,25 +104,26 @@ export class LedgerConnect {
               this.eventBus.publish(LedgerConnectEventsEnum.GO_TO_PAGE, event.detail)
             }
           />
-        </Fragment>
+        </Host>
       );
     }
 
     if (this.ledgerDataState.confirmScreenData) {
       return (
-        <Fragment>
+        <Host class={styles.ledgerConnectHost}>
           <mvx-side-panel-header
             panelTitle={providerLabels.ledger}
             hasLeftButton={false}
             onRightButtonClick={this.handleClose.bind(this)}
           />
+
           <mvx-ledger-confirm confirmScreenData={this.ledgerDataState.confirmScreenData} />
-        </Fragment>
+        </Host>
       );
     }
 
     return (
-      <Fragment>
+      <Host class={styles.ledgerConnectHost}>
         <mvx-side-panel-header
           panelTitle={providerLabels.ledger}
           hasLeftButton={false}
@@ -128,7 +134,7 @@ export class LedgerConnect {
           connectScreenData={this.ledgerDataState.connectScreenData}
           onConnect={this.handleIntroConnect.bind(this)}
         />
-      </Fragment>
+      </Host>
     );
   }
 }

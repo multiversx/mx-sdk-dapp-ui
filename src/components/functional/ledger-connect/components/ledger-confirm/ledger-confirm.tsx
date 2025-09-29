@@ -1,8 +1,9 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Host, Prop } from '@stencil/core';
 import { Icon } from 'common/Icon';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { IConfirmScreenData } from '../../ledger-connect.types';
+import styles from './ledger-confirm.styles';
 
 interface LedgerConfirmationItemType {
   label: string;
@@ -39,50 +40,55 @@ export class LedgerConfirm {
     ];
 
     return (
-      <div data-testid={DataTestIdsEnum.ledgerConfirmAddress} class="ledger-confirm">
-        <div class="ledger-confirm-items">
-          {ledgerConfirmationItems.map(ledgerConfirmationItem => (
-            <div class="ledger-confirm-item">
-              <div class="ledger-confirm-item-label">{ledgerConfirmationItem.label}</div>
+      <Host class={styles.ledgerConfirmHost}>
+        <div data-testid={DataTestIdsEnum.ledgerConfirmAddress} class={styles.ledgerConfirm}>
+          <div class={styles.ledgerConfirmItems}>
+            {ledgerConfirmationItems.map(ledgerConfirmationItem => (
+              <div class={styles.ledgerConfirmItem}>
+                <div class={styles.ledgerConfirmItemLabel}>{ledgerConfirmationItem.label}</div>
 
-              <div class="ledger-confirm-item-value">
-                <div
-                  class={{
-                    'ledger-confirm-item-value-text': true,
-                    'highlighted': Boolean(ledgerConfirmationItem.highlighted),
-                  }}
-                >
-                  {ledgerConfirmationItem.value}
-                </div>
+                <div class={styles.ledgerConfirmItemValue}>
+                  <div
+                    class={{
+                      [styles.ledgerConfirmItemValueText]: true,
+                      [styles.ledgerConfirmItemValueTextHighlighted]: Boolean(ledgerConfirmationItem.highlighted),
+                    }}
+                  >
+                    {ledgerConfirmationItem.value}
+                  </div>
 
-                <div class="ledger-confirm-item-value-actions">
-                  <mvx-copy-button text={ledgerConfirmationItem.value} />
+                  <div class={styles.ledgerConfirmItemValueActions}>
+                    <mvx-copy-button text={ledgerConfirmationItem.value} />
 
-                  {ledgerConfirmationItem.explorerLink && (
-                    <mvx-explorer-link link={ledgerConfirmationItem.explorerLink} />
-                  )}
+                    {ledgerConfirmationItem.explorerLink && (
+                      <mvx-explorer-link link={ledgerConfirmationItem.explorerLink} />
+                    )}
+                  </div>
                 </div>
               </div>
+            ))}
+          </div>
+
+          <div class="ledger-confirm-action">
+            Select <strong>Approve</strong> on your device to confirm.
+          </div>
+
+          <div class={styles.ledgerConfirmFooter}>
+            <Icon name="triangular-warning" class={styles.ledgerConfirmFooterIcon} />
+
+            <div class={styles.ledgerConfirmFooterDescription}>
+              <span>If the address above does not match the one on your device, close this page and </span>
+
+              <span
+                class={styles.ledgerConfirmFooterDescriptionSupport}
+                onClick={this.handleSupportButtonClick.bind(this)}
+              >
+                contact support.
+              </span>
             </div>
-          ))}
-        </div>
-
-        <div class="ledger-confirm-action">
-          Select <strong>Approve</strong> on your device to confirm.
-        </div>
-
-        <div class="ledger-confirm-footer">
-          <Icon name="triangular-warning" class="ledger-confirm-footer-icon" />
-
-          <div class="ledger-confirm-footer-description">
-            <span>If the address above does not match the one on your device, close this page and </span>
-
-            <span class="ledger-contact-support" onClick={this.handleSupportButtonClick.bind(this)}>
-              contact support.
-            </span>
           </div>
         </div>
-      </div>
+      </Host>
     );
   }
 }
