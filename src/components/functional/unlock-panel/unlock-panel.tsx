@@ -108,7 +108,6 @@ export class UnlockPanel {
       case ProviderTypeEnum.crossWindow:
       case ProviderTypeEnum.extension:
       case ProviderTypeEnum.metamask:
-      case ProviderTypeEnum.passkey:
         this.isIntroScreenVisible = true;
         this.isLoggingIn = true;
         this.eventBus.publish(UnlockPanelEventsEnum.LOGIN, { type: provider.type, anchor: this.anchor });
