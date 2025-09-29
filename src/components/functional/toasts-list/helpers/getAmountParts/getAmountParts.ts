@@ -3,9 +3,9 @@ export const getAmountParts = (amount = '') => {
     return { amountInteger: '', amountDecimal: '', label: '' };
   }
 
-  let [value, label = ''] = amount.replace(',', '').split(' ');
+  let [value, label = ''] = amount.split(' ');
 
-  if (isNaN(Number(value))) {
+  if (isNaN(Number(value?.replace(',', '')))) {
     return { amountInteger: '', amountDecimal: '', label };
   }
 
