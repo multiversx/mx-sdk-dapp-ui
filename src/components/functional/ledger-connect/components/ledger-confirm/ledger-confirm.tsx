@@ -41,7 +41,6 @@ export class LedgerConfirm {
 
     return (
       <Host class={styles.ledgerConfirmHost}>
-        LTEST
         <div data-testid={DataTestIdsEnum.ledgerConfirmAddress} class={styles.ledgerConfirm}>
           <div class={styles.ledgerConfirmItems}>
             {ledgerConfirmationItems.map(ledgerConfirmationItem => (

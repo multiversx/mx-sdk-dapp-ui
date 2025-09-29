@@ -1,4 +1,4 @@
-import { Component, Element, Fragment, h, Method, Prop, State, Watch } from '@stencil/core';
+import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { Icon } from 'common/Icon';
 import type { IEventBus, IWalletConnectPanelData } from 'components';
 import { SidePanelHeaderSlotEnum } from 'components/visual/side-panel/components/side-panel-header/side-panel-header';
@@ -8,6 +8,12 @@ import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import { EventBus } from 'utils/EventBus';
 
 import { WalletConnectEventsEnum } from './wallet-connect.types';
+
+// prettier-ignore
+const styles = {
+  walletConnectHost: 'wallet-connect-host mvx:flex mvx:flex-col mvx:flex-1 mvx:overflow-hidden',
+  walletConnect: 'wallet-connect mvx:flex mvx:flex-col mvx:transition-all mvx:duration-400 mvx:flex-1 mvx:py-6 mvx:ease-in-out mvx:overflow-auto mvx:transform-3d mvx:scrollbar-hide'
+} satisfies Record<string, string>;
 
 @Component({
   tag: 'mvx-wallet-connect',
@@ -79,7 +85,7 @@ export class WalletConnect {
 
   render() {
     return (
-      <Fragment>
+      <Host class={styles.walletConnectHost}>
         <mvx-side-panel-header
           hasRightButton={true}
           hasLeftButton={!this.showScanPage}
@@ -91,7 +97,7 @@ export class WalletConnect {
           <Icon name="close" slot={SidePanelHeaderSlotEnum.rightIcon} />
         </mvx-side-panel-header>
 
-        <div class="wallet-connect">
+        <div class={styles.walletConnect}>
           {this.showScanPage ? (
             <mvx-wallet-connect-scan
               qrCodeSvg={this.qrCodeSvg}
@@ -102,7 +108,7 @@ export class WalletConnect {
             <mvx-wallet-connect-download />
           )}
         </div>
-      </Fragment>
+      </Host>
     );
   }
 }
