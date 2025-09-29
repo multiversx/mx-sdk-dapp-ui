@@ -51,8 +51,6 @@ export const getProviderButtonIcon = ({
       }
     case ProviderTypeEnum.metamask:
       return <mvx-metamask-provider-icon />;
-    case ProviderTypeEnum.passkey:
-      return <mvx-passkey-provider-icon />;
     case ProviderTypeEnum.walletConnect:
       return <mvx-multiversx-logo-icon />;
     case ProviderTypeEnum.ledger:
