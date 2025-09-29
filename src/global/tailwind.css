@@ -28,12 +28,12 @@
 }
 
 @layer utilities {
-  .scrollbar-hide {
+  .mvx\:scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
 
-  .scrollbar-hide::-webkit-scrollbar {
+  .mvx\:scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
 }

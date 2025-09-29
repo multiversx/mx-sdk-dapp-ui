@@ -78,9 +78,6 @@ export namespace Components {
     interface MvxCircleInfoIcon {
         "class"?: string;
     }
-    interface MvxCloseIcon {
-        "class"?: string;
-    }
     interface MvxCopyButton {
         "class"?: string;
         "iconClass"?: string;
@@ -638,12 +635,6 @@ declare global {
     var HTMLMvxCircleInfoIconElement: {
         prototype: HTMLMvxCircleInfoIconElement;
         new (): HTMLMvxCircleInfoIconElement;
-    };
-    interface HTMLMvxCloseIconElement extends Components.MvxCloseIcon, HTMLStencilElement {
-    }
-    var HTMLMvxCloseIconElement: {
-        prototype: HTMLMvxCloseIconElement;
-        new (): HTMLMvxCloseIconElement;
     };
     interface HTMLMvxCopyButtonElement extends Components.MvxCopyButton, HTMLStencilElement {
     }
@@ -1241,7 +1232,6 @@ declare global {
         "mvx-brave-extension-provider-icon": HTMLMvxBraveExtensionProviderIconElement;
         "mvx-button": HTMLMvxButtonElement;
         "mvx-circle-info-icon": HTMLMvxCircleInfoIconElement;
-        "mvx-close-icon": HTMLMvxCloseIconElement;
         "mvx-copy-button": HTMLMvxCopyButtonElement;
         "mvx-custom-toast": HTMLMvxCustomToastElement;
         "mvx-data-with-explorer-link": HTMLMvxDataWithExplorerLinkElement;
@@ -1361,9 +1351,6 @@ declare namespace LocalJSX {
         "variant"?: `${ButtonVariantEnum}`;
     }
     interface MvxCircleInfoIcon {
-        "class"?: string;
-    }
-    interface MvxCloseIcon {
         "class"?: string;
     }
     interface MvxCopyButton {
@@ -1809,7 +1796,6 @@ declare namespace LocalJSX {
         "mvx-brave-extension-provider-icon": MvxBraveExtensionProviderIcon;
         "mvx-button": MvxButton;
         "mvx-circle-info-icon": MvxCircleInfoIcon;
-        "mvx-close-icon": MvxCloseIcon;
         "mvx-copy-button": MvxCopyButton;
         "mvx-custom-toast": MvxCustomToast;
         "mvx-data-with-explorer-link": MvxDataWithExplorerLink;
@@ -1894,7 +1880,6 @@ declare module "@stencil/core" {
             "mvx-brave-extension-provider-icon": LocalJSX.MvxBraveExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxBraveExtensionProviderIconElement>;
             "mvx-button": LocalJSX.MvxButton & JSXBase.HTMLAttributes<HTMLMvxButtonElement>;
             "mvx-circle-info-icon": LocalJSX.MvxCircleInfoIcon & JSXBase.HTMLAttributes<HTMLMvxCircleInfoIconElement>;
-            "mvx-close-icon": LocalJSX.MvxCloseIcon & JSXBase.HTMLAttributes<HTMLMvxCloseIconElement>;
             "mvx-copy-button": LocalJSX.MvxCopyButton & JSXBase.HTMLAttributes<HTMLMvxCopyButtonElement>;
             "mvx-custom-toast": LocalJSX.MvxCustomToast & JSXBase.HTMLAttributes<HTMLMvxCustomToastElement>;
             "mvx-data-with-explorer-link": LocalJSX.MvxDataWithExplorerLink & JSXBase.HTMLAttributes<HTMLMvxDataWithExplorerLinkElement>;
