@@ -5,7 +5,6 @@ export enum ProviderTypeEnum {
   crossWindow = 'crossWindow',
   walletConnect = 'walletConnect',
   ledger = 'ledger',
-  passkey = 'passkey',
 }
 
 export interface IProviderBase<T extends ProviderTypeEnum = ProviderTypeEnum> {

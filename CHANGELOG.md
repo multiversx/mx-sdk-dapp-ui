@@ -7,7 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Removed passkey components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/233)
+- [Display provider name in advanced signing](https://github.com/multiversx/mx-sdk-dapp-ui/pull/232)
 - [Updated Tailwind classes to be accessed from the markup instead of CSS files](https://github.com/multiversx/mx-sdk-dapp-ui/pull/227)
+
+## [[0.0.32](https://github.com/multiversx/mx-sdk-dapp-ui/pull/231)] - 2025-09-26
+
+- [Expose `getDetectedBrowser`](https://github.com/multiversx/mx-sdk-dapp-ui/pull/230)
 
 ## [[0.0.31](https://github.com/multiversx/mx-sdk-dapp-ui/pull/229)] - 2025-09-25
 
