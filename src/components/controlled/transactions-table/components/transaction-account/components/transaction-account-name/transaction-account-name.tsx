@@ -1,6 +1,10 @@
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 
+// prettier-ignore
+const styles = {
+  transactionAccountName: 'transaction-account-name mvx:w-max'
+} satisfies Record<string, string>;
 @Component({
   tag: 'mvx-transaction-account-name',
   styleUrl: 'transaction-account-name.scss',
@@ -16,7 +20,7 @@ export class TransactionAccountName {
     if (this.name) {
       return (
         <div
-          class={classNames('text-truncate', this.class, 'transaction-account-name')}
+          class={classNames('text-truncate', this.class, styles.transactionAccountName)}
           data-testid={this.dataTestId}
           title={this.description}
         >
@@ -28,7 +32,7 @@ export class TransactionAccountName {
     return (
       <mvx-trim
         text={this.address}
-        class={classNames(this.class, 'transaction-account-name')}
+        class={classNames(this.class, styles.transactionAccountName)}
         dataTestId={this.dataTestId}
       ></mvx-trim>
     );

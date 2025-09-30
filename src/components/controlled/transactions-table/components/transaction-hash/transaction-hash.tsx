@@ -3,10 +3,12 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionRowType } from '../../transactions-table.type';
 
-const transactionHashClasses: Record<string, string> = {
-  explorerLink: 'mvx:text-primary!',
-  transactionHash: 'mvx:flex mvx:items-center mvx:justify-center',
-};
+// prettier-ignore
+const styles = {
+  transactionHash: 'transaction-hash mvx:flex mvx:gap-1 mvx:items-center mvx:justify-center',
+  transactionHashExplorerLink: 'transaction-hash-explorer-link mvx:text-primary!',
+  transactionHashIcon: 'transaction-hash-icon mvx:flex mvx:items-center mvx:justify-center',
+} satisfies Record<string, string>;
 
 @Component({
   tag: 'mvx-transaction-hash',
@@ -24,16 +26,16 @@ export class TransactionHash {
     return (
       <div
         class={{
-          'transaction-hash': true,
+          [styles.transactionHash]: true,
           [this.class]: Boolean(this.class),
         }}
       >
-        <mvx-transaction-icon iconInfo={this.transaction.iconInfo} class={transactionHashClasses.transactionHash} />
+        <mvx-transaction-icon iconInfo={this.transaction.iconInfo} class={styles.transactionHashIcon} />
 
         <mvx-explorer-link
           dataTestId={DataTestIdsEnum.transactionLink}
           link={this.transaction.link}
-          class={transactionHashClasses.explorerLink}
+          class={styles.transactionHashExplorerLink}
         >
           <mvx-trim text={this.transaction.txHash} />
         </mvx-explorer-link>

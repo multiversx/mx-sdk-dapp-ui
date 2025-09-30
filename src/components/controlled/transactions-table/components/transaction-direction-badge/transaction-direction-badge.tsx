@@ -1,6 +1,11 @@
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 
+// prettier-ignore
+const styles = {
+  transactionDirectionBadge: 'transaction-direction-badge mvx:flex'
+} satisfies Record<string, string>;
+
 @Component({
   tag: 'mvx-transaction-direction-badge',
   styleUrl: 'transaction-direction-badge.scss',
@@ -11,7 +16,7 @@ export class TransactionDirectionBadge {
 
   render() {
     return (
-      <div class={classNames(this.class, 'transaction-direction-badge')}>
+      <div class={classNames(this.class, styles.transactionDirectionBadge)}>
         <span
           class={{
             directionBadge: true,
