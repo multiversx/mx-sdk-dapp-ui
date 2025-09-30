@@ -1,13 +1,1 @@
-:host {
-  @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:overflow-hidden;
-
-  .wallet-connect {
-    @apply mvx:flex mvx:flex-col mvx:transition-all mvx:duration-400 mvx:flex-1 mvx:py-6 mvx:ease-in-out mvx:overflow-auto;
-    transform-style: preserve-3d;
-    height: max(100%, 680px);
-
-    &::-webkit-scrollbar {
-      @apply mvx:hidden;
-    }
-  }
-}
+// This is needed to trigger the Stecil Tailwind compilation for inline Tailwind classes.
