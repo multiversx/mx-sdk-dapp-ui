@@ -6,7 +6,8 @@ import type { TransactionRowType } from '../../transactions-table.type';
 
 // prettier-ignore
 const styles = {
-  transactionShards :'transaction-shards mvx:items-center mvx:flex mvx:gap-2 mvx:w-max mvx:fill-label',
+  transactionShards: 'transaction-shards mvx:items-center mvx:flex mvx:gap-2 mvx:w-max mvx:fill-label',
+  transactionShardsArrowIcon: 'transaction-shards-arrow-icon mvx:w-4 mvx:h-4',
   explorerLink: 'explorer-link mvx:text-primary!'
 } satisfies Record<string, string>;
 
@@ -29,9 +30,7 @@ export class TransactionShards {
           <span data-testid={DataTestIdsEnum.senderShard}>{this.transaction.sender.shard}</span>
         </mvx-explorer-link>
 
-        <span class={styles.transactionShards}>
-          <mvx-arrow-right-icon />
-        </span>
+        <mvx-arrow-right-icon class={styles.transactionShardsArrowIcon} />
 
         <mvx-explorer-link
           link={this.transaction.receiver.shardLink}
