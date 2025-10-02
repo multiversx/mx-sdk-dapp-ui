@@ -25,6 +25,10 @@
   --color-neutral-900: var(--mvx-neutral-900);
   --color-ledger-warning: var(--mvx-ledger-warning-bg);
   --color-ledger-warning-message: var(--mvx-ledger-warning-color);
+  --color-label: var(--mvx-label-color);
+  --color-transaction-method: var(--mvx-transaction-method);
+  --color-slate-550: var(--mvx-slate-550);
+  --color-gray-200: var(--mvx-gray-200);
 }
 
 @layer utilities {
