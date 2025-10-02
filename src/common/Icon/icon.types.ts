@@ -19,6 +19,13 @@ export enum IconNameEnum {
   backArrow = 'back-arrow',
   arrowUpRightFromSquare = 'arrow-up-right-from-square-icon',
   close = 'close',
+  hourglass = 'hourglass',
+  ban = 'ban',
+  circleCheck = 'circle-check',
+  circleInfo = 'circle-info',
+  coins = 'coins',
+  arrowsRotate = 'arrows-rotate'
+
 }
 
 export type IconPropsType = JSXBase.IntrinsicElements['svg'] & {
