@@ -4,7 +4,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 // prettier-ignore
 const styles = {
-  transactionMethodBadge: 'transaction-method-badge mvx:inline-block mvx:py-1 mvx:px-1.5 mvx:font-normal mvx:text-center mvx:whitespace-pre-wrap mvx:text-[75%] mvx:leading-[1] mvx:break-all mvx:align-baseline mvx:rounded-sm mvx:transition-colors duration-200 ease-in-out mvx:motion-reduce:transition-none mvx:text-transaction-method mvx:border-1 mvx:border-transaction-method mvx:bg-transparent mvx:py-1 mvx:px-2 mvx:rounded-sm font-light',
+  transactionMethodBadge: 'transaction-method-badge mvx:inline-block mvx:py-1 mvx:px-1.5 mvx:font-normal mvx:text-center mvx:whitespace-pre-wrap mvx:text-[75%] mvx:leading-[1] mvx:break-all mvx:align-baseline mvx:rounded-sm mvx:transition-colors mvx:duration-200 mvx:ease-in-out mvx:motion-reduce:transition-none mvx:text-transaction-method mvx:border-1 mvx:border-transaction-method mvx:bg-transparent mvx:font-light',
   transactionMethodBadgeEmpty: 'transaction-method-badge-empty mvx:hidden',
   transactionMethodText: 'transaction-method-text mvx:truncate mvx:capitalize'
 
