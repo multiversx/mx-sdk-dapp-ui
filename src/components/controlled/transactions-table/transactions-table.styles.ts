@@ -1,6 +1,6 @@
 // prettier-ignore
 export default {
-    transactionsTableContainer: 'transactions-table-container mvx:w-full mvx:overflow-auto mvx:table-auto',
+    transactionsTableContainer: 'transactions-table-container mvx:w-full mvx:overflow-auto mvx:table-auto mvx:scrollbar-horizontal',
     transactionsTableHeader: 'transactions-table-header mvx:bg-secondary',
     transactionsTableHeaderCell: 'transactions-table-header-cell mvx:p-4 mvx:text-left mvx:text-sm mvx:tracking-wide mvx:font-normal mvx:text-secondary-text mvx:leading-4 mvx:w-1/6',
     transactionsTableBody: 'transactions-table-body mvx:bg-surface mvx:border-y mvx:border-outline-variant',
