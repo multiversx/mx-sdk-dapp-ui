@@ -29,6 +29,8 @@
   --color-transaction-method: var(--mvx-transaction-method);
   --color-slate-550: var(--mvx-slate-550);
   --color-gray-200: var(--mvx-gray-200);
+  --color-thumb: var(--mvx-scrollbar-thumb);
+  --color-outline-variant: var(--mvx-border-color-secondary);
 }
 
 @layer utilities {
