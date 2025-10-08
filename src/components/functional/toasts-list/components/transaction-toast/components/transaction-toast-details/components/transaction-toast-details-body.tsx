@@ -1,14 +1,14 @@
-import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { faCheck, faHourglass, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { Component, h, Prop } from '@stencil/core';
-import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 
-const iconData: Record<string, IconDefinition> = {
-  pending: faHourglass,
-  success: faCheck,
-  fail: faTimes,
-  invalid: faTimes,
+import { Component, h, Prop } from '@stencil/core';
+import { Icon } from 'common/Icon/Icon';
+import { IconNameEnum } from 'common/Icon/icon.types';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+
+const iconData: Record<string, IconNameEnum> = {
+  pending: IconNameEnum.hourglass,
+  success: IconNameEnum.check,
+  fail: IconNameEnum.close,
+  invalid: IconNameEnum.close,
 };
 
 const transactionToastDetailsBodyClasses: Record<string, string> = {
@@ -28,20 +28,20 @@ export class TransactionDetailsBody {
 
   render() {
     const statusIcon = this.status ? iconData[this.status] : null;
-    const iconHtml = statusIcon ? getIconHtmlFromIconDefinition(statusIcon) : null;
 
     return (
       <div class={this.transactionClass} key={this.hash} data-testid={DataTestIdsEnum.transactionDetailsToastBody}>
-        {iconHtml && (
+        {statusIcon && (
           <div
-            innerHTML={iconHtml}
             class={{
               'transaction-details-list-item-icon': true,
               'transaction-details-list-item-icon-success': this.status === 'success',
               'transaction-details-list-item-icon-pending': this.status === 'pending',
               'transaction-details-list-item-icon-fail': ['fail', 'invalid'].includes(this.status),
             }}
-          ></div>
+          >
+            <Icon name={statusIcon} />
+          </div>
         )}
         <div class="transaction-details-list-item-hash-index">{this.index}</div>
         <div class="transaction-details-list-item-hash-value">
