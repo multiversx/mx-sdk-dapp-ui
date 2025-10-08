@@ -13,7 +13,6 @@ const styles = {
 const storySettings: Meta<Pagination> = {
   tags: ['autodocs'],
   title: 'Components/Pagination',
-  render: properties => <mvx-pagination {...properties} />,
   args: {
     currentPage: 1,
     totalPages: 10,
@@ -36,25 +35,11 @@ const storySettings: Meta<Pagination> = {
 };
 
 export const Default: StoryObj<Pagination> = {
-  render: () => (
-    <mvx-pagination
-      currentPage={1}
-      totalPages={10}
-      isDisabled={false}
-      class=""
-    />
-  ),
+  render: properties => <mvx-pagination {...properties} />,
 };
 
 export const Disabled: StoryObj<Pagination> = {
-  render: () => (
-    <mvx-pagination
-      currentPage={5}
-      totalPages={20}
-      isDisabled={true}
-      class="custom-pagination"
-    />
-  ),
+  render: () => <mvx-pagination currentPage={5} totalPages={20} isDisabled={true} class="custom-pagination" />,
 };
 
 export const FirstPage: StoryObj<Pagination> = {

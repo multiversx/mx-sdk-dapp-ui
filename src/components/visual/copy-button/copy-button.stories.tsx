@@ -35,7 +35,6 @@ const styles = {
 const storySettings: Meta<CopyButton> = {
   tags: ['autodocs'],
   title: 'Components/CopyButton',
-  render: properties => <mvx-copy-button {...properties} />,
   args: {
     text: 'Hello World!',
   },
@@ -47,7 +46,7 @@ const storySettings: Meta<CopyButton> = {
 };
 
 export const Default: StoryObj<CopyButton> = {
-  render: () => <mvx-copy-button text="Copy this text" />,
+  render: properties => <mvx-copy-button {...properties} />,
 };
 
 export const Sizes: StoryObj<CopyButton> = {
