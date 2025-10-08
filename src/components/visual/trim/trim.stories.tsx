@@ -26,7 +26,6 @@ const styles = {
 const storySettings: Meta<Trim> = {
   tags: ['autodocs'],
   title: 'Components/Trim',
-  render: properties => <mvx-trim {...properties} />,
   args: {
     text: 'This is a long text that might need to be trimmed when the container is too narrow',
   },
@@ -38,10 +37,10 @@ const storySettings: Meta<Trim> = {
 };
 
 export const Default: StoryObj<Trim> = {
-  render: () => (
+  render: properties => (
     <div class={styles.trimStoriesWrapper}>
       <div class={styles.trimStoriesContainer}>
-        <mvx-trim text="This is a default trim component that will show trimming behavior when the container is narrow" />
+        <mvx-trim {...properties} />
       </div>
     </div>
   ),

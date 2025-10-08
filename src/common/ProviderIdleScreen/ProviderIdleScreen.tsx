@@ -20,6 +20,7 @@ interface IProviderIdleScreenProps {
   onClose?: () => void;
   onAccess?: () => void;
   children?: any;
+  isLogin?: boolean;
 }
 
 export function ProviderIdleScreen({
@@ -29,6 +30,7 @@ export function ProviderIdleScreen({
   onClose,
   onAccess,
   children,
+  isLogin,
 }: IProviderIdleScreenProps) {
   if (!provider) {
     return null;
@@ -43,7 +45,7 @@ export function ProviderIdleScreen({
   const providerIntroIcon = isExtensionProvider
     ? getProviderButtonIcon({ providerType, extensionProviderIconWidth, extensionProviderIconHeight })
     : getProviderButtonIcon({ providerType });
-  const providerIntroText = introText || getProviderIntroText(providerType);
+  const providerIntroText = introText || getProviderIntroText({ providerType, isLogin });
 
   if (provider.type === ProviderTypeEnum.ledger) {
     return (
