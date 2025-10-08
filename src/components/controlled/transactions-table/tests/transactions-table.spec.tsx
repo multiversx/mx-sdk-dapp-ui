@@ -1,4 +1,3 @@
-import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
@@ -11,7 +10,7 @@ describe('TransactionsTable', () => {
       age: { timeAgo: '5 minutes ago', tooltip: 'Feb 7, 2025, 4:55 PM' },
       direction: 'in',
       method: { name: 'transfer', actionDescription: 'Token transfer' },
-      iconInfo: { icon: faCheck as unknown as string, tooltip: 'Successful transaction' },
+      iconInfo: { icon: 'check' as unknown as string, tooltip: 'Successful transaction' },
       link: '/transactions/hash1',
       receiver: {
         address: 'erd1qqqqqqqqqqqqqpgqp699jngundfqw07d8jzkepucvpzush6k3wvqyc44rx',
@@ -55,7 +54,7 @@ describe('TransactionsTable', () => {
       age: { timeAgo: '10 minutes ago', tooltip: 'Feb 7, 2025, 4:50 PM' },
       direction: 'out',
       method: { name: 'esdt_transfer', actionDescription: 'ESDT Token transfer' },
-      iconInfo: { icon: faCheck as unknown as string, tooltip: 'Successful transaction' },
+      iconInfo: { icon: 'check' as unknown as string, tooltip: 'Successful transaction' },
       link: '/transactions/hash2',
       receiver: {
         address: 'erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3zpz3hypefsdd8ssycr6th',

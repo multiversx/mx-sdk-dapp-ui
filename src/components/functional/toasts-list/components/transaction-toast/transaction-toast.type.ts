@@ -1,5 +1,4 @@
 // match these interfaces with src/path-to-file.type.ts from sdk-dapp
-import type { IconName } from '@fortawesome/free-solid-svg-icons';
 import type { JSX } from '@stencil/core';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 export interface ITransactionProgressState {
@@ -33,7 +32,7 @@ interface ISharedCustomToast {
 }
 
 export interface ISimpleToast extends ISharedCustomToast {
-  icon: IconName | string | JSX.Element;
+  icon: string | JSX.Element;
   iconClassName?: string;
   title?: string;
   message?: string;

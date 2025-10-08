@@ -1,5 +1,3 @@
-import { faCircleCheck } from '@fortawesome/free-solid-svg-icons/faCircleCheck';
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons/faCircleInfo';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
@@ -27,7 +25,7 @@ describe('TransactionHash', () => {
         tooltip: '1 hour ago',
       },
       direction: 'in',
-      iconInfo: { icon: faCircleInfo as unknown as string, tooltip: 'Test' },
+      iconInfo: { icon: 'circle-info' as unknown as string, tooltip: 'Test' },
       link: 'https://example.com/tx/123',
       method: {
         name: 'Smart Contract',
@@ -65,7 +63,7 @@ describe('TransactionHash', () => {
         tooltip: '1 hour ago',
       },
       direction: 'in',
-      iconInfo: { icon: faCircleInfo as unknown as string, tooltip: 'Initial' },
+      iconInfo: { icon: 'circle-Info' as unknown as string, tooltip: 'Initial' },
       link: 'https://example.com/tx/initial',
       method: {
         name: 'Smart Contract',
@@ -101,7 +99,7 @@ describe('TransactionHash', () => {
         tooltip: '2 hours ago',
       },
       direction: 'out',
-      iconInfo: { icon: faCircleCheck as unknown as string, tooltip: 'Updated' },
+      iconInfo: { icon: 'circle-check' as unknown as string, tooltip: 'Updated' },
       link: 'https://example.com/tx/updated',
       method: {
         name: 'Transfer',
