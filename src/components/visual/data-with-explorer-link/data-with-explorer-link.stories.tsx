@@ -26,7 +26,6 @@ const styles = {
 const storySettings: Meta<DataWithExplorerLink> = {
   tags: ['autodocs'],
   title: 'Components/DataWithExplorerLink',
-  render: properties => <mvx-data-with-explorer-link {...properties} />,
   args: {
     data: 'erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3zpz3hypefsdd8ssycr6th',
     explorerLink: `${DEVNET_EXPLORER_URL}/accounts/erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3zpz3hypefsdd8ssycr6th`,
@@ -46,12 +45,9 @@ const storySettings: Meta<DataWithExplorerLink> = {
 };
 
 export const Default: StoryObj<DataWithExplorerLink> = {
-  render: () => (
+  render: properties => (
     <div class={styles.dataWithExplorerLinkStoriesWrapper}>
-      <mvx-data-with-explorer-link
-        data="erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3zpz3hypefsdd8ssycr6th"
-        explorerLink={`${DEVNET_EXPLORER_URL}/accounts/erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3zpz3hypefsdd8ssycr6th`}
-      />
+      <mvx-data-with-explorer-link {...properties} />
     </div>
   ),
 };

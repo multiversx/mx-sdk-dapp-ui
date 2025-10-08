@@ -15,7 +15,6 @@ const styles = {
 const storySettings: Meta<Button> = {
   tags: ['autodocs'],
   title: 'Components/Button',
-  render: properties => <mvx-button {...properties}>Button Text</mvx-button>,
   args: { variant: 'primary', size: 'large', disabled: false },
   argTypes: {
     variant: { control: { type: 'select' }, options: Object.values(ButtonVariantEnum) },
@@ -26,7 +25,7 @@ const storySettings: Meta<Button> = {
 };
 
 export const Primary: StoryObj<Button> = {
-  render: () => <mvx-button>Button</mvx-button>,
+  render: properties => <mvx-button {...properties}>Button Text</mvx-button>,
 };
 
 export const DefaultSize: StoryObj<Button> = {
