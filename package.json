@@ -88,8 +88,6 @@
     "storybook": "yarn run storybook-tailwind && storybook dev -p 6006 --no-open"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": ">=6.7.2",
-    "@fortawesome/free-solid-svg-icons": ">=6.7.2",
     "@stencil/core": "^4.36.2",
     "@stencil/react-output-target": "1.2.0",
     "classnames": ">=2.5.1",

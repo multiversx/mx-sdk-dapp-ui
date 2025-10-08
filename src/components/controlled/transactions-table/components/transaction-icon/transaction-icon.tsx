@@ -1,5 +1,4 @@
 import { Component, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
 
 import type { TransactionIconInfoType } from '../../transactions-table.type';
 import { Icon } from 'common/Icon';
@@ -25,13 +24,11 @@ export class TransactionIcon {
 
     return (
       <Icon
-        class={classNames(
-          {
-            [styles.transactionIconError]: this.iconInfo.icon === 'faTimes',
-            [styles.transactionIconPending]: this.iconInfo.icon === 'faHourglass',
-          },
-          this.class,
-        )}
+        class={{
+          [styles.transactionIconError]: this.iconInfo.icon === 'faTimes',
+          [styles.transactionIconPending]: this.iconInfo.icon === 'faHourglass',
+          [this.class]: Boolean(this.class),
+        }}
         name={this.iconInfo.icon as IconNameEnum}
       />
     );

@@ -34,7 +34,7 @@ export class TransactionAccountName {
         text={this.address}
         class={classNames(this.class, styles.transactionAccountName)}
         dataTestId={this.dataTestId}
-      ></mvx-trim>
+      />
     );
   }
 }

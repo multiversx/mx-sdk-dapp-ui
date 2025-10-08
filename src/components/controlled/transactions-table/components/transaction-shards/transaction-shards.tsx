@@ -1,5 +1,4 @@
 import { Component, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionRowType } from '../../transactions-table.type';
@@ -21,7 +20,7 @@ export class TransactionShards {
 
   render() {
     return (
-      <div class={classNames(this.class, styles.transactionShards)}>
+      <div class={{ [this.class]: Boolean(this.class), [styles.transactionShards]: true }}>
         <mvx-explorer-link
           link={this.transaction.sender.shardLink}
           class={styles.explorerLink}

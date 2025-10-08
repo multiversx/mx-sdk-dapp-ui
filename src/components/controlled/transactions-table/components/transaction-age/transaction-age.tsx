@@ -1,5 +1,4 @@
 import { Component, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 // prettier-ignore
@@ -34,6 +33,6 @@ export class TransactionAge {
       </div>
     );
 
-    return <div class={classNames(this.class, [styles.transactionAge])}>{component}</div>;
+    return <div class={{ [this.class]: Boolean(this.class), [styles.transactionAge]: true }}>{component}</div>;
   }
 }

@@ -1,10 +1,9 @@
 import { Component, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 // prettier-ignore
 const styles = {
-  transactionMethodBadge: 'transaction-method-badge mvx:inline-block mvx:py-1 mvx:px-1.5 mvx:font-normal mvx:text-center mvx:whitespace-pre-wrap mvx:text-[75%] mvx:leading-[1] mvx:break-all mvx:align-baseline mvx:rounded-sm mvx:transition-colors mvx:duration-200 mvx:ease-in-out mvx:motion-reduce:transition-none mvx:text-transaction-method mvx:border-1 mvx:border-transaction-method mvx:bg-transparent mvx:font-light',
+  transactionMethodBadge: 'transaction-method-badge mvx:inline-block mvx:py-1 mvx:px-1.5 mvx:font-normal mvx:text-center mvx:whitespace-pre-wrap mvx:text-xs mvx:leading-none mvx:break-all mvx:align-baseline mvx:rounded-sm mvx:transition-colors mvx:duration-200 mvx:ease-in-out mvx:motion-reduce:transition-none mvx:text-transaction-method mvx:border-1 mvx:border-transaction-method mvx:bg-transparent mvx:font-light',
   transactionMethodBadgeEmpty: 'transaction-method-badge-empty mvx:hidden',
   transactionMethodText: 'transaction-method-text mvx:truncate mvx:capitalize'
 
@@ -22,11 +21,11 @@ export class TransactionMethod {
   render() {
     return (
       <span
-        class={classNames(
-          styles.transactionMethodBadge,
-          { [styles.transactionMethodBadgeEmpty]: this.method === '' },
-          this.class,
-        )}
+        class={{
+          [styles.transactionMethodBadge]: true,
+          [styles.transactionMethodBadgeEmpty]: this.method === '',
+          [this.class]: Boolean(this.class),
+        }}
         data-testid={DataTestIdsEnum.method}
         title={this.actionDescription}
       >

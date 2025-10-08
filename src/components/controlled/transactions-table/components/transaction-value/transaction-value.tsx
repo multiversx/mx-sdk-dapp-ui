@@ -1,10 +1,10 @@
 import { Component, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
 import { Icon } from 'common/Icon';
 import type { TransactionValueType } from 'components/controlled/transactions-table/transactions-table.type';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import styles from './transaction-value.styles';
+import classNames from 'classnames';
 
 @Component({
   tag: 'mvx-transaction-value',
@@ -16,7 +16,7 @@ export class TransactionValue {
 
   render() {
     return (
-      <div class={classNames(this.class, styles.transactionValue)}>
+      <div class={{ [this.class]: Boolean(this.class), [styles.transactionValue]: true }}>
         {this.value.badge && (
           <div data-testid={DataTestIdsEnum.transactionNftBadge} class={styles.transactionValueBadge}>
             {this.value.badge}

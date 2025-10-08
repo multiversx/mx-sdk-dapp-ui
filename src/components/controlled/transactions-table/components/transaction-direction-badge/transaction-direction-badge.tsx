@@ -1,5 +1,4 @@
 import { Component, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
 
 // prettier-ignore
 const styles = {
@@ -16,7 +15,7 @@ export class TransactionDirectionBadge {
 
   render() {
     return (
-      <div class={classNames(this.class, styles.transactionDirectionBadge)}>
+      <div class={{ [this.class]: Boolean(this.class), [styles.transactionDirectionBadge]: true }}>
         <span
           class={{
             directionBadge: true,

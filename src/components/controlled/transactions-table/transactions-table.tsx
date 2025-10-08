@@ -1,5 +1,4 @@
 import { Component, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
 
 import { DataTestIdsEnum } from '../../../constants/dataTestIds.enum';
 import type { TransactionRowType } from './transactions-table.type';
@@ -17,7 +16,7 @@ export class TransactionsTable {
 
   render() {
     return (
-      <table class={classNames(this.class, styles.transactionsTableContainer)}>
+      <table class={{ [this.class]: Boolean(this.class), [styles.transactionsTableContainer]: true }}>
         <thead class={styles.transactionsTableHeader}>
           <tr>
             {COLUMNS.map(column => (

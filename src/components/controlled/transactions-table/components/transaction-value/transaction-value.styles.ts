@@ -1,7 +1,7 @@
 // prettier-ignore
 export default {
   transactionValue: 'transaction-value mvx:items-center mvx:flex mvx:gap-1',
-  transactionValueBadge: 'transaction-value-badge mvx:inline-block mvx:py-1 mvx:px-1.5 mvx:font-bold mvx:text-center mvx:whitespace-pre-wrap mvx:text-[75%] mvx:leading-[1] mvx:break-all mvx:align-baseline mvx:rounded-sm mvx:transition-colors mvx:duration-200 mvx:ease-in-out mvx:w-max mvx:motion-reduce:transition-none mvx:text-transaction-method mvx:border mvx:border-transaction-method mvx:bg-transparent',
+  transactionValueBadge: 'transaction-value-badge mvx:inline-block mvx:py-1 mvx:px-1.5 mvx:font-bold mvx:text-center mvx:whitespace-pre-wrap mvx:text-xs mvx:leading-none mvx:break-all mvx:align-baseline mvx:rounded-sm mvx:transition-colors mvx:duration-200 mvx:ease-in-out mvx:w-max mvx:motion-reduce:transition-none mvx:text-transaction-method mvx:border mvx:border-transaction-method mvx:bg-transparent',
   transactionValueAmount: 'transaction-value-amount mvx:flex mvx:items-center mvx:gap-1',
   transactionValueAmountSymbol: 'transaction-value-amount-symbol mvx:text-primary',
   transactionValueFormatAmount: 'transaction-value-format-amount mvx:mr-1 mvx:text-primary',
