@@ -50,9 +50,9 @@ describe('TransactionHash', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-transaction-hash>
-          <div class="transaction-hash">
-            <mvx-transaction-icon class="mvx:flex mvx:items-center mvx:justify-center"></mvx-transaction-icon>
-            <mvx-explorer-link class="mvx:text-primary!" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/123"><mvx-trim text="0x123456789abcdef"></mvx-trim></mvx-explorer-link>
+          <div class="mvx:flex mvx:gap-1 mvx:items-center mvx:justify-center transaction-hash">
+            <mvx-transaction-icon class="mvx:flex mvx:items-center mvx:justify-center transaction-hash-icon"></mvx-transaction-icon>
+            <mvx-explorer-link class="mvx:text-primary! transaction-hash-explorer-link" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/123"><mvx-trim text="0x123456789abcdef"></mvx-trim></mvx-explorer-link>
           </div>
       </mvx-transaction-hash>
     `);
@@ -88,9 +88,9 @@ describe('TransactionHash', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-transaction-hash>
-          <div class="transaction-hash">
-            <mvx-transaction-icon class="mvx:flex mvx:items-center mvx:justify-center"></mvx-transaction-icon>
-            <mvx-explorer-link class="mvx:text-primary!" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/initial"><mvx-trim text="0xInitialHash"></mvx-trim></mvx-explorer-link>
+          <div class="mvx:flex mvx:gap-1 mvx:items-center mvx:justify-center  transaction-hash">
+            <mvx-transaction-icon class="mvx:flex mvx:items-center mvx:justify-center transaction-hash-icon"></mvx-transaction-icon>
+            <mvx-explorer-link class="mvx:text-primary! transaction-hash-explorer-link" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/initial"><mvx-trim text="0xInitialHash"></mvx-trim></mvx-explorer-link>
           </div>
       </mvx-transaction-hash>
     `);
@@ -122,9 +122,9 @@ describe('TransactionHash', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-transaction-hash>
-          <div class="transaction-hash">
-            <mvx-transaction-icon class="mvx:flex mvx:items-center mvx:justify-center"></mvx-transaction-icon>
-            <mvx-explorer-link class="mvx:text-primary!" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/updated"><mvx-trim text="0xUpdatedHash"></mvx-trim></mvx-explorer-link>
+          <div class="mvx:flex mvx:gap-1 mvx:items-center mvx:justify-center transaction-hash">
+            <mvx-transaction-icon class="mvx:flex mvx:items-center mvx:justify-center transaction-hash-icon"></mvx-transaction-icon>
+            <mvx-explorer-link class="mvx:text-primary! transaction-hash-explorer-link" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/updated"><mvx-trim text="0xUpdatedHash"></mvx-trim></mvx-explorer-link>
           </div>
       </mvx-transaction-hash>
     `);

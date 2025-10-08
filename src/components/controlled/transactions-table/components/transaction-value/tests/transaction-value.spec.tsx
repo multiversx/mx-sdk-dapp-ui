@@ -23,7 +23,7 @@ describe('TransactionValue', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-transaction-value>
-          <div class="transaction-value"></div>
+          <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value"></div>
       </mvx-transaction-value>
     `);
   });
@@ -47,8 +47,8 @@ describe('TransactionValue', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-transaction-value>
-          <div class="transaction-value">
-            <div class="badge badge-pill badge-secondary font-weight-light transaction-value-badge" data-testid="transactionNftBadge">
+          <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
+            <div class="mvx:align-baseline mvx:bg-transparent mvx:border mvx:border-transaction-method mvx:break-all mvx:duration-200 mvx:ease-in-out mvx:font-bold mvx:inline-block mvx:leading-[1] mvx:motion-reduce:transition-none mvx:px-1.5 mvx:py-1 mvx:rounded-sm mvx:text-[75%] mvx:text-center mvx:text-transaction-method mvx:transition-colors mvx:w-max mvx:whitespace-pre-wrap transaction-value-badge" data-testid="transactionNftBadge">
               NFT
             </div>
           </div>
@@ -75,10 +75,10 @@ describe('TransactionValue', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-transaction-value>
-          <div class="transaction-value">
-           <div class="amount">
-            <mvx-multiversx-symbol-icon class="amount-symbol"></mvx-multiversx-symbol-icon>
-            <mvx-format-amount class="mr-1 mvx:text-primary" datatestid="transactionActionFormattedAmount" decimalclass="opacity-70" isvalid="" label="xEGLD" labelclass="opacity-70" valuedecimal="123" valueinteger="123"></mvx-format-amount>
+          <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
+           <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value-amount">
+            <mvx-multiversx-symbol-icon class="mvx:text-primary transaction-value-amount-symbol"></mvx-multiversx-symbol-icon>
+            <mvx-format-amount class="mvx:mr-1 mvx:text-primary transaction-value-format-amount" datatestid="transactionActionFormattedAmount" decimalclass="opacity-70" isvalid="" label="xEGLD" labelclass="opacity-70" valuedecimal="123" valueinteger="123"></mvx-format-amount>
             </div>
           </div>
       </mvx-transaction-value>
@@ -103,10 +103,10 @@ describe('TransactionValue', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-transaction-value>
-          <div class="transaction-value">
-            <mvx-explorer-link class="transaction-value-link text-truncate" link="https://example.com">
-              <div class="transaction-value-content">
-                <span class="transaction-value-link-text">Example Link</span>
+          <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
+            <mvx-explorer-link class="mvx:truncate transaction-value-text-truncate" link="https://example.com">
+              <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
+                <span>Example Link</span>
               </div>
             </mvx-explorer-link>
           </div>
@@ -133,11 +133,11 @@ describe('TransactionValue', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-transaction-value>
-          <div class="transaction-value">
-            <mvx-explorer-link class="transaction-value-link side-link d-flex" link="https://example.com">
-              <div class="transaction-value-content">
-                <img alt="Example Icon" class="transaction-value-img" src="https://example.com/icon.svg">
-                <span class="transaction-value-link-text">Example Link</span>
+          <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
+            <mvx-explorer-link class="mvx:flex transaction-value-link" link="https://example.com">
+              <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
+                <img alt="Example Icon" class="mvx:border mvx:border-gray-200 mvx:h-6 mvx:min-h-6 mvx:min-w-6 mvx:overflow-hidden mvx:rounded-full mvx:text-transparent mvx:w-6 transaction-value-img" src="https://example.com/icon.svg">
+                <span>Example Link</span>
               </div>
             </mvx-explorer-link>
           </div>
@@ -164,10 +164,10 @@ describe('TransactionValue', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-transaction-value>
-          <div class="transaction-value">
-            <mvx-explorer-link class="transaction-value-link text-truncate" link="https://example.com">
-              <div class="transaction-value-content">
-                <span class="transaction-value-link-text truncate">Example Link</span>
+          <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
+            <mvx-explorer-link class="mvx:truncate transaction-value-text-truncate" link="https://example.com">
+              <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
+                <span class="mvx:truncate transaction-value-text-truncate">Example Link</span>
               </div>
             </mvx-explorer-link>
           </div>
@@ -194,10 +194,10 @@ describe('TransactionValue', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-transaction-value>
-          <div class="transaction-value">
-            <mvx-explorer-link class="transaction-value-link text-truncate" link="https://example.com">
-              <div class="transaction-value-content">
-                <span class="transaction-value-link-text">Example Link</span>
+          <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
+            <mvx-explorer-link class="mvx:truncate transaction-value-text-truncate" link="https://example.com">
+              <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
+                <span>Example Link</span>
               </div>
             </mvx-explorer-link>
             <mvx-tooltip>
