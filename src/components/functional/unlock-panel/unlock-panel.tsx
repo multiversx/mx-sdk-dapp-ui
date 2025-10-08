@@ -181,6 +181,7 @@ export class UnlockPanel {
               onAccess={this.handleAccess}
               provider={this.selectedMethod}
               onClose={this.handleResetLoginState}
+              isLogin
             />
           )}
         </div>
