@@ -2,6 +2,14 @@ import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 
 import type { TransactionIconInfoType } from '../../transactions-table.type';
+import { Icon } from 'common/Icon';
+import { IconNameEnum } from 'common/Icon/icon.types';
+
+// prettier-ignore
+const styles = {
+  transactionIconError: 'transaction-icon-error mvx:text-error',
+  transactionIconPending: 'transaction-icon-pending mvx:text-pending'
+} satisfies Record<string, string>;
 
 @Component({
   tag: 'mvx-transaction-icon',
@@ -16,17 +24,15 @@ export class TransactionIcon {
     }
 
     return (
-      <mvx-fa-icon
+      <Icon
         class={classNames(
           {
-            'mvx:text-error': this.iconInfo.icon === 'faTimes',
-            'mvx:text-pending': this.iconInfo.icon === 'faHourglass',
+            [styles.transactionIconError]: this.iconInfo.icon === 'faTimes',
+            [styles.transactionIconPending]: this.iconInfo.icon === 'faHourglass',
           },
           this.class,
-          'transaction-icon',
         )}
-        icon={this.iconInfo.icon}
-        description={this.iconInfo.tooltip}
+        name={this.iconInfo.icon as IconNameEnum}
       />
     );
   }
