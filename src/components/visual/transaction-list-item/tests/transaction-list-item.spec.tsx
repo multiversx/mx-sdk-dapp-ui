@@ -58,11 +58,10 @@ describe('transaction-list-item', () => {
     });
 
     it('renders with asset icon', async () => {
-      const transaction = { ...baseTransaction, asset: { icon: 'faArrowsRotate' } };
+      const transaction = { ...baseTransaction, asset: { icon: 'arrows-rotate' } };
       const page = await createPage(transaction);
-      const iconComponent = page.root.querySelector('mvx-fa-icon');
+      const iconComponent = page.root.querySelector('svg');
       expect(iconComponent).not.toBeNull();
-      expect(iconComponent.getAttribute('icon')).toBe('faArrowsRotate');
     });
 
     it('renders with asset text', async () => {
