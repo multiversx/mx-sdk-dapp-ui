@@ -8,12 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@fortawesome/fontawesome-svg-core':
-        specifier: '>=6.7.2'
-        version: 7.0.1
-      '@fortawesome/free-solid-svg-icons':
-        specifier: '>=6.7.2'
-        version: 7.0.1
       '@stencil/core':
         specifier: ^4.36.2
         version: 4.36.3
@@ -511,18 +505,6 @@ packages:
   '@eslint/plugin-kit@0.3.5':
     resolution: {integrity: sha512-Z5kJ+wU3oA7MMIqVR9tyZRtjYPr4OC004Q4Rw7pgOKUOKkJfZ3O24nz3WYfGRpMDNmcOi3TwQOmgm7B7Tpii0w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@fortawesome/fontawesome-common-types@7.0.1':
-    resolution: {integrity: sha512-0VpNtO5cNe1/HQWMkl4OdncYK/mv9hnBte0Ew0n6DMzmo3Q3WzDFABHm6LeNTipt5zAyhQ6Ugjiu8aLaEjh1gg==}
-    engines: {node: '>=6'}
-
-  '@fortawesome/fontawesome-svg-core@7.0.1':
-    resolution: {integrity: sha512-x0cR55ILVqFpUioSMf6ebpRCMXMcheGN743P05W2RB5uCNpJUqWIqW66Lap8PfL/lngvjTbZj0BNSUweIr/fHQ==}
-    engines: {node: '>=6'}
-
-  '@fortawesome/free-solid-svg-icons@7.0.1':
-    resolution: {integrity: sha512-esKuSrl1WMOTMDLNt38i16VfLe/gRZt2ZAJ3Yw7slfs7sj583MKqNFqO57zmhknk1Sya6f9Wys89aCzIJkcqlg==}
-    engines: {node: '>=6'}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -4172,16 +4154,6 @@ snapshots:
     dependencies:
       '@eslint/core': 0.15.2
       levn: 0.4.1
-
-  '@fortawesome/fontawesome-common-types@7.0.1': {}
-
-  '@fortawesome/fontawesome-svg-core@7.0.1':
-    dependencies:
-      '@fortawesome/fontawesome-common-types': 7.0.1
-
-  '@fortawesome/free-solid-svg-icons@7.0.1':
-    dependencies:
-      '@fortawesome/fontawesome-common-types': 7.0.1
 
   '@humanfs/core@0.19.1': {}
 
