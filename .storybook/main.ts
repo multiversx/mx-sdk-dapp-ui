@@ -4,6 +4,14 @@ const config = {
   framework: {
     name: '@stencil/storybook-plugin',
   },
+  managerHead: (head) => `
+    ${head}
+    <base href="./" />
+  `,
+  previewHead: (head) => `
+    ${head}
+    <base href="./" />
+  `,
 };
 
 export default config;
