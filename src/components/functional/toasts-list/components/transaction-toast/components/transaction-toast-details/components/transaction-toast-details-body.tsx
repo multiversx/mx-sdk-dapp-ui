@@ -1,4 +1,3 @@
-
 import { Component, h, Prop } from '@stencil/core';
 import { Icon } from 'common/Icon/Icon';
 import { IconNameEnum } from 'common/Icon/icon.types';
