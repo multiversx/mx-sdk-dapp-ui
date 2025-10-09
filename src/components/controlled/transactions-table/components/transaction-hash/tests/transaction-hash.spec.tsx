@@ -25,7 +25,7 @@ describe('TransactionHash', () => {
         tooltip: '1 hour ago',
       },
       direction: 'in',
-      iconInfo: { icon: 'circle-info' as unknown as string, tooltip: 'Test' },
+      iconInfo: { icon: 'circle-info', tooltip: 'Test' },
       link: 'https://example.com/tx/123',
       method: {
         name: 'Smart Contract',
@@ -63,7 +63,7 @@ describe('TransactionHash', () => {
         tooltip: '1 hour ago',
       },
       direction: 'in',
-      iconInfo: { icon: 'circle-Info' as unknown as string, tooltip: 'Initial' },
+      iconInfo: { icon: 'circle-Info', tooltip: 'Initial' },
       link: 'https://example.com/tx/initial',
       method: {
         name: 'Smart Contract',
@@ -99,7 +99,7 @@ describe('TransactionHash', () => {
         tooltip: '2 hours ago',
       },
       direction: 'out',
-      iconInfo: { icon: 'circle-check' as unknown as string, tooltip: 'Updated' },
+      iconInfo: { icon: 'circle-check', tooltip: 'Updated' },
       link: 'https://example.com/tx/updated',
       method: {
         name: 'Transfer',
