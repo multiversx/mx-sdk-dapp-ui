@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [[0.0.34](https://github.com/multiversx/mx-sdk-dapp-ui/pull/238)] - 2025-10-09
 
-- [Added intro screens waiting for provider message](https://github.com/multiversx/mx-sdk-dapp-ui/pull/239)
+[Added intro screens waiting for provider message](https://github.com/multiversx/mx-sdk-dapp-ui/pull/239)
+
 - [Updated Storybook stories of utility elements to accept property changes from the interface](https://github.com/multiversx/mx-sdk-dapp-ui/pull/237)
 - [Refactor Tailwind CSS & FontAwesome icons](https://github.com/multiversx/mx-sdk-dapp-ui/pull/236)
 - [Updated Tailwind classes to be accessed from the markup instead of CSS files](https://github.com/multiversx/mx-sdk-dapp-ui/pull/227)
