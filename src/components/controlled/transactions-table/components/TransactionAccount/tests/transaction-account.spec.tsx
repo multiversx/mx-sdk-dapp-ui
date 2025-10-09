@@ -2,7 +2,7 @@ import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 
 import type { TransactionAccountType } from '../../../transactions-table.type';
-import { TransactionAccount } from '../transaction-account';
+import { TransactionAccount } from '../TransactionAccount';
 
 describe('TransactionAccount Component', () => {
   const baseAccount: TransactionAccountType = {

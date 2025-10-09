@@ -3,7 +3,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionRowType } from '../../../transactions-table.type';
-import { TransactionShards } from '../transaction-shards';
+import { TransactionShards } from '../TransactionShards';
 
 describe('TransactionShards', () => {
   const createMockTransaction = (senderShard: string, receiverShard: string): TransactionRowType => ({

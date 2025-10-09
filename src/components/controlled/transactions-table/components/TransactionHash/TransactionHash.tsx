@@ -2,6 +2,7 @@ import { h } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionRowType } from '../../transactions-table.type';
+import { TransactionIcon } from '../TransactionIcon';
 
 // prettier-ignore
 const styles = {
@@ -27,7 +28,7 @@ export function TransactionHash({ transaction, class: className }: TransactionHa
                 [className]: Boolean(className),
             }}
         >
-            <mvx-transaction-icon iconInfo={transaction.iconInfo} class={styles.transactionHashIcon} />
+            <TransactionIcon iconInfo={transaction.iconInfo} class={styles.transactionHashIcon} />
 
             <mvx-explorer-link
                 dataTestId={DataTestIdsEnum.transactionLink}

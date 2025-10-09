@@ -1,7 +1,8 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import { TransactionMethod } from '../TransactionMethod';
 
-import { TransactionMethod } from '../transaction-method';
+
 
 describe('transaction-method', () => {
   const createPage = async (props: { method?: string; actionDescription?: string }) => {
@@ -10,7 +11,7 @@ describe('transaction-method', () => {
       html: '<mvx-transaction-method></mvx-transaction-method>',
     });
 
-    const component = page.rootInstance as TransactionMethod;
+    const component = page.rootInstance;
     component.method = props.method;
     component.actionDescription = props.actionDescription;
     await page.waitForChanges();

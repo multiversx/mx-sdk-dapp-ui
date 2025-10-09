@@ -11,12 +11,11 @@ import { CustomToastType, IComponentToast, ISimpleToast } from "./components/fun
 import { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
 import { DecodeMethodEnum } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
-import { TransactionAccountType, TransactionIconInfoType, TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { LocalJSX as JSX } from "@stencil/core";
 import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-import { TransactionValueType } from "./components/controlled/transactions-table/transactions-table.type";
+import { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
 import { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
 import { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
 export { IAddressTableData } from "./types/address-table.types";
@@ -25,12 +24,11 @@ export { CustomToastType, IComponentToast, ISimpleToast } from "./components/fun
 export { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
 export { DecodeMethodEnum } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
-export { TransactionAccountType, TransactionIconInfoType, TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { LocalJSX as JSX } from "@stencil/core";
 export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-export { TransactionValueType } from "./components/controlled/transactions-table/transactions-table.type";
+export { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
 export { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
 export { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
 export namespace Components {
@@ -318,38 +316,8 @@ export namespace Components {
          */
         "triggerOnClick"?: boolean;
     }
-    interface MvxTransactionAccount {
-        "account": TransactionAccountType;
-        "class"?: string;
-        "dataTestId"?: string;
-        "scope": 'receiver' | 'sender';
-        /**
-          * @default false
-         */
-        "showLockedAccounts": boolean;
-    }
-    interface MvxTransactionAccountName {
-        "address": string;
-        "class"?: string;
-        "dataTestId"?: string;
-        "description": string;
-        "name"?: string;
-    }
-    interface MvxTransactionIcon {
-        "class"?: string;
-        "iconInfo": TransactionIconInfoType;
-    }
     interface MvxTransactionListItem {
         "transaction": ITransactionListItem;
-    }
-    interface MvxTransactionMethod {
-        "actionDescription": string;
-        "class"?: string;
-        "method": string;
-    }
-    interface MvxTransactionShards {
-        "class"?: string;
-        "transaction": TransactionRowType;
     }
     interface MvxTransactionToast {
         "fullWidth"?: boolean;
@@ -398,10 +366,6 @@ export namespace Components {
         "endTime"?: number;
         "isStatusPending"?: boolean;
         "startTime"?: number;
-    }
-    interface MvxTransactionValue {
-        "class"?: string;
-        "value": TransactionValueType;
     }
     interface MvxTransactionsTable {
         "class"?: string;
@@ -966,41 +930,11 @@ declare global {
         prototype: HTMLMvxTooltipElement;
         new (): HTMLMvxTooltipElement;
     };
-    interface HTMLMvxTransactionAccountElement extends Components.MvxTransactionAccount, HTMLStencilElement {
-    }
-    var HTMLMvxTransactionAccountElement: {
-        prototype: HTMLMvxTransactionAccountElement;
-        new (): HTMLMvxTransactionAccountElement;
-    };
-    interface HTMLMvxTransactionAccountNameElement extends Components.MvxTransactionAccountName, HTMLStencilElement {
-    }
-    var HTMLMvxTransactionAccountNameElement: {
-        prototype: HTMLMvxTransactionAccountNameElement;
-        new (): HTMLMvxTransactionAccountNameElement;
-    };
-    interface HTMLMvxTransactionIconElement extends Components.MvxTransactionIcon, HTMLStencilElement {
-    }
-    var HTMLMvxTransactionIconElement: {
-        prototype: HTMLMvxTransactionIconElement;
-        new (): HTMLMvxTransactionIconElement;
-    };
     interface HTMLMvxTransactionListItemElement extends Components.MvxTransactionListItem, HTMLStencilElement {
     }
     var HTMLMvxTransactionListItemElement: {
         prototype: HTMLMvxTransactionListItemElement;
         new (): HTMLMvxTransactionListItemElement;
-    };
-    interface HTMLMvxTransactionMethodElement extends Components.MvxTransactionMethod, HTMLStencilElement {
-    }
-    var HTMLMvxTransactionMethodElement: {
-        prototype: HTMLMvxTransactionMethodElement;
-        new (): HTMLMvxTransactionMethodElement;
-    };
-    interface HTMLMvxTransactionShardsElement extends Components.MvxTransactionShards, HTMLStencilElement {
-    }
-    var HTMLMvxTransactionShardsElement: {
-        prototype: HTMLMvxTransactionShardsElement;
-        new (): HTMLMvxTransactionShardsElement;
     };
     interface HTMLMvxTransactionToastElementEventMap {
         "deleteToast": void;
@@ -1053,12 +987,6 @@ declare global {
     var HTMLMvxTransactionToastProgressElement: {
         prototype: HTMLMvxTransactionToastProgressElement;
         new (): HTMLMvxTransactionToastProgressElement;
-    };
-    interface HTMLMvxTransactionValueElement extends Components.MvxTransactionValue, HTMLStencilElement {
-    }
-    var HTMLMvxTransactionValueElement: {
-        prototype: HTMLMvxTransactionValueElement;
-        new (): HTMLMvxTransactionValueElement;
     };
     interface HTMLMvxTransactionsTableElement extends Components.MvxTransactionsTable, HTMLStencilElement {
     }
@@ -1225,18 +1153,12 @@ declare global {
         "mvx-spinner-icon": HTMLMvxSpinnerIconElement;
         "mvx-toast-list": HTMLMvxToastListElement;
         "mvx-tooltip": HTMLMvxTooltipElement;
-        "mvx-transaction-account": HTMLMvxTransactionAccountElement;
-        "mvx-transaction-account-name": HTMLMvxTransactionAccountNameElement;
-        "mvx-transaction-icon": HTMLMvxTransactionIconElement;
         "mvx-transaction-list-item": HTMLMvxTransactionListItemElement;
-        "mvx-transaction-method": HTMLMvxTransactionMethodElement;
-        "mvx-transaction-shards": HTMLMvxTransactionShardsElement;
         "mvx-transaction-toast": HTMLMvxTransactionToastElement;
         "mvx-transaction-toast-content": HTMLMvxTransactionToastContentElement;
         "mvx-transaction-toast-details": HTMLMvxTransactionToastDetailsElement;
         "mvx-transaction-toast-details-body": HTMLMvxTransactionToastDetailsBodyElement;
         "mvx-transaction-toast-progress": HTMLMvxTransactionToastProgressElement;
-        "mvx-transaction-value": HTMLMvxTransactionValueElement;
         "mvx-transactions-table": HTMLMvxTransactionsTableElement;
         "mvx-trim": HTMLMvxTrimElement;
         "mvx-unlock-button": HTMLMvxUnlockButtonElement;
@@ -1547,38 +1469,8 @@ declare namespace LocalJSX {
          */
         "triggerOnClick"?: boolean;
     }
-    interface MvxTransactionAccount {
-        "account"?: TransactionAccountType;
-        "class"?: string;
-        "dataTestId"?: string;
-        "scope"?: 'receiver' | 'sender';
-        /**
-          * @default false
-         */
-        "showLockedAccounts"?: boolean;
-    }
-    interface MvxTransactionAccountName {
-        "address"?: string;
-        "class"?: string;
-        "dataTestId"?: string;
-        "description"?: string;
-        "name"?: string;
-    }
-    interface MvxTransactionIcon {
-        "class"?: string;
-        "iconInfo"?: TransactionIconInfoType;
-    }
     interface MvxTransactionListItem {
         "transaction"?: ITransactionListItem;
-    }
-    interface MvxTransactionMethod {
-        "actionDescription"?: string;
-        "class"?: string;
-        "method"?: string;
-    }
-    interface MvxTransactionShards {
-        "class"?: string;
-        "transaction"?: TransactionRowType;
     }
     interface MvxTransactionToast {
         "fullWidth"?: boolean;
@@ -1629,10 +1521,6 @@ declare namespace LocalJSX {
         "endTime"?: number;
         "isStatusPending"?: boolean;
         "startTime"?: number;
-    }
-    interface MvxTransactionValue {
-        "class"?: string;
-        "value"?: TransactionValueType;
     }
     interface MvxTransactionsTable {
         "class"?: string;
@@ -1764,18 +1652,12 @@ declare namespace LocalJSX {
         "mvx-spinner-icon": MvxSpinnerIcon;
         "mvx-toast-list": MvxToastList;
         "mvx-tooltip": MvxTooltip;
-        "mvx-transaction-account": MvxTransactionAccount;
-        "mvx-transaction-account-name": MvxTransactionAccountName;
-        "mvx-transaction-icon": MvxTransactionIcon;
         "mvx-transaction-list-item": MvxTransactionListItem;
-        "mvx-transaction-method": MvxTransactionMethod;
-        "mvx-transaction-shards": MvxTransactionShards;
         "mvx-transaction-toast": MvxTransactionToast;
         "mvx-transaction-toast-content": MvxTransactionToastContent;
         "mvx-transaction-toast-details": MvxTransactionToastDetails;
         "mvx-transaction-toast-details-body": MvxTransactionToastDetailsBody;
         "mvx-transaction-toast-progress": MvxTransactionToastProgress;
-        "mvx-transaction-value": MvxTransactionValue;
         "mvx-transactions-table": MvxTransactionsTable;
         "mvx-trim": MvxTrim;
         "mvx-unlock-button": MvxUnlockButton;
@@ -1844,18 +1726,12 @@ declare module "@stencil/core" {
             "mvx-spinner-icon": LocalJSX.MvxSpinnerIcon & JSXBase.HTMLAttributes<HTMLMvxSpinnerIconElement>;
             "mvx-toast-list": LocalJSX.MvxToastList & JSXBase.HTMLAttributes<HTMLMvxToastListElement>;
             "mvx-tooltip": LocalJSX.MvxTooltip & JSXBase.HTMLAttributes<HTMLMvxTooltipElement>;
-            "mvx-transaction-account": LocalJSX.MvxTransactionAccount & JSXBase.HTMLAttributes<HTMLMvxTransactionAccountElement>;
-            "mvx-transaction-account-name": LocalJSX.MvxTransactionAccountName & JSXBase.HTMLAttributes<HTMLMvxTransactionAccountNameElement>;
-            "mvx-transaction-icon": LocalJSX.MvxTransactionIcon & JSXBase.HTMLAttributes<HTMLMvxTransactionIconElement>;
             "mvx-transaction-list-item": LocalJSX.MvxTransactionListItem & JSXBase.HTMLAttributes<HTMLMvxTransactionListItemElement>;
-            "mvx-transaction-method": LocalJSX.MvxTransactionMethod & JSXBase.HTMLAttributes<HTMLMvxTransactionMethodElement>;
-            "mvx-transaction-shards": LocalJSX.MvxTransactionShards & JSXBase.HTMLAttributes<HTMLMvxTransactionShardsElement>;
             "mvx-transaction-toast": LocalJSX.MvxTransactionToast & JSXBase.HTMLAttributes<HTMLMvxTransactionToastElement>;
             "mvx-transaction-toast-content": LocalJSX.MvxTransactionToastContent & JSXBase.HTMLAttributes<HTMLMvxTransactionToastContentElement>;
             "mvx-transaction-toast-details": LocalJSX.MvxTransactionToastDetails & JSXBase.HTMLAttributes<HTMLMvxTransactionToastDetailsElement>;
             "mvx-transaction-toast-details-body": LocalJSX.MvxTransactionToastDetailsBody & JSXBase.HTMLAttributes<HTMLMvxTransactionToastDetailsBodyElement>;
             "mvx-transaction-toast-progress": LocalJSX.MvxTransactionToastProgress & JSXBase.HTMLAttributes<HTMLMvxTransactionToastProgressElement>;
-            "mvx-transaction-value": LocalJSX.MvxTransactionValue & JSXBase.HTMLAttributes<HTMLMvxTransactionValueElement>;
             "mvx-transactions-table": LocalJSX.MvxTransactionsTable & JSXBase.HTMLAttributes<HTMLMvxTransactionsTableElement>;
             "mvx-trim": LocalJSX.MvxTrim & JSXBase.HTMLAttributes<HTMLMvxTrimElement>;
             "mvx-unlock-button": LocalJSX.MvxUnlockButton & JSXBase.HTMLAttributes<HTMLMvxUnlockButtonElement>;
