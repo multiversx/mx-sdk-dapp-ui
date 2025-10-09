@@ -1,8 +1,8 @@
 import { Component, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
 
 import { DataTestIdsEnum } from '../../../constants/dataTestIds.enum';
 import type { TransactionRowType } from './transactions-table.type';
+import styles from './transactions-table.styles'
 
 const COLUMNS = ['Txn Hash', 'Age', 'Shard', 'From', 'To', 'Method', 'Value'];
 
@@ -16,55 +16,59 @@ export class TransactionsTable {
 
   render() {
     return (
-      <table class={classNames(this.class, 'transactions-table')}>
-        <thead class="transactions-table-header">
+      <table class={{ [this.class]: Boolean(this.class), [styles.transactionsTableContainer]: true }}>
+        <thead class={styles.transactionsTableHeader}>
           <tr>
             {COLUMNS.map(column => (
-              <th key={column} scope="col" class="transactions-table-header-cell">
+              <th key={column} scope="col" class={styles.transactionsTableHeaderCell}>
                 {column}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody class="transactions-table-body">
+        <tbody class={styles.transactionsTableBody}>
           {this.transactions.map(transaction => (
-            <tr class="transactions-table-body-row">
-              <td class="transactions-table-body-cell">
-                <mvx-transaction-hash transaction={transaction}></mvx-transaction-hash>
+            <tr class={styles.transactionsTableBodyRow}>
+              <td class={styles.transactionsTableBodyCell}>
+                <mvx-transaction-hash class={styles.transactionsTableBodyCellChild} transaction={transaction}></mvx-transaction-hash>
               </td>
-              <td class="transactions-table-body-cell">
+              <td class={styles.transactionsTableBodyCell}>
                 <mvx-transaction-age
+                  class={styles.transactionsTableBodyCellChild}
                   age={transaction.age.timeAgo}
                   tooltip={transaction.age.tooltip}
                 ></mvx-transaction-age>
               </td>
-              <td class="transactions-table-body-cell">
-                <mvx-transaction-shards transaction={transaction}></mvx-transaction-shards>
+              <td class={styles.transactionsTableBodyCell}>
+                <mvx-transaction-shards class={styles.transactionsTableBodyCellChild} transaction={transaction}></mvx-transaction-shards>
               </td>
-              <td class="transactions-table-body-cell">
+              <td class={styles.transactionsTableBodyCell}>
                 <mvx-transaction-account
+                  class={styles.transactionsTableBodyCellChild}
                   account={transaction.sender}
                   dataTestId={DataTestIdsEnum.transactionSender}
                   scope="sender"
                   showLockedAccounts={true}
                 ></mvx-transaction-account>
               </td>
-              <td class="transactions-table-body-cell">
+              <td class={styles.transactionsTableBodyCell}>
                 <mvx-transaction-account
+                  class={styles.transactionsTableBodyCellChild}
                   account={transaction.receiver}
                   dataTestId={DataTestIdsEnum.transactionReceiver}
                   scope="receiver"
                   showLockedAccounts={true}
                 ></mvx-transaction-account>
               </td>
-              <td class="transactions-table-body-cell">
+              <td class={styles.transactionsTableBodyCell}>
                 <mvx-transaction-method
+                  class={styles.transactionsTableBodyCellChild}
                   method={transaction.method.name}
                   actionDescription={transaction.method.actionDescription}
                 ></mvx-transaction-method>
               </td>
-              <td class="transactions-table-body-cell">
-                <mvx-transaction-value value={transaction.value}></mvx-transaction-value>
+              <td class={styles.transactionsTableBodyCell}>
+                <mvx-transaction-value class={styles.transactionsTableBodyCellChild} value={transaction.value}></mvx-transaction-value>
               </td>
             </tr>
           ))}

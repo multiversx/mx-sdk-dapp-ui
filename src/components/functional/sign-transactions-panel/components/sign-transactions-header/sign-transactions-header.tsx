@@ -1,12 +1,9 @@
 import { Component, h, State } from '@stencil/core';
-import classNames from 'classnames';
+import { Icon } from 'common/Icon';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import state from '../../signTransactionsPanelStore';
-
-const signTransactionsHeaderClasses: Record<string, string> = {
-  pagerIcon: 'mvx:w-auto! mvx:h-5!',
-};
+import styles from './sign-transactions-header.styles';
 
 @Component({
   tag: 'mvx-sign-transactions-header',
@@ -21,56 +18,72 @@ export class SignTransactionsHeader {
     const { currentIndex, transactionsCount, origin } = state.commonData;
 
     return (
-      <div class="sign-transactions-header" data-testid={DataTestIdsEnum.signTransactionsHeader}>
+      <div class={styles.signTransactionsHeader} data-testid={DataTestIdsEnum.signTransactionsHeader}>
         {transactionsCount > 1 && (
           <div
-            class="sign-transactions-header-pager"
+            class={styles.signTransactionsHeaderPager}
             data-testid={DataTestIdsEnum.signTransactionsHeaderPager}
             onClick={(event: MouseEvent) => event.stopPropagation()}
           >
-            <mvx-single-angle-left-icon
+            <Icon
               onClick={onBack}
+              name="angle-left"
               data-testid={DataTestIdsEnum.signTransactionsHeaderPagerPrevBtn}
-              class={classNames('sign-transactions-header-pager-icon', {
-                [signTransactionsHeaderClasses.pagerIcon]: true,
-                disabled: currentIndex === 0,
-              })}
+              class={{
+                [styles.signTransactionsHeaderPagerIcon]: true,
+                [styles.signTransactionsHeaderPagerIconDisabled]: currentIndex === 0,
+              }}
             />
+
             <div
-              class="sign-transactions-header-pager-text"
+              class={styles.signTransactionsHeaderPagerText}
               data-testid={DataTestIdsEnum.signTransactionsHeaderPagerText}
             >
-              <div class="sign-transactions-header-pager-text-label">Transaction</div>
-              <div class={{ 'sign-transactions-header-pager-text-value': true, 'large': transactionsCount >= 10 }}>
+              <div class={styles.signTransactionsHeaderPagerTextLabel}>Transaction</div>
+              <div
+                class={{
+                  [styles.signTransactionsHeaderPagerTextValue]: true,
+                  [styles.signTransactionsHeaderPagerTextValueLarge]: transactionsCount >= 10,
+                }}
+              >
                 {currentIndex + 1}
               </div>
 
-              <div class="sign-transactions-header-pager-text-label">of</div>
-              <div class={{ 'sign-transactions-header-pager-text-value': true, 'large': transactionsCount >= 10 }}>
+              <div class={styles.signTransactionsHeaderPagerTextLabel}>of</div>
+              <div
+                class={{
+                  [styles.signTransactionsHeaderPagerTextValue]: true,
+                  [styles.signTransactionsHeaderPagerTextValueLarge]: transactionsCount >= 10,
+                }}
+              >
                 {transactionsCount}
               </div>
             </div>
 
-            <mvx-single-angle-right-icon
+            <Icon
               onClick={onNext}
+              name="angle-right"
               data-testid={DataTestIdsEnum.signTransactionsHeaderPagerNextBtn}
-              class={classNames('sign-transactions-header-pager-icon', {
-                disabled: currentIndex + 1 === transactionsCount,
-                [signTransactionsHeaderClasses.pagerIcon]: true,
-              })}
+              class={{
+                [styles.signTransactionsHeaderPagerIcon]: true,
+                [styles.signTransactionsHeaderPagerIconDisabled]: currentIndex + 1 === transactionsCount,
+              }}
             />
           </div>
         )}
 
         <div
-          class={{ 'sign-transactions-header-origin': true, 'centered': transactionsCount <= 1 }}
           data-testid={DataTestIdsEnum.signTransactionsHeaderOrigin}
+          class={{
+            [styles.signTransactionsHeaderOrigin]: true,
+            [styles.signTransactionsHeaderOriginCentered]: transactionsCount <= 1,
+          }}
         >
-          <div class="sign-transactions-header-origin-label">Request from</div>
+          <div class={styles.signTransactionsHeaderOriginLabel}>Request from</div>
+
           {this.showFavicon && (
-            <div class="sign-transactions-header-origin-image">
+            <div class={styles.signTransactionsHeaderOriginImage}>
               <img
-                class="sign-transactions-header-origin-image-icon"
                 src={`${origin}/favicon.ico`}
                 alt="favicon"
                 onError={() => {
@@ -79,8 +92,9 @@ export class SignTransactionsHeader {
               />
             </div>
           )}
+
           <span
-            class="sign-transactions-header-origin-name"
+            class={styles.signTransactionsHeaderOriginName}
             data-testid={DataTestIdsEnum.signTransactionsHeaderOriginName}
           >
             {origin}

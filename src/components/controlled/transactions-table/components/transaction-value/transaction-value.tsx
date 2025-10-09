@@ -1,8 +1,10 @@
 import { Component, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
 import { Icon } from 'common/Icon';
 import type { TransactionValueType } from 'components/controlled/transactions-table/transactions-table.type';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+
+import styles from './transaction-value.styles';
+import classNames from 'classnames';
 
 @Component({
   tag: 'mvx-transaction-value',
@@ -14,22 +16,21 @@ export class TransactionValue {
 
   render() {
     return (
-      <div class={classNames(this.class, 'transaction-value')}>
+      <div class={{ [this.class]: Boolean(this.class), [styles.transactionValue]: true }}>
         {this.value.badge && (
-          <div
-            data-testid={DataTestIdsEnum.transactionNftBadge}
-            class="badge badge-secondary badge-pill font-weight-light transaction-value-badge"
-          >
+          <div data-testid={DataTestIdsEnum.transactionNftBadge} class={styles.transactionValueBadge}>
             {this.value.badge}
           </div>
         )}
 
         {this.value.showFormattedAmount && (
-          <div class="amount">
-            {this.value.egldLabel && <mvx-multiversx-symbol-icon class="amount-symbol" />}
+          <div class={styles.transactionValueAmount}>
+            {this.value.egldLabel && <mvx-multiversx-symbol-icon class={styles.transactionValueAmountSymbol} />}
 
             <mvx-format-amount
-              class={classNames('mr-1 mvx:text-primary', { 'text-truncate': this.value.svgUrl })}
+              class={classNames(styles.transactionValueFormatAmount, {
+                [styles.transactionValueTextTruncate]: this.value.svgUrl,
+              })}
               dataTestId={DataTestIdsEnum.transactionActionFormattedAmount}
               isValid={true}
               label={this.value.egldLabel}
@@ -44,21 +45,22 @@ export class TransactionValue {
         {this.value.link && (
           <mvx-explorer-link
             link={this.value.link}
-            class={classNames('transaction-value-link', {
-              'side-link d-flex': this.value.svgUrl,
-              'text-truncate': !this.value.svgUrl,
+            class={classNames({
+              [styles.transactionValueLink]: this.value.svgUrl,
+              [styles.transactionValueTextTruncate]: !this.value.svgUrl,
             })}
           >
-            <div class="transaction-value-content">
+            <div class={styles.transactionValue}>
               {this.value.svgUrl && (
-                <img src={this.value.svgUrl} alt={this.value.name ?? ''} class="transaction-value-img" />
+                <img src={this.value.svgUrl} alt={this.value.name ?? ''} class={styles.transactionValueImg} />
               )}
 
               {this.value.linkText && (
                 <span
-                  class={classNames('transaction-value-link-text', {
-                    truncate: this.value.ticker === this.value.collection && this.value.ticker != null,
-                  })}
+                  class={{
+                    [styles.transactionValueTextTruncate]:
+                      this.value.ticker === this.value.collection && this.value.ticker != null,
+                  }}
                 >
                   {this.value.linkText}
                 </span>
@@ -68,7 +70,7 @@ export class TransactionValue {
         )}
 
         {this.value.titleText && (
-          <mvx-tooltip trigger={<Icon name="layers" class="transaction-value-icon" />}>
+          <mvx-tooltip trigger={<Icon name="layers" class={styles.transactionValueIcon} />}>
             {this.value.titleText}
           </mvx-tooltip>
         )}

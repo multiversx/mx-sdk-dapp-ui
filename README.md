@@ -72,7 +72,6 @@ Visual components are the most basic building blocks that handle pure presentati
 Components:
 
 - **Preloader** (`mvx-preloader`): A loading indicator for asynchronous operations
-- **Font Awesome Icon** (`mvx-fa-icon`): Icon component with Font Awesome integration
 - **Side Panel** (`mvx-side-panel`): Sliding panel with header and content sections
 - **Tooltip** (`mvx-tooltip`): Contextual information display with hover/click activation
 - **Transaction List Item**: Structured display of transaction information

@@ -1,11 +1,10 @@
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
+import { Icon } from 'common/Icon';
+import { IconNameEnum } from 'common/Icon/icon.types';
 import type { ISimpleToast } from 'components/functional/toasts-list/components/transaction-toast/transaction-toast.type';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
-import { getIconHtmlFromIconName } from 'utils/icons/getIconHtmlFromIconName';
 
 @Component({
   tag: 'mvx-simple-toast',
@@ -22,26 +21,15 @@ export class SimpleToast {
   private renderIcon() {
     const { icon, iconClassName } = this.toast;
 
-    let iconHtml = null;
-    if (typeof icon === 'string') {
-      iconHtml = getIconHtmlFromIconName(icon);
-    }
-    if (icon instanceof HTMLElement) {
-      iconHtml = icon.outerHTML;
-    }
-
-    if (!iconHtml) {
-      return null;
-    }
-
     return (
       <div
         class={{
           'content-icon': true,
           [iconClassName]: Boolean(iconClassName),
         }}
-        innerHTML={iconHtml}
-      ></div>
+      >
+        <Icon name={icon as IconNameEnum} />
+      </div>
     );
   }
 
@@ -64,8 +52,9 @@ export class SimpleToast {
                   onClick={this.handleDeleteToast.bind(this)}
                   type="button"
                   class="icon-close"
-                  innerHTML={getIconHtmlFromIconDefinition(faTimes)}
-                />
+                >
+                  <Icon name='close' />
+                </button>
               )}
             </div>
             {subtitle && <div class="subtitle">{subtitle}</div>}

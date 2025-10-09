@@ -1,13 +1,20 @@
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
+import { Icon } from 'common/Icon';
 import { IconSizeEnumType, TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { IToastDataState } from '../../transaction-toast.type';
+import { IconNameEnum } from 'common/Icon/icon.types';
+
+// prettier-ignore
+const styles = {
+  transactionToastClose: 'transaction-toast-close mvx:flex mvx:flex-col mvx:justify-center mvx:shrink-0 mvx:cursor-pointer mvx:text-primary'
+} satisfies Record<string, string>;
+
 @Component({
   tag: 'mvx-transaction-toast-content',
   styleUrl: 'transaction-toast-content.scss',
@@ -43,10 +50,10 @@ export class TransactionToastContent {
       >
         <div class="transaction-toast-content">
           {!showPrimaryIcon && this.toastDataState.icon ? (
-            <mvx-fa-icon
-              icon={this.toastDataState.icon}
+            <Icon
+              name={this.toastDataState.icon as IconNameEnum}
               class={`transaction-toast-icon ${this.toastDataState.iconClassName ?? ''}`}
-            ></mvx-fa-icon>
+            />
           ) : (
             <div
               class={classNames('transaction-toast-icon', {
@@ -109,11 +116,7 @@ export class TransactionToastContent {
           </div>
 
           {hasCloseButton && (
-            <mvx-fa-icon
-              icon={faTimes}
-              class="transaction-toast-close-icon"
-              onClick={this.handleDeleteToast.bind(this)}
-            />
+            <Icon name="close" class={styles.transactionToastClose} onClick={this.handleDeleteToast.bind(this)} />
           )}
 
           {!hasCloseButton && showExplorerLinkButton && (

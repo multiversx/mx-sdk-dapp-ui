@@ -1,7 +1,1 @@
-.explorer-link {
-  @apply mvx:decoration-0 mvx:flex;
-
-  .explorer-link-icon {
-    @apply mvx:flex mvx:justify-center mvx:transition-opacity mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80 mvx:w-4 mvx:h-4;
-  }
-}
+// This is needed to trigger the Stecil Tailwind compilation for inline Tailwind classes.

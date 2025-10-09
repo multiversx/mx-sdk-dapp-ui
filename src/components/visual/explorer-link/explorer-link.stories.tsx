@@ -37,7 +37,6 @@ const styles = {
 const storySettings: Meta<ExplorerLink> = {
   tags: ['autodocs'],
   title: 'Components/ExplorerLink',
-  render: properties => <mvx-explorer-link {...properties} />,
   args: {
     link: DEVNET_EXPLORER_URL,
   },
@@ -49,7 +48,7 @@ const storySettings: Meta<ExplorerLink> = {
 };
 
 export const Default: StoryObj<ExplorerLink> = {
-  render: () => <mvx-explorer-link link={DEVNET_EXPLORER_URL} />,
+  render: properties => <mvx-explorer-link {...properties} />,
 };
 
 export const Sizes: StoryObj<ExplorerLink> = {
