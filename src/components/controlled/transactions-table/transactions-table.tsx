@@ -3,7 +3,7 @@ import { Component, h, Prop } from '@stencil/core';
 import { DataTestIdsEnum } from '../../../constants/dataTestIds.enum';
 import type { TransactionRowType } from './transactions-table.type';
 import styles from './transactions-table.styles'
-import { TransactionAge } from './components';
+import { TransactionAge, TransactionHash } from './components';
 
 const COLUMNS = ['Txn Hash', 'Age', 'Shard', 'From', 'To', 'Method', 'Value'];
 
@@ -31,7 +31,7 @@ export class TransactionsTable {
           {this.transactions.map(transaction => (
             <tr class={styles.transactionsTableBodyRow}>
               <td class={styles.transactionsTableBodyCell}>
-                <mvx-transaction-hash class={styles.transactionsTableBodyCellChild} transaction={transaction}></mvx-transaction-hash>
+                <TransactionHash class={styles.transactionsTableBodyCellChild} transaction={transaction} />
               </td>
               <td class={styles.transactionsTableBodyCell}>
                 <TransactionAge

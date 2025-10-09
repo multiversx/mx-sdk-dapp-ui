@@ -1,1 +1,2 @@
-export * from './TransactionAge'
+export * from './TransactionAge';
+export * from './TransactionHash';

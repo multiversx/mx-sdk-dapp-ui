@@ -335,14 +335,6 @@ export namespace Components {
         "description": string;
         "name"?: string;
     }
-    interface MvxTransactionDirectionBadge {
-        "class"?: string;
-        "direction": string;
-    }
-    interface MvxTransactionHash {
-        "class"?: string;
-        "transaction": TransactionRowType;
-    }
     interface MvxTransactionIcon {
         "class"?: string;
         "iconInfo": TransactionIconInfoType;
@@ -986,18 +978,6 @@ declare global {
         prototype: HTMLMvxTransactionAccountNameElement;
         new (): HTMLMvxTransactionAccountNameElement;
     };
-    interface HTMLMvxTransactionDirectionBadgeElement extends Components.MvxTransactionDirectionBadge, HTMLStencilElement {
-    }
-    var HTMLMvxTransactionDirectionBadgeElement: {
-        prototype: HTMLMvxTransactionDirectionBadgeElement;
-        new (): HTMLMvxTransactionDirectionBadgeElement;
-    };
-    interface HTMLMvxTransactionHashElement extends Components.MvxTransactionHash, HTMLStencilElement {
-    }
-    var HTMLMvxTransactionHashElement: {
-        prototype: HTMLMvxTransactionHashElement;
-        new (): HTMLMvxTransactionHashElement;
-    };
     interface HTMLMvxTransactionIconElement extends Components.MvxTransactionIcon, HTMLStencilElement {
     }
     var HTMLMvxTransactionIconElement: {
@@ -1247,8 +1227,6 @@ declare global {
         "mvx-tooltip": HTMLMvxTooltipElement;
         "mvx-transaction-account": HTMLMvxTransactionAccountElement;
         "mvx-transaction-account-name": HTMLMvxTransactionAccountNameElement;
-        "mvx-transaction-direction-badge": HTMLMvxTransactionDirectionBadgeElement;
-        "mvx-transaction-hash": HTMLMvxTransactionHashElement;
         "mvx-transaction-icon": HTMLMvxTransactionIconElement;
         "mvx-transaction-list-item": HTMLMvxTransactionListItemElement;
         "mvx-transaction-method": HTMLMvxTransactionMethodElement;
@@ -1586,14 +1564,6 @@ declare namespace LocalJSX {
         "description"?: string;
         "name"?: string;
     }
-    interface MvxTransactionDirectionBadge {
-        "class"?: string;
-        "direction"?: string;
-    }
-    interface MvxTransactionHash {
-        "class"?: string;
-        "transaction"?: TransactionRowType;
-    }
     interface MvxTransactionIcon {
         "class"?: string;
         "iconInfo"?: TransactionIconInfoType;
@@ -1796,8 +1766,6 @@ declare namespace LocalJSX {
         "mvx-tooltip": MvxTooltip;
         "mvx-transaction-account": MvxTransactionAccount;
         "mvx-transaction-account-name": MvxTransactionAccountName;
-        "mvx-transaction-direction-badge": MvxTransactionDirectionBadge;
-        "mvx-transaction-hash": MvxTransactionHash;
         "mvx-transaction-icon": MvxTransactionIcon;
         "mvx-transaction-list-item": MvxTransactionListItem;
         "mvx-transaction-method": MvxTransactionMethod;
@@ -1878,8 +1846,6 @@ declare module "@stencil/core" {
             "mvx-tooltip": LocalJSX.MvxTooltip & JSXBase.HTMLAttributes<HTMLMvxTooltipElement>;
             "mvx-transaction-account": LocalJSX.MvxTransactionAccount & JSXBase.HTMLAttributes<HTMLMvxTransactionAccountElement>;
             "mvx-transaction-account-name": LocalJSX.MvxTransactionAccountName & JSXBase.HTMLAttributes<HTMLMvxTransactionAccountNameElement>;
-            "mvx-transaction-direction-badge": LocalJSX.MvxTransactionDirectionBadge & JSXBase.HTMLAttributes<HTMLMvxTransactionDirectionBadgeElement>;
-            "mvx-transaction-hash": LocalJSX.MvxTransactionHash & JSXBase.HTMLAttributes<HTMLMvxTransactionHashElement>;
             "mvx-transaction-icon": LocalJSX.MvxTransactionIcon & JSXBase.HTMLAttributes<HTMLMvxTransactionIconElement>;
             "mvx-transaction-list-item": LocalJSX.MvxTransactionListItem & JSXBase.HTMLAttributes<HTMLMvxTransactionListItemElement>;
             "mvx-transaction-method": LocalJSX.MvxTransactionMethod & JSXBase.HTMLAttributes<HTMLMvxTransactionMethodElement>;
