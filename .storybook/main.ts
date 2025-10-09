@@ -2,16 +2,25 @@ const config = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-docs'],
   framework: {
-    name: '@stencil/storybook-plugin',
+    name: '@storybook/web-components-vite',
+    options: {},
   },
-  managerHead: (head) => `
+  managerHead: (head: string) => `
     ${head}
     <base href="./" />
   `,
-  previewHead: (head) => `
+  previewHead: (head: string) => `
     ${head}
     <base href="./" />
   `,
+  typescript: {
+    check: false,
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop: any) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+    },
+  },
 };
 
 export default config;

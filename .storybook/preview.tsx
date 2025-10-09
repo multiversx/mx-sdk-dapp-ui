@@ -1,6 +1,5 @@
-/** @jsx h */
-import { h } from '@stencil/core';
-import type { Preview } from '@stencil/storybook-plugin';
+import type { Preview } from '@storybook/web-components';
+import { html } from 'lit';
 
 import { defineCustomElements } from '../dist/web-components';
 
@@ -11,11 +10,13 @@ import './tailwind.css';
 defineCustomElements();
 
 export const decorators: Preview['decorators'] = [
-  (Story, context) => (
-    <div data-mvx-theme={`mvx:${context.globals.backgrounds.value}-theme`}>
-      <Story />
-    </div>
-  ),
+  (story, context) => {
+    return html`
+      <div data-mvx-theme="mvx:${context.globals.backgrounds.value}-theme">
+        ${story()}
+      </div>
+    `;
+  },
 ];
 
 export const initialGlobals: Preview['initialGlobals'] = {
