@@ -1,7 +1,7 @@
 import './button.scss';
 
-import { h } from '@stencil/core';
-import type { Meta, StoryObj } from '@stencil/storybook-plugin';
+import type { Meta, StoryObj } from '@storybook/web-components';
+import { html } from 'lit';
 import capitalize from 'lodash.capitalize';
 
 import type { Button } from './button';
@@ -25,41 +25,40 @@ const storySettings: Meta<Button> = {
 };
 
 export const Primary: StoryObj<Button> = {
-  render: properties => <mvx-button {...properties}>Button Text</mvx-button>,
+  render: properties =>
+    html`<mvx-button variant="${properties.variant}" size="${properties.size}" ?disabled="${properties.disabled}"
+      >Button Text</mvx-button
+    >`,
 };
 
 export const DefaultSize: StoryObj<Button> = {
-  render: () => (
-    <div class={styles.buttonStoriesGrid}>
-      {Object.values(ButtonVariantEnum).map(variant => (
-        <mvx-button variant={variant}>{capitalize(variant)}</mvx-button>
-      ))}
+  render: () => html`
+    <div class="${styles.buttonStoriesGrid}">
+      ${Object.values(ButtonVariantEnum).map(
+        variant => html`<mvx-button variant="${variant}">${capitalize(variant)}</mvx-button>`,
+      )}
     </div>
-  ),
+  `,
 };
 
 export const SmallSize: StoryObj<Button> = {
-  render: () => (
-    <div class={styles.buttonStoriesGrid}>
-      {Object.values(ButtonVariantEnum).map(variant => (
-        <mvx-button variant={variant} size="small">
-          {capitalize(variant)}
-        </mvx-button>
-      ))}
+  render: () => html`
+    <div class="${styles.buttonStoriesGrid}">
+      ${Object.values(ButtonVariantEnum).map(
+        variant => html`<mvx-button variant="${variant}" size="small">${capitalize(variant)}</mvx-button>`,
+      )}
     </div>
-  ),
+  `,
 };
 
 export const DisabledVariants: StoryObj<Button> = {
-  render: () => (
-    <div class={styles.buttonStoriesGrid}>
-      {Object.values(ButtonVariantEnum).map(variant => (
-        <mvx-button variant={variant} disabled={true}>
-          {capitalize(variant)}
-        </mvx-button>
-      ))}
+  render: () => html`
+    <div class="${styles.buttonStoriesGrid}">
+      ${Object.values(ButtonVariantEnum).map(
+        variant => html`<mvx-button variant="${variant}" ?disabled="${true}">${capitalize(variant)}</mvx-button>`,
+      )}
     </div>
-  ),
+  `,
 };
 
 export default storySettings;

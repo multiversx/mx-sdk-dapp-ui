@@ -2,7 +2,8 @@ const config = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-docs'],
   framework: {
-    name: '@stencil/storybook-plugin',
+    name: '@storybook/web-components-vite',
+    options: {},
   },
   managerHead: (head: string) => `
     ${head}
@@ -11,7 +12,19 @@ const config = {
   previewHead: (head: string) => `
     ${head}
     <base href="./" />
+    <script type="module">
+      import { defineCustomElements } from '../dist/web-components/index.js';
+      defineCustomElements();
+    </script>
   `,
+  typescript: {
+    check: false,
+    reactDocgen: 'react-docgen-typescript',
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      propFilter: (prop: any) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
+    },
+  },
 };
 
 export default config;
