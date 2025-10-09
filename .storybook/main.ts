@@ -2,8 +2,7 @@ const config = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-docs'],
   framework: {
-    name: '@storybook/web-components-vite',
-    options: {},
+    name: '@stencil/storybook-plugin',
   },
   managerHead: (head: string) => `
     ${head}
@@ -13,14 +12,6 @@ const config = {
     ${head}
     <base href="./" />
   `,
-  typescript: {
-    check: false,
-    reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop: any) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
-    },
-  },
 };
 
 export default config;
