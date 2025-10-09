@@ -10,7 +10,7 @@ describe('TransactionDirectionBadge', () => {
     });
     expect(page.root).toEqualHtml(`
       <mvx-transaction-direction-badge direction="in">
-          <div class="transaction-direction-badge">
+          <div class="mvx:flex transaction-direction-badge">
             <span class="directionBadge in">
               IN
             </span>
@@ -26,7 +26,7 @@ describe('TransactionDirectionBadge', () => {
     });
     expect(page.root).toEqualHtml(`
       <mvx-transaction-direction-badge direction="out">
-          <div class="transaction-direction-badge">
+          <div class="mvx:flex transaction-direction-badge">
             <span class="directionBadge out">
               OUT
             </span>
@@ -42,7 +42,7 @@ describe('TransactionDirectionBadge', () => {
     });
     expect(page.root).toEqualHtml(`
       <mvx-transaction-direction-badge direction="custom">
-          <div class="transaction-direction-badge">
+          <div class="mvx:flex transaction-direction-badge">
             <span class="directionBadge custom">
               CUSTOM
             </span>

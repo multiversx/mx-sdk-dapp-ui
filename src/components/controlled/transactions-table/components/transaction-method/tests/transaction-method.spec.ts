@@ -41,19 +41,19 @@ describe('transaction-method', () => {
   describe('method display', () => {
     it('displays the transaction method', async () => {
       const page = await createPage({ method: 'testMethod' });
-      const methodElement = page.root.querySelector('.text-truncate');
+      const methodElement = page.root.querySelector('.transaction-method-text');
       expect(methodElement.textContent).toBe('testMethod');
     });
 
     it('handles empty method', async () => {
       const page = await createPage({ method: '' });
-      const methodElement = page.root.querySelector('.text-truncate');
+      const methodElement = page.root.querySelector('.transaction-method-text');
       expect(methodElement.textContent).toBe('');
     });
 
     it('handles undefined method', async () => {
       const page = await createPage({ method: undefined });
-      const methodElement = page.root.querySelector('.text-truncate');
+      const methodElement = page.root.querySelector('.transaction-method-text');
       expect(methodElement.textContent).toBe('');
     });
   });
@@ -86,10 +86,7 @@ describe('transaction-method', () => {
       });
 
       const outerSpan = page.root.querySelector('span');
-      expect(outerSpan).toHaveClass('badge');
-      expect(outerSpan).toHaveClass('badge-secondary');
-      expect(outerSpan).toHaveClass('badge-pill');
-      expect(outerSpan).toHaveClass('font-weight-light');
+      expect(outerSpan).toHaveClass('transaction-method-badge');
     });
 
     it('applies correct CSS classes to inner div', async () => {
@@ -99,8 +96,7 @@ describe('transaction-method', () => {
       });
 
       const innerDiv = page.root.querySelector('span > div');
-      expect(innerDiv).toHaveClass('text-truncate');
-      expect(innerDiv).toHaveClass('text-capitalize');
+      expect(innerDiv).toHaveClass('transaction-method-text');
     });
   });
 });

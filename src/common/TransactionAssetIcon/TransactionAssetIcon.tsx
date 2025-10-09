@@ -1,4 +1,6 @@
 import { h } from '@stencil/core';
+import { Icon } from 'common/Icon';
+import { IconNameEnum } from 'common/Icon/icon.types';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 
 export enum IconSizeEnumType {
@@ -32,7 +34,7 @@ export function TransactionAssetIcon({ transaction, iconSize }: ITransactionAsse
   }
 
   if (transaction.asset.icon) {
-    return <mvx-fa-icon icon={transaction.asset.icon} />;
+    return <Icon name={transaction.asset.icon as IconNameEnum} />;
   }
 
   if (transaction.asset.text) {

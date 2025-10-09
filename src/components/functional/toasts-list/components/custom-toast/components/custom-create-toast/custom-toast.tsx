@@ -1,9 +1,8 @@
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
+import { Icon } from 'common/Icon';
 import type { IComponentToast } from 'components/functional/toasts-list/components/transaction-toast/transaction-toast.type';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-import { getIconHtmlFromIconDefinition } from 'utils/icons/getIconHtmlFromIconDefinition';
 
 @Component({
   tag: 'mvx-custom-toast',
@@ -25,8 +24,9 @@ export class CustomToast {
             onClick={this.handleDeleteToast.bind(this)}
             type="button"
             class="icon-close"
-            innerHTML={getIconHtmlFromIconDefinition(faTimes)}
-          />
+          >
+            <Icon name='close' />
+          </button>
         )}
         <div class="toast-body" ref={container => this.initializeToast(container)}></div>
       </div>

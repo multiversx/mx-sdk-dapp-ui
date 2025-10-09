@@ -52,14 +52,12 @@ describe('TransactionShards', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-transaction-shards>
-          <div class="transaction-shards">
-            <mvx-explorer-link class="mvx:text-primary!" data-testid="${DataTestIdsEnum.shardFromLink}" link="/blocks?shard=0">
+          <div class="mvx:fill-label mvx:flex mvx:gap-2 mvx:items-center mvx:w-max  transaction-shards">
+            <mvx-explorer-link class="explorer-link mvx:text-primary!" data-testid="${DataTestIdsEnum.shardFromLink}" link="/blocks?shard=0">
               <span data-testid="${DataTestIdsEnum.senderShard}">0</span>
             </mvx-explorer-link>
-            <span class="transaction-shards-arrow">
-              <mvx-arrow-right-icon />
-            </span>
-            <mvx-explorer-link class="mvx:text-primary!" data-testid="${DataTestIdsEnum.shardToLink}" link="/blocks?shard=1">
+            <mvx-arrow-right-icon class="mvx:h-4 mvx:w-4 transaction-shards-arrow-icon"></mvx-arrow-right-icon>
+            <mvx-explorer-link class="explorer-link mvx:text-primary!" data-testid="${DataTestIdsEnum.shardToLink}" link="/blocks?shard=1">
               <span data-testid="${DataTestIdsEnum.receiverShard}">1</span>
             </mvx-explorer-link>
           </div>
@@ -77,12 +75,12 @@ describe('TransactionShards', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-transaction-shards class="custom-class">
-          <div class="custom-class transaction-shards">
-            <mvx-explorer-link class="mvx:text-primary!" data-testid="${DataTestIdsEnum.shardFromLink}" link="/blocks?shard=0">
+          <div class="custom-class mvx:fill-label mvx:flex mvx:gap-2 mvx:items-center mvx:w-max transaction-shards">
+            <mvx-explorer-link class="explorer-link mvx:text-primary!" data-testid="${DataTestIdsEnum.shardFromLink}" link="/blocks?shard=0">
               <span data-testid="${DataTestIdsEnum.senderShard}">0</span>
             </mvx-explorer-link>
-            <span class="transaction-shards-arrow"><mvx-arrow-right-icon /></span>
-            <mvx-explorer-link class="mvx:text-primary!" data-testid="${DataTestIdsEnum.shardToLink}" link="/blocks?shard=1">
+           <mvx-arrow-right-icon class="mvx:h-4 mvx:w-4 transaction-shards-arrow-icon"></mvx-arrow-right-icon>
+            <mvx-explorer-link class="explorer-link mvx:text-primary!" data-testid="${DataTestIdsEnum.shardToLink}" link="/blocks?shard=1">
               <span data-testid="${DataTestIdsEnum.receiverShard}">1</span>
             </mvx-explorer-link>
           </div>

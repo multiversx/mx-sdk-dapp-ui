@@ -19,6 +19,12 @@ import { LockIcon } from './components/LockIcon';
 import { PencilIcon } from './components/PencilIcon';
 import { TriangularWarningIcon } from './components/TriangularWarningIcon';
 import type { IconPropsType } from './icon.types';
+import { HourglassIcon } from './components/HourglassIcon';
+import { BanIcon } from './components/BanIcon';
+import { CircleCheckIcon } from './components/CircleCheckIcon';
+import { CircleInfoIcon } from './components/CircleInfoIcon';
+import { CoinsIcon } from './components/CoinsIcon';
+import { ArrowsRotateIcon } from './components/ArrowsRotateIcon';
 
 export const Icon = ({ name, ...properties }: IconPropsType) => {
   switch (name) {
@@ -75,6 +81,24 @@ export const Icon = ({ name, ...properties }: IconPropsType) => {
 
     case 'close':
       return <CloseIcon {...properties} />;
+
+    case 'hourglass':
+      return <HourglassIcon {...properties} />;
+
+    case 'ban':
+      return <BanIcon {...properties} />;
+
+    case 'circle-check':
+      return <CircleCheckIcon {...properties} />;
+
+    case 'circle-info':
+      return <CircleInfoIcon {...properties} />;
+
+    case 'coins':
+      return <CoinsIcon {...properties} />;
+
+    case 'arrows-rotate':
+      return <ArrowsRotateIcon {...properties} />;
 
     default:
       console.error(`No data for the ${name} icon.`);

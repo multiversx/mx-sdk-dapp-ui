@@ -8,7 +8,6 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IAddressTableData } from "./types/address-table.types";
 import { ButtonSizeEnum, ButtonVariantEnum } from "./components/visual/button/button.types";
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 import { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
 import { DecodeMethodEnum } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
@@ -23,7 +22,6 @@ import { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./c
 export { IAddressTableData } from "./types/address-table.types";
 export { ButtonSizeEnum, ButtonVariantEnum } from "./components/visual/button/button.types";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
-export { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 export { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
 export { DecodeMethodEnum } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
@@ -125,14 +123,6 @@ export namespace Components {
         "class"?: string;
         "height"?: number;
         "width"?: number;
-    }
-    interface MvxFaIcon {
-        /**
-          * @default 'fa-icon'
-         */
-        "class"?: string;
-        "description"?: string;
-        "icon": IconDefinition | string;
     }
     interface MvxFirefoxExtensionProviderIcon {
         "class"?: string;
@@ -695,12 +685,6 @@ declare global {
         prototype: HTMLMvxExtensionProviderIconElement;
         new (): HTMLMvxExtensionProviderIconElement;
     };
-    interface HTMLMvxFaIconElement extends Components.MvxFaIcon, HTMLStencilElement {
-    }
-    var HTMLMvxFaIconElement: {
-        prototype: HTMLMvxFaIconElement;
-        new (): HTMLMvxFaIconElement;
-    };
     interface HTMLMvxFirefoxExtensionProviderIconElement extends Components.MvxFirefoxExtensionProviderIcon, HTMLStencilElement {
     }
     var HTMLMvxFirefoxExtensionProviderIconElement: {
@@ -1240,7 +1224,6 @@ declare global {
         "mvx-edge-extension-provider-icon": HTMLMvxEdgeExtensionProviderIconElement;
         "mvx-explorer-link": HTMLMvxExplorerLinkElement;
         "mvx-extension-provider-icon": HTMLMvxExtensionProviderIconElement;
-        "mvx-fa-icon": HTMLMvxFaIconElement;
         "mvx-firefox-extension-provider-icon": HTMLMvxFirefoxExtensionProviderIconElement;
         "mvx-format-amount": HTMLMvxFormatAmountElement;
         "mvx-generic-toast": HTMLMvxGenericToastElement;
@@ -1401,14 +1384,6 @@ declare namespace LocalJSX {
         "class"?: string;
         "height"?: number;
         "width"?: number;
-    }
-    interface MvxFaIcon {
-        /**
-          * @default 'fa-icon'
-         */
-        "class"?: string;
-        "description"?: string;
-        "icon"?: IconDefinition | string;
     }
     interface MvxFirefoxExtensionProviderIcon {
         "class"?: string;
@@ -1804,7 +1779,6 @@ declare namespace LocalJSX {
         "mvx-edge-extension-provider-icon": MvxEdgeExtensionProviderIcon;
         "mvx-explorer-link": MvxExplorerLink;
         "mvx-extension-provider-icon": MvxExtensionProviderIcon;
-        "mvx-fa-icon": MvxFaIcon;
         "mvx-firefox-extension-provider-icon": MvxFirefoxExtensionProviderIcon;
         "mvx-format-amount": MvxFormatAmount;
         "mvx-generic-toast": MvxGenericToast;
@@ -1888,7 +1862,6 @@ declare module "@stencil/core" {
             "mvx-edge-extension-provider-icon": LocalJSX.MvxEdgeExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxEdgeExtensionProviderIconElement>;
             "mvx-explorer-link": LocalJSX.MvxExplorerLink & JSXBase.HTMLAttributes<HTMLMvxExplorerLinkElement>;
             "mvx-extension-provider-icon": LocalJSX.MvxExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxExtensionProviderIconElement>;
-            "mvx-fa-icon": LocalJSX.MvxFaIcon & JSXBase.HTMLAttributes<HTMLMvxFaIconElement>;
             "mvx-firefox-extension-provider-icon": LocalJSX.MvxFirefoxExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxFirefoxExtensionProviderIconElement>;
             "mvx-format-amount": LocalJSX.MvxFormatAmount & JSXBase.HTMLAttributes<HTMLMvxFormatAmountElement>;
             "mvx-generic-toast": LocalJSX.MvxGenericToast & JSXBase.HTMLAttributes<HTMLMvxGenericToastElement>;

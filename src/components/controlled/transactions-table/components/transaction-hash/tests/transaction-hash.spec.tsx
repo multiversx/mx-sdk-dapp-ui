@@ -1,5 +1,3 @@
-import { faCircleCheck } from '@fortawesome/free-solid-svg-icons/faCircleCheck';
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons/faCircleInfo';
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
@@ -27,7 +25,7 @@ describe('TransactionHash', () => {
         tooltip: '1 hour ago',
       },
       direction: 'in',
-      iconInfo: { icon: faCircleInfo as unknown as string, tooltip: 'Test' },
+      iconInfo: { icon: 'circle-info', tooltip: 'Test' },
       link: 'https://example.com/tx/123',
       method: {
         name: 'Smart Contract',
@@ -50,9 +48,9 @@ describe('TransactionHash', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-transaction-hash>
-          <div class="transaction-hash">
-            <mvx-transaction-icon class="mvx:flex mvx:items-center mvx:justify-center"></mvx-transaction-icon>
-            <mvx-explorer-link class="mvx:text-primary!" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/123"><mvx-trim text="0x123456789abcdef"></mvx-trim></mvx-explorer-link>
+          <div class="mvx:flex mvx:gap-1 mvx:items-center mvx:justify-center transaction-hash">
+            <mvx-transaction-icon class="mvx:flex mvx:items-center mvx:justify-center transaction-hash-icon"></mvx-transaction-icon>
+            <mvx-explorer-link class="mvx:text-primary! transaction-hash-explorer-link" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/123"><mvx-trim text="0x123456789abcdef"></mvx-trim></mvx-explorer-link>
           </div>
       </mvx-transaction-hash>
     `);
@@ -65,7 +63,7 @@ describe('TransactionHash', () => {
         tooltip: '1 hour ago',
       },
       direction: 'in',
-      iconInfo: { icon: faCircleInfo as unknown as string, tooltip: 'Initial' },
+      iconInfo: { icon: 'circle-Info', tooltip: 'Initial' },
       link: 'https://example.com/tx/initial',
       method: {
         name: 'Smart Contract',
@@ -88,9 +86,9 @@ describe('TransactionHash', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-transaction-hash>
-          <div class="transaction-hash">
-            <mvx-transaction-icon class="mvx:flex mvx:items-center mvx:justify-center"></mvx-transaction-icon>
-            <mvx-explorer-link class="mvx:text-primary!" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/initial"><mvx-trim text="0xInitialHash"></mvx-trim></mvx-explorer-link>
+          <div class="mvx:flex mvx:gap-1 mvx:items-center mvx:justify-center  transaction-hash">
+            <mvx-transaction-icon class="mvx:flex mvx:items-center mvx:justify-center transaction-hash-icon"></mvx-transaction-icon>
+            <mvx-explorer-link class="mvx:text-primary! transaction-hash-explorer-link" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/initial"><mvx-trim text="0xInitialHash"></mvx-trim></mvx-explorer-link>
           </div>
       </mvx-transaction-hash>
     `);
@@ -101,7 +99,7 @@ describe('TransactionHash', () => {
         tooltip: '2 hours ago',
       },
       direction: 'out',
-      iconInfo: { icon: faCircleCheck as unknown as string, tooltip: 'Updated' },
+      iconInfo: { icon: 'circle-check', tooltip: 'Updated' },
       link: 'https://example.com/tx/updated',
       method: {
         name: 'Transfer',
@@ -122,9 +120,9 @@ describe('TransactionHash', () => {
 
     expect(page.root).toEqualHtml(`
       <mvx-transaction-hash>
-          <div class="transaction-hash">
-            <mvx-transaction-icon class="mvx:flex mvx:items-center mvx:justify-center"></mvx-transaction-icon>
-            <mvx-explorer-link class="mvx:text-primary!" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/updated"><mvx-trim text="0xUpdatedHash"></mvx-trim></mvx-explorer-link>
+          <div class="mvx:flex mvx:gap-1 mvx:items-center mvx:justify-center transaction-hash">
+            <mvx-transaction-icon class="mvx:flex mvx:items-center mvx:justify-center transaction-hash-icon"></mvx-transaction-icon>
+            <mvx-explorer-link class="mvx:text-primary! transaction-hash-explorer-link" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/updated"><mvx-trim text="0xUpdatedHash"></mvx-trim></mvx-explorer-link>
           </div>
       </mvx-transaction-hash>
     `);

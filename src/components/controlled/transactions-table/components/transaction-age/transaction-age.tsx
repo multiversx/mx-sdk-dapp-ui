@@ -1,6 +1,10 @@
 import { Component, h, Prop } from '@stencil/core';
-import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+
+// prettier-ignore
+const styles = {
+  transactionAge: 'transaction-age mvx:w-max'
+} satisfies Record<string, string>;
 
 @Component({
   tag: 'mvx-transaction-age',
@@ -16,19 +20,19 @@ export class TransactionAge {
       <div
         title={this.tooltip}
         data-testid={DataTestIdsEnum.transactionAge}
-        class={{ 'transaction-age': true, [this.class]: Boolean(this.class) }}
+        class={{ [styles.transactionAge]: true, [this.class]: Boolean(this.class) }}
       >
         {this.age}
       </div>
     ) : (
       <div
         data-testid={DataTestIdsEnum.transactionAge}
-        class={{ 'transaction-age': true, [this.class]: Boolean(this.class) }}
+        class={{ [styles.transactionAge]: true, [this.class]: Boolean(this.class) }}
       >
         {this.age}
       </div>
     );
 
-    return <div class={classNames(this.class, 'transaction-age')}>{component}</div>;
+    return <div class={{ [this.class]: Boolean(this.class), [styles.transactionAge]: true }}>{component}</div>;
   }
 }
