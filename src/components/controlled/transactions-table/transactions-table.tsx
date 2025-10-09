@@ -3,7 +3,7 @@ import { Component, h, Prop } from '@stencil/core';
 import { DataTestIdsEnum } from '../../../constants/dataTestIds.enum';
 import type { TransactionRowType } from './transactions-table.type';
 import styles from './transactions-table.styles'
-import { TransactionAge } from './TransactionAge';
+import { TransactionAge } from './components';
 
 const COLUMNS = ['Txn Hash', 'Age', 'Shard', 'From', 'To', 'Method', 'Value'];
 
