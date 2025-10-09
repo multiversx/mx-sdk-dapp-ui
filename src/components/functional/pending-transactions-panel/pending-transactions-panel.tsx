@@ -15,6 +15,8 @@ const getProviderIntroText = (providerType?: IProviderBase['type']) => {
       return 'Check  the MultiversX Browser Extension to connect to your wallet.';
     case ProviderTypeEnum.metamask:
       return 'Open the MetaMask Browser Extension to connect to your wallet.';
+    case ProviderTypeEnum.passkey:
+      return 'Use your predefined passkey to connect to your wallet.';
     case ProviderTypeEnum.crossWindow:
       return 'Follow the steps on MultiversX Web Wallet to connect to your wallet.';
     default:

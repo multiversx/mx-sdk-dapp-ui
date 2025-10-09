@@ -1,0 +1,8 @@
+:host {
+  @apply mvx:flex;
+
+  .passkey-provider-icon {
+    @apply mvx:w-full mvx:h-full  mvx:max-w-37.5 mvx:max-h-37.5;
+    fill: none;
+  }
+}
