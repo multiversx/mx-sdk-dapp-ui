@@ -1,7 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
+import { TransactionAge } from 'components/controlled/transactions-table/TransactionAge';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-import { TransactionAge } from '../transaction-age';
 
 describe('TransactionAge', () => {
   it('renders with age prop', async () => {
