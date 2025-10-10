@@ -15,6 +15,8 @@ export const getProviderIntroText = ({
       return `Open the MultiversX Browser Extension to ${loginText}`;
     case ProviderTypeEnum.metamask:
       return `Open the Metamask Browser Extension to ${loginText}`;
+    case ProviderTypeEnum.passkey:
+      return 'Use your predefined passkey to sign the transaction.';
     case ProviderTypeEnum.walletConnect:
       return `Open Xportal to ${loginText}`;
     case ProviderTypeEnum.crossWindow:
