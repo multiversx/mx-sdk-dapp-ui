@@ -6,13 +6,7 @@ import './styles.css';
 import './tailwind.css';
 
 export const decorators: Preview['decorators'] = [
-  (story, context) => {
-    return html`
-      <div data-mvx-theme="mvx:${context.globals.backgrounds.value}-theme">
-        ${story()}
-      </div>
-    `;
-  },
+  (story, context) => html` <div data-mvx-theme="mvx:${context.globals.backgrounds.value}-theme">${story()}</div> `,
 ];
 
 export const initialGlobals: Preview['initialGlobals'] = {
