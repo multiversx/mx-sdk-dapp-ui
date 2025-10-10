@@ -1,6 +1,15 @@
 :host {
   @apply mvx:flex;
 
+  /* Inherit CSS variables from parent document into shadow DOM */
+  --mvx-button-bg-primary: var(--mvx-button-bg-primary);
+  --mvx-button-text-primary: var(--mvx-button-text-primary);
+  --mvx-button-bg-secondary: var(--mvx-button-bg-secondary);
+  --mvx-button-text-secondary: var(--mvx-button-text-secondary);
+  --mvx-neutral-925: var(--mvx-neutral-925);
+  --mvx-white: var(--mvx-white);
+  --mvx-text-color-secondary: var(--mvx-text-color-secondary);
+
   .button {
     @apply mvx:flex mvx:items-center mvx:justify-center mvx:font-bold mvx:leading-none mvx:px-4 mvx:max-h-full;
     @apply mvx:rounded-xl mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:gap-2;
