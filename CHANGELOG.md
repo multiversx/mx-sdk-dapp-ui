@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [Refactor components in transactions table](https://github.com/multiversx/mx-sdk-dapp-ui/pull/243)
 
+- [Added passkey provider](https://github.com/multiversx/mx-sdk-dapp-ui/pull/242)
+
 ## [[0.0.34](https://github.com/multiversx/mx-sdk-dapp-ui/pull/238)] - 2025-10-09
 
 - [Added intro screens waiting for provider message](https://github.com/multiversx/mx-sdk-dapp-ui/pull/239)
