@@ -5,7 +5,7 @@ const config = {
     name: '@storybook/web-components-vite',
     options: {},
   },
-  staticDirs: ['public'],
+  staticDirs: ['public', '../dist'],
   managerHead: (head: string) => `
     ${head}
     <base href="./" />
@@ -14,7 +14,7 @@ const config = {
     ${head}
     <base href="./" />
     <script type="module">
-      import { defineCustomElements } from '../dist/web-components/index.js';
+      import { defineCustomElements } from './web-components/index.js';
       defineCustomElements();
     </script>
   `,
