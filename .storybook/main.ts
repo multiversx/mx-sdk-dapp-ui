@@ -5,6 +5,7 @@ const config = {
     name: '@storybook/web-components-vite',
     options: {},
   },
+  staticDirs: ['public'],
   managerHead: (head: string) => `
     ${head}
     <base href="./" />
