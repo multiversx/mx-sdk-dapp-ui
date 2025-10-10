@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 // prettier-ignore
 const styles = {
-    transactionAccountName: 'transaction-account-name mvx:w-max'
+    transactionAccountName: 'transaction-account-name mvx:w-max mvx:truncate'
 } satisfies Record<string, string>;
 
 interface TransactionAccountNamePropsType {
@@ -18,7 +18,7 @@ export function TransactionAccountName({ address, dataTestId, description, name,
     if (name) {
         return (
             <div
-                class={classNames('text-truncate', className, styles.transactionAccountName)}
+                class={{ [className]: Boolean(className), [styles.transactionAccountName]: true }}
                 data-testid={dataTestId}
                 title={description}
             >
