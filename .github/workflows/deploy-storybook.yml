@@ -2,7 +2,7 @@ name: Deploy Storybook
 
 on:
   push:
-    branches: [mm-storybook-deployment]
+    branches: [mm-storybook-deployment-stencil]
     paths:
       - 'src/**'
       - '.storybook/**'

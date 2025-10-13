@@ -12,15 +12,12 @@ import './tailwind.css';
 defineCustomElements();
 
 export const decorators: Preview['decorators'] = [
-  (Story, context) => {
-    const vnode = (
+  (Story, context) =>
+    renderJsxToHtml(
       <div data-mvx-theme={`mvx:${context.globals.backgrounds.value}-theme`}>
         <Story />
-      </div>
-    );
-    // Convert Stencil JSX vnode to HTML string for web-components renderer
-    return renderJsxToHtml(vnode);
-  },
+      </div>,
+    ),
 ];
 
 export const initialGlobals: Preview['initialGlobals'] = {
