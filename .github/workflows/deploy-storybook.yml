@@ -64,7 +64,7 @@ jobs:
           SLACK_ICON_EMOJI: ':books:'
           SLACK_USERNAME: mx-sdk-dapp-ui
           SLACK_TITLE: 'Storybook'
-          SLACK_MESSAGE: 'Successfully deployed to: https://${{ secrets.AWS_S3_BUCKET }}'
+          SLACK_MESSAGE: 'Successfully deployed to https://${{ secrets.AWS_S3_BUCKET }}'
           SLACK_COLOR: 'good'
           SLACK_FOOTER: 'Deployed from branch: ${{ github.ref_name }}'
           MSG_MINIMAL: false
