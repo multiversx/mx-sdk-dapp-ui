@@ -1,29 +1,19 @@
+import path from 'path';
+
 const config = {
   stories: ['../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-docs'],
   framework: {
-    name: '@storybook/web-components-vite',
+    name: '@stencil/storybook-plugin',
     options: {},
   },
-  managerHead: (head: string) => `
-    ${head}
-    <base href="./" />
-  `,
-  previewHead: (head: string) => `
-    ${head}
-    <base href="./" />
-    <script type="module">
-      import { defineCustomElements } from '../dist/web-components/index.js';
-      defineCustomElements();
-    </script>
-  `,
-  typescript: {
-    check: false,
-    reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      shouldExtractLiteralValuesFromEnum: true,
-      propFilter: (prop: any) => (prop.parent ? !/node_modules/.test(prop.parent.fileName) : true),
-    },
+  staticDirs: ['../dist/web-components'], // <-- important
+  webpackFinal: async config => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@dist': path.resolve(__dirname, '../dist'),
+    };
+    return config;
   },
 };
 
