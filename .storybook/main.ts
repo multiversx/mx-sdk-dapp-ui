@@ -4,14 +4,7 @@ const config = {
   framework: {
     name: '@stencil/storybook-plugin',
   },
-  managerHead: (head) => `
-    ${head}
-    <base href="./" />
-  `,
-  previewHead: (head) => `
-    ${head}
-    <base href="./" />
-  `,
+  staticDirs: ['../dist/web-components'],
 };
 
 export default config;
