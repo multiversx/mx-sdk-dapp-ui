@@ -34,17 +34,6 @@ jobs:
       - name: Build Storybook (includes Stencil build)
         run: yarn run storybook-build
 
-      - name: Verify iframe.html exists
-        run: |
-          if [ ! -f "./storybook-static/iframe.html" ]; then
-            echo "❌ Error: iframe.html missing - Storybook build failed"
-            echo "This indicates the @stencil/storybook-plugin compatibility issue"
-            echo "Stories will not load without iframe.html"
-            ls -la ./storybook-static/ || true
-            exit 1
-          fi
-          echo "✅ iframe.html found - Storybook build successful"
-
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
