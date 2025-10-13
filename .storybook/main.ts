@@ -4,11 +4,11 @@ const config = {
   framework: {
     name: '@storybook/web-components-vite',
   },
-  managerHead: (head: string) => `
+  managerHead: head => `
     ${head}
     <base href="./" />
   `,
-  previewHead: (head: string) => `
+  previewHead: head => `
     ${head}
     <base href="./" />
   `,
