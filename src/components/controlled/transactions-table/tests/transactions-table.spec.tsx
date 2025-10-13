@@ -127,19 +127,22 @@ describe('TransactionsTable', () => {
     expect(rows.length).toBe(2);
 
     rows.forEach((row, index) => {
-      expect(row.querySelector('mvx-transaction-hash')).toBeTruthy();
-      expect(row.querySelector('mvx-transaction-age')).toBeTruthy();
-      expect(row.querySelector('mvx-transaction-shards')).toBeTruthy();
-      expect(row.querySelector('mvx-transaction-account[scope="sender"]')).toBeTruthy();
-      expect(row.querySelector('mvx-transaction-account[scope="receiver"]')).toBeTruthy();
-      expect(row.querySelector('mvx-transaction-method')).toBeTruthy();
-      expect(row.querySelector('mvx-transaction-value')).toBeTruthy();
+      const cells = row.querySelectorAll('td');
+      expect(cells.length).toBe(7);
+
+      expect(cells[0].querySelector('div')).toBeTruthy(); //transaction hash
+      expect(cells[1].querySelector('div')).toBeTruthy(); //transaction age
+      expect(cells[2].querySelector('div')).toBeTruthy(); //transaction shards
+      expect(cells[3].querySelector('div')).toBeTruthy(); //transaction sender
+      expect(cells[4].querySelector('div')).toBeTruthy(); //transaction receiver
+      expect(cells[5].querySelector('div')).toBeTruthy(); //transaction method
+      expect(cells[6].querySelector('div')).toBeTruthy(); //transaction value
 
       // Check some specific values
-      expect(row.querySelector('mvx-transaction-age').getAttribute('age')).toBe(mockTransactions[index].age.timeAgo);
-      expect(row.querySelector('mvx-transaction-method').getAttribute('method')).toBe(
-        mockTransactions[index].method.name,
-      );
+      const ageCell = cells[1];
+      expect(ageCell.textContent).toContain(mockTransactions[index].age.timeAgo);
+      const methodCell = cells[5];
+      expect(methodCell.textContent).toContain(mockTransactions[index].method.name);
     });
   });
 });
