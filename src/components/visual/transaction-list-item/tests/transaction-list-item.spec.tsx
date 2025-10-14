@@ -1,9 +1,9 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
-import { FormatAmount } from 'components/controlled/format-amount/format-amount';
 
 import { TransactionListItem } from '../transaction-list-item';
 import type { ITransactionListItem } from '../transaction-list-item.types';
+import { FormatAmount } from 'common/FormatAmount/FormatAmount';
 
 describe('transaction-list-item', () => {
   const createPage = async (transaction: ITransactionListItem) => {

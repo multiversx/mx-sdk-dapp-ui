@@ -4,6 +4,7 @@ import { IconSizeEnumType, TransactionAssetIcon } from 'common/TransactionAssetI
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
 
 import type { ITransactionListItem } from './transaction-list-item.types';
+import { FormatAmount } from 'common/FormatAmount/FormatAmount';
 
 @Component({
   tag: 'mvx-transaction-list-item',
@@ -45,7 +46,7 @@ export class TransactionListItem {
               </div>
 
               {this.transaction.amount && (
-                <mvx-format-amount
+                <FormatAmount
                   class={classNames('transaction-amount', {
                     'amount-negative': this.transaction.amount.startsWith('-'),
                     'amount-positive': !this.transaction.amount.startsWith('-'),

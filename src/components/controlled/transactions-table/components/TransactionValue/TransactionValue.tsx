@@ -5,6 +5,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import styles from './transactionValue.styles';
 import classNames from 'classnames';
+import { FormatAmount } from 'common/FormatAmount/FormatAmount';
 
 interface TransactionValuePropsType {
     class?: string;
@@ -24,7 +25,7 @@ export function TransactionValue({ value, class: className }: TransactionValuePr
                 <div class={styles.transactionValueAmount}>
                     {value.egldLabel && <mvx-multiversx-symbol-icon class={styles.transactionValueAmountSymbol} />}
 
-                    <mvx-format-amount
+                    <FormatAmount
                         class={classNames(styles.transactionValueFormatAmount, {
                             [styles.transactionValueTextTruncate]: value.svgUrl,
                         })}

@@ -72,7 +72,17 @@ describe('TransactionValue tests', () => {
       <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
         <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value-amount">
           <mvx-multiversx-symbol-icon class="mvx:text-primary transaction-value-amount-symbol"></mvx-multiversx-symbol-icon>
-          <mvx-format-amount class="mvx:mr-1 mvx:text-primary transaction-value-format-amount" datatestid="transactionActionFormattedAmount" decimalclass="opacity-70" isvalid="" label="xEGLD" labelclass="opacity-70" valuedecimal="123" valueinteger="123"></mvx-format-amount>
+          <span class="format-amount mvx:items-center mvx:mr-1 mvx:text-primary transaction-value-format-amount" data-testid="transactionActionFormattedAmount">
+            <span class="int-amount mvx:text-inherit" data-testid="formatAmountInt">
+             123
+            </span>
+            <span class="decimals mvx:text-inherit opacity-70" data-testid="formatAmountDecimals">
+              123
+            </span>
+            <span class="mvx:ml-1 mvx:text-inherit opacity-70 symbol" data-testid="formatAmountSymbol">
+                xEGLD
+            </span>
+          </span>
         </div>
       </div>
     `);
