@@ -10,6 +10,6 @@ function isValidIcon(value: string): value is IconNameEnum {
 }
 
 export function getValidIcon(icon: string): IconNameEnum {
-    return isValidIcon(icon) ? icon : IconNameEnum.arrowUpRight;
+    return isValidIcon(icon) ? icon : null;
 }
 
