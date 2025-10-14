@@ -20,6 +20,21 @@ export function TransactionIcon({ iconInfo, class: className }: TransactionIconP
         return null;
     }
 
+    const allowedIcons = new Set<IconNameEnum>([
+        ...Object.values(IconNameEnum)
+    ]);
+
+    const validateIcon = (icon: string) => {
+        return allowedIcons.has(icon as IconNameEnum);
+    }
+
+    const getValidIcon = (icon: string) => {
+        return validateIcon(icon) ? icon as IconNameEnum : IconNameEnum.arrowUpRight;
+    }
+
+    const iconName = getValidIcon(iconInfo.icon);
+
+
     return (
         <Icon
             class={{
@@ -27,7 +42,7 @@ export function TransactionIcon({ iconInfo, class: className }: TransactionIconP
                 [styles.transactionIconPending]: iconInfo.icon === 'faHourglass',
                 [className]: Boolean(className),
             }}
-            name={iconInfo.icon as IconNameEnum}
+            name={iconName}
         />
     );
 
