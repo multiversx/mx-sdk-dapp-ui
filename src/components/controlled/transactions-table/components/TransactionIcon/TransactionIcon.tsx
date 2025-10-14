@@ -2,7 +2,7 @@ import { h } from '@stencil/core';
 
 import type { TransactionIconInfoType } from '../../transactions-table.type';
 import { Icon } from 'common/Icon';
-import { IconNameEnum } from 'common/Icon/icon.types';
+import { getValidIcon } from './transactionIcon.helpers';
 
 // prettier-ignore
 const styles = {
@@ -20,20 +20,7 @@ export function TransactionIcon({ iconInfo, class: className }: TransactionIconP
         return null;
     }
 
-    const allowedIcons = new Set<IconNameEnum>([
-        ...Object.values(IconNameEnum)
-    ]);
-
-    const validateIcon = (icon: string) => {
-        return allowedIcons.has(icon as IconNameEnum);
-    }
-
-    const getValidIcon = (icon: string) => {
-        return validateIcon(icon) ? icon as IconNameEnum : IconNameEnum.arrowUpRight;
-    }
-
     const iconName = getValidIcon(iconInfo.icon);
-
 
     return (
         <Icon
