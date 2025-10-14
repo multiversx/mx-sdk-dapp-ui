@@ -17,7 +17,7 @@ const account: TransactionAccountType = {
   shardLink: '/shard/0',
 };
 
-describe('TransactionHash', () => {
+describe('TransactionHash tests', () => {
   it('renders with transaction data', async () => {
     const transaction: TransactionRowType = {
       age: {

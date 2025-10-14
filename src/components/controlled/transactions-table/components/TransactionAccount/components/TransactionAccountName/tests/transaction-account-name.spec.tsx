@@ -2,7 +2,7 @@ import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { TransactionAccountName } from '../TransactionAccountName';
 
-describe('TransactionAccountName', () => {
+describe('TransactionAccountName tests', () => {
   it('renders name when provided', async () => {
     const page = await newSpecPage({
       components: [],

@@ -4,7 +4,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import type { TransactionAccountType } from '../../../transactions-table.type';
 import { TransactionAccount } from '../TransactionAccount';
 
-describe('TransactionAccount Component', () => {
+describe('TransactionAccount tests', () => {
   const baseAccount: TransactionAccountType = {
     address: '0x1234567890123456789012345678901234567890',
     name: 'John Doe',

@@ -4,7 +4,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { TransactionAge } from '../TransactionAge';
 
 
-describe('TransactionAge', () => {
+describe('TransactionAge tests', () => {
   it('renders with age prop', async () => {
     const page = await newSpecPage({
       components: [],

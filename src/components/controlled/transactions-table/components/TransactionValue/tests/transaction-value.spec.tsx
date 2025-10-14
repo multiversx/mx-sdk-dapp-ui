@@ -3,7 +3,7 @@ import { newSpecPage } from '@stencil/core/testing';
 import type { TransactionValueType } from 'components/controlled/transactions-table/transactions-table.type';
 import { TransactionValue } from '../TransactionValue';
 
-describe('TransactionValue', () => {
+describe('TransactionValue tests', () => {
   it('renders with minimal props', async () => {
     const value: TransactionValueType = {
       egldLabel: '',

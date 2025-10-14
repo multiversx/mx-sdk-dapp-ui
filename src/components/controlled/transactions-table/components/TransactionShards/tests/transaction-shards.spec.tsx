@@ -5,7 +5,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { TransactionRowType } from '../../../transactions-table.type';
 import { TransactionShards } from '../TransactionShards';
 
-describe('TransactionShards', () => {
+describe('TransactionShards tests', () => {
   const createMockTransaction = (senderShard: string, receiverShard: string): TransactionRowType => ({
     age: { timeAgo: '1 min ago', tooltip: '1 minute ago' },
     method: { name: 'transfer' },

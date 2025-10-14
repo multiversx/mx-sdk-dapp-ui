@@ -4,7 +4,7 @@ import { TransactionMethod } from '../TransactionMethod';
 
 
 
-describe('transaction-method', () => {
+describe('TransactionMethod tests', () => {
   const createPage = async (props: { method?: string; actionDescription?: string }) => {
     const page = await newSpecPage({
       components: [],
