@@ -1,6 +1,6 @@
 /** @jsx h */
 import { h } from '@stencil/core';
-import type { Preview } from '@storybook/web-components-vite';
+import type { Preview } from '@storybook/html-vite';
 import { renderJsxToHtml } from './jsxToHtml';
 
 import { defineCustomElements } from '../dist/web-components';
