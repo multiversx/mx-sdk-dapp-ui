@@ -25,8 +25,8 @@ export function TransactionIcon({ iconInfo, class: className }: TransactionIconP
     return (
         <Icon
             class={{
-                [styles.transactionIconError]: iconInfo.icon === 'faTimes',
-                [styles.transactionIconPending]: iconInfo.icon === 'faHourglass',
+                [styles.transactionIconError]: iconInfo.icon === 'close',
+                [styles.transactionIconPending]: iconInfo.icon === 'hourglass',
                 [className]: Boolean(className),
             }}
             name={iconName}
