@@ -70,7 +70,7 @@ export class TransactionToastContent {
                   class={{
                     'transaction-toast-title': true,
                     'transaction-toast-title-short': Boolean(showAmount),
-                    'truncate': showTooltip,
+                    'truncate-toast-title': showTooltip,
                   }}
                 >
                   {title}
