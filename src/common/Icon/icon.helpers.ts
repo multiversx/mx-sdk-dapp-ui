@@ -4,5 +4,5 @@ export const getValidIconName = (name: string): string => {
         return validIconName === 'times' ? 'close' : validIconName;
     }
 
-    return name;
+    return name === 'times' ? 'close' : name;
 };
