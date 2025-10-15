@@ -1,7 +1,9 @@
+import { IconNamesEnum } from "common/Icon/icon.types";
+
 export interface ITransactionListItemAsset {
   imageUrl?: string;
   text?: string;
-  icon?: string;
+  icon?: `${IconNamesEnum}`;
 }
 
 export interface ITransactionListItemAction {

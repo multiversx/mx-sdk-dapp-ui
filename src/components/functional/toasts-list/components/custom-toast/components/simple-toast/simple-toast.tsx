@@ -28,7 +28,7 @@ export class SimpleToast {
           [iconClassName]: Boolean(iconClassName),
         }}
       >
-        <Icon name={icon as IconNamesEnum} />
+        <Icon name={icon} />
       </div>
     );
   }

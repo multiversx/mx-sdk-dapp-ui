@@ -18,7 +18,7 @@ type TransactionAgeType = {
 };
 
 export type TransactionIconInfoType = {
-  icon?: `${IconNamesEnum}` | null;
+  icon?: `${IconNamesEnum}`;
   tooltip: string;
 };
 
