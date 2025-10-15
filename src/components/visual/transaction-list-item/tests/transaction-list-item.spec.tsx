@@ -4,6 +4,7 @@ import { FormatAmount } from 'components/controlled/format-amount/format-amount'
 
 import { TransactionListItem } from '../transaction-list-item';
 import type { ITransactionListItem } from '../transaction-list-item.types';
+import { IconNamesEnum } from 'common/Icon/icon.types';
 
 describe('transaction-list-item', () => {
   const createPage = async (transaction: ITransactionListItem) => {
@@ -58,7 +59,7 @@ describe('transaction-list-item', () => {
     });
 
     it('renders with asset icon', async () => {
-      const transaction = { ...baseTransaction, asset: { icon: 'arrows-rotate' } };
+      const transaction = { ...baseTransaction, asset: { icon: IconNamesEnum.arrowsRotate } };
       const page = await createPage(transaction);
       const iconComponent = page.root.querySelector('svg');
       expect(iconComponent).not.toBeNull();

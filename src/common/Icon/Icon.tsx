@@ -27,6 +27,10 @@ import { CoinsIcon } from './components/CoinsIcon';
 import { ArrowsRotateIcon } from './components/ArrowsRotateIcon';
 
 export const Icon = ({ name, ...properties }: IconPropsType) => {
+  if (!name) {
+    return;
+  }
+
   switch (name) {
     case 'contract':
       return <ContractIcon {...properties} />;

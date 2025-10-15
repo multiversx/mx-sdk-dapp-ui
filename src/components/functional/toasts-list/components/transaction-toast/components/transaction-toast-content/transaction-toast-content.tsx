@@ -8,7 +8,6 @@ import type { ITransactionListItem } from 'components/visual/transaction-list-it
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { IToastDataState } from '../../transaction-toast.type';
-import { IconNameEnum } from 'common/Icon/icon.types';
 
 // prettier-ignore
 const styles = {
@@ -51,7 +50,7 @@ export class TransactionToastContent {
         <div class="transaction-toast-content">
           {!showPrimaryIcon && this.toastDataState.icon ? (
             <Icon
-              name={this.toastDataState.icon as IconNameEnum}
+              name={this.toastDataState.icon}
               class={`transaction-toast-icon ${this.toastDataState.iconClassName ?? ''}`}
             />
           ) : (
@@ -70,7 +69,7 @@ export class TransactionToastContent {
                   class={{
                     'transaction-toast-title': true,
                     'transaction-toast-title-short': Boolean(showAmount),
-                    'truncate': showTooltip,
+                    'truncate-toast-title': showTooltip,
                   }}
                 >
                   {title}
