@@ -1,3 +1,4 @@
+import { getValidIconName } from "common/Icon/icon.helpers";
 import { IconNameEnum } from "common/Icon/icon.types";
 
 const iconMap: Record<IconNameEnum, true> = Object.values(IconNameEnum).reduce((acc, icon) => {
@@ -10,6 +11,7 @@ function isValidIcon(value: string): value is IconNameEnum {
 }
 
 export function getValidIcon(icon: string): IconNameEnum {
-    return isValidIcon(icon) ? icon : null;
+    const validIconName = getValidIconName(icon);
+    return isValidIcon(validIconName) ? validIconName : null;
 }
 
