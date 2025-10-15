@@ -8,7 +8,6 @@ import type { ITransactionListItem } from 'components/visual/transaction-list-it
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { IToastDataState } from '../../transaction-toast.type';
-import { IconNamesEnum } from 'common/Icon/icon.types';
 
 // prettier-ignore
 const styles = {

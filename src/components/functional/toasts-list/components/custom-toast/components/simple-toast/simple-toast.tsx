@@ -2,7 +2,6 @@ import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { Icon } from 'common/Icon';
-import { IconNamesEnum } from 'common/Icon/icon.types';
 import type { ISimpleToast } from 'components/functional/toasts-list/components/transaction-toast/transaction-toast.type';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
