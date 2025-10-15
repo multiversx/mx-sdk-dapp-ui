@@ -3,7 +3,7 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { TransactionsTable } from '../transactions-table';
 import type { TransactionRowType } from '../transactions-table.type';
-import { IconNameEnum } from 'common/Icon/icon.types';
+import { IconNamesEnum } from 'common/Icon/icon.types';
 
 describe('TransactionsTable', () => {
   const mockTransactions: TransactionRowType[] = [
@@ -11,7 +11,7 @@ describe('TransactionsTable', () => {
       age: { timeAgo: '5 minutes ago', tooltip: 'Feb 7, 2025, 4:55 PM' },
       direction: 'in',
       method: { name: 'transfer', actionDescription: 'Token transfer' },
-      iconInfo: { icon: IconNameEnum.check, tooltip: 'Successful transaction' },
+      iconInfo: { icon: IconNamesEnum.check, tooltip: 'Successful transaction' },
       link: '/transactions/hash1',
       receiver: {
         address: 'erd1qqqqqqqqqqqqqpgqp699jngundfqw07d8jzkepucvpzush6k3wvqyc44rx',
@@ -55,7 +55,7 @@ describe('TransactionsTable', () => {
       age: { timeAgo: '10 minutes ago', tooltip: 'Feb 7, 2025, 4:50 PM' },
       direction: 'out',
       method: { name: 'esdt_transfer', actionDescription: 'ESDT Token transfer' },
-      iconInfo: { icon: IconNameEnum.check, tooltip: 'Successful transaction' },
+      iconInfo: { icon: IconNamesEnum.check, tooltip: 'Successful transaction' },
       link: '/transactions/hash2',
       receiver: {
         address: 'erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3zpz3hypefsdd8ssycr6th',

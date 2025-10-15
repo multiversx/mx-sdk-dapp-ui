@@ -1,4 +1,4 @@
-import { IconNameEnum } from "common/Icon/icon.types";
+import { IconNamesEnum } from "common/Icon/icon.types";
 
 export type TransactionRowType = {
   age: TransactionAgeType;
@@ -18,7 +18,7 @@ type TransactionAgeType = {
 };
 
 export type TransactionIconInfoType = {
-  icon?: IconNameEnum | null;
+  icon?: `${IconNamesEnum}` | null;
   tooltip: string;
 };
 
