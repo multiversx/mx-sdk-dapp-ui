@@ -2,7 +2,7 @@ import { h } from '@stencil/core';
 
 import type { TransactionIconInfoType } from '../../transactions-table.type';
 import { Icon } from 'common/Icon';
-import { getValidIcon } from './transactionIcon.helpers';
+import { IconNameEnum } from 'common/Icon/icon.types';
 
 // prettier-ignore
 const styles = {
@@ -20,16 +20,14 @@ export function TransactionIcon({ iconInfo, class: className }: TransactionIconP
         return null;
     }
 
-    const iconName = getValidIcon(iconInfo.icon);
-
     return (
         <Icon
             class={{
-                [styles.transactionIconError]: iconInfo.icon === 'close',
-                [styles.transactionIconPending]: iconInfo.icon === 'hourglass',
+                [styles.transactionIconError]: iconInfo.icon === IconNameEnum.close,
+                [styles.transactionIconPending]: iconInfo.icon === IconNameEnum.hourglass,
                 [className]: Boolean(className),
             }}
-            name={iconName}
+            name={iconInfo.icon}
         />
     );
 

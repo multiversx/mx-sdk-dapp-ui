@@ -4,6 +4,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionAccountType, TransactionRowType } from '../../../transactions-table.type';
 import { TransactionHash } from '../TransactionHash';
+import { IconNameEnum } from 'common/Icon/icon.types';
 
 const account: TransactionAccountType = {
   address: 'erd...',
@@ -25,7 +26,7 @@ describe('TransactionHash tests', () => {
         tooltip: '1 hour ago',
       },
       direction: 'in',
-      iconInfo: { icon: 'circle-info', tooltip: 'Test' },
+      iconInfo: { icon: IconNameEnum.circleInfo, tooltip: 'Test' },
       link: 'https://example.com/tx/123',
       method: {
         name: 'Smart Contract',
@@ -63,7 +64,7 @@ describe('TransactionHash tests', () => {
         tooltip: '1 hour ago',
       },
       direction: 'in',
-      iconInfo: { icon: 'circle-Info', tooltip: 'Initial' },
+      iconInfo: { icon: IconNameEnum.circleInfo, tooltip: 'Initial' },
       link: 'https://example.com/tx/initial',
       method: {
         name: 'Smart Contract',
@@ -98,7 +99,7 @@ describe('TransactionHash tests', () => {
         tooltip: '2 hours ago',
       },
       direction: 'out',
-      iconInfo: { icon: 'circle-check', tooltip: 'Updated' },
+      iconInfo: { icon: IconNameEnum.circleCheck, tooltip: 'Updated' },
       link: 'https://example.com/tx/updated',
       method: {
         name: 'Transfer',

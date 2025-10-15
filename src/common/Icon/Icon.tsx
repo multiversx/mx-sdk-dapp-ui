@@ -25,16 +25,13 @@ import { CircleCheckIcon } from './components/CircleCheckIcon';
 import { CircleInfoIcon } from './components/CircleInfoIcon';
 import { CoinsIcon } from './components/CoinsIcon';
 import { ArrowsRotateIcon } from './components/ArrowsRotateIcon';
-import { getValidIconName } from './icon.helpers';
 
 export const Icon = ({ name, ...properties }: IconPropsType) => {
   if (!name) {
     return;
   }
 
-  const validName = getValidIconName(name);
-
-  switch (validName) {
+  switch (name) {
     case 'contract':
       return <ContractIcon {...properties} />;
 
