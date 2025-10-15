@@ -25,7 +25,6 @@ export enum IconNameEnum {
   circleInfo = 'circle-info',
   coins = 'coins',
   arrowsRotate = 'arrows-rotate'
-
 }
 
 export type IconPropsType = JSXBase.IntrinsicElements['svg'] & {

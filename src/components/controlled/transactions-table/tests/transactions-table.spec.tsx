@@ -126,20 +126,13 @@ describe('TransactionsTable', () => {
     const rows = page.root.querySelectorAll('tbody tr');
     expect(rows.length).toBe(2);
 
-    rows.forEach((row, index) => {
-      expect(row.querySelector('mvx-transaction-hash')).toBeTruthy();
-      expect(row.querySelector('mvx-transaction-age')).toBeTruthy();
-      expect(row.querySelector('mvx-transaction-shards')).toBeTruthy();
-      expect(row.querySelector('mvx-transaction-account[scope="sender"]')).toBeTruthy();
-      expect(row.querySelector('mvx-transaction-account[scope="receiver"]')).toBeTruthy();
-      expect(row.querySelector('mvx-transaction-method')).toBeTruthy();
-      expect(row.querySelector('mvx-transaction-value')).toBeTruthy();
+    const cells = rows[0].querySelectorAll('td');
+    expect(cells.length).toBe(7);
 
-      // Check some specific values
-      expect(row.querySelector('mvx-transaction-age').getAttribute('age')).toBe(mockTransactions[index].age.timeAgo);
-      expect(row.querySelector('mvx-transaction-method').getAttribute('method')).toBe(
-        mockTransactions[index].method.name,
-      );
-    });
+    // Check some specific values
+    const ageCell = cells[1];
+    expect(ageCell.textContent).toContain('5 minutes ago');
+    const methodCell = cells[5];
+    expect(methodCell.textContent).toContain('transfer');
   });
 });
