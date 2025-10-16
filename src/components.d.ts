@@ -369,6 +369,7 @@ export namespace Components {
         "endTime"?: number;
         "isStatusPending"?: boolean;
         "startTime"?: number;
+        "toastId"?: string;
     }
     interface MvxTransactionsTable {
         "class"?: string;
@@ -1534,6 +1535,7 @@ declare namespace LocalJSX {
         "endTime"?: number;
         "isStatusPending"?: boolean;
         "startTime"?: number;
+        "toastId"?: string;
     }
     interface MvxTransactionsTable {
         "class"?: string;
