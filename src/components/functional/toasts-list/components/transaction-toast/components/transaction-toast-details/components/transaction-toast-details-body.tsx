@@ -1,13 +1,13 @@
 import { Component, h, Prop } from '@stencil/core';
 import { Icon } from 'common/Icon/Icon';
-import { IconNameEnum } from 'common/Icon/icon.types';
+import { IconNamesEnum } from 'common/Icon/icon.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-const iconData: Record<string, IconNameEnum> = {
-  pending: IconNameEnum.hourglass,
-  success: IconNameEnum.check,
-  fail: IconNameEnum.close,
-  invalid: IconNameEnum.close,
+const iconData: Record<string, IconNamesEnum> = {
+  pending: IconNamesEnum.hourglass,
+  success: IconNamesEnum.check,
+  fail: IconNamesEnum.close,
+  invalid: IconNamesEnum.close,
 };
 
 const transactionToastDetailsBodyClasses: Record<string, string> = {

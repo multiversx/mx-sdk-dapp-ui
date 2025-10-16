@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.0.36](https://github.com/multiversx/mx-sdk-dapp-ui/pull/251)] - 2025-10-15
+
+- [Updated icons type](https://github.com/multiversx/mx-sdk-dapp-ui/pull/250)
+
 - [Added the Storybook as a live server deployment](https://github.com/multiversx/mx-sdk-dapp-ui/pull/248)
 
 - [Refactor components in transactions table](https://github.com/multiversx/mx-sdk-dapp-ui/pull/243)

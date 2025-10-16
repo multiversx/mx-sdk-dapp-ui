@@ -52,7 +52,7 @@ export class TransactionToastContent {
         <div class="transaction-toast-content">
           {!showPrimaryIcon && this.toastDataState.icon ? (
             <Icon
-              name={this.toastDataState.icon as IconNameEnum}
+              name={this.toastDataState.icon}
               class={`transaction-toast-icon ${this.toastDataState.iconClassName ?? ''}`}
             />
           ) : (
@@ -71,7 +71,7 @@ export class TransactionToastContent {
                   class={{
                     'transaction-toast-title': true,
                     'transaction-toast-title-short': Boolean(showAmount),
-                    'truncate': showTooltip,
+                    'truncate-toast-title': showTooltip,
                   }}
                 >
                   {title}

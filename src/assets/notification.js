@@ -18,7 +18,7 @@ function showNotification() {
     },
     fail: {
       id: notificationId,
-      icon: 'times',
+      icon: 'close',
       title: 'Transaction failed',
       hasCloseButton: true,
       iconClassName: 'danger',
@@ -32,7 +32,7 @@ function showNotification() {
     },
     timedOut: {
       id: notificationId,
-      icon: 'times',
+      icon: 'close',
       title: 'Transaction timed out',
       hasCloseButton: true,
       iconClassName: 'warning',

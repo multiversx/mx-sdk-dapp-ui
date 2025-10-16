@@ -4,6 +4,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionAccountType, TransactionRowType } from '../../../transactions-table.type';
 import { TransactionHash } from '../TransactionHash';
+import { IconNamesEnum } from 'common/Icon/icon.types';
 
 const account: TransactionAccountType = {
   address: 'erd...',
@@ -25,7 +26,7 @@ describe('TransactionHash tests', () => {
         tooltip: '1 hour ago',
       },
       direction: 'in',
-      iconInfo: { icon: 'circle-info', tooltip: 'Test' },
+      iconInfo: { icon: IconNamesEnum.circleInfo, tooltip: 'Test' },
       link: 'https://example.com/tx/123',
       method: {
         name: 'Smart Contract',
@@ -63,7 +64,7 @@ describe('TransactionHash tests', () => {
         tooltip: '1 hour ago',
       },
       direction: 'in',
-      iconInfo: { icon: 'circle-Info', tooltip: 'Initial' },
+      iconInfo: { icon: IconNamesEnum.circleInfo, tooltip: 'Initial' },
       link: 'https://example.com/tx/initial',
       method: {
         name: 'Smart Contract',
@@ -86,6 +87,9 @@ describe('TransactionHash tests', () => {
 
     expect(page.root).toEqualHtml(`
       <div class="mvx:flex mvx:gap-1 mvx:items-center mvx:justify-center  transaction-hash">
+      <svg class="mvx:flex mvx:items-center mvx:justify-center transaction-hash-icon" height="20" viewBox="0 0 640 640" width="20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M320 576C461.4 576 576 461.4 576 320C576 178.6 461.4 64 320 64C178.6 64 64 178.6 64 320C64 461.4 178.6 576 320 576zM288 224C288 206.3 302.3 192 320 192C337.7 192 352 206.3 352 224C352 241.7 337.7 256 320 256C302.3 256 288 241.7 288 224zM280 288L328 288C341.3 288 352 298.7 352 312L352 400L360 400C373.3 400 384 410.7 384 424C384 437.3 373.3 448 360 448L280 448C266.7 448 256 437.3 256 424C256 410.7 266.7 400 280 400L304 400L304 336L280 336C266.7 336 256 325.3 256 312C256 298.7 266.7 288 280 288z" fill="currentColor"></path>
+      </svg>
         <mvx-explorer-link class="mvx:text-primary! transaction-hash-explorer-link" dataTestId="${DataTestIdsEnum.transactionLink}" link="https://example.com/tx/initial"><mvx-trim text="0xInitialHash"></mvx-trim></mvx-explorer-link>
       </div>
   `);
@@ -98,7 +102,7 @@ describe('TransactionHash tests', () => {
         tooltip: '2 hours ago',
       },
       direction: 'out',
-      iconInfo: { icon: 'circle-check', tooltip: 'Updated' },
+      iconInfo: { icon: IconNamesEnum.circleCheck, tooltip: 'Updated' },
       link: 'https://example.com/tx/updated',
       method: {
         name: 'Transfer',
