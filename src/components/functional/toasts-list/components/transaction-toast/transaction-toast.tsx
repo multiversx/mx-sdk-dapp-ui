@@ -29,6 +29,7 @@ export class TransactionToast {
       <div class="transaction-toast">
         <mvx-transaction-toast-progress
           key={this.toastId}
+          toastId={this.toastId}
           startTime={this.transactionProgressState?.startTime}
           endTime={this.transactionProgressState?.endTime}
           isStatusPending={isStatusPending}
