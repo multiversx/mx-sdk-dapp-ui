@@ -1,9 +1,9 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
+import { IconNamesEnum } from 'common/Icon/icon.types';
 
 import type { TransactionAccountType, TransactionRowType } from '../../../transactions-table.type';
 import { TransactionHash } from '../TransactionHash';
-import { IconNamesEnum } from 'common/Icon/icon.types';
 
 const account: TransactionAccountType = {
   address: 'erd...',
