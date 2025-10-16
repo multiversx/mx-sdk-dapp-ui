@@ -5,7 +5,6 @@ import { TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAss
 
 import { TransactionListItem } from '../transaction-list-item';
 import type { ITransactionListItem } from '../transaction-list-item.types';
-import { IconNamesEnum } from 'common/Icon/icon.types';
 
 describe('transaction-list-item', () => {
   const createPage = async (transaction: ITransactionListItem) => {
