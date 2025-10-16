@@ -1,6 +1,6 @@
 import type { JSXBase } from '@stencil/core/internal';
 
-export enum IconNameEnum {
+export enum IconNamesEnum {
   contract = 'contract',
   layers = 'layers',
   lock = 'lock',
@@ -25,9 +25,8 @@ export enum IconNameEnum {
   circleInfo = 'circle-info',
   coins = 'coins',
   arrowsRotate = 'arrows-rotate'
-
 }
 
 export type IconPropsType = JSXBase.IntrinsicElements['svg'] & {
-  name: `${IconNameEnum}`;
+  name: `${IconNamesEnum}`;
 };

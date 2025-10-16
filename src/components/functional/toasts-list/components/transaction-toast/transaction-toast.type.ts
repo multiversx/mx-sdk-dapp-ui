@@ -1,5 +1,6 @@
 // match these interfaces with src/path-to-file.type.ts from sdk-dapp
 import type { JSX } from '@stencil/core';
+import { IconNamesEnum } from 'common/Icon/icon.types';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 export interface ITransactionProgressState {
   progressClass?: string;
@@ -10,7 +11,7 @@ export interface ITransactionProgressState {
 
 export interface IToastDataState {
   title: string;
-  icon?: string;
+  icon?: `${IconNamesEnum}`;
   iconClassName?: string;
   hasCloseButton?: boolean;
 }
@@ -32,7 +33,7 @@ interface ISharedCustomToast {
 }
 
 export interface ISimpleToast extends ISharedCustomToast {
-  icon: string | JSX.Element;
+  icon: `${IconNamesEnum}`;
   iconClassName?: string;
   title?: string;
   message?: string;

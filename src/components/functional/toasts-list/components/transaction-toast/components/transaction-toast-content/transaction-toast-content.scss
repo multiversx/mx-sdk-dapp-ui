@@ -56,8 +56,8 @@
   @apply mvx:max-w-40;
 }
 
-.truncate {
-  @apply mvx:truncate mvx:!max-w-25 mvx:shrink-0;
+.truncate-toast-title {
+  @apply mvx:truncate mvx:shrink-0;
 }
 
 .transaction-toast-amount {
