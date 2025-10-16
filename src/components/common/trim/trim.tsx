@@ -1,7 +1,7 @@
 import { Component, h, Prop, State } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-import { ELLIPSIS } from 'constants/htmlStrings';
 import { safeWindow } from 'constants/window.constants';
+import { Trim as TrimComponent } from 'common/Trim/Trim';
 
 @Component({
   tag: 'mvx-trim',
@@ -66,42 +66,14 @@ export class Trim {
   };
 
   render() {
-    const middleTextIndex = Math.floor(this.text.length / 2);
-    const leftHandText = this.text.slice(0, middleTextIndex);
-    const rightHandText = this.text.slice(middleTextIndex);
-
-    return (
-      <div
-        data-testid={this.dataTestId}
-        ref={this.handleTrimElementReference.bind(this)}
-        class={{ trim: true, [this.class]: Boolean(this.class) }}
-      >
-        <div
-          data-testid={DataTestIdsEnum.trimFullAddress}
-          ref={this.handleFullWidthTrimElementReference.bind(this)}
-          class={{ 'trim-full': true, 'visible': !this.shouldTrim }}
-        >
-          {this.text}
-        </div>
-
-        <div class={{ 'trim-wrapper': true, 'visible': this.shouldTrim }}>
-          <div class="trim-left-wrapper">
-            <div class="trim-left" style={{ fontSize: this.trimFontSize }}>
-              {leftHandText}
-            </div>
-          </div>
-
-          <div class="trim-ellipsis-wrapper">
-            <div class="trim-ellipsis">{ELLIPSIS}</div>
-          </div>
-
-          <div class="trim-right-wrapper">
-            <div class="trim-right" style={{ fontSize: this.trimFontSize }}>
-              {rightHandText}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    return <TrimComponent
+      class={this.class}
+      dataTestId={this.dataTestId}
+      text={this.text}
+      shouldTrim={this.shouldTrim}
+      trimFontSize={this.trimFontSize}
+      onTrimElementReference={this.handleTrimElementReference.bind(this)}
+      onFullWidthTrimElementReference={this.handleFullWidthTrimElementReference.bind(this)}
+    />;
   }
 }

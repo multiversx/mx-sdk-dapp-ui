@@ -76,4 +76,10 @@
   .mvx\:scrollbar-horizontal::-webkit-resizer {
     background-color: transparent;
   }
+
+  @supports (-webkit-hyphens: none) {
+    .mvx\:-webkit-letter-spacing {
+      letter-spacing: -0.001em;
+    }
+  }
 }

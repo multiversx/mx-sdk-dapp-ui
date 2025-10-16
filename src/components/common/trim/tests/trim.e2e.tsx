@@ -3,9 +3,9 @@ import { newSpecPage } from '@stencil/core/testing';
 import { Trim } from '../trim';
 
 class MockResizeObserver {
-  observe() {}
-  unobserve() {}
-  disconnect() {}
+  observe() { }
+  unobserve() { }
+  disconnect() { }
 }
 
 describe('trim', () => {
