@@ -54,7 +54,7 @@ export class TransactionToastContent {
               name={this.toastDataState.icon}
               class={classNames('transaction-toast-icon',
                 {
-                  'transaction-toast-icon-failed': this.toastDataState.iconClassName === 'fail',
+                  'transaction-toast-icon-failed': this.toastDataState.iconClassName === 'danger',
                   'transaction-toast-icon-pending': this.toastDataState.iconClassName === 'warning',
                   'transaction-toast-icon-success': this.toastDataState.iconClassName === 'success',
 
