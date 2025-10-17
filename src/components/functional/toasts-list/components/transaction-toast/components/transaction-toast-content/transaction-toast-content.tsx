@@ -64,6 +64,8 @@ export class TransactionToastContent {
             <div
               class={classNames('transaction-toast-icon', {
                 'transaction-toast-icon-failed': transaction.status === 'fail' || transaction.status === 'invalid',
+                'transaction-toast-icon-pending': transaction.status === 'pending',
+                'transaction-toast-icon-success': transaction.status === 'success',
               })}
             >
               <TransactionAssetIcon transaction={transaction} iconSize={IconSizeEnumType.small} />
