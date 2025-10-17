@@ -35,8 +35,9 @@ export class TransactionToastContent {
     const showAmount = this.transactions.length === 1 && transaction?.amount;
     const showExplorerLinkButton = transaction?.link && this.transactions.length === 1;
     const amount = transaction && getAmountParts(transaction.amount);
-    const showPrimaryIcon =
-      transaction.asset == null || transaction.asset.imageUrl || transaction.asset.icon || transaction.asset.text;
+    const isBatch = this.transactions.length > 1;
+    const showPrimaryIcon = !isBatch && (
+      transaction.asset == null || transaction.asset.imageUrl || transaction.asset.icon || transaction.asset.text);
     const showTooltip = showAmount && amount.label.length > 10;
 
     return (
@@ -51,12 +52,20 @@ export class TransactionToastContent {
           {!showPrimaryIcon && this.toastDataState.icon ? (
             <Icon
               name={this.toastDataState.icon}
-              class={`transaction-toast-icon ${this.toastDataState.iconClassName ?? ''}`}
+              class={classNames('transaction-toast-icon',
+                {
+                  'transaction-toast-icon-failed': this.toastDataState.iconClassName === 'danger',
+                  'transaction-toast-icon-pending': this.toastDataState.iconClassName === 'warning',
+                  'transaction-toast-icon-success': this.toastDataState.iconClassName === 'success',
+
+                })}
             />
           ) : (
             <div
               class={classNames('transaction-toast-icon', {
                 'transaction-toast-icon-failed': transaction.status === 'fail' || transaction.status === 'invalid',
+                'transaction-toast-icon-pending': transaction.status === 'pending',
+                'transaction-toast-icon-success': transaction.status === 'success',
               })}
             >
               <TransactionAssetIcon transaction={transaction} iconSize={IconSizeEnumType.small} />
