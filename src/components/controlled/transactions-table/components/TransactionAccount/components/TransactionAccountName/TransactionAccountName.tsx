@@ -1,5 +1,6 @@
 import { h } from '@stencil/core';
 import classNames from 'classnames';
+import { Trim } from 'common/Trim/Trim';
 
 // prettier-ignore
 const styles = {
@@ -28,7 +29,7 @@ export function TransactionAccountName({ address, dataTestId, description, name,
     }
 
     return (
-        <mvx-trim
+        <Trim
             text={address}
             class={classNames(className, styles.transactionAccountName)}
             dataTestId={dataTestId}

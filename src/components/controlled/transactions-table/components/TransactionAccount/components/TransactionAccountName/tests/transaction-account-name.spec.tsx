@@ -1,5 +1,6 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { TransactionAccountName } from '../TransactionAccountName';
 
 describe('TransactionAccountName tests', () => {
@@ -35,7 +36,28 @@ describe('TransactionAccountName tests', () => {
     });
 
     expect(page.root).toEqualHtml(`
-      <mvx-trim text="erd1q..." class="transaction-account-name mvx:w-max mvx:truncate"></mvx-trim>
+      <div class="mvx:flex mvx:max-w-full mvx:overflow-hidden mvx:relative mvx:truncate mvx:w-max mvx:whitespace-nowrap transaction-account-name trim" data-testid="${DataTestIdsEnum.trim}">
+        <div class="mvx:!text-inherit mvx:absolute mvx:leading-5 mvx:relative mvx:text-transparent trim-full trim-full-visible" data-testid="${DataTestIdsEnum.trimFullAddress}">
+          erd1q...
+        </div>
+        <div class="mvx:hidden trim-wrapper">
+          <div class="mvx:flex-shrink mvx:overflow-hidden mvx:text-[1px] mvx:text-ellipsis mvx:text-left trim-left-wrapper">
+            <div class="mvx:-webkit-letter-spacing mvx:inline mvx:leading-5 mvx:pointer-events-none mvx:select-none mvx:text-base trim-left" style="font-size: 1rem;">
+              erd1
+            </div>
+          </div>
+          <div class="mvx:block mvx:flex-shrink-0 mvx:pointer-events-none mvx:select-none trim-ellipsis-wrapper">
+            <div class="mvx:block mvx:leading-5 trim-ellipsis">
+              ...
+            </div>
+          </div>
+          <div class="mvx:flex-shrink mvx:overflow-hidden mvx:text-[1px] mvx:text-ellipsis mvx:text-right mvx:whitespace-nowrap trim-right-wrapper" style="direction: rtl;">
+            <div class="mvx:-webkit-letter-spacing mvx:inline mvx:leading-5 mvx:pointer-events-none mvx:select-none mvx:text-base mvx:text-clip trim-right" style="font-size: 1rem;">
+              q...
+            </div>
+          </div>
+        </div>
+      </div>
     `);
   });
 
@@ -52,7 +74,28 @@ describe('TransactionAccountName tests', () => {
     });
 
     expect(page.root).toEqualHtml(`
-      <mvx-trim text="erd1q..." class="transaction-account-name mvx:w-max mvx:truncate"></mvx-trim>
+      <div class="mvx:flex mvx:max-w-full mvx:overflow-hidden mvx:relative mvx:truncate mvx:w-max mvx:whitespace-nowrap transaction-account-name trim" data-testid="${DataTestIdsEnum.trim}">
+        <div class="mvx:!text-inherit mvx:absolute mvx:leading-5 mvx:relative mvx:text-transparent trim-full trim-full-visible" data-testid="${DataTestIdsEnum.trimFullAddress}">
+          erd1q...
+        </div>
+        <div class="mvx:hidden trim-wrapper">
+          <div class="mvx:flex-shrink mvx:overflow-hidden mvx:text-[1px] mvx:text-ellipsis mvx:text-left trim-left-wrapper">
+            <div class="mvx:-webkit-letter-spacing mvx:inline mvx:leading-5 mvx:pointer-events-none mvx:select-none mvx:text-base trim-left" style="font-size: 1rem;">
+              erd1
+            </div>
+          </div>
+          <div class="mvx:block mvx:flex-shrink-0 mvx:pointer-events-none mvx:select-none trim-ellipsis-wrapper">
+            <div class="mvx:block mvx:leading-5 trim-ellipsis">
+              ...
+            </div>
+          </div>
+          <div class="mvx:flex-shrink mvx:overflow-hidden mvx:text-[1px] mvx:text-ellipsis mvx:text-right mvx:whitespace-nowrap trim-right-wrapper" style="direction: rtl;">
+            <div class="mvx:-webkit-letter-spacing mvx:inline mvx:leading-5 mvx:pointer-events-none mvx:select-none mvx:text-base mvx:text-clip trim-right" style="font-size: 1rem;">
+              q...
+            </div>
+          </div>
+        </div>
+      </div>
     `);
   });
 

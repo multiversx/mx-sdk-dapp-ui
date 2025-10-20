@@ -51,7 +51,7 @@ export function Trim({
                     <div class={styles.trimEllipsis}>{ELLIPSIS}</div>
                 </div>
 
-                <div class={styles.trimRightWrapper}>
+                <div class={styles.trimRightWrapper} style={{ direction: 'rtl' }}>
                     <div class={styles.trimRight} style={{ fontSize: trimFontSize }}>
                         {rightHandText}
                     </div>

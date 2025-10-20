@@ -3,6 +3,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionRowType } from '../../transactions-table.type';
 import { TransactionIcon } from '../TransactionIcon';
+import { Trim } from 'common/Trim/Trim';
 
 // prettier-ignore
 const styles = {
@@ -35,7 +36,7 @@ export function TransactionHash({ transaction, class: className }: TransactionHa
                 link={transaction.link}
                 class={styles.transactionHashExplorerLink}
             >
-                <mvx-trim text={transaction.txHash} />
+                <Trim text={transaction.txHash} />
             </mvx-explorer-link>
         </div>
     );
