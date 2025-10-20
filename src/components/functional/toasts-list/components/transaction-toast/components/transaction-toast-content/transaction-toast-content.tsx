@@ -36,9 +36,6 @@ export class TransactionToastContent {
     const showAmount = this.transactions.length === 1 && transaction?.amount;
     const showExplorerLinkButton = transaction?.link && this.transactions.length === 1;
     const amount = transaction && getAmountParts(transaction.amount);
-    const isBatch = this.transactions.length > 1;
-    const showPrimaryIcon = !isBatch && (
-      transaction.asset == null || transaction.asset.imageUrl || transaction.asset.icon || transaction.asset.text);
     const showTooltip = showAmount && amount.label.length > 10;
 
     return (
@@ -50,7 +47,7 @@ export class TransactionToastContent {
         data-testid={DataTestIdsEnum.transactionToastContent}
       >
         <div class="transaction-toast-content">
-          {!showPrimaryIcon && this.toastDataState.icon ? (
+          {this.toastDataState.icon ? (
             <Icon
               name={this.toastDataState.icon}
               class={classNames('transaction-toast-icon',
