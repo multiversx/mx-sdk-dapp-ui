@@ -28,6 +28,14 @@
     color: var(--mvx-error-color);
   }
 
+  &.transaction-toast-icon-pending {
+    color: var(--mvx-pending-color);
+  }
+
+  &.transaction-toast-icon-success {
+    color: var(--mvx-success-color);
+  }
+
   svg,
   img,
   .svg-inline--fa {

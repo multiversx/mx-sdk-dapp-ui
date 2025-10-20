@@ -1,4 +1,5 @@
 import { IconNamesEnum } from "common/Icon/icon.types";
+import { TransactionStatusEnum } from "constants/transactionStatus.enum";
 
 export interface ITransactionListItemAsset {
   imageUrl?: string;
@@ -19,7 +20,7 @@ export interface ITransactionListItem {
   directionLabel?: string;
   amount?: string;
   hash: string;
-  status: string;
+  status: `${TransactionStatusEnum}`;
   link: string;
   timestamp: number;
 }

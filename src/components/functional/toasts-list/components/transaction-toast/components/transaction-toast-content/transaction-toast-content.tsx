@@ -8,6 +8,8 @@ import type { ITransactionListItem } from 'components/visual/transaction-list-it
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { IToastDataState } from '../../transaction-toast.type';
+import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
+import { getIsTransactionFailed } from 'utils/getTransactionStatus';
 import { FormatAmount } from 'common/FormatAmount/FormatAmount';
 
 // prettier-ignore
@@ -36,8 +38,6 @@ export class TransactionToastContent {
     const showAmount = this.transactions.length === 1 && transaction?.amount;
     const showExplorerLinkButton = transaction?.link && this.transactions.length === 1;
     const amount = transaction && getAmountParts(transaction.amount);
-    const showPrimaryIcon =
-      transaction.asset == null || transaction.asset.imageUrl || transaction.asset.icon || transaction.asset.text;
     const showTooltip = showAmount && amount.label.length > 10;
 
     return (
@@ -49,15 +49,23 @@ export class TransactionToastContent {
         data-testid={DataTestIdsEnum.transactionToastContent}
       >
         <div class="transaction-toast-content">
-          {!showPrimaryIcon && this.toastDataState.icon ? (
+          {this.toastDataState.icon ? (
             <Icon
               name={this.toastDataState.icon}
-              class={`transaction-toast-icon ${this.toastDataState.iconClassName ?? ''}`}
+              class={classNames('transaction-toast-icon',
+                {
+                  'transaction-toast-icon-failed': this.toastDataState.iconClassName === 'danger',
+                  'transaction-toast-icon-pending': this.toastDataState.iconClassName === 'warning',
+                  'transaction-toast-icon-success': this.toastDataState.iconClassName === 'success',
+
+                })}
             />
           ) : (
             <div
               class={classNames('transaction-toast-icon', {
-                'transaction-toast-icon-failed': transaction.status === 'fail' || transaction.status === 'invalid',
+                'transaction-toast-icon-failed': getIsTransactionFailed(transaction.status),
+                'transaction-toast-icon-pending': transaction.status === TransactionStatusEnum.pending,
+                'transaction-toast-icon-success': transaction.status === TransactionStatusEnum.success,
               })}
             >
               <TransactionAssetIcon transaction={transaction} iconSize={IconSizeEnumType.small} />
@@ -87,7 +95,7 @@ export class TransactionToastContent {
                   class={classNames('transaction-toast-amount', {
                     'amount-negative': transaction.amount.startsWith('-'),
                     'amount-positive': !transaction.amount.startsWith('-'),
-                    'transaction-toast-failed': transaction.status === 'fail' || transaction.status === 'invalid',
+                    'transaction-toast-failed': getIsTransactionFailed(transaction.status)
                   })}
                   isValid
                   label={amount.label}

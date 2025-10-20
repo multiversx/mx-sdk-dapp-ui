@@ -4,6 +4,7 @@ import { IconSizeEnumType, TransactionAssetIcon } from 'common/TransactionAssetI
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
 
 import type { ITransactionListItem } from './transaction-list-item.types';
+import { getIsTransactionFailed } from 'utils/getTransactionStatus';
 import { FormatAmount } from 'common/FormatAmount/FormatAmount';
 
 @Component({
@@ -25,7 +26,7 @@ export class TransactionListItem {
         <div class="transaction-item">
           <div
             class={classNames('transaction-icon', {
-              'transaction-icon-failed': ['fail', 'invalid'].includes(this.transaction.status),
+              'transaction-icon-failed': getIsTransactionFailed(this.transaction.status),
             })}
           >
             <TransactionAssetIcon transaction={this.transaction} iconSize={IconSizeEnumType.large} />
@@ -50,7 +51,7 @@ export class TransactionListItem {
                   class={classNames('transaction-amount', {
                     'amount-negative': this.transaction.amount.startsWith('-'),
                     'amount-positive': !this.transaction.amount.startsWith('-'),
-                    'transaction-failed': this.transaction.status === 'fail' || this.transaction.status === 'invalid',
+                    'transaction-failed': getIsTransactionFailed(this.transaction.status),
                   })}
                   isValid
                   label={amount.label}

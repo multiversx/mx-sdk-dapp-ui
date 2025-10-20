@@ -2,6 +2,7 @@ import { Component, Fragment, h, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
 
 const DEFAULT_INFINITE_ANIMATION_DURATION = 30;
+const finishedProgressStatusesMap: string[] = [];
 
 @Component({
   tag: 'mvx-transaction-toast-progress',
@@ -14,6 +15,7 @@ export class ToastProgress {
   @Prop() startTime?: number;
   @Prop() endTime?: number;
   @Prop() isStatusPending?: boolean;
+  @Prop() toastId?: string;
 
   @State() currentTimestamp: number = Date.now() / 1000;
   @State() hasTimeElapsed: boolean = false;
@@ -56,11 +58,18 @@ export class ToastProgress {
   private updateProgress() {
     const hasValidTimestamps = typeof this.startTime === 'number' && typeof this.endTime === 'number';
 
+    if (finishedProgressStatusesMap.includes(this.toastId)) {
+      this.shouldShowProgressBar = false;
+      this.hasTimeElapsed = true;
+      return;
+    }
+
     if (!hasValidTimestamps || this.startTime >= this.endTime) {
       this.shouldShowProgressBar = false;
       this.shouldQuickFill = true;
       clearTimeout(this.timeElapsedTimeoutReference);
       this.timeElapsedTimeoutReference = setTimeout(() => {
+        finishedProgressStatusesMap.push(this.toastId);
         this.hasTimeElapsed = true;
       }, 500);
       return;
@@ -87,6 +96,7 @@ export class ToastProgress {
       clearTimeout(this.timeElapsedTimeoutReference);
       this.timeElapsedTimeoutReference = setTimeout(
         () => {
+          finishedProgressStatusesMap.push(this.toastId);
           this.hasTimeElapsed = true;
         },
         this.expectedTransactionDuration * 1000 + 2000,
