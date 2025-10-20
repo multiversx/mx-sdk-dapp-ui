@@ -25,7 +25,7 @@ export class TransactionListItem {
         <div class="transaction-item">
           <div
             class={classNames('transaction-icon', {
-              'transaction-icon-failed': this.transaction.status === TransactionStatusEnum.fail || this.transaction.status === TransactionStatusEnum.invalid,
+              'transaction-icon-failed': this.transaction.status === TransactionStatusEnum.fail || TransactionStatusEnum.invalid,
             })}
           >
             <TransactionAssetIcon transaction={this.transaction} iconSize={IconSizeEnumType.large} />
@@ -50,7 +50,7 @@ export class TransactionListItem {
                   class={classNames('transaction-amount', {
                     'amount-negative': this.transaction.amount.startsWith('-'),
                     'amount-positive': !this.transaction.amount.startsWith('-'),
-                    'transaction-failed': this.transaction.status === TransactionStatusEnum.fail || this.transaction.status === TransactionStatusEnum.invalid,
+                    'transaction-failed': this.transaction.status === TransactionStatusEnum.fail || TransactionStatusEnum.invalid,
                   })}
                   isValid
                   label={amount.label}

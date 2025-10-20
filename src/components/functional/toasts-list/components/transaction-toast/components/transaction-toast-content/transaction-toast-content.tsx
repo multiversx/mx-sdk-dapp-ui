@@ -61,7 +61,7 @@ export class TransactionToastContent {
           ) : (
             <div
               class={classNames('transaction-toast-icon', {
-                'transaction-toast-icon-failed': transaction.status === TransactionStatusEnum.fail || transaction.status === TransactionStatusEnum.invalid,
+                'transaction-toast-icon-failed': transaction.status === TransactionStatusEnum.fail || TransactionStatusEnum.invalid,
                 'transaction-toast-icon-pending': transaction.status === TransactionStatusEnum.pending,
                 'transaction-toast-icon-success': transaction.status === TransactionStatusEnum.success,
               })}
@@ -93,7 +93,7 @@ export class TransactionToastContent {
                   class={classNames('transaction-toast-amount', {
                     'amount-negative': transaction.amount.startsWith('-'),
                     'amount-positive': !transaction.amount.startsWith('-'),
-                    'transaction-toast-failed': transaction.status === TransactionStatusEnum.fail || transaction.status === TransactionStatusEnum.invalid,
+                    'transaction-toast-failed': transaction.status === TransactionStatusEnum.fail || TransactionStatusEnum.invalid,
                   })}
                   isValid
                   label={amount.label}
