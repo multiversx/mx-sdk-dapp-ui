@@ -1,4 +1,4 @@
-import { TransactionStatusEnum } from "components";
+import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
 
 export function getIsTransactionFailed(status: `${TransactionStatusEnum}`) {
     return (
