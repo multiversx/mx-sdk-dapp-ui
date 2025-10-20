@@ -2,6 +2,8 @@ import { Component, h, Prop } from '@stencil/core';
 import { Icon } from 'common/Icon/Icon';
 import { IconNamesEnum } from 'common/Icon/icon.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
+import { getIsTransactionFailed } from 'utils/getTransactionStatus';
 
 const iconData: Record<string, IconNamesEnum> = {
   pending: IconNamesEnum.hourglass,
@@ -20,7 +22,7 @@ const transactionToastDetailsBodyClasses: Record<string, string> = {
 })
 export class TransactionDetailsBody {
   @Prop() transactionClass?: string = 'transaction-details-list-item';
-  @Prop() status?: string;
+  @Prop() status?: `${TransactionStatusEnum}`;
   @Prop() hash: string;
   @Prop() link: string;
   @Prop() index: string;
@@ -34,9 +36,9 @@ export class TransactionDetailsBody {
           <div
             class={{
               'transaction-details-list-item-icon': true,
-              'transaction-details-list-item-icon-success': this.status === 'success',
-              'transaction-details-list-item-icon-pending': this.status === 'pending',
-              'transaction-details-list-item-icon-fail': ['fail', 'invalid'].includes(this.status),
+              'transaction-details-list-item-icon-success': this.status === TransactionStatusEnum.success,
+              'transaction-details-list-item-icon-pending': this.status === TransactionStatusEnum.pending,
+              'transaction-details-list-item-icon-fail': getIsTransactionFailed(this.status),
             }}
           >
             <Icon name={statusIcon} />
