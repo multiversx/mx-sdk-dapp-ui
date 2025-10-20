@@ -15,6 +15,7 @@ import { ITransactionListItem } from "./components/visual/transaction-list-item/
 import { LocalJSX as JSX } from "@stencil/core";
 import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+import { TransactionStatusEnum } from "./constants/transactionStatus.enum";
 import { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
 import { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
 import { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
@@ -28,6 +29,7 @@ export { ITransactionListItem } from "./components/visual/transaction-list-item/
 export { LocalJSX as JSX } from "@stencil/core";
 export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+export { TransactionStatusEnum } from "./constants/transactionStatus.enum";
 export { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
 export { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
 export { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
@@ -359,7 +361,7 @@ export namespace Components {
         "hash": string;
         "index": string;
         "link": string;
-        "status"?: string;
+        "status"?: `${TransactionStatusEnum}`;
         /**
           * @default 'transaction-details-list-item'
          */
@@ -1525,7 +1527,7 @@ declare namespace LocalJSX {
         "hash"?: string;
         "index"?: string;
         "link"?: string;
-        "status"?: string;
+        "status"?: `${TransactionStatusEnum}`;
         /**
           * @default 'transaction-details-list-item'
          */

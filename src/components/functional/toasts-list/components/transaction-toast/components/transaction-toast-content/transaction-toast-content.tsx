@@ -8,6 +8,7 @@ import type { ITransactionListItem } from 'components/visual/transaction-list-it
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { IToastDataState } from '../../transaction-toast.type';
+import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
 
 // prettier-ignore
 const styles = {
@@ -63,9 +64,9 @@ export class TransactionToastContent {
           ) : (
             <div
               class={classNames('transaction-toast-icon', {
-                'transaction-toast-icon-failed': transaction.status === 'fail' || transaction.status === 'invalid',
-                'transaction-toast-icon-pending': transaction.status === 'pending',
-                'transaction-toast-icon-success': transaction.status === 'success',
+                'transaction-toast-icon-failed': transaction.status === TransactionStatusEnum.fail || transaction.status === TransactionStatusEnum.invalid,
+                'transaction-toast-icon-pending': transaction.status === TransactionStatusEnum.pending,
+                'transaction-toast-icon-success': transaction.status === TransactionStatusEnum.success,
               })}
             >
               <TransactionAssetIcon transaction={transaction} iconSize={IconSizeEnumType.small} />
@@ -95,7 +96,7 @@ export class TransactionToastContent {
                   class={classNames('transaction-toast-amount', {
                     'amount-negative': transaction.amount.startsWith('-'),
                     'amount-positive': !transaction.amount.startsWith('-'),
-                    'transaction-toast-failed': transaction.status === 'fail' || transaction.status === 'invalid',
+                    'transaction-toast-failed': transaction.status === TransactionStatusEnum.fail || transaction.status === TransactionStatusEnum.invalid,
                   })}
                   isValid
                   label={amount.label}

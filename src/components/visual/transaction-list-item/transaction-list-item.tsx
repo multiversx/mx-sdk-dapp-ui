@@ -2,6 +2,7 @@ import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { IconSizeEnumType, TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
+import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
 
 import type { ITransactionListItem } from './transaction-list-item.types';
 
@@ -24,7 +25,7 @@ export class TransactionListItem {
         <div class="transaction-item">
           <div
             class={classNames('transaction-icon', {
-              'transaction-icon-failed': ['fail', 'invalid'].includes(this.transaction.status),
+              'transaction-icon-failed': this.transaction.status === TransactionStatusEnum.fail || this.transaction.status === TransactionStatusEnum.invalid,
             })}
           >
             <TransactionAssetIcon transaction={this.transaction} iconSize={IconSizeEnumType.large} />
@@ -49,7 +50,7 @@ export class TransactionListItem {
                   class={classNames('transaction-amount', {
                     'amount-negative': this.transaction.amount.startsWith('-'),
                     'amount-positive': !this.transaction.amount.startsWith('-'),
-                    'transaction-failed': this.transaction.status === 'fail' || this.transaction.status === 'invalid',
+                    'transaction-failed': this.transaction.status === TransactionStatusEnum.fail || this.transaction.status === TransactionStatusEnum.invalid,
                   })}
                   isValid
                   label={amount.label}
