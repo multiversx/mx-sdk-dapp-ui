@@ -4,6 +4,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { TransactionRowType } from '../../transactions-table.type';
 import { TransactionIcon } from '../TransactionIcon';
 import { Trim } from 'common/Trim/Trim';
+import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
 
 // prettier-ignore
 const styles = {
@@ -31,13 +32,13 @@ export function TransactionHash({ transaction, class: className }: TransactionHa
         >
             <TransactionIcon iconInfo={transaction.iconInfo} class={styles.transactionHashIcon} />
 
-            <mvx-explorer-link
+            <ExplorerLink
                 dataTestId={DataTestIdsEnum.transactionLink}
                 link={transaction.link}
                 class={styles.transactionHashExplorerLink}
             >
                 <Trim text={transaction.txHash} />
-            </mvx-explorer-link>
+            </ExplorerLink>
         </div>
     );
 

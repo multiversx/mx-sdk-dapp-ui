@@ -6,6 +6,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import styles from './transactionValue.styles';
 import classNames from 'classnames';
 import { FormatAmount } from 'common/FormatAmount/FormatAmount';
+import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
 
 interface TransactionValuePropsType {
     class?: string;
@@ -41,7 +42,7 @@ export function TransactionValue({ value, class: className }: TransactionValuePr
             )}
 
             {value.link && (
-                <mvx-explorer-link
+                <ExplorerLink
                     link={value.link}
                     class={classNames({
                         [styles.transactionValueLink]: value.svgUrl,
@@ -64,7 +65,7 @@ export function TransactionValue({ value, class: className }: TransactionValuePr
                             </span>
                         )}
                     </div>
-                </mvx-explorer-link>
+                </ExplorerLink>
             )}
 
             {value.titleText && (

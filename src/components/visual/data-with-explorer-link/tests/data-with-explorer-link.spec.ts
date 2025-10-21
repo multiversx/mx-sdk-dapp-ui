@@ -1,7 +1,7 @@
 import { newSpecPage } from '@stencil/core/testing';
 
 import { CopyButton } from '../../copy-button/copy-button';
-import { ExplorerLink } from '../../explorer-link/explorer-link';
+import { ExplorerLink } from '../../../common/explorer-link/explorer-link';
 import { Tooltip } from '../../tooltip/tooltip';
 
 import { DataWithExplorerLink } from '../data-with-explorer-link';
