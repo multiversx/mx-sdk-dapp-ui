@@ -1,59 +1,36 @@
 .unlock-panel-footer {
   @apply mvx:mt-auto mvx:flex mvx:cursor-pointer mvx:relative mvx:p-6 mvx:z-1 mvx:rounded-2xl mvx:overflow-hidden;
-  border: 1px solid var(--mvx-border-color-primary);
-  background: var(--mvx-bg-accent-color);
-  box-shadow: 0px -8px 12px 12px var(--mvx-bg-color-primary);
+  @apply mvx:border mvx:border-outline mvx:bg-emphasize mvx:shadow-[0px_-8px_12px_12px_surface];
 
   &:hover .unlock-panel-footer-wrapper {
     @apply mvx:opacity-75;
   }
 
   .unlock-panel-footer-image {
-    @apply mvx:pointer-events-none mvx:-mt-8 mvx:mr-12 mvx:-mb-8 mvx:-ml-20 mvx:hidden mvx:max-h-48;
+    @apply mvx:pointer-events-none mvx:-mt-8 mvx:mr-12 mvx:-mb-8 mvx:-ml-20 mvx:hidden mvx:max-h-48 mvx:xs:flex;
 
-    @media (min-width: 480px) {
-      @apply mvx:flex;
-    }
   }
 
   .unlock-panel-footer-wrapper {
-    @apply mvx:flex mvx:flex-col mvx:transition-all mvx:duration-200 mvx:gap-2 mvx:flex-1 mvx:ease-in-out;
-
-    @media (min-width: 480px) {
-      @apply mvx:gap-4;
-    }
+    @apply mvx:flex mvx:flex-col mvx:transition-all mvx:duration-200 mvx:gap-2 mvx:flex-1 mvx:ease-in-out mvx:xs:gap-4;
 
     .unlock-panel-footer-title {
-      @apply mvx:font-medium mvx:leading-none mvx:text-base;
-      color: var(--mvx-text-color-primary);
-
-      @media (min-width: 480px) {
-        @apply mvx:pt-4 mvx:text-xl;
-      }
+      @apply mvx:font-medium mvx:leading-none mvx:text-base mvx:text-primary mvx:xs:pt-4 mvx:xs:text-xl;
     }
 
     .unlock-panel-footer-subtitle {
-      @apply mvx:text-base mvx:leading-tight mvx:opacity-40;
-      color: var(--mvx-text-color-primary);
+      @apply mvx:text-base mvx:leading-tight mvx:opacity-40 mvx:text-primary;
 
       &.desktop {
-        @apply mvx:hidden;
-
-        @media (min-width: 480px) {
-          @apply mvx:flex;
-        }
+        @apply mvx:hidden mvx:xs:flex;
       }
 
       &.mobile {
-        @apply mvx:text-xs;
-
-        @media (min-width: 480px) {
-          @apply mvx:hidden;
-        }
+        @apply mvx:text-xs mvx:xs:hidden;
       }
 
       .unlock-panel-footer-subtitle-link {
-        color: var(--mvx-text-accent-color);
+        @apply mvx:text-accent;
       }
     }
   }
