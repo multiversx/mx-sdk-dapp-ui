@@ -1,6 +1,5 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
-import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionAccountType, TransactionRowType } from '../../../transactions-table.type';
 import { TransactionHash } from '../TransactionHash';
