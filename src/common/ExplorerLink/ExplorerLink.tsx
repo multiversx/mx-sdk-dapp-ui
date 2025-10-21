@@ -14,8 +14,13 @@ interface ExplorerLinkPropsType {
     link: string;
 }
 
-export function ExplorerLink({ class: className, iconClass, dataTestId, link }: ExplorerLinkPropsType, children: any) {
+export function ExplorerLink({ class: className, iconClass, dataTestId, link }: ExplorerLinkPropsType, children: JSX.Element) {
+    if (!link) {
+        return null;
+    }
+
     const hasToAddress = link.split('/').length > 3;
+
     return (
         <a
             target="_blank"
