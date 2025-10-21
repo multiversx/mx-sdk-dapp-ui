@@ -106,11 +106,11 @@ describe('TransactionValue tests', () => {
 
     expect(page.root).toEqualHtml(`
       <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
-        <mvx-explorer-link class="mvx:truncate transaction-value-text-truncate" link="https://example.com">
+        <a class="explorer-link mvx:decoration-0 mvx:flex mvx:truncate transaction-value-text-truncate" href="https://example.com" rel="noreferrer" target="_blank">
           <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
             <span>Example Link</span>
           </div>
-        </mvx-explorer-link>
+        </a>
       </div>
     `);
   });
@@ -134,12 +134,12 @@ describe('TransactionValue tests', () => {
 
     expect(page.root).toEqualHtml(`
       <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
-        <mvx-explorer-link class="mvx:flex transaction-value-link" link="https://example.com">
+        <a class="explorer-link mvx:decoration-0 mvx:flex transaction-value-link" href="https://example.com" rel="noreferrer" target="_blank">
           <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
             <img alt="Example Icon" class="mvx:border mvx:border-gray-200 mvx:h-6 mvx:min-h-6 mvx:min-w-6 mvx:overflow-hidden mvx:rounded-full mvx:text-transparent mvx:w-6 transaction-value-img" src="https://example.com/icon.svg">
             <span>Example Link</span>
           </div>
-        </mvx-explorer-link>
+        </a>
       </div>
     `);
   });
@@ -162,13 +162,13 @@ describe('TransactionValue tests', () => {
     });
 
     expect(page.root).toEqualHtml(`
-      <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
-        <mvx-explorer-link class="mvx:truncate transaction-value-text-truncate" link="https://example.com">
-          <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
-            <span class="mvx:truncate transaction-value-text-truncate">Example Link</span>
-          </div>
-        </mvx-explorer-link>
-      </div>
+        <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
+          <a class="explorer-link mvx:decoration-0 mvx:flex mvx:truncate transaction-value-text-truncate" href="https://example.com" rel="noreferrer" target="_blank">
+            <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
+              <span class="mvx:truncate transaction-value-text-truncate">Example Link</span>
+            </div>
+          </a>
+        </div>
     `);
   });
 
@@ -191,11 +191,11 @@ describe('TransactionValue tests', () => {
 
     expect(page.root).toEqualHtml(`
       <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
-        <mvx-explorer-link class="mvx:truncate transaction-value-text-truncate" link="https://example.com">
+        <a class="explorer-link mvx:decoration-0 mvx:flex mvx:truncate transaction-value-text-truncate" href="https://example.com" rel="noreferrer" target="_blank">
           <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
             <span>Example Link</span>
           </div>
-        </mvx-explorer-link>
+        </a>
         <mvx-tooltip>
           Title Text
         </mvx-tooltip>
