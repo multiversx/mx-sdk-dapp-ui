@@ -1,5 +1,5 @@
 import { Component, Element, h, Prop } from '@stencil/core';
-import { ExplorerLink as ExplorerLinkCompoment } from 'common/ExplorerLink/ExplorerLink';
+import { ExplorerLink as ExplorerLinkComponent } from 'common/ExplorerLink/ExplorerLink';
 
 @Component({
   tag: 'mvx-explorer-link',
@@ -16,14 +16,13 @@ export class ExplorerLink {
 
   render() {
     return (
-      <ExplorerLinkCompoment
+      <ExplorerLinkComponent
         class={this.class}
         iconClass={this.iconClass}
         dataTestId={this.dataTestId}
         link={this.link}
-      >
-        <slot />
-      </ExplorerLinkCompoment>
+        hasHostElement={this.hostElement}
+      />
     );
   }
 }

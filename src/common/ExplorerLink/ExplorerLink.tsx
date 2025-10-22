@@ -12,14 +12,13 @@ interface ExplorerLinkPropsType {
     iconClass?: string;
     dataTestId?: string;
     link: string;
+    hasHostElement?: HTMLElement;
 }
 
-export function ExplorerLink({ class: className, iconClass, dataTestId, link }: ExplorerLinkPropsType, children: JSX.Element) {
+export function ExplorerLink({ class: className, iconClass, dataTestId, link, hasHostElement }: ExplorerLinkPropsType, children?: JSX.Element) {
     if (!link) {
         return null;
     }
-
-    const hasToAddress = link.split('/').length > 3;
 
     return (
         <a
@@ -29,13 +28,12 @@ export function ExplorerLink({ class: className, iconClass, dataTestId, link }: 
             data-testid={dataTestId}
             class={{ [styles.explorerLink]: true, [className]: Boolean(className) }}
         >
-            {children[0].$children$ !== null ? children : (
-                hasToAddress &&
-                <Icon
+            {hasHostElement ?
+                (<Icon
                     name="arrow-up-right-from-square-icon"
                     class={{ [styles.explorerLinkIcon]: true, [iconClass]: Boolean(iconClass) }}
-                />
-            )}
+                />)
+                : children}
         </a>
     );
 
