@@ -2,6 +2,7 @@ import { h } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionRowType } from '../../transactions-table.type';
+import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
 
 // prettier-ignore
 const styles = {
@@ -18,23 +19,23 @@ interface TransactionShardsPropsType {
 export function TransactionShards({ transaction, class: className }: TransactionShardsPropsType) {
     return (
         <div class={{ [className]: Boolean(className), [styles.transactionShards]: true }}>
-            <mvx-explorer-link
+            <ExplorerLink
                 link={transaction.sender.shardLink}
                 class={styles.explorerLink}
                 data-testid={DataTestIdsEnum.shardFromLink}
             >
                 <span data-testid={DataTestIdsEnum.senderShard}>{transaction.sender.shard}</span>
-            </mvx-explorer-link>
+            </ExplorerLink>
 
             <mvx-arrow-right-icon class={styles.transactionShardsArrowIcon} />
 
-            <mvx-explorer-link
+            <ExplorerLink
                 link={transaction.receiver.shardLink}
                 data-testid={DataTestIdsEnum.shardToLink}
                 class={styles.explorerLink}
             >
                 <span data-testid={DataTestIdsEnum.receiverShard}>{transaction.receiver.shard}</span>
-            </mvx-explorer-link>
+            </ExplorerLink>
         </div>
     );
 }

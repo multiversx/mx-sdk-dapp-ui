@@ -10,6 +10,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IToastDataState } from '../../transaction-toast.type';
 import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
 import { getIsTransactionFailed } from 'utils/getTransactionStatus';
+import { FormatAmount } from 'common/FormatAmount/FormatAmount';
 
 // prettier-ignore
 const styles = {
@@ -90,7 +91,7 @@ export class TransactionToastContent {
                 )}
               </div>
               {showAmount && (
-                <mvx-format-amount
+                <FormatAmount
                   class={classNames('transaction-toast-amount', {
                     'amount-negative': transaction.amount.startsWith('-'),
                     'amount-positive': !transaction.amount.startsWith('-'),

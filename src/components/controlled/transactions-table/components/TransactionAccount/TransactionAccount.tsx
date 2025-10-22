@@ -4,6 +4,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionAccountType } from '../../transactions-table.type';
 import { TransactionAccountName } from './components';
+import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
 
 // prettier-ignore
 const styles = {
@@ -32,13 +33,13 @@ export function TransactionAccount({ account, dataTestId, scope, showLockedAccou
             {account.isContract && <Icon name="contract" />}
 
             {account.showLink ? (
-                <mvx-explorer-link
+                <ExplorerLink
                     link={account.link}
                     data-testid={explorerLinkDataTestId}
                     class={styles.transactionAccountExplorerLink}
                 >
                     <span>{account.address}</span>
-                </mvx-explorer-link>
+                </ExplorerLink>
             ) : (
                 <TransactionAccountName
                     name={account.name}
