@@ -21,7 +21,7 @@ export class ExplorerLink {
         iconClass={this.iconClass}
         dataTestId={this.dataTestId}
         link={this.link}
-        hasHostElement={this.hostElement}
+        hasNoChildren={Boolean(this.hostElement)}
       />
     );
   }
