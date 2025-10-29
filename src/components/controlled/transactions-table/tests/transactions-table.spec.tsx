@@ -1,5 +1,6 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
+import { IconNamesEnum } from 'common/Icon/icon.types';
 
 import { TransactionsTable } from '../transactions-table';
 import type { TransactionRowType } from '../transactions-table.type';

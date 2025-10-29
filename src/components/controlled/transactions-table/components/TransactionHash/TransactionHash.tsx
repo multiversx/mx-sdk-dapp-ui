@@ -1,10 +1,10 @@
 import { h } from '@stencil/core';
+import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
+import { Trim } from 'common/Trim/Trim';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionRowType } from '../../transactions-table.type';
 import { TransactionIcon } from '../TransactionIcon';
-import { Trim } from 'common/Trim/Trim';
-import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
 
 // prettier-ignore
 const styles = {
@@ -14,32 +14,31 @@ const styles = {
 } satisfies Record<string, string>;
 
 interface TransactionHashPropsType {
-    class?: string;
-    transaction: TransactionRowType;
+  class?: string;
+  transaction: TransactionRowType;
 }
 
 export function TransactionHash({ transaction, class: className }: TransactionHashPropsType) {
-    if (!transaction) {
-        return null;
-    }
+  if (!transaction) {
+    return null;
+  }
 
-    return (
-        <div
-            class={{
-                [styles.transactionHash]: true,
-                [className]: Boolean(className),
-            }}
-        >
-            <TransactionIcon iconInfo={transaction.iconInfo} class={styles.transactionHashIcon} />
+  return (
+    <div
+      class={{
+        [styles.transactionHash]: true,
+        [className]: Boolean(className),
+      }}
+    >
+      <TransactionIcon iconInfo={transaction.iconInfo} class={styles.transactionHashIcon} />
 
-            <ExplorerLink
-                dataTestId={DataTestIdsEnum.transactionLink}
-                link={transaction.link}
-                class={styles.transactionHashExplorerLink}
-            >
-                <Trim text={transaction.txHash} />
-            </ExplorerLink>
-        </div>
-    );
-
+      <ExplorerLink
+        dataTestId={DataTestIdsEnum.transactionLink}
+        link={transaction.link}
+        class={styles.transactionHashExplorerLink}
+      >
+        <Trim text={transaction.txHash} />
+      </ExplorerLink>
+    </div>
+  );
 }

@@ -1,6 +1,7 @@
 import { h } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { ELLIPSIS } from 'constants/htmlStrings';
+
 import styles from './trim.styles'
 
 interface TrimPropsType {

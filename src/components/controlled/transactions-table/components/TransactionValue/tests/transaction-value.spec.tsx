@@ -1,6 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import type { TransactionValueType } from 'components/controlled/transactions-table/transactions-table.type';
+
 import { TransactionValue } from '../TransactionValue';
 
 describe('TransactionValue tests', () => {

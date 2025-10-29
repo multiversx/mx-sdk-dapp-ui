@@ -1,16 +1,16 @@
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
+import { FormatAmount } from 'common/FormatAmount/FormatAmount';
 import { Icon } from 'common/Icon';
 import { IconSizeEnumType, TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-
-import type { IToastDataState } from '../../transaction-toast.type';
 import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
 import { getIsTransactionFailed } from 'utils/getTransactionStatus';
-import { FormatAmount } from 'common/FormatAmount/FormatAmount';
+
+import type { IToastDataState } from '../../transaction-toast.type';
 
 // prettier-ignore
 const styles = {
@@ -52,13 +52,11 @@ export class TransactionToastContent {
           {this.toastDataState.icon ? (
             <Icon
               name={this.toastDataState.icon}
-              class={classNames('transaction-toast-icon',
-                {
-                  'transaction-toast-icon-failed': this.toastDataState.iconClassName === 'danger',
-                  'transaction-toast-icon-pending': this.toastDataState.iconClassName === 'warning',
-                  'transaction-toast-icon-success': this.toastDataState.iconClassName === 'success',
-
-                })}
+              class={classNames('transaction-toast-icon', {
+                'transaction-toast-icon-failed': this.toastDataState.iconClassName === 'danger',
+                'transaction-toast-icon-pending': this.toastDataState.iconClassName === 'warning',
+                'transaction-toast-icon-success': this.toastDataState.iconClassName === 'success',
+              })}
             />
           ) : (
             <div
@@ -95,7 +93,7 @@ export class TransactionToastContent {
                   class={classNames('transaction-toast-amount', {
                     'amount-negative': transaction.amount.startsWith('-'),
                     'amount-positive': !transaction.amount.startsWith('-'),
-                    'transaction-toast-failed': getIsTransactionFailed(transaction.status)
+                    'transaction-toast-failed': getIsTransactionFailed(transaction.status),
                   })}
                   isValid
                   label={amount.label}

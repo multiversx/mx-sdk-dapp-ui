@@ -1,5 +1,5 @@
-import { IconNamesEnum } from "common/Icon/icon.types";
-import { TransactionStatusEnum } from "constants/transactionStatus.enum";
+import type { IconNamesEnum } from 'common/Icon/icon.types';
+import type { TransactionStatusEnum } from 'constants/transactionStatus.enum';
 
 export interface ITransactionListItemAsset {
   imageUrl?: string;

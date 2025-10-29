@@ -1,11 +1,10 @@
 import { newSpecPage } from '@stencil/core/testing';
-
-import { CopyButton } from '../../copy-button/copy-button';
-import { ExplorerLink } from '../../../common/explorer-link/explorer-link';
-import { Tooltip } from '../../tooltip/tooltip';
-
-import { DataWithExplorerLink } from '../data-with-explorer-link';
 import { Trim } from 'common/Trim/Trim';
+
+import { ExplorerLink } from '../../../common/explorer-link/explorer-link';
+import { CopyButton } from '../../copy-button/copy-button';
+import { Tooltip } from '../../tooltip/tooltip';
+import { DataWithExplorerLink } from '../data-with-explorer-link';
 
 // Mock ResizeObserver
 global.ResizeObserver = class ResizeObserver {

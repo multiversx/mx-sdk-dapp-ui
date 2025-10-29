@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Fixed main conflicts with main branch](https://github.com/multiversx/mx-sdk-dapp-ui/pull/257)
+
 - [Added enum for transaction status](https://github.com/multiversx/mx-sdk-dapp-ui/pull/254)
 
 - [Fixed icons on batch transactions toast](https://github.com/multiversx/mx-sdk-dapp-ui/pull/253)

@@ -1,6 +1,6 @@
 // match these interfaces with src/path-to-file.type.ts from sdk-dapp
 import type { JSX } from '@stencil/core';
-import { IconNamesEnum } from 'common/Icon/icon.types';
+import type { IconNamesEnum } from 'common/Icon/icon.types';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 export interface ITransactionProgressState {
   progressClass?: string;
