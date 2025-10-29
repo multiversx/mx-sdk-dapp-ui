@@ -1,7 +1,7 @@
 import { Component, h, Prop, State } from '@stencil/core';
+import { Trim as TrimComponent } from 'common/Trim/Trim';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { safeWindow } from 'constants/window.constants';
-import { Trim as TrimComponent } from 'common/Trim/Trim';
 
 @Component({
   tag: 'mvx-trim',
@@ -66,14 +66,16 @@ export class Trim {
   };
 
   render() {
-    return <TrimComponent
-      class={this.class}
-      dataTestId={this.dataTestId}
-      text={this.text}
-      shouldTrim={this.shouldTrim}
-      trimFontSize={this.trimFontSize}
-      onTrimElementReference={this.handleTrimElementReference.bind(this)}
-      onFullWidthTrimElementReference={this.handleFullWidthTrimElementReference.bind(this)}
-    />;
+    return (
+      <TrimComponent
+        class={this.class}
+        dataTestId={this.dataTestId}
+        text={this.text}
+        shouldTrim={this.shouldTrim}
+        trimFontSize={this.trimFontSize}
+        onTrimElementReference={this.handleTrimElementReference.bind(this)}
+        onFullWidthTrimElementReference={this.handleFullWidthTrimElementReference.bind(this)}
+      />
+    );
   }
 }

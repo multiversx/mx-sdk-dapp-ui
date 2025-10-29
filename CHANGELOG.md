@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [[0.1.0](https://github.com/multiversx/mx-sdk-dapp-ui/pull/256)] - 2025-10-29
 
 - [Changed ppu to gasPriceOption in sign transactions panel](https://github.com/multiversx/mx-sdk-dapp-ui/pull/255)
+- [Fixed main conflicts with main branch](https://github.com/multiversx/mx-sdk-dapp-ui/pull/257)
 - [Added enum for transaction status](https://github.com/multiversx/mx-sdk-dapp-ui/pull/254)
 - [Fixed icons on batch transactions toast](https://github.com/multiversx/mx-sdk-dapp-ui/pull/253)
 - [Fixed finished toasts loader](https://github.com/multiversx/mx-sdk-dapp-ui/pull/252)

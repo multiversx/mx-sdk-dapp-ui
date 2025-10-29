@@ -1,4 +1,4 @@
-import { IconNamesEnum } from "common/Icon/icon.types";
+import type { IconNamesEnum } from "common/Icon/icon.types";
 
 export type TransactionRowType = {
   age: TransactionAgeType;
