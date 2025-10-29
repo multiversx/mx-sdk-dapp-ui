@@ -13,41 +13,38 @@ const styles = {
 } satisfies Record<string, string>;
 
 interface TransactionAccountPropsType {
-    account: TransactionAccountType;
-    class?: string;
-    dataTestId?: string;
-    scope: 'receiver' | 'sender';
-    showLockedAccounts: boolean;
+  account: TransactionAccountType;
+  class?: string;
+  dataTestId?: string;
+  scope: 'receiver' | 'sender';
+  showLockedAccounts: boolean;
 }
 
-export function TransactionAccount({ account, dataTestId, scope, showLockedAccounts = false, class: className }: TransactionAccountPropsType) {
-    const explorerLinkDataTestId =
-        scope === 'receiver' ? DataTestIdsEnum.receiverLink : DataTestIdsEnum.senderLink;
+export function TransactionAccount({
+  account,
+  dataTestId,
+  scope,
+  showLockedAccounts = false,
+  class: className,
+}: TransactionAccountPropsType) {
+  const explorerLinkDataTestId = scope === 'receiver' ? DataTestIdsEnum.receiverLink : DataTestIdsEnum.senderLink;
 
-    return (
-        <div
-            data-testid={dataTestId}
-            class={{ [styles.transactionAccount]: true, [className]: Boolean(className) }}
+  return (
+    <div data-testid={dataTestId} class={{ [styles.transactionAccount]: true, [className]: Boolean(className) }}>
+      {showLockedAccounts && account.isTokenLocked && <Icon name="lock" />}
+      {account.isContract && <Icon name="contract" />}
+
+      {account.showLink ? (
+        <ExplorerLink
+          link={account.link}
+          data-testid={explorerLinkDataTestId}
+          class={styles.transactionAccountExplorerLink}
         >
-            {showLockedAccounts && account.isTokenLocked && <Icon name="lock" />}
-            {account.isContract && <Icon name="contract" />}
-
-            {account.showLink ? (
-                <ExplorerLink
-                    link={account.link}
-                    data-testid={explorerLinkDataTestId}
-                    class={styles.transactionAccountExplorerLink}
-                >
-                    <span>{account.address}</span>
-                </ExplorerLink>
-            ) : (
-                <TransactionAccountName
-                    name={account.name}
-                    description={account.description}
-                    address={account.address}
-                />
-            )}
-        </div>
-    );
+          <span>{account.address}</span>
+        </ExplorerLink>
+      ) : (
+        <TransactionAccountName name={account.name} description={account.description} address={account.address} />
+      )}
+    </div>
+  );
 }
-

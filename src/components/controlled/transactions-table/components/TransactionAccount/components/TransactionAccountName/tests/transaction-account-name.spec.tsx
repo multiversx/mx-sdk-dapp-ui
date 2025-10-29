@@ -27,12 +27,7 @@ describe('TransactionAccountName tests', () => {
   it('uses trim component when name is missing', async () => {
     const page = await newSpecPage({
       components: [],
-      template: () => (
-        <TransactionAccountName
-          address="erd1q..."
-          description=""
-        />
-      )
+      template: () => <TransactionAccountName address="erd1q..." description="" />,
     });
 
     expect(page.root).toEqualHtml(`
@@ -64,13 +59,7 @@ describe('TransactionAccountName tests', () => {
   it('handles empty name string', async () => {
     const page = await newSpecPage({
       components: [],
-      template: () => (
-        <TransactionAccountName
-          address="erd1q..."
-          name=""
-          description=""
-        />
-      )
+      template: () => <TransactionAccountName address="erd1q..." name="" description="" />,
     });
 
     expect(page.root).toEqualHtml(`
@@ -102,14 +91,7 @@ describe('TransactionAccountName tests', () => {
   it('applies correct class names', async () => {
     const page = await newSpecPage({
       components: [],
-      template: () => (
-        <TransactionAccountName
-          address="erd1q..."
-          name="Bob"
-          class="custom-class"
-          description=""
-        />
-      )
+      template: () => <TransactionAccountName address="erd1q..." name="Bob" class="custom-class" description="" />,
     });
 
     expect(page.root).toEqualHtml(`
@@ -122,13 +104,7 @@ describe('TransactionAccountName tests', () => {
   it('handles missing dataTestId', async () => {
     const page = await newSpecPage({
       components: [],
-      template: () => (
-        <TransactionAccountName
-          address="erd1q..."
-          name="Charlie"
-          description=""
-        />
-      )
+      template: () => <TransactionAccountName address="erd1q..." name="Charlie" description="" />,
     });
 
     expect(page.root).toEqualHtml(`
@@ -141,13 +117,7 @@ describe('TransactionAccountName tests', () => {
   it('uses description as title when name exists', async () => {
     const page = await newSpecPage({
       components: [TransactionAccountName],
-      template: () => (
-        <TransactionAccountName
-          address="erd1q..."
-          name="Dave"
-          description="Dave's Savings"
-        />
-      )
+      template: () => <TransactionAccountName address="erd1q..." name="Dave" description="Dave's Savings" />,
     });
 
     expect(page.root).toEqualHtml(`
@@ -155,5 +125,5 @@ describe('TransactionAccountName tests', () => {
         Dave
       </div>
     `);
-  })
+  });
 });

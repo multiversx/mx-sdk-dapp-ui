@@ -14,32 +14,31 @@ const styles = {
 } satisfies Record<string, string>;
 
 interface TransactionHashPropsType {
-    class?: string;
-    transaction: TransactionRowType;
+  class?: string;
+  transaction: TransactionRowType;
 }
 
 export function TransactionHash({ transaction, class: className }: TransactionHashPropsType) {
-    if (!transaction) {
-        return null;
-    }
+  if (!transaction) {
+    return null;
+  }
 
-    return (
-        <div
-            class={{
-                [styles.transactionHash]: true,
-                [className]: Boolean(className),
-            }}
-        >
-            <TransactionIcon iconInfo={transaction.iconInfo} class={styles.transactionHashIcon} />
+  return (
+    <div
+      class={{
+        [styles.transactionHash]: true,
+        [className]: Boolean(className),
+      }}
+    >
+      <TransactionIcon iconInfo={transaction.iconInfo} class={styles.transactionHashIcon} />
 
-            <ExplorerLink
-                dataTestId={DataTestIdsEnum.transactionLink}
-                link={transaction.link}
-                class={styles.transactionHashExplorerLink}
-            >
-                <Trim text={transaction.txHash} />
-            </ExplorerLink>
-        </div>
-    );
-
+      <ExplorerLink
+        dataTestId={DataTestIdsEnum.transactionLink}
+        link={transaction.link}
+        class={styles.transactionHashExplorerLink}
+      >
+        <Trim text={transaction.txHash} />
+      </ExplorerLink>
+    </div>
+  );
 }

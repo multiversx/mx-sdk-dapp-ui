@@ -52,13 +52,11 @@ export class TransactionToastContent {
           {this.toastDataState.icon ? (
             <Icon
               name={this.toastDataState.icon}
-              class={classNames('transaction-toast-icon',
-                {
-                  'transaction-toast-icon-failed': this.toastDataState.iconClassName === 'danger',
-                  'transaction-toast-icon-pending': this.toastDataState.iconClassName === 'warning',
-                  'transaction-toast-icon-success': this.toastDataState.iconClassName === 'success',
-
-                })}
+              class={classNames('transaction-toast-icon', {
+                'transaction-toast-icon-failed': this.toastDataState.iconClassName === 'danger',
+                'transaction-toast-icon-pending': this.toastDataState.iconClassName === 'warning',
+                'transaction-toast-icon-success': this.toastDataState.iconClassName === 'success',
+              })}
             />
           ) : (
             <div
@@ -95,7 +93,7 @@ export class TransactionToastContent {
                   class={classNames('transaction-toast-amount', {
                     'amount-negative': transaction.amount.startsWith('-'),
                     'amount-positive': !transaction.amount.startsWith('-'),
-                    'transaction-toast-failed': getIsTransactionFailed(transaction.status)
+                    'transaction-toast-failed': getIsTransactionFailed(transaction.status),
                   })}
                   isValid
                   label={amount.label}
