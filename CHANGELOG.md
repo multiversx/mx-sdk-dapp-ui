@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [Fixed main conflicts with main branch](https://github.com/multiversx/mx-sdk-dapp-ui/pull/257)
 
+- [Added enum for transaction status](https://github.com/multiversx/mx-sdk-dapp-ui/pull/254)
+
+- [Fixed icons on batch transactions toast](https://github.com/multiversx/mx-sdk-dapp-ui/pull/253)
+
+- [Fixed finished toasts loader](https://github.com/multiversx/mx-sdk-dapp-ui/pull/252)
+
+- [Refactored utility components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/249)
+
 ## [[0.0.36](https://github.com/multiversx/mx-sdk-dapp-ui/pull/251)] - 2025-10-15
 
 - [Updated icons type](https://github.com/multiversx/mx-sdk-dapp-ui/pull/250)
