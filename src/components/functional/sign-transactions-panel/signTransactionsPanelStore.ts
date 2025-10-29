@@ -7,7 +7,7 @@ interface ITransactionState extends ISignTransactionsPanelData {
   onBack: () => void;
   onNext: () => void;
   onConfirm: () => void;
-  setPpuOption: (ppu: number) => void;
+  setGasPriceOption: (gasPriceOption: number) => void;
 }
 
 const initialState: ITransactionState = {
@@ -23,7 +23,7 @@ const initialState: ITransactionState = {
     currentIndex: 0,
     currentIndexToSign: 0,
     receiver: '',
-    ppuOptions: [],
+    gasPriceOptions: [],
     origin: '',
   },
   nftTransaction: null,
@@ -33,7 +33,7 @@ const initialState: ITransactionState = {
   onBack: null,
   onNext: null,
   onConfirm: null,
-  setPpuOption: null,
+  setGasPriceOption: null,
 };
 
 const store = createStore<ITransactionState>({
