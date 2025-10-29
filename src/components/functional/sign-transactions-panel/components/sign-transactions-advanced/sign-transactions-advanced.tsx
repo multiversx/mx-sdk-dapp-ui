@@ -19,22 +19,9 @@ export class SignTransactionsAdvanced {
     this.decodeMethod = method;
   }
 
-  get pricePerUnitOption() {
-    const {
-      commonData: { ppu, ppuOptions },
-    } = state;
-
-    if (ppuOptions.length === 0) {
-      return ppu;
-    }
-
-    const currentOption = ppuOptions.find(option => option.value === ppu);
-    return currentOption.value;
-  }
-
   render() {
     const {
-      commonData: { needsSigning, ppuOptions, gasLimit, gasPrice, egldLabel },
+      commonData: { needsSigning, gasPriceOptions, gasLimit, gasPrice, egldLabel, gasPriceOption },
     } = state;
 
     return (
@@ -48,15 +35,15 @@ export class SignTransactionsAdvanced {
               </span>
             </div>
             <div class="gas-speed-selector" data-testid={DataTestIdsEnum.signTransactionsAdvancedGasSpeedSelector}>
-              {ppuOptions.map(ppuOption => (
+              {gasPriceOptions.map(({ label, value }) => (
                 <button
-                  key={ppuOption.label}
+                  key={label}
                   disabled={!needsSigning}
-                  class={`speed-option ${this.pricePerUnitOption === ppuOption.value ? 'active' : ''}`}
+                  class={`speed-option ${gasPriceOption.toString() === value.toString() ? 'active' : ''}`}
                   data-testid={DataTestIdsEnum.signTransactionsAdvancedSpeedOption}
-                  onClick={() => state.setPpuOption(ppuOption.value)}
+                  onClick={() => state.setGasPriceOption(value)}
                 >
-                  <span class="speed-text">{ppuOption.label}</span>
+                  <span class="speed-text">{label}</span>
                 </button>
               ))}
             </div>
