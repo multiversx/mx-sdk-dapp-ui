@@ -1,10 +1,10 @@
 import { h } from '@stencil/core';
+import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
 import { Icon } from 'common/Icon';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionAccountType } from '../../transactions-table.type';
 import { TransactionAccountName } from './components';
-import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
 
 // prettier-ignore
 const styles = {

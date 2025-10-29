@@ -26,7 +26,6 @@ import {
   IToastDataState,
   ITransactionProgressState,
 } from './components/functional/toasts-list/components/transaction-toast/transaction-toast.type';
-import { TransactionStatusEnum } from './constants/transactionStatus.enum';
 import { TransactionRowType } from './components/controlled/transactions-table/transactions-table.type';
 import { IProviderBase, ProviderTypeEnum } from './types/provider.types';
 import { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from './components.d';
@@ -51,7 +50,6 @@ export {
   IToastDataState,
   ITransactionProgressState,
 } from './components/functional/toasts-list/components/transaction-toast/transaction-toast.type';
-export { TransactionStatusEnum } from './constants/transactionStatus.enum';
 export { TransactionRowType } from './components/controlled/transactions-table/transactions-table.type';
 export { IProviderBase, ProviderTypeEnum } from './types/provider.types';
 export { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from './components.d';
@@ -391,7 +389,6 @@ export namespace Components {
     endTime?: number;
     isStatusPending?: boolean;
     startTime?: number;
-    toastId?: string;
   }
   interface MvxTransactionsTable {
     class?: string;
@@ -2110,7 +2107,6 @@ declare namespace LocalJSX {
     endTime?: number;
     isStatusPending?: boolean;
     startTime?: number;
-    toastId?: string;
   }
   interface MvxTransactionsTable {
     class?: string;

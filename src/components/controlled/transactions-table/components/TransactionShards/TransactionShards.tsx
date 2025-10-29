@@ -1,8 +1,8 @@
 import { h } from '@stencil/core';
+import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionRowType } from '../../transactions-table.type';
-import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
 
 // prettier-ignore
 const styles = {

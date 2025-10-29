@@ -1,6 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+
 import { TransactionAccountName } from '../TransactionAccountName';
 
 describe('TransactionAccountName tests', () => {

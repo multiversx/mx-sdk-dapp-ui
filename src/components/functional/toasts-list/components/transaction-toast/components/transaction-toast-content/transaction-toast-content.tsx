@@ -1,16 +1,16 @@
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
+import { FormatAmount } from 'common/FormatAmount/FormatAmount';
 import { Icon } from 'common/Icon';
 import { IconSizeEnumType, TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
-
-import type { IToastDataState } from '../../transaction-toast.type';
 import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
 import { getIsTransactionFailed } from 'utils/getTransactionStatus';
-import { FormatAmount } from 'common/FormatAmount/FormatAmount';
+
+import type { IToastDataState } from '../../transaction-toast.type';
 
 // prettier-ignore
 const styles = {

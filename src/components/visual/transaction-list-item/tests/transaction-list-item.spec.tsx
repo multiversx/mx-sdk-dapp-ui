@@ -1,10 +1,10 @@
 import { newSpecPage } from '@stencil/core/testing';
+import { FormatAmount } from 'common/FormatAmount/FormatAmount';
+import { IconNamesEnum } from 'common/Icon/icon.types';
 import { TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
 
 import { TransactionListItem } from '../transaction-list-item';
 import type { ITransactionListItem } from '../transaction-list-item.types';
-import { IconNamesEnum } from 'common/Icon/icon.types';
-import { FormatAmount } from 'common/FormatAmount/FormatAmount';
 
 describe('transaction-list-item', () => {
   const createPage = async (transaction: ITransactionListItem) => {

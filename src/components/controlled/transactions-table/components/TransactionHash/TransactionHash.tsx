@@ -1,10 +1,10 @@
 import { h } from '@stencil/core';
+import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
+import { Trim } from 'common/Trim/Trim';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionRowType } from '../../transactions-table.type';
 import { TransactionIcon } from '../TransactionIcon';
-import { Trim } from 'common/Trim/Trim';
-import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
 
 // prettier-ignore
 const styles = {

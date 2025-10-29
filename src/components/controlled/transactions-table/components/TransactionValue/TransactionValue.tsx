@@ -1,12 +1,12 @@
 import { h } from '@stencil/core';
+import classNames from 'classnames';
+import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
+import { FormatAmount } from 'common/FormatAmount/FormatAmount';
 import { Icon } from 'common/Icon';
 import type { TransactionValueType } from 'components/controlled/transactions-table/transactions-table.type';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import styles from './transactionValue.styles';
-import classNames from 'classnames';
-import { FormatAmount } from 'common/FormatAmount/FormatAmount';
-import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
 
 interface TransactionValuePropsType {
   class?: string;
