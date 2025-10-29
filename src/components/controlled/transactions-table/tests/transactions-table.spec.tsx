@@ -4,6 +4,7 @@ import { IconNamesEnum } from 'common/Icon/icon.types';
 
 import { TransactionsTable } from '../transactions-table';
 import type { TransactionRowType } from '../transactions-table.type';
+import { IconNamesEnum } from 'common/Icon/icon.types';
 
 describe('TransactionsTable', () => {
   const mockTransactions: TransactionRowType[] = [

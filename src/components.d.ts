@@ -15,7 +15,10 @@ import { ITransactionListItem } from "./components/visual/transaction-list-item/
 import { LocalJSX as JSX } from "@stencil/core";
 import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+<<<<<<< HEAD
 import { TransactionStatusEnum } from "./constants/transactionStatus.enum";
+=======
+>>>>>>> main
 import { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
 import { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
 import { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
@@ -29,7 +32,10 @@ export { ITransactionListItem } from "./components/visual/transaction-list-item/
 export { LocalJSX as JSX } from "@stencil/core";
 export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
+<<<<<<< HEAD
 export { TransactionStatusEnum } from "./constants/transactionStatus.enum";
+=======
+>>>>>>> main
 export { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
 export { IProviderBase, ProviderTypeEnum } from "./types/provider.types";
 export { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
@@ -371,7 +377,10 @@ export namespace Components {
         "endTime"?: number;
         "isStatusPending"?: boolean;
         "startTime"?: number;
+<<<<<<< HEAD
         "toastId"?: string;
+=======
+>>>>>>> main
     }
     interface MvxTransactionsTable {
         "class"?: string;
@@ -1537,7 +1546,10 @@ declare namespace LocalJSX {
         "endTime"?: number;
         "isStatusPending"?: boolean;
         "startTime"?: number;
+<<<<<<< HEAD
         "toastId"?: string;
+=======
+>>>>>>> main
     }
     interface MvxTransactionsTable {
         "class"?: string;
