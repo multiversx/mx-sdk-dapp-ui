@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Fixed main conflicts with main branch](https://github.com/multiversx/mx-sdk-dapp-ui/pull/252)
+
 ## [[0.0.36](https://github.com/multiversx/mx-sdk-dapp-ui/pull/251)] - 2025-10-15
 
 - [Updated icons type](https://github.com/multiversx/mx-sdk-dapp-ui/pull/250)
