@@ -1,4 +1,5 @@
 import { Component, h, Prop } from '@stencil/core';
+import { Trim } from 'common/Trim/Trim';
 
 @Component({
   tag: 'mvx-data-with-explorer-link',
@@ -17,7 +18,7 @@ export class DataWithExplorerLink {
   render() {
     return (
       <div class={{ 'data-with-explorer-link': true, [this.class]: Boolean(this.class) }} data-testid={this.dataTestId}>
-        <mvx-trim text={this.data} class="data-with-explorer-link-trim" />
+        <Trim text={this.data} class="data-with-explorer-link-trim" />
 
         {(this.showCopyButton || this.showExplorerButton) && (
           <div class="data-with-explorer-link-buttons" onClick={event => event.stopPropagation()}>

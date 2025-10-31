@@ -108,9 +108,13 @@ describe('transaction-list-item', () => {
       expect(interactorAsset.getAttribute('alt')).toBe('Service icon');
       expect(interactorAsset.getAttribute('loading')).toBe('lazy');
 
-      const interactor = page.root.querySelector('mvx-trim');
-      expect(interactor.getAttribute('text')).toBe(baseTransaction.interactor);
-      expect(interactor.className).toBe('transaction-details-info-text');
+      const interactor = page.root.querySelector('.transaction-details-info-text.trim');
+      expect(interactor).not.toBeNull();
+
+      const fullAddressElement = page.root.querySelector('[data-testid="trimFullAddress"]');
+      expect(fullAddressElement.textContent).toBe(baseTransaction.interactor);
+
+      expect(interactor.className).toContain('transaction-details-info-text');
     });
 
     it('renders without direction label when not provided', async () => {
@@ -119,7 +123,7 @@ describe('transaction-list-item', () => {
         directionLabel: undefined,
       };
       const page = await createPage(transaction);
-      const directionLabel = page.root.querySelector('.transaction-details-info-text:not(mvx-trim)');
+      const directionLabel = page.root.querySelector('span.transaction-details-info-text');
       expect(directionLabel).toBeFalsy();
     });
 

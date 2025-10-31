@@ -11,6 +11,7 @@ import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
 import { getIsTransactionFailed } from 'utils/getTransactionStatus';
 
 import type { IToastDataState } from '../../transaction-toast.type';
+import { Trim } from 'common/Trim/Trim';
 
 // prettier-ignore
 const styles = {
@@ -116,7 +117,7 @@ export class TransactionToastContent {
                     <mvx-default-transaction-icon-small />
                   )}
                 </div>
-                <mvx-trim text={transaction.interactor} class="transaction-toast-details-info-text" />
+                <Trim text={transaction.interactor} class="transaction-toast-details-info-text" />
               </div>
             )}
           </div>

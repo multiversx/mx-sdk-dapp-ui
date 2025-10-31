@@ -1,6 +1,7 @@
 import { h } from '@stencil/core';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { ELLIPSIS } from 'constants/htmlStrings';
+import { safeWindow } from 'constants/window.constants';
 
 import styles from './trim.styles'
 
@@ -8,21 +9,100 @@ interface TrimPropsType {
     dataTestId?: string;
     class?: string;
     text: string;
-    shouldTrim?: boolean;
-    trimFontSize?: string;
-    onTrimElementReference?: (element: HTMLDivElement) => void;
-    onFullWidthTrimElementReference?: (element: HTMLDivElement) => void;
 }
 
 export function Trim({
     dataTestId = DataTestIdsEnum.trim,
     class: className,
-    text,
-    shouldTrim = false,
-    trimFontSize = '1rem',
-    onTrimElementReference,
-    onFullWidthTrimElementReference
+    text
 }: TrimPropsType) {
+    let fullWidthUntrimmedElementReference: HTMLDivElement;
+    let trimElementReference: HTMLDivElement;
+    let resizeObserver: ResizeObserver;
+    let currentTrimFontSize = '1rem';
+    let trimFullElement: HTMLDivElement;
+    let trimWrapperElement: HTMLDivElement;
+
+    const handleTrimElementReference = (element: HTMLDivElement) => {
+        if (element) {
+            trimElementReference = element;
+            setupResizeObserver();
+            requestAnimationFrame(checkOverflow);
+        }
+    }
+
+    const handleFullWidthTrimElementReference = (element: HTMLDivElement) => {
+        if (element) {
+            fullWidthUntrimmedElementReference = element;
+        }
+    }
+
+    const handleTrimFullRef = (element: HTMLDivElement) => {
+        if (element) {
+            trimFullElement = element;
+        }
+    };
+
+    const handleTrimWrapperRef = (element: HTMLDivElement) => {
+        if (element) {
+            trimWrapperElement = element;
+        }
+    };
+
+    const setupResizeObserver = () => {
+        if (resizeObserver) {
+            resizeObserver.disconnect();
+        }
+
+        resizeObserver = new ResizeObserver(() => {
+            checkOverflow();
+        });
+
+        if (trimElementReference) {
+            resizeObserver.observe(trimElementReference);
+        }
+    }
+
+    const checkOverflow = () => {
+        if (!fullWidthUntrimmedElementReference || !trimElementReference || !trimFullElement || !trimWrapperElement) {
+            return;
+        }
+
+        const hiddenFullWidthElementWidth = fullWidthUntrimmedElementReference.scrollWidth;
+        const trimmedElementWidth = trimElementReference.clientWidth;
+        const isTrimElementOverflowing = hiddenFullWidthElementWidth > trimmedElementWidth;
+
+        if (safeWindow) {
+            currentTrimFontSize = safeWindow.getComputedStyle(trimElementReference).fontSize;
+        }
+
+        const getIdentifierClass = (classes: string) => classes.split(' ')[0];
+
+        const trimLeftSelector = `.${getIdentifierClass(styles.trimLeft)}`;
+        const trimRightSelector = `.${getIdentifierClass(styles.trimRight)}`;
+
+        const trimLeftElement = trimElementReference.querySelector(trimLeftSelector) as HTMLElement;
+        const trimRightElement = trimElementReference.querySelector(trimRightSelector) as HTMLElement;
+        if (trimLeftElement) {
+            trimLeftElement.style.fontSize = currentTrimFontSize;
+        }
+
+        if (trimRightElement) {
+            trimRightElement.style.fontSize = currentTrimFontSize;
+        }
+
+        const trimFullVisibleClasses = styles.trimFullVisible.split(/\s+/);
+        const trimWrapperVisibleClasses = styles.trimWrapperVisible.split(/\s+/);
+
+        if (isTrimElementOverflowing) {
+            trimFullElement.classList.remove(...trimFullVisibleClasses);
+            trimWrapperElement.classList.add(...trimWrapperVisibleClasses);
+        } else {
+            trimFullElement.classList.add(...trimFullVisibleClasses);
+            trimWrapperElement.classList.remove(...trimWrapperVisibleClasses);
+        }
+    };
+
     const middleTextIndex = Math.floor(text.length / 2);
     const leftHandText = text.slice(0, middleTextIndex);
     const rightHandText = text.slice(middleTextIndex);
@@ -30,20 +110,23 @@ export function Trim({
     return (
         <div
             data-testid={dataTestId}
-            ref={onTrimElementReference}
+            ref={handleTrimElementReference}
             class={{ [styles.trim]: true, [className]: Boolean(className) }}
         >
             <div
                 data-testid={DataTestIdsEnum.trimFullAddress}
-                ref={onFullWidthTrimElementReference}
-                class={{ [styles.trimFull]: true, [styles.trimFullVisible]: !shouldTrim }}
+                ref={el => {
+                    handleFullWidthTrimElementReference(el);
+                    handleTrimFullRef(el);
+                }}
+                class={styles.trimFull}
             >
                 {text}
             </div>
 
-            <div class={{ [styles.trimWrapper]: true, [styles.trimWrapperVisible]: shouldTrim }}>
+            <div ref={handleTrimWrapperRef} class={styles.trimWrapper}>
                 <div class={styles.trimLeftWrapper}>
-                    <div class={styles.trimLeft} style={{ fontSize: trimFontSize }}>
+                    <div class={styles.trimLeft} style={{ fontSize: currentTrimFontSize }}>
                         {leftHandText}
                     </div>
                 </div>
@@ -53,7 +136,7 @@ export function Trim({
                 </div>
 
                 <div class={styles.trimRightWrapper} style={{ direction: 'rtl' }}>
-                    <div class={styles.trimRight} style={{ fontSize: trimFontSize }}>
+                    <div class={styles.trimRight} style={{ fontSize: currentTrimFontSize }}>
                         {rightHandText}
                     </div>
                 </div>
