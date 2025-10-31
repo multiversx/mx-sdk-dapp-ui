@@ -5,13 +5,6 @@ import { IconNamesEnum } from 'common/Icon/icon.types';
 import type { TransactionAccountType, TransactionRowType } from '../../../transactions-table.type';
 import { TransactionHash } from '../TransactionHash';
 
-// Mock ResizeObserver
-global.ResizeObserver = class ResizeObserver {
-  observe() { }
-  disconnect() { }
-  unobserve() { }
-};
-
 const account: TransactionAccountType = {
   address: 'erd...',
   name: 'test',

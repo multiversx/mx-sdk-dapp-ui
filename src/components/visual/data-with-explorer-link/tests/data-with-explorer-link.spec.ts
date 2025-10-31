@@ -6,13 +6,6 @@ import { CopyButton } from '../../copy-button/copy-button';
 import { Tooltip } from '../../tooltip/tooltip';
 import { DataWithExplorerLink } from '../data-with-explorer-link';
 
-// Mock ResizeObserver
-global.ResizeObserver = class ResizeObserver {
-  observe() { }
-  disconnect() { }
-  unobserve() { }
-};
-
 describe('DataWithExplorerLink', () => {
   it('renders with default props', async () => {
     const page = await newSpecPage({

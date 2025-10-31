@@ -6,13 +6,6 @@ import { TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAss
 import { TransactionListItem } from '../transaction-list-item';
 import type { ITransactionListItem } from '../transaction-list-item.types';
 
-// Mock ResizeObserver
-global.ResizeObserver = class ResizeObserver {
-  observe() { }
-  disconnect() { }
-  unobserve() { }
-};
-
 describe('transaction-list-item', () => {
   const createPage = async (transaction: ITransactionListItem) => {
     const page = await newSpecPage({

@@ -4,13 +4,6 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import { TransactionAccountName } from '../TransactionAccountName';
 
-// Mock ResizeObserver
-global.ResizeObserver = class ResizeObserver {
-  observe() { }
-  disconnect() { }
-  unobserve() { }
-};
-
 describe('TransactionAccountName tests', () => {
   it('renders name when provided', async () => {
     const page = await newSpecPage({
