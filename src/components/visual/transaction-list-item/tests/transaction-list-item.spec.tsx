@@ -6,6 +6,13 @@ import { TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAss
 import { TransactionListItem } from '../transaction-list-item';
 import type { ITransactionListItem } from '../transaction-list-item.types';
 
+// Mock ResizeObserver
+global.ResizeObserver = class ResizeObserver {
+  observe() { }
+  disconnect() { }
+  unobserve() { }
+};
+
 describe('transaction-list-item', () => {
   const createPage = async (transaction: ITransactionListItem) => {
     const page = await newSpecPage({
@@ -108,9 +115,13 @@ describe('transaction-list-item', () => {
       expect(interactorAsset.getAttribute('alt')).toBe('Service icon');
       expect(interactorAsset.getAttribute('loading')).toBe('lazy');
 
-      const interactor = page.root.querySelector('mvx-trim');
-      expect(interactor.getAttribute('text')).toBe(baseTransaction.interactor);
-      expect(interactor.className).toBe('transaction-details-info-text');
+      const interactor = page.root.querySelector('.transaction-details-info-text.trim');
+      expect(interactor).not.toBeNull();
+
+      const fullAddressElement = page.root.querySelector('[data-testid="trimFullAddress"]');
+      expect(fullAddressElement.textContent).toBe(baseTransaction.interactor);
+
+      expect(interactor.className).toContain('transaction-details-info-text');
     });
 
     it('renders without direction label when not provided', async () => {
@@ -119,7 +130,7 @@ describe('transaction-list-item', () => {
         directionLabel: undefined,
       };
       const page = await createPage(transaction);
-      const directionLabel = page.root.querySelector('.transaction-details-info-text:not(mvx-trim)');
+      const directionLabel = page.root.querySelector('span.transaction-details-info-text');
       expect(directionLabel).toBeFalsy();
     });
 

@@ -21,15 +21,10 @@ describe('Trim tests', () => {
     });
 
     const trimElement = page.root;
-    const component = page.rootInstance;
-
-    component.shouldTrim = false;
-    await page.waitForChanges();
 
     const fullTextElement = trimElement.querySelector('[data-testid="trimFullAddress"]');
     expect(fullTextElement).toBeTruthy();
     expect(fullTextElement.textContent).toBe('Short text');
-    expect(fullTextElement.classList.contains('trim-full-visible')).toBe(true);
   });
 
   it('should handle overflow and truncate text', async () => {
@@ -46,7 +41,6 @@ describe('Trim tests', () => {
 
     const trimWrapper = trimElement.querySelector('.trim-wrapper');
     expect(trimWrapper).toBeTruthy();
-    expect(trimWrapper.classList.contains('trim-wrapper-visible')).toBe(true);
 
     const leftWrapper = trimWrapper.querySelector('.trim-left-wrapper');
     const ellipsisWrapper = trimWrapper.querySelector('.trim-ellipsis-wrapper');

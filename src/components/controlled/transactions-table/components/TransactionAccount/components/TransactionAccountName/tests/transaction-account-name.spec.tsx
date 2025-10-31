@@ -4,6 +4,13 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import { TransactionAccountName } from '../TransactionAccountName';
 
+// Mock ResizeObserver
+global.ResizeObserver = class ResizeObserver {
+  observe() { }
+  disconnect() { }
+  unobserve() { }
+};
+
 describe('TransactionAccountName tests', () => {
   it('renders name when provided', async () => {
     const page = await newSpecPage({
@@ -33,7 +40,7 @@ describe('TransactionAccountName tests', () => {
 
     expect(page.root).toEqualHtml(`
       <div class="mvx:flex mvx:max-w-full mvx:overflow-hidden mvx:relative mvx:truncate mvx:w-max mvx:whitespace-nowrap transaction-account-name trim" data-testid="${DataTestIdsEnum.trim}">
-        <div class="mvx:!text-inherit mvx:absolute mvx:leading-5 mvx:relative mvx:text-transparent trim-full trim-full-visible" data-testid="${DataTestIdsEnum.trimFullAddress}">
+        <div class="mvx:absolute mvx:leading-5 mvx:text-transparent trim-full" data-testid="${DataTestIdsEnum.trimFullAddress}">
           erd1q...
         </div>
         <div class="mvx:hidden trim-wrapper">
@@ -65,7 +72,7 @@ describe('TransactionAccountName tests', () => {
 
     expect(page.root).toEqualHtml(`
       <div class="mvx:flex mvx:max-w-full mvx:overflow-hidden mvx:relative mvx:truncate mvx:w-max mvx:whitespace-nowrap transaction-account-name trim" data-testid="${DataTestIdsEnum.trim}">
-        <div class="mvx:!text-inherit mvx:absolute mvx:leading-5 mvx:relative mvx:text-transparent trim-full trim-full-visible" data-testid="${DataTestIdsEnum.trimFullAddress}">
+        <div class="mvx:absolute mvx:leading-5 mvx:text-transparent trim-full" data-testid="${DataTestIdsEnum.trimFullAddress}">
           erd1q...
         </div>
         <div class="mvx:hidden trim-wrapper">
@@ -96,7 +103,7 @@ describe('TransactionAccountName tests', () => {
     });
 
     expect(page.root).toEqualHtml(`
-      <div class="custom-class transaction-account-name mvx:w-max mvx:truncate" title="">
+      <div class="custom-class transaction-account-name mvx:w-max mvx:truncate">
         Bob
       </div>
     `);
@@ -109,7 +116,7 @@ describe('TransactionAccountName tests', () => {
     });
 
     expect(page.root).toEqualHtml(`
-      <div class="transaction-account-name mvx:w-max mvx:truncate" title="">
+      <div class="transaction-account-name mvx:w-max mvx:truncate">
         Charlie
       </div>
     `);

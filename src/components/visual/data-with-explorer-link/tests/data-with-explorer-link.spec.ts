@@ -25,7 +25,7 @@ describe('DataWithExplorerLink', () => {
     expect(mainDiv).toBeTruthy();
 
     // Check that trim component is present with correct class
-    const trimComponent = page.root.querySelector('mvx-trim.data-with-explorer-link-trim');
+    const trimComponent = page.root.querySelector('.data-with-explorer-link-trim.trim');
     expect(trimComponent).toBeTruthy();
 
     // Check that buttons container is present
@@ -103,7 +103,7 @@ describe('DataWithExplorerLink', () => {
     expect(mainDiv).toBeTruthy();
 
     // Check that trim component is present
-    const trimComponent = page.root.querySelector('mvx-trim');
+    const trimComponent = page.root.querySelector('.data-with-explorer-link-trim.trim');
     expect(trimComponent).toBeTruthy();
 
     // Check that buttons container is not present
@@ -201,7 +201,7 @@ describe('DataWithExplorerLink', () => {
     expect(buttonsContainer).toBeFalsy();
 
     // But trim component should still be present
-    const trimComponent = page.root.querySelector('mvx-trim');
+    const trimComponent = page.root.querySelector('.data-with-explorer-link-trim.trim');
     expect(trimComponent).toBeTruthy();
   });
 
@@ -216,7 +216,7 @@ describe('DataWithExplorerLink', () => {
     expect(mainDiv).toBeTruthy();
 
     // Check that trim component is present
-    const trimComponent = page.root.querySelector('mvx-trim');
+    const trimComponent = page.root.querySelector('.data-with-explorer-link-trim.trim');
     expect(trimComponent).toBeTruthy();
 
     // Check that the component instance has empty data
@@ -240,7 +240,7 @@ describe('DataWithExplorerLink', () => {
     expect(component.data).toBe(longData);
 
     // Check that trim component is present to handle the long text
-    const trimComponent = page.root.querySelector('mvx-trim');
+    const trimComponent = page.root.querySelector('.data-with-explorer-link-trim.trim');
     expect(trimComponent).toBeTruthy();
   });
 

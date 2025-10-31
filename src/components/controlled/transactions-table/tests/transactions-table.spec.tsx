@@ -5,6 +5,13 @@ import { IconNamesEnum } from 'common/Icon/icon.types';
 import { TransactionsTable } from '../transactions-table';
 import type { TransactionRowType } from '../transactions-table.type';
 
+// Mock ResizeObserver
+global.ResizeObserver = class ResizeObserver {
+  observe() { }
+  disconnect() { }
+  unobserve() { }
+};
+
 describe('TransactionsTable', () => {
   const mockTransactions: TransactionRowType[] = [
     {
