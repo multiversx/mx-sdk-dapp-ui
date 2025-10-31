@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Fixed trim component state](https://github.com/multiversx/mx-sdk-dapp-ui/pull/259)
+
 ## [[0.1.0](https://github.com/multiversx/mx-sdk-dapp-ui/pull/256)] - 2025-10-29
 
 - [Changed ppu to gasPriceOption in sign transactions panel](https://github.com/multiversx/mx-sdk-dapp-ui/pull/255)
