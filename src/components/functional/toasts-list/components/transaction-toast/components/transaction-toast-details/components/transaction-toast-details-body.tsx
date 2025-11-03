@@ -1,6 +1,7 @@
 import { Component, h, Prop } from '@stencil/core';
 import { Icon } from 'common/Icon/Icon';
 import { IconNamesEnum } from 'common/Icon/icon.types';
+import { Trim } from 'common/Trim/Trim';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
 import { getIsTransactionFailed } from 'utils/getTransactionStatus';
@@ -46,7 +47,7 @@ export class TransactionDetailsBody {
         )}
         <div class="transaction-details-list-item-hash-index">{this.index}</div>
         <div class="transaction-details-list-item-hash-value">
-          <mvx-trim text={this.hash} />
+          <Trim text={this.hash} />
         </div>
 
         <mvx-copy-button

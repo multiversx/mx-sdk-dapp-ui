@@ -1,4 +1,5 @@
 import { h } from '@stencil/core';
+import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import type { TransactionRowType } from '../../transactions-table.type';
@@ -11,31 +12,30 @@ const styles = {
 } satisfies Record<string, string>;
 
 interface TransactionShardsPropsType {
-    class?: string;
-    transaction: TransactionRowType;
+  class?: string;
+  transaction: TransactionRowType;
 }
 
 export function TransactionShards({ transaction, class: className }: TransactionShardsPropsType) {
-    return (
-        <div class={{ [className]: Boolean(className), [styles.transactionShards]: true }}>
-            <mvx-explorer-link
-                link={transaction.sender.shardLink}
-                class={styles.explorerLink}
-                data-testid={DataTestIdsEnum.shardFromLink}
-            >
-                <span data-testid={DataTestIdsEnum.senderShard}>{transaction.sender.shard}</span>
-            </mvx-explorer-link>
+  return (
+    <div class={{ [className]: Boolean(className), [styles.transactionShards]: true }}>
+      <ExplorerLink
+        link={transaction.sender.shardLink}
+        class={styles.explorerLink}
+        data-testid={DataTestIdsEnum.shardFromLink}
+      >
+        <span data-testid={DataTestIdsEnum.senderShard}>{transaction.sender.shard}</span>
+      </ExplorerLink>
 
-            <mvx-arrow-right-icon class={styles.transactionShardsArrowIcon} />
+      <mvx-arrow-right-icon class={styles.transactionShardsArrowIcon} />
 
-            <mvx-explorer-link
-                link={transaction.receiver.shardLink}
-                data-testid={DataTestIdsEnum.shardToLink}
-                class={styles.explorerLink}
-            >
-                <span data-testid={DataTestIdsEnum.receiverShard}>{transaction.receiver.shard}</span>
-            </mvx-explorer-link>
-        </div>
-    );
+      <ExplorerLink
+        link={transaction.receiver.shardLink}
+        data-testid={DataTestIdsEnum.shardToLink}
+        class={styles.explorerLink}
+      >
+        <span data-testid={DataTestIdsEnum.receiverShard}>{transaction.receiver.shard}</span>
+      </ExplorerLink>
+    </div>
+  );
 }
-

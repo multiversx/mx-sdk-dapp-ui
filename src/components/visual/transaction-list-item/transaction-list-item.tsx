@@ -1,10 +1,12 @@
 import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
+import { FormatAmount } from 'common/FormatAmount/FormatAmount';
 import { IconSizeEnumType, TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
+import { getIsTransactionFailed } from 'utils/getTransactionStatus';
 
 import type { ITransactionListItem } from './transaction-list-item.types';
-import { getIsTransactionFailed } from 'utils/getTransactionStatus';
+import { Trim } from 'common/Trim/Trim';
 
 @Component({
   tag: 'mvx-transaction-list-item',
@@ -46,7 +48,7 @@ export class TransactionListItem {
               </div>
 
               {this.transaction.amount && (
-                <mvx-format-amount
+                <FormatAmount
                   class={classNames('transaction-amount', {
                     'amount-negative': this.transaction.amount.startsWith('-'),
                     'amount-positive': !this.transaction.amount.startsWith('-'),
@@ -74,7 +76,7 @@ export class TransactionListItem {
                 )}
               </div>
 
-              <mvx-trim text={this.transaction.interactor} class="transaction-details-info-text" />
+              <Trim text={this.transaction.interactor} class="transaction-details-info-text" />
             </div>
           </div>
         </div>

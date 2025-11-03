@@ -1,8 +1,8 @@
 import { h } from '@stencil/core';
-
-import type { TransactionIconInfoType } from '../../transactions-table.type';
 import { Icon } from 'common/Icon';
 import { IconNamesEnum } from 'common/Icon/icon.types';
+
+import type { TransactionIconInfoType } from '../../transactions-table.type';
 
 // prettier-ignore
 const styles = {

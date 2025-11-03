@@ -50,8 +50,8 @@ export class SignTransactionsPanel {
       this.eventBus.publish(SignEventsEnum.BACK);
     };
 
-    state.setPpuOption = (ppu: number) => {
-      this.eventBus.publish(SignEventsEnum.SET_PPU, ppu);
+    state.setGasPriceOption = (gasPriceOption: number) => {
+      this.eventBus.publish(SignEventsEnum.SET_GAS_PRICE_OPTION, gasPriceOption);
     };
   }
 
