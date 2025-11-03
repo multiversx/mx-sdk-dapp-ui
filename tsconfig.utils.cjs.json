@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "rootDir": "src",
+    "outDir": "dist/cjs",
+    "declaration": false,
+    "sourceMap": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": false,
+    "lib": ["ES2020", "DOM"],
+    "baseUrl": "src",
+    "paths": {
+      "constants/*": ["constants/*"]
+    }
+  },
+  "include": ["src/utils/getDetectedBrowser.ts", "src/constants/browser.enum.ts", "src/constants/window.constants.ts"]
+}
