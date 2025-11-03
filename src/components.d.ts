@@ -397,9 +397,6 @@ export namespace Components {
         "closeWithAnimation": () => Promise<unknown>;
         "getEventBus": () => Promise<IEventBus>;
     }
-    interface MvxUnlockPanelFooter {
-        "walletAddress": string;
-    }
     interface MvxUnlockPanelGroup {
         "class"?: string;
         /**
@@ -1024,12 +1021,6 @@ declare global {
         prototype: HTMLMvxUnlockPanelElement;
         new (): HTMLMvxUnlockPanelElement;
     };
-    interface HTMLMvxUnlockPanelFooterElement extends Components.MvxUnlockPanelFooter, HTMLStencilElement {
-    }
-    var HTMLMvxUnlockPanelFooterElement: {
-        prototype: HTMLMvxUnlockPanelFooterElement;
-        new (): HTMLMvxUnlockPanelFooterElement;
-    };
     interface HTMLMvxUnlockPanelGroupElementEventMap {
         "login": IProviderBase;
     }
@@ -1176,7 +1167,6 @@ declare global {
         "mvx-trim": HTMLMvxTrimElement;
         "mvx-unlock-button": HTMLMvxUnlockButtonElement;
         "mvx-unlock-panel": HTMLMvxUnlockPanelElement;
-        "mvx-unlock-panel-footer": HTMLMvxUnlockPanelFooterElement;
         "mvx-unlock-panel-group": HTMLMvxUnlockPanelGroupElement;
         "mvx-unlock-provider-button": HTMLMvxUnlockProviderButtonElement;
         "mvx-wallet-connect": HTMLMvxWalletConnectElement;
@@ -1561,9 +1551,6 @@ declare namespace LocalJSX {
     }
     interface MvxUnlockPanel {
     }
-    interface MvxUnlockPanelFooter {
-        "walletAddress"?: string;
-    }
     interface MvxUnlockPanelGroup {
         "class"?: string;
         "onLogin"?: (event: MvxUnlockPanelGroupCustomEvent<IProviderBase>) => void;
@@ -1680,7 +1667,6 @@ declare namespace LocalJSX {
         "mvx-trim": MvxTrim;
         "mvx-unlock-button": MvxUnlockButton;
         "mvx-unlock-panel": MvxUnlockPanel;
-        "mvx-unlock-panel-footer": MvxUnlockPanelFooter;
         "mvx-unlock-panel-group": MvxUnlockPanelGroup;
         "mvx-unlock-provider-button": MvxUnlockProviderButton;
         "mvx-wallet-connect": MvxWalletConnect;
@@ -1755,7 +1741,6 @@ declare module "@stencil/core" {
             "mvx-trim": LocalJSX.MvxTrim & JSXBase.HTMLAttributes<HTMLMvxTrimElement>;
             "mvx-unlock-button": LocalJSX.MvxUnlockButton & JSXBase.HTMLAttributes<HTMLMvxUnlockButtonElement>;
             "mvx-unlock-panel": LocalJSX.MvxUnlockPanel & JSXBase.HTMLAttributes<HTMLMvxUnlockPanelElement>;
-            "mvx-unlock-panel-footer": LocalJSX.MvxUnlockPanelFooter & JSXBase.HTMLAttributes<HTMLMvxUnlockPanelFooterElement>;
             "mvx-unlock-panel-group": LocalJSX.MvxUnlockPanelGroup & JSXBase.HTMLAttributes<HTMLMvxUnlockPanelGroupElement>;
             "mvx-unlock-provider-button": LocalJSX.MvxUnlockProviderButton & JSXBase.HTMLAttributes<HTMLMvxUnlockProviderButtonElement>;
             "mvx-wallet-connect": LocalJSX.MvxWalletConnect & JSXBase.HTMLAttributes<HTMLMvxWalletConnectElement>;

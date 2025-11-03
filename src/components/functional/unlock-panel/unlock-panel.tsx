@@ -11,6 +11,7 @@ import { UnlockPanelGroupSlotEnum } from './components/unlock-panel-group/unlock
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
 import type { IUnlockPanelManagerData } from './unlock-panel.types';
 import { UnlockPanelEventsEnum } from './unlock-panel.types';
+import { UnlockPanelFooter } from './components';
 
 const unlockPanelClasses: Record<string, string> = {
   detectedPanelGroup: 'mvx:hidden mvx:sm:flex',
@@ -214,7 +215,7 @@ export class UnlockPanel {
                 <slot />
               </mvx-unlock-panel-group>
             </div>
-            <mvx-unlock-panel-footer walletAddress={this.walletAddress} />
+            <UnlockPanelFooter walletAddress={this.walletAddress} />
           </div>
         )}
       </mvx-side-panel>
