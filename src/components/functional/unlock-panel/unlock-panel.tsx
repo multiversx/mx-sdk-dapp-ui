@@ -7,14 +7,14 @@ import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import { UnlockPanelGroupSlotEnum } from './components/unlock-panel-group/unlock-panel-group';
+import { UnlockPanelGroup } from './components/unlock-panel-group/unlock-panel-group';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
 import type { IUnlockPanelManagerData } from './unlock-panel.types';
 import { UnlockPanelEventsEnum } from './unlock-panel.types';
 import { UnlockPanelFooter } from './components';
 
 const unlockPanelClasses: Record<string, string> = {
-  detectedPanelGroup: 'mvx:hidden mvx:sm:flex',
+  detectedPanelGroup: 'mvx:hidden mvx:sm:flex mvx:sm:flex-col',
   desktopPanelGroupTitle: 'mvx:hidden mvx:sm:flex',
   mobilePanelGroupTitle: 'mvx:sm:hidden',
 };
@@ -192,28 +192,28 @@ export class UnlockPanel {
           <div class="unlock-panel">
             <div class="unlock-panel-groups">
               {hasDetectedProviders && (
-                <mvx-unlock-panel-group
+                <UnlockPanelGroup
                   providers={detectedProviders}
-                  onLogin={(event: CustomEvent) => this.handleLogin(event.detail)}
+                  onLogin={(provider) => this.handleLogin(provider)}
                   class={unlockPanelClasses.detectedPanelGroup}
-                >
-                  <div slot={UnlockPanelGroupSlotEnum.groupLabel}>Detected</div>
-                </mvx-unlock-panel-group>
+                  groupLabel={
+                    <div>Detected</div>
+                  }
+                />
               )}
 
-              <mvx-unlock-panel-group
+              <UnlockPanelGroup
                 providers={otherProviders}
-                onLogin={(event: CustomEvent) => this.handleLogin(event.detail)}
-              >
-                <div slot={UnlockPanelGroupSlotEnum.groupLabel}>
-                  <div class={unlockPanelClasses.mobilePanelGroupTitle}>Options</div>
-                  <div class={unlockPanelClasses.desktopPanelGroupTitle}>
-                    {hasDetectedProviders ? 'Other Options' : 'Options'}
+                onLogin={(provider) => this.handleLogin(provider)}
+                groupLabel={
+                  <div>
+                    <div class={unlockPanelClasses.mobilePanelGroupTitle}>Options</div>
+                    <div class={unlockPanelClasses.desktopPanelGroupTitle}>
+                      {hasDetectedProviders ? 'Other Options' : 'Options'}
+                    </div>
                   </div>
-                </div>
-
-                <slot />
-              </mvx-unlock-panel-group>
+                }
+              />
             </div>
             <UnlockPanelFooter walletAddress={this.walletAddress} />
           </div>

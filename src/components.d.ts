@@ -397,13 +397,6 @@ export namespace Components {
         "closeWithAnimation": () => Promise<unknown>;
         "getEventBus": () => Promise<IEventBus>;
     }
-    interface MvxUnlockPanelGroup {
-        "class"?: string;
-        /**
-          * @default []
-         */
-        "providers": IProviderBase[];
-    }
     interface MvxUnlockProviderButton {
         "class"?: string;
         "provider": IProviderBase<ProviderTypeEnum>;
@@ -510,10 +503,6 @@ export interface MvxTransactionToastCustomEvent<T> extends CustomEvent<T> {
 export interface MvxTransactionToastContentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxTransactionToastContentElement;
-}
-export interface MvxUnlockPanelGroupCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMvxUnlockPanelGroupElement;
 }
 export interface MvxWalletConnectScanCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -1021,23 +1010,6 @@ declare global {
         prototype: HTMLMvxUnlockPanelElement;
         new (): HTMLMvxUnlockPanelElement;
     };
-    interface HTMLMvxUnlockPanelGroupElementEventMap {
-        "login": IProviderBase;
-    }
-    interface HTMLMvxUnlockPanelGroupElement extends Components.MvxUnlockPanelGroup, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxUnlockPanelGroupElementEventMap>(type: K, listener: (this: HTMLMvxUnlockPanelGroupElement, ev: MvxUnlockPanelGroupCustomEvent<HTMLMvxUnlockPanelGroupElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxUnlockPanelGroupElementEventMap>(type: K, listener: (this: HTMLMvxUnlockPanelGroupElement, ev: MvxUnlockPanelGroupCustomEvent<HTMLMvxUnlockPanelGroupElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLMvxUnlockPanelGroupElement: {
-        prototype: HTMLMvxUnlockPanelGroupElement;
-        new (): HTMLMvxUnlockPanelGroupElement;
-    };
     interface HTMLMvxUnlockProviderButtonElement extends Components.MvxUnlockProviderButton, HTMLStencilElement {
     }
     var HTMLMvxUnlockProviderButtonElement: {
@@ -1167,7 +1139,6 @@ declare global {
         "mvx-trim": HTMLMvxTrimElement;
         "mvx-unlock-button": HTMLMvxUnlockButtonElement;
         "mvx-unlock-panel": HTMLMvxUnlockPanelElement;
-        "mvx-unlock-panel-group": HTMLMvxUnlockPanelGroupElement;
         "mvx-unlock-provider-button": HTMLMvxUnlockProviderButtonElement;
         "mvx-wallet-connect": HTMLMvxWalletConnectElement;
         "mvx-wallet-connect-app-gallery-icon": HTMLMvxWalletConnectAppGalleryIconElement;
@@ -1551,14 +1522,6 @@ declare namespace LocalJSX {
     }
     interface MvxUnlockPanel {
     }
-    interface MvxUnlockPanelGroup {
-        "class"?: string;
-        "onLogin"?: (event: MvxUnlockPanelGroupCustomEvent<IProviderBase>) => void;
-        /**
-          * @default []
-         */
-        "providers"?: IProviderBase[];
-    }
     interface MvxUnlockProviderButton {
         "class"?: string;
         "provider"?: IProviderBase<ProviderTypeEnum>;
@@ -1667,7 +1630,6 @@ declare namespace LocalJSX {
         "mvx-trim": MvxTrim;
         "mvx-unlock-button": MvxUnlockButton;
         "mvx-unlock-panel": MvxUnlockPanel;
-        "mvx-unlock-panel-group": MvxUnlockPanelGroup;
         "mvx-unlock-provider-button": MvxUnlockProviderButton;
         "mvx-wallet-connect": MvxWalletConnect;
         "mvx-wallet-connect-app-gallery-icon": MvxWalletConnectAppGalleryIcon;
@@ -1741,7 +1703,6 @@ declare module "@stencil/core" {
             "mvx-trim": LocalJSX.MvxTrim & JSXBase.HTMLAttributes<HTMLMvxTrimElement>;
             "mvx-unlock-button": LocalJSX.MvxUnlockButton & JSXBase.HTMLAttributes<HTMLMvxUnlockButtonElement>;
             "mvx-unlock-panel": LocalJSX.MvxUnlockPanel & JSXBase.HTMLAttributes<HTMLMvxUnlockPanelElement>;
-            "mvx-unlock-panel-group": LocalJSX.MvxUnlockPanelGroup & JSXBase.HTMLAttributes<HTMLMvxUnlockPanelGroupElement>;
             "mvx-unlock-provider-button": LocalJSX.MvxUnlockProviderButton & JSXBase.HTMLAttributes<HTMLMvxUnlockProviderButtonElement>;
             "mvx-wallet-connect": LocalJSX.MvxWalletConnect & JSXBase.HTMLAttributes<HTMLMvxWalletConnectElement>;
             "mvx-wallet-connect-app-gallery-icon": LocalJSX.MvxWalletConnectAppGalleryIcon & JSXBase.HTMLAttributes<HTMLMvxWalletConnectAppGalleryIconElement>;
