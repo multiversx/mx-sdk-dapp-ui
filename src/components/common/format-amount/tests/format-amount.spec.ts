@@ -2,7 +2,7 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { FormatAmount } from '../format-amount';
 
-describe('FormatAmount component', () => {
+describe('FormatAmount tests', () => {
   const renderComponent = async (props: any) => {
     const page = await newSpecPage({
       components: [FormatAmount],

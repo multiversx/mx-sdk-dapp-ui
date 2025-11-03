@@ -32,6 +32,9 @@ export const config: Config = {
     }),
   ],
   sourceMap: isDev,
+  testing: {
+    setupFilesAfterEnv: ['./src/setupTests.ts'],
+  },
   outputTargets: [
     reactOutputTarget({
       outDir: './dist/react',

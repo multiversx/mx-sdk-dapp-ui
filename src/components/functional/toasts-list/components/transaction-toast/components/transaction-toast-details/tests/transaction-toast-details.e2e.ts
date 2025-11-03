@@ -1,9 +1,10 @@
 import { newE2EPage } from '@stencil/core/testing';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
+import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
 
-const createMockTransaction = (params: { hash: string; status?: string; timestamp?: number }): ITransactionListItem => ({
+const createMockTransaction = (params: { hash: string; status?: `${TransactionStatusEnum}`; timestamp?: number }): ITransactionListItem => ({
   hash: params.hash,
-  status: params.status || 'success',
+  status: params.status || TransactionStatusEnum.success,
   link: `https://explorer.com/${params.hash}`,
   asset: { text: 'EGLD', imageUrl: 'egld.png' },
   action: { name: 'transfer' },
@@ -14,7 +15,7 @@ const createMockTransaction = (params: { hash: string; status?: string; timestam
 const createMockTransactions = (count: number): ITransactionListItem[] => {
   return Array.from({ length: count }, (_, i) => {
     const index = i + 1;
-    const statuses = ['success', 'pending', 'failed'];
+    const statuses = [TransactionStatusEnum.success, TransactionStatusEnum.pending, TransactionStatusEnum.fail];
     const status = statuses[i % statuses.length];
     return createMockTransaction({
       hash: `tx${index}`,

@@ -79,12 +79,12 @@ describe('TransactionAccount tests', () => {
     });
 
     expect(page.root).toEqualHtml(`
-      <div class="transaction-account mvx:flex mvx:items-center mvx:gap-2">
-        <mvx-explorer-link link="https://example.com/account/0x1234567890123456789012345678901234567890" data-testid="receiverLink" class="transaction-account-explorer-link mvx:text-primary!">
-          <span>0x1234567890123456789012345678901234567890</span>
-        </mvx-explorer-link>
-      </div>
-    `);
+    <div class="transaction-account mvx:flex mvx:items-center mvx:gap-2">
+      <a class="explorer-link mvx:decoration-0 mvx:flex mvx:text-primary! transaction-account-explorer-link" href="https://example.com/account/0x1234567890123456789012345678901234567890" rel="noreferrer" target="_blank">
+        <span>0x1234567890123456789012345678901234567890</span>
+      </a>
+    </div>
+  `);
   });
 
   it('should apply custom class and data-testid', async () => {

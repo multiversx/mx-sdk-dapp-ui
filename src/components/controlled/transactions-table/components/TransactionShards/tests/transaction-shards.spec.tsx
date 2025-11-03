@@ -51,14 +51,14 @@ describe('TransactionShards tests', () => {
     });
 
     expect(page.root).toEqualHtml(`
-      <div class="mvx:fill-label mvx:flex mvx:gap-2 mvx:items-center mvx:w-max  transaction-shards">
-        <mvx-explorer-link class="explorer-link mvx:text-primary!" data-testid="${DataTestIdsEnum.shardFromLink}" link="/blocks?shard=0">
+      <div class="mvx:fill-label mvx:flex mvx:gap-2 mvx:items-center mvx:w-max transaction-shards">
+        <a class="explorer-link mvx:decoration-0 mvx:flex mvx:text-primary!" href="/blocks?shard=0" rel="noreferrer" target="_blank">
           <span data-testid="${DataTestIdsEnum.senderShard}">0</span>
-        </mvx-explorer-link>
+        </a>
         <mvx-arrow-right-icon class="mvx:h-4 mvx:w-4 transaction-shards-arrow-icon"></mvx-arrow-right-icon>
-        <mvx-explorer-link class="explorer-link mvx:text-primary!" data-testid="${DataTestIdsEnum.shardToLink}" link="/blocks?shard=1">
+        <a class="explorer-link mvx:decoration-0 mvx:flex mvx:text-primary!" href="/blocks?shard=1" rel="noreferrer" target="_blank">
           <span data-testid="${DataTestIdsEnum.receiverShard}">1</span>
-        </mvx-explorer-link>
+        </a>
       </div>
     `);
   });
@@ -73,13 +73,13 @@ describe('TransactionShards tests', () => {
 
     expect(page.root).toEqualHtml(`
       <div class="custom-class mvx:fill-label mvx:flex mvx:gap-2 mvx:items-center mvx:w-max transaction-shards">
-        <mvx-explorer-link class="explorer-link mvx:text-primary!" data-testid="${DataTestIdsEnum.shardFromLink}" link="/blocks?shard=0">
+        <a class="explorer-link mvx:decoration-0 mvx:flex mvx:text-primary!" href="/blocks?shard=0" rel="noreferrer" target="_blank">
           <span data-testid="${DataTestIdsEnum.senderShard}">0</span>
-        </mvx-explorer-link>
+        </a>
         <mvx-arrow-right-icon class="mvx:h-4 mvx:w-4 transaction-shards-arrow-icon"></mvx-arrow-right-icon>
-        <mvx-explorer-link class="explorer-link mvx:text-primary!" data-testid="${DataTestIdsEnum.shardToLink}" link="/blocks?shard=1">
+        <a class="explorer-link mvx:decoration-0 mvx:flex mvx:text-primary!" href="/blocks?shard=1" rel="noreferrer" target="_blank">
           <span data-testid="${DataTestIdsEnum.receiverShard}">1</span>
-        </mvx-explorer-link>
+        </a>
       </div>
     `);
   });

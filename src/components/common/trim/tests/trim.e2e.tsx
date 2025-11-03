@@ -3,12 +3,12 @@ import { newSpecPage } from '@stencil/core/testing';
 import { Trim } from '../trim';
 
 class MockResizeObserver {
-  observe() {}
-  unobserve() {}
-  disconnect() {}
+  observe() { }
+  unobserve() { }
+  disconnect() { }
 }
 
-describe('trim', () => {
+describe('Trim tests', () => {
   beforeAll(() => {
     // @ts-ignore
     global.ResizeObserver = MockResizeObserver;
@@ -21,12 +21,8 @@ describe('trim', () => {
     });
 
     const trimElement = page.root;
-    const component = page.rootInstance;
 
-    component.shouldTrim = false;
-    await page.waitForChanges();
-
-    const fullTextElement = trimElement.querySelector('.trim-full.visible');
+    const fullTextElement = trimElement.querySelector('[data-testid="trimFullAddress"]');
     expect(fullTextElement).toBeTruthy();
     expect(fullTextElement.textContent).toBe('Short text');
   });
@@ -43,7 +39,7 @@ describe('trim', () => {
 
     const trimElement = page.root;
 
-    const trimWrapper = trimElement.querySelector('.trim-wrapper.visible');
+    const trimWrapper = trimElement.querySelector('.trim-wrapper');
     expect(trimWrapper).toBeTruthy();
 
     const leftWrapper = trimWrapper.querySelector('.trim-left-wrapper');

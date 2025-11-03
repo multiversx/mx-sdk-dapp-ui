@@ -1,6 +1,7 @@
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
+import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
 
 import type { IToastDataState, ITransactionProgressState } from './transaction-toast.type';
 
@@ -23,12 +24,13 @@ export class TransactionToast {
   }
 
   render() {
-    const isStatusPending = this.transactions.every(tx => tx.status === 'pending');
+    const isStatusPending = this.transactions.every(tx => tx.status === TransactionStatusEnum.pending);
 
     return (
       <div class="transaction-toast">
         <mvx-transaction-toast-progress
           key={this.toastId}
+          toastId={this.toastId}
           startTime={this.transactionProgressState?.startTime}
           endTime={this.transactionProgressState?.endTime}
           isStatusPending={isStatusPending}

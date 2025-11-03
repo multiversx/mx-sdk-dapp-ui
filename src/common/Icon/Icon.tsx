@@ -6,25 +6,25 @@ import { AngleRightIcon } from './components/AngleRightIcon';
 import { AnglesLeftIcon } from './components/AnglesLeftIcon';
 import { AnglesRightIcon } from './components/AnglesRightIcon';
 import { AngleUpIcon } from './components/AngleUpIcon';
+import { ArrowsRotateIcon } from './components/ArrowsRotateIcon';
 import { ArrowUpRightFromSquareIcon } from './components/ArrowUpRightFromSquare';
 import { ArrowUpRightIcon } from './components/ArrowUpRightIcon';
 import { BackArrowIcon } from './components/BackArrowIcon';
+import { BanIcon } from './components/BanIcon';
 import { CheckIcon } from './components/CheckIcon';
+import { CircleCheckIcon } from './components/CircleCheckIcon';
 import { CircleExclamationIcon } from './components/CircleExclamationIcon';
+import { CircleInfoIcon } from './components/CircleInfoIcon';
 import { CloseIcon } from './components/CloseIcon';
+import { CoinsIcon } from './components/CoinsIcon';
 import { ContractIcon } from './components/ContractIcon';
 import { CopyIcon } from './components/CopyIcon';
+import { HourglassIcon } from './components/HourglassIcon';
 import { LayersIcon } from './components/LayersIcon';
 import { LockIcon } from './components/LockIcon';
 import { PencilIcon } from './components/PencilIcon';
 import { TriangularWarningIcon } from './components/TriangularWarningIcon';
 import type { IconPropsType } from './icon.types';
-import { HourglassIcon } from './components/HourglassIcon';
-import { BanIcon } from './components/BanIcon';
-import { CircleCheckIcon } from './components/CircleCheckIcon';
-import { CircleInfoIcon } from './components/CircleInfoIcon';
-import { CoinsIcon } from './components/CoinsIcon';
-import { ArrowsRotateIcon } from './components/ArrowsRotateIcon';
 
 export const Icon = ({ name, ...properties }: IconPropsType) => {
   if (!name) {
