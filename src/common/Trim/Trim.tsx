@@ -22,6 +22,7 @@ export function Trim({
     let currentTrimFontSize = '1rem';
     let trimFullElement: HTMLDivElement;
     let trimWrapperElement: HTMLDivElement;
+    let isCurrentlyOverflowing: boolean | null = null;
 
     const handleTrimElementReference = (element: HTMLDivElement) => {
         if (element) {
@@ -71,6 +72,12 @@ export function Trim({
         const hiddenFullWidthElementWidth = fullWidthUntrimmedElementReference.scrollWidth;
         const trimmedElementWidth = trimElementReference.clientWidth;
         const isTrimElementOverflowing = hiddenFullWidthElementWidth > trimmedElementWidth;
+
+        if (isCurrentlyOverflowing === isTrimElementOverflowing) {
+            return;
+        }
+
+        isCurrentlyOverflowing = isTrimElementOverflowing;
 
         if (safeWindow) {
             currentTrimFontSize = safeWindow.getComputedStyle(trimElementReference).fontSize;
