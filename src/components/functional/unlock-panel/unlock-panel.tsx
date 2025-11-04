@@ -7,11 +7,10 @@ import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import { UnlockPanelGroup } from './components/unlock-panel-group/unlock-panel-group';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
 import type { IUnlockPanelManagerData } from './unlock-panel.types';
 import { UnlockPanelEventsEnum } from './unlock-panel.types';
-import { UnlockPanelFooter } from './components';
+import { UnlockPanelFooter, UnlockPanelGroup } from './components';
 
 const unlockPanelClasses: Record<string, string> = {
   detectedPanelGroup: 'mvx:hidden mvx:sm:flex mvx:sm:flex-col',
