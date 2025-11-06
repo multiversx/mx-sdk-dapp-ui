@@ -15,5 +15,10 @@
       "constants/*": ["constants/*"]
     }
   },
-  "include": ["src/utils/getDetectedBrowser.ts", "src/constants/browser.enum.ts", "src/constants/window.constants.ts"]
+  "include": [
+    "src/utils/getDetectedBrowser.ts", 
+    "src/constants/browser.enum.ts", 
+    "src/constants/window.constants.ts", 
+    "src/utils/EventBus.ts"
+  ]
 }
