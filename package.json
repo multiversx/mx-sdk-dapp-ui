@@ -24,6 +24,11 @@
       "require": "./dist/cjs/constants/browser.enum.js",
       "types": "./dist/types/constants/browser.enum.d.ts"
     },
+    "./utils/EventBus": {
+      "import": "./dist/utils/EventBus.js",
+      "require": "./dist/cjs/utils/EventBus.js",
+      "types": "./dist/types/utils/EventBus.d.ts"
+    },
     "./mvx-unlock-panel": {
       "import": "./dist/web-components/mvx-unlock-panel.js",
       "types": "./dist/web-components/mvx-unlock-panel.d.ts"
