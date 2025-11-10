@@ -16,9 +16,7 @@ interface UnlockPanelGroupPropsType {
 
 export function UnlockPanelGroup({ providers = [], class: className, onLogin, groupLabel }: UnlockPanelGroupPropsType) {
   const handleLogin = (provider: IProviderBase) => {
-    if (onLogin) {
-      onLogin(provider);
-    }
+    onLogin?.(provider);
   };
 
   const isInstallableExtension = (provider: IProviderBase<ProviderTypeEnum>) =>

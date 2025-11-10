@@ -11,7 +11,7 @@ export function UnlockPanelFooter({ walletAddress }: { walletAddress: string }) 
     window.open(walletAddress, '_blank');
   };
 
-  const processedWalletAddress = String(walletAddress).replace('https://', '');
+  const noProtocolWalletAddress = String(walletAddress).replace('https://', '');
 
   return (
     <div class={styles.unlockPanelFooter} onClick={handleWalletClick}>
@@ -33,7 +33,7 @@ export function UnlockPanelFooter({ walletAddress }: { walletAddress: string }) 
             class={styles.unlockPanelFooterSubtitleLink}
             href={walletAddress}
           >
-            {processedWalletAddress}
+            {noProtocolWalletAddress}
           </a>
         </div>
 
