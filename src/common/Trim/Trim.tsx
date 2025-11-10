@@ -79,35 +79,47 @@ export function Trim({
 
         isCurrentlyOverflowing = isTrimElementOverflowing;
 
-        if (safeWindow) {
-            currentTrimFontSize = safeWindow.getComputedStyle(trimElementReference).fontSize;
+        if (resizeObserver) {
+            resizeObserver.disconnect();
         }
 
-        const getIdentifierClass = (classes: string) => classes.split(' ')[0];
+        requestAnimationFrame(() => {
+            if (safeWindow) {
+                currentTrimFontSize = safeWindow.getComputedStyle(trimElementReference).fontSize;
+            }
 
-        const trimLeftSelector = `.${getIdentifierClass(styles.trimLeft)}`;
-        const trimRightSelector = `.${getIdentifierClass(styles.trimRight)}`;
+            const getIdentifierClass = (classes: string) => classes.split(' ')[0];
 
-        const trimLeftElement = trimElementReference.querySelector(trimLeftSelector) as HTMLElement;
-        const trimRightElement = trimElementReference.querySelector(trimRightSelector) as HTMLElement;
-        if (trimLeftElement) {
-            trimLeftElement.style.fontSize = currentTrimFontSize;
-        }
+            const trimLeftSelector = `.${getIdentifierClass(styles.trimLeft)}`;
+            const trimRightSelector = `.${getIdentifierClass(styles.trimRight)}`;
 
-        if (trimRightElement) {
-            trimRightElement.style.fontSize = currentTrimFontSize;
-        }
+            const trimLeftElement = trimElementReference.querySelector(trimLeftSelector) as HTMLElement;
+            const trimRightElement = trimElementReference.querySelector(trimRightSelector) as HTMLElement;
+            if (trimLeftElement) {
+                trimLeftElement.style.fontSize = currentTrimFontSize;
+            }
 
-        const trimFullVisibleClasses = styles.trimFullVisible.split(/\s+/);
-        const trimWrapperVisibleClasses = styles.trimWrapperVisible.split(/\s+/);
+            if (trimRightElement) {
+                trimRightElement.style.fontSize = currentTrimFontSize;
+            }
 
-        if (isTrimElementOverflowing) {
-            trimFullElement.classList.remove(...trimFullVisibleClasses);
-            trimWrapperElement.classList.add(...trimWrapperVisibleClasses);
-        } else {
-            trimFullElement.classList.add(...trimFullVisibleClasses);
-            trimWrapperElement.classList.remove(...trimWrapperVisibleClasses);
-        }
+            const trimFullVisibleClasses = styles.trimFullVisible.split(/\s+/);
+            const trimWrapperVisibleClasses = styles.trimWrapperVisible.split(/\s+/);
+
+            if (isTrimElementOverflowing) {
+                trimFullElement.classList.remove(...trimFullVisibleClasses);
+                trimWrapperElement.classList.add(...trimWrapperVisibleClasses);
+            } else {
+                trimFullElement.classList.add(...trimFullVisibleClasses);
+                trimWrapperElement.classList.remove(...trimWrapperVisibleClasses);
+            }
+
+            requestAnimationFrame(() => {
+                if (resizeObserver && trimElementReference) {
+                    resizeObserver.observe(trimElementReference);
+                }
+            });
+        });
     };
 
     const middleTextIndex = Math.floor(text.length / 2);
