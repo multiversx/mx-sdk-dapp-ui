@@ -52,7 +52,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: ${{ steps.package.outputs.is-prerelease == 'false' }}
         run: |
-          RELEASE_TAG=v$(node -p "require('./package.json').version")
+          RELEASE_TAG=v${{ steps.package.outputs.version }}
           echo "Creating release for version: $RELEASE_TAG"
 
           changelog_content=$(awk "/^## \[\[?${RELEASE_TAG#v}[^\]]*\]/{flag=1; next} /^## \[/{flag=0} flag" CHANGELOG.md)
