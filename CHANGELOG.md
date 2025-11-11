@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Added github release on publish](https://github.com/multiversx/mx-sdk-dapp-ui/pull/264)
+
 ## [[0.1.2](https://github.com/multiversx/mx-sdk-dapp-ui/pull/263)] - 2025-11-06
 
 - [Added expose EventBus from utils](https://github.com/multiversx/mx-sdk-dapp-ui/pull/262)
