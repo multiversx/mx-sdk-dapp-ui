@@ -1,7 +1,8 @@
 import { h } from '@stencil/core';
 import classNames from 'classnames';
 import { type IProviderBase, ProviderTypeEnum } from 'types/provider.types';
-import styles from './unlockPanelGroup.styles'
+import styles from './unlockPanelGroup.styles';
+import { UnlockProviderButton } from '../UnlockProviderButton';
 
 export enum UnlockPanelGroupSlotEnum {
   groupLabel = 'group-label',
@@ -31,7 +32,7 @@ export function UnlockPanelGroup({ providers = [], class: className, onLogin, gr
 
         <div class={styles.unlockPanelGroupProviders}>
           {providers.map((provider, providerIndex) => (
-            <mvx-unlock-provider-button
+            <UnlockProviderButton
               provider={provider}
               onClick={() => handleLogin(provider)}
               class={classNames({

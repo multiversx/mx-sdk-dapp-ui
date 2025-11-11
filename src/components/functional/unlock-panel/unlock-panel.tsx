@@ -11,12 +11,7 @@ import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
 import type { IUnlockPanelManagerData } from './unlock-panel.types';
 import { UnlockPanelEventsEnum } from './unlock-panel.types';
 import { UnlockPanelFooter, UnlockPanelGroup } from './components';
-
-const unlockPanelClasses: Record<string, string> = {
-  detectedPanelGroup: 'mvx:hidden mvx:sm:flex mvx:sm:flex-col',
-  desktopPanelGroupTitle: 'mvx:hidden mvx:sm:flex',
-  mobilePanelGroupTitle: 'mvx:sm:hidden',
-};
+import styles from './unlock-panel.styles';
 
 @Component({
   tag: 'mvx-unlock-panel',
@@ -175,7 +170,7 @@ export class UnlockPanel {
         <div
           id="anchor"
           ref={(element: HTMLDivElement) => this.setAnchor(element)}
-          class={{ 'unlock-panel-anchor': this.isLoggingIn || this.isIntroScreenVisible }}
+          class={{ [styles.unlockPanelAnchor]: this.isLoggingIn || this.isIntroScreenVisible }}
         >
           {this.isIntroScreenVisible && (
             <ProviderIdleScreen
@@ -188,13 +183,13 @@ export class UnlockPanel {
         </div>
 
         {isProviderScreenVisible && (
-          <div class="unlock-panel">
-            <div class="unlock-panel-groups">
+          <div class={styles.unlockPanel}>
+            <div class={styles.unlockPanelGroups}>
               {hasDetectedProviders && (
                 <UnlockPanelGroup
                   providers={detectedProviders}
                   onLogin={(provider) => this.handleLogin(provider)}
-                  class={unlockPanelClasses.detectedPanelGroup}
+                  class={styles.detectedPanelGroup}
                   groupLabel={
                     <div>Detected</div>
                   }
@@ -206,8 +201,8 @@ export class UnlockPanel {
                 onLogin={(provider) => this.handleLogin(provider)}
                 groupLabel={
                   <div>
-                    <div class={unlockPanelClasses.mobilePanelGroupTitle}>Options</div>
-                    <div class={unlockPanelClasses.desktopPanelGroupTitle}>
+                    <div class={styles.mobilePanelGroupTitle}>Options</div>
+                    <div class={styles.desktopPanelGroupTitle}>
                       {hasDetectedProviders ? 'Other Options' : 'Options'}
                     </div>
                   </div>
