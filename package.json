@@ -1,6 +1,6 @@
 {
   "name": "@multiversx/sdk-dapp-ui",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A library to hold UI components for a dApp on the MultiversX blockchain",
   "author": "MultiversX",
   "license": "MIT",
@@ -16,11 +16,18 @@
     },
     "./utils/getDetectedBrowser": {
       "import": "./dist/utils/utils/getDetectedBrowser.js",
+      "require": "./dist/cjs/utils/getDetectedBrowser.js",
       "types": "./dist/types/utils/getDetectedBrowser.d.ts"
     },
     "./utils/constants/browser.enum": {
       "import": "./dist/utils/constants/browser.enum.js",
+      "require": "./dist/cjs/constants/browser.enum.js",
       "types": "./dist/types/constants/browser.enum.d.ts"
+    },
+    "./utils/EventBus": {
+      "import": "./dist/utils/EventBus.js",
+      "require": "./dist/cjs/utils/EventBus.js",
+      "types": "./dist/types/utils/EventBus.d.ts"
     },
     "./mvx-unlock-panel": {
       "import": "./dist/web-components/mvx-unlock-panel.js",
@@ -82,7 +89,9 @@
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "build:dev": "stencil build --dev",
-    "build": "stencil build --prod && tsc -p tsconfig.utils.json && tsc-alias -p tsconfig.utils.json",
+    "build:esm:utils": "tsc -p tsconfig.utils.esm.json && tsc-alias -p tsconfig.utils.esm.json",
+    "build:cjs:utils": "tsc -p tsconfig.utils.cjs.json && tsc-alias -p tsconfig.utils.cjs.json",
+    "build": "stencil build --prod && npm run build:esm:utils && npm run build:cjs:utils",
     "start": "yarn run build:dev --watch --serve",
     "storybook-build-tailwind": "npx ts-node .storybook/generate-safelist.ts && npx @tailwindcss/cli -i src/global/tailwind.css -o .storybook/tailwind.css --content '.storybook/tailwind-safelist.html' && rm -f .storybook/tailwind-safelist.html",
     "storybook-dev": "yarn run build && yarn run storybook-build-tailwind && storybook dev -p 6006 --no-open",
