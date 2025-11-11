@@ -23,6 +23,7 @@ export function Trim({
     let trimFullElement: HTMLDivElement;
     let trimWrapperElement: HTMLDivElement;
     let isCurrentlyOverflowing: boolean | null = null;
+    let isCheckingOverflow = false;
 
     const handleTrimElementReference = (element: HTMLDivElement) => {
         if (element) {
@@ -65,8 +66,31 @@ export function Trim({
     }
 
     const checkOverflow = () => {
+        if (isCheckingOverflow) {
+            return;
+        }
+
         if (!fullWidthUntrimmedElementReference || !trimElementReference || !trimFullElement || !trimWrapperElement) {
             return;
+        }
+
+        isCheckingOverflow = true;
+
+        if (resizeObserver) {
+            resizeObserver.disconnect();
+        }
+
+        const trimFullVisibleClasses = styles.trimFullVisible.split(/\s+/);
+        const trimWrapperVisibleClasses = styles.trimWrapperVisible.split(/\s+/);
+
+        const hasFullVisible = trimFullElement.classList.contains(trimFullVisibleClasses[0]);
+        const hasWrapperVisible = trimWrapperElement.classList.contains(trimWrapperVisibleClasses[0]);
+
+        if (hasFullVisible) {
+            trimFullElement.classList.remove(...trimFullVisibleClasses);
+        }
+        if (hasWrapperVisible) {
+            trimWrapperElement.classList.remove(...trimWrapperVisibleClasses);
         }
 
         const hiddenFullWidthElementWidth = fullWidthUntrimmedElementReference.scrollWidth;
@@ -74,14 +98,24 @@ export function Trim({
         const isTrimElementOverflowing = hiddenFullWidthElementWidth > trimmedElementWidth;
 
         if (isCurrentlyOverflowing === isTrimElementOverflowing) {
+            if (hasFullVisible) {
+                trimFullElement.classList.add(...trimFullVisibleClasses);
+            }
+            if (hasWrapperVisible) {
+                trimWrapperElement.classList.add(...trimWrapperVisibleClasses);
+            }
+
+            isCheckingOverflow = false;
+
+            setTimeout(() => {
+                if (resizeObserver && trimElementReference) {
+                    resizeObserver.observe(trimElementReference);
+                }
+            });
             return;
         }
 
         isCurrentlyOverflowing = isTrimElementOverflowing;
-
-        if (resizeObserver) {
-            resizeObserver.disconnect();
-        }
 
         requestAnimationFrame(() => {
             if (safeWindow) {
@@ -103,9 +137,6 @@ export function Trim({
                 trimRightElement.style.fontSize = currentTrimFontSize;
             }
 
-            const trimFullVisibleClasses = styles.trimFullVisible.split(/\s+/);
-            const trimWrapperVisibleClasses = styles.trimWrapperVisible.split(/\s+/);
-
             if (isTrimElementOverflowing) {
                 trimFullElement.classList.remove(...trimFullVisibleClasses);
                 trimWrapperElement.classList.add(...trimWrapperVisibleClasses);
@@ -113,6 +144,8 @@ export function Trim({
                 trimFullElement.classList.add(...trimFullVisibleClasses);
                 trimWrapperElement.classList.remove(...trimWrapperVisibleClasses);
             }
+
+            isCheckingOverflow = false;
 
             requestAnimationFrame(() => {
                 if (resizeObserver && trimElementReference) {
