@@ -80,11 +80,14 @@ export function Trim({
             resizeObserver.disconnect();
         }
 
+
+        const getIdentifierClass = (classes: string) => classes.split(' ')[0];
+
         const trimFullVisibleClasses = styles.trimFullVisible.split(/\s+/);
         const trimWrapperVisibleClasses = styles.trimWrapperVisible.split(/\s+/);
 
-        const hasFullVisible = trimFullElement.classList.contains(trimFullVisibleClasses[0]);
-        const hasWrapperVisible = trimWrapperElement.classList.contains(trimWrapperVisibleClasses[0]);
+        const hasFullVisible = trimFullElement.classList.contains(getIdentifierClass(styles.trimFullVisible));
+        const hasWrapperVisible = trimWrapperElement.classList.contains(getIdentifierClass(styles.trimWrapperVisible));
 
         if (hasFullVisible) {
             trimFullElement.classList.remove(...trimFullVisibleClasses);
@@ -121,8 +124,6 @@ export function Trim({
             if (safeWindow) {
                 currentTrimFontSize = safeWindow.getComputedStyle(trimElementReference).fontSize;
             }
-
-            const getIdentifierClass = (classes: string) => classes.split(' ')[0];
 
             const trimLeftSelector = `.${getIdentifierClass(styles.trimLeft)}`;
             const trimRightSelector = `.${getIdentifierClass(styles.trimRight)}`;
