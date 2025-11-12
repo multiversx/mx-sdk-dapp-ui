@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - [Added skip tests if PR is in draft](https://github.com/multiversx/mx-sdk-dapp-ui/pull/265)
+- [Refactored unlock panel components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/255)
 - [Added github release on publish](https://github.com/multiversx/mx-sdk-dapp-ui/pull/264)
 
 ## [[0.1.2](https://github.com/multiversx/mx-sdk-dapp-ui/pull/263)] - 2025-11-06
