@@ -275,8 +275,6 @@ export namespace Components {
          */
         "isToggled": boolean;
     }
-    interface MvxSignTransactionsFooter {
-    }
     interface MvxSignTransactionsHeader {
     }
     interface MvxSignTransactionsOverview {
@@ -854,12 +852,6 @@ declare global {
         prototype: HTMLMvxSignTransactionsAdvancedDataDecodeElement;
         new (): HTMLMvxSignTransactionsAdvancedDataDecodeElement;
     };
-    interface HTMLMvxSignTransactionsFooterElement extends Components.MvxSignTransactionsFooter, HTMLStencilElement {
-    }
-    var HTMLMvxSignTransactionsFooterElement: {
-        prototype: HTMLMvxSignTransactionsFooterElement;
-        new (): HTMLMvxSignTransactionsFooterElement;
-    };
     interface HTMLMvxSignTransactionsHeaderElement extends Components.MvxSignTransactionsHeader, HTMLStencilElement {
     }
     var HTMLMvxSignTransactionsHeaderElement: {
@@ -1111,7 +1103,6 @@ declare global {
         "mvx-sign-transactions-advanced": HTMLMvxSignTransactionsAdvancedElement;
         "mvx-sign-transactions-advanced-data": HTMLMvxSignTransactionsAdvancedDataElement;
         "mvx-sign-transactions-advanced-data-decode": HTMLMvxSignTransactionsAdvancedDataDecodeElement;
-        "mvx-sign-transactions-footer": HTMLMvxSignTransactionsFooterElement;
         "mvx-sign-transactions-header": HTMLMvxSignTransactionsHeaderElement;
         "mvx-sign-transactions-overview": HTMLMvxSignTransactionsOverviewElement;
         "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
@@ -1390,8 +1381,6 @@ declare namespace LocalJSX {
          */
         "isToggled"?: boolean;
     }
-    interface MvxSignTransactionsFooter {
-    }
     interface MvxSignTransactionsHeader {
     }
     interface MvxSignTransactionsOverview {
@@ -1597,7 +1586,6 @@ declare namespace LocalJSX {
         "mvx-sign-transactions-advanced": MvxSignTransactionsAdvanced;
         "mvx-sign-transactions-advanced-data": MvxSignTransactionsAdvancedData;
         "mvx-sign-transactions-advanced-data-decode": MvxSignTransactionsAdvancedDataDecode;
-        "mvx-sign-transactions-footer": MvxSignTransactionsFooter;
         "mvx-sign-transactions-header": MvxSignTransactionsHeader;
         "mvx-sign-transactions-overview": MvxSignTransactionsOverview;
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
@@ -1669,7 +1657,6 @@ declare module "@stencil/core" {
             "mvx-sign-transactions-advanced": LocalJSX.MvxSignTransactionsAdvanced & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsAdvancedElement>;
             "mvx-sign-transactions-advanced-data": LocalJSX.MvxSignTransactionsAdvancedData & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsAdvancedDataElement>;
             "mvx-sign-transactions-advanced-data-decode": LocalJSX.MvxSignTransactionsAdvancedDataDecode & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsAdvancedDataDecodeElement>;
-            "mvx-sign-transactions-footer": LocalJSX.MvxSignTransactionsFooter & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsFooterElement>;
             "mvx-sign-transactions-header": LocalJSX.MvxSignTransactionsHeader & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsHeaderElement>;
             "mvx-sign-transactions-overview": LocalJSX.MvxSignTransactionsOverview & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsOverviewElement>;
             "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;

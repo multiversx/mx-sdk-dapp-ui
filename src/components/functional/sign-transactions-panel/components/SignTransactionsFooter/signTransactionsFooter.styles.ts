@@ -14,5 +14,8 @@ export default {
     signTransactionsTrimWrapper: 'sign-transactions-trim-wrapper mvx:items-end mvx:leading-none',
     signTransactionsFooterIdentityUsername: 'sign-transactions-footer-identity-username mvx:flex mvx:items-center mvx:text-base mvx:text-primary',
     signTransactionsFooterIdentityUsernamePrefix: 'sign-transactions-footer-identity-username-prefix mvx:text-accent',
-    signTransactionsFooterIdentityCopy: 'sign-transactions-footer-identity-copy mvx:text-primary'
+    signTransactionsFooterIdentityCopy: 'sign-transactions-footer-identity-copy mvx:text-primary',
+    signTransactionsButtonTooltip: 'sign-transactions-button-tooltip mvx:absolute mvx:top-0 mvx:h-12 mvx:left-0 mvx:right-0',
+    signTransactionsActionButton: 'sign-transactions-action-button mvx:text-base! mvx:w-full',
+    signTransactionsExplorerLinkIcon: 'sign-transactions-explorer-link-icon mvx:text-primary',
 } satisfies Record<string, string>;
