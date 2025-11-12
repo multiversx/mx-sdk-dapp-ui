@@ -152,7 +152,7 @@ export class SignTransactionsPanel {
             )}
           </div>
 
-          <mvx-sign-transactions-footer />
+          <mvx-sign-transactions-footer style={{ height: '100%' }} />
         </div>
       </mvx-side-panel>
     );

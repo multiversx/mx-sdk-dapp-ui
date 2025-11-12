@@ -4,6 +4,7 @@ import { Icon } from 'common/Icon';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import state from '../../signTransactionsPanelStore';
+import styles from './sign-transactions-footer.styles';
 
 const signTransactionsFooterClasses: Record<string, string> = {
   buttonTooltip: 'mvx:absolute mvx:top-0 mvx:h-12 mvx:left-0 mvx:right-0',
@@ -56,122 +57,118 @@ export class SignTransactionsFooter {
     const checkButtonText = providerName ? `Check ${providerName}` : 'Check your device';
 
     return (
-      <div class="sign-transactions-footer" data-testid={DataTestIdsEnum.signTransactionsFooter}>
-        <div class="sign-transactions-footer-buttons" data-testid={DataTestIdsEnum.signTransactionsFooterButtons}>
-          <div class="sign-transactions-footer-button-wrapper cancel">
-            <mvx-button
-              size="small"
-              onButtonClick={isFirstTransaction ? onCancel : onBack}
-              variant={currentIndexCannotBeSignedYet ? 'primary' : 'secondary'}
-              data-testid={isFirstTransaction ? DataTestIdsEnum.signCancelBtn : DataTestIdsEnum.signBackBtn}
-              class={classNames('sign-transactions-footer-button', signTransactionsFooterClasses.actionButton)}
-            >
-              {isFirstTransaction ? 'Cancel' : 'Back'}
-            </mvx-button>
+      <div class={styles.signTransactionsFooterContainer}>
+        <div class={styles.signTransactionsFooter} data-testid={DataTestIdsEnum.signTransactionsFooter}>
+          <div class={styles.signTransactionsFooterButtons} data-testid={DataTestIdsEnum.signTransactionsFooterButtons}>
+            <div class={classNames(styles.signTransactionsFooterButtonWrapper, styles.signTransactionsFooterButtonWrapperCancel)}>
+              <mvx-button
+                size="small"
+                onButtonClick={isFirstTransaction ? onCancel : onBack}
+                variant={currentIndexCannotBeSignedYet ? 'primary' : 'secondary'}
+                data-testid={isFirstTransaction ? DataTestIdsEnum.signCancelBtn : DataTestIdsEnum.signBackBtn}
+                class={classNames(styles.signTransactionsFooterButton, signTransactionsFooterClasses.actionButton)}
+              >
+                {isFirstTransaction ? 'Cancel' : 'Back'}
+              </mvx-button>
+            </div>
+
+            <div class={styles.signTransactionsFooterButtonWrapper}>
+              {currentIndexCannotBeSignedYet && (
+                <div
+                  class={styles.signTransactionsFooterButtonTooltipWrapper}
+                  onClick={(event: MouseEvent) => event.stopPropagation()}
+                >
+                  <mvx-tooltip
+                    trigger={
+                      <div
+                        class={{
+                          [signTransactionsFooterClasses.buttonTooltip]: true,
+                        }}
+                      />
+                    }
+                  >
+                    {needsSigning ? (
+                      <Fragment>
+                        You cannot sign this transaction yet, <br /> please go back and sign consecutively.
+                      </Fragment>
+                    ) : (
+                      <Fragment>
+                        You cannot confirm this transaction yet, <br />
+                        please go back and confirm consecutively.
+                      </Fragment>
+                    )}
+                  </mvx-tooltip>
+                </div>
+              )}
+
+              <mvx-button
+                size="small"
+                data-testid={DataTestIdsEnum.signNextTransactionBtn}
+                onClick={showForwardAction ? this.handleSignClick : onNext}
+                disabled={currentIndexCannotBeSignedYet || this.isWaitingForSignature}
+                class={classNames(styles.signTransactionsFooterButton, signTransactionsFooterClasses.actionButton)}
+              >
+                {showForwardAction ? (
+                  <span>
+                    {this.isWaitingForSignature ? (
+                      <span>{checkButtonText}</span>
+                    ) : (
+                      <span>{needsSigning ? 'Sign' : 'Confirm'}</span>
+                    )}
+                  </span>
+                ) : (
+                  <span>Next</span>
+                )}
+
+                {showForwardAction ? (
+                  <span
+                    class={{
+                      [styles.signTransactionsFooterButtonIconLighter]: currentIndexCannotBeSignedYet,
+                    }}
+                  >
+                    {this.isWaitingForSignature ? (
+                      <span class={styles.signTransactionsFooterButtonIcon}>
+                        <mvx-spinner-icon />
+                      </span>
+                    ) : (
+                      <span class={styles.signTransactionsFooterButtonIcon}>
+                        <Icon name={!needsSigning ? 'pencil' : 'check'} />
+                      </span>
+                    )}
+                  </span>
+                ) : (
+                  <span class={styles.signTransactionsFooterButtonIcon}>
+                    <mvx-arrow-right-icon />
+                  </span>
+                )}
+              </mvx-button>
+            </div>
           </div>
 
-          <div class="sign-transactions-footer-button-wrapper confirm">
-            {currentIndexCannotBeSignedYet && (
+          <div class={styles.signTransactionsFooterIdentity} data-testid={DataTestIdsEnum.signTransactionsFooterIdentity}>
+            <div class={styles.signTransactionsFooterIdentityLabel}>Sign with</div>
+
+            {username && (
               <div
-                class="sign-transactions-footer-button-tooltip-wrapper"
-                onClick={(event: MouseEvent) => event.stopPropagation()}
+                class={styles.signTransactionsFooterIdentityUsername}
+                data-testid={DataTestIdsEnum.signTransactionsFooterIdentityUsername}
               >
-                <mvx-tooltip
-                  trigger={
-                    <div
-                      class={{
-                        'sign-transactions-footer-button-tooltip': true,
-                        [signTransactionsFooterClasses.buttonTooltip]: true,
-                      }}
-                    />
-                  }
-                >
-                  {needsSigning ? (
-                    <Fragment>
-                      You cannot sign this transaction yet, <br /> please go back and sign consecutively.
-                    </Fragment>
-                  ) : (
-                    <Fragment>
-                      You cannot confirm this transaction yet, <br />
-                      please go back and confirm consecutively.
-                    </Fragment>
-                  )}
-                </mvx-tooltip>
+                <span class={styles.signTransactionsFooterIdentityUsernamePrefix}>@</span>
+                <span>{username}</span>
               </div>
             )}
 
-            <mvx-button
-              size="small"
-              data-testid={DataTestIdsEnum.signNextTransactionBtn}
-              onClick={showForwardAction ? this.handleSignClick : onNext}
-              disabled={currentIndexCannotBeSignedYet || this.isWaitingForSignature}
-              class={classNames('sign-transactions-footer-button', signTransactionsFooterClasses.actionButton)}
-            >
-              {showForwardAction ? (
-                <span class="sign-transactions-footer-button-label-wrapper">
-                  {this.isWaitingForSignature ? (
-                    <span class="sign-transactions-footer-button-label">{checkButtonText}</span>
-                  ) : (
-                    <span class="sign-transactions-footer-button-label">{needsSigning ? 'Sign' : 'Confirm'}</span>
-                  )}
-                </span>
-              ) : (
-                <span class="sign-transactions-footer-button-label-wrapper">
-                  <span class="sign-transactions-footer-button-label">Next</span>
-                </span>
-              )}
+            {!username && address && (
+              <mvx-trim
+                text={address}
+                class={styles.signTransactionsFooterIdentityAddress}
+                data-testid={DataTestIdsEnum.signTransactionsFooterIdentityAddress}
+              />
+            )}
 
-              {showForwardAction ? (
-                <span
-                  class={{
-                    'sign-transactions-footer-button-icon-wrapper': true,
-                    'lighter': currentIndexCannotBeSignedYet,
-                  }}
-                >
-                  {this.isWaitingForSignature ? (
-                    <span class="sign-transactions-footer-button-icon">
-                      <mvx-spinner-icon />
-                    </span>
-                  ) : (
-                    <span class="sign-transactions-footer-button-icon">
-                      <Icon name={!needsSigning ? 'pencil' : 'check'} />
-                    </span>
-                  )}
-                </span>
-              ) : (
-                <span class="sign-transactions-footer-button-icon-wrapper">
-                  <span class="sign-transactions-footer-button-icon">
-                    <mvx-arrow-right-icon />
-                  </span>
-                </span>
-              )}
-            </mvx-button>
+            <mvx-copy-button text={username ?? address} class={styles.signTransactionsFooterIdentityCopy} />
+            <mvx-explorer-link link={explorerLink} iconClass={signTransactionsFooterClasses.explorerLinkIcon} />
           </div>
-        </div>
-
-        <div class="sign-transactions-footer-identity" data-testid={DataTestIdsEnum.signTransactionsFooterIdentity}>
-          <div class="sign-transactions-footer-identity-label">Sign with</div>
-
-          {username && (
-            <div
-              class="sign-transactions-footer-identity-username"
-              data-testid={DataTestIdsEnum.signTransactionsFooterIdentityUsername}
-            >
-              <span class="sign-transactions-footer-identity-username-prefix">@</span>
-              <span class="sign-transactions-footer-identity-username-text">{username}</span>
-            </div>
-          )}
-
-          {!username && address && (
-            <mvx-trim
-              text={address}
-              class="sign-transactions-footer-identity-address"
-              data-testid={DataTestIdsEnum.signTransactionsFooterIdentityAddress}
-            />
-          )}
-
-          <mvx-copy-button text={username ?? address} class="sign-transactions-footer-identity-copy" />
-          <mvx-explorer-link link={explorerLink} iconClass={signTransactionsFooterClasses.explorerLinkIcon} />
         </div>
       </div>
     );
