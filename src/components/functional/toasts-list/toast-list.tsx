@@ -43,7 +43,6 @@ export class ToastList {
   }
 
   disconnectedCallback() {
-    console.log('test');
     this.resetState();
     this.unsubscribeFunctions.forEach(unsubscribe => {
       if (typeof unsubscribe === 'function') {
