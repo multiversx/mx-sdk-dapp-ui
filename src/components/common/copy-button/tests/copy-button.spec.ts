@@ -47,8 +47,8 @@ describe('CopyButton', () => {
     });
 
     const copyButton = page.root;
-    const component = page.rootInstance as CopyButton;
-    await component.handleClick(new MouseEvent('click') as any);
+    const element = copyButton.querySelector('div');
+    element.click();
     await page.waitForChanges();
 
     expect(copyButton).toEqualHtml(`
@@ -71,8 +71,8 @@ describe('CopyButton', () => {
     });
 
     const copyButton = page.root;
-    const component = page.rootInstance as CopyButton;
-    await component.handleClick(new MouseEvent('click') as any);
+    const element = copyButton.querySelector('div');
+    element.click();
     await page.waitForChanges();
 
     expect(copyButton).toEqualHtml(`
@@ -97,8 +97,9 @@ describe('CopyButton', () => {
       stopPropagation: jest.fn(),
     };
 
-    const component = page.rootInstance as CopyButton;
-    await component.handleClick(mockEvent as any);
+    const element = page.root.querySelector('div');
+    element.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+    await page.waitForChanges();
 
     expect(mockEvent.preventDefault).toHaveBeenCalledTimes(1);
     expect(mockEvent.stopPropagation).toHaveBeenCalledTimes(1);

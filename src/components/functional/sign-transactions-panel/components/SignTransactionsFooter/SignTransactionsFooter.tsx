@@ -6,6 +6,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import state from '../../signTransactionsPanelStore';
 import styles from './signTransactionsFooter.styles';
 import { Trim } from 'common/Trim/Trim';
+import { CopyButton } from 'common/CopyButton/CopyButton';
 
 let isWaitingForSignature: boolean = false;
 let lastCommonData = { ...state.commonData };
@@ -148,7 +149,7 @@ export function SignTransactionsFooter() {
             />
           )}
 
-          <mvx-copy-button text={username ?? address} class={styles.signTransactionsFooterIdentityCopy} />
+          <CopyButton text={username ?? address} class={styles.signTransactionsFooterIdentityCopy} />
           <mvx-explorer-link link={explorerLink} class={styles.signTransactionsExplorerLinkIcon} />
         </div>
       </div>
