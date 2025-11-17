@@ -19,7 +19,7 @@ const styles = {
   buttonSecondary: 'button-secondary mvx:relative mvx:text-button-secondary mvx:border mvx:border-transparent mvx:after:absolute mvx:after:inset-0 mvx:after:rounded-lg mvx:after:opacity-40 mvx:after:transition-all mvx:after:duration-200 mvx:after:ease-in-out mvx:after:bg-button-bg-secondary mvx:after:content-[""] mvx:after:-z-1 mvx:hover:opacity-100 mvx:hover:text-button-primary mvx:hover:after:opacity-100 mvx:hover:after:bg-button-bg-primary',
   buttonSecondarySmall: 'button-secondary-small mvx:after:rounded-xl',
   buttonNeutral: 'button-neutral mvx:text-neutral-925 mvx:bg-white mvx:hover:opacity-75',
-  buttonDisabled: 'button-disabled mvx:pointer-events-none mvx:bg-transparent mvx:cursor-default mvx:border mvx:border-secondary-text mvx:text-secondary-text mvx:hover:opacity-100'
+  buttonDisabled: 'button-disabled mvx:pointer-events-none mvx:bg-transparent mvx:cursor-default mvx:border mvx:border-secondary-text mvx:!text-secondary-text mvx:hover:opacity-100'
 } satisfies Record<string, string>;
 
 @Component({

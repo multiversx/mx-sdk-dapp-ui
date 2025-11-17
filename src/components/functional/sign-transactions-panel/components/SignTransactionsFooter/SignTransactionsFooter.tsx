@@ -119,7 +119,7 @@ export function SignTransactionsFooter({ tooltipVisible, onTooltipVisibilityChan
                 >
                   {isWaitingForSignature ? (
                     <span class={styles.signTransactionsFooterButtonIcon}>
-                      <mvx-spinner-icon />
+                      <Icon name='spinner' />
                     </span>
                   ) : (
                     <span class={styles.signTransactionsFooterButtonIcon}>

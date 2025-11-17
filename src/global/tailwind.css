@@ -88,4 +88,14 @@
       letter-spacing: -0.001em;
     }
   }
+
+  @keyframes SpinnerAnimation {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .mvx\:animate-spinner {
+    animation: SpinnerAnimation 3000ms linear infinite;
+  }
 }
