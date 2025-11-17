@@ -129,7 +129,7 @@ export function SignTransactionsFooter({ tooltipVisible, onTooltipVisibilityChan
                 </span>
               ) : (
                 <span class={styles.signTransactionsFooterButtonIcon}>
-                  <mvx-arrow-right-icon />
+                  <Icon name='arrow-right' />
                 </span>
               )}
             </Button>
