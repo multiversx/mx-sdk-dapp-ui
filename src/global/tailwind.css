@@ -29,9 +29,14 @@
   --color-transaction-method: var(--mvx-transaction-method);
   --color-slate-550: var(--mvx-slate-550);
   --color-gray-200: var(--mvx-gray-200);
+  --color-neutral-925: var(--mvx-neutral-925);
   --color-thumb: var(--mvx-scrollbar-thumb);
   --color-outline-variant: var(--mvx-border-color-secondary);
   --color-emphasize: var(--mvx-bg-accent-color);
+  --color-button-primary: var(--mvx-button-text-primary);
+  --color-button-secondary: var(--mvx-button-text-secondary);
+  --color-button-bg-primary: var(--mvx-button-bg-primary);
+  --color-button-bg-secondary: var(--mvx-button-bg-secondary);
 }
 
 @layer utilities {

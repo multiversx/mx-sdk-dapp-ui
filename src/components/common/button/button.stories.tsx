@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from '@stencil/storybook-plugin';
 import capitalize from 'lodash.capitalize';
 
 import type { Button } from './button';
-import { ButtonSizeEnum, ButtonVariantEnum } from './button.types';
+import { ButtonSizeEnum, ButtonVariantEnum } from '../../../common/Button/button.types';
 
 // prettier-ignore
 const styles = {
