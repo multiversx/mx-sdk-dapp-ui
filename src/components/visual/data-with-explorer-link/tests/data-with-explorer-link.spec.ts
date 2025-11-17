@@ -3,7 +3,7 @@ import { Trim } from 'common/Trim/Trim';
 
 import { ExplorerLink } from '../../../common/explorer-link/explorer-link';
 import { CopyButton } from '../../../common/copy-button/copy-button';
-import { Tooltip } from '../../tooltip/tooltip';
+import { Tooltip } from '../../../common/tooltip/tooltip';
 import { DataWithExplorerLink } from '../data-with-explorer-link';
 
 describe('DataWithExplorerLink', () => {

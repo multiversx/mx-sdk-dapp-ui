@@ -5,13 +5,19 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import state from '../../signTransactionsPanelStore';
 import styles from './signTransactionsFooter.styles';
-import { Trim } from 'common/Trim/Trim';
 import { CopyButton } from 'common/CopyButton/CopyButton';
+import { Tooltip } from 'common/Tooltip/Tooltip';
+import { Button } from 'common/Button/Button';
 
 let isWaitingForSignature: boolean = false;
 let lastCommonData = { ...state.commonData };
 
-export function SignTransactionsFooter() {
+interface SignTransactionsFooterPropsType {
+  tooltipVisible?: boolean;
+  onTooltipVisibilityChange?: (visible: boolean) => void;
+}
+
+export function SignTransactionsFooter({ tooltipVisible, onTooltipVisibilityChange }: SignTransactionsFooterPropsType) {
   const currentCommonData = { ...state.commonData };
   const hasChanged = JSON.stringify(currentCommonData) !== JSON.stringify(lastCommonData);
 
@@ -44,15 +50,15 @@ export function SignTransactionsFooter() {
       <div class={styles.signTransactionsFooter} data-testid={DataTestIdsEnum.signTransactionsFooter}>
         <div class={styles.signTransactionsFooterButtons} data-testid={DataTestIdsEnum.signTransactionsFooterButtons}>
           <div class={classNames(styles.signTransactionsFooterButtonWrapper, styles.signTransactionsFooterButtonWrapperCancel)}>
-            <mvx-button
+            <Button
               size="small"
-              onButtonClick={isFirstTransaction ? onCancel : onBack}
+              onClick={isFirstTransaction ? onCancel : onBack}
               variant={currentIndexCannotBeSignedYet ? 'primary' : 'secondary'}
               data-testid={isFirstTransaction ? DataTestIdsEnum.signCancelBtn : DataTestIdsEnum.signBackBtn}
               class={classNames(styles.signTransactionsFooterButton, styles.signTransactionsActionButton)}
             >
               {isFirstTransaction ? 'Cancel' : 'Back'}
-            </mvx-button>
+            </Button>
           </div>
 
           <div class={styles.signTransactionsFooterButtonWrapper}>
@@ -61,7 +67,9 @@ export function SignTransactionsFooter() {
                 class={styles.signTransactionsFooterButtonTooltipWrapper}
                 onClick={(event: MouseEvent) => event.stopPropagation()}
               >
-                <mvx-tooltip
+                <Tooltip
+                  isTooltipVisible={tooltipVisible}
+                  onVisibilityChange={onTooltipVisibilityChange}
                   trigger={
                     <div
                       class={{
@@ -80,11 +88,11 @@ export function SignTransactionsFooter() {
                       please go back and confirm consecutively.
                     </Fragment>
                   )}
-                </mvx-tooltip>
+                </Tooltip>
               </div>
             )}
 
-            <mvx-button
+            <Button
               size="small"
               data-testid={DataTestIdsEnum.signNextTransactionBtn}
               onClick={showForwardAction ? handleSignClick : onNext}
@@ -124,7 +132,7 @@ export function SignTransactionsFooter() {
                   <mvx-arrow-right-icon />
                 </span>
               )}
-            </mvx-button>
+            </Button>
           </div>
         </div>
 
@@ -142,7 +150,7 @@ export function SignTransactionsFooter() {
           )}
 
           {!username && address && (
-            <Trim
+            <mvx-trim
               text={address}
               class={styles.signTransactionsFooterIdentityAddress}
               data-testid={DataTestIdsEnum.signTransactionsFooterIdentityAddress}

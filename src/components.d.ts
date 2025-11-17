@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IAddressTableData } from "./types/address-table.types";
-import { ButtonSizeEnum, ButtonVariantEnum } from "./components/visual/button/button.types";
+import { ButtonSizeEnum, ButtonVariantEnum } from "./common/Button/button.types";
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
@@ -20,7 +20,7 @@ import { TransactionRowType } from "./components/controlled/transactions-table/t
 import { IProviderBase } from "./types/provider.types";
 import { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
 export { IAddressTableData } from "./types/address-table.types";
-export { ButtonSizeEnum, ButtonVariantEnum } from "./components/visual/button/button.types";
+export { ButtonSizeEnum, ButtonVariantEnum } from "./common/Button/button.types";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
