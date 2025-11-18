@@ -9,6 +9,7 @@ import type { IOverviewProps, ISignTransactionsPanelData } from './sign-transact
 import { SignEventsEnum, TransactionTabsEnum } from './sign-transactions-panel.types';
 import state, { resetState } from './signTransactionsPanelStore';
 import { SignTransactionsFooter } from './components/SignTransactionsFooter/SignTransactionsFooter';
+import { CopyButtonHandler } from 'common/CopyButton/CopyButtonHandler';
 
 // prettier-ignore
 const styles = {
@@ -40,7 +41,8 @@ export class SignTransactionsPanel {
 
   @State() isOpen: boolean = false;
   @State() activeTab: TransactionTabsEnum = TransactionTabsEnum.overview;
-  @State() private isFooterTooltipVisible: boolean = false;
+  @State() isFooterTooltipVisible: boolean = false;
+  @State() isSuccessOnCopy: boolean = false;
 
   @Method() async getEventBus() {
     await this.connectionMonitor.waitForConnection();
@@ -132,6 +134,10 @@ export class SignTransactionsPanel {
     this.isFooterTooltipVisible = isTooltipVisible;
   };
 
+  private handleCopyButtonClick = CopyButtonHandler({
+    onSuccessChange: (isSuccess) => (this.isSuccessOnCopy = isSuccess),
+  });
+
   render() {
     console.log(styles) //TODO: remove this
     const transactionTabs = Object.values(TransactionTabsEnum);
@@ -174,6 +180,8 @@ export class SignTransactionsPanel {
           <SignTransactionsFooter
             tooltipVisible={this.isFooterTooltipVisible}
             onTooltipVisibilityChange={this.handleIsFooterTooltipVisible}
+            isSuccessOnCopy={this.isSuccessOnCopy}
+            handleCopyButtonClick={this.handleCopyButtonClick}
           />
         </div>
       </mvx-side-panel>

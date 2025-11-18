@@ -1,6 +1,5 @@
 import { h } from '@stencil/core';
 import { Icon } from 'common/Icon';
-import { copyToClipboard } from 'utils/copyToClipboard';
 
 // prettier-ignore
 const styles = {
@@ -13,46 +12,24 @@ interface CopyButtonPropsType {
     iconClass?: string;
     class?: string;
     text: string;
+    isSuccessOnCopy?: boolean;
+    handleCopyButtonClick?: (event: MouseEvent) => void;
 }
 
-let timeoutId: number | null = null;
-let isSuccess: boolean = false;
-
-export function CopyButton({ iconClass, class: className, text }: CopyButtonPropsType) {
-
-    const handleClick = async (event: MouseEvent) => {
-        const trimmedText = text ? text.trim() : text;
-        const success = await copyToClipboard(trimmedText);
-
-        event.preventDefault();
-        event.stopPropagation();
-
-        isSuccess = success;
-
-        if (success) {
-            if (timeoutId) {
-                clearTimeout(timeoutId);
-                timeoutId = null;
-            }
-            timeoutId = window.setTimeout(() => {
-                isSuccess = false;
-            }, 2000);
-        }
-    }
-
+export function CopyButton({ iconClass, class: className, isSuccessOnCopy, handleCopyButtonClick }: CopyButtonPropsType) {
     return (
         <div
-            onClick={handleClick}
+            onClick={(event) => handleCopyButtonClick?.(event)}
             class={{
                 [styles.copyButton]: true,
                 [className]: Boolean(className),
             }}
         >
             <Icon
-                name={isSuccess ? 'check' : 'copy'}
+                name={isSuccessOnCopy ? 'check' : 'copy'}
                 class={{
                     [styles.copyButtonIcon]: true,
-                    [styles.copyButtonIconCheck]: isSuccess,
+                    [styles.copyButtonIconCheck]: isSuccessOnCopy,
                     [iconClass]: Boolean(iconClass),
                 }}
             />

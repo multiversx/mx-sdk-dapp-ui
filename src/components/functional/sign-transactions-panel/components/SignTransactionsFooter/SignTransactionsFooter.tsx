@@ -8,6 +8,7 @@ import styles from './signTransactionsFooter.styles';
 import { CopyButton } from 'common/CopyButton/CopyButton';
 import { Tooltip } from 'common/Tooltip/Tooltip';
 import { Button } from 'common/Button/Button';
+import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
 
 let isWaitingForSignature: boolean = false;
 let lastCommonData = { ...state.commonData };
@@ -15,9 +16,11 @@ let lastCommonData = { ...state.commonData };
 interface SignTransactionsFooterPropsType {
   tooltipVisible?: boolean;
   onTooltipVisibilityChange?: (visible: boolean) => void;
+  isSuccessOnCopy?: boolean;
+  handleCopyButtonClick?: (event: MouseEvent, text?: string) => void;
 }
 
-export function SignTransactionsFooter({ tooltipVisible, onTooltipVisibilityChange }: SignTransactionsFooterPropsType) {
+export function SignTransactionsFooter({ tooltipVisible, onTooltipVisibilityChange, isSuccessOnCopy, handleCopyButtonClick }: SignTransactionsFooterPropsType) {
   const currentCommonData = { ...state.commonData };
   const hasChanged = JSON.stringify(currentCommonData) !== JSON.stringify(lastCommonData);
 
@@ -157,8 +160,8 @@ export function SignTransactionsFooter({ tooltipVisible, onTooltipVisibilityChan
             />
           )}
 
-          <CopyButton text={username ?? address} class={styles.signTransactionsFooterIdentityCopy} />
-          <mvx-explorer-link link={explorerLink} class={styles.signTransactionsExplorerLinkIcon} />
+          <CopyButton text={username ?? address} class={styles.signTransactionsFooterIdentityCopy} isSuccessOnCopy={isSuccessOnCopy} handleCopyButtonClick={(event) => handleCopyButtonClick?.(event, username ?? address)} />
+          <ExplorerLink link={explorerLink} iconClass={styles.signTransactionsExplorerLinkIcon} hasIcon />
         </div>
       </div>
     </div>
