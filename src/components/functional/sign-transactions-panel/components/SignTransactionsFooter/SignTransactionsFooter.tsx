@@ -9,6 +9,7 @@ import { CopyButton } from 'common/CopyButton/CopyButton';
 import { Tooltip } from 'common/Tooltip/Tooltip';
 import { Button } from 'common/Button/Button';
 import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
+import { Trim } from 'common/Trim/Trim';
 
 let isWaitingForSignature: boolean = false;
 let lastCommonData = { ...state.commonData };
@@ -153,7 +154,7 @@ export function SignTransactionsFooter({ tooltipVisible, onTooltipVisibilityChan
           )}
 
           {!username && address && (
-            <mvx-trim
+            < Trim
               text={address}
               class={styles.signTransactionsFooterIdentityAddress}
               data-testid={DataTestIdsEnum.signTransactionsFooterIdentityAddress}
