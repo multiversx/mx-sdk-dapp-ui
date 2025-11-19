@@ -277,23 +277,6 @@ export namespace Components {
     }
     interface MvxSignTransactionsHeader {
     }
-    interface MvxSignTransactionsOverview {
-        "action": string;
-        "amount": string;
-        "identifier": string;
-        "interactor": string;
-        "interactorIconUrl": string;
-        /**
-          * @default false
-         */
-        "isApp": boolean;
-        /**
-          * @default '~$0.00078'
-         */
-        "networkFee": string;
-        "tokenIconUrl": string;
-        "usdValue": string;
-    }
     interface MvxSignTransactionsPanel {
         "closeWithAnimation": () => Promise<unknown>;
         "getEventBus": () => Promise<IEventBus>;
@@ -858,12 +841,6 @@ declare global {
         prototype: HTMLMvxSignTransactionsHeaderElement;
         new (): HTMLMvxSignTransactionsHeaderElement;
     };
-    interface HTMLMvxSignTransactionsOverviewElement extends Components.MvxSignTransactionsOverview, HTMLStencilElement {
-    }
-    var HTMLMvxSignTransactionsOverviewElement: {
-        prototype: HTMLMvxSignTransactionsOverviewElement;
-        new (): HTMLMvxSignTransactionsOverviewElement;
-    };
     interface HTMLMvxSignTransactionsPanelElement extends Components.MvxSignTransactionsPanel, HTMLStencilElement {
     }
     var HTMLMvxSignTransactionsPanelElement: {
@@ -1104,7 +1081,6 @@ declare global {
         "mvx-sign-transactions-advanced-data": HTMLMvxSignTransactionsAdvancedDataElement;
         "mvx-sign-transactions-advanced-data-decode": HTMLMvxSignTransactionsAdvancedDataDecodeElement;
         "mvx-sign-transactions-header": HTMLMvxSignTransactionsHeaderElement;
-        "mvx-sign-transactions-overview": HTMLMvxSignTransactionsOverviewElement;
         "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
         "mvx-simple-toast": HTMLMvxSimpleToastElement;
         "mvx-spinner-icon": HTMLMvxSpinnerIconElement;
@@ -1383,23 +1359,6 @@ declare namespace LocalJSX {
     }
     interface MvxSignTransactionsHeader {
     }
-    interface MvxSignTransactionsOverview {
-        "action"?: string;
-        "amount"?: string;
-        "identifier"?: string;
-        "interactor"?: string;
-        "interactorIconUrl"?: string;
-        /**
-          * @default false
-         */
-        "isApp"?: boolean;
-        /**
-          * @default '~$0.00078'
-         */
-        "networkFee"?: string;
-        "tokenIconUrl"?: string;
-        "usdValue"?: string;
-    }
     interface MvxSignTransactionsPanel {
     }
     interface MvxSimpleToast {
@@ -1587,7 +1546,6 @@ declare namespace LocalJSX {
         "mvx-sign-transactions-advanced-data": MvxSignTransactionsAdvancedData;
         "mvx-sign-transactions-advanced-data-decode": MvxSignTransactionsAdvancedDataDecode;
         "mvx-sign-transactions-header": MvxSignTransactionsHeader;
-        "mvx-sign-transactions-overview": MvxSignTransactionsOverview;
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
         "mvx-simple-toast": MvxSimpleToast;
         "mvx-spinner-icon": MvxSpinnerIcon;
@@ -1658,7 +1616,6 @@ declare module "@stencil/core" {
             "mvx-sign-transactions-advanced-data": LocalJSX.MvxSignTransactionsAdvancedData & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsAdvancedDataElement>;
             "mvx-sign-transactions-advanced-data-decode": LocalJSX.MvxSignTransactionsAdvancedDataDecode & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsAdvancedDataDecodeElement>;
             "mvx-sign-transactions-header": LocalJSX.MvxSignTransactionsHeader & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsHeaderElement>;
-            "mvx-sign-transactions-overview": LocalJSX.MvxSignTransactionsOverview & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsOverviewElement>;
             "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;
             "mvx-simple-toast": LocalJSX.MvxSimpleToast & JSXBase.HTMLAttributes<HTMLMvxSimpleToastElement>;
             "mvx-spinner-icon": LocalJSX.MvxSpinnerIcon & JSXBase.HTMLAttributes<HTMLMvxSpinnerIconElement>;

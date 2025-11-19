@@ -10,6 +10,7 @@ import { SignEventsEnum, TransactionTabsEnum } from './sign-transactions-panel.t
 import state, { resetState } from './signTransactionsPanelStore';
 import { SignTransactionsFooter } from './components/SignTransactionsFooter/SignTransactionsFooter';
 import { CopyButtonHandler } from 'common/CopyButton/CopyButtonHandler';
+import { SignTransactionsOverview } from './components/SignTransactionsOverview/SignTransactionsOverview';
 
 // prettier-ignore
 const styles = {
@@ -171,7 +172,7 @@ export class SignTransactionsPanel {
             </div>
 
             {this.activeTab === TransactionTabsEnum.overview ? (
-              <mvx-sign-transactions-overview style={{ width: '100%' }} {...this.overviewProps} />
+              <SignTransactionsOverview {...this.overviewProps} />
             ) : (
               <mvx-sign-transactions-advanced style={{ width: '100%' }} data={data} highlight={highlight} />
             )}
