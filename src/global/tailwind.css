@@ -13,6 +13,7 @@
   --color-preloader: var(--mvx-preloader-item-bg);
   --color-pending: var(--mvx-pending-color);
   --color-secondary: var(--mvx-bg-color-secondary);
+  --color-tertiary: var(--mvx-bg-color-tertiary);
   --color-error: var(--mvx-error-color);
   --color-primary: var(--mvx-text-color-primary);
   --color-secondary-text: var(--mvx-text-color-secondary);
@@ -21,6 +22,8 @@
   --color-hover: var(--mvx-hover-color-primary);
   --color-pagination-item: var(--mvx-pagination-item-bg);
   --color-pagination-item-hover: var(--mvx-pagination-item-bg-hover);
+  --color-neutral-700: var(--mvx-neutral-700);
+  --color-neutral-800: var(--mvx-neutral-800);
   --color-neutral-950: var(--mvx-neutral-950);
   --color-neutral-900: var(--mvx-neutral-900);
   --color-ledger-warning: var(--mvx-ledger-warning-bg);
@@ -29,9 +32,20 @@
   --color-transaction-method: var(--mvx-transaction-method);
   --color-slate-550: var(--mvx-slate-550);
   --color-gray-200: var(--mvx-gray-200);
+  --color-neutral-925: var(--mvx-neutral-925);
   --color-thumb: var(--mvx-scrollbar-thumb);
   --color-outline-variant: var(--mvx-border-color-secondary);
   --color-emphasize: var(--mvx-bg-accent-color);
+  --color-accent-variant: var(--mvx-bg-accent-variant-color);
+  --color-button-primary: var(--mvx-button-text-primary);
+  --color-button-secondary: var(--mvx-button-text-secondary);
+  --color-button-bg-primary: var(--mvx-button-bg-primary);
+  --color-button-bg-secondary: var(--mvx-button-bg-secondary);
+  --color-select: var(--mvx-select-bg);
+  --color-select-tx: var(--mvx-select-color);
+  --color-select-option: var(--mvx-select-option-bg);
+  --color-select-option-mobile: var(--mvx-select-option-bg-mobile);
+  --color-select-option-text: var(--mvx-select-option-color);
 }
 
 @layer utilities {
@@ -82,5 +96,15 @@
     .mvx\:-webkit-letter-spacing {
       letter-spacing: -0.001em;
     }
+  }
+
+  @keyframes SpinnerAnimation {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .mvx\:animate-spinner {
+    animation: SpinnerAnimation 3000ms linear infinite;
   }
 }
