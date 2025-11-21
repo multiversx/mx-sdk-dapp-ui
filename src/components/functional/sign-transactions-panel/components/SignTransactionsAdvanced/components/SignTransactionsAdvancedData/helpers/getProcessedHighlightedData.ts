@@ -1,4 +1,4 @@
-import type { IDataHightlight } from '../sign-transactions-advanced-data';
+import type { IDataHightlight } from '../SignTransactionsAdvancedData';
 
 interface IGetProcessedHighlightedData {
   data: string;

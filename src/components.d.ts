@@ -10,7 +10,6 @@ import { ButtonSizeEnum, ButtonVariantEnum } from "./common/Button/button.types"
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
-import { DecodeMethodEnum } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { LocalJSX as JSX } from "@stencil/core";
 import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
@@ -24,7 +23,6 @@ export { ButtonSizeEnum, ButtonVariantEnum } from "./common/Button/button.types"
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
-export { DecodeMethodEnum } from "./components/functional/sign-transactions-panel/sign-transactions-panel.types";
 export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { LocalJSX as JSX } from "@stencil/core";
 export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
@@ -256,26 +254,6 @@ export namespace Components {
           * @default ''
          */
         "sidePanelIdentifier": string;
-    }
-    interface MvxSignTransactionsAdvanced {
-        "data": string;
-        "highlight"?: string;
-    }
-    interface MvxSignTransactionsAdvancedData {
-        "data": string;
-        "highlight"?: string;
-    }
-    interface MvxSignTransactionsAdvancedDataDecode {
-        /**
-          * @default DecodeMethodEnum.decimal
-         */
-        "currentDecodeMethod": DecodeMethodEnum;
-        /**
-          * @default false
-         */
-        "isToggled": boolean;
-    }
-    interface MvxSignTransactionsHeader {
     }
     interface MvxSignTransactionsPanel {
         "closeWithAnimation": () => Promise<unknown>;
@@ -817,30 +795,6 @@ declare global {
         prototype: HTMLMvxSidePanelSwiperElement;
         new (): HTMLMvxSidePanelSwiperElement;
     };
-    interface HTMLMvxSignTransactionsAdvancedElement extends Components.MvxSignTransactionsAdvanced, HTMLStencilElement {
-    }
-    var HTMLMvxSignTransactionsAdvancedElement: {
-        prototype: HTMLMvxSignTransactionsAdvancedElement;
-        new (): HTMLMvxSignTransactionsAdvancedElement;
-    };
-    interface HTMLMvxSignTransactionsAdvancedDataElement extends Components.MvxSignTransactionsAdvancedData, HTMLStencilElement {
-    }
-    var HTMLMvxSignTransactionsAdvancedDataElement: {
-        prototype: HTMLMvxSignTransactionsAdvancedDataElement;
-        new (): HTMLMvxSignTransactionsAdvancedDataElement;
-    };
-    interface HTMLMvxSignTransactionsAdvancedDataDecodeElement extends Components.MvxSignTransactionsAdvancedDataDecode, HTMLStencilElement {
-    }
-    var HTMLMvxSignTransactionsAdvancedDataDecodeElement: {
-        prototype: HTMLMvxSignTransactionsAdvancedDataDecodeElement;
-        new (): HTMLMvxSignTransactionsAdvancedDataDecodeElement;
-    };
-    interface HTMLMvxSignTransactionsHeaderElement extends Components.MvxSignTransactionsHeader, HTMLStencilElement {
-    }
-    var HTMLMvxSignTransactionsHeaderElement: {
-        prototype: HTMLMvxSignTransactionsHeaderElement;
-        new (): HTMLMvxSignTransactionsHeaderElement;
-    };
     interface HTMLMvxSignTransactionsPanelElement extends Components.MvxSignTransactionsPanel, HTMLStencilElement {
     }
     var HTMLMvxSignTransactionsPanelElement: {
@@ -1077,10 +1031,6 @@ declare global {
         "mvx-side-panel": HTMLMvxSidePanelElement;
         "mvx-side-panel-header": HTMLMvxSidePanelHeaderElement;
         "mvx-side-panel-swiper": HTMLMvxSidePanelSwiperElement;
-        "mvx-sign-transactions-advanced": HTMLMvxSignTransactionsAdvancedElement;
-        "mvx-sign-transactions-advanced-data": HTMLMvxSignTransactionsAdvancedDataElement;
-        "mvx-sign-transactions-advanced-data-decode": HTMLMvxSignTransactionsAdvancedDataDecodeElement;
-        "mvx-sign-transactions-header": HTMLMvxSignTransactionsHeaderElement;
         "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
         "mvx-simple-toast": HTMLMvxSimpleToastElement;
         "mvx-spinner-icon": HTMLMvxSpinnerIconElement;
@@ -1339,26 +1289,6 @@ declare namespace LocalJSX {
          */
         "sidePanelIdentifier"?: string;
     }
-    interface MvxSignTransactionsAdvanced {
-        "data"?: string;
-        "highlight"?: string;
-    }
-    interface MvxSignTransactionsAdvancedData {
-        "data"?: string;
-        "highlight"?: string;
-    }
-    interface MvxSignTransactionsAdvancedDataDecode {
-        /**
-          * @default DecodeMethodEnum.decimal
-         */
-        "currentDecodeMethod"?: DecodeMethodEnum;
-        /**
-          * @default false
-         */
-        "isToggled"?: boolean;
-    }
-    interface MvxSignTransactionsHeader {
-    }
     interface MvxSignTransactionsPanel {
     }
     interface MvxSimpleToast {
@@ -1542,10 +1472,6 @@ declare namespace LocalJSX {
         "mvx-side-panel": MvxSidePanel;
         "mvx-side-panel-header": MvxSidePanelHeader;
         "mvx-side-panel-swiper": MvxSidePanelSwiper;
-        "mvx-sign-transactions-advanced": MvxSignTransactionsAdvanced;
-        "mvx-sign-transactions-advanced-data": MvxSignTransactionsAdvancedData;
-        "mvx-sign-transactions-advanced-data-decode": MvxSignTransactionsAdvancedDataDecode;
-        "mvx-sign-transactions-header": MvxSignTransactionsHeader;
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
         "mvx-simple-toast": MvxSimpleToast;
         "mvx-spinner-icon": MvxSpinnerIcon;
@@ -1612,10 +1538,6 @@ declare module "@stencil/core" {
             "mvx-side-panel": LocalJSX.MvxSidePanel & JSXBase.HTMLAttributes<HTMLMvxSidePanelElement>;
             "mvx-side-panel-header": LocalJSX.MvxSidePanelHeader & JSXBase.HTMLAttributes<HTMLMvxSidePanelHeaderElement>;
             "mvx-side-panel-swiper": LocalJSX.MvxSidePanelSwiper & JSXBase.HTMLAttributes<HTMLMvxSidePanelSwiperElement>;
-            "mvx-sign-transactions-advanced": LocalJSX.MvxSignTransactionsAdvanced & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsAdvancedElement>;
-            "mvx-sign-transactions-advanced-data": LocalJSX.MvxSignTransactionsAdvancedData & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsAdvancedDataElement>;
-            "mvx-sign-transactions-advanced-data-decode": LocalJSX.MvxSignTransactionsAdvancedDataDecode & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsAdvancedDataDecodeElement>;
-            "mvx-sign-transactions-header": LocalJSX.MvxSignTransactionsHeader & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsHeaderElement>;
             "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;
             "mvx-simple-toast": LocalJSX.MvxSimpleToast & JSXBase.HTMLAttributes<HTMLMvxSimpleToastElement>;
             "mvx-spinner-icon": LocalJSX.MvxSpinnerIcon & JSXBase.HTMLAttributes<HTMLMvxSpinnerIconElement>;

@@ -154,7 +154,7 @@ export function SignTransactionsFooter({ tooltipVisible, onTooltipVisibilityChan
           )}
 
           {!username && address && (
-            < Trim
+            <Trim
               text={address}
               class={styles.signTransactionsFooterIdentityAddress}
               data-testid={DataTestIdsEnum.signTransactionsFooterIdentityAddress}

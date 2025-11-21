@@ -23,6 +23,7 @@
   --color-pagination-item: var(--mvx-pagination-item-bg);
   --color-pagination-item-hover: var(--mvx-pagination-item-bg-hover);
   --color-neutral-700: var(--mvx-neutral-700);
+  --color-neutral-800: var(--mvx-neutral-800);
   --color-neutral-950: var(--mvx-neutral-950);
   --color-neutral-900: var(--mvx-neutral-900);
   --color-ledger-warning: var(--mvx-ledger-warning-bg);
@@ -40,6 +41,11 @@
   --color-button-secondary: var(--mvx-button-text-secondary);
   --color-button-bg-primary: var(--mvx-button-bg-primary);
   --color-button-bg-secondary: var(--mvx-button-bg-secondary);
+  --color-select: var(--mvx-select-bg);
+  --color-select-tx: var(--mvx-select-color);
+  --color-select-option: var(--mvx-select-option-bg);
+  --color-select-option-mobile: var(--mvx-select-option-bg-mobile);
+  --color-select-option-text: var(--mvx-select-option-color);
 }
 
 @layer utilities {

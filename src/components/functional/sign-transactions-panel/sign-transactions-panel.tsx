@@ -6,11 +6,13 @@ import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
 import type { IOverviewProps, ISignTransactionsPanelData } from './sign-transactions-panel.types';
-import { SignEventsEnum, TransactionTabsEnum } from './sign-transactions-panel.types';
+import { DecodeMethodEnum, SignEventsEnum, TransactionTabsEnum } from './sign-transactions-panel.types';
 import state, { resetState } from './signTransactionsPanelStore';
 import { SignTransactionsFooter } from './components/SignTransactionsFooter/SignTransactionsFooter';
 import { CopyButtonHandler } from 'common/CopyButton/CopyButtonHandler';
 import { SignTransactionsOverview } from './components/SignTransactionsOverview/SignTransactionsOverview';
+import { SignTransactionsAdvanced } from './components/SignTransactionsAdvanced/SignTransactionsAdvanced';
+import { SignTransactionsHeader } from './components/SignTransactionsHeader/SignTransactionsHeader';
 
 // prettier-ignore
 const styles = {
@@ -21,7 +23,9 @@ const styles = {
   buttonSecondary: 'button-secondary mvx:relative mvx:text-button-secondary mvx:border mvx:border-transparent mvx:after:absolute mvx:after:inset-0 mvx:after:rounded-lg mvx:after:opacity-40 mvx:after:transition-all mvx:after:duration-200 mvx:after:ease-in-out mvx:after:bg-button-bg-secondary mvx:after:content-[""] mvx:after:-z-1 mvx:hover:opacity-100 mvx:hover:text-button-primary mvx:hover:after:opacity-100 mvx:hover:after:bg-button-bg-primary',
   buttonSecondarySmall: 'button-secondary-small mvx:after:rounded-xl',
   buttonNeutral: 'button-neutral mvx:text-neutral-925 mvx:bg-white mvx:hover:opacity-75',
-  buttonDisabled: 'button-disabled mvx:pointer-events-none mvx:bg-transparent mvx:cursor-default mvx:border mvx:border-secondary-text mvx:!text-secondary-text mvx:hover:opacity-100'
+  buttonDisabled: 'button-disabled mvx:pointer-events-none mvx:bg-transparent mvx:cursor-default mvx:border mvx:border-secondary-text mvx:!text-secondary-text mvx:hover:opacity-100',
+  tooltipContent: 'tooltip-content mvx:flex-row mvx:cursor-default mvx:p-2 mvx:whitespace-nowrap mvx:text-xs mvx:rounded-xl mvx:leading-none mvx:!bg-surface mvx:border-outline-variant mvx:border mvx:text-primary mvx:after:left-1/2 mvx:after:origin-center mvx:after:w-2 mvx:after:h-2 mvx:after:absolute mvx:after:border mvx:after:border-outline-variant mvx:after:!bg-surface mvx:after:translate-x-[calc(50%-8px)] mvx:after:-rotate-[45deg] mvx:after:content-[""]',
+  signTransactionsHeader: 'sign-transactions-header mvx:flex mvx:flex-1 mvx:flex-col mvx:gap-5 mvx:py-5',
 } satisfies Record<string, string>;
 
 @Component({
@@ -44,6 +48,9 @@ export class SignTransactionsPanel {
   @State() activeTab: TransactionTabsEnum = TransactionTabsEnum.overview;
   @State() isFooterTooltipVisible: boolean = false;
   @State() isSuccessOnCopy: boolean = false;
+  @State() showFavicon: boolean = true;
+  @State() decodeMethod: DecodeMethodEnum = DecodeMethodEnum.raw;
+  @State() decodeTooltipVisible: boolean = false;
 
   @Method() async getEventBus() {
     await this.connectionMonitor.waitForConnection();
@@ -139,12 +146,20 @@ export class SignTransactionsPanel {
     onSuccessChange: (isSuccess) => (this.isSuccessOnCopy = isSuccess),
   });
 
+  private setDecodeMethod = (method: DecodeMethodEnum) => {
+    this.decodeMethod = method;
+  };
+
+  private setDecodeTooltipVisible = (isVisible: boolean) => {
+    this.decodeTooltipVisible = isVisible;
+  };
+
   render() {
     console.log(styles) //TODO: remove this
     const transactionTabs = Object.values(TransactionTabsEnum);
 
-    const { commonData } = state;
-    const { data, highlight } = commonData;
+    const { commonData, onBack, onNext } = state;
+    const { data, highlight, needsSigning, gasPriceOptions, gasLimit, gasPrice, egldLabel, gasPriceOption, currentIndex, transactionsCount, origin } = commonData;
 
     return (
       <mvx-side-panel
@@ -154,7 +169,14 @@ export class SignTransactionsPanel {
         hasBackButton={false}
       >
         <div class="sign-transactions-panel" data-testid={DataTestIdsEnum.signTransactionsPanel}>
-          <mvx-sign-transactions-header />
+          <SignTransactionsHeader
+            onBack={onBack}
+            onNext={onNext}
+            currentIndex={currentIndex}
+            transactionsCount={transactionsCount}
+            origin={origin}
+            showFavicon={this.showFavicon}
+          />
 
           <div class="sign-transaction-content">
             <div class="sign-transactions-tabs">
@@ -174,7 +196,20 @@ export class SignTransactionsPanel {
             {this.activeTab === TransactionTabsEnum.overview ? (
               <SignTransactionsOverview {...this.overviewProps} />
             ) : (
-              <mvx-sign-transactions-advanced style={{ width: '100%' }} data={data} highlight={highlight} />
+              <SignTransactionsAdvanced
+                data={data}
+                highlight={highlight}
+                needsSigning={needsSigning}
+                gasPriceOptions={gasPriceOptions}
+                gasLimit={gasLimit}
+                gasPrice={gasPrice}
+                egldLabel={egldLabel}
+                gasPriceOption={gasPriceOption}
+                decodeMethod={this.decodeMethod}
+                onDecodeMethodChange={this.setDecodeMethod}
+                decodeTooltipVisible={this.decodeTooltipVisible}
+                onDecodeTooltipVisibilityChange={this.setDecodeTooltipVisible}
+              />
             )}
           </div>
 
