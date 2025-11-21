@@ -1,6 +1,7 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 import { reactOutputTarget } from '@stencil/react-output-target';
+import { vueOutputTarget } from '@stencil/vue-output-target';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
 import tailwind from 'stencil-tailwind-plugin';
 import { getExcludedComponentTags } from './src/global/scripts/exclude-react-components';
@@ -39,6 +40,12 @@ export const config: Config = {
     reactOutputTarget({
       outDir: './dist/react',
       stencilPackageName: '../../dist/types',
+      customElementsDir: '../web-components',
+      excludeComponents,
+    }),
+    vueOutputTarget({
+      componentCorePackage: '../../dist/types',
+      proxiesFile: './dist/vue/components.ts',
       customElementsDir: '../web-components',
       excludeComponents,
     }),
