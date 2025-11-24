@@ -15,12 +15,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [[0.1.3](https://github.com/multiversx/mx-sdk-dapp-ui/pull/266)] - 2025-11-12
 
-## [[0.1.4](https://github.com/multiversx/mx-sdk-dapp-ui/pull/269)] - 2025-11-21
-
-- [Added Vue.js component outputs](https://github.com/multiversx/mx-sdk-dapp-ui/pull/268)
-
-## [[0.1.3](https://github.com/multiversx/mx-sdk-dapp-ui/pull/266)] - 2025-11-12
-
 - [Added skip tests if PR is in draft](https://github.com/multiversx/mx-sdk-dapp-ui/pull/265)
 - [Refactored unlock panel components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/255)
 - [Added github release on publish](https://github.com/multiversx/mx-sdk-dapp-ui/pull/264)
