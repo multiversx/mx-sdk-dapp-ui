@@ -24,8 +24,8 @@ const styles = {
   buttonSecondarySmall: 'button-secondary-small mvx:after:rounded-xl',
   buttonNeutral: 'button-neutral mvx:text-neutral-925 mvx:bg-white mvx:hover:opacity-75',
   buttonDisabled: 'button-disabled mvx:pointer-events-none mvx:bg-transparent mvx:cursor-default mvx:border mvx:border-secondary-text mvx:!text-secondary-text mvx:hover:opacity-100',
-  tooltipContent: 'tooltip-content mvx:flex-row mvx:cursor-default mvx:p-2 mvx:whitespace-nowrap mvx:text-xs mvx:rounded-xl mvx:leading-none mvx:!bg-surface mvx:border-outline-variant mvx:border mvx:text-primary mvx:after:left-1/2 mvx:after:origin-center mvx:after:w-2 mvx:after:h-2 mvx:after:absolute mvx:after:border mvx:after:border-outline-variant mvx:after:!bg-surface mvx:after:translate-x-[calc(50%-8px)] mvx:after:-rotate-[45deg] mvx:after:content-[""]',
-  signTransactionsHeader: 'sign-transactions-header mvx:flex mvx:flex-1 mvx:flex-col mvx:gap-5 mvx:py-5',
+  // tooltipContent: 'tooltip-content mvx:flex-row mvx:cursor-default mvx:p-2 mvx:whitespace-nowrap mvx:text-xs mvx:rounded-xl mvx:leading-none mvx:!bg-surface mvx:border-outline-variant mvx:border mvx:text-primary mvx:after:left-1/2 mvx:after:origin-center mvx:after:w-2 mvx:after:h-2 mvx:after:absolute mvx:after:border mvx:after:border-outline-variant mvx:after:!bg-surface mvx:after:translate-x-[calc(50%-8px)] mvx:after:-rotate-[45deg] mvx:after:content-[""]',
+  // signTransactionsHeader: 'sign-transactions-header mvx:flex mvx:flex-1 mvx:flex-col mvx:gap-5 mvx:py-5',
 } satisfies Record<string, string>;
 
 @Component({

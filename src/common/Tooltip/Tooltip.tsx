@@ -4,7 +4,7 @@ import { h } from '@stencil/core';
 const styles = {
     tooltip: 'tooltip mvx:flex mvx:relative',
     tooltipContentWrapper: 'tooltip-content-wrapper mvx:left-1/2 mvx:absolute mvx:z-1 mvx:transform mvx:-translate-x-1/2',
-    tooltipContent: 'tooltip-content mvx:flex-row mvx:cursor-default mvx:p-2 mvx:whitespace-nowrap mvx:text-xs mvx:rounded-xl mvx:leading-none mvx:bg-surface mvx:border-outline-variant mvx:border mvx:text-primary mvx:after:left-1/2 mvx:after:origin-center mvx:after:w-2 mvx:after:h-2 mvx:after:absolute mvx:after:border mvx:after:border-outline-variant mvx:after:bg-surface mvx:after:translate-x-[calc(50%-8px)] mvx:after:-rotate-[45deg] mvx:after:content-[""]',
+    tooltipContent: 'tooltip-content mvx:flex-row mvx:cursor-default mvx:p-2 mvx:whitespace-nowrap mvx:text-xs mvx:rounded-xl mvx:leading-none mvx:!bg-surface mvx:border-outline-variant mvx:border mvx:text-primary mvx:after:left-1/2 mvx:after:origin-center mvx:after:w-2 mvx:after:h-2 mvx:after:absolute mvx:after:border mvx:after:border-outline-variant mvx:after:!bg-surface mvx:after:translate-x-[calc(50%-8px)] mvx:after:-rotate-[45deg] mvx:after:content-[""]',
     tooltipContentTop: 'tooltip-content-top mvx:after:border-t-0 mvx:after:border-r-0 mvx:after:-bottom-1',
     tooltipContentBottom: 'tooltip-content-bottom mvx:after:border-b-0 mvx:after:border-l-0 mvx:after:-top-1'
 } satisfies Record<string, string>;
