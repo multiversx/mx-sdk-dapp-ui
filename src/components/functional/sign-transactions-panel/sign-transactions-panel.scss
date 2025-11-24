@@ -1,153 +1,37 @@
-.header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  align-self: stretch;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  position: relative;
-  min-width: 0;
-  padding: 24px 24px 12px 24px;
-}
-
-.frame {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  position: relative;
-  width: 30px;
-  height: 30px;
-  padding: 0 0 0 0;
-}
-
-.frame-1 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-wrap: nowrap;
-  flex-grow: 1;
-  flex-shrink: 0;
-  flex-basis: 0;
-  gap: 4px;
-  position: relative;
-}
-
-.frame-2 {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  position: relative;
-  width: 30px;
-}
-
-.mx-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  position: relative;
-  width: 30px;
-  height: 30px;
-}
-
-.transaction-navigation {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  align-self: stretch;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  gap: 10px;
-  position: relative;
-  min-width: 0;
-  padding: 0 24px 0 24px;
-}
-
-.navigation-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  position: relative;
-  width: 25px;
-  height: 25px;
-}
-
-.sign-transaction-content {
-  @apply mvx:flex mvx:flex-col mvx:items-center mvx:gap-2 mvx:relative mvx:min-w-0 mvx:self-stretch mvx:flex-nowrap mvx:shrink-0;
-
-  .sign-transactions-tabs {
-    @apply mvx:px-4 mvx:gap-2 mvx:flex mvx:mr-auto;
-
-    .sign-transactions-tab {
-      @apply mvx:px-4 mvx:h-8 mvx:flex mvx:items-center mvx:leading-none mvx:justify-center mvx:transition-all mvx:duration-200;
-      @apply mvx:ease-in-out mvx:cursor-pointer mvx:relative mvx:rounded-3xl;
-      color: var(--mvx-text-color-secondary);
-
-      &:hover,
-      &.active {
-        color: var(--mvx-text-accent-color);
-        background-color: var(--mvx-bg-color-secondary);
-      }
-
-      .sign-transactions-tab-text {
-        @apply mvx:text-base mvx:z-1 mvx:relative mvx:capitalize;
-      }
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .main-container {
-    width: 100%;
-    margin: 0;
-  }
-}
-
-.sign-transactions-panel {
-  @apply mvx:flex mvx:flex-col mvx:flex-1 mvx:pb-6;
-}
-
-// Trim component base styles
+// This is needed to trigger the Stecil Tailwind compilation for inline Tailwind classes.
 .trim {
-  @apply mvx:flex mvx:relative mvx:max-w-full mvx:overflow-hidden mvx:whitespace-nowrap;
+    @apply mvx:flex mvx:relative mvx:max-w-full mvx:overflow-hidden mvx:whitespace-nowrap;
 }
 
 .trim-full {
-  @apply mvx:text-transparent mvx:absolute mvx:leading-5;
+    @apply mvx:text-transparent mvx:absolute mvx:leading-5;
 }
 
 .trim-full-visible {
-  @apply mvx:text-inherit mvx:relative mvx:leading-5;
+    @apply mvx:text-inherit mvx:relative mvx:leading-5;
 }
 
 .trim-wrapper {
-  @apply mvx:hidden;
+    @apply mvx:hidden;
 }
 
 .trim-wrapper-visible {
-  @apply mvx:overflow-hidden mvx:max-w-full mvx:flex;
+    @apply mvx:overflow-hidden mvx:max-w-full mvx:flex;
 }
 
 .trim-left-wrapper {
-  @apply mvx:flex-shrink mvx:text-ellipsis mvx:overflow-hidden mvx:text-left mvx:text-[1px];
+    @apply mvx:flex-shrink mvx:text-ellipsis mvx:overflow-hidden mvx:text-left mvx:text-[1px];
 }
 
 .trim-left {
-  @apply mvx:select-none mvx:pointer-events-none mvx:inline mvx:text-base mvx:leading-5;
+    @apply mvx:select-none mvx:pointer-events-none mvx:inline mvx:text-base mvx:leading-5;
 }
 
 .trim-right-wrapper {
-  @apply mvx:flex-shrink mvx:text-ellipsis mvx:overflow-hidden mvx:whitespace-nowrap mvx:text-right mvx:text-[1px];
-  direction: rtl;
+    @apply mvx:flex-shrink mvx:text-ellipsis mvx:overflow-hidden mvx:whitespace-nowrap mvx:text-right mvx:text-[1px];
+    direction: rtl;
 }
 
 .trim-right {
-  @apply mvx:select-none mvx:pointer-events-none mvx:inline mvx:text-base mvx:leading-5 mvx:text-clip;
+    @apply mvx:select-none mvx:pointer-events-none mvx:inline mvx:text-base mvx:leading-5 mvx:text-clip;
 }
