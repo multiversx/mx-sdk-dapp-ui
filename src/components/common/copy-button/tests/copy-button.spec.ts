@@ -47,14 +47,14 @@ describe('CopyButton', () => {
     });
 
     const copyButton = page.root;
-    const copyButtonInstance = page.rootInstance as CopyButton;
+    const component = page.rootInstance as CopyButton;
 
     const mockEvent = {
       preventDefault: jest.fn(),
       stopPropagation: jest.fn(),
     } as unknown as MouseEvent;
 
-    await copyButtonInstance['handleClick'](mockEvent, copyButtonInstance.text);
+    await component['handleClick'](mockEvent, component.text);
     await page.waitForChanges();
 
     expect(copyButton).toEqualHtml(`
@@ -98,14 +98,14 @@ describe('CopyButton', () => {
       html: '<mvx-copy-button text="Copy me"></mvx-copy-button>',
     });
 
-    const copyButtonInstance = page.rootInstance as CopyButton;
+    const component = page.rootInstance as CopyButton;
     const mockEvent = {
       preventDefault: jest.fn(),
       stopPropagation: jest.fn(),
     } as unknown as MouseEvent;
 
 
-    await copyButtonInstance['handleClick'](mockEvent, copyButtonInstance.text);
+    await component['handleClick'](mockEvent, component.text);
     await page.waitForChanges();
 
     expect(mockEvent.preventDefault).toHaveBeenCalledTimes(1);
