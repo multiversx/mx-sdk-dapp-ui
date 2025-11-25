@@ -28,7 +28,10 @@ export function SignTransactionsAdvanced(props: SignTransactionsAdvancedPropsTyp
               {gasPrice} {egldLabel}
             </span>
           </div>
-          <div class={styles.signTransactionsGasSpeedSelector} data-testid={DataTestIdsEnum.signTransactionsAdvancedGasSpeedSelector}>
+          <div
+            class={styles.signTransactionsGasSpeedSelector}
+            data-testid={DataTestIdsEnum.signTransactionsAdvancedGasSpeedSelector}
+          >
             {gasPriceOptions?.map(({ label, value }) => {
               const isActive = gasPriceOption?.toString() === value.toString();
 
@@ -36,26 +39,39 @@ export function SignTransactionsAdvanced(props: SignTransactionsAdvancedPropsTyp
                 <button
                   key={label}
                   disabled={!needsSigning}
-                  class={classNames(styles.signTransactionsSpeedOption, { [styles.signTransactionsSpeedOptionActive]: isActive })}
+                  class={classNames(styles.signTransactionsSpeedOption, {
+                    [styles.signTransactionsSpeedOptionActive]: isActive,
+                  })}
                   data-testid={DataTestIdsEnum.signTransactionsAdvancedSpeedOption}
                   onClick={() => state.setGasPriceOption(value)}
                 >
-                  <span class={classNames(styles.signTransactionsSpeedText, { [styles.signTransactionsSpeedOptionActiveSpeedText]: isActive })}>
+                  <span
+                    class={classNames(styles.signTransactionsSpeedText, {
+                      [styles.signTransactionsSpeedOptionActiveSpeedText]: isActive,
+                    })}
+                  >
                     {label}
                   </span>
                 </button>
               );
             })}
           </div>
-          <div class={styles.signTransactionsGasLimitRow} data-testid={DataTestIdsEnum.signTransactionsAdvancedGasLimit}>
+          <div
+            class={styles.signTransactionsGasLimitRow}
+            data-testid={DataTestIdsEnum.signTransactionsAdvancedGasLimit}
+          >
             <span class={styles.signTransactionsGasLimit}>Gas Limit</span>
             <span class={styles.signTransactionsGasLimitValue}>{gasLimit}</span>
           </div>
         </div>
       </div>
 
-      <SignTransactionsAdvancedData decodeMethod={decodeMethod} onDecodeMethodChange={onDecodeMethodChange} decodeTooltipVisible={decodeTooltipVisible} onDecodeTooltipVisibilityChange={onDecodeTooltipVisibilityChange} />
+      <SignTransactionsAdvancedData
+        decodeMethod={decodeMethod}
+        onDecodeMethodChange={onDecodeMethodChange}
+        decodeTooltipVisible={decodeTooltipVisible}
+        onDecodeTooltipVisibilityChange={onDecodeTooltipVisibilityChange}
+      />
     </div>
   );
 }
-

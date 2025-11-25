@@ -7,7 +7,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import { SignTransactionsAdvancedDataDecode } from './components/SignTransactionsAdvancedDataDecode/SignTransactionsAdvancedDataDecode';
 import { getProcessedHighlightedData } from './helpers/getProcessedHighlightedData';
-import styles from './signTransactionsAdvancedData.styles'
+import styles from './signTransactionsAdvancedData.styles';
 
 export interface IDataHightlight {
   beforeHighlight?: string;
@@ -22,7 +22,12 @@ interface SignTransactionsAdvancedDataPropsType {
   onDecodeTooltipVisibilityChange?: (isVisible: boolean) => void;
 }
 
-export function SignTransactionsAdvancedData({ decodeMethod = DecodeMethodEnum.raw, onDecodeMethodChange, decodeTooltipVisible, onDecodeTooltipVisibilityChange }: SignTransactionsAdvancedDataPropsType) {
+export function SignTransactionsAdvancedData({
+  decodeMethod = DecodeMethodEnum.raw,
+  onDecodeMethodChange,
+  decodeTooltipVisible,
+  onDecodeTooltipVisibilityChange,
+}: SignTransactionsAdvancedDataPropsType) {
   const { data, highlight } = state.commonData;
   let highlightElement: HTMLElement;
 
@@ -40,19 +45,18 @@ export function SignTransactionsAdvancedData({ decodeMethod = DecodeMethodEnum.r
     }
 
     const { displayValue = '', highlight: decodedHighlight = '' } = state.commonData.decodedData
-      ? state.commonData.decodedData[decodeMethod] ?? {}
+      ? (state.commonData.decodedData[decodeMethod] ?? {})
       : {};
 
     return !decodedHighlight || !displayValue.includes(decodedHighlight)
       ? { highlight: displayValue }
       : getProcessedHighlightedData({ data: displayValue, highlightedData: decodedHighlight });
-  }
+  };
 
   const computedDisplayData = getComputedDisplayData();
   const { beforeHighlight, afterHighlight, highlight: highlightText } = computedDisplayData;
 
   if ((beforeHighlight || afterHighlight) && highlightElement) {
-
     const timeoutId = setTimeout(() => {
       highlightElement?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
     });
@@ -73,10 +77,7 @@ export function SignTransactionsAdvancedData({ decodeMethod = DecodeMethodEnum.r
           }}
           isTooltipVisible={decodeTooltipVisible}
           trigger={
-            <SignTransactionsAdvancedDataDecode
-              isToggled={decodeTooltipVisible}
-              currentDecodeMethod={decodeMethod}
-            />
+            <SignTransactionsAdvancedDataDecode isToggled={decodeTooltipVisible} currentDecodeMethod={decodeMethod} />
           }
         >
           <div
@@ -114,7 +115,10 @@ export function SignTransactionsAdvancedData({ decodeMethod = DecodeMethodEnum.r
               )}
 
               <div
-                class={classNames(styles.signTransactionsAdvancedDataHighlight, styles.signTransactionsAdvancedDataHighlightBolded)}
+                class={classNames(
+                  styles.signTransactionsAdvancedDataHighlight,
+                  styles.signTransactionsAdvancedDataHighlightBolded,
+                )}
                 data-testid={DataTestIdsEnum.signTransactionsAdvancedDataHighlight}
                 ref={el => (highlightElement = el)}
               >
@@ -140,7 +144,6 @@ export function SignTransactionsAdvancedData({ decodeMethod = DecodeMethodEnum.r
           )}
         </div>
       </div>
-    </div >
+    </div>
   );
 }
-

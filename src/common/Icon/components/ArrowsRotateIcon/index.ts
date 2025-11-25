@@ -1,1 +1,1 @@
-export * from './ArrowsRotateIcon'
+export * from './ArrowsRotateIcon';

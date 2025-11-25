@@ -1,1 +1,1 @@
-export * from './TransactionShards'
+export * from './TransactionShards';

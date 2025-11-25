@@ -1,4 +1,4 @@
-import { Component, h,Prop, State } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 import { CopyButton as CopyButtonComponent } from 'common/CopyButton/CopyButton';
 import { getCopyClickAction } from 'common/CopyButton/getCopyClickAction';
 
@@ -13,7 +13,7 @@ export class CopyButton {
   @Prop() text: string;
 
   private handleClick = getCopyClickAction({
-    onSuccessChange: (isSuccess) => (this.isSuccess = isSuccess),
+    onSuccessChange: isSuccess => (this.isSuccess = isSuccess),
   });
 
   render() {

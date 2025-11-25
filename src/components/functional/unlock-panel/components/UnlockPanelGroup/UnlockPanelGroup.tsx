@@ -27,9 +27,7 @@ export function UnlockPanelGroup({ providers = [], class: className, onLogin, gr
   return (
     <div class={styles.unlockPanelGroupContainer}>
       <div class={{ [styles.unlockPanelGroup]: true, [className]: Boolean(className) }}>
-        <div class={styles.unlockPanelGroupLabel}>
-          {groupLabel}
-        </div>
+        <div class={styles.unlockPanelGroupLabel}>{groupLabel}</div>
 
         <div class={styles.unlockPanelGroupProviders}>
           {providers.map((provider, providerIndex) => (

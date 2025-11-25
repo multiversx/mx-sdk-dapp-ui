@@ -1,1 +1,1 @@
-export * from './TransactionHash'
+export * from './TransactionHash';

@@ -15,7 +15,14 @@ interface SignTransactionsHeaderPropsType {
 
 const NUMBER_OF_TRANSACTIONS = 10;
 
-export function SignTransactionsHeader({ onBack, onNext, currentIndex, transactionsCount, origin, showFavicon }: SignTransactionsHeaderPropsType) {
+export function SignTransactionsHeader({
+  onBack,
+  onNext,
+  currentIndex,
+  transactionsCount,
+  origin,
+  showFavicon,
+}: SignTransactionsHeaderPropsType) {
   return (
     <div class={styles.signTransactionsHeader} data-testid={DataTestIdsEnum.signTransactionsHeader}>
       {transactionsCount > 1 && (
@@ -102,4 +109,3 @@ export function SignTransactionsHeader({ onBack, onNext, currentIndex, transacti
     </div>
   );
 }
-

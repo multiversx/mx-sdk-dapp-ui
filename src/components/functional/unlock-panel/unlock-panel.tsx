@@ -188,17 +188,15 @@ export class UnlockPanel {
               {hasDetectedProviders && (
                 <UnlockPanelGroup
                   providers={detectedProviders}
-                  onLogin={(provider) => this.handleLogin(provider)}
+                  onLogin={provider => this.handleLogin(provider)}
                   class={styles.detectedPanelGroup}
-                  groupLabel={
-                    <div>Detected</div>
-                  }
+                  groupLabel={<div>Detected</div>}
                 />
               )}
 
               <UnlockPanelGroup
                 providers={otherProviders}
-                onLogin={(provider) => this.handleLogin(provider)}
+                onLogin={provider => this.handleLogin(provider)}
                 groupLabel={
                   <div>
                     <div class={styles.mobilePanelGroupTitle}>Options</div>

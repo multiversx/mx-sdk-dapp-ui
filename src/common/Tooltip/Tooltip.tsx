@@ -10,78 +10,89 @@ const styles = {
 } satisfies Record<string, string>;
 
 interface TooltipPropsType {
-    position?: 'top' | 'bottom';
-    triggerOnClick?: boolean;
-    trigger: HTMLElement;
-    class?: string;
-    isTooltipVisible?: boolean;
-    onVisibilityChange?: (isTooltipVisible: boolean) => void;
+  position?: 'top' | 'bottom';
+  triggerOnClick?: boolean;
+  trigger: HTMLElement;
+  class?: string;
+  isTooltipVisible?: boolean;
+  onVisibilityChange?: (isTooltipVisible: boolean) => void;
 }
 
-export function Tooltip({ position = 'top', triggerOnClick = false, trigger, class: className, onVisibilityChange, isTooltipVisible = false }: TooltipPropsType, children?: any) {
-    const setTooltipVisible = (isTooltipVisible: boolean) => {
-        onVisibilityChange?.(isTooltipVisible);
+export function Tooltip(
+  {
+    position = 'top',
+    triggerOnClick = false,
+    trigger,
+    class: className,
+    onVisibilityChange,
+    isTooltipVisible = false,
+  }: TooltipPropsType,
+  children?: any,
+) {
+  const setTooltipVisible = (isTooltipVisible: boolean) => {
+    onVisibilityChange?.(isTooltipVisible);
+  };
+
+  const handleEllipsisClick = (event: MouseEvent) => {
+    if (!triggerOnClick) {
+      return;
     }
 
-    const handleEllipsisClick = (event: MouseEvent) => {
-        if (!triggerOnClick) {
-            return;
-        }
+    event.preventDefault();
+    setTooltipVisible(!isTooltipVisible);
+  };
 
-        event.preventDefault();
-        setTooltipVisible(!isTooltipVisible);
+  const handleFocusOut = (event: FocusEvent) => {
+    const relatedTarget = event.relatedTarget as Node;
+    const currentTarget = event.currentTarget as HTMLElement;
+
+    if (!currentTarget.contains(relatedTarget)) {
+      setTooltipVisible(false);
+    }
+  };
+
+  const handleMouseEvent = (isTooltipVisible: boolean) => {
+    if (triggerOnClick) {
+      return;
     }
 
-    const handleFocusOut = (event: FocusEvent) => {
-        const relatedTarget = event.relatedTarget as Node;
-        const currentTarget = event.currentTarget as HTMLElement;
+    return (event: MouseEvent) => {
+      event.preventDefault();
+      setTooltipVisible(isTooltipVisible);
+    };
+  };
 
-        if (!currentTarget.contains(relatedTarget)) {
-            setTooltipVisible(false);
-        }
-    }
-
-    const handleMouseEvent = (isTooltipVisible: boolean) => {
-        if (triggerOnClick) {
-            return;
-        }
-
-        return (event: MouseEvent) => {
-            event.preventDefault();
-            setTooltipVisible(isTooltipVisible);
-        };
-    }
-
-    return (
+  return (
+    <div
+      onClick={handleEllipsisClick}
+      onMouseEnter={handleMouseEvent(true)}
+      onMouseLeave={handleMouseEvent(false)}
+      class={{ [styles.tooltip]: true, [className]: Boolean(className) }}
+    >
+      {isTooltipVisible && (
         <div
-            onClick={handleEllipsisClick}
-            onMouseEnter={handleMouseEvent(true)}
-            onMouseLeave={handleMouseEvent(false)}
-            class={{ [styles.tooltip]: true, [className]: Boolean(className) }}
+          class={styles.tooltipContentWrapper}
+          style={{
+            top: position === 'bottom' ? 'calc(100% + 16px)' : undefined,
+            bottom: position === 'top' ? 'calc(100% + 16px)' : undefined,
+          }}
         >
-            {isTooltipVisible && (
-                <div class={styles.tooltipContentWrapper}
-                    style={{
-                        top: position === 'bottom' ? 'calc(100% + 16px)' : undefined,
-                        bottom: position === 'top' ? 'calc(100% + 16px)' : undefined,
-                    }}
-                >
-                    <div
-                        class={{
-                            [styles.tooltipContent]: true,
-                            [styles.tooltipContentTop]: position === 'top',
-                            [styles.tooltipContentBottom]: position === 'bottom'
-                        }}
-                        tabIndex={-1}
-                        onFocusout={handleFocusOut}
-                        onClick={(event: MouseEvent) => event.stopPropagation()}
-                    >
-                        {children}
-                    </div>
-                </div>
-            )}
-
-            <span>{trigger}</span>
+          <div
+            class={{
+              [styles.tooltipContent]: true,
+              [styles.tooltipContentTop]: position === 'top',
+              [styles.tooltipContentBottom]: position === 'bottom',
+            }}
+            tabIndex={-1}
+            onFocusout={handleFocusOut}
+            onClick={(event: MouseEvent) => event.stopPropagation()}
+          >
+            {children}
+          </div>
         </div>
-    );
+      )}
+
+      <span>{trigger}</span>
+    </div>
+  );
 }

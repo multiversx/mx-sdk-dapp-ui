@@ -21,7 +21,12 @@ interface SignTransactionsFooterPropsType {
   handleCopyButtonClick?: (event: MouseEvent, text?: string) => void;
 }
 
-export function SignTransactionsFooter({ tooltipVisible, onTooltipVisibilityChange, isSuccessOnCopy, handleCopyButtonClick }: SignTransactionsFooterPropsType) {
+export function SignTransactionsFooter({
+  tooltipVisible,
+  onTooltipVisibilityChange,
+  isSuccessOnCopy,
+  handleCopyButtonClick,
+}: SignTransactionsFooterPropsType) {
   const currentCommonData = { ...state.commonData };
   const hasChanged = JSON.stringify(currentCommonData) !== JSON.stringify(lastCommonData);
 
@@ -53,7 +58,12 @@ export function SignTransactionsFooter({ tooltipVisible, onTooltipVisibilityChan
     <div class={styles.signTransactionsFooterContainer}>
       <div class={styles.signTransactionsFooter} data-testid={DataTestIdsEnum.signTransactionsFooter}>
         <div class={styles.signTransactionsFooterButtons} data-testid={DataTestIdsEnum.signTransactionsFooterButtons}>
-          <div class={classNames(styles.signTransactionsFooterButtonWrapper, styles.signTransactionsFooterButtonWrapperCancel)}>
+          <div
+            class={classNames(
+              styles.signTransactionsFooterButtonWrapper,
+              styles.signTransactionsFooterButtonWrapperCancel,
+            )}
+          >
             <Button
               size="small"
               onClick={isFirstTransaction ? onCancel : onBack}
@@ -123,7 +133,7 @@ export function SignTransactionsFooter({ tooltipVisible, onTooltipVisibilityChan
                 </span>
               ) : (
                 <span class={styles.signTransactionsFooterButtonIcon}>
-                  <Icon name='arrow-right' />
+                  <Icon name="arrow-right" />
                 </span>
               )}
             </Button>
@@ -151,7 +161,12 @@ export function SignTransactionsFooter({ tooltipVisible, onTooltipVisibilityChan
             />
           )}
 
-          <CopyButton text={username ?? address} class={styles.signTransactionsFooterIdentityCopy} isSuccessOnCopy={isSuccessOnCopy} handleCopyButtonClick={(event) => handleCopyButtonClick?.(event, username ?? address)} />
+          <CopyButton
+            text={username ?? address}
+            class={styles.signTransactionsFooterIdentityCopy}
+            isSuccessOnCopy={isSuccessOnCopy}
+            handleCopyButtonClick={event => handleCopyButtonClick?.(event, username ?? address)}
+          />
           <ExplorerLink link={explorerLink} iconClass={styles.signTransactionsExplorerLinkIcon} hasIcon />
         </div>
       </div>

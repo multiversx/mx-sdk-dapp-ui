@@ -19,7 +19,17 @@ interface SignTransactionsOverviewPropsType {
   isApp: boolean;
 }
 
-export function SignTransactionsOverview({ identifier, usdValue, amount, tokenIconUrl, interactor, interactorIconUrl, action, networkFee = '~$0.00078', isApp = false }: SignTransactionsOverviewPropsType) {
+export function SignTransactionsOverview({
+  identifier,
+  usdValue,
+  amount,
+  tokenIconUrl,
+  interactor,
+  interactorIconUrl,
+  action,
+  networkFee = '~$0.00078',
+  isApp = false,
+}: SignTransactionsOverviewPropsType) {
   const setAmountValueRef = (el?: HTMLElement) => {
     if (!el) {
       return;
@@ -31,7 +41,10 @@ export function SignTransactionsOverview({ identifier, usdValue, amount, tokenIc
   return (
     <div class={styles.signTransactionsOverviewContainer} data-testid={DataTestIdsEnum.signTransactionsOverview}>
       <div class={styles.signTransactionsOverviewContent}>
-        <div class={classNames(styles.signTransactionsDetailRow, styles.signTransactionsAmountRow)} data-testid={DataTestIdsEnum.signTransactionsOverviewAmountRow}>
+        <div
+          class={classNames(styles.signTransactionsDetailRow, styles.signTransactionsAmountRow)}
+          data-testid={DataTestIdsEnum.signTransactionsOverviewAmountRow}
+        >
           <div class={styles.signTransactionsDetailLabel}>{isApp ? 'Amount' : 'Send'}</div>
           <div class={styles.signTransactionsAmountDisplay}>
             <div class={styles.signTransactionsAmountValueContainer}>
@@ -45,7 +58,10 @@ export function SignTransactionsOverview({ identifier, usdValue, amount, tokenIc
                 </span>
               </div>
               {identifier !== 'USD' && (
-                <div class={styles.signTransactionsUsdValue} data-testid={DataTestIdsEnum.signTransactionsOverviewUsdValue}>
+                <div
+                  class={styles.signTransactionsUsdValue}
+                  data-testid={DataTestIdsEnum.signTransactionsOverviewUsdValue}
+                >
                   {usdValue}
                 </div>
               )}
@@ -62,7 +78,10 @@ export function SignTransactionsOverview({ identifier, usdValue, amount, tokenIc
           <div class={styles.signTransactionsDirectionIcon}>
             <Icon
               name={isApp ? 'angle-up' : 'angle-down'}
-              class={{ [styles.signTransactionsDirectionIconArrow]: true, [styles.signTransactionsDirectionIconArrowDown]: !isApp }}
+              class={{
+                [styles.signTransactionsDirectionIconArrow]: true,
+                [styles.signTransactionsDirectionIconArrowDown]: !isApp,
+              }}
             />
 
             <span class={styles.signTransactionsDirectionIconDot} />
@@ -70,7 +89,10 @@ export function SignTransactionsOverview({ identifier, usdValue, amount, tokenIc
           </div>
         </div>
 
-        <div class={classNames(styles.signTransactionsDetailRow, styles.signTransactionsInteractorRow)} data-testid={DataTestIdsEnum.signTransactionsOverviewInteractorRow}>
+        <div
+          class={classNames(styles.signTransactionsDetailRow, styles.signTransactionsInteractorRow)}
+          data-testid={DataTestIdsEnum.signTransactionsOverviewInteractorRow}
+        >
           <div class={styles.signTransactionsDetailLabel}>{isApp ? 'App' : 'To'}</div>
           <div class={styles.signTransactionsInteractorInfo}>
             {interactorIconUrl && (
@@ -88,9 +110,15 @@ export function SignTransactionsOverview({ identifier, usdValue, amount, tokenIc
           </div>
         </div>
         {isApp && (
-          <div class={classNames(styles.signTransactionsDetailRow, styles.signTransactionsActionRow)} data-testid={DataTestIdsEnum.signTransactionsOverviewActionRow}>
+          <div
+            class={classNames(styles.signTransactionsDetailRow, styles.signTransactionsActionRow)}
+            data-testid={DataTestIdsEnum.signTransactionsOverviewActionRow}
+          >
             <div class={styles.signTransactionsDetailLabel}>Action</div>
-            <div class={styles.signTransactionsActionValue} data-testid={DataTestIdsEnum.signTransactionsOverviewActionValue}>
+            <div
+              class={styles.signTransactionsActionValue}
+              data-testid={DataTestIdsEnum.signTransactionsOverviewActionValue}
+            >
               {action}
             </div>
           </div>
@@ -108,7 +136,6 @@ export function SignTransactionsOverview({ identifier, usdValue, amount, tokenIc
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 }
-

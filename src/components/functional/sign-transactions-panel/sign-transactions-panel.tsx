@@ -130,7 +130,7 @@ export class SignTransactionsPanel {
   };
 
   private handleCopyButtonClick = getCopyClickAction({
-    onSuccessChange: (isSuccess) => (this.isSuccessOnCopy = isSuccess),
+    onSuccessChange: isSuccess => (this.isSuccessOnCopy = isSuccess),
   });
 
   private setDecodeMethod = (method: DecodeMethodEnum) => {
@@ -168,7 +168,10 @@ export class SignTransactionsPanel {
             <div class={styles.signTransactionsTabs}>
               {transactionTabs.map(transactionTab => (
                 <div
-                  class={{ [styles.signTransactionsTab]: true, [styles.signTransactionsTabActive]: transactionTab === this.activeTab }}
+                  class={{
+                    [styles.signTransactionsTab]: true,
+                    [styles.signTransactionsTabActive]: transactionTab === this.activeTab,
+                  }}
                   data-testid={`${DataTestIdsEnum.signTransactionsTab}-${transactionTab.toLowerCase()}`}
                   onClick={() => this.setActiveTab(transactionTab)}
                 >
@@ -198,7 +201,7 @@ export class SignTransactionsPanel {
             handleCopyButtonClick={this.handleCopyButtonClick}
           />
         </div>
-      </mvx-side-panel >
+      </mvx-side-panel>
     );
   }
 }

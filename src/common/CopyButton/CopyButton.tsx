@@ -9,30 +9,35 @@ const styles = {
 } satisfies Record<string, string>;
 
 interface CopyButtonPropsType {
-    iconClass?: string;
-    class?: string;
-    text: string;
-    isSuccessOnCopy?: boolean;
-    handleCopyButtonClick?: (event: MouseEvent) => void;
+  iconClass?: string;
+  class?: string;
+  text: string;
+  isSuccessOnCopy?: boolean;
+  handleCopyButtonClick?: (event: MouseEvent) => void;
 }
 
-export function CopyButton({ iconClass, class: className, isSuccessOnCopy, handleCopyButtonClick }: CopyButtonPropsType) {
-    return (
-        <div
-            onClick={(event) => handleCopyButtonClick?.(event)}
-            class={{
-                [styles.copyButton]: true,
-                [className]: Boolean(className),
-            }}
-        >
-            <Icon
-                name={isSuccessOnCopy ? 'check' : 'copy'}
-                class={{
-                    [styles.copyButtonIcon]: true,
-                    [styles.copyButtonIconCheck]: isSuccessOnCopy,
-                    [iconClass]: Boolean(iconClass),
-                }}
-            />
-        </div>
-    );
+export function CopyButton({
+  iconClass,
+  class: className,
+  isSuccessOnCopy,
+  handleCopyButtonClick,
+}: CopyButtonPropsType) {
+  return (
+    <div
+      onClick={event => handleCopyButtonClick?.(event)}
+      class={{
+        [styles.copyButton]: true,
+        [className]: Boolean(className),
+      }}
+    >
+      <Icon
+        name={isSuccessOnCopy ? 'check' : 'copy'}
+        class={{
+          [styles.copyButtonIcon]: true,
+          [styles.copyButtonIconCheck]: isSuccessOnCopy,
+          [iconClass]: Boolean(iconClass),
+        }}
+      />
+    </div>
+  );
 }

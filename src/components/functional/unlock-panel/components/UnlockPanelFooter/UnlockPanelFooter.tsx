@@ -2,7 +2,7 @@ import { h } from '@stencil/core';
 import { Icon } from 'common/Icon';
 
 import unlockPanelWalletImg from '../../../../../assets/unlock-panel-wallet.webp';
-import styles from './unlockPanelFooter.styles'
+import styles from './unlockPanelFooter.styles';
 
 export function UnlockPanelFooter({ walletAddress }: { walletAddress: string }) {
   const handleWalletClick = (event: MouseEvent) => {
@@ -39,7 +39,6 @@ export function UnlockPanelFooter({ walletAddress }: { walletAddress: string }) 
 
         <Icon name="arrow-up-right" class={styles.unlockButton} />
       </div>
-    </div >
+    </div>
   );
-
 }

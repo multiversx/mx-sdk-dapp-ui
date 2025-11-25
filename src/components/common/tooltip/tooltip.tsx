@@ -1,4 +1,4 @@
-import type { EventEmitter} from '@stencil/core';
+import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State } from '@stencil/core';
 import { Tooltip as TooltipComponent } from 'common/Tooltip/Tooltip';
 
@@ -20,7 +20,6 @@ export class Tooltip {
     this.triggerRender.emit(isVisible);
     this.isVisible = isVisible;
   };
-
 
   render() {
     return (

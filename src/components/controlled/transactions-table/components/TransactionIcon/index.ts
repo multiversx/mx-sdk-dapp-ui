@@ -1,1 +1,1 @@
-export * from './TransactionIcon'
+export * from './TransactionIcon';

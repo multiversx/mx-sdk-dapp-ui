@@ -107,10 +107,10 @@ export const Icon = ({ name, ...properties }: IconPropsType) => {
       return <ArrowsRotateIcon {...properties} />;
 
     case 'spinner':
-      return <SpinnerIcon />
+      return <SpinnerIcon />;
 
     case 'arrow-right':
-      return <ArrowRightIcon />
+      return <ArrowRightIcon />;
 
     default:
       console.error(`No data for the ${name} icon.`);
