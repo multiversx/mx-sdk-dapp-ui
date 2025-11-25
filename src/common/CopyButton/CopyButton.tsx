@@ -3,9 +3,9 @@ import { Icon } from 'common/Icon';
 
 // prettier-ignore
 const styles = {
-    copyButton: 'copy-button mvx:flex',
-    copyButtonIcon: 'copy-button-icon mvx:flex mvx:cursor-pointer mvx:justify-center mvx:transition-opacity mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80',
-    copyButtonIconCheck: 'copy-button-icon-check mvx:hover:opacity-100! mvx:cursor-default!',
+  copyButton: 'copy-button mvx:flex',
+  copyButtonIcon: 'copy-button-icon mvx:flex mvx:cursor-pointer mvx:justify-center mvx:transition-opacity mvx:duration-200 mvx:ease-in-out mvx:hover:opacity-80',
+  copyButtonIconCheck: 'copy-button-icon-check mvx:hover:opacity-100! mvx:cursor-default!',
 } satisfies Record<string, string>;
 
 interface CopyButtonPropsType {
