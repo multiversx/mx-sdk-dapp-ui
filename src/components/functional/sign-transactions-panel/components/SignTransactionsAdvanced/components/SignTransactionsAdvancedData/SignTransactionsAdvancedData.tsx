@@ -54,9 +54,12 @@ export function SignTransactionsAdvancedData({ highlight, data, decodeMethod = D
   const { beforeHighlight, afterHighlight, highlight: highlightText } = computedDisplayData;
 
   if ((beforeHighlight || afterHighlight) && highlightElement) {
-    setTimeout(() => {
+
+    const timeoutId = setTimeout(() => {
       highlightElement?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
     });
+
+    clearTimeout(timeoutId);
   }
 
   return (

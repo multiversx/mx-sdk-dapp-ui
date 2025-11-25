@@ -6,6 +6,7 @@ import state from '../../signTransactionsPanelStore';
 import styles from './signTransactionsAdvanced.styles';
 import { SignTransactionsAdvancedData } from './components/SignTransactionsAdvancedData/SignTransactionsAdvancedData';
 import { DecodeMethodEnum } from '../../sign-transactions-panel.types';
+import classNames from 'classnames';
 
 interface SignTransactionsAdvancedPropsType {
   data: string;
@@ -36,7 +37,9 @@ export function SignTransactionsAdvanced(props: SignTransactionsAdvancedPropsTyp
             </span>
           </div>
           <div class={styles.signTransactionsGasSpeedSelector} data-testid={DataTestIdsEnum.signTransactionsAdvancedGasSpeedSelector}>
-            {gasPriceOptions.map(({ label, value }) => (
+            {gasPriceOptions.map(({ label, value }) => {
+              const isActive = gasPriceOption.toString() === value.toString();
+
               <button
                 key={label}
                 disabled={!needsSigning}
@@ -50,19 +53,11 @@ export function SignTransactionsAdvanced(props: SignTransactionsAdvancedPropsTyp
                 data-testid={DataTestIdsEnum.signTransactionsAdvancedSpeedOption}
                 onClick={() => state.setGasPriceOption(value)}
               >
-                <span
-                  class={`
-                      ${styles.signTransactionsSpeedText}
-                      ${gasPriceOption.toString() === value.toString()
-                      ? styles.signTransactionsSpeedOptionActiveSpeedText
-                      : ''
-                    }
-                    `}
-                >
+                <span class={classNames(styles.signTransactionsSpeedText, { [styles.signTransactionsSpeedOptionActiveSpeedText]: isActive })}>
                   {label}
                 </span>
               </button>
-            ))}
+            })}
           </div>
           <div class={styles.signTransactionsGasLimitRow} data-testid={DataTestIdsEnum.signTransactionsAdvancedGasLimit}>
             <span class={styles.signTransactionsGasLimit}>Gas Limit</span>
