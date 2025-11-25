@@ -86,27 +86,11 @@ export function Trim({
         const trimFullVisibleClasses = styles.trimFullVisible.split(/\s+/);
         const trimWrapperVisibleClasses = styles.trimWrapperVisible.split(/\s+/);
 
-        const hasFullVisible = trimFullElement.classList.contains(getIdentifierClass(styles.trimFullVisible));
-        const hasWrapperVisible = trimWrapperElement.classList.contains(getIdentifierClass(styles.trimWrapperVisible));
-
-        if (hasFullVisible) {
-            trimFullElement.classList.remove(...trimFullVisibleClasses);
-        }
-        if (hasWrapperVisible) {
-            trimWrapperElement.classList.remove(...trimWrapperVisibleClasses);
-        }
-
         const hiddenFullWidthElementWidth = fullWidthUntrimmedElementReference.scrollWidth;
         const trimmedElementWidth = trimElementReference.clientWidth;
         const isTrimElementOverflowing = hiddenFullWidthElementWidth > trimmedElementWidth;
 
         if (isCurrentlyOverflowing === isTrimElementOverflowing) {
-            if (hasFullVisible) {
-                trimFullElement.classList.add(...trimFullVisibleClasses);
-            }
-            if (hasWrapperVisible) {
-                trimWrapperElement.classList.add(...trimWrapperVisibleClasses);
-            }
 
             isCheckingOverflow = false;
 

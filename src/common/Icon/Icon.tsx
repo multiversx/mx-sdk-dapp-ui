@@ -24,7 +24,9 @@ import { LayersIcon } from './components/LayersIcon';
 import { LockIcon } from './components/LockIcon';
 import { PencilIcon } from './components/PencilIcon';
 import { TriangularWarningIcon } from './components/TriangularWarningIcon';
+import { SpinnerIcon } from './components/SpinnerIcon';
 import type { IconPropsType } from './icon.types';
+import { ArrowRightIcon } from './components/ArrowRightIcon';
 
 export const Icon = ({ name, ...properties }: IconPropsType) => {
   if (!name) {
@@ -103,6 +105,12 @@ export const Icon = ({ name, ...properties }: IconPropsType) => {
 
     case 'arrows-rotate':
       return <ArrowsRotateIcon {...properties} />;
+
+    case 'spinner':
+      return <SpinnerIcon />
+
+    case 'arrow-right':
+      return <ArrowRightIcon />
 
     default:
       console.error(`No data for the ${name} icon.`);
