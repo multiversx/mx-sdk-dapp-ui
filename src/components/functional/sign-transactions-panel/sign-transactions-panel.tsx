@@ -1,20 +1,19 @@
 import { Component, h, Method, State } from '@stencil/core';
+import { getCopyClickAction } from 'common/CopyButton/getCopyClickAction';
 import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
+import { SignTransactionsAdvanced } from './components/SignTransactionsAdvanced/SignTransactionsAdvanced';
+import { SignTransactionsFooter } from './components/SignTransactionsFooter/SignTransactionsFooter';
+import { SignTransactionsHeader } from './components/SignTransactionsHeader/SignTransactionsHeader';
+import { SignTransactionsOverview } from './components/SignTransactionsOverview/SignTransactionsOverview';
+import styles from './sign-transactions-panel.styles';
 import type { IOverviewProps, ISignTransactionsPanelData } from './sign-transactions-panel.types';
 import { DecodeMethodEnum, SignEventsEnum, TransactionTabsEnum } from './sign-transactions-panel.types';
 import state, { resetState } from './signTransactionsPanelStore';
-import { SignTransactionsFooter } from './components/SignTransactionsFooter/SignTransactionsFooter';
-import { getCopyClickAction } from 'common/CopyButton/getCopyClickAction';
-import { SignTransactionsOverview } from './components/SignTransactionsOverview/SignTransactionsOverview';
-import { SignTransactionsAdvanced } from './components/SignTransactionsAdvanced/SignTransactionsAdvanced';
-import { SignTransactionsHeader } from './components/SignTransactionsHeader/SignTransactionsHeader';
-
-import styles from './sign-transactions-panel.styles';
 
 @Component({
   tag: 'mvx-sign-transactions-panel',

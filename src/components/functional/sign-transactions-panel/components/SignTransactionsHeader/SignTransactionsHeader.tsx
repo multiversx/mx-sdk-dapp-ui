@@ -1,6 +1,7 @@
 import { h } from '@stencil/core';
 import { Icon } from 'common/Icon';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
+
 import styles from './sign-transactions-header.styles';
 
 interface SignTransactionsHeaderPropsType {

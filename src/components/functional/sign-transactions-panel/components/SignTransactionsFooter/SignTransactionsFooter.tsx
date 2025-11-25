@@ -1,15 +1,15 @@
 import { Fragment, h } from '@stencil/core';
 import classNames from 'classnames';
+import { Button } from 'common/Button/Button';
+import { CopyButton } from 'common/CopyButton/CopyButton';
+import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
 import { Icon } from 'common/Icon';
+import { Tooltip } from 'common/Tooltip/Tooltip';
+import { Trim } from 'common/Trim/Trim';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import state from '../../signTransactionsPanelStore';
 import styles from './signTransactionsFooter.styles';
-import { CopyButton } from 'common/CopyButton/CopyButton';
-import { Tooltip } from 'common/Tooltip/Tooltip';
-import { Button } from 'common/Button/Button';
-import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
-import { Trim } from 'common/Trim/Trim';
 
 let isWaitingForSignature: boolean = false;
 let lastCommonData = { ...state.commonData };

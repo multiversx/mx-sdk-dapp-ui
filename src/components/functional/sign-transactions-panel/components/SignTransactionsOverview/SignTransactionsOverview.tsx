@@ -1,12 +1,11 @@
 import { h } from '@stencil/core';
+import classNames from 'classnames';
 import { Icon } from 'common/Icon';
+import { Trim } from 'common/Trim/Trim';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import { handleAmountResize } from '../../helpers';
-import classNames from 'classnames';
-
 import styles from './signTransactionsOverview.styles';
-import { Trim } from 'common/Trim/Trim';
 
 interface SignTransactionsOverviewPropsType {
   identifier: string;

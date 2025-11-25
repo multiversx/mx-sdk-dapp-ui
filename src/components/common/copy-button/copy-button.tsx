@@ -1,4 +1,4 @@
-import { Component, Prop, State, h } from '@stencil/core';
+import { Component, h,Prop, State } from '@stencil/core';
 import { CopyButton as CopyButtonComponent } from 'common/CopyButton/CopyButton';
 import { getCopyClickAction } from 'common/CopyButton/getCopyClickAction';
 

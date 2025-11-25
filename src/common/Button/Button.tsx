@@ -1,6 +1,7 @@
 import { h } from '@stencil/core';
-import { ButtonSizeEnum, ButtonVariantEnum } from './button.types';
+
 import styles from './button.styles';
+import { ButtonSizeEnum, ButtonVariantEnum } from './button.types';
 
 interface ButtonPropsType {
     class?: string;

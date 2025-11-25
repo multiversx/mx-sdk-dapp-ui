@@ -6,6 +6,7 @@ import { AngleRightIcon } from './components/AngleRightIcon';
 import { AnglesLeftIcon } from './components/AnglesLeftIcon';
 import { AnglesRightIcon } from './components/AnglesRightIcon';
 import { AngleUpIcon } from './components/AngleUpIcon';
+import { ArrowRightIcon } from './components/ArrowRightIcon';
 import { ArrowsRotateIcon } from './components/ArrowsRotateIcon';
 import { ArrowUpRightFromSquareIcon } from './components/ArrowUpRightFromSquare';
 import { ArrowUpRightIcon } from './components/ArrowUpRightIcon';
@@ -23,10 +24,9 @@ import { HourglassIcon } from './components/HourglassIcon';
 import { LayersIcon } from './components/LayersIcon';
 import { LockIcon } from './components/LockIcon';
 import { PencilIcon } from './components/PencilIcon';
-import { TriangularWarningIcon } from './components/TriangularWarningIcon';
 import { SpinnerIcon } from './components/SpinnerIcon';
+import { TriangularWarningIcon } from './components/TriangularWarningIcon';
 import type { IconPropsType } from './icon.types';
-import { ArrowRightIcon } from './components/ArrowRightIcon';
 
 export const Icon = ({ name, ...properties }: IconPropsType) => {
   if (!name) {

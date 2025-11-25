@@ -1,12 +1,11 @@
 import { h } from '@stencil/core';
+import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
+import type { DecodeMethodEnum } from '../../sign-transactions-panel.types';
 import state from '../../signTransactionsPanelStore';
-
-import styles from './signTransactionsAdvanced.styles';
 import { SignTransactionsAdvancedData } from './components/SignTransactionsAdvancedData/SignTransactionsAdvancedData';
-import { DecodeMethodEnum } from '../../sign-transactions-panel.types';
-import classNames from 'classnames';
+import styles from './signTransactionsAdvanced.styles';
 
 interface SignTransactionsAdvancedPropsType {
   decodeMethod?: DecodeMethodEnum;

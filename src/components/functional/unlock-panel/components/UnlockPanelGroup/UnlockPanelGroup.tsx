@@ -1,8 +1,9 @@
 import { h } from '@stencil/core';
 import classNames from 'classnames';
 import { type IProviderBase, ProviderTypeEnum } from 'types/provider.types';
-import styles from './unlockPanelGroup.styles';
+
 import { UnlockProviderButton } from '../UnlockProviderButton';
+import styles from './unlockPanelGroup.styles';
 
 export enum UnlockPanelGroupSlotEnum {
   groupLabel = 'group-label',

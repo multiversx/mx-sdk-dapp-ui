@@ -1,14 +1,13 @@
 import { Fragment, h } from '@stencil/core';
+import classNames from 'classnames';
+import { Tooltip } from 'common/Tooltip/Tooltip';
 import { DecodeMethodEnum } from 'components/functional/sign-transactions-panel/sign-transactions-panel.types';
 import state from 'components/functional/sign-transactions-panel/signTransactionsPanelStore';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-import styles from './signTransactionsAdvancedData.styles'
-
-import { getProcessedHighlightedData } from './helpers/getProcessedHighlightedData';
 import { SignTransactionsAdvancedDataDecode } from './components/SignTransactionsAdvancedDataDecode/SignTransactionsAdvancedDataDecode';
-import classNames from 'classnames';
-import { Tooltip } from 'common/Tooltip/Tooltip';
+import { getProcessedHighlightedData } from './helpers/getProcessedHighlightedData';
+import styles from './signTransactionsAdvancedData.styles'
 
 export interface IDataHightlight {
   beforeHighlight?: string;
