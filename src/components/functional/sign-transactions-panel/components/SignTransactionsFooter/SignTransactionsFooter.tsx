@@ -116,20 +116,10 @@ export function SignTransactionsFooter({ tooltipVisible, onTooltipVisibilityChan
               )}
 
               {showForwardAction ? (
-                <span
-                  class={{
-                    [styles.signTransactionsFooterButtonIconLighter]: currentIndexCannotBeSignedYet,
-                  }}
-                >
-                  {isWaitingForSignature ? (
-                    <span class={styles.signTransactionsFooterButtonIcon}>
-                      <Icon name='spinner' />
-                    </span>
-                  ) : (
-                    <span class={styles.signTransactionsFooterButtonIcon}>
-                      <Icon name={!needsSigning ? 'pencil' : 'check'} />
-                    </span>
-                  )}
+                <span class={{ [styles.signTransactionsFooterButtonIconLighter]: currentIndexCannotBeSignedYet }}>
+                  <span class={styles.signTransactionsFooterButtonIcon}>
+                    <Icon name={isWaitingForSignature ? 'spinner' : !needsSigning ? 'pencil' : 'check'} />
+                  </span>
                 </span>
               ) : (
                 <span class={styles.signTransactionsFooterButtonIcon}>

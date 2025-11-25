@@ -3,7 +3,7 @@ export default {
     signTransactionContent: 'sign-transaction-content mvx:flex mvx:flex-col mvx:items-center mvx:gap-2 mvx:relative mvx:min-w-0 mvx:self-stretch mvx:flex-nowrap mvx:shrink-0',
     signTransactionsTabs: 'sign-transactions-tabs mvx:px-4 mvx:gap-2 mvx:flex mvx:mr-auto',
     signTransactionsTab: 'sign-transactions-tab mvx:px-4 mvx:h-8 mvx:flex mvx:items-center mvx:leading-none mvx:justify-center mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:cursor-pointer mvx:relative mvx:rounded-3xl mvx:text-secondary-text mvx:hover:text-accent mvx:hover:bg-secondary mvx:active:text-accent mvx:active:bg-secondary',
-    signTransactionsTabActive: 'sign-transactions-tab-active mvx:text-accent mvx:bg-secondary',
+    signTransactionsTabActive: 'sign-transactions-tab-active mvx:!text-accent mvx:!bg-secondary',
     signTransactionsTabText: 'sign-transactions-tab-text mvx:text-base mvx:z-1 mvx:relative mvx:capitalize',
     signTransactionsPanel: 'sign-transactions-panel mvx:flex mvx:flex-col mvx:flex-1 mvx:pb-6',
     button: 'button mvx:flex mvx:items-center mvx:justify-center mvx:font-bold mvx:leading-none mvx:px-4 mvx:max-h-full mvx:rounded-xl mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:gap-2',

@@ -9,7 +9,7 @@ import type { IOverviewProps, ISignTransactionsPanelData } from './sign-transact
 import { DecodeMethodEnum, SignEventsEnum, TransactionTabsEnum } from './sign-transactions-panel.types';
 import state, { resetState } from './signTransactionsPanelStore';
 import { SignTransactionsFooter } from './components/SignTransactionsFooter/SignTransactionsFooter';
-import { CopyButtonHandler } from 'common/CopyButton/CopyButtonHandler';
+import { getCopyClickAction } from 'common/CopyButton/getCopyClickAction';
 import { SignTransactionsOverview } from './components/SignTransactionsOverview/SignTransactionsOverview';
 import { SignTransactionsAdvanced } from './components/SignTransactionsAdvanced/SignTransactionsAdvanced';
 import { SignTransactionsHeader } from './components/SignTransactionsHeader/SignTransactionsHeader';
@@ -130,7 +130,7 @@ export class SignTransactionsPanel {
     this.isFooterTooltipVisible = isTooltipVisible;
   };
 
-  private handleCopyButtonClick = CopyButtonHandler({
+  private handleCopyButtonClick = getCopyClickAction({
     onSuccessChange: (isSuccess) => (this.isSuccessOnCopy = isSuccess),
   });
 
@@ -146,7 +146,7 @@ export class SignTransactionsPanel {
     const transactionTabs = Object.values(TransactionTabsEnum);
 
     const { commonData, onBack, onNext } = state;
-    const { data, highlight, needsSigning, gasPriceOptions, gasLimit, gasPrice, egldLabel, gasPriceOption, currentIndex, transactionsCount, origin } = commonData;
+    const { currentIndex, transactionsCount, origin } = commonData;
 
     return (
       <mvx-side-panel
@@ -184,14 +184,6 @@ export class SignTransactionsPanel {
               <SignTransactionsOverview {...this.overviewProps} />
             ) : (
               <SignTransactionsAdvanced
-                data={data}
-                highlight={highlight}
-                needsSigning={needsSigning}
-                gasPriceOptions={gasPriceOptions}
-                gasLimit={gasLimit}
-                gasPrice={gasPrice}
-                egldLabel={egldLabel}
-                gasPriceOption={gasPriceOption}
                 decodeMethod={this.decodeMethod}
                 onDecodeMethodChange={this.setDecodeMethod}
                 decodeTooltipVisible={this.decodeTooltipVisible}

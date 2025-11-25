@@ -12,6 +12,8 @@ interface SignTransactionsHeaderPropsType {
   showFavicon: boolean;
 }
 
+const NUMBER_OF_TRANSACTIONS = 10;
+
 export function SignTransactionsHeader({ onBack, onNext, currentIndex, transactionsCount, origin, showFavicon }: SignTransactionsHeaderPropsType) {
   return (
     <div class={styles.signTransactionsHeader} data-testid={DataTestIdsEnum.signTransactionsHeader}>
@@ -39,7 +41,7 @@ export function SignTransactionsHeader({ onBack, onNext, currentIndex, transacti
             <div
               class={{
                 [styles.signTransactionsHeaderPagerTextValue]: true,
-                [styles.signTransactionsHeaderPagerTextValueLarge]: transactionsCount >= 10,
+                [styles.signTransactionsHeaderPagerTextValueLarge]: transactionsCount >= NUMBER_OF_TRANSACTIONS,
               }}
             >
               {currentIndex + 1}
@@ -49,7 +51,7 @@ export function SignTransactionsHeader({ onBack, onNext, currentIndex, transacti
             <div
               class={{
                 [styles.signTransactionsHeaderPagerTextValue]: true,
-                [styles.signTransactionsHeaderPagerTextValueLarge]: transactionsCount >= 10,
+                [styles.signTransactionsHeaderPagerTextValueLarge]: transactionsCount >= NUMBER_OF_TRANSACTIONS,
               }}
             >
               {transactionsCount}

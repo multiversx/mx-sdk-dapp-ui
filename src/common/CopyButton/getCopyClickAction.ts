@@ -4,7 +4,7 @@ interface CopyHandlerOptions {
     onSuccessChange?: (isSuccess: boolean) => void;
 }
 
-export function CopyButtonHandler({ onSuccessChange }: CopyHandlerOptions) {
+export function getCopyClickAction({ onSuccessChange }: CopyHandlerOptions) {
     let timeoutId: number | null = null;
 
     return async (event: MouseEvent, text?: string) => {

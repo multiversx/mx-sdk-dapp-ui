@@ -1,6 +1,6 @@
 import { Component, Prop, State, h } from '@stencil/core';
 import { CopyButton as CopyButtonComponent } from 'common/CopyButton/CopyButton';
-import { CopyButtonHandler } from 'common/CopyButton/CopyButtonHandler';
+import { getCopyClickAction } from 'common/CopyButton/getCopyClickAction';
 
 @Component({
   tag: 'mvx-copy-button',
@@ -12,7 +12,7 @@ export class CopyButton {
   @Prop() class?: string;
   @Prop() text: string;
 
-  private handleClick = CopyButtonHandler({
+  private handleClick = getCopyClickAction({
     onSuccessChange: (isSuccess) => (this.isSuccess = isSuccess),
   });
 

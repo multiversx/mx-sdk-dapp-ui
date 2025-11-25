@@ -9,14 +9,6 @@ import { DecodeMethodEnum } from '../../sign-transactions-panel.types';
 import classNames from 'classnames';
 
 interface SignTransactionsAdvancedPropsType {
-  data: string;
-  highlight?: string;
-  needsSigning?: boolean;
-  gasPriceOptions?: Array<{ label: string; value: number }>;
-  gasLimit?: string;
-  gasPrice?: string;
-  egldLabel?: string;
-  gasPriceOption?: number;
   decodeMethod?: DecodeMethodEnum;
   onDecodeMethodChange?: (method: DecodeMethodEnum) => void;
   decodeTooltipVisible?: boolean;
@@ -24,7 +16,8 @@ interface SignTransactionsAdvancedPropsType {
 }
 
 export function SignTransactionsAdvanced(props: SignTransactionsAdvancedPropsType) {
-  const { data, highlight, needsSigning, gasPriceOptions, gasLimit, gasPrice, egldLabel, gasPriceOption, decodeMethod, onDecodeMethodChange, decodeTooltipVisible, onDecodeTooltipVisibilityChange } = props;
+  const { decodeMethod, onDecodeMethodChange, decodeTooltipVisible, onDecodeTooltipVisibilityChange } = props;
+  const { needsSigning, gasPriceOptions, gasLimit, gasPrice, egldLabel, gasPriceOption } = state.commonData;
 
   return (
     <div class={styles.signTransactionsAdvancedDetails} data-testid={DataTestIdsEnum.signTransactionsAdvanced}>
@@ -37,26 +30,22 @@ export function SignTransactionsAdvanced(props: SignTransactionsAdvancedPropsTyp
             </span>
           </div>
           <div class={styles.signTransactionsGasSpeedSelector} data-testid={DataTestIdsEnum.signTransactionsAdvancedGasSpeedSelector}>
-            {gasPriceOptions.map(({ label, value }) => {
-              const isActive = gasPriceOption.toString() === value.toString();
+            {gasPriceOptions?.map(({ label, value }) => {
+              const isActive = gasPriceOption?.toString() === value.toString();
 
-              <button
-                key={label}
-                disabled={!needsSigning}
-                class={`
-                    ${styles.signTransactionsSpeedOption}
-                    ${gasPriceOption.toString() === value.toString()
-                    ? styles.signTransactionsSpeedOptionActive
-                    : ''
-                  }
-                    `}
-                data-testid={DataTestIdsEnum.signTransactionsAdvancedSpeedOption}
-                onClick={() => state.setGasPriceOption(value)}
-              >
-                <span class={classNames(styles.signTransactionsSpeedText, { [styles.signTransactionsSpeedOptionActiveSpeedText]: isActive })}>
-                  {label}
-                </span>
-              </button>
+              return (
+                <button
+                  key={label}
+                  disabled={!needsSigning}
+                  class={classNames(styles.signTransactionsSpeedOption, { [styles.signTransactionsSpeedOptionActive]: isActive })}
+                  data-testid={DataTestIdsEnum.signTransactionsAdvancedSpeedOption}
+                  onClick={() => state.setGasPriceOption(value)}
+                >
+                  <span class={classNames(styles.signTransactionsSpeedText, { [styles.signTransactionsSpeedOptionActiveSpeedText]: isActive })}>
+                    {label}
+                  </span>
+                </button>
+              );
             })}
           </div>
           <div class={styles.signTransactionsGasLimitRow} data-testid={DataTestIdsEnum.signTransactionsAdvancedGasLimit}>
@@ -66,7 +55,7 @@ export function SignTransactionsAdvanced(props: SignTransactionsAdvancedPropsTyp
         </div>
       </div>
 
-      <SignTransactionsAdvancedData highlight={highlight} data={data} decodeMethod={decodeMethod} onDecodeMethodChange={onDecodeMethodChange} decodeTooltipVisible={decodeTooltipVisible} onDecodeTooltipVisibilityChange={onDecodeTooltipVisibilityChange} />
+      <SignTransactionsAdvancedData decodeMethod={decodeMethod} onDecodeMethodChange={onDecodeMethodChange} decodeTooltipVisible={decodeTooltipVisible} onDecodeTooltipVisibilityChange={onDecodeTooltipVisibilityChange} />
     </div>
   );
 }

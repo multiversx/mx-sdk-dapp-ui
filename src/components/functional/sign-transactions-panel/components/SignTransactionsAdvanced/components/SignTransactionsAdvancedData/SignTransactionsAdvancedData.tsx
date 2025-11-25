@@ -17,15 +17,14 @@ export interface IDataHightlight {
 }
 
 interface SignTransactionsAdvancedDataPropsType {
-  highlight?: string;
-  data: string;
   decodeMethod?: DecodeMethodEnum;
   onDecodeMethodChange?: (method: DecodeMethodEnum) => void;
   decodeTooltipVisible?: boolean;
   onDecodeTooltipVisibilityChange?: (isVisible: boolean) => void;
 }
 
-export function SignTransactionsAdvancedData({ highlight, data, decodeMethod = DecodeMethodEnum.raw, onDecodeMethodChange, decodeTooltipVisible, onDecodeTooltipVisibilityChange }: SignTransactionsAdvancedDataPropsType) {
+export function SignTransactionsAdvancedData({ decodeMethod = DecodeMethodEnum.raw, onDecodeMethodChange, decodeTooltipVisible, onDecodeTooltipVisibilityChange }: SignTransactionsAdvancedDataPropsType) {
+  const { data, highlight } = state.commonData;
   let highlightElement: HTMLElement;
 
   const setDecodeMethod = (method: DecodeMethodEnum) => {
@@ -36,8 +35,8 @@ export function SignTransactionsAdvancedData({ highlight, data, decodeMethod = D
 
   const getComputedDisplayData = (): IDataHightlight => {
     if (decodeMethod === DecodeMethodEnum.raw) {
-      return !highlight || !data.includes(highlight)
-        ? { highlight: data }
+      return !highlight || !data?.includes(highlight)
+        ? { highlight: data || '' }
         : getProcessedHighlightedData({ data, highlightedData: highlight });
     }
 
