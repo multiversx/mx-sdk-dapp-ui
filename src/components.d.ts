@@ -16,7 +16,6 @@ import { ITransactionListItem as ITransactionListItem1 } from "./components/visu
 import { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { TransactionStatusEnum } from "./constants/transactionStatus.enum";
 import { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
-import { IProviderBase } from "./types/provider.types";
 import { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
 export { IAddressTableData } from "./types/address-table.types";
 export { ButtonSizeEnum, ButtonVariantEnum } from "./common/Button/button.types";
@@ -29,7 +28,6 @@ export { ITransactionListItem as ITransactionListItem1 } from "./components/visu
 export { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { TransactionStatusEnum } from "./constants/transactionStatus.enum";
 export { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
-export { IProviderBase } from "./types/provider.types";
 export { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
 export namespace Components {
     interface MvxAddressTable {
@@ -343,14 +341,6 @@ export namespace Components {
          */
         "dataTestId"?: string;
         "text": string;
-    }
-    interface MvxUnlockButton {
-        "class"?: string;
-        "dataTestId"?: string;
-        "icon"?: HTMLElement;
-        "iconUrl": string;
-        "label": string;
-        "type"?: IProviderBase['type'];
     }
     interface MvxUnlockPanel {
         "closeWithAnimation": () => Promise<unknown>;
@@ -917,12 +907,6 @@ declare global {
         prototype: HTMLMvxTrimElement;
         new (): HTMLMvxTrimElement;
     };
-    interface HTMLMvxUnlockButtonElement extends Components.MvxUnlockButton, HTMLStencilElement {
-    }
-    var HTMLMvxUnlockButtonElement: {
-        prototype: HTMLMvxUnlockButtonElement;
-        new (): HTMLMvxUnlockButtonElement;
-    };
     interface HTMLMvxUnlockPanelElement extends Components.MvxUnlockPanel, HTMLStencilElement {
     }
     var HTMLMvxUnlockPanelElement: {
@@ -1044,7 +1028,6 @@ declare global {
         "mvx-transaction-toast-progress": HTMLMvxTransactionToastProgressElement;
         "mvx-transactions-table": HTMLMvxTransactionsTableElement;
         "mvx-trim": HTMLMvxTrimElement;
-        "mvx-unlock-button": HTMLMvxUnlockButtonElement;
         "mvx-unlock-panel": HTMLMvxUnlockPanelElement;
         "mvx-wallet-connect": HTMLMvxWalletConnectElement;
         "mvx-wallet-connect-app-gallery-icon": HTMLMvxWalletConnectAppGalleryIconElement;
@@ -1379,14 +1362,6 @@ declare namespace LocalJSX {
         "dataTestId"?: string;
         "text"?: string;
     }
-    interface MvxUnlockButton {
-        "class"?: string;
-        "dataTestId"?: string;
-        "icon"?: HTMLElement;
-        "iconUrl"?: string;
-        "label"?: string;
-        "type"?: IProviderBase['type'];
-    }
     interface MvxUnlockPanel {
     }
     interface MvxWalletConnect {
@@ -1485,7 +1460,6 @@ declare namespace LocalJSX {
         "mvx-transaction-toast-progress": MvxTransactionToastProgress;
         "mvx-transactions-table": MvxTransactionsTable;
         "mvx-trim": MvxTrim;
-        "mvx-unlock-button": MvxUnlockButton;
         "mvx-unlock-panel": MvxUnlockPanel;
         "mvx-wallet-connect": MvxWalletConnect;
         "mvx-wallet-connect-app-gallery-icon": MvxWalletConnectAppGalleryIcon;
@@ -1551,7 +1525,6 @@ declare module "@stencil/core" {
             "mvx-transaction-toast-progress": LocalJSX.MvxTransactionToastProgress & JSXBase.HTMLAttributes<HTMLMvxTransactionToastProgressElement>;
             "mvx-transactions-table": LocalJSX.MvxTransactionsTable & JSXBase.HTMLAttributes<HTMLMvxTransactionsTableElement>;
             "mvx-trim": LocalJSX.MvxTrim & JSXBase.HTMLAttributes<HTMLMvxTrimElement>;
-            "mvx-unlock-button": LocalJSX.MvxUnlockButton & JSXBase.HTMLAttributes<HTMLMvxUnlockButtonElement>;
             "mvx-unlock-panel": LocalJSX.MvxUnlockPanel & JSXBase.HTMLAttributes<HTMLMvxUnlockPanelElement>;
             "mvx-wallet-connect": LocalJSX.MvxWalletConnect & JSXBase.HTMLAttributes<HTMLMvxWalletConnectElement>;
             "mvx-wallet-connect-app-gallery-icon": LocalJSX.MvxWalletConnectAppGalleryIcon & JSXBase.HTMLAttributes<HTMLMvxWalletConnectAppGalleryIconElement>;
