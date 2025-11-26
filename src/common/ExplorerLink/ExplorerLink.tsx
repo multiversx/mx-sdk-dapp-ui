@@ -8,33 +8,37 @@ const styles = {
 } satisfies Record<string, string>;
 
 interface ExplorerLinkPropsType {
-    class?: string;
-    iconClass?: string;
-    dataTestId?: string;
-    link: string;
-    hasIcon?: boolean;
+  class?: string;
+  iconClass?: string;
+  dataTestId?: string;
+  link: string;
+  hasIcon?: boolean;
 }
 
-export function ExplorerLink({ class: className, iconClass, dataTestId, link, hasIcon }: ExplorerLinkPropsType, children?: JSX.Element) {
-    if (!link) {
-        return null;
-    }
+export function ExplorerLink(
+  { class: className, iconClass, dataTestId, link, hasIcon }: ExplorerLinkPropsType,
+  children?: JSX.Element,
+) {
+  if (!link) {
+    return null;
+  }
 
-    return (
-        <a
-            target="_blank"
-            rel="noreferrer"
-            href={link}
-            data-testid={dataTestId}
-            class={{ [styles.explorerLink]: true, [className]: Boolean(className) }}
-        >
-            {hasIcon ?
-                (<Icon
-                    name="arrow-up-right-from-square-icon"
-                    class={{ [styles.explorerLinkIcon]: true, [iconClass]: Boolean(iconClass) }}
-                />)
-                : children}
-        </a>
-    );
-
+  return (
+    <a
+      target="_blank"
+      rel="noreferrer"
+      href={link}
+      data-testid={dataTestId}
+      class={{ [styles.explorerLink]: true, [className]: Boolean(className) }}
+    >
+      {hasIcon ? (
+        <Icon
+          name="arrow-up-right-from-square-icon"
+          class={{ [styles.explorerLinkIcon]: true, [iconClass]: Boolean(iconClass) }}
+        />
+      ) : (
+        children
+      )}
+    </a>
+  );
 }

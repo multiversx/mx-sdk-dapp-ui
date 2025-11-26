@@ -18,7 +18,10 @@ interface SignTransactionsAdvancedDataDecodePropsType {
   currentDecodeMethod: DecodeMethodEnum;
 }
 
-export function SignTransactionsAdvancedDataDecode({ isToggled = false, currentDecodeMethod = DecodeMethodEnum.decimal }: SignTransactionsAdvancedDataDecodePropsType) {
+export function SignTransactionsAdvancedDataDecode({
+  isToggled = false,
+  currentDecodeMethod = DecodeMethodEnum.decimal,
+}: SignTransactionsAdvancedDataDecodePropsType) {
   return (
     <div
       class={styles.signTransactionsAdvancedDataDecode}
@@ -41,4 +44,3 @@ export function SignTransactionsAdvancedDataDecode({ isToggled = false, currentD
     </div>
   );
 }
-

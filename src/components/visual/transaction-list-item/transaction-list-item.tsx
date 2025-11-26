@@ -2,11 +2,11 @@ import { Component, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { FormatAmount } from 'common/FormatAmount/FormatAmount';
 import { IconSizeEnumType, TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
+import { Trim } from 'common/Trim/Trim';
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
 import { getIsTransactionFailed } from 'utils/getTransactionStatus';
 
 import type { ITransactionListItem } from './transaction-list-item.types';
-import { Trim } from 'common/Trim/Trim';
 
 @Component({
   tag: 'mvx-transaction-list-item',
