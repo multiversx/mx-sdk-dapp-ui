@@ -7,11 +7,11 @@ import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
+import { UnlockPanelFooter, UnlockPanelGroup } from './components';
 import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
+import styles from './unlock-panel.styles';
 import type { IUnlockPanelManagerData } from './unlock-panel.types';
 import { UnlockPanelEventsEnum } from './unlock-panel.types';
-import { UnlockPanelFooter, UnlockPanelGroup } from './components';
-import styles from './unlock-panel.styles';
 
 @Component({
   tag: 'mvx-unlock-panel',
@@ -188,17 +188,15 @@ export class UnlockPanel {
               {hasDetectedProviders && (
                 <UnlockPanelGroup
                   providers={detectedProviders}
-                  onLogin={(provider) => this.handleLogin(provider)}
+                  onLogin={provider => this.handleLogin(provider)}
                   class={styles.detectedPanelGroup}
-                  groupLabel={
-                    <div>Detected</div>
-                  }
+                  groupLabel={<div>Detected</div>}
                 />
               )}
 
               <UnlockPanelGroup
                 providers={otherProviders}
-                onLogin={(provider) => this.handleLogin(provider)}
+                onLogin={provider => this.handleLogin(provider)}
                 groupLabel={
                   <div>
                     <div class={styles.mobilePanelGroupTitle}>Options</div>

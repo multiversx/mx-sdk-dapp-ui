@@ -106,7 +106,9 @@ export class NotificationsFeed {
           {hasPending && (
             <div class="notifications-container">
               <div class="processing-status">Processing...</div>
-              {this.pendingTransactions?.map(toast => <mvx-transaction-toast fullWidth={true} {...toast} />)}
+              {this.pendingTransactions?.map(toast => (
+                <mvx-transaction-toast fullWidth={true} {...toast} />
+              ))}
             </div>
           )}
 

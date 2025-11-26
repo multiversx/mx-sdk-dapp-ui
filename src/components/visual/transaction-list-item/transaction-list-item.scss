@@ -1,6 +1,6 @@
 .transaction-item {
   @apply mvx:flex mvx:items-center mvx:py-5 mvx:px-3 mvx:gap-3 mvx:rounded-lg;
-  @apply mvx:transition-all mvx:duration-200 mvx:ease-in-out ;
+  @apply mvx:transition-all mvx:duration-200 mvx:ease-in-out;
   background-color: var(--mvx-bg-color-secondary);
 
   &:hover {
@@ -53,7 +53,7 @@
   color: var(--mvx-text-color-tertiary);
 
   &.truncate {
-  @apply mvx:truncate mvx:max-w-30 mvx:shrink-0;
+    @apply mvx:truncate mvx:max-w-30 mvx:shrink-0;
   }
 
   @media (min-width: 375px) {

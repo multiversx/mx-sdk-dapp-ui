@@ -1,15 +1,15 @@
 import { Fragment, h } from '@stencil/core';
 import classNames from 'classnames';
+import { Button } from 'common/Button/Button';
+import { CopyButton } from 'common/CopyButton/CopyButton';
+import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
 import { Icon } from 'common/Icon';
+import { Tooltip } from 'common/Tooltip/Tooltip';
+import { Trim } from 'common/Trim/Trim';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import state from '../../signTransactionsPanelStore';
 import styles from './signTransactionsFooter.styles';
-import { CopyButton } from 'common/CopyButton/CopyButton';
-import { Tooltip } from 'common/Tooltip/Tooltip';
-import { Button } from 'common/Button/Button';
-import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
-import { Trim } from 'common/Trim/Trim';
 
 let isWaitingForSignature: boolean = false;
 let lastCommonData = { ...state.commonData };
@@ -21,7 +21,12 @@ interface SignTransactionsFooterPropsType {
   handleCopyButtonClick?: (event: MouseEvent, text?: string) => void;
 }
 
-export function SignTransactionsFooter({ tooltipVisible, onTooltipVisibilityChange, isSuccessOnCopy, handleCopyButtonClick }: SignTransactionsFooterPropsType) {
+export function SignTransactionsFooter({
+  tooltipVisible,
+  onTooltipVisibilityChange,
+  isSuccessOnCopy,
+  handleCopyButtonClick,
+}: SignTransactionsFooterPropsType) {
   const currentCommonData = { ...state.commonData };
   const hasChanged = JSON.stringify(currentCommonData) !== JSON.stringify(lastCommonData);
 
@@ -53,7 +58,12 @@ export function SignTransactionsFooter({ tooltipVisible, onTooltipVisibilityChan
     <div class={styles.signTransactionsFooterContainer}>
       <div class={styles.signTransactionsFooter} data-testid={DataTestIdsEnum.signTransactionsFooter}>
         <div class={styles.signTransactionsFooterButtons} data-testid={DataTestIdsEnum.signTransactionsFooterButtons}>
-          <div class={classNames(styles.signTransactionsFooterButtonWrapper, styles.signTransactionsFooterButtonWrapperCancel)}>
+          <div
+            class={classNames(
+              styles.signTransactionsFooterButtonWrapper,
+              styles.signTransactionsFooterButtonWrapperCancel,
+            )}
+          >
             <Button
               size="small"
               onClick={isFirstTransaction ? onCancel : onBack}
@@ -123,7 +133,7 @@ export function SignTransactionsFooter({ tooltipVisible, onTooltipVisibilityChan
                 </span>
               ) : (
                 <span class={styles.signTransactionsFooterButtonIcon}>
-                  <Icon name='arrow-right' />
+                  <Icon name="arrow-right" />
                 </span>
               )}
             </Button>
@@ -151,7 +161,12 @@ export function SignTransactionsFooter({ tooltipVisible, onTooltipVisibilityChan
             />
           )}
 
-          <CopyButton text={username ?? address} class={styles.signTransactionsFooterIdentityCopy} isSuccessOnCopy={isSuccessOnCopy} handleCopyButtonClick={(event) => handleCopyButtonClick?.(event, username ?? address)} />
+          <CopyButton
+            text={username ?? address}
+            class={styles.signTransactionsFooterIdentityCopy}
+            isSuccessOnCopy={isSuccessOnCopy}
+            handleCopyButtonClick={event => handleCopyButtonClick?.(event, username ?? address)}
+          />
           <ExplorerLink link={explorerLink} iconClass={styles.signTransactionsExplorerLinkIcon} hasIcon />
         </div>
       </div>

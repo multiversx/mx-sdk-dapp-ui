@@ -3,13 +3,11 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { TransactionMethod } from '../TransactionMethod';
 
-
-
 describe('TransactionMethod tests', () => {
   const createPage = async (props: { method?: string; actionDescription?: string }) => {
     const page = await newSpecPage({
       components: [],
-      template: () => <TransactionMethod method={props.method} actionDescription={props.actionDescription} />
+      template: () => <TransactionMethod method={props.method} actionDescription={props.actionDescription} />,
     });
 
     return page;
@@ -19,7 +17,7 @@ describe('TransactionMethod tests', () => {
     it('renders with default props', async () => {
       const page = await newSpecPage({
         components: [],
-        template: () => <TransactionMethod method="" actionDescription="" />
+        template: () => <TransactionMethod method="" actionDescription="" />,
       });
 
       expect(page.root).toBeTruthy();
@@ -28,7 +26,7 @@ describe('TransactionMethod tests', () => {
     it('has correct data-testid', async () => {
       const page = await newSpecPage({
         components: [],
-        template: () => <TransactionMethod method="testMethod" actionDescription="Test Description" />
+        template: () => <TransactionMethod method="testMethod" actionDescription="Test Description" />,
       });
 
       expect(page.root).toEqualHtml(`
@@ -92,7 +90,7 @@ describe('TransactionMethod tests', () => {
     it('applies correct CSS classes to outer span', async () => {
       const page = await newSpecPage({
         components: [],
-        template: () => <TransactionMethod method="testMethod" actionDescription="" />
+        template: () => <TransactionMethod method="testMethod" actionDescription="" />,
       });
 
       expect(page.root).toEqualHtml(`
@@ -105,7 +103,7 @@ describe('TransactionMethod tests', () => {
     it('applies correct CSS classes to inner div', async () => {
       const page = await newSpecPage({
         components: [],
-        template: () => <TransactionMethod method="testMethod" actionDescription="" />
+        template: () => <TransactionMethod method="testMethod" actionDescription="" />,
       });
 
       expect(page.root).toEqualHtml(`

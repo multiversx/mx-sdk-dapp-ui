@@ -104,7 +104,6 @@ describe('CopyButton', () => {
       stopPropagation: jest.fn(),
     } as unknown as MouseEvent;
 
-
     await component['handleClick'](mockEvent, component.text);
     await page.waitForChanges();
 

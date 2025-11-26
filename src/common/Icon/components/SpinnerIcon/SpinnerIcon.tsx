@@ -1,16 +1,20 @@
 import { h } from '@stencil/core';
 
 const styles = {
-    spinnerIcon: 'spinner-icon mvx:w-4 mvx:h-4 mvx:fill-secondary-text mvx:animate-spinner'
+  spinnerIcon: 'spinner-icon mvx:w-4 mvx:h-4 mvx:fill-secondary-text mvx:animate-spinner',
 } satisfies Record<string, string>;
 
 export const SpinnerIcon = ({ class: className }: { class?: string }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16" class={{ [styles.spinnerIcon]: true, [className]: Boolean(className) }}>
-        <path
-            fill="currentColor"
-            d="M304 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm0 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM48 304a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm464-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM142.9 437A48 48 0 1 0 75 369.1 48 48 0 1 0 142.9 437zm0-294.2A48 48 0 1 0 75 75a48 48 0 1 0 67.9 67.9zM369.1 437A48 48 0 1 0 437 369.1 48 48 0 1 0 369.1 437z"
-        />
-    </svg>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 512 512"
+    width="16"
+    height="16"
+    class={{ [styles.spinnerIcon]: true, [className]: Boolean(className) }}
+  >
+    <path
+      fill="currentColor"
+      d="M304 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm0 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM48 304a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm464-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM142.9 437A48 48 0 1 0 75 369.1 48 48 0 1 0 142.9 437zm0-294.2A48 48 0 1 0 75 75a48 48 0 1 0 67.9 67.9zM369.1 437A48 48 0 1 0 437 369.1 48 48 0 1 0 369.1 437z"
+    />
+  </svg>
 );
-
-

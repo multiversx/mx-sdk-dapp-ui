@@ -13,6 +13,7 @@ import { safeWindow } from 'constants/window.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 import { getDetectedBrowser } from 'utils/getDetectedBrowser';
+
 import styles from './unlockButton.styles';
 
 interface UnlockButtonPropsType {

@@ -1,8 +1,9 @@
 import { h } from '@stencil/core';
 import classNames from 'classnames';
 import { type IProviderBase, ProviderTypeEnum } from 'types/provider.types';
-import styles from './unlockPanelGroup.styles';
+
 import { UnlockProviderButton } from '../UnlockProviderButton';
+import styles from './unlockPanelGroup.styles';
 
 export enum UnlockPanelGroupSlotEnum {
   groupLabel = 'group-label',
@@ -26,9 +27,7 @@ export function UnlockPanelGroup({ providers = [], class: className, onLogin, gr
   return (
     <div class={styles.unlockPanelGroupContainer}>
       <div class={{ [styles.unlockPanelGroup]: true, [className]: Boolean(className) }}>
-        <div class={styles.unlockPanelGroupLabel}>
-          {groupLabel}
-        </div>
+        <div class={styles.unlockPanelGroupLabel}>{groupLabel}</div>
 
         <div class={styles.unlockPanelGroupProviders}>
           {providers.map((provider, providerIndex) => (

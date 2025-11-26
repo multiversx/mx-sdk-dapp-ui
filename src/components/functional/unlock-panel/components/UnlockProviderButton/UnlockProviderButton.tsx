@@ -21,9 +21,7 @@ export function UnlockProviderButton({ provider, class: className, onClick }: Un
     return null;
   }
 
-  const icon: HTMLElement | null = !provider.iconUrl
-    ? getProviderButtonIcon({ providerType: provider.type })
-    : null;
+  const icon: HTMLElement | null = !provider.iconUrl ? getProviderButtonIcon({ providerType: provider.type }) : null;
 
   return (
     <div onClick={onClick}>
