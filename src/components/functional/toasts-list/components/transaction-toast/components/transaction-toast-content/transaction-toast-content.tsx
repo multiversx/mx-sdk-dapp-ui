@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { FormatAmount } from 'common/FormatAmount/FormatAmount';
 import { Icon } from 'common/Icon';
 import { IconSizeEnumType, TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
+import { Trim } from 'common/Trim/Trim';
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
@@ -11,7 +12,6 @@ import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
 import { getIsTransactionFailed } from 'utils/getTransactionStatus';
 
 import type { IToastDataState } from '../../transaction-toast.type';
-import { Trim } from 'common/Trim/Trim';
 
 // prettier-ignore
 const styles = {

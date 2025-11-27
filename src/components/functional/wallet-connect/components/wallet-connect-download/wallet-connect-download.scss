@@ -21,7 +21,7 @@
     .wallet-connect-download-options {
       @apply mvx:h-60 mvx:flex mvx:flex-col mvx:gap-4 mvx:items-center mvx:justify-end mvx:my-auto mvx:mx-0;
 
-      .wallet-connect-download-option svg{
+      .wallet-connect-download-option svg {
         @apply mvx:cursor-pointer mvx:transition-all mvx:ease-in-out mvx:duration-200 mvx:rounded-lg mvx:p-3;
       }
     }

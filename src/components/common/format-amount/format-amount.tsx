@@ -17,16 +17,18 @@ export class FormatAmount {
   @Prop() decimalClass?: string;
 
   render() {
-    return <FormatAmountComponent
-      class={this.class}
-      dataTestId={this.dataTestId}
-      isValid={this.isValid}
-      label={this.label}
-      labelClass={this.labelClass}
-      showLabel={this.showLabel}
-      valueDecimal={this.valueDecimal}
-      valueInteger={this.valueInteger}
-      decimalClass={this.decimalClass}
-    />;
+    return (
+      <FormatAmountComponent
+        class={this.class}
+        dataTestId={this.dataTestId}
+        isValid={this.isValid}
+        label={this.label}
+        labelClass={this.labelClass}
+        showLabel={this.showLabel}
+        valueDecimal={this.valueDecimal}
+        valueInteger={this.valueInteger}
+        decimalClass={this.decimalClass}
+      />
+    );
   }
 }

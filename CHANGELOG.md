@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Eslint and prettierrc fixes](https://github.com/multiversx/mx-sdk-dapp-ui/pull/270)
 - [Refactored sign transactions panel internal components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/267)
 
 ## [[0.1.4](https://github.com/multiversx/mx-sdk-dapp-ui/pull/269)] - 2025-11-21

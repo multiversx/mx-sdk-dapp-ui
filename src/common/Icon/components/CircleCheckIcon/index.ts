@@ -1,1 +1,1 @@
-export * from './CircleCheckIcon'
+export * from './CircleCheckIcon';

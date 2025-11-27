@@ -10,23 +10,23 @@ const styles = {
 } satisfies Record<string, string>;
 
 interface TransactionMethodPropsType {
-    class?: string;
-    actionDescription: string;
-    method: string;
+  class?: string;
+  actionDescription: string;
+  method: string;
 }
 
 export function TransactionMethod({ method, actionDescription, class: className }: TransactionMethodPropsType) {
-    return (
-        <span
-            class={{
-                [styles.transactionMethodBadge]: true,
-                [styles.transactionMethodBadgeEmpty]: method === '',
-                [className]: Boolean(className),
-            }}
-            data-testid={DataTestIdsEnum.method}
-            title={actionDescription}
-        >
-            <div class={styles.transactionMethodText}>{method}</div>
-        </span>
-    );
+  return (
+    <span
+      class={{
+        [styles.transactionMethodBadge]: true,
+        [styles.transactionMethodBadgeEmpty]: method === '',
+        [className]: Boolean(className),
+      }}
+      data-testid={DataTestIdsEnum.method}
+      title={actionDescription}
+    >
+      <div class={styles.transactionMethodText}>{method}</div>
+    </span>
+  );
 }

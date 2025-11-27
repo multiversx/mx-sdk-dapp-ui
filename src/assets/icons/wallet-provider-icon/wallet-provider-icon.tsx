@@ -10,7 +10,11 @@ export class WalletProviderIcon {
 
   render() {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" class={{ 'wallet-provider-icon': true, [this.class]: Boolean(this.class) }}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 40 40"
+        class={{ 'wallet-provider-icon': true, [this.class]: Boolean(this.class) }}
+      >
         <mask id="mask0_7913_1658" maskUnits="userSpaceOnUse" x="0" y="0" width="40" height="41">
           <path
             fill-rule="evenodd"
@@ -55,27 +59,55 @@ export class WalletProviderIcon {
           </g>
         </g>
         <defs>
-          <filter id="filter0_dddd_7913_1658" x="-5.00009" y="8.71786" width="34.903" height="31.9416" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+          <filter
+            id="filter0_dddd_7913_1658"
+            x="-5.00009"
+            y="8.71786"
+            width="34.903"
+            height="31.9416"
+            filterUnits="userSpaceOnUse"
+            color-interpolation-filters="sRGB"
+          >
             <feFlood flood-opacity="0" result="BackgroundImageFix" />
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha"
+            />
             <feOffset dy="0.970874" />
             <feGaussianBlur stdDeviation="1.26214" />
             <feComposite in2="hardAlpha" operator="out" />
             <feColorMatrix type="matrix" values="0 0 0 0 0.137255 0 0 0 0 0.968627 0 0 0 0 0.866667 0 0 0 0.1 0" />
             <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_7913_1658" />
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha"
+            />
             <feOffset dy="2.13592" />
             <feGaussianBlur stdDeviation="5.53398" />
             <feComposite in2="hardAlpha" operator="out" />
             <feColorMatrix type="matrix" values="0 0 0 0 0.137255 0 0 0 0 0.968627 0 0 0 0 0.866667 0 0 0 0.3 0" />
             <feBlend mode="normal" in2="effect1_dropShadow_7913_1658" result="effect2_dropShadow_7913_1658" />
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha"
+            />
             <feOffset dy="0.291262" />
             <feGaussianBlur stdDeviation="0.533981" />
             <feComposite in2="hardAlpha" operator="out" />
             <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0" />
             <feBlend mode="normal" in2="effect2_dropShadow_7913_1658" result="effect3_dropShadow_7913_1658" />
-            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+              result="hardAlpha"
+            />
             <feOffset dy="0.194175" />
             <feGaussianBlur stdDeviation="0.0970874" />
             <feComposite in2="hardAlpha" operator="out" />
@@ -83,19 +115,47 @@ export class WalletProviderIcon {
             <feBlend mode="normal" in2="effect3_dropShadow_7913_1658" result="effect4_dropShadow_7913_1658" />
             <feBlend mode="normal" in="SourceGraphic" in2="effect4_dropShadow_7913_1658" result="shape" />
           </filter>
-          <linearGradient id="paint0_linear_7913_1658" x1="20.2306" y1="15.5045" x2="20.2306" y2="35.9947" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="paint0_linear_7913_1658"
+            x1="20.2306"
+            y1="15.5045"
+            x2="20.2306"
+            y2="35.9947"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop stop-color="#00FFE0" />
             <stop offset="1" stop-color="#00FFE0" />
           </linearGradient>
-          <linearGradient id="paint1_linear_7913_1658" x1="6.49826" y1="27.07" x2="42.1154" y2="23.7635" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="paint1_linear_7913_1658"
+            x1="6.49826"
+            y1="27.07"
+            x2="42.1154"
+            y2="23.7635"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop stop-color="#00FFE0" />
             <stop offset="1" stop-color="#4CFFE9" />
           </linearGradient>
-          <linearGradient id="paint2_linear_7913_1658" x1="20.2306" y1="21.6695" x2="20.2306" y2="42.1597" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="paint2_linear_7913_1658"
+            x1="20.2306"
+            y1="21.6695"
+            x2="20.2306"
+            y2="42.1597"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop stop-color="#00FFE0" />
             <stop offset="1" stop-color="#00FFE0" />
           </linearGradient>
-          <linearGradient id="paint3_linear_7913_1658" x1="6.49826" y1="33.2351" x2="42.1154" y2="29.9285" gradientUnits="userSpaceOnUse">
+          <linearGradient
+            id="paint3_linear_7913_1658"
+            x1="6.49826"
+            y1="33.2351"
+            x2="42.1154"
+            y2="29.9285"
+            gradientUnits="userSpaceOnUse"
+          >
             <stop stop-color="#00FFE0" />
             <stop offset="1" stop-color="#4CFFE9" />
           </linearGradient>

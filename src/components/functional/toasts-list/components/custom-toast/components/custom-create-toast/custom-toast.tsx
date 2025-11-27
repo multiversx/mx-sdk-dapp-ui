@@ -20,12 +20,8 @@ export class CustomToast {
     return (
       <div class="toast-wrapper" data-testid={DataTestIdsEnum.transactionToastContent}>
         {this.toast.hasCloseButton !== false && (
-          <button
-            onClick={this.handleDeleteToast.bind(this)}
-            type="button"
-            class="icon-close"
-          >
-            <Icon name='close' />
+          <button onClick={this.handleDeleteToast.bind(this)} type="button" class="icon-close">
+            <Icon name="close" />
           </button>
         )}
         <div class="toast-body" ref={container => this.initializeToast(container)}></div>

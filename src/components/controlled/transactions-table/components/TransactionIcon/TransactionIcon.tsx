@@ -11,24 +11,23 @@ const styles = {
 } satisfies Record<string, string>;
 
 interface TransactionIconPropsType {
-    iconInfo: TransactionIconInfoType;
-    class?: string;
+  iconInfo: TransactionIconInfoType;
+  class?: string;
 }
 
 export function TransactionIcon({ iconInfo, class: className }: TransactionIconPropsType) {
-    if (!iconInfo) {
-        return null;
-    }
+  if (!iconInfo) {
+    return null;
+  }
 
-    return (
-        <Icon
-            class={{
-                [styles.transactionIconError]: iconInfo.icon === IconNamesEnum.close,
-                [styles.transactionIconPending]: iconInfo.icon === IconNamesEnum.hourglass,
-                [className]: Boolean(className),
-            }}
-            name={iconInfo.icon}
-        />
-    );
-
+  return (
+    <Icon
+      class={{
+        [styles.transactionIconError]: iconInfo.icon === IconNamesEnum.close,
+        [styles.transactionIconPending]: iconInfo.icon === IconNamesEnum.hourglass,
+        [className]: Boolean(className),
+      }}
+      name={iconInfo.icon}
+    />
+  );
 }

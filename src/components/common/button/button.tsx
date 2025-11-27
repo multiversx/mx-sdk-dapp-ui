@@ -1,9 +1,8 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
+import { Button as ButtonComponent } from 'common/Button/Button';
 
 import type { ButtonSizeEnum, ButtonVariantEnum } from '../../../common/Button/button.types';
-
-import { Button as ButtonComponent } from 'common/Button/Button';
 
 @Component({
   tag: 'mvx-button',

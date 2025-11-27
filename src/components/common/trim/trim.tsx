@@ -13,12 +13,6 @@ export class Trim {
   @Prop() text: string;
 
   render() {
-    return (
-      <TrimComponent
-        class={this.class}
-        dataTestId={this.dataTestId}
-        text={this.text}
-      />
-    );
+    return <TrimComponent class={this.class} dataTestId={this.dataTestId} text={this.text} />;
   }
 }

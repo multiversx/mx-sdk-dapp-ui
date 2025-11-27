@@ -1,1 +1,1 @@
-export * from './BanIcon'
+export * from './BanIcon';

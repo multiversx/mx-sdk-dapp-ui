@@ -1,1 +1,1 @@
-export * from './TransactionMethod'
+export * from './TransactionMethod';
