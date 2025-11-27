@@ -23,6 +23,8 @@ import { CopyIcon } from './components/CopyIcon';
 import { HourglassIcon } from './components/HourglassIcon';
 import { LayersIcon } from './components/LayersIcon';
 import { LockIcon } from './components/LockIcon';
+import { MaximizeIcon } from './components/MaximizeIcon';
+import { MinimizeIcon } from './components/MinimizeIcon';
 import { PencilIcon } from './components/PencilIcon';
 import { SpinnerIcon } from './components/SpinnerIcon';
 import { TriangularWarningIcon } from './components/TriangularWarningIcon';
@@ -111,6 +113,12 @@ export const Icon = ({ name, ...properties }: IconPropsType) => {
 
     case 'arrow-right':
       return <ArrowRightIcon />;
+
+    case 'minimize':
+      return <MinimizeIcon />;
+
+    case 'maximize':
+      return <MaximizeIcon />;
 
     default:
       console.error(`No data for the ${name} icon.`);
