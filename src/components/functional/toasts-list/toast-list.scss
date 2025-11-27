@@ -18,9 +18,11 @@
 }
 
 .view-all-button-container {
-  @apply mvx:absolute mvx:-bottom-12 mvx:right-0 mvx:z-1;
+  @apply mvx:absolute mvx:-bottom-12 mvx:right-0 mvx:z-1 mvx:flex;
 }
 
+.minimize-button,
+.maximize-button,
 .view-all-button {
   @apply mvx:backdrop-blur-2xl mvx:py-2 mvx:px-4 mvx:text-base mvx:font-normal mvx:leading-6 mvx:cursor-pointer;
   @apply mvx:ease-in-out mvx:transition-opacity mvx:duration-200;
@@ -28,6 +30,7 @@
   border: 2px solid var(--mvx-border-color-secondary);
   background: var(--mvx-bg-color-primary);
   color: var(--mvx-text-color-primary);
+  min-height: 44px;
 
   &:hover {
     @apply mvx:opacity-80;
