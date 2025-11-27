@@ -1,6 +1,7 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Element, Event, h, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
+import { SidePanelHeader } from './components/SidePanelHeader/SidePanelHeader';
 
 @Component({
   tag: 'mvx-side-panel',
@@ -85,7 +86,7 @@ export class SidePanel {
             class={classNames('side-panel', { visible: this.shouldAnimate }, this.panelClassName)}
           >
             {this.showHeader && (
-              <mvx-side-panel-header
+              <SidePanelHeader
                 panelTitle={this.panelTitle}
                 panelClassName={this.panelClassName}
                 hasLeftButton={this.hasBackButton}

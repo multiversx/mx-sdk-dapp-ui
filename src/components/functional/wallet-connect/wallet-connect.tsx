@@ -1,13 +1,13 @@
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { Icon } from 'common/Icon';
 import type { IEventBus, IWalletConnectPanelData } from 'components';
-import { SidePanelHeaderSlotEnum } from 'components/visual/side-panel/components/side-panel-header/side-panel-header';
 import { providerLabels } from 'constants/providerFactory.constants';
 import QRCode from 'qrcode';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import { EventBus } from 'utils/EventBus';
 
 import { WalletConnectEventsEnum } from './wallet-connect.types';
+import { SidePanelHeader } from 'components/visual/side-panel/components/SidePanelHeader/SidePanelHeader';
 
 // prettier-ignore
 const styles = {
@@ -86,16 +86,15 @@ export class WalletConnect {
   render() {
     return (
       <Host class={styles.walletConnectHost}>
-        <mvx-side-panel-header
+        <SidePanelHeader
           hasRightButton={true}
           hasLeftButton={!this.showScanPage}
           panelTitle={providerLabels.walletConnect}
           onLeftButtonClick={this.handlePageToggle.bind(this)}
           onRightButtonClick={() => this.eventBus.publish(WalletConnectEventsEnum.CLOSE)}
-        >
-          {!this.showScanPage && <Icon name="back-arrow" slot={SidePanelHeaderSlotEnum.leftIcon} />}
-          <Icon name="close" slot={SidePanelHeaderSlotEnum.rightIcon} />
-        </mvx-side-panel-header>
+          leftIcon={!this.showScanPage ? <Icon name="back-arrow" /> : undefined}
+          rightIcon={<Icon name="close" />}
+        />
 
         <div class={styles.walletConnect}>
           {this.showScanPage ? (

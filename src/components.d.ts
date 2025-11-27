@@ -229,18 +229,6 @@ export namespace Components {
          */
         "showHeader"?: boolean;
     }
-    interface MvxSidePanelHeader {
-        /**
-          * @default true
-         */
-        "hasLeftButton"?: boolean;
-        /**
-          * @default true
-         */
-        "hasRightButton"?: boolean;
-        "panelClassName"?: string;
-        "panelTitle": string;
-    }
     interface MvxSidePanelSwiper {
         "close": () => Promise<void>;
         /**
@@ -424,10 +412,6 @@ export interface MvxPaginationEllipsisFormCustomEvent<T> extends CustomEvent<T> 
 export interface MvxSidePanelCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxSidePanelElement;
-}
-export interface MvxSidePanelHeaderCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMvxSidePanelHeaderElement;
 }
 export interface MvxSidePanelSwiperCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -749,24 +733,6 @@ declare global {
         prototype: HTMLMvxSidePanelElement;
         new (): HTMLMvxSidePanelElement;
     };
-    interface HTMLMvxSidePanelHeaderElementEventMap {
-        "rightButtonClick": any;
-        "leftButtonClick": any;
-    }
-    interface HTMLMvxSidePanelHeaderElement extends Components.MvxSidePanelHeader, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxSidePanelHeaderElementEventMap>(type: K, listener: (this: HTMLMvxSidePanelHeaderElement, ev: MvxSidePanelHeaderCustomEvent<HTMLMvxSidePanelHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxSidePanelHeaderElementEventMap>(type: K, listener: (this: HTMLMvxSidePanelHeaderElement, ev: MvxSidePanelHeaderCustomEvent<HTMLMvxSidePanelHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLMvxSidePanelHeaderElement: {
-        prototype: HTMLMvxSidePanelHeaderElement;
-        new (): HTMLMvxSidePanelHeaderElement;
-    };
     interface HTMLMvxSidePanelSwiperElementEventMap {
         "sheetDismiss": void;
         "sheetSnapChange": { index: number; snapPoint: string };
@@ -1013,7 +979,6 @@ declare global {
         "mvx-pending-transactions-panel": HTMLMvxPendingTransactionsPanelElement;
         "mvx-preloader": HTMLMvxPreloaderElement;
         "mvx-side-panel": HTMLMvxSidePanelElement;
-        "mvx-side-panel-header": HTMLMvxSidePanelHeaderElement;
         "mvx-side-panel-swiper": HTMLMvxSidePanelSwiperElement;
         "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
         "mvx-simple-toast": HTMLMvxSimpleToastElement;
@@ -1246,20 +1211,6 @@ declare namespace LocalJSX {
          */
         "showHeader"?: boolean;
     }
-    interface MvxSidePanelHeader {
-        /**
-          * @default true
-         */
-        "hasLeftButton"?: boolean;
-        /**
-          * @default true
-         */
-        "hasRightButton"?: boolean;
-        "onLeftButtonClick"?: (event: MvxSidePanelHeaderCustomEvent<any>) => void;
-        "onRightButtonClick"?: (event: MvxSidePanelHeaderCustomEvent<any>) => void;
-        "panelClassName"?: string;
-        "panelTitle"?: string;
-    }
     interface MvxSidePanelSwiper {
         "onSheetDismiss"?: (event: MvxSidePanelSwiperCustomEvent<void>) => void;
         "onSheetSnapChange"?: (event: MvxSidePanelSwiperCustomEvent<{ index: number; snapPoint: string }>) => void;
@@ -1445,7 +1396,6 @@ declare namespace LocalJSX {
         "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
         "mvx-preloader": MvxPreloader;
         "mvx-side-panel": MvxSidePanel;
-        "mvx-side-panel-header": MvxSidePanelHeader;
         "mvx-side-panel-swiper": MvxSidePanelSwiper;
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
         "mvx-simple-toast": MvxSimpleToast;
@@ -1510,7 +1460,6 @@ declare module "@stencil/core" {
             "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
             "mvx-preloader": LocalJSX.MvxPreloader & JSXBase.HTMLAttributes<HTMLMvxPreloaderElement>;
             "mvx-side-panel": LocalJSX.MvxSidePanel & JSXBase.HTMLAttributes<HTMLMvxSidePanelElement>;
-            "mvx-side-panel-header": LocalJSX.MvxSidePanelHeader & JSXBase.HTMLAttributes<HTMLMvxSidePanelHeaderElement>;
             "mvx-side-panel-swiper": LocalJSX.MvxSidePanelSwiper & JSXBase.HTMLAttributes<HTMLMvxSidePanelSwiperElement>;
             "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;
             "mvx-simple-toast": LocalJSX.MvxSimpleToast & JSXBase.HTMLAttributes<HTMLMvxSimpleToastElement>;

@@ -4,6 +4,7 @@ import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 
 import { getProviderIntroText } from './helpers/getProviderIntroText';
+import { SidePanelHeader } from 'components/visual/side-panel/components/SidePanelHeader/SidePanelHeader';
 
 const styles = {
   container: 'mvx:flex mvx:flex-col mvx:flex-1 mvx:overflow-hidden',
@@ -50,7 +51,7 @@ export function ProviderIdleScreen({
   if (provider.type === ProviderTypeEnum.ledger) {
     return (
       <Fragment>
-        <mvx-side-panel-header hasLeftButton={false} panelTitle={provider.name} onRightButtonClick={onClose} />
+        <SidePanelHeader hasLeftButton={false} panelTitle={provider.name} onRightButtonClick={onClose} />
 
         <mvx-ledger-intro onConnect={onAccess} />
       </Fragment>
@@ -59,7 +60,7 @@ export function ProviderIdleScreen({
 
   return (
     <div class={styles.container}>
-      <mvx-side-panel-header hasLeftButton={false} panelTitle={provider.name} onRightButtonClick={onClose} />
+      <SidePanelHeader hasLeftButton={false} panelTitle={provider.name} onRightButtonClick={onClose} />
 
       <div class={styles.intro} style={{ color: 'var(--mvx-text-color-primary)' }}>
         <div class={styles.icon}>{providerIntroIcon}</div>
