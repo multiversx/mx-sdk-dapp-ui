@@ -1,4 +1,6 @@
 import { Component, h, Method, State } from '@stencil/core';
+import { Icon } from 'common/Icon';
+import { IconNamesEnum } from 'common/Icon/icon.types';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
@@ -18,6 +20,7 @@ export class ToastList {
   @State() transactionToasts: ITransactionToast[] = [];
   @State() customToasts: CustomToastType[] = [];
   @State() isVisible: boolean = true;
+  @State() isMinimized: boolean = false;
 
   @Method()
   async getEventBus() {
@@ -80,24 +83,40 @@ export class ToastList {
     this.customToasts = [...payload];
   };
 
+  private readonly toggleMinimize = () => {
+    this.isMinimized = !this.isMinimized;
+  };
+
   private resetState() {
     this.transactionToasts = [];
     this.customToasts = [];
     this.isVisible = true;
+    this.isMinimized = false;
   }
 
   render() {
     const hasTransactionToasts = this.transactionToasts?.length > 0;
 
+    const toastListClasses = {
+      'toast-list': true,
+      'toast-list-bottom': hasTransactionToasts,
+      'hidden': !this.isVisible,
+    };
+
+    if (this.isMinimized && hasTransactionToasts) {
+      return (
+        <div class={toastListClasses} id="toast-list">
+          <div class="view-all-button-container">
+            <button class="maximize-button" onClick={this.toggleMinimize} aria-label="Maximize Toasts">
+              <Icon name={IconNamesEnum.maximize} />
+            </button>
+          </div>
+        </div>
+      );
+    }
+
     return (
-      <div
-        class={{
-          'toast-list': true,
-          'toast-list-bottom': hasTransactionToasts,
-          'hidden': !this.isVisible,
-        }}
-        id="toast-list"
-      >
+      <div class={toastListClasses} id="toast-list">
         {this.customToasts?.map(toast => (
           <mvx-generic-toast toast={toast} onDeleteToast={() => this.handleCustomToastDelete(toast.toastId)} />
         ))}
@@ -108,6 +127,9 @@ export class ToastList {
 
         {hasTransactionToasts && (
           <div class="view-all-button-container">
+            <button class="minimize-button" onClick={this.toggleMinimize} aria-label="Minimize Toasts">
+              <Icon name={IconNamesEnum.minimize} />
+            </button>
             <button class="view-all-button" onClick={this.handleViewAllClick}>
               View All
             </button>

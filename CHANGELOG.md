@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Added minimize/maximize action for toasts](https://github.com/multiversx/mx-sdk-dapp-ui/pull/272)
 - [Eslint and prettierrc fixes](https://github.com/multiversx/mx-sdk-dapp-ui/pull/270)
 - [Refactored sign transactions panel internal components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/267)
 
