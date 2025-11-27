@@ -25,6 +25,7 @@ export function Trim({ dataTestId = DataTestIdsEnum.trim, class: className, text
     if (element) {
       trimElementReference = element;
       setupResizeObserver();
+      requestAnimationFrame(checkOverflow);
     }
   };
 
@@ -37,14 +38,12 @@ export function Trim({ dataTestId = DataTestIdsEnum.trim, class: className, text
   const handleTrimFullRef = (element: HTMLDivElement) => {
     if (element) {
       trimFullElement = element;
-      requestAnimationFrame(checkOverflow);
     }
   };
 
   const handleTrimWrapperRef = (element: HTMLDivElement) => {
     if (element) {
       trimWrapperElement = element;
-      requestAnimationFrame(checkOverflow);
     }
   };
 
