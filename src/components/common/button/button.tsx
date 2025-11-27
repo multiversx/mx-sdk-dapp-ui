@@ -18,6 +18,10 @@ export class Button {
   @Prop() size?: `${ButtonSizeEnum}` = 'large';
   @Prop() variant?: `${ButtonVariantEnum}` = 'primary';
 
+  private handleClick = (event: MouseEvent) => {
+    this.buttonClick.emit(event);
+  };
+
   render() {
     return (
       <ButtonComponent
@@ -26,6 +30,7 @@ export class Button {
         disabled={this.disabled}
         size={this.size}
         variant={this.variant}
+        onClick={this.handleClick}
       >
         <slot />
       </ButtonComponent>
