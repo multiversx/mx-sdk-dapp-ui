@@ -20,12 +20,25 @@ export function Trim({ dataTestId = DataTestIdsEnum.trim, class: className, text
   let trimWrapperElement: HTMLDivElement;
   let isCurrentlyOverflowing: boolean | null = null;
   let isCheckingOverflow = false;
+  let isOverflowCheckTriggered = false;
+
+  const triggerCheckOverflow = () => {
+    if (isOverflowCheckTriggered) {
+      return;
+    }
+
+    isOverflowCheckTriggered = true;
+    requestAnimationFrame(() => {
+      isOverflowCheckTriggered = false;
+      checkOverflow();
+    });
+  };
 
   const handleTrimElementReference = (element: HTMLDivElement) => {
     if (element) {
       trimElementReference = element;
       setupResizeObserver();
-      requestAnimationFrame(checkOverflow);
+      triggerCheckOverflow();
     }
   };
 
@@ -38,12 +51,14 @@ export function Trim({ dataTestId = DataTestIdsEnum.trim, class: className, text
   const handleTrimFullRef = (element: HTMLDivElement) => {
     if (element) {
       trimFullElement = element;
+      triggerCheckOverflow();
     }
   };
 
   const handleTrimWrapperRef = (element: HTMLDivElement) => {
     if (element) {
       trimWrapperElement = element;
+      triggerCheckOverflow();
     }
   };
 
@@ -67,6 +82,7 @@ export function Trim({ dataTestId = DataTestIdsEnum.trim, class: className, text
     }
 
     if (!fullWidthUntrimmedElementReference || !trimElementReference || !trimFullElement || !trimWrapperElement) {
+      triggerCheckOverflow();
       return;
     }
 
