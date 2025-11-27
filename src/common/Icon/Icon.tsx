@@ -6,6 +6,7 @@ import { AngleRightIcon } from './components/AngleRightIcon';
 import { AnglesLeftIcon } from './components/AnglesLeftIcon';
 import { AnglesRightIcon } from './components/AnglesRightIcon';
 import { AngleUpIcon } from './components/AngleUpIcon';
+import { ArrowRightIcon } from './components/ArrowRightIcon';
 import { ArrowsRotateIcon } from './components/ArrowsRotateIcon';
 import { ArrowUpRightFromSquareIcon } from './components/ArrowUpRightFromSquare';
 import { ArrowUpRightIcon } from './components/ArrowUpRightIcon';
@@ -22,11 +23,12 @@ import { CopyIcon } from './components/CopyIcon';
 import { HourglassIcon } from './components/HourglassIcon';
 import { LayersIcon } from './components/LayersIcon';
 import { LockIcon } from './components/LockIcon';
+import { MaximizeIcon } from './components/MaximizeIcon';
+import { MinimizeIcon } from './components/MinimizeIcon';
 import { PencilIcon } from './components/PencilIcon';
-import { TriangularWarningIcon } from './components/TriangularWarningIcon';
 import { SpinnerIcon } from './components/SpinnerIcon';
+import { TriangularWarningIcon } from './components/TriangularWarningIcon';
 import type { IconPropsType } from './icon.types';
-import { ArrowRightIcon } from './components/ArrowRightIcon';
 
 export const Icon = ({ name, ...properties }: IconPropsType) => {
   if (!name) {
@@ -107,10 +109,16 @@ export const Icon = ({ name, ...properties }: IconPropsType) => {
       return <ArrowsRotateIcon {...properties} />;
 
     case 'spinner':
-      return <SpinnerIcon />
+      return <SpinnerIcon />;
 
     case 'arrow-right':
-      return <ArrowRightIcon />
+      return <ArrowRightIcon />;
+
+    case 'minimize':
+      return <MinimizeIcon />;
+
+    case 'maximize':
+      return <MaximizeIcon />;
 
     default:
       console.error(`No data for the ${name} icon.`);

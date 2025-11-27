@@ -26,7 +26,9 @@ export enum IconNamesEnum {
   coins = 'coins',
   arrowsRotate = 'arrows-rotate',
   spinner = 'spinner',
-  arrowRight = 'arrow-right'
+  arrowRight = 'arrow-right',
+  minimize = 'minimize',
+  maximize = 'maximize',
 }
 
 export type IconPropsType = JSXBase.IntrinsicElements['svg'] & {
