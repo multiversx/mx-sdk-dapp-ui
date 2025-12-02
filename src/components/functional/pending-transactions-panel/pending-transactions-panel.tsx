@@ -1,6 +1,6 @@
 import { Component, h, Method, State, Watch } from '@stencil/core';
 import { ProviderIdleScreen } from 'common/ProviderIdleScreen/ProviderIdleScreen';
-import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/side-panel.constants';
+import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
 import { SidePanel } from 'components/visual/SidePanel/SidePanel';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';

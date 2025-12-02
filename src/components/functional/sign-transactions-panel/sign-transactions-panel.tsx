@@ -1,6 +1,6 @@
 import { Component, h, Method, State, Watch } from '@stencil/core';
 import { getCopyClickAction } from 'common/CopyButton/getCopyClickAction';
-import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/side-panel.constants';
+import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
 import { SidePanel } from 'components/visual/SidePanel/SidePanel';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';

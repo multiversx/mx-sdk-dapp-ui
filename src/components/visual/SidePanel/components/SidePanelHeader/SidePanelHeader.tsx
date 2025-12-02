@@ -8,7 +8,7 @@ const styles = {
   sidePanelHeadingLeft: 'side-panel-heading-left mvx:mr-auto mvx:hidden mvx:pointer-events-none mvx:cursor-pointer mvx:opacity-0 mvx:text-secondary-text mvx:xs:flex mvx:hover:opacity-75',
   sidePanelHeadingRight: 'side-panel-heading-right mvx:ml-auto mvx:hidden mvx:pointer-events-none mvx:cursor-pointer mvx:opacity-0 mvx:text-secondary-text mvx:xs:flex mvx:hover:opacity-75',
   sidePanelHeadingLeftVisible: 'side-panel-heading-left-visible mvx:transition-all mvx:opacity-100 mvx:duration-200 mvx:ease-in-out mvx:!pointer-events-auto mvx:flex mvx:hover:opacity-75',
-  sidePanelHeadingRightVisible: 'side-panel-heading-right-visible mvx:transition-all mvx:opacity-100 mvx:duration-200 mvx:ease-in-out mvx:!pointer-events-auto mvx:flex mvx:hover:opacity-75',
+  sidePanelHeadingRightVisible: 'side-panel-heading-right-visible mvx:transition-all mvx:opacity-100 mvx:duration-200 mvx:ease-in-out mvx:!pointer-events-auto mvx:!flex mvx:hover:opacity-75',
   sidePanelHeadingTitle: 'side-panel-heading-title mvx:font-medium mvx:text-primary'
 } satisfies Record<string, string>;
 

@@ -9,7 +9,7 @@ import type { ITransactionListItem } from '../../visual/transaction-list-item/tr
 import type { ITransactionToast } from '../toasts-list/components/transaction-toast/transaction-toast.type';
 import { NotificationsFeedEventsEnum } from './notifications-feed.types';
 import { handleSidePanelOpenChange } from 'components/visual/SidePanel/helpers/handleSidePanelOpenChange';
-import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/side-panel.constants';
+import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
 
 @Component({
   tag: 'mvx-notifications-feed',
