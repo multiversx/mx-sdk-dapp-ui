@@ -1,5 +1,6 @@
-import { Component, h, Method, State } from '@stencil/core';
+import { Component, h, Method, State, Watch } from '@stencil/core';
 import { Icon } from 'common/Icon';
+import { SidePanel } from 'components/visual/SidePanel/SidePanel';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
@@ -7,6 +8,8 @@ import { EventBus } from 'utils/EventBus';
 import type { ITransactionListItem } from '../../visual/transaction-list-item/transaction-list-item.types';
 import type { ITransactionToast } from '../toasts-list/components/transaction-toast/transaction-toast.type';
 import { NotificationsFeedEventsEnum } from './notifications-feed.types';
+import { handleSidePanelOpenChange } from 'components/visual/SidePanel/helpers/handleSidePanelOpenChange';
+import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/side-panel.constants';
 
 @Component({
   tag: 'mvx-notifications-feed',
@@ -23,10 +26,16 @@ export class NotificationsFeed {
   @State() isOpen: boolean = false;
   @State() pendingTransactions: ITransactionToast[] = [];
   @State() transactionsHistory: ITransactionListItem[] = [];
+  @State() shouldAnimate = false;
+
+  @Watch('isOpen')
+  handleIsOpenChange(isOpen: boolean) {
+    handleSidePanelOpenChange(isOpen, (shouldAnimate) => { this.shouldAnimate = shouldAnimate; });
+  }
 
   @Method() async closeWithAnimation() {
     this.isOpen = false;
-    const animationDelay = await new Promise(resolve => setTimeout(resolve, 300));
+    const animationDelay = await ANIMATION_DELAY_PROMISE;
     return animationDelay;
   }
 
@@ -91,8 +100,8 @@ export class NotificationsFeed {
     const hasPending = this.pendingTransactions?.length > 0;
 
     return (
-      <mvx-side-panel
-        isOpen={this.isOpen}
+      <SidePanel
+        shouldAnimate={this.shouldAnimate}
         panelTitle="Notifications Feed"
         onClose={this.handleClose}
         hasBackButton={false}
@@ -131,7 +140,7 @@ export class NotificationsFeed {
             </div>
           </div>
         </div>
-      </mvx-side-panel>
+      </SidePanel>
     );
   }
 }

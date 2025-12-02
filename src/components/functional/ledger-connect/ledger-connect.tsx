@@ -6,7 +6,7 @@ import { EventBus, type IEventBus } from 'utils/EventBus';
 import { getLedgerAddressByIndex } from './helpers/getLedgerAddressByIndex';
 import type { ILedgerConnectPanelData } from './ledger-connect.types';
 import { LedgerConnectEventsEnum } from './ledger-connect.types';
-import { SidePanelHeader } from 'components/visual/side-panel/components/SidePanelHeader/SidePanelHeader';
+import { SidePanelHeader } from 'components/visual/SidePanel/components/SidePanelHeader/SidePanelHeader';
 
 // prettier-ignore
 const styles = {
