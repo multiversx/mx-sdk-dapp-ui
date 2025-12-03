@@ -1,6 +1,7 @@
 import { h } from '@stencil/core';
 import classNames from 'classnames';
 import { SidePanelHeader } from './components/SidePanelHeader/SidePanelHeader';
+import { SidePanelSwiper } from './components/SidePanelSwiper/SidePanelSwiper';
 
 // prettier-ignore
 // const styles = {
@@ -58,10 +59,9 @@ export function SidePanel({
         visible: shouldAnimate,
       })}
     >
-      <mvx-side-panel-swiper
+      <SidePanelSwiper
         open={shouldAnimate}
         onSheetDismiss={onClose}
-        sidePanelIdentifier={sidePanelIdentifier}
       >
         <div
           id={sidePanelIdentifier}
@@ -85,7 +85,7 @@ export function SidePanel({
             {children}
           </div>
         </div>
-      </mvx-side-panel-swiper>
+      </SidePanelSwiper>
     </div>
   );
 }
