@@ -1,16 +1,18 @@
 import { createStore } from '@stencil/store';
 
-interface ISidePanelSwiperState {
+interface ISidePanelState {
     isVisible: boolean;
     currentSnapIndex: number;
+    shouldAnimate: boolean;
 }
 
-const initialState: ISidePanelSwiperState = {
+const initialState: ISidePanelState = {
     isVisible: false,
-    currentSnapIndex: 1
+    currentSnapIndex: 1,
+    shouldAnimate: false
 }
 
-const store = createStore<ISidePanelSwiperState>({
+const store = createStore<ISidePanelState>({
     ...initialState,
 });
 

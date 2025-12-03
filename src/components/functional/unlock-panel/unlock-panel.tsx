@@ -1,4 +1,4 @@
-import { Component, Element, h, Method, State, Watch } from '@stencil/core';
+import { Component, Element, h, Method, State } from '@stencil/core';
 import { ProviderIdleScreen } from 'common/ProviderIdleScreen/ProviderIdleScreen';
 import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
 import { SidePanel } from 'components/visual/SidePanel/SidePanel';
@@ -13,7 +13,6 @@ import { getIsExtensionAvailable, getIsMetaMaskAvailable } from './helpers';
 import styles from './unlock-panel.styles';
 import type { IUnlockPanelManagerData } from './unlock-panel.types';
 import { UnlockPanelEventsEnum } from './unlock-panel.types';
-import { handleSidePanelOpenChange } from 'components/visual/SidePanel/helpers/handleSidePanelOpenChange';
 
 @Component({
   tag: 'mvx-unlock-panel',
@@ -35,12 +34,6 @@ export class UnlockPanel {
   @State() isLoggingIn: boolean = false;
   @State() isIntroScreenVisible: boolean = false;
   @State() selectedMethod: IProviderBase | null = null;
-  @State() shouldAnimate = false;
-
-  @Watch('isOpen')
-  handleIsOpenChange(isOpen: boolean) {
-    handleSidePanelOpenChange(isOpen, (shouldAnimate) => { this.shouldAnimate = shouldAnimate; });
-  }
 
   @Method() async getEventBus() {
     await this.connectionMonitor.waitForConnection();
@@ -168,7 +161,7 @@ export class UnlockPanel {
 
     return (
       <SidePanel
-        shouldAnimate={this.shouldAnimate}
+        isOpen={this.isOpen}
         panelTitle={panelTitle}
         onClose={this.handleClose}
         onBack={this.handleResetLoginState}

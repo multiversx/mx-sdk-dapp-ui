@@ -1,4 +1,4 @@
-import { Component, h, Method, State, Watch } from '@stencil/core';
+import { Component, h, Method, State } from '@stencil/core';
 import { ProviderIdleScreen } from 'common/ProviderIdleScreen/ProviderIdleScreen';
 import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
 import { SidePanel } from 'components/visual/SidePanel/SidePanel';
@@ -9,7 +9,6 @@ import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
 import { PendingTransactionsEventsEnum } from './pending-transactions-panel.types';
-import { handleSidePanelOpenChange } from 'components/visual/SidePanel/helpers/handleSidePanelOpenChange';
 
 const getProviderIntroText = (providerType?: IProviderBase['type']) => {
   switch (providerType) {
@@ -38,12 +37,6 @@ export class PendingTransactionsPanel {
 
   @State() provider: IProviderBase = null;
   @State() isOpen: boolean = false;
-  @State() shouldAnimate = false;
-
-  @Watch('isOpen')
-  handleIsOpenChange(isOpen: boolean) {
-    handleSidePanelOpenChange(isOpen, (shouldAnimate) => { this.shouldAnimate = shouldAnimate; });
-  }
 
   @Method() async getEventBus() {
     await this.connectionMonitor.waitForConnection();
@@ -85,7 +78,7 @@ export class PendingTransactionsPanel {
   render() {
     return (
       <SidePanel
-        shouldAnimate={this.shouldAnimate}
+        isOpen={this.isOpen}
         panelTitle={this?.provider?.name}
         showHeader={false}
       >

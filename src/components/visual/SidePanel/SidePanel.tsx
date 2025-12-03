@@ -2,6 +2,8 @@ import { h } from '@stencil/core';
 import classNames from 'classnames';
 import { SidePanelHeader } from './components/SidePanelHeader/SidePanelHeader';
 import { SidePanelSwiper } from './components/SidePanelSwiper/SidePanelSwiper';
+import { handleSidePanelOpenChange } from './helpers/handleSidePanelOpenChange';
+import state from './sidePanelStore';
 
 // prettier-ignore
 // const styles = {
@@ -13,7 +15,7 @@ import { SidePanelSwiper } from './components/SidePanelSwiper/SidePanelSwiper';
 // } satisfies Record<string, string>;
 
 interface SidePanelPropsType {
-  shouldAnimate?: boolean;
+  isOpen?: boolean;
   panelClassName?: string;
   panelTitle: string;
   hasBackButton?: boolean;
@@ -23,7 +25,7 @@ interface SidePanelPropsType {
 }
 
 export function SidePanel({
-  shouldAnimate = false,
+  isOpen = false,
   panelClassName,
   panelTitle,
   hasBackButton,
@@ -31,7 +33,14 @@ export function SidePanel({
   onClose,
   onBack
 }: SidePanelPropsType, children: JSX.Element) {
+  if (isOpen !== undefined) {
+    handleSidePanelOpenChange(isOpen, (shouldAnimate) => {
+      state.shouldAnimate = shouldAnimate;
+    });
+  }
+
   const sidePanelIdentifier = 'side-panel';
+  const shouldAnimate = state.shouldAnimate;
 
   const handleOverlayClick = (event: MouseEvent) => {
     if (event.target === event.currentTarget) {

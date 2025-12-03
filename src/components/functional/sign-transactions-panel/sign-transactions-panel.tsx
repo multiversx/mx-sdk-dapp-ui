@@ -1,4 +1,4 @@
-import { Component, h, Method, State, Watch } from '@stencil/core';
+import { Component, h, Method, State } from '@stencil/core';
 import { getCopyClickAction } from 'common/CopyButton/getCopyClickAction';
 import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
 import { SidePanel } from 'components/visual/SidePanel/SidePanel';
@@ -15,7 +15,6 @@ import styles from './sign-transactions-panel.styles';
 import type { IOverviewProps, ISignTransactionsPanelData } from './sign-transactions-panel.types';
 import { DecodeMethodEnum, SignEventsEnum, TransactionTabsEnum } from './sign-transactions-panel.types';
 import state, { resetState } from './signTransactionsPanelStore';
-import { handleSidePanelOpenChange } from 'components/visual/SidePanel/helpers/handleSidePanelOpenChange';
 
 @Component({
   tag: 'mvx-sign-transactions-panel',
@@ -40,12 +39,6 @@ export class SignTransactionsPanel {
   @State() showFavicon: boolean = true;
   @State() decodeMethod: DecodeMethodEnum = DecodeMethodEnum.raw;
   @State() decodeTooltipVisible: boolean = false;
-  @State() shouldAnimate = false;
-
-  @Watch('isOpen')
-  handleIsOpenChange(isOpen: boolean) {
-    handleSidePanelOpenChange(isOpen, (shouldAnimate) => { this.shouldAnimate = shouldAnimate; });
-  }
 
   @Method() async getEventBus() {
     await this.connectionMonitor.waitForConnection();
@@ -157,7 +150,7 @@ export class SignTransactionsPanel {
 
     return (
       <SidePanel
-        shouldAnimate={this.shouldAnimate}
+        isOpen={this.isOpen}
         onClose={this.handleClose}
         panelTitle="Confirm Transaction"
         hasBackButton={false}

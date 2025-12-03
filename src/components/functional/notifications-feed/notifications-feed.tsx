@@ -1,4 +1,4 @@
-import { Component, h, Method, State, Watch } from '@stencil/core';
+import { Component, h, Method, State } from '@stencil/core';
 import { Icon } from 'common/Icon';
 import { SidePanel } from 'components/visual/SidePanel/SidePanel';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
@@ -8,7 +8,6 @@ import { EventBus } from 'utils/EventBus';
 import type { ITransactionListItem } from '../../visual/transaction-list-item/transaction-list-item.types';
 import type { ITransactionToast } from '../toasts-list/components/transaction-toast/transaction-toast.type';
 import { NotificationsFeedEventsEnum } from './notifications-feed.types';
-import { handleSidePanelOpenChange } from 'components/visual/SidePanel/helpers/handleSidePanelOpenChange';
 import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
 
 @Component({
@@ -26,12 +25,6 @@ export class NotificationsFeed {
   @State() isOpen: boolean = false;
   @State() pendingTransactions: ITransactionToast[] = [];
   @State() transactionsHistory: ITransactionListItem[] = [];
-  @State() shouldAnimate = false;
-
-  @Watch('isOpen')
-  handleIsOpenChange(isOpen: boolean) {
-    handleSidePanelOpenChange(isOpen, (shouldAnimate) => { this.shouldAnimate = shouldAnimate; });
-  }
 
   @Method() async closeWithAnimation() {
     this.isOpen = false;
@@ -101,7 +94,7 @@ export class NotificationsFeed {
 
     return (
       <SidePanel
-        shouldAnimate={this.shouldAnimate}
+        isOpen={this.isOpen}
         panelTitle="Notifications Feed"
         onClose={this.handleClose}
         hasBackButton={false}
