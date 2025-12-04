@@ -2,7 +2,7 @@ import type { JSX } from '@stencil/core';
 import { Component, h, Prop, State } from '@stencil/core';
 import classNames from 'classnames';
 import { Icon } from 'common/Icon';
-import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
+import type { ITransactionListItem } from 'components/visual/TransactionListItem/transactionListItem.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 @Component({

@@ -3,8 +3,8 @@ import { FormatAmount } from 'common/FormatAmount/FormatAmount';
 import { IconNamesEnum } from 'common/Icon/icon.types';
 import { TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
 
-import { TransactionListItem } from '../transaction-list-item';
-import type { ITransactionListItem } from '../transaction-list-item.types';
+import { TransactionListItem } from '../TransactionListItem';
+import type { ITransactionListItem } from '../transactionListItem.types';
 
 describe('transaction-list-item', () => {
   const createPage = async (transaction: ITransactionListItem) => {
