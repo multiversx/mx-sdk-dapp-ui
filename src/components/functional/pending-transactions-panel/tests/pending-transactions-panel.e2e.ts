@@ -21,12 +21,13 @@ describe('pending-transactions-panel', () => {
     });
 
     page.rootInstance.provider = { name: title };
+    page.rootInstance.isOpen = true;
     await page.waitForChanges();
 
-    const panel = page.root.shadowRoot.querySelector('mvx-side-panel');
+    const panel = page.root.shadowRoot.querySelector('#side-panel');
     expect(panel).toBeTruthy();
 
-    const panelTitle = panel.getAttribute('panelTitle');
-    expect(panelTitle).toBe(title);
+    expect(page.rootInstance.provider?.name).toBe(title);
+    expect(page.rootInstance.isOpen).toBe(true);
   });
 });
