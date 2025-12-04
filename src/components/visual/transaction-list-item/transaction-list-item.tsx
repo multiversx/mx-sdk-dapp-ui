@@ -5,6 +5,7 @@ import { IconSizeEnumType, TransactionAssetIcon } from 'common/TransactionAssetI
 import { Trim } from 'common/Trim/Trim';
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
 import { getIsTransactionFailed } from 'utils/getTransactionStatus';
+import styles from './transactionListItem.styles'
 
 import type { ITransactionListItem } from './transaction-list-item.types';
 
@@ -23,20 +24,26 @@ export class TransactionListItem {
     const showTooltip = this.transaction.amount && amount.label.length > 12;
 
     return (
-      <a class="transaction-link" href={this.transaction.link} target="_blank" rel="noreferrer">
-        <div class="transaction-item">
+      <a href={this.transaction.link} target="_blank" rel="noreferrer">
+        <div class={styles.transactionItem}>
           <div
-            class={classNames('transaction-icon', {
-              'transaction-icon-failed': getIsTransactionFailed(this.transaction.status),
+            class={classNames(styles.transactionIcon, {
+              [styles.transactionIconFailed]: getIsTransactionFailed(this.transaction.status),
             })}
           >
-            <TransactionAssetIcon transaction={this.transaction} iconSize={IconSizeEnumType.large} />
+            <TransactionAssetIcon
+              transaction={this.transaction}
+              iconSize={IconSizeEnumType.large}
+              iconClass={styles.transactionIconSvg}
+              imgClass={styles.transactionIconImg}
+              textClass={styles.transactionIconText}
+            />
           </div>
 
-          <div class="transaction-details">
-            <div class="transaction-details-header">
-              <div class="transaction-header-left">
-                <h4 class={classNames('transaction-title', { truncate: showTooltip })}>
+          <div class={styles.transactionDetails}>
+            <div class={styles.transactionDetailsHeader}>
+              <div class={styles.transactionHeaderLeft}>
+                <h4 class={classNames(styles.transactionTitle, { [styles.transactionTitleTruncate]: showTooltip })}>
                   {this.transaction.action.name}
                 </h4>
 
@@ -49,34 +56,34 @@ export class TransactionListItem {
 
               {this.transaction.amount && (
                 <FormatAmount
-                  class={classNames('transaction-amount', {
-                    'amount-negative': this.transaction.amount.startsWith('-'),
-                    'amount-positive': !this.transaction.amount.startsWith('-'),
-                    'transaction-failed': getIsTransactionFailed(this.transaction.status),
+                  class={classNames(styles.transactionAmount, {
+                    [styles.transactionAmountNegative]: this.transaction.amount.startsWith('-'),
+                    [styles.transactionAmountPositive]: !this.transaction.amount.startsWith('-'),
+                    [styles.transactionFailed]: getIsTransactionFailed(this.transaction.status),
                   })}
                   isValid
                   label={amount.label}
                   valueDecimal={amount.amountDecimal}
                   valueInteger={amount.amountInteger}
-                  labelClass="transaction-amount-label"
-                  decimalClass="transaction-amount-decimal"
+                  labelClass={styles.transactionAmountLabel}
+                  decimalClass={styles.transactionAmountDecimal}
                 />
               )}
             </div>
-            <div class="transaction-details-info">
+            <div class={styles.transactionDetailsInfo}>
               {this.transaction.directionLabel && (
-                <span class="transaction-details-info-text">{this.transaction.directionLabel}</span>
+                <span class={classNames(styles.transactionDetailsInfoText, styles.transactionDetailsInfoTextSpan)}>{this.transaction.directionLabel}</span>
               )}
 
-              <div class="transaction-details-info-icon">
+              <div class={styles.transactionDetailsInfoIcon}>
                 {this.transaction.interactorAsset ? (
-                  <img src={this.transaction.interactorAsset} alt="Service icon" loading="lazy" />
+                  <img src={this.transaction.interactorAsset} alt="Service icon" loading="lazy" class={styles.transactionDetailsInfoIconImg} />
                 ) : (
                   <mvx-default-transaction-icon-small />
                 )}
               </div>
 
-              <Trim text={this.transaction.interactor} class="transaction-details-info-text" />
+              <Trim text={this.transaction.interactor} class={styles.transactionDetailsInfoText} />
             </div>
           </div>
         </div>

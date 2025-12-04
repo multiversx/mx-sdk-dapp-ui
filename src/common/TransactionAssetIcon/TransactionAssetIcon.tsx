@@ -1,4 +1,5 @@
 import { h } from '@stencil/core';
+import classNames from 'classnames';
 import { Icon } from 'common/Icon';
 import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
 
@@ -10,9 +11,12 @@ export enum IconSizeEnumType {
 interface ITransactionAssetIconProps {
   transaction: ITransactionListItem;
   iconSize: IconSizeEnumType;
+  iconClass?: string;
+  imgClass?: string;
+  textClass?: string;
 }
 
-export function TransactionAssetIcon({ transaction, iconSize }: ITransactionAssetIconProps) {
+export function TransactionAssetIcon({ transaction, iconSize, iconClass, imgClass, textClass }: ITransactionAssetIconProps) {
   if (transaction?.asset === null) {
     return iconSize === IconSizeEnumType.small ? (
       <mvx-default-transaction-icon-small />
@@ -27,17 +31,17 @@ export function TransactionAssetIcon({ transaction, iconSize }: ITransactionAsse
         src={transaction.asset.imageUrl}
         alt="Transaction icon"
         loading="lazy"
-        class="mvx:max-w-full mvx:max-h-full"
+        class={classNames("mvx:max-w-full mvx:max-h-full", imgClass)}
       />
     );
   }
 
   if (transaction.asset.icon) {
-    return <Icon name={transaction.asset.icon} />;
+    return <Icon name={transaction.asset.icon} class={iconClass} />;
   }
 
   if (transaction.asset.text) {
-    return <span>{transaction.asset.text}</span>;
+    return <span class={textClass}>{transaction.asset.text}</span>;
   }
 
   return iconSize === IconSizeEnumType.small ? (
