@@ -16,10 +16,8 @@ const store = createStore<ISidePanelState>({
     ...initialState,
 });
 
-const state = store.state;
+export const state = store.state;
 
 export const resetState = () => {
     Object.assign(state, initialState);
 };
-
-export default state;

@@ -1,5 +1,5 @@
 import { h } from '@stencil/core';
-import state from '../../sidePanelStore';
+import { state } from '../../sidePanelStore';
 import styles from './sidePanelSwiper.styles';
 
 interface SidePanelSwiperPropsType {
@@ -12,6 +12,10 @@ let hasInitialized = false;
 let previousOpen: boolean | null = null;
 
 const snapPointsArray: string[] = ['100%'];
+const SNAP_PERCENT_DEFAULT = '50';
+const OPEN_TIMEOUT_VALUE = 50;
+const CLOSE_TTMEOUT_VALUE = 300;
+const TRANSLATE_Y_VALUE = 100;
 let sheetElement: HTMLElement | null = null;
 
 let dragState = {
@@ -33,7 +37,7 @@ export function SidePanelSwiper({ open = false, onSheetDismiss, onSheetSnapChang
       return;
     }
 
-    const snapPercent = parseFloat(snapPointsArray[snapIndex] || '50');
+    const snapPercent = parseFloat(snapPointsArray[snapIndex] || SNAP_PERCENT_DEFAULT);
     const targetY = 100 - snapPercent;
 
     dragState.isAnimating = true;
@@ -65,7 +69,7 @@ export function SidePanelSwiper({ open = false, onSheetDismiss, onSheetSnapChang
       if (sheetElement && state.isVisible) {
         animateToPosition(state.currentSnapIndex, false);
       }
-    }, 50);
+    }, OPEN_TIMEOUT_VALUE);
   }
 
   const animateToClose = () => {
@@ -84,7 +88,7 @@ export function SidePanelSwiper({ open = false, onSheetDismiss, onSheetSnapChang
       if (sheetElement) {
         sheetElement.style.transition = '';
       }
-    }, 300);
+    }, CLOSE_TTMEOUT_VALUE);
   }
 
   const closeSwiper = () => {
@@ -212,7 +216,7 @@ export function SidePanelSwiper({ open = false, onSheetDismiss, onSheetSnapChang
 
   const getCurrentTransform = (): number => {
     if (!sheetElement) {
-      return 100;
+      return TRANSLATE_Y_VALUE;
     }
 
     const transform = sheetElement.style.transform;
@@ -222,7 +226,7 @@ export function SidePanelSwiper({ open = false, onSheetDismiss, onSheetSnapChang
         return parseFloat(match[1].replace('%', ''));
       }
     }
-    return 100;
+    return TRANSLATE_Y_VALUE;
   }
   return (
     <div class={styles.sidePanelSwiperContainer}>
