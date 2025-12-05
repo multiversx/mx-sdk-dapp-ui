@@ -1,7 +1,6 @@
+import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
-import { FormatAmount } from 'common/FormatAmount/FormatAmount';
 import { IconNamesEnum } from 'common/Icon/icon.types';
-import { TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
 
 import { TransactionListItem } from '../TransactionListItem';
 import type { ITransactionListItem } from '../transactionListItem.types';
@@ -9,11 +8,10 @@ import type { ITransactionListItem } from '../transactionListItem.types';
 describe('transaction-list-item', () => {
   const createPage = async (transaction: ITransactionListItem) => {
     const page = await newSpecPage({
-      components: [TransactionListItem, TransactionAssetIcon, FormatAmount],
-      html: '<mvx-transaction-list-item></mvx-transaction-list-item>',
+      components: [],
+      template: () => <TransactionListItem transaction={transaction} />,
     });
 
-    page.root.transaction = transaction;
     await page.waitForChanges();
     return page;
   };
@@ -40,10 +38,10 @@ describe('transaction-list-item', () => {
   describe('empty state', () => {
     it('renders empty when no transaction is provided', async () => {
       const page = await newSpecPage({
-        components: [TransactionListItem],
-        html: '<mvx-transaction-list-item></mvx-transaction-list-item>',
+        components: [],
+        template: () => <TransactionListItem transaction={null} />,
       });
-      expect(page.root.querySelector('.transaction-item')).toBeFalsy();
+      expect(page.root).toBeFalsy();
     });
   });
 
@@ -68,7 +66,7 @@ describe('transaction-list-item', () => {
     it('renders with asset text', async () => {
       const transaction = { ...baseTransaction, asset: { text: 'TX' } };
       const page = await createPage(transaction);
-      const iconText = page.root.querySelector('span');
+      const iconText = page.root.querySelector('.transaction-icon-text');
       expect(iconText).not.toBeNull();
       expect(iconText.textContent).toBe('TX');
     });
@@ -85,7 +83,7 @@ describe('transaction-list-item', () => {
       const transaction = { ...baseTransaction, asset: null };
       const page = await createPage(transaction);
 
-      const regularIcon = page.root.querySelector('.icon-text');
+      const regularIcon = page.root.querySelector('.transaction-icon-text');
       expect(regularIcon).toBeFalsy();
 
       const defaultIcon = page.root.querySelector('mvx-default-transaction-icon-large');
@@ -143,8 +141,8 @@ describe('transaction-list-item', () => {
       const page = await createPage(baseTransaction);
       const amount = page.root.querySelector('.transaction-amount');
 
-      expect(amount).toHaveClass('amount-positive');
-      expect(amount).not.toHaveClass('amount-negative');
+      expect(amount).toHaveClass('transaction-amount-positive');
+      expect(amount).not.toHaveClass('transaction-amount-negative');
       expect(amount.textContent.trim()).toBe(baseTransaction.amount.replace(' ', ''));
     });
 
@@ -153,8 +151,8 @@ describe('transaction-list-item', () => {
       const page = await createPage(transaction);
       const amount = page.root.querySelector('.transaction-amount');
 
-      expect(amount).toHaveClass('amount-negative');
-      expect(amount).not.toHaveClass('amount-positive');
+      expect(amount).toHaveClass('transaction-amount-negative');
+      expect(amount).not.toHaveClass('transaction-amount-positive');
       expect(amount.textContent.trim()).toBe(transaction.amount.replace(' ', ''));
     });
   });

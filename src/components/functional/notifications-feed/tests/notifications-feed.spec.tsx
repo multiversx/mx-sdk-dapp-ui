@@ -2,6 +2,7 @@ import { newSpecPage } from '@stencil/core/testing';
 
 import { NotificationsFeed } from '../notifications-feed';
 import { NotificationsFeedEventsEnum } from '../notifications-feed.types';
+import type { ITransactionListItem } from 'components/visual/TransactionListItem/transactionListItem.types';
 
 describe('notifications-feed', () => {
   const mockPendingTransactions = [
@@ -16,13 +17,17 @@ describe('notifications-feed', () => {
     },
   ];
 
-  const mockTransactionsHistory = [
+  const mockTransactionsHistory: ITransactionListItem[] = [
     {
       hash: 'hash1',
       status: 'success',
       link: 'link1',
-      title: 'Transaction 1',
       timestamp: Date.now(),
+      asset: null,
+      action: {
+        name: 'Transaction 1',
+      },
+      interactor: 'erd1test...',
     },
   ];
 
