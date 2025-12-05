@@ -15,7 +15,6 @@ import { ITransactionListItem } from "./components/visual/TransactionListItem/tr
 import { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { TransactionStatusEnum } from "./constants/transactionStatus.enum";
 import { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
-import { IProviderBase } from "./types/provider.types";
 import { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
 export { IAddressTableData } from "./types/address-table.types";
 export { ButtonSizeEnum, ButtonVariantEnum } from "./common/Button/button.types";
@@ -27,7 +26,6 @@ export { ITransactionListItem } from "./components/visual/TransactionListItem/tr
 export { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { TransactionStatusEnum } from "./constants/transactionStatus.enum";
 export { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
-export { IProviderBase } from "./types/provider.types";
 export { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
 export namespace Components {
     interface MvxAddressTable {
@@ -216,43 +214,6 @@ export namespace Components {
     interface MvxPreloader {
         "class"?: string;
     }
-    interface MvxSidePanel {
-        "hasBackButton"?: boolean;
-        /**
-          * @default false
-         */
-        "isOpen": boolean;
-        "panelClassName"?: string;
-        "panelTitle": string;
-        /**
-          * @default true
-         */
-        "showHeader"?: boolean;
-    }
-    interface MvxSidePanelHeader {
-        /**
-          * @default true
-         */
-        "hasLeftButton"?: boolean;
-        /**
-          * @default true
-         */
-        "hasRightButton"?: boolean;
-        "panelClassName"?: string;
-        "panelTitle": string;
-    }
-    interface MvxSidePanelSwiper {
-        "close": () => Promise<void>;
-        /**
-          * @default false
-         */
-        "open": boolean;
-        "openToSnapPoint": (snapIndex?: number) => Promise<void>;
-        /**
-          * @default ''
-         */
-        "sidePanelIdentifier": string;
-    }
     interface MvxSignTransactionsPanel {
         "closeWithAnimation": () => Promise<unknown>;
         "getEventBus": () => Promise<IEventBus>;
@@ -339,14 +300,6 @@ export namespace Components {
         "dataTestId"?: string;
         "text": string;
     }
-    interface MvxUnlockButton {
-        "class"?: string;
-        "dataTestId"?: string;
-        "icon"?: HTMLElement;
-        "iconUrl": string;
-        "label": string;
-        "type"?: IProviderBase['type'];
-    }
     interface MvxUnlockPanel {
         "closeWithAnimation": () => Promise<unknown>;
         "getEventBus": () => Promise<IEventBus>;
@@ -425,18 +378,6 @@ export interface MvxPaginationCustomEvent<T> extends CustomEvent<T> {
 export interface MvxPaginationEllipsisFormCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxPaginationEllipsisFormElement;
-}
-export interface MvxSidePanelCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMvxSidePanelElement;
-}
-export interface MvxSidePanelHeaderCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMvxSidePanelHeaderElement;
-}
-export interface MvxSidePanelSwiperCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMvxSidePanelSwiperElement;
 }
 export interface MvxSimpleToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -736,60 +677,6 @@ declare global {
         prototype: HTMLMvxPreloaderElement;
         new (): HTMLMvxPreloaderElement;
     };
-    interface HTMLMvxSidePanelElementEventMap {
-        "close": void;
-        "back": void;
-    }
-    interface HTMLMvxSidePanelElement extends Components.MvxSidePanel, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxSidePanelElementEventMap>(type: K, listener: (this: HTMLMvxSidePanelElement, ev: MvxSidePanelCustomEvent<HTMLMvxSidePanelElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxSidePanelElementEventMap>(type: K, listener: (this: HTMLMvxSidePanelElement, ev: MvxSidePanelCustomEvent<HTMLMvxSidePanelElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLMvxSidePanelElement: {
-        prototype: HTMLMvxSidePanelElement;
-        new (): HTMLMvxSidePanelElement;
-    };
-    interface HTMLMvxSidePanelHeaderElementEventMap {
-        "rightButtonClick": any;
-        "leftButtonClick": any;
-    }
-    interface HTMLMvxSidePanelHeaderElement extends Components.MvxSidePanelHeader, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxSidePanelHeaderElementEventMap>(type: K, listener: (this: HTMLMvxSidePanelHeaderElement, ev: MvxSidePanelHeaderCustomEvent<HTMLMvxSidePanelHeaderElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxSidePanelHeaderElementEventMap>(type: K, listener: (this: HTMLMvxSidePanelHeaderElement, ev: MvxSidePanelHeaderCustomEvent<HTMLMvxSidePanelHeaderElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLMvxSidePanelHeaderElement: {
-        prototype: HTMLMvxSidePanelHeaderElement;
-        new (): HTMLMvxSidePanelHeaderElement;
-    };
-    interface HTMLMvxSidePanelSwiperElementEventMap {
-        "sheetDismiss": void;
-        "sheetSnapChange": { index: number; snapPoint: string };
-    }
-    interface HTMLMvxSidePanelSwiperElement extends Components.MvxSidePanelSwiper, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxSidePanelSwiperElementEventMap>(type: K, listener: (this: HTMLMvxSidePanelSwiperElement, ev: MvxSidePanelSwiperCustomEvent<HTMLMvxSidePanelSwiperElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxSidePanelSwiperElementEventMap>(type: K, listener: (this: HTMLMvxSidePanelSwiperElement, ev: MvxSidePanelSwiperCustomEvent<HTMLMvxSidePanelSwiperElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLMvxSidePanelSwiperElement: {
-        prototype: HTMLMvxSidePanelSwiperElement;
-        new (): HTMLMvxSidePanelSwiperElement;
-    };
     interface HTMLMvxSignTransactionsPanelElement extends Components.MvxSignTransactionsPanel, HTMLStencilElement {
     }
     var HTMLMvxSignTransactionsPanelElement: {
@@ -906,12 +793,6 @@ declare global {
         prototype: HTMLMvxTrimElement;
         new (): HTMLMvxTrimElement;
     };
-    interface HTMLMvxUnlockButtonElement extends Components.MvxUnlockButton, HTMLStencilElement {
-    }
-    var HTMLMvxUnlockButtonElement: {
-        prototype: HTMLMvxUnlockButtonElement;
-        new (): HTMLMvxUnlockButtonElement;
-    };
     interface HTMLMvxUnlockPanelElement extends Components.MvxUnlockPanel, HTMLStencilElement {
     }
     var HTMLMvxUnlockPanelElement: {
@@ -1017,9 +898,6 @@ declare global {
         "mvx-passkey-provider-icon": HTMLMvxPasskeyProviderIconElement;
         "mvx-pending-transactions-panel": HTMLMvxPendingTransactionsPanelElement;
         "mvx-preloader": HTMLMvxPreloaderElement;
-        "mvx-side-panel": HTMLMvxSidePanelElement;
-        "mvx-side-panel-header": HTMLMvxSidePanelHeaderElement;
-        "mvx-side-panel-swiper": HTMLMvxSidePanelSwiperElement;
         "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
         "mvx-simple-toast": HTMLMvxSimpleToastElement;
         "mvx-spinner-icon": HTMLMvxSpinnerIconElement;
@@ -1032,7 +910,6 @@ declare global {
         "mvx-transaction-toast-progress": HTMLMvxTransactionToastProgressElement;
         "mvx-transactions-table": HTMLMvxTransactionsTableElement;
         "mvx-trim": HTMLMvxTrimElement;
-        "mvx-unlock-button": HTMLMvxUnlockButtonElement;
         "mvx-unlock-panel": HTMLMvxUnlockPanelElement;
         "mvx-wallet-connect": HTMLMvxWalletConnectElement;
         "mvx-wallet-connect-app-gallery-icon": HTMLMvxWalletConnectAppGalleryIconElement;
@@ -1236,47 +1113,6 @@ declare namespace LocalJSX {
     interface MvxPreloader {
         "class"?: string;
     }
-    interface MvxSidePanel {
-        "hasBackButton"?: boolean;
-        /**
-          * @default false
-         */
-        "isOpen"?: boolean;
-        "onBack"?: (event: MvxSidePanelCustomEvent<void>) => void;
-        "onClose"?: (event: MvxSidePanelCustomEvent<void>) => void;
-        "panelClassName"?: string;
-        "panelTitle"?: string;
-        /**
-          * @default true
-         */
-        "showHeader"?: boolean;
-    }
-    interface MvxSidePanelHeader {
-        /**
-          * @default true
-         */
-        "hasLeftButton"?: boolean;
-        /**
-          * @default true
-         */
-        "hasRightButton"?: boolean;
-        "onLeftButtonClick"?: (event: MvxSidePanelHeaderCustomEvent<any>) => void;
-        "onRightButtonClick"?: (event: MvxSidePanelHeaderCustomEvent<any>) => void;
-        "panelClassName"?: string;
-        "panelTitle"?: string;
-    }
-    interface MvxSidePanelSwiper {
-        "onSheetDismiss"?: (event: MvxSidePanelSwiperCustomEvent<void>) => void;
-        "onSheetSnapChange"?: (event: MvxSidePanelSwiperCustomEvent<{ index: number; snapPoint: string }>) => void;
-        /**
-          * @default false
-         */
-        "open"?: boolean;
-        /**
-          * @default ''
-         */
-        "sidePanelIdentifier"?: string;
-    }
     interface MvxSignTransactionsPanel {
     }
     interface MvxSimpleToast {
@@ -1364,14 +1200,6 @@ declare namespace LocalJSX {
         "dataTestId"?: string;
         "text"?: string;
     }
-    interface MvxUnlockButton {
-        "class"?: string;
-        "dataTestId"?: string;
-        "icon"?: HTMLElement;
-        "iconUrl"?: string;
-        "label"?: string;
-        "type"?: IProviderBase['type'];
-    }
     interface MvxUnlockPanel {
     }
     interface MvxWalletConnect {
@@ -1454,9 +1282,6 @@ declare namespace LocalJSX {
         "mvx-passkey-provider-icon": MvxPasskeyProviderIcon;
         "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
         "mvx-preloader": MvxPreloader;
-        "mvx-side-panel": MvxSidePanel;
-        "mvx-side-panel-header": MvxSidePanelHeader;
-        "mvx-side-panel-swiper": MvxSidePanelSwiper;
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
         "mvx-simple-toast": MvxSimpleToast;
         "mvx-spinner-icon": MvxSpinnerIcon;
@@ -1469,7 +1294,6 @@ declare namespace LocalJSX {
         "mvx-transaction-toast-progress": MvxTransactionToastProgress;
         "mvx-transactions-table": MvxTransactionsTable;
         "mvx-trim": MvxTrim;
-        "mvx-unlock-button": MvxUnlockButton;
         "mvx-unlock-panel": MvxUnlockPanel;
         "mvx-wallet-connect": MvxWalletConnect;
         "mvx-wallet-connect-app-gallery-icon": MvxWalletConnectAppGalleryIcon;
@@ -1519,9 +1343,6 @@ declare module "@stencil/core" {
             "mvx-passkey-provider-icon": LocalJSX.MvxPasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLMvxPasskeyProviderIconElement>;
             "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
             "mvx-preloader": LocalJSX.MvxPreloader & JSXBase.HTMLAttributes<HTMLMvxPreloaderElement>;
-            "mvx-side-panel": LocalJSX.MvxSidePanel & JSXBase.HTMLAttributes<HTMLMvxSidePanelElement>;
-            "mvx-side-panel-header": LocalJSX.MvxSidePanelHeader & JSXBase.HTMLAttributes<HTMLMvxSidePanelHeaderElement>;
-            "mvx-side-panel-swiper": LocalJSX.MvxSidePanelSwiper & JSXBase.HTMLAttributes<HTMLMvxSidePanelSwiperElement>;
             "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;
             "mvx-simple-toast": LocalJSX.MvxSimpleToast & JSXBase.HTMLAttributes<HTMLMvxSimpleToastElement>;
             "mvx-spinner-icon": LocalJSX.MvxSpinnerIcon & JSXBase.HTMLAttributes<HTMLMvxSpinnerIconElement>;
@@ -1534,7 +1355,6 @@ declare module "@stencil/core" {
             "mvx-transaction-toast-progress": LocalJSX.MvxTransactionToastProgress & JSXBase.HTMLAttributes<HTMLMvxTransactionToastProgressElement>;
             "mvx-transactions-table": LocalJSX.MvxTransactionsTable & JSXBase.HTMLAttributes<HTMLMvxTransactionsTableElement>;
             "mvx-trim": LocalJSX.MvxTrim & JSXBase.HTMLAttributes<HTMLMvxTrimElement>;
-            "mvx-unlock-button": LocalJSX.MvxUnlockButton & JSXBase.HTMLAttributes<HTMLMvxUnlockButtonElement>;
             "mvx-unlock-panel": LocalJSX.MvxUnlockPanel & JSXBase.HTMLAttributes<HTMLMvxUnlockPanelElement>;
             "mvx-wallet-connect": LocalJSX.MvxWalletConnect & JSXBase.HTMLAttributes<HTMLMvxWalletConnectElement>;
             "mvx-wallet-connect-app-gallery-icon": LocalJSX.MvxWalletConnectAppGalleryIcon & JSXBase.HTMLAttributes<HTMLMvxWalletConnectAppGalleryIconElement>;

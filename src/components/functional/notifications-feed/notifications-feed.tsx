@@ -1,5 +1,6 @@
 import { Component, h, Method, State } from '@stencil/core';
 import { Icon } from 'common/Icon';
+import { SidePanel } from 'components/visual/SidePanel/SidePanel';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
@@ -7,6 +8,7 @@ import { EventBus } from 'utils/EventBus';
 import { ITransactionListItem } from 'components/visual/TransactionListItem/transactionListItem.types';
 import type { ITransactionToast } from '../toasts-list/components/transaction-toast/transaction-toast.type';
 import { NotificationsFeedEventsEnum } from './notifications-feed.types';
+import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
 import { TransactionListItem } from 'components/visual/TransactionListItem/TransactionListItem';
 
 @Component({
@@ -27,7 +29,7 @@ export class NotificationsFeed {
 
   @Method() async closeWithAnimation() {
     this.isOpen = false;
-    const animationDelay = await new Promise(resolve => setTimeout(resolve, 300));
+    const animationDelay = await ANIMATION_DELAY_PROMISE;
     return animationDelay;
   }
 
@@ -92,7 +94,7 @@ export class NotificationsFeed {
     const hasPending = this.pendingTransactions?.length > 0;
 
     return (
-      <mvx-side-panel
+      <SidePanel
         isOpen={this.isOpen}
         panelTitle="Notifications Feed"
         onClose={this.handleClose}
@@ -132,7 +134,7 @@ export class NotificationsFeed {
             </div>
           </div>
         </div>
-      </mvx-side-panel>
+      </SidePanel>
     );
   }
 }

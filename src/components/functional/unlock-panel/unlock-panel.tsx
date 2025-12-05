@@ -1,6 +1,7 @@
 import { Component, Element, h, Method, State } from '@stencil/core';
 import { ProviderIdleScreen } from 'common/ProviderIdleScreen/ProviderIdleScreen';
-import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
+import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
+import { SidePanel } from 'components/visual/SidePanel/SidePanel';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
@@ -159,7 +160,7 @@ export class UnlockPanel {
     const isCustomProviderActive = this.selectedMethod && this.isCustomProvider(this.selectedMethod.type);
 
     return (
-      <mvx-side-panel
+      <SidePanel
         isOpen={this.isOpen}
         panelTitle={panelTitle}
         onClose={this.handleClose}
@@ -210,7 +211,7 @@ export class UnlockPanel {
             <UnlockPanelFooter walletAddress={this.walletAddress} />
           </div>
         )}
-      </mvx-side-panel>
+      </SidePanel>
     );
   }
 }
