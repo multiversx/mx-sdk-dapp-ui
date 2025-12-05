@@ -1,6 +1,7 @@
 import { Component, h, Method, State } from '@stencil/core';
 import { getCopyClickAction } from 'common/CopyButton/getCopyClickAction';
-import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
+import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
+import { SidePanel } from 'components/visual/SidePanel/SidePanel';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
@@ -148,7 +149,7 @@ export class SignTransactionsPanel {
     const { currentIndex, transactionsCount, origin } = commonData;
 
     return (
-      <mvx-side-panel
+      <SidePanel
         isOpen={this.isOpen}
         onClose={this.handleClose}
         panelTitle="Confirm Transaction"
@@ -201,7 +202,7 @@ export class SignTransactionsPanel {
             handleCopyButtonClick={this.handleCopyButtonClick}
           />
         </div>
-      </mvx-side-panel>
+      </SidePanel>
     );
   }
 }

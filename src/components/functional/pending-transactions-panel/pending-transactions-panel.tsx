@@ -1,6 +1,7 @@
 import { Component, h, Method, State } from '@stencil/core';
 import { ProviderIdleScreen } from 'common/ProviderIdleScreen/ProviderIdleScreen';
-import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
+import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
+import { SidePanel } from 'components/visual/SidePanel/SidePanel';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
@@ -76,7 +77,11 @@ export class PendingTransactionsPanel {
 
   render() {
     return (
-      <mvx-side-panel isOpen={this.isOpen} panelTitle={this?.provider?.name} showHeader={false}>
+      <SidePanel
+        isOpen={this.isOpen}
+        panelTitle={this?.provider?.name}
+        showHeader={false}
+      >
         <ProviderIdleScreen
           provider={this.provider}
           onClose={this.handleClose}
@@ -85,7 +90,7 @@ export class PendingTransactionsPanel {
         >
           <button onClick={this.handleClose}>Close</button>
         </ProviderIdleScreen>
-      </mvx-side-panel>
+      </SidePanel>
     );
   }
 }
