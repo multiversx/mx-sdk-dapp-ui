@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.1.5](https://github.com/multiversx/mx-sdk-dapp-ui/pull/275)] - 2025-12-08
+
 - [Refactored transaction list item](https://github.com/multiversx/mx-sdk-dapp-ui/pull/274)
 - [Refactored side panel components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/271)
 - [Fixed trimmed address not showing in address-table](https://github.com/multiversx/mx-sdk-dapp-ui/pull/273)
