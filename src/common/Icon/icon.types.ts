@@ -29,6 +29,7 @@ export enum IconNamesEnum {
   arrowRight = 'arrow-right',
   minimize = 'minimize',
   maximize = 'maximize',
+  defaultTransactionIconSmall = 'default-transaction-icon-small'
 }
 
 export type IconPropsType = JSXBase.IntrinsicElements['svg'] & {

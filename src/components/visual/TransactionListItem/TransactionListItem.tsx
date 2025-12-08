@@ -9,6 +9,7 @@ import styles from './transactionListItem.styles'
 
 import type { ITransactionListItem } from './transactionListItem.types';
 import { Tooltip } from 'common/Tooltip/Tooltip';
+import { Icon } from 'common/Icon';
 
 interface TransactionListItemPropsType {
   transaction: ITransactionListItem;
@@ -22,7 +23,7 @@ export function TransactionListItem({ transaction }: TransactionListItemPropsTyp
   const showTooltip = transaction.amount && amount.label.length > 12;
 
   return (
-    <a href={transaction.link} target="_blank" rel="noreferrer">
+    <a href={transaction.link} target="_blank" rel="noopener noreferrer">
       <div class={styles.transactionItem}>
         <div
           class={classNames(styles.transactionIcon, {
@@ -46,7 +47,7 @@ export function TransactionListItem({ transaction }: TransactionListItemPropsTyp
               </h4>
 
               {showTooltip && (
-                <Tooltip position="bottom" trigger={<mvx-circle-info-icon />}>
+                <Tooltip position="bottom" trigger={<Icon name='circle-info' />}>
                   {amount.label}
                 </Tooltip>
               )}
@@ -77,7 +78,7 @@ export function TransactionListItem({ transaction }: TransactionListItemPropsTyp
               {transaction.interactorAsset ? (
                 <img src={transaction.interactorAsset} alt="Service icon" loading="lazy" class={styles.transactionDetailsInfoIconImg} />
               ) : (
-                <mvx-default-transaction-icon-small />
+                <Icon name='default-transaction-icon-small' />
               )}
             </div>
 
