@@ -6,7 +6,7 @@ import { Icon } from 'common/Icon';
 import { IconSizeEnumType, TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
 import { Trim } from 'common/Trim/Trim';
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
-import type { ITransactionListItem } from 'components/visual/transaction-list-item/transaction-list-item.types';
+import type { ITransactionListItem } from 'components/visual/TransactionListItem/transactionListItem.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
 import { getIsTransactionFailed } from 'utils/getTransactionStatus';

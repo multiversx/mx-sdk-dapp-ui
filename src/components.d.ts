@@ -10,9 +10,8 @@ import { ButtonSizeEnum, ButtonVariantEnum } from "./common/Button/button.types"
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
-import { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 import { LocalJSX as JSX } from "@stencil/core";
-import { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
+import { ITransactionListItem } from "./components/visual/TransactionListItem/transactionListItem.types";
 import { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { TransactionStatusEnum } from "./constants/transactionStatus.enum";
 import { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
@@ -22,9 +21,8 @@ export { ButtonSizeEnum, ButtonVariantEnum } from "./common/Button/button.types"
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
-export { ITransactionListItem } from "./components/visual/transaction-list-item/transaction-list-item.types";
 export { LocalJSX as JSX } from "@stencil/core";
-export { ITransactionListItem as ITransactionListItem1 } from "./components/visual/transaction-list-item/transaction-list-item.types";
+export { ITransactionListItem } from "./components/visual/TransactionListItem/transactionListItem.types";
 export { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { TransactionStatusEnum } from "./constants/transactionStatus.enum";
 export { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
@@ -240,9 +238,6 @@ export namespace Components {
           * @default false
          */
         "triggerOnClick"?: boolean;
-    }
-    interface MvxTransactionListItem {
-        "transaction": ITransactionListItem;
     }
     interface MvxTransactionToast {
         "fullWidth"?: boolean;
@@ -734,12 +729,6 @@ declare global {
         prototype: HTMLMvxTooltipElement;
         new (): HTMLMvxTooltipElement;
     };
-    interface HTMLMvxTransactionListItemElement extends Components.MvxTransactionListItem, HTMLStencilElement {
-    }
-    var HTMLMvxTransactionListItemElement: {
-        prototype: HTMLMvxTransactionListItemElement;
-        new (): HTMLMvxTransactionListItemElement;
-    };
     interface HTMLMvxTransactionToastElementEventMap {
         "deleteToast": void;
     }
@@ -914,7 +903,6 @@ declare global {
         "mvx-spinner-icon": HTMLMvxSpinnerIconElement;
         "mvx-toast-list": HTMLMvxToastListElement;
         "mvx-tooltip": HTMLMvxTooltipElement;
-        "mvx-transaction-list-item": HTMLMvxTransactionListItemElement;
         "mvx-transaction-toast": HTMLMvxTransactionToastElement;
         "mvx-transaction-toast-content": HTMLMvxTransactionToastContentElement;
         "mvx-transaction-toast-details": HTMLMvxTransactionToastDetailsElement;
@@ -1149,9 +1137,6 @@ declare namespace LocalJSX {
          */
         "triggerOnClick"?: boolean;
     }
-    interface MvxTransactionListItem {
-        "transaction"?: ITransactionListItem;
-    }
     interface MvxTransactionToast {
         "fullWidth"?: boolean;
         "onDeleteToast"?: (event: MvxTransactionToastCustomEvent<void>) => void;
@@ -1302,7 +1287,6 @@ declare namespace LocalJSX {
         "mvx-spinner-icon": MvxSpinnerIcon;
         "mvx-toast-list": MvxToastList;
         "mvx-tooltip": MvxTooltip;
-        "mvx-transaction-list-item": MvxTransactionListItem;
         "mvx-transaction-toast": MvxTransactionToast;
         "mvx-transaction-toast-content": MvxTransactionToastContent;
         "mvx-transaction-toast-details": MvxTransactionToastDetails;
@@ -1364,7 +1348,6 @@ declare module "@stencil/core" {
             "mvx-spinner-icon": LocalJSX.MvxSpinnerIcon & JSXBase.HTMLAttributes<HTMLMvxSpinnerIconElement>;
             "mvx-toast-list": LocalJSX.MvxToastList & JSXBase.HTMLAttributes<HTMLMvxToastListElement>;
             "mvx-tooltip": LocalJSX.MvxTooltip & JSXBase.HTMLAttributes<HTMLMvxTooltipElement>;
-            "mvx-transaction-list-item": LocalJSX.MvxTransactionListItem & JSXBase.HTMLAttributes<HTMLMvxTransactionListItemElement>;
             "mvx-transaction-toast": LocalJSX.MvxTransactionToast & JSXBase.HTMLAttributes<HTMLMvxTransactionToastElement>;
             "mvx-transaction-toast-content": LocalJSX.MvxTransactionToastContent & JSXBase.HTMLAttributes<HTMLMvxTransactionToastContentElement>;
             "mvx-transaction-toast-details": LocalJSX.MvxTransactionToastDetails & JSXBase.HTMLAttributes<HTMLMvxTransactionToastDetailsElement>;

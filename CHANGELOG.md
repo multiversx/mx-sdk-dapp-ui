@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Refactored transaction list item](https://github.com/multiversx/mx-sdk-dapp-ui/pull/274)
 - [Refactored side panel components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/271)
 - [Fixed trimmed address not showing in address-table](https://github.com/multiversx/mx-sdk-dapp-ui/pull/273)
 - [Added minimize/maximize action for toasts](https://github.com/multiversx/mx-sdk-dapp-ui/pull/272)

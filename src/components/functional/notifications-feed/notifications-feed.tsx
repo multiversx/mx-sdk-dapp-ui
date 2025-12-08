@@ -5,10 +5,11 @@ import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import type { ITransactionListItem } from '../../visual/transaction-list-item/transaction-list-item.types';
+import { ITransactionListItem } from 'components/visual/TransactionListItem/transactionListItem.types';
 import type { ITransactionToast } from '../toasts-list/components/transaction-toast/transaction-toast.type';
 import { NotificationsFeedEventsEnum } from './notifications-feed.types';
 import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
+import { TransactionListItem } from 'components/visual/TransactionListItem/TransactionListItem';
 
 @Component({
   tag: 'mvx-notifications-feed',
@@ -126,7 +127,7 @@ export class NotificationsFeed {
 
             <div class="activity-list">
               {hasActivity ? (
-                this.transactionsHistory.map(transaction => <mvx-transaction-list-item transaction={transaction} />)
+                this.transactionsHistory.map(transaction => <TransactionListItem transaction={transaction} />)
               ) : (
                 <div class="no-activity">No activity to show</div>
               )}

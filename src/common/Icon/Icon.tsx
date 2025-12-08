@@ -28,6 +28,7 @@ import { MinimizeIcon } from './components/MinimizeIcon';
 import { PencilIcon } from './components/PencilIcon';
 import { SpinnerIcon } from './components/SpinnerIcon';
 import { TriangularWarningIcon } from './components/TriangularWarningIcon';
+import { DefaultTransactionIconSmall } from './components/DefaultTransactionIconSmall';
 import type { IconPropsType } from './icon.types';
 
 export const Icon = ({ name, ...properties }: IconPropsType) => {
@@ -119,6 +120,9 @@ export const Icon = ({ name, ...properties }: IconPropsType) => {
 
     case 'maximize':
       return <MaximizeIcon />;
+
+    case 'default-transaction-icon-small':
+      return <DefaultTransactionIconSmall />
 
     default:
       console.error(`No data for the ${name} icon.`);

@@ -15,8 +15,10 @@
   --color-secondary: var(--mvx-bg-color-secondary);
   --color-tertiary: var(--mvx-bg-color-tertiary);
   --color-error: var(--mvx-error-color);
+  --color-success: var(--mvx-success-color);
   --color-primary: var(--mvx-text-color-primary);
   --color-secondary-text: var(--mvx-text-color-secondary);
+  --color-tertiary-text: var(--mvx-text-color-tertiary);
   --color-surface: var(--mvx-bg-color-primary);
   --color-outline: var(--mvx-border-color-primary);
   --color-hover: var(--mvx-hover-color-primary);
