@@ -1,7 +1,8 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
+import { Button as ButtonComponent } from 'common/Button/Button';
 
-import type { ButtonSizeEnum, ButtonVariantEnum } from './button.types';
+import type { ButtonSizeEnum, ButtonVariantEnum } from '../../../common/Button/button.types';
 
 @Component({
   tag: 'mvx-button',
@@ -17,22 +18,22 @@ export class Button {
   @Prop() size?: `${ButtonSizeEnum}` = 'large';
   @Prop() variant?: `${ButtonVariantEnum}` = 'primary';
 
+  private handleClick = (event: MouseEvent) => {
+    this.buttonClick.emit(event);
+  };
+
   render() {
     return (
-      <button
-        data-testid={this.dataTestId}
-        onClick={this.buttonClick.emit.bind(this)}
+      <ButtonComponent
+        class={this.class}
+        dataTestId={this.dataTestId}
         disabled={this.disabled}
-        class={{
-          button: true,
-          disabled: this.disabled,
-          [this.size]: Boolean(this.size),
-          [this.variant]: Boolean(this.variant),
-          [this.class]: Boolean(this.class),
-        }}
+        size={this.size}
+        variant={this.variant}
+        onClick={this.handleClick}
       >
         <slot />
-      </button>
+      </ButtonComponent>
     );
   }
 }

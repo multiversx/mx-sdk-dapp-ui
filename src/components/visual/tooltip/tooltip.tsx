@@ -1,10 +1,6 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State } from '@stencil/core';
-
-// prettier-ignore
-const styles = {
-  tooltip: 'tooltip mvx:flex mvx:relative',
-} satisfies Record<string, string>;
+import { Tooltip as TooltipComponent } from 'common/Tooltip/Tooltip';
 
 @Component({
   tag: 'mvx-tooltip',
@@ -12,76 +8,31 @@ const styles = {
   shadow: true,
 })
 export class Tooltip {
-  @Event() triggerRender: EventEmitter<boolean>;
-  @State() isTooltipVisible: boolean = false;
-
   @Prop() position: 'top' | 'bottom' = 'top';
   @Prop() triggerOnClick?: boolean = false;
   @Prop() trigger: HTMLElement;
   @Prop() class?: string;
 
-  constructor() {
-    this.handleEllipsisClick = this.handleEllipsisClick.bind(this);
-    this.handleFocusOut = this.handleFocusOut.bind(this);
-  }
+  @Event() triggerRender: EventEmitter<boolean>;
+  @State() private isVisible: boolean = false;
 
-  private setTooltipVisible(isTooltipVisible: boolean) {
-    this.isTooltipVisible = isTooltipVisible;
-    this.triggerRender.emit(this.isTooltipVisible);
-  }
-
-  private handleEllipsisClick(event: MouseEvent) {
-    if (!this.triggerOnClick) {
-      return;
-    }
-
-    event.preventDefault();
-    this.setTooltipVisible(!this.isTooltipVisible);
-  }
-
-  private handleFocusOut(event: FocusEvent) {
-    const relatedTarget = event.relatedTarget as Node;
-    const currentTarget = event.currentTarget as HTMLElement;
-
-    if (!currentTarget.contains(relatedTarget)) {
-      this.setTooltipVisible(false);
-    }
-  }
-
-  private handleMouseEvent(isTooltipVisible: boolean) {
-    if (this.triggerOnClick) {
-      return;
-    }
-
-    return (event: MouseEvent) => {
-      event.preventDefault();
-      this.setTooltipVisible(isTooltipVisible);
-    };
-  }
+  private handleVisibilityChange = (isVisible: boolean) => {
+    this.triggerRender.emit(isVisible);
+    this.isVisible = isVisible;
+  };
 
   render() {
     return (
-      <div
-        onClick={this.handleEllipsisClick}
-        onMouseEnter={this.handleMouseEvent(true)}
-        onMouseLeave={this.handleMouseEvent(false)}
-        class={{ [styles.tooltip]: true, [this.class]: Boolean(this.class) }}
+      <TooltipComponent
+        position={this.position}
+        triggerOnClick={this.triggerOnClick}
+        trigger={this.trigger}
+        class={this.class}
+        isTooltipVisible={this.isVisible}
+        onVisibilityChange={this.handleVisibilityChange}
       >
-        {this.isTooltipVisible && (
-          <div class={{ 'tooltip-content-wrapper': true, [this.position]: true }}>
-            <div
-              class={{ 'tooltip-content': true, [this.position]: true }}
-              tabIndex={-1}
-              onFocusout={this.handleFocusOut}
-              onClick={(event: MouseEvent) => event.stopPropagation()}
-            >
-              <slot />
-            </div>
-          </div>
-        )}
-
-        <span class="tooltip-trigger">{this.trigger}</span>
-      </div>
+        <slot />
+      </TooltipComponent>
     );
   }
 }

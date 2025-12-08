@@ -95,7 +95,7 @@
   }
 
   // Ensure children don't cause horizontal scroll
-  > * {
+  >* {
     @apply mvx:w-full mvx:max-w-full mvx:box-border;
   }
 }

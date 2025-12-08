@@ -1,4 +1,4 @@
-import type { IProviderBase } from 'components';
+import { IProviderBase } from "types/provider.types";
 
 // Extend the Window interface globally to include custom properties
 export interface ExtendedWindow extends Window {

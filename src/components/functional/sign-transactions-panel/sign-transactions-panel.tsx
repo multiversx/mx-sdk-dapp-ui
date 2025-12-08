@@ -1,12 +1,19 @@
 import { Component, h, Method, State } from '@stencil/core';
-import { ANIMATION_DELAY_PROMISE } from 'components/visual/side-panel/side-panel.constants';
+import { getCopyClickAction } from 'common/CopyButton/getCopyClickAction';
+import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
+import { SidePanel } from 'components/visual/SidePanel/SidePanel';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
+import { SignTransactionsAdvanced } from './components/SignTransactionsAdvanced/SignTransactionsAdvanced';
+import { SignTransactionsFooter } from './components/SignTransactionsFooter/SignTransactionsFooter';
+import { SignTransactionsHeader } from './components/SignTransactionsHeader/SignTransactionsHeader';
+import { SignTransactionsOverview } from './components/SignTransactionsOverview/SignTransactionsOverview';
+import styles from './sign-transactions-panel.styles';
 import type { IOverviewProps, ISignTransactionsPanelData } from './sign-transactions-panel.types';
-import { SignEventsEnum, TransactionTabsEnum } from './sign-transactions-panel.types';
+import { DecodeMethodEnum, SignEventsEnum, TransactionTabsEnum } from './sign-transactions-panel.types';
 import state, { resetState } from './signTransactionsPanelStore';
 
 @Component({
@@ -27,6 +34,11 @@ export class SignTransactionsPanel {
 
   @State() isOpen: boolean = false;
   @State() activeTab: TransactionTabsEnum = TransactionTabsEnum.overview;
+  @State() isFooterTooltipVisible: boolean = false;
+  @State() isSuccessOnCopy: boolean = false;
+  @State() showFavicon: boolean = true;
+  @State() decodeMethod: DecodeMethodEnum = DecodeMethodEnum.raw;
+  @State() decodeTooltipVisible: boolean = false;
 
   @Method() async getEventBus() {
     await this.connectionMonitor.waitForConnection();
@@ -114,31 +126,57 @@ export class SignTransactionsPanel {
     };
   }
 
+  private handleIsFooterTooltipVisible = (isTooltipVisible: boolean) => {
+    this.isFooterTooltipVisible = isTooltipVisible;
+  };
+
+  private handleCopyButtonClick = getCopyClickAction({
+    onSuccessChange: isSuccess => (this.isSuccessOnCopy = isSuccess),
+  });
+
+  private setDecodeMethod = (method: DecodeMethodEnum) => {
+    this.decodeMethod = method;
+  };
+
+  private setDecodeTooltipVisible = (isVisible: boolean) => {
+    this.decodeTooltipVisible = isVisible;
+  };
+
   render() {
     const transactionTabs = Object.values(TransactionTabsEnum);
 
-    const { commonData } = state;
-    const { data, highlight } = commonData;
+    const { commonData, onBack, onNext } = state;
+    const { currentIndex, transactionsCount, origin } = commonData;
 
     return (
-      <mvx-side-panel
+      <SidePanel
         isOpen={this.isOpen}
         onClose={this.handleClose}
         panelTitle="Confirm Transaction"
         hasBackButton={false}
       >
-        <div class="sign-transactions-panel" data-testid={DataTestIdsEnum.signTransactionsPanel}>
-          <mvx-sign-transactions-header />
+        <div class={styles.signTransactionsPanel} data-testid={DataTestIdsEnum.signTransactionsPanel}>
+          <SignTransactionsHeader
+            onBack={onBack}
+            onNext={onNext}
+            currentIndex={currentIndex}
+            transactionsCount={transactionsCount}
+            origin={origin}
+            showFavicon={this.showFavicon}
+          />
 
-          <div class="sign-transaction-content">
-            <div class="sign-transactions-tabs">
+          <div class={styles.signTransactionContent}>
+            <div class={styles.signTransactionsTabs}>
               {transactionTabs.map(transactionTab => (
                 <div
-                  class={{ 'sign-transactions-tab': true, 'active': transactionTab === this.activeTab }}
+                  class={{
+                    [styles.signTransactionsTab]: true,
+                    [styles.signTransactionsTabActive]: transactionTab === this.activeTab,
+                  }}
                   data-testid={`${DataTestIdsEnum.signTransactionsTab}-${transactionTab.toLowerCase()}`}
                   onClick={() => this.setActiveTab(transactionTab)}
                 >
-                  <div class="sign-transactions-tab-text" data-testid={DataTestIdsEnum.signTransactionsTabText}>
+                  <div class={styles.signTransactionsTabText} data-testid={DataTestIdsEnum.signTransactionsTabText}>
                     {transactionTab}
                   </div>
                 </div>
@@ -146,15 +184,25 @@ export class SignTransactionsPanel {
             </div>
 
             {this.activeTab === TransactionTabsEnum.overview ? (
-              <mvx-sign-transactions-overview style={{ width: '100%' }} {...this.overviewProps} />
+              <SignTransactionsOverview {...this.overviewProps} />
             ) : (
-              <mvx-sign-transactions-advanced style={{ width: '100%' }} data={data} highlight={highlight} />
+              <SignTransactionsAdvanced
+                decodeMethod={this.decodeMethod}
+                onDecodeMethodChange={this.setDecodeMethod}
+                decodeTooltipVisible={this.decodeTooltipVisible}
+                onDecodeTooltipVisibilityChange={this.setDecodeTooltipVisible}
+              />
             )}
           </div>
 
-          <mvx-sign-transactions-footer />
+          <SignTransactionsFooter
+            tooltipVisible={this.isFooterTooltipVisible}
+            onTooltipVisibilityChange={this.handleIsFooterTooltipVisible}
+            isSuccessOnCopy={this.isSuccessOnCopy}
+            handleCopyButtonClick={this.handleCopyButtonClick}
+          />
         </div>
-      </mvx-side-panel>
+      </SidePanel>
     );
   }
 }

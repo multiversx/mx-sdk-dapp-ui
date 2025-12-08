@@ -1,2 +1,2 @@
 export * from './InvalidFormatAmount';
-export * from './ValidFormatAmount'
+export * from './ValidFormatAmount';

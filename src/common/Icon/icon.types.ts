@@ -24,7 +24,12 @@ export enum IconNamesEnum {
   circleCheck = 'circle-check',
   circleInfo = 'circle-info',
   coins = 'coins',
-  arrowsRotate = 'arrows-rotate'
+  arrowsRotate = 'arrows-rotate',
+  spinner = 'spinner',
+  arrowRight = 'arrow-right',
+  minimize = 'minimize',
+  maximize = 'maximize',
+  defaultTransactionIconSmall = 'default-transaction-icon-small'
 }
 
 export type IconPropsType = JSXBase.IntrinsicElements['svg'] & {

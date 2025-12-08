@@ -10,7 +10,11 @@ export class MultiversXLogoIcon {
 
   render() {
     return (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" class={{ 'multiversx-logo-icon': true, [this.class]: Boolean(this.class) }}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 40 40"
+        class={{ 'multiversx-logo-icon': true, [this.class]: Boolean(this.class) }}
+      >
         <path
           d="M0 20.3198C0 10.8917 0 6.17769 2.92893 3.24876C5.85786 0.319824 10.5719 0.319824 20 0.319824C29.4281 0.319824 34.1421 0.319824 37.0711 3.24876C40 6.17769 40 10.8917 40 20.3198C40 29.7479 40 34.462 37.0711 37.3909C34.1421 40.3198 29.4281 40.3198 20 40.3198C10.5719 40.3198 5.85786 40.3198 2.92893 37.3909C0 34.462 0 29.7479 0 20.3198Z"
           fill="#23F7DD"

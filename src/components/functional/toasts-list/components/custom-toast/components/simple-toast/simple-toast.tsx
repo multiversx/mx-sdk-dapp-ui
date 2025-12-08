@@ -47,12 +47,8 @@ export class SimpleToast {
                 </h5>
               )}
               {this.toast.hasCloseButton !== false && (
-                <button
-                  onClick={this.handleDeleteToast.bind(this)}
-                  type="button"
-                  class="icon-close"
-                >
-                  <Icon name='close' />
+                <button onClick={this.handleDeleteToast.bind(this)} type="button" class="icon-close">
+                  <Icon name="close" />
                 </button>
               )}
             </div>
