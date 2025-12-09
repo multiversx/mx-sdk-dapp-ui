@@ -13,7 +13,7 @@ interface CopyButtonPropsType {
   class?: string;
   text: string;
   isSuccessOnCopy?: boolean;
-  handleCopyButtonClick?: (event: MouseEvent) => void;
+  handleCopyButtonClick?: (event: MouseEvent, text?: string) => void;
 }
 
 export function CopyButton({
@@ -21,10 +21,11 @@ export function CopyButton({
   class: className,
   isSuccessOnCopy,
   handleCopyButtonClick,
+  text
 }: CopyButtonPropsType) {
   return (
     <div
-      onClick={event => handleCopyButtonClick?.(event)}
+      onClick={event => handleCopyButtonClick?.(event, text)}
       class={{
         [styles.copyButton]: true,
         [className]: Boolean(className),
