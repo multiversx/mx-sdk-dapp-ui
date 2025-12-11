@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.1.6](https://github.com/multiversx/mx-sdk-dapp-ui/pull/277)] - 2025-12-09
+
+- [Sync development with main](https://github.com/multiversx/mx-sdk-dapp-ui/pull/278)
+- [Fixed copy button](https://github.com/multiversx/mx-sdk-dapp-ui/pull/276)
+
 ## [[0.1.5](https://github.com/multiversx/mx-sdk-dapp-ui/pull/275)] - 2025-12-08
 
 - [Refactored transaction list item](https://github.com/multiversx/mx-sdk-dapp-ui/pull/274)
