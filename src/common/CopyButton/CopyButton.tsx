@@ -21,7 +21,7 @@ export function CopyButton({
   class: className,
   isSuccessOnCopy,
   handleCopyButtonClick,
-  text
+  text,
 }: CopyButtonPropsType) {
   return (
     <div
