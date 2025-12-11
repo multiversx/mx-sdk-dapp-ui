@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [[0.1.6](https://github.com/multiversx/mx-sdk-dapp-ui/pull/277)] - 2025-12-09
 
+- [Fixed compatibility issue on stencil/core](https://github.com/multiversx/mx-sdk-dapp-ui/pull/279)
 - [Sync development with main](https://github.com/multiversx/mx-sdk-dapp-ui/pull/278)
 - [Fixed copy button](https://github.com/multiversx/mx-sdk-dapp-ui/pull/276)
 
