@@ -109,4 +109,10 @@
   .mvx\:animate-spinner {
     animation: SpinnerAnimation 3000ms linear infinite;
   }
+
+  .mvx\:no-spinner::-webkit-outer-spin-button,
+  .mvx\:no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }

@@ -179,19 +179,6 @@ export namespace Components {
         "closeWithAnimation": () => Promise<unknown>;
         "getEventBus": () => Promise<IEventBus>;
     }
-    interface MvxPaginationEllipsis {
-        /**
-          * @default false
-         */
-        "isActive": boolean;
-    }
-    interface MvxPaginationEllipsisForm {
-        /**
-          * @default false
-         */
-        "isVisible": boolean;
-        "maxPageToSearchFor": number;
-    }
     interface MvxPasskeyProviderIcon {
         "class"?: string;
     }
@@ -358,10 +345,6 @@ export interface MvxGenericToastCustomEvent<T> extends CustomEvent<T> {
 export interface MvxLedgerIntroCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxLedgerIntroElement;
-}
-export interface MvxPaginationEllipsisFormCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMvxPaginationEllipsisFormElement;
 }
 export interface MvxSimpleToastCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -607,29 +590,6 @@ declare global {
         prototype: HTMLMvxNotificationsFeedElement;
         new (): HTMLMvxNotificationsFeedElement;
     };
-    interface HTMLMvxPaginationEllipsisElement extends Components.MvxPaginationEllipsis, HTMLStencilElement {
-    }
-    var HTMLMvxPaginationEllipsisElement: {
-        prototype: HTMLMvxPaginationEllipsisElement;
-        new (): HTMLMvxPaginationEllipsisElement;
-    };
-    interface HTMLMvxPaginationEllipsisFormElementEventMap {
-        "search": number;
-    }
-    interface HTMLMvxPaginationEllipsisFormElement extends Components.MvxPaginationEllipsisForm, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxPaginationEllipsisFormElementEventMap>(type: K, listener: (this: HTMLMvxPaginationEllipsisFormElement, ev: MvxPaginationEllipsisFormCustomEvent<HTMLMvxPaginationEllipsisFormElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxPaginationEllipsisFormElementEventMap>(type: K, listener: (this: HTMLMvxPaginationEllipsisFormElement, ev: MvxPaginationEllipsisFormCustomEvent<HTMLMvxPaginationEllipsisFormElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLMvxPaginationEllipsisFormElement: {
-        prototype: HTMLMvxPaginationEllipsisFormElement;
-        new (): HTMLMvxPaginationEllipsisFormElement;
-    };
     interface HTMLMvxPasskeyProviderIconElement extends Components.MvxPasskeyProviderIcon, HTMLStencilElement {
     }
     var HTMLMvxPasskeyProviderIconElement: {
@@ -874,8 +834,6 @@ declare global {
         "mvx-multiversx-logo-icon": HTMLMvxMultiversxLogoIconElement;
         "mvx-multiversx-symbol-icon": HTMLMvxMultiversxSymbolIconElement;
         "mvx-notifications-feed": HTMLMvxNotificationsFeedElement;
-        "mvx-pagination-ellipsis": HTMLMvxPaginationEllipsisElement;
-        "mvx-pagination-ellipsis-form": HTMLMvxPaginationEllipsisFormElement;
         "mvx-passkey-provider-icon": HTMLMvxPasskeyProviderIconElement;
         "mvx-pending-transactions-panel": HTMLMvxPendingTransactionsPanelElement;
         "mvx-preloader": HTMLMvxPreloaderElement;
@@ -1059,20 +1017,6 @@ declare namespace LocalJSX {
     }
     interface MvxNotificationsFeed {
     }
-    interface MvxPaginationEllipsis {
-        /**
-          * @default false
-         */
-        "isActive"?: boolean;
-    }
-    interface MvxPaginationEllipsisForm {
-        /**
-          * @default false
-         */
-        "isVisible"?: boolean;
-        "maxPageToSearchFor"?: number;
-        "onSearch"?: (event: MvxPaginationEllipsisFormCustomEvent<number>) => void;
-    }
     interface MvxPasskeyProviderIcon {
         "class"?: string;
     }
@@ -1245,8 +1189,6 @@ declare namespace LocalJSX {
         "mvx-multiversx-logo-icon": MvxMultiversxLogoIcon;
         "mvx-multiversx-symbol-icon": MvxMultiversxSymbolIcon;
         "mvx-notifications-feed": MvxNotificationsFeed;
-        "mvx-pagination-ellipsis": MvxPaginationEllipsis;
-        "mvx-pagination-ellipsis-form": MvxPaginationEllipsisForm;
         "mvx-passkey-provider-icon": MvxPasskeyProviderIcon;
         "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
         "mvx-preloader": MvxPreloader;
@@ -1305,8 +1247,6 @@ declare module "@stencil/core" {
             "mvx-multiversx-logo-icon": LocalJSX.MvxMultiversxLogoIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxLogoIconElement>;
             "mvx-multiversx-symbol-icon": LocalJSX.MvxMultiversxSymbolIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxSymbolIconElement>;
             "mvx-notifications-feed": LocalJSX.MvxNotificationsFeed & JSXBase.HTMLAttributes<HTMLMvxNotificationsFeedElement>;
-            "mvx-pagination-ellipsis": LocalJSX.MvxPaginationEllipsis & JSXBase.HTMLAttributes<HTMLMvxPaginationEllipsisElement>;
-            "mvx-pagination-ellipsis-form": LocalJSX.MvxPaginationEllipsisForm & JSXBase.HTMLAttributes<HTMLMvxPaginationEllipsisFormElement>;
             "mvx-passkey-provider-icon": LocalJSX.MvxPasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLMvxPasskeyProviderIconElement>;
             "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
             "mvx-preloader": LocalJSX.MvxPreloader & JSXBase.HTMLAttributes<HTMLMvxPreloaderElement>;

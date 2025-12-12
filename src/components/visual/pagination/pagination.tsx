@@ -4,6 +4,9 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import { getPagination } from './helpers';
 import styles from './pagination.styles';
+import { PaginationEllipsisForm } from './components/PaginationEllipsisForm/PaginationEllipsisForm';
+import { Tooltip } from 'common/Tooltip/Tooltip';
+import { PaginationEllipsis } from './components/PaginationEllipsis/PaginationEllipsis';
 
 export interface PaginationPropsType {
   currentPage: number;
@@ -14,9 +17,11 @@ export interface PaginationPropsType {
   activeTooltipIndex?: number | null;
   isTooltipOpen?: boolean;
   onTooltipStatusChange?: (index: number | null, isOpen: boolean) => void;
+  pageValue?: string;
+  onPageValueChange?: (value: string) => void;
 }
 
-export function Pagination({ activeTooltipIndex = null, isTooltipOpen = false, onTooltipStatusChange, currentPage = 1, totalPages, isDisabled = false, class: className, onPageChange }: PaginationPropsType) {
+export function Pagination({ activeTooltipIndex = null, isTooltipOpen = false, onTooltipStatusChange, currentPage = 1, totalPages, isDisabled = false, class: className, onPageChange, pageValue = '', onPageValueChange }: PaginationPropsType) {
   const handleTooltipStatus = (index: number | null, isOpen: boolean) => {
     onTooltipStatusChange?.(index, isOpen);
   }
@@ -115,25 +120,28 @@ export function Pagination({ activeTooltipIndex = null, isTooltipOpen = false, o
                 <span class={styles.paginationItemText}>{paginationItem}</span>
               </div>
             ) : (
-              <mvx-tooltip
+              <Tooltip
                 triggerOnClick
+                isTooltipVisible={isTooltipOpen && activeTooltipIndex === paginationItemIndex}
                 trigger={
-                  <mvx-pagination-ellipsis
+                  <PaginationEllipsis
                     isActive={isTooltipOpen && activeTooltipIndex === paginationItemIndex}
                   />
                 }
-                onTriggerRender={(event: CustomEvent) => {
-                  handleTooltipStatus(paginationItemIndex, event.detail);
+                onVisibilityChange={(isVisible: boolean) => {
+                  handleTooltipStatus(paginationItemIndex, isVisible);
                 }}
               >
                 {!isDisabled && (
-                  <mvx-pagination-ellipsis-form
+                  <PaginationEllipsisForm
                     isVisible={isTooltipOpen}
                     maxPageToSearchFor={totalPages}
-                    onSearch={(event: CustomEvent) => handlePageClick(event.detail)}
+                    pageValue={pageValue}
+                    onPageValueChange={(value) => onPageValueChange?.(value)}
+                    onSearch={(page) => handlePageClick(page)}
                   />
                 )}
-              </mvx-tooltip>
+              </Tooltip>
             )}
           </div>
         ))}
