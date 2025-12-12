@@ -179,18 +179,6 @@ export namespace Components {
         "closeWithAnimation": () => Promise<unknown>;
         "getEventBus": () => Promise<IEventBus>;
     }
-    interface MvxPagination {
-        "class"?: string;
-        /**
-          * @default 1
-         */
-        "currentPage": number;
-        /**
-          * @default false
-         */
-        "isDisabled"?: boolean;
-        "totalPages": number;
-    }
     interface MvxPaginationEllipsis {
         /**
           * @default false
@@ -371,10 +359,6 @@ export interface MvxLedgerIntroCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxLedgerIntroElement;
 }
-export interface MvxPaginationCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMvxPaginationElement;
-}
 export interface MvxPaginationEllipsisFormCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxPaginationEllipsisFormElement;
@@ -394,6 +378,10 @@ export interface MvxTransactionToastCustomEvent<T> extends CustomEvent<T> {
 export interface MvxTransactionToastContentCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxTransactionToastContentElement;
+}
+export interface MvxTransactionsTableCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMvxTransactionsTableElement;
 }
 export interface MvxWalletConnectScanCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -619,23 +607,6 @@ declare global {
         prototype: HTMLMvxNotificationsFeedElement;
         new (): HTMLMvxNotificationsFeedElement;
     };
-    interface HTMLMvxPaginationElementEventMap {
-        "pageChange": number;
-    }
-    interface HTMLMvxPaginationElement extends Components.MvxPagination, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxPaginationElementEventMap>(type: K, listener: (this: HTMLMvxPaginationElement, ev: MvxPaginationCustomEvent<HTMLMvxPaginationElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxPaginationElementEventMap>(type: K, listener: (this: HTMLMvxPaginationElement, ev: MvxPaginationCustomEvent<HTMLMvxPaginationElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
-    }
-    var HTMLMvxPaginationElement: {
-        prototype: HTMLMvxPaginationElement;
-        new (): HTMLMvxPaginationElement;
-    };
     interface HTMLMvxPaginationEllipsisElement extends Components.MvxPaginationEllipsis, HTMLStencilElement {
     }
     var HTMLMvxPaginationEllipsisElement: {
@@ -781,7 +752,18 @@ declare global {
         prototype: HTMLMvxTransactionToastProgressElement;
         new (): HTMLMvxTransactionToastProgressElement;
     };
+    interface HTMLMvxTransactionsTableElementEventMap {
+        "pageChange": number;
+    }
     interface HTMLMvxTransactionsTableElement extends Components.MvxTransactionsTable, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMvxTransactionsTableElementEventMap>(type: K, listener: (this: HTMLMvxTransactionsTableElement, ev: MvxTransactionsTableCustomEvent<HTMLMvxTransactionsTableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMvxTransactionsTableElementEventMap>(type: K, listener: (this: HTMLMvxTransactionsTableElement, ev: MvxTransactionsTableCustomEvent<HTMLMvxTransactionsTableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLMvxTransactionsTableElement: {
         prototype: HTMLMvxTransactionsTableElement;
@@ -892,7 +874,6 @@ declare global {
         "mvx-multiversx-logo-icon": HTMLMvxMultiversxLogoIconElement;
         "mvx-multiversx-symbol-icon": HTMLMvxMultiversxSymbolIconElement;
         "mvx-notifications-feed": HTMLMvxNotificationsFeedElement;
-        "mvx-pagination": HTMLMvxPaginationElement;
         "mvx-pagination-ellipsis": HTMLMvxPaginationEllipsisElement;
         "mvx-pagination-ellipsis-form": HTMLMvxPaginationEllipsisFormElement;
         "mvx-passkey-provider-icon": HTMLMvxPasskeyProviderIconElement;
@@ -1078,19 +1059,6 @@ declare namespace LocalJSX {
     }
     interface MvxNotificationsFeed {
     }
-    interface MvxPagination {
-        "class"?: string;
-        /**
-          * @default 1
-         */
-        "currentPage"?: number;
-        /**
-          * @default false
-         */
-        "isDisabled"?: boolean;
-        "onPageChange"?: (event: MvxPaginationCustomEvent<number>) => void;
-        "totalPages"?: number;
-    }
     interface MvxPaginationEllipsis {
         /**
           * @default false
@@ -1190,6 +1158,7 @@ declare namespace LocalJSX {
     }
     interface MvxTransactionsTable {
         "class"?: string;
+        "onPageChange"?: (event: MvxTransactionsTableCustomEvent<number>) => void;
         "transactions"?: TransactionRowType[];
     }
     interface MvxTrim {
@@ -1276,7 +1245,6 @@ declare namespace LocalJSX {
         "mvx-multiversx-logo-icon": MvxMultiversxLogoIcon;
         "mvx-multiversx-symbol-icon": MvxMultiversxSymbolIcon;
         "mvx-notifications-feed": MvxNotificationsFeed;
-        "mvx-pagination": MvxPagination;
         "mvx-pagination-ellipsis": MvxPaginationEllipsis;
         "mvx-pagination-ellipsis-form": MvxPaginationEllipsisForm;
         "mvx-passkey-provider-icon": MvxPasskeyProviderIcon;
@@ -1337,7 +1305,6 @@ declare module "@stencil/core" {
             "mvx-multiversx-logo-icon": LocalJSX.MvxMultiversxLogoIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxLogoIconElement>;
             "mvx-multiversx-symbol-icon": LocalJSX.MvxMultiversxSymbolIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxSymbolIconElement>;
             "mvx-notifications-feed": LocalJSX.MvxNotificationsFeed & JSXBase.HTMLAttributes<HTMLMvxNotificationsFeedElement>;
-            "mvx-pagination": LocalJSX.MvxPagination & JSXBase.HTMLAttributes<HTMLMvxPaginationElement>;
             "mvx-pagination-ellipsis": LocalJSX.MvxPaginationEllipsis & JSXBase.HTMLAttributes<HTMLMvxPaginationEllipsisElement>;
             "mvx-pagination-ellipsis-form": LocalJSX.MvxPaginationEllipsisForm & JSXBase.HTMLAttributes<HTMLMvxPaginationEllipsisFormElement>;
             "mvx-passkey-provider-icon": LocalJSX.MvxPasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLMvxPasskeyProviderIconElement>;

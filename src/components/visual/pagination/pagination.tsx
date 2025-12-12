@@ -1,64 +1,46 @@
-import type { EventEmitter } from '@stencil/core';
-import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
+import { h } from '@stencil/core';
 import { Icon } from 'common/Icon';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import { getPagination } from './helpers';
 import styles from './pagination.styles';
 
-@Component({
-  tag: 'mvx-pagination',
-  styleUrl: 'pagination.scss',
-  shadow: true,
-})
-export class Pagination {
-  @Prop() currentPage: number = 1;
-  @Prop() totalPages: number;
-  @Prop() isDisabled?: boolean = false;
-  @Prop() class?: string;
+export interface PaginationPropsType {
+  currentPage: number;
+  totalPages: number;
+  isDisabled?: boolean;
+  class?: string;
+  onPageChange?: (page: number) => void;
+  activeTooltipIndex?: number | null;
+  isTooltipOpen?: boolean;
+  onTooltipStatusChange?: (index: number | null, isOpen: boolean) => void;
+}
 
-  @Event({ bubbles: false, composed: false }) pageChange: EventEmitter<number>;
-  @State() activeTooltipIndex: number | null = null;
-  @State() isTooltipOpen: boolean = false;
-  @State() currentPageIndex: number;
-
-  @Watch('currentPage')
-  watchCurrentPage(newValue: number) {
-    if (newValue !== this.currentPageIndex) {
-      this.currentPageIndex = newValue;
-    }
+export function Pagination({ activeTooltipIndex = null, isTooltipOpen = false, onTooltipStatusChange, currentPage = 1, totalPages, isDisabled = false, class: className, onPageChange }: PaginationPropsType) {
+  const handleTooltipStatus = (index: number | null, isOpen: boolean) => {
+    onTooltipStatusChange?.(index, isOpen);
   }
 
-  private handleTooltipStatus(isOpen: boolean) {
-    this.isTooltipOpen = isOpen;
-  }
-
-  private handlePageClick(newPageIndex: number) {
-    if (newPageIndex === this.currentPageIndex) {
+  const handlePageClick = (newPageIndex: number) => {
+    if (newPageIndex === currentPage) {
       return;
     }
-
-    this.currentPageIndex = newPageIndex;
-    this.pageChange.emit(newPageIndex);
+    onPageChange?.(newPageIndex);
   }
 
-  private handleEdgePageClick(pageToNavigateTo: number) {
+  const handleEdgePageClick = (pageToNavigateTo: number) => {
     return (event: MouseEvent) => {
       event.preventDefault();
-      this.handlePageClick(pageToNavigateTo);
+      handlePageClick(pageToNavigateTo);
     };
   }
 
-  private isCurrentPageActive(paginationItem: string) {
-    return parseFloat(paginationItem) === this.currentPageIndex;
+  const isCurrentPageActive = (paginationItem: string) => {
+    return parseFloat(paginationItem) === currentPage;
   }
 
-  private isInTheHundreds(paginationItem: string) {
+  const isInTheHundreds = (paginationItem: string) => {
     return parseFloat(paginationItem) && parseFloat(paginationItem) >= 100;
-  }
-
-  componentWillLoad() {
-    this.currentPageIndex = this.currentPage;
   }
 
   /**
@@ -67,10 +49,10 @@ export class Pagination {
    * @returns Object with CSS class mappings
    */
 
-  private getPaginationEdgeButtonClasses(isInactive: boolean) {
+  const getPaginationEdgeButtonClasses = (isInactive: boolean) => {
     return {
       [styles.paginationEdgeButton]: true,
-      [styles.paginationEdgeButtonDisabled]: this.isDisabled,
+      [styles.paginationEdgeButtonDisabled]: isDisabled,
       [styles.paginationEdgeButtonInactive]: isInactive,
     };
   }
@@ -81,100 +63,98 @@ export class Pagination {
    * @returns Object with CSS class mappings
    */
 
-  private getPaginationAngleClasses(isInactive: boolean) {
+  const getPaginationAngleClasses = (isInactive: boolean) => {
     return {
       [styles.paginationAngle]: true,
-      [styles.paginationAngleDisabled]: this.isDisabled,
+      [styles.paginationAngleDisabled]: isDisabled,
       [styles.paginationAngleInactive]: isInactive,
     };
   }
 
-  render() {
-    const isLeftToggleDisabled = this.currentPageIndex === 1;
-    const isRightToggleDisabled = this.currentPageIndex === this.totalPages;
-    const paginationItems = getPagination({ currentPage: this.currentPageIndex, totalPages: this.totalPages });
+  const isLeftToggleDisabled = currentPage === 1;
+  const isRightToggleDisabled = currentPage === totalPages;
+  const paginationItems = getPagination({ currentPage, totalPages });
 
-    return (
-      <div class={{ [styles.pagination]: true, [this.class]: Boolean(this.class) }}>
-        <span
-          onClick={this.handleEdgePageClick(1)}
-          data-testid={DataTestIdsEnum.firstBtn}
-          class={this.getPaginationAngleClasses(isLeftToggleDisabled)}
-        >
-          <Icon name="angles-left" class={styles.paginationAngleIcon} />
-        </span>
+  return (
+    <div class={{ [styles.pagination]: true, [className]: Boolean(className) }}>
+      <span
+        onClick={handleEdgePageClick(1)}
+        data-testid={DataTestIdsEnum.firstBtn}
+        class={getPaginationAngleClasses(isLeftToggleDisabled)}
+      >
+        <Icon name="angles-left" class={styles.paginationAngleIcon} />
+      </span>
 
-        <div
-          data-testid={DataTestIdsEnum.prevBtn}
-          onClick={this.handleEdgePageClick(this.currentPageIndex - 1)}
-          class={this.getPaginationEdgeButtonClasses(isLeftToggleDisabled)}
-        >
-          <Icon name="angle-left" class={styles.paginationEdgeButtonIcon} />
-        </div>
-
-        <div class={styles.paginationItems}>
-          {paginationItems.map((paginationItem, paginationItemIndex) => (
-            <div
-              class={{
-                [styles.paginationItemWrapper]: true,
-                [styles.paginationItemWrapperDisabled]: this.isDisabled,
-              }}
-            >
-              {parseFloat(paginationItem) ? (
-                <div
-                  onClick={() => this.handlePageClick(Number(paginationItem))}
-                  data-testid={`${DataTestIdsEnum.paginationItem}-${paginationItem}`}
-                  class={{
-                    [styles.paginationItem]: true,
-                    [styles.paginationItemBefore]: true,
-                    [styles.paginationItemActive]: this.isCurrentPageActive(paginationItem),
-                    [styles.paginationItemHundreds]: this.isInTheHundreds(paginationItem),
-                  }}
-                >
-                  <span class={styles.paginationItemText}>{paginationItem}</span>
-                </div>
-              ) : (
-                <mvx-tooltip
-                  triggerOnClick
-                  trigger={
-                    <mvx-pagination-ellipsis
-                      isActive={this.isTooltipOpen && this.activeTooltipIndex === paginationItemIndex}
-                    />
-                  }
-                  onTriggerRender={(event: CustomEvent) => {
-                    this.activeTooltipIndex = paginationItemIndex;
-                    this.handleTooltipStatus(event.detail);
-                  }}
-                >
-                  {!this.isDisabled && (
-                    <mvx-pagination-ellipsis-form
-                      isVisible={this.isTooltipOpen}
-                      maxPageToSearchFor={this.totalPages}
-                      onSearch={(event: CustomEvent) => this.handlePageClick(event.detail)}
-                    />
-                  )}
-                </mvx-tooltip>
-              )}
-            </div>
-          ))}
-        </div>
-
-        <div
-          data-testid={DataTestIdsEnum.nextBtn}
-          onClick={this.handleEdgePageClick(this.currentPageIndex + 1)}
-          class={this.getPaginationEdgeButtonClasses(isRightToggleDisabled)}
-        >
-          <Icon name="angle-right" class={styles.paginationEdgeButtonIcon} />
-        </div>
-
-        <span
-          data-testid={DataTestIdsEnum.lastBtn}
-          onClick={this.handleEdgePageClick(this.totalPages)}
-          class={this.getPaginationAngleClasses(isRightToggleDisabled)}
-        >
-          <Icon name="angles-right" class={styles.paginationAngleIcon} />
-        </span>
+      <div
+        data-testid={DataTestIdsEnum.prevBtn}
+        onClick={handleEdgePageClick(currentPage - 1)}
+        class={getPaginationEdgeButtonClasses(isLeftToggleDisabled)}
+      >
+        <Icon name="angle-left" class={styles.paginationEdgeButtonIcon} />
       </div>
-    );
-  }
+
+      <div class={styles.paginationItems}>
+        {paginationItems.map((paginationItem, paginationItemIndex) => (
+          <div
+            class={{
+              [styles.paginationItemWrapper]: true,
+              [styles.paginationItemWrapperDisabled]: isDisabled,
+            }}
+          >
+            {parseFloat(paginationItem) ? (
+              <div
+                onClick={() => handlePageClick(Number(paginationItem))}
+                data-testid={`${DataTestIdsEnum.paginationItem}-${paginationItem}`}
+                class={{
+                  [styles.paginationItem]: true,
+                  [styles.paginationItemBefore]: true,
+                  [styles.paginationItemActive]: isCurrentPageActive(paginationItem),
+                  [styles.paginationItemHundreds]: isInTheHundreds(paginationItem),
+                }}
+              >
+                <span class={styles.paginationItemText}>{paginationItem}</span>
+              </div>
+            ) : (
+              <mvx-tooltip
+                triggerOnClick
+                trigger={
+                  <mvx-pagination-ellipsis
+                    isActive={isTooltipOpen && activeTooltipIndex === paginationItemIndex}
+                  />
+                }
+                onTriggerRender={(event: CustomEvent) => {
+                  handleTooltipStatus(paginationItemIndex, event.detail);
+                }}
+              >
+                {!isDisabled && (
+                  <mvx-pagination-ellipsis-form
+                    isVisible={isTooltipOpen}
+                    maxPageToSearchFor={totalPages}
+                    onSearch={(event: CustomEvent) => handlePageClick(event.detail)}
+                  />
+                )}
+              </mvx-tooltip>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div
+        data-testid={DataTestIdsEnum.nextBtn}
+        onClick={handleEdgePageClick(currentPage + 1)}
+        class={getPaginationEdgeButtonClasses(isRightToggleDisabled)}
+      >
+        <Icon name="angle-right" class={styles.paginationEdgeButtonIcon} />
+      </div>
+
+      <span
+        data-testid={DataTestIdsEnum.lastBtn}
+        onClick={handleEdgePageClick(totalPages)}
+        class={getPaginationAngleClasses(isRightToggleDisabled)}
+      >
+        <Icon name="angles-right" class={styles.paginationAngleIcon} />
+      </span>
+    </div>
+  );
 }
+

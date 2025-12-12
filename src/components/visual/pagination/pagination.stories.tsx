@@ -3,14 +3,14 @@ import './pagination.scss';
 import { h } from '@stencil/core';
 import type { Meta, StoryObj } from '@stencil/storybook-plugin';
 
-import type { Pagination } from './pagination';
+import type { PaginationPropsType } from './Pagination';
 
 // prettier-ignore
 const styles = {
   paginationStoriesWrapper: 'pagination-stories-wrapper mvx:justify-center mvx:flex mvx:gap-4 mvx:pt-24',
 } satisfies Record<string, string>;
 
-const storySettings: Meta<Pagination> = {
+const storySettings: Meta<PaginationPropsType> = {
   tags: ['autodocs'],
   title: 'Components/Pagination',
   args: {
@@ -34,27 +34,27 @@ const storySettings: Meta<Pagination> = {
   ],
 };
 
-export const Default: StoryObj<Pagination> = {
+export const Default: StoryObj<PaginationPropsType> = {
   render: properties => <mvx-pagination {...properties} />,
 };
 
-export const Disabled: StoryObj<Pagination> = {
+export const Disabled: StoryObj<PaginationPropsType> = {
   render: () => <mvx-pagination currentPage={5} totalPages={20} isDisabled={true} class="custom-pagination" />,
 };
 
-export const FirstPage: StoryObj<Pagination> = {
+export const FirstPage: StoryObj<PaginationPropsType> = {
   render: () => <mvx-pagination currentPage={1} totalPages={10} />,
 };
 
-export const LastPage: StoryObj<Pagination> = {
+export const LastPage: StoryObj<PaginationPropsType> = {
   render: () => <mvx-pagination currentPage={10} totalPages={10} />,
 };
 
-export const SinglePage: StoryObj<Pagination> = {
+export const SinglePage: StoryObj<PaginationPropsType> = {
   render: () => <mvx-pagination currentPage={1} totalPages={1} />,
 };
 
-export const ManyPages: StoryObj<Pagination> = {
+export const ManyPages: StoryObj<PaginationPropsType> = {
   render: () => <mvx-pagination currentPage={520} totalPages={1000} />,
 };
 
