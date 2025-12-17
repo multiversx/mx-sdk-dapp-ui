@@ -3,7 +3,8 @@ import { Component, Event, h, Prop, State } from '@stencil/core';
 import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IAddressTableData, IndexedAccountType } from 'types/address-table.types';
-import { Pagination } from '../Pagination/Pagination';
+
+import { Pagination } from '../pagination/pagination';
 
 const TOTAL_ADDRESSES_COUNT = 5000;
 const addressTableClasses: Record<string, string> = {

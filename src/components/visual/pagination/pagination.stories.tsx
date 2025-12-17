@@ -3,7 +3,7 @@ import './pagination.scss';
 import { h } from '@stencil/core';
 import type { Meta, StoryObj } from '@stencil/storybook-plugin';
 
-import type { PaginationPropsType } from './Pagination';
+import type { PaginationPropsType } from './pagination';
 
 // prettier-ignore
 const styles = {

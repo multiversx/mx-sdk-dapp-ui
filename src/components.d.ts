@@ -362,10 +362,6 @@ export interface MvxTransactionToastContentCustomEvent<T> extends CustomEvent<T>
     detail: T;
     target: HTMLMvxTransactionToastContentElement;
 }
-export interface MvxTransactionsTableCustomEvent<T> extends CustomEvent<T> {
-    detail: T;
-    target: HTMLMvxTransactionsTableElement;
-}
 export interface MvxWalletConnectScanCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMvxWalletConnectScanElement;
@@ -712,18 +708,7 @@ declare global {
         prototype: HTMLMvxTransactionToastProgressElement;
         new (): HTMLMvxTransactionToastProgressElement;
     };
-    interface HTMLMvxTransactionsTableElementEventMap {
-        "pageChange": number;
-    }
     interface HTMLMvxTransactionsTableElement extends Components.MvxTransactionsTable, HTMLStencilElement {
-        addEventListener<K extends keyof HTMLMvxTransactionsTableElementEventMap>(type: K, listener: (this: HTMLMvxTransactionsTableElement, ev: MvxTransactionsTableCustomEvent<HTMLMvxTransactionsTableElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
-        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLMvxTransactionsTableElementEventMap>(type: K, listener: (this: HTMLMvxTransactionsTableElement, ev: MvxTransactionsTableCustomEvent<HTMLMvxTransactionsTableElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
-        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
     }
     var HTMLMvxTransactionsTableElement: {
         prototype: HTMLMvxTransactionsTableElement;
@@ -1102,7 +1087,6 @@ declare namespace LocalJSX {
     }
     interface MvxTransactionsTable {
         "class"?: string;
-        "onPageChange"?: (event: MvxTransactionsTableCustomEvent<number>) => void;
         "transactions"?: TransactionRowType[];
     }
     interface MvxTrim {

@@ -1,12 +1,12 @@
 import { h } from '@stencil/core';
 import { Icon } from 'common/Icon';
+import { Tooltip } from 'common/Tooltip/Tooltip';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
+import { PaginationEllipsis } from './components/PaginationEllipsis/PaginationEllipsis';
+import { PaginationEllipsisForm } from './components/PaginationEllipsisForm/PaginationEllipsisForm';
 import { getPagination } from './helpers';
 import styles from './pagination.styles';
-import { PaginationEllipsisForm } from './components/PaginationEllipsisForm/PaginationEllipsisForm';
-import { Tooltip } from 'common/Tooltip/Tooltip';
-import { PaginationEllipsis } from './components/PaginationEllipsis/PaginationEllipsis';
 
 export interface PaginationPropsType {
   currentPage: number;
@@ -21,32 +21,43 @@ export interface PaginationPropsType {
   onPageValueChange?: (value: string) => void;
 }
 
-export function Pagination({ activeTooltipIndex = null, isTooltipOpen = false, onTooltipStatusChange, currentPage = 1, totalPages, isDisabled = false, class: className, onPageChange, pageValue = '', onPageValueChange }: PaginationPropsType) {
+export function Pagination({
+  activeTooltipIndex = null,
+  isTooltipOpen = false,
+  onTooltipStatusChange,
+  currentPage = 1,
+  totalPages,
+  isDisabled = false,
+  class: className,
+  onPageChange,
+  pageValue = '',
+  onPageValueChange,
+}: PaginationPropsType) {
   const handleTooltipStatus = (index: number | null, isOpen: boolean) => {
     onTooltipStatusChange?.(index, isOpen);
-  }
+  };
 
   const handlePageClick = (newPageIndex: number) => {
     if (newPageIndex === currentPage) {
       return;
     }
     onPageChange?.(newPageIndex);
-  }
+  };
 
   const handleEdgePageClick = (pageToNavigateTo: number) => {
     return (event: MouseEvent) => {
       event.preventDefault();
       handlePageClick(pageToNavigateTo);
     };
-  }
+  };
 
   const isCurrentPageActive = (paginationItem: string) => {
     return parseFloat(paginationItem) === currentPage;
-  }
+  };
 
   const isInTheHundreds = (paginationItem: string) => {
     return parseFloat(paginationItem) && parseFloat(paginationItem) >= 100;
-  }
+  };
 
   /**
    * Generates CSS classes for pagination edge buttons (previous/next)
@@ -60,7 +71,7 @@ export function Pagination({ activeTooltipIndex = null, isTooltipOpen = false, o
       [styles.paginationEdgeButtonDisabled]: isDisabled,
       [styles.paginationEdgeButtonInactive]: isInactive,
     };
-  }
+  };
 
   /**
    * Generates CSS classes for pagination angle buttons (first/last)
@@ -74,7 +85,7 @@ export function Pagination({ activeTooltipIndex = null, isTooltipOpen = false, o
       [styles.paginationAngleDisabled]: isDisabled,
       [styles.paginationAngleInactive]: isInactive,
     };
-  }
+  };
 
   const isLeftToggleDisabled = currentPage === 1;
   const isRightToggleDisabled = currentPage === totalPages;
@@ -123,11 +134,7 @@ export function Pagination({ activeTooltipIndex = null, isTooltipOpen = false, o
               <Tooltip
                 triggerOnClick
                 isTooltipVisible={isTooltipOpen && activeTooltipIndex === paginationItemIndex}
-                trigger={
-                  <PaginationEllipsis
-                    isActive={isTooltipOpen && activeTooltipIndex === paginationItemIndex}
-                  />
-                }
+                trigger={<PaginationEllipsis isActive={isTooltipOpen && activeTooltipIndex === paginationItemIndex} />}
                 onVisibilityChange={(isVisible: boolean) => {
                   handleTooltipStatus(paginationItemIndex, isVisible);
                 }}
@@ -137,8 +144,8 @@ export function Pagination({ activeTooltipIndex = null, isTooltipOpen = false, o
                     isVisible={isTooltipOpen}
                     maxPageToSearchFor={totalPages}
                     pageValue={pageValue}
-                    onPageValueChange={(value) => onPageValueChange?.(value)}
-                    onSearch={(page) => handlePageClick(page)}
+                    onPageValueChange={value => onPageValueChange?.(value)}
+                    onSearch={page => handlePageClick(page)}
                   />
                 )}
               </Tooltip>
@@ -165,4 +172,3 @@ export function Pagination({ activeTooltipIndex = null, isTooltipOpen = false, o
     </div>
   );
 }
-
