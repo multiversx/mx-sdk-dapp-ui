@@ -1,15 +1,15 @@
 import { Component, h, Method, State } from '@stencil/core';
 import { Icon } from 'common/Icon';
 import { SidePanel } from 'components/visual/SidePanel/SidePanel';
+import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
+import { TransactionListItem } from 'components/visual/TransactionListItem/TransactionListItem';
+import type { ITransactionListItem } from 'components/visual/TransactionListItem/transactionListItem.types';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import { ITransactionListItem } from 'components/visual/TransactionListItem/transactionListItem.types';
 import type { ITransactionToast } from '../toasts-list/components/transaction-toast/transaction-toast.type';
 import { NotificationsFeedEventsEnum } from './notifications-feed.types';
-import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
-import { TransactionListItem } from 'components/visual/TransactionListItem/TransactionListItem';
 
 @Component({
   tag: 'mvx-notifications-feed',

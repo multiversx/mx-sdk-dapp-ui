@@ -1,8 +1,8 @@
 import { newSpecPage } from '@stencil/core/testing';
+import type { ITransactionListItem } from 'components/visual/TransactionListItem/transactionListItem.types';
 
 import { NotificationsFeed } from '../notifications-feed';
 import { NotificationsFeedEventsEnum } from '../notifications-feed.types';
-import type { ITransactionListItem } from 'components/visual/TransactionListItem/transactionListItem.types';
 
 describe('notifications-feed', () => {
   const mockPendingTransactions = [

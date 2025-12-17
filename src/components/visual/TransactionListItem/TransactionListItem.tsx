@@ -1,15 +1,15 @@
 import { h } from '@stencil/core';
 import classNames from 'classnames';
 import { FormatAmount } from 'common/FormatAmount/FormatAmount';
+import { Icon } from 'common/Icon';
+import { Tooltip } from 'common/Tooltip/Tooltip';
 import { IconSizeEnumType, TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
 import { Trim } from 'common/Trim/Trim';
 import { getAmountParts } from 'components/functional/toasts-list/helpers';
 import { getIsTransactionFailed } from 'utils/getTransactionStatus';
-import styles from './transactionListItem.styles'
 
+import styles from './transactionListItem.styles'
 import type { ITransactionListItem } from './transactionListItem.types';
-import { Tooltip } from 'common/Tooltip/Tooltip';
-import { Icon } from 'common/Icon';
 
 interface TransactionListItemPropsType {
   transaction: ITransactionListItem;

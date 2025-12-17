@@ -1,11 +1,11 @@
 import { h } from '@stencil/core';
 import classNames from 'classnames';
+
 import { SidePanelHeader } from './components/SidePanelHeader/SidePanelHeader';
 import { SidePanelSwiper } from './components/SidePanelSwiper/SidePanelSwiper';
 import { handleSidePanelOpenChange } from './helpers/handleSidePanelOpenChange';
-import { state } from './sidePanelStore';
-
 import styles from './sidePanel.styles';
+import { state } from './sidePanelStore';
 
 interface SidePanelPropsType {
   isOpen?: boolean;
@@ -17,17 +17,12 @@ interface SidePanelPropsType {
   onBack?: () => void;
 }
 
-export function SidePanel({
-  isOpen = false,
-  panelClassName,
-  panelTitle,
-  hasBackButton,
-  showHeader = true,
-  onClose,
-  onBack
-}: SidePanelPropsType, children: JSX.Element) {
+export function SidePanel(
+  { isOpen = false, panelClassName, panelTitle, hasBackButton, showHeader = true, onClose, onBack }: SidePanelPropsType,
+  children: JSX.Element,
+) {
   if (isOpen !== undefined) {
-    handleSidePanelOpenChange(isOpen, (shouldAnimate) => {
+    handleSidePanelOpenChange(isOpen, shouldAnimate => {
       state.shouldAnimate = shouldAnimate;
     });
   }
@@ -56,10 +51,7 @@ export function SidePanel({
       onClick={handleOverlayClick}
       class={classNames([styles.sidePanelWrapper], { [styles.sidePanelWrapperVisible]: shouldAnimate })}
     >
-      <SidePanelSwiper
-        open={shouldAnimate}
-        onSheetDismiss={onClose}
-      >
+      <SidePanelSwiper open={shouldAnimate} onSheetDismiss={onClose}>
         <div
           id={sidePanelIdentifier}
           class={classNames([styles.sidePanel], { [styles.sidePanelVisible]: shouldAnimate }, panelClassName)}
@@ -74,14 +66,9 @@ export function SidePanel({
             />
           )}
 
-          <div
-            class={styles.sidePanelContent}
-          >
-            {children}
-          </div>
+          <div class={styles.sidePanelContent}>{children}</div>
         </div>
       </SidePanelSwiper>
     </div>
   );
 }
-

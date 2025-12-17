@@ -1,4 +1,5 @@
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
+import { SidePanelHeader } from 'components/visual/SidePanel/components/SidePanelHeader/SidePanelHeader';
 import { providerLabels } from 'constants/providerFactory.constants';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import { EventBus, type IEventBus } from 'utils/EventBus';
@@ -6,7 +7,6 @@ import { EventBus, type IEventBus } from 'utils/EventBus';
 import { getLedgerAddressByIndex } from './helpers/getLedgerAddressByIndex';
 import type { ILedgerConnectPanelData } from './ledger-connect.types';
 import { LedgerConnectEventsEnum } from './ledger-connect.types';
-import { SidePanelHeader } from 'components/visual/SidePanel/components/SidePanelHeader/SidePanelHeader';
 
 // prettier-ignore
 const styles = {

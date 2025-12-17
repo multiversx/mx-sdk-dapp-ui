@@ -1,8 +1,8 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { Trim } from 'common/Trim/Trim';
 
-import { ExplorerLink } from '../../explorer-link/explorer-link';
 import { CopyButton } from '../../copy-button/copy-button';
+import { ExplorerLink } from '../../explorer-link/explorer-link';
 import { Tooltip } from '../../tooltip/tooltip';
 import { DataWithExplorerLink } from '../data-with-explorer-link';
 

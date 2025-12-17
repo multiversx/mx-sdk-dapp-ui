@@ -1,4 +1,5 @@
 import { h } from '@stencil/core';
+
 import { state } from '../../sidePanelStore';
 import styles from './sidePanelSwiper.styles';
 
