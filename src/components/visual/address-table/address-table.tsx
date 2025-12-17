@@ -147,7 +147,10 @@ export class AddressTable {
             totalPages={totalPages}
             isDisabled={isPageChanging}
             class={addressClasses.pagination}
-            onPageChange={(page: number) => this.pageChange.emit(page)}
+            onPageChange={(page: number) => {
+              console.log('page', page);
+              this.pageChange.emit(page);
+            }}
             currentPage={Math.floor(this.accountScreenData.startIndex / this.accountScreenData.addressesPerPage) + 1}
             activeTooltipIndex={this.activeTooltipIndex}
             isTooltipOpen={this.isTooltipOpen}

@@ -14,6 +14,7 @@ interface TooltipPropsType {
   triggerOnClick?: boolean;
   trigger: HTMLElement;
   class?: string;
+  contentClass?: string;
   isTooltipVisible?: boolean;
   onVisibilityChange?: (isTooltipVisible: boolean) => void;
 }
@@ -24,6 +25,7 @@ export function Tooltip(
     triggerOnClick = false,
     trigger,
     class: className,
+    contentClass,
     onVisibilityChange,
     isTooltipVisible = false,
   }: TooltipPropsType,
@@ -82,6 +84,7 @@ export function Tooltip(
               [styles.tooltipContent]: true,
               [styles.tooltipContentTop]: position === 'top',
               [styles.tooltipContentBottom]: position === 'bottom',
+              [contentClass || '']: Boolean(contentClass),
             }}
             tabIndex={-1}
             onFocusout={handleFocusOut}

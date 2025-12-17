@@ -1,5 +1,5 @@
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
-import { SidePanelHeader } from 'components/visual/SidePanel/components/SidePanelHeader/SidePanelHeader';
+import { SidePanelHeader } from 'common/SidePanel/components/SidePanelHeader/SidePanelHeader';
 import { providerLabels } from 'constants/providerFactory.constants';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import { EventBus, type IEventBus } from 'utils/EventBus';

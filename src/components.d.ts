@@ -11,7 +11,7 @@ import { CustomToastType, IComponentToast, ISimpleToast } from "./components/fun
 import { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
 import { LocalJSX as JSX } from "@stencil/core";
-import { ITransactionListItem } from "./components/visual/TransactionListItem/transactionListItem.types";
+import { ITransactionListItem } from "./components/functional/notifications-feed/components/TransactionListItem/transactionListItem.types";
 import { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { TransactionStatusEnum } from "./constants/transactionStatus.enum";
 import { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
@@ -22,7 +22,7 @@ export { CustomToastType, IComponentToast, ISimpleToast } from "./components/fun
 export { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
 export { LocalJSX as JSX } from "@stencil/core";
-export { ITransactionListItem } from "./components/visual/TransactionListItem/transactionListItem.types";
+export { ITransactionListItem } from "./components/functional/notifications-feed/components/TransactionListItem/transactionListItem.types";
 export { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { TransactionStatusEnum } from "./constants/transactionStatus.enum";
 export { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";

@@ -7,7 +7,7 @@ import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import { EventBus } from 'utils/EventBus';
 
 import { WalletConnectEventsEnum } from './wallet-connect.types';
-import { SidePanelHeader } from 'components/visual/SidePanel/components/SidePanelHeader/SidePanelHeader';
+import { SidePanelHeader } from 'common/SidePanel/components/SidePanelHeader/SidePanelHeader';
 
 // prettier-ignore
 const styles = {
