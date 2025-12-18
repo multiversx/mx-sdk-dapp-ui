@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IAddressTableData, IndexedAccountType } from 'types/address-table.types';
 
-import { Pagination } from '../pagination/components/Pagination/Pagination';
+import { Pagination } from './components/pagination/Pagination';
 
 const TOTAL_ADDRESSES_COUNT = 5000;
 const addressTableClasses: Record<string, string> = {

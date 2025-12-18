@@ -11,6 +11,13 @@ const styles = {
 const storySettings = {
   tags: ['autodocs'],
   title: 'Components/Pagination',
+  parameters: {
+    docs: {
+      description: {
+        component: 'Make sure to exclude the component from the tsconfig.json file.',
+      },
+    },
+  },
   args: {
     'current-page': 1,
     'total-pages': 10,

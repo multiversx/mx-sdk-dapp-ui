@@ -1,7 +1,7 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State, Watch } from '@stencil/core';
 
-import { Pagination } from './components/Pagination/Pagination';
+import { Pagination } from './Pagination';
 
 @Component({
   tag: 'mvx-pagination',

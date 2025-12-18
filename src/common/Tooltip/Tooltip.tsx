@@ -64,6 +64,8 @@ export function Tooltip(
     };
   };
 
+  console.log('isTooltipVisible', isTooltipVisible);
+
   return (
     <div
       onClick={handleEllipsisClick}
@@ -94,7 +96,6 @@ export function Tooltip(
           </div>
         </div>
       )}
-
       <span>{trigger}</span>
     </div>
   );
