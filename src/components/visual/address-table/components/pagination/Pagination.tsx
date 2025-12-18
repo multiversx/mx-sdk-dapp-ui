@@ -110,6 +110,7 @@ export function Pagination({
       <div class={styles.paginationItems}>
         {paginationItems.map((paginationItem, paginationItemIndex) => (
           <div
+            key={paginationItemIndex}
             class={{
               [styles.paginationItemWrapper]: true,
               [styles.paginationItemWrapperDisabled]: isDisabled,

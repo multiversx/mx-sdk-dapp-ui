@@ -29,7 +29,7 @@ export class NotificationsFeed {
 
   @Method() async closeWithAnimation() {
     this.isOpen = false;
-    const animationDelay = await ANIMATION_DELAY_PROMISE;
+    const animationDelay = await ANIMATION_DELAY_PROMISE();
     return animationDelay;
   }
 

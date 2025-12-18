@@ -14,7 +14,8 @@ const storySettings = {
   parameters: {
     docs: {
       description: {
-        component: 'Make sure to exclude the component from the tsconfig.json file.',
+        component:
+          'Pagination is not exported as a webcomponent. Make sure to exclude the component from the tsconfig.json file.',
       },
     },
   },
@@ -25,10 +26,10 @@ const storySettings = {
     'class': '',
   },
   argTypes: {
-    currentPage: { control: { type: 'number', min: 1, max: 10 } },
-    totalPages: { control: { type: 'number', min: 1 } },
-    isDisabled: { control: 'boolean' },
-    class: { control: 'text' },
+    'current-page': { control: { type: 'number', min: 1, max: 10 } },
+    'total-pages': { control: { type: 'number', min: 1 } },
+    'is-disabled': { control: 'boolean' },
+    'class': { control: 'text' },
   },
   decorators: [
     Story => (

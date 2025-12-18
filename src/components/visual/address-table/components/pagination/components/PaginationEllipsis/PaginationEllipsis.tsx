@@ -8,9 +8,11 @@ const styles = {
 } satisfies Record<string, string>;
 
 interface PaginationEllipsisPropsType {
-  isActive: boolean;
+  isActive?: boolean;
 }
 
 export function PaginationEllipsis({ isActive = false }: PaginationEllipsisPropsType) {
-  return <div class={{ [styles.paginationEllipsis]: true, [styles.paginationEllipsisActive]: isActive }}>{ELLIPSIS}</div>;
+  return (
+    <div class={{ [styles.paginationEllipsis]: true, [styles.paginationEllipsisActive]: isActive }}>{ELLIPSIS}</div>
+  );
 }

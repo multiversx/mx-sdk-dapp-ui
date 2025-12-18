@@ -36,7 +36,6 @@ export function PaginationEllipsisForm({
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.code === 'Enter') {
       event.preventDefault();
-      console.log('event', event);
       handleSubmit(event);
     }
 
