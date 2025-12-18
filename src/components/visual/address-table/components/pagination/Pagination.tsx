@@ -93,13 +93,6 @@ export function Pagination({
 
   return (
     <div class={{ [styles.pagination]: true, [className]: Boolean(className) }}>
-      <button
-        onClick={() => {
-          console.log('button clicked');
-        }}
-      >
-        asd
-      </button>
       <span
         onClick={handleEdgePageClick(1)}
         data-testid={DataTestIdsEnum.firstBtn}
@@ -141,7 +134,6 @@ export function Pagination({
                 isTooltipVisible={isTooltipOpen && activeTooltipIndex === paginationItemIndex}
                 trigger={<PaginationEllipsis isActive={isTooltipOpen && activeTooltipIndex === paginationItemIndex} />}
                 onVisibilityChange={(isVisible: boolean) => {
-                  console.log('isVisible', isVisible);
                   handleTooltipStatus(paginationItemIndex, isVisible);
                 }}
               >

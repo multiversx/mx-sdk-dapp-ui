@@ -43,6 +43,11 @@ export class AddressTable {
     return Number(accountDerivation.index + 1).toLocaleString();
   }
 
+  private handlePaginationTooltipStatusChange = (index: number | null, isOpen: boolean) => {
+    this.activeTooltipIndex = index;
+    this.isTooltipOpen = isOpen;
+  };
+
   render() {
     const isPageChanging = this.accountScreenData.isLoading;
     const isAddressesLoadingInitially = this.accountScreenData.accounts.length === 0;
@@ -147,17 +152,11 @@ export class AddressTable {
             totalPages={totalPages}
             isDisabled={isPageChanging}
             class={addressClasses.pagination}
-            onPageChange={(page: number) => {
-              console.log('page', page);
-              this.pageChange.emit(page);
-            }}
+            onPageChange={(page: number) => this.pageChange.emit(page)}
             currentPage={Math.floor(this.accountScreenData.startIndex / this.accountScreenData.addressesPerPage) + 1}
             activeTooltipIndex={this.activeTooltipIndex}
             isTooltipOpen={this.isTooltipOpen}
-            onTooltipStatusChange={(index, isOpen) => {
-              this.activeTooltipIndex = index;
-              this.isTooltipOpen = isOpen;
-            }}
+            onTooltipStatusChange={this.handlePaginationTooltipStatusChange}
           />
         </div>
 
