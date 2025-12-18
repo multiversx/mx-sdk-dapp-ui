@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [Remove pagination webcomponent](https://github.com/multiversx/mx-sdk-dapp-ui/pull/282)
 
+
 ## [[0.1.7](https://github.com/multiversx/mx-sdk-dapp-ui/pull/281)] - 2025-12-11
 
 - [Fixed compatibility issue on stencil/core](https://github.com/multiversx/mx-sdk-dapp-ui/pull/279)
