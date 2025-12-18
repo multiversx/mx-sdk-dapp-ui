@@ -1,7 +1,7 @@
 import { Component, h, Method, State } from '@stencil/core';
 import { getCopyClickAction } from 'common/CopyButton/getCopyClickAction';
-import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
-import { SidePanel } from 'components/visual/SidePanel/SidePanel';
+import { SidePanel } from 'common/SidePanel/SidePanel';
+import { ANIMATION_DELAY_PROMISE } from 'common/SidePanel/sidePanel.constants';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
@@ -28,7 +28,7 @@ export class SignTransactionsPanel {
 
   @Method() async closeWithAnimation() {
     this.isOpen = false;
-    const animationDelay = await ANIMATION_DELAY_PROMISE;
+    const animationDelay = await ANIMATION_DELAY_PROMISE();
     return animationDelay;
   }
 
@@ -149,12 +149,7 @@ export class SignTransactionsPanel {
     const { currentIndex, transactionsCount, origin } = commonData;
 
     return (
-      <SidePanel
-        isOpen={this.isOpen}
-        onClose={this.handleClose}
-        panelTitle="Confirm Transaction"
-        hasBackButton={false}
-      >
+      <SidePanel isOpen={this.isOpen} onClose={this.handleClose} panelTitle="Confirm Transaction" hasBackButton={false}>
         <div class={styles.signTransactionsPanel} data-testid={DataTestIdsEnum.signTransactionsPanel}>
           <SignTransactionsHeader
             onBack={onBack}

@@ -1,8 +1,10 @@
 import type { EventEmitter } from '@stencil/core';
-import { Component, Event, h, Prop } from '@stencil/core';
+import { Component, Event, h, Prop, State } from '@stencil/core';
 import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IAddressTableData, IndexedAccountType } from 'types/address-table.types';
+
+import { Pagination } from './components/pagination/Pagination';
 
 const TOTAL_ADDRESSES_COUNT = 5000;
 const addressTableClasses: Record<string, string> = {
@@ -22,6 +24,9 @@ export class AddressTable {
   @Event({ bubbles: false, composed: false }) selectAccount: EventEmitter;
   @Event() pageChange: EventEmitter<number>;
 
+  @State() activeTooltipIndex: number | null = null;
+  @State() isTooltipOpen: boolean = false;
+
   handleAccessWallet(event: MouseEvent) {
     event.preventDefault();
     this.accessWallet.emit();
@@ -34,15 +39,14 @@ export class AddressTable {
     };
   }
 
-  private handlePageChange(event: CustomEvent) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.pageChange.emit(event.detail);
-  }
-
   private processLedgerAddressIndex(accountDerivation: IndexedAccountType) {
     return Number(accountDerivation.index + 1).toLocaleString();
   }
+
+  private handlePaginationTooltipStatusChange = (index: number | null, isOpen: boolean) => {
+    this.activeTooltipIndex = index;
+    this.isTooltipOpen = isOpen;
+  };
 
   render() {
     const isPageChanging = this.accountScreenData.isLoading;
@@ -144,12 +148,15 @@ export class AddressTable {
         </div>
 
         <div class="address-table-pagination">
-          <mvx-pagination
+          <Pagination
             totalPages={totalPages}
             isDisabled={isPageChanging}
             class={addressClasses.pagination}
-            onPageChange={(event: CustomEvent) => this.handlePageChange(event)}
+            onPageChange={(page: number) => this.pageChange.emit(page)}
             currentPage={Math.floor(this.accountScreenData.startIndex / this.accountScreenData.addressesPerPage) + 1}
+            activeTooltipIndex={this.activeTooltipIndex}
+            isTooltipOpen={this.isTooltipOpen}
+            onTooltipStatusChange={this.handlePaginationTooltipStatusChange}
           />
         </div>
 

@@ -1,4 +1,5 @@
 import { h } from '@stencil/core';
+
 import { state } from '../../sidePanelStore';
 import styles from './sidePanelSwiper.styles';
 
@@ -14,7 +15,7 @@ let previousOpen: boolean | null = null;
 const snapPointsArray: string[] = ['100%'];
 const SNAP_PERCENT_DEFAULT = '50';
 const OPEN_TIMEOUT_VALUE = 50;
-const CLOSE_TTMEOUT_VALUE = 300;
+const CLOSE_TIMEOUT_VALUE = 300;
 const TRANSLATE_Y_VALUE = 100;
 let sheetElement: HTMLElement | null = null;
 
@@ -27,10 +28,13 @@ let dragState = {
 
 let isDragging = false;
 
-export function SidePanelSwiper({ open = false, onSheetDismiss, onSheetSnapChange }: SidePanelSwiperPropsType, children: JSX.Element) {
+export function SidePanelSwiper(
+  { open = false, onSheetDismiss, onSheetSnapChange }: SidePanelSwiperPropsType,
+  children: JSX.Element,
+) {
   const handleSheetDismiss = () => {
     onSheetDismiss?.();
-  }
+  };
 
   const animateToPosition = (snapIndex: number, emitEvent: boolean = true) => {
     if (!sheetElement || dragState.isAnimating) {
@@ -55,7 +59,7 @@ export function SidePanelSwiper({ open = false, onSheetDismiss, onSheetSnapChang
         sheetElement.style.transition = '';
       }
     }, 350);
-  }
+  };
 
   const openToSnapPoint = (snapIndex: number = 1) => {
     if (dragState.isAnimating) {
@@ -70,7 +74,7 @@ export function SidePanelSwiper({ open = false, onSheetDismiss, onSheetSnapChang
         animateToPosition(state.currentSnapIndex, false);
       }
     }, OPEN_TIMEOUT_VALUE);
-  }
+  };
 
   const animateToClose = () => {
     if (!sheetElement || dragState.isAnimating) {
@@ -88,8 +92,8 @@ export function SidePanelSwiper({ open = false, onSheetDismiss, onSheetSnapChang
       if (sheetElement) {
         sheetElement.style.transition = '';
       }
-    }, CLOSE_TTMEOUT_VALUE);
-  }
+    }, CLOSE_TIMEOUT_VALUE);
+  };
 
   const closeSwiper = () => {
     if (dragState.isAnimating || !state.isVisible) {
@@ -97,7 +101,7 @@ export function SidePanelSwiper({ open = false, onSheetDismiss, onSheetSnapChang
     }
 
     animateToClose();
-  }
+  };
 
   if (previousOpen !== null && previousOpen !== open) {
     if (open && !state.isVisible) {
@@ -124,8 +128,7 @@ export function SidePanelSwiper({ open = false, onSheetDismiss, onSheetSnapChang
         openToSnapPoint(state.currentSnapIndex);
       }
     }
-  }
-
+  };
 
   const handleDragStart = (e: MouseEvent | TouchEvent) => {
     if (dragState.isAnimating) {
@@ -227,15 +230,17 @@ export function SidePanelSwiper({ open = false, onSheetDismiss, onSheetSnapChang
       }
     }
     return TRANSLATE_Y_VALUE;
-  }
+  };
   return (
     <div class={styles.sidePanelSwiperContainer}>
-      <div class={{ [styles.sidePanelSwiperWrapper]: true, [styles.sidePanelSwiperWrapperVisible]: state.isVisible, [styles.sidePanelSwiperWrapperHidden]: !state.isVisible }}>
-        <div
-          class={styles.sidePanelSwiper}
-          ref={setSheetRef}
-          onClick={(event: MouseEvent) => event.stopPropagation()}
-        >
+      <div
+        class={{
+          [styles.sidePanelSwiperWrapper]: true,
+          [styles.sidePanelSwiperWrapperVisible]: state.isVisible,
+          [styles.sidePanelSwiperWrapperHidden]: !state.isVisible,
+        }}
+      >
+        <div class={styles.sidePanelSwiper} ref={setSheetRef} onClick={(event: MouseEvent) => event.stopPropagation()}>
           <div class={styles.sidePanelSwiperHandleWrapper}>
             <div
               class={styles.sidePanelSwiperHandleContainer}
@@ -246,12 +251,9 @@ export function SidePanelSwiper({ open = false, onSheetDismiss, onSheetSnapChang
             </div>
           </div>
 
-          <div class={styles.sidePanelSwiperContent}>
-            {children}
-          </div>
+          <div class={styles.sidePanelSwiperContent}>{children}</div>
         </div>
       </div>
     </div>
   );
 }
-

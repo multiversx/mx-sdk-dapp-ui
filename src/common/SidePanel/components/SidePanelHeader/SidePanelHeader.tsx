@@ -23,16 +23,25 @@ interface SidePanelHeaderPropsType {
   rightIcon?: any;
 }
 
-export function SidePanelHeader({ panelClassName, panelTitle, hasLeftButton = true, hasRightButton = true, onRightButtonClick, onLeftButtonClick, leftIcon, rightIcon }: SidePanelHeaderPropsType) {
+export function SidePanelHeader({
+  panelClassName,
+  panelTitle,
+  hasLeftButton = true,
+  hasRightButton = true,
+  onRightButtonClick,
+  onLeftButtonClick,
+  leftIcon,
+  rightIcon,
+}: SidePanelHeaderPropsType) {
   const handleRightIconClick = (event: MouseEvent) => {
     event.preventDefault();
     onRightButtonClick?.(event);
-  }
+  };
 
   const handleLeftIconClick = (event: MouseEvent) => {
     event.preventDefault();
     onLeftButtonClick?.(event);
-  }
+  };
 
   return (
     <div class={classNames(styles.sidePanelHeading, panelClassName)}>
@@ -40,9 +49,7 @@ export function SidePanelHeader({ panelClassName, panelTitle, hasLeftButton = tr
         class={{ [styles.sidePanelHeadingLeft]: true, [styles.sidePanelHeadingLeftVisible]: hasLeftButton }}
         onClick={handleLeftIconClick}
       >
-        {hasLeftButton && (
-          leftIcon || <Icon name="back-arrow" />
-        )}
+        {hasLeftButton && (leftIcon || <Icon name="back-arrow" />)}
       </div>
 
       <div class={styles.sidePanelHeadingTitle}>{panelTitle}</div>
@@ -51,9 +58,8 @@ export function SidePanelHeader({ panelClassName, panelTitle, hasLeftButton = tr
         class={{ [styles.sidePanelHeadingRight]: true, [styles.sidePanelHeadingRightVisible]: hasRightButton }}
         onClick={handleRightIconClick}
       >
-        {rightIcon || <Icon name="close" />}
+        {hasRightButton && (rightIcon || <Icon name="close" />)}
       </div>
-    </div >
+    </div>
   );
 }
-

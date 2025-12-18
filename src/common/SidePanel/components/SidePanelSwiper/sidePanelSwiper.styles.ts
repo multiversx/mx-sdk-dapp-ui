@@ -1,7 +1,7 @@
 // prettier-ignore
 export default {
-    sidePanelSwiperContainer: 'side-panel-swipper-container mvx:flex mvx:xs:flex-col mvx:xs:h-full',
-    sidePanelSwiperWrapper: 'side-panel-swipper-wrapper mvx:fixed mvx:left-0 mvx:top-0 mvx:bottom-0 mvx:right-0 mvx:z-50 mvx:xs:static mvx:xs:h-full mvx:before:opacity-90 mvx:before:left-0 mvx:before:top-0 mvx:before:right-0 mvx:before:bottom-0 mvx:before:transition-all mvx:before:duration-200 mvx:before:pointer-events-none mvx:before:absolute mvx:before:ease-in-out mvx:before:bg-neutral-900 mvx:before:content-[""] mvx:before:supports-[backdrop-filter]:opacity-50 mvx:before:supports-[backdrop-filter]:backdrop-blur-sm mvx:before:supports-[backdrop-filter]:bg-neutral-900 mvx:xs:before:content-none',
+    sidePanelSwiperContainer: 'side-panel-swiper-container mvx:flex mvx:xs:flex-col mvx:xs:h-full',
+    sidePanelSwiperWrapper: 'side-panel-swiper-wrapper mvx:fixed mvx:left-0 mvx:top-0 mvx:bottom-0 mvx:right-0 mvx:z-50 mvx:xs:static mvx:xs:h-full mvx:before:opacity-90 mvx:before:left-0 mvx:before:top-0 mvx:before:right-0 mvx:before:bottom-0 mvx:before:transition-all mvx:before:duration-200 mvx:before:pointer-events-none mvx:before:absolute mvx:before:ease-in-out mvx:before:bg-neutral-900 mvx:before:content-[""] mvx:before:supports-[backdrop-filter]:opacity-50 mvx:before:supports-[backdrop-filter]:backdrop-blur-sm mvx:before:supports-[backdrop-filter]:bg-neutral-900 mvx:xs:before:content-none',
     sidePanelSwiperWrapperVisible: 'side-panel-swiper-visible mvx:!flex',
     sidePanelSwiperWrapperHidden: 'side-panel-swiper-wrapper-hidden mvx:hidden mvx:xs:block',
     sidePanelSwiperHidden: 'side-panel-swiper-hidden mvx:translate-y-full',

@@ -1,15 +1,15 @@
 import { Component, h, Method, State } from '@stencil/core';
 import { Icon } from 'common/Icon';
-import { SidePanel } from 'components/visual/SidePanel/SidePanel';
+import { SidePanel } from 'common/SidePanel/SidePanel';
+import { ANIMATION_DELAY_PROMISE } from 'common/SidePanel/sidePanel.constants';
+import { TransactionListItem } from 'components/functional/notifications-feed/components/TransactionListItem/TransactionListItem';
+import type { ITransactionListItem } from 'components/functional/notifications-feed/components/TransactionListItem/transactionListItem.types';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
-import { ITransactionListItem } from 'components/visual/TransactionListItem/transactionListItem.types';
 import type { ITransactionToast } from '../toasts-list/components/transaction-toast/transaction-toast.type';
 import { NotificationsFeedEventsEnum } from './notifications-feed.types';
-import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
-import { TransactionListItem } from 'components/visual/TransactionListItem/TransactionListItem';
 
 @Component({
   tag: 'mvx-notifications-feed',
@@ -29,7 +29,7 @@ export class NotificationsFeed {
 
   @Method() async closeWithAnimation() {
     this.isOpen = false;
-    const animationDelay = await ANIMATION_DELAY_PROMISE;
+    const animationDelay = await ANIMATION_DELAY_PROMISE();
     return animationDelay;
   }
 
@@ -94,12 +94,7 @@ export class NotificationsFeed {
     const hasPending = this.pendingTransactions?.length > 0;
 
     return (
-      <SidePanel
-        isOpen={this.isOpen}
-        panelTitle="Notifications Feed"
-        onClose={this.handleClose}
-        hasBackButton={false}
-      >
+      <SidePanel isOpen={this.isOpen} panelTitle="Notifications Feed" onClose={this.handleClose} hasBackButton={false}>
         <div class="feed-content">
           <div class="notifications-info">
             This feed is stored in your browser and will be reset when a new session is started.
@@ -109,9 +104,7 @@ export class NotificationsFeed {
           {hasPending && (
             <div class="notifications-container">
               <div class="processing-status">Processing...</div>
-              {this.pendingTransactions?.map(toast => (
-                <mvx-transaction-toast fullWidth={true} {...toast} />
-              ))}
+              {this.pendingTransactions?.map(toast => <mvx-transaction-toast fullWidth={true} {...toast} />)}
             </div>
           )}
 

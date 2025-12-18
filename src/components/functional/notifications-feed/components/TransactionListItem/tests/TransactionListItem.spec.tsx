@@ -8,7 +8,7 @@ import type { ITransactionListItem } from '../transactionListItem.types';
 describe('transaction-list-item', () => {
   const createPage = async (transaction: ITransactionListItem) => {
     const page = await newSpecPage({
-      components: [],
+      components: [TransactionListItem],
       template: () => <TransactionListItem transaction={transaction} />,
     });
 
@@ -38,7 +38,7 @@ describe('transaction-list-item', () => {
   describe('empty state', () => {
     it('renders empty when no transaction is provided', async () => {
       const page = await newSpecPage({
-        components: [],
+        components: [TransactionListItem],
         template: () => <TransactionListItem transaction={null} />,
       });
       expect(page.root).toBeFalsy();

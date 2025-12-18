@@ -1,7 +1,7 @@
 import { h } from '@stencil/core';
 import classNames from 'classnames';
 import { Icon } from 'common/Icon';
-import type { ITransactionListItem } from 'components/visual/TransactionListItem/transactionListItem.types';
+import type { ITransactionListItem } from 'components/functional/notifications-feed/components/TransactionListItem/transactionListItem.types';
 
 export enum IconSizeEnumType {
   small = 'small',
@@ -16,7 +16,13 @@ interface ITransactionAssetIconProps {
   textClass?: string;
 }
 
-export function TransactionAssetIcon({ transaction, iconSize, iconClass, imgClass, textClass }: ITransactionAssetIconProps) {
+export function TransactionAssetIcon({
+  transaction,
+  iconSize,
+  iconClass,
+  imgClass,
+  textClass,
+}: ITransactionAssetIconProps) {
   if (transaction?.asset === null) {
     return iconSize === IconSizeEnumType.small ? (
       <mvx-default-transaction-icon-small />
@@ -31,7 +37,7 @@ export function TransactionAssetIcon({ transaction, iconSize, iconClass, imgClas
         src={transaction.asset.imageUrl}
         alt="Transaction icon"
         loading="lazy"
-        class={classNames("mvx:max-w-full mvx:max-h-full", imgClass)}
+        class={classNames('mvx:max-w-full mvx:max-h-full', imgClass)}
       />
     );
   }
