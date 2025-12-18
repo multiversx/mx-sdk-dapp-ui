@@ -100,7 +100,6 @@ export function Pagination({
       >
         <Icon name="angles-left" class={styles.paginationAngleIcon} />
       </span>
-
       <div
         data-testid={DataTestIdsEnum.prevBtn}
         onClick={handleEdgePageClick(currentPage - 1)}
@@ -108,7 +107,6 @@ export function Pagination({
       >
         <Icon name="angle-left" class={styles.paginationEdgeButtonIcon} />
       </div>
-
       <div class={styles.paginationItems}>
         {paginationItems.map((paginationItem, paginationItemIndex) => (
           <div
@@ -153,7 +151,6 @@ export function Pagination({
           </div>
         ))}
       </div>
-
       <div
         data-testid={DataTestIdsEnum.nextBtn}
         onClick={handleEdgePageClick(currentPage + 1)}
@@ -161,7 +158,6 @@ export function Pagination({
       >
         <Icon name="angle-right" class={styles.paginationEdgeButtonIcon} />
       </div>
-
       <span
         data-testid={DataTestIdsEnum.lastBtn}
         onClick={handleEdgePageClick(totalPages)}

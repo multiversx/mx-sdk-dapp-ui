@@ -20,7 +20,13 @@ interface PaginationEllipsisFormPropsType {
   onPageValueChange: (value: string) => void;
 }
 
-export function PaginationEllipsisForm({ maxPageToSearchFor, isVisible = false, pageValue = '', onSearch, onPageValueChange, }: PaginationEllipsisFormPropsType) {
+export function PaginationEllipsisForm({
+  maxPageToSearchFor,
+  isVisible = false,
+  pageValue = '',
+  onSearch,
+  onPageValueChange,
+}: PaginationEllipsisFormPropsType) {
   const handleInputRef = (el: HTMLInputElement | null) => {
     if (el && isVisible) {
       el.focus();
@@ -30,6 +36,7 @@ export function PaginationEllipsisForm({ maxPageToSearchFor, isVisible = false, 
   const handleKeyDown = (event: KeyboardEvent) => {
     if (event.code === 'Enter') {
       event.preventDefault();
+      console.log('event', event);
       handleSubmit(event);
     }
 
@@ -37,7 +44,7 @@ export function PaginationEllipsisForm({ maxPageToSearchFor, isVisible = false, 
       event.preventDefault();
       return;
     }
-  }
+  };
 
   const handleInput = (event: Event) => {
     const input = event.target as HTMLInputElement;
@@ -48,7 +55,7 @@ export function PaginationEllipsisForm({ maxPageToSearchFor, isVisible = false, 
     } else {
       input.value = pageValue;
     }
-  }
+  };
 
   const handleSubmit = (event: Event) => {
     if (!pageValue) {
@@ -57,7 +64,7 @@ export function PaginationEllipsisForm({ maxPageToSearchFor, isVisible = false, 
 
     event.preventDefault();
     onSearch(parseInt(pageValue === '0' ? '1' : pageValue));
-  }
+  };
 
   return (
     <div class={styles.paginationEllipsisForm} onClick={(event: MouseEvent) => event.stopPropagation()}>
@@ -89,4 +96,3 @@ export function PaginationEllipsisForm({ maxPageToSearchFor, isVisible = false, 
     </div>
   );
 }
-
