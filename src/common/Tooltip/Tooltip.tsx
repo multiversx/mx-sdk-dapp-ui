@@ -64,8 +64,6 @@ export function Tooltip(
     };
   };
 
-  console.log('isTooltipVisible', isTooltipVisible);
-
   return (
     <div
       onClick={handleEllipsisClick}
