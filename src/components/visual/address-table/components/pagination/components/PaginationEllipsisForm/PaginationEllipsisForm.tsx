@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 // prettier-ignore
 const styles = {
-  paginationEllipsisForm: 'pagination-ellipsis-form mvx:cursor-default mvx:flex mvx:flex-col mvx:text-left',
+  paginationEllipsisForm: 'pagination-ellipsis-form mvx:cursor-default mvx:flex mvx:flex-col mvx:text-left mvx:!bg-surface mvx:w-full mvx:min-w-full',
   paginationEllipsisFormFieldLabel: 'pagination-ellipsis-form-field-label mvx:cursor-pointer mvx:mb-2 mvx:text-xs mvx:text-secondary-text',
   paginationEllipsisFormField: 'pagination-ellipsis-form-field mvx:relative mvx:gap-2 mvx:flex',
   paginationEllipsisFormFieldInput: 'pagination-ellipsis-form-field-input mvx:w-22 mvx:h-11 mvx:p-3 mvx:text-center mvx:transition-all mvx:duration-200 mvx:ease-in-out mvx:pr-10 mvx:m-0 mvx:border mvx:shadow-none mvx:text-base mvx:rounded-lg mvx:border-transparent mvx:appearance-none mvx:outline-none mvx:bg-surface mvx:text-primary mvx:focus:border-accent mvx:no-spinner',
