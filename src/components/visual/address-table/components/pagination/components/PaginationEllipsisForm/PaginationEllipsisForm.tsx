@@ -17,7 +17,6 @@ interface PaginationEllipsisFormPropsType {
   isVisible?: boolean;
   pageValue: string;
   onSearch: (page: number) => void;
-  onPageValueChange: (value: string) => void;
 }
 
 export function PaginationEllipsisForm({
@@ -25,8 +24,9 @@ export function PaginationEllipsisForm({
   isVisible = false,
   pageValue = '',
   onSearch,
-  onPageValueChange,
 }: PaginationEllipsisFormPropsType) {
+  let localPageValue = pageValue;
+
   const handleInputRef = (el: HTMLInputElement | null) => {
     if (el && isVisible) {
       el.focus();
@@ -49,20 +49,24 @@ export function PaginationEllipsisForm({
     const input = event.target as HTMLInputElement;
     const isBelowMax = parseFloat(input.value) <= maxPageToSearchFor;
 
+    if (isNaN(parseInt(input.value))) {
+      return;
+    }
+
     if (isBelowMax) {
-      onPageValueChange(input.value);
+      localPageValue = input.value;
     } else {
-      input.value = pageValue;
+      input.value = localPageValue;
     }
   };
 
   const handleSubmit = (event: Event) => {
-    if (!pageValue) {
+    if (localPageValue == null) {
       return;
     }
 
     event.preventDefault();
-    onSearch(parseInt(pageValue === '0' ? '1' : pageValue));
+    onSearch(parseInt(localPageValue == '0' ? '1' : localPageValue));
   };
 
   return (

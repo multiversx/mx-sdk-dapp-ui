@@ -18,7 +18,6 @@ export interface PaginationPropsType {
   isTooltipOpen?: boolean;
   onTooltipStatusChange?: (index: number | null, isOpen: boolean) => void;
   pageValue?: string;
-  onPageValueChange?: (value: string) => void;
 }
 
 export function Pagination({
@@ -31,7 +30,6 @@ export function Pagination({
   class: className,
   onPageChange,
   pageValue = '',
-  onPageValueChange,
 }: PaginationPropsType) {
   const handleTooltipStatus = (index: number | null, isOpen: boolean) => {
     onTooltipStatusChange?.(index, isOpen);
@@ -143,7 +141,6 @@ export function Pagination({
                     isVisible={isTooltipOpen}
                     maxPageToSearchFor={totalPages}
                     pageValue={pageValue}
-                    onPageValueChange={value => onPageValueChange?.(value)}
                     onSearch={page => handlePageClick(page)}
                   />
                 )}
