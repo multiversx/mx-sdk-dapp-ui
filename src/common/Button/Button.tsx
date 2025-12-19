@@ -35,10 +35,11 @@ export function Button(
         [styles.buttonLarge]: size === ButtonSizeEnum.large,
         [styles.buttonSmall]: size === ButtonSizeEnum.small,
         [variant]: Boolean(variant),
-        [styles.buttonPrimary]: variant === ButtonVariantEnum.primary,
-        [styles.buttonSecondary]: variant === ButtonVariantEnum.secondary,
-        [styles.buttonSecondarySmall]: variant === ButtonVariantEnum.secondary && size === ButtonSizeEnum.small,
-        [styles.buttonNeutral]: variant === ButtonVariantEnum.neutral,
+        [styles.buttonPrimary]: variant === ButtonVariantEnum.primary && !disabled,
+        [styles.buttonSecondary]: variant === ButtonVariantEnum.secondary && !disabled,
+        [styles.buttonSecondarySmall]:
+          variant === ButtonVariantEnum.secondary && size === ButtonSizeEnum.small && !disabled,
+        [styles.buttonNeutral]: variant === ButtonVariantEnum.neutral && !disabled,
         [className]: Boolean(className),
       }}
     >
