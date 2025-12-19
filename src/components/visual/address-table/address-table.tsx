@@ -5,6 +5,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IAddressTableData, IndexedAccountType } from 'types/address-table.types';
 
 import { Pagination } from './components/pagination/Pagination';
+import { Preloader } from './components/preloader';
 
 const TOTAL_ADDRESSES_COUNT = 5000;
 const addressTableClasses: Record<string, string> = {
@@ -91,23 +92,23 @@ export class AddressTable {
         <div class="address-table-wrapper">
           <div class={{ 'address-table-preloader': true, 'visible': isPageChanging }}>
             {Array.from({ length: this.accountScreenData.addressesPerPage }, () => (
-              <mvx-preloader class={classNames('address-table-preloader-item', addressClasses.preloaderItem)}>
-                <mvx-preloader
+              <Preloader class={classNames('address-table-preloader-item', addressClasses.preloaderItem)}>
+                <Preloader
                   class={classNames('address-table-preloader-item-checkbox', addressClasses.preloaderItemCheckbox)}
                 />
 
-                <mvx-preloader
+                <Preloader
                   class={classNames('address-table-preloader-item-index', addressClasses.preloaderItemIndex)}
                 />
 
-                <mvx-preloader
+                <Preloader
                   class={classNames('address-table-preloader-item-address', addressClasses.preloaderItemAddress)}
                 />
 
-                <mvx-preloader
+                <Preloader
                   class={classNames('address-table-preloader-item-balance', addressClasses.preloaderItemBalance)}
                 />
-              </mvx-preloader>
+              </Preloader>
             ))}
           </div>
 
