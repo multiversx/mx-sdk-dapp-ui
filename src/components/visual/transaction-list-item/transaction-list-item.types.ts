@@ -1,3 +1,3 @@
 export * from '../TransactionListItem/transactionListItem.types';
 
-// here just to avoid breaking changes with sdk-dapp 5.5.1
+// This file is a temporary workaround to maintain backward compatibility with sdk-dapp v5.5.1.
