@@ -7,8 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- [Remove pagination webcomponent](https://github.com/multiversx/mx-sdk-dapp-ui/pull/282)
 
+## [[0.1.8](https://github.com/multiversx/mx-sdk-dapp-ui/pull/284)] - 2026-01-13
+
+- [Added provider selection handling to unlock panel](https://github.com/multiversx/mx-sdk-dapp-ui/pull/283)
+- [Remove pagination webcomponent](https://github.com/multiversx/mx-sdk-dapp-ui/pull/282)
 
 ## [[0.1.7](https://github.com/multiversx/mx-sdk-dapp-ui/pull/281)] - 2025-12-11
 
