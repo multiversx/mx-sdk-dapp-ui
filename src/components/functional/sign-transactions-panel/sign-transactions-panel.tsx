@@ -1,7 +1,7 @@
 import { Component, h, Method, State } from '@stencil/core';
 import { getCopyClickAction } from 'common/CopyButton/getCopyClickAction';
+import { getAnimationDelay } from 'common/SidePanel/helpers/getAnimationDelay';
 import { SidePanel } from 'common/SidePanel/SidePanel';
-import { ANIMATION_DELAY_PROMISE } from 'common/SidePanel/sidePanel.constants';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
@@ -28,7 +28,7 @@ export class SignTransactionsPanel {
 
   @Method() async closeWithAnimation() {
     this.isOpen = false;
-    const animationDelay = await ANIMATION_DELAY_PROMISE();
+    const animationDelay = await getAnimationDelay();
     return animationDelay;
   }
 
