@@ -1,4 +1,4 @@
-# MultiversX UI library for Front-End DApps
+# MultiversX UI library for Front-End dApps
 
 MultiversX Front-End Library for JavaScript and TypeScript (written in TypeScript).
 
@@ -50,13 +50,7 @@ It outputs both web components (working out of the box) and React components (yo
 ### React Components import
 
 ```tsx
-export {
-  MvxCopyButton,
-  MvxExplorerLink,
-  MvxFormatAmount,
-  MvxTransactionsTable,
-  MvxUnlockButton,
-} from '@multiversx/sdk-dapp-ui/react';
+export { MvxCopyButton, MvxExplorerLink, MvxFormatAmount, MvxTransactionsTable } from '@multiversx/sdk-dapp-ui/react';
 ```
 
 The library is divided into three main categories of components:

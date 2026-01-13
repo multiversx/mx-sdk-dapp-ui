@@ -1,4 +1,4 @@
-import { IProviderBase } from "types/provider.types";
+import type { IProviderBase } from 'types/provider.types';
 
 // Extend the Window interface globally to include custom properties
 export interface ExtendedWindow extends Window {
@@ -24,6 +24,7 @@ export enum UnlockPanelEventsEnum {
   LOGIN = 'LOGIN',
   CANCEL_LOGIN = 'CANCEL_LOGIN',
   CANCEL_IN_PROVIDER = 'CANCEL_IN_PROVIDER',
+  SELECT_PROVIDER = 'SELECT_PROVIDER',
   /**
    * User clicks Close button inside mounted provider
    */

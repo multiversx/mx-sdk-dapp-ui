@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          registry-url: https://registry.npmjs.org/
+          registry-url: 'https://registry.npmjs.org'
       - name: Setup pnpm
         run: npm install -g pnpm
       - name: Install Chrome for Puppeteer
@@ -52,7 +52,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: ${{ steps.package.outputs.is-prerelease == 'false' }}
         run: |
-          RELEASE_TAG=v${{ steps.package.outputs.version }}
+          RELEASE_TAG=v$(node -p "require('./package.json').version")
           echo "Creating release for version: $RELEASE_TAG"
 
           changelog_content=$(awk "/^## \[\[?${RELEASE_TAG#v}[^\]]*\]/{flag=1; next} /^## \[/{flag=0} flag" CHANGELOG.md)
@@ -73,10 +73,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         if: ${{ steps.package.outputs.is-prerelease == 'true'}}
-        run: echo ${{ steps.package.outputs.is-prerelease}} && npm publish --tag next --no-git-checks
+        run: echo ${{ steps.package.outputs.is-prerelease}} && npm publish --tag next
 
       - name: Publish to npmjs
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
         if: ${{ steps.package.outputs.is-prerelease == 'false' }}
-        run: npm publish --no-git-checks
+        run: npm publish

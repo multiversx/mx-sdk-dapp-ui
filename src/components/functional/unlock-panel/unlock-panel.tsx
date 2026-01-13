@@ -52,8 +52,12 @@ export class UnlockPanel {
       UnlockPanelEventsEnum.CANCEL_IN_PROVIDER,
       this.handleResetLoginState,
     );
+    const unsubSelectProvider = this.eventBus.subscribe(
+      UnlockPanelEventsEnum.SELECT_PROVIDER,
+      this.handleProviderSelection,
+    );
 
-    this.unsubscribeFunctions.push(unsubDataUpdate, unsubCancelInProvider);
+    this.unsubscribeFunctions.push(unsubDataUpdate, unsubCancelInProvider, unsubSelectProvider);
     this.connectionMonitor.connect();
   }
 
@@ -66,6 +70,13 @@ export class UnlockPanel {
     this.isIntroScreenVisible = false;
     this.allowedProviders = [];
   }
+
+  private readonly handleProviderSelection = ({ providerType }: { providerType: IProviderBase['type'] }) => {
+    const provider = this.allowedProviders.find(p => p.type === providerType);
+    if (provider) {
+      this.handleLogin(provider);
+    }
+  };
 
   private isExtensionInstalled(currentProvider: IProviderBase['type']) {
     return currentProvider === ProviderTypeEnum.extension && getIsExtensionAvailable();
