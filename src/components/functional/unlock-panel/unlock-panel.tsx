@@ -1,7 +1,7 @@
 import { Component, Element, h, Method, State } from '@stencil/core';
 import { ProviderIdleScreen } from 'common/ProviderIdleScreen/ProviderIdleScreen';
-import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
-import { SidePanel } from 'components/visual/SidePanel/SidePanel';
+import { SidePanel } from 'common/SidePanel/SidePanel';
+import { ANIMATION_DELAY_PROMISE } from 'common/SidePanel/sidePanel.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
@@ -42,7 +42,7 @@ export class UnlockPanel {
 
   @Method() async closeWithAnimation() {
     this.isOpen = false;
-    const animationDelay = await ANIMATION_DELAY_PROMISE;
+    const animationDelay = await ANIMATION_DELAY_PROMISE();
     return animationDelay;
   }
 
@@ -52,8 +52,12 @@ export class UnlockPanel {
       UnlockPanelEventsEnum.CANCEL_IN_PROVIDER,
       this.handleResetLoginState,
     );
+    const unsubSelectProvider = this.eventBus.subscribe(
+      UnlockPanelEventsEnum.SELECT_PROVIDER,
+      this.handleProviderSelection,
+    );
 
-    this.unsubscribeFunctions.push(unsubDataUpdate, unsubCancelInProvider);
+    this.unsubscribeFunctions.push(unsubDataUpdate, unsubCancelInProvider, unsubSelectProvider);
     this.connectionMonitor.connect();
   }
 
@@ -66,6 +70,13 @@ export class UnlockPanel {
     this.isIntroScreenVisible = false;
     this.allowedProviders = [];
   }
+
+  private readonly handleProviderSelection = ({ providerType }: { providerType: IProviderBase['type'] }) => {
+    const provider = this.allowedProviders.find(p => p.type === providerType);
+    if (provider) {
+      this.handleLogin(provider);
+    }
+  };
 
   private isExtensionInstalled(currentProvider: IProviderBase['type']) {
     return currentProvider === ProviderTypeEnum.extension && getIsExtensionAvailable();

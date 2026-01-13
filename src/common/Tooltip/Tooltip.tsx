@@ -91,7 +91,6 @@ export function Tooltip(
           </div>
         </div>
       )}
-
       <span>{trigger}</span>
     </div>
   );

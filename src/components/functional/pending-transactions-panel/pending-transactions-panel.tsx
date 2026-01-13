@@ -1,7 +1,7 @@
 import { Component, h, Method, State } from '@stencil/core';
 import { ProviderIdleScreen } from 'common/ProviderIdleScreen/ProviderIdleScreen';
-import { ANIMATION_DELAY_PROMISE } from 'components/visual/SidePanel/sidePanel.constants';
-import { SidePanel } from 'components/visual/SidePanel/SidePanel';
+import { SidePanel } from 'common/SidePanel/SidePanel';
+import { ANIMATION_DELAY_PROMISE } from 'common/SidePanel/sidePanel.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
@@ -45,7 +45,7 @@ export class PendingTransactionsPanel {
 
   @Method() async closeWithAnimation() {
     this.isOpen = false;
-    const animationDelay = await ANIMATION_DELAY_PROMISE;
+    const animationDelay = await ANIMATION_DELAY_PROMISE();
     return animationDelay;
   }
 
@@ -77,11 +77,7 @@ export class PendingTransactionsPanel {
 
   render() {
     return (
-      <SidePanel
-        isOpen={this.isOpen}
-        panelTitle={this?.provider?.name}
-        showHeader={false}
-      >
+      <SidePanel isOpen={this.isOpen} panelTitle={this?.provider?.name} showHeader={false}>
         <ProviderIdleScreen
           provider={this.provider}
           onClose={this.handleClose}

@@ -1,5 +1,5 @@
 import { newE2EPage } from '@stencil/core/testing';
-import type { ITransactionListItem } from 'components/visual/TransactionListItem/transactionListItem.types';
+import type { ITransactionListItem } from 'components/functional/notifications-feed/components/TransactionListItem/transactionListItem.types';
 import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
 
 const createMockTransaction = (params: {

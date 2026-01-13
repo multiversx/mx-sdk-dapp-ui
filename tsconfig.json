@@ -16,5 +16,7 @@
     "jsxFactory": "h"
   },
   "include": ["src"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", 
+  "src/components/visual/address-table/components/pagination/pagination-story.tsx"
+  ]
 }

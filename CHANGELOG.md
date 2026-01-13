@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [[0.1.9](https://github.com/multiversx/mx-sdk-dapp-ui/pull/286)] - 2026-01-13
+
+- [Added provider selection handling to unlock panel](https://github.com/multiversx/mx-sdk-dapp-ui/pull/285)
+- [Remove pagination webcomponent](https://github.com/multiversx/mx-sdk-dapp-ui/pull/282)
+
 ## [[0.1.8](https://github.com/multiversx/mx-sdk-dapp-ui/pull/283)] - 2025-12-30
 
 - [Fix publish script, fix WalletConnect issues](https://github.com/multiversx/mx-sdk-dapp-ui/pull/283)
@@ -18,6 +24,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [[0.1.6](https://github.com/multiversx/mx-sdk-dapp-ui/pull/277)] - 2025-12-09
 
 - [Fixed compatibility issue on stencil/core](https://github.com/multiversx/mx-sdk-dapp-ui/pull/279)
+
+## [[0.1.6](https://github.com/multiversx/mx-sdk-dapp-ui/pull/277)] - 2025-12-09
+
 - [Sync development with main](https://github.com/multiversx/mx-sdk-dapp-ui/pull/278)
 - [Fixed copy button](https://github.com/multiversx/mx-sdk-dapp-ui/pull/276)
 
