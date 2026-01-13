@@ -1,7 +1,7 @@
 import { Component, h, Method, State } from '@stencil/core';
 import { Icon } from 'common/Icon';
+import { getAnimationDelay } from 'common/SidePanel/helpers/getAnimationDelay';
 import { SidePanel } from 'common/SidePanel/SidePanel';
-import { ANIMATION_DELAY_PROMISE } from 'common/SidePanel/sidePanel.constants';
 import { TransactionListItem } from 'components/functional/notifications-feed/components/TransactionListItem/TransactionListItem';
 import type { ITransactionListItem } from 'components/functional/notifications-feed/components/TransactionListItem/transactionListItem.types';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
@@ -29,7 +29,7 @@ export class NotificationsFeed {
 
   @Method() async closeWithAnimation() {
     this.isOpen = false;
-    const animationDelay = await ANIMATION_DELAY_PROMISE();
+    const animationDelay = await getAnimationDelay();
     return animationDelay;
   }
 
