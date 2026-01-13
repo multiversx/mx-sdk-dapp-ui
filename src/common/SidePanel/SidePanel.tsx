@@ -17,17 +17,12 @@ interface SidePanelPropsType {
   onBack?: () => void;
 }
 
-export function SidePanel({
-  isOpen = false,
-  panelClassName,
-  panelTitle,
-  hasBackButton,
-  showHeader = true,
-  onClose,
-  onBack
-}: SidePanelPropsType, children: JSX.Element) {
+export function SidePanel(
+  { isOpen = false, panelClassName, panelTitle, hasBackButton, showHeader = true, onClose, onBack }: SidePanelPropsType,
+  children: JSX.Element,
+) {
   if (isOpen !== undefined) {
-    handleSidePanelOpenChange(isOpen, (shouldAnimate) => {
+    handleSidePanelOpenChange(isOpen, shouldAnimate => {
       state.shouldAnimate = shouldAnimate;
     });
   }
@@ -56,32 +51,25 @@ export function SidePanel({
       onClick={handleOverlayClick}
       class={classNames([styles.sidePanelWrapper], { [styles.sidePanelWrapperVisible]: shouldAnimate })}
     >
-      <SidePanelSwiper
-        open={shouldAnimate}
-        onSheetDismiss={onClose}
-      >
+      <SidePanelSwiper open={shouldAnimate} onSheetDismiss={onClose}>
         <div
           id={sidePanelIdentifier}
           class={classNames([styles.sidePanel], { [styles.sidePanelVisible]: shouldAnimate }, panelClassName)}
         >
-          {showHeader && (
-            <SidePanelHeader
-              panelTitle={panelTitle}
-              panelClassName={panelClassName}
-              hasLeftButton={hasBackButton}
-              onRightButtonClick={handleCloseClick}
-              onLeftButtonClick={handleBackClick}
-            />
-          )}
-
-          <div
-            class={styles.sidePanelContent}
-          >
-            {children}
+          <div>
+            {showHeader && (
+              <SidePanelHeader
+                panelTitle={panelTitle}
+                panelClassName={panelClassName}
+                hasLeftButton={hasBackButton}
+                onRightButtonClick={handleCloseClick}
+                onLeftButtonClick={handleBackClick}
+              />
+            )}
           </div>
+          <div class={styles.sidePanelContent}>{children}</div>
         </div>
       </SidePanelSwiper>
     </div>
   );
 }
-
