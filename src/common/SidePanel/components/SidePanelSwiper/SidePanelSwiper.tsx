@@ -76,7 +76,7 @@ export function SidePanelSwiper(
     }, OPEN_TIMEOUT_VALUE);
   };
 
-  const animateToClose = () => {
+  const animateToClose = (shouldCallDismiss: boolean = false) => {
     if (!sheetElement || dragState.isAnimating) {
       return;
     }
@@ -88,7 +88,9 @@ export function SidePanelSwiper(
     setTimeout(() => {
       dragState.isAnimating = false;
       state.isVisible = false;
-      handleSheetDismiss();
+      if (shouldCallDismiss) {
+        handleSheetDismiss();
+      }
       if (sheetElement) {
         sheetElement.style.transition = '';
       }
@@ -196,7 +198,7 @@ export function SidePanelSwiper(
 
     // Close if dragged down significantly or fast downward velocity
     if (currentTransform > 70 || velocity > 150) {
-      closeSwiper();
+      animateToClose(true);
       return;
     }
 
