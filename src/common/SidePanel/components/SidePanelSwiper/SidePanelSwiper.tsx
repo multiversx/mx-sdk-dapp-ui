@@ -97,19 +97,19 @@ export function SidePanelSwiper(
     }, CLOSE_TIMEOUT_VALUE);
   };
 
-  const closeSwiper = () => {
+  const closeSwiper = (shouldCallDismiss: boolean) => {
     if (dragState.isAnimating || !state.isVisible) {
       return;
     }
 
-    animateToClose();
+    animateToClose(shouldCallDismiss);
   };
 
   if (previousOpen !== null && previousOpen !== open) {
     if (open && !state.isVisible) {
       openToSnapPoint(state.currentSnapIndex);
     } else if (!open && state.isVisible) {
-      closeSwiper();
+      closeSwiper(false);
     }
   }
 
