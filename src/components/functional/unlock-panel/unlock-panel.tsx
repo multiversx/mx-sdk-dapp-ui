@@ -130,6 +130,8 @@ export class UnlockPanel {
     this.isIntroScreenVisible = false;
     this.selectedMethod = null;
 
+    this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
+
     if (!this.anchor) {
       return;
     }
@@ -137,8 +139,6 @@ export class UnlockPanel {
     while (this.anchor.firstChild) {
       this.anchor.removeChild(this.anchor.firstChild);
     }
-
-    this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
   };
 
   private readonly handleClose = () => {

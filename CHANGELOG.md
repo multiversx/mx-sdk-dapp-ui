@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.1.10](https://github.com/multiversx/mx-sdk-dapp-ui/pull/287)] - 2026-01-14
+
+
 - [Refactored side panel helper to `getAnimationDelay`](https://github.com/multiversx/mx-sdk-dapp-ui/pull/287)
 
 ## [[0.1.9](https://github.com/multiversx/mx-sdk-dapp-ui/pull/286)] - 2026-01-13
