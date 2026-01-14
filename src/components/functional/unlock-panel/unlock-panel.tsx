@@ -1,7 +1,7 @@
 import { Component, Element, h, Method, State } from '@stencil/core';
 import { ProviderIdleScreen } from 'common/ProviderIdleScreen/ProviderIdleScreen';
+import { getAnimationDelay } from 'common/SidePanel/helpers/getAnimationDelay';
 import { SidePanel } from 'common/SidePanel/SidePanel';
-import { ANIMATION_DELAY_PROMISE } from 'common/SidePanel/sidePanel.constants';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
@@ -42,7 +42,7 @@ export class UnlockPanel {
 
   @Method() async closeWithAnimation() {
     this.isOpen = false;
-    const animationDelay = await ANIMATION_DELAY_PROMISE();
+    const animationDelay = await getAnimationDelay();
     return animationDelay;
   }
 
@@ -130,6 +130,8 @@ export class UnlockPanel {
     this.isIntroScreenVisible = false;
     this.selectedMethod = null;
 
+    this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
+
     if (!this.anchor) {
       return;
     }
@@ -137,8 +139,6 @@ export class UnlockPanel {
     while (this.anchor.firstChild) {
       this.anchor.removeChild(this.anchor.firstChild);
     }
-
-    this.eventBus.publish(UnlockPanelEventsEnum.CANCEL_LOGIN);
   };
 
   private readonly handleClose = () => {
