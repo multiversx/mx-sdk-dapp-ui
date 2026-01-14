@@ -11,7 +11,6 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import state from '../../signTransactionsPanelStore';
 import styles from './signTransactionsFooter.styles';
 
-let isWaitingForSignature: boolean = false;
 let lastCommonData = { ...state.commonData };
 
 interface SignTransactionsFooterPropsType {
@@ -30,16 +29,16 @@ export function SignTransactionsFooter({
   const currentCommonData = { ...state.commonData };
   const hasChanged = JSON.stringify(currentCommonData) !== JSON.stringify(lastCommonData);
 
-  if (hasChanged && isWaitingForSignature) {
+  if (hasChanged && state.isWaitingForSignature) {
     // Reset the waiting state when data changes
-    isWaitingForSignature = false;
+    state.isWaitingForSignature = false;
   }
 
   lastCommonData = currentCommonData;
 
   const handleSignClick = () => {
     if (state.onConfirm) {
-      isWaitingForSignature = true;
+      state.isWaitingForSignature = true;
       state.onConfirm();
     }
   };
@@ -110,12 +109,12 @@ export function SignTransactionsFooter({
               size="small"
               data-testid={DataTestIdsEnum.signNextTransactionBtn}
               onClick={showForwardAction ? handleSignClick : onNext}
-              disabled={currentIndexCannotBeSignedYet || isWaitingForSignature}
+              disabled={currentIndexCannotBeSignedYet || state.isWaitingForSignature}
               class={classNames(styles.signTransactionsFooterButton, styles.signTransactionsActionButton)}
             >
               {showForwardAction ? (
                 <span>
-                  {isWaitingForSignature ? (
+                  {state.isWaitingForSignature ? (
                     <span>{checkButtonText}</span>
                   ) : (
                     <span>{needsSigning ? 'Sign' : 'Confirm'}</span>
@@ -128,7 +127,7 @@ export function SignTransactionsFooter({
               {showForwardAction ? (
                 <span class={{ [styles.signTransactionsFooterButtonIconLighter]: currentIndexCannotBeSignedYet }}>
                   <span class={styles.signTransactionsFooterButtonIcon}>
-                    <Icon name={isWaitingForSignature ? 'spinner' : !needsSigning ? 'pencil' : 'check'} />
+                    <Icon name={state.isWaitingForSignature ? 'spinner' : !needsSigning ? 'pencil' : 'check'} />
                   </span>
                 </span>
               ) : (
