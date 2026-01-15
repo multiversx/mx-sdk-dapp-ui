@@ -76,7 +76,7 @@ export function SidePanelSwiper(
     }, OPEN_TIMEOUT_VALUE);
   };
 
-  const animateToClose = (shouldCallDismiss: boolean = false) => {
+  const animateToClose = (shouldDismiss: boolean = false) => {
     if (!sheetElement || dragState.isAnimating) {
       return;
     }
@@ -88,7 +88,7 @@ export function SidePanelSwiper(
     setTimeout(() => {
       dragState.isAnimating = false;
       state.isVisible = false;
-      if (shouldCallDismiss) {
+      if (shouldDismiss) {
         handleSheetDismiss();
       }
       if (sheetElement) {
@@ -97,12 +97,12 @@ export function SidePanelSwiper(
     }, CLOSE_TIMEOUT_VALUE);
   };
 
-  const closeSwiper = (shouldCallDismiss: boolean) => {
+  const closeSwiper = (shouldDismiss: boolean) => {
     if (dragState.isAnimating || !state.isVisible) {
       return;
     }
 
-    animateToClose(shouldCallDismiss);
+    animateToClose(shouldDismiss);
   };
 
   if (previousOpen !== null && previousOpen !== open) {
