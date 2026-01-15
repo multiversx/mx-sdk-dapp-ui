@@ -76,7 +76,7 @@ export function SidePanelSwiper(
     }, OPEN_TIMEOUT_VALUE);
   };
 
-  const animateToClose = (shouldDismiss: boolean = false) => {
+  const animateToClose = (shouldDismiss: boolean) => {
     if (!sheetElement || dragState.isAnimating) {
       return;
     }
