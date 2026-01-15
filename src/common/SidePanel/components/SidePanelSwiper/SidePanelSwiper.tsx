@@ -76,7 +76,7 @@ export function SidePanelSwiper(
     }, OPEN_TIMEOUT_VALUE);
   };
 
-  const animateToClose = (shouldDismiss: boolean) => {
+  const animateToClose = (options?: { shouldDismiss: boolean }) => {
     if (!sheetElement || dragState.isAnimating) {
       return;
     }
@@ -88,7 +88,7 @@ export function SidePanelSwiper(
     setTimeout(() => {
       dragState.isAnimating = false;
       state.isVisible = false;
-      if (shouldDismiss) {
+      if (options.shouldDismiss) {
         handleSheetDismiss();
       }
       if (sheetElement) {
@@ -97,19 +97,19 @@ export function SidePanelSwiper(
     }, CLOSE_TIMEOUT_VALUE);
   };
 
-  const closeSwiper = (shouldDismiss: boolean) => {
+  const closeSwiper = (options?: { shouldDismiss: boolean }) => {
     if (dragState.isAnimating || !state.isVisible) {
       return;
     }
 
-    animateToClose(shouldDismiss);
+    animateToClose({ shouldDismiss: options.shouldDismiss });
   };
 
   if (previousOpen !== null && previousOpen !== open) {
     if (open && !state.isVisible) {
       openToSnapPoint(state.currentSnapIndex);
     } else if (!open && state.isVisible) {
-      closeSwiper(false);
+      closeSwiper({ shouldDismiss: false });
     }
   }
 
@@ -198,7 +198,7 @@ export function SidePanelSwiper(
 
     // Close if dragged down significantly or fast downward velocity
     if (currentTransform > 70 || velocity > 150) {
-      animateToClose(true);
+      animateToClose({ shouldDismiss: true });
       return;
     }
 
