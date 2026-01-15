@@ -1,11 +1,11 @@
 import { h } from '@stencil/core';
 import classNames from 'classnames';
+
 import { SidePanelHeader } from './components/SidePanelHeader/SidePanelHeader';
 import { SidePanelSwiper } from './components/SidePanelSwiper/SidePanelSwiper';
 import { handleSidePanelOpenChange } from './helpers/handleSidePanelOpenChange';
-import { state } from './sidePanelStore';
-
 import styles from './sidePanel.styles';
+import { state } from './sidePanelStore';
 
 interface SidePanelPropsType {
   isOpen?: boolean;

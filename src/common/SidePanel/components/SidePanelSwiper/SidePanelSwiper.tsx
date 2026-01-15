@@ -76,7 +76,7 @@ export function SidePanelSwiper(
     }, OPEN_TIMEOUT_VALUE);
   };
 
-  const animateToClose = () => {
+  const animateToClose = (options?: { shouldDismiss: boolean }) => {
     if (!sheetElement || dragState.isAnimating) {
       return;
     }
@@ -88,26 +88,28 @@ export function SidePanelSwiper(
     setTimeout(() => {
       dragState.isAnimating = false;
       state.isVisible = false;
-      handleSheetDismiss();
+      if (options.shouldDismiss) {
+        handleSheetDismiss();
+      }
       if (sheetElement) {
         sheetElement.style.transition = '';
       }
     }, CLOSE_TIMEOUT_VALUE);
   };
 
-  const closeSwiper = () => {
+  const closeSwiper = (options?: { shouldDismiss: boolean }) => {
     if (dragState.isAnimating || !state.isVisible) {
       return;
     }
 
-    animateToClose();
+    animateToClose({ shouldDismiss: options.shouldDismiss });
   };
 
   if (previousOpen !== null && previousOpen !== open) {
     if (open && !state.isVisible) {
       openToSnapPoint(state.currentSnapIndex);
     } else if (!open && state.isVisible) {
-      closeSwiper();
+      closeSwiper({ shouldDismiss: false });
     }
   }
 
@@ -196,7 +198,7 @@ export function SidePanelSwiper(
 
     // Close if dragged down significantly or fast downward velocity
     if (currentTransform > 70 || velocity > 150) {
-      closeSwiper();
+      animateToClose({ shouldDismiss: true });
       return;
     }
 

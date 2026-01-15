@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.1.12](https://github.com/multiversx/mx-sdk-dapp-ui/pull/291)] - 2026-01-15
+
+- [Fixed issue with sheetDismiss on SidePanelSwiper](https://github.com/multiversx/mx-sdk-dapp-ui/pull/290)
+
 ## [[0.1.11](https://github.com/multiversx/mx-sdk-dapp-ui/pull/289)] - 2026-01-14
 
 - [Fixed cancel login event on unlock panel](https://github.com/multiversx/mx-sdk-dapp-ui/pull/289)
