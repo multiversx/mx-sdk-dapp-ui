@@ -88,7 +88,7 @@ export function SidePanelSwiper(
     setTimeout(() => {
       dragState.isAnimating = false;
       state.isVisible = false;
-      if (options.shouldDismiss) {
+      if (options?.shouldDismiss) {
         handleSheetDismiss();
       }
       if (sheetElement) {
@@ -102,7 +102,7 @@ export function SidePanelSwiper(
       return;
     }
 
-    animateToClose({ shouldDismiss: options.shouldDismiss });
+    animateToClose({ shouldDismiss: options?.shouldDismiss });
   };
 
   if (previousOpen !== null && previousOpen !== open) {
