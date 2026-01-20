@@ -32,7 +32,7 @@ const storySettings: Meta<Trim> = {
   argTypes: {
     text: { control: 'text' },
     class: { control: 'text' },
-    'data-testid': { control: 'text' },
+    dataTestId: { control: 'text' },
   },
 };
 
