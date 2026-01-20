@@ -11,7 +11,7 @@ export class ExplorerLink {
 
   @Prop() class?: string;
   @Prop() iconClass?: string;
-  @Prop() dataTestId?: string;
+  @Prop({ attribute: 'data-testid' }) dataTestId?: string;
   @Prop() link: string;
 
   render() {
@@ -19,7 +19,7 @@ export class ExplorerLink {
       <ExplorerLinkComponent
         class={this.class}
         iconClass={this.iconClass}
-        dataTestId={this.dataTestId}
+        data-testid={this.dataTestId}
         link={this.link}
         hasIcon={Boolean(this.hostElement)}
       />

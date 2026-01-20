@@ -13,7 +13,7 @@ export class Button {
   @Event() buttonClick: EventEmitter<MouseEvent>;
 
   @Prop() class?: string = '';
-  @Prop() dataTestId?: string = '';
+  @Prop({ attribute: 'data-testid' }) dataTestId?: string = '';
   @Prop() disabled?: boolean = false;
   @Prop() size?: `${ButtonSizeEnum}` = 'large';
   @Prop() variant?: `${ButtonVariantEnum}` = 'primary';
@@ -26,7 +26,7 @@ export class Button {
     return (
       <ButtonComponent
         class={this.class}
-        dataTestId={this.dataTestId}
+        data-testid={this.dataTestId}
         disabled={this.disabled}
         size={this.size}
         variant={this.variant}

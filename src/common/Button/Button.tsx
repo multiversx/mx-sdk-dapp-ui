@@ -5,7 +5,7 @@ import { ButtonSizeEnum, ButtonVariantEnum } from './button.types';
 
 interface ButtonPropsType {
   class?: string;
-  dataTestId?: string;
+  'data-testid'?: string;
   disabled?: boolean;
   size?: `${ButtonSizeEnum}`;
   variant?: `${ButtonVariantEnum}`;
@@ -15,7 +15,7 @@ interface ButtonPropsType {
 export function Button(
   {
     class: className = '',
-    dataTestId = '',
+    'data-testid': dataTestId = '',
     disabled = false,
     size = 'large',
     variant = 'primary',
