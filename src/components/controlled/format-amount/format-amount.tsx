@@ -7,7 +7,7 @@ import { FormatAmount as FormatAmountComponent } from 'common/FormatAmount/Forma
 })
 export class FormatAmount {
   @Prop() class?: string;
-  @Prop() 'data-testid'?: string;
+  @Prop({ attribute: 'data-testid' }) dataTestId?: string;
   @Prop() isValid: boolean;
   @Prop() label?: string;
   @Prop() labelClass?: string;
@@ -20,7 +20,7 @@ export class FormatAmount {
     return (
       <FormatAmountComponent
         class={this.class}
-        data-testid={this['data-testid']}
+        data-testid={this.dataTestId}
         isValid={this.isValid}
         label={this.label}
         labelClass={this.labelClass}

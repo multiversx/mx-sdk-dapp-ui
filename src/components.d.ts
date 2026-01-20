@@ -49,11 +49,11 @@ export namespace Components {
         /**
           * @default ''
          */
-        "'data-testid'"?: string;
+        "class"?: string;
         /**
           * @default ''
          */
-        "class"?: string;
+        "dataTestId"?: string;
         /**
           * @default false
          */
@@ -108,8 +108,8 @@ export namespace Components {
         "width"?: number;
     }
     interface MvxExplorerLink {
-        "'data-testid'"?: string;
         "class"?: string;
+        "dataTestId"?: string;
         "iconClass"?: string;
         "link": string;
     }
@@ -124,8 +124,8 @@ export namespace Components {
         "width"?: number;
     }
     interface MvxFormatAmount {
-        "'data-testid'"?: string;
         "class"?: string;
+        "dataTestId"?: string;
         "decimalClass"?: string;
         "isValid": boolean;
         "label"?: string;
@@ -268,11 +268,11 @@ export namespace Components {
         "transactions": TransactionRowType[];
     }
     interface MvxTrim {
+        "class"?: string;
         /**
           * @default DataTestIdsEnum.trim
          */
-        "'data-testid'"?: string;
-        "class"?: string;
+        "dataTestId"?: string;
         "text": string;
     }
     interface MvxUnlockPanel {
@@ -871,11 +871,11 @@ declare namespace LocalJSX {
         /**
           * @default ''
          */
-        "'data-testid'"?: string;
+        "class"?: string;
         /**
           * @default ''
          */
-        "class"?: string;
+        "dataTestId"?: string;
         /**
           * @default false
          */
@@ -932,8 +932,8 @@ declare namespace LocalJSX {
         "width"?: number;
     }
     interface MvxExplorerLink {
-        "'data-testid'"?: string;
         "class"?: string;
+        "dataTestId"?: string;
         "iconClass"?: string;
         "link"?: string;
     }
@@ -948,8 +948,8 @@ declare namespace LocalJSX {
         "width"?: number;
     }
     interface MvxFormatAmount {
-        "'data-testid'"?: string;
         "class"?: string;
+        "dataTestId"?: string;
         "decimalClass"?: string;
         "isValid"?: boolean;
         "label"?: string;
@@ -1090,11 +1090,11 @@ declare namespace LocalJSX {
         "transactions"?: TransactionRowType[];
     }
     interface MvxTrim {
+        "class"?: string;
         /**
           * @default DataTestIdsEnum.trim
          */
-        "'data-testid'"?: string;
-        "class"?: string;
+        "dataTestId"?: string;
         "text"?: string;
     }
     interface MvxUnlockPanel {
