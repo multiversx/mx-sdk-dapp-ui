@@ -33,7 +33,7 @@ export function TransactionHash({ transaction, class: className }: TransactionHa
       <TransactionIcon iconInfo={transaction.iconInfo} class={styles.transactionHashIcon} />
 
       <ExplorerLink
-        dataTestId={DataTestIdsEnum.transactionLink}
+        data-testid={DataTestIdsEnum.transactionLink}
         link={transaction.link}
         class={styles.transactionHashExplorerLink}
       >

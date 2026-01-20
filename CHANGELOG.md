@@ -7,8 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [[0.1.13](https://github.com/multiversx/mx-sdk-dapp-ui/pull/292)] - 2026-01-20
+## [[0.1.13](https://github.com/multiversx/mx-sdk-dapp-ui/pull/294)] - 2026-01-20
 
+- [Fixed data-testid attributes](https://github.com/multiversx/mx-sdk-dapp-ui/pull/293)
 - [Fixed Button data-testid attribute](https://github.com/multiversx/mx-sdk-dapp-ui/pull/292)
 
 ## [[0.1.12](https://github.com/multiversx/mx-sdk-dapp-ui/pull/291)] - 2026-01-15

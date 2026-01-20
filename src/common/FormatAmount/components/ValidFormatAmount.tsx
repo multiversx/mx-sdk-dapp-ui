@@ -12,7 +12,7 @@ const styles = {
 
 interface ValidFormatAmountPropsType {
   class?: string;
-  dataTestId?: string;
+  'data-testid'?: string;
   label?: string;
   labelClass?: string;
   showLabel?: boolean;
@@ -22,7 +22,7 @@ interface ValidFormatAmountPropsType {
 }
 
 export function ValidFormatAmount({
-  dataTestId,
+  'data-testid': dataTestId,
   class: className,
   valueInteger,
   valueDecimal,

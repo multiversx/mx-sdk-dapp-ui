@@ -20,12 +20,19 @@ interface UnlockButtonPropsType {
   label: string;
   iconUrl: string;
   icon?: HTMLElement;
-  dataTestId?: string;
+  'data-testid'?: string;
   type?: IProviderBase['type'];
   class?: string;
 }
 
-export function UnlockButton({ label, iconUrl, icon, dataTestId, type, class: className }: UnlockButtonPropsType) {
+export function UnlockButton({
+  label,
+  iconUrl,
+  icon,
+  'data-testid': dataTestId,
+  type,
+  class: className,
+}: UnlockButtonPropsType) {
   const isExtensionProvider = type === ProviderTypeEnum.extension;
   const isMetaMaskProvider = type === ProviderTypeEnum.metamask;
   const isDetectableProvider = isExtensionProvider || isMetaMaskProvider;

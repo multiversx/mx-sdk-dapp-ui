@@ -13,7 +13,7 @@ describe('TransactionAccountName tests', () => {
           address="erd1q..."
           name="Alice"
           description="Alice's Wallet"
-          dataTestId="account-name"
+          data-testid="account-name"
         />
       ),
     });

@@ -6,12 +6,16 @@ import { safeWindow } from 'constants/window.constants';
 import styles from './trim.styles';
 
 interface TrimPropsType {
-  dataTestId?: string;
+  'data-testid'?: string;
   class?: string;
   text: string;
 }
 
-export function Trim({ dataTestId = DataTestIdsEnum.trim, class: className, text }: TrimPropsType) {
+export function Trim({
+  'data-testid': dataTestId = DataTestIdsEnum.trim,
+  class: className,
+  text,
+}: TrimPropsType) {
   let fullWidthUntrimmedElementReference: HTMLDivElement;
   let trimElementReference: HTMLDivElement;
   let resizeObserver: ResizeObserver;

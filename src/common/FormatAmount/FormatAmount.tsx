@@ -1,8 +1,10 @@
+import { h } from '@stencil/core';
+
 import { InvalidFormatAmount, ValidFormatAmount } from './components';
 
 interface FormatAmountPropsType {
   class?: string;
-  dataTestId?: string;
+  'data-testid'?: string;
   isValid: boolean;
   label?: string;
   labelClass?: string;
@@ -14,7 +16,7 @@ interface FormatAmountPropsType {
 
 export function FormatAmount({
   class: className,
-  dataTestId,
+  'data-testid': dataTestId,
   isValid,
   label,
   labelClass,
@@ -23,16 +25,19 @@ export function FormatAmount({
   valueInteger,
   decimalClass,
 }: FormatAmountPropsType) {
-  return isValid
-    ? ValidFormatAmount({
-        dataTestId,
-        class: className,
-        valueInteger,
-        valueDecimal,
-        decimalClass,
-        showLabel,
-        label,
-        labelClass,
-      })
-    : InvalidFormatAmount({ dataTestId, class: className });
+
+  if (isValid) {
+    return <ValidFormatAmount 
+      data-testid={dataTestId} 
+      class={className} 
+      valueInteger={valueInteger} 
+      valueDecimal={valueDecimal} 
+      decimalClass={decimalClass} 
+      showLabel={showLabel} 
+      label={label} 
+      labelClass={labelClass} 
+    />;
+  }
+
+  return <InvalidFormatAmount data-testid={dataTestId} class={className} />;
 }
