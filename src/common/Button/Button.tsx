@@ -15,7 +15,7 @@ interface ButtonPropsType {
 export function Button(
   {
     'class': className = '',
-    'data-testid': dataTestId = '',
+    'data-testid': dataTestId = ,
     disabled = false,
     size = 'large',
     variant = 'primary',
