@@ -15,14 +15,14 @@ const styles = {
 interface TransactionAccountPropsType {
   account: TransactionAccountType;
   class?: string;
-  dataTestId?: string;
+  'data-testid'?: string;
   scope: 'receiver' | 'sender';
   showLockedAccounts: boolean;
 }
 
 export function TransactionAccount({
   account,
-  dataTestId,
+  'data-testid': dataTestId,
   scope,
   showLockedAccounts = false,
   class: className,

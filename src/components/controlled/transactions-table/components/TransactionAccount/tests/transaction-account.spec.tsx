@@ -94,7 +94,7 @@ describe('TransactionAccount tests', () => {
         <TransactionAccount
           account={baseAccount}
           class="custom-class"
-          dataTestId="test-id"
+          data-testid="transaction-account"
           scope="sender"
           showLockedAccounts={false}
         />

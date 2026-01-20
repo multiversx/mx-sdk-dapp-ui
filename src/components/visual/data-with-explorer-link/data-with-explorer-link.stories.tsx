@@ -40,7 +40,7 @@ const storySettings: Meta<DataWithExplorerLink> = {
     showExplorerButton: { control: 'boolean' },
     withTooltip: { control: 'boolean' },
     class: { control: 'text' },
-    dataTestId: { control: 'text' },
+    'data-testid': { control: 'text' },
   },
 };
 
@@ -313,7 +313,7 @@ export const InteractiveScenarios: StoryObj<DataWithExplorerLink> = {
           data="a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456"
           explorerLink={`${DEVNET_EXPLORER_URL}/transactions/a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef123456`}
           withTooltip={true}
-          dataTestId="transaction-with-tooltips"
+          data-testid="transaction-with-tooltips"
           class={styles.dataWithExplorerLinkStoriesMonospace}
         />
       </div>
@@ -326,7 +326,7 @@ export const InteractiveScenarios: StoryObj<DataWithExplorerLink> = {
           withTooltip={true}
           showCopyButton={true}
           showExplorerButton={false}
-          dataTestId="account-copy-tooltip"
+          data-testid="account-copy-tooltip"
           class={styles.dataWithExplorerLinkStoriesMonospace}
         />
       </div>
@@ -339,7 +339,7 @@ export const InteractiveScenarios: StoryObj<DataWithExplorerLink> = {
           withTooltip={true}
           showCopyButton={false}
           showExplorerButton={true}
-          dataTestId="token-explorer-tooltip"
+          data-testid="token-explorer-tooltip"
         />
       </div>
 
@@ -351,7 +351,7 @@ export const InteractiveScenarios: StoryObj<DataWithExplorerLink> = {
           withTooltip={true}
           showCopyButton={true}
           showExplorerButton={true}
-          dataTestId="nft-all-features"
+          data-testid="nft-all-features"
           class={classNames(styles.dataWithExplorerLinkStoriesMonospace, styles.dataWithExplorerLinkStoriesBlue)}
         />
       </div>

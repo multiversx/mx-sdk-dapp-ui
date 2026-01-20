@@ -31,7 +31,7 @@ export function UnlockProviderButton({ provider, class: className, onClick }: Un
         type={provider.type}
         class={classNames(className, unlockProviderButtonClasses.button)}
         icon={icon}
-        dataTestId={provider.type.toString()}
+        data-testid={provider.type.toString()}
       />
     </div>
   );

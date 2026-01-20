@@ -8,11 +8,11 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
   shadow: false,
 })
 export class Trim {
-  @Prop() dataTestId?: string = DataTestIdsEnum.trim;
+  @Prop() 'data-testid'?: string = DataTestIdsEnum.trim;
   @Prop() class?: string;
   @Prop() text: string;
 
   render() {
-    return <TrimComponent class={this.class} dataTestId={this.dataTestId} text={this.text} />;
+    return <TrimComponent class={this.class} data-testid={this['data-testid']} text={this.text} />;
   }
 }

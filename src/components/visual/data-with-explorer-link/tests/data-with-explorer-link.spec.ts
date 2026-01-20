@@ -1,8 +1,8 @@
 import { newSpecPage } from '@stencil/core/testing';
 import { Trim } from 'common/Trim/Trim';
 
-import { ExplorerLink } from '../../explorer-link/explorer-link';
 import { CopyButton } from '../../copy-button/copy-button';
+import { ExplorerLink } from '../../explorer-link/explorer-link';
 import { Tooltip } from '../../tooltip/tooltip';
 import { DataWithExplorerLink } from '../data-with-explorer-link';
 
@@ -32,17 +32,17 @@ describe('DataWithExplorerLink', () => {
     expect(explorerLink).toBeTruthy();
   });
 
-  it('renders with custom class and dataTestId', async () => {
+  it('renders with custom class and data-testid', async () => {
     const page = await newSpecPage({
       components: [DataWithExplorerLink, Trim, CopyButton, ExplorerLink],
-      html: '<mvx-data-with-explorer-link data="test-data" explorer-link="https://explorer.com/test" class="custom-class" data-test-id="custom-test-id"></mvx-data-with-explorer-link>',
+      html: '<mvx-data-with-explorer-link data="test-data" explorer-link="https://explorer.com/test" class="custom-class" data-testid="custom-test-id"></mvx-data-with-explorer-link>',
     });
 
     // Check that custom class is applied to the main div
     const mainDiv = page.root.querySelector('.data-with-explorer-link.custom-class');
     expect(mainDiv).toBeTruthy();
 
-    // Check that dataTestId is applied
+    // Check that data-testid is applied
     const elementWithTestId = page.root.querySelector('[data-testid="custom-test-id"]');
     expect(elementWithTestId).toBeTruthy();
   });
@@ -240,7 +240,7 @@ describe('DataWithExplorerLink', () => {
   it('has correct component properties set', async () => {
     const page = await newSpecPage({
       components: [DataWithExplorerLink],
-      html: '<mvx-data-with-explorer-link data="test-data" explorer-link="https://explorer.com/test" show-copy-button="false" show-explorer-button="true" with-tooltip="true" class="custom" data-test-id="test"></mvx-data-with-explorer-link>',
+      html: '<mvx-data-with-explorer-link data="test-data" explorer-link="https://explorer.com/test" show-copy-button="false" show-explorer-button="true" with-tooltip="true" class="custom" data-testid="test"></mvx-data-with-explorer-link>',
     });
 
     const component = page.rootInstance as DataWithExplorerLink;
@@ -250,6 +250,6 @@ describe('DataWithExplorerLink', () => {
     expect(component.showExplorerButton).toBe(true);
     expect(component.withTooltip).toBe(true);
     expect(component.class).toBe('custom');
-    expect(component.dataTestId).toBe('test');
+    expect(component['data-testid']).toBe('test');
   });
 });
