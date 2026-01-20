@@ -4,18 +4,18 @@ import styles from './button.styles';
 import { ButtonSizeEnum, ButtonVariantEnum } from './button.types';
 
 interface ButtonPropsType {
-  'class'?: string;
+  class?: string;
   'data-testid'?: string;
-  'disabled'?: boolean;
-  'size'?: `${ButtonSizeEnum}`;
-  'variant'?: `${ButtonVariantEnum}`;
-  'onClick'?: (event: MouseEvent) => void;
+  disabled?: boolean;
+  size?: `${ButtonSizeEnum}`;
+  variant?: `${ButtonVariantEnum}`;
+  onClick?: (event: MouseEvent) => void;
 }
 
 export function Button(
   {
     'class': className = '',
-    'data-testid': dataTestId = ,
+    'data-testid': dataTestId = '',
     disabled = false,
     size = 'large',
     variant = 'primary',
