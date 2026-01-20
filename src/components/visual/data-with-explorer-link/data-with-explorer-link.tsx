@@ -11,7 +11,7 @@ export class DataWithExplorerLink {
   @Prop() showCopyButton?: boolean = true;
   @Prop() withTooltip?: boolean = false;
   @Prop() explorerLink: string;
-  @Prop() 'data-testid'?: string;
+  @Prop({ attribute: 'data-testid' }) dataTestId?: string;
   @Prop() class?: string;
   @Prop() data: string;
 
@@ -19,7 +19,7 @@ export class DataWithExplorerLink {
     return (
       <div
         class={{ 'data-with-explorer-link': true, [this.class]: Boolean(this.class) }}
-        data-testid={this['data-testid']}
+        data-testid={this.dataTestId}
       >
         <Trim text={this.data} class="data-with-explorer-link-trim" />
 

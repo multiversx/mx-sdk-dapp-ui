@@ -79,9 +79,9 @@ export namespace Components {
         "toast": IComponentToast;
     }
     interface MvxDataWithExplorerLink {
-        "'data-testid'"?: string;
         "class"?: string;
         "data": string;
+        "dataTestId"?: string;
         "explorerLink": string;
         /**
           * @default true
@@ -903,9 +903,9 @@ declare namespace LocalJSX {
         "toast"?: IComponentToast;
     }
     interface MvxDataWithExplorerLink {
-        "'data-testid'"?: string;
         "class"?: string;
         "data"?: string;
+        "dataTestId"?: string;
         "explorerLink"?: string;
         /**
           * @default true

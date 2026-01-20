@@ -79,12 +79,14 @@ describe('TransactionAccount tests', () => {
     });
 
     expect(page.root).toEqualHtml(`
-    <div class="transaction-account mvx:flex mvx:items-center mvx:gap-2">
-      <a class="explorer-link mvx:decoration-0 mvx:flex mvx:text-primary! transaction-account-explorer-link" href="https://example.com/account/0x1234567890123456789012345678901234567890" rel="noreferrer" target="_blank">
-        <span>0x1234567890123456789012345678901234567890</span>
-      </a>
-    </div>
-  `);
+      <div class="transaction-account mvx:flex mvx:items-center mvx:gap-2">
+        <a class="explorer-link mvx:decoration-0 mvx:flex mvx:text-primary! transaction-account-explorer-link" data-testid="receiverLink" href="https://example.com/account/0x1234567890123456789012345678901234567890" rel="noreferrer" target="_blank">
+          <span>
+            0x1234567890123456789012345678901234567890
+          </span>
+        </a>
+      </div>
+    `);
   });
 
   it('should apply custom class and data-testid', async () => {
@@ -102,7 +104,7 @@ describe('TransactionAccount tests', () => {
     });
 
     expect(page.root).toEqualHtml(`
-      <div class="transaction-account mvx:flex mvx:items-center mvx:gap-2 custom-class" data-testid="test-id">
+      <div class="transaction-account mvx:flex mvx:items-center mvx:gap-2 custom-class" data-testid="transaction-account">
         <div class="transaction-account-name mvx:w-max mvx:truncate" title="Test Account">
           John Doe
         </div>

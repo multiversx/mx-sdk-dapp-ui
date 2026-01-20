@@ -40,7 +40,7 @@ const storySettings: Meta<DataWithExplorerLink> = {
     showExplorerButton: { control: 'boolean' },
     withTooltip: { control: 'boolean' },
     class: { control: 'text' },
-    'data-testid': { control: 'text' },
+    dataTestId: { control: 'text' },
   },
 };
 

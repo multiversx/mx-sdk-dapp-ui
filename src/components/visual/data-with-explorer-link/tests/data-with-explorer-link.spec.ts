@@ -250,6 +250,6 @@ describe('DataWithExplorerLink', () => {
     expect(component.showExplorerButton).toBe(true);
     expect(component.withTooltip).toBe(true);
     expect(component.class).toBe('custom');
-    expect(component['data-testid']).toBe('test');
+    expect((component as DataWithExplorerLink).dataTestId).toBe('test');
   });
 });
