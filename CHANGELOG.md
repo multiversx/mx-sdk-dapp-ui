@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [[0.1.14](https://github.com/multiversx/mx-sdk-dapp-ui/pull/294)] - 2026-01-23
 
-- [Bump version to 0.1.14 and add pageValue state to AddressTable component](https://github.com/multiversx/mx-sdk-dapp-ui/pull/293)
+- [Bump version to 0.1.14, added `pageValue` state to `AddressTable` component, exported getIsExtensionAvailable and getIsMetaMaskAvailable, added @types/react and @types/react-dom as devDependencies](https://github.com/multiversx/mx-sdk-dapp-ui/pull/293)
 
 ## [[0.1.13](https://github.com/multiversx/mx-sdk-dapp-ui/pull/292)] - 2026-01-20
 
