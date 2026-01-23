@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.1.14](https://github.com/multiversx/mx-sdk-dapp-ui/pull/294)] - 2026-01-23
+
+- [Bump version to 0.1.14 and add pageValue state to AddressTable component](https://github.com/multiversx/mx-sdk-dapp-ui/pull/293)
+
 ## [[0.1.13](https://github.com/multiversx/mx-sdk-dapp-ui/pull/292)] - 2026-01-20
 
 - [Fixed Button data-testid attribute](https://github.com/multiversx/mx-sdk-dapp-ui/pull/292)
