@@ -8,10 +8,13 @@ const styles = {
 
 interface InvalidFormatAmountPropsType {
   class?: string;
-  dataTestId?: string;
+  'data-testid'?: string;
 }
 
-export function InvalidFormatAmount({ dataTestId, class: className }: InvalidFormatAmountPropsType) {
+export function InvalidFormatAmount({
+  'data-testid': dataTestId,
+  class: className,
+}: InvalidFormatAmountPropsType) {
   return (
     <span data-testid={dataTestId ?? DataTestIdsEnum.formatAmountComponent} class={className}>
       <span class={styles.intAmount} data-testid={DataTestIdsEnum.formatAmountInt}>

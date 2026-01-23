@@ -10,14 +10,14 @@ const styles = {
 interface TransactionAccountNamePropsType {
   address: string;
   class?: string;
-  dataTestId?: string;
+  'data-testid'?: string;
   description: string;
   name?: string;
 }
 
 export function TransactionAccountName({
   address,
-  dataTestId,
+  'data-testid': dataTestId,
   description,
   name,
   class: className,
@@ -34,5 +34,7 @@ export function TransactionAccountName({
     );
   }
 
-  return <Trim text={address} class={classNames(className, styles.transactionAccountName)} dataTestId={dataTestId} />;
+  return (
+    <Trim text={address} class={classNames(className, styles.transactionAccountName)} data-testid={dataTestId} />
+  );
 }

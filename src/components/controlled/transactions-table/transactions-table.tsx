@@ -54,7 +54,7 @@ export class TransactionsTable {
                 <TransactionAccount
                   class={styles.transactionsTableBodyCellChild}
                   account={transaction.sender}
-                  dataTestId={DataTestIdsEnum.transactionSender}
+                  data-testid={DataTestIdsEnum.transactionSender}
                   scope="sender"
                   showLockedAccounts={true}
                 />
@@ -63,7 +63,7 @@ export class TransactionsTable {
                 <TransactionAccount
                   class={styles.transactionsTableBodyCellChild}
                   account={transaction.receiver}
-                  dataTestId={DataTestIdsEnum.transactionReceiver}
+                  data-testid={DataTestIdsEnum.transactionReceiver}
                   scope="receiver"
                   showLockedAccounts={true}
                 />

@@ -10,13 +10,19 @@ const styles = {
 interface ExplorerLinkPropsType {
   class?: string;
   iconClass?: string;
-  dataTestId?: string;
+  'data-testid'?: string;
   link: string;
   hasIcon?: boolean;
 }
 
 export function ExplorerLink(
-  { class: className, iconClass, dataTestId, link, hasIcon }: ExplorerLinkPropsType,
+  { 
+    class: className, 
+    iconClass, 
+    'data-testid': dataTestId,
+    link, 
+    hasIcon
+  }: ExplorerLinkPropsType,
   children?: JSX.Element,
 ) {
   if (!link) {

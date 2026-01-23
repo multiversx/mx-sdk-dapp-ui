@@ -30,7 +30,7 @@ export function TransactionValue({ value, class: className }: TransactionValuePr
             class={classNames(styles.transactionValueFormatAmount, {
               [styles.transactionValueTextTruncate]: value.svgUrl,
             })}
-            dataTestId={DataTestIdsEnum.transactionActionFormattedAmount}
+            data-testid={DataTestIdsEnum.transactionActionFormattedAmount}
             isValid
             label={value.egldLabel}
             valueDecimal={value.valueDecimal}
