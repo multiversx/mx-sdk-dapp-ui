@@ -118,7 +118,7 @@
     }
 
     .address-table-pagination {
-      @apply mvx:relative mvx:z-1;
+      @apply mvx:relative mvx:z-1 mvx:flex mvx:justify-center;
 
       &:after {
         @apply mvx:absolute mvx:left-0 mvx:right-0 mvx:h-0;
