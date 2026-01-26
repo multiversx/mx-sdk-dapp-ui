@@ -83,6 +83,9 @@ export function Tooltip(
               [styles.tooltipContentTop]: position === 'top',
               [styles.tooltipContentBottom]: position === 'bottom',
             }}
+            style={{
+              backgroundColor: 'var(--color-surface, var(--mvx-bg-color-secondary, #353535))',
+            }}
             tabIndex={-1}
             onFocusout={handleFocusOut}
             onClick={(event: MouseEvent) => event.stopPropagation()}
