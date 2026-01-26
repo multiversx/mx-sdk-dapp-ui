@@ -7,9 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [[0.1.14](https://github.com/multiversx/mx-sdk-dapp-ui/pull/293)] - 2026-01-26
+## [[0.1.15](https://github.com/multiversx/mx-sdk-dapp-ui/pull/296)] - 2026-01-26
 
-- [Fixed emit page value when page changes (tm/fix/emit-page-value → development)](https://github.com/multiversx/mx-sdk-dapp-ui/pull/295)
+- [Fixed helpers export](https://github.com/multiversx/mx-sdk-dapp-ui/pull/296)
+
+## [[0.1.14](https://github.com/multiversx/mx-sdk-dapp-ui/pull/295)] - 2026-01-26
+
+- [Fixed emit page value when page changes](https://github.com/multiversx/mx-sdk-dapp-ui/pull/295)
 
 ## [[0.1.13](https://github.com/multiversx/mx-sdk-dapp-ui/pull/293)] - 2026-01-20
 
