@@ -26,6 +26,7 @@ export class AddressTable {
 
   @State() activeTooltipIndex: number | null = null;
   @State() isTooltipOpen: boolean = false;
+  @State() pageValue: string = '';
 
   handleAccessWallet(event: MouseEvent) {
     event.preventDefault();
@@ -46,6 +47,13 @@ export class AddressTable {
   private handlePaginationTooltipStatusChange = (index: number | null, isOpen: boolean) => {
     this.activeTooltipIndex = index;
     this.isTooltipOpen = isOpen;
+    if (!isOpen) {
+      this.pageValue = '';
+    }
+  };
+
+  private handlePageValueChange = (value: string) => {
+    this.pageValue = value;
   };
 
   render() {
@@ -157,6 +165,8 @@ export class AddressTable {
             activeTooltipIndex={this.activeTooltipIndex}
             isTooltipOpen={this.isTooltipOpen}
             onTooltipStatusChange={this.handlePaginationTooltipStatusChange}
+            pageValue={this.pageValue}
+            onPageValueChange={this.handlePageValueChange}
           />
         </div>
 
