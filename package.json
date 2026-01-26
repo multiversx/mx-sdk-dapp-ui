@@ -29,15 +29,15 @@
       "require": "./dist/cjs/utils/EventBus.js",
       "types": "./dist/types/utils/EventBus.d.ts"
     },
-    "./helpers/getIsMetaMaskAvailable": {
-      "import": "./dist/utils/helpers/getIsMetaMaskAvailable.js",
-      "require": "./dist/cjs/helpers/getIsMetaMaskAvailable.js",
-      "types": "./dist/types/helpers/getIsMetaMaskAvailable.d.ts"
+    "./utils/getIsMetaMaskAvailable": {
+      "import": "./dist/utils/components/functional/unlock-panel/helpers/getIsMetaMaskAvailable.js",
+      "require": "./dist/cjs/components/functional/unlock-panel/helpers/getIsMetaMaskAvailable.js",
+      "types": "./dist/types/components/functional/unlock-panel/helpers/getIsMetaMaskAvailable.d.ts"
     },
-    "./helpers/getIsExtensionAvailable": {
-      "import": "./dist/utils/helpers/getIsExtensionAvailable.js",
-      "require": "./dist/cjs/helpers/getIsExtensionAvailable.js",
-      "types": "./dist/types/helpers/getIsExtensionAvailable.d.ts"
+    "./utils/getIsExtensionAvailable": {
+      "import": "./dist/utils/components/functional/unlock-panel/helpers/getIsExtensionAvailable.js",
+      "require": "./dist/cjs/components/functional/unlock-panel/helpers/getIsExtensionAvailable.js",
+      "types": "./dist/types/components/functional/unlock-panel/helpers/getIsExtensionAvailable.d.ts"
     },
     "./mvx-unlock-panel": {
       "import": "./dist/web-components/mvx-unlock-panel.js",
