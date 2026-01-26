@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [[0.1.15](https://github.com/multiversx/mx-sdk-dapp-ui/pull/296)] - 2026-01-26
 
-- [Fixed helpers export)](https://github.com/multiversx/mx-sdk-dapp-ui/pull/296)
+- [Fixed helpers export](https://github.com/multiversx/mx-sdk-dapp-ui/pull/296)
 
 ## [[0.1.14](https://github.com/multiversx/mx-sdk-dapp-ui/pull/295)] - 2026-01-26
 
