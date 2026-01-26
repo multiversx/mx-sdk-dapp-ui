@@ -97,6 +97,7 @@ export function Pagination({
         onClick={handleEdgePageClick(1)}
         data-testid={DataTestIdsEnum.firstBtn}
         class={getPaginationAngleClasses(isLeftToggleDisabled)}
+        part="pagination-angle-first"
       >
         <Icon name="angles-left" class={styles.paginationAngleIcon} />
       </span>
@@ -104,6 +105,7 @@ export function Pagination({
         data-testid={DataTestIdsEnum.prevBtn}
         onClick={handleEdgePageClick(currentPage - 1)}
         class={getPaginationEdgeButtonClasses(isLeftToggleDisabled)}
+        part="pagination-button-prev"
       >
         <Icon name="angle-left" class={styles.paginationEdgeButtonIcon} />
       </div>
@@ -120,6 +122,7 @@ export function Pagination({
               <div
                 onClick={() => handlePageClick(Number(paginationItem))}
                 data-testid={`${DataTestIdsEnum.paginationItem}-${paginationItem}`}
+                part="pagination-item"
                 class={{
                   [styles.paginationItem]: true,
                   [styles.paginationItemBefore]: true,
@@ -156,6 +159,7 @@ export function Pagination({
         data-testid={DataTestIdsEnum.nextBtn}
         onClick={handleEdgePageClick(currentPage + 1)}
         class={getPaginationEdgeButtonClasses(isRightToggleDisabled)}
+        part="pagination-button-next"
       >
         <Icon name="angle-right" class={styles.paginationEdgeButtonIcon} />
       </div>
@@ -163,6 +167,7 @@ export function Pagination({
         data-testid={DataTestIdsEnum.lastBtn}
         onClick={handleEdgePageClick(totalPages)}
         class={getPaginationAngleClasses(isRightToggleDisabled)}
+        part="pagination-angle-last"
       >
         <Icon name="angles-right" class={styles.paginationAngleIcon} />
       </span>
