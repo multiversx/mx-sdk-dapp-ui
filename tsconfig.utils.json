@@ -21,7 +21,6 @@
     "src/constants/window.constants.ts",
     "src/components/functional/unlock-panel/helpers/getIsMetaMaskAvailable.ts",
     "src/components/functional/unlock-panel/helpers/getIsExtensionAvailable.ts",
-    "src/utils/helpers/getIsExtensionAvailable.ts",
     "src/utils/EventBus.ts"
   ]
 }
