@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [[0.1.17](https://github.com/multiversx/mx-sdk-dapp-ui/pull/299)] - 2026-01-27
+## [[0.1.17](https://github.com/multiversx/mx-sdk-dapp-ui/pull/300)] - 2026-01-27
 
 - [Added shard icon to address table and hover on button](https://github.com/multiversx/mx-sdk-dapp-ui/pull/299)
 
