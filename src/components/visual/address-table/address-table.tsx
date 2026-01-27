@@ -153,7 +153,7 @@ export class AddressTable {
                   #{this.processLedgerAddressIndex(accountDerivation)}
                   {accountDerivation.shard != null && (
                     <mvx-tooltip
-                      position={accountDerivation.index % 10 === 0 ? 'bottom' : 'top'}
+                      position={accountDerivation.index === this.accountScreenData.startIndex ? 'bottom' : 'top'}
                       trigger={
                         <mvx-shard-icon shard={accountDerivation.shard} class="address-table-list-item-shard-icon" />
                       }
