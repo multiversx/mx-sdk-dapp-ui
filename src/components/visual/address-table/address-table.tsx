@@ -92,7 +92,7 @@ export class AddressTable {
 
     return (
       <div class="address-table">
-        <div class="address-table-label-wrapper">
+        <div class="address-table-label-wrapper" part="label-wrapper">
           <div class="address-table-label">Choose the wallet you want to access</div>
         </div>
 
@@ -148,14 +148,14 @@ export class AddressTable {
                   #{this.processLedgerAddressIndex(accountDerivation)}
                 </div>
 
-                <mvx-trim text={accountDerivation.address} class="address-table-list-item-address" />
+                <mvx-trim text={accountDerivation.address} class="address-table-list-item-address" part="address" />
                 <div class="address-table-list-item-balance">{accountDerivation.usdValue}</div>
               </div>
             ))}
           </div>
         </div>
 
-        <div class="address-table-pagination">
+        <div class="address-table-pagination" part="pagination-wrapper">
           <Pagination
             totalPages={totalPages}
             isDisabled={isPageChanging}
@@ -186,6 +186,7 @@ export class AddressTable {
             onButtonClick={this.handleAccessWallet.bind(this)}
             disabled={isPageChanging || isAccessWalletDisabled}
             class={classNames('address-table-button', addressTableClasses.button)}
+            exportparts="button: access-button"
           >
             <span class="address-table-button-label">{isPageChanging ? 'Loading Wallets...' : 'Access Wallet'}</span>
             {isPageChanging && <mvx-spinner-icon />}
