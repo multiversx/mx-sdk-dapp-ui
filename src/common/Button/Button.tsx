@@ -25,6 +25,7 @@ export function Button(
 ) {
   return (
     <button
+      part="button"
       data-testid={dataTestId}
       onClick={onClick}
       disabled={disabled}
