@@ -3,6 +3,7 @@ export interface IndexedAccountType {
   balance: string;
   usdValue?: string;
   index: number;
+  shard?: number | null;
 }
 
 export interface IAddressTableData {
