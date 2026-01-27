@@ -76,6 +76,8 @@ export class AddressTable {
       preloaderItem:
         'mvx:h-16! mvx:border mvx:border-solid mvx:border-transparent mvx:rounded-lg! mvx:flex mvx:items-center mvx:w-full! mvx:p-4',
       preloaderItemCheckbox: 'mvx:h-4! mvx:mr-2 mvx:min-w-4! mvx:w-4! mvx:rounded-full! mvx:bg-preloader!',
+      preloaderItemShard:
+        'address-table-preloader-item-shard mvx:h-4! mvx:mr-2 mvx:min-w-4! mvx:w-4! mvx:rounded-full! mvx:bg-preloader!',
       preloaderItemAddress: 'mvx:w-40! mvx:h-4! mvx:bg-preloader! mvx:rounded-lg! mvx:mr-auto',
       preloaderItemBalance: 'mvx:w-24! mvx:h-4! mvx:bg-preloader! mvx:rounded-lg! mvx:ml-2',
       preloaderItemIndex: classNames('mvx:mr-2 mvx:h-4! mvx:bg-preloader! mvx:rounded-lg!', {
@@ -103,6 +105,8 @@ export class AddressTable {
                 <mvx-preloader
                   class={classNames('address-table-preloader-item-checkbox', addressClasses.preloaderItemCheckbox)}
                 />
+
+                <mvx-preloader class={classNames(addressClasses.preloaderItemShard)} />
 
                 <mvx-preloader
                   class={classNames('address-table-preloader-item-index', addressClasses.preloaderItemIndex)}
@@ -135,6 +139,7 @@ export class AddressTable {
                     'checked': accountDerivation.index === this.selectedIndex,
                   }}
                 />
+
                 <div
                   class={{
                     'address-table-list-item-index': true,
@@ -146,6 +151,16 @@ export class AddressTable {
                   }}
                 >
                   #{this.processLedgerAddressIndex(accountDerivation)}
+                  {accountDerivation.shard != null && (
+                    <mvx-tooltip
+                      position={accountDerivation.index % 10 === 0 ? 'bottom' : 'top'}
+                      trigger={
+                        <mvx-shard-icon shard={accountDerivation.shard} class="address-table-list-item-shard-icon" />
+                      }
+                    >
+                      <div class="address-table-list-item-shard-tooltip">Shard {accountDerivation.shard}</div>
+                    </mvx-tooltip>
+                  )}
                 </div>
 
                 <mvx-trim text={accountDerivation.address} class="address-table-list-item-address" part="address" />

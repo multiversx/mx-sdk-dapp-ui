@@ -77,8 +77,13 @@
             }
           }
 
+          .address-table-list-item-shard-tooltip {
+            @apply mvx:whitespace-nowrap;
+            color: var(--mvx-text-color-secondary, #737373);
+          }
+
           .address-table-list-item-index {
-            @apply mvx:relative mvx:z-1 mvx:text-base mvx:font-medium mvx:transition-all mvx:duration-200 mvx:mr-4 mvx:ease-in-out;
+            @apply mvx:relative mvx:z-1 mvx:flex mvx:items-center mvx:gap-2 mvx:text-base mvx:font-medium mvx:transition-all mvx:duration-200 mvx:mr-4 mvx:ease-in-out;
             color: var(--mvx-text-color-secondary);
 
             &.checked {
@@ -100,10 +105,14 @@
             &.largest {
               @apply mvx:w-15;
             }
+
+            mvx-tooltip {
+              @apply mvx:mt-1 mvx:ml-1;
+            }
           }
 
           .address-table-list-item-address {
-            @apply mvx:relative mvx:z-1 mvx:max-w-40 mvx:text-base mvx:mr-auto mvx:min-w-0;
+            @apply mvx:relative mvx:z-1 mvx:max-w-40 mvx:text-base mvx:mr-auto mvx:min-w-0 mvx:ml-2;
 
             .trim-wrapper {
               @apply mvx:leading-none;
