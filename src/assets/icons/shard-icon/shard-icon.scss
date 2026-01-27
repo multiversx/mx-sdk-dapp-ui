@@ -1,0 +1,40 @@
+:host {
+  display: inline-block;
+}
+
+.shard-icon {
+  height: auto;
+  width: 16px;
+  cursor: pointer;
+
+  &.shard-0 {
+    path:not(:nth-child(1)) {
+      opacity: 0.2;
+    }
+
+    path:nth-child(1) {
+      opacity: 0.5;
+    }
+  }
+
+  &.shard-1 {
+    path:not(:nth-child(2)) {
+      opacity: 0.2;
+    }
+
+    path:nth-child(2) {
+      opacity: 0.5;
+    }
+  }
+
+  &.shard-2 {
+    path:not(:nth-child(3)) {
+      opacity: 0.2;
+    }
+
+    path:nth-child(3) {
+      opacity: 0.5;
+    }
+  }
+}
+

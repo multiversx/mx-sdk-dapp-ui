@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.1.17](https://github.com/multiversx/mx-sdk-dapp-ui/pull/299)] - 2026-01-27
+
+- [Added shard icon to address table and hover on button](https://github.com/multiversx/mx-sdk-dapp-ui/pull/299)
+
 ## [[0.1.16](https://github.com/multiversx/mx-sdk-dapp-ui/pull/298)] - 2026-01-27
 
 - [Add part attributes to Button, AddressTable, and Pagination components for improved external styling capabilities](https://github.com/multiversx/mx-sdk-dapp-ui/pull/298)
