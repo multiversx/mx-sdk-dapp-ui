@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.1.16](https://github.com/multiversx/mx-sdk-dapp-ui/pull/297)] - 2026-01-27
+
+- [Add part attributes to Button and AddressTable components for improved accessibility](https://github.com/multiversx/mx-sdk-dapp-ui/pull/297)
+
 ## [[0.1.15](https://github.com/multiversx/mx-sdk-dapp-ui/pull/296)] - 2026-01-26
 
 - [Fixed helpers export](https://github.com/multiversx/mx-sdk-dapp-ui/pull/296)
