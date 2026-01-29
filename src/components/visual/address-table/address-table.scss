@@ -91,19 +91,19 @@
             }
 
             &.narrow {
-              @apply mvx:w-7;
+              @apply mvx:min-w-7;
             }
 
             &.middle {
-              @apply mvx:w-8;
+              @apply mvx:min-w-8;
             }
 
             &.larger {
-              @apply mvx:w-11;
+              @apply mvx:min-w-11;
             }
 
             &.largest {
-              @apply mvx:w-15;
+              @apply mvx:min-w-15;
             }
 
             mvx-tooltip {

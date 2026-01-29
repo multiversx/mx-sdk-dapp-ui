@@ -81,10 +81,10 @@ export class AddressTable {
       preloaderItemAddress: 'mvx:w-40! mvx:h-4! mvx:bg-preloader! mvx:rounded-lg! mvx:mr-auto',
       preloaderItemBalance: 'mvx:w-24! mvx:h-4! mvx:bg-preloader! mvx:rounded-lg! mvx:ml-2',
       preloaderItemIndex: classNames('mvx:mr-2 mvx:h-4! mvx:bg-preloader! mvx:rounded-lg!', {
-        'mvx:w-9!': isSingleDigitIndex,
-        'mvx:w-10!': isIndexBelowOneHundred,
-        'mvx:w-13!': isIndexInTheHundreds,
-        'mvx:w-17!': isIndexInTheThousands,
+        'mvx:min-w-9!': isSingleDigitIndex,
+        'mvx:min-w-10!': isIndexBelowOneHundred,
+        'mvx:min-w-13!': isIndexInTheHundreds,
+        'mvx:min-w-17!': isIndexInTheThousands,
       }),
     };
 
