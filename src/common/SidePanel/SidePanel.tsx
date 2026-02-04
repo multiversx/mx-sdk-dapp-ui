@@ -54,6 +54,7 @@ export function SidePanel(
       <SidePanelSwiper open={shouldAnimate} onSheetDismiss={onClose}>
         <div
           id={sidePanelIdentifier}
+          part={sidePanelIdentifier}
           class={classNames([styles.sidePanel], { [styles.sidePanelVisible]: shouldAnimate }, panelClassName)}
         >
           <div>
