@@ -13,7 +13,9 @@ export class Button {
   @Event() buttonClick: EventEmitter<MouseEvent>;
 
   @Prop() class?: string = '';
-  @Prop({ attribute: 'data-testid' }) dataTestId?: string = '';
+  // Accept `data-testid` without reflecting it on the host element,
+  // so only the inner `<button>` ends up with this attribute.
+  @Prop({ attribute: 'data-testid', reflect: false }) dataTestId?: string = '';
   @Prop() disabled?: boolean = false;
   @Prop() size?: `${ButtonSizeEnum}` = 'large';
   @Prop() variant?: `${ButtonVariantEnum}` = 'primary';
