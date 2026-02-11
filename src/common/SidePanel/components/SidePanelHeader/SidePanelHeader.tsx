@@ -1,6 +1,7 @@
 import { h } from '@stencil/core';
 import classNames from 'classnames';
 import { Icon } from 'common/Icon';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 // prettier-ignore
 const styles = {
@@ -52,12 +53,14 @@ export function SidePanelHeader({
         {hasLeftButton && (leftIcon || <Icon name="back-arrow" />)}
       </div>
 
-      <div class={styles.sidePanelHeadingTitle}>{panelTitle}</div>
+      <div class={styles.sidePanelHeadingTitle}>{panelTitle}AAAA</div>
 
       <div
         class={{ [styles.sidePanelHeadingRight]: true, [styles.sidePanelHeadingRightVisible]: hasRightButton }}
         onClick={handleRightIconClick}
+        data-testid={DataTestIdsEnum.sidePanelCloseButton}
       >
+        asd
         {hasRightButton && (rightIcon || <Icon name="close" />)}
       </div>
     </div>

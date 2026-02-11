@@ -82,4 +82,5 @@ export enum DataTestIdsEnum {
   signTransactionsAdvancedDataWrapper = 'signTransactionsAdvancedDataWrapper',
   signTransactionsAdvancedDataText = 'signTransactionsAdvancedDataText',
   signTransactionsAdvancedDataHighlight = 'signTransactionsAdvancedDataHighlight',
+  sidePanelCloseButton = 'side-panel-close-button',
 }
