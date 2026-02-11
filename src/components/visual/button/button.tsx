@@ -20,7 +20,7 @@ export class Button {
   @Prop() size?: `${ButtonSizeEnum}` = 'large';
   @Prop() variant?: `${ButtonVariantEnum}` = 'primary';
 
-  private handleClick = (event: MouseEvent) => {
+  private readonly handleClick = (event: MouseEvent) => {
     this.buttonClick.emit(event);
   };
 
@@ -28,7 +28,7 @@ export class Button {
     return (
       <ButtonComponent
         class={this.class}
-        data-testid={this.dataTestId}
+        // data-testid={this.internalDataTestId} // This is handled by the `data-testid` prop with `reflect: false`
         disabled={this.disabled}
         size={this.size}
         variant={this.variant}
