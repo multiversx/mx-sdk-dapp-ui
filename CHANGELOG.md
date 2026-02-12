@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [[0.1.20](https://github.com/multiversx/mx-sdk-dapp-ui/pull/304)] - 2026-02-11
 
-- [Fixed `data-testid`s](https://github.com/multiversx/mx-sdk-dapp-ui/pull/303)
+- [Fied `data-testid`s](https://github.com/multiversx/mx-sdk-dapp-ui/pull/303)
 
 ## [[0.1.19](https://github.com/multiversx/mx-sdk-dapp-ui/pull/302)] - 2026-01-29
 
