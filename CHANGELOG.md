@@ -7,13 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.1.21](https://github.com/multiversx/mx-sdk-dapp-ui/pull/305)] - 2026-02-11
+
+- [Fixed `data-testid` on button](https://github.com/multiversx/mx-sdk-dapp-ui/pull/305)
+
 ## [[0.1.20](https://github.com/multiversx/mx-sdk-dapp-ui/pull/304)] - 2026-02-11
 
-- [Fied `data-testid`s](https://github.com/multiversx/mx-sdk-dapp-ui/pull/303)
+- [Fixed `data-testid`s](https://github.com/multiversx/mx-sdk-dapp-ui/pull/303)
 
 ## [[0.1.19](https://github.com/multiversx/mx-sdk-dapp-ui/pull/302)] - 2026-01-29
 
-- [Fix duplicated `data-testid` on `mvx-button` host and inner `<button>`](https://github.com/multiversx/mx-sdk-dapp-ui/pull/302)
+- [Fixed duplicated `data-testid` on `mvx-button` host and inner `<button>`](https://github.com/multiversx/mx-sdk-dapp-ui/pull/302)
 
 ## [[0.1.18](https://github.com/multiversx/mx-sdk-dapp-ui/pull/301)] - 2026-01-29
 
