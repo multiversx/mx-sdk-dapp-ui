@@ -68,7 +68,7 @@ export function SidePanel(
               />
             )}
           </div>
-          <div class={styles.sidePanelContent}>{children}</div>
+          <div class={styles.sidePanelContent} part="side-panel-content">{children}</div>
         </div>
       </SidePanelSwiper>
     </div>

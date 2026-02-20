@@ -241,19 +241,28 @@ export function SidePanelSwiper(
           [styles.sidePanelSwiperWrapperVisible]: state.isVisible,
           [styles.sidePanelSwiperWrapperHidden]: !state.isVisible,
         }}
+        part="side-panel-swiper-wrapper"
       >
-        <div class={styles.sidePanelSwiper} ref={setSheetRef} onClick={(event: MouseEvent) => event.stopPropagation()}>
-          <div class={styles.sidePanelSwiperHandleWrapper}>
+        <div
+          class={styles.sidePanelSwiper}
+          ref={setSheetRef}
+          part="side-panel-swiper"
+          onClick={(event: MouseEvent) => event.stopPropagation()}
+        >
+          <div class={styles.sidePanelSwiperHandleWrapper} part="side-panel-swiper-handle-wrapper">
             <div
               class={styles.sidePanelSwiperHandleContainer}
+              part="side-panel-swiper-handle-container"
               onMouseDown={handleDragStart}
               onTouchStart={handleDragStart}
             >
-              <div class={styles.sidePanelSwiperHandle} />
+              <div class={styles.sidePanelSwiperHandle} part="side-panel-swiper-handle" />
             </div>
           </div>
 
-          <div class={styles.sidePanelSwiperContent}>{children}</div>
+          <div class={styles.sidePanelSwiperContent} part="side-panel-swiper-content">
+            {children}
+          </div>
         </div>
       </div>
     </div>

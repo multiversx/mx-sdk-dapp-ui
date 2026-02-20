@@ -102,7 +102,7 @@ export function SignTransactionsAdvancedData({
       </div>
 
       <div class={styles.signTransactionsAdvancedDataBottom}>
-        <div class={styles.signTransactionsAdvancedDataWrapper}>
+        <div class={styles.signTransactionsAdvancedDataWrapper} part="sign-transactions-advanced-data-wrapper">
           {beforeHighlight || afterHighlight ? (
             <Fragment>
               {beforeHighlight && (
@@ -120,6 +120,7 @@ export function SignTransactionsAdvancedData({
                   styles.signTransactionsAdvancedDataHighlightBolded,
                 )}
                 data-testid={DataTestIdsEnum.signTransactionsAdvancedDataHighlight}
+                part="sign-transactions-advanced-data-highlight"
                 ref={el => (highlightElement = el)}
               >
                 {highlightText}
@@ -138,6 +139,7 @@ export function SignTransactionsAdvancedData({
             <div
               class={styles.signTransactionsAdvancedDataHighlight}
               data-testid={DataTestIdsEnum.signTransactionsAdvancedDataHighlight}
+              part="sign-transactions-advanced-data-highlight"
             >
               {highlightText}
             </div>
