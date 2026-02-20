@@ -54,7 +54,7 @@ export function SignTransactionsFooter({
   const checkButtonText = providerName ? `Check ${providerName}` : 'Check your device';
 
   return (
-    <div class={styles.signTransactionsFooterContainer}>
+    <div class={styles.signTransactionsFooterContainer} part="sign-transactions-footer-container">
       <div class={styles.signTransactionsFooter} data-testid={DataTestIdsEnum.signTransactionsFooter}>
         <div class={styles.signTransactionsFooterButtons} data-testid={DataTestIdsEnum.signTransactionsFooterButtons}>
           <div

@@ -150,7 +150,7 @@ export class SignTransactionsPanel {
 
     return (
       <SidePanel isOpen={this.isOpen} onClose={this.handleClose} panelTitle="Confirm Transaction" hasBackButton={false}>
-        <div class={styles.signTransactionsPanel} data-testid={DataTestIdsEnum.signTransactionsPanel}>
+        <div class={styles.signTransactionsPanel} data-testid={DataTestIdsEnum.signTransactionsPanel} part="sign-transactions-panel">
           <SignTransactionsHeader
             onBack={onBack}
             onNext={onNext}
@@ -160,7 +160,7 @@ export class SignTransactionsPanel {
             showFavicon={this.showFavicon}
           />
 
-          <div class={styles.signTransactionContent}>
+          <div class={styles.signTransactionContent} part="sign-transaction-content">
             <div class={styles.signTransactionsTabs}>
               {transactionTabs.map(transactionTab => (
                 <div

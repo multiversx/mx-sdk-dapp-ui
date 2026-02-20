@@ -24,7 +24,11 @@ export function SignTransactionsHeader({
   showFavicon,
 }: SignTransactionsHeaderPropsType) {
   return (
-    <div class={styles.signTransactionsHeader} data-testid={DataTestIdsEnum.signTransactionsHeader}>
+    <div
+      class={styles.signTransactionsHeader}
+      data-testid={DataTestIdsEnum.signTransactionsHeader}
+      part={DataTestIdsEnum.signTransactionsHeader}
+    >
       {transactionsCount > 1 && (
         <div
           class={styles.signTransactionsHeaderPager}
@@ -80,6 +84,7 @@ export function SignTransactionsHeader({
 
       <div
         data-testid={DataTestIdsEnum.signTransactionsHeaderOrigin}
+        part="sign-transactions-header-origin"
         class={{
           [styles.signTransactionsHeaderOrigin]: true,
           [styles.signTransactionsHeaderOriginCentered]: transactionsCount <= 1,
