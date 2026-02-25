@@ -60,6 +60,8 @@
             @apply mvx:relative mvx:z-1 mvx:cursor-pointer mvx:transition-all mvx:duration-200 mvx:rounded-full;
             @apply mvx:ease-in-out mvx:mr-2 mvx:min-w-4 mvx:max-w-4 mvx:h-4;
             border: 1px solid var(--mvx-text-color-primary);
+            appearance: none;
+            -webkit-appearance: none;
 
             &:after {
               @apply mvx:absolute mvx:left-1/2 mvx:top-1/2 mvx:rounded-full mvx:opacity-0 mvx:transition-all mvx:duration-200;
