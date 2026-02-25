@@ -110,7 +110,13 @@ export function SignTransactionsFooter({
               data-testid={DataTestIdsEnum.signNextTransactionBtn}
               onClick={showForwardAction ? handleSignClick : onNext}
               disabled={currentIndexCannotBeSignedYet || state.isWaitingForSignature}
-              class={classNames(styles.signTransactionsFooterButton, styles.signTransactionsActionButton)}
+              class={classNames(
+                styles.signTransactionsFooterButton,
+                styles.signTransactionsActionButton,
+                {
+                  [styles.signTransactionsButtonDisabled]: currentIndexCannotBeSignedYet || state.isWaitingForSignature,
+                }
+              )}
             >
               {showForwardAction ? (
                 <span>
