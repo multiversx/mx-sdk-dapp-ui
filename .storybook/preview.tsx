@@ -22,6 +22,7 @@ const upgradeAddressTables = () => {
 
   elements.forEach(element => {
     const raw = element.getAttribute('data-account-screen-data');
+    const selectedIndexAttr = element.getAttribute('selectedindex');
 
     if (!raw) {
       return;
@@ -29,7 +30,16 @@ const upgradeAddressTables = () => {
 
     try {
       const parsed = JSON.parse(raw);
-      (element as unknown as { accountScreenData?: unknown }).accountScreenData = parsed;
+      const typedElement = element as unknown as { accountScreenData?: unknown; selectedIndex?: unknown };
+
+      typedElement.accountScreenData = parsed;
+
+      if (selectedIndexAttr != null) {
+        const parsedSelectedIndex = Number(selectedIndexAttr);
+        if (!Number.isNaN(parsedSelectedIndex)) {
+          typedElement.selectedIndex = parsedSelectedIndex;
+        }
+      }
     } catch {
       // Ignore parse errors in Storybook only.
     }
