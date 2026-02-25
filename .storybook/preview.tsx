@@ -11,6 +11,42 @@ import './tailwind.css';
 
 defineCustomElements();
 
+const upgradeAddressTables = () => {
+  if (typeof document === 'undefined') {
+    return;
+  }
+
+  const elements = Array.from(
+    document.querySelectorAll<HTMLElement>('mvx-address-table[data-account-screen-data]'),
+  );
+
+  elements.forEach(element => {
+    const raw = element.getAttribute('data-account-screen-data');
+
+    if (!raw) {
+      return;
+    }
+
+    try {
+      const parsed = JSON.parse(raw);
+      (element as unknown as { accountScreenData?: unknown }).accountScreenData = parsed;
+    } catch {
+      // Ignore parse errors in Storybook only.
+    }
+  });
+};
+
+if (typeof window !== 'undefined' && 'MutationObserver' in window) {
+  const observer = new MutationObserver(() => {
+    upgradeAddressTables();
+  });
+
+  window.addEventListener('load', () => {
+    upgradeAddressTables();
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+  });
+}
+
 export const decorators: Preview['decorators'] = [
   (Story, context) =>
     renderJsxToHtml(
