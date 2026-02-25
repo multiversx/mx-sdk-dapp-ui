@@ -18,5 +18,6 @@ export default {
   signTransactionsFooterIdentityCopy: 'sign-transactions-footer-identity-copy mvx:text-primary',
   signTransactionsButtonTooltip: 'sign-transactions-button-tooltip mvx:absolute mvx:top-0 mvx:h-12 mvx:left-0 mvx:right-0',
   signTransactionsActionButton: 'sign-transactions-action-button mvx:text-base! mvx:w-full',
+  signTransactionsButtonDisabled: 'sign-transactions-button-disabled mvx:pointer-events-none mvx:!bg-transparent mvx:cursor-default mvx:border mvx:border-secondary-text mvx:!text-secondary-text mvx:hover:opacity-100',
   signTransactionsExplorerLinkIcon: 'sign-transactions-explorer-link-icon mvx:text-primary',
 } satisfies Record<string, string>;

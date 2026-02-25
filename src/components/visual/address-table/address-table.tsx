@@ -126,14 +126,17 @@ export class AddressTable {
           <div class={{ 'address-table-list': true, 'visible': !isPageChanging }}>
             {this.accountScreenData.accounts.map(accountDerivation => (
               <div
-                data-testid={`${DataTestIdsEnum.addressTableItem}-${accountDerivation.address}`}
+                data-testid={`${DataTestIdsEnum.check}_${accountDerivation.address}`}
                 onClick={this.handleSelectAccount(accountDerivation.index)}
                 class={{
                   'address-table-list-item': true,
                   'checked': accountDerivation.index === this.selectedIndex,
                 }}
               >
-                <div
+                <input
+                  type="radio"
+                  name="address-table-selection"
+                  checked={accountDerivation.index === this.selectedIndex}
                   class={{
                     'address-table-list-item-checkbox': true,
                     'checked': accountDerivation.index === this.selectedIndex,
