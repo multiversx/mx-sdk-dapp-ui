@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.1.23](https://github.com/multiversx/mx-sdk-dapp-ui/pull/308)] - 2026-02-20
+
+- [Fixed addressTable data-testid & markup](https://github.com/multiversx/mx-sdk-dapp-ui/pull/307)
+
 ## [[0.1.22](https://github.com/multiversx/mx-sdk-dapp-ui/pull/306)] - 2026-02-20
 
 - [Added part attributes to SidePanel and SignTransactions ](https://github.com/multiversx/mx-sdk-dapp-ui/pull/306)
