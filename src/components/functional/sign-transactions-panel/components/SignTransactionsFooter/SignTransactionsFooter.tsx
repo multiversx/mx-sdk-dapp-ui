@@ -53,6 +53,8 @@ export function SignTransactionsFooter({
   const showForwardAction = currentIndexNeedsSigning || currentIndexCannotBeSignedYet;
   const checkButtonText = providerName ? `Check ${providerName}` : 'Check your device';
 
+  const isDisabled = currentIndexCannotBeSignedYet || state.isWaitingForSignature;
+
   return (
     <div class={styles.signTransactionsFooterContainer} part="sign-transactions-footer-container">
       <div class={styles.signTransactionsFooter} data-testid={DataTestIdsEnum.signTransactionsFooter}>
@@ -109,8 +111,10 @@ export function SignTransactionsFooter({
               size="small"
               data-testid={DataTestIdsEnum.signNextTransactionBtn}
               onClick={showForwardAction ? handleSignClick : onNext}
-              disabled={currentIndexCannotBeSignedYet || state.isWaitingForSignature}
-              class={classNames(styles.signTransactionsFooterButton, styles.signTransactionsActionButton)}
+              disabled={isDisabled}
+              class={classNames(styles.signTransactionsFooterButton, styles.signTransactionsActionButton, {
+                [styles.signTransactionsButtonDisabled]: isDisabled,
+              })}
             >
               {showForwardAction ? (
                 <span>
