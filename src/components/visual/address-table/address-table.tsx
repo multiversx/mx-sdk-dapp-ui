@@ -124,52 +124,55 @@ export class AddressTable {
           </div>
 
           <div class={{ 'address-table-list': true, 'visible': !isPageChanging }}>
-            {this.accountScreenData.accounts.map(accountDerivation => (
-              <div
-                data-testid={`${DataTestIdsEnum.check}_${accountDerivation.address}`}
-                onClick={this.handleSelectAccount(accountDerivation.index)}
-                class={{
-                  'address-table-list-item': true,
-                  'checked': accountDerivation.index === this.selectedIndex,
-                }}
-              >
-                <input
-                  type="radio"
-                  name="address-table-selection"
-                  checked={accountDerivation.index === this.selectedIndex}
-                  class={{
-                    'address-table-list-item-checkbox': true,
-                    'checked': accountDerivation.index === this.selectedIndex,
-                  }}
-                />
-
+            {this.accountScreenData.accounts.map(accountDerivation => {
+              const isChecked = accountDerivation.index === this.selectedIndex;
+              return (
                 <div
+                  data-testid={`${DataTestIdsEnum.check}_${accountDerivation.address}`}
+                  onClick={this.handleSelectAccount(accountDerivation.index)}
                   class={{
-                    'address-table-list-item-index': true,
-                    'checked': accountDerivation.index === this.selectedIndex,
-                    'narrow': isSingleDigitIndex,
-                    'middle': isIndexBelowOneHundred,
-                    'larger': isIndexInTheHundreds,
-                    'largest': isIndexInTheThousands,
+                    'address-table-list-item': true,
+                    'checked': isChecked,
                   }}
                 >
-                  #{this.processLedgerAddressIndex(accountDerivation)}
-                  {accountDerivation.shard != null && (
-                    <mvx-tooltip
-                      position={accountDerivation.index === this.accountScreenData.startIndex ? 'bottom' : 'top'}
-                      trigger={
-                        <mvx-shard-icon shard={accountDerivation.shard} class="address-table-list-item-shard-icon" />
-                      }
-                    >
-                      <div class="address-table-list-item-shard-tooltip">Shard {accountDerivation.shard}</div>
-                    </mvx-tooltip>
-                  )}
-                </div>
+                  <input
+                    type="radio"
+                    name="address-table-selection"
+                    checked={isChecked}
+                    class={{
+                      'address-table-list-item-checkbox': true,
+                      'checked': isChecked,
+                    }}
+                  />
 
-                <mvx-trim text={accountDerivation.address} class="address-table-list-item-address" part="address" />
-                <div class="address-table-list-item-balance">{accountDerivation.usdValue}</div>
-              </div>
-            ))}
+                  <div
+                    class={{
+                      'address-table-list-item-index': true,
+                      'checked': isChecked,
+                      'narrow': isSingleDigitIndex,
+                      'middle': isIndexBelowOneHundred,
+                      'larger': isIndexInTheHundreds,
+                      'largest': isIndexInTheThousands,
+                    }}
+                  >
+                    #{this.processLedgerAddressIndex(accountDerivation)}
+                    {accountDerivation.shard != null && (
+                      <mvx-tooltip
+                        position={accountDerivation.index === this.accountScreenData.startIndex ? 'bottom' : 'top'}
+                        trigger={
+                          <mvx-shard-icon shard={accountDerivation.shard} class="address-table-list-item-shard-icon" />
+                        }
+                      >
+                        <div class="address-table-list-item-shard-tooltip">Shard {accountDerivation.shard}</div>
+                      </mvx-tooltip>
+                    )}
+                  </div>
+
+                  <mvx-trim text={accountDerivation.address} class="address-table-list-item-address" part="address" />
+                  <div class="address-table-list-item-balance">{accountDerivation.usdValue}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
