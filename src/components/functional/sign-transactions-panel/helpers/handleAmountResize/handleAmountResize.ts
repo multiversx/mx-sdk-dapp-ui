@@ -7,15 +7,18 @@ export const handleAmountResize = (element: HTMLElement | null) => {
   const getFontSize = (element: HTMLElement) => parseInt(getComputedStyle(element).getPropertyValue('font-size'));
 
   const firstChild = element.firstChild as HTMLElement;
+
+  if (!firstChild) {
+    return;
+  }
+
+  firstChild.style.fontSize = '';
+
   const maxWidth = 250;
   const sizes = {
     parent: Math.min(element.offsetWidth, maxWidth),
     firstChild: getFontSize(firstChild),
   };
-
-  if (!firstChild) {
-    return;
-  }
 
   while (sizes.parent < getElementWidth(firstChild)) {
     const updatedSize = sizes.firstChild - 0.1;
