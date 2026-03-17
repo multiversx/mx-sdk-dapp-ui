@@ -53,9 +53,8 @@ export function SignTransactionsOverview({
                 data-testid={DataTestIdsEnum.signTransactionsOverviewAmountValue}
                 ref={setAmountValueRef}
               >
-                <span>
-                  {amount} {identifier}
-                </span>
+                <span>{amount}</span>
+                <span class={styles.signTransactionsIdentifier}>{identifier}</span>
               </div>
               {identifier !== 'USD' && (
                 <div

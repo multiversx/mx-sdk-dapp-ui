@@ -9,7 +9,7 @@ export default {
     signTransactionsDetailLabel: 'sign-transactions-detail-label mvx:text-secondary-text mvx:text-sm mvx:font-normal mvx:leading-5 mvx:relative mvx:z-1',
     signTransactionsAmountDisplay: 'sign-transactions-amount-display mvx:flex mvx:items-center mvx:ml-auto mvx:gap-3 mvx:z-1',
     signTransactionsAmountValueContainer: 'sign-transactions-amount-value-container mvx:flex mvx:flex-col mvx:items-end mvx:gap-1',
-    signTransactionsAmountValue: 'sign-transactions-amount-value mvx:text-xl mvx:font-medium mvx:text-primary mvx:-tracking-[0.24px] mvx:leading-6 mvx:text-right mvx:whitespace-nowrap',
+    signTransactionsAmountValue: 'sign-transactions-amount-value mvx:flex mvx:flex-row mvx:flex-wrap mvx:justify-end mvx:items-baseline mvx:gap-x-1 mvx:text-xl mvx:font-medium mvx:text-primary mvx:-tracking-[0.24px] mvx:leading-6 mvx:text-right',
     signTransactionsIdentifier: 'sign-transactions-identifier mvx:text-sm mvx:text-primary',
     signTransactionsUsdValue: 'sign-transactions-usd-value mvx:text-sm mvx:text-secondary-text',
     signTransactionsTokenIcon: 'sign-transactions-token-icon mvx:w-10 mvx:h-10 mvx:rounded-xs mvx:overflow-hidden mvx:border mvx:border-neutral-700',
