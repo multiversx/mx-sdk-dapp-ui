@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [[0.1.24](https://github.com/multiversx/mx-sdk-dapp-ui/pull/309)] - 2026-03-17
+
+- [Fixed amount scaling](https://github.com/multiversx/mx-sdk-dapp-ui/pull/309)
+
 ## [[0.1.23](https://github.com/multiversx/mx-sdk-dapp-ui/pull/308)] - 2026-02-20
 
 - [Fixed addressTable data-testid & markup](https://github.com/multiversx/mx-sdk-dapp-ui/pull/307)
