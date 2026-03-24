@@ -1,4 +1,14 @@
 import { h } from '@stencil/core';
+import { ArcExtensionProviderIcon } from 'assets/icons/arc-extension-provider-icon/arc-extension-provider-icon';
+import { BraveExtensionProviderIcon } from 'assets/icons/brave-extension-provider-icon/brave-extension-provider-icon';
+import { EdgeExtensionProviderIcon } from 'assets/icons/edge-extension-provider-icon/edge-extension-provider-icon';
+import { ExtensionProviderIcon } from 'assets/icons/extension-provider-icon/extension-provider-icon';
+import { FirefoxExtensionProviderIcon } from 'assets/icons/firefox-extension-provider-icon/firefox-extension-provider-icon';
+import { LedgerProviderIcon } from 'assets/icons/ledger-provider-icon/ledger-provider-icon';
+import { MetaMaskProviderIcon } from 'assets/icons/metamask-provider-icon/metamask-provider-icon';
+import { MultiversXLogoIcon } from 'assets/icons/multiversx-logo-icon/multiversx-logo-icon';
+import { PasskeyProviderIcon } from 'assets/icons/passkey-provider-icon/passkey-provider-icon';
+import { WalletProviderIcon } from 'assets/icons/wallet-provider-icon/wallet-provider-icon';
 import { BrowserEnum } from 'constants/browser.enum';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
@@ -21,46 +31,32 @@ export const getProviderButtonIcon = ({
     case ProviderTypeEnum.extension:
       switch (detectedBrowser) {
         case BrowserEnum.Edge:
-          return (
-            <mvx-edge-extension-provider-icon width={extensionProviderIconWidth} height={extensionProviderIconHeight} />
-          );
+          return <EdgeExtensionProviderIcon width={extensionProviderIconWidth} height={extensionProviderIconHeight} />;
         case BrowserEnum.Firefox:
           return (
-            <mvx-firefox-extension-provider-icon
-              width={extensionProviderIconWidth}
-              height={extensionProviderIconHeight}
-            />
+            <FirefoxExtensionProviderIcon width={extensionProviderIconWidth} height={extensionProviderIconHeight} />
           );
         case BrowserEnum.Brave:
-          return (
-            <mvx-brave-extension-provider-icon
-              width={extensionProviderIconWidth}
-              height={extensionProviderIconHeight}
-            />
-          );
+          return <BraveExtensionProviderIcon width={extensionProviderIconWidth} height={extensionProviderIconHeight} />;
         case BrowserEnum.Arc:
-          return (
-            <mvx-arc-extension-provider-icon width={extensionProviderIconWidth} height={extensionProviderIconHeight} />
-          );
+          return <ArcExtensionProviderIcon width={extensionProviderIconWidth} height={extensionProviderIconHeight} />;
         case BrowserEnum.Chrome:
-          return (
-            <mvx-extension-provider-icon width={extensionProviderIconWidth} height={extensionProviderIconHeight} />
-          );
+          return <ExtensionProviderIcon width={extensionProviderIconWidth} height={extensionProviderIconHeight} />;
         default:
-          return <mvx-wallet-provider-icon />;
+          return <WalletProviderIcon />;
       }
     case ProviderTypeEnum.metamask:
-      return <mvx-metamask-provider-icon />;
+      return <MetaMaskProviderIcon />;
     case ProviderTypeEnum.passkey:
-      return <mvx-passkey-provider-icon />;
+      return <PasskeyProviderIcon />;
     case ProviderTypeEnum.walletConnect:
-      return <mvx-multiversx-logo-icon />;
+      return <MultiversXLogoIcon />;
     case ProviderTypeEnum.ledger:
-      return <mvx-ledger-provider-icon />;
+      return <LedgerProviderIcon />;
     case ProviderTypeEnum.crossWindow:
-      return <mvx-wallet-provider-icon />;
+      return <WalletProviderIcon />;
 
     default:
-      return <mvx-multiversx-logo-icon />;
+      return <MultiversXLogoIcon />;
   }
 };

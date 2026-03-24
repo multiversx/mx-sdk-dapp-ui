@@ -1,49 +1,53 @@
-import type { EventEmitter, JSX } from '@stencil/core';
-import { Component, Event, h, Prop } from '@stencil/core';
+import type { JSX } from '@stencil/core';
+import { h } from '@stencil/core';
 import type { ITransactionListItem } from 'components/functional/notifications-feed/components/TransactionListItem/transactionListItem.types';
 import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
 
+import { TransactionToastContent } from './components/transaction-toast-content/transaction-toast-content';
 import type { IToastDataState, ITransactionProgressState } from './transaction-toast.type';
 
-@Component({
-  tag: 'mvx-transaction-toast',
-  styleUrl: './transaction-toast.scss',
-})
-export class TransactionToast {
-  @Prop() toastId: string = '';
-  @Prop() wrapperClass: string;
-  @Prop() fullWidth?: boolean;
-  @Prop() processedTransactionsStatus: string | JSX.Element = '';
-  @Prop() transactions: ITransactionListItem[] = [];
-  @Prop() toastDataState: IToastDataState;
-  @Prop() transactionProgressState?: ITransactionProgressState;
-  @Event() deleteToast: EventEmitter<void>;
+interface TransactionToastPropsType {
+  toastId?: string;
+  fullWidth?: boolean;
+  processedTransactionsStatus?: string | JSX.Element;
+  transactions?: ITransactionListItem[];
+  toastDataState: IToastDataState;
+  transactionProgressState?: ITransactionProgressState;
+  onDeleteToast?: () => void;
+  onForceUpdate?: () => void;
+}
 
-  private handleDeleteToast() {
-    this.deleteToast.emit();
-  }
+export function TransactionToast({
+  toastId = '',
+  fullWidth,
+  processedTransactionsStatus = '',
+  transactions = [],
+  toastDataState,
+  transactionProgressState,
+  onDeleteToast,
+  onForceUpdate,
+}: TransactionToastPropsType) {
+  const isStatusPending = transactions.every(tx => tx.status === TransactionStatusEnum.pending);
 
-  render() {
-    const isStatusPending = this.transactions.every(tx => tx.status === TransactionStatusEnum.pending);
-
-    return (
-      <div class="transaction-toast">
-        <mvx-transaction-toast-progress
-          key={this.toastId}
-          toastId={this.toastId}
-          startTime={this.transactionProgressState?.startTime}
-          endTime={this.transactionProgressState?.endTime}
-          isStatusPending={isStatusPending}
-        >
-          <mvx-transaction-toast-content
-            fullWidth={this.fullWidth}
-            toastDataState={this.toastDataState}
-            transactions={this.transactions}
-            processedTransactionsStatus={this.processedTransactionsStatus}
-            onDeleteToast={this.handleDeleteToast.bind(this)}
-          />
-        </mvx-transaction-toast-progress>
-      </div>
-    );
-  }
+  return (
+    <div class="transaction-toast">
+      <mvx-transaction-toast-progress
+        key={toastId}
+        toastId={toastId}
+        startTime={transactionProgressState?.startTime}
+        endTime={transactionProgressState?.endTime}
+        isStatusPending={isStatusPending}
+      >
+        <TransactionToastContent
+          fullWidth={fullWidth}
+          toastDataState={toastDataState}
+          transactions={transactions}
+          processedTransactionsStatus={processedTransactionsStatus}
+          toastId={toastId}
+          onDeleteToast={onDeleteToast}
+          onForceUpdate={onForceUpdate}
+        />
+      </mvx-transaction-toast-progress>
+    </div>
+  );
 }

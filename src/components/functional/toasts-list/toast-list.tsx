@@ -5,6 +5,8 @@ import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
+import { GenericToast } from './components/custom-toast/generic-toast';
+import { TransactionToast } from './components/transaction-toast/transaction-toast';
 import type { CustomToastType, ITransactionToast } from './components/transaction-toast/transaction-toast.type';
 import { ToastEventsEnum } from './toast-list.types';
 
@@ -118,11 +120,17 @@ export class ToastList {
     return (
       <div class={toastListClasses} id="toast-list">
         {this.customToasts?.map(toast => (
-          <mvx-generic-toast toast={toast} onDeleteToast={() => this.handleCustomToastDelete(toast.toastId)} />
+          <GenericToast toast={toast} onDeleteToast={() => this.handleCustomToastDelete(toast.toastId)} />
         ))}
 
         {this.transactionToasts?.map(toast => (
-          <mvx-transaction-toast {...toast} onDeleteToast={() => this.handleTransactionToastDelete(toast.toastId)} />
+          <TransactionToast
+            {...toast}
+            onDeleteToast={() => this.handleTransactionToastDelete(toast.toastId)}
+            onForceUpdate={() => {
+              this.transactionToasts = [...this.transactionToasts];
+            }}
+          />
         ))}
 
         {hasTransactionToasts && (

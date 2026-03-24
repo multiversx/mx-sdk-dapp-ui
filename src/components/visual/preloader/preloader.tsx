@@ -1,18 +1,13 @@
-import { Component, h, Prop } from '@stencil/core';
+import { h } from '@stencil/core';
 
-@Component({
-  tag: 'mvx-preloader',
-  styleUrl: 'preloader.scss',
-  shadow: true,
-})
-export class Preloader {
-  @Prop() class?: string;
+interface PreloaderPropsType {
+  class?: string;
+}
 
-  render() {
-    return (
-      <div class={{ preloader: true, [this.class]: Boolean(this.class) }}>
-        <slot />
-      </div>
-    );
-  }
+export function Preloader({ class: className }: PreloaderPropsType = {}, children?: any) {
+  return (
+    <div class={{ preloader: true, [className]: Boolean(className) }}>
+      {children}
+    </div>
+  );
 }

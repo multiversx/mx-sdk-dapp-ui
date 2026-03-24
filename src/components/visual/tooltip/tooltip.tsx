@@ -1,38 +1,52 @@
-import type { EventEmitter } from '@stencil/core';
-import { Component, Event, h, Prop, State } from '@stencil/core';
+import { h } from '@stencil/core';
 import { Tooltip as TooltipComponent } from 'common/Tooltip/Tooltip';
 
-@Component({
-  tag: 'mvx-tooltip',
-  styleUrl: 'tooltip.scss',
-  shadow: true,
-})
-export class Tooltip {
-  @Prop() position: 'top' | 'bottom' = 'top';
-  @Prop() triggerOnClick?: boolean = false;
-  @Prop() trigger: HTMLElement;
-  @Prop() class?: string;
+const tooltipVisibilityMap = new Map<string, boolean>();
+let tooltipCounter = 0;
 
-  @Event() triggerRender: EventEmitter<boolean>;
-  @State() private isVisible: boolean = false;
+interface MvxTooltipPropsType {
+  position?: 'top' | 'bottom';
+  triggerOnClick?: boolean;
+  trigger: HTMLElement;
+  class?: string;
+  isTooltipVisible?: boolean;
+  onVisibilityChange?: (isVisible: boolean) => void;
+  onTriggerRender?: (isVisible: boolean) => void;
+  tooltipKey?: string;
+}
 
-  private handleVisibilityChange = (isVisible: boolean) => {
-    this.triggerRender.emit(isVisible);
-    this.isVisible = isVisible;
+export function MvxTooltip(
+  {
+    position = 'top',
+    triggerOnClick = false,
+    trigger,
+    class: className,
+    isTooltipVisible,
+    onVisibilityChange,
+    onTriggerRender,
+    tooltipKey,
+  }: MvxTooltipPropsType,
+  children?: any,
+) {
+  const key = tooltipKey ?? `tooltip-${tooltipCounter++}`;
+  const visible = isTooltipVisible ?? (tooltipVisibilityMap.get(key) ?? false);
+
+  const handleVisibilityChange = (isVisible: boolean) => {
+    tooltipVisibilityMap.set(key, isVisible);
+    onVisibilityChange?.(isVisible);
+    onTriggerRender?.(isVisible);
   };
 
-  render() {
-    return (
-      <TooltipComponent
-        position={this.position}
-        triggerOnClick={this.triggerOnClick}
-        trigger={this.trigger}
-        class={this.class}
-        isTooltipVisible={this.isVisible}
-        onVisibilityChange={this.handleVisibilityChange}
-      >
-        <slot />
-      </TooltipComponent>
-    );
-  }
+  return (
+    <TooltipComponent
+      position={position}
+      triggerOnClick={triggerOnClick}
+      trigger={trigger}
+      class={className}
+      isTooltipVisible={visible}
+      onVisibilityChange={handleVisibilityChange}
+    >
+      {children}
+    </TooltipComponent>
+  );
 }

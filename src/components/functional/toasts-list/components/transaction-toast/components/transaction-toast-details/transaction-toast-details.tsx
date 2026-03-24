@@ -1,101 +1,115 @@
 import type { JSX } from '@stencil/core';
-import { Component, h, Prop, State } from '@stencil/core';
+import { h } from '@stencil/core';
 import classNames from 'classnames';
 import { Icon } from 'common/Icon';
 import type { ITransactionListItem } from 'components/functional/notifications-feed/components/TransactionListItem/transactionListItem.types';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-@Component({
-  tag: 'mvx-transaction-toast-details',
-  styleUrl: 'transaction-toast-details.scss',
-})
-export class TransactionToastDetails {
-  @Prop() processedTransactionsStatus?: string | JSX.Element;
-  @Prop() transactions?: ITransactionListItem[];
-  @Prop() transactionClass: string;
-  @Prop() maxShownTransactions: number = 5;
-  @State() isExpanded: boolean = false;
-  @State() showAllTransactions: boolean = false;
+import { TransactionDetailsBody } from './components/transaction-toast-details-body';
 
-  private toggleExpand() {
-    this.isExpanded = !this.isExpanded;
-    // Reset showAllTransactions when collapsing
-    if (!this.isExpanded) {
-      this.showAllTransactions = false;
+const expandedStateMap = new Map<string, boolean>();
+const showAllMap = new Map<string, boolean>();
+const transactionsOrderMap = new Map<string, Map<string, number>>();
+
+interface TransactionToastDetailsPropsType {
+  processedTransactionsStatus?: string | JSX.Element;
+  transactions?: ITransactionListItem[];
+  transactionClass?: string;
+  maxShownTransactions?: number;
+  toastId?: string;
+  onForceUpdate?: () => void;
+}
+
+export function TransactionToastDetails({
+  processedTransactionsStatus,
+  transactions,
+  transactionClass,
+  maxShownTransactions = 5,
+  toastId = '',
+  onForceUpdate,
+}: TransactionToastDetailsPropsType) {
+  if (transactions == null) {
+    return null;
+  }
+
+  if (!transactionsOrderMap.has(toastId)) {
+    transactionsOrderMap.set(toastId, new Map<string, number>());
+  }
+  const initialTransactionsOrder = transactionsOrderMap.get(toastId);
+
+  const isExpanded = expandedStateMap.get(toastId) ?? false;
+  const showAllTransactions = showAllMap.get(toastId) ?? false;
+
+  const toggleExpand = () => {
+    const current = expandedStateMap.get(toastId) ?? false;
+    expandedStateMap.set(toastId, !current);
+    if (current) {
+      showAllMap.set(toastId, false);
     }
-  }
+    onForceUpdate?.();
+  };
 
-  private showMoreTransactions() {
-    this.showAllTransactions = true;
-  }
+  const showMoreTransactions = () => {
+    showAllMap.set(toastId, true);
+    onForceUpdate?.();
+  };
 
-  private initialTransactionsOrder = new Map<string, number>();
-
-  private getOrderedTransactions(transactions: ITransactionListItem[]) {
-    transactions.forEach((transaction, index) => {
-      if (!this.initialTransactionsOrder.has(transaction.hash)) {
-        this.initialTransactionsOrder.set(transaction.hash, index + 1);
+  const getOrderedTransactions = (txs: ITransactionListItem[]) => {
+    txs.forEach((transaction, index) => {
+      if (!initialTransactionsOrder.has(transaction.hash)) {
+        initialTransactionsOrder.set(transaction.hash, index + 1);
       }
     });
 
-    return [...transactions].sort(
-      (a, b) => this.initialTransactionsOrder.get(a.hash) - this.initialTransactionsOrder.get(b.hash),
-    );
-  }
+    return [...txs].sort((a, b) => initialTransactionsOrder.get(a.hash) - initialTransactionsOrder.get(b.hash));
+  };
 
-  render() {
-    if (this.transactions == null) {
-      return null;
-    }
+  const hasMoreTransactionsToShow = transactions.length > maxShownTransactions;
+  const hiddenTransactionsCount = transactions.length - maxShownTransactions;
+  const orderedTransactions = getOrderedTransactions(transactions);
+  const visibleTransactions = showAllTransactions
+    ? orderedTransactions
+    : orderedTransactions.slice(0, maxShownTransactions);
 
-    const hasMoreTransactionsToShow = this.transactions.length > this.maxShownTransactions;
-    const hiddenTransactionsCount = this.transactions.length - this.maxShownTransactions;
-    const orderedTransactions = this.getOrderedTransactions(this.transactions);
-    const visibleTransactions = this.showAllTransactions
-      ? orderedTransactions
-      : orderedTransactions.slice(0, this.maxShownTransactions);
+  return (
+    <div class="transaction-details-container">
+      <div class="transaction-details-status" onClick={toggleExpand}>
+        <Icon
+          name="angle-down"
+          class={classNames('transaction-details-status-icon', {
+            rotated: isExpanded,
+          })}
+        />
 
-    return (
-      <div class="transaction-details-container">
-        <div class="transaction-details-status" onClick={this.toggleExpand.bind(this)}>
-          <Icon
-            name="angle-down"
-            class={classNames('transaction-details-status-icon', {
-              rotated: this.isExpanded,
-            })}
-          />
-
-          <span data-testid={DataTestIdsEnum.transactionDetailsStatus} class="transaction-details-status-text">
-            {this.processedTransactionsStatus}
-          </span>
-        </div>
-
-        <div
-          class={{
-            'transaction-details-list': true,
-            'expanded': this.isExpanded,
-          }}
-        >
-          {visibleTransactions.map(({ hash, status, link }) => (
-            <mvx-transaction-toast-details-body
-              transactionClass={this.transactionClass}
-              hash={hash}
-              status={status}
-              link={link}
-              index={`#${this.initialTransactionsOrder.get(hash)}`}
-              key={hash}
-            />
-          ))}
-
-          {hasMoreTransactionsToShow && !this.showAllTransactions && (
-            <div class="view-all-container">
-              <button type="button" class="show-more-button" onClick={this.showMoreTransactions.bind(this)}>
-                View {hiddenTransactionsCount} more
-              </button>
-            </div>
-          )}
-        </div>
+        <span data-testid={DataTestIdsEnum.transactionDetailsStatus} class="transaction-details-status-text">
+          {processedTransactionsStatus}
+        </span>
       </div>
-    );
-  }
+
+      <div
+        class={{
+          'transaction-details-list': true,
+          'expanded': isExpanded,
+        }}
+      >
+        {visibleTransactions.map(({ hash, status, link }) => (
+          <TransactionDetailsBody
+            transactionClass={transactionClass}
+            hash={hash}
+            status={status}
+            link={link}
+            index={`#${initialTransactionsOrder.get(hash)}`}
+          />
+        ))}
+
+        {hasMoreTransactionsToShow && !showAllTransactions && (
+          <div class="view-all-container">
+            <button type="button" class="show-more-button" onClick={showMoreTransactions}>
+              View {hiddenTransactionsCount} more
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }

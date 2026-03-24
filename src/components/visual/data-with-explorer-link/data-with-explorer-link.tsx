@@ -1,4 +1,7 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
+import { CopyButton } from 'common/CopyButton/CopyButton';
+import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
+import { Tooltip } from 'common/Tooltip/Tooltip';
 import { Trim } from 'common/Trim/Trim';
 
 @Component({
@@ -15,6 +18,9 @@ export class DataWithExplorerLink {
   @Prop() class?: string;
   @Prop() data: string;
 
+  @State() isCopyTooltipVisible: boolean = false;
+  @State() isExplorerTooltipVisible: boolean = false;
+
   render() {
     return (
       <div
@@ -26,19 +32,29 @@ export class DataWithExplorerLink {
         {(this.showCopyButton || this.showExplorerButton) && (
           <div class="data-with-explorer-link-buttons" onClick={event => event.stopPropagation()}>
             {this.showCopyButton && this.withTooltip && (
-              <mvx-tooltip position="bottom" trigger={<mvx-copy-button text={this.data} />}>
+              <Tooltip
+                position="bottom"
+                trigger={<CopyButton text={this.data} />}
+                isTooltipVisible={this.isCopyTooltipVisible}
+                onVisibilityChange={isVisible => { this.isCopyTooltipVisible = isVisible; }}
+              >
                 Copy
-              </mvx-tooltip>
+              </Tooltip>
             )}
 
             {this.showExplorerButton && this.withTooltip && (
-              <mvx-tooltip position="bottom" trigger={<mvx-explorer-link link={this.explorerLink} />}>
+              <Tooltip
+                position="bottom"
+                trigger={<ExplorerLink link={this.explorerLink} />}
+                isTooltipVisible={this.isExplorerTooltipVisible}
+                onVisibilityChange={isVisible => { this.isExplorerTooltipVisible = isVisible; }}
+              >
                 Explore
-              </mvx-tooltip>
+              </Tooltip>
             )}
 
-            {this.showCopyButton && !this.withTooltip && <mvx-copy-button text={this.data} />}
-            {this.showExplorerButton && !this.withTooltip && <mvx-explorer-link link={this.explorerLink} />}
+            {this.showCopyButton && !this.withTooltip && <CopyButton text={this.data} />}
+            {this.showExplorerButton && !this.withTooltip && <ExplorerLink link={this.explorerLink} />}
           </div>
         )}
       </div>

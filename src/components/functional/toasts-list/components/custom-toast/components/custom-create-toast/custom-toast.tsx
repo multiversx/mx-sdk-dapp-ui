@@ -1,35 +1,15 @@
-import type { EventEmitter } from '@stencil/core';
-import { Component, Event, h, Prop } from '@stencil/core';
+import { h } from '@stencil/core';
 import { Icon } from 'common/Icon';
 import type { IComponentToast } from 'components/functional/toasts-list/components/transaction-toast/transaction-toast.type';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
-@Component({
-  tag: 'mvx-custom-toast',
-  styleUrl: 'custom-toast.scss',
-})
-export class CustomToast {
-  @Prop() toast: IComponentToast;
-  @Event({ bubbles: false, composed: false }) deleteToast: EventEmitter<string>;
+interface CustomToastPropsType {
+  toast: IComponentToast;
+  onDeleteToast?: () => void;
+}
 
-  private handleDeleteToast() {
-    this.deleteToast.emit();
-  }
-
-  render() {
-    return (
-      <div class="toast-wrapper" data-testid={DataTestIdsEnum.transactionToastContent}>
-        {this.toast.hasCloseButton !== false && (
-          <button onClick={this.handleDeleteToast.bind(this)} type="button" class="icon-close">
-            <Icon name="close" />
-          </button>
-        )}
-        <div class="toast-body" ref={container => this.initializeToast(container)}></div>
-      </div>
-    );
-  }
-
-  private initializeToast(container: HTMLElement) {
+export function CustomToast({ toast, onDeleteToast }: CustomToastPropsType) {
+  const initializeToast = (container: HTMLElement) => {
     if (!container) {
       return;
     }
@@ -39,10 +19,21 @@ export class CustomToast {
       container.innerHTML = '';
     }
 
-    const customElement = this.toast.instantiateToastElement();
+    const customElement = toast.instantiateToastElement();
     if (!customElement) {
       return;
     }
     container.appendChild(customElement);
-  }
+  };
+
+  return (
+    <div class="toast-wrapper" data-testid={DataTestIdsEnum.transactionToastContent}>
+      {toast.hasCloseButton !== false && (
+        <button onClick={onDeleteToast} type="button" class="icon-close">
+          <Icon name="close" />
+        </button>
+      )}
+      <div class="toast-body" ref={initializeToast}></div>
+    </div>
+  );
 }

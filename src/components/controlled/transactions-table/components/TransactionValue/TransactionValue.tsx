@@ -1,8 +1,10 @@
 import { h } from '@stencil/core';
+import { MultiversXSymbolIcon } from 'assets/icons/multiversx-symbol-icon/multiversx-symbol-icon';
 import classNames from 'classnames';
 import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
 import { FormatAmount } from 'common/FormatAmount/FormatAmount';
 import { Icon } from 'common/Icon';
+import { Tooltip } from 'common/Tooltip/Tooltip';
 import type { TransactionValueType } from 'components/controlled/transactions-table/transactions-table.type';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
@@ -11,9 +13,11 @@ import styles from './transactionValue.styles';
 interface TransactionValuePropsType {
   class?: string;
   value: TransactionValueType;
+  isTooltipVisible?: boolean;
+  onTooltipVisibilityChange?: (isVisible: boolean) => void;
 }
 
-export function TransactionValue({ value, class: className }: TransactionValuePropsType) {
+export function TransactionValue({ value, class: className, isTooltipVisible, onTooltipVisibilityChange }: TransactionValuePropsType) {
   return (
     <div class={{ [className]: Boolean(className), [styles.transactionValue]: true }}>
       {value.badge && (
@@ -24,7 +28,7 @@ export function TransactionValue({ value, class: className }: TransactionValuePr
 
       {value.showFormattedAmount && (
         <div class={styles.transactionValueAmount}>
-          {value.egldLabel && <mvx-multiversx-symbol-icon class={styles.transactionValueAmountSymbol} />}
+          {value.egldLabel && <MultiversXSymbolIcon class={styles.transactionValueAmountSymbol} />}
 
           <FormatAmount
             class={classNames(styles.transactionValueFormatAmount, {
@@ -66,9 +70,13 @@ export function TransactionValue({ value, class: className }: TransactionValuePr
       )}
 
       {value.titleText && (
-        <mvx-tooltip trigger={<Icon name="layers" class={styles.transactionValueIcon} />}>
+        <Tooltip
+          trigger={<Icon name="layers" class={styles.transactionValueIcon} />}
+          isTooltipVisible={isTooltipVisible}
+          onVisibilityChange={onTooltipVisibilityChange}
+        >
           {value.titleText}
-        </mvx-tooltip>
+        </Tooltip>
       )}
     </div>
   );

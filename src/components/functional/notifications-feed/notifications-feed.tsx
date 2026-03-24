@@ -8,6 +8,7 @@ import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
+import { TransactionToast } from '../toasts-list/components/transaction-toast/transaction-toast';
 import type { ITransactionToast } from '../toasts-list/components/transaction-toast/transaction-toast.type';
 import { NotificationsFeedEventsEnum } from './notifications-feed.types';
 
@@ -104,7 +105,15 @@ export class NotificationsFeed {
           {hasPending && (
             <div class="notifications-container">
               <div class="processing-status">Processing...</div>
-              {this.pendingTransactions?.map(toast => <mvx-transaction-toast fullWidth={true} {...toast} />)}
+              {this.pendingTransactions?.map(toast => (
+                <TransactionToast
+                  fullWidth={true}
+                  {...toast}
+                  onForceUpdate={() => {
+                    this.pendingTransactions = [...this.pendingTransactions];
+                  }}
+                />
+              ))}
             </div>
           )}
 
