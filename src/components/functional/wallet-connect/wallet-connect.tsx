@@ -3,7 +3,7 @@ import { Icon } from 'common/Icon';
 import { SidePanelHeader } from 'common/SidePanel/components/SidePanelHeader/SidePanelHeader';
 import type { IEventBus, IWalletConnectPanelData } from 'components';
 import { providerLabels } from 'constants/providerFactory.constants';
-import QRCode from 'qrcode';
+import { renderSVG } from 'lib/uqr';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import { EventBus } from 'utils/EventBus';
 
@@ -34,9 +34,9 @@ export class WalletConnect {
   @Prop() qrCodeSvg: string = '';
 
   @Watch('data')
-  async onDataChange(newData: IWalletConnectPanelData) {
+  onDataChange(newData: IWalletConnectPanelData) {
     if (newData.wcURI) {
-      this.qrCodeSvg = await this.generateSVG(newData.wcURI);
+      this.qrCodeSvg = this.generateSVG(newData.wcURI);
     }
   }
 
@@ -45,29 +45,28 @@ export class WalletConnect {
     return this.eventBus;
   }
 
-  private async generateSVG(wcURI: string) {
+  private generateSVG(wcURI: string) {
     try {
-      const svg = await QRCode.toString(wcURI, { type: 'svg' });
-      return svg;
+      return renderSVG(wcURI);
     } catch (error) {
       console.error('Error generating QR Code:', error);
       return '';
     }
   }
 
-  private async dataUpdate(payload: IWalletConnectPanelData) {
+  private dataUpdate(payload: IWalletConnectPanelData) {
     if (payload.walletConnectDeepLink) {
       this.walletConnectDeepLink = payload.walletConnectDeepLink;
     }
 
     if (payload.wcURI) {
-      this.qrCodeSvg = await this.generateSVG(payload.wcURI);
+      this.qrCodeSvg = this.generateSVG(payload.wcURI);
     }
   }
 
-  async componentDidLoad() {
+  componentDidLoad() {
     if (this.data.wcURI) {
-      this.qrCodeSvg = await this.generateSVG(this.data.wcURI);
+      this.qrCodeSvg = this.generateSVG(this.data.wcURI);
     }
 
     this.eventBus.subscribe(WalletConnectEventsEnum.DATA_UPDATE, this.dataUpdate.bind(this));
