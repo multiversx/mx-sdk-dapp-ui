@@ -55,7 +55,9 @@ describe('TransactionShards tests', () => {
         <a class="explorer-link mvx:decoration-0 mvx:flex mvx:text-primary!" data-testid="${DataTestIdsEnum.shardFromLink}" href="/blocks?shard=0" rel="noreferrer" target="_blank">
           <span data-testid="${DataTestIdsEnum.senderShard}">0</span>
         </a>
-        <mvx-arrow-right-icon class="mvx:h-4 mvx:w-4 transaction-shards-arrow-icon"></mvx-arrow-right-icon>
+        <svg class="arrow-right-icon mvx:h-4 mvx:w-4 transaction-shards-arrow-icon" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+          <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" fill="currentColor"></path>
+        </svg>
         <a class="explorer-link mvx:decoration-0 mvx:flex mvx:text-primary!" data-testid="${DataTestIdsEnum.shardToLink}" href="/blocks?shard=1" rel="noreferrer" target="_blank">
           <span data-testid="${DataTestIdsEnum.receiverShard}">1</span>
         </a>
@@ -76,7 +78,9 @@ describe('TransactionShards tests', () => {
         <a class="explorer-link mvx:decoration-0 mvx:flex mvx:text-primary!" data-testid="${DataTestIdsEnum.shardFromLink}" href="/blocks?shard=0" rel="noreferrer" target="_blank">
           <span data-testid="${DataTestIdsEnum.senderShard}">0</span>
         </a>
-        <mvx-arrow-right-icon class="mvx:h-4 mvx:w-4 transaction-shards-arrow-icon"></mvx-arrow-right-icon>
+        <svg class="arrow-right-icon mvx:h-4 mvx:w-4 transaction-shards-arrow-icon" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+          <path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" fill="currentColor"></path>
+        </svg>
         <a class="explorer-link mvx:decoration-0 mvx:flex mvx:text-primary!" data-testid="${DataTestIdsEnum.shardToLink}" href="/blocks?shard=1" rel="noreferrer" target="_blank">
           <span data-testid="${DataTestIdsEnum.receiverShard}">1</span>
         </a>

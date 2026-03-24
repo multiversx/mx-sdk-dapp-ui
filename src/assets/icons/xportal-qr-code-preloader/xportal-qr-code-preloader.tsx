@@ -1,19 +1,15 @@
-import { Component, h, Prop } from '@stencil/core';
+import { h } from '@stencil/core';
 
-@Component({
-  tag: 'mvx-xportal-qr-code-preloader',
-  styleUrl: 'xportal-qr-code-preloader.scss',
-  shadow: true,
-})
-export class XPortalQrCodePreloader {
-  @Prop() class?: string;
+interface XPortalQrCodePreloaderPropsType {
+  class?: string;
+}
 
-  render() {
-    return (
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 302 300"
-        class={{ 'xportal-qr-code-preloader': true, [this.class]: Boolean(this.class) }}
+export function XPortalQrCodePreloader({ class: className }: XPortalQrCodePreloaderPropsType) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 302 300"
+      class={{ 'xportal-qr-code-preloader': true, [className]: Boolean(className) }}
       >
         <g opacity="0.5">
           <path d="M108.94 0H96.9403V12.0001H108.94V0Z" fill="url(#paint0_linear_8712_31655)" />
@@ -337,6 +333,5 @@ export class XPortalQrCodePreloader {
           ))}
         </defs>
       </svg>
-    );
-  }
+  );
 }

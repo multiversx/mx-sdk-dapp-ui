@@ -8,12 +8,15 @@ describe('notifications-feed', () => {
   const mockPendingTransactions = [
     {
       toastId: 'tx1',
+      wrapperClass: '',
+      processedTransactionsStatus: 'Pending',
       title: 'Transaction 1',
       transactionHash: 'hash1',
       status: 'pending',
       link: 'link1',
       actions: [],
-      transactions: [{ hash: 'hash1', status: 'pending', link: 'link1' }],
+      transactions: [{ hash: 'hash1', status: 'pending', link: 'link1', asset: null, action: { name: 'Transfer' }, interactor: 'erd1test', timestamp: 1234567890 }],
+      toastDataState: { title: 'Transaction 1' },
     },
   ];
 

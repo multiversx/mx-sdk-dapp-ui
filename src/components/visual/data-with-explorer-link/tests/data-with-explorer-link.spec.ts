@@ -3,7 +3,6 @@ import { Trim } from 'common/Trim/Trim';
 
 import { CopyButton } from '../../copy-button/copy-button';
 import { ExplorerLink } from '../../explorer-link/explorer-link';
-import { Tooltip } from '../../tooltip/tooltip';
 import { DataWithExplorerLink } from '../data-with-explorer-link';
 
 describe('DataWithExplorerLink', () => {
@@ -26,8 +25,8 @@ describe('DataWithExplorerLink', () => {
     expect(buttonsContainer).toBeTruthy();
 
     // Check that copy button and explorer link are present
-    const copyButton = page.root.querySelector('mvx-copy-button');
-    const explorerLink = page.root.querySelector('mvx-explorer-link');
+    const copyButton = page.root.querySelector('.copy-button');
+    const explorerLink = page.root.querySelector('.explorer-link');
     expect(copyButton).toBeTruthy();
     expect(explorerLink).toBeTruthy();
   });
@@ -58,11 +57,11 @@ describe('DataWithExplorerLink', () => {
     expect(buttonsContainer).toBeTruthy();
 
     // Check that copy button is not present
-    const copyButton = page.root.querySelector('mvx-copy-button');
+    const copyButton = page.root.querySelector('.copy-button');
     expect(copyButton).toBeFalsy();
 
     // Check that explorer link is present
-    const explorerLink = page.root.querySelector('mvx-explorer-link');
+    const explorerLink = page.root.querySelector('.explorer-link');
     expect(explorerLink).toBeTruthy();
   });
 
@@ -77,11 +76,11 @@ describe('DataWithExplorerLink', () => {
     expect(buttonsContainer).toBeTruthy();
 
     // Check that copy button is present
-    const copyButton = page.root.querySelector('mvx-copy-button');
+    const copyButton = page.root.querySelector('.copy-button');
     expect(copyButton).toBeTruthy();
 
     // Check that explorer link is not present
-    const explorerLink = page.root.querySelector('mvx-explorer-link');
+    const explorerLink = page.root.querySelector('.explorer-link');
     expect(explorerLink).toBeFalsy();
   });
 
@@ -106,7 +105,7 @@ describe('DataWithExplorerLink', () => {
 
   it('renders with tooltips enabled', async () => {
     const page = await newSpecPage({
-      components: [DataWithExplorerLink, Trim, CopyButton, ExplorerLink, Tooltip],
+      components: [DataWithExplorerLink, Trim, CopyButton, ExplorerLink],
       html: '<mvx-data-with-explorer-link data="test-data" explorer-link="https://explorer.com/test" with-tooltip="true"></mvx-data-with-explorer-link>',
     });
 
@@ -114,8 +113,8 @@ describe('DataWithExplorerLink', () => {
     const buttonsContainer = page.root.querySelector('.data-with-explorer-link-buttons');
     expect(buttonsContainer).toBeTruthy();
 
-    // Check that tooltips are present
-    const tooltips = page.root.querySelectorAll('mvx-tooltip');
+    // Check that tooltips are present (Tooltip renders as .tooltip divs)
+    const tooltips = page.root.querySelectorAll('.tooltip');
     expect(tooltips.length).toBe(2);
 
     // Check component props
@@ -127,16 +126,16 @@ describe('DataWithExplorerLink', () => {
 
   it('renders with tooltips enabled and copy button disabled', async () => {
     const page = await newSpecPage({
-      components: [DataWithExplorerLink, Trim, ExplorerLink, Tooltip],
+      components: [DataWithExplorerLink, Trim, ExplorerLink],
       html: '<mvx-data-with-explorer-link data="test-data" explorer-link="https://explorer.com/test" with-tooltip="true" show-copy-button="false"></mvx-data-with-explorer-link>',
     });
 
     // Check that only one tooltip is present
-    const tooltips = page.root.querySelectorAll('mvx-tooltip');
+    const tooltips = page.root.querySelectorAll('.tooltip');
     expect(tooltips.length).toBe(1);
 
     // Check that copy button is not present
-    const copyButton = page.root.querySelector('mvx-copy-button');
+    const copyButton = page.root.querySelector('.copy-button');
     expect(copyButton).toBeFalsy();
 
     // Check component props
@@ -148,16 +147,16 @@ describe('DataWithExplorerLink', () => {
 
   it('renders with tooltips enabled and explorer button disabled', async () => {
     const page = await newSpecPage({
-      components: [DataWithExplorerLink, Trim, CopyButton, Tooltip],
+      components: [DataWithExplorerLink, Trim, CopyButton],
       html: '<mvx-data-with-explorer-link data="test-data" explorer-link="https://explorer.com/test" with-tooltip="true" show-explorer-button="false"></mvx-data-with-explorer-link>',
     });
 
     // Check that only one tooltip is present
-    const tooltips = page.root.querySelectorAll('mvx-tooltip');
+    const tooltips = page.root.querySelectorAll('.tooltip');
     expect(tooltips.length).toBe(1);
 
     // Check that explorer link is not present
-    const explorerLink = page.root.querySelector('mvx-explorer-link');
+    const explorerLink = page.root.querySelector('.explorer-link');
     expect(explorerLink).toBeFalsy();
 
     // Check component props

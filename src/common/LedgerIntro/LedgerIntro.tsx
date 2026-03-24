@@ -1,4 +1,5 @@
 import { h } from '@stencil/core';
+import { LedgerIcon } from 'assets/icons/ledger-icon/ledger-icon';
 import classNames from 'classnames';
 import { Button } from 'common/Button/Button';
 import { SpinnerIcon } from 'common/Icon/components/SpinnerIcon/SpinnerIcon';
@@ -57,7 +58,7 @@ export function LedgerIntro({ connectScreenData, isAwaiting = false, onConnect }
         `}
       </style>
       <div class={styles.ledgerIntroWrapper}>
-        <mvx-ledger-icon class={classNames(styles.ledgerIntroIcon, ledgerIntroClasses.icon)} />
+        <LedgerIcon class={classNames(styles.ledgerIntroIcon, ledgerIntroClasses.icon)} />
 
         <div class={styles.ledgerIntroDescription} style={{ color: 'var(--mvx-text-color-secondary)' }}>
           Connect your device <br />

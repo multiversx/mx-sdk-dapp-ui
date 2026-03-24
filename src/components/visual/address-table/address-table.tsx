@@ -1,6 +1,12 @@
 import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop, State } from '@stencil/core';
+import { ShardIcon } from 'assets/icons/shard-icon/shard-icon';
+import { SpinnerIcon } from 'assets/icons/spinner-icon/spinner-icon';
 import classNames from 'classnames';
+import { Tooltip } from 'common/Tooltip/Tooltip';
+import { Trim } from 'common/Trim/Trim';
+import { LedgerIntro } from 'components/functional/ledger-connect/components/ledger-intro/ledger-intro';
+import { Preloader } from 'components/visual/preloader/preloader';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IAddressTableData, IndexedAccountType } from 'types/address-table.types';
 
@@ -27,6 +33,8 @@ export class AddressTable {
   @State() activeTooltipIndex: number | null = null;
   @State() isTooltipOpen: boolean = false;
   @State() pageValue: string = '';
+  @State() isButtonTooltipVisible: boolean = false;
+  @State() shardTooltipVisibility: Record<number, boolean> = {};
 
   handleAccessWallet(event: MouseEvent) {
     event.preventDefault();
@@ -89,7 +97,7 @@ export class AddressTable {
     };
 
     if (isAddressesLoadingInitially) {
-      return <mvx-ledger-intro isAwaiting={true} />;
+      return <LedgerIntro isAwaiting={true} />;
     }
 
     return (
@@ -101,25 +109,25 @@ export class AddressTable {
         <div class="address-table-wrapper">
           <div class={{ 'address-table-preloader': true, 'visible': isPageChanging }}>
             {Array.from({ length: this.accountScreenData.addressesPerPage }, () => (
-              <mvx-preloader class={classNames('address-table-preloader-item', addressClasses.preloaderItem)}>
-                <mvx-preloader
+              <Preloader class={classNames('address-table-preloader-item', addressClasses.preloaderItem)}>
+                <Preloader
                   class={classNames('address-table-preloader-item-checkbox', addressClasses.preloaderItemCheckbox)}
                 />
 
-                <mvx-preloader class={classNames(addressClasses.preloaderItemShard)} />
+                <Preloader class={classNames(addressClasses.preloaderItemShard)} />
 
-                <mvx-preloader
+                <Preloader
                   class={classNames('address-table-preloader-item-index', addressClasses.preloaderItemIndex)}
                 />
 
-                <mvx-preloader
+                <Preloader
                   class={classNames('address-table-preloader-item-address', addressClasses.preloaderItemAddress)}
                 />
 
-                <mvx-preloader
+                <Preloader
                   class={classNames('address-table-preloader-item-balance', addressClasses.preloaderItemBalance)}
                 />
-              </mvx-preloader>
+              </Preloader>
             ))}
           </div>
 
@@ -157,18 +165,25 @@ export class AddressTable {
                   >
                     #{this.processLedgerAddressIndex(accountDerivation)}
                     {accountDerivation.shard != null && (
-                      <mvx-tooltip
+                      <Tooltip
                         position={accountDerivation.index === this.accountScreenData.startIndex ? 'bottom' : 'top'}
                         trigger={
-                          <mvx-shard-icon shard={accountDerivation.shard} class="address-table-list-item-shard-icon" />
+                          <ShardIcon shard={accountDerivation.shard} class="address-table-list-item-shard-icon" />
                         }
+                        isTooltipVisible={Boolean(this.shardTooltipVisibility[accountDerivation.index])}
+                        onVisibilityChange={isVisible => {
+                          this.shardTooltipVisibility = {
+                            ...this.shardTooltipVisibility,
+                            [accountDerivation.index]: isVisible,
+                          };
+                        }}
                       >
                         <div class="address-table-list-item-shard-tooltip">Shard {accountDerivation.shard}</div>
-                      </mvx-tooltip>
+                      </Tooltip>
                     )}
                   </div>
 
-                  <mvx-trim text={accountDerivation.address} class="address-table-list-item-address" part="address" />
+                  <Trim text={accountDerivation.address} class="address-table-list-item-address" />
                   <div class="address-table-list-item-balance">{accountDerivation.usdValue}</div>
                 </div>
               );
@@ -194,11 +209,15 @@ export class AddressTable {
         <div class="address-table-button-wrapper">
           {isAccessWalletDisabled && (
             <div class="address-table-button-tooltip-wrapper">
-              <mvx-tooltip
+              <Tooltip
                 trigger={<div class={{ 'address-table-button-tooltip': true, [addressClasses.buttonTooltip]: true }} />}
+                isTooltipVisible={this.isButtonTooltipVisible}
+                onVisibilityChange={isVisible => {
+                  this.isButtonTooltipVisible = isVisible;
+                }}
               >
                 You have to select a wallet from the list that you want to access.
-              </mvx-tooltip>
+              </Tooltip>
             </div>
           )}
 
@@ -210,7 +229,7 @@ export class AddressTable {
             exportparts="button: access-button"
           >
             <span class="address-table-button-label">{isPageChanging ? 'Loading Wallets...' : 'Access Wallet'}</span>
-            {isPageChanging && <mvx-spinner-icon />}
+            {isPageChanging && <SpinnerIcon />}
           </mvx-button>
         </div>
       </div>

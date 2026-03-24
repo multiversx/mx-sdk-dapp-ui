@@ -1,4 +1,4 @@
-import { Component, h, Prop } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 
 import { DataTestIdsEnum } from '../../../constants/dataTestIds.enum';
 import {
@@ -21,6 +21,7 @@ const COLUMNS = ['Txn Hash', 'Age', 'Shard', 'From', 'To', 'Method', 'Value'];
 export class TransactionsTable {
   @Prop() class?: string;
   @Prop() transactions: TransactionRowType[];
+  @State() valueTooltipVisible: Record<number, boolean> = {};
 
   render() {
     return (
@@ -35,7 +36,7 @@ export class TransactionsTable {
           </tr>
         </thead>
         <tbody class={styles.transactionsTableBody}>
-          {this.transactions.map(transaction => (
+          {this.transactions.map((transaction, index) => (
             <tr class={styles.transactionsTableBodyRow}>
               <td class={styles.transactionsTableBodyCell}>
                 <TransactionHash class={styles.transactionsTableBodyCellChild} transaction={transaction} />
@@ -76,7 +77,14 @@ export class TransactionsTable {
                 />
               </td>
               <td class={styles.transactionsTableBodyCell}>
-                <TransactionValue class={styles.transactionsTableBodyCellChild} value={transaction.value} />
+                <TransactionValue
+                  class={styles.transactionsTableBodyCellChild}
+                  value={transaction.value}
+                  isTooltipVisible={Boolean(this.valueTooltipVisible[index])}
+                  onTooltipVisibilityChange={isVisible => {
+                    this.valueTooltipVisible = { ...this.valueTooltipVisible, [index]: isVisible };
+                  }}
+                />
               </td>
             </tr>
           ))}

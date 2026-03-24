@@ -1,4 +1,6 @@
 import { h } from '@stencil/core';
+import { DefaultTransactionIconLarge } from 'assets/icons/default-transaction-icon-large/default-transaction-icon-large';
+import { DefaultTransactionIconSmall } from 'assets/icons/default-transaction-icon-small/default-transaction-icon-small';
 import classNames from 'classnames';
 import { Icon } from 'common/Icon';
 import type { ITransactionListItem } from 'components/functional/notifications-feed/components/TransactionListItem/transactionListItem.types';
@@ -24,11 +26,7 @@ export function TransactionAssetIcon({
   textClass,
 }: ITransactionAssetIconProps) {
   if (transaction?.asset === null) {
-    return iconSize === IconSizeEnumType.small ? (
-      <mvx-default-transaction-icon-small />
-    ) : (
-      <mvx-default-transaction-icon-large />
-    );
+    return iconSize === IconSizeEnumType.small ? <DefaultTransactionIconSmall /> : <DefaultTransactionIconLarge />;
   }
 
   if (transaction.asset.imageUrl) {
@@ -50,9 +48,5 @@ export function TransactionAssetIcon({
     return <span class={textClass}>{transaction.asset.text}</span>;
   }
 
-  return iconSize === IconSizeEnumType.small ? (
-    <mvx-default-transaction-icon-small />
-  ) : (
-    <mvx-default-transaction-icon-large />
-  );
+  return iconSize === IconSizeEnumType.small ? <DefaultTransactionIconSmall /> : <DefaultTransactionIconLarge />;
 }

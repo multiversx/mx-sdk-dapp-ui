@@ -1,13 +1,15 @@
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { Icon } from 'common/Icon';
+import { SidePanelHeader } from 'common/SidePanel/components/SidePanelHeader/SidePanelHeader';
 import type { IEventBus, IWalletConnectPanelData } from 'components';
 import { providerLabels } from 'constants/providerFactory.constants';
 import QRCode from 'qrcode';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import { EventBus } from 'utils/EventBus';
 
+import { WalletConnectDownload } from './components/wallet-connect-download/wallet-connect-download';
+import { WalletConnectScan } from './components/wallet-connect-scan/wallet-connect-scan';
 import { WalletConnectEventsEnum } from './wallet-connect.types';
-import { SidePanelHeader } from 'common/SidePanel/components/SidePanelHeader/SidePanelHeader';
 
 // prettier-ignore
 const styles = {
@@ -98,13 +100,13 @@ export class WalletConnect {
 
         <div class={styles.walletConnect}>
           {this.showScanPage ? (
-            <mvx-wallet-connect-scan
+            <WalletConnectScan
               qrCodeSvg={this.qrCodeSvg}
               onDownloadClick={this.handlePageToggle.bind(this)}
               walletConnectDeepLink={this.walletConnectDeepLink}
             />
           ) : (
-            <mvx-wallet-connect-download />
+            <WalletConnectDownload />
           )}
         </div>
       </Host>

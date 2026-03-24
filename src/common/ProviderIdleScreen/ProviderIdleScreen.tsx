@@ -1,10 +1,11 @@
 import { Fragment, h } from '@stencil/core';
+import { SidePanelHeader } from 'common/SidePanel/components/SidePanelHeader/SidePanelHeader';
+import { LedgerIntro } from 'components/functional/ledger-connect/components/ledger-intro/ledger-intro';
 import { getProviderButtonIcon } from 'components/functional/unlock-panel/helpers';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 
 import { getProviderIntroText } from './helpers/getProviderIntroText';
-import { SidePanelHeader } from 'common/SidePanel/components/SidePanelHeader/SidePanelHeader';
 
 const styles = {
   container: 'mvx:flex mvx:flex-col mvx:flex-1 mvx:overflow-hidden',
@@ -53,7 +54,7 @@ export function ProviderIdleScreen({
       <Fragment>
         <SidePanelHeader hasLeftButton={false} panelTitle={provider.name} onRightButtonClick={onClose} />
 
-        <mvx-ledger-intro onConnect={onAccess} />
+        <LedgerIntro onConnect={onAccess} />
       </Fragment>
     );
   }

@@ -1,4 +1,5 @@
 import { h } from '@stencil/core';
+import { MagnifyingGlassIcon } from 'assets/icons/magnifying-glass-icon/magnifying-glass-icon';
 import classNames from 'classnames';
 
 // prettier-ignore
@@ -87,7 +88,7 @@ export function PaginationEllipsisForm({
         />
 
         <div class={styles.paginationEllipsisFormButton} onClick={handleSubmit}>
-          <mvx-magnifying-glass-icon
+          <MagnifyingGlassIcon
             class={classNames(styles.paginationEllipsisFormButtonIconHover, styles.paginationEllipsisFormButtonIcon)}
           />
         </div>

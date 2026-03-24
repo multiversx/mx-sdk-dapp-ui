@@ -4,6 +4,8 @@ import { providerLabels } from 'constants/providerFactory.constants';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
 import { EventBus, type IEventBus } from 'utils/EventBus';
 
+import { LedgerConfirm } from './components/ledger-confirm/ledger-confirm';
+import { LedgerIntro } from './components/ledger-intro/ledger-intro';
 import { getLedgerAddressByIndex } from './helpers/getLedgerAddressByIndex';
 import type { ILedgerConnectPanelData } from './ledger-connect.types';
 import { LedgerConnectEventsEnum } from './ledger-connect.types';
@@ -118,7 +120,7 @@ export class LedgerConnect {
             onRightButtonClick={this.handleClose.bind(this)}
           />
 
-          <mvx-ledger-confirm confirmScreenData={this.ledgerDataState.confirmScreenData} />
+          <LedgerConfirm confirmScreenData={this.ledgerDataState.confirmScreenData} />
         </Host>
       );
     }
@@ -131,7 +133,7 @@ export class LedgerConnect {
           onRightButtonClick={this.handleClose.bind(this)}
         />
 
-        <mvx-ledger-intro
+        <LedgerIntro
           connectScreenData={this.ledgerDataState.connectScreenData}
           onConnect={this.handleIntroConnect.bind(this)}
         />
