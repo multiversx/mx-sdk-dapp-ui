@@ -135,8 +135,8 @@ export function FooIcon({ class: className }: FooIconPropsType) {
 | 7 | `mvx-ledger-provider-icon` | `src/assets/icons/ledger-provider-icon/ledger-provider-icon.tsx` | ✅ done |
 | 8 | `mvx-multiversx-logo-icon` | `src/assets/icons/multiversx-logo-icon/multiversx-logo-icon.tsx` | ✅ done |
 | 9 | `mvx-multiversx-symbol-icon` | `src/assets/icons/multiversx-symbol-icon/multiversx-symbol-icon.tsx` | ✅ done |
-| 10 | `mvx-passkey-provider-icon` | `src/assets/icons/passkey-provider-icon/passkey-provider-icon.tsx` | |
-| 11 | `mvx-wallet-provider-icon` | `src/assets/icons/wallet-provider-icon/wallet-provider-icon.tsx` | |
+| 10 | `mvx-passkey-provider-icon` | `src/assets/icons/passkey-provider-icon/passkey-provider-icon.tsx` | ✅ done |
+| 11 | `mvx-wallet-provider-icon` | `src/assets/icons/wallet-provider-icon/wallet-provider-icon.tsx` | ✅ done |
 | 12 | `mvx-extension-provider-icon` | `src/assets/icons/extension-provider-icon/extension-provider-icon.tsx` | |
 | 13 | `mvx-arc-extension-provider-icon` | `src/assets/icons/arc-extension-provider-icon/arc-extension-provider-icon.tsx` | |
 | 14 | `mvx-brave-extension-provider-icon` | `src/assets/icons/brave-extension-provider-icon/brave-extension-provider-icon.tsx` | |
