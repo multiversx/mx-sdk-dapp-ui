@@ -180,13 +180,6 @@ export namespace Components {
     interface MvxPreloader {
         "class"?: string;
     }
-    interface MvxShardIcon {
-        "class"?: string;
-        /**
-          * @default 0
-         */
-        "shard": number;
-    }
     interface MvxSignTransactionsPanel {
         "closeWithAnimation": () => Promise<unknown>;
         "getEventBus": () => Promise<IEventBus>;
@@ -581,12 +574,6 @@ declare global {
         prototype: HTMLMvxPreloaderElement;
         new (): HTMLMvxPreloaderElement;
     };
-    interface HTMLMvxShardIconElement extends Components.MvxShardIcon, HTMLStencilElement {
-    }
-    var HTMLMvxShardIconElement: {
-        prototype: HTMLMvxShardIconElement;
-        new (): HTMLMvxShardIconElement;
-    };
     interface HTMLMvxSignTransactionsPanelElement extends Components.MvxSignTransactionsPanel, HTMLStencilElement {
     }
     var HTMLMvxSignTransactionsPanelElement: {
@@ -796,7 +783,6 @@ declare global {
         "mvx-passkey-provider-icon": HTMLMvxPasskeyProviderIconElement;
         "mvx-pending-transactions-panel": HTMLMvxPendingTransactionsPanelElement;
         "mvx-preloader": HTMLMvxPreloaderElement;
-        "mvx-shard-icon": HTMLMvxShardIconElement;
         "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
         "mvx-simple-toast": HTMLMvxSimpleToastElement;
         "mvx-toast-list": HTMLMvxToastListElement;
@@ -975,13 +961,6 @@ declare namespace LocalJSX {
     interface MvxPreloader {
         "class"?: string;
     }
-    interface MvxShardIcon {
-        "class"?: string;
-        /**
-          * @default 0
-         */
-        "shard"?: number;
-    }
     interface MvxSignTransactionsPanel {
     }
     interface MvxSimpleToast {
@@ -1142,7 +1121,6 @@ declare namespace LocalJSX {
         "mvx-passkey-provider-icon": MvxPasskeyProviderIcon;
         "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
         "mvx-preloader": MvxPreloader;
-        "mvx-shard-icon": MvxShardIcon;
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
         "mvx-simple-toast": MvxSimpleToast;
         "mvx-toast-list": MvxToastList;
@@ -1197,7 +1175,6 @@ declare module "@stencil/core" {
             "mvx-passkey-provider-icon": LocalJSX.MvxPasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLMvxPasskeyProviderIconElement>;
             "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
             "mvx-preloader": LocalJSX.MvxPreloader & JSXBase.HTMLAttributes<HTMLMvxPreloaderElement>;
-            "mvx-shard-icon": LocalJSX.MvxShardIcon & JSXBase.HTMLAttributes<HTMLMvxShardIconElement>;
             "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;
             "mvx-simple-toast": LocalJSX.MvxSimpleToast & JSXBase.HTMLAttributes<HTMLMvxSimpleToastElement>;
             "mvx-toast-list": LocalJSX.MvxToastList & JSXBase.HTMLAttributes<HTMLMvxToastListElement>;

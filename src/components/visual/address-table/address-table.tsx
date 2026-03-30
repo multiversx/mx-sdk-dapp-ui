@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IAddressTableData, IndexedAccountType } from 'types/address-table.types';
 
+import { ShardIcon } from 'assets/icons/shard-icon/shard-icon';
 import { SpinnerIcon } from 'assets/icons/spinner-icon/spinner-icon';
 import { Pagination } from './components/pagination/Pagination';
 
@@ -156,7 +157,7 @@ export class AddressTable {
                     <mvx-tooltip
                       position={accountDerivation.index === this.accountScreenData.startIndex ? 'bottom' : 'top'}
                       trigger={
-                        <mvx-shard-icon shard={accountDerivation.shard} class="address-table-list-item-shard-icon" />
+                        <ShardIcon shard={accountDerivation.shard} class="address-table-list-item-shard-icon" />
                       }
                     >
                       <div class="address-table-list-item-shard-tooltip">Shard {accountDerivation.shard}</div>
