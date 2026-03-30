@@ -1,7 +1,3 @@
-:host {
-  @apply mvx:flex;
-
-  .arrow-right-icon {
-    @apply mvx:w-4 mvx:h-4 mvx:text-inherit;
-  }
+.arrow-right-icon {
+  @apply mvx:w-4 mvx:h-4 mvx:text-inherit;
 }

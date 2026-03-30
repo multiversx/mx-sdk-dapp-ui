@@ -37,9 +37,6 @@ export namespace Components {
         "height"?: number;
         "width"?: number;
     }
-    interface MvxArrowRightIcon {
-        "class"?: string;
-    }
     interface MvxBraveExtensionProviderIcon {
         "class"?: string;
         "height"?: number;
@@ -398,12 +395,6 @@ declare global {
     var HTMLMvxArcExtensionProviderIconElement: {
         prototype: HTMLMvxArcExtensionProviderIconElement;
         new (): HTMLMvxArcExtensionProviderIconElement;
-    };
-    interface HTMLMvxArrowRightIconElement extends Components.MvxArrowRightIcon, HTMLStencilElement {
-    }
-    var HTMLMvxArrowRightIconElement: {
-        prototype: HTMLMvxArrowRightIconElement;
-        new (): HTMLMvxArrowRightIconElement;
     };
     interface HTMLMvxBraveExtensionProviderIconElement extends Components.MvxBraveExtensionProviderIcon, HTMLStencilElement {
     }
@@ -807,7 +798,6 @@ declare global {
     interface HTMLElementTagNameMap {
         "mvx-address-table": HTMLMvxAddressTableElement;
         "mvx-arc-extension-provider-icon": HTMLMvxArcExtensionProviderIconElement;
-        "mvx-arrow-right-icon": HTMLMvxArrowRightIconElement;
         "mvx-brave-extension-provider-icon": HTMLMvxBraveExtensionProviderIconElement;
         "mvx-button": HTMLMvxButtonElement;
         "mvx-circle-info-icon": HTMLMvxCircleInfoIconElement;
@@ -872,9 +862,6 @@ declare namespace LocalJSX {
         "class"?: string;
         "height"?: number;
         "width"?: number;
-    }
-    interface MvxArrowRightIcon {
-        "class"?: string;
     }
     interface MvxBraveExtensionProviderIcon {
         "class"?: string;
@@ -1169,7 +1156,6 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "mvx-address-table": MvxAddressTable;
         "mvx-arc-extension-provider-icon": MvxArcExtensionProviderIcon;
-        "mvx-arrow-right-icon": MvxArrowRightIcon;
         "mvx-brave-extension-provider-icon": MvxBraveExtensionProviderIcon;
         "mvx-button": MvxButton;
         "mvx-circle-info-icon": MvxCircleInfoIcon;
@@ -1228,7 +1214,6 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "mvx-address-table": LocalJSX.MvxAddressTable & JSXBase.HTMLAttributes<HTMLMvxAddressTableElement>;
             "mvx-arc-extension-provider-icon": LocalJSX.MvxArcExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxArcExtensionProviderIconElement>;
-            "mvx-arrow-right-icon": LocalJSX.MvxArrowRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowRightIconElement>;
             "mvx-brave-extension-provider-icon": LocalJSX.MvxBraveExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxBraveExtensionProviderIconElement>;
             "mvx-button": LocalJSX.MvxButton & JSXBase.HTMLAttributes<HTMLMvxButtonElement>;
             "mvx-circle-info-icon": LocalJSX.MvxCircleInfoIcon & JSXBase.HTMLAttributes<HTMLMvxCircleInfoIconElement>;

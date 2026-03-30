@@ -1,4 +1,5 @@
 import { h } from '@stencil/core';
+import { ArrowRightIcon } from 'assets/icons/arrow-right-icon/arrow-right-icon';
 import { ExplorerLink } from 'common/ExplorerLink/ExplorerLink';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
@@ -16,6 +17,7 @@ interface TransactionShardsPropsType {
   transaction: TransactionRowType;
 }
 
+
 export function TransactionShards({ transaction, class: className }: TransactionShardsPropsType) {
   return (
     <div class={{ [className]: Boolean(className), [styles.transactionShards]: true }}>
@@ -27,7 +29,7 @@ export function TransactionShards({ transaction, class: className }: Transaction
         <span data-testid={DataTestIdsEnum.senderShard}>{transaction.sender.shard}</span>
       </ExplorerLink>
 
-      <mvx-arrow-right-icon class={styles.transactionShardsArrowIcon} />
+      <ArrowRightIcon class={styles.transactionShardsArrowIcon} />
 
       <ExplorerLink
         link={transaction.receiver.shardLink}
