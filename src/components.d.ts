@@ -32,16 +32,6 @@ export namespace Components {
         "accountScreenData": IAddressTableData;
         "selectedIndex": number;
     }
-    interface MvxArcExtensionProviderIcon {
-        "class"?: string;
-        "height"?: number;
-        "width"?: number;
-    }
-    interface MvxBraveExtensionProviderIcon {
-        "class"?: string;
-        "height"?: number;
-        "width"?: number;
-    }
     interface MvxButton {
         /**
           * @default ''
@@ -96,26 +86,11 @@ export namespace Components {
     interface MvxDefaultTransactionIconSmall {
         "class"?: string;
     }
-    interface MvxEdgeExtensionProviderIcon {
-        "class"?: string;
-        "height"?: number;
-        "width"?: number;
-    }
     interface MvxExplorerLink {
         "class"?: string;
         "dataTestId"?: string;
         "iconClass"?: string;
         "link": string;
-    }
-    interface MvxExtensionProviderIcon {
-        "class"?: string;
-        "height"?: number;
-        "width"?: number;
-    }
-    interface MvxFirefoxExtensionProviderIcon {
-        "class"?: string;
-        "height"?: number;
-        "width"?: number;
     }
     interface MvxFormatAmount {
         "class"?: string;
@@ -157,9 +132,6 @@ export namespace Components {
     interface MvxNotificationsFeed {
         "closeWithAnimation": () => Promise<unknown>;
         "getEventBus": () => Promise<IEventBus>;
-    }
-    interface MvxPasskeyProviderIcon {
-        "class"?: string;
     }
     interface MvxPendingTransactionsPanel {
         "closeWithAnimation": () => Promise<unknown>;
@@ -289,9 +261,6 @@ export namespace Components {
          */
         "walletConnectDeepLink"?: string;
     }
-    interface MvxWalletProviderIcon {
-        "class"?: string;
-    }
     interface MvxXportalDownloadQrIcon {
         /**
           * @default ''
@@ -362,18 +331,6 @@ declare global {
         prototype: HTMLMvxAddressTableElement;
         new (): HTMLMvxAddressTableElement;
     };
-    interface HTMLMvxArcExtensionProviderIconElement extends Components.MvxArcExtensionProviderIcon, HTMLStencilElement {
-    }
-    var HTMLMvxArcExtensionProviderIconElement: {
-        prototype: HTMLMvxArcExtensionProviderIconElement;
-        new (): HTMLMvxArcExtensionProviderIconElement;
-    };
-    interface HTMLMvxBraveExtensionProviderIconElement extends Components.MvxBraveExtensionProviderIcon, HTMLStencilElement {
-    }
-    var HTMLMvxBraveExtensionProviderIconElement: {
-        prototype: HTMLMvxBraveExtensionProviderIconElement;
-        new (): HTMLMvxBraveExtensionProviderIconElement;
-    };
     interface HTMLMvxButtonElementEventMap {
         "buttonClick": MouseEvent;
     }
@@ -432,29 +389,11 @@ declare global {
         prototype: HTMLMvxDefaultTransactionIconSmallElement;
         new (): HTMLMvxDefaultTransactionIconSmallElement;
     };
-    interface HTMLMvxEdgeExtensionProviderIconElement extends Components.MvxEdgeExtensionProviderIcon, HTMLStencilElement {
-    }
-    var HTMLMvxEdgeExtensionProviderIconElement: {
-        prototype: HTMLMvxEdgeExtensionProviderIconElement;
-        new (): HTMLMvxEdgeExtensionProviderIconElement;
-    };
     interface HTMLMvxExplorerLinkElement extends Components.MvxExplorerLink, HTMLStencilElement {
     }
     var HTMLMvxExplorerLinkElement: {
         prototype: HTMLMvxExplorerLinkElement;
         new (): HTMLMvxExplorerLinkElement;
-    };
-    interface HTMLMvxExtensionProviderIconElement extends Components.MvxExtensionProviderIcon, HTMLStencilElement {
-    }
-    var HTMLMvxExtensionProviderIconElement: {
-        prototype: HTMLMvxExtensionProviderIconElement;
-        new (): HTMLMvxExtensionProviderIconElement;
-    };
-    interface HTMLMvxFirefoxExtensionProviderIconElement extends Components.MvxFirefoxExtensionProviderIcon, HTMLStencilElement {
-    }
-    var HTMLMvxFirefoxExtensionProviderIconElement: {
-        prototype: HTMLMvxFirefoxExtensionProviderIconElement;
-        new (): HTMLMvxFirefoxExtensionProviderIconElement;
     };
     interface HTMLMvxFormatAmountElement extends Components.MvxFormatAmount, HTMLStencilElement {
     }
@@ -519,12 +458,6 @@ declare global {
     var HTMLMvxNotificationsFeedElement: {
         prototype: HTMLMvxNotificationsFeedElement;
         new (): HTMLMvxNotificationsFeedElement;
-    };
-    interface HTMLMvxPasskeyProviderIconElement extends Components.MvxPasskeyProviderIcon, HTMLStencilElement {
-    }
-    var HTMLMvxPasskeyProviderIconElement: {
-        prototype: HTMLMvxPasskeyProviderIconElement;
-        new (): HTMLMvxPasskeyProviderIconElement;
     };
     interface HTMLMvxPendingTransactionsPanelElement extends Components.MvxPendingTransactionsPanel, HTMLStencilElement {
     }
@@ -701,12 +634,6 @@ declare global {
         prototype: HTMLMvxWalletConnectScanElement;
         new (): HTMLMvxWalletConnectScanElement;
     };
-    interface HTMLMvxWalletProviderIconElement extends Components.MvxWalletProviderIcon, HTMLStencilElement {
-    }
-    var HTMLMvxWalletProviderIconElement: {
-        prototype: HTMLMvxWalletProviderIconElement;
-        new (): HTMLMvxWalletProviderIconElement;
-    };
     interface HTMLMvxXportalDownloadQrIconElement extends Components.MvxXportalDownloadQrIcon, HTMLStencilElement {
     }
     var HTMLMvxXportalDownloadQrIconElement: {
@@ -721,18 +648,13 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "mvx-address-table": HTMLMvxAddressTableElement;
-        "mvx-arc-extension-provider-icon": HTMLMvxArcExtensionProviderIconElement;
-        "mvx-brave-extension-provider-icon": HTMLMvxBraveExtensionProviderIconElement;
         "mvx-button": HTMLMvxButtonElement;
         "mvx-copy-button": HTMLMvxCopyButtonElement;
         "mvx-custom-toast": HTMLMvxCustomToastElement;
         "mvx-data-with-explorer-link": HTMLMvxDataWithExplorerLinkElement;
         "mvx-default-transaction-icon-large": HTMLMvxDefaultTransactionIconLargeElement;
         "mvx-default-transaction-icon-small": HTMLMvxDefaultTransactionIconSmallElement;
-        "mvx-edge-extension-provider-icon": HTMLMvxEdgeExtensionProviderIconElement;
         "mvx-explorer-link": HTMLMvxExplorerLinkElement;
-        "mvx-extension-provider-icon": HTMLMvxExtensionProviderIconElement;
-        "mvx-firefox-extension-provider-icon": HTMLMvxFirefoxExtensionProviderIconElement;
         "mvx-format-amount": HTMLMvxFormatAmountElement;
         "mvx-generic-toast": HTMLMvxGenericToastElement;
         "mvx-ledger-confirm": HTMLMvxLedgerConfirmElement;
@@ -740,7 +662,6 @@ declare global {
         "mvx-ledger-intro": HTMLMvxLedgerIntroElement;
         "mvx-metamask-provider-icon": HTMLMvxMetamaskProviderIconElement;
         "mvx-notifications-feed": HTMLMvxNotificationsFeedElement;
-        "mvx-passkey-provider-icon": HTMLMvxPasskeyProviderIconElement;
         "mvx-pending-transactions-panel": HTMLMvxPendingTransactionsPanelElement;
         "mvx-preloader": HTMLMvxPreloaderElement;
         "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
@@ -761,7 +682,6 @@ declare global {
         "mvx-wallet-connect-download": HTMLMvxWalletConnectDownloadElement;
         "mvx-wallet-connect-google-play-icon": HTMLMvxWalletConnectGooglePlayIconElement;
         "mvx-wallet-connect-scan": HTMLMvxWalletConnectScanElement;
-        "mvx-wallet-provider-icon": HTMLMvxWalletProviderIconElement;
         "mvx-xportal-download-qr-icon": HTMLMvxXportalDownloadQrIconElement;
         "mvx-xportal-qr-code-preloader": HTMLMvxXportalQrCodePreloaderElement;
     }
@@ -773,16 +693,6 @@ declare namespace LocalJSX {
         "onPageChange"?: (event: MvxAddressTableCustomEvent<number>) => void;
         "onSelectAccount"?: (event: MvxAddressTableCustomEvent<any>) => void;
         "selectedIndex"?: number;
-    }
-    interface MvxArcExtensionProviderIcon {
-        "class"?: string;
-        "height"?: number;
-        "width"?: number;
-    }
-    interface MvxBraveExtensionProviderIcon {
-        "class"?: string;
-        "height"?: number;
-        "width"?: number;
     }
     interface MvxButton {
         /**
@@ -840,26 +750,11 @@ declare namespace LocalJSX {
     interface MvxDefaultTransactionIconSmall {
         "class"?: string;
     }
-    interface MvxEdgeExtensionProviderIcon {
-        "class"?: string;
-        "height"?: number;
-        "width"?: number;
-    }
     interface MvxExplorerLink {
         "class"?: string;
         "dataTestId"?: string;
         "iconClass"?: string;
         "link"?: string;
-    }
-    interface MvxExtensionProviderIcon {
-        "class"?: string;
-        "height"?: number;
-        "width"?: number;
-    }
-    interface MvxFirefoxExtensionProviderIcon {
-        "class"?: string;
-        "height"?: number;
-        "width"?: number;
     }
     interface MvxFormatAmount {
         "class"?: string;
@@ -900,9 +795,6 @@ declare namespace LocalJSX {
         "class"?: string;
     }
     interface MvxNotificationsFeed {
-    }
-    interface MvxPasskeyProviderIcon {
-        "class"?: string;
     }
     interface MvxPendingTransactionsPanel {
     }
@@ -1029,9 +921,6 @@ declare namespace LocalJSX {
          */
         "walletConnectDeepLink"?: string;
     }
-    interface MvxWalletProviderIcon {
-        "class"?: string;
-    }
     interface MvxXportalDownloadQrIcon {
         /**
           * @default ''
@@ -1043,18 +932,13 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "mvx-address-table": MvxAddressTable;
-        "mvx-arc-extension-provider-icon": MvxArcExtensionProviderIcon;
-        "mvx-brave-extension-provider-icon": MvxBraveExtensionProviderIcon;
         "mvx-button": MvxButton;
         "mvx-copy-button": MvxCopyButton;
         "mvx-custom-toast": MvxCustomToast;
         "mvx-data-with-explorer-link": MvxDataWithExplorerLink;
         "mvx-default-transaction-icon-large": MvxDefaultTransactionIconLarge;
         "mvx-default-transaction-icon-small": MvxDefaultTransactionIconSmall;
-        "mvx-edge-extension-provider-icon": MvxEdgeExtensionProviderIcon;
         "mvx-explorer-link": MvxExplorerLink;
-        "mvx-extension-provider-icon": MvxExtensionProviderIcon;
-        "mvx-firefox-extension-provider-icon": MvxFirefoxExtensionProviderIcon;
         "mvx-format-amount": MvxFormatAmount;
         "mvx-generic-toast": MvxGenericToast;
         "mvx-ledger-confirm": MvxLedgerConfirm;
@@ -1062,7 +946,6 @@ declare namespace LocalJSX {
         "mvx-ledger-intro": MvxLedgerIntro;
         "mvx-metamask-provider-icon": MvxMetamaskProviderIcon;
         "mvx-notifications-feed": MvxNotificationsFeed;
-        "mvx-passkey-provider-icon": MvxPasskeyProviderIcon;
         "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
         "mvx-preloader": MvxPreloader;
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
@@ -1083,7 +966,6 @@ declare namespace LocalJSX {
         "mvx-wallet-connect-download": MvxWalletConnectDownload;
         "mvx-wallet-connect-google-play-icon": MvxWalletConnectGooglePlayIcon;
         "mvx-wallet-connect-scan": MvxWalletConnectScan;
-        "mvx-wallet-provider-icon": MvxWalletProviderIcon;
         "mvx-xportal-download-qr-icon": MvxXportalDownloadQrIcon;
         "mvx-xportal-qr-code-preloader": MvxXportalQrCodePreloader;
     }
@@ -1093,18 +975,13 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "mvx-address-table": LocalJSX.MvxAddressTable & JSXBase.HTMLAttributes<HTMLMvxAddressTableElement>;
-            "mvx-arc-extension-provider-icon": LocalJSX.MvxArcExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxArcExtensionProviderIconElement>;
-            "mvx-brave-extension-provider-icon": LocalJSX.MvxBraveExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxBraveExtensionProviderIconElement>;
             "mvx-button": LocalJSX.MvxButton & JSXBase.HTMLAttributes<HTMLMvxButtonElement>;
             "mvx-copy-button": LocalJSX.MvxCopyButton & JSXBase.HTMLAttributes<HTMLMvxCopyButtonElement>;
             "mvx-custom-toast": LocalJSX.MvxCustomToast & JSXBase.HTMLAttributes<HTMLMvxCustomToastElement>;
             "mvx-data-with-explorer-link": LocalJSX.MvxDataWithExplorerLink & JSXBase.HTMLAttributes<HTMLMvxDataWithExplorerLinkElement>;
             "mvx-default-transaction-icon-large": LocalJSX.MvxDefaultTransactionIconLarge & JSXBase.HTMLAttributes<HTMLMvxDefaultTransactionIconLargeElement>;
             "mvx-default-transaction-icon-small": LocalJSX.MvxDefaultTransactionIconSmall & JSXBase.HTMLAttributes<HTMLMvxDefaultTransactionIconSmallElement>;
-            "mvx-edge-extension-provider-icon": LocalJSX.MvxEdgeExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxEdgeExtensionProviderIconElement>;
             "mvx-explorer-link": LocalJSX.MvxExplorerLink & JSXBase.HTMLAttributes<HTMLMvxExplorerLinkElement>;
-            "mvx-extension-provider-icon": LocalJSX.MvxExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxExtensionProviderIconElement>;
-            "mvx-firefox-extension-provider-icon": LocalJSX.MvxFirefoxExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxFirefoxExtensionProviderIconElement>;
             "mvx-format-amount": LocalJSX.MvxFormatAmount & JSXBase.HTMLAttributes<HTMLMvxFormatAmountElement>;
             "mvx-generic-toast": LocalJSX.MvxGenericToast & JSXBase.HTMLAttributes<HTMLMvxGenericToastElement>;
             "mvx-ledger-confirm": LocalJSX.MvxLedgerConfirm & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmElement>;
@@ -1112,7 +989,6 @@ declare module "@stencil/core" {
             "mvx-ledger-intro": LocalJSX.MvxLedgerIntro & JSXBase.HTMLAttributes<HTMLMvxLedgerIntroElement>;
             "mvx-metamask-provider-icon": LocalJSX.MvxMetamaskProviderIcon & JSXBase.HTMLAttributes<HTMLMvxMetamaskProviderIconElement>;
             "mvx-notifications-feed": LocalJSX.MvxNotificationsFeed & JSXBase.HTMLAttributes<HTMLMvxNotificationsFeedElement>;
-            "mvx-passkey-provider-icon": LocalJSX.MvxPasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLMvxPasskeyProviderIconElement>;
             "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
             "mvx-preloader": LocalJSX.MvxPreloader & JSXBase.HTMLAttributes<HTMLMvxPreloaderElement>;
             "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;
@@ -1133,7 +1009,6 @@ declare module "@stencil/core" {
             "mvx-wallet-connect-download": LocalJSX.MvxWalletConnectDownload & JSXBase.HTMLAttributes<HTMLMvxWalletConnectDownloadElement>;
             "mvx-wallet-connect-google-play-icon": LocalJSX.MvxWalletConnectGooglePlayIcon & JSXBase.HTMLAttributes<HTMLMvxWalletConnectGooglePlayIconElement>;
             "mvx-wallet-connect-scan": LocalJSX.MvxWalletConnectScan & JSXBase.HTMLAttributes<HTMLMvxWalletConnectScanElement>;
-            "mvx-wallet-provider-icon": LocalJSX.MvxWalletProviderIcon & JSXBase.HTMLAttributes<HTMLMvxWalletProviderIconElement>;
             "mvx-xportal-download-qr-icon": LocalJSX.MvxXportalDownloadQrIcon & JSXBase.HTMLAttributes<HTMLMvxXportalDownloadQrIconElement>;
             "mvx-xportal-qr-code-preloader": LocalJSX.MvxXportalQrCodePreloader & JSXBase.HTMLAttributes<HTMLMvxXportalQrCodePreloaderElement>;
         }

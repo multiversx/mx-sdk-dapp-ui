@@ -1,7 +1,1 @@
-:host {
-  @apply mvx:flex;
-
-  .edge-extension-provider-icon {
-    fill: none;
-  }
-}
+// This is needed to trigger the Stencil Tailwind compilation for inline Tailwind classes.
