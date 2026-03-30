@@ -131,8 +131,8 @@ export function FooIcon({ class: className }: FooIconPropsType) {
 | 3 | `mvx-magnifying-glass-icon` | `src/assets/icons/magnifying-glass-icon/magnifying-glass-icon.tsx` | ✅ done |
 | 4 | `mvx-spinner-icon` | `src/assets/icons/spinner-icon/spinner-icon.tsx` | ✅ done |
 | 5 | `mvx-shard-icon` | `src/assets/icons/shard-icon/shard-icon.tsx` | ✅ done |
-| 6 | `mvx-ledger-icon` | `src/assets/icons/ledger-icon/ledger-icon.tsx` | |
-| 7 | `mvx-ledger-provider-icon` | `src/assets/icons/ledger-provider-icon/ledger-provider-icon.tsx` | |
+| 6 | `mvx-ledger-icon` | `src/assets/icons/ledger-icon/ledger-icon.tsx` | ✅ done |
+| 7 | `mvx-ledger-provider-icon` | `src/assets/icons/ledger-provider-icon/ledger-provider-icon.tsx` | ✅ done |
 | 8 | `mvx-multiversx-logo-icon` | `src/assets/icons/multiversx-logo-icon/multiversx-logo-icon.tsx` | |
 | 9 | `mvx-multiversx-symbol-icon` | `src/assets/icons/multiversx-symbol-icon/multiversx-symbol-icon.tsx` | |
 | 10 | `mvx-passkey-provider-icon` | `src/assets/icons/passkey-provider-icon/passkey-provider-icon.tsx` | |

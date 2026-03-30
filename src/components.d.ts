@@ -151,9 +151,6 @@ export namespace Components {
          */
         "isAwaiting"?: boolean;
     }
-    interface MvxLedgerProviderIcon {
-        "class"?: string;
-    }
     interface MvxMetamaskProviderIcon {
         "class"?: string;
     }
@@ -517,12 +514,6 @@ declare global {
         prototype: HTMLMvxLedgerIntroElement;
         new (): HTMLMvxLedgerIntroElement;
     };
-    interface HTMLMvxLedgerProviderIconElement extends Components.MvxLedgerProviderIcon, HTMLStencilElement {
-    }
-    var HTMLMvxLedgerProviderIconElement: {
-        prototype: HTMLMvxLedgerProviderIconElement;
-        new (): HTMLMvxLedgerProviderIconElement;
-    };
     interface HTMLMvxMetamaskProviderIconElement extends Components.MvxMetamaskProviderIcon, HTMLStencilElement {
     }
     var HTMLMvxMetamaskProviderIconElement: {
@@ -765,7 +756,6 @@ declare global {
         "mvx-ledger-confirm": HTMLMvxLedgerConfirmElement;
         "mvx-ledger-connect": HTMLMvxLedgerConnectElement;
         "mvx-ledger-intro": HTMLMvxLedgerIntroElement;
-        "mvx-ledger-provider-icon": HTMLMvxLedgerProviderIconElement;
         "mvx-metamask-provider-icon": HTMLMvxMetamaskProviderIconElement;
         "mvx-multiversx-logo-icon": HTMLMvxMultiversxLogoIconElement;
         "mvx-multiversx-symbol-icon": HTMLMvxMultiversxSymbolIconElement;
@@ -925,9 +915,6 @@ declare namespace LocalJSX {
          */
         "isAwaiting"?: boolean;
         "onConnect"?: (event: MvxLedgerIntroCustomEvent<any>) => void;
-    }
-    interface MvxLedgerProviderIcon {
-        "class"?: string;
     }
     interface MvxMetamaskProviderIcon {
         "class"?: string;
@@ -1099,7 +1086,6 @@ declare namespace LocalJSX {
         "mvx-ledger-confirm": MvxLedgerConfirm;
         "mvx-ledger-connect": MvxLedgerConnect;
         "mvx-ledger-intro": MvxLedgerIntro;
-        "mvx-ledger-provider-icon": MvxLedgerProviderIcon;
         "mvx-metamask-provider-icon": MvxMetamaskProviderIcon;
         "mvx-multiversx-logo-icon": MvxMultiversxLogoIcon;
         "mvx-multiversx-symbol-icon": MvxMultiversxSymbolIcon;
@@ -1152,7 +1138,6 @@ declare module "@stencil/core" {
             "mvx-ledger-confirm": LocalJSX.MvxLedgerConfirm & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmElement>;
             "mvx-ledger-connect": LocalJSX.MvxLedgerConnect & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectElement>;
             "mvx-ledger-intro": LocalJSX.MvxLedgerIntro & JSXBase.HTMLAttributes<HTMLMvxLedgerIntroElement>;
-            "mvx-ledger-provider-icon": LocalJSX.MvxLedgerProviderIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerProviderIconElement>;
             "mvx-metamask-provider-icon": LocalJSX.MvxMetamaskProviderIcon & JSXBase.HTMLAttributes<HTMLMvxMetamaskProviderIconElement>;
             "mvx-multiversx-logo-icon": LocalJSX.MvxMultiversxLogoIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxLogoIconElement>;
             "mvx-multiversx-symbol-icon": LocalJSX.MvxMultiversxSymbolIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxSymbolIconElement>;
