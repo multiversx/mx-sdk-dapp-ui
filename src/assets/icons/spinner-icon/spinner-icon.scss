@@ -3,9 +3,3 @@
     transform: rotate(360deg);
   }
 }
-
-.spinner {
-  @apply mvx:w-4 mvx:h-4;
-  fill: var(--mvx-text-color-secondary);
-  animation: SpinnerAnimation 3000ms linear infinite;
-}

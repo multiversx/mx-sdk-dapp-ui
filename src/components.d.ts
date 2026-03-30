@@ -194,9 +194,6 @@ export namespace Components {
     interface MvxSimpleToast {
         "toast": ISimpleToast;
     }
-    interface MvxSpinnerIcon {
-        "class"?: string;
-    }
     interface MvxToastList {
         "getEventBus": () => Promise<IEventBus>;
     }
@@ -613,12 +610,6 @@ declare global {
         prototype: HTMLMvxSimpleToastElement;
         new (): HTMLMvxSimpleToastElement;
     };
-    interface HTMLMvxSpinnerIconElement extends Components.MvxSpinnerIcon, HTMLStencilElement {
-    }
-    var HTMLMvxSpinnerIconElement: {
-        prototype: HTMLMvxSpinnerIconElement;
-        new (): HTMLMvxSpinnerIconElement;
-    };
     interface HTMLMvxToastListElement extends Components.MvxToastList, HTMLStencilElement {
     }
     var HTMLMvxToastListElement: {
@@ -808,7 +799,6 @@ declare global {
         "mvx-shard-icon": HTMLMvxShardIconElement;
         "mvx-sign-transactions-panel": HTMLMvxSignTransactionsPanelElement;
         "mvx-simple-toast": HTMLMvxSimpleToastElement;
-        "mvx-spinner-icon": HTMLMvxSpinnerIconElement;
         "mvx-toast-list": HTMLMvxToastListElement;
         "mvx-tooltip": HTMLMvxTooltipElement;
         "mvx-transaction-toast": HTMLMvxTransactionToastElement;
@@ -998,9 +988,6 @@ declare namespace LocalJSX {
         "onDeleteToast"?: (event: MvxSimpleToastCustomEvent<void>) => void;
         "toast"?: ISimpleToast;
     }
-    interface MvxSpinnerIcon {
-        "class"?: string;
-    }
     interface MvxToastList {
     }
     interface MvxTooltip {
@@ -1158,7 +1145,6 @@ declare namespace LocalJSX {
         "mvx-shard-icon": MvxShardIcon;
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
         "mvx-simple-toast": MvxSimpleToast;
-        "mvx-spinner-icon": MvxSpinnerIcon;
         "mvx-toast-list": MvxToastList;
         "mvx-tooltip": MvxTooltip;
         "mvx-transaction-toast": MvxTransactionToast;
@@ -1214,7 +1200,6 @@ declare module "@stencil/core" {
             "mvx-shard-icon": LocalJSX.MvxShardIcon & JSXBase.HTMLAttributes<HTMLMvxShardIconElement>;
             "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;
             "mvx-simple-toast": LocalJSX.MvxSimpleToast & JSXBase.HTMLAttributes<HTMLMvxSimpleToastElement>;
-            "mvx-spinner-icon": LocalJSX.MvxSpinnerIcon & JSXBase.HTMLAttributes<HTMLMvxSpinnerIconElement>;
             "mvx-toast-list": LocalJSX.MvxToastList & JSXBase.HTMLAttributes<HTMLMvxToastListElement>;
             "mvx-tooltip": LocalJSX.MvxTooltip & JSXBase.HTMLAttributes<HTMLMvxTooltipElement>;
             "mvx-transaction-toast": LocalJSX.MvxTransactionToast & JSXBase.HTMLAttributes<HTMLMvxTransactionToastElement>;

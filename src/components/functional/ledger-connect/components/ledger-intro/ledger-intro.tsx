@@ -2,6 +2,7 @@ import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 
+import { SpinnerIcon } from 'assets/icons/spinner-icon/spinner-icon';
 import type { IConnectScreenData } from '../../ledger-connect.types';
 
 const ledgerIntroClasses: Record<string, string> = {
@@ -56,7 +57,7 @@ export class LedgerIntro {
               <span class="ledger-intro-button-label">{showError ? 'Retry Connection' : 'Connect Ledger'}</span>
             )}
 
-            {this.isAwaiting && <mvx-spinner-icon />}
+            {this.isAwaiting && <SpinnerIcon />}
           </mvx-button>
 
           {showError && <div class="ledger-intro-error">{this.connectScreenData.error}</div>}

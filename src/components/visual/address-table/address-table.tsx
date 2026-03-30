@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 import type { IAddressTableData, IndexedAccountType } from 'types/address-table.types';
 
+import { SpinnerIcon } from 'assets/icons/spinner-icon/spinner-icon';
 import { Pagination } from './components/pagination/Pagination';
 
 const TOTAL_ADDRESSES_COUNT = 5000;
@@ -204,7 +205,7 @@ export class AddressTable {
             exportparts="button: access-button"
           >
             <span class="address-table-button-label">{isPageChanging ? 'Loading Wallets...' : 'Access Wallet'}</span>
-            {isPageChanging && <mvx-spinner-icon />}
+            {isPageChanging && <SpinnerIcon />}
           </mvx-button>
         </div>
       </div>
