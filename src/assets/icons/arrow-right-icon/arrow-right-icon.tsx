@@ -10,6 +10,7 @@ export function ArrowRightIcon({ class: className }: ArrowRightIconPropsType) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 448 512"
       class={{ 'arrow-right-icon': true, [className]: Boolean(className) }}
+      style={{ width: '1rem', height: '1rem', flexShrink: '0' }}
     >
       <path
         fill="currentColor"

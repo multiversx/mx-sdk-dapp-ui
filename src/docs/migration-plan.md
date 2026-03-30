@@ -8,6 +8,70 @@ A previous attempt (`tm/refactor/qr-code-local-replacement`, commit `65f2d34`) m
 
 ---
 
+## SCSS + Shadow DOM Rule (learned from #3 magnifying-glass-icon)
+
+Removing `@Component` also removes the `styleUrl` link — the SCSS file is no longer injected into any component. This has two consequences:
+
+1. **Tailwind classes in SCSS won't apply inside shadow DOM parents.** Parent components with `shadow: true` (e.g. `mvx-address-table`) isolate their DOM — global CSS can't penetrate. Any Tailwind utilities previously in the icon's SCSS must move to the JSX class attribute directly, so Stencil includes them in the parent component's scoped styles at build time.
+
+2. **Raw CSS values (non-Tailwind) must move to inline `style={{}}`** on the element. E.g. `fill: var(--mvx-neutral-500)` in SCSS → `style={{ fill: 'var(--mvx-neutral-500)' }}` on the SVG.
+
+### Why Tailwind classes fail inside shadow DOM (confirmed with #3)
+
+Even when Tailwind classes like `mvx:w-3 mvx:h-3` ARE present on the element (verified in DevTools), their CSS rules live in the **global stylesheet**. The `@Component { styleUrl }` → SCSS → Stencil Tailwind plugin chain was what injected those rules into the component's scoped shadow DOM styles. Without `@Component`, that chain is broken — the trigger comment in the SCSS has no effect.
+
+Result: inside a shadow DOM parent (e.g. `mvx-address-table`), Tailwind class names on the SVG are inert. The computed size stays at whatever the flex container imposes, not what Tailwind specifies.
+
+**Rule: all intrinsic icon styles must move to `style={{}}`** — inline styles always cross shadow DOM boundaries.
+
+### Watch out for `:host` overrides of parent-passed classes
+
+Some icons used `:host { @apply mvx:p-0!; }` to cancel classes passed by the parent. Removing the shadow DOM means those parent-passed classes now take effect on the SVG directly. Example from `magnifying-glass-icon` / `PaginationEllipsisForm`:
+
+- Parent passed `mvx:p-[10px]` to the web component host
+- `:host { @apply mvx:p-0!; }` silently killed it → production SVG had no padding
+- After migration: `mvx:p-[10px]` reached the SVG + `mvx:box-content` → 32px instead of 12px
+
+**Fix:** remove both the dead parent class (`mvx:p-[10px]`) and `mvx:box-content` from the icon JSX.
+
+**Rule:** when removing `:host` rules, check each one — if it was overriding a parent-passed class, that class is now live and may need to be removed from the parent callsite too.
+
+### Watch out for wrapper elements that depended on the web component's host size
+
+When a web component host element had padding/size classes applied to it, its wrapper (e.g. a button div) relied on that size to maintain its own dimensions. After migration, the wrapper's content is the bare SVG (much smaller), which can cause the wrapper to collapse.
+
+Example from `magnifying-glass-icon` / `PaginationEllipsisForm`:
+- The button wrapper was absolutely positioned, sized by its content
+- Production: button content was the `<mvx-magnifying-glass-icon>` host at ~30.5px wide (via `px-[10px]` padding on the host)
+- After migration: button content is the 10.5px SVG → button collapses to 10.5px
+- Fix: move `mvx:px-[10px] mvx:items-center mvx:justify-center` to the **wrapper div**, not the icon
+
+**Rule:** this only applies when the wrapper's size depended on the web component host. Icons used inside already-sized flex rows (like `TransactionShards`) or slot content (like `mvx-tooltip`) are not affected.
+
+### Correct migration pattern for icons (all intrinsic styles via inline style):
+```tsx
+// ALL icon-specific styles go in style={{}}, NOT as Tailwind classes:
+<svg
+  class={{ 'magnifying-glass-icon': true, [className]: Boolean(className) }}
+  style={{
+    width: '0.75rem',                    // replaces mvx:w-3 (= 10.5px at 14px root)
+    height: '0.75rem',                   // replaces mvx:h-3
+    fill: 'var(--mvx-neutral-500)',      // replaces fill: var(...) in SCSS
+    transition: 'all 0.2s ease-in-out', // replaces mvx:transition-all etc.
+    flexShrink: '0',
+  }}
+>
+```
+
+Tailwind classes passed via `className` prop from the **parent** still work — they are compiled into the parent component's shadow DOM styles. So parent-passed hover/color classes work fine.
+
+The SCSS file is kept with only the trigger comment:
+```scss
+// This is needed to trigger the Stencil Tailwind compilation for inline Tailwind classes.
+```
+
+---
+
 ## Branch
 
 `tm/refactor/components-to-functions`
@@ -44,8 +108,8 @@ export function FooIcon({ class: className }: FooIconPropsType) {
 1. Remove `@Component` decorator (tag, styleUrl, shadow)
 2. Remove all Stencil decorators: `@Prop`, `@State`, `@Event`, `@Method`, `@Element`
 3. Convert `export class Foo { render() { ... } }` → `export function Foo(props: FooPropsType) { ... }`
-4. Update SCSS: remove `:host { ... }` wrapper, use direct class selectors (e.g., `.foo-icon { @apply mvx:w-4 mvx:h-4; }`)
-5. Keep the SCSS file — if there are no non-`:host` rules, replace with the Tailwind trigger comment: `// This is needed to trigger the Stencil Tailwind compilation for inline Tailwind classes.`
+4. Move styles out of SCSS into JSX: Tailwind classes → class attribute, raw CSS values → `style={{}}`. Replace SCSS content with the Tailwind trigger comment.
+5. SCSS file must always be kept with the trigger comment (even if empty of rules) — Stencil needs it to compile inline Tailwind classes.
 6. Update all parent usages: replace `<mvx-foo-icon class={x} />` with `<FooIcon class={x} />` and add import
 7. `npm run build` → verify visually → commit
 

@@ -157,9 +157,6 @@ export namespace Components {
     interface MvxLedgerProviderIcon {
         "class"?: string;
     }
-    interface MvxMagnifyingGlassIcon {
-        "class"?: string;
-    }
     interface MvxMetamaskProviderIcon {
         "class"?: string;
     }
@@ -545,12 +542,6 @@ declare global {
         prototype: HTMLMvxLedgerProviderIconElement;
         new (): HTMLMvxLedgerProviderIconElement;
     };
-    interface HTMLMvxMagnifyingGlassIconElement extends Components.MvxMagnifyingGlassIcon, HTMLStencilElement {
-    }
-    var HTMLMvxMagnifyingGlassIconElement: {
-        prototype: HTMLMvxMagnifyingGlassIconElement;
-        new (): HTMLMvxMagnifyingGlassIconElement;
-    };
     interface HTMLMvxMetamaskProviderIconElement extends Components.MvxMetamaskProviderIcon, HTMLStencilElement {
     }
     var HTMLMvxMetamaskProviderIconElement: {
@@ -807,7 +798,6 @@ declare global {
         "mvx-ledger-icon": HTMLMvxLedgerIconElement;
         "mvx-ledger-intro": HTMLMvxLedgerIntroElement;
         "mvx-ledger-provider-icon": HTMLMvxLedgerProviderIconElement;
-        "mvx-magnifying-glass-icon": HTMLMvxMagnifyingGlassIconElement;
         "mvx-metamask-provider-icon": HTMLMvxMetamaskProviderIconElement;
         "mvx-multiversx-logo-icon": HTMLMvxMultiversxLogoIconElement;
         "mvx-multiversx-symbol-icon": HTMLMvxMultiversxSymbolIconElement;
@@ -974,9 +964,6 @@ declare namespace LocalJSX {
         "onConnect"?: (event: MvxLedgerIntroCustomEvent<any>) => void;
     }
     interface MvxLedgerProviderIcon {
-        "class"?: string;
-    }
-    interface MvxMagnifyingGlassIcon {
         "class"?: string;
     }
     interface MvxMetamaskProviderIcon {
@@ -1161,7 +1148,6 @@ declare namespace LocalJSX {
         "mvx-ledger-icon": MvxLedgerIcon;
         "mvx-ledger-intro": MvxLedgerIntro;
         "mvx-ledger-provider-icon": MvxLedgerProviderIcon;
-        "mvx-magnifying-glass-icon": MvxMagnifyingGlassIcon;
         "mvx-metamask-provider-icon": MvxMetamaskProviderIcon;
         "mvx-multiversx-logo-icon": MvxMultiversxLogoIcon;
         "mvx-multiversx-symbol-icon": MvxMultiversxSymbolIcon;
@@ -1218,7 +1204,6 @@ declare module "@stencil/core" {
             "mvx-ledger-icon": LocalJSX.MvxLedgerIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerIconElement>;
             "mvx-ledger-intro": LocalJSX.MvxLedgerIntro & JSXBase.HTMLAttributes<HTMLMvxLedgerIntroElement>;
             "mvx-ledger-provider-icon": LocalJSX.MvxLedgerProviderIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerProviderIconElement>;
-            "mvx-magnifying-glass-icon": LocalJSX.MvxMagnifyingGlassIcon & JSXBase.HTMLAttributes<HTMLMvxMagnifyingGlassIconElement>;
             "mvx-metamask-provider-icon": LocalJSX.MvxMetamaskProviderIcon & JSXBase.HTMLAttributes<HTMLMvxMetamaskProviderIconElement>;
             "mvx-multiversx-logo-icon": LocalJSX.MvxMultiversxLogoIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxLogoIconElement>;
             "mvx-multiversx-symbol-icon": LocalJSX.MvxMultiversxSymbolIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxSymbolIconElement>;
