@@ -144,9 +144,6 @@ export namespace Components {
         "data": ILedgerConnectPanelData;
         "getEventBus": () => Promise<IEventBus>;
     }
-    interface MvxLedgerIcon {
-        "class"?: string;
-    }
     interface MvxLedgerIntro {
         "connectScreenData"?: IConnectScreenData;
         /**
@@ -503,12 +500,6 @@ declare global {
         prototype: HTMLMvxLedgerConnectElement;
         new (): HTMLMvxLedgerConnectElement;
     };
-    interface HTMLMvxLedgerIconElement extends Components.MvxLedgerIcon, HTMLStencilElement {
-    }
-    var HTMLMvxLedgerIconElement: {
-        prototype: HTMLMvxLedgerIconElement;
-        new (): HTMLMvxLedgerIconElement;
-    };
     interface HTMLMvxLedgerIntroElementEventMap {
         "connect": any;
     }
@@ -773,7 +764,6 @@ declare global {
         "mvx-generic-toast": HTMLMvxGenericToastElement;
         "mvx-ledger-confirm": HTMLMvxLedgerConfirmElement;
         "mvx-ledger-connect": HTMLMvxLedgerConnectElement;
-        "mvx-ledger-icon": HTMLMvxLedgerIconElement;
         "mvx-ledger-intro": HTMLMvxLedgerIntroElement;
         "mvx-ledger-provider-icon": HTMLMvxLedgerProviderIconElement;
         "mvx-metamask-provider-icon": HTMLMvxMetamaskProviderIconElement;
@@ -927,9 +917,6 @@ declare namespace LocalJSX {
           * @default {     accountScreenData: null,     confirmScreenData: null,     connectScreenData: {},   }
          */
         "data"?: ILedgerConnectPanelData;
-    }
-    interface MvxLedgerIcon {
-        "class"?: string;
     }
     interface MvxLedgerIntro {
         "connectScreenData"?: IConnectScreenData;
@@ -1111,7 +1098,6 @@ declare namespace LocalJSX {
         "mvx-generic-toast": MvxGenericToast;
         "mvx-ledger-confirm": MvxLedgerConfirm;
         "mvx-ledger-connect": MvxLedgerConnect;
-        "mvx-ledger-icon": MvxLedgerIcon;
         "mvx-ledger-intro": MvxLedgerIntro;
         "mvx-ledger-provider-icon": MvxLedgerProviderIcon;
         "mvx-metamask-provider-icon": MvxMetamaskProviderIcon;
@@ -1165,7 +1151,6 @@ declare module "@stencil/core" {
             "mvx-generic-toast": LocalJSX.MvxGenericToast & JSXBase.HTMLAttributes<HTMLMvxGenericToastElement>;
             "mvx-ledger-confirm": LocalJSX.MvxLedgerConfirm & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmElement>;
             "mvx-ledger-connect": LocalJSX.MvxLedgerConnect & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectElement>;
-            "mvx-ledger-icon": LocalJSX.MvxLedgerIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerIconElement>;
             "mvx-ledger-intro": LocalJSX.MvxLedgerIntro & JSXBase.HTMLAttributes<HTMLMvxLedgerIntroElement>;
             "mvx-ledger-provider-icon": LocalJSX.MvxLedgerProviderIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerProviderIconElement>;
             "mvx-metamask-provider-icon": LocalJSX.MvxMetamaskProviderIcon & JSXBase.HTMLAttributes<HTMLMvxMetamaskProviderIconElement>;

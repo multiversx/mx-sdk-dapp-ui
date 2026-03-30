@@ -2,6 +2,7 @@ import type { EventEmitter } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 
+import { LedgerIcon } from 'assets/icons/ledger-icon/ledger-icon';
 import { SpinnerIcon } from 'assets/icons/spinner-icon/spinner-icon';
 import type { IConnectScreenData } from '../../ledger-connect.types';
 
@@ -35,7 +36,7 @@ export class LedgerIntro {
     return (
       <div class="ledger-intro">
         <div class="ledger-intro-wrapper">
-          <mvx-ledger-icon
+          <LedgerIcon
             class={classNames('ledger-intro-icon', {
               [ledgerIntroClasses.icon]: true,
             })}
