@@ -137,11 +137,11 @@ export function FooIcon({ class: className }: FooIconPropsType) {
 | 9 | `mvx-multiversx-symbol-icon` | `src/assets/icons/multiversx-symbol-icon/multiversx-symbol-icon.tsx` | ✅ done |
 | 10 | `mvx-passkey-provider-icon` | `src/assets/icons/passkey-provider-icon/passkey-provider-icon.tsx` | ✅ done |
 | 11 | `mvx-wallet-provider-icon` | `src/assets/icons/wallet-provider-icon/wallet-provider-icon.tsx` | ✅ done |
-| 12 | `mvx-extension-provider-icon` | `src/assets/icons/extension-provider-icon/extension-provider-icon.tsx` | |
-| 13 | `mvx-arc-extension-provider-icon` | `src/assets/icons/arc-extension-provider-icon/arc-extension-provider-icon.tsx` | |
-| 14 | `mvx-brave-extension-provider-icon` | `src/assets/icons/brave-extension-provider-icon/brave-extension-provider-icon.tsx` | |
-| 15 | `mvx-edge-extension-provider-icon` | `src/assets/icons/edge-extension-provider-icon/edge-extension-provider-icon.tsx` | |
-| 16 | `mvx-firefox-extension-provider-icon` | `src/assets/icons/firefox-extension-provider-icon/firefox-extension-provider-icon.tsx` | |
+| 12 | `mvx-extension-provider-icon` | `src/assets/icons/extension-provider-icon/extension-provider-icon.tsx` | ✅ done |
+| 13 | `mvx-arc-extension-provider-icon` | `src/assets/icons/arc-extension-provider-icon/arc-extension-provider-icon.tsx` | ✅ done |
+| 14 | `mvx-brave-extension-provider-icon` | `src/assets/icons/brave-extension-provider-icon/brave-extension-provider-icon.tsx` | ✅ done |
+| 15 | `mvx-edge-extension-provider-icon` | `src/assets/icons/edge-extension-provider-icon/edge-extension-provider-icon.tsx` | ✅ done |
+| 16 | `mvx-firefox-extension-provider-icon` | `src/assets/icons/firefox-extension-provider-icon/firefox-extension-provider-icon.tsx` | ✅ done |
 | 17 | `mvx-metamask-provider-icon` | `src/assets/icons/metamask-provider-icon/metamask-provider-icon.tsx` | |
 | 18 | `mvx-default-transaction-icon-large` | `src/assets/icons/default-transaction-icon-large/default-transaction-icon-large.tsx` | |
 | 19 | `mvx-default-transaction-icon-small` | `src/assets/icons/default-transaction-icon-small/default-transaction-icon-small.tsx` | |

@@ -5,6 +5,7 @@ import { EdgeExtensionProviderIcon } from 'assets/icons/edge-extension-provider-
 import { ExtensionProviderIcon } from 'assets/icons/extension-provider-icon/extension-provider-icon';
 import { FirefoxExtensionProviderIcon } from 'assets/icons/firefox-extension-provider-icon/firefox-extension-provider-icon';
 import { LedgerProviderIcon } from 'assets/icons/ledger-provider-icon/ledger-provider-icon';
+import { MetaMaskProviderIcon } from 'assets/icons/metamask-provider-icon/metamask-provider-icon';
 import { MultiversXLogoIcon } from 'assets/icons/multiversx-logo-icon/multiversx-logo-icon';
 import { PasskeyProviderIcon } from 'assets/icons/passkey-provider-icon/passkey-provider-icon';
 import { WalletProviderIcon } from 'assets/icons/wallet-provider-icon/wallet-provider-icon';
@@ -47,7 +48,7 @@ export const getProviderButtonIcon = ({
           return <WalletProviderIcon />;
       }
     case ProviderTypeEnum.metamask:
-      return <mvx-metamask-provider-icon />;
+      return <MetaMaskProviderIcon />;
     case ProviderTypeEnum.passkey:
       return <PasskeyProviderIcon />;
     case ProviderTypeEnum.walletConnect:
