@@ -154,12 +154,6 @@ export namespace Components {
     interface MvxMetamaskProviderIcon {
         "class"?: string;
     }
-    interface MvxMultiversxLogoIcon {
-        "class"?: string;
-    }
-    interface MvxMultiversxSymbolIcon {
-        "class"?: string;
-    }
     interface MvxNotificationsFeed {
         "closeWithAnimation": () => Promise<unknown>;
         "getEventBus": () => Promise<IEventBus>;
@@ -520,18 +514,6 @@ declare global {
         prototype: HTMLMvxMetamaskProviderIconElement;
         new (): HTMLMvxMetamaskProviderIconElement;
     };
-    interface HTMLMvxMultiversxLogoIconElement extends Components.MvxMultiversxLogoIcon, HTMLStencilElement {
-    }
-    var HTMLMvxMultiversxLogoIconElement: {
-        prototype: HTMLMvxMultiversxLogoIconElement;
-        new (): HTMLMvxMultiversxLogoIconElement;
-    };
-    interface HTMLMvxMultiversxSymbolIconElement extends Components.MvxMultiversxSymbolIcon, HTMLStencilElement {
-    }
-    var HTMLMvxMultiversxSymbolIconElement: {
-        prototype: HTMLMvxMultiversxSymbolIconElement;
-        new (): HTMLMvxMultiversxSymbolIconElement;
-    };
     interface HTMLMvxNotificationsFeedElement extends Components.MvxNotificationsFeed, HTMLStencilElement {
     }
     var HTMLMvxNotificationsFeedElement: {
@@ -757,8 +739,6 @@ declare global {
         "mvx-ledger-connect": HTMLMvxLedgerConnectElement;
         "mvx-ledger-intro": HTMLMvxLedgerIntroElement;
         "mvx-metamask-provider-icon": HTMLMvxMetamaskProviderIconElement;
-        "mvx-multiversx-logo-icon": HTMLMvxMultiversxLogoIconElement;
-        "mvx-multiversx-symbol-icon": HTMLMvxMultiversxSymbolIconElement;
         "mvx-notifications-feed": HTMLMvxNotificationsFeedElement;
         "mvx-passkey-provider-icon": HTMLMvxPasskeyProviderIconElement;
         "mvx-pending-transactions-panel": HTMLMvxPendingTransactionsPanelElement;
@@ -917,12 +897,6 @@ declare namespace LocalJSX {
         "onConnect"?: (event: MvxLedgerIntroCustomEvent<any>) => void;
     }
     interface MvxMetamaskProviderIcon {
-        "class"?: string;
-    }
-    interface MvxMultiversxLogoIcon {
-        "class"?: string;
-    }
-    interface MvxMultiversxSymbolIcon {
         "class"?: string;
     }
     interface MvxNotificationsFeed {
@@ -1087,8 +1061,6 @@ declare namespace LocalJSX {
         "mvx-ledger-connect": MvxLedgerConnect;
         "mvx-ledger-intro": MvxLedgerIntro;
         "mvx-metamask-provider-icon": MvxMetamaskProviderIcon;
-        "mvx-multiversx-logo-icon": MvxMultiversxLogoIcon;
-        "mvx-multiversx-symbol-icon": MvxMultiversxSymbolIcon;
         "mvx-notifications-feed": MvxNotificationsFeed;
         "mvx-passkey-provider-icon": MvxPasskeyProviderIcon;
         "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
@@ -1139,8 +1111,6 @@ declare module "@stencil/core" {
             "mvx-ledger-connect": LocalJSX.MvxLedgerConnect & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectElement>;
             "mvx-ledger-intro": LocalJSX.MvxLedgerIntro & JSXBase.HTMLAttributes<HTMLMvxLedgerIntroElement>;
             "mvx-metamask-provider-icon": LocalJSX.MvxMetamaskProviderIcon & JSXBase.HTMLAttributes<HTMLMvxMetamaskProviderIconElement>;
-            "mvx-multiversx-logo-icon": LocalJSX.MvxMultiversxLogoIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxLogoIconElement>;
-            "mvx-multiversx-symbol-icon": LocalJSX.MvxMultiversxSymbolIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxSymbolIconElement>;
             "mvx-notifications-feed": LocalJSX.MvxNotificationsFeed & JSXBase.HTMLAttributes<HTMLMvxNotificationsFeedElement>;
             "mvx-passkey-provider-icon": LocalJSX.MvxPasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLMvxPasskeyProviderIconElement>;
             "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;

@@ -1,7 +1,1 @@
-:host {
-  @apply mvx:flex;
-
-  .multiversx-symbol-icon {
-    @apply mvx:w-3 mvx:h-3 mvx:fill-current;
-  }
-}
+// This is needed to trigger the Stencil Tailwind compilation for inline Tailwind classes.
