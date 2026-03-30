@@ -134,7 +134,7 @@ export function FooIcon({ class: className }: FooIconPropsType) {
 | 6 | `mvx-ledger-icon` | `src/assets/icons/ledger-icon/ledger-icon.tsx` | ✅ done |
 | 7 | `mvx-ledger-provider-icon` | `src/assets/icons/ledger-provider-icon/ledger-provider-icon.tsx` | ✅ done |
 | 8 | `mvx-multiversx-logo-icon` | `src/assets/icons/multiversx-logo-icon/multiversx-logo-icon.tsx` | ✅ done |
-| 9 | `mvx-multiversx-symbol-icon` | `src/assets/icons/multiversx-symbol-icon/multiversx-symbol-icon.tsx` | |
+| 9 | `mvx-multiversx-symbol-icon` | `src/assets/icons/multiversx-symbol-icon/multiversx-symbol-icon.tsx` | ✅ done |
 | 10 | `mvx-passkey-provider-icon` | `src/assets/icons/passkey-provider-icon/passkey-provider-icon.tsx` | |
 | 11 | `mvx-wallet-provider-icon` | `src/assets/icons/wallet-provider-icon/wallet-provider-icon.tsx` | |
 | 12 | `mvx-extension-provider-icon` | `src/assets/icons/extension-provider-icon/extension-provider-icon.tsx` | |

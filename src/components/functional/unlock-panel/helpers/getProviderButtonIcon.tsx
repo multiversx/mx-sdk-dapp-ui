@@ -1,6 +1,7 @@
 import { h } from '@stencil/core';
 import { LedgerProviderIcon } from 'assets/icons/ledger-provider-icon/ledger-provider-icon';
 import { MultiversXLogoIcon } from 'assets/icons/multiversx-logo-icon/multiversx-logo-icon';
+import { PasskeyProviderIcon } from 'assets/icons/passkey-provider-icon/passkey-provider-icon';
 import { BrowserEnum } from 'constants/browser.enum';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
@@ -54,7 +55,7 @@ export const getProviderButtonIcon = ({
     case ProviderTypeEnum.metamask:
       return <mvx-metamask-provider-icon />;
     case ProviderTypeEnum.passkey:
-      return <mvx-passkey-provider-icon />;
+      return <PasskeyProviderIcon />;
     case ProviderTypeEnum.walletConnect:
       return <MultiversXLogoIcon />;
     case ProviderTypeEnum.ledger:
