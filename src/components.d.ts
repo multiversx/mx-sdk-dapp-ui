@@ -64,9 +64,6 @@ export namespace Components {
          */
         "variant"?: `${ButtonVariantEnum}`;
     }
-    interface MvxCircleInfoIcon {
-        "class"?: string;
-    }
     interface MvxCopyButton {
         "class"?: string;
         "iconClass"?: string;
@@ -418,12 +415,6 @@ declare global {
     var HTMLMvxButtonElement: {
         prototype: HTMLMvxButtonElement;
         new (): HTMLMvxButtonElement;
-    };
-    interface HTMLMvxCircleInfoIconElement extends Components.MvxCircleInfoIcon, HTMLStencilElement {
-    }
-    var HTMLMvxCircleInfoIconElement: {
-        prototype: HTMLMvxCircleInfoIconElement;
-        new (): HTMLMvxCircleInfoIconElement;
     };
     interface HTMLMvxCopyButtonElement extends Components.MvxCopyButton, HTMLStencilElement {
     }
@@ -800,7 +791,6 @@ declare global {
         "mvx-arc-extension-provider-icon": HTMLMvxArcExtensionProviderIconElement;
         "mvx-brave-extension-provider-icon": HTMLMvxBraveExtensionProviderIconElement;
         "mvx-button": HTMLMvxButtonElement;
-        "mvx-circle-info-icon": HTMLMvxCircleInfoIconElement;
         "mvx-copy-button": HTMLMvxCopyButtonElement;
         "mvx-custom-toast": HTMLMvxCustomToastElement;
         "mvx-data-with-explorer-link": HTMLMvxDataWithExplorerLinkElement;
@@ -890,9 +880,6 @@ declare namespace LocalJSX {
           * @default 'primary'
          */
         "variant"?: `${ButtonVariantEnum}`;
-    }
-    interface MvxCircleInfoIcon {
-        "class"?: string;
     }
     interface MvxCopyButton {
         "class"?: string;
@@ -1158,7 +1145,6 @@ declare namespace LocalJSX {
         "mvx-arc-extension-provider-icon": MvxArcExtensionProviderIcon;
         "mvx-brave-extension-provider-icon": MvxBraveExtensionProviderIcon;
         "mvx-button": MvxButton;
-        "mvx-circle-info-icon": MvxCircleInfoIcon;
         "mvx-copy-button": MvxCopyButton;
         "mvx-custom-toast": MvxCustomToast;
         "mvx-data-with-explorer-link": MvxDataWithExplorerLink;
@@ -1216,7 +1202,6 @@ declare module "@stencil/core" {
             "mvx-arc-extension-provider-icon": LocalJSX.MvxArcExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxArcExtensionProviderIconElement>;
             "mvx-brave-extension-provider-icon": LocalJSX.MvxBraveExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxBraveExtensionProviderIconElement>;
             "mvx-button": LocalJSX.MvxButton & JSXBase.HTMLAttributes<HTMLMvxButtonElement>;
-            "mvx-circle-info-icon": LocalJSX.MvxCircleInfoIcon & JSXBase.HTMLAttributes<HTMLMvxCircleInfoIconElement>;
             "mvx-copy-button": LocalJSX.MvxCopyButton & JSXBase.HTMLAttributes<HTMLMvxCopyButtonElement>;
             "mvx-custom-toast": LocalJSX.MvxCustomToast & JSXBase.HTMLAttributes<HTMLMvxCustomToastElement>;
             "mvx-data-with-explorer-link": LocalJSX.MvxDataWithExplorerLink & JSXBase.HTMLAttributes<HTMLMvxDataWithExplorerLinkElement>;

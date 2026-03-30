@@ -63,7 +63,7 @@ export function FooIcon({ class: className }: FooIconPropsType) {
 | # | Tag | File | Status |
 |---|-----|------|--------|
 | 1 | `mvx-arrow-right-icon` | `src/assets/icons/arrow-right-icon/arrow-right-icon.tsx` | ✅ done |
-| 2 | `mvx-circle-info-icon` | `src/assets/icons/circle-info-icon/circle-info-icon.tsx` | |
+| 2 | `mvx-circle-info-icon` | `src/assets/icons/circle-info-icon/circle-info-icon.tsx` | ✅ done |
 | 3 | `mvx-magnifying-glass-icon` | `src/assets/icons/magnifying-glass-icon/magnifying-glass-icon.tsx` | |
 | 4 | `mvx-spinner-icon` | `src/assets/icons/spinner-icon/spinner-icon.tsx` | |
 | 5 | `mvx-shard-icon` | `src/assets/icons/shard-icon/shard-icon.tsx` | |

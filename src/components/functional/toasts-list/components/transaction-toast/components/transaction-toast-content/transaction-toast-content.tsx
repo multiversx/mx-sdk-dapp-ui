@@ -1,6 +1,7 @@
 import type { EventEmitter, JSX } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
+import { CircleInfoIcon } from 'assets/icons/circle-info-icon/circle-info-icon';
 import { FormatAmount } from 'common/FormatAmount/FormatAmount';
 import { Icon } from 'common/Icon';
 import { IconSizeEnumType, TransactionAssetIcon } from 'common/TransactionAssetIcon/TransactionAssetIcon';
@@ -84,7 +85,7 @@ export class TransactionToastContent {
                 </h4>
 
                 {showTooltip && (
-                  <mvx-tooltip position="bottom" trigger={<mvx-circle-info-icon />}>
+                  <mvx-tooltip position="bottom" trigger={<CircleInfoIcon />}>
                     {amount.label}
                   </mvx-tooltip>
                 )}
