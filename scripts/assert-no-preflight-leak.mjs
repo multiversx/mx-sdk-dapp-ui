@@ -2,7 +2,7 @@
 /*
  * Post-build assertions on dist/web-components: no preflight leak, correct `@layer`
  * order, and every `mvx:` utility used in the markup has a rule behind it.
- * See "Tailwind pipeline" in CLAUDE.md.
+ * See "Tailwind pipeline" in AGENTS.md.
  */
 
 import { readdirSync, readFileSync } from 'node:fs';

@@ -147,7 +147,7 @@ const sourceDirsCache = new Map<string, string[]>();
 
 /**
  * Directories Tailwind must scan for `mvx:` candidates when building `tag`'s stylesheet.
- * See "Tailwind pipeline" in CLAUDE.md for why the scan is scoped this way.
+ * See "Tailwind pipeline" in AGENTS.md for why the scan is scoped this way.
  */
 export function getSourceDirsForTag(tag: string): string[] {
   const cached = sourceDirsCache.get(tag);

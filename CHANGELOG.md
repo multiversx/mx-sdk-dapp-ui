@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- [Build updates, fix Tailwind leaking](https://github.com/multiversx/mx-sdk-dapp-ui/pull/310)
+
 ## [[0.1.24](https://github.com/multiversx/mx-sdk-dapp-ui/pull/309)] - 2026-03-17
 
 - [Fixed amount scaling](https://github.com/multiversx/mx-sdk-dapp-ui/pull/309)

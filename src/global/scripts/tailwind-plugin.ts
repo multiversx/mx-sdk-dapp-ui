@@ -31,7 +31,7 @@ const GLOBAL_DEPENDENCIES = [
 ].map(name => path.join(GLOBAL_DIR, name));
 
 /**
- * Runs Tailwind over every component stylesheet. See "Tailwind pipeline" in CLAUDE.md.
+ * Runs Tailwind over every component stylesheet. See "Tailwind pipeline" in AGENTS.md.
  * Must be registered AFTER `sass()` - postcss cannot parse SCSS.
  */
 export function mvxTailwind() {

@@ -1,14 +1,4 @@
-packages:
-  - .
-
 allowBuilds:
-  # stencil-tailwind-plugin pulls this from a git tag; pnpm keys git deps by URL
-  'postcss-combine-duplicated-selectors@https://codeload.github.com/poimen/postcss-combine-duplicated-selectors/tar.gz/690c03192aa5c61b674ff9e7b8e6016edb56df53': true
   '@parcel/watcher': false
   esbuild: false
   puppeteer: false
-
-onlyBuiltDependencies:
-  - postcss-combine-duplicated-selectors
-
-blockExoticSubdeps: false
