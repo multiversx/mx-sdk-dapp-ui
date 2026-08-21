@@ -74,7 +74,7 @@
 .mvx-transaction-toast-bar-fixed {
   width: var(--start-width, 0%);
   background: var(--mvx-progress-accent-color);
-  transition: width 1s linear;
+  transition: width var(--transition-duration, 1s) linear;
 }
 
 .mvx-transaction-toast-bar-content {

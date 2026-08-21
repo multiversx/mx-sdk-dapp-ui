@@ -2,6 +2,9 @@ import { Component, Fragment, h, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
 
 const DEFAULT_INFINITE_ANIMATION_DURATION = 30;
+const MIN_UPDATE_INTERVAL_MS = 50;
+const MAX_UPDATE_INTERVAL_MS = 1000;
+const TARGET_UPDATE_COUNT = 60;
 const finishedProgressStatusesMap: string[] = [];
 
 @Component({
@@ -27,15 +30,14 @@ export class ToastProgress {
   @State() infiniteProgressDelay: number = 0;
   @State() infinitePercentagePassedSinceStart: number = 0;
   @State() infinitePercentageAnimationDuration: number = DEFAULT_INFINITE_ANIMATION_DURATION;
+  @State() updateIntervalMs: number = MAX_UPDATE_INTERVAL_MS;
 
   componentWillLoad() {
     this.updateProgress();
   }
 
   componentDidLoad() {
-    this.intervalId = setInterval(() => {
-      this.updateProgress();
-    }, 1000);
+    this.restartProgressInterval();
   }
 
   disconnectedCallback() {
@@ -43,9 +45,7 @@ export class ToastProgress {
       clearTimeout(this.timeElapsedTimeoutReference);
     }
 
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-    }
+    this.clearProgressInterval();
   }
 
   @Watch('startTime')
@@ -53,6 +53,36 @@ export class ToastProgress {
   @Watch('isStatusPending')
   handleTimeChange() {
     this.updateProgress();
+    this.restartProgressInterval();
+  }
+
+  private getUpdateInterval() {
+    if (!(this.expectedTransactionDuration > 0)) {
+      return MAX_UPDATE_INTERVAL_MS;
+    }
+
+    const idealInterval = (this.expectedTransactionDuration * 1000) / TARGET_UPDATE_COUNT;
+
+    return Math.min(MAX_UPDATE_INTERVAL_MS, Math.max(MIN_UPDATE_INTERVAL_MS, idealInterval));
+  }
+
+  private clearProgressInterval() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = undefined;
+    }
+  }
+
+  private restartProgressInterval() {
+    this.clearProgressInterval();
+
+    if (this.hasTimeElapsed) {
+      return;
+    }
+
+    this.intervalId = setInterval(() => {
+      this.updateProgress();
+    }, this.updateIntervalMs);
   }
 
   private updateProgress() {
@@ -61,12 +91,16 @@ export class ToastProgress {
     if (finishedProgressStatusesMap.includes(this.toastId)) {
       this.shouldShowProgressBar = false;
       this.hasTimeElapsed = true;
+      this.clearProgressInterval();
       return;
     }
 
     if (!hasValidTimestamps || this.startTime >= this.endTime) {
       this.shouldShowProgressBar = false;
       this.shouldQuickFill = true;
+      // Nothing left to sample: keeping the interval alive would re-arm the
+      // timeout below on every tick and it would never fire.
+      this.clearProgressInterval();
       clearTimeout(this.timeElapsedTimeoutReference);
       this.timeElapsedTimeoutReference = setTimeout(() => {
         finishedProgressStatusesMap.push(this.toastId);
@@ -92,6 +126,13 @@ export class ToastProgress {
       (this.secondsPassedSinceStart / (this.expectedTransactionDuration + this.infinitePercentageAnimationDuration)) *
       100;
 
+    const nextUpdateInterval = this.getUpdateInterval();
+
+    if (nextUpdateInterval !== this.updateIntervalMs) {
+      this.updateIntervalMs = nextUpdateInterval;
+      this.restartProgressInterval();
+    }
+
     if (this.expectedTransactionDuration > 0 && !this.isStatusPending) {
       clearTimeout(this.timeElapsedTimeoutReference);
       this.timeElapsedTimeoutReference = setTimeout(
@@ -112,6 +153,7 @@ export class ToastProgress {
             class="mvx-transaction-toast-bar-fixed"
             style={{
               '--start-width': `${this.percentagePassedSinceStart}%`,
+              '--transition-duration': `${this.updateIntervalMs}ms`,
             }}
           />
 
