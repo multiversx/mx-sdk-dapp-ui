@@ -8,6 +8,7 @@ import type {
 
 @Component({
   tag: 'mvx-generic-toast',
+  styleUrl: './generic-toast.scss',
 })
 export class GenericToast {
   @Prop() toast: CustomToastType;

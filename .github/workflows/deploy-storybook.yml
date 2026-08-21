@@ -26,13 +26,13 @@ jobs:
           node-version: 22
 
       - name: Setup Yarn
-        run: npm install -g yarn
+        run: npm install -g pnpm
 
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build Storybook (includes Stencil build)
-        run: yarn run storybook-build
+        run: pnpm storybook-build
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4

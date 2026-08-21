@@ -1,4 +1,4 @@
-.transaction-toast-content-wrapper {
+.mvx-transaction-toast-content-wrapper {
   @apply mvx:relative mvx:flex mvx:p-3 mvx:flex-col mvx:items-start mvx:gap-1 mvx:rounded-xl mvx:backdrop-blur-2xl mvx:max-w-100;
   border: 1px solid var(--mvx-border-color-tertiary);
   background: var(--mvx-bg-color-primary);
@@ -8,31 +8,31 @@
     color: var(--mvx-text-color-primary);
   }
 
-  &.full-width {
+  &.mvx-full-width {
     @apply mvx:max-w-full;
 
-    .transaction-toast-title {
+    .mvx-transaction-toast-title {
       @apply mvx:max-w-full;
     }
   }
 }
 
-.transaction-toast-content {
+.mvx-transaction-toast-content {
   @apply mvx:flex mvx:items-start mvx:gap-3 mvx:self-stretch;
 }
 
-.transaction-toast-icon {
+.mvx-transaction-toast-icon {
   @apply mvx:rounded-full mvx:w-5 mvx:h-5;
 
-  &.transaction-toast-icon-failed {
+  &.mvx-transaction-toast-icon-failed {
     color: var(--mvx-error-color);
   }
 
-  &.transaction-toast-icon-pending {
+  &.mvx-transaction-toast-icon-pending {
     color: var(--mvx-pending-color);
   }
 
-  &.transaction-toast-icon-success {
+  &.mvx-transaction-toast-icon-success {
     color: var(--mvx-success-color);
   }
 
@@ -43,62 +43,62 @@
   }
 }
 
-.transaction-toast-details {
+.mvx-transaction-toast-details {
   @apply mvx:flex mvx:flex-col mvx:items-start mvx:gap-1 mvx:grow mvx:shrink-0 mvx:basis-0;
 }
 
-.transaction-toast-details-header {
+.mvx-transaction-toast-details-header {
   @apply mvx:flex mvx:items-center mvx:gap-3 mvx:self-stretch mvx:justify-between mvx:p-0;
 }
 
-.transaction-toast-header-left {
+.mvx-transaction-toast-header-left {
   @apply mvx:flex mvx:gap-1 mvx:items-center mvx:justify-center mvx:fill-link;
 }
 
-.transaction-toast-title {
+.mvx-transaction-toast-title {
   @apply mvx:text-sm mvx:font-bold mvx:leading-5;
   color: var(--mvx-text-color-primary);
 }
 
-.transaction-toast-title-short {
+.mvx-transaction-toast-title-short {
   @apply mvx:max-w-40;
 }
 
-.truncate-toast-title {
+.mvx-truncate-toast-title {
   @apply mvx:truncate mvx:shrink-0;
 }
 
-.transaction-toast-amount {
+.mvx-transaction-toast-amount {
   @apply mvx:flex mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight;
   color: var(--mvx-text-color-primary);
 
-  &.amount-positive {
+  &.mvx-amount-positive {
     color: var(--mvx-success-color);
   }
 
-  &.transaction-toast-failed {
+  &.mvx-transaction-toast-failed {
     color: var(--mvx-error-color);
   }
 
-  .transaction-amount-decimal {
+  .mvx-transaction-amount-decimal {
     @apply mvx:opacity-70;
   }
 
-  .transaction-amount-label {
+  .mvx-transaction-amount-label {
     @apply mvx:tracking-tight mvx:opacity-70 mvx:truncate mvx:max-w-25 mvx:shrink-0;
   }
 }
 
-.transaction-toast-details-info {
-  @apply mvx:flex mvx:items-start mvx:gap-1 mvx:self-stretch;
+.mvx-transaction-toast-details-info {
+  @apply mvx:flex mvx:items-center mvx:gap-1 mvx:self-stretch;
 }
 
-.transaction-toast-details-info-text {
+.mvx-transaction-toast-details-info-text {
   @apply mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight mvx:max-w-40;
   color: var(--mvx-text-color-secondary);
 }
 
-.transaction-toast-details-info-icon {
+.mvx-transaction-toast-details-info-icon {
   @apply mvx:rounded-full mvx:w-4 mvx:h-4;
 
   img {
@@ -106,7 +106,7 @@
   }
 }
 
-.transaction-toast-action-button {
+.mvx-transaction-toast-action-button {
   @apply mvx:flex mvx:flex-col mvx:justify-center mvx:shrink-0 mvx:w-5 mvx:h-5;
   color: var(--mvx-text-color-primary);
 
@@ -116,7 +116,7 @@
   }
 }
 
-.transaction-toast-close-icon {
+.mvx-transaction-toast-close-icon {
   @apply mvx:flex mvx:flex-col mvx:justify-center mvx:shrink-0 mvx:w-5 mvx:h-5 mvx:cursor-pointer;
   color: var(--mvx-text-color-primary);
 

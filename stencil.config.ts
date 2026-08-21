@@ -5,6 +5,7 @@ import { vueOutputTarget } from '@stencil/vue-output-target';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
 import tailwind from 'stencil-tailwind-plugin';
 import { getExcludedComponentTags } from './src/global/scripts/exclude-react-components';
+import { tailwindEntryFor } from './src/global/scripts/tailwind-entries';
 import image from '@rollup/plugin-image';
 
 /**
@@ -29,7 +30,13 @@ export const config: Config = {
   plugins: [
     sass(),
     tailwind({
-      tailwindCssPath: './src/global/tailwind.css',
+      /**
+       * `injectTailwindConfiguration` takes precedence over `tailwindCssPath`
+       * anyway, so setting both would only add a misleading second source of
+       * truth.
+       *
+       */
+      injectTailwindConfiguration: tailwindEntryFor,
     }),
   ],
   sourceMap: isDev,

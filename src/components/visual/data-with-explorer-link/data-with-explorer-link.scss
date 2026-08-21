@@ -1,11 +1,11 @@
-.data-with-explorer-link {
+.mvx-data-with-explorer-link {
   @apply mvx:flex mvx:gap-3;
 
-  .data-with-explorer-link-trim {
+  .mvx-data-with-explorer-link-trim {
     @apply mvx:min-w-0;
   }
 
-  .data-with-explorer-link-buttons {
+  .mvx-data-with-explorer-link-buttons {
     @apply mvx:flex mvx:items-center mvx:gap-3;
   }
 }

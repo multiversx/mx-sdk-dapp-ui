@@ -4,6 +4,7 @@ import { getCopyClickAction } from 'common/CopyButton/getCopyClickAction';
 
 @Component({
   tag: 'mvx-copy-button',
+  styleUrl: 'copy-button.scss',
   shadow: false,
 })
 export class CopyButton {

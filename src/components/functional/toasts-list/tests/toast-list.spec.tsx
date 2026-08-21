@@ -50,7 +50,7 @@ describe('toast-list', () => {
 
     expect(page.root).not.toBeNull();
 
-    const toastListContainer = page.root.querySelector('.toast-list');
+    const toastListContainer = page.root.querySelector('.mvx-toast-list');
     expect(toastListContainer).not.toBeNull();
 
     const transactionToasts = page.root.querySelectorAll('transaction-toast');
@@ -215,7 +215,7 @@ describe('toast-list', () => {
     page.rootInstance.transactionToasts = mockTransactionToasts;
     await page.waitForChanges();
 
-    const viewAllButton = page.root.querySelector('.view-all-button');
+    const viewAllButton = page.root.querySelector('.mvx-view-all-button');
     expect(viewAllButton).not.toBeNull();
     expect(viewAllButton.textContent.trim()).toBe('View All');
   });
@@ -229,7 +229,7 @@ describe('toast-list', () => {
     page.root.customToasts = mockCustomToasts;
     await page.waitForChanges();
 
-    const viewAllButton = page.root.querySelector('.view-all-button');
+    const viewAllButton = page.root.querySelector('.mvx-view-all-button');
     expect(viewAllButton).toBeNull();
   });
 

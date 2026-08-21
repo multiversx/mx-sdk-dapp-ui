@@ -1,0 +1,100 @@
+/*
+ * Scoped replacement for the parts of Tailwind's preflight that the non-shadow
+ * components actually depend on.
+ *
+ * `__MVX_TAG__` is replaced with the component's custom element tag by
+ * src/global/scripts/tailwind-entries.ts, once per non-shadow component.
+ *
+ */
+@layer mvx-reset {
+  /*
+   * box-sizing: .transaction-toast-content-wrapper applies `mvx:p-3` and
+   * `border: 1px solid` to the same box (likewise simple-toast `.content` and
+   * custom-toast `.toast-wrapper`); under content-box every toast grows by 8px.
+   * margin/padding: the toast tree renders <h5> and a <button>
+   * (.show-more-button) that set neither, and would pick up UA defaults.
+   * border: 0 solid: Tailwind's `mvx:border-*` WIDTH utilities assume a preset
+   * border-style, which is why preflight uses `0 solid` rather than `none`.
+   */
+  /*
+   * The pseudo-elements are written OUTSIDE :where() on purpose. Pseudo-
+   * elements are not valid inside :where(), and lightningcss silently collapses
+   * `:where(__MVX_TAG__ *::before)` to an empty `:where()` that matches
+   * nothing - which is how the ::before/::after reset was lost the first time.
+   */
+  :where(__MVX_TAG__),
+  :where(__MVX_TAG__ *),
+  :where(__MVX_TAG__ *)::before,
+  :where(__MVX_TAG__ *)::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+  }
+
+  /*
+   * 16 <a> elements across explorer-link, data-with-explorer-link,
+   * transactions-table and transaction-toast-details-body set neither colour
+   * nor decoration; they inherit from a parent. Without this they all render UA
+   * blue and underlined inside a host app.
+   */
+  :where(__MVX_TAG__ a) {
+    color: inherit;
+    text-decoration: inherit;
+  }
+
+  :where(__MVX_TAG__ :is(h1, h2, h3, h4, h5, h6)) {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  :where(__MVX_TAG__ :is(menu, ol, ul)) {
+    list-style: none;
+  }
+
+  /*
+   * The toast icons sit in `mvx:items-center` circles; as inline elements they
+   * pick up a baseline descender gap and render visibly off-centre. Also covers
+   * consumer-supplied FontAwesome nodes, which are <svg>.
+   */
+  :where(__MVX_TAG__ :is(audio, canvas, embed, iframe, img, object, svg, video)) {
+    display: block;
+    vertical-align: middle;
+  }
+
+  /*
+   * .transaction-toast-details-info-icon img is a consumer-supplied token logo
+   * of arbitrary intrinsic size.
+   */
+  :where(__MVX_TAG__ :is(img, video)) {
+    height: auto;
+    max-width: 100%;
+  }
+
+  /*
+   * Six <button> elements. .icon-close and .show-more-button set `mvx:bg-none`,
+   * which is background-IMAGE, not background-color, so without this they
+   * render with UA grey button chrome. `font: inherit` also stops them dropping
+   * to the UA 13.33px Arial - the global stylesheet is never emitted by the
+   * dist-custom-elements output target, so nothing else sets a font here.
+   */
+  :where(__MVX_TAG__ :is(button, input, optgroup, select, textarea)) {
+    background-color: transparent;
+    border-radius: 0;
+    color: inherit;
+    font: inherit;
+    letter-spacing: inherit;
+    opacity: 1;
+  }
+
+  /*
+   * mvx-transactions-table renders a real <table> and styles it entirely with
+   * inline mvx: utilities, none of which touch border-collapse; without this
+   * every cell gets the UA 2px border-spacing.
+   */
+  :where(__MVX_TAG__ table) {
+    border-collapse: collapse;
+    border-color: inherit;
+    text-indent: 0;
+  }
+}

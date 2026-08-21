@@ -56,24 +56,24 @@ export class TransactionToastDetails {
       : orderedTransactions.slice(0, this.maxShownTransactions);
 
     return (
-      <div class="transaction-details-container">
-        <div class="transaction-details-status" onClick={this.toggleExpand.bind(this)}>
+      <div class="mvx-transaction-details-container">
+        <div class="mvx-transaction-details-status" onClick={this.toggleExpand.bind(this)}>
           <Icon
             name="angle-down"
-            class={classNames('transaction-details-status-icon', {
-              rotated: this.isExpanded,
+            class={classNames('mvx-transaction-details-status-icon', {
+              'mvx-rotated': this.isExpanded,
             })}
           />
 
-          <span data-testid={DataTestIdsEnum.transactionDetailsStatus} class="transaction-details-status-text">
+          <span data-testid={DataTestIdsEnum.transactionDetailsStatus} class="mvx-transaction-details-status-text">
             {this.processedTransactionsStatus}
           </span>
         </div>
 
         <div
           class={{
-            'transaction-details-list': true,
-            'expanded': this.isExpanded,
+            'mvx-transaction-details-list': true,
+            'mvx-expanded': this.isExpanded,
           }}
         >
           {visibleTransactions.map(({ hash, status, link }) => (
@@ -88,8 +88,8 @@ export class TransactionToastDetails {
           ))}
 
           {hasMoreTransactionsToShow && !this.showAllTransactions && (
-            <div class="view-all-container">
-              <button type="button" class="show-more-button" onClick={this.showMoreTransactions.bind(this)}>
+            <div class="mvx-view-all-container">
+              <button type="button" class="mvx-show-more-button" onClick={this.showMoreTransactions.bind(this)}>
                 View {hiddenTransactionsCount} more
               </button>
             </div>

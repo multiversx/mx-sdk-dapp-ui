@@ -1,0 +1,224 @@
+/*
+ * Shadow-DOM replacement for Tailwind's preflight.
+ *
+ * This package cannot emit Tailwind's real preflight anywhere - see the comment
+ * at the top of tailwind.css for why. Shadow components still need what
+ * preflight gave them, so this file reproduces it scoped to `:host`.
+ *
+ * Because it only ever applies inside a shadow root, it can safely keep the
+ * document-level declarations (line-height, font-family, tab-size, ...) that
+ * the light-DOM reset must omit. It mirrors tailwindcss/preflight.css closely
+ * so the 38 shadow components keep rendering as they do today.
+ *
+ * Lives in @layer mvx-reset, which sorts before @layer utilities, so every
+ * mvx:-prefixed utility beats it, and component SCSS (unlayered) beats it too.
+ *
+ */
+@layer mvx-reset {
+  :host,
+  :host *,
+  :host *::before,
+  :host *::after,
+  :host *::backdrop {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+  }
+
+  :host ::file-selector-button {
+    appearance: button;
+    box-sizing: border-box;
+    margin: 0;
+    margin-inline-end: 4px;
+    padding: 0;
+    border: 0 solid;
+    border-radius: 0;
+    background-color: transparent;
+    color: inherit;
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    opacity: 1;
+  }
+
+  :host {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    font-family: var(
+      --mvx-default-font-family,
+      ui-sans-serif,
+      system-ui,
+      sans-serif,
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      'Segoe UI Symbol',
+      'Noto Color Emoji'
+    );
+    font-feature-settings: var(--mvx-default-font-feature-settings, normal);
+    font-variation-settings: var(--mvx-default-font-variation-settings, normal);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :host hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+  }
+
+  :host abbr:where([title]) {
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted;
+  }
+
+  :host :is(h1, h2, h3, h4, h5, h6) {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  :host a {
+    color: inherit;
+    -webkit-text-decoration: inherit;
+    text-decoration: inherit;
+  }
+
+  :host :is(b, strong) {
+    font-weight: bolder;
+  }
+
+  :host :is(code, kbd, samp, pre) {
+    font-family: var(
+      --mvx-default-mono-font-family,
+      ui-monospace,
+      SFMono-Regular,
+      Menlo,
+      Monaco,
+      Consolas,
+      'Liberation Mono',
+      'Courier New',
+      monospace
+    );
+    font-feature-settings: var(--mvx-default-mono-font-feature-settings, normal);
+    font-variation-settings: var(--mvx-default-mono-font-variation-settings, normal);
+    font-size: 1em;
+  }
+
+  :host small {
+    font-size: 80%;
+  }
+
+  :host :is(sub, sup) {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  :host sub {
+    bottom: -0.25em;
+  }
+
+  :host sup {
+    top: -0.5em;
+  }
+
+  :host table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+  }
+
+  :host :-moz-focusring {
+    outline: auto;
+  }
+
+  :host progress {
+    vertical-align: baseline;
+  }
+
+  :host summary {
+    display: list-item;
+  }
+
+  :host :is(ol, ul, menu) {
+    list-style: none;
+  }
+
+  :host :is(img, svg, video, canvas, audio, iframe, embed, object) {
+    display: block;
+    vertical-align: middle;
+  }
+
+  :host :is(img, video) {
+    max-width: 100%;
+    height: auto;
+  }
+
+  :host :is(button, input, select, optgroup, textarea) {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    border-radius: 0;
+    background-color: transparent;
+    opacity: 1;
+  }
+
+  :host :where(select:is([multiple], [size])) optgroup {
+    font-weight: bolder;
+  }
+
+  :host :where(select:is([multiple], [size])) optgroup option {
+    padding-inline-start: 20px;
+  }
+
+  :host ::placeholder {
+    opacity: 1;
+  }
+
+  @supports (not (-webkit-appearance: -apple-pay-button)) or (contain-intrinsic-size: 1px) {
+    :host ::placeholder {
+      color: color-mix(in oklab, currentColor 50%, transparent);
+    }
+  }
+
+  :host textarea {
+    resize: vertical;
+  }
+
+  :host ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+
+  :host ::-webkit-date-and-time-value {
+    min-height: 1lh;
+    text-align: inherit;
+  }
+
+  :host ::-webkit-datetime-edit {
+    display: inline-flex;
+  }
+
+  :host ::-webkit-datetime-edit-fields-wrapper {
+    padding-block: 0;
+  }
+
+  :host :-moz-ui-invalid {
+    box-shadow: none;
+  }
+
+  :host :is(button, input:where([type='button'], [type='reset'], [type='submit'])) {
+    appearance: button;
+  }
+
+  :host :is(::-webkit-inner-spin-button, ::-webkit-outer-spin-button) {
+    height: auto;
+  }
+
+  :host [hidden]:where(:not([hidden='until-found'])) {
+    display: none !important;
+  }
+}

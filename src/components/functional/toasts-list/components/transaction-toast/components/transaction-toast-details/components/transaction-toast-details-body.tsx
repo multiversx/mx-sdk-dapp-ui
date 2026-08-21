@@ -36,27 +36,27 @@ export class TransactionDetailsBody {
         {statusIcon && (
           <div
             class={{
-              'transaction-details-list-item-icon': true,
-              'transaction-details-list-item-icon-success': this.status === TransactionStatusEnum.success,
-              'transaction-details-list-item-icon-pending': this.status === TransactionStatusEnum.pending,
-              'transaction-details-list-item-icon-fail': getIsTransactionFailed(this.status),
+              'mvx-transaction-details-list-item-icon': true,
+              'mvx-transaction-details-list-item-icon-success': this.status === TransactionStatusEnum.success,
+              'mvx-transaction-details-list-item-icon-pending': this.status === TransactionStatusEnum.pending,
+              'mvx-transaction-details-list-item-icon-fail': getIsTransactionFailed(this.status),
             }}
           >
             <Icon name={statusIcon} />
           </div>
         )}
-        <div class="transaction-details-list-item-hash-index">{this.index}</div>
-        <div class="transaction-details-list-item-hash-value">
+        <div class="mvx-transaction-details-list-item-hash-index">{this.index}</div>
+        <div class="mvx-transaction-details-list-item-hash-value">
           <Trim text={this.hash} />
         </div>
 
         <mvx-copy-button
           text={this.hash}
-          class="transaction-details-list-item-copy"
+          class="mvx-transaction-details-list-item-copy"
           iconClass="transaction-details-list-item-copy-icon"
         />
 
-        <div class="transaction-details-list-item-explorer-link-icon">
+        <div class="mvx-transaction-details-list-item-explorer-link-icon">
           <mvx-explorer-link link={this.link} class={transactionToastDetailsBodyClasses.explorerLinkIcon} />
         </div>
       </div>

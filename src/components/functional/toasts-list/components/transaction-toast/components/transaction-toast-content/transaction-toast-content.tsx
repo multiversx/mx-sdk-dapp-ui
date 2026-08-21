@@ -44,40 +44,40 @@ export class TransactionToastContent {
     return (
       <div
         class={{
-          'transaction-toast-content-wrapper': true,
-          'full-width': this.fullWidth,
+          'mvx-transaction-toast-content-wrapper': true,
+          'mvx-full-width': this.fullWidth,
         }}
         data-testid={DataTestIdsEnum.transactionToastContent}
       >
-        <div class="transaction-toast-content">
+        <div class="mvx-transaction-toast-content">
           {this.toastDataState.icon ? (
             <Icon
               name={this.toastDataState.icon}
-              class={classNames('transaction-toast-icon', {
-                'transaction-toast-icon-failed': this.toastDataState.iconClassName === 'danger',
-                'transaction-toast-icon-pending': this.toastDataState.iconClassName === 'warning',
-                'transaction-toast-icon-success': this.toastDataState.iconClassName === 'success',
+              class={classNames('mvx-transaction-toast-icon', {
+                'mvx-transaction-toast-icon-failed': this.toastDataState.iconClassName === 'danger',
+                'mvx-transaction-toast-icon-pending': this.toastDataState.iconClassName === 'warning',
+                'mvx-transaction-toast-icon-success': this.toastDataState.iconClassName === 'success',
               })}
             />
           ) : (
             <div
-              class={classNames('transaction-toast-icon', {
-                'transaction-toast-icon-failed': getIsTransactionFailed(transaction.status),
-                'transaction-toast-icon-pending': transaction.status === TransactionStatusEnum.pending,
-                'transaction-toast-icon-success': transaction.status === TransactionStatusEnum.success,
+              class={classNames('mvx-transaction-toast-icon', {
+                'mvx-transaction-toast-icon-failed': getIsTransactionFailed(transaction.status),
+                'mvx-transaction-toast-icon-pending': transaction.status === TransactionStatusEnum.pending,
+                'mvx-transaction-toast-icon-success': transaction.status === TransactionStatusEnum.success,
               })}
             >
               <TransactionAssetIcon transaction={transaction} iconSize={IconSizeEnumType.small} />
             </div>
           )}
-          <div class="transaction-toast-details">
-            <div class="transaction-toast-details-header">
-              <div class="transaction-toast-header-left">
+          <div class="mvx-transaction-toast-details">
+            <div class="mvx-transaction-toast-details-header">
+              <div class="mvx-transaction-toast-header-left">
                 <h4
                   class={{
-                    'transaction-toast-title': true,
-                    'transaction-toast-title-short': Boolean(showAmount),
-                    'truncate-toast-title': showTooltip,
+                    'mvx-transaction-toast-title': true,
+                    'mvx-transaction-toast-title-short': Boolean(showAmount),
+                    'mvx-truncate-toast-title': showTooltip,
                   }}
                 >
                   {title}
@@ -91,10 +91,10 @@ export class TransactionToastContent {
               </div>
               {showAmount && (
                 <FormatAmount
-                  class={classNames('transaction-toast-amount', {
-                    'amount-negative': transaction.amount.startsWith('-'),
-                    'amount-positive': !transaction.amount.startsWith('-'),
-                    'transaction-toast-failed': getIsTransactionFailed(transaction.status),
+                  class={classNames('mvx-transaction-toast-amount', {
+                    'mvx-amount-negative': transaction.amount.startsWith('-'),
+                    'mvx-amount-positive': !transaction.amount.startsWith('-'),
+                    'mvx-transaction-toast-failed': getIsTransactionFailed(transaction.status),
                   })}
                   isValid
                   label={amount.label}
@@ -106,18 +106,18 @@ export class TransactionToastContent {
               )}
             </div>
             {transaction && (
-              <div class="transaction-toast-details-info">
+              <div class="mvx-transaction-toast-details-info">
                 {transaction.directionLabel && (
-                  <span class="transaction-toast-details-info-text">{transaction.directionLabel}</span>
+                  <span class="mvx-transaction-toast-details-info-text">{transaction.directionLabel}</span>
                 )}
-                <div class="transaction-toast-details-info-icon">
+                <div class="mvx-transaction-toast-details-info-icon">
                   {transaction.interactorAsset ? (
                     <img src={transaction.interactorAsset} alt="Service icon" loading="lazy" />
                   ) : (
                     <mvx-default-transaction-icon-small />
                   )}
                 </div>
-                <Trim text={transaction.interactor} class="transaction-toast-details-info-text" />
+                <Trim text={transaction.interactor} class="mvx-transaction-toast-details-info-text" />
               </div>
             )}
           </div>
@@ -127,7 +127,7 @@ export class TransactionToastContent {
           )}
 
           {!hasCloseButton && showExplorerLinkButton && (
-            <mvx-explorer-link link={transaction.link} class="transaction-toast-action-button" />
+            <mvx-explorer-link link={transaction.link} class="mvx-transaction-toast-action-button" />
           )}
         </div>
 

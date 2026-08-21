@@ -23,7 +23,7 @@ export class SimpleToast {
     return (
       <div
         class={{
-          'content-icon': true,
+          'mvx-content-icon': true,
           [iconClassName]: Boolean(iconClassName),
         }}
       >
@@ -36,25 +36,25 @@ export class SimpleToast {
     const { title, message, subtitle } = this.toast;
 
     return (
-      <div class="content" data-testid={DataTestIdsEnum.transactionToastContent} id={`toast-${this.toast.toastId}`}>
-        <div class="content-left">
+      <div class="mvx-content" data-testid={DataTestIdsEnum.transactionToastContent} id={`toast-${this.toast.toastId}`}>
+        <div class="mvx-content-left">
           {this.renderIcon()}
-          <div class="content-right">
-            <div class="content-heading">
+          <div class="mvx-content-right">
+            <div class="mvx-content-heading">
               {title && (
-                <h5 class="content-heading-title" data-testid={DataTestIdsEnum.transactionToastTitle}>
+                <h5 class="mvx-content-heading-title" data-testid={DataTestIdsEnum.transactionToastTitle}>
                   {title}
                 </h5>
               )}
               {this.toast.hasCloseButton !== false && (
-                <button onClick={this.handleDeleteToast.bind(this)} type="button" class="icon-close">
+                <button onClick={this.handleDeleteToast.bind(this)} type="button" class="mvx-icon-close">
                   <Icon name="close" />
                 </button>
               )}
             </div>
-            {subtitle && <div class="subtitle">{subtitle}</div>}
+            {subtitle && <div class="mvx-subtitle">{subtitle}</div>}
             {message && (
-              <div class={classNames('content-message', { 'no-margin': !title && !subtitle })}>{message}</div>
+              <div class={classNames('mvx-content-message', { 'mvx-no-margin': !title && !subtitle })}>{message}</div>
             )}
           </div>
         </div>

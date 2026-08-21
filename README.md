@@ -36,7 +36,7 @@ npm install @multiversx/sdk-dapp-ui
 or
 
 ```bash
-yarn add @multiversx/sdk-dapp-ui
+pnpm add @multiversx/sdk-dapp-ui
 ```
 
 ## Usage

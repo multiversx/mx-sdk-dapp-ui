@@ -1,6 +1,6 @@
 {
   "name": "@multiversx/sdk-dapp-ui",
-  "version": "0.1.24",
+  "version": "0.1.25-alpha.0",
   "description": "A library to hold UI components for a dApp on the MultiversX blockchain",
   "author": "MultiversX",
   "license": "MIT",
@@ -106,10 +106,10 @@
     "build:esm:utils": "tsc -p tsconfig.utils.esm.json && tsc-alias -p tsconfig.utils.esm.json",
     "build:cjs:utils": "tsc -p tsconfig.utils.cjs.json && tsc-alias -p tsconfig.utils.cjs.json",
     "build": "stencil build --prod && npm run build:esm:utils && npm run build:cjs:utils",
-    "start": "yarn run build:dev --watch --serve",
+    "start": "pnpm build:dev --watch --serve",
     "storybook-build-tailwind": "npx ts-node .storybook/generate-safelist.ts && npx @tailwindcss/cli -i src/global/tailwind.css -o .storybook/tailwind.css --content '.storybook/tailwind-safelist.html' && rm -f .storybook/tailwind-safelist.html",
-    "storybook-dev": "yarn run build && yarn run storybook-build-tailwind && storybook dev -p 6006 --no-open",
-    "storybook-build": "yarn run build && yarn run storybook-build-tailwind && storybook build"
+    "storybook-dev": "pnpm build && pnpm storybook-build-tailwind && storybook dev -p 6006 --no-open",
+    "storybook-build": "pnpm build && pnpm storybook-build-tailwind && storybook build"
   },
   "dependencies": {
     "@stencil/core": "4.38.1",
@@ -122,6 +122,7 @@
     "qrcode": ">=1.5.4"
   },
   "devDependencies": {
+    "@parcel/watcher": "^2.6.0",
     "@rollup/plugin-image": "^3.0.3",
     "@stencil/sass": "^3.0.12",
     "@stencil/store": "2.0.16",

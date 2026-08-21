@@ -107,17 +107,17 @@ export class ToastProgress {
   render() {
     return (
       <Fragment>
-        <div class="transaction-toast-bar-wrapper" style={{ opacity: this.hasTimeElapsed ? '0' : '1' }}>
+        <div class="mvx-transaction-toast-bar-wrapper" style={{ opacity: this.hasTimeElapsed ? '0' : '1' }}>
           <div
-            class="transaction-toast-bar-fixed"
+            class="mvx-transaction-toast-bar-fixed"
             style={{
               '--start-width': `${this.percentagePassedSinceStart}%`,
             }}
           />
 
-          <div class="transaction-toast-bar infinite">
+          <div class="mvx-transaction-toast-bar mvx-infinite">
             <div
-              class="transaction-toast-bar-line"
+              class="mvx-transaction-toast-bar-line"
               style={{
                 '--start-width': `${this.infinitePercentagePassedSinceStart}%`,
                 '--animation-duration': `${this.infinitePercentageAnimationDuration}s`,
@@ -127,13 +127,13 @@ export class ToastProgress {
           </div>
 
           <div
-            class={classNames('transaction-toast-bar fill', {
-              animate: this.shouldQuickFill,
+            class={classNames('mvx-transaction-toast-bar mvx-fill', {
+              'mvx-animate': this.shouldQuickFill,
             })}
           />
         </div>
 
-        <div class="transaction-toast-bar-content">
+        <div class="mvx-transaction-toast-bar-content">
           <slot />
         </div>
       </Fragment>
