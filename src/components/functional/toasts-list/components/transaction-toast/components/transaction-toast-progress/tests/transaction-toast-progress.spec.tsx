@@ -5,6 +5,8 @@ import { ToastProgress } from '../transaction-toast-progress';
 
 const nowInSeconds = () => Date.now() / 1000;
 
+let renderedInstances: ToastProgress[] = [];
+
 const renderProgress = async (props: { toastId: string; durationInSeconds: number }) => {
   const startTime = nowInSeconds();
 
@@ -20,18 +22,17 @@ const renderProgress = async (props: { toastId: string; durationInSeconds: numbe
     ),
   });
 
+  renderedInstances.push(page.rootInstance);
+
   return page.root.querySelector('.mvx-transaction-toast-bar-fixed') as HTMLElement;
 };
 
 describe('ToastProgress sampling rate', () => {
-  // Fake timers keep the component's polling interval from outliving the test.
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
+  // The component polls on an interval; tear it down so the timer does not
+  // outlive the test and keep the jest worker alive.
   afterEach(() => {
-    jest.clearAllTimers();
-    jest.useRealTimers();
+    renderedInstances.forEach(instance => instance.disconnectedCallback());
+    renderedInstances = [];
   });
 
   it('samples sub-second durations at the minimum interval instead of once per second', async () => {
