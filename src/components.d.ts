@@ -10,23 +10,23 @@ import { ButtonSizeEnum, ButtonVariantEnum } from "./common/Button/button.types"
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
-import { LocalJSX as JSX } from "@stencil/core";
+import { JSX } from "@stencil/core";
 import { ITransactionListItem } from "./components/functional/notifications-feed/components/TransactionListItem/transactionListItem.types";
 import { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { TransactionStatusEnum } from "./constants/transactionStatus.enum";
 import { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
-import { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
+import { IEventBus as IEventBus1, IWalletConnectPanelData } from "./components.d";
 export { IAddressTableData } from "./types/address-table.types";
 export { ButtonSizeEnum, ButtonVariantEnum } from "./common/Button/button.types";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
-export { LocalJSX as JSX } from "@stencil/core";
+export { JSX } from "@stencil/core";
 export { ITransactionListItem } from "./components/functional/notifications-feed/components/TransactionListItem/transactionListItem.types";
 export { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { TransactionStatusEnum } from "./constants/transactionStatus.enum";
 export { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
-export { IEventBus as IEventBus1, unknown as IWalletConnectPanelData } from "./components.d";
+export { IEventBus as IEventBus1, IWalletConnectPanelData } from "./components.d";
 export namespace Components {
     interface MvxAddressTable {
         "accountScreenData": IAddressTableData;
@@ -1166,119 +1166,304 @@ declare namespace LocalJSX {
     interface MvxXportalQrCodePreloader {
         "class"?: string;
     }
+
+    interface MvxAddressTableAttributes {
+        "selectedIndex": number;
+    }
+    interface MvxArcExtensionProviderIconAttributes {
+        "class": string;
+        "width": number;
+        "height": number;
+    }
+    interface MvxArrowRightIconAttributes {
+        "class": string;
+    }
+    interface MvxBraveExtensionProviderIconAttributes {
+        "class": string;
+        "width": number;
+        "height": number;
+    }
+    interface MvxButtonAttributes {
+        "class": string;
+        "dataTestId": string;
+        "disabled": boolean;
+        "size": `${ButtonSizeEnum}`;
+        "variant": `${ButtonVariantEnum}`;
+    }
+    interface MvxCircleInfoIconAttributes {
+        "class": string;
+    }
+    interface MvxCopyButtonAttributes {
+        "iconClass": string;
+        "class": string;
+        "text": string;
+    }
+    interface MvxDataWithExplorerLinkAttributes {
+        "showExplorerButton": boolean;
+        "showCopyButton": boolean;
+        "withTooltip": boolean;
+        "explorerLink": string;
+        "dataTestId": string;
+        "class": string;
+        "data": string;
+    }
+    interface MvxDefaultTransactionIconLargeAttributes {
+        "class": string;
+    }
+    interface MvxDefaultTransactionIconSmallAttributes {
+        "class": string;
+    }
+    interface MvxEdgeExtensionProviderIconAttributes {
+        "class": string;
+        "width": number;
+        "height": number;
+    }
+    interface MvxExplorerLinkAttributes {
+        "class": string;
+        "iconClass": string;
+        "dataTestId": string;
+        "link": string;
+    }
+    interface MvxExtensionProviderIconAttributes {
+        "class": string;
+        "width": number;
+        "height": number;
+    }
+    interface MvxFirefoxExtensionProviderIconAttributes {
+        "class": string;
+        "width": number;
+        "height": number;
+    }
+    interface MvxFormatAmountAttributes {
+        "class": string;
+        "dataTestId": string;
+        "isValid": boolean;
+        "label": string;
+        "labelClass": string;
+        "showLabel": boolean;
+        "valueDecimal": string;
+        "valueInteger": string;
+        "decimalClass": string;
+    }
+    interface MvxLedgerIconAttributes {
+        "class": string;
+    }
+    interface MvxLedgerIntroAttributes {
+        "isAwaiting": boolean;
+    }
+    interface MvxLedgerProviderIconAttributes {
+        "class": string;
+    }
+    interface MvxMagnifyingGlassIconAttributes {
+        "class": string;
+    }
+    interface MvxMetamaskProviderIconAttributes {
+        "class": string;
+    }
+    interface MvxMultiversxLogoIconAttributes {
+        "class": string;
+    }
+    interface MvxMultiversxSymbolIconAttributes {
+        "class": string;
+    }
+    interface MvxPasskeyProviderIconAttributes {
+        "class": string;
+    }
+    interface MvxPreloaderAttributes {
+        "class": string;
+    }
+    interface MvxShardIconAttributes {
+        "shard": number;
+        "class": string;
+    }
+    interface MvxSpinnerIconAttributes {
+        "class": string;
+    }
+    interface MvxTooltipAttributes {
+        "position": 'top' | 'bottom';
+        "triggerOnClick": boolean;
+        "class": string;
+    }
+    interface MvxTransactionToastAttributes {
+        "toastId": string;
+        "wrapperClass": string;
+        "fullWidth": boolean;
+        "processedTransactionsStatus": string | JSX.Element;
+    }
+    interface MvxTransactionToastContentAttributes {
+        "processedTransactionsStatus": string | JSX.Element;
+        "fullWidth": boolean;
+    }
+    interface MvxTransactionToastDetailsAttributes {
+        "processedTransactionsStatus": string | JSX.Element;
+        "transactionClass": string;
+        "maxShownTransactions": number;
+    }
+    interface MvxTransactionToastDetailsBodyAttributes {
+        "transactionClass": string;
+        "status": `${TransactionStatusEnum}`;
+        "hash": string;
+        "link": string;
+        "index": string;
+    }
+    interface MvxTransactionToastProgressAttributes {
+        "startTime": number;
+        "endTime": number;
+        "isStatusPending": boolean;
+        "toastId": string;
+    }
+    interface MvxTransactionsTableAttributes {
+        "class": string;
+    }
+    interface MvxTrimAttributes {
+        "dataTestId": string;
+        "class": string;
+        "text": string;
+    }
+    interface MvxWalletConnectAttributes {
+        "data": string;
+        "qrCodeSvg": string;
+    }
+    interface MvxWalletConnectAppGalleryIconAttributes {
+        "class": string;
+    }
+    interface MvxWalletConnectAppStoreIconAttributes {
+        "class": string;
+    }
+    interface MvxWalletConnectDownloadAttributes {
+        "class": string;
+    }
+    interface MvxWalletConnectGooglePlayIconAttributes {
+        "class": string;
+    }
+    interface MvxWalletConnectScanAttributes {
+        "walletConnectDeepLink": string;
+        "qrCodeSvg": string;
+        "class": string;
+    }
+    interface MvxWalletProviderIconAttributes {
+        "class": string;
+    }
+    interface MvxXportalDownloadQrIconAttributes {
+        "class": string;
+    }
+    interface MvxXportalQrCodePreloaderAttributes {
+        "class": string;
+    }
+
     interface IntrinsicElements {
-        "mvx-address-table": MvxAddressTable;
-        "mvx-arc-extension-provider-icon": MvxArcExtensionProviderIcon;
-        "mvx-arrow-right-icon": MvxArrowRightIcon;
-        "mvx-brave-extension-provider-icon": MvxBraveExtensionProviderIcon;
-        "mvx-button": MvxButton;
-        "mvx-circle-info-icon": MvxCircleInfoIcon;
-        "mvx-copy-button": MvxCopyButton;
+        "mvx-address-table": Omit<MvxAddressTable, keyof MvxAddressTableAttributes> & { [K in keyof MvxAddressTable & keyof MvxAddressTableAttributes]?: MvxAddressTable[K] } & { [K in keyof MvxAddressTable & keyof MvxAddressTableAttributes as `attr:${K}`]?: MvxAddressTableAttributes[K] } & { [K in keyof MvxAddressTable & keyof MvxAddressTableAttributes as `prop:${K}`]?: MvxAddressTable[K] };
+        "mvx-arc-extension-provider-icon": Omit<MvxArcExtensionProviderIcon, keyof MvxArcExtensionProviderIconAttributes> & { [K in keyof MvxArcExtensionProviderIcon & keyof MvxArcExtensionProviderIconAttributes]?: MvxArcExtensionProviderIcon[K] } & { [K in keyof MvxArcExtensionProviderIcon & keyof MvxArcExtensionProviderIconAttributes as `attr:${K}`]?: MvxArcExtensionProviderIconAttributes[K] } & { [K in keyof MvxArcExtensionProviderIcon & keyof MvxArcExtensionProviderIconAttributes as `prop:${K}`]?: MvxArcExtensionProviderIcon[K] };
+        "mvx-arrow-right-icon": Omit<MvxArrowRightIcon, keyof MvxArrowRightIconAttributes> & { [K in keyof MvxArrowRightIcon & keyof MvxArrowRightIconAttributes]?: MvxArrowRightIcon[K] } & { [K in keyof MvxArrowRightIcon & keyof MvxArrowRightIconAttributes as `attr:${K}`]?: MvxArrowRightIconAttributes[K] } & { [K in keyof MvxArrowRightIcon & keyof MvxArrowRightIconAttributes as `prop:${K}`]?: MvxArrowRightIcon[K] };
+        "mvx-brave-extension-provider-icon": Omit<MvxBraveExtensionProviderIcon, keyof MvxBraveExtensionProviderIconAttributes> & { [K in keyof MvxBraveExtensionProviderIcon & keyof MvxBraveExtensionProviderIconAttributes]?: MvxBraveExtensionProviderIcon[K] } & { [K in keyof MvxBraveExtensionProviderIcon & keyof MvxBraveExtensionProviderIconAttributes as `attr:${K}`]?: MvxBraveExtensionProviderIconAttributes[K] } & { [K in keyof MvxBraveExtensionProviderIcon & keyof MvxBraveExtensionProviderIconAttributes as `prop:${K}`]?: MvxBraveExtensionProviderIcon[K] };
+        "mvx-button": Omit<MvxButton, keyof MvxButtonAttributes> & { [K in keyof MvxButton & keyof MvxButtonAttributes]?: MvxButton[K] } & { [K in keyof MvxButton & keyof MvxButtonAttributes as `attr:${K}`]?: MvxButtonAttributes[K] } & { [K in keyof MvxButton & keyof MvxButtonAttributes as `prop:${K}`]?: MvxButton[K] };
+        "mvx-circle-info-icon": Omit<MvxCircleInfoIcon, keyof MvxCircleInfoIconAttributes> & { [K in keyof MvxCircleInfoIcon & keyof MvxCircleInfoIconAttributes]?: MvxCircleInfoIcon[K] } & { [K in keyof MvxCircleInfoIcon & keyof MvxCircleInfoIconAttributes as `attr:${K}`]?: MvxCircleInfoIconAttributes[K] } & { [K in keyof MvxCircleInfoIcon & keyof MvxCircleInfoIconAttributes as `prop:${K}`]?: MvxCircleInfoIcon[K] };
+        "mvx-copy-button": Omit<MvxCopyButton, keyof MvxCopyButtonAttributes> & { [K in keyof MvxCopyButton & keyof MvxCopyButtonAttributes]?: MvxCopyButton[K] } & { [K in keyof MvxCopyButton & keyof MvxCopyButtonAttributes as `attr:${K}`]?: MvxCopyButtonAttributes[K] } & { [K in keyof MvxCopyButton & keyof MvxCopyButtonAttributes as `prop:${K}`]?: MvxCopyButton[K] };
         "mvx-custom-toast": MvxCustomToast;
-        "mvx-data-with-explorer-link": MvxDataWithExplorerLink;
-        "mvx-default-transaction-icon-large": MvxDefaultTransactionIconLarge;
-        "mvx-default-transaction-icon-small": MvxDefaultTransactionIconSmall;
-        "mvx-edge-extension-provider-icon": MvxEdgeExtensionProviderIcon;
-        "mvx-explorer-link": MvxExplorerLink;
-        "mvx-extension-provider-icon": MvxExtensionProviderIcon;
-        "mvx-firefox-extension-provider-icon": MvxFirefoxExtensionProviderIcon;
-        "mvx-format-amount": MvxFormatAmount;
+        "mvx-data-with-explorer-link": Omit<MvxDataWithExplorerLink, keyof MvxDataWithExplorerLinkAttributes> & { [K in keyof MvxDataWithExplorerLink & keyof MvxDataWithExplorerLinkAttributes]?: MvxDataWithExplorerLink[K] } & { [K in keyof MvxDataWithExplorerLink & keyof MvxDataWithExplorerLinkAttributes as `attr:${K}`]?: MvxDataWithExplorerLinkAttributes[K] } & { [K in keyof MvxDataWithExplorerLink & keyof MvxDataWithExplorerLinkAttributes as `prop:${K}`]?: MvxDataWithExplorerLink[K] };
+        "mvx-default-transaction-icon-large": Omit<MvxDefaultTransactionIconLarge, keyof MvxDefaultTransactionIconLargeAttributes> & { [K in keyof MvxDefaultTransactionIconLarge & keyof MvxDefaultTransactionIconLargeAttributes]?: MvxDefaultTransactionIconLarge[K] } & { [K in keyof MvxDefaultTransactionIconLarge & keyof MvxDefaultTransactionIconLargeAttributes as `attr:${K}`]?: MvxDefaultTransactionIconLargeAttributes[K] } & { [K in keyof MvxDefaultTransactionIconLarge & keyof MvxDefaultTransactionIconLargeAttributes as `prop:${K}`]?: MvxDefaultTransactionIconLarge[K] };
+        "mvx-default-transaction-icon-small": Omit<MvxDefaultTransactionIconSmall, keyof MvxDefaultTransactionIconSmallAttributes> & { [K in keyof MvxDefaultTransactionIconSmall & keyof MvxDefaultTransactionIconSmallAttributes]?: MvxDefaultTransactionIconSmall[K] } & { [K in keyof MvxDefaultTransactionIconSmall & keyof MvxDefaultTransactionIconSmallAttributes as `attr:${K}`]?: MvxDefaultTransactionIconSmallAttributes[K] } & { [K in keyof MvxDefaultTransactionIconSmall & keyof MvxDefaultTransactionIconSmallAttributes as `prop:${K}`]?: MvxDefaultTransactionIconSmall[K] };
+        "mvx-edge-extension-provider-icon": Omit<MvxEdgeExtensionProviderIcon, keyof MvxEdgeExtensionProviderIconAttributes> & { [K in keyof MvxEdgeExtensionProviderIcon & keyof MvxEdgeExtensionProviderIconAttributes]?: MvxEdgeExtensionProviderIcon[K] } & { [K in keyof MvxEdgeExtensionProviderIcon & keyof MvxEdgeExtensionProviderIconAttributes as `attr:${K}`]?: MvxEdgeExtensionProviderIconAttributes[K] } & { [K in keyof MvxEdgeExtensionProviderIcon & keyof MvxEdgeExtensionProviderIconAttributes as `prop:${K}`]?: MvxEdgeExtensionProviderIcon[K] };
+        "mvx-explorer-link": Omit<MvxExplorerLink, keyof MvxExplorerLinkAttributes> & { [K in keyof MvxExplorerLink & keyof MvxExplorerLinkAttributes]?: MvxExplorerLink[K] } & { [K in keyof MvxExplorerLink & keyof MvxExplorerLinkAttributes as `attr:${K}`]?: MvxExplorerLinkAttributes[K] } & { [K in keyof MvxExplorerLink & keyof MvxExplorerLinkAttributes as `prop:${K}`]?: MvxExplorerLink[K] };
+        "mvx-extension-provider-icon": Omit<MvxExtensionProviderIcon, keyof MvxExtensionProviderIconAttributes> & { [K in keyof MvxExtensionProviderIcon & keyof MvxExtensionProviderIconAttributes]?: MvxExtensionProviderIcon[K] } & { [K in keyof MvxExtensionProviderIcon & keyof MvxExtensionProviderIconAttributes as `attr:${K}`]?: MvxExtensionProviderIconAttributes[K] } & { [K in keyof MvxExtensionProviderIcon & keyof MvxExtensionProviderIconAttributes as `prop:${K}`]?: MvxExtensionProviderIcon[K] };
+        "mvx-firefox-extension-provider-icon": Omit<MvxFirefoxExtensionProviderIcon, keyof MvxFirefoxExtensionProviderIconAttributes> & { [K in keyof MvxFirefoxExtensionProviderIcon & keyof MvxFirefoxExtensionProviderIconAttributes]?: MvxFirefoxExtensionProviderIcon[K] } & { [K in keyof MvxFirefoxExtensionProviderIcon & keyof MvxFirefoxExtensionProviderIconAttributes as `attr:${K}`]?: MvxFirefoxExtensionProviderIconAttributes[K] } & { [K in keyof MvxFirefoxExtensionProviderIcon & keyof MvxFirefoxExtensionProviderIconAttributes as `prop:${K}`]?: MvxFirefoxExtensionProviderIcon[K] };
+        "mvx-format-amount": Omit<MvxFormatAmount, keyof MvxFormatAmountAttributes> & { [K in keyof MvxFormatAmount & keyof MvxFormatAmountAttributes]?: MvxFormatAmount[K] } & { [K in keyof MvxFormatAmount & keyof MvxFormatAmountAttributes as `attr:${K}`]?: MvxFormatAmountAttributes[K] } & { [K in keyof MvxFormatAmount & keyof MvxFormatAmountAttributes as `prop:${K}`]?: MvxFormatAmount[K] };
         "mvx-generic-toast": MvxGenericToast;
         "mvx-ledger-confirm": MvxLedgerConfirm;
         "mvx-ledger-connect": MvxLedgerConnect;
-        "mvx-ledger-icon": MvxLedgerIcon;
-        "mvx-ledger-intro": MvxLedgerIntro;
-        "mvx-ledger-provider-icon": MvxLedgerProviderIcon;
-        "mvx-magnifying-glass-icon": MvxMagnifyingGlassIcon;
-        "mvx-metamask-provider-icon": MvxMetamaskProviderIcon;
-        "mvx-multiversx-logo-icon": MvxMultiversxLogoIcon;
-        "mvx-multiversx-symbol-icon": MvxMultiversxSymbolIcon;
+        "mvx-ledger-icon": Omit<MvxLedgerIcon, keyof MvxLedgerIconAttributes> & { [K in keyof MvxLedgerIcon & keyof MvxLedgerIconAttributes]?: MvxLedgerIcon[K] } & { [K in keyof MvxLedgerIcon & keyof MvxLedgerIconAttributes as `attr:${K}`]?: MvxLedgerIconAttributes[K] } & { [K in keyof MvxLedgerIcon & keyof MvxLedgerIconAttributes as `prop:${K}`]?: MvxLedgerIcon[K] };
+        "mvx-ledger-intro": Omit<MvxLedgerIntro, keyof MvxLedgerIntroAttributes> & { [K in keyof MvxLedgerIntro & keyof MvxLedgerIntroAttributes]?: MvxLedgerIntro[K] } & { [K in keyof MvxLedgerIntro & keyof MvxLedgerIntroAttributes as `attr:${K}`]?: MvxLedgerIntroAttributes[K] } & { [K in keyof MvxLedgerIntro & keyof MvxLedgerIntroAttributes as `prop:${K}`]?: MvxLedgerIntro[K] };
+        "mvx-ledger-provider-icon": Omit<MvxLedgerProviderIcon, keyof MvxLedgerProviderIconAttributes> & { [K in keyof MvxLedgerProviderIcon & keyof MvxLedgerProviderIconAttributes]?: MvxLedgerProviderIcon[K] } & { [K in keyof MvxLedgerProviderIcon & keyof MvxLedgerProviderIconAttributes as `attr:${K}`]?: MvxLedgerProviderIconAttributes[K] } & { [K in keyof MvxLedgerProviderIcon & keyof MvxLedgerProviderIconAttributes as `prop:${K}`]?: MvxLedgerProviderIcon[K] };
+        "mvx-magnifying-glass-icon": Omit<MvxMagnifyingGlassIcon, keyof MvxMagnifyingGlassIconAttributes> & { [K in keyof MvxMagnifyingGlassIcon & keyof MvxMagnifyingGlassIconAttributes]?: MvxMagnifyingGlassIcon[K] } & { [K in keyof MvxMagnifyingGlassIcon & keyof MvxMagnifyingGlassIconAttributes as `attr:${K}`]?: MvxMagnifyingGlassIconAttributes[K] } & { [K in keyof MvxMagnifyingGlassIcon & keyof MvxMagnifyingGlassIconAttributes as `prop:${K}`]?: MvxMagnifyingGlassIcon[K] };
+        "mvx-metamask-provider-icon": Omit<MvxMetamaskProviderIcon, keyof MvxMetamaskProviderIconAttributes> & { [K in keyof MvxMetamaskProviderIcon & keyof MvxMetamaskProviderIconAttributes]?: MvxMetamaskProviderIcon[K] } & { [K in keyof MvxMetamaskProviderIcon & keyof MvxMetamaskProviderIconAttributes as `attr:${K}`]?: MvxMetamaskProviderIconAttributes[K] } & { [K in keyof MvxMetamaskProviderIcon & keyof MvxMetamaskProviderIconAttributes as `prop:${K}`]?: MvxMetamaskProviderIcon[K] };
+        "mvx-multiversx-logo-icon": Omit<MvxMultiversxLogoIcon, keyof MvxMultiversxLogoIconAttributes> & { [K in keyof MvxMultiversxLogoIcon & keyof MvxMultiversxLogoIconAttributes]?: MvxMultiversxLogoIcon[K] } & { [K in keyof MvxMultiversxLogoIcon & keyof MvxMultiversxLogoIconAttributes as `attr:${K}`]?: MvxMultiversxLogoIconAttributes[K] } & { [K in keyof MvxMultiversxLogoIcon & keyof MvxMultiversxLogoIconAttributes as `prop:${K}`]?: MvxMultiversxLogoIcon[K] };
+        "mvx-multiversx-symbol-icon": Omit<MvxMultiversxSymbolIcon, keyof MvxMultiversxSymbolIconAttributes> & { [K in keyof MvxMultiversxSymbolIcon & keyof MvxMultiversxSymbolIconAttributes]?: MvxMultiversxSymbolIcon[K] } & { [K in keyof MvxMultiversxSymbolIcon & keyof MvxMultiversxSymbolIconAttributes as `attr:${K}`]?: MvxMultiversxSymbolIconAttributes[K] } & { [K in keyof MvxMultiversxSymbolIcon & keyof MvxMultiversxSymbolIconAttributes as `prop:${K}`]?: MvxMultiversxSymbolIcon[K] };
         "mvx-notifications-feed": MvxNotificationsFeed;
-        "mvx-passkey-provider-icon": MvxPasskeyProviderIcon;
+        "mvx-passkey-provider-icon": Omit<MvxPasskeyProviderIcon, keyof MvxPasskeyProviderIconAttributes> & { [K in keyof MvxPasskeyProviderIcon & keyof MvxPasskeyProviderIconAttributes]?: MvxPasskeyProviderIcon[K] } & { [K in keyof MvxPasskeyProviderIcon & keyof MvxPasskeyProviderIconAttributes as `attr:${K}`]?: MvxPasskeyProviderIconAttributes[K] } & { [K in keyof MvxPasskeyProviderIcon & keyof MvxPasskeyProviderIconAttributes as `prop:${K}`]?: MvxPasskeyProviderIcon[K] };
         "mvx-pending-transactions-panel": MvxPendingTransactionsPanel;
-        "mvx-preloader": MvxPreloader;
-        "mvx-shard-icon": MvxShardIcon;
+        "mvx-preloader": Omit<MvxPreloader, keyof MvxPreloaderAttributes> & { [K in keyof MvxPreloader & keyof MvxPreloaderAttributes]?: MvxPreloader[K] } & { [K in keyof MvxPreloader & keyof MvxPreloaderAttributes as `attr:${K}`]?: MvxPreloaderAttributes[K] } & { [K in keyof MvxPreloader & keyof MvxPreloaderAttributes as `prop:${K}`]?: MvxPreloader[K] };
+        "mvx-shard-icon": Omit<MvxShardIcon, keyof MvxShardIconAttributes> & { [K in keyof MvxShardIcon & keyof MvxShardIconAttributes]?: MvxShardIcon[K] } & { [K in keyof MvxShardIcon & keyof MvxShardIconAttributes as `attr:${K}`]?: MvxShardIconAttributes[K] } & { [K in keyof MvxShardIcon & keyof MvxShardIconAttributes as `prop:${K}`]?: MvxShardIcon[K] };
         "mvx-sign-transactions-panel": MvxSignTransactionsPanel;
         "mvx-simple-toast": MvxSimpleToast;
-        "mvx-spinner-icon": MvxSpinnerIcon;
+        "mvx-spinner-icon": Omit<MvxSpinnerIcon, keyof MvxSpinnerIconAttributes> & { [K in keyof MvxSpinnerIcon & keyof MvxSpinnerIconAttributes]?: MvxSpinnerIcon[K] } & { [K in keyof MvxSpinnerIcon & keyof MvxSpinnerIconAttributes as `attr:${K}`]?: MvxSpinnerIconAttributes[K] } & { [K in keyof MvxSpinnerIcon & keyof MvxSpinnerIconAttributes as `prop:${K}`]?: MvxSpinnerIcon[K] };
         "mvx-toast-list": MvxToastList;
-        "mvx-tooltip": MvxTooltip;
-        "mvx-transaction-toast": MvxTransactionToast;
-        "mvx-transaction-toast-content": MvxTransactionToastContent;
-        "mvx-transaction-toast-details": MvxTransactionToastDetails;
-        "mvx-transaction-toast-details-body": MvxTransactionToastDetailsBody;
-        "mvx-transaction-toast-progress": MvxTransactionToastProgress;
-        "mvx-transactions-table": MvxTransactionsTable;
-        "mvx-trim": MvxTrim;
+        "mvx-tooltip": Omit<MvxTooltip, keyof MvxTooltipAttributes> & { [K in keyof MvxTooltip & keyof MvxTooltipAttributes]?: MvxTooltip[K] } & { [K in keyof MvxTooltip & keyof MvxTooltipAttributes as `attr:${K}`]?: MvxTooltipAttributes[K] } & { [K in keyof MvxTooltip & keyof MvxTooltipAttributes as `prop:${K}`]?: MvxTooltip[K] };
+        "mvx-transaction-toast": Omit<MvxTransactionToast, keyof MvxTransactionToastAttributes> & { [K in keyof MvxTransactionToast & keyof MvxTransactionToastAttributes]?: MvxTransactionToast[K] } & { [K in keyof MvxTransactionToast & keyof MvxTransactionToastAttributes as `attr:${K}`]?: MvxTransactionToastAttributes[K] } & { [K in keyof MvxTransactionToast & keyof MvxTransactionToastAttributes as `prop:${K}`]?: MvxTransactionToast[K] };
+        "mvx-transaction-toast-content": Omit<MvxTransactionToastContent, keyof MvxTransactionToastContentAttributes> & { [K in keyof MvxTransactionToastContent & keyof MvxTransactionToastContentAttributes]?: MvxTransactionToastContent[K] } & { [K in keyof MvxTransactionToastContent & keyof MvxTransactionToastContentAttributes as `attr:${K}`]?: MvxTransactionToastContentAttributes[K] } & { [K in keyof MvxTransactionToastContent & keyof MvxTransactionToastContentAttributes as `prop:${K}`]?: MvxTransactionToastContent[K] };
+        "mvx-transaction-toast-details": Omit<MvxTransactionToastDetails, keyof MvxTransactionToastDetailsAttributes> & { [K in keyof MvxTransactionToastDetails & keyof MvxTransactionToastDetailsAttributes]?: MvxTransactionToastDetails[K] } & { [K in keyof MvxTransactionToastDetails & keyof MvxTransactionToastDetailsAttributes as `attr:${K}`]?: MvxTransactionToastDetailsAttributes[K] } & { [K in keyof MvxTransactionToastDetails & keyof MvxTransactionToastDetailsAttributes as `prop:${K}`]?: MvxTransactionToastDetails[K] };
+        "mvx-transaction-toast-details-body": Omit<MvxTransactionToastDetailsBody, keyof MvxTransactionToastDetailsBodyAttributes> & { [K in keyof MvxTransactionToastDetailsBody & keyof MvxTransactionToastDetailsBodyAttributes]?: MvxTransactionToastDetailsBody[K] } & { [K in keyof MvxTransactionToastDetailsBody & keyof MvxTransactionToastDetailsBodyAttributes as `attr:${K}`]?: MvxTransactionToastDetailsBodyAttributes[K] } & { [K in keyof MvxTransactionToastDetailsBody & keyof MvxTransactionToastDetailsBodyAttributes as `prop:${K}`]?: MvxTransactionToastDetailsBody[K] };
+        "mvx-transaction-toast-progress": Omit<MvxTransactionToastProgress, keyof MvxTransactionToastProgressAttributes> & { [K in keyof MvxTransactionToastProgress & keyof MvxTransactionToastProgressAttributes]?: MvxTransactionToastProgress[K] } & { [K in keyof MvxTransactionToastProgress & keyof MvxTransactionToastProgressAttributes as `attr:${K}`]?: MvxTransactionToastProgressAttributes[K] } & { [K in keyof MvxTransactionToastProgress & keyof MvxTransactionToastProgressAttributes as `prop:${K}`]?: MvxTransactionToastProgress[K] };
+        "mvx-transactions-table": Omit<MvxTransactionsTable, keyof MvxTransactionsTableAttributes> & { [K in keyof MvxTransactionsTable & keyof MvxTransactionsTableAttributes]?: MvxTransactionsTable[K] } & { [K in keyof MvxTransactionsTable & keyof MvxTransactionsTableAttributes as `attr:${K}`]?: MvxTransactionsTableAttributes[K] } & { [K in keyof MvxTransactionsTable & keyof MvxTransactionsTableAttributes as `prop:${K}`]?: MvxTransactionsTable[K] };
+        "mvx-trim": Omit<MvxTrim, keyof MvxTrimAttributes> & { [K in keyof MvxTrim & keyof MvxTrimAttributes]?: MvxTrim[K] } & { [K in keyof MvxTrim & keyof MvxTrimAttributes as `attr:${K}`]?: MvxTrimAttributes[K] } & { [K in keyof MvxTrim & keyof MvxTrimAttributes as `prop:${K}`]?: MvxTrim[K] };
         "mvx-unlock-panel": MvxUnlockPanel;
-        "mvx-wallet-connect": MvxWalletConnect;
-        "mvx-wallet-connect-app-gallery-icon": MvxWalletConnectAppGalleryIcon;
-        "mvx-wallet-connect-app-store-icon": MvxWalletConnectAppStoreIcon;
-        "mvx-wallet-connect-download": MvxWalletConnectDownload;
-        "mvx-wallet-connect-google-play-icon": MvxWalletConnectGooglePlayIcon;
-        "mvx-wallet-connect-scan": MvxWalletConnectScan;
-        "mvx-wallet-provider-icon": MvxWalletProviderIcon;
-        "mvx-xportal-download-qr-icon": MvxXportalDownloadQrIcon;
-        "mvx-xportal-qr-code-preloader": MvxXportalQrCodePreloader;
+        "mvx-wallet-connect": Omit<MvxWalletConnect, keyof MvxWalletConnectAttributes> & { [K in keyof MvxWalletConnect & keyof MvxWalletConnectAttributes]?: MvxWalletConnect[K] } & { [K in keyof MvxWalletConnect & keyof MvxWalletConnectAttributes as `attr:${K}`]?: MvxWalletConnectAttributes[K] } & { [K in keyof MvxWalletConnect & keyof MvxWalletConnectAttributes as `prop:${K}`]?: MvxWalletConnect[K] };
+        "mvx-wallet-connect-app-gallery-icon": Omit<MvxWalletConnectAppGalleryIcon, keyof MvxWalletConnectAppGalleryIconAttributes> & { [K in keyof MvxWalletConnectAppGalleryIcon & keyof MvxWalletConnectAppGalleryIconAttributes]?: MvxWalletConnectAppGalleryIcon[K] } & { [K in keyof MvxWalletConnectAppGalleryIcon & keyof MvxWalletConnectAppGalleryIconAttributes as `attr:${K}`]?: MvxWalletConnectAppGalleryIconAttributes[K] } & { [K in keyof MvxWalletConnectAppGalleryIcon & keyof MvxWalletConnectAppGalleryIconAttributes as `prop:${K}`]?: MvxWalletConnectAppGalleryIcon[K] };
+        "mvx-wallet-connect-app-store-icon": Omit<MvxWalletConnectAppStoreIcon, keyof MvxWalletConnectAppStoreIconAttributes> & { [K in keyof MvxWalletConnectAppStoreIcon & keyof MvxWalletConnectAppStoreIconAttributes]?: MvxWalletConnectAppStoreIcon[K] } & { [K in keyof MvxWalletConnectAppStoreIcon & keyof MvxWalletConnectAppStoreIconAttributes as `attr:${K}`]?: MvxWalletConnectAppStoreIconAttributes[K] } & { [K in keyof MvxWalletConnectAppStoreIcon & keyof MvxWalletConnectAppStoreIconAttributes as `prop:${K}`]?: MvxWalletConnectAppStoreIcon[K] };
+        "mvx-wallet-connect-download": Omit<MvxWalletConnectDownload, keyof MvxWalletConnectDownloadAttributes> & { [K in keyof MvxWalletConnectDownload & keyof MvxWalletConnectDownloadAttributes]?: MvxWalletConnectDownload[K] } & { [K in keyof MvxWalletConnectDownload & keyof MvxWalletConnectDownloadAttributes as `attr:${K}`]?: MvxWalletConnectDownloadAttributes[K] } & { [K in keyof MvxWalletConnectDownload & keyof MvxWalletConnectDownloadAttributes as `prop:${K}`]?: MvxWalletConnectDownload[K] };
+        "mvx-wallet-connect-google-play-icon": Omit<MvxWalletConnectGooglePlayIcon, keyof MvxWalletConnectGooglePlayIconAttributes> & { [K in keyof MvxWalletConnectGooglePlayIcon & keyof MvxWalletConnectGooglePlayIconAttributes]?: MvxWalletConnectGooglePlayIcon[K] } & { [K in keyof MvxWalletConnectGooglePlayIcon & keyof MvxWalletConnectGooglePlayIconAttributes as `attr:${K}`]?: MvxWalletConnectGooglePlayIconAttributes[K] } & { [K in keyof MvxWalletConnectGooglePlayIcon & keyof MvxWalletConnectGooglePlayIconAttributes as `prop:${K}`]?: MvxWalletConnectGooglePlayIcon[K] };
+        "mvx-wallet-connect-scan": Omit<MvxWalletConnectScan, keyof MvxWalletConnectScanAttributes> & { [K in keyof MvxWalletConnectScan & keyof MvxWalletConnectScanAttributes]?: MvxWalletConnectScan[K] } & { [K in keyof MvxWalletConnectScan & keyof MvxWalletConnectScanAttributes as `attr:${K}`]?: MvxWalletConnectScanAttributes[K] } & { [K in keyof MvxWalletConnectScan & keyof MvxWalletConnectScanAttributes as `prop:${K}`]?: MvxWalletConnectScan[K] };
+        "mvx-wallet-provider-icon": Omit<MvxWalletProviderIcon, keyof MvxWalletProviderIconAttributes> & { [K in keyof MvxWalletProviderIcon & keyof MvxWalletProviderIconAttributes]?: MvxWalletProviderIcon[K] } & { [K in keyof MvxWalletProviderIcon & keyof MvxWalletProviderIconAttributes as `attr:${K}`]?: MvxWalletProviderIconAttributes[K] } & { [K in keyof MvxWalletProviderIcon & keyof MvxWalletProviderIconAttributes as `prop:${K}`]?: MvxWalletProviderIcon[K] };
+        "mvx-xportal-download-qr-icon": Omit<MvxXportalDownloadQrIcon, keyof MvxXportalDownloadQrIconAttributes> & { [K in keyof MvxXportalDownloadQrIcon & keyof MvxXportalDownloadQrIconAttributes]?: MvxXportalDownloadQrIcon[K] } & { [K in keyof MvxXportalDownloadQrIcon & keyof MvxXportalDownloadQrIconAttributes as `attr:${K}`]?: MvxXportalDownloadQrIconAttributes[K] } & { [K in keyof MvxXportalDownloadQrIcon & keyof MvxXportalDownloadQrIconAttributes as `prop:${K}`]?: MvxXportalDownloadQrIcon[K] };
+        "mvx-xportal-qr-code-preloader": Omit<MvxXportalQrCodePreloader, keyof MvxXportalQrCodePreloaderAttributes> & { [K in keyof MvxXportalQrCodePreloader & keyof MvxXportalQrCodePreloaderAttributes]?: MvxXportalQrCodePreloader[K] } & { [K in keyof MvxXportalQrCodePreloader & keyof MvxXportalQrCodePreloaderAttributes as `attr:${K}`]?: MvxXportalQrCodePreloaderAttributes[K] } & { [K in keyof MvxXportalQrCodePreloader & keyof MvxXportalQrCodePreloaderAttributes as `prop:${K}`]?: MvxXportalQrCodePreloader[K] };
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "mvx-address-table": LocalJSX.MvxAddressTable & JSXBase.HTMLAttributes<HTMLMvxAddressTableElement>;
-            "mvx-arc-extension-provider-icon": LocalJSX.MvxArcExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxArcExtensionProviderIconElement>;
-            "mvx-arrow-right-icon": LocalJSX.MvxArrowRightIcon & JSXBase.HTMLAttributes<HTMLMvxArrowRightIconElement>;
-            "mvx-brave-extension-provider-icon": LocalJSX.MvxBraveExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxBraveExtensionProviderIconElement>;
-            "mvx-button": LocalJSX.MvxButton & JSXBase.HTMLAttributes<HTMLMvxButtonElement>;
-            "mvx-circle-info-icon": LocalJSX.MvxCircleInfoIcon & JSXBase.HTMLAttributes<HTMLMvxCircleInfoIconElement>;
-            "mvx-copy-button": LocalJSX.MvxCopyButton & JSXBase.HTMLAttributes<HTMLMvxCopyButtonElement>;
-            "mvx-custom-toast": LocalJSX.MvxCustomToast & JSXBase.HTMLAttributes<HTMLMvxCustomToastElement>;
-            "mvx-data-with-explorer-link": LocalJSX.MvxDataWithExplorerLink & JSXBase.HTMLAttributes<HTMLMvxDataWithExplorerLinkElement>;
-            "mvx-default-transaction-icon-large": LocalJSX.MvxDefaultTransactionIconLarge & JSXBase.HTMLAttributes<HTMLMvxDefaultTransactionIconLargeElement>;
-            "mvx-default-transaction-icon-small": LocalJSX.MvxDefaultTransactionIconSmall & JSXBase.HTMLAttributes<HTMLMvxDefaultTransactionIconSmallElement>;
-            "mvx-edge-extension-provider-icon": LocalJSX.MvxEdgeExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxEdgeExtensionProviderIconElement>;
-            "mvx-explorer-link": LocalJSX.MvxExplorerLink & JSXBase.HTMLAttributes<HTMLMvxExplorerLinkElement>;
-            "mvx-extension-provider-icon": LocalJSX.MvxExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxExtensionProviderIconElement>;
-            "mvx-firefox-extension-provider-icon": LocalJSX.MvxFirefoxExtensionProviderIcon & JSXBase.HTMLAttributes<HTMLMvxFirefoxExtensionProviderIconElement>;
-            "mvx-format-amount": LocalJSX.MvxFormatAmount & JSXBase.HTMLAttributes<HTMLMvxFormatAmountElement>;
-            "mvx-generic-toast": LocalJSX.MvxGenericToast & JSXBase.HTMLAttributes<HTMLMvxGenericToastElement>;
-            "mvx-ledger-confirm": LocalJSX.MvxLedgerConfirm & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmElement>;
-            "mvx-ledger-connect": LocalJSX.MvxLedgerConnect & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectElement>;
-            "mvx-ledger-icon": LocalJSX.MvxLedgerIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerIconElement>;
-            "mvx-ledger-intro": LocalJSX.MvxLedgerIntro & JSXBase.HTMLAttributes<HTMLMvxLedgerIntroElement>;
-            "mvx-ledger-provider-icon": LocalJSX.MvxLedgerProviderIcon & JSXBase.HTMLAttributes<HTMLMvxLedgerProviderIconElement>;
-            "mvx-magnifying-glass-icon": LocalJSX.MvxMagnifyingGlassIcon & JSXBase.HTMLAttributes<HTMLMvxMagnifyingGlassIconElement>;
-            "mvx-metamask-provider-icon": LocalJSX.MvxMetamaskProviderIcon & JSXBase.HTMLAttributes<HTMLMvxMetamaskProviderIconElement>;
-            "mvx-multiversx-logo-icon": LocalJSX.MvxMultiversxLogoIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxLogoIconElement>;
-            "mvx-multiversx-symbol-icon": LocalJSX.MvxMultiversxSymbolIcon & JSXBase.HTMLAttributes<HTMLMvxMultiversxSymbolIconElement>;
-            "mvx-notifications-feed": LocalJSX.MvxNotificationsFeed & JSXBase.HTMLAttributes<HTMLMvxNotificationsFeedElement>;
-            "mvx-passkey-provider-icon": LocalJSX.MvxPasskeyProviderIcon & JSXBase.HTMLAttributes<HTMLMvxPasskeyProviderIconElement>;
-            "mvx-pending-transactions-panel": LocalJSX.MvxPendingTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
-            "mvx-preloader": LocalJSX.MvxPreloader & JSXBase.HTMLAttributes<HTMLMvxPreloaderElement>;
-            "mvx-shard-icon": LocalJSX.MvxShardIcon & JSXBase.HTMLAttributes<HTMLMvxShardIconElement>;
-            "mvx-sign-transactions-panel": LocalJSX.MvxSignTransactionsPanel & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;
-            "mvx-simple-toast": LocalJSX.MvxSimpleToast & JSXBase.HTMLAttributes<HTMLMvxSimpleToastElement>;
-            "mvx-spinner-icon": LocalJSX.MvxSpinnerIcon & JSXBase.HTMLAttributes<HTMLMvxSpinnerIconElement>;
-            "mvx-toast-list": LocalJSX.MvxToastList & JSXBase.HTMLAttributes<HTMLMvxToastListElement>;
-            "mvx-tooltip": LocalJSX.MvxTooltip & JSXBase.HTMLAttributes<HTMLMvxTooltipElement>;
-            "mvx-transaction-toast": LocalJSX.MvxTransactionToast & JSXBase.HTMLAttributes<HTMLMvxTransactionToastElement>;
-            "mvx-transaction-toast-content": LocalJSX.MvxTransactionToastContent & JSXBase.HTMLAttributes<HTMLMvxTransactionToastContentElement>;
-            "mvx-transaction-toast-details": LocalJSX.MvxTransactionToastDetails & JSXBase.HTMLAttributes<HTMLMvxTransactionToastDetailsElement>;
-            "mvx-transaction-toast-details-body": LocalJSX.MvxTransactionToastDetailsBody & JSXBase.HTMLAttributes<HTMLMvxTransactionToastDetailsBodyElement>;
-            "mvx-transaction-toast-progress": LocalJSX.MvxTransactionToastProgress & JSXBase.HTMLAttributes<HTMLMvxTransactionToastProgressElement>;
-            "mvx-transactions-table": LocalJSX.MvxTransactionsTable & JSXBase.HTMLAttributes<HTMLMvxTransactionsTableElement>;
-            "mvx-trim": LocalJSX.MvxTrim & JSXBase.HTMLAttributes<HTMLMvxTrimElement>;
-            "mvx-unlock-panel": LocalJSX.MvxUnlockPanel & JSXBase.HTMLAttributes<HTMLMvxUnlockPanelElement>;
-            "mvx-wallet-connect": LocalJSX.MvxWalletConnect & JSXBase.HTMLAttributes<HTMLMvxWalletConnectElement>;
-            "mvx-wallet-connect-app-gallery-icon": LocalJSX.MvxWalletConnectAppGalleryIcon & JSXBase.HTMLAttributes<HTMLMvxWalletConnectAppGalleryIconElement>;
-            "mvx-wallet-connect-app-store-icon": LocalJSX.MvxWalletConnectAppStoreIcon & JSXBase.HTMLAttributes<HTMLMvxWalletConnectAppStoreIconElement>;
-            "mvx-wallet-connect-download": LocalJSX.MvxWalletConnectDownload & JSXBase.HTMLAttributes<HTMLMvxWalletConnectDownloadElement>;
-            "mvx-wallet-connect-google-play-icon": LocalJSX.MvxWalletConnectGooglePlayIcon & JSXBase.HTMLAttributes<HTMLMvxWalletConnectGooglePlayIconElement>;
-            "mvx-wallet-connect-scan": LocalJSX.MvxWalletConnectScan & JSXBase.HTMLAttributes<HTMLMvxWalletConnectScanElement>;
-            "mvx-wallet-provider-icon": LocalJSX.MvxWalletProviderIcon & JSXBase.HTMLAttributes<HTMLMvxWalletProviderIconElement>;
-            "mvx-xportal-download-qr-icon": LocalJSX.MvxXportalDownloadQrIcon & JSXBase.HTMLAttributes<HTMLMvxXportalDownloadQrIconElement>;
-            "mvx-xportal-qr-code-preloader": LocalJSX.MvxXportalQrCodePreloader & JSXBase.HTMLAttributes<HTMLMvxXportalQrCodePreloaderElement>;
+            "mvx-address-table": LocalJSX.IntrinsicElements["mvx-address-table"] & JSXBase.HTMLAttributes<HTMLMvxAddressTableElement>;
+            "mvx-arc-extension-provider-icon": LocalJSX.IntrinsicElements["mvx-arc-extension-provider-icon"] & JSXBase.HTMLAttributes<HTMLMvxArcExtensionProviderIconElement>;
+            "mvx-arrow-right-icon": LocalJSX.IntrinsicElements["mvx-arrow-right-icon"] & JSXBase.HTMLAttributes<HTMLMvxArrowRightIconElement>;
+            "mvx-brave-extension-provider-icon": LocalJSX.IntrinsicElements["mvx-brave-extension-provider-icon"] & JSXBase.HTMLAttributes<HTMLMvxBraveExtensionProviderIconElement>;
+            "mvx-button": LocalJSX.IntrinsicElements["mvx-button"] & JSXBase.HTMLAttributes<HTMLMvxButtonElement>;
+            "mvx-circle-info-icon": LocalJSX.IntrinsicElements["mvx-circle-info-icon"] & JSXBase.HTMLAttributes<HTMLMvxCircleInfoIconElement>;
+            "mvx-copy-button": LocalJSX.IntrinsicElements["mvx-copy-button"] & JSXBase.HTMLAttributes<HTMLMvxCopyButtonElement>;
+            "mvx-custom-toast": LocalJSX.IntrinsicElements["mvx-custom-toast"] & JSXBase.HTMLAttributes<HTMLMvxCustomToastElement>;
+            "mvx-data-with-explorer-link": LocalJSX.IntrinsicElements["mvx-data-with-explorer-link"] & JSXBase.HTMLAttributes<HTMLMvxDataWithExplorerLinkElement>;
+            "mvx-default-transaction-icon-large": LocalJSX.IntrinsicElements["mvx-default-transaction-icon-large"] & JSXBase.HTMLAttributes<HTMLMvxDefaultTransactionIconLargeElement>;
+            "mvx-default-transaction-icon-small": LocalJSX.IntrinsicElements["mvx-default-transaction-icon-small"] & JSXBase.HTMLAttributes<HTMLMvxDefaultTransactionIconSmallElement>;
+            "mvx-edge-extension-provider-icon": LocalJSX.IntrinsicElements["mvx-edge-extension-provider-icon"] & JSXBase.HTMLAttributes<HTMLMvxEdgeExtensionProviderIconElement>;
+            "mvx-explorer-link": LocalJSX.IntrinsicElements["mvx-explorer-link"] & JSXBase.HTMLAttributes<HTMLMvxExplorerLinkElement>;
+            "mvx-extension-provider-icon": LocalJSX.IntrinsicElements["mvx-extension-provider-icon"] & JSXBase.HTMLAttributes<HTMLMvxExtensionProviderIconElement>;
+            "mvx-firefox-extension-provider-icon": LocalJSX.IntrinsicElements["mvx-firefox-extension-provider-icon"] & JSXBase.HTMLAttributes<HTMLMvxFirefoxExtensionProviderIconElement>;
+            "mvx-format-amount": LocalJSX.IntrinsicElements["mvx-format-amount"] & JSXBase.HTMLAttributes<HTMLMvxFormatAmountElement>;
+            "mvx-generic-toast": LocalJSX.IntrinsicElements["mvx-generic-toast"] & JSXBase.HTMLAttributes<HTMLMvxGenericToastElement>;
+            "mvx-ledger-confirm": LocalJSX.IntrinsicElements["mvx-ledger-confirm"] & JSXBase.HTMLAttributes<HTMLMvxLedgerConfirmElement>;
+            "mvx-ledger-connect": LocalJSX.IntrinsicElements["mvx-ledger-connect"] & JSXBase.HTMLAttributes<HTMLMvxLedgerConnectElement>;
+            "mvx-ledger-icon": LocalJSX.IntrinsicElements["mvx-ledger-icon"] & JSXBase.HTMLAttributes<HTMLMvxLedgerIconElement>;
+            "mvx-ledger-intro": LocalJSX.IntrinsicElements["mvx-ledger-intro"] & JSXBase.HTMLAttributes<HTMLMvxLedgerIntroElement>;
+            "mvx-ledger-provider-icon": LocalJSX.IntrinsicElements["mvx-ledger-provider-icon"] & JSXBase.HTMLAttributes<HTMLMvxLedgerProviderIconElement>;
+            "mvx-magnifying-glass-icon": LocalJSX.IntrinsicElements["mvx-magnifying-glass-icon"] & JSXBase.HTMLAttributes<HTMLMvxMagnifyingGlassIconElement>;
+            "mvx-metamask-provider-icon": LocalJSX.IntrinsicElements["mvx-metamask-provider-icon"] & JSXBase.HTMLAttributes<HTMLMvxMetamaskProviderIconElement>;
+            "mvx-multiversx-logo-icon": LocalJSX.IntrinsicElements["mvx-multiversx-logo-icon"] & JSXBase.HTMLAttributes<HTMLMvxMultiversxLogoIconElement>;
+            "mvx-multiversx-symbol-icon": LocalJSX.IntrinsicElements["mvx-multiversx-symbol-icon"] & JSXBase.HTMLAttributes<HTMLMvxMultiversxSymbolIconElement>;
+            "mvx-notifications-feed": LocalJSX.IntrinsicElements["mvx-notifications-feed"] & JSXBase.HTMLAttributes<HTMLMvxNotificationsFeedElement>;
+            "mvx-passkey-provider-icon": LocalJSX.IntrinsicElements["mvx-passkey-provider-icon"] & JSXBase.HTMLAttributes<HTMLMvxPasskeyProviderIconElement>;
+            "mvx-pending-transactions-panel": LocalJSX.IntrinsicElements["mvx-pending-transactions-panel"] & JSXBase.HTMLAttributes<HTMLMvxPendingTransactionsPanelElement>;
+            "mvx-preloader": LocalJSX.IntrinsicElements["mvx-preloader"] & JSXBase.HTMLAttributes<HTMLMvxPreloaderElement>;
+            "mvx-shard-icon": LocalJSX.IntrinsicElements["mvx-shard-icon"] & JSXBase.HTMLAttributes<HTMLMvxShardIconElement>;
+            "mvx-sign-transactions-panel": LocalJSX.IntrinsicElements["mvx-sign-transactions-panel"] & JSXBase.HTMLAttributes<HTMLMvxSignTransactionsPanelElement>;
+            "mvx-simple-toast": LocalJSX.IntrinsicElements["mvx-simple-toast"] & JSXBase.HTMLAttributes<HTMLMvxSimpleToastElement>;
+            "mvx-spinner-icon": LocalJSX.IntrinsicElements["mvx-spinner-icon"] & JSXBase.HTMLAttributes<HTMLMvxSpinnerIconElement>;
+            "mvx-toast-list": LocalJSX.IntrinsicElements["mvx-toast-list"] & JSXBase.HTMLAttributes<HTMLMvxToastListElement>;
+            "mvx-tooltip": LocalJSX.IntrinsicElements["mvx-tooltip"] & JSXBase.HTMLAttributes<HTMLMvxTooltipElement>;
+            "mvx-transaction-toast": LocalJSX.IntrinsicElements["mvx-transaction-toast"] & JSXBase.HTMLAttributes<HTMLMvxTransactionToastElement>;
+            "mvx-transaction-toast-content": LocalJSX.IntrinsicElements["mvx-transaction-toast-content"] & JSXBase.HTMLAttributes<HTMLMvxTransactionToastContentElement>;
+            "mvx-transaction-toast-details": LocalJSX.IntrinsicElements["mvx-transaction-toast-details"] & JSXBase.HTMLAttributes<HTMLMvxTransactionToastDetailsElement>;
+            "mvx-transaction-toast-details-body": LocalJSX.IntrinsicElements["mvx-transaction-toast-details-body"] & JSXBase.HTMLAttributes<HTMLMvxTransactionToastDetailsBodyElement>;
+            "mvx-transaction-toast-progress": LocalJSX.IntrinsicElements["mvx-transaction-toast-progress"] & JSXBase.HTMLAttributes<HTMLMvxTransactionToastProgressElement>;
+            "mvx-transactions-table": LocalJSX.IntrinsicElements["mvx-transactions-table"] & JSXBase.HTMLAttributes<HTMLMvxTransactionsTableElement>;
+            "mvx-trim": LocalJSX.IntrinsicElements["mvx-trim"] & JSXBase.HTMLAttributes<HTMLMvxTrimElement>;
+            "mvx-unlock-panel": LocalJSX.IntrinsicElements["mvx-unlock-panel"] & JSXBase.HTMLAttributes<HTMLMvxUnlockPanelElement>;
+            "mvx-wallet-connect": LocalJSX.IntrinsicElements["mvx-wallet-connect"] & JSXBase.HTMLAttributes<HTMLMvxWalletConnectElement>;
+            "mvx-wallet-connect-app-gallery-icon": LocalJSX.IntrinsicElements["mvx-wallet-connect-app-gallery-icon"] & JSXBase.HTMLAttributes<HTMLMvxWalletConnectAppGalleryIconElement>;
+            "mvx-wallet-connect-app-store-icon": LocalJSX.IntrinsicElements["mvx-wallet-connect-app-store-icon"] & JSXBase.HTMLAttributes<HTMLMvxWalletConnectAppStoreIconElement>;
+            "mvx-wallet-connect-download": LocalJSX.IntrinsicElements["mvx-wallet-connect-download"] & JSXBase.HTMLAttributes<HTMLMvxWalletConnectDownloadElement>;
+            "mvx-wallet-connect-google-play-icon": LocalJSX.IntrinsicElements["mvx-wallet-connect-google-play-icon"] & JSXBase.HTMLAttributes<HTMLMvxWalletConnectGooglePlayIconElement>;
+            "mvx-wallet-connect-scan": LocalJSX.IntrinsicElements["mvx-wallet-connect-scan"] & JSXBase.HTMLAttributes<HTMLMvxWalletConnectScanElement>;
+            "mvx-wallet-provider-icon": LocalJSX.IntrinsicElements["mvx-wallet-provider-icon"] & JSXBase.HTMLAttributes<HTMLMvxWalletProviderIconElement>;
+            "mvx-xportal-download-qr-icon": LocalJSX.IntrinsicElements["mvx-xportal-download-qr-icon"] & JSXBase.HTMLAttributes<HTMLMvxXportalDownloadQrIconElement>;
+            "mvx-xportal-qr-code-preloader": LocalJSX.IntrinsicElements["mvx-xportal-qr-code-preloader"] & JSXBase.HTMLAttributes<HTMLMvxXportalQrCodePreloaderElement>;
         }
     }
 }

@@ -33,9 +33,9 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
       - name: Setup pnpm
-        run: npm install -g pnpm
+        uses: pnpm/action-setup@v4
       - name: Remove node_modules
         run: rm -rf node_modules
       - name: Install Chrome for Puppeteer
