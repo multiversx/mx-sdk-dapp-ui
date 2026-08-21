@@ -3,9 +3,8 @@ import { sass } from '@stencil/sass';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { vueOutputTarget } from '@stencil/vue-output-target';
 import nodePolyfills from 'rollup-plugin-node-polyfills';
-import tailwind from 'stencil-tailwind-plugin';
 import { getExcludedComponentTags } from './src/global/scripts/exclude-react-components';
-import { tailwindEntryFor } from './src/global/scripts/tailwind-entries';
+import { mvxTailwind } from './src/global/scripts/tailwind-plugin';
 import image from '@rollup/plugin-image';
 
 /**
@@ -27,18 +26,11 @@ export const config: Config = {
   namespace: 'sdk-dapp-ui',
   globalStyle: './src/global/style.css',
   buildEs5: false,
-  plugins: [
-    sass(),
-    tailwind({
-      /**
-       * `injectTailwindConfiguration` takes precedence over `tailwindCssPath`
-       * anyway, so setting both would only add a misleading second source of
-       * truth.
-       *
-       */
-      injectTailwindConfiguration: tailwindEntryFor,
-    }),
-  ],
+  /**
+   * Order matters: `sass()` must compile the SCSS (`//` comments, nesting)
+   * before `mvxTailwind()` hands it to postcss, which cannot parse either.
+   */
+  plugins: [sass(), mvxTailwind()],
   sourceMap: isDev,
   testing: {
     setupFilesAfterEnv: ['./src/setupTests.ts'],

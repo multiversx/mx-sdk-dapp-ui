@@ -15,7 +15,8 @@
 
   &::-webkit-scrollbar,
   &::-webkit-scrollbar-track,
-  &::-webkit-scrollbar-track:hover &::-webkit-scrollbar-corner {
+  &::-webkit-scrollbar-track:hover,
+  &::-webkit-scrollbar-corner {
     @apply mvx:bg-transparent;
   }
 
@@ -95,7 +96,7 @@
   }
 
   // Ensure children don't cause horizontal scroll
-  >* {
+  > * {
     @apply mvx:w-full mvx:max-w-full mvx:box-border;
   }
 }
