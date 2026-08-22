@@ -143,9 +143,9 @@ Pitfalls:
   `dist/web-components`. Run it only after a **prod** build; `stencil test` rewrites `dist/` in dev
   mode.
 
-## Build outputs (three pipelines)
+## Build outputs (two pipelines)
 
-`pnpm build` runs three pipelines:
+`pnpm build` runs two independent pipelines:
 
 1. **Stencil** (`stencil build --prod`) emits three output targets: `dist/web-components/` (custom
    elements bundle), `dist/react/`, `dist/vue/`. `dist-custom-elements` is **not** emitted by
@@ -153,26 +153,27 @@ Pitfalls:
 2. **Utils** (`build:esm:utils` + `build:cjs:utils`) compiles a hand-picked list of util files to
    dual ESM/CJS via `tsc` + `tsc-alias`. When adding a new publicly-consumable util, add it to
    **both** `tsconfig.utils.json` `include` and `package.json` `exports`.
-3. **Framework proxies** (`build:proxies`) compiles the `.ts` files the React and Vue output targets
-   emit into `dist/react/` and `dist/vue/` down to `.js` + `.d.ts` via `tsconfig.proxies.json`, then
-   deletes the `.ts` sources. The package must not ship raw `.ts` through `exports`: consumers would
-   typecheck it with *their* tsconfig (no `skipLibCheck`, their `jsx`/`esModuleInterop` settings).
 
-   The generated proxies `import` from `@stencil/react-output-target/runtime` and
-   `@stencil/vue-output-target/runtime` at **runtime**, so both output-target packages are real
-   `dependencies`, not devDependencies. Their own `react` / `vue` peers resolve from the consumer's
-   graph, so this package deliberately declares **no** `peerDependencies`; `react`, `react-dom`,
-   `vue` and `vue-router` are devDependencies only, so `build:proxies` typechecks reproducibly
-   instead of relying on pnpm's `auto-install-peers`.
+The React and Vue output targets emit **raw `.ts`**, and `package.json` `exports` points `./react`
+and `./vue` straight at it — consumers compile it with *their* tsconfig. So the generated
+`src/components.d.ts` is part of the public API surface, and two things silently corrupt it:
 
-   Two things silently break this pipeline, both by corrupting the generated `src/components.d.ts`:
-   - An `@Prop()` typed with `JSX.Element` from `@stencil/core` makes Stencil emit
-     `export { JSX } from "./stencil-public-runtime"`, which collides with the file's own
-     `export { LocalJSX as JSX }` — a duplicate identifier that breaks every Vue proxy. Use `VNode`
-     (`JSX.Element` is an empty interface in Stencil anyway, so it typed nothing).
-   - An `@Prop()` typed with an interface that exists nowhere but `components.d.ts` itself (imported
-     via the `components` path alias) makes the generated file import from itself. Declare prop types
-     in a real `*.types.ts`; never import them from `components`.
+- An `@Prop()` typed with `JSX.Element` from `@stencil/core` makes Stencil emit
+  `export { JSX } from "./stencil-public-runtime"`, which collides with the file's own
+  `export { LocalJSX as JSX }` — a duplicate identifier that breaks every Vue proxy. Use `VNode`
+  (`JSX.Element` is an empty interface in Stencil anyway, so it typed nothing).
+- An `@Prop()` typed with an interface that exists nowhere but `components.d.ts` itself (imported via
+  the `components` path alias) makes the generated file import from itself. Declare prop types in a
+  real `*.types.ts`; never import them from `components`.
+
+A consumer's `skipLibCheck` will not hide either one: it only suppresses `.d.ts` checking, and these
+entry points are `.ts`. Verify with `tsc --noEmit` against `dist/react/components.ts` and
+`dist/vue/components.ts` after changing a prop type.
+
+`@stencil/react-output-target` and `@stencil/vue-output-target` are runtime `dependencies`, not
+devDependencies: the emitted proxies import `@stencil/*-output-target/runtime`, and as
+devDependencies they are absent from a consumer's tree. Their own `react` / `vue` peers resolve from
+the consumer's graph, so this package deliberately declares no `peerDependencies`.
 
 ## Code conventions
 

@@ -72,14 +72,14 @@
       "types": "./dist/web-components/*.d.ts"
     },
     "./react": {
-      "types": "./dist/react/components.d.ts",
-      "import": "./dist/react/components.js",
-      "default": "./dist/react/components.js"
+      "types": "./dist/react/components.ts",
+      "import": "./dist/react/components.ts",
+      "require": "./dist/react/components.ts"
     },
     "./vue": {
-      "types": "./dist/vue/components.d.ts",
-      "import": "./dist/vue/components.js",
-      "default": "./dist/vue/components.js"
+      "types": "./dist/vue/components.ts",
+      "import": "./dist/vue/components.ts",
+      "require": "./dist/vue/components.ts"
     }
   },
   "repository": {
@@ -104,14 +104,13 @@
     "build:dev": "stencil build --dev",
     "build:esm:utils": "tsc -p tsconfig.utils.esm.json && tsc-alias -p tsconfig.utils.esm.json",
     "build:cjs:utils": "tsc -p tsconfig.utils.cjs.json && tsc-alias -p tsconfig.utils.cjs.json",
-    "build": "stencil build --prod && pnpm assert:css && pnpm build:esm:utils && pnpm build:cjs:utils && pnpm build:proxies",
+    "build": "stencil build --prod && pnpm assert:css && pnpm build:esm:utils && pnpm build:cjs:utils",
     "start": "pnpm build:dev --watch --serve",
     "storybook-build-tailwind": "node .storybook/generate-safelist.ts && pnpm exec tailwindcss -i src/global/tailwind.css -o .storybook/tailwind.css --content '.storybook/tailwind-safelist.html' && rm -f .storybook/tailwind-safelist.html",
     "storybook-dev": "pnpm build && pnpm storybook-build-tailwind && storybook dev -p 6006 --no-open",
     "storybook-build": "pnpm build && pnpm storybook-build-tailwind && storybook build",
     "audit": "pnpm audit --audit-level=high",
-    "assert:css": "node scripts/assert-no-preflight-leak.mjs",
-    "build:proxies": "tsc -p tsconfig.proxies.json && rm -f dist/react/components.ts dist/vue/components.ts"
+    "assert:css": "node scripts/assert-no-preflight-leak.mjs"
   },
   "dependencies": {
     "@stencil/core": "^4.44.0",
