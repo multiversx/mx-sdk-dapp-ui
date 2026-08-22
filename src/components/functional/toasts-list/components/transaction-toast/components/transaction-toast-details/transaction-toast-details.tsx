@@ -1,4 +1,4 @@
-import type { JSX } from '@stencil/core';
+import type { VNode } from '@stencil/core';
 import { Component, h, Prop, State } from '@stencil/core';
 import classNames from 'classnames';
 import { Icon } from 'common/Icon';
@@ -10,7 +10,7 @@ import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
   styleUrl: 'transaction-toast-details.scss',
 })
 export class TransactionToastDetails {
-  @Prop() processedTransactionsStatus?: string | JSX.Element;
+  @Prop() processedTransactionsStatus?: string | VNode;
   @Prop() transactions?: ITransactionListItem[];
   @Prop() transactionClass: string;
   @Prop() maxShownTransactions: number = 5;

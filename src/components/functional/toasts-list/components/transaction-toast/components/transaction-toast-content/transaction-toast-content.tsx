@@ -1,4 +1,4 @@
-import type { EventEmitter, JSX } from '@stencil/core';
+import type { EventEmitter, VNode } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { FormatAmount } from 'common/FormatAmount/FormatAmount';
@@ -25,7 +25,7 @@ const styles = {
 export class TransactionToastContent {
   @Prop() transactions: ITransactionListItem[];
   @Prop() toastDataState: IToastDataState;
-  @Prop() processedTransactionsStatus?: string | JSX.Element;
+  @Prop() processedTransactionsStatus?: string | VNode;
   @Prop() fullWidth?: boolean;
   @Event() deleteToast: EventEmitter<void>;
 

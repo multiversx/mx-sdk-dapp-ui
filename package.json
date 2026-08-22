@@ -1,6 +1,6 @@
 {
   "name": "@multiversx/sdk-dapp-ui",
-  "version": "0.1.25-alpha.2",
+  "version": "0.1.25-alpha.3",
   "description": "A library to hold UI components for a dApp on the MultiversX blockchain",
   "author": "MultiversX",
   "license": "MIT",
@@ -72,12 +72,14 @@
       "types": "./dist/web-components/*.d.ts"
     },
     "./react": {
-      "import": "./dist/react/components.ts",
-      "require": "./dist/react/components.ts"
+      "types": "./dist/react/components.d.ts",
+      "import": "./dist/react/components.js",
+      "default": "./dist/react/components.js"
     },
     "./vue": {
-      "types": "./dist/vue/components.ts",
-      "import": "./dist/vue/components.ts"
+      "types": "./dist/vue/components.d.ts",
+      "import": "./dist/vue/components.js",
+      "default": "./dist/vue/components.js"
     }
   },
   "repository": {
@@ -102,16 +104,19 @@
     "build:dev": "stencil build --dev",
     "build:esm:utils": "tsc -p tsconfig.utils.esm.json && tsc-alias -p tsconfig.utils.esm.json",
     "build:cjs:utils": "tsc -p tsconfig.utils.cjs.json && tsc-alias -p tsconfig.utils.cjs.json",
-    "build": "stencil build --prod && pnpm assert:css && pnpm build:esm:utils && pnpm build:cjs:utils",
+    "build": "stencil build --prod && pnpm assert:css && pnpm build:esm:utils && pnpm build:cjs:utils && pnpm build:proxies",
     "start": "pnpm build:dev --watch --serve",
     "storybook-build-tailwind": "node .storybook/generate-safelist.ts && pnpm exec tailwindcss -i src/global/tailwind.css -o .storybook/tailwind.css --content '.storybook/tailwind-safelist.html' && rm -f .storybook/tailwind-safelist.html",
     "storybook-dev": "pnpm build && pnpm storybook-build-tailwind && storybook dev -p 6006 --no-open",
     "storybook-build": "pnpm build && pnpm storybook-build-tailwind && storybook build",
     "audit": "pnpm audit --audit-level=high",
-    "assert:css": "node scripts/assert-no-preflight-leak.mjs"
+    "assert:css": "node scripts/assert-no-preflight-leak.mjs",
+    "build:proxies": "tsc -p tsconfig.proxies.json && rm -f dist/react/components.ts dist/vue/components.ts"
   },
   "dependencies": {
     "@stencil/core": "^4.44.0",
+    "@stencil/react-output-target": "^1.6.2",
+    "@stencil/vue-output-target": "^0.14.1",
     "classnames": "^2.5.1",
     "lodash.capitalize": "^4.2.1",
     "lodash.inrange": "^3.3.0",
@@ -121,11 +126,9 @@
   "devDependencies": {
     "@parcel/watcher": "^2.6.0",
     "@rollup/plugin-image": "^3.0.3",
-    "@stencil/react-output-target": "^1.6.2",
     "@stencil/sass": "^3.3.3",
     "@stencil/store": "^2.2.4",
     "@stencil/storybook-plugin": "^0.5.9",
-    "@stencil/vue-output-target": "^0.14.1",
     "@storybook/addon-docs": "^9.1.20",
     "@storybook/addon-links": "^9.1.20",
     "@storybook/html": "^9.1.20",

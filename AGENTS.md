@@ -143,9 +143,9 @@ Pitfalls:
   `dist/web-components`. Run it only after a **prod** build; `stencil test` rewrites `dist/` in dev
   mode.
 
-## Build outputs (two pipelines)
+## Build outputs (three pipelines)
 
-`pnpm build` runs two independent pipelines:
+`pnpm build` runs three pipelines:
 
 1. **Stencil** (`stencil build --prod`) emits three output targets: `dist/web-components/` (custom
    elements bundle), `dist/react/`, `dist/vue/`. `dist-custom-elements` is **not** emitted by
@@ -153,6 +153,26 @@ Pitfalls:
 2. **Utils** (`build:esm:utils` + `build:cjs:utils`) compiles a hand-picked list of util files to
    dual ESM/CJS via `tsc` + `tsc-alias`. When adding a new publicly-consumable util, add it to
    **both** `tsconfig.utils.json` `include` and `package.json` `exports`.
+3. **Framework proxies** (`build:proxies`) compiles the `.ts` files the React and Vue output targets
+   emit into `dist/react/` and `dist/vue/` down to `.js` + `.d.ts` via `tsconfig.proxies.json`, then
+   deletes the `.ts` sources. The package must not ship raw `.ts` through `exports`: consumers would
+   typecheck it with *their* tsconfig (no `skipLibCheck`, their `jsx`/`esModuleInterop` settings).
+
+   The generated proxies `import` from `@stencil/react-output-target/runtime` and
+   `@stencil/vue-output-target/runtime` at **runtime**, so both output-target packages are real
+   `dependencies`, not devDependencies. Their own `react` / `vue` peers resolve from the consumer's
+   graph, so this package deliberately declares **no** `peerDependencies`; `react`, `react-dom`,
+   `vue` and `vue-router` are devDependencies only, so `build:proxies` typechecks reproducibly
+   instead of relying on pnpm's `auto-install-peers`.
+
+   Two things silently break this pipeline, both by corrupting the generated `src/components.d.ts`:
+   - An `@Prop()` typed with `JSX.Element` from `@stencil/core` makes Stencil emit
+     `export { JSX } from "./stencil-public-runtime"`, which collides with the file's own
+     `export { LocalJSX as JSX }` — a duplicate identifier that breaks every Vue proxy. Use `VNode`
+     (`JSX.Element` is an empty interface in Stencil anyway, so it typed nothing).
+   - An `@Prop()` typed with an interface that exists nowhere but `components.d.ts` itself (imported
+     via the `components` path alias) makes the generated file import from itself. Declare prop types
+     in a real `*.types.ts`; never import them from `components`.
 
 ## Code conventions
 
@@ -208,7 +228,7 @@ Two traps worth knowing:
   rejected by the other with `Invalid vNode child`, rendering nothing. `mvx-tooltip`'s `trigger` is
   declared `HTMLElement` but really wants a vNode child — inside the library it is given JSX, while
   stories must pass a plain string. The same caution applies to
-  `processedTransactionsStatus: string | JSX.Element`; use the string form in stories.
+  `processedTransactionsStatus: string | VNode`; use the string form in stories.
 - **`mvx-transaction-toast-progress` remembers finished toast ids in module scope**, so reusing a
   `toastId` renders an already-complete bar on a second visit. Generate a fresh one per story
   (`uniqueToastId`). Its `startTime`/`endTime` are UNIX **seconds**, not milliseconds.

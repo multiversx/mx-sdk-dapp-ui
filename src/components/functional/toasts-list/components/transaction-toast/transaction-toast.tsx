@@ -1,4 +1,4 @@
-import type { EventEmitter, JSX } from '@stencil/core';
+import type { EventEmitter, VNode } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import type { ITransactionListItem } from 'components/functional/notifications-feed/components/TransactionListItem/transactionListItem.types';
 import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
@@ -13,7 +13,7 @@ export class TransactionToast {
   @Prop() toastId: string = '';
   @Prop() wrapperClass: string;
   @Prop() fullWidth?: boolean;
-  @Prop() processedTransactionsStatus: string | JSX.Element = '';
+  @Prop() processedTransactionsStatus: string | VNode = '';
   @Prop() transactions: ITransactionListItem[] = [];
   @Prop() toastDataState: IToastDataState;
   @Prop() transactionProgressState?: ITransactionProgressState;
