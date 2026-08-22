@@ -12,7 +12,7 @@ export default {
     transactionTitle: 'transaction-title mvx:text-xs mvx:font-medium mvx:leading-6 mvx:tracking-tight mvx:m-0 mvx:text-tertiary-text mvx:xxs:text-sm mvx:xs:text-base',
     transactionTitleTruncate: 'transaction-title-truncate mvx:truncate mvx:max-w-30 mvx:shrink-0',
     transactionDetailsInfo: 'transaction-details-info mvx:flex mvx:items-center mvx:gap-1 mvx:self-stretch mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight mvx:text-label',
-    transactionDetailsInfoText: 'transaction-details-info-text mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight mvx:max-w-64 mvx:text-label',
+    transactionDetailsInfoText: 'transaction-details-info-text mvx:text-sm mvx:font-medium mvx:tracking-tight mvx:max-w-64 mvx:text-label',
     transactionDetailsInfoIcon: 'transaction-details-info-icon mvx:rounded-full mvx:w-4 mvx:h-4',
     transactionDetailsInfoIconImg: 'transaction-details-info-icon-img mvx:rounded-full mvx:w-full mvx:h-full',
     transactionAmount: 'transaction-amount mvx:flex mvx:text-xs mvx:font-medium mvx:leading-6 mvx:tracking-tight mvx:text-tertiary-text mvx:xxs:text-sm mvx:xs:text-base',

@@ -27,7 +27,12 @@ export class TransactionToast {
     const isStatusPending = this.transactions.every(tx => tx.status === TransactionStatusEnum.pending);
 
     return (
-      <div class="mvx-transaction-toast">
+      <div
+        class={{
+          'mvx-transaction-toast': true,
+          'mvx:max-w-100': !this.fullWidth,
+        }}
+      >
         <mvx-transaction-toast-progress
           key={this.toastId}
           toastId={this.toastId}

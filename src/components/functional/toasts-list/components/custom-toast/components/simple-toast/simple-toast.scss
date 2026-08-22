@@ -43,6 +43,7 @@
 
 .mvx-content-heading-title {
   @apply mvx:text-base mvx:font-bold mvx:m-0;
+  margin-top: calc(var(--mvx-spacing) / -2);
   color: var(--mvx-text-color-primary);
 }
 

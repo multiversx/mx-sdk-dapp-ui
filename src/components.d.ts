@@ -266,6 +266,7 @@ export namespace Components {
     }
     interface MvxTransactionToastProgress {
         "endTime"?: number;
+        "fullWidth"?: boolean;
         "isStatusPending"?: boolean;
         "startTime"?: number;
         "toastId"?: string;
@@ -1102,6 +1103,7 @@ declare namespace LocalJSX {
     }
     interface MvxTransactionToastProgress {
         "endTime"?: number;
+        "fullWidth"?: boolean;
         "isStatusPending"?: boolean;
         "startTime"?: number;
         "toastId"?: string;
@@ -1311,6 +1313,7 @@ declare namespace LocalJSX {
         "endTime": number;
         "isStatusPending": boolean;
         "toastId": string;
+        "fullWidth": boolean;
     }
     interface MvxTransactionsTableAttributes {
         "class": string;

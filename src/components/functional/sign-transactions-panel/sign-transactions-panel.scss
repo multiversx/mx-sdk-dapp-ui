@@ -23,7 +23,7 @@
 }
 
 .trim-left {
-  @apply mvx:select-none mvx:pointer-events-none mvx:inline mvx:text-base mvx:leading-5;
+  @apply mvx:select-none mvx:pointer-events-none mvx:inline mvx:leading-5;
 }
 
 .trim-right-wrapper {
@@ -32,5 +32,10 @@
 }
 
 .trim-right {
-  @apply mvx:select-none mvx:pointer-events-none mvx:inline mvx:text-base mvx:leading-5 mvx:text-clip;
+  @apply mvx:select-none mvx:pointer-events-none mvx:inline mvx:leading-5 mvx:text-clip;
+}
+
+// Must match the halves' line-height, or the ellipsis lands off their shared baseline.
+.trim-ellipsis {
+  @apply mvx:leading-5;
 }

@@ -12,11 +12,15 @@ import type { ToastProgress } from './transaction-toast-progress';
 
 // prettier-ignore
 const styles = {
-  progressStoriesWrapper: 'progress-stories-wrapper mvx:flex mvx:flex-col mvx:w-full mvx:max-w-md',
+  progressStoriesWrapper:
+    'progress-stories-wrapper mvx:flex mvx:flex-col mvx:w-full mvx:relative mvx:rounded-xl mvx:overflow-hidden mvx:max-w-100',
 } satisfies Record<string, string>;
 
 const renderSlottedContent = (status: `${TransactionStatusEnum}`) => (
-  <mvx-transaction-toast-content transactions={createTransactions(1, status)} toastDataState={createToastDataState(status)} />
+  <mvx-transaction-toast-content
+    transactions={createTransactions(1, status)}
+    toastDataState={createToastDataState(status)}
+  />
 );
 
 const storySettings: Meta<ToastProgress> = {

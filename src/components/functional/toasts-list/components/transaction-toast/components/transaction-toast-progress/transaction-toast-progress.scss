@@ -34,7 +34,7 @@
 
 .mvx-transaction-toast-bar-wrapper {
   @apply mvx:absolute mvx:left-1 mvx:right-1 mvx:flex mvx:overflow-hidden mvx:pointer-events-none mvx:h-1 mvx:opacity-100 mvx:transition-opacity mvx:duration-300 mvx:ease-in mvx:m-0;
-  bottom: 1px;
+  bottom: 0.5px;
   left: 1px;
   right: 1px;
   background: var(--mvx-progress-color);

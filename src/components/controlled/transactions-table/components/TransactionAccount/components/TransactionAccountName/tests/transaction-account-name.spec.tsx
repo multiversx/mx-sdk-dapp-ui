@@ -33,22 +33,22 @@ describe('TransactionAccountName tests', () => {
 
     expect(page.root).toEqualHtml(`
       <div class="mvx:flex mvx:max-w-full mvx:overflow-hidden mvx:relative mvx:truncate mvx:w-max mvx:whitespace-nowrap transaction-account-name trim" data-testid="${DataTestIdsEnum.trim}">
-        <div class="mvx:absolute mvx:leading-5 mvx:text-transparent trim-full" data-testid="${DataTestIdsEnum.trimFullAddress}">
+        <div class="mvx:absolute mvx:text-transparent trim-full" data-testid="${DataTestIdsEnum.trimFullAddress}">
           erd1q...
         </div>
         <div class="mvx:hidden trim-wrapper">
           <div class="mvx:flex-shrink mvx:overflow-hidden mvx:text-[1px] mvx:text-ellipsis mvx:text-left trim-left-wrapper">
-            <div class="mvx:-webkit-letter-spacing mvx:inline mvx:leading-5 mvx:pointer-events-none mvx:select-none mvx:text-base trim-left" style="font-size: 1rem;">
+            <div class="mvx:-webkit-letter-spacing mvx:inline mvx:pointer-events-none mvx:select-none trim-left" style="font-size: 1rem;">
               erd1
             </div>
           </div>
           <div class="mvx:block mvx:flex-shrink-0 mvx:pointer-events-none mvx:select-none trim-ellipsis-wrapper">
-            <div class="mvx:block mvx:leading-5 trim-ellipsis">
+            <div class="mvx:block trim-ellipsis">
               ...
             </div>
           </div>
           <div class="mvx:flex-shrink mvx:overflow-hidden mvx:text-[1px] mvx:text-ellipsis mvx:text-right mvx:whitespace-nowrap trim-right-wrapper" style="direction: rtl;">
-            <div class="mvx:-webkit-letter-spacing mvx:inline mvx:leading-5 mvx:pointer-events-none mvx:select-none mvx:text-base mvx:text-clip trim-right" style="font-size: 1rem;">
+            <div class="mvx:-webkit-letter-spacing mvx:inline mvx:pointer-events-none mvx:select-none mvx:text-clip trim-right" style="font-size: 1rem;">
               q...
             </div>
           </div>
@@ -65,22 +65,22 @@ describe('TransactionAccountName tests', () => {
 
     expect(page.root).toEqualHtml(`
       <div class="mvx:flex mvx:max-w-full mvx:overflow-hidden mvx:relative mvx:truncate mvx:w-max mvx:whitespace-nowrap transaction-account-name trim" data-testid="${DataTestIdsEnum.trim}">
-        <div class="mvx:absolute mvx:leading-5 mvx:text-transparent trim-full" data-testid="${DataTestIdsEnum.trimFullAddress}">
+        <div class="mvx:absolute mvx:text-transparent trim-full" data-testid="${DataTestIdsEnum.trimFullAddress}">
           erd1q...
         </div>
         <div class="mvx:hidden trim-wrapper">
           <div class="mvx:flex-shrink mvx:overflow-hidden mvx:text-[1px] mvx:text-ellipsis mvx:text-left trim-left-wrapper">
-            <div class="mvx:-webkit-letter-spacing mvx:inline mvx:leading-5 mvx:pointer-events-none mvx:select-none mvx:text-base trim-left" style="font-size: 1rem;">
+            <div class="mvx:-webkit-letter-spacing mvx:inline mvx:pointer-events-none mvx:select-none trim-left" style="font-size: 1rem;">
               erd1
             </div>
           </div>
           <div class="mvx:block mvx:flex-shrink-0 mvx:pointer-events-none mvx:select-none trim-ellipsis-wrapper">
-            <div class="mvx:block mvx:leading-5 trim-ellipsis">
+            <div class="mvx:block trim-ellipsis">
               ...
             </div>
           </div>
           <div class="mvx:flex-shrink mvx:overflow-hidden mvx:text-[1px] mvx:text-ellipsis mvx:text-right mvx:whitespace-nowrap trim-right-wrapper" style="direction: rtl;">
-            <div class="mvx:-webkit-letter-spacing mvx:inline mvx:leading-5 mvx:pointer-events-none mvx:select-none mvx:text-base mvx:text-clip trim-right" style="font-size: 1rem;">
+            <div class="mvx:-webkit-letter-spacing mvx:inline mvx:pointer-events-none mvx:select-none mvx:text-clip trim-right" style="font-size: 1rem;">
               q...
             </div>
           </div>

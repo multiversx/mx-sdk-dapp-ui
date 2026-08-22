@@ -1,5 +1,5 @@
 .mvx-transaction-toast-content-wrapper {
-  @apply mvx:relative mvx:flex mvx:p-3 mvx:flex-col mvx:items-start mvx:gap-1 mvx:rounded-xl mvx:backdrop-blur-2xl mvx:max-w-100;
+  @apply mvx:relative mvx:flex mvx:px-3 mvx:pt-3 mvx:pb-4 mvx:flex-col mvx:items-start mvx:gap-1 mvx:rounded-xl mvx:backdrop-blur-2xl mvx:max-w-100;
   border: 1px solid var(--mvx-border-color-tertiary);
   background: var(--mvx-bg-color-primary);
   color: var(--mvx-text-color-primary);
@@ -96,6 +96,22 @@
 .mvx-transaction-toast-details-info-text {
   @apply mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight mvx:max-w-40;
   color: var(--mvx-text-color-secondary);
+
+  // The shared Trim hardcodes `leading-5` on its inner nodes and renders the two
+  // halves inside a `text-[1px]` wrapper, whose strut sits below the 14px inline
+  // box and pushes the row to ~23px. Pin every inner line box to the 16px row.
+  .trim-full,
+  .trim-full-visible,
+  .trim-ellipsis,
+  .trim-left,
+  .trim-right {
+    @apply mvx:leading-4;
+  }
+
+  .trim-left-wrapper,
+  .trim-right-wrapper {
+    @apply mvx:leading-none;
+  }
 }
 
 .mvx-transaction-toast-details-info-icon {
