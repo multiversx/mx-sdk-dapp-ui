@@ -18,10 +18,6 @@ const config: StorybookConfig = {
     name: '@stencil/storybook-plugin',
   },
   viteFinal: async viteConfig => {
-    viteConfig.plugins = (viteConfig.plugins ?? []).filter(
-      plugin => !(plugin && 'name' in plugin && plugin.name === 'unplugin-stencil'),
-    );
-
     viteConfig.resolve = {
       ...viteConfig.resolve,
       alias: [...sourceAliases, ...(Array.isArray(viteConfig.resolve?.alias) ? viteConfig.resolve.alias : [])],

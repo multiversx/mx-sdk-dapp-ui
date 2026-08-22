@@ -197,16 +197,24 @@ work directly; there is no JSON-in-a-`data-` attribute workaround any more.
 `defineCustomElements()`, which is why `storybook-dev` runs a full `pnpm build` first and why source
 edits need a rebuild + restart before they show up.
 
-`.storybook/main.ts` does two things beyond naming the framework, both load-bearing:
+`.storybook/main.ts` **aliases every top-level `src/` directory**, and that is load-bearing.
+`tsconfig.json` sets `baseUrl: ./src`, but Vite does not read `baseUrl`, so bare specifiers
+(`utils/EventBus`, `common/Icon`) need explicit aliases. Type-only imports are erased and never
+needed them; stories importing real values do.
 
-- **It strips `unplugin-stencil`** from the Vite config. The framework preset injects it to compile
-  components from source, which we do not need — and its `resolveId` hook rewrites *every* relative
-  specifier in the graph, with no importer check, to a same-named file under `dist/web-components`
-  when one exists. That silently hands `@vitest/mocker`'s `./index.js` our
-  `dist/web-components/index.js` and fails the build.
-- **It aliases every top-level `src/` directory.** `tsconfig.json` sets `baseUrl: ./src`, but Vite
-  does not read `baseUrl`, so bare specifiers (`utils/EventBus`, `common/Icon`) need explicit
-  aliases. Type-only imports are erased and never needed them; stories importing real values do.
+`.storybook/tsconfig.json` is equally load-bearing: it sets `jsx: react` + `jsxFactory: h` for
+`.storybook/*.tsx`. The root `tsconfig.json` only covers `include: ["src"]`, and Vite 8's transform
+**ignores the `/** @jsx h *\/` pragma**, so without this file `.storybook/preview.tsx` compiles
+against the automatic React runtime. Its global theme decorator then wraps every story in a React
+element, Stencil's `render()` rejects it with `Invalid vNode child`, and *all* stories render blank
+while the build still reports success. Only a browser check catches this — see "Verifying a change".
+
+Storybook 10's framework preset appends `@stencil-community/unplugin-stencil` (renamed from
+`unplugin-stencil` in `@stencil/storybook-plugin` 0.7.0) *after* `main.ts`'s `viteFinal` runs, so it
+can no longer be stripped there. It no longer needs to be: on Storybook 10 its importer-less
+`resolveId` hook — which rewrites every relative specifier to a same-named file under
+`dist/web-components` — no longer breaks `@vitest/mocker`, and the build and all stories are clean
+with the plugin left in place.
 
 Conventions (see `copy-button.stories.tsx` for the cleanest example): author in Stencil JSX with
 `import { h } from '@stencil/core'`; type against the component class,
@@ -246,6 +254,15 @@ toggle switches them). Storybook builds its own global
 `.storybook/tailwind.css`, which reaches light-DOM components but **cannot cross a shadow boundary** —
 shadow components depend entirely on their own emitted CSS. Storybook serves the built `dist/`, so
 restart it after rebuilding.
+
+`storybook build` succeeding proves nothing about whether stories **render** — a JSX-factory or
+runtime mismatch leaves `#storybook-root` holding an empty `<div>` while the build reports success.
+After touching Storybook, Vite or `@stencil/*` versions, load a handful of stories in a browser and
+confirm the `mvx-*` elements actually hydrated (a non-empty `shadowRoot`). `pnpm test` does not
+cover this: `stencil test` runs Jest and never touches the Storybook/Vite path.
+
+Two known non-regressions when you do: the six `Visual/Pagination` stories do not hydrate, and the
+`Panels/SignTransactionsPanel` stories log a 404. Both predate the Storybook 10 migration.
 
 ## Changelog
 
