@@ -25,7 +25,8 @@ const styles = {
 
 const storySettings: Meta<DataWithExplorerLink> = {
   tags: ['autodocs'],
-  title: 'Components/DataWithExplorerLink',
+  title: 'Visual/DataWithExplorerLink',
+  component: 'mvx-data-with-explorer-link',
   args: {
     data: 'erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3zpz3hypefsdd8ssycr6th',
     explorerLink: `${DEVNET_EXPLORER_URL}/accounts/erd1qyu5wthldzr8wx5c9ucg8kjagg0jfs53s8nr3zpz3hypefsdd8ssycr6th`,

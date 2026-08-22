@@ -166,6 +166,53 @@ Pitfalls:
 - Test selectors should target `data-testid` (`DataTestIdsEnum`) or `mvx-` prefixed class names.
   Non-prefixed class selectors in tests are stale.
 
+## Storybook
+
+Framework: **`@stencil/storybook-plugin`** (not `@storybook/html-vite`). Its `renderToCanvas` calls
+Stencil's own `render(vdom, element)`, so stories build real DOM — non-primitive values are assigned
+as DOM **properties** and `on*` handlers as listeners. Object, array and function props therefore
+work directly; there is no JSON-in-a-`data-` attribute workaround any more.
+
+`.storybook/preview.tsx` registers components from the prebuilt `dist/web-components` bundle via
+`defineCustomElements()`, which is why `storybook-dev` runs a full `pnpm build` first and why source
+edits need a rebuild + restart before they show up.
+
+`.storybook/main.ts` does two things beyond naming the framework, both load-bearing:
+
+- **It strips `unplugin-stencil`** from the Vite config. The framework preset injects it to compile
+  components from source, which we do not need — and its `resolveId` hook rewrites *every* relative
+  specifier in the graph, with no importer check, to a same-named file under `dist/web-components`
+  when one exists. That silently hands `@vitest/mocker`'s `./index.js` our
+  `dist/web-components/index.js` and fails the build.
+- **It aliases every top-level `src/` directory.** `tsconfig.json` sets `baseUrl: ./src`, but Vite
+  does not read `baseUrl`, so bare specifiers (`utils/EventBus`, `common/Icon`) need explicit
+  aliases. Type-only imports are erased and never needed them; stories importing real values do.
+
+Conventions (see `copy-button.stories.tsx` for the cleanest example): author in Stencil JSX with
+`import { h } from '@stencil/core'`; type against the component class,
+`Meta<T>` / `StoryObj<T>` from `@stencil/storybook-plugin`; set `component: 'mvx-<tag>'` (the string
+form, since components are lazily registered); keep a `// prettier-ignore` `styles` map of
+`mvx:`-prefixed utilities; `export default storySettings` last. Titles group as `Visual/`,
+`Controlled/`, `Toasts/`, `Panels/`.
+
+**Functional components** take no data props. Drive them from a `play` function with `publishTo`
+(`src/components/functional/toasts-list/tests/mocks/eventBusHarness.ts`), which awaits
+`getEventBus()` — itself gated on `ConnectionMonitor`, so it cannot race hydration. Shared fixtures
+live in `tests/mocks/` folders; Stencil keeps `tests/` out of `dist/types`, so they are linted and
+type-checked without shipping.
+
+Two traps worth knowing:
+
+- **A vNode cannot be passed as a prop from a story.** Stories bundle their own copy of the Stencil
+  runtime while components carry the one baked into `dist/web-components`; a vNode built by one is
+  rejected by the other with `Invalid vNode child`, rendering nothing. `mvx-tooltip`'s `trigger` is
+  declared `HTMLElement` but really wants a vNode child — inside the library it is given JSX, while
+  stories must pass a plain string. The same caution applies to
+  `processedTransactionsStatus: string | JSX.Element`; use the string form in stories.
+- **`mvx-transaction-toast-progress` remembers finished toast ids in module scope**, so reusing a
+  `toastId` renders an already-complete bar on a second visit. Generate a fresh one per story
+  (`uniqueToastId`). Its `startTime`/`endTime` are UNIX **seconds**, not milliseconds.
+
 ## Verifying a change
 
 ```bash
@@ -174,7 +221,8 @@ pnpm build      # includes assert:css
 pnpm test       # needs chrome-headless-shell for the e2e suites
 ```
 
-For visual changes, `pnpm storybook-dev` and compare on :6006. Storybook builds its own global
+For visual changes, `pnpm storybook-dev` and compare on :6006, in **both** themes (the background
+toggle switches them). Storybook builds its own global
 `.storybook/tailwind.css`, which reaches light-DOM components but **cannot cross a shadow boundary** —
 shadow components depend entirely on their own emitted CSS. Storybook serves the built `dist/`, so
 restart it after rebuilding.

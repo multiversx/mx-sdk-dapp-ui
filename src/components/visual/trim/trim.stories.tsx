@@ -25,7 +25,8 @@ const styles = {
 
 const storySettings: Meta<Trim> = {
   tags: ['autodocs'],
-  title: 'Components/Trim',
+  title: 'Visual/Trim',
+  component: 'mvx-trim',
   args: {
     text: 'This is a long text that might need to be trimmed when the container is too narrow',
   },
