@@ -100,8 +100,8 @@ export class TransactionToastContent {
                   label={amount.label}
                   valueDecimal={amount.amountDecimal}
                   valueInteger={amount.amountInteger}
-                  labelClass="transaction-amount-label"
-                  decimalClass="transaction-amount-decimal"
+                  labelClass="mvx-transaction-amount-label"
+                  decimalClass="mvx-transaction-amount-decimal"
                 />
               )}
             </div>

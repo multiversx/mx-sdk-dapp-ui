@@ -260,7 +260,7 @@ export namespace Components {
         "link": string;
         "status"?: `${TransactionStatusEnum}`;
         /**
-          * @default 'transaction-details-list-item'
+          * @default 'mvx-transaction-details-list-item'
          */
         "transactionClass"?: string;
     }
@@ -1097,7 +1097,7 @@ declare namespace LocalJSX {
         "link"?: string;
         "status"?: `${TransactionStatusEnum}`;
         /**
-          * @default 'transaction-details-list-item'
+          * @default 'mvx-transaction-details-list-item'
          */
         "transactionClass"?: string;
     }

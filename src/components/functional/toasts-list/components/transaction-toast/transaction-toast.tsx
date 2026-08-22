@@ -39,6 +39,7 @@ export class TransactionToast {
           startTime={this.transactionProgressState?.startTime}
           endTime={this.transactionProgressState?.endTime}
           isStatusPending={isStatusPending}
+          fullWidth={this.fullWidth}
         >
           <mvx-transaction-toast-content
             fullWidth={this.fullWidth}
