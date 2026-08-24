@@ -23,9 +23,9 @@ export function TransactionIcon({ iconInfo, class: className }: TransactionIconP
   return (
     <Icon
       class={{
-        [styles.transactionIconError]: iconInfo.icon === IconNamesEnum.ban,
+        [styles.transactionIconError]: iconInfo.icon === IconNamesEnum.fail,
         [styles.transactionIconPending]: iconInfo.icon === IconNamesEnum.hourglass,
-        [className]: Boolean(className),
+        [String(className)]: Boolean(className),
       }}
       name={iconInfo.icon}
     />

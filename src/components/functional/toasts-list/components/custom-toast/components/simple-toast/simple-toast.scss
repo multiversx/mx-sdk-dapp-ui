@@ -9,7 +9,9 @@
 }
 
 .mvx-content-icon {
-  @apply mvx:rounded-full mvx:w-5 mvx:flex mvx:items-center mvx:justify-center mvx:h-5;
+  @apply mvx:rounded-full mvx:flex mvx:items-center mvx:justify-center mvx:w-5 mvx:h-5 mvx:min-w-5 mvx:min-h-5;
+
+  margin-top: calc(var(--mvx-spacing) / 2);
 
   svg,
   img,
@@ -43,7 +45,6 @@
 
 .mvx-content-heading-title {
   @apply mvx:text-base mvx:font-bold mvx:m-0;
-  margin-top: calc(var(--mvx-spacing) / -2);
   color: var(--mvx-text-color-primary);
 }
 

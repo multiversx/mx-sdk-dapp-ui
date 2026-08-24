@@ -9,7 +9,7 @@ import { getIsTransactionFailed } from 'utils/getTransactionStatus';
 const iconData: Record<string, IconNamesEnum> = {
   pending: IconNamesEnum.hourglass,
   success: IconNamesEnum.circleCheck,
-  fail: IconNamesEnum.ban,
+  fail: IconNamesEnum.fail,
   invalid: IconNamesEnum.ban,
 };
 
