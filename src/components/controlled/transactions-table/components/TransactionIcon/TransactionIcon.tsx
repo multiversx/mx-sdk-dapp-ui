@@ -23,7 +23,7 @@ export function TransactionIcon({ iconInfo, class: className }: TransactionIconP
   return (
     <Icon
       class={{
-        [styles.transactionIconError]: iconInfo.icon === IconNamesEnum.close,
+        [styles.transactionIconError]: iconInfo.icon === IconNamesEnum.ban,
         [styles.transactionIconPending]: iconInfo.icon === IconNamesEnum.hourglass,
         [className]: Boolean(className),
       }}

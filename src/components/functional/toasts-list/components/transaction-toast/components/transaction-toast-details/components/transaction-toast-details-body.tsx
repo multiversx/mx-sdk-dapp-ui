@@ -8,9 +8,9 @@ import { getIsTransactionFailed } from 'utils/getTransactionStatus';
 
 const iconData: Record<string, IconNamesEnum> = {
   pending: IconNamesEnum.hourglass,
-  success: IconNamesEnum.check,
-  fail: IconNamesEnum.close,
-  invalid: IconNamesEnum.close,
+  success: IconNamesEnum.circleCheck,
+  fail: IconNamesEnum.ban,
+  invalid: IconNamesEnum.ban,
 };
 
 const transactionToastDetailsBodyClasses: Record<string, string> = {

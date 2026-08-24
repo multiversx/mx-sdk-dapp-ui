@@ -32,6 +32,20 @@ const pendingToast = () =>
     processedTransactionsStatus: 'Processing transaction',
   });
 
+const failedToast = () =>
+  createTransactionToast({
+    toastId: uniqueToastId('feed-failed'),
+    transactions: createTransactions(1, TransactionStatusEnum.fail),
+    toastDataState: createToastDataState(TransactionStatusEnum.fail),
+    processedTransactionsStatus: 'Transaction failed',
+  });
+
+/** Activity list where one of the entries failed, so both statuses are rendered side by side. */
+const historyWithFailure = (count: number) =>
+  createTransactions(count).map((transaction, index) =>
+    index === 2 ? { ...transaction, status: TransactionStatusEnum.fail } : transaction,
+  );
+
 const storySettings: Meta = {
   tags: ['autodocs'],
   title: 'Panels/NotificationsFeed',
@@ -53,13 +67,13 @@ const storySettings: Meta = {
 
 export const PendingAndHistory: StoryObj = {
   play: openWith([
-    [NotificationsFeedEventsEnum.PENDING_TRANSACTIONS_UPDATE, [pendingToast()]],
-    [NotificationsFeedEventsEnum.TRANSACTIONS_HISTORY_UPDATE, createTransactions(6)],
+    [NotificationsFeedEventsEnum.PENDING_TRANSACTIONS_UPDATE, [pendingToast(), failedToast()]],
+    [NotificationsFeedEventsEnum.TRANSACTIONS_HISTORY_UPDATE, historyWithFailure(6)],
   ]),
 };
 
 export const HistoryOnly: StoryObj = {
-  play: openWith([[NotificationsFeedEventsEnum.TRANSACTIONS_HISTORY_UPDATE, createTransactions(8)]]),
+  play: openWith([[NotificationsFeedEventsEnum.TRANSACTIONS_HISTORY_UPDATE, historyWithFailure(8)]]),
 };
 
 export const PendingOnly: StoryObj = {

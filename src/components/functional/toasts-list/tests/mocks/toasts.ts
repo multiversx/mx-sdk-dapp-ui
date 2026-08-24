@@ -60,7 +60,12 @@ export const createToastDataState = (status: `${TransactionStatusEnum}`): IToast
       };
     case TransactionStatusEnum.fail:
     case TransactionStatusEnum.invalid:
-      return { title: 'Transaction failed', icon: IconNamesEnum.close, iconClassName: 'danger', hasCloseButton: true };
+      return {
+        title: 'Transaction failed',
+        icon: IconNamesEnum.ban,
+        iconClassName: 'danger',
+        hasCloseButton: true,
+      };
     default:
       return {
         title: 'Processing transaction',

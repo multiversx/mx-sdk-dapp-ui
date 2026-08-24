@@ -5,7 +5,7 @@ export default {
     transactionIconFailed: 'transaction-icon-failed mvx:text-error',
     transactionIconImg: 'transaction-icon-img mvx:w-full mvx:h-full mvx:object-cover',
     transactionIconText: 'transaction-icon-text mvx:text-xl mvx:w-10 mvx:h-10 mvx:text-primary',
-    transactionIconSvg: 'transaction-icon-svg mvx:w-8 mvx:h-8 mvx:text-primary',
+    transactionIconSvg: 'transaction-icon-svg mvx:w-8 mvx:h-8',
     transactionDetails: 'transaction-details mvx:flex-1 mvx:min-w-0',
     transactionDetailsHeader: 'transaction-details-header mvx:flex mvx:items-center mvx:justify-between',
     transactionHeaderLeft: 'transaction-header-left mvx:flex mvx:gap-1 mvx:items-center mvx:justify-center mvx:fill-link',

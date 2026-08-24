@@ -56,7 +56,7 @@
 }
 
 .mvx-transaction-toast-title {
-  @apply mvx:text-sm mvx:font-bold mvx:leading-5;
+  @apply mvx:text-sm mvx:font-bold mvx:leading-5 mvx:mb-0;
   color: var(--mvx-text-color-primary);
 }
 
