@@ -19,18 +19,21 @@
     @apply mvx:w-4 mvx:h-4;
   }
 
-  &.success {
+  &.success,
+  &.mvx-toast-success {
     color: var(--mvx-success-color);
     background: var(--mvx-success-bg-color);
   }
 
   &.pending,
-  &.warning {
+  &.warning,
+  &.mvx-toast-pending {
     color: var(--mvx-pending-color);
     background: var(--mvx-pending-bg-color);
   }
 
-  &.danger {
+  &.danger,
+  &.mvx-toast-danger {
     color: var(--mvx-error-color);
     background: var(--mvx-error-bg-color);
   }

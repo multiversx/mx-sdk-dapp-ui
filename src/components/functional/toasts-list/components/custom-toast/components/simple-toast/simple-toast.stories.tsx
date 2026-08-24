@@ -48,7 +48,7 @@ export const IconVariants: StoryObj<SimpleToast> = {
       <mvx-simple-toast
         toast={createSimpleToast({
           icon: IconNamesEnum.circleCheck,
-          iconClassName: 'success',
+          iconClassName: 'mvx-toast-success',
           title: 'Success',
           message: 'The operation completed.',
         })}
@@ -57,7 +57,7 @@ export const IconVariants: StoryObj<SimpleToast> = {
       <mvx-simple-toast
         toast={createSimpleToast({
           icon: IconNamesEnum.hourglass,
-          iconClassName: 'pending',
+          iconClassName: 'mvx-toast-pending',
           title: 'Warning',
           message: 'This is taking longer than usual.',
         })}
@@ -66,7 +66,7 @@ export const IconVariants: StoryObj<SimpleToast> = {
       <mvx-simple-toast
         toast={createSimpleToast({
           icon: IconNamesEnum.triangularWarning,
-          iconClassName: 'danger',
+          iconClassName: 'mvx-toast-danger',
           title: 'Danger',
           message: 'Something went wrong.',
         })}

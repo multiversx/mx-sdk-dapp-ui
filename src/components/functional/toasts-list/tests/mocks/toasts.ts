@@ -55,7 +55,7 @@ export const createToastDataState = (status: `${TransactionStatusEnum}`): IToast
       return {
         title: 'Transaction successful',
         icon: IconNamesEnum.circleCheck,
-        iconClassName: 'success',
+        iconClassName: 'mvx-toast-success',
         hasCloseButton: true,
       };
     case TransactionStatusEnum.fail:
@@ -63,14 +63,14 @@ export const createToastDataState = (status: `${TransactionStatusEnum}`): IToast
       return {
         title: 'Transaction failed',
         icon: IconNamesEnum.fail,
-        iconClassName: 'danger',
+        iconClassName: 'mvx-toast-danger',
         hasCloseButton: true,
       };
     default:
       return {
         title: 'Processing transaction',
         icon: IconNamesEnum.hourglass,
-        iconClassName: 'pending',
+        iconClassName: 'mvx-toast-pending',
         hasCloseButton: false,
       };
   }
@@ -100,7 +100,7 @@ export const createProgressState = (durationInSeconds = 30, isCrossShard = false
 export const createSimpleToast = (overrides: Partial<ISimpleToast> = {}): ISimpleToast => ({
   toastId: uniqueToastId('simple-toast'),
   icon: IconNamesEnum.circleInfo,
-  iconClassName: 'success',
+  iconClassName: 'mvx-toast-success',
   title: 'Custom toast',
   message: 'This is a custom toast message.',
   hasCloseButton: true,
