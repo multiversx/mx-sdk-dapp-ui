@@ -27,7 +27,8 @@
 
   &.pending,
   &.warning,
-  &.mvx-toast-pending {
+  &.mvx-toast-pending,
+  &.mvx-toast-warning {
     color: var(--mvx-pending-color);
     background: var(--mvx-pending-bg-color);
   }
