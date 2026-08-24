@@ -53,22 +53,22 @@ describe('TransactionHash tests', () => {
         </svg>
         <a class="explorer-link mvx:decoration-0 mvx:flex mvx:text-primary! transaction-hash-explorer-link" data-testid="transactionLink" href="https://example.com/tx/123" rel="noreferrer" target="_blank">
           <div class="mvx:flex mvx:max-w-full mvx:overflow-hidden mvx:relative mvx:whitespace-nowrap trim" data-testid="trim">
-            <div class="mvx:absolute mvx:leading-5 mvx:text-transparent trim-full" data-testid="trimFullAddress">
+            <div class="mvx:absolute mvx:text-transparent trim-full" data-testid="trimFullAddress">
               0x123456789abcdef
             </div>
             <div class="mvx:hidden trim-wrapper">
               <div class="mvx:flex-shrink mvx:overflow-hidden mvx:text-[1px] mvx:text-ellipsis mvx:text-left trim-left-wrapper">
-                <div class="mvx:-webkit-letter-spacing mvx:inline mvx:leading-5 mvx:pointer-events-none mvx:select-none mvx:text-base trim-left" style="font-size: 1rem;">
+                <div class="mvx:-webkit-letter-spacing mvx:inline mvx:pointer-events-none mvx:select-none trim-left" style="font-size: 1rem;">
                   0x123456
                 </div>
               </div>
               <div class="mvx:block mvx:flex-shrink-0 mvx:pointer-events-none mvx:select-none trim-ellipsis-wrapper">
-                <div class="mvx:block mvx:leading-5 trim-ellipsis">
+                <div class="mvx:block trim-ellipsis">
                   ...
                 </div>
               </div>
               <div class="mvx:flex-shrink mvx:overflow-hidden mvx:text-[1px] mvx:text-ellipsis mvx:text-right mvx:whitespace-nowrap trim-right-wrapper" style="direction: rtl;">
-                <div class="mvx:-webkit-letter-spacing mvx:inline mvx:leading-5 mvx:pointer-events-none mvx:select-none mvx:text-base mvx:text-clip trim-right" style="font-size: 1rem;">
+                <div class="mvx:-webkit-letter-spacing mvx:inline mvx:pointer-events-none mvx:select-none mvx:text-clip trim-right" style="font-size: 1rem;">
                   789abcdef
                 </div>
               </div>
@@ -114,22 +114,22 @@ describe('TransactionHash tests', () => {
       </svg>
         <a class="explorer-link mvx:decoration-0 mvx:flex mvx:text-primary! transaction-hash-explorer-link" data-testid="transactionLink" href="https://example.com/tx/initial" rel="noreferrer" target="_blank">
           <div class="mvx:flex mvx:max-w-full mvx:overflow-hidden mvx:relative mvx:whitespace-nowrap trim" data-testid="trim">
-            <div class="mvx:absolute mvx:leading-5 mvx:text-transparent trim-full" data-testid="trimFullAddress">
+            <div class="mvx:absolute mvx:text-transparent trim-full" data-testid="trimFullAddress">
               0xInitialHash
             </div>
             <div class="mvx:hidden trim-wrapper">
               <div class="mvx:flex-shrink mvx:overflow-hidden mvx:text-[1px] mvx:text-ellipsis mvx:text-left trim-left-wrapper">
-                <div class="mvx:-webkit-letter-spacing mvx:inline mvx:leading-5 mvx:pointer-events-none mvx:select-none mvx:text-base trim-left" style="font-size: 1rem;">
+                <div class="mvx:-webkit-letter-spacing mvx:inline mvx:pointer-events-none mvx:select-none trim-left" style="font-size: 1rem;">
                   0xInit
                 </div>
               </div>
               <div class="mvx:block mvx:flex-shrink-0 mvx:pointer-events-none mvx:select-none trim-ellipsis-wrapper">
-                <div class="mvx:block mvx:leading-5 trim-ellipsis">
+                <div class="mvx:block trim-ellipsis">
                   ...
                 </div>
               </div>
               <div class="mvx:flex-shrink mvx:overflow-hidden mvx:text-[1px] mvx:text-ellipsis mvx:text-right mvx:whitespace-nowrap trim-right-wrapper" style="direction: rtl;">
-                <div class="mvx:-webkit-letter-spacing mvx:inline mvx:leading-5 mvx:pointer-events-none mvx:select-none mvx:text-base mvx:text-clip trim-right" style="font-size: 1rem;">
+                <div class="mvx:-webkit-letter-spacing mvx:inline mvx:pointer-events-none mvx:select-none mvx:text-clip trim-right" style="font-size: 1rem;">
                   ialHash
                 </div>
               </div>
@@ -175,22 +175,22 @@ describe('TransactionHash tests', () => {
          </svg>
          <a class="explorer-link mvx:decoration-0 mvx:flex mvx:text-primary! transaction-hash-explorer-link" data-testid="transactionLink" href="https://example.com/tx/updated" rel="noreferrer" target="_blank">
            <div class="mvx:flex mvx:max-w-full mvx:overflow-hidden mvx:relative mvx:whitespace-nowrap trim" data-testid="trim">
-             <div class="mvx:absolute mvx:leading-5 mvx:text-transparent trim-full" data-testid="trimFullAddress">
+             <div class="mvx:absolute mvx:text-transparent trim-full" data-testid="trimFullAddress">
                0xUpdatedHash
              </div>
              <div class="mvx:hidden trim-wrapper">
                <div class="mvx:flex-shrink mvx:overflow-hidden mvx:text-[1px] mvx:text-ellipsis mvx:text-left trim-left-wrapper">
-                 <div class="mvx:-webkit-letter-spacing mvx:inline mvx:leading-5 mvx:pointer-events-none mvx:select-none mvx:text-base trim-left" style="font-size: 1rem;">
+                 <div class="mvx:-webkit-letter-spacing mvx:inline mvx:pointer-events-none mvx:select-none trim-left" style="font-size: 1rem;">
                    0xUpda
                  </div>
                </div>
                <div class="mvx:block mvx:flex-shrink-0 mvx:pointer-events-none mvx:select-none trim-ellipsis-wrapper">
-                 <div class="mvx:block mvx:leading-5 trim-ellipsis">
+                 <div class="mvx:block trim-ellipsis">
                    ...
                  </div>
                </div>
                <div class="mvx:flex-shrink mvx:overflow-hidden mvx:text-[1px] mvx:text-ellipsis mvx:text-right mvx:whitespace-nowrap trim-right-wrapper" style="direction: rtl;">
-                 <div class="mvx:-webkit-letter-spacing mvx:inline mvx:leading-5 mvx:pointer-events-none mvx:select-none mvx:text-base mvx:text-clip trim-right" style="font-size: 1rem;">
+                 <div class="mvx:-webkit-letter-spacing mvx:inline mvx:pointer-events-none mvx:select-none mvx:text-clip trim-right" style="font-size: 1rem;">
                    tedHash
                  </div>
                </div>

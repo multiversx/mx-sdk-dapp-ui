@@ -9,7 +9,9 @@
 }
 
 .mvx-content-icon {
-  @apply mvx:rounded-full mvx:w-5 mvx:flex mvx:items-center mvx:justify-center mvx:h-5;
+  @apply mvx:rounded-full mvx:flex mvx:items-center mvx:justify-center mvx:w-5 mvx:h-5 mvx:min-w-5 mvx:min-h-5;
+
+  margin-top: calc(var(--mvx-spacing) / 2);
 
   svg,
   img,
@@ -17,17 +19,22 @@
     @apply mvx:w-4 mvx:h-4;
   }
 
-  &.success {
+  &.success,
+  &.mvx-toast-success {
     color: var(--mvx-success-color);
     background: var(--mvx-success-bg-color);
   }
 
-  &.warning {
+  &.pending,
+  &.warning,
+  &.mvx-toast-pending,
+  &.mvx-toast-warning {
     color: var(--mvx-pending-color);
     background: var(--mvx-pending-bg-color);
   }
 
-  &.danger {
+  &.danger,
+  &.mvx-toast-danger {
     color: var(--mvx-error-color);
     background: var(--mvx-error-bg-color);
   }

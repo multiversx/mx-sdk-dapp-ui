@@ -14,7 +14,8 @@ const styles = {
 
 const storySettings: Meta<Button> = {
   tags: ['autodocs'],
-  title: 'Components/Button',
+  title: 'Visual/Button',
+  component: 'mvx-button',
   args: { variant: 'primary', size: 'large', disabled: false },
   argTypes: {
     variant: { control: { type: 'select' }, options: Object.values(ButtonVariantEnum) },

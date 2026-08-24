@@ -58,7 +58,8 @@ type AddressTableStoryArgs = {
 
 const storySettings: Meta<AddressTableStoryArgs> = {
   tags: ['autodocs'],
-  title: 'Components/AddressTable',
+  title: 'Visual/AddressTable',
+  component: 'mvx-address-table',
   args: {
     accountScreenData: exampleAccountScreenData,
     selectedIndex: exampleAccountScreenData.accounts[0].index,
@@ -74,7 +75,7 @@ export const Default: StoryObj<AddressTableStoryArgs> = {
     <div class={styles.addressTableStoriesWrapper}>
       <div class={styles.addressTableStoriesContainer}>
         <mvx-address-table
-          data-account-screen-data={JSON.stringify(properties.accountScreenData ?? exampleAccountScreenData)}
+          accountScreenData={properties.accountScreenData ?? exampleAccountScreenData}
           selectedIndex={properties.selectedIndex}
         />
       </div>
@@ -87,10 +88,10 @@ export const PageChanging: StoryObj<AddressTableStoryArgs> = {
     <div class={styles.addressTableStoriesWrapper}>
       <div class={styles.addressTableStoriesContainer}>
         <mvx-address-table
-          data-account-screen-data={JSON.stringify({
+          accountScreenData={{
             ...exampleAccountScreenData,
             isLoading: true,
-          })}
+          }}
           selectedIndex={properties.selectedIndex}
         />
       </div>
@@ -103,11 +104,11 @@ export const InitialLoadingIntro: StoryObj<AddressTableStoryArgs> = {
     <div class={styles.addressTableStoriesWrapper}>
       <div class={styles.addressTableStoriesContainer}>
         <mvx-address-table
-          data-account-screen-data={JSON.stringify({
+          accountScreenData={{
             ...exampleAccountScreenData,
             accounts: [],
             isLoading: true,
-          })}
+          }}
           selectedIndex={properties.selectedIndex}
         />
       </div>

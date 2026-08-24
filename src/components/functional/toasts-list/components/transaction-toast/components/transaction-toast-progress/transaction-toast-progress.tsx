@@ -19,6 +19,7 @@ export class ToastProgress {
   @Prop() endTime?: number;
   @Prop() isStatusPending?: boolean;
   @Prop() toastId?: string;
+  @Prop() fullWidth?: boolean;
 
   @State() currentTimestamp: number = Date.now() / 1000;
   @State() hasTimeElapsed: boolean = false;
@@ -148,7 +149,13 @@ export class ToastProgress {
   render() {
     return (
       <Fragment>
-        <div class="mvx-transaction-toast-bar-wrapper" style={{ opacity: this.hasTimeElapsed ? '0' : '1' }}>
+        <div
+          class={{
+            'mvx-transaction-toast-bar-wrapper': true,
+            'mvx:max-w-100': !this.fullWidth,
+          }}
+          style={{ opacity: this.hasTimeElapsed ? '0' : '1' }}
+        >
           <div
             class="mvx-transaction-toast-bar-fixed"
             style={{

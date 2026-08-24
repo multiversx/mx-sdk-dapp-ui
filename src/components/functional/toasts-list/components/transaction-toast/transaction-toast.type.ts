@@ -1,5 +1,5 @@
 // match these interfaces with src/path-to-file.type.ts from sdk-dapp
-import type { JSX } from '@stencil/core';
+import type { VNode } from '@stencil/core';
 import type { IconNamesEnum } from 'common/Icon/icon.types';
 import type { ITransactionListItem } from 'components/functional/notifications-feed/components/TransactionListItem/transactionListItem.types';
 export interface ITransactionProgressState {
@@ -19,7 +19,7 @@ export interface IToastDataState {
 export interface ITransactionToast {
   toastId: string;
   wrapperClass: string;
-  processedTransactionsStatus: string | JSX.Element;
+  processedTransactionsStatus: string | VNode;
   transactions: ITransactionListItem[];
   toastDataState: IToastDataState;
   transactionProgressState?: ITransactionProgressState | null;

@@ -24,7 +24,7 @@ export class SimpleToast {
       <div
         class={{
           'mvx-content-icon': true,
-          [iconClassName]: Boolean(iconClassName),
+          [String(iconClassName)]: Boolean(iconClassName),
         }}
       >
         <Icon name={icon} />

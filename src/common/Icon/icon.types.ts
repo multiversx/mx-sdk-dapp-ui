@@ -19,6 +19,7 @@ export enum IconNamesEnum {
   backArrow = 'back-arrow',
   arrowUpRightFromSquare = 'arrow-up-right-from-square-icon',
   close = 'close',
+  fail = 'fail',
   hourglass = 'hourglass',
   ban = 'ban',
   circleCheck = 'circle-check',
@@ -29,7 +30,7 @@ export enum IconNamesEnum {
   arrowRight = 'arrow-right',
   minimize = 'minimize',
   maximize = 'maximize',
-  defaultTransactionIconSmall = 'default-transaction-icon-small'
+  defaultTransactionIconSmall = 'default-transaction-icon-small',
 }
 
 export type IconPropsType = JSXBase.IntrinsicElements['svg'] & {

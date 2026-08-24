@@ -1,12 +1,13 @@
 import { Component, Element, h, Host, Method, Prop, State, Watch } from '@stencil/core';
 import { Icon } from 'common/Icon';
 import { SidePanelHeader } from 'common/SidePanel/components/SidePanelHeader/SidePanelHeader';
-import type { IEventBus, IWalletConnectPanelData } from 'components';
 import { providerLabels } from 'constants/providerFactory.constants';
 import QRCode from 'qrcode';
 import { ConnectionMonitor } from 'utils/ConnectionMonitor';
+import type { IEventBus } from 'utils/EventBus';
 import { EventBus } from 'utils/EventBus';
 
+import type { IWalletConnectPanelData } from './wallet-connect.types';
 import { WalletConnectEventsEnum } from './wallet-connect.types';
 
 // prettier-ignore

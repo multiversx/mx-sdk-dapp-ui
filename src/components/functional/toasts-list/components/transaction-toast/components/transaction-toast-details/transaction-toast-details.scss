@@ -1,5 +1,5 @@
 .mvx-transaction-details-container {
-  @apply mvx:flex mvx:flex-col mvx:items-start mvx:self-stretch mvx:gap-3 mvx:w-full;
+  @apply mvx:flex mvx:flex-col mvx:items-start mvx:self-stretch mvx:w-full;
 }
 
 .mvx-transaction-details-status {
@@ -25,7 +25,7 @@
   @apply mvx:transition-all mvx:duration-200 mvx:ease-in-out;
 
   &.mvx-expanded {
-    @apply mvx:w-full mvx:overflow-y-scroll mvx:max-h-125;
+    @apply mvx:w-full mvx:overflow-y-scroll mvx:max-h-125 mvx:mt-3;
   }
 }
 

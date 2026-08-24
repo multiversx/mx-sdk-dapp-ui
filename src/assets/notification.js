@@ -7,39 +7,51 @@ function showNotification() {
       icon: 'check',
       hasCloseButton: true,
       title: 'Transaction successful',
-      iconClassName: 'success',
+      iconClassName: 'mvx-toast-success',
     },
     pending: {
       id: notificationId,
       icon: 'hourglass',
       hasCloseButton: false,
       title: 'Processing transaction',
-      iconClassName: 'warning',
+      iconClassName: 'mvx-toast-pending',
     },
     fail: {
       id: notificationId,
       icon: 'close',
       title: 'Transaction failed',
       hasCloseButton: true,
-      iconClassName: 'danger',
+      iconClassName: 'mvx-toast-danger',
     },
     invalid: {
       id: notificationId,
       icon: 'ban',
       title: 'Transaction invalid',
       hasCloseButton: true,
-      iconClassName: 'warning',
+      iconClassName: 'mvx-toast-warning',
     },
     timedOut: {
       id: notificationId,
       icon: 'close',
       title: 'Transaction timed out',
       hasCloseButton: true,
-      iconClassName: 'warning',
+      iconClassName: 'mvx-toast-warning',
     },
   };
 
-  const statuses = ['success', 'pending', 'fail', 'invalid', 'timedOut', 'pending', 'signed', 'sent', 'executed', 'notExecuted', 'rewardReverted'];
+  const statuses = [
+    'success',
+    'pending',
+    'fail',
+    'invalid',
+    'timedOut',
+    'pending',
+    'signed',
+    'sent',
+    'executed',
+    'notExecuted',
+    'rewardReverted',
+  ];
   const status = statuses[Math.floor(Math.random() * statuses.length)];
   const progressStatuses = ['pending', 'signed', 'sent', 'executed', 'notExecuted', 'rewardReverted'];
 

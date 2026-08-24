@@ -8,9 +8,9 @@ import { getIsTransactionFailed } from 'utils/getTransactionStatus';
 
 const iconData: Record<string, IconNamesEnum> = {
   pending: IconNamesEnum.hourglass,
-  success: IconNamesEnum.check,
-  fail: IconNamesEnum.close,
-  invalid: IconNamesEnum.close,
+  success: IconNamesEnum.circleCheck,
+  fail: IconNamesEnum.fail,
+  invalid: IconNamesEnum.ban,
 };
 
 const transactionToastDetailsBodyClasses: Record<string, string> = {
@@ -22,7 +22,7 @@ const transactionToastDetailsBodyClasses: Record<string, string> = {
   styleUrl: 'transaction-toast-details-body.scss',
 })
 export class TransactionDetailsBody {
-  @Prop() transactionClass?: string = 'transaction-details-list-item';
+  @Prop() transactionClass?: string = 'mvx-transaction-details-list-item';
   @Prop() status?: `${TransactionStatusEnum}`;
   @Prop() hash: string;
   @Prop() link: string;
@@ -53,7 +53,7 @@ export class TransactionDetailsBody {
         <mvx-copy-button
           text={this.hash}
           class="mvx-transaction-details-list-item-copy"
-          iconClass="transaction-details-list-item-copy-icon"
+          iconClass="mvx-transaction-details-list-item-copy-icon"
         />
 
         <div class="mvx-transaction-details-list-item-explorer-link-icon">

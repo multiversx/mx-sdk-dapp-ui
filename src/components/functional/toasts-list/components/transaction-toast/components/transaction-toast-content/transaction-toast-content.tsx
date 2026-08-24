@@ -1,4 +1,4 @@
-import type { EventEmitter, JSX } from '@stencil/core';
+import type { EventEmitter, VNode } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import classNames from 'classnames';
 import { FormatAmount } from 'common/FormatAmount/FormatAmount';
@@ -15,7 +15,7 @@ import type { IToastDataState } from '../../transaction-toast.type';
 
 // prettier-ignore
 const styles = {
-  transactionToastClose: 'transaction-toast-close mvx:flex mvx:flex-col mvx:justify-center mvx:shrink-0 mvx:cursor-pointer mvx:text-primary'
+  transactionToastClose: 'transaction-toast-close mvx:flex mvx:flex-col mvx:justify-center mvx:shrink-0 mvx:cursor-pointer mvx:text-primary mvx:mt-0.5'
 } satisfies Record<string, string>;
 
 @Component({
@@ -25,7 +25,7 @@ const styles = {
 export class TransactionToastContent {
   @Prop() transactions: ITransactionListItem[];
   @Prop() toastDataState: IToastDataState;
-  @Prop() processedTransactionsStatus?: string | JSX.Element;
+  @Prop() processedTransactionsStatus?: string | VNode;
   @Prop() fullWidth?: boolean;
   @Event() deleteToast: EventEmitter<void>;
 
@@ -45,26 +45,26 @@ export class TransactionToastContent {
       <div
         class={{
           'mvx-transaction-toast-content-wrapper': true,
-          'mvx-full-width': this.fullWidth,
+          'mvx-full-width': Boolean(this.fullWidth),
         }}
         data-testid={DataTestIdsEnum.transactionToastContent}
       >
         <div class="mvx-transaction-toast-content">
           {this.toastDataState.icon ? (
-            <Icon
-              name={this.toastDataState.icon}
-              class={classNames('mvx-transaction-toast-icon', {
-                'mvx-transaction-toast-icon-failed': this.toastDataState.iconClassName === 'danger',
-                'mvx-transaction-toast-icon-pending': this.toastDataState.iconClassName === 'warning',
-                'mvx-transaction-toast-icon-success': this.toastDataState.iconClassName === 'success',
-              })}
-            />
+            <div
+              class={{
+                'mvx-transaction-toast-icon': true,
+                [String(this.toastDataState.iconClassName)]: Boolean(this.toastDataState.iconClassName),
+              }}
+            >
+              <Icon name={this.toastDataState.icon} />
+            </div>
           ) : (
             <div
               class={classNames('mvx-transaction-toast-icon', {
-                'mvx-transaction-toast-icon-failed': getIsTransactionFailed(transaction.status),
-                'mvx-transaction-toast-icon-pending': transaction.status === TransactionStatusEnum.pending,
-                'mvx-transaction-toast-icon-success': transaction.status === TransactionStatusEnum.success,
+                failed: getIsTransactionFailed(transaction.status),
+                pending: transaction.status === TransactionStatusEnum.pending,
+                success: transaction.status === TransactionStatusEnum.success,
               })}
             >
               <TransactionAssetIcon transaction={transaction} iconSize={IconSizeEnumType.small} />
@@ -73,15 +73,15 @@ export class TransactionToastContent {
           <div class="mvx-transaction-toast-details">
             <div class="mvx-transaction-toast-details-header">
               <div class="mvx-transaction-toast-header-left">
-                <h4
+                <h5
                   class={{
                     'mvx-transaction-toast-title': true,
                     'mvx-transaction-toast-title-short': Boolean(showAmount),
-                    'mvx-truncate-toast-title': showTooltip,
+                    'mvx-truncate-toast-title': Boolean(showTooltip),
                   }}
                 >
                   {title}
-                </h4>
+                </h5>
 
                 {showTooltip && (
                   <mvx-tooltip position="bottom" trigger={<mvx-circle-info-icon />}>
@@ -92,16 +92,16 @@ export class TransactionToastContent {
               {showAmount && (
                 <FormatAmount
                   class={classNames('mvx-transaction-toast-amount', {
-                    'mvx-amount-negative': transaction.amount.startsWith('-'),
-                    'mvx-amount-positive': !transaction.amount.startsWith('-'),
+                    'mvx-amount-negative': Boolean(transaction?.amount?.startsWith('-')),
+                    'mvx-amount-positive': !Boolean(transaction?.amount?.startsWith('-')),
                     'mvx-transaction-toast-failed': getIsTransactionFailed(transaction.status),
                   })}
                   isValid
                   label={amount.label}
                   valueDecimal={amount.amountDecimal}
                   valueInteger={amount.amountInteger}
-                  labelClass="transaction-amount-label"
-                  decimalClass="transaction-amount-decimal"
+                  labelClass="mvx-transaction-amount-label"
+                  decimalClass="mvx-transaction-amount-decimal"
                 />
               )}
             </div>

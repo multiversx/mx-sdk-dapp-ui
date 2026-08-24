@@ -10,23 +10,23 @@ import { ButtonSizeEnum, ButtonVariantEnum } from "./common/Button/button.types"
 import { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 import { IEventBus } from "./utils/EventBus";
-import { JSX } from "@stencil/core";
+import { VNode } from "@stencil/core";
 import { ITransactionListItem } from "./components/functional/notifications-feed/components/TransactionListItem/transactionListItem.types";
 import { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 import { TransactionStatusEnum } from "./constants/transactionStatus.enum";
 import { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
-import { IEventBus as IEventBus1, IWalletConnectPanelData } from "./components.d";
+import { IWalletConnectPanelData } from "./components/functional/wallet-connect/wallet-connect.types";
 export { IAddressTableData } from "./types/address-table.types";
 export { ButtonSizeEnum, ButtonVariantEnum } from "./common/Button/button.types";
 export { CustomToastType, IComponentToast, ISimpleToast } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { IConfirmScreenData, IConnectScreenData, ILedgerConnectPanelData } from "./components/functional/ledger-connect/ledger-connect.types";
 export { IEventBus } from "./utils/EventBus";
-export { JSX } from "@stencil/core";
+export { VNode } from "@stencil/core";
 export { ITransactionListItem } from "./components/functional/notifications-feed/components/TransactionListItem/transactionListItem.types";
 export { IToastDataState, ITransactionProgressState } from "./components/functional/toasts-list/components/transaction-toast/transaction-toast.type";
 export { TransactionStatusEnum } from "./constants/transactionStatus.enum";
 export { TransactionRowType } from "./components/controlled/transactions-table/transactions-table.type";
-export { IEventBus as IEventBus1, IWalletConnectPanelData } from "./components.d";
+export { IWalletConnectPanelData } from "./components/functional/wallet-connect/wallet-connect.types";
 export namespace Components {
     interface MvxAddressTable {
         "accountScreenData": IAddressTableData;
@@ -226,7 +226,7 @@ export namespace Components {
         /**
           * @default ''
          */
-        "processedTransactionsStatus": string | JSX.Element;
+        "processedTransactionsStatus": string | VNode;
         "toastDataState": IToastDataState;
         /**
           * @default ''
@@ -241,7 +241,7 @@ export namespace Components {
     }
     interface MvxTransactionToastContent {
         "fullWidth"?: boolean;
-        "processedTransactionsStatus"?: string | JSX.Element;
+        "processedTransactionsStatus"?: string | VNode;
         "toastDataState": IToastDataState;
         "transactions": ITransactionListItem[];
     }
@@ -250,7 +250,7 @@ export namespace Components {
           * @default 5
          */
         "maxShownTransactions": number;
-        "processedTransactionsStatus"?: string | JSX.Element;
+        "processedTransactionsStatus"?: string | VNode;
         "transactionClass": string;
         "transactions"?: ITransactionListItem[];
     }
@@ -260,12 +260,13 @@ export namespace Components {
         "link": string;
         "status"?: `${TransactionStatusEnum}`;
         /**
-          * @default 'transaction-details-list-item'
+          * @default 'mvx-transaction-details-list-item'
          */
         "transactionClass"?: string;
     }
     interface MvxTransactionToastProgress {
         "endTime"?: number;
+        "fullWidth"?: boolean;
         "isStatusPending"?: boolean;
         "startTime"?: number;
         "toastId"?: string;
@@ -1061,7 +1062,7 @@ declare namespace LocalJSX {
         /**
           * @default ''
          */
-        "processedTransactionsStatus"?: string | JSX.Element;
+        "processedTransactionsStatus"?: string | VNode;
         "toastDataState"?: IToastDataState;
         /**
           * @default ''
@@ -1077,7 +1078,7 @@ declare namespace LocalJSX {
     interface MvxTransactionToastContent {
         "fullWidth"?: boolean;
         "onDeleteToast"?: (event: MvxTransactionToastContentCustomEvent<void>) => void;
-        "processedTransactionsStatus"?: string | JSX.Element;
+        "processedTransactionsStatus"?: string | VNode;
         "toastDataState"?: IToastDataState;
         "transactions"?: ITransactionListItem[];
     }
@@ -1086,7 +1087,7 @@ declare namespace LocalJSX {
           * @default 5
          */
         "maxShownTransactions"?: number;
-        "processedTransactionsStatus"?: string | JSX.Element;
+        "processedTransactionsStatus"?: string | VNode;
         "transactionClass"?: string;
         "transactions"?: ITransactionListItem[];
     }
@@ -1096,12 +1097,13 @@ declare namespace LocalJSX {
         "link"?: string;
         "status"?: `${TransactionStatusEnum}`;
         /**
-          * @default 'transaction-details-list-item'
+          * @default 'mvx-transaction-details-list-item'
          */
         "transactionClass"?: string;
     }
     interface MvxTransactionToastProgress {
         "endTime"?: number;
+        "fullWidth"?: boolean;
         "isStatusPending"?: boolean;
         "startTime"?: number;
         "toastId"?: string;
@@ -1288,14 +1290,14 @@ declare namespace LocalJSX {
         "toastId": string;
         "wrapperClass": string;
         "fullWidth": boolean;
-        "processedTransactionsStatus": string | JSX.Element;
+        "processedTransactionsStatus": string | VNode;
     }
     interface MvxTransactionToastContentAttributes {
-        "processedTransactionsStatus": string | JSX.Element;
+        "processedTransactionsStatus": string | VNode;
         "fullWidth": boolean;
     }
     interface MvxTransactionToastDetailsAttributes {
-        "processedTransactionsStatus": string | JSX.Element;
+        "processedTransactionsStatus": string | VNode;
         "transactionClass": string;
         "maxShownTransactions": number;
     }
@@ -1311,6 +1313,7 @@ declare namespace LocalJSX {
         "endTime": number;
         "isStatusPending": boolean;
         "toastId": string;
+        "fullWidth": boolean;
     }
     interface MvxTransactionsTableAttributes {
         "class": string;
@@ -1321,7 +1324,6 @@ declare namespace LocalJSX {
         "text": string;
     }
     interface MvxWalletConnectAttributes {
-        "data": string;
         "qrCodeSvg": string;
     }
     interface MvxWalletConnectAppGalleryIconAttributes {

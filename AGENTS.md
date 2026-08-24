@@ -154,6 +154,27 @@ Pitfalls:
    dual ESM/CJS via `tsc` + `tsc-alias`. When adding a new publicly-consumable util, add it to
    **both** `tsconfig.utils.json` `include` and `package.json` `exports`.
 
+The React and Vue output targets emit **raw `.ts`**, and `package.json` `exports` points `./react`
+and `./vue` straight at it — consumers compile it with *their* tsconfig. So the generated
+`src/components.d.ts` is part of the public API surface, and two things silently corrupt it:
+
+- An `@Prop()` typed with `JSX.Element` from `@stencil/core` makes Stencil emit
+  `export { JSX } from "./stencil-public-runtime"`, which collides with the file's own
+  `export { LocalJSX as JSX }` — a duplicate identifier that breaks every Vue proxy. Use `VNode`
+  (`JSX.Element` is an empty interface in Stencil anyway, so it typed nothing).
+- An `@Prop()` typed with an interface that exists nowhere but `components.d.ts` itself (imported via
+  the `components` path alias) makes the generated file import from itself. Declare prop types in a
+  real `*.types.ts`; never import them from `components`.
+
+A consumer's `skipLibCheck` will not hide either one: it only suppresses `.d.ts` checking, and these
+entry points are `.ts`. Verify with `tsc --noEmit` against `dist/react/components.ts` and
+`dist/vue/components.ts` after changing a prop type.
+
+`@stencil/react-output-target` and `@stencil/vue-output-target` are runtime `dependencies`, not
+devDependencies: the emitted proxies import `@stencil/*-output-target/runtime`, and as
+devDependencies they are absent from a consumer's tree. Their own `react` / `vue` peers resolve from
+the consumer's graph, so this package deliberately declares no `peerDependencies`.
+
 ## Code conventions
 
 - All custom elements are prefixed **`mvx-`**; so are global CSS class names (`mvx-transaction-…`).
@@ -166,6 +187,61 @@ Pitfalls:
 - Test selectors should target `data-testid` (`DataTestIdsEnum`) or `mvx-` prefixed class names.
   Non-prefixed class selectors in tests are stale.
 
+## Storybook
+
+Framework: **`@stencil/storybook-plugin`** (not `@storybook/html-vite`). Its `renderToCanvas` calls
+Stencil's own `render(vdom, element)`, so stories build real DOM — non-primitive values are assigned
+as DOM **properties** and `on*` handlers as listeners. Object, array and function props therefore
+work directly; there is no JSON-in-a-`data-` attribute workaround any more.
+
+`.storybook/preview.tsx` registers components from the prebuilt `dist/web-components` bundle via
+`defineCustomElements()`, which is why `storybook-dev` runs a full `pnpm build` first and why source
+edits need a rebuild + restart before they show up.
+
+`.storybook/main.ts` **aliases every top-level `src/` directory**, and that is load-bearing.
+`tsconfig.json` sets `baseUrl: ./src`, but Vite does not read `baseUrl`, so bare specifiers
+(`utils/EventBus`, `common/Icon`) need explicit aliases. Type-only imports are erased and never
+needed them; stories importing real values do.
+
+`.storybook/tsconfig.json` is equally load-bearing: it sets `jsx: react` + `jsxFactory: h` for
+`.storybook/*.tsx`. The root `tsconfig.json` only covers `include: ["src"]`, and Vite 8's transform
+**ignores the `/** @jsx h *\/` pragma**, so without this file `.storybook/preview.tsx` compiles
+against the automatic React runtime. Its global theme decorator then wraps every story in a React
+element, Stencil's `render()` rejects it with `Invalid vNode child`, and *all* stories render blank
+while the build still reports success. Only a browser check catches this — see "Verifying a change".
+
+Storybook 10's framework preset appends `@stencil-community/unplugin-stencil` (renamed from
+`unplugin-stencil` in `@stencil/storybook-plugin` 0.7.0) *after* `main.ts`'s `viteFinal` runs, so it
+can no longer be stripped there. It no longer needs to be: on Storybook 10 its importer-less
+`resolveId` hook — which rewrites every relative specifier to a same-named file under
+`dist/web-components` — no longer breaks `@vitest/mocker`, and the build and all stories are clean
+with the plugin left in place.
+
+Conventions (see `copy-button.stories.tsx` for the cleanest example): author in Stencil JSX with
+`import { h } from '@stencil/core'`; type against the component class,
+`Meta<T>` / `StoryObj<T>` from `@stencil/storybook-plugin`; set `component: 'mvx-<tag>'` (the string
+form, since components are lazily registered); keep a `// prettier-ignore` `styles` map of
+`mvx:`-prefixed utilities; `export default storySettings` last. Titles group as `Visual/`,
+`Controlled/`, `Toasts/`, `Panels/`.
+
+**Functional components** take no data props. Drive them from a `play` function with `publishTo`
+(`src/components/functional/toasts-list/tests/mocks/eventBusHarness.ts`), which awaits
+`getEventBus()` — itself gated on `ConnectionMonitor`, so it cannot race hydration. Shared fixtures
+live in `tests/mocks/` folders; Stencil keeps `tests/` out of `dist/types`, so they are linted and
+type-checked without shipping.
+
+Two traps worth knowing:
+
+- **A vNode cannot be passed as a prop from a story.** Stories bundle their own copy of the Stencil
+  runtime while components carry the one baked into `dist/web-components`; a vNode built by one is
+  rejected by the other with `Invalid vNode child`, rendering nothing. `mvx-tooltip`'s `trigger` is
+  declared `HTMLElement` but really wants a vNode child — inside the library it is given JSX, while
+  stories must pass a plain string. The same caution applies to
+  `processedTransactionsStatus: string | VNode`; use the string form in stories.
+- **`mvx-transaction-toast-progress` remembers finished toast ids in module scope**, so reusing a
+  `toastId` renders an already-complete bar on a second visit. Generate a fresh one per story
+  (`uniqueToastId`). Its `startTime`/`endTime` are UNIX **seconds**, not milliseconds.
+
 ## Verifying a change
 
 ```bash
@@ -174,10 +250,20 @@ pnpm build      # includes assert:css
 pnpm test       # needs chrome-headless-shell for the e2e suites
 ```
 
-For visual changes, `pnpm storybook-dev` and compare on :6006. Storybook builds its own global
+For visual changes, `pnpm storybook-dev` and compare on :6006, in **both** themes (the background
+toggle switches them). Storybook builds its own global
 `.storybook/tailwind.css`, which reaches light-DOM components but **cannot cross a shadow boundary** —
 shadow components depend entirely on their own emitted CSS. Storybook serves the built `dist/`, so
 restart it after rebuilding.
+
+`storybook build` succeeding proves nothing about whether stories **render** — a JSX-factory or
+runtime mismatch leaves `#storybook-root` holding an empty `<div>` while the build reports success.
+After touching Storybook, Vite or `@stencil/*` versions, load a handful of stories in a browser and
+confirm the `mvx-*` elements actually hydrated (a non-empty `shadowRoot`). `pnpm test` does not
+cover this: `stencil test` runs Jest and never touches the Storybook/Vite path.
+
+Two known non-regressions when you do: the six `Visual/Pagination` stories do not hydrate, and the
+`Panels/SignTransactionsPanel` stories log a 404. Both predate the Storybook 10 migration.
 
 ## Changelog
 
