@@ -37,6 +37,7 @@
     background: var(--mvx-success-bg-color);
   }
 
+  &.pending,
   &.warning {
     color: var(--mvx-pending-color);
     background: var(--mvx-pending-bg-color);
@@ -53,7 +54,7 @@
 }
 
 .mvx-transaction-toast-details-header {
-  @apply mvx:flex mvx:items-center mvx:gap-3 mvx:self-stretch mvx:justify-between mvx:p-0;
+  @apply mvx:flex mvx:items-baseline mvx:gap-3 mvx:self-stretch mvx:justify-between mvx:p-0;
 }
 
 .mvx-transaction-toast-header-left {

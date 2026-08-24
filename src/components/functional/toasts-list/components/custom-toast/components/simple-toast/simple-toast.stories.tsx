@@ -57,7 +57,7 @@ export const IconVariants: StoryObj<SimpleToast> = {
       <mvx-simple-toast
         toast={createSimpleToast({
           icon: IconNamesEnum.hourglass,
-          iconClassName: 'warning',
+          iconClassName: 'pending',
           title: 'Warning',
           message: 'This is taking longer than usual.',
         })}

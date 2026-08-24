@@ -24,6 +24,7 @@
     background: var(--mvx-success-bg-color);
   }
 
+  &.pending,
   &.warning {
     color: var(--mvx-pending-color);
     background: var(--mvx-pending-bg-color);

@@ -14,7 +14,7 @@ function showNotification() {
       icon: 'hourglass',
       hasCloseButton: false,
       title: 'Processing transaction',
-      iconClassName: 'warning',
+      iconClassName: 'pending',
     },
     fail: {
       id: notificationId,
@@ -39,7 +39,19 @@ function showNotification() {
     },
   };
 
-  const statuses = ['success', 'pending', 'fail', 'invalid', 'timedOut', 'pending', 'signed', 'sent', 'executed', 'notExecuted', 'rewardReverted'];
+  const statuses = [
+    'success',
+    'pending',
+    'fail',
+    'invalid',
+    'timedOut',
+    'pending',
+    'signed',
+    'sent',
+    'executed',
+    'notExecuted',
+    'rewardReverted',
+  ];
   const status = statuses[Math.floor(Math.random() * statuses.length)];
   const progressStatuses = ['pending', 'signed', 'sent', 'executed', 'notExecuted', 'rewardReverted'];
 

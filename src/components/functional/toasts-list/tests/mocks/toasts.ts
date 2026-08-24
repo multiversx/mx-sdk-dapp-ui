@@ -70,7 +70,7 @@ export const createToastDataState = (status: `${TransactionStatusEnum}`): IToast
       return {
         title: 'Processing transaction',
         icon: IconNamesEnum.hourglass,
-        iconClassName: 'warning',
+        iconClassName: 'pending',
         hasCloseButton: false,
       };
   }
