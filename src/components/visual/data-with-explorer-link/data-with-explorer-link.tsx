@@ -18,13 +18,13 @@ export class DataWithExplorerLink {
   render() {
     return (
       <div
-        class={{ 'data-with-explorer-link': true, [this.class]: Boolean(this.class) }}
+        class={{ 'mvx-data-with-explorer-link': true, [this.class]: Boolean(this.class) }}
         data-testid={this.dataTestId}
       >
-        <Trim text={this.data} class="data-with-explorer-link-trim" />
+        <Trim text={this.data} class="mvx-data-with-explorer-link-trim" />
 
         {(this.showCopyButton || this.showExplorerButton) && (
-          <div class="data-with-explorer-link-buttons" onClick={event => event.stopPropagation()}>
+          <div class="mvx-data-with-explorer-link-buttons" onClick={event => event.stopPropagation()}>
             {this.showCopyButton && this.withTooltip && (
               <mvx-tooltip position="bottom" trigger={<mvx-copy-button text={this.data} />}>
                 Copy

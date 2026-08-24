@@ -33,7 +33,9 @@ export function TransactionListItem({ transaction }: TransactionListItemPropsTyp
           <TransactionAssetIcon
             transaction={transaction}
             iconSize={IconSizeEnumType.large}
-            iconClass={styles.transactionIconSvg}
+            iconClass={classNames(styles.transactionIconSvg, {
+              [styles.transactionIconFailed]: getIsTransactionFailed(transaction.status),
+            })}
             imgClass={styles.transactionIconImg}
             textClass={styles.transactionIconText}
           />

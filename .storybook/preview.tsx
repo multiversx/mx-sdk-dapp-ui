@@ -1,7 +1,6 @@
 /** @jsx h */
 import { h } from '@stencil/core';
-import type { Preview } from '@storybook/html-vite';
-import { renderJsxToHtml } from './jsxToHtml';
+import type { Decorator, Preview } from '@stencil/storybook-plugin';
 
 import { defineCustomElements } from '../dist/web-components';
 
@@ -11,59 +10,12 @@ import './tailwind.css';
 
 defineCustomElements();
 
-const upgradeAddressTables = () => {
-  if (typeof document === 'undefined') {
-    return;
-  }
-
-  const elements = Array.from(
-    document.querySelectorAll<HTMLElement>('mvx-address-table[data-account-screen-data]'),
-  );
-
-  elements.forEach(element => {
-    const raw = element.getAttribute('data-account-screen-data');
-    const selectedIndexAttr = element.getAttribute('selectedindex');
-
-    if (!raw) {
-      return;
-    }
-
-    try {
-      const parsed = JSON.parse(raw);
-      const typedElement = element as unknown as { accountScreenData?: unknown; selectedIndex?: unknown };
-
-      typedElement.accountScreenData = parsed;
-
-      if (selectedIndexAttr != null) {
-        const parsedSelectedIndex = Number(selectedIndexAttr);
-        if (!Number.isNaN(parsedSelectedIndex)) {
-          typedElement.selectedIndex = parsedSelectedIndex;
-        }
-      }
-    } catch {
-      // Ignore parse errors in Storybook only.
-    }
-  });
-};
-
-if (typeof window !== 'undefined' && 'MutationObserver' in window) {
-  const observer = new MutationObserver(() => {
-    upgradeAddressTables();
-  });
-
-  window.addEventListener('load', () => {
-    upgradeAddressTables();
-    observer.observe(document.documentElement, { childList: true, subtree: true });
-  });
-}
-
-export const decorators: Preview['decorators'] = [
-  (Story, context) =>
-    renderJsxToHtml(
-      <div data-mvx-theme={`mvx:${context.globals.backgrounds.value}-theme`}>
-        <Story />
-      </div>,
-    ),
+export const decorators: Decorator[] = [
+  (Story, context) => (
+    <div data-mvx-theme={`mvx:${context.globals.backgrounds.value}-theme`}>
+      <Story />
+    </div>
+  ),
 ];
 
 export const initialGlobals: Preview['initialGlobals'] = {

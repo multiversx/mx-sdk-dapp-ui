@@ -36,7 +36,8 @@ const styles = {
 
 const storySettings: Meta<ExplorerLink> = {
   tags: ['autodocs'],
-  title: 'Components/ExplorerLink',
+  title: 'Visual/ExplorerLink',
+  component: 'mvx-explorer-link',
   args: {
     link: DEVNET_EXPLORER_URL,
   },

@@ -14,15 +14,15 @@ describe('DataWithExplorerLink', () => {
     });
 
     // Check that the main structure is rendered
-    const mainDiv = page.root.querySelector('.data-with-explorer-link');
+    const mainDiv = page.root.querySelector('.mvx-data-with-explorer-link');
     expect(mainDiv).toBeTruthy();
 
     // Check that trim component is present with correct class
-    const trimComponent = page.root.querySelector('.data-with-explorer-link-trim.trim');
+    const trimComponent = page.root.querySelector('.mvx-data-with-explorer-link-trim.trim');
     expect(trimComponent).toBeTruthy();
 
     // Check that buttons container is present
-    const buttonsContainer = page.root.querySelector('.data-with-explorer-link-buttons');
+    const buttonsContainer = page.root.querySelector('.mvx-data-with-explorer-link-buttons');
     expect(buttonsContainer).toBeTruthy();
 
     // Check that copy button and explorer link are present
@@ -39,7 +39,7 @@ describe('DataWithExplorerLink', () => {
     });
 
     // Check that custom class is applied to the main div
-    const mainDiv = page.root.querySelector('.data-with-explorer-link.custom-class');
+    const mainDiv = page.root.querySelector('.mvx-data-with-explorer-link.custom-class');
     expect(mainDiv).toBeTruthy();
 
     // Check that data-testid is applied
@@ -54,7 +54,7 @@ describe('DataWithExplorerLink', () => {
     });
 
     // Check that buttons container is present
-    const buttonsContainer = page.root.querySelector('.data-with-explorer-link-buttons');
+    const buttonsContainer = page.root.querySelector('.mvx-data-with-explorer-link-buttons');
     expect(buttonsContainer).toBeTruthy();
 
     // Check that copy button is not present
@@ -73,7 +73,7 @@ describe('DataWithExplorerLink', () => {
     });
 
     // Check that buttons container is present
-    const buttonsContainer = page.root.querySelector('.data-with-explorer-link-buttons');
+    const buttonsContainer = page.root.querySelector('.mvx-data-with-explorer-link-buttons');
     expect(buttonsContainer).toBeTruthy();
 
     // Check that copy button is present
@@ -92,15 +92,15 @@ describe('DataWithExplorerLink', () => {
     });
 
     // Check that main div is present
-    const mainDiv = page.root.querySelector('.data-with-explorer-link');
+    const mainDiv = page.root.querySelector('.mvx-data-with-explorer-link');
     expect(mainDiv).toBeTruthy();
 
     // Check that trim component is present
-    const trimComponent = page.root.querySelector('.data-with-explorer-link-trim.trim');
+    const trimComponent = page.root.querySelector('.mvx-data-with-explorer-link-trim.trim');
     expect(trimComponent).toBeTruthy();
 
     // Check that buttons container is not present
-    const buttonsContainer = page.root.querySelector('.data-with-explorer-link-buttons');
+    const buttonsContainer = page.root.querySelector('.mvx-data-with-explorer-link-buttons');
     expect(buttonsContainer).toBeFalsy();
   });
 
@@ -111,7 +111,7 @@ describe('DataWithExplorerLink', () => {
     });
 
     // Check that buttons container is present
-    const buttonsContainer = page.root.querySelector('.data-with-explorer-link-buttons');
+    const buttonsContainer = page.root.querySelector('.mvx-data-with-explorer-link-buttons');
     expect(buttonsContainer).toBeTruthy();
 
     // Check that tooltips are present
@@ -173,7 +173,7 @@ describe('DataWithExplorerLink', () => {
       html: '<mvx-data-with-explorer-link data="test-data" explorer-link="https://explorer.com/test"></mvx-data-with-explorer-link>',
     });
 
-    const buttonsContainer = page.root.querySelector('.data-with-explorer-link-buttons');
+    const buttonsContainer = page.root.querySelector('.mvx-data-with-explorer-link-buttons');
     expect(buttonsContainer).toBeTruthy();
 
     // The onClick handler should be attached to the buttons container
@@ -190,11 +190,11 @@ describe('DataWithExplorerLink', () => {
       html: '<mvx-data-with-explorer-link data="test-data" explorer-link="https://explorer.com/test" show-copy-button="false" show-explorer-button="false"></mvx-data-with-explorer-link>',
     });
 
-    const buttonsContainer = page.root.querySelector('.data-with-explorer-link-buttons');
+    const buttonsContainer = page.root.querySelector('.mvx-data-with-explorer-link-buttons');
     expect(buttonsContainer).toBeFalsy();
 
     // But trim component should still be present
-    const trimComponent = page.root.querySelector('.data-with-explorer-link-trim.trim');
+    const trimComponent = page.root.querySelector('.mvx-data-with-explorer-link-trim.trim');
     expect(trimComponent).toBeTruthy();
   });
 
@@ -205,11 +205,11 @@ describe('DataWithExplorerLink', () => {
     });
 
     // Check that the component renders even with empty data
-    const mainDiv = page.root.querySelector('.data-with-explorer-link');
+    const mainDiv = page.root.querySelector('.mvx-data-with-explorer-link');
     expect(mainDiv).toBeTruthy();
 
     // Check that trim component is present
-    const trimComponent = page.root.querySelector('.data-with-explorer-link-trim.trim');
+    const trimComponent = page.root.querySelector('.mvx-data-with-explorer-link-trim.trim');
     expect(trimComponent).toBeTruthy();
 
     // Check that the component instance has empty data
@@ -225,7 +225,7 @@ describe('DataWithExplorerLink', () => {
     });
 
     // Check that the component renders with long data
-    const mainDiv = page.root.querySelector('.data-with-explorer-link');
+    const mainDiv = page.root.querySelector('.mvx-data-with-explorer-link');
     expect(mainDiv).toBeTruthy();
 
     // Check that the component instance has the correct long data
@@ -233,7 +233,7 @@ describe('DataWithExplorerLink', () => {
     expect(component.data).toBe(longData);
 
     // Check that trim component is present to handle the long text
-    const trimComponent = page.root.querySelector('.data-with-explorer-link-trim.trim');
+    const trimComponent = page.root.querySelector('.mvx-data-with-explorer-link-trim.trim');
     expect(trimComponent).toBeTruthy();
   });
 

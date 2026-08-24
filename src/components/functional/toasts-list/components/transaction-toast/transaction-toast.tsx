@@ -1,4 +1,4 @@
-import type { EventEmitter, JSX } from '@stencil/core';
+import type { EventEmitter, VNode } from '@stencil/core';
 import { Component, Event, h, Prop } from '@stencil/core';
 import type { ITransactionListItem } from 'components/functional/notifications-feed/components/TransactionListItem/transactionListItem.types';
 import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
@@ -13,7 +13,7 @@ export class TransactionToast {
   @Prop() toastId: string = '';
   @Prop() wrapperClass: string;
   @Prop() fullWidth?: boolean;
-  @Prop() processedTransactionsStatus: string | JSX.Element = '';
+  @Prop() processedTransactionsStatus: string | VNode = '';
   @Prop() transactions: ITransactionListItem[] = [];
   @Prop() toastDataState: IToastDataState;
   @Prop() transactionProgressState?: ITransactionProgressState;
@@ -27,13 +27,19 @@ export class TransactionToast {
     const isStatusPending = this.transactions.every(tx => tx.status === TransactionStatusEnum.pending);
 
     return (
-      <div class="transaction-toast">
+      <div
+        class={{
+          'mvx-transaction-toast': true,
+          'mvx:max-w-100': !this.fullWidth,
+        }}
+      >
         <mvx-transaction-toast-progress
           key={this.toastId}
           toastId={this.toastId}
           startTime={this.transactionProgressState?.startTime}
           endTime={this.transactionProgressState?.endTime}
           isStatusPending={isStatusPending}
+          fullWidth={this.fullWidth}
         >
           <mvx-transaction-toast-content
             fullWidth={this.fullWidth}

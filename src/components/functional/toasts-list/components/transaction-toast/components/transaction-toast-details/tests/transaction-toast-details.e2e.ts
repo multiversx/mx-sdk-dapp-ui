@@ -47,7 +47,7 @@ describe('transaction-toast-details', () => {
 
     await page.waitForChanges();
 
-    const statusElement = await page.find('.transaction-details-status-text');
+    const statusElement = await page.find('.mvx-transaction-details-status-text');
     expect(statusElement.textContent).toBe('3 Transactions');
 
     const transactionItems = await page.findAll('mvx-transaction-toast-details-body');
@@ -70,16 +70,16 @@ describe('transaction-toast-details', () => {
 
     await page.waitForChanges();
 
-    let detailsList = await page.find('.transaction-details-list');
-    expect(detailsList.getAttribute('class')).not.toContain('expanded');
+    let detailsList = await page.find('.mvx-transaction-details-list');
+    expect(detailsList.getAttribute('class')).not.toContain('mvx-expanded');
 
-    const statusElement = await page.find('.transaction-details-status');
+    const statusElement = await page.find('.mvx-transaction-details-status');
     await statusElement.click();
 
     await page.waitForChanges();
 
-    detailsList = await page.find('.transaction-details-list');
-    expect(detailsList.getAttribute('class')).toContain('expanded');
+    detailsList = await page.find('.mvx-transaction-details-list');
+    expect(detailsList.getAttribute('class')).toContain('mvx-expanded');
   });
 
   it('shows "Show more" button when there are more transactions than maxShownTransactions', async () => {
@@ -99,13 +99,13 @@ describe('transaction-toast-details', () => {
 
     await page.waitForChanges();
 
-    const statusElement = await page.find('.transaction-details-status');
+    const statusElement = await page.find('.mvx-transaction-details-status');
     expect(statusElement).not.toBeNull();
     await statusElement.click();
 
     await page.waitForChanges();
 
-    const showMoreButton = await page.find('.show-more-button');
+    const showMoreButton = await page.find('.mvx-show-more-button');
     expect(showMoreButton).not.toBeNull();
     expect(showMoreButton.textContent).toContain('View 3 more');
 
@@ -115,7 +115,7 @@ describe('transaction-toast-details', () => {
     const transactionItems = await page.findAll('mvx-transaction-toast-details-body');
     expect(transactionItems.length).toBe(6);
 
-    const showMoreButtonAfter = await page.find('.show-more-button');
+    const showMoreButtonAfter = await page.find('.mvx-show-more-button');
     expect(showMoreButtonAfter).toBeNull();
   });
 
@@ -130,7 +130,7 @@ describe('transaction-toast-details', () => {
 
     await page.waitForChanges();
 
-    const detailsContainer = await page.find('.transaction-details-container');
+    const detailsContainer = await page.find('.mvx-transaction-details-container');
     expect(detailsContainer).toBeNull();
   });
 });

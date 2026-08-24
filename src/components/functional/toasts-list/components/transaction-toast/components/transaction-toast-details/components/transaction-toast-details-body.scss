@@ -7,19 +7,19 @@
   }
 }
 
-.transaction-details-list-item {
+.mvx-transaction-details-list-item {
   @apply mvx:flex mvx:items-center mvx:gap-3 mvx:self-stretch mvx:w-64;
 
   &:hover {
-    .transaction-details-list-item-hash-value {
+    .mvx-transaction-details-list-item-hash-value {
       color: var(--mvx-text-color-tertiary);
     }
 
-    .transaction-details-list-item-explorer-link-icon {
+    .mvx-transaction-details-list-item-explorer-link-icon {
       @apply mvx:visible;
     }
 
-    .transaction-details-list-item-copy {
+    .mvx-transaction-details-list-item-copy {
       @apply mvx:visible!;
     }
   }
@@ -33,7 +33,7 @@
   }
 }
 
-.transaction-details-list-item-icon {
+.mvx-transaction-details-list-item-icon {
   @apply mvx:w-4 mvx:h-4 mvx:rounded-full mvx:flex mvx:items-center mvx:justify-center;
 
   svg,
@@ -46,7 +46,7 @@
   }
 }
 
-.transaction-details-list-item-icon-success {
+.mvx-transaction-details-list-item-icon-success {
   background-color: var(--mvx-success-bg-color);
 
   svg,
@@ -55,7 +55,7 @@
   }
 }
 
-.transaction-details-list-item-icon-pending {
+.mvx-transaction-details-list-item-icon-pending {
   background-color: var(--mvx-pending-bg-color);
 
   svg,
@@ -65,7 +65,7 @@
   }
 }
 
-.transaction-details-list-item-icon-fail {
+.mvx-transaction-details-list-item-icon-fail {
   background-color: var(--mvx-error-bg-color);
 
   svg,
@@ -74,26 +74,26 @@
   }
 }
 
-.transaction-details-list-item-hash-index {
+.mvx-transaction-details-list-item-hash-index {
   @apply mvx:text-xs mvx:font-medium mvx:leading-4;
   color: var(--mvx-text-color-tertiary);
 }
 
-.transaction-details-list-item-hash-value {
+.mvx-transaction-details-list-item-hash-value {
   @apply mvx:text-xs mvx:font-normal mvx:leading-4 mvx:w-full mvx:mt-1 mvx:max-w-55;
   color: var(--mvx-label-color);
 }
 
-.transaction-details-list-item-copy {
+.mvx-transaction-details-list-item-copy {
   @apply mvx:flex mvx:invisible!;
 
-  .transaction-details-list-item-copy-icon {
+  .mvx-transaction-details-list-item-copy-icon {
     @apply mvx:flex mvx:flex-col mvx:justify-end mvx:shrink-0;
     color: var(--mvx-text-color-tertiary);
   }
 }
 
-.transaction-details-list-item-explorer-link-icon {
+.mvx-transaction-details-list-item-explorer-link-icon {
   @apply mvx:flex mvx:flex-col mvx:justify-end mvx:shrink-0 mvx:mr-3 mvx:invisible mvx:w-4 mvx:h-4;
   color: var(--mvx-text-color-tertiary);
 

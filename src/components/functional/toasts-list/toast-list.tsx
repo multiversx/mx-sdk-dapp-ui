@@ -98,16 +98,16 @@ export class ToastList {
     const hasTransactionToasts = this.transactionToasts?.length > 0;
 
     const toastListClasses = {
-      'toast-list': true,
-      'toast-list-bottom': hasTransactionToasts,
-      'hidden': !this.isVisible,
+      'mvx-toast-list': true,
+      'mvx-toast-list-bottom': hasTransactionToasts,
+      'mvx-hidden': !this.isVisible,
     };
 
     if (this.isMinimized && hasTransactionToasts) {
       return (
         <div class={toastListClasses} id="toast-list">
-          <div class="view-all-button-container">
-            <button class="maximize-button" onClick={this.toggleMinimize} aria-label="Maximize Toasts">
+          <div class="mvx-view-all-button-container">
+            <button class="mvx-maximize-button" onClick={this.toggleMinimize} aria-label="Maximize Toasts">
               <Icon name={IconNamesEnum.maximize} />
             </button>
           </div>
@@ -126,11 +126,11 @@ export class ToastList {
         ))}
 
         {hasTransactionToasts && (
-          <div class="view-all-button-container">
-            <button class="minimize-button" onClick={this.toggleMinimize} aria-label="Minimize Toasts">
+          <div class="mvx-view-all-button-container">
+            <button class="mvx-minimize-button" onClick={this.toggleMinimize} aria-label="Minimize Toasts">
               <Icon name={IconNamesEnum.minimize} />
             </button>
-            <button class="view-all-button" onClick={this.handleViewAllClick}>
+            <button class="mvx-view-all-button" onClick={this.handleViewAllClick}>
               View All
             </button>
           </div>

@@ -1,41 +1,12 @@
-import * as fs from 'fs';
-import * as path from 'path';
+import { readComponentMetadata } from './component-metadata';
 
-function getTSXFiles(dir: string): string[] {
-  let results: string[] = [];
-  const list = fs.readdirSync(dir);
-
-  list.forEach(file => {
-    const filePath = path.join(dir, file);
-    const stat = fs.statSync(filePath);
-
-    if (stat && stat.isDirectory()) {
-      results = results.concat(getTSXFiles(filePath));
-    } else if (filePath.endsWith('.tsx')) {
-      results.push(filePath);
-    }
-  });
-
-  return results;
-}
-
-function extractTagName(content: string): string | null {
-  const tagRegex = /@Component\s*\(\s*{[^}]*tag:\s*['"`]([^'"`]+)['"`][\s\S]*?\}/;
-  const match = content.match(tagRegex);
-  return match ? match[1] : null;
-}
-
+/**
+ * Collects the tags of every component under `folderPath`, so they can be
+ * excluded from the React and Vue output targets.
+ *
+ * Thin wrapper over `readComponentMetadata` so there is a single decorator
+ * parser in the repo — see src/global/scripts/component-metadata.ts.
+ */
 export function getExcludedComponentTags(folderPath: string): string[] {
-  const files = getTSXFiles(folderPath);
-  const tags: string[] = [];
-
-  files.forEach(file => {
-    const content = fs.readFileSync(file, 'utf8');
-    const tag = extractTagName(content);
-    if (tag) {
-      tags.push(tag);
-    }
-  });
-
-  return tags;
+  return readComponentMetadata(folderPath).map(component => component.tag);
 }

@@ -18,8 +18,7 @@ See [Template dApp](https://template-dapp.multiversx.com/) for live demo or chec
 
 ## Requirements
 
-- Node.js version 20.13.1+
-- Npm version 10.5.2+
+- Node.js 20.19.0+ (CI runs Node 24)
 
 ## Distribution
 
@@ -36,7 +35,7 @@ npm install @multiversx/sdk-dapp-ui
 or
 
 ```bash
-yarn add @multiversx/sdk-dapp-ui
+pnpm add @multiversx/sdk-dapp-ui
 ```
 
 ## Usage
@@ -66,10 +65,12 @@ Visual components are the most basic building blocks that handle pure presentati
 Components:
 
 - **Preloader** (`mvx-preloader`): A loading indicator for asynchronous operations
-- **Side Panel** (`mvx-side-panel`): Sliding panel with header and content sections
 - **Tooltip** (`mvx-tooltip`): Contextual information display with hover/click activation
-- **Transaction List Item**: Structured display of transaction information
 - **Pagination** (`mvx-pagination`): Navigation controls for paginated content
+- **Copy Button** (`mvx-copy-button`): Copies a value to the clipboard
+- **Explorer Link** (`mvx-explorer-link`): Link to the MultiversX explorer
+- **Trim** (`mvx-trim`): Middle-truncates text to the available width
+- **Address Table** (`mvx-address-table`): Selectable, paginated list of derived addresses
 
 ### Visual Component Example
 
@@ -148,14 +149,15 @@ Components:
 - **Unlock Panel** (`mvx-unlock-panel`): Wallet authentication
 - **Toast List** (`mvx-toast-list`): Notification management
 - **Ledger Connect** (`mvx-ledger-connect`): Hardware wallet connection
+- **Pending Transactions Panel** (`mvx-pending-transactions-panel`): Pending transaction status
 
 You can check out the way these components are used in `@multiversx/sdk-dapp` [here](https://github.com/multiversx/mx-sdk-dapp/blob/main/src/managers/UnlockPanelManager/UnlockPanelManager.ts).
 
 ## Debugging your dApp
 
-The recommended way to debug your application is by using [lerna](https://lerna.js.org/). Make sure you have the same package version in sdk-daap-core's package.json and in your project's package.json.
+The recommended way to debug your application is by using [lerna](https://lerna.js.org/). Make sure you have the same package version in this package's package.json and in your project's package.json.
 
-If you preffer to use [npm link](https://docs.npmjs.com/cli/v11/commands/npm-link), make sure to use the `preserveSymlinks` option in the server configuration:
+If you prefer to use [npm link](https://docs.npmjs.com/cli/v11/commands/npm-link), make sure to use the `preserveSymlinks` option in the server configuration:
 
 ```js
   resolve: {
@@ -169,23 +171,39 @@ If you preffer to use [npm link](https://docs.npmjs.com/cli/v11/commands/npm-lin
 To build the library, run:
 
 ```bash
-npm run build
+pnpm build
 ```
 
-To run the unit tests, run:
+## Development
 
 ```bash
-npm test
+pnpm install
+pnpm start            # dev build, watch + serve
+pnpm lint             # eslint src
+pnpm build            # full production build
+pnpm test             # spec + e2e tests
+pnpm storybook-dev    # Storybook on http://localhost:6006
 ```
 
-To run a specific test file in Stencil, run:
+E2E tests run in a real browser and need a Chromium binary:
 
 ```bash
-npx stencil test src/components/visual/transaction-list-item/tests/transaction-list-item.spec.tsx --spec
+npx puppeteer browsers install chrome-headless-shell
 ```
 
-To run an individual test from a specific test file in Stencil, run:
+To run a specific test file:
 
 ```bash
-npx stencil test src/components/visual/transaction-list-item/tests/transaction-list-item.spec.tsx --spec -t 'renders with asset icon'
+npx stencil test src/components/controlled/format-amount/tests/format-amount.spec.ts --spec
 ```
+
+To run an individual test from a specific test file:
+
+```bash
+npx stencil test src/components/controlled/format-amount/tests/format-amount.spec.ts --spec -t 'renders correctly'
+```
+
+Use `--e2e` instead of `--spec` for `.e2e.ts` files.
+
+Contributor documentation — architecture, the Tailwind pipeline, conventions and verification
+steps — is in [AGENTS.md](./AGENTS.md).

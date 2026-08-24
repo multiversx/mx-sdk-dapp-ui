@@ -34,7 +34,8 @@ const styles = {
 
 const storySettings: Meta<CopyButton> = {
   tags: ['autodocs'],
-  title: 'Components/CopyButton',
+  title: 'Visual/CopyButton',
+  component: 'mvx-copy-button',
   args: {
     text: 'Hello World!',
   },
