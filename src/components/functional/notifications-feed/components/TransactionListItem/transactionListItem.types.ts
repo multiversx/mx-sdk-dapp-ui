@@ -23,4 +23,5 @@ export interface ITransactionListItem {
   status: `${TransactionStatusEnum}`;
   link: string;
   timestamp: number;
+  timestampMs?: number;
 }
