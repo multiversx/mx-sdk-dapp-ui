@@ -90,11 +90,16 @@ export const createTransactionToast = (overrides: Partial<ITransactionToast> = {
   };
 };
 
-/** `startTime`/`endTime` are UNIX seconds, not milliseconds. */
-export const createProgressState = (durationInSeconds = 30, isCrossShard = false) => {
-  const startTime = Math.floor(Date.now() / 1000);
+/**
+ * `startTime`/`endTime` are UNIX milliseconds. The duration stays in seconds
+ * because it reads better at a story's call site; fractions are allowed, which
+ * is the whole point of the millisecond move — `0.6` is a single-block round,
+ * the shortest a transaction can take.
+ */
+export const createProgressState = (durationInSeconds = 3, isCrossShard = false) => {
+  const startTime = Date.now();
 
-  return { startTime, endTime: startTime + durationInSeconds, isCrossShard };
+  return { startTime, endTime: startTime + durationInSeconds * 1000, isCrossShard };
 };
 
 export const createSimpleToast = (overrides: Partial<ISimpleToast> = {}): ISimpleToast => ({

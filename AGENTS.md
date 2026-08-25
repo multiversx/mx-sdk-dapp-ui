@@ -244,7 +244,12 @@ Two traps worth knowing:
   `processedTransactionsStatus: string | VNode`; use the string form in stories.
 - **`mvx-transaction-toast-progress` remembers finished toast ids in module scope**, so reusing a
   `toastId` renders an already-complete bar on a second visit. Generate a fresh one per story
-  (`uniqueToastId`). Its `startTime`/`endTime` are UNIX **seconds**, not milliseconds.
+  (`uniqueToastId`). Its `startTime`/`endTime` are UNIX **milliseconds** — seconds cannot express a
+  sub-second round. Second-based values are still accepted: `normalizeProgressTimestamps` scales any
+  pair below 1e11 by 1000, deciding the factor once from `startTime` so a pair is never split across
+  units. The expected duration is then floored at `MIN_BLOCK_TIME_MS` (600ms): a transaction cannot
+  resolve faster than one block, so a shorter span is under-reported data, not a faster transaction.
+  An *inverted* span (`endTime <= startTime`) is not clamped — it still quick-fills as finished.
 
 ## Verifying a change
 

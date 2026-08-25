@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Moved `mvx-transaction-toast-progress` `startTime`/`endTime` to UNIX milliseconds in preparation
+  for sub-second finality, lowering the progress sampling floor from 50ms to one frame. Second-based
+  timestamps are still accepted and normalized, so existing consumers are unaffected. The expected
+  duration is floored at one block (600ms), since a transaction cannot resolve faster than that.
+- Wired a `durationInSeconds` control into the transaction-toast and progress stories, replacing
+  `startTime`/`endTime` controls that were declared but never read by any story's `render`.
+
 ## [[0.1.25](https://github.com/multiversx/mx-sdk-dapp-ui/pull/313)] - 2026-08-25
 
 - [Update Storybook Components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/312)

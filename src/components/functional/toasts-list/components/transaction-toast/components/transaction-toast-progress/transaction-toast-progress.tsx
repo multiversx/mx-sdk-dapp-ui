@@ -1,8 +1,14 @@
 import { Component, Fragment, h, Prop, State, Watch } from '@stencil/core';
 import classNames from 'classnames';
 
-const DEFAULT_INFINITE_ANIMATION_DURATION = 30;
-const MIN_UPDATE_INTERVAL_MS = 50;
+import { normalizeProgressTimestamps } from './helpers/normalizeProgressTimestamps';
+
+const DEFAULT_INFINITE_ANIMATION_DURATION_MS = 30000;
+// The shortest a transaction can possibly take is one block, so a shorter span
+// is under-reported data rather than a faster transaction. Pacing the bar over
+// a real block keeps it honest about what the chain is actually doing.
+const MIN_BLOCK_TIME_MS = 600;
+const MIN_UPDATE_INTERVAL_MS = 16;
 const MAX_UPDATE_INTERVAL_MS = 1000;
 const TARGET_UPDATE_COUNT = 60;
 const finishedProgressStatusesMap: string[] = [];
@@ -21,16 +27,16 @@ export class ToastProgress {
   @Prop() toastId?: string;
   @Prop() fullWidth?: boolean;
 
-  @State() currentTimestamp: number = Date.now() / 1000;
+  @State() currentTimestamp: number = Date.now();
   @State() hasTimeElapsed: boolean = false;
-  @State() expectedTransactionDuration: number = 0;
-  @State() secondsPassedSinceStart: number = 0;
+  @State() expectedTransactionDurationMs: number = 0;
+  @State() msPassedSinceStart: number = 0;
   @State() shouldShowProgressBar: boolean = false;
   @State() percentagePassedSinceStart: number = 0;
   @State() shouldQuickFill: boolean = false;
-  @State() infiniteProgressDelay: number = 0;
+  @State() infiniteProgressDelayMs: number = 0;
   @State() infinitePercentagePassedSinceStart: number = 0;
-  @State() infinitePercentageAnimationDuration: number = DEFAULT_INFINITE_ANIMATION_DURATION;
+  @State() infinitePercentageAnimationDuration: number = DEFAULT_INFINITE_ANIMATION_DURATION_MS;
   @State() updateIntervalMs: number = MAX_UPDATE_INTERVAL_MS;
 
   componentWillLoad() {
@@ -58,11 +64,11 @@ export class ToastProgress {
   }
 
   private getUpdateInterval() {
-    if (!(this.expectedTransactionDuration > 0)) {
+    if (!(this.expectedTransactionDurationMs > 0)) {
       return MAX_UPDATE_INTERVAL_MS;
     }
 
-    const idealInterval = (this.expectedTransactionDuration * 1000) / TARGET_UPDATE_COUNT;
+    const idealInterval = this.expectedTransactionDurationMs / TARGET_UPDATE_COUNT;
 
     return Math.min(MAX_UPDATE_INTERVAL_MS, Math.max(MIN_UPDATE_INTERVAL_MS, idealInterval));
   }
@@ -87,7 +93,7 @@ export class ToastProgress {
   }
 
   private updateProgress() {
-    const hasValidTimestamps = typeof this.startTime === 'number' && typeof this.endTime === 'number';
+    const timestamps = normalizeProgressTimestamps(this.startTime, this.endTime);
 
     if (finishedProgressStatusesMap.includes(this.toastId)) {
       this.shouldShowProgressBar = false;
@@ -96,7 +102,7 @@ export class ToastProgress {
       return;
     }
 
-    if (!hasValidTimestamps || this.startTime >= this.endTime) {
+    if (!timestamps || timestamps.startTime >= timestamps.endTime) {
       this.shouldShowProgressBar = false;
       this.shouldQuickFill = true;
       // Nothing left to sample: keeping the interval alive would re-arm the
@@ -111,21 +117,20 @@ export class ToastProgress {
     }
 
     this.shouldShowProgressBar = true;
-    this.currentTimestamp = Date.now() / 1000;
-    this.expectedTransactionDuration = this.endTime - this.startTime;
-    this.secondsPassedSinceStart = this.currentTimestamp - this.startTime;
+    this.currentTimestamp = Date.now();
+    this.expectedTransactionDurationMs = Math.max(MIN_BLOCK_TIME_MS, timestamps.endTime - timestamps.startTime);
+    this.msPassedSinceStart = this.currentTimestamp - timestamps.startTime;
     this.percentagePassedSinceStart =
-      this.expectedTransactionDuration > 0
-        ? Math.min((this.secondsPassedSinceStart / this.expectedTransactionDuration) * 100, 100)
+      this.expectedTransactionDurationMs > 0
+        ? Math.min((this.msPassedSinceStart / this.expectedTransactionDurationMs) * 100, 100)
         : 0;
 
     this.infinitePercentageAnimationDuration =
-      DEFAULT_INFINITE_ANIMATION_DURATION + this.expectedTransactionDuration * 2;
+      DEFAULT_INFINITE_ANIMATION_DURATION_MS + this.expectedTransactionDurationMs * 2;
 
-    this.infiniteProgressDelay = Math.max(0, this.expectedTransactionDuration - this.secondsPassedSinceStart);
+    this.infiniteProgressDelayMs = Math.max(0, this.expectedTransactionDurationMs - this.msPassedSinceStart);
     this.infinitePercentagePassedSinceStart =
-      (this.secondsPassedSinceStart / (this.expectedTransactionDuration + this.infinitePercentageAnimationDuration)) *
-      100;
+      (this.msPassedSinceStart / (this.expectedTransactionDurationMs + this.infinitePercentageAnimationDuration)) * 100;
 
     const nextUpdateInterval = this.getUpdateInterval();
 
@@ -134,15 +139,12 @@ export class ToastProgress {
       this.restartProgressInterval();
     }
 
-    if (this.expectedTransactionDuration > 0 && !this.isStatusPending) {
+    if (this.expectedTransactionDurationMs > 0 && !this.isStatusPending) {
       clearTimeout(this.timeElapsedTimeoutReference);
-      this.timeElapsedTimeoutReference = setTimeout(
-        () => {
-          finishedProgressStatusesMap.push(this.toastId);
-          this.hasTimeElapsed = true;
-        },
-        this.expectedTransactionDuration * 1000 + 2000,
-      );
+      this.timeElapsedTimeoutReference = setTimeout(() => {
+        finishedProgressStatusesMap.push(String(this.toastId));
+        this.hasTimeElapsed = true;
+      }, this.expectedTransactionDurationMs + 2000);
     }
   }
 
@@ -169,8 +171,8 @@ export class ToastProgress {
               class="mvx-transaction-toast-bar-line"
               style={{
                 '--start-width': `${this.infinitePercentagePassedSinceStart}%`,
-                '--animation-duration': `${this.infinitePercentageAnimationDuration}s`,
-                '--animation-delay': `${this.infiniteProgressDelay}s`,
+                '--animation-duration': `${this.infinitePercentageAnimationDuration}ms`,
+                '--animation-delay': `${this.infiniteProgressDelayMs}ms`,
               }}
             />
           </div>
