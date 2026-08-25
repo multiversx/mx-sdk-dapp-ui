@@ -14,6 +14,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Wired a `durationInSeconds` control into the transaction-toast and progress stories, replacing
   `startTime`/`endTime` controls that were declared but never read by any story's `render`.
 
+  ## [[0.1.26](https://github.com/multiversx/mx-sdk-dapp-ui/pull/315)] - 2026-08-25
+
+- [Milisecond tx tracking/animations/toasts](https://github.com/multiversx/mx-sdk-dapp-ui/pull/314)
+
 ## [[0.1.25](https://github.com/multiversx/mx-sdk-dapp-ui/pull/313)] - 2026-08-25
 
 - [Update Storybook Components](https://github.com/multiversx/mx-sdk-dapp-ui/pull/312)
