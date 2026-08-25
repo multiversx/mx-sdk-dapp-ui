@@ -6,6 +6,8 @@ import typescriptParser from '@typescript-eslint/parser';
 import typescriptPlugin from '@typescript-eslint/eslint-plugin';
 
 export default [{
+  ignores: ['src/components/visual/address-table/components/pagination/pagination-story.tsx'],
+}, {
   files: ['src/**/*.{ts,tsx}'],
   plugins: {
     '@typescript-eslint': typescriptPlugin,

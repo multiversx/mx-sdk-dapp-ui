@@ -1,45 +1,23 @@
 import { newSpecPage } from '@stencil/core/testing';
+import { TransactionStatusEnum } from 'constants/transactionStatus.enum';
 
 import { ToastList } from '../toast-list';
 import { ToastEventsEnum } from '../toast-list.types';
+import { createSimpleToast, createToastDataState, createTransactions, createTransactionToast } from './mocks/toasts';
 
 describe('toast-list', () => {
   const mockTransactionToasts = [
-    {
-      toastId: 'tx1',
-      title: 'Transaction 1',
-      transactionHash: 'hash1',
-      status: 'success',
-      link: 'link1',
-      actions: [],
-      transactions: [{ hash: 'hash1', status: 'success', link: 'link1' }],
-    },
-    {
+    createTransactionToast({ toastId: 'tx1' }),
+    createTransactionToast({
       toastId: 'tx2',
-      title: 'Transaction 2',
-      transactionHash: 'hash2',
-      status: 'pending',
-      link: 'link2',
-      actions: [],
-      transactions: [{ hash: 'hash2', status: 'pending', link: 'link2' }],
-    },
+      transactions: createTransactions(1, TransactionStatusEnum.pending),
+      toastDataState: createToastDataState(TransactionStatusEnum.pending),
+    }),
   ];
 
   const mockCustomToasts = [
-    {
-      toastId: 'custom1',
-      title: 'Custom Toast 1',
-      description: 'Description 1',
-      icon: 'icon1',
-      actions: [],
-    },
-    {
-      toastId: 'custom2',
-      title: 'Custom Toast 2',
-      description: 'Description 2',
-      icon: 'icon2',
-      actions: [],
-    },
+    createSimpleToast({ toastId: 'custom1', title: 'Custom Toast 1', message: 'Description 1' }),
+    createSimpleToast({ toastId: 'custom2', title: 'Custom Toast 2', message: 'Description 2' }),
   ];
 
   it('renders empty toast list when no toasts are provided', async () => {
@@ -50,7 +28,7 @@ describe('toast-list', () => {
 
     expect(page.root).not.toBeNull();
 
-    const toastListContainer = page.root.querySelector('.toast-list');
+    const toastListContainer = page.root.querySelector('.mvx-toast-list');
     expect(toastListContainer).not.toBeNull();
 
     const transactionToasts = page.root.querySelectorAll('transaction-toast');
@@ -215,7 +193,7 @@ describe('toast-list', () => {
     page.rootInstance.transactionToasts = mockTransactionToasts;
     await page.waitForChanges();
 
-    const viewAllButton = page.root.querySelector('.view-all-button');
+    const viewAllButton = page.root.querySelector('.mvx-view-all-button');
     expect(viewAllButton).not.toBeNull();
     expect(viewAllButton.textContent.trim()).toBe('View All');
   });
@@ -229,7 +207,7 @@ describe('toast-list', () => {
     page.root.customToasts = mockCustomToasts;
     await page.waitForChanges();
 
-    const viewAllButton = page.root.querySelector('.view-all-button');
+    const viewAllButton = page.root.querySelector('.mvx-view-all-button');
     expect(viewAllButton).toBeNull();
   });
 

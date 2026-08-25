@@ -1,10 +1,10 @@
-.toast-wrapper {
+.mvx-toast-wrapper {
   @apply mvx:relative mvx:flex mvx:flex-col mvx:p-3 mvx:items-start mvx:gap-3 mvx:rounded-xl mvx:backdrop-blur-2xl mvx:w-80;
   border: 1px solid var(--mvx-border-color-tertiary);
   background: var(--mvx-bg-color-primary);
 }
 
-.icon-close {
+.mvx-icon-close {
   @apply mvx:flex mvx:w-5 mvx:h-5 mvx:flex-col mvx:justify-center mvx:shrink-0 mvx:p-0 mvx:cursor-pointer mvx:absolute mvx:right-3 mvx:top-3 mvx:bg-none mvx:border-0;
   color: var(--mvx-text-color-primary);
 
@@ -14,6 +14,6 @@
   }
 }
 
-.toast-body {
+.mvx-toast-body {
   @apply mvx:flex mvx:items-start mvx:gap-3 mvx:self-stretch mvx:w-full;
 }

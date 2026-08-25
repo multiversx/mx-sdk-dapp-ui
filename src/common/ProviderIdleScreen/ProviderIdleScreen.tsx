@@ -1,10 +1,10 @@
 import { Fragment, h } from '@stencil/core';
+import { SidePanelHeader } from 'common/SidePanel/components/SidePanelHeader/SidePanelHeader';
 import { getProviderButtonIcon } from 'components/functional/unlock-panel/helpers';
 import type { IProviderBase } from 'types/provider.types';
 import { ProviderTypeEnum } from 'types/provider.types';
 
 import { getProviderIntroText } from './helpers/getProviderIntroText';
-import { SidePanelHeader } from 'common/SidePanel/components/SidePanelHeader/SidePanelHeader';
 
 const styles = {
   container: 'mvx:flex mvx:flex-col mvx:flex-1 mvx:overflow-hidden',

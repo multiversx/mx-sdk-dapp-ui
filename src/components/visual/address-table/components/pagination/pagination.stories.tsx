@@ -1,16 +1,24 @@
 import './pagination.scss';
 
 import { h } from '@stencil/core';
-import type { StoryObj } from '@stencil/storybook-plugin';
+import type { Meta, StoryObj } from '@stencil/storybook-plugin';
+
+type PaginationComponent = {
+  currentPage: number;
+  totalPages: number;
+  isDisabled?: boolean;
+  class?: string;
+};
 
 // prettier-ignore
 const styles = {
   paginationStoriesWrapper: 'pagination-stories-wrapper mvx:justify-center mvx:flex mvx:gap-4 mvx:pt-24',
 } satisfies Record<string, string>;
 
-const storySettings = {
+const storySettings: Meta<PaginationComponent> = {
   tags: ['autodocs'],
-  title: 'Components/Pagination',
+  title: 'Visual/Pagination',
+  component: 'mvx-pagination',
   parameters: {
     docs: {
       description: {
@@ -20,16 +28,16 @@ const storySettings = {
     },
   },
   args: {
-    'current-page': 1,
-    'total-pages': 10,
-    'is-disabled': false,
-    'class': '',
+    currentPage: 1,
+    totalPages: 10,
+    isDisabled: false,
+    class: '',
   },
   argTypes: {
-    'current-page': { control: { type: 'number', min: 1, max: 10 } },
-    'total-pages': { control: { type: 'number', min: 1 } },
-    'is-disabled': { control: 'boolean' },
-    'class': { control: 'text' },
+    currentPage: { control: { type: 'number', min: 1, max: 10 } },
+    totalPages: { control: { type: 'number', min: 1 } },
+    isDisabled: { control: 'boolean' },
+    class: { control: 'text' },
   },
   decorators: [
     Story => (
@@ -40,32 +48,28 @@ const storySettings = {
   ],
 };
 
-type PaginationPropsType = typeof storySettings.args;
-
-export const Default: StoryObj<PaginationPropsType> = {
-  render: props => {
-    return <mvx-pagination {...props} />;
-  },
+export const Default: StoryObj<PaginationComponent> = {
+  render: properties => <mvx-pagination {...properties} />,
 };
 
-export const Disabled: StoryObj<PaginationPropsType> = {
-  render: () => <mvx-pagination current-page={5} total-pages={20} is-disabled={true} class="custom-pagination" />,
+export const Disabled: StoryObj<PaginationComponent> = {
+  render: () => <mvx-pagination currentPage={5} totalPages={20} isDisabled={true} class="custom-pagination" />,
 };
 
-export const FirstPage: StoryObj<PaginationPropsType> = {
-  render: () => <mvx-pagination current-page={1} total-pages={10} />,
+export const FirstPage: StoryObj<PaginationComponent> = {
+  render: () => <mvx-pagination currentPage={1} totalPages={10} />,
 };
 
-export const LastPage: StoryObj<PaginationPropsType> = {
-  render: () => <mvx-pagination current-page={10} total-pages={10} />,
+export const LastPage: StoryObj<PaginationComponent> = {
+  render: () => <mvx-pagination currentPage={10} totalPages={10} />,
 };
 
-export const SinglePage: StoryObj<PaginationPropsType> = {
-  render: () => <mvx-pagination current-page={1} total-pages={1} />,
+export const SinglePage: StoryObj<PaginationComponent> = {
+  render: () => <mvx-pagination currentPage={1} totalPages={1} />,
 };
 
-export const ManyPages: StoryObj<PaginationPropsType> = {
-  render: () => <mvx-pagination current-page={520} total-pages={1000} />,
+export const ManyPages: StoryObj<PaginationComponent> = {
+  render: () => <mvx-pagination currentPage={520} totalPages={1000} />,
 };
 
 export default storySettings;

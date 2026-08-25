@@ -1,5 +1,5 @@
-.transaction-toast-content-wrapper {
-  @apply mvx:relative mvx:flex mvx:p-3 mvx:flex-col mvx:items-start mvx:gap-1 mvx:rounded-xl mvx:backdrop-blur-2xl mvx:max-w-100;
+.mvx-transaction-toast-content-wrapper {
+  @apply mvx:relative mvx:flex mvx:px-3 mvx:pt-3 mvx:pb-4 mvx:flex-col mvx:items-start mvx:gap-1 mvx:rounded-xl mvx:backdrop-blur-2xl mvx:max-w-100;
   border: 1px solid var(--mvx-border-color-tertiary);
   background: var(--mvx-bg-color-primary);
   color: var(--mvx-text-color-primary);
@@ -8,97 +8,123 @@
     color: var(--mvx-text-color-primary);
   }
 
-  &.full-width {
+  &.mvx-full-width {
     @apply mvx:max-w-full;
 
-    .transaction-toast-title {
+    .mvx-transaction-toast-title {
       @apply mvx:max-w-full;
     }
   }
 }
 
-.transaction-toast-content {
+.mvx-transaction-toast-content {
   @apply mvx:flex mvx:items-start mvx:gap-3 mvx:self-stretch;
 }
 
-.transaction-toast-icon {
-  @apply mvx:rounded-full mvx:w-5 mvx:h-5;
+.mvx-transaction-toast-icon {
+  @apply mvx:rounded-full mvx:flex mvx:items-center mvx:justify-center mvx:w-5 mvx:h-5 mvx:min-w-5 mvx:min-h-5;
 
-  &.transaction-toast-icon-failed {
-    color: var(--mvx-error-color);
-  }
-
-  &.transaction-toast-icon-pending {
-    color: var(--mvx-pending-color);
-  }
-
-  &.transaction-toast-icon-success {
-    color: var(--mvx-success-color);
-  }
+  margin-top: calc(var(--mvx-spacing) / 2);
 
   svg,
   img,
   .svg-inline--fa {
-    @apply mvx:rounded-full mvx:w-5 mvx:h-5;
+    @apply mvx:w-4 mvx:h-4;
+  }
+
+  &.success,
+  &.mvx-toast-success {
+    color: var(--mvx-success-color);
+    background: var(--mvx-success-bg-color);
+  }
+
+  &.pending,
+  &.warning,
+  &.mvx-toast-pending,
+  &.mvx-toast-warning {
+    color: var(--mvx-pending-color);
+    background: var(--mvx-pending-bg-color);
+  }
+
+  &.danger,
+  &.mvx-toast-danger {
+    color: var(--mvx-error-color);
+    background: var(--mvx-error-bg-color);
   }
 }
 
-.transaction-toast-details {
+.mvx-transaction-toast-details {
   @apply mvx:flex mvx:flex-col mvx:items-start mvx:gap-1 mvx:grow mvx:shrink-0 mvx:basis-0;
 }
 
-.transaction-toast-details-header {
-  @apply mvx:flex mvx:items-center mvx:gap-3 mvx:self-stretch mvx:justify-between mvx:p-0;
+.mvx-transaction-toast-details-header {
+  @apply mvx:flex mvx:items-baseline mvx:gap-3 mvx:self-stretch mvx:justify-between mvx:p-0;
 }
 
-.transaction-toast-header-left {
+.mvx-transaction-toast-header-left {
   @apply mvx:flex mvx:gap-1 mvx:items-center mvx:justify-center mvx:fill-link;
 }
 
-.transaction-toast-title {
-  @apply mvx:text-sm mvx:font-bold mvx:leading-5;
+.mvx-transaction-toast-title {
+  @apply mvx:text-base mvx:font-bold mvx:m-0;
   color: var(--mvx-text-color-primary);
 }
 
-.transaction-toast-title-short {
-  @apply mvx:max-w-40;
+.mvx-transaction-toast-title-short {
+  @apply mvx:max-w-55;
 }
 
-.truncate-toast-title {
+.mvx-truncate-toast-title {
   @apply mvx:truncate mvx:shrink-0;
 }
 
-.transaction-toast-amount {
-  @apply mvx:flex mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight;
+.mvx-transaction-toast-amount {
+  @apply mvx:flex mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight mvx:max-w-45 mvx:overflow-x-auto;
   color: var(--mvx-text-color-primary);
 
-  &.amount-positive {
+  &.mvx-amount-positive {
     color: var(--mvx-success-color);
   }
 
-  &.transaction-toast-failed {
+  &.mvx-transaction-toast-failed {
     color: var(--mvx-error-color);
   }
 
-  .transaction-amount-decimal {
+  .mvx-transaction-amount-decimal {
     @apply mvx:opacity-70;
   }
 
-  .transaction-amount-label {
+  .mvx-transaction-amount-label {
     @apply mvx:tracking-tight mvx:opacity-70 mvx:truncate mvx:max-w-25 mvx:shrink-0;
   }
 }
 
-.transaction-toast-details-info {
-  @apply mvx:flex mvx:items-start mvx:gap-1 mvx:self-stretch;
+.mvx-transaction-toast-details-info {
+  @apply mvx:flex mvx:items-center mvx:gap-1 mvx:self-stretch;
 }
 
-.transaction-toast-details-info-text {
+.mvx-transaction-toast-details-info-text {
   @apply mvx:text-sm mvx:font-medium mvx:leading-4 mvx:tracking-tight mvx:max-w-40;
   color: var(--mvx-text-color-secondary);
+
+  // The shared Trim hardcodes `leading-5` on its inner nodes and renders the two
+  // halves inside a `text-[1px]` wrapper, whose strut sits below the 14px inline
+  // box and pushes the row to ~23px. Pin every inner line box to the 16px row.
+  .trim-full,
+  .trim-full-visible,
+  .trim-ellipsis,
+  .trim-left,
+  .trim-right {
+    @apply mvx:leading-4;
+  }
+
+  .trim-left-wrapper,
+  .trim-right-wrapper {
+    @apply mvx:leading-none;
+  }
 }
 
-.transaction-toast-details-info-icon {
+.mvx-transaction-toast-details-info-icon {
   @apply mvx:rounded-full mvx:w-4 mvx:h-4;
 
   img {
@@ -106,7 +132,7 @@
   }
 }
 
-.transaction-toast-action-button {
+.mvx-transaction-toast-action-button {
   @apply mvx:flex mvx:flex-col mvx:justify-center mvx:shrink-0 mvx:w-5 mvx:h-5;
   color: var(--mvx-text-color-primary);
 
@@ -116,7 +142,7 @@
   }
 }
 
-.transaction-toast-close-icon {
+.mvx-transaction-toast-close-icon {
   @apply mvx:flex mvx:flex-col mvx:justify-center mvx:shrink-0 mvx:w-5 mvx:h-5 mvx:cursor-pointer;
   color: var(--mvx-text-color-primary);
 

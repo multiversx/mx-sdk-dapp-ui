@@ -3,7 +3,7 @@
 .feed-content {
   @apply mvx:h-full mvx:w-full mvx:flex mvx:flex-col mvx:relative mvx:gap-5 mvx:overflow-x-hidden mvx:overflow-y-scroll mvx:pt-6;
 
-  .transaction-toast-content-wrapper {
+  .mvx-transaction-toast-content-wrapper {
     @apply mvx:w-full;
     background: var(--mvx-bg-color-secondary);
     border-color: var(--mvx-bg-color-secondary);
@@ -15,7 +15,8 @@
 
   &::-webkit-scrollbar,
   &::-webkit-scrollbar-track,
-  &::-webkit-scrollbar-track:hover &::-webkit-scrollbar-corner {
+  &::-webkit-scrollbar-track:hover,
+  &::-webkit-scrollbar-corner {
     @apply mvx:bg-transparent;
   }
 
@@ -95,7 +96,7 @@
   }
 
   // Ensure children don't cause horizontal scroll
-  >* {
+  > * {
     @apply mvx:w-full mvx:max-w-full mvx:box-border;
   }
 }

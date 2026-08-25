@@ -20,6 +20,8 @@ import { CloseIcon } from './components/CloseIcon';
 import { CoinsIcon } from './components/CoinsIcon';
 import { ContractIcon } from './components/ContractIcon';
 import { CopyIcon } from './components/CopyIcon';
+import { DefaultTransactionIconSmall } from './components/DefaultTransactionIconSmall';
+import { FailIcon } from './components/FailIcon';
 import { HourglassIcon } from './components/HourglassIcon';
 import { LayersIcon } from './components/LayersIcon';
 import { LockIcon } from './components/LockIcon';
@@ -28,7 +30,6 @@ import { MinimizeIcon } from './components/MinimizeIcon';
 import { PencilIcon } from './components/PencilIcon';
 import { SpinnerIcon } from './components/SpinnerIcon';
 import { TriangularWarningIcon } from './components/TriangularWarningIcon';
-import { DefaultTransactionIconSmall } from './components/DefaultTransactionIconSmall';
 import type { IconPropsType } from './icon.types';
 
 export const Icon = ({ name, ...properties }: IconPropsType) => {
@@ -91,6 +92,9 @@ export const Icon = ({ name, ...properties }: IconPropsType) => {
     case 'close':
       return <CloseIcon {...properties} />;
 
+    case 'fail':
+      return <FailIcon {...properties} />;
+
     case 'hourglass':
       return <HourglassIcon {...properties} />;
 
@@ -122,7 +126,7 @@ export const Icon = ({ name, ...properties }: IconPropsType) => {
       return <MaximizeIcon />;
 
     case 'default-transaction-icon-small':
-      return <DefaultTransactionIconSmall />
+      return <DefaultTransactionIconSmall />;
 
     default:
       console.error(`No data for the ${name} icon.`);
