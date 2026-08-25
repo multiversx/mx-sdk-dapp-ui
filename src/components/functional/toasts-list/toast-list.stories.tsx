@@ -21,16 +21,18 @@ const styles = {
 
 const TAG = 'mvx-toast-list';
 
-const withToasts = (events: [string, unknown?][]) => async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  await publishTo(canvasElement, TAG, events);
-};
+const withToasts =
+  (events: [string, unknown?][]) =>
+  async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    await publishTo(canvasElement, TAG, events);
+  };
 
 const pendingToast = () =>
   createTransactionToast({
     toastId: uniqueToastId('pending'),
     transactions: createTransactions(1, TransactionStatusEnum.pending),
     toastDataState: createToastDataState(TransactionStatusEnum.pending),
-    transactionProgressState: createProgressState(60),
+    transactionProgressState: createProgressState(3),
     processedTransactionsStatus: 'Processing transaction',
   });
 

@@ -61,7 +61,7 @@ and consumed.
    `mvx-unlock-panel`, `mvx-sign-transactions-panel`, `mvx-ledger-connect`, `mvx-wallet-connect`,
    `mvx-notifications-feed`, `mvx-toast-list`, `mvx-pending-transactions-panel`.
 
-Shared presentational sub-components that are *not* custom elements (`SidePanel`, `Icon`, `Button`,
+Shared presentational sub-components that are _not_ custom elements (`SidePanel`, `Icon`, `Button`,
 `Tooltip`, `Trim`, `ProviderIdleScreen`) live in `src/common/`. Icon custom elements live in
 `src/assets/icons/`.
 
@@ -124,7 +124,7 @@ every utility in the library (25.5 KB vs 4.6 KB for `mvx-trim`).
 
 **Class-forwarding components scan backwards too.** A shadow component with a `@Prop() class` that it
 re-applies inside its own shadow root (`mvx-preloader`, `mvx-button`, `mvx-tooltip`, the provider
-icons) needs its *consumer's* classes in its *own* stylesheet — a stylesheet cannot cross a shadow
+icons) needs its _consumer's_ classes in its _own_ stylesheet — a stylesheet cannot cross a shadow
 boundary. `component-sources.ts` detects these and pulls in the closures of everything rendering the
 tag. Without it, e.g. every `mvx-address-table` skeleton row silently falls back to `preloader.scss`'s
 default `mvx:w-30 mvx:h-30` and renders as a 120px box.
@@ -155,7 +155,7 @@ Pitfalls:
    **both** `tsconfig.utils.json` `include` and `package.json` `exports`.
 
 The React and Vue output targets emit **raw `.ts`**, and `package.json` `exports` points `./react`
-and `./vue` straight at it — consumers compile it with *their* tsconfig. So the generated
+and `./vue` straight at it — consumers compile it with _their_ tsconfig. So the generated
 `src/components.d.ts` is part of the public API surface, and two things silently corrupt it:
 
 - An `@Prop()` typed with `JSX.Element` from `@stencil/core` makes Stencil emit
@@ -189,6 +189,10 @@ the consumer's graph, so this package deliberately declares no `peerDependencies
 
 ## Storybook
 
+Deployed at **https://sdk-dapp-ui.multiversx.com** — `.github/workflows/deploy-storybook.yml` builds
+and syncs `storybook-static/` on every push to `main` that touches `src/`, `.storybook/` or
+`package.json`.
+
 Framework: **`@stencil/storybook-plugin`** (not `@storybook/html-vite`). Its `renderToCanvas` calls
 Stencil's own `render(vdom, element)`, so stories build real DOM — non-primitive values are assigned
 as DOM **properties** and `on*` handlers as listeners. Object, array and function props therefore
@@ -207,11 +211,11 @@ needed them; stories importing real values do.
 `.storybook/*.tsx`. The root `tsconfig.json` only covers `include: ["src"]`, and Vite 8's transform
 **ignores the `/** @jsx h *\/` pragma**, so without this file `.storybook/preview.tsx` compiles
 against the automatic React runtime. Its global theme decorator then wraps every story in a React
-element, Stencil's `render()` rejects it with `Invalid vNode child`, and *all* stories render blank
+element, Stencil's `render()` rejects it with `Invalid vNode child`, and _all_ stories render blank
 while the build still reports success. Only a browser check catches this — see "Verifying a change".
 
 Storybook 10's framework preset appends `@stencil-community/unplugin-stencil` (renamed from
-`unplugin-stencil` in `@stencil/storybook-plugin` 0.7.0) *after* `main.ts`'s `viteFinal` runs, so it
+`unplugin-stencil` in `@stencil/storybook-plugin` 0.7.0) _after_ `main.ts`'s `viteFinal` runs, so it
 can no longer be stripped there. It no longer needs to be: on Storybook 10 its importer-less
 `resolveId` hook — which rewrites every relative specifier to a same-named file under
 `dist/web-components` — no longer breaks `@vitest/mocker`, and the build and all stories are clean
@@ -240,7 +244,12 @@ Two traps worth knowing:
   `processedTransactionsStatus: string | VNode`; use the string form in stories.
 - **`mvx-transaction-toast-progress` remembers finished toast ids in module scope**, so reusing a
   `toastId` renders an already-complete bar on a second visit. Generate a fresh one per story
-  (`uniqueToastId`). Its `startTime`/`endTime` are UNIX **seconds**, not milliseconds.
+  (`uniqueToastId`). Its `startTime`/`endTime` are UNIX **milliseconds** — seconds cannot express a
+  sub-second round. Second-based values are still accepted: `normalizeProgressTimestamps` scales any
+  pair below 1e11 by 1000, deciding the factor once from `startTime` so a pair is never split across
+  units. The expected duration is then floored at `MIN_BLOCK_TIME_MS` (600ms): a transaction cannot
+  resolve faster than one block, so a shorter span is under-reported data, not a faster transaction.
+  An *inverted* span (`endTime <= startTime`) is not clamped — it still quick-fills as finished.
 
 ## Verifying a change
 

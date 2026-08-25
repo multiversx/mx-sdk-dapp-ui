@@ -19,16 +19,18 @@ const styles = {
 
 const TAG = 'mvx-notifications-feed';
 
-const openWith = (events: [string, unknown?][]) => async ({ canvasElement }: { canvasElement: HTMLElement }) => {
-  await publishTo(canvasElement, TAG, [...events, [NotificationsFeedEventsEnum.OPEN]]);
-};
+const openWith =
+  (events: [string, unknown?][]) =>
+  async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+    await publishTo(canvasElement, TAG, [...events, [NotificationsFeedEventsEnum.OPEN]]);
+  };
 
 const pendingToast = () =>
   createTransactionToast({
     toastId: uniqueToastId('feed-pending'),
     transactions: createTransactions(1, TransactionStatusEnum.pending),
     toastDataState: createToastDataState(TransactionStatusEnum.pending),
-    transactionProgressState: createProgressState(60),
+    transactionProgressState: createProgressState(3),
     processedTransactionsStatus: 'Processing transaction',
   });
 

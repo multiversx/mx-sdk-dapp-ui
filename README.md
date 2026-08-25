@@ -4,6 +4,9 @@ MultiversX Front-End Library for JavaScript and TypeScript (written in TypeScrip
 
 ## Introduction
 
+[![Storybook](https://raw.githubusercontent.com/storybooks/brand/master/badge/badge-storybook.svg)](https://sdk-dapp-ui.multiversx.com)
+[![Unit tests](https://github.com/multiversx/mx-sdk-dapp-ui/actions/workflows/pre-merge-unit-tests.yml/badge.svg)](https://github.com/multiversx/mx-sdk-dapp-ui/actions/workflows/pre-merge-unit-tests.yml)
+
 `sdk-dapp-ui` is a library that holds components to display user information from the MultiversX blockchain.
 
 Since the library is built using [Stencil](https://stenciljs.com/), it can be used in any front-end framework, such as [React](https://github.com/multiversx/mx-template-dapp), Angular, or [Solid.js](https://github.com/multiversx/mx-solidjs-template-dapp), but also in back-end frameworks like [Next.js](https://github.com/multiversx/mx-template-dapp-nextjs).
@@ -15,6 +18,10 @@ The GitHub repository can be found here: [https://github.com/multiversx/mx-sdk-d
 ## Live demo: template-dapp
 
 See [Template dApp](https://template-dapp.multiversx.com/) for live demo or checkout usage in the [Github repo](https://github.com/multiversx/mx-template-dapp)
+
+Check out existing components and states using [Storybook](https://sdk-dapp-ui.multiversx.com).
+
+> **Looking for another framework?** The same dApp exists for Next.js, Vue, Angular, SolidJS, plain-JavaScript React, and React Native — see [Other templates](#other-templates).
 
 ## Requirements
 
@@ -204,6 +211,25 @@ npx stencil test src/components/controlled/format-amount/tests/format-amount.spe
 ```
 
 Use `--e2e` instead of `--spec` for `.e2e.ts` files.
+
+## Other templates
+
+The same template dApp is implemented across several frameworks. If another stack suits your project better, start from one of these instead:
+
+| Template                           | Stack                                | Repository                                                                                   |
+| ---------------------------------- | ------------------------------------ | -------------------------------------------------------------------------------------------- |
+| React (TypeScript) **← this repo** | React 18 · TypeScript · Vite         | [mx-template-dapp](https://github.com/multiversx/mx-template-dapp)                           |
+| React (JavaScript)                 | React 19 · JSX · Vite                | [mx-template-dapp-reactjs](https://github.com/multiversx/mx-template-dapp-reactjs)           |
+| Next.js                            | Next.js 16 (App Router) · TypeScript | [mx-template-dapp-nextjs](https://github.com/multiversx/mx-template-dapp-nextjs)             |
+| SolidJS                            | SolidJS · TypeScript · Vite          | [mx-template-dapp-solidjs](https://github.com/multiversx/mx-template-dapp-solidjs)           |
+| Vue                                | Vue 3 · TypeScript · Vite            | [mx-template-dapp-vue](https://github.com/multiversx/mx-template-dapp-vue)                   |
+| Angular                            | Angular 20 · TypeScript              | [mx-template-dapp-angular](https://github.com/multiversx/mx-template-dapp-angular)           |
+| React Native                       | React Native                         | [mx-template-dapp-react-native](https://github.com/multiversx/mx-template-dapp-react-native) |
+
+## Links
+
+- [@multiversx/sdk-dapp on GitHub](https://github.com/multiversx/mx-sdk-dapp) · [on npm](https://www.npmjs.com/package/@multiversx/sdk-dapp)
+- [MultiversX developer docs](https://docs.multiversx.com/)
 
 Contributor documentation — architecture, the Tailwind pipeline, conventions and verification
 steps — is in [AGENTS.md](./AGENTS.md).
