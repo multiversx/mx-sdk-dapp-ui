@@ -20,6 +20,8 @@ export default {
     'sign-transactions-amount-value mvx:flex mvx:flex-row mvx:flex-wrap mvx:justify-end mvx:items-baseline mvx:gap-x-1 mvx:text-xl mvx:font-medium mvx:text-primary mvx:-tracking-[0.24px] mvx:leading-6 mvx:text-right',
   signTransactionsIdentifier: 'sign-transactions-identifier mvx:text-sm mvx:text-primary',
   signTransactionsUsdValue: 'sign-transactions-usd-value mvx:text-sm mvx:text-secondary-text',
+  signTransactionsEgldValue:
+    'sign-transactions-egld-value mvx:flex mvx:items-baseline mvx:gap-1 mvx:text-sm mvx:font-medium mvx:text-primary',
   signTransactionsTokenIcon:
     'sign-transactions-token-icon mvx:w-10 mvx:h-10 mvx:rounded-full mvx:overflow-hidden mvx:border mvx:border-neutral-700',
   signTransactionsTokenIconImg: 'sign-transactions-token-icon-img mvx:w-full mvx:h-full mvx:object-cover',
@@ -41,6 +43,9 @@ export default {
     'sign-transactions-direction-icon-dot mvx:relative mvx:rounded-full mvx:w-0.5 mvx:h-0.5 mvx:bg-secondary-text',
   signTransactionsActionValue:
     'sign-transactions-action-value mvx:ml-auto mvx:text-sm mvx:font-medium mvx:text-secondary-text mvx:relative mvx:z-1',
+  signTransactionsInteractorWarning:
+    'sign-transactions-interactor-warning mvx:flex mvx:items-center mvx:gap-2 mvx:px-6 mvx:pt-3 mvx:text-sm mvx:text-orange-500',
+  signTransactionsInteractorWarningIcon: 'sign-transactions-interactor-warning-icon mvx:w-4 mvx:h-4 mvx:shrink-0',
   signTransactionsFeeContainer: 'sign-transactions-fee-container mvx:py-2 mvx:px-6',
   signTransactionsFeeRow: 'sign-transactions-fee-row mvx:flex mvx:items-center mvx:justify-between mvx:py-3 mvx:px-0',
   signTransactionsFeeLabelContainer: 'sign-transactions-fee-label-container mvx:flex mvx:items-center mvx:gap-1',
@@ -49,4 +54,6 @@ export default {
   signTransactionsInfoIcon:
     'sign-transactions-info-icon mvx:w-3.5 mvx:h-3.5 mvx:relative mvx:before:content-["ⓘ"] mvx:before:text-sm mvx:before:text-secondary-text mvx:before:absolute mvx:before:-top-0.5 mvx:before:left-0',
   signTransactionsFeeValue: 'sign-transactions-fee-value mvx:text-primary mvx:text-sm mvx:font-normal mvx:leading-5',
+  signTransactionsAccountValue:
+    'sign-transactions-account-value mvx:text-primary mvx:text-sm mvx:font-normal mvx:leading-5 mvx:max-w-1/2 mvx:min-w-0',
 } satisfies Record<string, string>;

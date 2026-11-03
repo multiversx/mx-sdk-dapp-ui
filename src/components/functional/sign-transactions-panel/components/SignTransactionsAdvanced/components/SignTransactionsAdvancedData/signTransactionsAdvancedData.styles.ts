@@ -11,5 +11,6 @@ export default {
     signTransactionsAdvancedDataWrapper: 'sign-transactions-advanced-data-wrapper mvx:h-30 mvx:p-2 mvx:rounded-lg mvx:overflow-auto mvx:flex mvx:flex-col mvx:break-words mvx:text-base mvx:border mvx:border-neutral-800 mvx:before:left-px mvx:before:top-px mvx:before:bottom-px mvx:before:border-7 mvx:before:border-transparent mvx:before:border-b-10 mvx:before:border-t-10 mvx:before:content-[""] mvx:before:absolute mvx:before:pointer-events-none mvx:before:right-4 mvx:before:border-l-0 mvx:before:rounded-lg mvx:before:border-r-0 mvx:scrollbar-horizontal',
     signTransactionsAdvancedDataText: 'sign-transactions-advanced-data-text mvx:text-secondary-text',
     signTransactionsAdvancedDataHighlight: 'sign-transactions-advanced-data-highlight mvx:text-primary',
-    signTransactionsAdvancedDataHighlightBolded: 'sign-transactions-advanced-data-highlight-bolded mvx:font-medium'
+    signTransactionsAdvancedDataHighlightBolded: 'sign-transactions-advanced-data-highlight-bolded mvx:font-medium',
+    signTransactionsAdvancedDataWarning: 'sign-transactions-advanced-data-warning mvx:px-2 mvx:text-sm mvx:text-orange-500'
 } satisfies Record<string, string>;

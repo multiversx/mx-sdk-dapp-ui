@@ -15,9 +15,15 @@ export type FungibleTransactionType = {
 
 export type TokenType = EsdtEnumType | NftEnumType;
 
+export type EgldValueType = {
+  amount: string;
+  usdValue: string;
+};
+
 export interface ISignTransactionsPanelCommonData {
   receiver?: string;
   receiverIcon?: string;
+  receiverScamInfo?: string;
   data?: string;
   decodedData?: Partial<Record<DecodeMethodEnum, DecodedDisplayType>>;
   gasPrice?: string; // formatted gas price
@@ -37,13 +43,21 @@ export interface ISignTransactionsPanelCommonData {
   needsSigning?: boolean;
   isEditable?: boolean;
   highlight?: string | null;
+  // which occurrence of `highlight` in the data is this screen's (0 when it is the first)
+  highlightOccurrence?: number;
   scCall?: string | null;
   nextUnsignedTxIndex?: number;
   providerName?: string;
   address?: string;
+  // the transaction's sender, which can differ from `address` (e.g. a multisig or guarded account)
+  sender?: string;
+  // the account paying the fee of a relayed transaction
+  relayer?: string;
   username?: string;
   origin?: string;
   explorerLink?: string;
+  // EGLD value of a transaction whose screen shows a token amount
+  egldValue?: EgldValueType;
 }
 
 export interface ISignTransactionsPanelData {
@@ -93,7 +107,12 @@ export interface IOverviewProps {
   tokenIconUrl: string;
   interactor: string;
   interactorIconUrl: string;
+  interactorWarning?: string;
   action: string;
-  networkFee: string;
+  networkFee?: string;
+  egldValue?: EgldValueType;
+  egldLabel?: string;
+  sender?: string;
+  relayer?: string;
   isApp: boolean;
 }

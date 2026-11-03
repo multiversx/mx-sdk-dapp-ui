@@ -34,6 +34,7 @@ export function TransactionAssetIcon({
   if (transaction.asset.imageUrl) {
     return (
       <img
+        referrerPolicy="no-referrer"
         src={transaction.asset.imageUrl}
         alt="Transaction icon"
         loading="lazy"

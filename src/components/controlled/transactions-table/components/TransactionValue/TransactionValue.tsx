@@ -13,7 +13,15 @@ interface TransactionValuePropsType {
   value: TransactionValueType;
 }
 
+const riskWarnings: Partial<Record<NonNullable<TransactionValueType['displayRisk']>, string>> = {
+  suspicious: 'This token name contains hidden or look-alike characters',
+  blocked: 'This token name contains characters that can hide or reorder text',
+};
+
 export function TransactionValue({ value, class: className }: TransactionValuePropsType) {
+  const isNameBlocked = value.displayRisk === 'blocked';
+  const riskWarning = value.displayRisk ? riskWarnings[value.displayRisk] : undefined;
+
   return (
     <div class={{ [className]: Boolean(className), [styles.transactionValue]: true }}>
       {value.badge && (
@@ -50,7 +58,14 @@ export function TransactionValue({ value, class: className }: TransactionValuePr
           })}
         >
           <div class={styles.transactionValue}>
-            {value.svgUrl && <img src={value.svgUrl} alt={value.name ?? ''} class={styles.transactionValueImg} />}
+            {value.svgUrl && (
+              <img
+                referrerPolicy="no-referrer"
+                src={value.svgUrl}
+                alt={isNameBlocked ? '' : (value.name ?? '')}
+                class={styles.transactionValueImg}
+              />
+            )}
 
             {value.linkText && (
               <span
@@ -58,11 +73,20 @@ export function TransactionValue({ value, class: className }: TransactionValuePr
                   [styles.transactionValueTextTruncate]: value.ticker === value.collection && value.ticker != null,
                 }}
               >
-                {value.linkText}
+                {isNameBlocked ? 'Unknown token' : value.linkText}
               </span>
             )}
           </div>
         </ExplorerLink>
+      )}
+
+      {riskWarning && (
+        <mvx-tooltip
+          data-testid={DataTestIdsEnum.transactionValueRiskWarning}
+          trigger={<Icon name="triangular-warning" class={styles.transactionValueRiskIcon} />}
+        >
+          {riskWarning}
+        </mvx-tooltip>
       )}
 
       {value.titleText && (

@@ -5,6 +5,7 @@ import { Trim } from 'common/Trim/Trim';
 import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import { handleAmountResize } from '../../helpers';
+import type { EgldValueType } from '../../sign-transactions-panel.types';
 import styles from './signTransactionsOverview.styles';
 
 interface SignTransactionsOverviewPropsType {
@@ -14,8 +15,13 @@ interface SignTransactionsOverviewPropsType {
   tokenIconUrl: string;
   interactor: string;
   interactorIconUrl: string;
+  interactorWarning?: string;
   action: string;
-  networkFee: string;
+  networkFee?: string;
+  egldValue?: EgldValueType;
+  egldLabel?: string;
+  sender?: string;
+  relayer?: string;
   isApp: boolean;
 }
 
@@ -26,8 +32,13 @@ export function SignTransactionsOverview({
   tokenIconUrl,
   interactor,
   interactorIconUrl,
+  interactorWarning,
   action,
-  networkFee = '~$0.00078',
+  networkFee,
+  egldValue,
+  egldLabel,
+  sender,
+  relayer,
   isApp = false,
 }: SignTransactionsOverviewPropsType) {
   const setAmountValueRef = (el?: HTMLElement) => {
@@ -64,10 +75,21 @@ export function SignTransactionsOverview({
                   {usdValue}
                 </div>
               )}
+              {egldValue && (
+                <div
+                  class={styles.signTransactionsEgldValue}
+                  data-testid={DataTestIdsEnum.signTransactionsOverviewEgldValue}
+                >
+                  <span>
+                    + {egldValue.amount} {egldLabel}
+                  </span>
+                  <span class={styles.signTransactionsUsdValue}>{egldValue.usdValue}</span>
+                </div>
+              )}
             </div>
             {tokenIconUrl && (
               <div class={styles.signTransactionsTokenIcon}>
-                <img src={tokenIconUrl} alt={identifier} />
+                <img referrerPolicy="no-referrer" src={tokenIconUrl} alt={identifier} />
               </div>
             )}
           </div>
@@ -96,7 +118,7 @@ export function SignTransactionsOverview({
           <div class={styles.signTransactionsInteractorInfo}>
             {interactorIconUrl && (
               <div class={styles.signTransactionsInteractorIcon}>
-                <img src={interactorIconUrl} alt={interactor} />
+                <img referrerPolicy="no-referrer" src={interactorIconUrl} alt={interactor} />
               </div>
             )}
             {interactor && (
@@ -124,6 +146,16 @@ export function SignTransactionsOverview({
         )}
       </div>
 
+      {interactorWarning && (
+        <div
+          class={styles.signTransactionsInteractorWarning}
+          data-testid={DataTestIdsEnum.signTransactionsOverviewInteractorWarning}
+        >
+          <Icon name="triangular-warning" class={styles.signTransactionsInteractorWarningIcon} />
+          <span>{interactorWarning}</span>
+        </div>
+      )}
+
       <div class={styles.signTransactionsFeeContainer}>
         <div class={styles.signTransactionsFeeRow}>
           <div class={styles.signTransactionsFeeLabelContainer}>
@@ -131,9 +163,23 @@ export function SignTransactionsOverview({
             <div class={styles.signTransactionsInfoIcon}></div>
           </div>
           <div class={styles.signTransactionsFeeValue} data-testid={DataTestIdsEnum.signTransactionsOverviewNetworkFee}>
-            {networkFee}
+            {networkFee ?? '-'}
           </div>
         </div>
+
+        {relayer && (
+          <div class={styles.signTransactionsFeeRow} data-testid={DataTestIdsEnum.signTransactionsOverviewRelayer}>
+            <span class={styles.signTransactionsFeeLabel}>Fee paid by</span>
+            <Trim class={styles.signTransactionsAccountValue} text={relayer} />
+          </div>
+        )}
+
+        {sender && (
+          <div class={styles.signTransactionsFeeRow} data-testid={DataTestIdsEnum.signTransactionsOverviewSender}>
+            <span class={styles.signTransactionsFeeLabel}>From</span>
+            <Trim class={styles.signTransactionsAccountValue} text={sender} />
+          </div>
+        )}
       </div>
     </div>
   );

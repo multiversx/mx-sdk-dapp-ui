@@ -8,5 +8,6 @@ export default {
   transactionValueTextTruncate: 'transaction-value-text-truncate mvx:truncate',
   transactionValueLink: 'transaction-value-link mvx:flex',
   transactionValueImg: 'transaction-value-img mvx:w-6 mvx:h-6 mvx:min-w-6 mvx:min-h-6 mvx:text-transparent mvx:rounded-full mvx:overflow-hidden mvx:border mvx:border-gray-200',
-  transactionValueIcon: 'transaction-value-icon mvx:w-4 mvx:h-4'
+  transactionValueIcon: 'transaction-value-icon mvx:w-4 mvx:h-4',
+  transactionValueRiskIcon: 'transaction-value-risk-icon mvx:w-4 mvx:h-4 mvx:text-orange-500'
 } satisfies Record<string, string>;

@@ -109,6 +109,16 @@ export class SignTransactionsPanel {
     }
   };
 
+  get networkFee() {
+    const { feeInFiatLimit, feeLimit, egldLabel } = state.commonData ?? {};
+
+    if (feeInFiatLimit) {
+      return feeInFiatLimit;
+    }
+
+    return feeLimit ? `${feeLimit} ${egldLabel}` : undefined;
+  }
+
   get overviewProps(): IOverviewProps {
     const { tokenTransaction, sftTransaction, nftTransaction } = state;
     const txData = sftTransaction || nftTransaction || tokenTransaction;
@@ -120,8 +130,13 @@ export class SignTransactionsPanel {
       tokenIconUrl: txData?.imageURL,
       interactor: state.commonData?.receiver,
       interactorIconUrl: state.commonData?.receiverIcon,
+      interactorWarning: state.commonData?.receiverScamInfo,
       action: state.commonData?.scCall,
-      networkFee: state.commonData?.feeInFiatLimit,
+      networkFee: this.networkFee,
+      egldValue: state.commonData?.egldValue,
+      egldLabel: state.commonData?.egldLabel,
+      sender: state.commonData?.sender !== state.commonData?.address ? state.commonData?.sender : undefined,
+      relayer: state.commonData?.relayer,
       isApp: Boolean(state.commonData?.scCall),
     };
   }
@@ -150,7 +165,11 @@ export class SignTransactionsPanel {
 
     return (
       <SidePanel isOpen={this.isOpen} onClose={this.handleClose} panelTitle="Confirm Transaction" hasBackButton={false}>
-        <div class={styles.signTransactionsPanel} data-testid={DataTestIdsEnum.signTransactionsPanel} part="sign-transactions-panel">
+        <div
+          class={styles.signTransactionsPanel}
+          data-testid={DataTestIdsEnum.signTransactionsPanel}
+          part="sign-transactions-panel"
+        >
           <SignTransactionsHeader
             onBack={onBack}
             onNext={onNext}

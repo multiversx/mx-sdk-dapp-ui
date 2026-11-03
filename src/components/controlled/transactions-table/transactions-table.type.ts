@@ -42,6 +42,7 @@ export type TransactionAccountType = {
 export type TransactionValueType = {
   badge?: string;
   collection?: string;
+  displayRisk?: 'clean' | 'suspicious' | 'blocked';
   egldLabel: string;
   link?: string;
   linkText?: string;

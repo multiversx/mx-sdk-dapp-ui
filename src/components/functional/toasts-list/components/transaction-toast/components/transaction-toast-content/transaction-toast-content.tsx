@@ -112,7 +112,7 @@ export class TransactionToastContent {
                 )}
                 <div class="mvx-transaction-toast-details-info-icon">
                   {transaction.interactorAsset ? (
-                    <img src={transaction.interactorAsset} alt="Service icon" loading="lazy" />
+                    <img referrerPolicy="no-referrer" src={transaction.interactorAsset} alt="Service icon" loading="lazy" />
                   ) : (
                     <mvx-default-transaction-icon-small />
                   )}

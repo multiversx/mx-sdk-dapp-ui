@@ -79,6 +79,7 @@ export function TransactionListItem({ transaction }: TransactionListItemPropsTyp
             <div class={styles.transactionDetailsInfoIcon}>
               {transaction.interactorAsset ? (
                 <img
+                  referrerPolicy="no-referrer"
                   src={transaction.interactorAsset}
                   alt="Service icon"
                   loading="lazy"

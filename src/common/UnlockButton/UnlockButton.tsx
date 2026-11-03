@@ -64,7 +64,7 @@ export function UnlockButton({
           [styles.unlockButtonIconClipped]: isExtensionProvider,
         })}
       >
-        {icon ? icon : <img src={iconUrl} alt={label} />}
+        {icon ? icon : <img referrerPolicy="no-referrer" src={iconUrl} alt={label} />}
       </div>
 
       {isDetectableProvider && (

@@ -1,6 +1,7 @@
 import { h } from '@stencil/core';
 import { newSpecPage } from '@stencil/core/testing';
 import type { TransactionValueType } from 'components/controlled/transactions-table/transactions-table.type';
+import { DataTestIdsEnum } from 'constants/dataTestIds.enum';
 
 import { TransactionValue } from '../TransactionValue';
 
@@ -137,7 +138,7 @@ describe('TransactionValue tests', () => {
       <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
         <a class="explorer-link mvx:decoration-0 mvx:flex transaction-value-link" href="https://example.com" rel="noreferrer" target="_blank">
           <div class="mvx:flex mvx:gap-1 mvx:items-center transaction-value">
-            <img alt="Example Icon" class="mvx:border mvx:border-gray-200 mvx:h-6 mvx:min-h-6 mvx:min-w-6 mvx:overflow-hidden mvx:rounded-full mvx:text-transparent mvx:w-6 transaction-value-img" src="https://example.com/icon.svg">
+            <img alt="Example Icon" class="mvx:border mvx:border-gray-200 mvx:h-6 mvx:min-h-6 mvx:min-w-6 mvx:overflow-hidden mvx:rounded-full mvx:text-transparent mvx:w-6 transaction-value-img" referrerpolicy="no-referrer" src="https://example.com/icon.svg">
             <span>Example Link</span>
           </div>
         </a>
@@ -202,5 +203,54 @@ describe('TransactionValue tests', () => {
         </mvx-tooltip>
       </div>
     `);
+  });
+
+  describe('displayRisk', () => {
+    const tokenValue: TransactionValueType = {
+      egldLabel: '',
+      link: 'https://example.com/tokens/USDC-c76f1f',
+      linkText: 'USDC',
+      name: 'USDC',
+      svgUrl: 'https://example.com/icon.png',
+      ticker: 'USDC',
+      valueDecimal: '',
+      valueInteger: '',
+    };
+
+    const render = async (value: TransactionValueType) => {
+      const page = await newSpecPage({
+        components: [],
+        template: () => <TransactionValue value={value} />,
+      });
+
+      return {
+        warning: page.root.querySelector(`[data-testid="${DataTestIdsEnum.transactionValueRiskWarning}"]`),
+        text: page.root.querySelector('a').textContent,
+        alt: page.root.querySelector('img').getAttribute('alt'),
+      };
+    };
+
+    it('shows no warning for a clean name', async () => {
+      const { warning, text } = await render({ ...tokenValue, displayRisk: 'clean' });
+
+      expect(warning).toBeNull();
+      expect(text).toContain('USDC');
+    });
+
+    it('warns about a suspicious name but still shows it', async () => {
+      const { warning, text } = await render({ ...tokenValue, displayRisk: 'suspicious' });
+
+      expect(warning.textContent).toContain('hidden or look-alike characters');
+      expect(text).toContain('USDC');
+    });
+
+    it('warns about a blocked name and does not show it', async () => {
+      const { warning, text, alt } = await render({ ...tokenValue, displayRisk: 'blocked' });
+
+      expect(warning.textContent).toContain('hide or reorder text');
+      expect(text).not.toContain('USDC');
+      expect(text).toContain('Unknown token');
+      expect(alt).toBe('');
+    });
   });
 });

@@ -28,7 +28,7 @@ export function SignTransactionsAdvancedData({
   decodeTooltipVisible,
   onDecodeTooltipVisibilityChange,
 }: SignTransactionsAdvancedDataPropsType) {
-  const { data, highlight } = state.commonData;
+  const { data, highlight, highlightOccurrence: occurrence = 0 } = state.commonData;
   let highlightElement: HTMLElement;
 
   const setDecodeMethod = (method: DecodeMethodEnum) => {
@@ -41,7 +41,7 @@ export function SignTransactionsAdvancedData({
     if (decodeMethod === DecodeMethodEnum.raw) {
       return !highlight || !data?.includes(highlight)
         ? { highlight: data || '' }
-        : getProcessedHighlightedData({ data, highlightedData: highlight });
+        : getProcessedHighlightedData({ data, highlightedData: highlight, occurrence });
     }
 
     const { displayValue = '', highlight: decodedHighlight = '' } = state.commonData.decodedData
@@ -50,8 +50,13 @@ export function SignTransactionsAdvancedData({
 
     return !decodedHighlight || !displayValue.includes(decodedHighlight)
       ? { highlight: displayValue }
-      : getProcessedHighlightedData({ data: displayValue, highlightedData: decodedHighlight });
+      : getProcessedHighlightedData({ data: displayValue, highlightedData: decodedHighlight, occurrence });
   };
+
+  const validationWarnings =
+    decodeMethod === DecodeMethodEnum.raw
+      ? []
+      : (state.commonData.decodedData?.[decodeMethod]?.validationWarnings ?? []);
 
   const computedDisplayData = getComputedDisplayData();
   const { beforeHighlight, afterHighlight, highlight: highlightText } = computedDisplayData;
@@ -146,6 +151,15 @@ export function SignTransactionsAdvancedData({
           )}
         </div>
       </div>
+
+      {validationWarnings.map(warning => (
+        <div
+          class={styles.signTransactionsAdvancedDataWarning}
+          data-testid={DataTestIdsEnum.signTransactionsAdvancedDataWarning}
+        >
+          {warning}
+        </div>
+      ))}
     </div>
   );
 }
