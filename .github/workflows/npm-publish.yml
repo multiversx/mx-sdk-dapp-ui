@@ -1,14 +1,11 @@
 name: Publish sdk-dapp-ui
 
 on:
-  push:
-    branches: [main]
-  repository_dispatch:
-    types: publish-npm
   workflow_dispatch:
 
 permissions:
   contents: write
+  id-token: write
 
 jobs:
   publish-npm:
@@ -45,17 +42,30 @@ jobs:
 
       - name: Get package info
         id: package
-        uses: andreigiura/action-nodejs-package-info@v1.0.2
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [[ "$VERSION" == *-* ]]; then PRERELEASE=true; else PRERELEASE=false; fi
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "prerelease=$PRERELEASE" >> "$GITHUB_OUTPUT"
+
+      - name: Publish to npmjs next version
+        if: ${{ steps.package.outputs.prerelease == 'true' }}
+        run: npm publish --tag next
+
+      - name: Publish to npmjs
+        if: ${{ steps.package.outputs.prerelease == 'false' }}
+        run: npm publish
 
       - name: Create GitHub Release
+        if: ${{ steps.package.outputs.prerelease == 'false' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: ${{ steps.package.outputs.is-prerelease == 'false' }}
+          VERSION: ${{ steps.package.outputs.version }}
         run: |
-          RELEASE_TAG=v$(node -p "require('./package.json').version")
+          RELEASE_TAG="v$VERSION"
           echo "Creating release for version: $RELEASE_TAG"
 
-          changelog_content=$(awk "/^## \[\[?${RELEASE_TAG#v}[^\]]*\]/{flag=1; next} /^## \[/{flag=0} flag" CHANGELOG.md)
+          changelog_content=$(awk "/^## \[\[?${VERSION}[^\]]*\]/{flag=1; next} /^## \[/{flag=0} flag" CHANGELOG.md)
 
           cat > release_notes.md << EOF
           ## What's Changed
@@ -63,20 +73,7 @@ jobs:
           $changelog_content
           EOF
 
-          # Create the release
           gh release create "$RELEASE_TAG" \
-            --target=$GITHUB_SHA \
+            --target="$GITHUB_SHA" \
             --title="$RELEASE_TAG" \
             --notes-file release_notes.md
-
-      - name: Publish to npmjs next version
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-        if: ${{ steps.package.outputs.is-prerelease == 'true'}}
-        run: echo ${{ steps.package.outputs.is-prerelease}} && npm publish --tag next
-
-      - name: Publish to npmjs
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-        if: ${{ steps.package.outputs.is-prerelease == 'false' }}
-        run: npm publish

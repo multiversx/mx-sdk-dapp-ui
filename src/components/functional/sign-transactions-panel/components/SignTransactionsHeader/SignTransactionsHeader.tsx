@@ -95,6 +95,7 @@ export function SignTransactionsHeader({
         {showFavicon && (
           <div class={styles.signTransactionsHeaderOriginImage}>
             <img
+              referrerPolicy="no-referrer"
               src={`${origin}/favicon.ico`}
               alt="favicon"
               onError={() => {
