@@ -58,6 +58,7 @@ export interface ISignTransactionsPanelCommonData {
   explorerLink?: string;
   // EGLD value of a transaction whose screen shows a token amount
   egldValue?: EgldValueType;
+  tokenTransferWarning?: string;
 }
 
 export interface ISignTransactionsPanelData {
@@ -114,5 +115,6 @@ export interface IOverviewProps {
   egldLabel?: string;
   sender?: string;
   relayer?: string;
+  tokenTransferWarning?: string;
   isApp: boolean;
 }

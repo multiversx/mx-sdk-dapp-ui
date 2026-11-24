@@ -70,6 +70,7 @@ export enum DataTestIdsEnum {
   signTransactionsOverviewInteractorRow = 'signTransactionsOverviewInteractorRow',
   signTransactionsOverviewInteractorName = 'signTransactionsOverviewInteractorName',
   signTransactionsOverviewInteractorWarning = 'signTransactionsOverviewInteractorWarning',
+  signTransactionsOverviewTokenTransferWarning = 'signTransactionsOverviewTokenTransferWarning',
   signTransactionsOverviewActionRow = 'signTransactionsOverviewActionRow',
   signTransactionsOverviewActionValue = 'signTransactionsOverviewActionValue',
   signTransactionsOverviewNetworkFee = 'signTransactionsOverviewNetworkFee',

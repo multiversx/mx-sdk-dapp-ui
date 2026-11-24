@@ -122,11 +122,12 @@ export class SignTransactionsPanel {
   get overviewProps(): IOverviewProps {
     const { tokenTransaction, sftTransaction, nftTransaction } = state;
     const txData = sftTransaction || nftTransaction || tokenTransaction;
+    const tokenTransferWarning = state.commonData?.tokenTransferWarning;
 
     return {
       identifier: txData?.identifier,
       usdValue: tokenTransaction?.usdValue,
-      amount: txData?.amount || '0',
+      amount: txData?.amount || (tokenTransferWarning ? '' : '0'),
       tokenIconUrl: txData?.imageURL,
       interactor: state.commonData?.receiver,
       interactorIconUrl: state.commonData?.receiverIcon,
@@ -137,6 +138,7 @@ export class SignTransactionsPanel {
       egldLabel: state.commonData?.egldLabel,
       sender: state.commonData?.sender !== state.commonData?.address ? state.commonData?.sender : undefined,
       relayer: state.commonData?.relayer,
+      tokenTransferWarning,
       isApp: Boolean(state.commonData?.scCall),
     };
   }

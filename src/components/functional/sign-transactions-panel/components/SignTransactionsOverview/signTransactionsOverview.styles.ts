@@ -45,6 +45,8 @@ export default {
     'sign-transactions-action-value mvx:ml-auto mvx:text-sm mvx:font-medium mvx:text-secondary-text mvx:relative mvx:z-1',
   signTransactionsInteractorWarning:
     'sign-transactions-interactor-warning mvx:flex mvx:items-center mvx:gap-2 mvx:px-6 mvx:pt-3 mvx:text-sm mvx:text-orange-500',
+  signTransactionsTokenTransferWarning:
+    'sign-transactions-token-transfer-warning mvx:flex mvx:items-start mvx:gap-2 mvx:text-sm mvx:font-medium mvx:text-orange-500',
   signTransactionsInteractorWarningIcon: 'sign-transactions-interactor-warning-icon mvx:w-4 mvx:h-4 mvx:shrink-0',
   signTransactionsFeeContainer: 'sign-transactions-fee-container mvx:py-2 mvx:px-6',
   signTransactionsFeeRow: 'sign-transactions-fee-row mvx:flex mvx:items-center mvx:justify-between mvx:py-3 mvx:px-0',

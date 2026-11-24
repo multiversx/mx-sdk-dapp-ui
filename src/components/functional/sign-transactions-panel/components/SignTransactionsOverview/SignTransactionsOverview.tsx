@@ -22,6 +22,7 @@ interface SignTransactionsOverviewPropsType {
   egldLabel?: string;
   sender?: string;
   relayer?: string;
+  tokenTransferWarning?: string;
   isApp: boolean;
 }
 
@@ -39,6 +40,7 @@ export function SignTransactionsOverview({
   egldLabel,
   sender,
   relayer,
+  tokenTransferWarning,
   isApp = false,
 }: SignTransactionsOverviewPropsType) {
   const setAmountValueRef = (el?: HTMLElement) => {
@@ -59,15 +61,26 @@ export function SignTransactionsOverview({
           <div class={styles.signTransactionsDetailLabel}>{isApp ? 'Amount' : 'Send'}</div>
           <div class={styles.signTransactionsAmountDisplay}>
             <div class={styles.signTransactionsAmountValueContainer}>
-              <div
-                class={styles.signTransactionsAmountValue}
-                data-testid={DataTestIdsEnum.signTransactionsOverviewAmountValue}
-                ref={setAmountValueRef}
-              >
-                <span>{amount}</span>
-                <span class={styles.signTransactionsIdentifier}>{identifier}</span>
-              </div>
-              {identifier !== 'USD' && (
+              {(amount || identifier) && (
+                <div
+                  class={styles.signTransactionsAmountValue}
+                  data-testid={DataTestIdsEnum.signTransactionsOverviewAmountValue}
+                  ref={setAmountValueRef}
+                >
+                  <span>{amount}</span>
+                  <span class={styles.signTransactionsIdentifier}>{identifier}</span>
+                </div>
+              )}
+              {tokenTransferWarning && (
+                <div
+                  class={styles.signTransactionsTokenTransferWarning}
+                  data-testid={DataTestIdsEnum.signTransactionsOverviewTokenTransferWarning}
+                >
+                  <Icon name="triangular-warning" class={styles.signTransactionsInteractorWarningIcon} />
+                  <span>{tokenTransferWarning}</span>
+                </div>
+              )}
+              {identifier !== 'USD' && usdValue && (
                 <div
                   class={styles.signTransactionsUsdValue}
                   data-testid={DataTestIdsEnum.signTransactionsOverviewUsdValue}

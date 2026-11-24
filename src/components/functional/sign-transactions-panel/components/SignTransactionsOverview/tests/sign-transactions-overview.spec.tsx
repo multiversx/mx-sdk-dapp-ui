@@ -99,4 +99,47 @@ describe('SignTransactionsOverview', () => {
     expect(page.root.querySelector(`[data-testid="${DataTestIdsEnum.signTransactionsOverviewRelayer}"]`)).toBeNull();
     expect(page.root.querySelector(`[data-testid="${DataTestIdsEnum.signTransactionsOverviewSender}"]`)).toBeNull();
   });
+
+  it('shows the token transfer warning instead of an amount', async () => {
+    const page = await render({
+      identifier: '',
+      amount: '',
+      usdValue: '',
+      tokenTransferWarning: 'The token transfer could not be read',
+    });
+
+    const warning = page.root.querySelector(
+      `[data-testid="${DataTestIdsEnum.signTransactionsOverviewTokenTransferWarning}"]`,
+    );
+
+    expect(warning.textContent).toContain('The token transfer could not be read');
+    expect(
+      page.root.querySelector(`[data-testid="${DataTestIdsEnum.signTransactionsOverviewAmountValue}"]`),
+    ).toBeNull();
+  });
+
+  it('shows the token transfer warning next to an amount that is not scaled', async () => {
+    const page = await render({
+      identifier: 'TOKEN-123456',
+      amount: '1000000',
+      usdValue: '',
+      tokenTransferWarning: 'The token details could not be loaded',
+    });
+
+    const amount = page.root.querySelector(`[data-testid="${DataTestIdsEnum.signTransactionsOverviewAmountValue}"]`);
+
+    expect(amount.textContent).toContain('1000000');
+    expect(
+      page.root.querySelector(`[data-testid="${DataTestIdsEnum.signTransactionsOverviewTokenTransferWarning}"]`),
+    ).not.toBeNull();
+    expect(page.root.querySelector(`[data-testid="${DataTestIdsEnum.signTransactionsOverviewUsdValue}"]`)).toBeNull();
+  });
+
+  it('shows no token transfer warning when there is none', async () => {
+    const page = await render();
+
+    expect(
+      page.root.querySelector(`[data-testid="${DataTestIdsEnum.signTransactionsOverviewTokenTransferWarning}"]`),
+    ).toBeNull();
+  });
 });
